@@ -6,9 +6,9 @@ namespace LoZClone
     public class LinkSpriteFactory
     {
         private Texture2D linkIdleLeftTexture;
-        //private SpriteSheetData linkIdleLeftData = new SpriteSheetData("Link_Idle_Left", 25, 25);
+        private SpriteSheetData linkIdleLeftData = new SpriteSheetData("Link_Idle_Left", 25, 25, 1, 1);
         private Texture2D linkIdleRightTexture;
-        //private SpriteSheetData linkIdleRightData = new SpriteSheetData("Link_Idle_Right", 25, 25);
+        private SpriteSheetData linkIdleRightData = new SpriteSheetData("Link_Idle_Right", 25, 25, 1, 1);
 
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
 
@@ -26,17 +26,18 @@ namespace LoZClone
 
         public void LoadAllTextures(ContentManager content)
         {
-            //linkIdleLeftTexture = content.Load<Texture2D>(linkIdleLeftData.GetFilePath);
+            linkIdleLeftTexture = content.Load<Texture2D>(linkIdleLeftData.GetFilePath);
+            linkIdleRightTexture = content.Load<Texture2D>(linkIdleRightData.GetFilePath);
         }
 
-        public Sprite CreateSprite_Link_Idle_Left()
+        public LinkIdleLeftSprite CreateSprite_Link_Idle_Left()
         {
-            return new Sprite(linkIdleLeftTexture, linkIdleLeftData);
+            return new LinkIdleLeftSprite(linkIdleLeftTexture, linkIdleLeftData);
         }
 
-        public Sprite CreateSprite_Link_Idle_Right()
+        public LinkIdleRightSprite CreateSprite_Link_Idle_Right()
         {
-            return new Sprite(linkIdleRightTexture, linkIdleRightData);
+            return new LinkIdleRightSprite(linkIdleRightTexture, linkIdleRightData);
         }
     }
 }
