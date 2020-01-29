@@ -1,4 +1,4 @@
-_3902 Format. Please fill out according to all italicized text and remove all italicized text and unnecessary line breaks before creating PR_
+_3902 Format. Please fill out according to all italicized text. Remove all italicized text, unnecessary line breaks, and non-relevant sections before creating PR_
 
 # Description
 
@@ -10,7 +10,7 @@ _Please select one of the following, where **Ready** means ready to check and me
 
 **Ready**
 
-**Hold** _Link other PRs_
+**Hold** _Link other PRs_ 
 
 # Changes
 
@@ -37,3 +37,7 @@ _Please mark all relevant options as follow - [x]_
 _Please list all components of the application that this will affect_
 
 - _Component Here_
+
+## Mentions
+
+_Use this space to \@Mention any other contributors to review your PR_
