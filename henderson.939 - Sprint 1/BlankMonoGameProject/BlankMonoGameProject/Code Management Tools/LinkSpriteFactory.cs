@@ -34,9 +34,9 @@ namespace LoZClone
             return new Sprite(linkIdleLeftTexture, linkIdleLeftData);
         }
 
-        public UnanimatedSprite CreateSprite_Link_Idle_Right()
+        public Sprite CreateSprite_Link_Idle_Right()
         {
-            return new UnanimatedSprite(linkIdleRightTexture, linkIdleRightData);
+            return new Sprite(linkIdleRightTexture, linkIdleRightData);
         }
     }
 }
