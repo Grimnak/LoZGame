@@ -38,9 +38,32 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CommandStuff\CommandA.cs" />
+    <Compile Include="CommandStuff\CommandD.cs" />
+    <Compile Include="CommandStuff\CommandE.cs" />
+    <Compile Include="CommandStuff\CommandI.cs" />
+    <Compile Include="CommandStuff\CommandIdleDown.cs" />
+    <Compile Include="CommandStuff\CommandIdleLeft.cs" />
+    <Compile Include="CommandStuff\CommandIdleRight.cs" />
+    <Compile Include="CommandStuff\CommandIdleUp.cs" />
+    <Compile Include="CommandStuff\CommandLoader.cs" />
+    <Compile Include="CommandStuff\CommandN.cs" />
+    <Compile Include="CommandStuff\CommandO.cs" />
+    <Compile Include="CommandStuff\CommandOne.cs" />
+    <Compile Include="CommandStuff\CommandP.cs" />
+    <Compile Include="CommandStuff\CommandQ.cs" />
+    <Compile Include="CommandStuff\CommandR.cs" />
+    <Compile Include="CommandStuff\CommandS.cs" />
+    <Compile Include="CommandStuff\CommandThree.cs" />
+    <Compile Include="CommandStuff\CommandTwo.cs" />
+    <Compile Include="CommandStuff\CommandU.cs" />
+    <Compile Include="CommandStuff\CommandW.cs" />
+    <Compile Include="CommandStuff\CommandZ.cs" />
+    <Compile Include="CommandStuff\ICommand.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
+    <Compile Include="KeyboardController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpriteStuff\EnemySpriteFactory.cs" />
