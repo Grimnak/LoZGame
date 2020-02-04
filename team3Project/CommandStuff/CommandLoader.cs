@@ -9,10 +9,7 @@ namespace LoZClone
 {
     class CommandLoader
     {
-        private CommandIdleUp commandIdleUp;
-        private CommandIdleDown commandIdleDown;
-        private CommandIdleLeft commandIdleLeft;
-        private CommandIdleRight commandIdleRight;
+        private CommandIdle commandIdle;
 
         private CommandW commandW;
         private CommandA commandA;
@@ -26,7 +23,6 @@ namespace LoZClone
 
         private CommandOne commandOne;
         private CommandTwo commandTwo;
-        private CommandThree commandThree;
 
         private CommandU commandU;
         private CommandI commandI;
@@ -41,10 +37,7 @@ namespace LoZClone
         public CommandLoader(Game game, Iplayer player /*, ItemManager? item, NpcManager npc*/)
         {
             //TODO constructors for all commands
-            commandIdleUp = new CommandIdleUp(player);
-            commandIdleDown = new CommandIdleDown(player);
-            commandIdleLeft = new CommandIdleLeft(player);
-            commandIdleRight = new CommandIdleRight(player);
+            commandIdle = new CommandIdle(player);
 
             commandW = new CommandW(player);
             commandA = new CommandA(player);
@@ -58,7 +51,6 @@ namespace LoZClone
 
             commandOne = new CommandOne(player);
             commandTwo = new CommandTwo(player);
-            commandThree = new CommandThree(player);
 
             commandU = new CommandU(/*item*/);
             commandI = new CommandI(/*item*/);
@@ -74,23 +66,9 @@ namespace LoZClone
 
         }
 
-        public ICommand getIdleUp
+        public ICommand getIdle
         {
-            get { return commandIdleUp; }
-        }
-
-        public ICommand getIdleDown
-        {
-            get { return commandIdleDown; }
-        }
-
-        public ICommand getIdleLeft
-        {
-            get { return commandIdleLeft; }
-        }
-        public ICommand getIdleRight
-        {
-            get { return commandIdleRight; }
+            get { return commandIdle; }
         }
 
         public ICommand getW
@@ -136,11 +114,6 @@ namespace LoZClone
         public ICommand getTwo
         {
             get { return commandTwo; }
-        }
-
-        public ICommand getThree
-        {
-            get { return commandThree; }
         }
 
         public ICommand getU

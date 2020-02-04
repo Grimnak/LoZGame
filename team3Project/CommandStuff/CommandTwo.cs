@@ -17,7 +17,7 @@ namespace LoZClone
         }
         public void execute()
         {
-            player.UseItemTwo();
+            player.useSecondaryItem();
         }
     }
 }

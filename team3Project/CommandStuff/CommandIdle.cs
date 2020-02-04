@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace LoZClone
 {
-    class CommandIdleRight : ICommand
+    class CommandIdle : ICommand
     {
         IPlayer player;
 
-        public CommandIdleRight(IPlayer player)
+        public CommandIdle(IPlayer player)
         {
             this.player = player;
         }
 
         public void execute()
         {
-            player.IdleRight();
+            player.idle();
         }
 
     }

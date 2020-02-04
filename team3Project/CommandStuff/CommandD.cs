@@ -18,7 +18,7 @@ namespace LoZClone
         public void execute()
         {
 
-            player.MoveRight();
+            player.moveRight();
         }
     }
 }

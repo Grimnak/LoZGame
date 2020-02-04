@@ -42,10 +42,7 @@
     <Compile Include="CommandStuff\CommandD.cs" />
     <Compile Include="CommandStuff\CommandE.cs" />
     <Compile Include="CommandStuff\CommandI.cs" />
-    <Compile Include="CommandStuff\CommandIdleDown.cs" />
-    <Compile Include="CommandStuff\CommandIdleLeft.cs" />
-    <Compile Include="CommandStuff\CommandIdleRight.cs" />
-    <Compile Include="CommandStuff\CommandIdleUp.cs" />
+    <Compile Include="CommandStuff\CommandIdle.cs" />
     <Compile Include="CommandStuff\CommandLoader.cs" />
     <Compile Include="CommandStuff\CommandN.cs" />
     <Compile Include="CommandStuff\CommandO.cs" />
