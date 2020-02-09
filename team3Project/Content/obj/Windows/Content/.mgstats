@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Ryan/Documents/LoZGame/team3Project/Content/enemies.png","C:/Users/Ryan/Documents/LoZGame/team3Project/Content/bin/Windows/Content/enemies.xnb","TextureProcessor","Texture2DContent",471,4005,0.7048123
+"C:/Users/Ryan/Documents/LoZGame/team3Project/Content/stalfos.png","C:/Users/Ryan/Documents/LoZGame/team3Project/Content/bin/Windows/Content/stalfos.xnb","TextureProcessor","Texture2DContent",471,4005,0.0168811

@@ -1,0 +1,4 @@
+C:\Users\Ryan\Documents\LoZGame\team3Project\obj\x86\Debug\team3Project.csprojAssemblyReference.cache
+C:\Users\Ryan\Documents\LoZGame\team3Project\obj\x86\Debug\team3Project.csproj.CoreCompileInputs.cache
+C:\Users\Ryan\Documents\LoZGame\team3Project\obj\x86\Debug\BlankMonoGameProject.exe
+C:\Users\Ryan\Documents\LoZGame\team3Project\obj\x86\Debug\BlankMonoGameProject.pdb
