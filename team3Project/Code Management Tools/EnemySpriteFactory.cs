@@ -29,28 +29,28 @@ namespace LoZClone
 
         //Stalfos Sprites
 
-        public StalfosSprite createSpriteDownMovingStalfos()
+        public StalfosSprite createDownMovingStalfosSprite()
         {
             // Initial sprite direction is down
             return new StalfosSprite(enemies);
            
         }
 
-        public StalfosSprite createSpriteUpMovingStalfos()
+        public StalfosSprite createUpMovingStalfosSprite()
         {
             StalfosSprite sprite = new StalfosSprite(enemies);
             sprite.state = new UpMovingStalfosState(sprite);
             return sprite;
         }
 
-        public StalfosSprite createSpriteLeftMovingStalfos()
+        public StalfosSprite createLeftMovingStalfosSprite()
         {
             StalfosSprite sprite = new StalfosSprite(enemies);
             sprite.state = new LeftMovingStalfosState(sprite);
             return sprite;
         }
 
-        public StalfosSprite createSpriteRightMovingStalfos()
+        public StalfosSprite createRightMovingStalfosSprite()
         {
             StalfosSprite sprite = new StalfosSprite(enemies);
             sprite.state = new RightMovingStalfosState(sprite);
@@ -59,28 +59,28 @@ namespace LoZClone
 
         //Goriya Sprites
 
-        public GoriyaSprite createSpriteDownMovingGoriya()
+        public GoriyaSprite createDownMovingGoriyaSprite()
         {
             // Initial sprite direction is down
             return new GoriyaSprite(enemies);
 
         }
 
-        public GoriyaSprite createSpriteUpMovingGoriya()
+        public GoriyaSprite createUpMovingGoriyaSprite()
         {
             GoriyaSprite sprite = new GoriyaSprite(enemies);
             sprite.state = new UpMovingGoriyaState(sprite);
             return sprite;
         }
 
-        public GoriyaSprite createSpriteLeftMovingGoriya()
+        public GoriyaSprite createLeftMovingGoriyaSprite()
         {
             GoriyaSprite sprite = new GoriyaSprite(enemies);
             sprite.state = new LeftMovingGoriyaState(sprite);
             return sprite;
         }
 
-        public GoriyaSprite createSpriteRightMovingGoriya()
+        public GoriyaSprite createRightMovingGoriyaSprite()
         {
             GoriyaSprite sprite = new GoriyaSprite(enemies);
             sprite.state = new RightMovingGoriyaState(sprite);
@@ -89,14 +89,14 @@ namespace LoZClone
 
         //Wallmaster Sprites
 
-        public WallMasterSprite createSpriteDownMovingWallMaster()
+        public WallMasterSprite createDownMovingWallMasterSprite()
         {
             // Initial sprite direction is down
             return new WallMasterSprite(enemies);
 
         }
 
-        public WallMasterSprite createSpriteUpMovingWallMaster()
+        public WallMasterSprite createUpMovingWallMasterSprite()
         {
             WallMasterSprite sprite = new WallMasterSprite(enemies);
             sprite.state = new UpMovingWallMasterState(sprite);
@@ -110,7 +110,7 @@ namespace LoZClone
             return sprite;
         }
 
-        public WallMasterSprite createSpriteRightMovingWallMaster()
+        public WallMasterSprite createRightMovingWallMasterSprite()
         {
             WallMasterSprite sprite = new WallMasterSprite(enemies);
             sprite.state = new RightMovingWallMasterState(sprite);
@@ -118,28 +118,28 @@ namespace LoZClone
         }
 
         //Rope sprites
-        public RopeSprite createSpriteDownMovingRope()
+        public RopeSprite createDownMovingRopeSprite()
         {
             // Initial sprite direction is down
             return new RopeSprite(enemies);
 
         }
 
-        public RopeSprite createSpriteUpMovingRope()
+        public RopeSprite createUpMovingRopeSprite()
         {
             RopeSprite sprite = new RopeSprite(enemies);
             sprite.state = new UpMovingRopeState(sprite);
             return sprite;
         }
 
-        public RopeSprite createSpriteLeftMovingRope()
+        public RopeSprite createLeftMovingRopeSprite()
         {
             RopeSprite sprite = new RopeSprite(enemies);
             sprite.state = new LeftMovingRopeState(sprite);
             return sprite;
         }
 
-        public RopeSprite createSpriteRightMovingRope()
+        public RopeSprite createRightMovingRopeSprite()
         {
             RopeSprite sprite = new RopeSprite(enemies);
             sprite.state = new RightMovingRopeState(sprite);
@@ -147,28 +147,28 @@ namespace LoZClone
         }
 
         //Gel Sprites
-        public GelSprite createSpriteDownMovingGel()
+        public GelSprite createDownMovingGelSprite()
         {
             // Initial sprite direction is down
             return new GelSprite(enemies);
 
         }
 
-        public GelSprite createSpriteUpMovingGel()
+        public GelSprite createUpMovingGelSprite()
         {
             GelSprite sprite = new GelSprite(enemies);
             sprite.state = new UpMovingGelState(sprite);
             return sprite;
         }
 
-        public GelSprite createSpriteLeftMovingGel()
+        public GelSprite createLeftMovingGelSprite()
         {
             GelSprite sprite = new GelSprite(enemies);
             sprite.state = new LeftMovingGelState(sprite);
             return sprite;
         }
 
-        public GelSprite createSpriteRightMovingGel()
+        public GelSprite createightMovingGelSprite()
         {
             GelSprite sprite = new GelSprite(enemies);
             sprite.state = new RightMovingGelState(sprite);
@@ -176,28 +176,28 @@ namespace LoZClone
         }
 
         // Zol Sprites
-        public ZolSprite createSpriteDownMovingZol()
+        public ZolSprite createDownMovingZolSprite()
         {
             // Initial sprite direction is down
             return new ZolSprite(enemies);
 
         }
 
-        public ZolSprite createSpriteUpMovingZol()
+        public ZolSprite createUpMovingZolSprite()
         {
             ZolSprite sprite = new ZolSprite(enemies);
             sprite.state = new UpMovingZolState(sprite);
             return sprite;
         }
 
-        public ZolSprite createSpriteLeftMovingZol()
+        public ZolSprite createLeftMovingZolSprite()
         {
             ZolSprite sprite = new ZolSprite(enemies);
             sprite.state = new LeftMovingZolState(sprite);
             return sprite;
         }
 
-        public ZolSprite createSpriteRightMovingZol()
+        public ZolSprite createRightMovingZolSprite()
         {
             ZolSprite sprite = new ZolSprite(enemies);
             sprite.state = new RightMovingZolState(sprite);
@@ -205,28 +205,28 @@ namespace LoZClone
         }
 
         //SpikeCrossSprite
-        public SpikeCrossSprite createSpriteDownMovingSpikeCross()
+        public SpikeCrossSprite createDownMovingSpikeCrossSprite()
         {
             // Initial sprite direction is down
             return new SpikeCrossSprite(enemies);
 
         }
 
-        public SpikeCrossSprite createSpriteUpMovingSpikeCross()
+        public SpikeCrossSprite createUpMovingSpikeCrossSprite()
         {
             SpikeCrossSprite sprite = new SpikeCrossSprite(enemies);
             sprite.state = new UpMovingSpikeCrossState(sprite);
             return sprite;
         }
 
-        public SpikeCrossSprite createSpriteLeftMovingSpikeCross()
+        public SpikeCrossSprite createLeftMovingSpikeCrossSprite()
         {
             SpikeCrossSprite sprite = new SpikeCrossSprite(enemies);
             sprite.state = new LeftMovingSpikeCrossState(sprite);
             return sprite;
         }
 
-        public SpikeCrossSprite createSpriteRightMovingSpikeCross()
+        public SpikeCrossSprite createRightMovingSpikeCrossSprite()
         {
             SpikeCrossSprite sprite = new SpikeCrossSprite(enemies);
             sprite.state = new RightMovingSpikeCrossState(sprite);
@@ -234,35 +234,35 @@ namespace LoZClone
         }
 
         //Keese Sprites
-        public KeeseSprite createSpriteDownMovingKeese()
+        public KeeseSprite createDownMovingKeeseSprite()
         {
             // Initial sprite direction is down
             return new KeeseSprite(enemies);
 
         }
 
-        public KeeseSprite createSpriteUpMovingKeese()
+        public KeeseSprite createUpMovingKeeseSprite()
         {
             KeeseSprite sprite = new KeeseSprite(enemies);
             sprite.state = new UpMovingKeeseState(sprite);
             return sprite;
         }
 
-        public KeeseSprite createSpriteLeftMovingKeese()
+        public KeeseSprite createLeftMovingKeeseSprite()
         {
             KeeseSprite sprite = new KeeseSprite(enemies);
             sprite.state = new LeftMovingKeeseState(sprite);
             return sprite;
         }
 
-        public KeeseSprite createSpriteRightMovingKeese()
+        public KeeseSprite createRightMovingKeeseSprite()
         {
             KeeseSprite sprite = new KeeseSprite(enemies);
             sprite.state = new RightMovingKeeseState(sprite);
             return sprite;
         }
 
-        public KeeseSprite createSpriteUpLeftMovingKeese()
+        public KeeseSprite createUpLeftMovingKeeseSprite()
         {
             KeeseSprite sprite = new KeeseSprite(enemies);
             sprite.state = new UpLeftMovingKeeseState(sprite);
@@ -276,14 +276,14 @@ namespace LoZClone
             return sprite;
         }
 
-        public KeeseSprite createSpriteDownLeftMovingKeese()
+        public KeeseSprite createDownLeftMovingKeeseSprite()
         {
             KeeseSprite sprite = new KeeseSprite(enemies);
             sprite.state = new DownLeftMovingKeeseState(sprite);
             return sprite;
         }
 
-        public KeeseSprite createSpriteDownRightMovingKeese()
+        public KeeseSprite createDownRightMovingKeeseSprite()
         {
             KeeseSprite sprite = new KeeseSprite(enemies);
             sprite.state = new DownRightMovingKeeseState(sprite);
@@ -291,14 +291,14 @@ namespace LoZClone
         }
 
         //Dragon Sprites
-        public DragonSprite createSpriteLeftMovingDragon()
+        public DragonSprite createLeftMovingDragonSprite()
         {
             DragonSprite sprite = new DragonSprite(enemies);
             sprite.state = new LeftMovingDragonState(sprite);
             return sprite;
         }
 
-        public DragonSprite createSpriteRightMovingDragon()
+        public DragonSprite createRightMovingDragonSprite()
         {
             DragonSprite sprite = new DragonSprite(enemies);
             sprite.state = new RightMovingDragonState(sprite);
@@ -306,28 +306,28 @@ namespace LoZClone
         }
 
         //DodongoSprites
-        public DodongoSprite createSpriteDownMovingDodongo()
+        public DodongoSprite createDownMovingDodongoSprite()
         {
             // Initial sprite direction is down
             return new DodongoSprite(enemies);
 
         }
 
-        public DodongoSprite createSpriteUpMovingDodongo()
+        public DodongoSprite createUpMovingDodongoSprite()
         {
             DodongoSprite sprite = new DodongoSprite(enemies);
             sprite.state = new UpMovingDodongoState(sprite);
             return sprite;
         }
 
-        public DodongoSprite createSpriteLeftMovingDodongo()
+        public DodongoSprite createLeftMovingDodongoSprite()
         {
             DodongoSprite sprite = new DodongoSprite(enemies);
             sprite.state = new LeftMovingDodongoState(sprite);
             return sprite;
         }
 
-        public DodongoSprite createSpriteRightMovingDodongo()
+        public DodongoSprite createRightMovingDodongoSprite()
         {
             DodongoSprite sprite = new DodongoSprite(enemies);
             sprite.state = new RightMovingDodongoState(sprite);
@@ -335,15 +335,22 @@ namespace LoZClone
         }
 
         //Old Man Sprite
-        public OldManSprite createSpriteOldMan()
+        public OldManSprite createOldManSprite()
         {
             return new OldManSprite(enemies); 
         }
 
         //Merchant Sprite
-        public MerchantSprite createSpriteMerchant()
+        public MerchantSprite createMerchantSprite()
         {
             return new MerchantSprite(enemies);
         }
+
+        //Flame Sprite
+        public FlameSprite createFlameSprite()
+        {
+            return new FlameSprite(enemies);
+        }
+
     }
 }

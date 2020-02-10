@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public interface ISprite
+    public interface IEnemySprite
     {
         public void Update();
         public void Draw(SpriteBatch spriteBatch, Color spriteTint);
