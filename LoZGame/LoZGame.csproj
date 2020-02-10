@@ -53,6 +53,8 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controller\Commands\CommandFour.cs" />
+    <Compile Include="Controller\Commands\CommandThree.cs" />
     <Compile Include="Controller\Commands\CommandZ.cs" />
     <Compile Include="Controller\Commands\CommandW.cs" />
     <Compile Include="Controller\Commands\CommandU.cs" />
