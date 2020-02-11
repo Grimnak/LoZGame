@@ -13,20 +13,20 @@ namespace LoZClone
         private Array<IEnemySprite> addNPCs()
         {
             NPCs = new Array<IEnemySprite>();
-            NPCs.SetValue(new Dodongo(), 0);
-            NPCs.SetValue(new Dragon(), 0);
-            NPCs.SetValue(new Stalfos(), 0);
-            NPCs.SetValue(new Keese(), 0);
-            NPCs.SetValue(new Gel(), 0);
-            NPCs.SetValue(new Zol(), 0);
-            NPCs.SetValue(new Goriya(), 0);
-            NPCs.SetValue(new Rope(), 0);
-            NPCs.SetValue(new SpikeCross(), 0);
-            NPCs.SetValue(new WallMaster(), 0);
+            NPCs.SetValue(new Dodongo(), 1);
+            NPCs.SetValue(new Dragon(), 2);
+            NPCs.SetValue(new Stalfos(), 3);
+            NPCs.SetValue(new Keese(), 4);
+            NPCs.SetValue(new Gel(), 5);
+            NPCs.SetValue(new Zol(), 6);
+            NPCs.SetValue(new Goriya(), 7);
+            NPCs.SetValue(new Rope(), 8);
+            NPCs.SetValue(new SpikeCross(), 9);
+            NPCs.SetValue(new WallMaster(), 10);
 
-           // NPCs.SetValue(new OldMan(), 0);
-           // NPCs.SetValue(new Merchant(), 0);
-           // NPCs.SetValue(new Flame(), 0);
+           // NPCs.SetValue(new OldMan(), 11);
+           // NPCs.SetValue(new Merchant(), 12);
+           // NPCs.SetValue(new Flame(), 13);
         }
 
         public IEnemySprite cycleRight()
