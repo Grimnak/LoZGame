@@ -10,7 +10,7 @@ namespace LoZClone
 {
     class KeyboardController : IController
     {
-        Game game;
+        LoZGame game;
         CommandLoader loader;
         Dictionary<Keys, ICommand> commands;
 
