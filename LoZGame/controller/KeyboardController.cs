@@ -73,6 +73,31 @@ namespace LoZClone
                     currentCommand = allCommands.getTwo;
                     currentCommand.execute();
                 }
+                else if (pressed.Contains(Keys.D3))
+                {
+                    currentCommand = allCommands.getThree;
+                    currentCommand.execute();
+                }
+                else if (pressed.Contains(Keys.D4))
+                {
+                    currentCommand = allCommands.getFour;
+                    currentCommand.execute();
+                }
+                else if (pressed.Contains(Keys.D5))
+                {
+                    currentCommand = allCommands.getFive;
+                    currentCommand.execute();
+                }
+                else if (pressed.Contains(Keys.D6))
+                {
+                    currentCommand = allCommands.getSix;
+                    currentCommand.execute();
+                }
+                else if (pressed.Contains(Keys.D7))
+                {
+                    currentCommand = allCommands.getSeven;
+                    currentCommand.execute();
+                }
                 //maybe change
                 else if (pressed.Contains(Keys.E))
                 {

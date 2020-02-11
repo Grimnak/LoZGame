@@ -16,6 +16,11 @@ namespace LoZClone
 
         private CommandOne commandOne;
         private CommandTwo commandTwo;
+        private CommandThree commandThree;
+        private CommandFour commandFour;
+        private CommandFive commandFive;
+        private CommandSix commandSix;
+        private CommandSeven commandSeven;
 
         private CommandU commandU;
         private CommandI commandI;
@@ -43,6 +48,11 @@ namespace LoZClone
 
             commandOne = new CommandOne(player);
             commandTwo = new CommandTwo(player);
+            commandThree = new CommandThree(player);
+            commandFour = new CommandFour(player);
+            commandFive = new CommandFive(player);
+            commandSix = new CommandSix(player);
+            commandSeven = new CommandSeven(player);
 
             commandU = new CommandU(item);
             commandI = new CommandI(item);
@@ -103,6 +113,31 @@ namespace LoZClone
         public ICommand getTwo
         {
             get { return commandTwo; }
+        }
+
+        public ICommand getThree
+        {
+            get { return commandThree; }
+        }
+
+        public ICommand getFour
+        {
+            get { return commandFour; }
+        }
+
+        public ICommand getFive
+        {
+            get { return commandFive; }
+        }
+
+        public ICommand getSix
+        {
+            get { return commandSix; }
+        }
+
+        public ICommand getSeven
+        {
+            get { return commandSeven; }
         }
 
         public ICommand getU
