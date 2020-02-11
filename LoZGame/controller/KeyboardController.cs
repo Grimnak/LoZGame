@@ -98,12 +98,7 @@ namespace LoZClone
                     currentCommand = allCommands.getSeven;
                     currentCommand.execute();
                 }
-                //maybe change
-                else if (pressed.Contains(Keys.E))
-                {
-                    currentCommand = allCommands.getE;
-                    currentCommand.execute();
-                }
+                
 
                 if (pressed.Contains(Keys.U))
                 {
@@ -124,6 +119,12 @@ namespace LoZClone
                 else if (pressed.Contains(Keys.P))
                 {
                     currentCommand = allCommands.getP;
+                    currentCommand.execute();
+                }
+
+                if (pressed.Contains(Keys.E))
+                {
+                    currentCommand = allCommands.getE;
                     currentCommand.execute();
                 }
 

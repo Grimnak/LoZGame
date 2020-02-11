@@ -9,7 +9,7 @@
         }
         public void execute()
         {
-            player.moveRight();
+            player.takeDamage();
         }
     }
 }
