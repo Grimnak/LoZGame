@@ -1,4 +1,4 @@
-﻿namespace LoZClone
+namespace LoZClone
 {
     public class AttackState : IPlayerState
     {
@@ -21,10 +21,12 @@
             if (player.CurrentDirection.Equals("Up"))
             {
                 return LinkSpriteFactory.Instance.createSpriteLinkAttackUp(player.CurrentColor);
-            } else if (player.CurrentDirection.Equals("Down"))
+            }
+            else if (player.CurrentDirection.Equals("Down"))
             {
                 return LinkSpriteFactory.Instance.createSpriteLinkAttackDown(player.CurrentColor);
-            } else if (player.CurrentDirection.Equals("Left"))
+            }
+            else if (player.CurrentDirection.Equals("Left"))
             {
                 return LinkSpriteFactory.Instance.createSpriteLinkAttackLeft(player.CurrentColor);
             }
