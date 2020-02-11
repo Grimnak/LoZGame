@@ -27,7 +27,7 @@ namespace LoZClone
 
         private CommandR commandR;
 
-        public CommandLoader(LoZGame game, IPlayer player /*, ItemManager? item, NpcManager npc*/)
+        public CommandLoader(LoZGame game, IPlayer player , ItemManager item/*, NpcManager npc*/)
         {
             commandIdle = new CommandIdle(player);
 
@@ -44,8 +44,8 @@ namespace LoZClone
             commandOne = new CommandOne(player);
             commandTwo = new CommandTwo(player);
 
-            commandU = new CommandU(/*item*/);
-            commandI = new CommandI(/*item*/);
+            commandU = new CommandU(item);
+            commandI = new CommandI(item);
 
             commandO = new CommandO(/*npc*/);
             commandP = new CommandP(/*npc*/);
