@@ -62,7 +62,7 @@ namespace LoZClone
 
             commandQ = new CommandQ(game);
 
-            commandR = new CommandR(game);
+            commandR = new CommandR(game, player, item);
         }
 
         public ICommand getIdle

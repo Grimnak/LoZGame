@@ -49,7 +49,7 @@ namespace LoZClone
             this.game = game;
             currentColor = "Green";
             currentDirection = "Down";
-            currentLocation = new Vector2(400, 200);
+            currentLocation = new Vector2(150, 200);
             currentTint = Color.White;
             currentSpeed = 2;
             damageTimer = 0;
