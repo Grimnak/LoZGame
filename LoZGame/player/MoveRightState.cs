@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 
 namespace LoZClone
 {
@@ -44,7 +44,7 @@ namespace LoZClone
         }
         public void Update()
         {
-            player.CurrentLocation = new Vector2(player.CurrentLocation.X + 1, player.CurrentLocation.Y);
+            player.CurrentLocation = new Vector2(player.CurrentLocation.X + player.CurrentSpeed, player.CurrentLocation.Y);
             sprite.Update();
         }
         public void Draw()
