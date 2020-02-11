@@ -1,4 +1,4 @@
-﻿namespace LoZClone
+namespace LoZClone
 {
     public class IdleState : IPlayerState
     {

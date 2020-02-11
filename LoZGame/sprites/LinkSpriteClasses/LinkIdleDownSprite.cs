@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
@@ -7,11 +7,14 @@ namespace LoZClone
     {
         private Texture2D spriteSheet;
         private int spriteSheetRows, spriteSheetColumns;
+        private int spriteSheetWidth, spriteSheetHeight;
         private int currentFrame = 0;
 
         public LinkIdleDownSprite(Texture2D spriteTexture, SpriteSheetData data)
         {
             spriteSheet = spriteTexture;
+            spriteSheetWidth = data.Width;
+            spriteSheetHeight = data.Height;
             spriteSheetRows = data.Rows;
             spriteSheetColumns = data.Columns;
         }
@@ -33,7 +36,7 @@ namespace LoZClone
             int column = currentFrame % spriteSheetColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, spriteSheetWidth, spriteSheetHeight);
 
             spriteBatch.Draw(spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
         }

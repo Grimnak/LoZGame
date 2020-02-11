@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 
 namespace LoZClone
 {
@@ -37,7 +37,11 @@ namespace LoZClone
             get { return currentTint; }
             set { currentTint = value; }
         }
-        private bool isDamaged;
+        private int currentSpeed;
+        public int CurrentSpeed
+        {
+            get { return currentSpeed; }
+        }
         private int damageTimer;
 
         public Link(LoZGame game)
@@ -47,22 +51,13 @@ namespace LoZClone
             currentDirection = "Down";
             currentLocation = new Vector2(400, 200);
             currentTint = Color.White;
-            isDamaged = false;
+            currentSpeed = 2;
             damageTimer = 0;
 
             playerState = new NullState(game, this);
         }
         private void handleDamage()
         {
-            if (isDamaged)
-            {
-                damageTimer = 1000;
-                isDamaged = false;
-            }
-            else
-            {
-                damageTimer = 0;
-            }
             if (damageTimer > 0)
             {
                 damageTimer--;
@@ -76,19 +71,20 @@ namespace LoZClone
                 }
             }
         }
+        //This handleBounds method will not remain here past Sprint 2.  This is a form of "collision handling" just so Link will stay in bounds.
         private void handleBounds()
         {
-            if (currentLocation.X + 25 > game.GraphicsDevice.Viewport.Width)
+            if (currentLocation.X + 50 > game.GraphicsDevice.Viewport.Width)
             {
-                currentLocation.X = game.GraphicsDevice.Viewport.Width - 25;
+                currentLocation.X = game.GraphicsDevice.Viewport.Width - 50;
             }
             else if (currentLocation.X < 0)
             {
                 currentLocation.X = 0;
             }
-            if (currentLocation.Y + 25 > game.GraphicsDevice.Viewport.Height)
+            if (currentLocation.Y + 50 > game.GraphicsDevice.Viewport.Height)
             {
-                currentLocation.Y = game.GraphicsDevice.Viewport.Height - 25;
+                currentLocation.Y = game.GraphicsDevice.Viewport.Height - 50;
             }
             else if (currentLocation.Y < 0)
             {
@@ -117,7 +113,7 @@ namespace LoZClone
         }
         public void takeDamage()
         {
-            isDamaged = true;
+            damageTimer = 1000;
         }
         public void attack()
         {
