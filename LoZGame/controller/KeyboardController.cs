@@ -16,7 +16,7 @@ namespace LoZClone
 
         private ICommand currentCommand;
 
-        public KeyboardController(Game game, CommandLoader loader)
+        public KeyboardController(LoZGame game, CommandLoader loader)
         {
             this.game = game;
             this.loader = loader;
