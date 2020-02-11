@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace Game1
+namespace LoZClone
 {
     // Class to handle the completely stationary sprite
-    class Fairy : ISprite
+    class Fairy : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle firstFrame;   // frames
@@ -59,7 +59,7 @@ namespace Game1
 
     }
 
-    class Health : ISprite
+    class Health : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle currentFrame;
@@ -101,13 +101,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, currentFrame, Color.White);
+
         }
 
     }
 
-    class TriForce : ISprite
+    class TriForce : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle currentFrame;
@@ -150,13 +150,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, currentFrame, Color.White);
+
         }
 
     }
 
-    class YellowRupee : ISprite
+    class YellowRupee : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle currentFrame;
@@ -199,13 +199,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, currentFrame, Color.White);
+
         }
 
     }
 
-    class FullHeart : ISprite
+    class FullHeart : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -229,13 +229,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class HalfHeart : ISprite
+    class HalfHeart : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -259,13 +259,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class EmptyHeart : ISprite
+    class EmptyHeart : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -289,13 +289,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class HeartContainer : ISprite
+    class HeartContainer : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -320,13 +320,12 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
-        }
 
+        }
     }
 
-    class Clock : ISprite
+    class Clock : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -350,13 +349,12 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
-        }
 
+        }
     }
 
-    class Rupee : ISprite
+    class Rupee : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -380,13 +378,14 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
+        
         }
 
     }
 
-    class LifePotion : ISprite
+    class LifePotion : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -410,13 +409,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class SecondPotion : ISprite
+    class SecondPotion : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -441,13 +440,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class Letter : ISprite
+    class Letter : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -471,13 +470,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class Map : ISprite
+    class Map : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -501,13 +500,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class Food : ISprite
+    class Food : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -531,13 +530,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class WoodenSword : ISprite
+    class WoodenSword : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -561,13 +560,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class WhiteSword : ISprite
+    class WhiteSword : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -591,13 +590,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class MagicSword : ISprite
+    class MagicSword : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -621,13 +620,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class MagicShield : ISprite
+    class MagicShield : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -651,13 +650,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class Boomerang : ISprite
+    class Boomerang : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -681,13 +680,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class MagicBoomerang : ISprite
+    class MagicBoomerang : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -711,13 +710,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class Bomb : ISprite
+    class Bomb : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -741,13 +740,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class Bow : ISprite
+    class Bow : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -771,13 +770,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class Arrow : ISprite
+    class Arrow : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -801,13 +800,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class SilverArrow : ISprite
+    class SilverArrow : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -831,13 +830,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class RedCandle : ISprite
+    class RedCandle : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -861,13 +860,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class BlueCandle : ISprite
+    class BlueCandle : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -891,13 +890,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class RedRing : ISprite
+    class RedRing : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -921,13 +920,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class BlueRing : ISprite
+    class BlueRing : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -951,13 +950,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class PowerBracelet : ISprite
+    class PowerBracelet : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -981,13 +980,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class Flute : ISprite
+    class Flute : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -1011,13 +1010,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class Raft : ISprite
+    class Raft : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -1041,13 +1040,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class StepLadder : ISprite
+    class StepLadder : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -1071,13 +1070,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class MagicRod : ISprite
+    class MagicRod : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -1101,13 +1100,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class MagicBook : ISprite
+    class MagicBook : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -1131,13 +1130,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class Key : ISprite
+    class Key : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -1161,13 +1160,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class MagicKey : ISprite
+    class MagicKey : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -1191,13 +1190,13 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
 
-    class Compass : ISprite
+    class Compass : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -1221,8 +1220,8 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // draaws the sill link at the specified location
             spriteBatch.Draw(Texture, location, frame, Color.White);
+
         }
 
     }
