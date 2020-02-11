@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>/Users/garrettmorse/Documents/school/currentCourses/cse3902/proj/LoZGame/content/Green_Link_Up.png</SourceFile>
-  <SourceTime>2020-02-11T14:07:55.2018943-05:00</SourceTime>
-  <DestFile>/Users/garrettmorse/Documents/school/currentCourses/cse3902/proj/LoZGame/content/bin/Windows/Content/Green_Link_Up.xnb</DestFile>
-  <DestTime>2020-02-11T14:28:25.2283189-05:00</DestTime>
+  <SourceFile>C:/Users/wensinkj/Desktop/3902proj/LoZGame/LoZGame/Content/Green_Link_Up.png</SourceFile>
+  <SourceTime>2020-02-11T15:34:24.6468487-05:00</SourceTime>
+  <DestFile>C:/Users/wensinkj/Desktop/3902proj/LoZGame/LoZGame/Content/bin/Windows/Content/Green_Link_Up.xnb</DestFile>
+  <DestTime>2020-02-11T15:34:43.5434261-05:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2018-12-08T11:35:14-05:00</ImporterTime>
+  <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2018-12-08T11:35:14-05:00</ProcessorTime>
+  <ProcessorTime>2018-12-08T11:35:54-05:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>
