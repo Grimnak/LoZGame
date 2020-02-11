@@ -14,6 +14,7 @@ namespace LoZClone
         private IPlayer link;
         private CommandLoader commandLoader;
         private IController keyboardController;
+        private ItemManager itemManager;
 
         public LoZGame()
         {
@@ -24,7 +25,8 @@ namespace LoZClone
         protected override void Initialize()
         {
             link = new Link(this);
-            commandLoader = new CommandLoader(this, link);
+            itemManager = new ItemManager();
+            commandLoader = new CommandLoader(this, link, itemManager);
             keyboardController = new KeyboardController(this, commandLoader);
             base.Initialize();
         }
@@ -32,6 +34,8 @@ namespace LoZClone
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
+            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+            itemManager.loadSprites(120, 120);
         }
         protected override void UnloadContent()
         {
@@ -40,14 +44,15 @@ namespace LoZClone
         {
             keyboardController.Update();
             link.Update();
+            itemManager.currentItem.Update();
             base.Update(gameTime);
         }
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Gray);
-
             spriteBatch.Begin();
             link.Draw();
+            itemManager.currentItem.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

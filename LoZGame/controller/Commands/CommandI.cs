@@ -1,15 +1,16 @@
-﻿namespace LoZClone
+﻿
+namespace LoZClone
 {
     public class CommandI : ICommand
     {
-        //ItemManager? item;
-        public CommandI(/*ItemManager? item*/)
+        ItemManager item;
+        public CommandI(ItemManager item)
         {
-            //this.item = item;
+            this.item = item;
         }
         public void execute()
         {
-            //item.CycleItemRight();
+            item.cycleRight();
         }
     }
 }

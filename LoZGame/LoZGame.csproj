@@ -73,6 +73,12 @@
     <Compile Include="Controller\Commands\CommandA.cs" />
     <Compile Include="Controller\Commands\CommandLoader.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
+    <Compile Include="Interfaces\Interface1.cs" />
+    <Compile Include="Interfaces\IPlayerSprite.cs" />
+    <Compile Include="Interfaces\IItemSprite.cs" />
+    <Compile Include="Managers\ItemManager.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\ItemSpriteClasses.cs" />
+    <Compile Include="util\ItemSpriteFactory.cs" />
     <Compile Include="util\LinkSpriteFactory.cs" />
     <Compile Include="LoZGame.cs" />
     <Compile Include="Interfaces\IController.cs" />

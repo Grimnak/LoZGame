@@ -40,7 +40,7 @@ namespace LoZClone
 
         private CommandR commandR;
 
-        public CommandLoader(LoZGame game, IPlayer player /*, ItemManager? item, NpcManager npc*/)
+        public CommandLoader(LoZGame game, IPlayer player, ItemManager item/*, NpcManager npc*/)
         {
 
             commandIdle = new CommandIdle(player);
@@ -71,9 +71,9 @@ namespace LoZClone
             commandFour = new CommandFour(player);
             commands.Add(Keys.D4, commandFour);
 
-            commandU = new CommandU(/*item*/);
+            commandU = new CommandU(item);
             commands.Add(Keys.U, commandU);
-            commandI = new CommandI(/*item*/);
+            commandI = new CommandI(item);
             commands.Add(Keys.I, commandI);
 
             commandO = new CommandO(/*npc*/);

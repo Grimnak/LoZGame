@@ -109,6 +109,18 @@
 /processorParam:TextureFormat=Color
 /build:Green_Link_Up.png
 
+#begin Items.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Items.png
+
 #begin Red_Link_Down.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -156,4 +168,11 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Red_Link_Up.png
+
+#begin Text.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Text.spritefont
 
