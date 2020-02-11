@@ -12,8 +12,9 @@ public class SpikeCrossSprite
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle = new Rectangle(400, 240, 80, 80);
         public int health = 2;
+        public string direction;
 
-        public SpikeCrossSprite(Texture2D texture)
+        public SpikeCrossSprite(Texture2D texture, string direction)
         {
             state = new DownMovingSpikeCrossState(this);
             spriteSheet = texture;

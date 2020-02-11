@@ -2,13 +2,13 @@
 
 namespace LoZCloe
 {
-    public class UpMovingSpikeCrossState : IEnemyState
+    public class IdleSpikeCrossState : IEnemyState
     {
         private SpikeCrossState spikeCross;
-        public UpMovingSpikeCrossState(SpikeCrossSprite spikeCrossSprite)
+        public IdleSpikeCrossState(SpikeCrossSprite spikeCrossSprite)
         {
             this.spikeCross = spikeCrossSprite;
-            EnemySpriteFactory.Instance.createUpMovingSpikeCrossSprite();
+            EnemySpriteFactory.Instance.createIdleSpikeCrossSprite();
         }
         public void moveLeft()
         {
@@ -20,21 +20,20 @@ namespace LoZCloe
         }
         public void moveUp()
         {
-            // Blank b/c already moving down
+            spikeCross.state = new UpMovingSpikeCrossState(spikeCross);
         }
         public void moveDown()
         {
-            
             spikeCross.state = new DownMovingSpikeCrossState(spikeCross);
         }
         public void stop()
         {
-            spikeCross.state = new IdleSpikeCrossState(spikeCross);
+            // Blank b/c already moving down
         }
 
         public void takeDamage()
         {
-          
+ 
         }
         public void die()
         {
@@ -43,7 +42,7 @@ namespace LoZCloe
 
         public void update()
         {
-            spikeCross.moveUp();
+            spikeCross.moveDown();
             spikeCross.update();
         }
     }

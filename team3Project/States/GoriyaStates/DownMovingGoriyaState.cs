@@ -43,6 +43,7 @@ namespace LoZCloe
         public void update()
         {
             goriya.moveDown();
+            goriya.update();
         }
     }
 }

@@ -12,8 +12,9 @@ public class GelSprite
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle = new Rectangle(400, 240, 80, 80);
         public int health = 2;
+        public string direction;
 
-        public GelSprite(Texture2D texture)
+        public GelSprite(Texture2D texture, string direction)
         {
             state = new DownMovingGelState(this);
             spriteSheet = texture;

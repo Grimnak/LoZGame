@@ -2,17 +2,17 @@
 
 namespace LoZCloe
 {
-    public class LeftMovingDragonState : IEnemyState
+    public class IdleDragonState : IEnemyState
     {
         private DragonSprite dragon;
-        public LeftMovingDragonState(DragonSprite dragonSprite)
+        public IdleDragonState(DragonSprite dragonSprite)
         {
             this.dragon = dragonSprite;
-            EnemySpriteFactory.Instance.createLeftMovingDragonSprite();
+            EnemySpriteFactory.Instance.createIdleDragonSprite();
         }
         public void moveLeft()
         {
-            // Blank b/c already moving left
+            dragon.state = new LeftMovingDragonState(dragon);
         }
         public void moveRight()
         {
@@ -28,7 +28,7 @@ namespace LoZCloe
         }
         public void stop()
         {
-            dragon.state = new IdleDragonState(dragon);
+            // Blank b/c already moving left
         }
 
         public void takeDamage()
@@ -46,7 +46,7 @@ namespace LoZCloe
 
         public void update()
         {
-            dragon.moveLeft();
+            dragon.moveRight();
             dragon.update();
         }
     }

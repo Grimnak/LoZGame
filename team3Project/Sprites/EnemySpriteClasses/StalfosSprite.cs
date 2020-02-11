@@ -11,8 +11,9 @@ namespace LoZClone
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle = new Rectangle(400, 240, 80, 80);
         public int health = 2;
+        public string direction;
 
-        public StalfosSprite(Texture2D texture)
+        public StalfosSprite(Texture2D texture, string direction)
         {
             state = new DownMovingStalfosState(this);
             spriteSheet = texture;

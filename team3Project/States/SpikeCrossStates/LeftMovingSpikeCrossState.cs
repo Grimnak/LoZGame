@@ -5,7 +5,7 @@ namespace LoZCloe
     public class LeftMovingSpikeCrossState : IEnemyState
     {
         private SpikeCrossState spikeCross;
-        public LeftMovingSpikeCrossState(GoriyaSprite spikeCrossSprite)
+        public LeftMovingSpikeCrossState(SpikeCrossSprite spikeCrossSprite)
         {
             this.spikeCross = spikeCrossSprite;
             EnemySpriteFactory.Instance.createDownMovingSpikeCrossSprite();
@@ -26,6 +26,10 @@ namespace LoZCloe
         {
             spikeCross.state = new DownMovingSpikeCrossState(spikeCross);
         }
+        public void stop()
+        {
+            spikeCross.state = new IdleSpikeCrossState(spikeCross);
+        }
 
         public void takeDamage()
         {
@@ -39,6 +43,7 @@ namespace LoZCloe
         public void update()
         {
             spikeCross.moveLeft();
+            spikeCross.update();
         }
     }
 }

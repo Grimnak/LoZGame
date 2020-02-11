@@ -12,8 +12,9 @@ public class KeeseSprite
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle = new Rectangle(400, 240, 80, 80);
         public int health = 2;
+        public string direction;
 
-        public KeeseSprite(Texture2D texture)
+        public KeeseSprite(Texture2D texture, string direction)
         {
             state = new DownMovingKeeseState(this);
             spriteSheet = texture;

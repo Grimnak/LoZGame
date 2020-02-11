@@ -12,8 +12,9 @@ public class DodongoSprite
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle = new Rectangle(400, 240, 80, 80);
         public int health = 2;
+        public string direction;
 
-        public DodongoSprite(Texture2D texture)
+        public DodongoSprite(Texture2D texture, string direction)
         {
             state = new DownMovingDodongoState(this);
             spriteSheet = texture;

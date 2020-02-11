@@ -12,8 +12,9 @@ public class WallMasterSprite
         private Rectangle sourceRectangle;
         private Rectangle destinationRectangle = new Rectangle(400, 240, 80, 80);
         public int health = 2;
+        public string direction;
 
-        public WallMasterSprite(Texture2D texture)
+        public WallMasterSprite(Texture2D texture, string direction)
         {
             state = new DownMovingWallMasterState(this);
             spriteSheet = texture;

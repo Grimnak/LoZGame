@@ -26,6 +26,10 @@ namespace LoZCloe
         {
             dragon.state = new DownMovingDragonState(dragon);
         }
+        public void stop()
+        {
+            dragon.state = new IdleDragonState(dragon);
+        }
 
         public void takeDamage()
         {

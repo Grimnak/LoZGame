@@ -31,278 +31,202 @@ namespace LoZClone
 
         public StalfosSprite createDownMovingStalfosSprite()
         {
-            // Initial sprite direction is down
-            return new StalfosSprite(enemies);
-           
+            return new StalfosSprite(enemies, "down"); 
         }
 
         public StalfosSprite createUpMovingStalfosSprite()
         {
-            StalfosSprite sprite = new StalfosSprite(enemies);
-            sprite.state = new UpMovingStalfosState(sprite);
-            return sprite;
+            return new StalfosSprite(enemies, "up");
         }
 
         public StalfosSprite createLeftMovingStalfosSprite()
         {
-            StalfosSprite sprite = new StalfosSprite(enemies);
-            sprite.state = new LeftMovingStalfosState(sprite);
-            return sprite;
+            return new StalfosSprite(enemies, "left");
         }
 
         public StalfosSprite createRightMovingStalfosSprite()
         {
-            StalfosSprite sprite = new StalfosSprite(enemies);
-            sprite.state = new RightMovingStalfosState(sprite);
-            return sprite;
+            return new StalfosSprite(enemies, "right");
         }
 
         //Goriya Sprites
 
         public GoriyaSprite createDownMovingGoriyaSprite()
         {
-            // Initial sprite direction is down
-            return new GoriyaSprite(enemies);
-
+            return new GoriyaSprite(enemies, "down");
         }
 
         public GoriyaSprite createUpMovingGoriyaSprite()
         {
-            GoriyaSprite sprite = new GoriyaSprite(enemies);
-            sprite.state = new UpMovingGoriyaState(sprite);
-            return sprite;
+            return new GoriyaSprite(enemies, "down");
         }
 
         public GoriyaSprite createLeftMovingGoriyaSprite()
         {
-            GoriyaSprite sprite = new GoriyaSprite(enemies);
-            sprite.state = new LeftMovingGoriyaState(sprite);
-            return sprite;
+            return new GoriyaSprite(enemies, "down");
         }
 
         public GoriyaSprite createRightMovingGoriyaSprite()
         {
-            GoriyaSprite sprite = new GoriyaSprite(enemies);
-            sprite.state = new RightMovingGoriyaState(sprite);
-            return sprite;
+            return new GoriyaSprite(enemies, "down");
         }
 
         //Wallmaster Sprites
 
         public WallMasterSprite createDownMovingWallMasterSprite()
         {
-            // Initial sprite direction is down
-            return new WallMasterSprite(enemies);
-
+            return new WallMasterSprite(enemies, "down");
         }
 
         public WallMasterSprite createUpMovingWallMasterSprite()
         {
-            WallMasterSprite sprite = new WallMasterSprite(enemies);
-            sprite.state = new UpMovingWallMasterState(sprite);
-            return sprite;
+            return new WallMasterSprite(enemies, "down");
         }
 
         public WallMasterSprite createSpriteLeftMovingWallMaster()
         {
-            WallMasterSprite sprite = new WallMasterSprite(enemies);
-            sprite.state = new LeftMovingWallMasterState(sprite);
-            return sprite;
+            return new WallMasterSprite(enemies, "down");
         }
 
         public WallMasterSprite createRightMovingWallMasterSprite()
         {
-            WallMasterSprite sprite = new WallMasterSprite(enemies);
-            sprite.state = new RightMovingWallMasterState(sprite);
-            return sprite;
+            return new WallMasterSprite(enemies, "down");
         }
 
         //Rope sprites
         public RopeSprite createDownMovingRopeSprite()
         {
-            // Initial sprite direction is down
-            return new RopeSprite(enemies);
-
+            return new RopeSprite(enemies, "down");
         }
 
         public RopeSprite createUpMovingRopeSprite()
         {
-            RopeSprite sprite = new RopeSprite(enemies);
-            sprite.state = new UpMovingRopeState(sprite);
-            return sprite;
+            return new RopeSprite(enemies, "down");
         }
 
         public RopeSprite createLeftMovingRopeSprite()
         {
-            RopeSprite sprite = new RopeSprite(enemies);
-            sprite.state = new LeftMovingRopeState(sprite);
-            return sprite;
+            return new RopeSprite(enemies, "down");
         }
 
         public RopeSprite createRightMovingRopeSprite()
         {
-            RopeSprite sprite = new RopeSprite(enemies);
-            sprite.state = new RightMovingRopeState(sprite);
-            return sprite;
+            return new RopeSprite(enemies, "down");
         }
 
         //Gel Sprites
         public GelSprite createDownMovingGelSprite()
         {
-            // Initial sprite direction is down
-            return new GelSprite(enemies);
-
+            return new GelSprite(enemies, "down");
         }
 
         public GelSprite createUpMovingGelSprite()
         {
-            GelSprite sprite = new GelSprite(enemies);
-            sprite.state = new UpMovingGelState(sprite);
-            return sprite;
+            return new GelSprite(enemies, "down");
         }
 
         public GelSprite createLeftMovingGelSprite()
         {
-            GelSprite sprite = new GelSprite(enemies);
-            sprite.state = new LeftMovingGelState(sprite);
-            return sprite;
+            return new GelSprite(enemies, "down");
         }
 
         public GelSprite createightMovingGelSprite()
         {
-            GelSprite sprite = new GelSprite(enemies);
-            sprite.state = new RightMovingGelState(sprite);
-            return sprite;
+            return new GelSprite(enemies, "down");
         }
 
         // Zol Sprites
         public ZolSprite createDownMovingZolSprite()
         {
-            // Initial sprite direction is down
-            return new ZolSprite(enemies);
-
+            return new ZolSprite(enemies, "down");
         }
 
         public ZolSprite createUpMovingZolSprite()
         {
-            ZolSprite sprite = new ZolSprite(enemies);
-            sprite.state = new UpMovingZolState(sprite);
-            return sprite;
+            return new ZolSprite(enemies, "down");
         }
 
         public ZolSprite createLeftMovingZolSprite()
         {
-            ZolSprite sprite = new ZolSprite(enemies);
-            sprite.state = new LeftMovingZolState(sprite);
-            return sprite;
+            return new ZolSprite(enemies, "down");
         }
 
         public ZolSprite createRightMovingZolSprite()
         {
-            ZolSprite sprite = new ZolSprite(enemies);
-            sprite.state = new RightMovingZolState(sprite);
-            return sprite;
+            return new ZolSprite(enemies, "down");
         }
 
         //SpikeCrossSprite
         public SpikeCrossSprite createDownMovingSpikeCrossSprite()
         {
-            // Initial sprite direction is down
-            return new SpikeCrossSprite(enemies);
-
+            return new SpikeCrossSprite(enemies, "down");
         }
 
         public SpikeCrossSprite createUpMovingSpikeCrossSprite()
         {
-            SpikeCrossSprite sprite = new SpikeCrossSprite(enemies);
-            sprite.state = new UpMovingSpikeCrossState(sprite);
-            return sprite;
+            return new SpikeCrossSprite(enemies, "down");
         }
 
         public SpikeCrossSprite createLeftMovingSpikeCrossSprite()
         {
-            SpikeCrossSprite sprite = new SpikeCrossSprite(enemies);
-            sprite.state = new LeftMovingSpikeCrossState(sprite);
-            return sprite;
+            return new SpikeCrossSprite(enemies, "down");
         }
 
         public SpikeCrossSprite createRightMovingSpikeCrossSprite()
         {
-            SpikeCrossSprite sprite = new SpikeCrossSprite(enemies);
-            sprite.state = new RightMovingSpikeCrossState(sprite);
-            return sprite;
+            return new SpikeCrossSprite(enemies, "down");
         }
 
         //Keese Sprites
         public KeeseSprite createDownMovingKeeseSprite()
         {
-            // Initial sprite direction is down
             return new KeeseSprite(enemies);
-
         }
 
         public KeeseSprite createUpMovingKeeseSprite()
         {
             KeeseSprite sprite = new KeeseSprite(enemies);
-            sprite.state = new UpMovingKeeseState(sprite);
-            return sprite;
         }
 
         public KeeseSprite createLeftMovingKeeseSprite()
         {
             KeeseSprite sprite = new KeeseSprite(enemies);
-            sprite.state = new LeftMovingKeeseState(sprite);
-            return sprite;
         }
 
         public KeeseSprite createRightMovingKeeseSprite()
         {
             KeeseSprite sprite = new KeeseSprite(enemies);
-            sprite.state = new RightMovingKeeseState(sprite);
-            return sprite;
         }
 
         public KeeseSprite createUpLeftMovingKeeseSprite()
         {
             KeeseSprite sprite = new KeeseSprite(enemies);
-            sprite.state = new UpLeftMovingKeeseState(sprite);
-            return sprite;
         }
 
         public KeeseSprite createSpriteUpRightMovingKeese()
         {
             KeeseSprite sprite = new KeeseSprite(enemies);
-            sprite.state = new UpRightMovingKeeseState(sprite);
-            return sprite;
         }
 
         public KeeseSprite createDownLeftMovingKeeseSprite()
         {
             KeeseSprite sprite = new KeeseSprite(enemies);
-            sprite.state = new DownLeftMovingKeeseState(sprite);
-            return sprite;
         }
 
         public KeeseSprite createDownRightMovingKeeseSprite()
         {
             KeeseSprite sprite = new KeeseSprite(enemies);
-            sprite.state = new DownRightMovingKeeseState(sprite);
-            return sprite;
         }
 
         //Dragon Sprites
         public DragonSprite createLeftMovingDragonSprite()
         {
             DragonSprite sprite = new DragonSprite(enemies);
-            sprite.state = new LeftMovingDragonState(sprite);
-            return sprite;
         }
 
         public DragonSprite createRightMovingDragonSprite()
         {
             DragonSprite sprite = new DragonSprite(enemies);
-            sprite.state = new RightMovingDragonState(sprite);
-            return sprite;
         }
 
         //DodongoSprites
@@ -310,28 +234,21 @@ namespace LoZClone
         {
             // Initial sprite direction is down
             return new DodongoSprite(enemies);
-
         }
 
         public DodongoSprite createUpMovingDodongoSprite()
         {
             DodongoSprite sprite = new DodongoSprite(enemies);
-            sprite.state = new UpMovingDodongoState(sprite);
-            return sprite;
         }
 
         public DodongoSprite createLeftMovingDodongoSprite()
         {
             DodongoSprite sprite = new DodongoSprite(enemies);
-            sprite.state = new LeftMovingDodongoState(sprite);
-            return sprite;
         }
 
         public DodongoSprite createRightMovingDodongoSprite()
         {
             DodongoSprite sprite = new DodongoSprite(enemies);
-            sprite.state = new RightMovingDodongoState(sprite);
-            return sprite;
         }
 
         //Old Man Sprite

@@ -10,13 +10,11 @@ public class ZolSprite
 
         private int currentFrame, totalFrames, frameDelay, frameDelayMax = 15;
         private Rectangle sourceRectangle;
-
-        //Subject to change
         private Rectangle destinationRectangle = new Rectangle(400, 240, 80, 80);
-
         public int health = 2;
+        public string direction;
 
-        public ZolSprite(Texture2D texture)
+        public ZolSprite(Texture2D texture, string direction)
         {
             state = new DownMovingZolState(this);
             spriteSheet = texture;
