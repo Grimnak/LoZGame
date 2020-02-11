@@ -9,11 +9,11 @@ namespace LoZClone
         public int health = 10;
         public Vector2 location;
     }
-	    public Dodongo()
-	    {
-            state = new LeftMovingDodongoState(this);
-        l   ocation = new Vector2(400, 200);
-        }
+    public Dodongo()
+    {
+        state = new LeftMovingDodongoState(this);
+        location = new Vector2(400, 200);
+    }
 
     public void moveLeft()
     {
