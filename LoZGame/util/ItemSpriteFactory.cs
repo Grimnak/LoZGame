@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 
-namespace Game1
+namespace LoZClone
 {
     class ItemSpriteFactory
     {
@@ -35,11 +32,11 @@ namespace Game1
             itemSpriteSheet = content.Load<Texture2D>("Items");
         }
 
-        public List<ISprite> getAll(int width, int height)
+        public List<IItemSprite> getAll(int width, int height)
         {
             int x = width / 2;
             int y = height / 2;
-            List<ISprite> allItems = new List<ISprite>();
+            List<IItemSprite> allItems = new List<IItemSprite>();
             allItems.Add(this.Fairy(new Vector2(x, y)));
             allItems.Add(this.Health(new Vector2(x, y)));
             allItems.Add(this.Triforce(new Vector2(x, y)));
@@ -81,155 +78,155 @@ namespace Game1
             return allItems;
         }
 
-        public ISprite Fairy(Vector2 loc)
+        public IItemSprite Fairy(Vector2 loc)
         {
             return new Fairy(itemSpriteSheet, loc);
         }
-        public ISprite Health(Vector2 loc)
+        public IItemSprite Health(Vector2 loc)
         {
             return new Health(itemSpriteSheet, loc);
         }
-        public ISprite Triforce(Vector2 loc)
+        public IItemSprite Triforce(Vector2 loc)
         {
             return new TriForce(itemSpriteSheet, loc);
         }
-        public ISprite YellowRupee(Vector2 loc)
+        public IItemSprite YellowRupee(Vector2 loc)
         {
             return new YellowRupee(itemSpriteSheet, loc);
         }
-        public ISprite FullHeart(Vector2 loc)
+        public IItemSprite FullHeart(Vector2 loc)
         {
             return new FullHeart(itemSpriteSheet, loc);
         }
-        public ISprite HalfHeart(Vector2 loc)
+        public IItemSprite HalfHeart(Vector2 loc)
         {
             return new HalfHeart(itemSpriteSheet, loc);
         }
-        public ISprite EmptyHeart(Vector2 loc)
+        public IItemSprite EmptyHeart(Vector2 loc)
         {
             return new EmptyHeart(itemSpriteSheet, loc);
         }
-        public ISprite HeartContainer(Vector2 loc)
+        public IItemSprite HeartContainer(Vector2 loc)
         {
             return new HeartContainer(itemSpriteSheet, loc);
         }
-        public ISprite Clock(Vector2 loc)
+        public IItemSprite Clock(Vector2 loc)
         {
             return new Clock(itemSpriteSheet, loc);
         }
-        public ISprite Rupee(Vector2 loc)
+        public IItemSprite Rupee(Vector2 loc)
         {
             return new Rupee(itemSpriteSheet, loc);
         }
-        public ISprite LifePotion(Vector2 loc)
+        public IItemSprite LifePotion(Vector2 loc)
         {
             return new LifePotion(itemSpriteSheet, loc);
         }
-        public ISprite SecondPotion(Vector2 loc)
+        public IItemSprite SecondPotion(Vector2 loc)
         {
             return new SecondPotion(itemSpriteSheet, loc);
         }
-        public ISprite Letter(Vector2 loc)
+        public IItemSprite Letter(Vector2 loc)
         {
             return new Letter(itemSpriteSheet, loc);
         }
-        public ISprite Map(Vector2 loc)
+        public IItemSprite Map(Vector2 loc)
         {
             return new Map(itemSpriteSheet, loc);
         }
-        public ISprite Food(Vector2 loc)
+        public IItemSprite Food(Vector2 loc)
         {
             return new Food(itemSpriteSheet, loc);
         }
-        public ISprite WoodenSword(Vector2 loc)
+        public IItemSprite WoodenSword(Vector2 loc)
         {
             return new WoodenSword(itemSpriteSheet, loc);
         }
-        public ISprite WhiteSword(Vector2 loc)
+        public IItemSprite WhiteSword(Vector2 loc)
         {
             return new WhiteSword(itemSpriteSheet, loc);
         }
-        public ISprite MagicSword(Vector2 loc)
+        public IItemSprite MagicSword(Vector2 loc)
         {
             return new MagicSword(itemSpriteSheet, loc);
         }
-        public ISprite MagicShield(Vector2 loc)
+        public IItemSprite MagicShield(Vector2 loc)
         {
             return new MagicShield(itemSpriteSheet, loc);
         }
-        public ISprite Boomerang(Vector2 loc)
+        public IItemSprite Boomerang(Vector2 loc)
         {
             return new Boomerang(itemSpriteSheet, loc);
         }
-        public ISprite MagicBoomerang(Vector2 loc)
+        public IItemSprite MagicBoomerang(Vector2 loc)
         {
             return new MagicBoomerang(itemSpriteSheet, loc);
         }
-        public ISprite Bomb(Vector2 loc)
+        public IItemSprite Bomb(Vector2 loc)
         {
             return new Bomb(itemSpriteSheet, loc);
         }
-        public ISprite Bow(Vector2 loc)
+        public IItemSprite Bow(Vector2 loc)
         {
             return new Bow(itemSpriteSheet, loc);
         }
-        public ISprite Arrow(Vector2 loc)
+        public IItemSprite Arrow(Vector2 loc)
         {
             return new Arrow(itemSpriteSheet, loc);
         }
-        public ISprite SilverArrow(Vector2 loc)
+        public IItemSprite SilverArrow(Vector2 loc)
         {
             return new SilverArrow(itemSpriteSheet, loc);
         }
-        public ISprite RedCandle(Vector2 loc)
+        public IItemSprite RedCandle(Vector2 loc)
         {
             return new RedCandle(itemSpriteSheet, loc);
         }
-        public ISprite BlueCandle(Vector2 loc)
+        public IItemSprite BlueCandle(Vector2 loc)
         {
             return new BlueCandle(itemSpriteSheet, loc);
         }
-        public ISprite RedRing(Vector2 loc)
+        public IItemSprite RedRing(Vector2 loc)
         {
             return new RedRing(itemSpriteSheet, loc);
         }
-        public ISprite BlueRing(Vector2 loc)
+        public IItemSprite BlueRing(Vector2 loc)
         {
             return new BlueRing(itemSpriteSheet, loc);
         }
-        public ISprite PowerBracelet(Vector2 loc)
+        public IItemSprite PowerBracelet(Vector2 loc)
         {
             return new PowerBracelet(itemSpriteSheet, loc);
         }
-        public ISprite Flute(Vector2 loc)
+        public IItemSprite Flute(Vector2 loc)
         {
             return new Flute(itemSpriteSheet, loc);
         }
-        public ISprite Raft(Vector2 loc)
+        public IItemSprite Raft(Vector2 loc)
         {
             return new Raft(itemSpriteSheet, loc);
         }
-        public ISprite StepLadder(Vector2 loc)
+        public IItemSprite StepLadder(Vector2 loc)
         {
             return new StepLadder(itemSpriteSheet, loc);
         }
-        public ISprite MagicRod(Vector2 loc)
+        public IItemSprite MagicRod(Vector2 loc)
         {
             return new MagicRod(itemSpriteSheet, loc);
         }
-        public ISprite MagicBook(Vector2 loc)
+        public IItemSprite MagicBook(Vector2 loc)
         {
             return new MagicBook(itemSpriteSheet, loc);
         }
-        public ISprite Key(Vector2 loc)
+        public IItemSprite Key(Vector2 loc)
         {
             return new Key(itemSpriteSheet, loc);
         }
-        public ISprite MagicKey(Vector2 loc)
+        public IItemSprite MagicKey(Vector2 loc)
         {
             return new MagicKey(itemSpriteSheet, loc);
         }
-        public ISprite Compass(Vector2 loc)
+        public IItemSprite Compass(Vector2 loc)
         {
             return new Compass(itemSpriteSheet, loc);
         }
