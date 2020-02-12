@@ -124,6 +124,17 @@ namespace LoZClone
                     currentCommand.execute();
                 }
 
+                if (pressed.Contains(Keys.L) && oldState.IsKeyUp(Keys.L))
+                {
+                    currentCommand = allCommands.getL;
+                    currentCommand.execute();
+                }
+                else if (pressed.Contains(Keys.K) && oldState.IsKeyUp(Keys.K))
+                {
+                    currentCommand = allCommands.getK;
+                    currentCommand.execute();
+                }
+
                 if (pressed.Contains(Keys.E))
                 {
                     currentCommand = allCommands.getE;
