@@ -36,22 +36,28 @@ namespace LoZClone
 
         public void cycleLeft()
         {
+            this.location = currentItem.location;
             this.currentIndex--;
+
             if (this.currentIndex < 0)
             {
                 this.currentIndex = this.maxIndex - 1;
             }
+           
             this.currentItem = this.itemList[this.currentIndex];
+            this.currentItem.location = this.location;
         }
 
         public void cycleRight()
         {
+            this.location = currentItem.location;
             this.currentIndex++;
             if (this.currentIndex >= this.maxIndex)
             {
                 this.currentIndex = 0;
             }
             this.currentItem = this.itemList[this.currentIndex];
+            this.currentItem.location = this.location;
         }
 
         public int CurrentIndex{

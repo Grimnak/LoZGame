@@ -16,17 +16,74 @@ namespace LoZClone
         private Rectangle firstFrame;   // frames
         private Rectangle secondFrame;
         private Rectangle currentFrame; // frame to draw
+        private int scale;
+        private enum direction {North, South, East, West, NorthEast, NorthWest, SouthEast, SouthWest };
+        private direction currentDirection;
         public Vector2 location { get; set; }
         private int lifeTime;
 
-        public Fairy(Texture2D texture, Vector2 loc) {
+        public Fairy(Texture2D texture, Vector2 loc, int scale) {
             Texture = texture;                          // assigns texture to passed texture
             firstFrame = new Rectangle(40, 0, 8, 16);
             secondFrame = new Rectangle(48, 0, 8, 16);
             currentFrame = firstFrame;
             lifeTime = 0;
+            this.scale = scale;
             location = loc;
+            this.getNewDirection();
         }
+
+        private void getNewDirection()
+        {
+            Random randomselect = new Random();
+            currentDirection = (direction)(randomselect.Next(0, 7));
+        }
+
+        private void updateLoc()
+        {
+            switch (this.currentDirection)
+            {
+                case direction.North:
+                    this.location = new Vector2(this.location.X - 1, this.location.Y);
+                    break;
+                case direction.South:
+                    this.location = new Vector2(this.location.X + 1, this.location.Y);
+                    break;
+                case direction.East:
+                    this.location = new Vector2(this.location.X + 1, this.location.Y);
+                    break;
+                case direction.West:
+                    this.location = new Vector2(this.location.X - 1, this.location.Y);
+                    break;
+                case direction.NorthEast:
+                    this.location = new Vector2(this.location.X + 1, this.location.Y - 1);
+                    break;
+                case direction.NorthWest:
+                    this.location = new Vector2(this.location.X - 1, this.location.Y - 1);
+                    break;
+                case direction.SouthEast:
+                    this.location = new Vector2(this.location.X + 1, this.location.Y + 1);
+                    break;
+                case direction.SouthWest:
+                    this.location = new Vector2(this.location.X - 1, this.location.Y + 1);
+                    break;
+                default:
+                    break;
+            }
+            this.checkBorder();
+        }
+        private void checkBorder()
+        {
+            if (this.location.Y < 0)
+            {
+                this.location = new Vector2(this.location.X, 0);
+            }
+            if (this.location.X < 0)
+            {
+                this.location = new Vector2(0, this.location.Y);
+            }
+        }
+
         private void nextFrame()
         {
             if (currentFrame == firstFrame)
@@ -41,8 +98,10 @@ namespace LoZClone
         public void Update()
         {
             lifeTime++;
+            this.updateLoc();
             if (lifeTime > 20)
             {
+                this.getNewDirection();
                 lifeTime = 0;
             }
             if (lifeTime % 4 == 0)
@@ -53,8 +112,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, currentFrame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, firstFrame.Width * scale, firstFrame.Height * scale);
+            spriteBatch.Draw(Texture, dest, currentFrame, Color.White);
         }
 
     }
@@ -66,8 +125,9 @@ namespace LoZClone
         private Rectangle firstFrame;
         private Rectangle secondFrame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Health(Texture2D texture, Vector2 loc)
+        public Health(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;                          
             firstFrame = new Rectangle(0, 0, 7, 8);
@@ -75,6 +135,7 @@ namespace LoZClone
             currentFrame = firstFrame;
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         private void nextFrame()
         {
@@ -101,8 +162,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, currentFrame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, firstFrame.Width * scale, firstFrame.Height * scale);
+            spriteBatch.Draw(Texture, dest, currentFrame, Color.White);
         }
 
     }
@@ -114,8 +175,9 @@ namespace LoZClone
         private Rectangle firstFrame;
         private Rectangle secondFrame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public TriForce(Texture2D texture, Vector2 loc)
+        public TriForce(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             firstFrame = new Rectangle(275, 0, 10, 16);
@@ -123,6 +185,7 @@ namespace LoZClone
             currentFrame = firstFrame;
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         private void nextFrame()
         {
@@ -150,8 +213,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, currentFrame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, firstFrame.Width * scale, firstFrame.Height * scale);
+            spriteBatch.Draw(Texture, dest, currentFrame, Color.White);
         }
 
     }
@@ -163,8 +226,9 @@ namespace LoZClone
         private Rectangle firstFrame;
         private Rectangle secondFrame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public YellowRupee(Texture2D texture, Vector2 loc)
+        public YellowRupee(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             firstFrame = new Rectangle(72, 0, 8, 16);
@@ -172,6 +236,7 @@ namespace LoZClone
             currentFrame = firstFrame;
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         private void nextFrame()
         {
@@ -199,8 +264,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, currentFrame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, firstFrame.Width * scale, firstFrame.Height * scale);
+            spriteBatch.Draw(Texture, dest, currentFrame, Color.White);
         }
 
     }
@@ -210,13 +275,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public FullHeart(Texture2D texture, Vector2 loc)
+        public FullHeart(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(0, 0, 7, 8);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -229,8 +296,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -240,13 +307,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public HalfHeart(Texture2D texture, Vector2 loc)
+        public HalfHeart(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(8, 0, 8, 8);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -259,8 +328,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -270,13 +339,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public EmptyHeart(Texture2D texture, Vector2 loc)
+        public EmptyHeart(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(16, 0, 7, 8);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -289,8 +360,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -300,13 +371,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public HeartContainer(Texture2D texture, Vector2 loc)
+        public HeartContainer(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(25, 0, 13, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
 
         }
         public void Update()
@@ -320,8 +393,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
     }
 
@@ -330,13 +403,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Clock(Texture2D texture, Vector2 loc)
+        public Clock(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(58, 0, 11, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -349,8 +424,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
     }
 
@@ -359,13 +434,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Rupee(Texture2D texture, Vector2 loc)
+        public Rupee(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(72, 0, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -378,9 +455,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
-        
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -390,13 +466,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public LifePotion(Texture2D texture, Vector2 loc)
+        public LifePotion(Texture2D texture, Vector2 loc, int scale)
         { 
             Texture = texture;
             frame = new Rectangle(80, 0, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -409,8 +487,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -420,14 +498,16 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
 
-        public SecondPotion(Texture2D texture, Vector2 loc)
+        public SecondPotion(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(80, 16, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -440,8 +520,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -451,13 +531,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Letter(Texture2D texture, Vector2 loc)
+        public Letter(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(88, 16, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -470,8 +552,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -481,13 +563,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Map(Texture2D texture, Vector2 loc)
+        public Map(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(88, 0, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -500,8 +584,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -511,13 +595,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Food(Texture2D texture, Vector2 loc)
+        public Food(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(96, 0, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -530,8 +616,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -541,13 +627,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public WoodenSword(Texture2D texture, Vector2 loc)
+        public WoodenSword(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(104, 0, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -560,8 +648,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -571,13 +659,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public WhiteSword(Texture2D texture, Vector2 loc)
+        public WhiteSword(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(104, 16, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -590,8 +680,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -601,13 +691,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public MagicSword(Texture2D texture, Vector2 loc)
+        public MagicSword(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(112, 0, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -620,8 +712,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -631,13 +723,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public MagicShield(Texture2D texture, Vector2 loc)
+        public MagicShield(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(120, 0, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -650,8 +744,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -661,13 +755,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Boomerang(Texture2D texture, Vector2 loc)
+        public Boomerang(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(129, 0, 5, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -680,8 +776,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -691,13 +787,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public MagicBoomerang(Texture2D texture, Vector2 loc)
+        public MagicBoomerang(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(129, 16, 5, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -710,8 +808,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -721,13 +819,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Bomb(Texture2D texture, Vector2 loc)
+        public Bomb(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(136, 0, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -740,8 +840,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -751,13 +851,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Bow(Texture2D texture, Vector2 loc)
+        public Bow(Texture2D texture, Vector2 loc, int scale)
         {
             location = loc;
             Texture = texture;
             frame = new Rectangle(144, 0, 8, 16);
             lifeTime = 0;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -770,8 +872,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -781,13 +883,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Arrow(Texture2D texture, Vector2 loc)
+        public Arrow(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(154, 0, 5, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -800,8 +904,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -811,13 +915,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public SilverArrow(Texture2D texture, Vector2 loc)
+        public SilverArrow(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(154, 16, 5, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -830,8 +936,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -841,13 +947,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public RedCandle(Texture2D texture, Vector2 loc)
+        public RedCandle(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(160, 0, 6, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -860,8 +968,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -871,13 +979,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public BlueCandle(Texture2D texture, Vector2 loc)
+        public BlueCandle(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(160, 16, 6, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -890,8 +1000,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -901,13 +1011,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public RedRing(Texture2D texture, Vector2 loc)
+        public RedRing(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(169, 0, 7, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -920,8 +1032,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -931,13 +1043,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public BlueRing(Texture2D texture, Vector2 loc)
+        public BlueRing(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(169, 16, 7, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -950,8 +1064,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -961,13 +1075,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public PowerBracelet(Texture2D texture, Vector2 loc)
+        public PowerBracelet(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(176, 0, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -980,8 +1096,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -991,13 +1107,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Flute(Texture2D texture, Vector2 loc)
+        public Flute(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(187, 0, 3, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -1010,8 +1128,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -1021,13 +1139,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Raft(Texture2D texture, Vector2 loc)
+        public Raft(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(193, 0, 14, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -1040,8 +1160,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -1051,13 +1171,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public StepLadder(Texture2D texture, Vector2 loc)
+        public StepLadder(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(208, 0, 16, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -1070,8 +1192,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -1081,13 +1203,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public MagicRod(Texture2D texture, Vector2 loc)
+        public MagicRod(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(226, 0, 4, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -1100,8 +1224,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -1111,13 +1235,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public MagicBook(Texture2D texture, Vector2 loc)
+        public MagicBook(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(232, 0, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -1130,8 +1256,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -1141,13 +1267,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Key(Texture2D texture, Vector2 loc)
+        public Key(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(240, 0, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -1160,8 +1288,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -1171,13 +1299,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public MagicKey(Texture2D texture, Vector2 loc)
+        public MagicKey(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(248, 0, 8, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -1190,8 +1320,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
@@ -1201,13 +1331,15 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
+        private int scale;
         public Vector2 location { get; set; }
-        public Compass(Texture2D texture, Vector2 loc)
+        public Compass(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
             frame = new Rectangle(258, 0, 11, 16);
             lifeTime = 0;
             location = loc;
+            this.scale = scale;
         }
         public void Update()
         {
@@ -1220,8 +1352,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White);
-
+            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
+            spriteBatch.Draw(Texture, dest, frame, Color.White);
         }
 
     }
