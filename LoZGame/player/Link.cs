@@ -49,7 +49,7 @@ namespace LoZClone
             this.game = game;
             currentColor = "Green";
             currentDirection = "Down";
-            currentLocation = new Vector2(400, 200);
+            currentLocation = new Vector2(150, 200);
             currentTint = Color.White;
             currentSpeed = 2;
             damageTimer = 0;
@@ -61,7 +61,7 @@ namespace LoZClone
             if (damageTimer > 0)
             {
                 damageTimer--;
-                if (damageTimer % 100 > 50)
+                if (damageTimer % 10 > 5)
                 {
                     currentTint = Color.Purple;
                 }
@@ -113,7 +113,7 @@ namespace LoZClone
         }
         public void takeDamage()
         {
-            damageTimer = 1000;
+            damageTimer = 100;
         }
         public void attack()
         {

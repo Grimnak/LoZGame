@@ -10,6 +10,8 @@
         void takeDamage();
         void attack();
         //void usePrimaryItem();
+        //void useItemAnimation1();
+        //void useItemAnimation2();
         //void useSecondaryItem();
         void Update();
         void Draw();

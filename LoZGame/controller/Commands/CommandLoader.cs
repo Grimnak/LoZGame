@@ -9,6 +9,9 @@ namespace LoZClone
         private CommandS commandS;
         private CommandD commandD;
 
+        private CommandL commandL;
+        private CommandK commandK;
+
         private CommandZ commandZ;
         private CommandN commandN;
 
@@ -16,6 +19,11 @@ namespace LoZClone
 
         private CommandOne commandOne;
         private CommandTwo commandTwo;
+        private CommandThree commandThree;
+        private CommandFour commandFour;
+        private CommandFive commandFive;
+        private CommandSix commandSix;
+        private CommandSeven commandSeven;
 
         private CommandU commandU;
         private CommandI commandI;
@@ -27,7 +35,7 @@ namespace LoZClone
 
         private CommandR commandR;
 
-        public CommandLoader(LoZGame game, IPlayer player , ItemManager item/*, NpcManager npc*/)
+        public CommandLoader(LoZGame game, IPlayer player , ItemManager item, BlockManager block/*, InventoryManager inventory, NpcManager npc*/)
         {
             commandIdle = new CommandIdle(player);
 
@@ -41,18 +49,26 @@ namespace LoZClone
 
             commandE = new CommandE(player);
 
-            commandOne = new CommandOne(player);
-            commandTwo = new CommandTwo(player);
+            commandOne = new CommandOne(player/*, inventory*/);
+            commandTwo = new CommandTwo(player/*, inventory*/);
+            commandThree = new CommandThree(player/*, inventory*/);
+            commandFour = new CommandFour(player/*, inventory*/);
+            commandFive = new CommandFive(player/*, inventory*/);
+            commandSix = new CommandSix(player/*, inventory*/);
+            commandSeven = new CommandSeven(player/*, inventory*/);
 
             commandU = new CommandU(item);
             commandI = new CommandI(item);
+
+            commandK = new CommandK(block);
+            commandL = new CommandL(block);
 
             commandO = new CommandO(/*npc*/);
             commandP = new CommandP(/*npc*/);
 
             commandQ = new CommandQ(game);
 
-            commandR = new CommandR(game);
+            commandR = new CommandR(game, player, item, block);
         }
 
         public ICommand getIdle
@@ -105,6 +121,31 @@ namespace LoZClone
             get { return commandTwo; }
         }
 
+        public ICommand getThree
+        {
+            get { return commandThree; }
+        }
+
+        public ICommand getFour
+        {
+            get { return commandFour; }
+        }
+
+        public ICommand getFive
+        {
+            get { return commandFive; }
+        }
+
+        public ICommand getSix
+        {
+            get { return commandSix; }
+        }
+
+        public ICommand getSeven
+        {
+            get { return commandSeven; }
+        }
+
         public ICommand getU
         {
             get { return commandU; }
@@ -113,6 +154,16 @@ namespace LoZClone
         public ICommand getI
         {
             get { return commandI; }
+        }
+
+        public ICommand getK
+        {
+            get { return commandK; }
+        }
+
+        public ICommand getL
+        {
+            get { return commandL; }
         }
 
         public ICommand getO

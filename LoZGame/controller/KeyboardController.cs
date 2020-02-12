@@ -7,6 +7,7 @@ namespace LoZClone
     {
         LoZGame game;
         CommandLoader allCommands;
+        KeyboardState oldState;
 
         private ICommand currentCommand;
 
@@ -14,6 +15,7 @@ namespace LoZClone
         {
             this.game = game;
             this.allCommands = allCommands;
+            oldState = Keyboard.GetState();
         }
 
 
@@ -31,12 +33,12 @@ namespace LoZClone
             else
             {
 
-                if (pressed.Contains(Keys.Z))
+                if (pressed.Contains(Keys.Z) && oldState.IsKeyUp(Keys.Z))
                 {
                     currentCommand = allCommands.getZ;
                     currentCommand.execute();
                 }
-                else if (pressed.Contains(Keys.N))
+                else if (pressed.Contains(Keys.N) && oldState.IsKeyUp(Keys.N))
                 {
                     currentCommand = allCommands.getN;
                     currentCommand.execute();
@@ -73,19 +75,39 @@ namespace LoZClone
                     currentCommand = allCommands.getTwo;
                     currentCommand.execute();
                 }
-                //maybe change
-                else if (pressed.Contains(Keys.E))
+                else if (pressed.Contains(Keys.D3))
                 {
-                    currentCommand = allCommands.getE;
+                    currentCommand = allCommands.getThree;
                     currentCommand.execute();
                 }
+                else if (pressed.Contains(Keys.D4))
+                {
+                    currentCommand = allCommands.getFour;
+                    currentCommand.execute();
+                }
+                else if (pressed.Contains(Keys.D5))
+                {
+                    currentCommand = allCommands.getFive;
+                    currentCommand.execute();
+                }
+                else if (pressed.Contains(Keys.D6))
+                {
+                    currentCommand = allCommands.getSix;
+                    currentCommand.execute();
+                }
+                else if (pressed.Contains(Keys.D7))
+                {
+                    currentCommand = allCommands.getSeven;
+                    currentCommand.execute();
+                }
+                
 
-                if (pressed.Contains(Keys.U))
+                if (pressed.Contains(Keys.U) && oldState.IsKeyUp(Keys.U))
                 {
                     currentCommand = allCommands.getU;
                     currentCommand.execute();
                 }
-                else if (pressed.Contains(Keys.I))
+                else if (pressed.Contains(Keys.I) && oldState.IsKeyUp(Keys.I))
                 {
                     currentCommand = allCommands.getI;
                     currentCommand.execute();
@@ -102,6 +124,23 @@ namespace LoZClone
                     currentCommand.execute();
                 }
 
+                if (pressed.Contains(Keys.L) && oldState.IsKeyUp(Keys.L))
+                {
+                    currentCommand = allCommands.getL;
+                    currentCommand.execute();
+                }
+                else if (pressed.Contains(Keys.K) && oldState.IsKeyUp(Keys.K))
+                {
+                    currentCommand = allCommands.getK;
+                    currentCommand.execute();
+                }
+
+                if (pressed.Contains(Keys.E))
+                {
+                    currentCommand = allCommands.getE;
+                    currentCommand.execute();
+                }
+
                 if (pressed.Contains(Keys.Q))
                 {
                     currentCommand = allCommands.getQ;
@@ -113,7 +152,10 @@ namespace LoZClone
                     currentCommand = allCommands.getR;
                     currentCommand.execute();
                 }
+
+                
             }
+            oldState = state;
         }
     }
 }
