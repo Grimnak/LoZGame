@@ -26,121 +26,119 @@ namespace LoZClone
         public void Update()
         {
             KeyboardState state = Keyboard.GetState();
+            
 
             Keys[] pressed = state.GetPressedKeys();
 
-            if (pressed.Length == 0)
+
+            if (pressed.Contains(Keys.Z) && oldState.IsKeyUp(Keys.Z))
+            {
+
+                dict[Keys.Z].execute();
+            }
+            else if (pressed.Contains(Keys.N) && oldState.IsKeyUp(Keys.N))
+            {
+                dict[Keys.N].execute();
+            }
+            else if (pressed.Contains(Keys.W))
+            {
+                dict[Keys.W].execute();
+            }
+            else if (pressed.Contains(Keys.A))
+            {
+                dict[Keys.A].execute();
+            }
+            else if (pressed.Contains(Keys.S))
+            {
+                dict[Keys.S].execute();
+            }
+            else if (pressed.Contains(Keys.D))
+            {
+                dict[Keys.D].execute();
+            }
+            else if (pressed.Contains(Keys.D1))
+            {
+                dict[Keys.D1].execute();
+            }
+            else if (pressed.Contains(Keys.D2))
+            {
+                dict[Keys.D2].execute();
+            }
+            else if (pressed.Contains(Keys.D3))
+            {
+                dict[Keys.D3].execute();
+            }
+            else if (pressed.Contains(Keys.D4))
+            {
+                dict[Keys.D4].execute();
+            }
+            else if (pressed.Contains(Keys.D5))
+            {
+                dict[Keys.D5].execute();
+            }
+            else if (pressed.Contains(Keys.D6))
+            {
+                dict[Keys.D6].execute();
+            }
+            else if (pressed.Contains(Keys.D7))
+            {
+                dict[Keys.D7].execute();
+            }
+            else
             {
                 currentCommand = allCommands.getIdle;
                 currentCommand.execute();
             }
-            else
+
+
+            if (pressed.Contains(Keys.U) && oldState.IsKeyUp(Keys.U))
             {
-
-                if (pressed.Contains(Keys.Z) && oldState.IsKeyUp(Keys.Z))
-                {
-
-                    dict[Keys.Z].execute();
-                }
-                else if (pressed.Contains(Keys.N) && oldState.IsKeyUp(Keys.N))
-                {
-                    dict[Keys.N].execute();
-                }
-                else if (pressed.Contains(Keys.W))
-                {
-                    dict[Keys.W].execute();
-                }
-                else if (pressed.Contains(Keys.A))
-                {
-                    dict[Keys.A].execute();
-                }
-                else if (pressed.Contains(Keys.S))
-                {
-                    dict[Keys.S].execute();
-                }
-                else if (pressed.Contains(Keys.D))
-                {
-                    dict[Keys.D].execute();
-                }
-                else if (pressed.Contains(Keys.D1))
-                {
-                    dict[Keys.D1].execute();
-                }
-                else if (pressed.Contains(Keys.D2))
-                {
-                    dict[Keys.D2].execute();
-                }
-                else if (pressed.Contains(Keys.D3))
-                {
-                    dict[Keys.D3].execute();
-                }
-                else if (pressed.Contains(Keys.D4))
-                {
-                    dict[Keys.D4].execute();
-                }
-                else if (pressed.Contains(Keys.D5))
-                {
-                    dict[Keys.D5].execute();
-                }
-                else if (pressed.Contains(Keys.D6))
-                {
-                    dict[Keys.D6].execute();
-                }
-                else if (pressed.Contains(Keys.D7))
-                {
-                    dict[Keys.D7].execute();
-                }
-                
-
-                if (pressed.Contains(Keys.U) && oldState.IsKeyUp(Keys.U))
-                {
-                    dict[Keys.U].execute();
-                }
-                else if (pressed.Contains(Keys.I) && oldState.IsKeyUp(Keys.I))
-                {
-                    dict[Keys.I].execute();
-                }
-
-
-                if (pressed.Contains(Keys.O))
-                {
-                    dict[Keys.O].execute();
-                }
-                else if (pressed.Contains(Keys.P))
-                {
-                    dict[Keys.P].execute();
-                }
-
-
-                if (pressed.Contains(Keys.L) && oldState.IsKeyUp(Keys.L))
-                {
-                    dict[Keys.L].execute();
-                }
-                else if (pressed.Contains(Keys.K) && oldState.IsKeyUp(Keys.K))
-                {
-                    dict[Keys.K].execute();
-                }
-
-
-                if (pressed.Contains(Keys.E))
-                {
-                    dict[Keys.E].execute();
-                }
-
-
-                if (pressed.Contains(Keys.Q))
-                {
-                    dict[Keys.Q].execute();
-                }
-
-
-                if (pressed.Contains(Keys.R))
-                {
-                    dict[Keys.R].execute();
-                }
-
-                
+                dict[Keys.U].execute();
             }
+            else if (pressed.Contains(Keys.I) && oldState.IsKeyUp(Keys.I))
+            {
+                dict[Keys.I].execute();
+            }
+
+
+            if (pressed.Contains(Keys.O))
+            {
+                dict[Keys.O].execute();
+            }
+            else if (pressed.Contains(Keys.P))
+            {
+                dict[Keys.P].execute();
+            }
+        
+
+            if (pressed.Contains(Keys.L) && oldState.IsKeyUp(Keys.L))
+            {
+                dict[Keys.L].execute();
+            }
+            else if (pressed.Contains(Keys.K) && oldState.IsKeyUp(Keys.K))
+            {
+                dict[Keys.K].execute();
+            }
+
+
+            if (pressed.Contains(Keys.E))
+            {
+                dict[Keys.E].execute();
+            }
+
+
+            if (pressed.Contains(Keys.Q))
+            {
+                dict[Keys.Q].execute();
+            }
+
+
+            if (pressed.Contains(Keys.R))
+            {
+                dict[Keys.R].execute();
+            }
+
+                
             oldState = state;
         }
     }
