@@ -1,16 +1,16 @@
 ﻿
 namespace LoZClone
 {
-    public class CommandU : ICommand
+    public class CommandK: ICommand
     {
-        ItemManager item;
-        public CommandU(ItemManager item)
+        BlockManager block;
+        public CommandK(BlockManager block)
         {
-            this.item = item;
+            this.block = block;
         }
         public void execute()
         {
-            item.cycleLeft();
+            block.cycleLeft();
         }
     }
 }

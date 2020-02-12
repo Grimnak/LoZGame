@@ -74,15 +74,19 @@
     <Compile Include="Controller\Commands\CommandE.cs" />
     <Compile Include="Controller\Commands\CommandD.cs" />
     <Compile Include="Controller\Commands\CommandA.cs" />
+	<Compile Include="Controller\Commands\CommandK.cs" />
+	<Compile Include="Controller\Commands\CommandL.cs" />
     <Compile Include="Controller\Commands\CommandLoader.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Interfaces\Interface1.cs" />
     <Compile Include="Interfaces\IPlayerSprite.cs" />
     <Compile Include="Interfaces\IItemSprite.cs" />
     <Compile Include="Managers\ItemManager.cs" />
+	<Compile Include="Managers\BlockManager.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\ItemSpriteClasses.cs" />
     <Compile Include="util\ItemSpriteFactory.cs" />
     <Compile Include="util\LinkSpriteFactory.cs" />
+	<Compile Include="util\BlockSpriteFactory.cs" />
     <Compile Include="LoZGame.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
@@ -112,6 +116,25 @@
     <Compile Include="Sprites\LinkSpriteClasses\LinkIdleDownSprite.cs" />
     <Compile Include="Sprites\LinkSpriteClasses\LinkIdleLeftSprite.cs" />
     <Compile Include="Sprites\LinkSpriteClasses\LinkIdleRightSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\BombedOpeningDownSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\BombedOpeningUpSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\BombedOpeningLeftSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\BombedOpeningRightSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\DoorDownSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\DoorLeftSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\DoorRightSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\DoorUpSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\FloorTileSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\GapTileSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\LadderSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\MovableSquareSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\FireSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\StairsSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\BlueStatueLeftSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\BlueStatueRightSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\TurquoiseStatueRightSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\TurquoiseStatueLeftSprite.cs" />
+	<Compile Include="Sprites\BlockSpriteClasses\BrickTileSprite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
