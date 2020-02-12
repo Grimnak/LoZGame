@@ -121,6 +121,7 @@ namespace LoZClone
             {
                 lockoutTimer--;
             }
+            
 
             if (lockoutTimer <= 0)
             {

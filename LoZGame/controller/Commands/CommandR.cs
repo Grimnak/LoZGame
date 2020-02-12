@@ -21,6 +21,7 @@ namespace LoZClone
             
             manager.CurrentIndex = 1;
             manager.cycleLeft();
+            manager.currentItem.location = new Vector2(120, 120);
 
             //TODO add npc and block defaults
         }
