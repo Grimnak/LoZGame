@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 
 namespace LoZClone
@@ -8,6 +9,8 @@ namespace LoZClone
         LoZGame game;
         CommandLoader allCommands;
         KeyboardState oldState;
+        Dictionary<Keys, ICommand> dict;
+        
 
         private ICommand currentCommand;
 
@@ -16,6 +19,7 @@ namespace LoZClone
             this.game = game;
             this.allCommands = allCommands;
             oldState = Keyboard.GetState();
+            dict = allCommands.getDict;
         }
 
 
@@ -35,122 +39,104 @@ namespace LoZClone
 
                 if (pressed.Contains(Keys.Z) && oldState.IsKeyUp(Keys.Z))
                 {
-                    currentCommand = allCommands.getZ;
-                    currentCommand.execute();
+
+                    dict[Keys.Z].execute();
                 }
                 else if (pressed.Contains(Keys.N) && oldState.IsKeyUp(Keys.N))
                 {
-                    currentCommand = allCommands.getN;
-                    currentCommand.execute();
+                    dict[Keys.N].execute();
                 }
                 else if (pressed.Contains(Keys.W))
                 {
-                    currentCommand = allCommands.getW;
-                    currentCommand.execute();
+                    dict[Keys.W].execute();
                 }
                 else if (pressed.Contains(Keys.A))
                 {
-                    currentCommand = allCommands.getA;
-                    currentCommand.execute();
+                    dict[Keys.A].execute();
                 }
                 else if (pressed.Contains(Keys.S))
                 {
-                    currentCommand = allCommands.getS;
-                    currentCommand.execute();
+                    dict[Keys.S].execute();
                 }
                 else if (pressed.Contains(Keys.D))
                 {
-                    currentCommand = allCommands.getD;
-                    currentCommand.execute();
+                    dict[Keys.D].execute();
                 }
-                //maybe change
                 else if (pressed.Contains(Keys.D1))
                 {
-                    currentCommand = allCommands.getOne;
-                    currentCommand.execute();
+                    dict[Keys.D1].execute();
                 }
-                //maybe change
                 else if (pressed.Contains(Keys.D2))
                 {
-                    currentCommand = allCommands.getTwo;
-                    currentCommand.execute();
+                    dict[Keys.D2].execute();
                 }
                 else if (pressed.Contains(Keys.D3))
                 {
-                    currentCommand = allCommands.getThree;
-                    currentCommand.execute();
+                    dict[Keys.D3].execute();
                 }
                 else if (pressed.Contains(Keys.D4))
                 {
-                    currentCommand = allCommands.getFour;
-                    currentCommand.execute();
+                    dict[Keys.D4].execute();
                 }
                 else if (pressed.Contains(Keys.D5))
                 {
-                    currentCommand = allCommands.getFive;
-                    currentCommand.execute();
+                    dict[Keys.D5].execute();
                 }
                 else if (pressed.Contains(Keys.D6))
                 {
-                    currentCommand = allCommands.getSix;
-                    currentCommand.execute();
+                    dict[Keys.D6].execute();
                 }
                 else if (pressed.Contains(Keys.D7))
                 {
-                    currentCommand = allCommands.getSeven;
-                    currentCommand.execute();
+                    dict[Keys.D7].execute();
                 }
                 
 
                 if (pressed.Contains(Keys.U) && oldState.IsKeyUp(Keys.U))
                 {
-                    currentCommand = allCommands.getU;
-                    currentCommand.execute();
+                    dict[Keys.U].execute();
                 }
                 else if (pressed.Contains(Keys.I) && oldState.IsKeyUp(Keys.I))
                 {
-                    currentCommand = allCommands.getI;
-                    currentCommand.execute();
+                    dict[Keys.I].execute();
                 }
+
 
                 if (pressed.Contains(Keys.O))
                 {
-                    currentCommand = allCommands.getO;
-                    currentCommand.execute();
+                    dict[Keys.O].execute();
                 }
                 else if (pressed.Contains(Keys.P))
                 {
-                    currentCommand = allCommands.getP;
-                    currentCommand.execute();
+                    dict[Keys.P].execute();
                 }
+
 
                 if (pressed.Contains(Keys.L) && oldState.IsKeyUp(Keys.L))
                 {
-                    currentCommand = allCommands.getL;
-                    currentCommand.execute();
+                    dict[Keys.L].execute();
                 }
                 else if (pressed.Contains(Keys.K) && oldState.IsKeyUp(Keys.K))
                 {
-                    currentCommand = allCommands.getK;
-                    currentCommand.execute();
+                    dict[Keys.K].execute();
                 }
+
 
                 if (pressed.Contains(Keys.E))
                 {
-                    currentCommand = allCommands.getE;
-                    currentCommand.execute();
+                    dict[Keys.E].execute();
                 }
+
 
                 if (pressed.Contains(Keys.Q))
                 {
-                    currentCommand = allCommands.getQ;
-                    currentCommand.execute();
+                    dict[Keys.Q].execute();
                 }
+
 
                 if (pressed.Contains(Keys.R))
                 {
-                    currentCommand = allCommands.getR;
-                    currentCommand.execute();
+                    dict[Keys.R].execute();
                 }
 
                 

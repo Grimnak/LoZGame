@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Input;
+
 namespace LoZClone
 {
     public class CommandLoader
@@ -35,40 +38,66 @@ namespace LoZClone
 
         private CommandR commandR;
 
-        public CommandLoader(LoZGame game, IPlayer player , ItemManager item, BlockManager block/*, InventoryManager inventory, NpcManager npc*/)
+        private Dictionary<Keys, ICommand> dictionary;
+
+        public CommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block/*, InventoryManager inventory, NpcManager npc*/)
         {
+            dictionary = new Dictionary<Keys, ICommand>();
+
             commandIdle = new CommandIdle(player);
 
             commandW = new CommandW(player);
+            dictionary.Add(Keys.W, commandW);
             commandA = new CommandA(player);
+            dictionary.Add(Keys.A, commandA);
             commandS = new CommandS(player);
+            dictionary.Add(Keys.S, commandS);
             commandD = new CommandD(player);
+            dictionary.Add(Keys.D, commandD);
 
             commandZ = new CommandZ(player);
+            dictionary.Add(Keys.Z, commandZ);
             commandN = new CommandN(player);
+            dictionary.Add(Keys.N, commandN);
 
             commandE = new CommandE(player);
+            dictionary.Add(Keys.E, commandE);
 
             commandOne = new CommandOne(player/*, inventory*/);
+            dictionary.Add(Keys.D1, commandOne);
             commandTwo = new CommandTwo(player/*, inventory*/);
+            dictionary.Add(Keys.D2, commandTwo);
             commandThree = new CommandThree(player/*, inventory*/);
+            dictionary.Add(Keys.D3, commandThree);
             commandFour = new CommandFour(player/*, inventory*/);
+            dictionary.Add(Keys.D4, commandFour);
             commandFive = new CommandFive(player/*, inventory*/);
+            dictionary.Add(Keys.D5, commandFive);
             commandSix = new CommandSix(player/*, inventory*/);
+            dictionary.Add(Keys.D6, commandSix);
             commandSeven = new CommandSeven(player/*, inventory*/);
+            dictionary.Add(Keys.D7, commandSeven);
 
             commandU = new CommandU(item);
+            dictionary.Add(Keys.U, commandU);
             commandI = new CommandI(item);
+            dictionary.Add(Keys.I, commandI);
 
             commandK = new CommandK(block);
+            dictionary.Add(Keys.K, commandK);
             commandL = new CommandL(block);
+            dictionary.Add(Keys.L, commandL);
 
             commandO = new CommandO(/*npc*/);
+            dictionary.Add(Keys.O, commandO);
             commandP = new CommandP(/*npc*/);
+            dictionary.Add(Keys.P, commandP);
 
             commandQ = new CommandQ(game);
+            dictionary.Add(Keys.Q, commandQ);
 
             commandR = new CommandR(game, player, item, block);
+            dictionary.Add(Keys.R, commandR);
         }
 
         public ICommand getIdle
@@ -76,114 +105,10 @@ namespace LoZClone
             get { return commandIdle; }
         }
 
-        public ICommand getW
+        public Dictionary<Keys, ICommand> getDict
         {
-            get { return commandW; }
+            get { return dictionary; }
         }
 
-        public ICommand getA
-        {
-            get { return commandA; }
-        }
-
-        public ICommand getS
-        {
-            get { return commandS; }
-        }
-
-        public ICommand getD
-        {
-            get { return commandD; }
-        }
-
-        public ICommand getZ
-        {
-            get { return commandZ; }
-        }
-
-        public ICommand getN
-        {
-            get { return commandN; }
-        }
-
-        public ICommand getE
-        {
-            get { return commandE; }
-        }
-
-        public ICommand getOne
-        {
-            get { return commandOne; }
-        }
-
-        public ICommand getTwo
-        {
-            get { return commandTwo; }
-        }
-
-        public ICommand getThree
-        {
-            get { return commandThree; }
-        }
-
-        public ICommand getFour
-        {
-            get { return commandFour; }
-        }
-
-        public ICommand getFive
-        {
-            get { return commandFive; }
-        }
-
-        public ICommand getSix
-        {
-            get { return commandSix; }
-        }
-
-        public ICommand getSeven
-        {
-            get { return commandSeven; }
-        }
-
-        public ICommand getU
-        {
-            get { return commandU; }
-        }
-
-        public ICommand getI
-        {
-            get { return commandI; }
-        }
-
-        public ICommand getK
-        {
-            get { return commandK; }
-        }
-
-        public ICommand getL
-        {
-            get { return commandL; }
-        }
-
-        public ICommand getO
-        {
-            get { return commandO; }
-        }
-
-        public ICommand getP
-        {
-            get { return commandP; }
-        }
-
-        public ICommand getQ
-        {
-            get { return commandQ; }
-        }
-
-        public ICommand getR
-        {
-            get { return commandR; }
-        }
     }
 }
