@@ -14,6 +14,7 @@ namespace LoZClone
         private Rectangle frame;
         private int lifeTime;
         private int scale;
+        private Vector2 origin;
         private string direction;
         private bool moving;
         private float rotation;
@@ -23,7 +24,8 @@ namespace LoZClone
             Texture = texture;
             frame = new Rectangle(154, 0, 5, 16);
             lifeTime = 0;
-            location = loc;
+            this.location = new Vector2(loc.X, loc.Y);
+            this.origin = new Vector2(loc.X, loc.Y);
             this.scale = scale;
             this.moving = false;
             this.direction = "Up";
@@ -35,7 +37,6 @@ namespace LoZClone
             Texture = texture;
             frame = new Rectangle(154, 0, 5, 16);
             lifeTime = 0;
-            location = loc;
             this.scale = scale;
             this.direction = direction;
             this.moving = true;
@@ -46,7 +47,7 @@ namespace LoZClone
             } else if (this.direction == "Left")
             {
                 location = new Vector2(loc.X - 64, loc.Y);
-                rotation = MathHelper.PiOver2;
+                rotation = -1 * MathHelper.PiOver2;
             } else if (this.direction == "Right")
             {
                 location = new Vector2(loc.X + 64, loc.Y);
@@ -54,8 +55,9 @@ namespace LoZClone
             } else
             {
                 location = new Vector2(loc.X, loc.Y + 64);
-                rotation = 3*MathHelper.PiOver2;
+                rotation = MathHelper.PiOver2;
             }
+            this.origin = new Vector2(this.location.X, this.location.Y);
         }
         public void Update()
         {
@@ -76,11 +78,12 @@ namespace LoZClone
             {
                 this.location = new Vector2(location.X, location.Y + 1);
             }
+            this.origin = new Vector2(this.location.X, this.location.Y);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)   
         {
-            spriteBatch.Draw(Texture, location, frame, Color.White, rotation, location, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, location, scale, SpriteEffects.None, 0f);
         }
 
     }
