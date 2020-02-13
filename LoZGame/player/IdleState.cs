@@ -1,4 +1,4 @@
-namespace LoZClone
+﻿namespace LoZClone
 {
     public class IdleState : IPlayerState
     {
@@ -51,6 +51,10 @@ namespace LoZClone
         public void attack()
         {
             player.State = new AttackState(game, player);
+        }
+        public void die()
+        {
+            player.State = new DieState(game, player);
         }
         public void Update()
         {

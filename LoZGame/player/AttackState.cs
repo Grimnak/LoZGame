@@ -1,4 +1,4 @@
-namespace LoZClone
+﻿namespace LoZClone
 {
     public class AttackState : IPlayerState
     {
@@ -121,12 +121,15 @@ namespace LoZClone
             {
                 lockoutTimer--;
             }
-            
 
             if (lockoutTimer <= 0)
             {
                 isAttacking = false;
             }
+        }
+        public void die()
+        {
+            player.State = new DieState(game, player);
         }
         public void Update()
         {
