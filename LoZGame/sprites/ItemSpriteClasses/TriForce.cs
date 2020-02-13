@@ -18,6 +18,7 @@ namespace LoZClone
         private int scale;
         private int instance;
         private bool expired;
+        private bool isStatic;
         public Vector2 location { get; set; }
         public TriForce(Texture2D texture, Vector2 loc, int scale)
         {
@@ -28,6 +29,7 @@ namespace LoZClone
             lifeTime = 0;
             location = loc;
             this.scale = scale;
+            isStatic = true;
         }
 
         public TriForce(Texture2D texture, Vector2 loc, int scale, int instance)
@@ -36,11 +38,12 @@ namespace LoZClone
             firstFrame = new Rectangle(275, 0, 10, 16);
             secondFrame = new Rectangle(275, 16, 10, 16);
             currentFrame = firstFrame;
-            lifeTime = 0;
-            location = loc;
+            lifeTime = 200;
+            location = new Vector2(loc.X, loc.Y - 32);
             this.scale = scale;
             expired = false;
             this.instance = instance;
+            isStatic = false;
         }
         private void nextFrame()
         {
@@ -65,11 +68,23 @@ namespace LoZClone
 
         public void Update()
         {
-            lifeTime++;
-            if (lifeTime > 200)
+            lifeTime--;
+
+            if (isStatic)
             {
-                lifeTime = 0;
+                if (lifeTime <= 0)
+                {
+                    lifeTime = 200;
+                }
             }
+            else
+            {
+                if(lifeTime <= 0)
+                {
+                    expired = true;
+                }
+            }
+
             if (lifeTime % 4 == 0)
             {
                 this.nextFrame();

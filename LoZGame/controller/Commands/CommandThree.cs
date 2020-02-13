@@ -11,8 +11,8 @@
         }
         public void execute()
         {
-            //player.useThirdItem();
-            inventory.addItem(InventoryManager.ItemType.Bomb, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+            
+            inventory.addItem(InventoryManager.ItemType.Triforce, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
         }
     }
 }
