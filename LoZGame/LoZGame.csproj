@@ -82,6 +82,7 @@
     <Compile Include="Interfaces\IItemSprite.cs" />
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\BlockManager.cs" />
+    <Compile Include="Player\DieState.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\ItemSpriteClasses.cs" />
     <Compile Include="util\ItemSpriteFactory.cs" />
     <Compile Include="util\LinkSpriteFactory.cs" />
