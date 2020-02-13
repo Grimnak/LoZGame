@@ -1,18 +1,16 @@
-﻿namespace LoZClone
+namespace LoZClone
 {
     public class AttackState : IPlayerState
     {
         private LoZGame game;
         private Link player;
         private ISprite sprite;
-        private bool isAttacking = false;
         private int lockoutTimer = 0;
 
         public AttackState(LoZGame game, IPlayer playerInstance)
         {
             this.game = game;
             this.player = (Link)playerInstance;
-            isAttacking = true;
             lockoutTimer = 15; //attack frames * frame delay
             sprite = createCorrectSprite();
         }
@@ -37,95 +35,41 @@
         }
         public void idle()
         {
-            if (isAttacking)
-            {
-                lockoutTimer--;
-            }
-            else
-            {
-                player.State = new IdleState(game, player);
-            }
-
             if (lockoutTimer <= 0)
             {
-                isAttacking = false;
+                player.State = new IdleState(game, player);
             }
         }
         public void moveUp()
         {
-            if (isAttacking)
-            {
-                lockoutTimer--;
-            }
-            else
-            {
-                player.State = new MoveUpState(game, player);
-            }
-
             if (lockoutTimer <= 0)
             {
-                isAttacking = false;
+                player.State = new MoveUpState(game, player);
             }
         }
         public void moveDown()
         {
-            if (isAttacking)
-            {
-                lockoutTimer--;
-            }
-            else
-            {
-                player.State = new MoveDownState(game, player);
-            }
-
             if (lockoutTimer <= 0)
             {
-                isAttacking = false;
+                player.State = new MoveDownState(game, player);
             }
         }
         public void moveLeft()
         {
-            if (isAttacking)
-            {
-                lockoutTimer--;
-            }
-            else
-            {
-                player.State = new MoveLeftState(game, player);
-            }
-
             if (lockoutTimer <= 0)
             {
-                isAttacking = false;
+                player.State = new MoveLeftState(game, player);
             }
         }
         public void moveRight()
         {
-            if (isAttacking)
-            {
-                lockoutTimer--;
-            }
-            else
-            {
-                player.State = new MoveRightState(game, player);
-            }
-
             if (lockoutTimer <= 0)
             {
-                isAttacking = false;
+                player.State = new MoveRightState(game, player);
             }
         }
         public void attack()
         {
-            if (isAttacking)
-            {
-                lockoutTimer--;
-            }
-
-            if (lockoutTimer <= 0)
-            {
-                isAttacking = false;
-            }
         }
         public void die()
         {
@@ -133,6 +77,10 @@
         }
         public void Update()
         {
+            if (lockoutTimer > 0)
+            {
+                lockoutTimer--;
+            }
             sprite.Update();
         }
         public void Draw()
