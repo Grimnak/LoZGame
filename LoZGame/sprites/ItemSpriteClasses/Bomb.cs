@@ -38,19 +38,19 @@ namespace LoZClone
 
             if (direction.Equals("Up"))
             {
-                location = new Vector2(loc.X, loc.Y - 64);
+                location = new Vector2(loc.X, loc.Y - 32);
             }
             else if (direction.Equals("Left"))
             {
-                location = new Vector2(loc.X - 64, loc.Y);
+                location = new Vector2(loc.X - 32, loc.Y);
             }
             else if (direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + 64, loc.Y);
+                location = new Vector2(loc.X + 32, loc.Y);
             }
             else
             {
-                location = new Vector2(loc.X, loc.Y + 64);
+                location = new Vector2(loc.X, loc.Y + 32);
             }
 
 

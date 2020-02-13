@@ -8,13 +8,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    class Boomerang : IItemSprite
+    class Boomerang : IItemSprite, IUsableItem
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
         private int scale;
         private string direction;
+        private int instance;
+        private bool expired;
         public Vector2 location { get; set; }
         public Boomerang(Texture2D texture, Vector2 loc, int scale)
         {
@@ -25,14 +27,26 @@ namespace LoZClone
             this.scale = scale;
         }
 
-        public Boomerang(Texture2D texture, Vector2 loc, string direction, int scale)
+        public Boomerang(Texture2D texture, Vector2 loc, string direction, int scale, int instance)
         {
             Texture = texture;
             frame = new Rectangle(129, 0, 5, 16);
             lifeTime = 0;
             location = loc;
             this.scale = scale;
+            this.instance = instance;
+            expired = false;
         }
+        public bool IsExpired
+        {
+            get { return expired; }
+        }
+
+        public int Instance
+        {
+            get { return instance; }
+        }
+
         public void Update()
         {
             lifeTime++;

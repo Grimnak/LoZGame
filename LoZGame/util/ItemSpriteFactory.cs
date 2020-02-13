@@ -98,6 +98,10 @@ namespace LoZClone
         {
             return new TriForce(itemSpriteSheet, loc, scale);
         }
+        public IItemSprite Triforce(Vector2 loc, int scale, int instance)
+        {
+            return new TriForce(itemSpriteSheet, loc, scale, instance);
+        }
         public IItemSprite YellowRupee(Vector2 loc, int scale)
         {
             return new YellowRupee(itemSpriteSheet, loc, scale);
@@ -166,17 +170,17 @@ namespace LoZClone
         {
             return new Boomerang(itemSpriteSheet, loc, scale);
         }
-        public IItemSprite Boomerang(Vector2 loc, string direction, int scale)
+        public IItemSprite Boomerang(Vector2 loc, string direction, int scale, int instance)
         {
-            return new Boomerang(itemSpriteSheet, loc, direction, scale);
+            return new Boomerang(itemSpriteSheet, loc, direction, scale, instance);
         }
         public IItemSprite MagicBoomerang(Vector2 loc, int scale)
         {
             return new MagicBoomerang(itemSpriteSheet, loc, scale);
         }
-        public IItemSprite MagicBoomerang(Vector2 loc, string direction, int scale)
+        public IItemSprite MagicBoomerang(Vector2 loc, string direction, int scale, int instance)
         {
-            return new MagicBoomerang(itemSpriteSheet, loc, direction, scale);
+            return new MagicBoomerang(itemSpriteSheet, loc, direction, scale, instance);
         }
         public IItemSprite Bomb(Vector2 loc, int scale)
         {
@@ -194,9 +198,9 @@ namespace LoZClone
         {
             return new Arrow(itemSpriteSheet, loc, scale);
         }
-        public IItemSprite Arrow(Vector2 loc, string direction, int scale)
+        public IItemSprite Arrow(Vector2 loc, string direction, int scale, int instance)
         {
-            return new Arrow(itemSpriteSheet, loc, direction, scale);
+            return new Arrow(itemSpriteSheet, loc, direction, scale, instance);
         }
         public IItemSprite SilverArrow(Vector2 loc, int scale)
         {
@@ -210,9 +214,9 @@ namespace LoZClone
         {
             return new RedCandle(itemSpriteSheet, loc, scale);
         }
-        public IItemSprite RedCandle(Vector2 loc, string direction, int scale)
+        public IItemSprite RedCandle(Vector2 loc, string direction, int scale, int instance)
         {
-            return new RedCandle(itemSpriteSheet, loc, direction, scale);
+            return new RedCandle(itemSpriteSheet, loc, direction, scale, instance);
         }
         public IItemSprite BlueCandle(Vector2 loc, int scale)
         {

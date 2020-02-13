@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    class TriForce : IItemSprite
+    class TriForce : IItemSprite, IUsableItem
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle currentFrame;
@@ -16,6 +16,8 @@ namespace LoZClone
         private Rectangle secondFrame;
         private int lifeTime;
         private int scale;
+        private int instance;
+        private bool expired;
         public Vector2 location { get; set; }
         public TriForce(Texture2D texture, Vector2 loc, int scale)
         {
@@ -26,6 +28,19 @@ namespace LoZClone
             lifeTime = 0;
             location = loc;
             this.scale = scale;
+        }
+
+        public TriForce(Texture2D texture, Vector2 loc, int scale, int instance)
+        {
+            Texture = texture;
+            firstFrame = new Rectangle(275, 0, 10, 16);
+            secondFrame = new Rectangle(275, 16, 10, 16);
+            currentFrame = firstFrame;
+            lifeTime = 0;
+            location = loc;
+            this.scale = scale;
+            expired = false;
+            this.instance = instance;
         }
         private void nextFrame()
         {
@@ -38,6 +53,16 @@ namespace LoZClone
                 currentFrame = firstFrame;
             }
         }
+        public bool IsExpired
+        {
+            get { return expired; }
+        }
+
+        public int Instance
+        {
+            get { return instance; }
+        }
+
         public void Update()
         {
             lifeTime++;

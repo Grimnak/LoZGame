@@ -35,16 +35,16 @@ namespace LoZClone
                     this.itemList.Add(currentItem, (IUsableItem)ItemSpriteFactory.Instance.Bomb(loc, direction, scale, currentItem));
                     break;
                 case (ItemType.Triforce):
-                    this.itemList.Add(currentItem, (IUsableItem)ItemSpriteFactory.Instance.Triforce(loc, scale));
+                    this.itemList.Add(currentItem, (IUsableItem)ItemSpriteFactory.Instance.Triforce(loc, scale, currentItem));
                     break;
                 case (ItemType.Arrow):
-                    this.itemList.Add(currentItem, (IUsableItem)ItemSpriteFactory.Instance.Arrow(loc, direction, scale));
+                    this.itemList.Add(currentItem, (IUsableItem)ItemSpriteFactory.Instance.Arrow(loc, direction, scale, currentItem));
                     break;
                 case (ItemType.Boomerang):
-                    this.itemList.Add(currentItem, (IUsableItem)ItemSpriteFactory.Instance.Boomerang(loc, direction, scale));
+                    this.itemList.Add(currentItem, (IUsableItem)ItemSpriteFactory.Instance.Boomerang(loc, direction, scale, currentItem));
                     break;
                 case (ItemType.MagicBoomerang):
-                    this.itemList.Add(currentItem, (IUsableItem)ItemSpriteFactory.Instance.MagicBoomerang(loc, direction, scale));
+                    this.itemList.Add(currentItem, (IUsableItem)ItemSpriteFactory.Instance.MagicBoomerang(loc, direction, scale, currentItem));
                     break;
                 case (ItemType.RedCandle):
                     this.itemList.Add(currentItem, (IUsableItem)ItemSpriteFactory.Instance.BlueCandle(loc, direction, scale));

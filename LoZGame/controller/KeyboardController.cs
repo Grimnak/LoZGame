@@ -44,27 +44,27 @@ namespace LoZClone
             {
                 dict[Keys.D1].execute();
             }
-            else if (pressed.Contains(Keys.D2))
+            else if (pressed.Contains(Keys.D2) && oldState.IsKeyUp(Keys.D2))
             {
                 dict[Keys.D2].execute();
             }
-            else if (pressed.Contains(Keys.D3))
+            else if (pressed.Contains(Keys.D3) && oldState.IsKeyUp(Keys.D3))
             {
                 dict[Keys.D3].execute();
             }
-            else if (pressed.Contains(Keys.D4))
+            else if (pressed.Contains(Keys.D4) && oldState.IsKeyUp(Keys.D4))
             {
                 dict[Keys.D4].execute();
             }
-            else if (pressed.Contains(Keys.D5))
+            else if (pressed.Contains(Keys.D5) && oldState.IsKeyUp(Keys.D5))
             {
                 dict[Keys.D5].execute();
             }
-            else if (pressed.Contains(Keys.D6))
+            else if (pressed.Contains(Keys.D6) && oldState.IsKeyUp(Keys.D6))
             {
                 dict[Keys.D6].execute();
             }
-            else if (pressed.Contains(Keys.D7))
+            else if (pressed.Contains(Keys.D7) && oldState.IsKeyUp(Keys.D7))
             {
                 dict[Keys.D7].execute();
             }
