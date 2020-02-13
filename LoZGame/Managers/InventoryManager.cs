@@ -30,10 +30,7 @@ namespace LoZClone
                     this.itemList.Add(ItemSpriteFactory.Instance.Bomb(loc, direction, scale));
                     break;
                 case (ItemType.Triforce):
-                    this.itemList.Add(ItemSpriteFactory.Instance.Triforce(loc, direction, scale));
-                    break;
-                case (ItemType.HeartContainer):
-                    this.itemList.Add(ItemSpriteFactory.Instance.HeartContainer(loc, direction, scale));
+                    this.itemList.Add(ItemSpriteFactory.Instance.Triforce(loc, scale));
                     break;
                 case (ItemType.Arrow):
                     this.itemList.Add(ItemSpriteFactory.Instance.Arrow(loc, direction, scale));
@@ -45,7 +42,7 @@ namespace LoZClone
                     this.itemList.Add(ItemSpriteFactory.Instance.MagicBoomerang(loc, direction, scale));
                     break;
                 case (ItemType.RedCandle):
-                    this.itemList.Add(ItemSpriteFactory.Instance.BlueCandle(loc, direction scale));
+                    this.itemList.Add(ItemSpriteFactory.Instance.BlueCandle(loc, direction, scale));
                     break;
                 default:
                     break;

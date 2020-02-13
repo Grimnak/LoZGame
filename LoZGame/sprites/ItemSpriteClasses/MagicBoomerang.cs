@@ -14,6 +14,7 @@ namespace LoZClone
         private Rectangle frame;
         private int lifeTime;
         private int scale;
+        private string direction;
         public Vector2 location { get; set; }
         public MagicBoomerang(Texture2D texture, Vector2 loc, int scale)
         {
@@ -22,6 +23,15 @@ namespace LoZClone
             lifeTime = 0;
             location = loc;
             this.scale = scale;
+        }
+        public MagicBoomerang(Texture2D texture, Vector2 loc, string direction, int scale)
+        {
+            Texture = texture;
+            frame = new Rectangle(129, 16, 5, 16);
+            lifeTime = 0;
+            location = loc;
+            this.scale = scale;
+            this.direction = direction;
         }
         public void Update()
         {

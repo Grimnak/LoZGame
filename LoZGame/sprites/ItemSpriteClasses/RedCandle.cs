@@ -14,6 +14,7 @@ namespace LoZClone
         private Rectangle frame;
         private int lifeTime;
         private int scale;
+        private string direction;
         public Vector2 location { get; set; }
         public RedCandle(Texture2D texture, Vector2 loc, int scale)
         {
@@ -23,6 +24,17 @@ namespace LoZClone
             location = loc;
             this.scale = scale;
         }
+
+        public RedCandle(Texture2D texture, Vector2 loc, string direction, int scale)
+        {
+            Texture = texture;
+            frame = new Rectangle(160, 0, 6, 16);
+            lifeTime = 0;
+            location = loc;
+            this.scale = scale;
+            this.direction = direction;
+        }
+
         public void Update()
         {
             lifeTime++;
