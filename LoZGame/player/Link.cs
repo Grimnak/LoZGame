@@ -113,7 +113,7 @@ namespace LoZClone
         }
         public void takeDamage()
         {
-            damageTimer = 100;
+            if (damageTimer <= 0) { damageTimer = 100; }
         }
         public void attack()
         {
