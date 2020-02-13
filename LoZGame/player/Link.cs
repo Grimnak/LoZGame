@@ -63,7 +63,7 @@ namespace LoZClone
                 damageTimer--;
                 if (damageTimer % 10 > 5)
                 {
-                    currentTint = Color.Purple;
+                    currentTint = Color.DarkSlateGray;
                 }
                 else
                 {
