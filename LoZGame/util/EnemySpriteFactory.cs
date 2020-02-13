@@ -6,7 +6,6 @@ namespace LoZClone
     public class EnemySpriteFactory
     {
         private Texture2D enemies;
-        private Texture2D stalfos;
 
         private static EnemySpriteFactory instance = new EnemySpriteFactory();
 

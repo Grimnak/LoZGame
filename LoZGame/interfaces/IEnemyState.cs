@@ -11,6 +11,7 @@ namespace LoZClone
         void takeDamage();
         void die();
         void update();
+        void draw();
     }
 
 }
