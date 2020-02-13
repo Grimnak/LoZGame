@@ -40,7 +40,7 @@ namespace LoZClone
 
         private Dictionary<Keys, ICommand> dictionary;
 
-        public CommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block/*, InventoryManager inventory, NpcManager npc*/)
+        public CommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block, InventoryManager inventory/*, NpcManager npc*/)
         {
             dictionary = new Dictionary<Keys, ICommand>();
 
@@ -63,19 +63,19 @@ namespace LoZClone
             commandE = new CommandE(player);
             dictionary.Add(Keys.E, commandE);
 
-            commandOne = new CommandOne(player/*, inventory*/);
+            commandOne = new CommandOne(player, inventory);
             dictionary.Add(Keys.D1, commandOne);
-            commandTwo = new CommandTwo(player/*, inventory*/);
+            commandTwo = new CommandTwo(player, inventory);
             dictionary.Add(Keys.D2, commandTwo);
-            commandThree = new CommandThree(player/*, inventory*/);
+            commandThree = new CommandThree(player, inventory);
             dictionary.Add(Keys.D3, commandThree);
-            commandFour = new CommandFour(player/*, inventory*/);
+            commandFour = new CommandFour(player, inventory);
             dictionary.Add(Keys.D4, commandFour);
-            commandFive = new CommandFive(player/*, inventory*/);
+            commandFive = new CommandFive(player, inventory);
             dictionary.Add(Keys.D5, commandFive);
-            commandSix = new CommandSix(player/*, inventory*/);
+            commandSix = new CommandSix(player, inventory);
             dictionary.Add(Keys.D6, commandSix);
-            commandSeven = new CommandSeven(player/*, inventory*/);
+            commandSeven = new CommandSeven(player, inventory);
             dictionary.Add(Keys.D7, commandSeven);
 
             commandU = new CommandU(item);
@@ -96,7 +96,7 @@ namespace LoZClone
             commandQ = new CommandQ(game);
             dictionary.Add(Keys.Q, commandQ);
 
-            commandR = new CommandR(game, player, item, block);
+            commandR = new CommandR(game, player, item, block, inventory);
             dictionary.Add(Keys.R, commandR);
         }
 

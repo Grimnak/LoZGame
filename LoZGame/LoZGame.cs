@@ -16,6 +16,7 @@ namespace LoZClone
         private IController keyboardController;
         private ItemManager itemManager;
         private BlockManager blockManager;
+        private InventoryManager inventoryManager;
 
         public LoZGame()
         {
@@ -28,7 +29,8 @@ namespace LoZClone
             link = new Link(this);
             itemManager = new ItemManager();
             blockManager = new BlockManager();
-            commandLoader = new CommandLoader(this, link, itemManager, blockManager);
+            inventoryManager = new InventoryManager();
+            commandLoader = new CommandLoader(this, link, itemManager, blockManager, inventoryManager);
             keyboardController = new KeyboardController(this, commandLoader);
             base.Initialize();
         }
@@ -50,6 +52,7 @@ namespace LoZClone
             link.Update();
             itemManager.currentItem.Update();
             blockManager.currentBlock.Update();
+            inventoryManager.Update();
             base.Update(gameTime);
         }
         protected override void Draw(GameTime gameTime)
@@ -59,6 +62,7 @@ namespace LoZClone
             link.Draw();
             itemManager.currentItem.Draw(spriteBatch);
             blockManager.currentBlock.Draw(spriteBatch, new Vector2(240, 150), Color.White);
+            inventoryManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
