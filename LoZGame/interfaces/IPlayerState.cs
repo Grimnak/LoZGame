@@ -1,4 +1,4 @@
-﻿namespace LoZClone
+namespace LoZClone
 {
     public interface IPlayerState
     {
@@ -8,6 +8,7 @@
         void moveLeft();
         void moveRight();
         void attack();
+        void die();
         //void usePrimaryItem();
         //void useSecondaryItem();
         void Update();
