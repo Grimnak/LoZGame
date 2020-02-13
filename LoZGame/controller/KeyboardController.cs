@@ -40,23 +40,7 @@ namespace LoZClone
             {
                 dict[Keys.N].execute();
             }
-            else if (pressed.Contains(Keys.W))
-            {
-                dict[Keys.W].execute();
-            }
-            else if (pressed.Contains(Keys.A))
-            {
-                dict[Keys.A].execute();
-            }
-            else if (pressed.Contains(Keys.S))
-            {
-                dict[Keys.S].execute();
-            }
-            else if (pressed.Contains(Keys.D))
-            {
-                dict[Keys.D].execute();
-            }
-            else if (pressed.Contains(Keys.D1))
+            else if (pressed.Contains(Keys.D1) && oldState.IsKeyUp(Keys.D1))
             {
                 dict[Keys.D1].execute();
             }
@@ -83,6 +67,22 @@ namespace LoZClone
             else if (pressed.Contains(Keys.D7))
             {
                 dict[Keys.D7].execute();
+            }
+            else if (pressed.Contains(Keys.W))
+            {
+                dict[Keys.W].execute();
+            }
+            else if (pressed.Contains(Keys.A))
+            {
+                dict[Keys.A].execute();
+            }
+            else if (pressed.Contains(Keys.S))
+            {
+                dict[Keys.S].execute();
+            }
+            else if (pressed.Contains(Keys.D))
+            {
+                dict[Keys.D].execute();
             }
             else
             {

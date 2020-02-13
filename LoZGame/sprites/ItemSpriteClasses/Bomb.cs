@@ -8,14 +8,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    class Bomb : IItemSprite
+    class Bomb : IItemSprite, IUsableItem
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
         private int scale;
-        bool isStatic;
-        bool exploding;
+        private bool isStatic;
+        private bool expired;
+        private int instance;
         public Vector2 location { get; set; }
         public Bomb(Texture2D texture, Vector2 loc, int scale)
         {
@@ -25,15 +26,15 @@ namespace LoZClone
             location = loc;
             this.scale = scale;
             isStatic = true;
-            exploding = false;
+            expired = false;
         }
 
-        public Bomb(Texture2D texture, Vector2 loc, String direction, int scale)
+        public Bomb(Texture2D texture, Vector2 loc, String direction, int scale, int instance)
         {
             Texture = texture;
             frame = new Rectangle(136, 0, 8, 16);
-            lifeTime = 20;
-
+            lifeTime = 60;
+            this.instance = instance;
 
             if (direction.Equals("Up"))
             {
@@ -55,7 +56,17 @@ namespace LoZClone
 
             this.scale = scale;
             isStatic = false;
-            exploding = false;
+            expired = false;
+        }
+
+        public bool IsExpired
+        {
+            get { return expired; }
+        }
+
+        public int Instance
+        {
+            get { return instance; }
         }
 
 
@@ -68,7 +79,7 @@ namespace LoZClone
             }
             if (lifeTime <= 0)
             {
-                exploding = true;
+                expired = true;
             }
 
         }

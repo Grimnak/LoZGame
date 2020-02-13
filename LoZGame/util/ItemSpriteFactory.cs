@@ -182,9 +182,9 @@ namespace LoZClone
         {
             return new Bomb(itemSpriteSheet, loc, scale);
         }
-        public IItemSprite Bomb(Vector2 loc, string direction, int scale)
+        public IItemSprite Bomb(Vector2 loc, string direction, int scale, int instance)
         {
-            return new Bomb(itemSpriteSheet, loc, direction, scale);
+            return new Bomb(itemSpriteSheet, loc, direction, scale, instance);
         }
         public IItemSprite Bow(Vector2 loc, int scale)
         {
