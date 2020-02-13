@@ -86,6 +86,19 @@ namespace LoZClone
             return allItems;
         }
 
+        public List<IItemSprite> getInv()
+        {
+            List<IItemSprite> inv = new List<IItemSprite>();
+            inv.Add(this.Bomb(/*overloadmethod*/));
+            inv.Add(this.HeartContainer(/*overloadmethod*/));
+            inv.Add(this.Triforce(/*overloadmethod*/));
+            inv.Add(this.Arrow(/*overloadmethod*/));
+            inv.Add(this.Boomerang(/*overloadmethod*/));
+            inv.Add(this.MagicBoomerang(/*overloadmethod*/));
+            inv.Add(this.RedCandle(/*overloadmethod*/));
+            return inv;
+        }
+
         public IItemSprite Fairy(Vector2 loc, int scale)
         {
             return new Fairy(itemSpriteSheet, loc, scale);
