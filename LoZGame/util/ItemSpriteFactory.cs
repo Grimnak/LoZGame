@@ -24,6 +24,15 @@ namespace LoZClone
             }
         }
 
+        public int Scale
+        {
+            get { return DRAW_SCALE; }
+        }
+
+        public Texture2D SpriteSheet {
+            get { return itemSpriteSheet; }
+        }
+
         private ItemSpriteFactory()
         { }
 

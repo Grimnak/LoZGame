@@ -14,8 +14,6 @@ namespace LoZClone
             }
         }
         private string currentColor;
-        private int damageTimer;
-        private int damageCounter;
         public string CurrentColor
         {
             get { return currentColor; }
@@ -44,13 +42,13 @@ namespace LoZClone
         {
             get { return currentSpeed; }
         }
-
+        private int damageCounter;
         public int DamageCounter
         {
             get { return damageCounter; }
             set { damageCounter = value; }
         }
-
+        private int damageTimer;
         public int DamageTimer
         {
             get { return damageTimer; }
