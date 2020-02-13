@@ -18,34 +18,34 @@ namespace LoZClone
         public InventoryManager()
         {
             itemList = new List<IItemSprite>();
-            this.scale = (int)ItemSpriteFactory.Instance.scale;
+            this.scale = (int)ItemSpriteFactory.Instance.Scale;
         }
 
 
-        public void addItem(ItemType item, Vector2 loc, Texture2D texture)
+        public void addItem(ItemType item, Vector2 loc, string direction)
         {
             switch (item)
             {
                 case (ItemType.Bomb):
-                    this.itemList.Add(ItemSpriteFactory.Instance.Bomb(texture, loc, scale));
+                    this.itemList.Add(ItemSpriteFactory.Instance.Bomb(loc, direction, scale));
                     break;
                 case (ItemType.Triforce):
-                    this.itemList.Add(ItemSpriteFactory.Instance.Triforce());
+                    this.itemList.Add(ItemSpriteFactory.Instance.Triforce(loc, direction, scale));
                     break;
                 case (ItemType.HeartContainer):
-                    this.itemList.Add(ItemSpriteFactory.Instance.HeartContainer());
+                    this.itemList.Add(ItemSpriteFactory.Instance.HeartContainer(loc, direction, scale));
                     break;
                 case (ItemType.Arrow):
-                    this.itemList.Add(ItemSpriteFactory.Instance.Arrow());
+                    this.itemList.Add(ItemSpriteFactory.Instance.Arrow(loc, direction, scale));
                     break;
                 case (ItemType.Boomerang):
-                    this.itemList.Add(ItemSpriteFactory.Instance.Boomerang());
+                    this.itemList.Add(ItemSpriteFactory.Instance.Boomerang(loc, direction, scale));
                     break;
                 case (ItemType.MagicBoomerang):
-                    this.itemList.Add(ItemSpriteFactory.Instance.MagicBoomerang());
+                    this.itemList.Add(ItemSpriteFactory.Instance.MagicBoomerang(loc, direction, scale));
                     break;
                 case (ItemType.RedCandle):
-                    this.itemList.Add(ItemSpriteFactory.Instance.RedCandle());
+                    this.itemList.Add(ItemSpriteFactory.Instance.BlueCandle(loc, direction scale));
                     break;
                 default:
                     break;
