@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace LoZClone
 {
@@ -14,6 +14,8 @@ namespace LoZClone
             }
         }
         private string currentColor;
+        private int damageTimer;
+        private int damageCounter;
         public string CurrentColor
         {
             get { return currentColor; }
@@ -42,7 +44,19 @@ namespace LoZClone
         {
             get { return currentSpeed; }
         }
-        private int damageTimer;
+
+        public int DamageCounter
+        {
+            get { return damageCounter; }
+            set { damageCounter = value; }
+        }
+
+        public int DamageTimer
+        {
+            get { return damageTimer; }
+            set { damageTimer = value; }
+        }
+
 
         public Link(LoZGame game)
         {
@@ -53,17 +67,18 @@ namespace LoZClone
             currentTint = Color.White;
             currentSpeed = 2;
             damageTimer = 0;
+            damageCounter = 0;
 
             playerState = new NullState(game, this);
         }
         private void handleDamage()
         {
-            if (damageTimer > 0)
+            if (damageTimer > 0 && damageCounter < 3)
             {
                 damageTimer--;
                 if (damageTimer % 10 > 5)
                 {
-                    currentTint = Color.Purple;
+                    currentTint = Color.DarkSlateGray;
                 }
                 else
                 {
@@ -113,7 +128,16 @@ namespace LoZClone
         }
         public void takeDamage()
         {
-            damageTimer = 100;
+            if (damageCounter >= 3)
+            {
+                playerState.die();
+            }
+
+            if (damageTimer <= 0)
+            {
+                damageCounter++;
+                damageTimer = 100;
+            }
         }
         public void attack()
         {

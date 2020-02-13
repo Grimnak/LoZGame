@@ -20,6 +20,8 @@ namespace LoZClone
             ((Link)player).CurrentLocation = new Vector2(150, 200);
             ((Link)player).CurrentDirection = "Down";
             ((Link)player).State = new NullState(game, player);
+            ((Link)player).DamageCounter = 0;
+            ((Link)player).DamageTimer = 0;
             
             manager.CurrentIndex = 1;
             manager.cycleLeft();
