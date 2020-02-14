@@ -119,31 +119,31 @@ namespace LoZClone
 
         private void returnHome()
         {
-            float newx = this.location.X;
-            float newy = this.location.Y;
+            float newX = this.location.X;
+            float newY = this.location.Y;
             playerLoc = player.CurrentLocation;
             playerLoc = new Vector2(playerLoc.X + 16, playerLoc.Y + 16);
-            if (Math.Abs(playerLoc.X - this.location.X) <= 2 * travelRate && Math.Abs(playerLoc.Y - this.location.Y) <= 2 * travelRate)
+            float diffX = playerLoc.X - newX;
+            float diffY = playerLoc.Y - newY;
+            if (Math.Abs(diffX) <= 2 * travelRate && Math.Abs(diffY) <= 2 * travelRate)
             {
                 this.isReturned = true;
                 return;
             }
-            if (newx < playerLoc.X - travelRate)
+
+
+            float diffTotal = (float)Math.Sqrt(Math.Pow(diffX, 2) + Math.Pow(diffY, 2));
+            if (newX != playerLoc.X)
             {
-                newx += travelRate;
-            } else if (newx > playerLoc.X + travelRate)
+                float changeX = (diffX / diffTotal) * travelRate;
+                newX += changeX;
+            } 
+            if (newY != playerLoc.Y)
             {
-                newx -= travelRate;
+                float changeY = (diffY / diffTotal) * travelRate; 
+                newY += changeY;
             }
-            if (newy < playerLoc.Y - travelRate)
-            {
-                newy += travelRate;
-            }
-            else if (newy > playerLoc.Y + travelRate)
-            {
-                newy -= travelRate;
-            }
-            this.location = new Vector2(newx, newy);
+            this.location = new Vector2(newX, newY);
         }
 
 
