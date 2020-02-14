@@ -88,6 +88,8 @@
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\BlockManager.cs" />
     <Compile Include="Player\DieState.cs" />
+    <Compile Include="Player\UseItemState.cs" />
+    <Compile Include="Player\PickupItemState.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\Arrow.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\BlueCandle.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\BlueRing.cs" />
@@ -126,6 +128,12 @@
     <Compile Include="Sprites\ItemSpriteClasses\WhiteSword.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\WoodenSword.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\YellowRupee.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkDieSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemLeftSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemRightSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemUpSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemDownSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkPickupItemSprite.cs" />
     <Compile Include="util\ItemSpriteFactory.cs" />
     <Compile Include="util\LinkSpriteFactory.cs" />
     <Compile Include="util\BlockSpriteFactory.cs" />

@@ -21,11 +21,6 @@ namespace LoZClone
 
         public void Update()
         {
-            currentFrame++;
-            if (currentFrame > 0)
-            {
-                currentFrame = 0;
-            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint)
