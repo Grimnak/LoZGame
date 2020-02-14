@@ -119,7 +119,7 @@ namespace LoZClone
 
         private void returnHome()
         {
-            float newx = this.location.X;d
+            float newx = this.location.X;
             float newy = this.location.Y;
             playerLoc = player.CurrentLocation;
             playerLoc = new Vector2(playerLoc.X + 16, playerLoc.Y + 16);
