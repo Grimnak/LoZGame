@@ -13,7 +13,7 @@
         {
 
             //player.useItem();
-            inventory.addItem(InventoryManager.ItemType.Bomb,((Link)player).CurrentLocation,((Link)player).CurrentDirection);
+            inventory.addItem(inventory.Bomb,((Link)player).CurrentLocation,((Link)player).CurrentDirection);
             
         }
     }

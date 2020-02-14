@@ -12,7 +12,7 @@
         public void execute()
         {
             //player.useSecondaryItem();
-            inventory.addItem(InventoryManager.ItemType.BlueCandle, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+            inventory.addItem(inventory.BlueCandle, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
         }
     }
 }

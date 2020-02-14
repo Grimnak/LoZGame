@@ -11,12 +11,18 @@ namespace LoZClone
     class BlueCandle : IItemSprite, IUsableItem
     {
         private Texture2D Texture;      // the texture to pull frames from
-        private Rectangle frame;
+        private Rectangle firstFrame;
+        private Rectangle secondFrame;
+        private Rectangle currentFrame;
         private int scale;
         private string direction;
         private Vector2 destination;
-        private static int travelDistance = 128;
         private int lifeTime;
+        private int distTravelled;
+
+        private static int lifeTimeMax = 210;
+        private static int travelDistance = 256;
+        private static int frameDelay = 10;
 
         private int instance;
         private bool expired;
@@ -27,7 +33,7 @@ namespace LoZClone
         public BlueCandle(Texture2D texture, Vector2 loc, int scale)
         {
             Texture = texture;
-            frame = new Rectangle(160, 16, 6, 16);
+            currentFrame = new Rectangle(160, 16, 6, 16);
             location = loc;
             this.scale = scale;
             moving = false;
@@ -36,14 +42,17 @@ namespace LoZClone
 
         public BlueCandle(Texture2D texture, Vector2 loc, string direction, int scale, int instance)
         {
-            lifeTime = 150;
+            lifeTime = lifeTimeMax;
             Texture = texture;
-            frame = new Rectangle(160, 16, 6, 16);
+            firstFrame = new Rectangle(0, 0, 20, 20);
+            secondFrame = new Rectangle(0, 30, 20, 20);
+            currentFrame = firstFrame;
             this.scale = scale;
             this.instance = instance;
             expired = false;
             this.direction = direction;
             moving = true;
+            distTravelled = 1;
 
             if (direction.Equals("Up"))
             {
@@ -77,29 +86,45 @@ namespace LoZClone
             get { return instance; }
         }
 
+        private void nextFrame()
+        {
+            if (currentFrame == firstFrame)
+            {
+                currentFrame = secondFrame;
+            }
+            else
+            {
+                currentFrame = firstFrame;
+            }
+        }
+
         public void Update()
         {
             if (moving)
             {
-                if (lifeTime >= 60)
+                if (lifeTime % frameDelay == 0)
                 {
-                    float xdiff = destination.X - location.X;
-                    float ydiff = destination.Y - location.Y;
-                    this.location = new Vector2(location.X + (xdiff * 1 / travelDistance), location.Y + (ydiff * 1 / travelDistance));
+                    this.nextFrame();
+                }
+                if (lifeTime >= lifeTimeMax / 3)
+                {
+                    float xdiff = (destination.X - location.X) / 8;
+                    float ydiff = (destination.Y - location.Y) / 8;
+                    float denom = 2 * distTravelled + 1 / distTravelled;
+                    this.location = new Vector2(this.location.X + (xdiff / denom), this.location.Y + (ydiff / denom));
                 }
                 else if (lifeTime <= 0)
                 {
                     expired = true;
                 }
-
+                distTravelled++;
                 lifeTime--;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
-            spriteBatch.Draw(Texture, dest, frame, Color.White);
+            spriteBatch.Draw(Texture, this.location, currentFrame, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
         }
 
     }

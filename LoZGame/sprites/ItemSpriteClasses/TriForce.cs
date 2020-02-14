@@ -39,7 +39,7 @@ namespace LoZClone
             secondFrame = new Rectangle(275, 16, 10, 16);
             currentFrame = firstFrame;
             lifeTime = 200;
-            location = new Vector2(loc.X, loc.Y - 32);
+            location = new Vector2(loc.X + 11, loc.Y - 32);
             this.scale = scale;
             expired = false;
             this.instance = instance;
