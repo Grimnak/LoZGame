@@ -11,7 +11,6 @@
         }
         public void execute()
         {
-            //player.useSecondaryItem();
             inventory.addItem(InventoryManager.ItemType.Arrow, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
         }
     }

@@ -17,6 +17,7 @@ namespace LoZClone
         private bool isStatic;
         private bool expired;
         private int instance;
+        private string direction;
         public Vector2 location { get; set; }
         public Bomb(Texture2D texture, Vector2 loc, int scale)
         {
@@ -35,22 +36,22 @@ namespace LoZClone
             frame = new Rectangle(136, 0, 8, 16);
             lifeTime = 60;
             this.instance = instance;
-
-            if (direction.Equals("Up"))
+            this.direction = direction;
+            if (this.direction == "Up")
             {
-                location = new Vector2(loc.X, loc.Y - 32);
+                location = new Vector2(loc.X + 12, loc.Y - 32);
             }
-            else if (direction.Equals("Left"))
+            else if (this.direction == "Left")
             {
-                location = new Vector2(loc.X - 32, loc.Y);
+                location = new Vector2(loc.X - 16, loc.Y + 8);
             }
-            else if (direction.Equals("Right"))
+            else if (this.direction == "Right")
             {
-                location = new Vector2(loc.X + 32, loc.Y);
+                location = new Vector2(loc.X + 32, loc.Y + 8);
             }
             else
             {
-                location = new Vector2(loc.X, loc.Y + 32);
+                location = new Vector2(loc.X + 12, loc.Y + 64);
             }
 
 

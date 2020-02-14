@@ -12,7 +12,7 @@
         public void execute()
         {
             
-            inventory.addItem(InventoryManager.ItemType.Triforce, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+            inventory.addItem(InventoryManager.ItemType.Boomerang, (Link)player);
         }
     }
 }

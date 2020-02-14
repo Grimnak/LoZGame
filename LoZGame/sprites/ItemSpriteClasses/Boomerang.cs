@@ -12,22 +12,24 @@ namespace LoZClone
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
+        private Link player;
         private int scale;
         private string direction;
 
         private int instance;
         private bool expired;
-        private bool isStatic;
+        private bool moving;
+        private bool returning;
+        private bool isReturned;
 
         private float rotation;
-        private Vector2 originalLocation;
-        private int travDirection;
-        private static int maxDistance = 300;
+        private static int maxDistance = 200;
+        private static int travelRate = 5;
+        private int distTraveled;
 
-        private static int maxFrameDelay = 2;
         private static int maxRotationDelay = 4;
-        private int rotationDelay;
-        private int frameDelay;
+        private Vector2 playerLoc;
+        private int lifeTime;
 
         public Vector2 location { get; set; }
         public Boomerang(Texture2D texture, Vector2 loc, int scale)
@@ -36,45 +38,47 @@ namespace LoZClone
             frame = new Rectangle(129, 0, 5, 16);
             location = loc;
             this.scale = scale;
-            isStatic = true;
+            moving = false;
         }
 
-        public Boomerang(Texture2D texture, Vector2 loc, string direction, int scale, int instance)
+        public Boomerang(Texture2D texture, Link player, int scale, int instance)
         {
             Texture = texture;
             frame = new Rectangle(129, 0, 5, 16);
             this.scale = scale;
             this.instance = instance;
             expired = false;
-            isStatic = false;
+            moving = true;
             rotation = 0;
-            travDirection = 1;
-            this.direction = direction;
-            frameDelay = 0;
-            rotationDelay = 0;
+            Vector2 loc = player.CurrentLocation;
+            this.direction = player.CurrentDirection;
+            this.isReturned = false;
+            this.returning = false;
+            this.player = player;
+            this.distTraveled = 0;
 
             if (direction.Equals("Up"))
             {
-                location = new Vector2(loc.X, loc.Y - 32);
+                location = new Vector2(loc.X + 16, loc.Y);
             }
             else if (direction.Equals("Left"))
             {
-                location = new Vector2(loc.X - 32, loc.Y);
+                location = new Vector2(loc.X, loc.Y + 16);
             }
             else if (direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + 32, loc.Y);
+                location = new Vector2(loc.X + 32, loc.Y + 16);
             }
             else
             {
-                location = new Vector2(loc.X, loc.Y + 32);
+                location = new Vector2(loc.X + 16, loc.Y + 32);
             }
-
-            originalLocation = new Vector2(loc.X, loc.Y);
+            playerLoc = player.CurrentLocation;
+            playerLoc = new Vector2(playerLoc.X + 16, playerLoc.Y + 16);
         }
 
 
-        public void rotate()
+        private void rotate()
         {
             if (rotation == 0)
             {
@@ -94,6 +98,54 @@ namespace LoZClone
             }
         }
 
+        private Vector2 updateLoc(string direction)
+        {
+            Vector2 newLoc;
+            if (direction.Equals("Up"))
+            {
+                newLoc = new Vector2(this.location.X, this.location.Y - travelRate);
+            } else if (direction.Equals("Left"))
+            {
+                newLoc = new Vector2(this.location.X - travelRate, this.location.Y);
+            } else if (direction.Equals("Right"))
+            {
+                newLoc = new Vector2(this.location.X + travelRate, this.location.Y);
+            } else
+            {
+                newLoc = new Vector2(this.location.X, this.location.Y + travelRate);
+            }
+            return newLoc;
+        }
+
+        private void returnHome()
+        {
+            float newx = this.location.X;d
+            float newy = this.location.Y;
+            playerLoc = player.CurrentLocation;
+            playerLoc = new Vector2(playerLoc.X + 16, playerLoc.Y + 16);
+            if (Math.Abs(playerLoc.X - this.location.X) <= 2 * travelRate && Math.Abs(playerLoc.Y - this.location.Y) <= 2 * travelRate)
+            {
+                this.isReturned = true;
+                return;
+            }
+            if (newx < playerLoc.X - travelRate)
+            {
+                newx += travelRate;
+            } else if (newx > playerLoc.X + travelRate)
+            {
+                newx -= travelRate;
+            }
+            if (newy < playerLoc.Y - travelRate)
+            {
+                newy += travelRate;
+            }
+            else if (newy > playerLoc.Y + travelRate)
+            {
+                newy -= travelRate;
+            }
+            this.location = new Vector2(newx, newy);
+        }
+
 
         public bool IsExpired
         {
@@ -107,71 +159,36 @@ namespace LoZClone
 
         public void Update()
         {
-            frameDelay++;
-            rotationDelay++;
-            if (rotationDelay == maxRotationDelay)
+            if (moving)
             {
-                rotationDelay = 0;
-                this.rotate();
-            }
-            if (!isStatic && frameDelay == maxFrameDelay)
-            {
-                frameDelay = 0;
-                if (direction.Equals("Up"))
+                if (this.isReturned)
                 {
-                    if (location.Y - 10 < originalLocation.Y - maxDistance)
-                    {
-                        travDirection = -1;
-                    }
-                    if (location.Y > originalLocation.Y)
-                    {
-                        expired = true;
-                    }
-                    location = new Vector2(location.X, location.Y - travDirection*10);
+                    this.expired = true;
                 }
-                else if (direction.Equals("Left"))
+                lifeTime++;
+                if (lifeTime % maxRotationDelay == 0)
                 {
-                    if (location.X - 10 < originalLocation.X - maxDistance)
-                    {
-                        travDirection = -1;
-                    }
-                    if (location.X > originalLocation.X)
-                    {
-                        expired = true;
-                    }
-                    location = new Vector2(location.X - travDirection*10, location.Y);
+                    this.rotate();
                 }
-                else if (direction.Equals("Right"))
+                if (distTraveled == maxDistance)
                 {
-                    if (location.X + 10 > originalLocation.X + maxDistance)
-                    {
-                        travDirection = -1;
-                    }
-                    if (location.X < originalLocation.X)
-                    {
-                        expired = true;
-                    }
-                    location = new Vector2(location.X + travDirection*10, location.Y);
+                    this.returning = true;
                 }
-                else
+                if (!returning)
                 {
-                    if (location.Y + 10 > originalLocation.Y + maxDistance)
-                    {
-                        travDirection = -1;
-                    }
-                    if (location.Y < originalLocation.Y)
-                    {
-                        expired = true;
-                    }
-                    location = new Vector2(location.X, location.Y + travDirection*10);
+                    this.location = this.updateLoc(this.direction);
+                } else
+                {
+                    this.returnHome();
                 }
+                distTraveled += travelRate;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
-            if (isStatic)
+            if (!moving)
             {
                 spriteBatch.Draw(Texture, dest, frame, Color.White);
             }

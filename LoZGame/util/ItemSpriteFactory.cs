@@ -170,17 +170,17 @@ namespace LoZClone
         {
             return new Boomerang(itemSpriteSheet, loc, scale);
         }
-        public IItemSprite Boomerang(Vector2 loc, string direction, int scale, int instance)
+        public IItemSprite Boomerang(Link player, int scale, int instance)
         {
-            return new Boomerang(itemSpriteSheet, loc, direction, scale, instance);
+            return new Boomerang(itemSpriteSheet, player, scale, instance);
         }
         public IItemSprite MagicBoomerang(Vector2 loc, int scale)
         {
             return new MagicBoomerang(itemSpriteSheet, loc, scale);
         }
-        public IItemSprite MagicBoomerang(Vector2 loc, string direction, int scale, int instance)
+        public IItemSprite MagicBoomerang(Link player, int scale, int instance)
         {
-            return new MagicBoomerang(itemSpriteSheet, loc, direction, scale, instance);
+            return new MagicBoomerang(itemSpriteSheet, player, scale, instance);
         }
         public IItemSprite Bomb(Vector2 loc, int scale)
         {
@@ -206,9 +206,9 @@ namespace LoZClone
         {
             return new SilverArrow(itemSpriteSheet, loc, scale);
         }
-        public IItemSprite SilverArrow(Vector2 loc, string direction, int scale)
+        public IItemSprite SilverArrow(Vector2 loc, string direction, int scale, int instance)
         {
-            return new SilverArrow(itemSpriteSheet, loc, direction, scale);
+            return new SilverArrow(itemSpriteSheet, loc, direction, scale, instance);
         }
         public IItemSprite RedCandle(Vector2 loc, int scale)
         {
@@ -222,9 +222,9 @@ namespace LoZClone
         {
             return new BlueCandle(itemSpriteSheet, loc, scale);
         }
-        public IItemSprite BlueCandle(Vector2 loc, string direction, int scale)
+        public IItemSprite BlueCandle(Vector2 loc, string direction, int scale, int instance)
         {
-            return new BlueCandle(itemSpriteSheet, loc, direction, scale);
+            return new BlueCandle(itemSpriteSheet, loc, direction, scale, instance);
         }
         public IItemSprite RedRing(Vector2 loc, int scale)
         {

@@ -54,6 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controller\Commands\CommandFive.cs" />
+    <Compile Include="Controller\Commands\CommandEight.cs" />
     <Compile Include="Controller\Commands\CommandFour.cs" />
     <Compile Include="Controller\Commands\CommandSeven.cs" />
     <Compile Include="Controller\Commands\CommandSix.cs" />

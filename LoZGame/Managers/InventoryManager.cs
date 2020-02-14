@@ -11,7 +11,7 @@ namespace LoZClone
 
     public class InventoryManager
     {
-        public enum ItemType {Bomb, SilverArrow, Triforce, Boomerang, MagicBoomerang, Arrow, RedCandle};
+        public enum ItemType {Bomb, SilverArrow, Triforce, Boomerang, MagicBoomerang, Arrow, RedCandle, BlueCandle};
         private Dictionary<int, IUsableItem> itemList;
         private int scale;
         private int itemId;
@@ -40,18 +40,34 @@ namespace LoZClone
                 case (ItemType.Arrow):
                     this.itemList.Add(itemId, (IUsableItem)ItemSpriteFactory.Instance.Arrow(loc, direction, scale, itemId));
                     break;
-                case (ItemType.Boomerang):
-                    this.itemList.Add(itemId, (IUsableItem)ItemSpriteFactory.Instance.Boomerang(loc, direction, scale, itemId));
-                    break;
-                case (ItemType.MagicBoomerang):
-                    this.itemList.Add(itemId, (IUsableItem)ItemSpriteFactory.Instance.MagicBoomerang(loc, direction, scale, itemId));
+                case (ItemType.SilverArrow):
+                    this.itemList.Add(itemId, (IUsableItem)ItemSpriteFactory.Instance.SilverArrow(loc, direction, scale, itemId));
                     break;
                 case (ItemType.RedCandle):
-                    this.itemList.Add(itemId, (IUsableItem)ItemSpriteFactory.Instance.BlueCandle(loc, direction, scale));
+                    this.itemList.Add(itemId, (IUsableItem)ItemSpriteFactory.Instance.RedCandle(loc, direction, scale, itemId));
+                    break;
+                case (ItemType.BlueCandle):
+                    this.itemList.Add(itemId, (IUsableItem)ItemSpriteFactory.Instance.BlueCandle(loc, direction, scale, itemId));
                     break;
                 default:
                     break;
 
+            }
+        }
+
+        public void addItem(ItemType item, Link player)
+        {
+            itemId++;
+            switch (item)
+            {
+                case (ItemType.Boomerang):
+                    this.itemList.Add(itemId, (IUsableItem)ItemSpriteFactory.Instance.Boomerang(player, scale, itemId));
+                    break;
+                case (ItemType.MagicBoomerang):
+                    this.itemList.Add(itemId, (IUsableItem)ItemSpriteFactory.Instance.MagicBoomerang(player, scale, itemId));
+                    break;
+                default:
+                    break;
             }
         }
 

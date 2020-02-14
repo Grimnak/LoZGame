@@ -68,6 +68,10 @@ namespace LoZClone
             {
                 dict[Keys.D7].execute();
             }
+            else if (pressed.Contains(Keys.D8) && oldState.IsKeyUp(Keys.D8))
+            {
+                dict[Keys.D8].execute();
+            }
             else if (pressed.Contains(Keys.W))
             {
                 dict[Keys.W].execute();

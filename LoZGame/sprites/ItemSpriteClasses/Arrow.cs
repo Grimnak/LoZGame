@@ -40,21 +40,21 @@ namespace LoZClone
             this.scale = scale;
             this.direction = direction;
             this.moving = true;
-            if (this.direction == "Up")
+            if (this.direction.Equals("Up"))
             {
-                location = new Vector2(loc.X, loc.Y - 10);
+                location = new Vector2(loc.X + 16, loc.Y);
                 rotation = 0;
-            } else if (this.direction == "Left")
+            } else if (this.direction.Equals("Left"))
             {
-                location = new Vector2(loc.X - 10, loc.Y);
+                location = new Vector2(loc.X, loc.Y + 16);
                 rotation = -1 * MathHelper.PiOver2;
-            } else if (this.direction == "Right")
+            } else if (this.direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + 10, loc.Y);
+                location = new Vector2(loc.X + 32, loc.Y + 16);
                 rotation = MathHelper.PiOver2;
             } else
             {
-                location = new Vector2(loc.X, loc.Y + 10);
+                location = new Vector2(loc.X + 16, loc.Y + 32);
                 rotation = MathHelper.Pi;
             }
 
@@ -74,7 +74,6 @@ namespace LoZClone
 
         public void Update()
         {
-            lifeTime--;
             if (moving)
             {
                 lifeTime--;
@@ -83,25 +82,25 @@ namespace LoZClone
             {
                 expired = true;
             }
-            if (this.direction == "Up" && this.moving == true)
+            if (this.direction.Equals("Up") && this.moving == true)
             {
                 this.location = new Vector2(location.X, location.Y - 10);
             }
-            else if (this.direction == "Left" && this.moving == true)
+            else if (this.direction.Equals("Left") && this.moving == true)
             {
                 this.location = new Vector2(location.X - 10, location.Y);
             }
-            else if (this.direction == "Right" && this.moving == true)
+            else if (this.direction.Equals("Right") && this.moving == true)
             {
                 this.location = new Vector2(location.X + 10, location.Y);
             }
-            else if (this.direction == "Down" && this.moving == true)
+            else if (this.direction.Equals("Down") && this.moving == true)
             {
                 this.location = new Vector2(location.X, location.Y + 10);
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)   
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, new Vector2(2,8), scale, SpriteEffects.None, 0f);
         }

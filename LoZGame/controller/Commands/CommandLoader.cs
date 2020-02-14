@@ -27,6 +27,7 @@ namespace LoZClone
         private CommandFive commandFive;
         private CommandSix commandSix;
         private CommandSeven commandSeven;
+        private CommandEight commandEight;
 
         private CommandU commandU;
         private CommandI commandI;
@@ -77,6 +78,8 @@ namespace LoZClone
             dictionary.Add(Keys.D6, commandSix);
             commandSeven = new CommandSeven(player, inventory);
             dictionary.Add(Keys.D7, commandSeven);
+            commandEight = new CommandEight(player, inventory);
+            dictionary.Add(Keys.D8, commandEight);
 
             commandU = new CommandU(item);
             dictionary.Add(Keys.U, commandU);
