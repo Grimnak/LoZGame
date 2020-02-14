@@ -125,6 +125,7 @@ namespace LoZClone
             {
                 this.removeItem(index);
             }
+            deletable.Clear();
             foreach (KeyValuePair<int, IProjectile> item in this.itemList)
             {
                 item.Value.Update();
