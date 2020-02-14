@@ -3,16 +3,16 @@
     public class CommandSeven : ICommand
     {
         IPlayer player;
-        InventoryManager inventory;
-        public CommandSeven(IPlayer player, InventoryManager inventory)
+        ProjectileManager projectile;
+        public CommandSeven(IPlayer player, ProjectileManager projectile)
         {
             this.player = player;
-            this.inventory = inventory;
+            this.projectile = projectile;
         }
         public void execute()
         {
             //player.useSecondaryItem();
-            inventory.addItem(inventory.RedCandle, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+            projectile.addItem(projectile.RedCandle, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
         }
     }
 }

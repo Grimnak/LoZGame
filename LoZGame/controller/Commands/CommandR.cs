@@ -8,8 +8,8 @@ namespace LoZClone
         ItemManager manager;
         BlockManager block;
         LoZGame game;
-        InventoryManager inventory;
-        public CommandR(LoZGame game, IPlayer player, ItemManager manager, BlockManager block, InventoryManager inventory/*, NPCManager npc*/)
+        ProjectileManager inventory;
+        public CommandR(LoZGame game, IPlayer player, ItemManager manager, BlockManager block, ProjectileManager inventory/*, NPCManager npc*/)
         {
             this.game = game;
             this.player = player;

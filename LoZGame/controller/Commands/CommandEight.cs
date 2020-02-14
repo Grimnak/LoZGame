@@ -3,16 +3,16 @@
     public class CommandEight : ICommand
     {
         IPlayer player;
-        InventoryManager inventory;
-        public CommandEight(IPlayer player, InventoryManager inventory)
+        ProjectileManager projectile;
+        public CommandEight(IPlayer player, ProjectileManager projectile)
         {
             this.player = player;
-            this.inventory = inventory;
+            this.projectile = projectile;
         }
         public void execute()
         {
             //player.useSecondaryItem();
-            inventory.addItem(inventory.Triforce, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+            projectile.addItem(projectile.Triforce, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
         }
     }
 }

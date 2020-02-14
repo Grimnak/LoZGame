@@ -26,10 +26,6 @@ namespace LoZClone
         public void Update()
         {
             lifeTime++;
-            if (lifeTime > 20)
-            {
-                lifeTime = 0;
-            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

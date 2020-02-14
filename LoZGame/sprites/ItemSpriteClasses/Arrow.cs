@@ -8,17 +8,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    class Arrow : IItemSprite, IUsableItem
+    class Arrow : IItemSprite
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
         private int scale;
-        private string direction;
-        private bool moving;
         private float rotation;
-        private int instance;
-        private bool expired;
         public Vector2 location { get; set; }
         public Arrow(Texture2D texture, Vector2 loc, int scale)
         {
@@ -27,77 +23,12 @@ namespace LoZClone
             lifeTime = 20;
             this.location = new Vector2(loc.X, loc.Y);
             this.scale = scale;
-            this.moving = false;
-            this.direction = "Up";
             this.rotation = 0;
-        }
-
-        public Arrow(Texture2D texture, Vector2 loc, string direction, int scale, int instance)
-        {
-            Texture = texture;
-            frame = new Rectangle(154, 0, 5, 16);
-            lifeTime = 100;
-            this.scale = scale;
-            this.direction = direction;
-            this.moving = true;
-            if (this.direction.Equals("Up"))
-            {
-                location = new Vector2(loc.X + 16, loc.Y);
-                rotation = 0;
-            } else if (this.direction.Equals("Left"))
-            {
-                location = new Vector2(loc.X, loc.Y + 16);
-                rotation = -1 * MathHelper.PiOver2;
-            } else if (this.direction.Equals("Right"))
-            {
-                location = new Vector2(loc.X + 32, loc.Y + 16);
-                rotation = MathHelper.PiOver2;
-            } else
-            {
-                location = new Vector2(loc.X + 16, loc.Y + 32);
-                rotation = MathHelper.Pi;
-            }
-
-            this.instance = instance;
-            expired = false;
-        }
-
-        public bool IsExpired
-        {
-            get { return expired; }
-        }
-
-        public int Instance
-        {
-            get { return instance; }
         }
 
         public void Update()
         {
-            if (moving)
-            {
-                lifeTime--;
-            }
-            if (lifeTime <= 0)
-            {
-                expired = true;
-            }
-            if (this.direction.Equals("Up") && this.moving == true)
-            {
-                this.location = new Vector2(location.X, location.Y - 10);
-            }
-            else if (this.direction.Equals("Left") && this.moving == true)
-            {
-                this.location = new Vector2(location.X - 10, location.Y);
-            }
-            else if (this.direction.Equals("Right") && this.moving == true)
-            {
-                this.location = new Vector2(location.X + 10, location.Y);
-            }
-            else if (this.direction.Equals("Down") && this.moving == true)
-            {
-                this.location = new Vector2(location.X, location.Y + 10);
-            }
+            lifeTime++;
         }
 
         public void Draw(SpriteBatch spriteBatch)
