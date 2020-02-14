@@ -8,12 +8,14 @@ namespace LoZClone
         ItemManager manager;
         BlockManager block;
         LoZGame game;
-        public CommandR(LoZGame game, IPlayer player, ItemManager manager, BlockManager block/*, NPCManager npc*/)
+        InventoryManager inventory;
+        public CommandR(LoZGame game, IPlayer player, ItemManager manager, BlockManager block, InventoryManager inventory/*, NPCManager npc*/)
         {
             this.game = game;
             this.player = player;
             this.manager = manager;
             this.block = block;
+            this.inventory = inventory;
         }
         public void execute()
         {
@@ -26,6 +28,8 @@ namespace LoZClone
             manager.CurrentIndex = 1;
             manager.cycleLeft();
             manager.currentItem.location = new Vector2(120, 120);
+
+            inventory.Clear();
 
             block.CurrentIndex = 1;
             block.cycleLeft();

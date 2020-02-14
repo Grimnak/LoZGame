@@ -40,6 +40,38 @@ namespace LoZClone
             {
                 dict[Keys.N].execute();
             }
+            else if (pressed.Contains(Keys.D1) && oldState.IsKeyUp(Keys.D1))
+            {
+                dict[Keys.D1].execute();
+            }
+            else if (pressed.Contains(Keys.D2) && oldState.IsKeyUp(Keys.D2))
+            {
+                dict[Keys.D2].execute();
+            }
+            else if (pressed.Contains(Keys.D3) && oldState.IsKeyUp(Keys.D3))
+            {
+                dict[Keys.D3].execute();
+            }
+            else if (pressed.Contains(Keys.D4) && oldState.IsKeyUp(Keys.D4))
+            {
+                dict[Keys.D4].execute();
+            }
+            else if (pressed.Contains(Keys.D5) && oldState.IsKeyUp(Keys.D5))
+            {
+                dict[Keys.D5].execute();
+            }
+            else if (pressed.Contains(Keys.D6) && oldState.IsKeyUp(Keys.D6))
+            {
+                dict[Keys.D6].execute();
+            }
+            else if (pressed.Contains(Keys.D7) && oldState.IsKeyUp(Keys.D7))
+            {
+                dict[Keys.D7].execute();
+            }
+            else if (pressed.Contains(Keys.D8) && oldState.IsKeyUp(Keys.D8))
+            {
+                dict[Keys.D8].execute();
+            }
             else if (pressed.Contains(Keys.W))
             {
                 dict[Keys.W].execute();
@@ -55,34 +87,6 @@ namespace LoZClone
             else if (pressed.Contains(Keys.D))
             {
                 dict[Keys.D].execute();
-            }
-            else if (pressed.Contains(Keys.D1))
-            {
-                dict[Keys.D1].execute();
-            }
-            else if (pressed.Contains(Keys.D2))
-            {
-                dict[Keys.D2].execute();
-            }
-            else if (pressed.Contains(Keys.D3))
-            {
-                dict[Keys.D3].execute();
-            }
-            else if (pressed.Contains(Keys.D4))
-            {
-                dict[Keys.D4].execute();
-            }
-            else if (pressed.Contains(Keys.D5))
-            {
-                dict[Keys.D5].execute();
-            }
-            else if (pressed.Contains(Keys.D6))
-            {
-                dict[Keys.D6].execute();
-            }
-            else if (pressed.Contains(Keys.D7))
-            {
-                dict[Keys.D7].execute();
             }
             else
             {
