@@ -12,6 +12,7 @@ namespace LoZClone
         private IEnemyState currentState;
         private int health = 10;
         public Vector2 currentLocation;
+        private string currentDirection = "left";
 
         public Goriya()
         {
@@ -21,19 +22,24 @@ namespace LoZClone
 
         public void moveLeft()
         {
+            currentDirection = "left";
             currentState.moveLeft();
         }
         public void moveRight()
         {
+            currentDirection = "right";
             currentState.moveRight();
         }
         public void moveUp()
         {
+            currentDirection = "up";
             currentState.moveUp();
+
         }
         public void moveDown()
         {
-            currentState.moveDown();
+            currentDirection = "down";
+            currentState.moveDown(); 
         }
         public void attack()
         {
@@ -67,6 +73,12 @@ namespace LoZClone
         {
             get { return health; }
             set { health = value; }
+        }
+
+        public string direction
+        {
+            get { return currentDirection; }
+            set { currentDirection = value; }
         }
     }
 }
