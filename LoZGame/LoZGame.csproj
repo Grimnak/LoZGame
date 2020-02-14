@@ -83,8 +83,8 @@
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Interfaces\IPlayerSprite.cs" />
     <Compile Include="Interfaces\IItemSprite.cs" />
-    <Compile Include="Interfaces\IUsableItem.cs" />
-    <Compile Include="Managers\InventoryManager.cs" />
+    <Compile Include="Interfaces\IProjectile.cs" />
+    <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\BlockManager.cs" />
     <Compile Include="Player\DieState.cs" />
@@ -126,6 +126,15 @@
     <Compile Include="Sprites\ItemSpriteClasses\WhiteSword.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\WoodenSword.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\YellowRupee.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\TriforceProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BlueCandleProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\RedCandleProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BombProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\MagicBoomerangProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\SilverArrowProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BoomerangProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\ArrowProjectile.cs" />
+    <Compile Include="util\ProjectileSpriteFactory.cs" />
     <Compile Include="util\ItemSpriteFactory.cs" />
     <Compile Include="util\LinkSpriteFactory.cs" />
     <Compile Include="util\BlockSpriteFactory.cs" />

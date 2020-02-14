@@ -41,7 +41,7 @@ namespace LoZClone
 
         private Dictionary<Keys, ICommand> dictionary;
 
-        public CommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block, InventoryManager inventory/*, NpcManager npc*/)
+        public CommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block, ProjectileManager projectile/*, NpcManager npc*/)
         {
             dictionary = new Dictionary<Keys, ICommand>();
 
@@ -64,21 +64,21 @@ namespace LoZClone
             commandE = new CommandE(player);
             dictionary.Add(Keys.E, commandE);
 
-            commandOne = new CommandOne(player, inventory);
+            commandOne = new CommandOne(player, projectile);
             dictionary.Add(Keys.D1, commandOne);
-            commandTwo = new CommandTwo(player, inventory);
+            commandTwo = new CommandTwo(player, projectile);
             dictionary.Add(Keys.D2, commandTwo);
-            commandThree = new CommandThree(player, inventory);
+            commandThree = new CommandThree(player, projectile);
             dictionary.Add(Keys.D3, commandThree);
-            commandFour = new CommandFour(player, inventory);
+            commandFour = new CommandFour(player, projectile);
             dictionary.Add(Keys.D4, commandFour);
-            commandFive = new CommandFive(player, inventory);
+            commandFive = new CommandFive(player, projectile);
             dictionary.Add(Keys.D5, commandFive);
-            commandSix = new CommandSix(player, inventory);
+            commandSix = new CommandSix(player, projectile);
             dictionary.Add(Keys.D6, commandSix);
-            commandSeven = new CommandSeven(player, inventory);
+            commandSeven = new CommandSeven(player, projectile);
             dictionary.Add(Keys.D7, commandSeven);
-            commandEight = new CommandEight(player, inventory);
+            commandEight = new CommandEight(player, projectile);
             dictionary.Add(Keys.D8, commandEight);
 
             commandU = new CommandU(item);
@@ -99,7 +99,7 @@ namespace LoZClone
             commandQ = new CommandQ(game);
             dictionary.Add(Keys.Q, commandQ);
 
-            commandR = new CommandR(game, player, item, block, inventory);
+            commandR = new CommandR(game, player, item, block, projectile);
             dictionary.Add(Keys.R, commandR);
         }
 

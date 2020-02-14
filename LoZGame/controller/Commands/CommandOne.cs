@@ -3,17 +3,17 @@
     public class CommandOne : ICommand
     {
         IPlayer player;
-        InventoryManager inventory;
-        public CommandOne(IPlayer player,InventoryManager inventory)
+        ProjectileManager projectile;
+        public CommandOne(IPlayer player,ProjectileManager projectile)
         {
             this.player = player;
-            this.inventory = inventory;
+            this.projectile = projectile;
         }
         public void execute()
         {
 
             //player.useItem();
-            inventory.addItem(inventory.Bomb,((Link)player).CurrentLocation,((Link)player).CurrentDirection);
+            projectile.addItem(projectile.Bomb,((Link)player).CurrentLocation,((Link)player).CurrentDirection);
             
         }
     }

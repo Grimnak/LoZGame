@@ -3,16 +3,16 @@
     public class CommandSix : ICommand
     {
         IPlayer player;
-        InventoryManager inventory;
-        public CommandSix(IPlayer player, InventoryManager inventory)
+        ProjectileManager projectile;
+        public CommandSix(IPlayer player, ProjectileManager projectile)
         {
             this.player = player;
-            this.inventory = inventory;
+            this.projectile = projectile;
         }
         public void execute()
         {
             //player.useSecondaryItem();
-            inventory.addItem(inventory.MagicBoomerang, (Link)player);
+            projectile.addItem(projectile.MagicBoomerang, (Link)player);
         }
     }
 }

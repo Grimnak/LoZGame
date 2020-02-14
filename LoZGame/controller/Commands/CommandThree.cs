@@ -3,16 +3,16 @@
     public class CommandThree : ICommand
     {
         IPlayer player;
-        InventoryManager inventory;
-        public CommandThree(IPlayer player, InventoryManager inventory)
+        ProjectileManager projectile;
+        public CommandThree(IPlayer player, ProjectileManager projectile)
         {
             this.player = player;
-            this.inventory = inventory;
+            this.projectile = projectile;
         }
         public void execute()
         {
             
-            inventory.addItem(inventory.Boomerang, (Link)player);
+            projectile.addItem(projectile.Boomerang, (Link)player);
         }
     }
 }

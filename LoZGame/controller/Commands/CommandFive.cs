@@ -3,16 +3,16 @@
     public class CommandFive : ICommand
     {
         IPlayer player;
-        InventoryManager inventory;
-        public CommandFive(IPlayer player, InventoryManager inventory)
+        ProjectileManager projectile;
+        public CommandFive(IPlayer player, ProjectileManager projectile)
         {
             this.player = player;
-            this.inventory = inventory;
+            this.projectile = projectile;
         }
         public void execute()
         {
             //player.useSecondaryItem();
-            inventory.addItem(inventory.SilverArrow, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+            projectile.addItem(projectile.SilverArrow, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
         }
     }
 }
