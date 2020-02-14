@@ -11,7 +11,8 @@ namespace LoZClone
 
     public class InventoryManager
     {
-        public enum ItemType {Bomb, SilverArrow, Triforce, Boomerang, MagicBoomerang, Arrow, RedCandle, BlueCandle};
+        private enum ItemType {Bomb, SilverArrow, Triforce, Boomerang, MagicBoomerang, Arrow, RedCandle, BlueCandle};
+        private ItemType item;
         private Dictionary<int, IUsableItem> itemList;
         private int scale;
         private int itemId;
@@ -25,11 +26,45 @@ namespace LoZClone
             deletable = new List<int>();
         }
 
+        public int Arrow
+        {
+            get { return (int)ItemType.Arrow; }
+        }
+        public int SilverArrow
+        {
+            get { return (int)ItemType.SilverArrow; }
+        }
+        public int Boomerang
+        {
+            get { return (int)ItemType.Boomerang; }
+        }
+        public int MagicBoomerang
+        {
+            get { return (int)ItemType.MagicBoomerang; }
+        }
+        public int BlueCandle
+        {
+            get { return (int)ItemType.BlueCandle; }
+        }
+        public int RedCandle
+        {
+            get { return (int)ItemType.RedCandle; }
+        }
+        public int Bomb
+        {
+            get { return (int)ItemType.Bomb; }
+        }
+        public int Triforce
+        {
+            get { return (int)ItemType.Triforce; }
+        }
 
-        public void addItem(ItemType item, Vector2 loc, string direction)
+
+        public void addItem(int item, Vector2 loc, string direction)
         {
             itemId++;
-            switch (item)
+            this.item = (ItemType)item;
+            switch (this.item)
             {
                 case (ItemType.Bomb):
                     this.itemList.Add(itemId, (IUsableItem)ItemSpriteFactory.Instance.Bomb(loc, direction, scale, itemId));
@@ -55,10 +90,11 @@ namespace LoZClone
             }
         }
 
-        public void addItem(ItemType item, Link player)
+        public void addItem(int item, Link player)
         {
+            this.item = (ItemType)item;
             itemId++;
-            switch (item)
+            switch (this.item)
             {
                 case (ItemType.Boomerang):
                     this.itemList.Add(itemId, (IUsableItem)ItemSpriteFactory.Instance.Boomerang(player, scale, itemId));

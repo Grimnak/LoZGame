@@ -12,6 +12,7 @@ namespace LoZClone
     class ItemSpriteFactory
     {
         private Texture2D itemSpriteSheet;
+        private Texture2D fireSpriteSheet;
         private static int DRAW_SCALE = 2;
 
         private static ItemSpriteFactory instance = new ItemSpriteFactory();
@@ -40,6 +41,7 @@ namespace LoZClone
         public void LoadAllTextures(ContentManager content)
         {
             itemSpriteSheet = content.Load<Texture2D>("Items");
+            fireSpriteSheet = content.Load<Texture2D>("fire");
         }
 
         public List<IItemSprite> getAll(int x, int y)
@@ -216,7 +218,7 @@ namespace LoZClone
         }
         public IItemSprite RedCandle(Vector2 loc, string direction, int scale, int instance)
         {
-            return new RedCandle(itemSpriteSheet, loc, direction, scale, instance);
+            return new RedCandle(fireSpriteSheet, loc, direction, scale, instance);
         }
         public IItemSprite BlueCandle(Vector2 loc, int scale)
         {
@@ -224,7 +226,7 @@ namespace LoZClone
         }
         public IItemSprite BlueCandle(Vector2 loc, string direction, int scale, int instance)
         {
-            return new BlueCandle(itemSpriteSheet, loc, direction, scale, instance);
+            return new BlueCandle(fireSpriteSheet, loc, direction, scale, instance);
         }
         public IItemSprite RedRing(Vector2 loc, int scale)
         {

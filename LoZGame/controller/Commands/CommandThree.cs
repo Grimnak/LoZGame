@@ -12,7 +12,7 @@
         public void execute()
         {
             
-            inventory.addItem(InventoryManager.ItemType.Boomerang, (Link)player);
+            inventory.addItem(inventory.Boomerang, (Link)player);
         }
     }
 }

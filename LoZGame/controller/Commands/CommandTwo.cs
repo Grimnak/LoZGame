@@ -10,8 +10,8 @@
             this.inventory = inventory;
         }
         public void execute()
-        {
-            inventory.addItem(InventoryManager.ItemType.Arrow, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+        {   
+            inventory.addItem(inventory.Arrow, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
         }
     }
 }
