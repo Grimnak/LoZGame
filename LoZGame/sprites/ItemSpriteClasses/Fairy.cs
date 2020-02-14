@@ -11,6 +11,8 @@ namespace LoZClone
     // Class to handle the completely stationary sprite
     class Fairy : IItemSprite
     {
+        private static int directionChange = 40;
+        private static int frameChange = 10;
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle firstFrame;   // frames
         private Rectangle secondFrame;
@@ -77,10 +79,22 @@ namespace LoZClone
             if (this.location.Y < 0)
             {
                 this.location = new Vector2(this.location.X, 0);
+                this.lifeTime = directionChange + 1;
             }
+            if (this.location.Y > 480 - currentFrame.Height*scale)
+            {
+                this.location = new Vector2(this.location.X, 480 - currentFrame.Height * scale);
+                this.lifeTime = directionChange + 1;
+            } 
             if (this.location.X < 0)
             {
                 this.location = new Vector2(0, this.location.Y);
+                this.lifeTime = directionChange + 1;
+            }
+            if (this.location.X > 800 - currentFrame.Width * scale)
+            {
+                this.location = new Vector2(800 - currentFrame.Width * scale, this.location.Y);
+                this.lifeTime = directionChange + 1;
             }
         }
 
@@ -99,12 +113,12 @@ namespace LoZClone
         {
             lifeTime++;
             this.updateLoc();
-            if (lifeTime > 20)
+            if (lifeTime > directionChange)
             {
                 this.getNewDirection();
                 lifeTime = 0;
             }
-            if (lifeTime % 4 == 0)
+            if (lifeTime % frameChange == 0)
             {
                 this.nextFrame();
             }
@@ -112,9 +126,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, firstFrame.Width * scale, firstFrame.Height * scale);
-            spriteBatch.Draw(Texture, dest, currentFrame, Color.White);
+            spriteBatch.Draw(Texture, location, currentFrame, Color.White, 0, new Vector2(0,0), scale, SpriteEffects.None, 0f);
         }
-
     }
 }
