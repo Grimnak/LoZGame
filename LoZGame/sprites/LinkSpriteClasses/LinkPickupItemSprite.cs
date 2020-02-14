@@ -8,7 +8,7 @@ namespace LoZClone
         private Texture2D spriteSheet;
         private int spriteSheetRows, spriteSheetColumns;
         private int spriteSheetWidth, spriteSheetHeight;
-        private int currentFrame = 6;
+        private int currentFrame = 1;
 
         public LinkPickupItemSprite(Texture2D spriteTexture, SpriteSheetData data)
         {

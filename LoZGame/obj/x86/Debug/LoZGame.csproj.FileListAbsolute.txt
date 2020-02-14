@@ -379,3 +379,7 @@ D:\LoZRepo\LoZGame\obj\x86\Debug\BlankMonoGameProject.pdb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\Blue_Link_Die.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Die.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\Red_Link_Die.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\Blue_Link_Pickup.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Pickup.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\pickup.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\Red_Link_Pickup.xnb

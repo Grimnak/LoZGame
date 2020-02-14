@@ -40,6 +40,14 @@ namespace LoZClone
         private Texture2D redLinkDieTexture;
         private SpriteSheetData redLinkDieData = new SpriteSheetData("Red_Link_Die", 30, 30, 1, 16);
 
+        private Texture2D greenLinkPickupTexture;
+        private SpriteSheetData greenLinkPickupData = new SpriteSheetData("Green_Link_Pickup", 30, 30, 1, 2);
+        private Texture2D blueLinkPickupTexture;
+        private SpriteSheetData blueLinkPickupData = new SpriteSheetData("Blue_Link_Pickup", 30, 30, 1, 2);
+        private Texture2D redLinkPickupTexture;
+        private SpriteSheetData redLinkPickupData = new SpriteSheetData("Red_Link_Pickup", 30, 30, 1, 2);
+
+
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
 
         public static LinkSpriteFactory Instance
@@ -75,6 +83,10 @@ namespace LoZClone
             greenLinkDieTexture = content.Load<Texture2D>(greenLinkDieData.FilePath);
             blueLinkDieTexture = content.Load<Texture2D>(blueLinkDieData.FilePath);
             redLinkDieTexture = content.Load<Texture2D>(redLinkDieData.FilePath);
+
+            greenLinkPickupTexture = content.Load<Texture2D>(greenLinkPickupData.FilePath);
+            blueLinkPickupTexture = content.Load<Texture2D>(blueLinkPickupData.FilePath);
+            redLinkPickupTexture = content.Load<Texture2D>(redLinkPickupData.FilePath);
         }
 
         public LinkIdleUpSprite createSpriteLinkIdleUp(string currentColor)
@@ -262,15 +274,15 @@ namespace LoZClone
         {
             if (currentColor.Equals("Red"))
             {
-                return new LinkPickupItemSprite(redLinkDownTexture, redLinkDownData);
+                return new LinkPickupItemSprite(redLinkPickupTexture, redLinkPickupData);
             }
             else if (currentColor.Equals("Blue"))
             {
-                return new LinkPickupItemSprite(blueLinkDownTexture, blueLinkDownData);
+                return new LinkPickupItemSprite(blueLinkPickupTexture, blueLinkPickupData);
             }
             else
             {
-                return new LinkPickupItemSprite(greenLinkDownTexture, greenLinkDownData);
+                return new LinkPickupItemSprite(greenLinkPickupTexture, greenLinkPickupData);
             }
         }
         public LinkUseItemUpSprite createSpriteLinkUseItemUp(string currentColor)
