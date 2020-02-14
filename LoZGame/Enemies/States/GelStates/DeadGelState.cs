@@ -48,5 +48,10 @@ namespace LoZClone
             gel.currentLocation = new Vector2(gel.currentLocation.X, gel.currentLocation.Y + 3);
             sprite.Update();
         }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, gel.currentLocation, Color.White);
+        }
     }
 }

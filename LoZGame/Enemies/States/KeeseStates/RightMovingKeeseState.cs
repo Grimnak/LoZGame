@@ -11,7 +11,7 @@ namespace LoZClone
         public RightMovingKeeseState(Keese keese)
         {
             this.keese = keese;
-            sprite = EnemySpriteFactory.Instance.createRightMovingKeeseSprite();
+            sprite = EnemySpriteFactory.Instance.createKeeseSprite();
         }
 
         public void moveLeft()
@@ -64,6 +64,11 @@ namespace LoZClone
         {
             keese.currentLocation = new Vector2(keese.currentLocation.X + 3, keese.currentLocation.Y);
             sprite.Update();
+        }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, keese.currentLocation, Color.White);
         }
     }
 }

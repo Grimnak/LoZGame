@@ -65,5 +65,10 @@ namespace LoZClone
             keese.currentLocation = new Vector2(keese.currentLocation.X, keese.currentLocation.Y + 3);
             sprite.Update();
         }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, keese.currentLocation, Color.White);
+        }
     }
 }

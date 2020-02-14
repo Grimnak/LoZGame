@@ -10,7 +10,7 @@ namespace LoZClone
         public IdleDragonState(Dragon dragon)
         {
             this.dragon = dragon;
-            sprite = EnemySpriteFactory.Instance.createIdleDragonSprite();
+            sprite = EnemySpriteFactory.Instance.createDragonSprite();
         }
         public void moveLeft()
         {
@@ -53,6 +53,11 @@ namespace LoZClone
         public void update()
         {         
             sprite.Update();
+        }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, dragon.currentLocation, Color.White);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace LoZClone
         public RightMovingZolState(Zol zol)
         {
             this.zol = zol;
-            sprite = EnemySpriteFactory.Instance.createRightMovingZolSprite();
+            sprite = EnemySpriteFactory.Instance.createZolSprite();
         }
         public void moveLeft()
         {
@@ -47,6 +47,11 @@ namespace LoZClone
         {
             zol.currentLocation = new Vector2(zol.currentLocation.X + 3, zol.currentLocation.Y);
             sprite.Update();
+        }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, zol.currentLocation, Color.White);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace LoZClone
         public LeftMovingGelState(Gel gel)
         {
             this.gel = gel;
-            sprite = EnemySpriteFactory.Instance.createLeftMovingGelSprite();
+            sprite = EnemySpriteFactory.Instance.createGelSprite();
         }
         public void moveLeft()
         {
@@ -47,6 +47,11 @@ namespace LoZClone
         {
             gel.currentLocation = new Vector2(gel.currentLocation.X - 3, gel.currentLocation.Y);
             sprite.Update();
+        }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, gel.currentLocation, Color.White);
         }
     }
 }

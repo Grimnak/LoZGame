@@ -11,7 +11,7 @@ namespace LoZClone
         public IdleSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            sprite = EnemySpriteFactory.Instance.createIdleSpikeCrossSprite();
+            sprite = EnemySpriteFactory.Instance.createSpikeCrossSprite();
         }
         public void moveLeft()
         {
@@ -46,6 +46,11 @@ namespace LoZClone
         public void update()
         {
             sprite.Update();
+        }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, spikeCross.currentLocation, Color.White);
         }
     }
 }

@@ -51,9 +51,9 @@ namespace LoZClone
         {
             currentState.update();
         }
-        public void draw()
+        public void draw(SpriteBatch sb)
         {
-
+            currentState.draw(sb);
         }
 
         public IEnemyState CurrentState
@@ -68,6 +68,7 @@ namespace LoZClone
             get { return health; }
             set { health = value; }
         }
+
     }
 }
 

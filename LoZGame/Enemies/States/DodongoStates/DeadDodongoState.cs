@@ -48,5 +48,11 @@ namespace LoZClone
             dodongo.currentLocation = new Vector2(dodongo.currentLocation.X, dodongo.currentLocation.Y - 3);
             sprite.Update();
         }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, dodongo.currentLocation, Color.White);
+        }
+
     }
 }

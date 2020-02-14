@@ -56,5 +56,10 @@ namespace LoZClone
         {         
             sprite.Update();
         }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, dragon.currentLocation, Color.White);
+        }
     }
 }

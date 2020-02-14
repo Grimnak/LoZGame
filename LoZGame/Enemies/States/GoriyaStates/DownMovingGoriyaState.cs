@@ -52,5 +52,10 @@ namespace LoZClone
             goriya.currentLocation = new Vector2(goriya.currentLocation.X, goriya.currentLocation.Y + 3);
             sprite.Update();
         }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, goriya.currentLocation, Color.White);
+        }
     }
 }

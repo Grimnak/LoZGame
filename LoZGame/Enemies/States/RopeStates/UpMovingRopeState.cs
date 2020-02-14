@@ -11,7 +11,7 @@ namespace LoZClone
         public UpMovingRopeState(Rope rope)
         {
             this.rope = rope;
-            sprite = EnemySpriteFactory.Instance.createUpMovingRopeSprite();
+            sprite = EnemySpriteFactory.Instance.createRightMovingRopeSprite();
         }
         public void moveLeft()
         {
@@ -47,6 +47,11 @@ namespace LoZClone
         {
             rope.currentLocation = new Vector2(rope.currentLocation.X, rope.currentLocation.Y - 3);
             sprite.Update();
+        }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, rope.currentLocation, Color.White);
         }
     }
 }

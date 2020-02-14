@@ -48,5 +48,10 @@ namespace LoZClone
             wallMaster.currentLocation = new Vector2(wallMaster.currentLocation.X + 3, wallMaster.currentLocation.Y);
             sprite.Update();
         }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, wallMaster.currentLocation, Color.White);
+        }
     }
 }

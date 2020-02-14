@@ -11,7 +11,7 @@ namespace LoZClone
         public LeftMovingStalfosState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
-            sprite = EnemySpriteFactory.Instance.createLeftMovingStalfosSprite();
+            sprite = EnemySpriteFactory.Instance.createStalfosSprite();
         }
         public void moveLeft()
         {
@@ -47,6 +47,11 @@ namespace LoZClone
         {
             stalfos.currentLocation = new Vector2(stalfos.currentLocation.X - 3, stalfos.currentLocation.Y);
             sprite.Update();
+        }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, stalfos.currentLocation, Color.White);
         }
     }
 }

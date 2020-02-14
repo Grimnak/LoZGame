@@ -11,7 +11,7 @@ namespace LoZClone
         public LeftMovingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
-            sprite = EnemySpriteFactory.Instance.createLeftMovingDragonSprite();
+            sprite = EnemySpriteFactory.Instance.createDragonSprite();
         }
         public void moveLeft()
         {
@@ -55,6 +55,11 @@ namespace LoZClone
         {
             dragon.currentLocation = new Vector2(dragon.currentLocation.X - 3, dragon.currentLocation.Y);
             sprite.Update();
+        }
+
+        public void draw(SpriteBatch sb)
+        {
+            sprite.draw(sb, dragon.currentLocation, Color.White);
         }
     }
 }

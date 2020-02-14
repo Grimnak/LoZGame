@@ -3,14 +3,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public class StalfosAttackDownSprite : ISprite
+    public class GoriyaRightSprite : IGoriyaSprite
     {
         private Texture2D spriteSheet;
         private int spriteSheetRows, spriteSheetColumns;
         private int spriteSheetWidth, spriteSheetHeight;
         private int currentFrame = 0, frameDelay = 0, frameDelayMax = 5;
 
-        public StalfosAttackDownSprite(Texture2D spriteTexture, SpriteSheetData data)
+        public GoriyaRightSprite(Texture2D spriteTexture, SpriteSheetData data)
         {
             spriteSheet = spriteTexture;
             spriteSheetWidth = data.Width;
@@ -25,9 +25,9 @@ namespace LoZClone
             if (frameDelay == frameDelayMax)
             {
                 currentFrame++;
-                if (currentFrame < 2 || currentFrame > 4)
+                if (currentFrame > 1)
                 {
-                    currentFrame = 2;
+                    currentFrame = 0;
                 }
                 frameDelay = 0;
             }
