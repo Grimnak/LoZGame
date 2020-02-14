@@ -7,15 +7,15 @@ using Microsoft.Xna.Framework;
 namespace LoZClone
 {
 
-    public class Dodongo : IEnemy
+    public class SpikeCross : IEnemy
     {
         private IEnemyState currentState;
         private int health = 10;
         public Vector2 currentLocation;
 
-        public Dodongo()
+        public SpikeCross()
         {
-            currentState = new LeftMovingDodongoState(this);
+            currentState = new LeftMovingSpikeCrossState(this);
             currentLocation = new Vector2(400, 200);
         }
 
