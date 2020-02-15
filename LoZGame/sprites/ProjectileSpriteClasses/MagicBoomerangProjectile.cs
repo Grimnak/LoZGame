@@ -24,13 +24,10 @@ namespace LoZClone
         private bool isReturned;
 
         private float rotation;
-        private static int maxDistance = 200;
+        private static int maxDistance = 300;
         private static int travelRate = 5;
         private int distTraveled;
-
-        private static int maxRotationDelay = 4;
         private Vector2 playerLoc;
-        private int lifeTime;
 
         public Vector2 location { get; set; }
 
@@ -73,22 +70,7 @@ namespace LoZClone
 
         private void rotate()
         {
-            if (rotation == 0)
-            {
-                rotation = MathHelper.PiOver2;
-            }
-            else if (rotation == MathHelper.PiOver2)
-            {
-                rotation = MathHelper.Pi;
-            }
-            else if (rotation == MathHelper.Pi)
-            {
-                rotation = -1 * MathHelper.PiOver2;
-            }
-            else
-            {
-                rotation = 0;
-            }
+            rotation += MathHelper.PiOver4 / 2;
         }
 
         private Vector2 updateLoc(string direction)
@@ -155,16 +137,10 @@ namespace LoZClone
 
         public void Update()
         {
-            if (moving)
-            {
+            this.rotate();
                 if (this.isReturned)
                 {
                     this.expired = true;
-                }
-                lifeTime++;
-                if (lifeTime % maxRotationDelay == 0)
-                {
-                    this.rotate();
                 }
                 if (distTraveled == maxDistance)
                 {
@@ -179,7 +155,6 @@ namespace LoZClone
                     this.returnHome();
                 }
                 distTraveled += travelRate;
-            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

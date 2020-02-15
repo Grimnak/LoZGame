@@ -26,10 +26,7 @@ namespace LoZClone
         private static int maxDistance = 200;
         private static int travelRate = 5;
         private int distTraveled;
-
-        private static int maxRotationDelay = 4;
         private Vector2 playerLoc;
-        private int lifeTime;
 
         public Vector2 location { get; set; }
 
@@ -72,22 +69,7 @@ namespace LoZClone
 
         private void rotate()
         {
-            if (rotation == 0)
-            {
-                rotation = MathHelper.PiOver2;
-            }
-            else if (rotation == MathHelper.PiOver2)
-            {
-                rotation = MathHelper.Pi;
-            }
-            else if (rotation == MathHelper.Pi)
-            {
-                rotation = -1 * MathHelper.PiOver2;
-            }
-            else
-            {
-                rotation = 0;
-            }
+            rotation += MathHelper.PiOver4 / 2;
         }
 
         private Vector2 updateLoc(string direction)
@@ -154,16 +136,10 @@ namespace LoZClone
 
         public void Update()
         {
-            if (moving)
-            {
+                this.rotate();
                 if (this.isReturned)
                 {
                     this.expired = true;
-                }
-                lifeTime++;
-                if (lifeTime % maxRotationDelay == 0)
-                {
-                    this.rotate();
                 }
                 if (distTraveled == maxDistance)
                 {
@@ -178,20 +154,11 @@ namespace LoZClone
                     this.returnHome();
                 }
                 distTraveled += travelRate;
-            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
-            if (!moving)
-            {
-                spriteBatch.Draw(Texture, dest, frame, Color.White);
-            }
-            else
-            {
-                spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, new Vector2(3, 8), scale, SpriteEffects.None, 0f);
-            }
+            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, new Vector2(3, 8), scale, SpriteEffects.None, 0f);   
         }
     }
 }
