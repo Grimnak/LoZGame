@@ -25,7 +25,7 @@ namespace LoZClone
             if (frameDelay == frameDelayMax)
             {
                 currentFrame++;
-                if (currentFrame >= 16)
+                if (currentFrame > 16)
                 {
                     currentFrame = 16;
                 }
