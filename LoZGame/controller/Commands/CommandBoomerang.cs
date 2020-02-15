@@ -4,6 +4,7 @@
     {
         IPlayer player;
         ProjectileManager projectile;
+        private static int priority = 5;
         public CommandBoomerang(IPlayer player, ProjectileManager projectile)
         {
             this.player = player;
@@ -13,6 +14,10 @@
         {
             
             projectile.addItem(projectile.Boomerang, (Link)player);
+        }
+        public int Priority
+        {
+            get { return priority; }
         }
     }
 }

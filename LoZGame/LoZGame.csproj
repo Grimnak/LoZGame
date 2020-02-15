@@ -81,6 +81,7 @@
     <Compile Include="Controller\Commands\CommandBlockRight.cs" />
     <Compile Include="Controller\Commands\CommandLoader.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
+    <Compile Include="Controller\PriorityComparer.cs" />
     <Compile Include="Interfaces\IPlayerSprite.cs" />
     <Compile Include="Interfaces\IItemSprite.cs" />
     <Compile Include="Interfaces\IProjectile.cs" />

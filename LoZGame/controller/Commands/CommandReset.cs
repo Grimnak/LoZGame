@@ -9,6 +9,7 @@ namespace LoZClone
         BlockManager block;
         LoZGame game;
         ProjectileManager inventory;
+        private static int priority = -1;
         public CommandReset(LoZGame game, IPlayer player, ItemManager manager, BlockManager block, ProjectileManager inventory/*, NPCManager npc*/)
         {
             this.game = game;
@@ -35,6 +36,10 @@ namespace LoZClone
             block.cycleLeft();
 
             //TODO add npc defaults
+        }
+        public int Priority
+        {
+            get { return priority; }
         }
     }
 }
