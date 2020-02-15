@@ -19,15 +19,20 @@ namespace LoZClone
         private bool expired;
         private int instance;
         private string direction;
+        private bool hostile;
+        private ProjectileManager projectile;
+        public bool IsHostile { get { return hostile; } }
         public Vector2 location { get; set; }
 
-        public BombProjectile(Texture2D texture, Vector2 loc, String direction, int scale, int instance)
+        public BombProjectile(Texture2D texture, Vector2 loc, String direction, int scale, int instance, ProjectileManager projectile)
         {
             Texture = texture;
             frame = new Rectangle(136, 0, 8, 16);
             lifeTime = 60;
             this.instance = instance;
             this.direction = direction;
+            this.hostile = false;
+            this.projectile = projectile;
             if (this.direction == "Up")
             {
                 location = new Vector2(loc.X + 12, loc.Y - 32);
@@ -71,6 +76,8 @@ namespace LoZClone
             }
             if (lifeTime <= 0)
             {
+                Vector2 expolsionLoc = new Vector2(this.location.X - 4 - 16 * scale, this.location.Y - 16 * scale);
+                projectile.addExplosion(projectile.Explosion, expolsionLoc);
                 expired = true;
             }
 
@@ -78,8 +85,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
-            spriteBatch.Draw(Texture, dest, frame, Color.White);
+            spriteBatch.Draw(Texture, this.location, frame, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
         }
     }
 }

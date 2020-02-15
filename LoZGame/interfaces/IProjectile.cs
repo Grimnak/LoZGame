@@ -10,6 +10,8 @@ namespace LoZClone
 
         int Instance { get; }
 
+        bool IsHostile { get; }
+
         Vector2 location { get; }
 
         void Update();

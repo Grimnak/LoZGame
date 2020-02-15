@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+
 namespace LoZClone
 {
-    class BoomerangProjectile : IProjectile
+    class MagicBoomerangEnemy : IProjectile
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
-        private Link player;
         private int scale;
         private string direction;
 
@@ -22,50 +22,56 @@ namespace LoZClone
         private bool isReturned;
 
         private float rotation;
-        private static int maxDistance = 200;
+        private static int maxDistance = 300;
         private static int travelRate = 5;
+        private int dX, dY;
         private int distTraveled;
-        private Vector2 playerLoc;
+        private Vector2 enemyLoc;
 
-        private bool hostile;
-        public bool IsHostile { get { return hostile; } }
-
+        public bool IsHostile { get; }
         public Vector2 location { get; set; }
 
-        public BoomerangProjectile(Texture2D texture, Link player, int scale, int instance)
+        public MagicBoomerangEnemy(Texture2D texture, /*IEnemy enemy,*/ int scale, int instance)
         {
             Texture = texture;
-            frame = new Rectangle(129, 0, 5, 16);
+            frame = new Rectangle(129, 16, 5, 16);
             this.scale = scale;
             this.instance = instance;
             expired = false;
             rotation = 0;
-            Vector2 loc = player.CurrentLocation;
-            this.direction = player.CurrentDirection;
+            /*Vector2 loc = enemy.CurrentLocation;
+            this.direction = enemy.CurrentDirection;*/
             this.isReturned = false;
             this.returning = false;
-            this.player = player;
             this.distTraveled = 0;
-            this.hostile = false;
+            this.IsHostile = true;
 
             if (direction.Equals("Up"))
             {
-                location = new Vector2(loc.X + 16, loc.Y);
+                //location = new Vector2(loc.X + 16, loc.Y);
+                dX = 0;
+                dY = -1;
             }
             else if (direction.Equals("Left"))
             {
-                location = new Vector2(loc.X, loc.Y + 16);
+                //location = new Vector2(loc.X, loc.Y + 16);
+                dX = -1;
+                dY = 0;
             }
             else if (direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + 32, loc.Y + 16);
+                //location = new Vector2(loc.X + 32, loc.Y + 16);
+                dX = 1;
+                dY = 0;
             }
             else
             {
-                location = new Vector2(loc.X + 16, loc.Y + 32);
+                //location = new Vector2(loc.X + 16, loc.Y + 32);
+                dX = 0;
+                dY = 1;
             }
-            playerLoc = player.CurrentLocation;
-            playerLoc = new Vector2(playerLoc.X + 16, playerLoc.Y + 16);
+            /*entityLoc = enemy.CurrentLocation;*/
+            /*entityLoc = new Vector2(entityLoc.X + 16, entityLoc.Y + 16);*/
         }
 
 
@@ -74,57 +80,37 @@ namespace LoZClone
             rotation += MathHelper.PiOver4 / 2;
         }
 
-        private Vector2 updateLoc(string direction)
+        private void updateLoc()
         {
-            Vector2 newLoc;
-            if (direction.Equals("Up"))
-            {
-                newLoc = new Vector2(this.location.X, this.location.Y - travelRate);
-            }
-            else if (direction.Equals("Left"))
-            {
-                newLoc = new Vector2(this.location.X - travelRate, this.location.Y);
-            }
-            else if (direction.Equals("Right"))
-            {
-                newLoc = new Vector2(this.location.X + travelRate, this.location.Y);
-            }
-            else
-            {
-                newLoc = new Vector2(this.location.X, this.location.Y + travelRate);
-            }
-            return newLoc;
+            this.location = new Vector2(this.location.X + dX * travelRate, this.location.Y + dY * travelRate);
         }
 
         private void returnHome()
         {
             float newX = this.location.X;
             float newY = this.location.Y;
-            playerLoc = player.CurrentLocation;
-            playerLoc = new Vector2(playerLoc.X + 16, playerLoc.Y + 16);
-            float diffX = playerLoc.X - newX;
-            float diffY = playerLoc.Y - newY;
+            /*enemyLoc = enemy.CurrentLocation;
+            enemyLoc = new Vector2(enemyLoc.X + 16, enemyLoc.Y + 16);*/
+            float diffX = enemyLoc.X - newX;
+            float diffY = enemyLoc.Y - newY;
             if (Math.Abs(diffX) <= 2 * travelRate && Math.Abs(diffY) <= 2 * travelRate)
             {
                 this.isReturned = true;
                 return;
             }
-
-
             float diffTotal = (float)Math.Sqrt(Math.Pow(diffX, 2) + Math.Pow(diffY, 2));
-            if (newX != playerLoc.X)
+            if (newX != enemyLoc.X)
             {
                 float changeX = (diffX / diffTotal) * travelRate;
                 newX += changeX;
             }
-            if (newY != playerLoc.Y)
+            if (newY != enemyLoc.Y)
             {
                 float changeY = (diffY / diffTotal) * travelRate;
                 newY += changeY;
             }
             this.location = new Vector2(newX, newY);
         }
-
 
         public bool IsExpired
         {
@@ -138,7 +124,7 @@ namespace LoZClone
 
         public void Update()
         {
-                this.rotate();
+            this.rotate();
                 if (this.isReturned)
                 {
                     this.expired = true;
@@ -149,7 +135,7 @@ namespace LoZClone
                 }
                 if (!returning)
                 {
-                    this.location = this.updateLoc(this.direction);
+                    this.updateLoc();
                 }
                 else
                 {
@@ -160,7 +146,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, new Vector2(3, 8), scale, SpriteEffects.None, 0f);   
+            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, new Vector2(3, 8), scale, SpriteEffects.None, 0f);
         }
     }
 }

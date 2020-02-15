@@ -22,12 +22,13 @@ namespace LoZClone
         private int distTravelled;
 
         private static int lifeTimeMax = 210;
-        private static int travelDistance = 256;
+        private static int travelDistance = 372;
         private static int frameDelay = 10;
 
         private int instance;
         private bool expired;
-        private bool moving;
+        private bool hostile;
+        public bool IsHostile { get { return hostile; } }
 
 
         public Vector2 location { get; set; }
@@ -43,7 +44,7 @@ namespace LoZClone
             this.instance = instance;
             expired = false;
             this.direction = direction;
-            moving = true;
+            this.hostile = false;
             distTravelled = 1;
 
             if (direction.Equals("Up"))
@@ -92,25 +93,22 @@ namespace LoZClone
 
         public void Update()
         {
-            if (moving)
+            distTravelled++;
+            lifeTime--;
+            if (lifeTime % frameDelay == 0)
             {
-                if (lifeTime % frameDelay == 0)
-                {
-                    this.nextFrame();
-                }
-                if (lifeTime >= lifeTimeMax / 3)
-                {
-                    float xdiff = (destination.X - location.X) / 8;
-                    float ydiff = (destination.Y - location.Y) / 8;
-                    float denom = 2 * distTravelled + 1 / distTravelled;
-                    this.location = new Vector2(this.location.X + (xdiff / denom), this.location.Y + (ydiff / denom));
-                }
-                else if (lifeTime <= 0)
-                {
-                    expired = true;
-                }
-                distTravelled++;
-                lifeTime--;
+                this.nextFrame();
+            }
+            if (lifeTime >= lifeTimeMax / 3)
+            {
+                float xdiff = (destination.X - location.X) / 8;
+                float ydiff = (destination.Y - location.Y) / 8;
+                float denom = 2 * distTravelled + 1 / distTravelled;
+                this.location = new Vector2(this.location.X + (xdiff / denom), this.location.Y + (ydiff / denom));
+            }
+            else if (lifeTime <= 0)
+            {
+                expired = true;
             }
         }
 

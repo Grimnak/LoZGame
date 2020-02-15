@@ -28,6 +28,8 @@ namespace LoZClone
         private Vector2 tip;
         private static int delay = 10;
         public Vector2 location { get; set; }
+        private bool hostile;
+        public bool IsHostile { get { return hostile; } }
 
         private ProjectileManager projectile;
 
@@ -49,6 +51,7 @@ namespace LoZClone
             this.scale = scale;
             this.direction = player.CurrentDirection;
             Vector2 loc = player.CurrentLocation;
+            this.hostile = false;
             
             if (this.direction.Equals("Up"))
             {
@@ -128,7 +131,7 @@ namespace LoZClone
                 }
                 if (lifeTime <= 0)
                 {
-                    projectile.addExplosion(new Vector2(this.location.X + tip.X, this.location.Y + tip.Y));
+                    projectile.addExplosion(projectile.SwordExplosion, new Vector2(this.location.X + tip.X, this.location.Y + tip.Y));
                     expired = true;
                 }
                 this.location = new Vector2(this.location.X + (dX * speed), this.location.Y + (dY * speed));

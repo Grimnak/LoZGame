@@ -11,7 +11,8 @@ namespace LoZClone
 
     public class ProjectileManager
     {
-        private enum ProjectileType {Bomb, SilverArrow, Triforce, Boomerang, MagicBoomerang, Arrow, RedCandle, BlueCandle, SwordBeam, SwordExplode};
+        private enum ProjectileType {Bomb, SilverArrow, Triforce, Boomerang, MagicBoomerang, Arrow, RedCandle, BlueCandle, SwordBeam};
+        private enum ExplosionType {BombExplode, SwordExplode};
         private ProjectileType item;
         private Dictionary<int, IProjectile> itemList;
         private Dictionary<int, IProjectile> explosionList;
@@ -83,10 +84,12 @@ namespace LoZClone
         }
         public int SwordExplosion
         {
-            get { return (int)ProjectileType.SwordExplode; }
+            get { return (int)ExplosionType.SwordExplode; }
         }
-
-
+        public int Explosion
+        {
+            get { return (int)ExplosionType.BombExplode; }
+        }
 
         public void addItem(int item, Vector2 loc, string direction)
         {
@@ -96,7 +99,7 @@ namespace LoZClone
             switch (this.item)
             {
                 case (ProjectileType.Bomb):
-                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Bomb(loc, direction, scale, projectileId));
+                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Bomb(loc, direction, scale, projectileId, this));
                     break;
                 case (ProjectileType.Triforce):
                     this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Triforce(loc, scale, projectileId));
@@ -156,20 +159,51 @@ namespace LoZClone
             }
         }
 
-        public void addExplosion(Vector2 loc)
+        public void addExplosion(int explosion, Vector2 loc)
         {
+            ExplosionType type = (ExplosionType)explosion;
+
             explosionId++;
             explosionListSize++;
-            this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "NorthEast", scale, explosionId));
-            explosionId++;
-            explosionListSize++;
-            this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "NorthWest", scale, explosionId));
-            explosionId++;
-            explosionListSize++;
-            this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "SouthEast", scale, explosionId));
-            explosionId++;
-            explosionListSize++;
-            this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "SouthWest", scale, explosionId));
+            switch (type)
+            {
+                case (ExplosionType.SwordExplode):
+                    this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "NorthEast", scale, explosionId));
+                    explosionId++;
+                    explosionListSize++;
+                    this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "NorthWest", scale, explosionId));
+                    explosionId++;
+                    explosionListSize++;
+                    this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "SouthEast", scale, explosionId));
+                    explosionId++;
+                    explosionListSize++;
+                    this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "SouthWest", scale, explosionId));
+                    break;
+                case (ExplosionType.BombExplode):
+                    Random numGen = new Random();
+                    int selectBomb = numGen.Next(0, 4);
+                    switch (selectBomb)
+                    {
+                        case (0):
+                            this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.BombExplosionOne(loc, scale, explosionId));
+                            break;
+                        case (1):
+                            this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.BombExplosionTwo(loc, scale, explosionId));
+                            break;
+                        case (2):
+                            this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.BombExplosionThree(loc, scale, explosionId));
+                            break;
+                        case (3):
+                            this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.BombExplosionFour(loc, scale, explosionId));
+                            break;
+                        case (4):
+                            this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.BombExplosionFive(loc, scale, explosionId));
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+            }
         }
 
         public void removeItem(int instance)

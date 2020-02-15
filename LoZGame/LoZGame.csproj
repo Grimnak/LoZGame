@@ -145,6 +145,9 @@
     <Compile Include="Sprites\ProjectileSpriteClasses\SilverArrowProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\BoomerangProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\ArrowProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BoomerangEnemy.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\MagicBoomerangEnemy.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BombExplosion.cs" />
     <Compile Include="util\ProjectileSpriteFactory.cs" />
     <Compile Include="util\ItemSpriteFactory.cs" />
     <Compile Include="util\LinkSpriteFactory.cs" />

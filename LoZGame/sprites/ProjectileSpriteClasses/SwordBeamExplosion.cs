@@ -25,8 +25,12 @@ namespace LoZClone
         private float rotation;
         private int instance;
         private bool expired;
-        public Vector2 location { get; set; }
         private SpriteEffects effect;
+
+
+        public Vector2 location { get; set; }
+        private bool hostile;
+        public bool IsHostile { get { return hostile; } }
 
         private static int frameDelay = 4;
         private static float speed = (float)2.5;
@@ -79,6 +83,7 @@ namespace LoZClone
             }
 
             this.instance = instance;
+            this.hostile = false;
             expired = false;
         }
 

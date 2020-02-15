@@ -4,6 +4,11 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>D:/LoZRepo/LoZGame/Content/BombExplosionFive.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/BombExplosionFour.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/BombExplosionOne.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/BombExplosionThree.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/BombExplosionTwo.png</File>
     <File>D:/LoZRepo/LoZGame/Content/Blue_Link_Die.png</File>
     <File>D:/LoZRepo/LoZGame/Content/Blue_Link_Down.png</File>
     <File>D:/LoZRepo/LoZGame/Content/Blue_Link_Left.png</File>
@@ -47,6 +52,11 @@
     <File>D:/LoZRepo/LoZGame/Content/turquoise_statue.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
