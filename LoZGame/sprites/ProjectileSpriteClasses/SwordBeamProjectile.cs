@@ -36,7 +36,8 @@ namespace LoZClone
         private static int frameDelay = 4;
         private static int speed = 5;
         private static int maxLifeTime = 40;
-        
+        private static int xBound = 800, yBound = 480;
+        private static int linkSpriteSize = 32;
 
         public SwordBeamProjectile(Texture2D texture, Link player, int scale, int instance, ProjectileManager projectile)
         {
@@ -63,7 +64,7 @@ namespace LoZClone
             }
             else if (this.direction.Equals("Left"))
             {
-                location = new Vector2(loc.X, loc.Y + 16);
+                location = new Vector2(loc.X, loc.Y + linkSpriteSize / 2);
                 rotation = 1 * MathHelper.PiOver2;
                 dX = -1;
                 dY = 0;
@@ -71,7 +72,7 @@ namespace LoZClone
             }
             else if (this.direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + 32, loc.Y + 16);
+                location = new Vector2(loc.X + linkSpriteSize, loc.Y + linkSpriteSize / 2);
                 rotation = -1 * MathHelper.PiOver2;
                 dX = 1;
                 dY = 0;
@@ -79,7 +80,7 @@ namespace LoZClone
             }
             else
             {
-                location = new Vector2(loc.X + 16, loc.Y + 32);
+                location = new Vector2(loc.X + linkSpriteSize / 2, loc.Y + linkSpriteSize);
                 rotation = 0;
                 dX = 0;
                 dY = 1;
@@ -120,6 +121,14 @@ namespace LoZClone
             }
         }
 
+        private void checkBounds()
+        {
+            if (this.location.X >= xBound || this.location.X <= 0 || this.location.Y >= yBound || this.location.Y <= 0)
+            {
+                this.lifeTime = 0;
+            }
+        }
+
         public void Update()
         {
             lifeTime--;
@@ -135,6 +144,7 @@ namespace LoZClone
                     expired = true;
                 }
                 this.location = new Vector2(this.location.X + (dX * speed), this.location.Y + (dY * speed));
+                this.checkBounds();
             }
         }
 

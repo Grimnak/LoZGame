@@ -44,8 +44,7 @@ namespace LoZClone
             swordLock = false;
             boomerangLock = false;
             swordInstance = 0;
-            boomerangInstance = 0;
-            
+            boomerangInstance = 0;    
         }
 
         public int Arrow
