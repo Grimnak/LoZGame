@@ -33,6 +33,21 @@ namespace LoZClone
         private Texture2D redLinkRightTexture;
         private SpriteSheetData redLinkRightData = new SpriteSheetData("Red_Link_Right", 50, 50, 7, 1);
 
+        private Texture2D greenLinkDieTexture;
+        private SpriteSheetData greenLinkDieData = new SpriteSheetData("Green_Link_Die", 30, 30, 1, 16);
+        private Texture2D blueLinkDieTexture;
+        private SpriteSheetData blueLinkDieData = new SpriteSheetData("Blue_Link_Die", 30, 30, 1, 16);
+        private Texture2D redLinkDieTexture;
+        private SpriteSheetData redLinkDieData = new SpriteSheetData("Red_Link_Die", 30, 30, 1, 16);
+
+        private Texture2D greenLinkPickupTexture;
+        private SpriteSheetData greenLinkPickupData = new SpriteSheetData("Green_Link_Pickup", 50, 50, 1, 2);
+        private Texture2D blueLinkPickupTexture;
+        private SpriteSheetData blueLinkPickupData = new SpriteSheetData("Blue_Link_Pickup", 50, 50, 1, 2);
+        private Texture2D redLinkPickupTexture;
+        private SpriteSheetData redLinkPickupData = new SpriteSheetData("Red_Link_Pickup", 50, 50, 1, 2);
+
+
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
 
         public static LinkSpriteFactory Instance
@@ -64,6 +79,14 @@ namespace LoZClone
             greenLinkRightTexture = content.Load<Texture2D>(greenLinkRightData.FilePath);
             blueLinkRightTexture = content.Load<Texture2D>(blueLinkRightData.FilePath);
             redLinkRightTexture = content.Load<Texture2D>(redLinkRightData.FilePath);
+
+            greenLinkDieTexture = content.Load<Texture2D>(greenLinkDieData.FilePath);
+            blueLinkDieTexture = content.Load<Texture2D>(blueLinkDieData.FilePath);
+            redLinkDieTexture = content.Load<Texture2D>(redLinkDieData.FilePath);
+
+            greenLinkPickupTexture = content.Load<Texture2D>(greenLinkPickupData.FilePath);
+            blueLinkPickupTexture = content.Load<Texture2D>(blueLinkPickupData.FilePath);
+            redLinkPickupTexture = content.Load<Texture2D>(redLinkPickupData.FilePath);
         }
 
         public LinkIdleUpSprite createSpriteLinkIdleUp(string currentColor)
@@ -245,6 +268,96 @@ namespace LoZClone
             else
             {
                 return new LinkAttackRightSprite(greenLinkRightTexture, greenLinkRightData);
+            }
+        }
+        public LinkPickupItemSprite createSpriteLinkPickupItem(string currentColor)
+        {
+            if (currentColor.Equals("Red"))
+            {
+                return new LinkPickupItemSprite(redLinkPickupTexture, redLinkPickupData);
+            }
+            else if (currentColor.Equals("Blue"))
+            {
+                return new LinkPickupItemSprite(blueLinkPickupTexture, blueLinkPickupData);
+            }
+            else
+            {
+                return new LinkPickupItemSprite(greenLinkPickupTexture, greenLinkPickupData);
+            }
+        }
+        public LinkUseItemUpSprite createSpriteLinkUseItemUp(string currentColor)
+        {
+            if (currentColor.Equals("Red"))
+            {
+                return new LinkUseItemUpSprite(redLinkUpTexture, redLinkUpData);
+            }
+            else if (currentColor.Equals("Blue"))
+            {
+                return new LinkUseItemUpSprite(blueLinkUpTexture, blueLinkUpData);
+            }
+            else
+            {
+                return new LinkUseItemUpSprite(greenLinkUpTexture, greenLinkUpData);
+            }
+        }
+        public LinkUseItemDownSprite createSpriteLinkUseItemDown(string currentColor)
+        {
+            if (currentColor.Equals("Red"))
+            {
+                return new LinkUseItemDownSprite(redLinkDownTexture, redLinkDownData);
+            }
+            else if (currentColor.Equals("Blue"))
+            {
+                return new LinkUseItemDownSprite(blueLinkDownTexture, blueLinkDownData);
+            }
+            else
+            {
+                return new LinkUseItemDownSprite(greenLinkDownTexture, greenLinkDownData);
+            }
+        }
+        public LinkUseItemLeftSprite createSpriteLinkUseItemLeft(string currentColor)
+        {
+            if (currentColor.Equals("Red"))
+            {
+                return new LinkUseItemLeftSprite(redLinkLeftTexture, redLinkLeftData);
+            }
+            else if (currentColor.Equals("Blue"))
+            {
+                return new LinkUseItemLeftSprite(blueLinkLeftTexture, blueLinkLeftData);
+            }
+            else
+            {
+                return new LinkUseItemLeftSprite(greenLinkLeftTexture, greenLinkLeftData);
+            }
+        }
+        public LinkUseItemRightSprite createSpriteLinkUseItemRight(string currentColor)
+        {
+            if (currentColor.Equals("Red"))
+            {
+                return new LinkUseItemRightSprite(redLinkRightTexture, redLinkRightData);
+            }
+            else if (currentColor.Equals("Blue"))
+            {
+                return new LinkUseItemRightSprite(blueLinkRightTexture, blueLinkRightData);
+            }
+            else
+            {
+                return new LinkUseItemRightSprite(greenLinkRightTexture, greenLinkRightData);
+            }
+        }
+        public LinkDieSprite createSpriteLinkDie(string currentColor)
+        {
+            if (currentColor.Equals("Red"))
+            {
+                return new LinkDieSprite(redLinkDieTexture, redLinkDieData);
+            }
+            else if (currentColor.Equals("Blue"))
+            {
+                return new LinkDieSprite(blueLinkDieTexture, blueLinkDieData);
+            }
+            else
+            {
+                return new LinkDieSprite(greenLinkDieTexture, greenLinkDieData);
             }
         }
     }

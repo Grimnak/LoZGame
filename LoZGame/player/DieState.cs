@@ -16,7 +16,7 @@ namespace LoZClone
         }
         private ISprite createCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.createSpriteLinkAttackUp(player.CurrentColor);
+            return LinkSpriteFactory.Instance.createSpriteLinkDie(player.CurrentColor);
         }
         public void idle()
         {
@@ -37,6 +37,12 @@ namespace LoZClone
         {
         }
         public void die()
+        {
+        }
+        public void pickupItem()
+        {
+        }
+        public void useItem()
         {
         }
         public void Update()
