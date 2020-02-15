@@ -35,19 +35,19 @@ namespace LoZClone
             this.projectile = projectile;
             if (this.direction == "Up")
             {
-                location = new Vector2(loc.X + 12, loc.Y - 32);
+                location = new Vector2(loc.X + 4*scale, loc.Y - 32);
             }
             else if (this.direction == "Left")
             {
-                location = new Vector2(loc.X - 16, loc.Y + 8);
+                location = new Vector2(loc.X - 16, loc.Y);
             }
             else if (this.direction == "Right")
             {
-                location = new Vector2(loc.X + 32, loc.Y + 8);
+                location = new Vector2(loc.X + 32, loc.Y);
             }
             else
             {
-                location = new Vector2(loc.X + 12, loc.Y + 64);
+                location = new Vector2(loc.X + 4*scale, loc.Y + 32);
             }
 
 

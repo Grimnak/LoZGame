@@ -35,7 +35,7 @@ namespace LoZClone
 
         private static int frameDelay = 4;
         private static int speed = 5;
-        private static int maxLifeTime = 80;
+        private static int maxLifeTime = 40;
         
 
         public SwordBeamProjectile(Texture2D texture, Link player, int scale, int instance, ProjectileManager projectile)

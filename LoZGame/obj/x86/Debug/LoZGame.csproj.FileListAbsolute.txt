@@ -414,3 +414,9 @@ D:\LoZRepo\LoZGame\obj\x86\Debug\LoZGame.csprojAssemblyReference.cache
 D:\LoZRepo\LoZGame\obj\x86\Debug\LoZGame.csproj.CopyComplete
 D:\LoZRepo\LoZGame\obj\x86\Debug\BlankMonoGameProject.exe
 D:\LoZRepo\LoZGame\obj\x86\Debug\BlankMonoGameProject.pdb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Blue_Link_Die.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Blue_Link_Pickup.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Die.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Pickup.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Red_Link_Die.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Red_Link_Pickup.xnb
