@@ -12,8 +12,11 @@
         }
         public void execute()
         {
-            player.attack();
-            projectile.addItem(projectile.Swordbeam, (Link)player);
+            if (!((Link)player).IsDead)
+            {
+                player.attack();
+                projectile.addItem(projectile.Swordbeam, (Link)player);
+            }
         }
         public int Priority
         {

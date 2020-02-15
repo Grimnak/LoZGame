@@ -12,8 +12,11 @@
         }
         public void execute()
         {
-            player.useItem();
-            projectile.addItem(projectile.Arrow, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+            if (!((Link)player).IsDead)
+            {
+                player.useItem();
+                projectile.addItem(projectile.Arrow, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+            }
         }
         public int Priority
         {

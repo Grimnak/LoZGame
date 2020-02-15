@@ -12,6 +12,7 @@ namespace LoZClone
         {
             this.game = game;
             player = (Link)playerInstance;
+            player.IsDead = true;
             sprite = createCorrectSprite();
         }
         private ISprite createCorrectSprite()
