@@ -1,10 +1,11 @@
 ﻿namespace LoZClone
 {
-    public class CommandSeven : ICommand
+    public class CommandRedCandle : ICommand
     {
         IPlayer player;
         ProjectileManager projectile;
-        public CommandSeven(IPlayer player, ProjectileManager projectile)
+        private static int priority = 5;
+        public CommandRedCandle(IPlayer player, ProjectileManager projectile)
         {
             this.player = player;
             this.projectile = projectile;
@@ -13,6 +14,10 @@
         {
             //player.useSecondaryItem();
             projectile.addItem(projectile.RedCandle, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+        }
+        public int Priority
+        {
+            get { return priority; }
         }
     }
 }

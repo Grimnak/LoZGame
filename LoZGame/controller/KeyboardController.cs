@@ -10,7 +10,7 @@ namespace LoZClone
         CommandLoader allCommands;
         KeyboardState oldState;
         Dictionary<Keys, ICommand> dict;
-        
+        List<KeyValuePair<Keys, ICommand>> playerCommands;
 
         private ICommand currentCommand;
 
@@ -20,6 +20,7 @@ namespace LoZClone
             this.allCommands = allCommands;
             oldState = Keyboard.GetState();
             dict = allCommands.getDict;
+            playerCommands = new List<KeyValuePair<Keys, ICommand>>();
         }
 
 
@@ -30,70 +31,41 @@ namespace LoZClone
 
             Keys[] pressed = state.GetPressedKeys();
 
+            foreach (Keys key in pressed)
+            {
+                if (dict.ContainsKey(key) && dict[key].Priority != -1)
+                {
+                    
+                    playerCommands.Add(new KeyValuePair<Keys, ICommand>(key, dict[key]));
+                }
+            }
+            playerCommands.Add(new KeyValuePair<Keys, ICommand>(Keys.Subtract, allCommands.getIdle));
 
-            if (pressed.Contains(Keys.Z) && oldState.IsKeyUp(Keys.Z))
+            if (playerCommands.Count > 0)
             {
+                playerCommands.Sort(new PriorityComparer());
 
-                dict[Keys.Z].execute();
-            }
-            else if (pressed.Contains(Keys.N) && oldState.IsKeyUp(Keys.N))
-            {
-                dict[Keys.N].execute();
-            }
-            else if (pressed.Contains(Keys.D1) && oldState.IsKeyUp(Keys.D1))
-            {
-                dict[Keys.D1].execute();
-            }
-            else if (pressed.Contains(Keys.D2) && oldState.IsKeyUp(Keys.D2))
-            {
-                dict[Keys.D2].execute();
-            }
-            else if (pressed.Contains(Keys.D3) && oldState.IsKeyUp(Keys.D3))
-            {
-                dict[Keys.D3].execute();
-            }
-            else if (pressed.Contains(Keys.D4) && oldState.IsKeyUp(Keys.D4))
-            {
-                dict[Keys.D4].execute();
-            }
-            else if (pressed.Contains(Keys.D5) && oldState.IsKeyUp(Keys.D5))
-            {
-                dict[Keys.D5].execute();
-            }
-            else if (pressed.Contains(Keys.D6) && oldState.IsKeyUp(Keys.D6))
-            {
-                dict[Keys.D6].execute();
-            }
-            else if (pressed.Contains(Keys.D7) && oldState.IsKeyUp(Keys.D7))
-            {
-                dict[Keys.D7].execute();
-            }
-            else if (pressed.Contains(Keys.D8) && oldState.IsKeyUp(Keys.D8))
-            {
-                dict[Keys.D8].execute();
-            }
-            else if (pressed.Contains(Keys.W))
-            {
-                dict[Keys.W].execute();
-            }
-            else if (pressed.Contains(Keys.A))
-            {
-                dict[Keys.A].execute();
-            }
-            else if (pressed.Contains(Keys.S))
-            {
-                dict[Keys.S].execute();
-            }
-            else if (pressed.Contains(Keys.D))
-            {
-                dict[Keys.D].execute();
-            }
-            else
-            {
-                currentCommand = allCommands.getIdle;
-                currentCommand.execute();
-            }
+                currentCommand = playerCommands[0].Value;
 
+                if (currentCommand.Priority == 5 || currentCommand.Priority == 6)
+                {
+                    Keys currentKey = playerCommands[0].Key;
+                    if (oldState.IsKeyUp(currentKey))
+                    {
+                        currentCommand.execute();
+                    }
+                    else
+                    {
+                        allCommands.getIdle.execute();
+                    }
+                }
+                else
+                {
+                    currentCommand.execute();
+                }
+
+            }
+            playerCommands.Clear();
 
             if (pressed.Contains(Keys.U) && oldState.IsKeyUp(Keys.U))
             {
