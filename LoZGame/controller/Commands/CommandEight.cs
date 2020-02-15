@@ -11,7 +11,7 @@
         }
         public void execute()
         {
-            //player.useSecondaryItem();
+            player.pickupItem();
             inventory.addItem(inventory.Triforce, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
         }
     }

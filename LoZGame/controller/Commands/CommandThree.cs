@@ -11,7 +11,7 @@
         }
         public void execute()
         {
-            
+            player.useItem();
             inventory.addItem(inventory.Boomerang, (Link)player);
         }
     }

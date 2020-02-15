@@ -12,7 +12,7 @@
         public void execute()
         {
 
-            //player.useItem();
+            player.useItem();
             inventory.addItem(inventory.Bomb,((Link)player).CurrentLocation,((Link)player).CurrentDirection);
             
         }

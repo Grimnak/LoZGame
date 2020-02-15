@@ -41,11 +41,11 @@ namespace LoZClone
         private SpriteSheetData redLinkDieData = new SpriteSheetData("Red_Link_Die", 30, 30, 1, 16);
 
         private Texture2D greenLinkPickupTexture;
-        private SpriteSheetData greenLinkPickupData = new SpriteSheetData("Green_Link_Pickup", 30, 30, 1, 2);
+        private SpriteSheetData greenLinkPickupData = new SpriteSheetData("Green_Link_Pickup", 50, 50, 1, 2);
         private Texture2D blueLinkPickupTexture;
-        private SpriteSheetData blueLinkPickupData = new SpriteSheetData("Blue_Link_Pickup", 30, 30, 1, 2);
+        private SpriteSheetData blueLinkPickupData = new SpriteSheetData("Blue_Link_Pickup", 50, 50, 1, 2);
         private Texture2D redLinkPickupTexture;
-        private SpriteSheetData redLinkPickupData = new SpriteSheetData("Red_Link_Pickup", 30, 30, 1, 2);
+        private SpriteSheetData redLinkPickupData = new SpriteSheetData("Red_Link_Pickup", 50, 50, 1, 2);
 
 
         private static LinkSpriteFactory instance = new LinkSpriteFactory();

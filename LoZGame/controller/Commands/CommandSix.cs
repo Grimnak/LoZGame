@@ -11,7 +11,7 @@
         }
         public void execute()
         {
-            //player.useSecondaryItem();
+            player.useItem();
             inventory.addItem(inventory.MagicBoomerang, (Link)player);
         }
     }
