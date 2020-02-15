@@ -13,7 +13,6 @@ namespace LoZClone
     {
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
-        private Link player;
         private int scale;
         private string direction;
 
@@ -40,8 +39,8 @@ namespace LoZClone
             this.instance = instance;
             expired = false;
             rotation = 0;
-            Vector2 loc = player.CurrentLocation;
-            this.direction = player.CurrentDirection;
+            /*Vector2 loc = enemy.CurrentLocation;
+            this.direction = enemy.CurrentDirection;*/
             this.isReturned = false;
             this.returning = false;
             this.distTraveled = 0;
@@ -49,25 +48,25 @@ namespace LoZClone
 
             if (direction.Equals("Up"))
             {
-                location = new Vector2(loc.X + 16, loc.Y);
+                //location = new Vector2(loc.X + 16, loc.Y);
                 dX = 0;
                 dY = -1;
             }
             else if (direction.Equals("Left"))
             {
-                location = new Vector2(loc.X, loc.Y + 16);
+                //location = new Vector2(loc.X, loc.Y + 16);
                 dX = -1;
                 dY = 0;
             }
             else if (direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + 32, loc.Y + 16);
+                //location = new Vector2(loc.X + 32, loc.Y + 16);
                 dX = 1;
                 dY = 0;
             }
             else
             {
-                location = new Vector2(loc.X + 16, loc.Y + 32);
+                //location = new Vector2(loc.X + 16, loc.Y + 32);
                 dX = 0;
                 dY = 1;
             }

@@ -325,3 +325,8 @@ C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\SwordBeam.x
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\SwordBeamSecondary.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\SwordBeam.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\SwordBeamSecondary.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\BombExplosionFive.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\BombExplosionFour.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\BombExplosionOne.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\BombExplosionThree.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\BombExplosionTwo.xnb

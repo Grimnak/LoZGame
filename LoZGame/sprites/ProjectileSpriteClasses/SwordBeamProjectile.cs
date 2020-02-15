@@ -131,7 +131,7 @@ namespace LoZClone
                 }
                 if (lifeTime <= 0)
                 {
-                    projectile.addExplosion(new Vector2(this.location.X + tip.X, this.location.Y + tip.Y));
+                    projectile.addExplosion(projectile.SwordExplosion, new Vector2(this.location.X + tip.X, this.location.Y + tip.Y));
                     expired = true;
                 }
                 this.location = new Vector2(this.location.X + (dX * speed), this.location.Y + (dY * speed));

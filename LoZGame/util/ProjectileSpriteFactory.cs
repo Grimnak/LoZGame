@@ -15,6 +15,11 @@ namespace LoZClone
         private Texture2D fireProjectileSpriteSheet;
         private Texture2D swordBeamSpriteSheet;
         private Texture2D swordBeamExplosionSpriteSheet;
+        private Texture2D explosionOneSpriteSheet;
+        private Texture2D explosionTwoSpriteSheet;
+        private Texture2D explosionThreeSpriteSheet;
+        private Texture2D explosionFourSpriteSheet;
+        private Texture2D explosionFiveSpriteSheet;
         private static int DRAW_SCALE = 2;
 
         private static ProjectileSpriteFactory instance = new ProjectileSpriteFactory();
@@ -46,6 +51,11 @@ namespace LoZClone
             fireProjectileSpriteSheet = content.Load<Texture2D>("fire");
             swordBeamSpriteSheet = content.Load<Texture2D>("SwordBeam");
             swordBeamExplosionSpriteSheet = content.Load<Texture2D>("SwordBeamSecondary");
+            explosionOneSpriteSheet = content.Load<Texture2D>("BombExplosionOne");
+            explosionTwoSpriteSheet = content.Load<Texture2D>("BombExplosionTwo");
+            explosionThreeSpriteSheet = content.Load<Texture2D>("BombExplosionThree");
+            explosionFourSpriteSheet = content.Load<Texture2D>("BombExplosionFour");
+            explosionFiveSpriteSheet = content.Load<Texture2D>("BombExplosionFive");
         }
 
        
@@ -62,9 +72,9 @@ namespace LoZClone
         {
             return new MagicBoomerangProjectile(projectileSpriteSheet, player, scale, instance);
         }
-        public IProjectile Bomb(Vector2 loc, string direction, int scale, int instance)
+        public IProjectile Bomb(Vector2 loc, string direction, int scale, int instance, ProjectileManager projectile)
         {
-            return new BombProjectile(projectileSpriteSheet, loc, direction, scale, instance);
+            return new BombProjectile(projectileSpriteSheet, loc, direction, scale, instance, projectile);
         }
         public IProjectile Arrow(Vector2 loc, string direction, int scale, int instance)
         {
@@ -89,6 +99,26 @@ namespace LoZClone
         public IProjectile SwordExplosion(Vector2 loc, string direction, int scale, int instance)
         {
             return new SwordBeamExplosion(swordBeamExplosionSpriteSheet, loc, direction, scale, instance);
+        }
+        public IProjectile BombExplosionOne(Vector2 loc, int scale, int instance)
+        {
+            return new BombExplosion(explosionOneSpriteSheet, loc, scale, instance);
+        }
+        public IProjectile BombExplosionTwo(Vector2 loc, int scale, int instance)
+        {
+            return new BombExplosion(explosionTwoSpriteSheet, loc, scale, instance);
+        }
+        public IProjectile BombExplosionThree(Vector2 loc, int scale, int instance)
+        {
+            return new BombExplosion(explosionThreeSpriteSheet, loc, scale, instance);
+        }
+        public IProjectile BombExplosionFour(Vector2 loc, int scale, int instance)
+        {
+            return new BombExplosion(explosionFourSpriteSheet, loc, scale, instance);
+        }
+        public IProjectile BombExplosionFive(Vector2 loc, int scale, int instance)
+        {
+            return new BombExplosion(explosionFiveSpriteSheet, loc, scale, instance);
         }
     }
 }

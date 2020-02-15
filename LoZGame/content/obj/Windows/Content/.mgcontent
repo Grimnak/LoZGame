@@ -14,6 +14,11 @@
     <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/bombed_opening_left.png</File>
     <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/bombed_opening_right.png</File>
     <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/bombed_opening_up.png</File>
+    <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/BombExplosionFive.png</File>
+    <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/BombExplosionFour.png</File>
+    <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/BombExplosionOne.png</File>
+    <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/BombExplosionThree.png</File>
+    <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/BombExplosionTwo.png</File>
     <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/brick_tile.png</File>
     <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/door_down.png</File>
     <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/door_left.png</File>
@@ -41,6 +46,11 @@
     <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/turquoise_statue.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
