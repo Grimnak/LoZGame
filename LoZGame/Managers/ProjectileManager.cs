@@ -11,8 +11,8 @@ namespace LoZClone
 
     public class ProjectileManager
     {
-        private enum ProjectileType {Bomb, SilverArrow, Triforce, Boomerang, MagicBoomerang, Arrow, RedCandle, BlueCandle, SwordBeam};
-        private enum ExplosionType {BombExplode, SwordExplode};
+        private enum ProjectileType { Bomb, SilverArrow, Triforce, Boomerang, MagicBoomerang, Arrow, RedCandle, BlueCandle, SwordBeam };
+        private enum ExplosionType { BombExplode, SwordExplode };
         private ProjectileType item;
         private Dictionary<int, IProjectile> itemList;
         private Dictionary<int, IProjectile> explosionList;
@@ -27,6 +27,8 @@ namespace LoZClone
         private bool boomerangLock;
         private int swordInstance;
         private int boomerangInstance;
+
+        public bool BoomerangOut {get {return boomerangLock;} }
 
         public ProjectileManager()
         {

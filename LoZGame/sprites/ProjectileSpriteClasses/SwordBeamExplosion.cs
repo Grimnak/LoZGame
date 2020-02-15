@@ -28,6 +28,7 @@ namespace LoZClone
         private SpriteEffects effect;
 
 
+
         public Vector2 location { get; set; }
         private bool hostile;
         public bool IsHostile { get { return hostile; } }
