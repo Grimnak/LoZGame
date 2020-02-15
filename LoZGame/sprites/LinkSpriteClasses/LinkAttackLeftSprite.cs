@@ -8,7 +8,7 @@ namespace LoZClone
         private Texture2D spriteSheet;
         private int spriteSheetRows, spriteSheetColumns;
         private int spriteSheetWidth, spriteSheetHeight;
-        private int currentFrame = 0, frameDelay = 0, frameDelayMax = 5;
+        private int currentFrame = 0;
 
         public LinkAttackLeftSprite(Texture2D spriteTexture, SpriteSheetData data)
         {
@@ -21,16 +21,6 @@ namespace LoZClone
 
         public void Update()
         {
-            frameDelay++;
-            if (frameDelay == frameDelayMax)
-            {
-                currentFrame++;
-                if (currentFrame < 2 || currentFrame > 4)
-                {
-                    currentFrame = 2;
-                }
-                frameDelay = 0;
-            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint)

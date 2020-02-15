@@ -11,7 +11,7 @@ namespace LoZClone
         {
             this.game = game;
             this.player = (Link)playerInstance;
-            lockoutTimer = 15; //attack frames * frame delay
+            lockoutTimer = 15; //wait period
             sprite = createCorrectSprite();
         }
         private ISprite createCorrectSprite()

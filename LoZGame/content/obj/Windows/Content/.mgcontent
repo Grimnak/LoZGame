@@ -4,11 +4,6 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/LoZRepo/LoZGame/Content/BombExplosionFive.png</File>
-    <File>D:/LoZRepo/LoZGame/Content/BombExplosionFour.png</File>
-    <File>D:/LoZRepo/LoZGame/Content/BombExplosionOne.png</File>
-    <File>D:/LoZRepo/LoZGame/Content/BombExplosionThree.png</File>
-    <File>D:/LoZRepo/LoZGame/Content/BombExplosionTwo.png</File>
     <File>D:/LoZRepo/LoZGame/Content/Blue_Link_Die.png</File>
     <File>D:/LoZRepo/LoZGame/Content/Blue_Link_Down.png</File>
     <File>D:/LoZRepo/LoZGame/Content/Blue_Link_Left.png</File>
@@ -21,6 +16,11 @@
     <File>D:/LoZRepo/LoZGame/Content/bombed_opening_left.png</File>
     <File>D:/LoZRepo/LoZGame/Content/bombed_opening_right.png</File>
     <File>D:/LoZRepo/LoZGame/Content/bombed_opening_up.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/BombExplosionFive.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/BombExplosionFour.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/BombExplosionOne.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/BombExplosionThree.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/BombExplosionTwo.png</File>
     <File>D:/LoZRepo/LoZGame/Content/brick_tile.png</File>
     <File>D:/LoZRepo/LoZGame/Content/door_down.png</File>
     <File>D:/LoZRepo/LoZGame/Content/door_left.png</File>
