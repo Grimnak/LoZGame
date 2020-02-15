@@ -12,7 +12,7 @@
         }
         public void execute()
         {
-            //player.useSecondaryItem();
+            player.pickupItem();
             projectile.addItem(projectile.Triforce, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
         }
         public int Priority

@@ -56,6 +56,14 @@
         {
             player.State = new DieState(game, player);
         }
+        public void pickupItem()
+        {
+            player.State = new PickupItemState(game, player);
+        }
+        public void useItem()
+        {
+            player.State = new UseItemState(game, player);
+        }
         public void Update()
         {
             sprite.Update();
