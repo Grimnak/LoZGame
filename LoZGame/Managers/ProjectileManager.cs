@@ -22,6 +22,10 @@ namespace LoZClone
         private int explosionId;
         private int projectileListSize;
         private int explosionListSize;
+        private bool swordLock;
+        private bool boomerangLock;
+        private int swordInstance;
+        private int boomerangInstance;
 
         public ProjectileManager()
         {
@@ -34,6 +38,11 @@ namespace LoZClone
             this.scale = (int)ProjectileSpriteFactory.Instance.Scale;
             deletable = new List<int>();
             explosionDeletable  = new List<int>();
+            swordLock = false;
+            boomerangLock = false;
+            swordInstance = 0;
+            boomerangInstance = 0;
+            
         }
 
         public int Arrow
@@ -117,13 +126,30 @@ namespace LoZClone
             switch (this.item)
             {
                 case (ProjectileType.Boomerang):
-                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Boomerang(player, scale, projectileId));
+                    if (!boomerangLock)
+                    {
+                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Boomerang(player, scale, projectileId));
+                        boomerangLock = true;
+                        boomerangInstance = projectileId;
+                    }
                     break;
                 case (ProjectileType.MagicBoomerang):
-                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.MagicBoomerang(player, scale, projectileId));
+                    if (!boomerangLock)
+                    {
+                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.MagicBoomerang(player, scale, projectileId));
+                        boomerangLock = true;
+                        boomerangInstance = projectileId;
+                    }
+                    
                     break;
                 case (ProjectileType.SwordBeam):
-                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.SwordBeam(player, scale, projectileId, this));
+                    if (!swordLock)
+                    {
+                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.SwordBeam(player, scale, projectileId, this));
+                        swordLock = true;
+                        swordInstance = projectileId;
+                    }
+                    
                     break;
                 default:
                     break;
@@ -172,6 +198,15 @@ namespace LoZClone
             {
                 if (item.Value.IsExpired)
                 {
+                    if (item.Value.Instance == swordInstance)
+                    {
+                        swordLock = false;
+                    }
+                    if (item.Value.Instance == boomerangInstance)
+                    {
+                        boomerangLock = false;
+                    }
+
                     deletable.Add(item.Value.Instance);
                 }
             }
