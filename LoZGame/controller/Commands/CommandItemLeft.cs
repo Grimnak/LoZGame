@@ -1,10 +1,10 @@
 ﻿
 namespace LoZClone
 {
-    public class CommandU : ICommand
+    public class CommandItemLeft : ICommand
     {
         ItemManager item;
-        public CommandU(ItemManager item)
+        public CommandItemLeft(ItemManager item)
         {
             this.item = item;
         }

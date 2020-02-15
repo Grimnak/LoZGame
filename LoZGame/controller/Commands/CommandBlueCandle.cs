@@ -1,10 +1,10 @@
 ﻿namespace LoZClone
 {
-    public class CommandFive : ICommand
+    public class CommandBlueCandle : ICommand
     {
         IPlayer player;
         ProjectileManager projectile;
-        public CommandFive(IPlayer player, ProjectileManager projectile)
+        public CommandBlueCandle(IPlayer player, ProjectileManager projectile)
         {
             this.player = player;
             this.projectile = projectile;
@@ -12,7 +12,7 @@
         public void execute()
         {
             //player.useSecondaryItem();
-            projectile.addItem(projectile.SilverArrow, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+            projectile.addItem(projectile.BlueCandle, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
         }
     }
 }

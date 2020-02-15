@@ -1,10 +1,10 @@
 ﻿namespace LoZClone
 {
-    public class CommandSeven : ICommand
+    public class CommandRedCandle : ICommand
     {
         IPlayer player;
         ProjectileManager projectile;
-        public CommandSeven(IPlayer player, ProjectileManager projectile)
+        public CommandRedCandle(IPlayer player, ProjectileManager projectile)
         {
             this.player = player;
             this.projectile = projectile;

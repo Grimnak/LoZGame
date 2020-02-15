@@ -1,10 +1,10 @@
 ﻿namespace LoZClone
 {
-    public class CommandThree : ICommand
+    public class CommandBoomerang : ICommand
     {
         IPlayer player;
         ProjectileManager projectile;
-        public CommandThree(IPlayer player, ProjectileManager projectile)
+        public CommandBoomerang(IPlayer player, ProjectileManager projectile)
         {
             this.player = player;
             this.projectile = projectile;

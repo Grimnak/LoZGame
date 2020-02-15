@@ -1,16 +1,16 @@
 ﻿
 namespace LoZClone
 {
-    public class CommandL : ICommand
+    public class CommandBlockLeft: ICommand
     {
         BlockManager block;
-        public CommandL(BlockManager block)
+        public CommandBlockLeft(BlockManager block)
         {
             this.block = block;
         }
         public void execute()
         {
-            block.cycleRight();
+            block.cycleLeft();
         }
     }
 }
