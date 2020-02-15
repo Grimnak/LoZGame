@@ -62,7 +62,7 @@ namespace LoZClone
             spriteBatch.Begin();
             link.Draw();
             itemManager.currentItem.Draw(spriteBatch);
-            blockManager.currentBlock.Draw(spriteBatch, new Vector2(240, 150), Color.White);
+            blockManager.currentBlock.Draw(spriteBatch, new Vector2(500, 240), Color.White);
             projectileManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
