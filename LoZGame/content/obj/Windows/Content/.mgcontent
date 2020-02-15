@@ -35,10 +35,14 @@
     <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/Red_Link_Right.png</File>
     <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/Red_Link_Up.png</File>
     <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/stairs.png</File>
+    <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/SwordBeam.png</File>
+    <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/SwordBeamSecondary.png</File>
     <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/Text.spritefont</File>
     <File>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/turquoise_statue.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

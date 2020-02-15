@@ -7,100 +7,100 @@ namespace LoZClone
     {
         private CommandIdle commandIdle;
 
-        private CommandW commandW;
-        private CommandA commandA;
-        private CommandS commandS;
-        private CommandD commandD;
+        private CommandUp commandUp;
+        private CommandLeft commandLeft;
+        private CommandDown commandDown;
+        private CommandRight commandRight;
 
-        private CommandL commandL;
-        private CommandK commandK;
+        private CommandAttackA commandAttackA;
+        private CommandAttackB commandAttackB;
 
-        private CommandZ commandZ;
-        private CommandN commandN;
+        private CommandDamage commandDamage;
 
-        private CommandE commandE;
+        private CommandBomb commandBomb;
+        private CommandArrow commandArrow;
+        private CommandBoomerang commandBoomerang;
+        private CommandBlueCandle commandBlueCandle;
+        private CommandSilverArrow commandSilverArrow;
+        private CommandMagicBoomerang commandMagicBoomerang;
+        private CommandRedCandle commandRedCandle;
+        private CommandTriforce commandTriforce;
 
-        private CommandOne commandOne;
-        private CommandTwo commandTwo;
-        private CommandThree commandThree;
-        private CommandFour commandFour;
-        private CommandFive commandFive;
-        private CommandSix commandSix;
-        private CommandSeven commandSeven;
-        private CommandEight commandEight;
+        private CommandItemLeft commandItemLeft;
+        private CommandItemRight commandItemRight;
 
-        private CommandU commandU;
-        private CommandI commandI;
+        private CommandBlockLeft commandBlockLeft;
+        private CommandBlockRight commandBlockRight;
 
-        private CommandO commandO;
-        private CommandP commandP;
+        private CommandEnemyLeft commandEnemyLeft;
+        private CommandEnemyRight commandEnemyRight;
 
-        private CommandQ commandQ;
+        private CommandQuit commandQuit;
 
-        private CommandR commandR;
+        private CommandReset commandReset;
 
         private Dictionary<Keys, ICommand> dictionary;
 
-        public CommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block, InventoryManager inventory/*, NpcManager npc*/)
+        public CommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block, ProjectileManager projectile/*, NpcManager npc*/)
         {
             dictionary = new Dictionary<Keys, ICommand>();
 
             commandIdle = new CommandIdle(player);
 
-            commandW = new CommandW(player);
-            dictionary.Add(Keys.W, commandW);
-            commandA = new CommandA(player);
-            dictionary.Add(Keys.A, commandA);
-            commandS = new CommandS(player);
-            dictionary.Add(Keys.S, commandS);
-            commandD = new CommandD(player);
-            dictionary.Add(Keys.D, commandD);
+            commandUp = new CommandUp(player);
+            dictionary.Add(Keys.W, commandUp);
+            commandLeft = new CommandLeft(player);
+            dictionary.Add(Keys.A, commandLeft);
+            commandDown = new CommandDown(player);
+            dictionary.Add(Keys.S, commandDown);
+            commandRight = new CommandRight(player);
+            dictionary.Add(Keys.D, commandRight);
 
-            commandZ = new CommandZ(player);
-            dictionary.Add(Keys.Z, commandZ);
-            commandN = new CommandN(player);
-            dictionary.Add(Keys.N, commandN);
+            commandAttackA = new CommandAttackA(player, projectile);
+            dictionary.Add(Keys.Z, commandAttackA);
+            commandAttackB = new CommandAttackB(player, projectile);
+            dictionary.Add(Keys.N, commandAttackB);
 
-            commandE = new CommandE(player);
-            dictionary.Add(Keys.E, commandE);
+            commandDamage = new CommandDamage(player);
+            dictionary.Add(Keys.E, commandDamage);
 
-            commandOne = new CommandOne(player, inventory);
-            dictionary.Add(Keys.D1, commandOne);
-            commandTwo = new CommandTwo(player, inventory);
-            dictionary.Add(Keys.D2, commandTwo);
-            commandThree = new CommandThree(player, inventory);
-            dictionary.Add(Keys.D3, commandThree);
-            commandFour = new CommandFour(player, inventory);
-            dictionary.Add(Keys.D4, commandFour);
-            commandFive = new CommandFive(player, inventory);
-            dictionary.Add(Keys.D5, commandFive);
-            commandSix = new CommandSix(player, inventory);
-            dictionary.Add(Keys.D6, commandSix);
-            commandSeven = new CommandSeven(player, inventory);
-            dictionary.Add(Keys.D7, commandSeven);
-            commandEight = new CommandEight(player, inventory);
-            dictionary.Add(Keys.D8, commandEight);
+            commandBomb = new CommandBomb(player, projectile);
+            dictionary.Add(Keys.D1, commandBomb);
+            commandArrow = new CommandArrow(player, projectile);
+            dictionary.Add(Keys.D2, commandArrow);
+            commandBoomerang = new CommandBoomerang(player, projectile);
+            dictionary.Add(Keys.D3, commandBoomerang);
+            commandBlueCandle = new CommandBlueCandle(player, projectile);
+            dictionary.Add(Keys.D4, commandBlueCandle);
+            commandSilverArrow = new CommandSilverArrow(player, projectile);
+            dictionary.Add(Keys.D5, commandSilverArrow);
+            commandMagicBoomerang = new CommandMagicBoomerang(player, projectile);
+            dictionary.Add(Keys.D6, commandMagicBoomerang);
+            commandRedCandle = new CommandRedCandle(player, projectile);
+            dictionary.Add(Keys.D7, commandRedCandle);
+            commandTriforce = new CommandTriforce(player, projectile);
+            dictionary.Add(Keys.D8, commandTriforce);
 
-            commandU = new CommandU(item);
-            dictionary.Add(Keys.U, commandU);
-            commandI = new CommandI(item);
-            dictionary.Add(Keys.I, commandI);
+            commandItemLeft = new CommandItemLeft(item);
+            dictionary.Add(Keys.U, commandItemLeft);
+            commandItemRight = new CommandItemRight(item);
+            dictionary.Add(Keys.I, commandItemRight);
 
-            commandK = new CommandK(block);
-            dictionary.Add(Keys.K, commandK);
-            commandL = new CommandL(block);
-            dictionary.Add(Keys.L, commandL);
+            commandBlockLeft = new CommandBlockLeft(block);
+            dictionary.Add(Keys.K, commandBlockLeft);
+            commandBlockRight = new CommandBlockRight(block);
+            dictionary.Add(Keys.L, commandBlockRight);
 
-            commandO = new CommandO(/*npc*/);
-            dictionary.Add(Keys.O, commandO);
-            commandP = new CommandP(/*npc*/);
-            dictionary.Add(Keys.P, commandP);
+            commandEnemyLeft = new CommandEnemyLeft(/*npc*/);
+            dictionary.Add(Keys.O, commandEnemyLeft);
+            commandEnemyRight = new CommandEnemyRight(/*npc*/);
+            dictionary.Add(Keys.P, commandEnemyRight);
 
-            commandQ = new CommandQ(game);
-            dictionary.Add(Keys.Q, commandQ);
+            commandQuit = new CommandQuit(game);
+            dictionary.Add(Keys.Q, commandQuit);
 
-            commandR = new CommandR(game, player, item, block, inventory);
-            dictionary.Add(Keys.R, commandR);
+            commandReset = new CommandReset(game, player, item, block, projectile);
+            dictionary.Add(Keys.R, commandReset);
         }
 
         public ICommand getIdle
