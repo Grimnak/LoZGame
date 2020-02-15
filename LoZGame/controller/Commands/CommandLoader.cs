@@ -56,9 +56,9 @@ namespace LoZClone
             commandD = new CommandD(player);
             dictionary.Add(Keys.D, commandD);
 
-            commandZ = new CommandZ(player);
+            commandZ = new CommandZ(player, projectile);
             dictionary.Add(Keys.Z, commandZ);
-            commandN = new CommandN(player);
+            commandN = new CommandN(player, projectile);
             dictionary.Add(Keys.N, commandN);
 
             commandE = new CommandE(player);

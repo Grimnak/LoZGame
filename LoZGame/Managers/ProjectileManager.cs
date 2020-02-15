@@ -11,7 +11,7 @@ namespace LoZClone
 
     public class ProjectileManager
     {
-        private enum ProjectileType {Bomb, SilverArrow, Triforce, Boomerang, MagicBoomerang, Arrow, RedCandle, BlueCandle};
+        private enum ProjectileType {Bomb, SilverArrow, Triforce, Boomerang, MagicBoomerang, Arrow, RedCandle, BlueCandle, SwordBeam, SwordExplode};
         private ProjectileType item;
         private Dictionary<int, IProjectile> itemList;
         private int scale;
@@ -58,6 +58,15 @@ namespace LoZClone
         {
             get { return (int)ProjectileType.Triforce; }
         }
+        public int Swordbeam
+        {
+            get { return (int)ProjectileType.SwordBeam; }
+        }
+        public int SwordExplosion
+        {
+            get { return (int)ProjectileType.SwordExplode; }
+        }
+
 
 
         public void addItem(int item, Vector2 loc, string direction)
@@ -101,6 +110,9 @@ namespace LoZClone
                     break;
                 case (ProjectileType.MagicBoomerang):
                     this.itemList.Add(itemId, ProjectileSpriteFactory.Instance.MagicBoomerang(player, scale, itemId));
+                    break;
+                case (ProjectileType.SwordBeam):
+                    this.itemList.Add(itemId, ProjectileSpriteFactory.Instance.SwordBeam(player, scale, itemId));
                     break;
                 default:
                     break;

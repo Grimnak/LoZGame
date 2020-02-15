@@ -126,6 +126,7 @@
     <Compile Include="Sprites\ItemSpriteClasses\WhiteSword.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\WoodenSword.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\YellowRupee.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\TriforceProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\BlueCandleProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\RedCandleProjectile.cs" />

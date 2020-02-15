@@ -19,7 +19,7 @@ namespace LoZClone
         }
         public void execute()
         {
-            ((Link)player).CurrentLocation = new Vector2(150, 200);
+            ((Link)player).CurrentLocation = new Vector2(400, 240);
             ((Link)player).CurrentDirection = "Down";
             ((Link)player).State = new NullState(game, player);
             ((Link)player).DamageCounter = 0;
@@ -27,7 +27,7 @@ namespace LoZClone
             
             manager.CurrentIndex = 1;
             manager.cycleLeft();
-            manager.currentItem.location = new Vector2(120, 120);
+            manager.currentItem.location = new Vector2(300, 240);
 
             inventory.Clear();
 
