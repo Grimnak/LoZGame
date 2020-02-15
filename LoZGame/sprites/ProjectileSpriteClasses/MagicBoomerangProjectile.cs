@@ -19,16 +19,18 @@ namespace LoZClone
 
         private int instance;
         private bool expired;
-        private bool moving;
         private bool returning;
         private bool isReturned;
 
         private float rotation;
         private static int maxDistance = 300;
         private static int travelRate = 5;
+        private int dX, dY;
         private int distTraveled;
-        private Vector2 playerLoc;
+        private Vector2 entityLoc;
 
+        private bool hostile;
+        public bool IsHostile { get { return hostile; } }
         public Vector2 location { get; set; }
 
         public MagicBoomerangProjectile(Texture2D texture, Link player, int scale, int instance)
@@ -38,7 +40,6 @@ namespace LoZClone
             this.scale = scale;
             this.instance = instance;
             expired = false;
-            moving = true;
             rotation = 0;
             Vector2 loc = player.CurrentLocation;
             this.direction = player.CurrentDirection;
@@ -46,63 +47,54 @@ namespace LoZClone
             this.returning = false;
             this.player = player;
             this.distTraveled = 0;
+            this.hostile = false;
 
             if (direction.Equals("Up"))
             {
                 location = new Vector2(loc.X + 16, loc.Y);
+                dX = 0;
+                dY = -1;
             }
             else if (direction.Equals("Left"))
             {
                 location = new Vector2(loc.X, loc.Y + 16);
+                dX = -1;
+                dY = 0;
             }
             else if (direction.Equals("Right"))
             {
                 location = new Vector2(loc.X + 32, loc.Y + 16);
+                dX = 1;
+                dY = 0;
             }
             else
             {
                 location = new Vector2(loc.X + 16, loc.Y + 32);
+                dX = 0;
+                dY = 1;
             }
-            playerLoc = player.CurrentLocation;
-            playerLoc = new Vector2(playerLoc.X + 16, playerLoc.Y + 16);
+            entityLoc = player.CurrentLocation;
+            entityLoc = new Vector2(entityLoc.X + 16, entityLoc.Y + 16);
         }
-
 
         private void rotate()
         {
             rotation += MathHelper.PiOver4 / 2;
         }
 
-        private Vector2 updateLoc(string direction)
+        private void updateLoc()
         {
-            Vector2 newLoc;
-            if (direction.Equals("Up"))
-            {
-                newLoc = new Vector2(this.location.X, this.location.Y - travelRate);
-            }
-            else if (direction.Equals("Left"))
-            {
-                newLoc = new Vector2(this.location.X - travelRate, this.location.Y);
-            }
-            else if (direction.Equals("Right"))
-            {
-                newLoc = new Vector2(this.location.X + travelRate, this.location.Y);
-            }
-            else
-            {
-                newLoc = new Vector2(this.location.X, this.location.Y + travelRate);
-            }
-            return newLoc;
+            this.location = new Vector2(this.location.X + dX * travelRate, this.location.Y + dY * travelRate);
         }
 
         private void returnHome()
         {
             float newX = this.location.X;
             float newY = this.location.Y;
-            playerLoc = player.CurrentLocation;
-            playerLoc = new Vector2(playerLoc.X + 16, playerLoc.Y + 16);
-            float diffX = playerLoc.X - newX;
-            float diffY = playerLoc.Y - newY;
+            entityLoc = player.CurrentLocation;
+            entityLoc = new Vector2(entityLoc.X + 16, entityLoc.Y + 16);
+            float diffX = entityLoc.X - newX;
+            float diffY = entityLoc.Y - newY;
             if (Math.Abs(diffX) <= 2 * travelRate && Math.Abs(diffY) <= 2 * travelRate)
             {
                 this.isReturned = true;
@@ -111,12 +103,12 @@ namespace LoZClone
 
 
             float diffTotal = (float)Math.Sqrt(Math.Pow(diffX, 2) + Math.Pow(diffY, 2));
-            if (newX != playerLoc.X)
+            if (newX != entityLoc.X)
             {
                 float changeX = (diffX / diffTotal) * travelRate;
                 newX += changeX;
             }
-            if (newY != playerLoc.Y)
+            if (newY != entityLoc.Y)
             {
                 float changeY = (diffY / diffTotal) * travelRate;
                 newY += changeY;
@@ -148,7 +140,7 @@ namespace LoZClone
                 }
                 if (!returning)
                 {
-                    this.location = this.updateLoc(this.direction);
+                    this.updateLoc();
                 }
                 else
                 {
@@ -159,15 +151,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, frame.Width * scale, frame.Height * scale);
-            if (!moving)
-            {
-                spriteBatch.Draw(Texture, dest, frame, Color.White);
-            }
-            else
-            {
-                spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, new Vector2(3, 8), scale, SpriteEffects.None, 0f);
-            }
+            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, new Vector2(3, 8), scale, SpriteEffects.None, 0f);
         }
     }
 }

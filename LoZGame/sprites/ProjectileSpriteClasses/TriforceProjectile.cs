@@ -19,7 +19,9 @@ namespace LoZClone
         private int scale;
         private int instance;
         private bool expired;
-        private bool isStatic;
+        private bool isStatic; 
+        private bool hostile;
+        public bool IsHostile { get { return hostile; } }
         public Vector2 location { get; set; }
 
         public TriforceProjectile(Texture2D texture, Vector2 loc, int scale, int instance)
@@ -34,6 +36,7 @@ namespace LoZClone
             expired = false;
             this.instance = instance;
             isStatic = false;
+            this.hostile = false;
         }
         private void nextFrame()
         {

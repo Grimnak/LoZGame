@@ -27,7 +27,8 @@ namespace LoZClone
 
         private int instance;
         private bool expired;
-        private bool moving;
+        private bool hostile;
+        public bool IsHostile { get { return hostile; } }
         public Vector2 location { get; set; }
 
         public BlueCandleProjectile(Texture2D texture, Vector2 loc, string direction, int scale, int instance)
@@ -41,9 +42,8 @@ namespace LoZClone
             this.instance = instance;
             expired = false;
             this.direction = direction;
-            moving = true;
             distTravelled = 1;
-
+            this.hostile = false;
             if (direction.Equals("Up"))
             {
                 location = new Vector2(loc.X + 13, loc.Y);
@@ -90,8 +90,6 @@ namespace LoZClone
 
         public void Update()
         {
-            if (moving)
-            {
                 if (lifeTime % frameDelay == 0)
                 {
                     this.nextFrame();
@@ -109,7 +107,6 @@ namespace LoZClone
                 }
                 distTravelled++;
                 lifeTime--;
-            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

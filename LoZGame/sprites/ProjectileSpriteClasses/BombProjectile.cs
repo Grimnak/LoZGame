@@ -19,6 +19,8 @@ namespace LoZClone
         private bool expired;
         private int instance;
         private string direction;
+        private bool hostile;
+        public bool IsHostile { get { return hostile; } }
         public Vector2 location { get; set; }
 
         public BombProjectile(Texture2D texture, Vector2 loc, String direction, int scale, int instance)
@@ -28,6 +30,7 @@ namespace LoZClone
             lifeTime = 60;
             this.instance = instance;
             this.direction = direction;
+            this.hostile = false;
             if (this.direction == "Up")
             {
                 location = new Vector2(loc.X + 12, loc.Y - 32);
