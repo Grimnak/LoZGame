@@ -12,8 +12,11 @@
         }
         public void execute()
         {
-            player.pickupItem();
-            projectile.addItem(projectile.Triforce, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+            if (!((Link)player).IsDead)
+            {
+                player.pickupItem();
+                projectile.addItem(projectile.Triforce, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+            }
         }
         public int Priority
         {

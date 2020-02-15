@@ -12,7 +12,7 @@
         }
         public void execute()
         {
-            if (!projectile.BoomerangOut)
+            if (!projectile.BoomerangOut && !((Link)player).IsDead)
             {
                 player.useItem();
                 projectile.addItem(projectile.Boomerang, (Link)player);

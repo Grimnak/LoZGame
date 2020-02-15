@@ -8,10 +8,7 @@ namespace LoZClone
         private IPlayerState playerState;
         public IPlayerState State
         {
-            set
-            {
-                playerState = value;
-            }
+            set { playerState = value; }
         }
         private string currentColor;
         public string CurrentColor
@@ -54,7 +51,12 @@ namespace LoZClone
             get { return damageTimer; }
             set { damageTimer = value; }
         }
-
+        private bool isDead;
+        public bool IsDead
+        {
+            get { return isDead; }
+            set { isDead = value; }
+        }
 
         public Link(LoZGame game)
         {
@@ -66,6 +68,7 @@ namespace LoZClone
             currentSpeed = 2;
             damageTimer = 0;
             damageCounter = 0;
+            isDead = false;
 
             playerState = new NullState(game, this);
         }
