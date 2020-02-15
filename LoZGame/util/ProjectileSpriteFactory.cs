@@ -82,9 +82,13 @@ namespace LoZClone
         {
             return new BlueCandleProjectile(fireProjectileSpriteSheet, loc, direction, scale, instance);
         }
-        public IProjectile SwordBeam(Link player, int scale, int instance)
+        public IProjectile SwordBeam(Link player, int scale, int instance, ProjectileManager projectile)
         {
-            return new SwordBeamProjectile(swordBeamSpriteSheet, player, scale, instance);
+            return new SwordBeamProjectile(swordBeamSpriteSheet, player, scale, instance, projectile);
+        }
+        public IProjectile SwordExplosion(Vector2 loc, string direction, int scale, int instance)
+        {
+            return new SwordBeamExplosion(swordBeamExplosionSpriteSheet, loc, direction, scale, instance);
         }
     }
 }

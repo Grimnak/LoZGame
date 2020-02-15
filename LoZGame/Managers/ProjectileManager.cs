@@ -14,16 +14,26 @@ namespace LoZClone
         private enum ProjectileType {Bomb, SilverArrow, Triforce, Boomerang, MagicBoomerang, Arrow, RedCandle, BlueCandle, SwordBeam, SwordExplode};
         private ProjectileType item;
         private Dictionary<int, IProjectile> itemList;
-        private int scale;
-        private int itemId;
+        private Dictionary<int, IProjectile> explosionList;
         private List<int> deletable;
+        private List<int> explosionDeletable;
+        private int scale;
+        private int projectileId;
+        private int explosionId;
+        private int projectileListSize;
+        private int explosionListSize;
 
         public ProjectileManager()
         {
-            itemList = new Dictionary<int, IProjectile>();
-            this.scale = (int)ItemSpriteFactory.Instance.Scale;
-            itemId = 0;
+            this.itemList = new Dictionary<int, IProjectile>();
+            this.explosionList = new Dictionary<int, IProjectile>();
+            this.projectileId = 0;
+            this.explosionId = 0;
+            this.explosionListSize = 0;
+            this.projectileListSize = 0;
+            this.scale = (int)ProjectileSpriteFactory.Instance.Scale;
             deletable = new List<int>();
+            explosionDeletable  = new List<int>();
         }
 
         public int Arrow
@@ -71,60 +81,92 @@ namespace LoZClone
 
         public void addItem(int item, Vector2 loc, string direction)
         {
-            itemId++;
+            projectileId++;
+            projectileListSize++;
             this.item = (ProjectileType)item;
             switch (this.item)
             {
                 case (ProjectileType.Bomb):
-                    this.itemList.Add(itemId, ProjectileSpriteFactory.Instance.Bomb(loc, direction, scale, itemId));
+                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Bomb(loc, direction, scale, projectileId));
                     break;
                 case (ProjectileType.Triforce):
-                    this.itemList.Add(itemId, ProjectileSpriteFactory.Instance.Triforce(loc, scale, itemId));
+                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Triforce(loc, scale, projectileId));
                     break;
                 case (ProjectileType.Arrow):
-                    this.itemList.Add(itemId, ProjectileSpriteFactory.Instance.Arrow(loc, direction, scale, itemId));
+                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Arrow(loc, direction, scale, projectileId));
                     break;
                 case (ProjectileType.SilverArrow):
-                    this.itemList.Add(itemId, ProjectileSpriteFactory.Instance.SilverArrow(loc, direction, scale, itemId));
+                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.SilverArrow(loc, direction, scale, projectileId));
                     break;
                 case (ProjectileType.RedCandle):
-                    this.itemList.Add(itemId, ProjectileSpriteFactory.Instance.RedCandle(loc, direction, scale, itemId));
+                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.RedCandle(loc, direction, scale, projectileId));
                     break;
                 case (ProjectileType.BlueCandle):
-                    this.itemList.Add(itemId, ProjectileSpriteFactory.Instance.BlueCandle(loc, direction, scale, itemId));
+                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.BlueCandle(loc, direction, scale, projectileId));
                     break;
                 default:
                     break;
-
             }
         }
 
         public void addItem(int item, Link player)
         {
             this.item = (ProjectileType)item;
-            itemId++;
+            projectileId++;
+            projectileListSize++;
             switch (this.item)
             {
                 case (ProjectileType.Boomerang):
-                    this.itemList.Add(itemId, ProjectileSpriteFactory.Instance.Boomerang(player, scale, itemId));
+                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Boomerang(player, scale, projectileId));
                     break;
                 case (ProjectileType.MagicBoomerang):
-                    this.itemList.Add(itemId, ProjectileSpriteFactory.Instance.MagicBoomerang(player, scale, itemId));
+                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.MagicBoomerang(player, scale, projectileId));
                     break;
                 case (ProjectileType.SwordBeam):
-                    this.itemList.Add(itemId, ProjectileSpriteFactory.Instance.SwordBeam(player, scale, itemId));
+                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.SwordBeam(player, scale, projectileId, this));
                     break;
                 default:
                     break;
             }
         }
 
+        public void addExplosion(Vector2 loc)
+        {
+            explosionId++;
+            explosionListSize++;
+            this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "NorthEast", scale, explosionId));
+            explosionId++;
+            explosionListSize++;
+            this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "NorthWest", scale, explosionId));
+            explosionId++;
+            explosionListSize++;
+            this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "SouthEast", scale, explosionId));
+            explosionId++;
+            explosionListSize++;
+            this.explosionList.Add(explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "SouthWest", scale, explosionId));
+        }
+
         public void removeItem(int instance)
         {
             itemList.Remove(instance);
+            projectileListSize--;
+            if (projectileListSize == 0)
+            {
+                projectileId = 0;
+            }
         }
 
-        public void Update()
+        public void removeExplosion(int instance)
+        {
+            explosionList.Remove(instance);
+            explosionListSize--;
+            if (explosionListSize == 0)
+            {
+                explosionId = 0;
+            }
+        }
+
+        private void UpdateProjectiles()
         {
             foreach (KeyValuePair<int, IProjectile> item in this.itemList)
             {
@@ -144,17 +186,54 @@ namespace LoZClone
             }
         }
 
+        private void UpdateExplosions()
+        {
+            foreach (KeyValuePair<int, IProjectile> explosion in this.explosionList)
+            {
+                if (explosion.Value.IsExpired)
+                {
+                    explosionDeletable.Add(explosion.Value.Instance);
+                }
+            }
+            foreach (int index in explosionDeletable)
+            {
+                this.removeExplosion(index);
+            }
+            explosionDeletable.Clear();
+            foreach (KeyValuePair<int, IProjectile> explosion in this.explosionList)
+            {
+                explosion.Value.Update();
+            }
+        }
+
+        public void Update()
+        {
+            this.UpdateProjectiles();
+            this.UpdateExplosions();
+        }
+
         public void Draw(SpriteBatch spritebatch)
         {
             foreach (KeyValuePair<int, IProjectile> item in this.itemList)
             {
                 item.Value.Draw(spritebatch);
             }
+            foreach (KeyValuePair<int, IProjectile> explosion in this.explosionList)
+            {
+                explosion.Value.Draw(spritebatch);
+            }
         }
 
         public void Clear()
         {
             this.itemList = new Dictionary<int, IProjectile>();
+            this.explosionList = new Dictionary<int, IProjectile>();
+            this.explosionDeletable = new List<int>();
+            this.deletable = new List<int>();
+            this.projectileId = 0;
+            this.explosionId = 0;
+            this.explosionListSize = 0;
+            this.projectileListSize = 0;
         }
     }
 }
