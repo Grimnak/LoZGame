@@ -11,7 +11,8 @@
             this.projectile = projectile;
         }
         public void execute()
-        {   
+        {
+            player.useItem();
             projectile.addItem(projectile.Arrow, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
         }
         public int Priority

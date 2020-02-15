@@ -141,6 +141,14 @@ namespace LoZClone
         {
             playerState.attack();
         }
+        public void pickupItem()
+        {
+            playerState.pickupItem();
+        }
+        public void useItem()
+        {
+            playerState.useItem();
+        }
         public void Update()
         {
             handleDamage();

@@ -75,6 +75,20 @@ namespace LoZClone
         {
             player.State = new DieState(game, player);
         }
+        public void pickupItem()
+        {
+            if (lockoutTimer <= 0)
+            {
+                player.State = new PickupItemState(game, player);
+            }
+        }
+        public void useItem()
+        {
+            if (lockoutTimer <= 0)
+            {
+                player.State = new UseItemState(game, player);
+            }
+        }
         public void Update()
         {
             if (lockoutTimer > 0)

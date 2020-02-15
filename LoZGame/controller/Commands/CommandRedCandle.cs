@@ -12,7 +12,7 @@
         }
         public void execute()
         {
-            //player.useSecondaryItem();
+            player.useItem();
             projectile.addItem(projectile.RedCandle, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
         }
         public int Priority

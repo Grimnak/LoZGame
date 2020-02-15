@@ -12,8 +12,7 @@
         }
         public void execute()
         {
-
-            //player.useItem();
+            player.useItem();
             projectile.addItem(projectile.Bomb,((Link)player).CurrentLocation,((Link)player).CurrentDirection);
             
         }

@@ -88,6 +88,8 @@
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\BlockManager.cs" />
+    <Compile Include="Player\PickupItemState.cs" />
+    <Compile Include="Player\UseItemState.cs" />
     <Compile Include="Player\DieState.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\Arrow.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\BlueCandle.cs" />
@@ -127,9 +129,12 @@
     <Compile Include="Sprites\ItemSpriteClasses\WhiteSword.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\WoodenSword.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\YellowRupee.cs" />
-    <Compile Include="Sprites\ProjectileSpriteClasses\BoomerangEnemy.cs" />
-    <Compile Include="Sprites\ProjectileSpriteClasses\MagicBoomerangEnemy.cs" />
-    <Compile Include="Sprites\ProjectileSpriteClasses\BombExplosion.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemRightSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemLeftSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemUpSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemDownSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkPickupItemSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkDieSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamExplosion.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\TriforceProjectile.cs" />
@@ -140,6 +145,9 @@
     <Compile Include="Sprites\ProjectileSpriteClasses\SilverArrowProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\BoomerangProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\ArrowProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BoomerangEnemy.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\MagicBoomerangEnemy.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BombExplosion.cs" />
     <Compile Include="util\ProjectileSpriteFactory.cs" />
     <Compile Include="util\ItemSpriteFactory.cs" />
     <Compile Include="util\LinkSpriteFactory.cs" />

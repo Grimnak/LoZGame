@@ -12,7 +12,7 @@
         }
         public void execute()
         {
-            //player.useSecondaryItem();
+            player.useItem();
             projectile.addItem(projectile.MagicBoomerang, (Link)player);
         }
         public int Priority
