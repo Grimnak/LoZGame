@@ -26,6 +26,7 @@ namespace LoZClone
         private int instance;
         private bool expired;
         private Vector2 tip;
+        private static int delay = 10;
         public Vector2 location { get; set; }
 
         private ProjectileManager projectile;
@@ -119,7 +120,7 @@ namespace LoZClone
         public void Update()
         {
             lifeTime--;
-            if (lifeTime < maxLifeTime - 30)
+            if (lifeTime < maxLifeTime - delay)
             {
                 if (lifeTime % frameDelay == 0)
                 {
@@ -136,7 +137,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (lifeTime < maxLifeTime - 30)
+            if (lifeTime < maxLifeTime - delay)
             {
                 spriteBatch.Draw(Texture, this.location, currentFrame, Color.White, rotation, new Vector2(8, 8), scale, SpriteEffects.None, 0f);
             }
