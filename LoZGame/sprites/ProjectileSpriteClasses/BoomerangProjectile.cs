@@ -10,6 +10,10 @@ namespace LoZClone
 {
     class BoomerangProjectile : IProjectile
     {
+        private static int maxDistance = 200;
+        private static int travelRate = 5;
+        private static int xBound = 800, yBound = 480;
+
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private Link player;
@@ -20,10 +24,7 @@ namespace LoZClone
         private bool expired;
         private bool returning;
         private bool isReturned;
-
         private float rotation;
-        private static int maxDistance = 200;
-        private static int travelRate = 5;
         private int distTraveled;
         private Vector2 playerLoc;
 
@@ -72,6 +73,14 @@ namespace LoZClone
         private void rotate()
         {
             rotation += MathHelper.PiOver4 / 2;
+        }
+
+        private void checkBounds()
+        {
+            if (this.location.X >= xBound || this.location.X <= 0 || this.location.Y >= yBound || this.location.Y <= 0)
+            {
+                this.returning = true;
+            }
         }
 
         private Vector2 updateLoc(string direction)
@@ -155,7 +164,8 @@ namespace LoZClone
                 {
                     this.returnHome();
                 }
-                distTraveled += travelRate;
+            distTraveled += travelRate;
+            this.checkBounds();
         }
 
         public void Draw(SpriteBatch spriteBatch)

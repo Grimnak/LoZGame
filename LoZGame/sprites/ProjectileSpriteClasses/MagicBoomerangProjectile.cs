@@ -11,6 +11,10 @@ namespace LoZClone
 {
     class MagicBoomerangProjectile : IProjectile
     {
+        private static int maxDistance = 300;
+        private static int travelRate = 5;
+        private static int xBound = 800, yBound = 480;
+
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private Link player;
@@ -23,8 +27,6 @@ namespace LoZClone
         private bool isReturned;
 
         private float rotation;
-        private static int maxDistance = 300;
-        private static int travelRate = 5;
         private int dX, dY;
         private int distTraveled;
         private Vector2 entityLoc;
@@ -87,6 +89,14 @@ namespace LoZClone
             this.location = new Vector2(this.location.X + dX * travelRate, this.location.Y + dY * travelRate);
         }
 
+        private void checkBounds()
+        {
+            if (this.location.X >= xBound || this.location.X <= 0 || this.location.Y >= yBound || this.location.Y <= 0)
+            {
+                this.returning = true;
+            }
+        }
+
         private void returnHome()
         {
             float newX = this.location.X;
@@ -147,6 +157,7 @@ namespace LoZClone
                     this.returnHome();
                 }
                 distTraveled += travelRate;
+            this.checkBounds();
         }
 
         public void Draw(SpriteBatch spriteBatch)
