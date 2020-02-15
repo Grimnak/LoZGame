@@ -46,22 +46,22 @@ namespace LoZClone
             this.hostile = false;
             if (direction.Equals("Up"))
             {
-                location = new Vector2(loc.X + 13, loc.Y);
+                location = new Vector2(loc.X - 5, loc.Y - 21);
                 destination = new Vector2(this.location.X, this.location.Y - travelDistance);
             }
             else if (direction.Equals("Left"))
             {
-                location = new Vector2(loc.X, loc.Y + 8);
+                location = new Vector2(loc.X - 32, loc.Y - 5);
                 destination = new Vector2(this.location.X - travelDistance, this.location.Y);
             }
             else if (direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + 32, loc.Y + 8);
+                location = new Vector2(loc.X + 32, loc.Y - 5);
                 destination = new Vector2(this.location.X + travelDistance, this.location.Y);
             }
             else
             {
-                location = new Vector2(loc.X + 13, loc.Y + 32);
+                location = new Vector2(loc.X - 5, loc.Y + 21);
                 destination = new Vector2(this.location.X, this.location.Y + travelDistance);
             }
         }

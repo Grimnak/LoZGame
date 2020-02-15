@@ -39,7 +39,8 @@ namespace LoZClone
 
         public SwordBeamExplosion(Texture2D texture, Vector2 location, string direction, int scale, int instance)
         {
-            location = new Vector2(location.X - 6, location.Y - 5);
+            int width = 10, height = 12;
+            location = new Vector2(location.X - width * scale, location.Y - height * scale);
             Texture = texture;
             frameOne = new Rectangle(0, 0, 10, 12);
             frameTwo = new Rectangle(0, 12, 10, 12);
@@ -49,9 +50,9 @@ namespace LoZClone
             lifeTime = maxLifeTime;
             this.scale = scale;
             this.direction = direction;
+            this.location = new Vector2(location.X, location.Y);
             if (this.direction.Equals("NorthEast"))
             {
-                this.location = new Vector2(location.X, location.Y);
                 effect = SpriteEffects.FlipHorizontally;
                 rotation = 0;
                 dX = 1;
@@ -59,7 +60,6 @@ namespace LoZClone
             }
             else if (this.direction.Equals("NorthWest"))
             {
-                this.location = new Vector2(location.X, location.Y);
                 effect = effect = SpriteEffects.None;
                 rotation = 0;
                 dX = -1;
@@ -67,7 +67,7 @@ namespace LoZClone
             }
             else if (this.direction.Equals("SouthEast"))
             {
-                this.location = new Vector2(location.X + 20, location.Y + 24);
+                this.location = new Vector2(this.location.X + width * scale, this.location.Y + height * scale);
                 effect = SpriteEffects.None;
                 rotation = MathHelper.Pi;
                 dX = 1;
@@ -75,7 +75,6 @@ namespace LoZClone
             }
             else
             {
-                this.location = new Vector2(location.X, location.Y);
                 rotation = 0;
                 effect = SpriteEffects.FlipVertically;
                 dX = -1;
