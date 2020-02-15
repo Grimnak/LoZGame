@@ -13,6 +13,8 @@ namespace LoZClone
     {
         private Texture2D projectileSpriteSheet;
         private Texture2D fireProjectileSpriteSheet;
+        private Texture2D swordBeamSpriteSheet;
+        private Texture2D swordBeamExplosionSpriteSheet;
         private static int DRAW_SCALE = 2;
 
         private static ProjectileSpriteFactory instance = new ProjectileSpriteFactory();
@@ -42,6 +44,8 @@ namespace LoZClone
         {
             projectileSpriteSheet = content.Load<Texture2D>("Items");
             fireProjectileSpriteSheet = content.Load<Texture2D>("fire");
+            swordBeamSpriteSheet = content.Load<Texture2D>("SwordBeam");
+            swordBeamExplosionSpriteSheet = content.Load<Texture2D>("SwordBeamSecondary");
         }
 
        
@@ -77,6 +81,14 @@ namespace LoZClone
         public IProjectile BlueCandle(Vector2 loc, string direction, int scale, int instance)
         {
             return new BlueCandleProjectile(fireProjectileSpriteSheet, loc, direction, scale, instance);
+        }
+        public IProjectile SwordBeam(Link player, int scale, int instance, ProjectileManager projectile)
+        {
+            return new SwordBeamProjectile(swordBeamSpriteSheet, player, scale, instance, projectile);
+        }
+        public IProjectile SwordExplosion(Vector2 loc, string direction, int scale, int instance)
+        {
+            return new SwordBeamExplosion(swordBeamExplosionSpriteSheet, loc, direction, scale, instance);
         }
     }
 }
