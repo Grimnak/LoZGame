@@ -6,46 +6,46 @@ namespace LoZClone
     public class LinkSpriteFactory
     {
         private Texture2D greenLinkUpTexture;
-        private SpriteSheetData greenLinkUpData = new SpriteSheetData("Green_Link_Up", 50, 50, 7, 1);
+        private SpriteSheetData greenLinkUpData = new SpriteSheetData("Green_Link_Up", 50, 50, 3, 1);
         private Texture2D blueLinkUpTexture;
-        private SpriteSheetData blueLinkUpData = new SpriteSheetData("Blue_Link_Up", 50, 50, 7, 1);
+        private SpriteSheetData blueLinkUpData = new SpriteSheetData("Blue_Link_Up", 50, 50, 3, 1);
         private Texture2D redLinkUpTexture;
-        private SpriteSheetData redLinkUpData = new SpriteSheetData("Red_Link_Up", 50, 50, 7, 1);
+        private SpriteSheetData redLinkUpData = new SpriteSheetData("Red_Link_Up", 50, 50, 3, 1);
 
         private Texture2D greenLinkDownTexture;
-        private SpriteSheetData greenLinkDownData = new SpriteSheetData("Green_Link_Down", 50, 50, 7, 1);
+        private SpriteSheetData greenLinkDownData = new SpriteSheetData("Green_Link_Down", 50, 50, 3, 1);
         private Texture2D blueLinkDownTexture;
-        private SpriteSheetData blueLinkDownData = new SpriteSheetData("Blue_Link_Down", 50, 50, 7, 1);
+        private SpriteSheetData blueLinkDownData = new SpriteSheetData("Blue_Link_Down", 50, 50, 3, 1);
         private Texture2D redLinkDownTexture;
-        private SpriteSheetData redLinkDownData = new SpriteSheetData("Red_Link_Down", 50, 50, 7, 1);
+        private SpriteSheetData redLinkDownData = new SpriteSheetData("Red_Link_Down", 50, 50, 3, 1);
 
         private Texture2D greenLinkLeftTexture;
-        private SpriteSheetData greenLinkLeftData = new SpriteSheetData("Green_Link_Left", 50, 50, 7, 1);
+        private SpriteSheetData greenLinkLeftData = new SpriteSheetData("Green_Link_Left", 50, 50, 3, 1);
         private Texture2D blueLinkLeftTexture;
-        private SpriteSheetData blueLinkLeftData = new SpriteSheetData("Blue_Link_Left", 50, 50, 7, 1);
+        private SpriteSheetData blueLinkLeftData = new SpriteSheetData("Blue_Link_Left", 50, 50, 3, 1);
         private Texture2D redLinkLeftTexture;
-        private SpriteSheetData redLinkLeftData = new SpriteSheetData("Red_Link_Left", 50, 50, 7, 1);
+        private SpriteSheetData redLinkLeftData = new SpriteSheetData("Red_Link_Left", 50, 50, 3, 1);
 
         private Texture2D greenLinkRightTexture;
-        private SpriteSheetData greenLinkRightData = new SpriteSheetData("Green_Link_Right", 50, 50, 7, 1);
+        private SpriteSheetData greenLinkRightData = new SpriteSheetData("Green_Link_Right", 50, 50, 3, 1);
         private Texture2D blueLinkRightTexture;
-        private SpriteSheetData blueLinkRightData = new SpriteSheetData("Blue_Link_Right", 50, 50, 7, 1);
+        private SpriteSheetData blueLinkRightData = new SpriteSheetData("Blue_Link_Right", 50, 50, 3, 1);
         private Texture2D redLinkRightTexture;
-        private SpriteSheetData redLinkRightData = new SpriteSheetData("Red_Link_Right", 50, 50, 7, 1);
+        private SpriteSheetData redLinkRightData = new SpriteSheetData("Red_Link_Right", 50, 50, 3, 1);
 
         private Texture2D greenLinkDieTexture;
-        private SpriteSheetData greenLinkDieData = new SpriteSheetData("Green_Link_Die", 30, 30, 1, 16);
+        private SpriteSheetData greenLinkDieData = new SpriteSheetData("Green_Link_Die", 50, 50, 1, 17);
         private Texture2D blueLinkDieTexture;
-        private SpriteSheetData blueLinkDieData = new SpriteSheetData("Blue_Link_Die", 30, 30, 1, 16);
+        private SpriteSheetData blueLinkDieData = new SpriteSheetData("Blue_Link_Die", 50, 50, 1, 17);
         private Texture2D redLinkDieTexture;
-        private SpriteSheetData redLinkDieData = new SpriteSheetData("Red_Link_Die", 30, 30, 1, 16);
+        private SpriteSheetData redLinkDieData = new SpriteSheetData("Red_Link_Die", 50, 50, 1, 17);
 
         private Texture2D greenLinkPickupTexture;
-        private SpriteSheetData greenLinkPickupData = new SpriteSheetData("Green_Link_Pickup", 50, 50, 1, 2);
+        private SpriteSheetData greenLinkPickupData = new SpriteSheetData("Green_Link_Pickup", 50, 50, 2, 1);
         private Texture2D blueLinkPickupTexture;
-        private SpriteSheetData blueLinkPickupData = new SpriteSheetData("Blue_Link_Pickup", 50, 50, 1, 2);
+        private SpriteSheetData blueLinkPickupData = new SpriteSheetData("Blue_Link_Pickup", 50, 50, 2, 1);
         private Texture2D redLinkPickupTexture;
-        private SpriteSheetData redLinkPickupData = new SpriteSheetData("Red_Link_Pickup", 50, 50, 1, 2);
+        private SpriteSheetData redLinkPickupData = new SpriteSheetData("Red_Link_Pickup", 50, 50, 2, 1);
 
 
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
