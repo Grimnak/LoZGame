@@ -4,8 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/LoZRepo/LoZGame/Content/../../art/link/redLink/down.png</File>
-    <File>D:/LoZRepo/LoZGame/Content/../../art/link/redLink/left.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/Blue_Link_Die.png</File>
     <File>D:/LoZRepo/LoZGame/Content/Blue_Link_Down.png</File>
     <File>D:/LoZRepo/LoZGame/Content/Blue_Link_Left.png</File>
     <File>D:/LoZRepo/LoZGame/Content/Blue_Link_Pickup.png</File>
@@ -26,9 +25,16 @@
     <File>D:/LoZRepo/LoZGame/Content/floor_tile.png</File>
     <File>D:/LoZRepo/LoZGame/Content/floor_tile_dungeon.png</File>
     <File>D:/LoZRepo/LoZGame/Content/gap_tile.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/Green_Link_Die.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/Green_Link_Down.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/Green_Link_Left.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/Green_Link_Pickup.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/Green_Link_Right.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/Green_Link_Up.png</File>
     <File>D:/LoZRepo/LoZGame/Content/Items.png</File>
     <File>D:/LoZRepo/LoZGame/Content/ladder.png</File>
     <File>D:/LoZRepo/LoZGame/Content/movable_square.png</File>
+    <File>D:/LoZRepo/LoZGame/Content/Red_Link_Die.png</File>
     <File>D:/LoZRepo/LoZGame/Content/Red_Link_Down.png</File>
     <File>D:/LoZRepo/LoZGame/Content/Red_Link_Left.png</File>
     <File>D:/LoZRepo/LoZGame/Content/Red_Link_Pickup.png</File>
@@ -41,8 +47,14 @@
     <File>D:/LoZRepo/LoZGame/Content/turquoise_statue.png</File>
   </SourceFiles>
   <DestFiles>
-    <File>Red_Link_Down.png</File>
-    <File>Red_Link_Left.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
