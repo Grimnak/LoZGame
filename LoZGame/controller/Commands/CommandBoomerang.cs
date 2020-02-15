@@ -12,8 +12,11 @@
         }
         public void execute()
         {
-            player.useItem();
-            projectile.addItem(projectile.Boomerang, (Link)player);
+            if (!projectile.BoomerangOut)
+            {
+                player.useItem();
+                projectile.addItem(projectile.Boomerang, (Link)player);
+            }
         }
         public int Priority
         {

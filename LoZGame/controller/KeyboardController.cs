@@ -56,7 +56,7 @@ namespace LoZClone
                     }
                     else
                     {
-                        allCommands.getIdle.execute();
+                        //allCommands.getIdle.execute();
                     }
                 }
                 else
