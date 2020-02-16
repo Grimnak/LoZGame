@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/wensi/Desktop/3902proj/LoZGame/LoZGame/Content/Blue_Link_Up.png</SourceFile>
-  <SourceTime>2020-02-16T11:53:13.4223826-05:00</SourceTime>
-  <DestFile>C:/Users/wensi/Desktop/3902proj/LoZGame/LoZGame/Content/bin/Windows/Content/Blue_Link_Up.xnb</DestFile>
-  <DestTime>2020-02-16T11:53:51.8784204-05:00</DestTime>
+  <SourceFile>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/Blue_Link_Up.png</SourceFile>
+  <SourceTime>2020-02-16T12:07:13.4016513-05:00</SourceTime>
+  <DestFile>C:/Users/16reh/Desktop/LoZGame/LoZGame/Content/bin/Windows/Content/Blue_Link_Up.xnb</DestFile>
+  <DestTime>2020-02-16T13:20:54.8726545-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-08-05T14:17:44-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
