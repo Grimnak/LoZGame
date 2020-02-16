@@ -23,7 +23,7 @@ namespace LoZClone
         private bool hostile;
         public bool IsHostile { get { return hostile; } }
         public Vector2 location { get; set; }
-
+        public static int LifeTime { get { return 200; } }
 
         public TriforceProjectile(Texture2D texture, Vector2 loc, int scale, int instance)
         {
@@ -31,7 +31,7 @@ namespace LoZClone
             firstFrame = new Rectangle(275, 0, 10, 16);
             secondFrame = new Rectangle(275, 16, 10, 16);
             currentFrame = firstFrame;
-            lifeTime = 200;
+            lifeTime = LifeTime;
             location = new Vector2(loc.X + 11, loc.Y - 32);
             this.scale = scale;
             expired = false;
