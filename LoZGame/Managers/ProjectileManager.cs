@@ -25,8 +25,10 @@ namespace LoZClone
         private int explosionListSize;
         private bool swordLock;
         private bool boomerangLock;
+        private bool spamLock;
         private int swordInstance;
         private int boomerangInstance;
+        private int spamCounter;
 
         public bool BoomerangOut {get {return boomerangLock;} }
 
@@ -43,8 +45,10 @@ namespace LoZClone
             explosionDeletable  = new List<int>();
             swordLock = false;
             boomerangLock = false;
+            spamLock = false;
             swordInstance = 0;
-            boomerangInstance = 0;    
+            boomerangInstance = 0;
+            spamCounter = 0;
         }
 
         public int Arrow
@@ -97,28 +101,33 @@ namespace LoZClone
             projectileId++;
             projectileListSize++;
             this.item = (ProjectileType)item;
-            switch (this.item)
+            if (!spamLock)
             {
-                case (ProjectileType.Bomb):
-                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Bomb(loc, direction, scale, projectileId, this));
-                    break;
-                case (ProjectileType.Triforce):
-                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Triforce(loc, scale, projectileId));
-                    break;
-                case (ProjectileType.Arrow):
-                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Arrow(loc, direction, scale, projectileId));
-                    break;
-                case (ProjectileType.SilverArrow):
-                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.SilverArrow(loc, direction, scale, projectileId));
-                    break;
-                case (ProjectileType.RedCandle):
-                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.RedCandle(loc, direction, scale, projectileId));
-                    break;
-                case (ProjectileType.BlueCandle):
-                    this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.BlueCandle(loc, direction, scale, projectileId));
-                    break;
-                default:
-                    break;
+                spamCounter = 30;
+                spamLock = true;
+                switch (this.item)
+                {
+                    case (ProjectileType.Bomb):
+                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Bomb(loc, direction, scale, projectileId, this));
+                        break;
+                    case (ProjectileType.Triforce):
+                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Triforce(loc, scale, projectileId));
+                        break;
+                    case (ProjectileType.Arrow):
+                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Arrow(loc, direction, scale, projectileId));
+                        break;
+                    case (ProjectileType.SilverArrow):
+                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.SilverArrow(loc, direction, scale, projectileId));
+                        break;
+                    case (ProjectileType.RedCandle):
+                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.RedCandle(loc, direction, scale, projectileId));
+                        break;
+                    case (ProjectileType.BlueCandle):
+                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.BlueCandle(loc, direction, scale, projectileId));
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -229,6 +238,11 @@ namespace LoZClone
 
         private void UpdateProjectiles()
         {
+            spamCounter--;
+            if (spamCounter <= 0)
+            {
+                spamLock = false;
+            }
             foreach (KeyValuePair<int, IProjectile> item in this.itemList)
             {
                 if (item.Value.IsExpired)
@@ -241,6 +255,7 @@ namespace LoZClone
                     {
                         boomerangLock = false;
                     }
+                    
 
                     deletable.Add(item.Value.Instance);
                 }

@@ -47,7 +47,7 @@ namespace LoZClone
 
                 currentCommand = playerCommands[0].Value;
 
-                if (currentCommand.Priority == 5 || currentCommand.Priority == 6)
+                if (currentCommand.Priority == 6)
                 {
                     Keys currentKey = playerCommands[0].Key;
                     if (oldState.IsKeyUp(currentKey))
@@ -56,7 +56,15 @@ namespace LoZClone
                     }
                     else
                     {
-                        //allCommands.getIdle.execute();
+                        allCommands.getIdle.execute();
+                    }
+                }
+                else if (currentCommand.Priority == 5)
+                {
+                    Keys currentKey = playerCommands[0].Key;
+                    if (oldState.IsKeyUp(currentKey))
+                    {
+                        currentCommand.execute();
                     }
                 }
                 else

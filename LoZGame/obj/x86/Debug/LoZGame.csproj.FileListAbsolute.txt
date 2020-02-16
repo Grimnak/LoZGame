@@ -420,3 +420,14 @@ C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Pickup.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Red_Link_Die.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Red_Link_Pickup.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Blue_Link_Die.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Blue_Link_Pickup.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\BombExplosionFive.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\BombExplosionFour.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\BombExplosionOne.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\BombExplosionThree.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\BombExplosionTwo.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Die.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Pickup.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Red_Link_Die.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Red_Link_Pickup.xnb
