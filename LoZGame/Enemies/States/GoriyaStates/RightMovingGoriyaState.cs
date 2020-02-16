@@ -15,7 +15,7 @@ namespace LoZClone
         }
         public void moveLeft()
         {
-            goriya.currentState = new LeftMovingGoriyaState(goriya);
+            goriya.CurrentState = new LeftMovingGoriyaState(goriya);
         }
         public void moveRight()
         {
@@ -23,15 +23,15 @@ namespace LoZClone
         }
         public void moveUp()
         {
-            goriya.currentState = new UpMovingGoriyaState(goriya);
+            goriya.CurrentState = new UpMovingGoriyaState(goriya);
         }
         public void moveDown()
         { 
-            goriya.currentState = new DownMovingGoriyaState(goriya);
+            goriya.CurrentState = new DownMovingGoriyaState(goriya);
         }
         public void attack()
         {
-            goriya.currentState = new AttackingGoriyaState(goriya);
+            goriya.CurrentState = new AttackingGoriyaState(goriya);
 
         }
 
@@ -40,7 +40,7 @@ namespace LoZClone
             this.goriya.Health--;
             if (this.goriya.Health-- == 0)
             {
-                goriya.currentState.die();
+                goriya.CurrentState.die();
             }
         }
         public void die()

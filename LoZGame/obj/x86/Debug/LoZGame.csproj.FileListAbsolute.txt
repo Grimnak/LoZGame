@@ -342,3 +342,7 @@ C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\SharpDX
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\SharpDX.Mathematics.dll
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\SharpDX.Mathematics.xml
+C:\Users\Ryan\Documents\LoZGame\LoZGame\obj\x86\Debug\LoZGame.csprojAssemblyReference.cache
+C:\Users\Ryan\Documents\LoZGame\LoZGame\obj\x86\Debug\LoZGame.csproj.CoreCompileInputs.cache
+C:\Users\Ryan\Documents\LoZGame\LoZGame\obj\x86\Debug\BlankMonoGameProject.exe
+C:\Users\Ryan\Documents\LoZGame\LoZGame\obj\x86\Debug\BlankMonoGameProject.pdb

@@ -15,19 +15,19 @@ namespace LoZClone
         }
         public void moveLeft()
         {
-            spikeCross.currentState = new LeftMovingSpikeCrossState(spikeCross);
+            spikeCross.CurrentState = new LeftMovingSpikeCrossState(spikeCross);
         }
         public void moveRight()
         {
-            spikeCross.currentState = new RightMovingSpikeCrossState(spikeCross);
+            spikeCross.CurrentState = new RightMovingSpikeCrossState(spikeCross);
         }
         public void moveUp()
         {
-            spikeCross.currentState = new UpMovingSpikeCrossState(spikeCross);
+            spikeCross.CurrentState = new UpMovingSpikeCrossState(spikeCross);
         }
         public void moveDown()
         {
-            spikeCross.currentState = new DownMovingSpikeCrossState(spikeCross);
+            spikeCross.CurrentState = new DownMovingSpikeCrossState(spikeCross);
         }
         public void stop()
         {

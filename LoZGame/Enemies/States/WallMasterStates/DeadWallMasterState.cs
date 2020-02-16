@@ -15,15 +15,15 @@ namespace LoZClone
         }
         public void moveLeft()
         {
-            wallMaster.currentState = new LeftMovingWallMasterState(wallMaster);
+            wallMaster.CurrentState = new LeftMovingWallMasterState(wallMaster);
         }
         public void moveRight()
         {
-            wallMaster.currentState = new RightMovingWallMasterState(wallMaster);
+            wallMaster.CurrentState = new RightMovingWallMasterState(wallMaster);
         }
         public void moveUp()
         {
-            wallMaster.currentState = new UpMovingWallMasterState(wallMaster);
+            wallMaster.CurrentState = new UpMovingWallMasterState(wallMaster);
         }
         public void moveDown()
         {
@@ -35,7 +35,7 @@ namespace LoZClone
             this.wallMaster.Health--;
             if (this.wallMaster.Health-- == 0)
             {
-                wallMaster.currentState.die();
+                wallMaster.CurrentState.die();
             }
         }
         public void die()

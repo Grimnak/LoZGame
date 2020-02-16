@@ -19,15 +19,15 @@ namespace LoZClone
         }
         public void moveRight()
         {
-            stalfos.currentState = new RightMovingStalfosState(stalfos);
+            stalfos.CurrentState = new RightMovingStalfosState(stalfos);
         }
         public void moveUp()
         {
-            stalfos.currentState = new UpMovingStalfosState(stalfos);
+            stalfos.CurrentState = new UpMovingStalfosState(stalfos);
         }
         public void moveDown()
         {
-            stalfos.currentState = new DownMovingStalfosState(stalfos);
+            stalfos.CurrentState = new DownMovingStalfosState(stalfos);
         }
 
         public void takeDamage()
@@ -35,12 +35,12 @@ namespace LoZClone
             this.stalfos.Health--;
             if (this.stalfos.Health-- == 0)
             {
-                stalfos.currentState.die();
+                stalfos.CurrentState.die();
             }
         }
         public void die()
         {
-            stalfos.currentState = new DeadStalfosState(stalfos);
+            stalfos.CurrentState = new DeadStalfosState(stalfos);
         }
 
         public void update()

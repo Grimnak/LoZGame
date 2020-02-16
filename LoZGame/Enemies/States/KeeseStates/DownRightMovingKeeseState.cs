@@ -16,31 +16,31 @@ namespace LoZClone
 
         public void moveLeft()
         {
-            keese.currentState = new LeftMovingKeeseState(keese);
+            keese.CurrentState = new LeftMovingKeeseState(keese);
         }
         public void moveRight()
         {
-            keese.currentState = new RightMovingKeeseState(keese);
+            keese.CurrentState = new RightMovingKeeseState(keese);
         }
         public void moveUp()
         {
-            keese.currentState = new UpMovingKeeseState(keese);
+            keese.CurrentState = new UpMovingKeeseState(keese);
         }
         public void moveDown()
         {
-            keese.currentState = new DownMovingKeeseState(keese);
+            keese.CurrentState = new DownMovingKeeseState(keese);
         }
         public void moveUpLeft()
         {
-            keese.currentState = new UpLeftMovingKeeseState(keese);
+            keese.CurrentState = new UpLeftMovingKeeseState(keese);
         }
         public void moveUpRight()
         {
-            keese.currentState = new UpRightMovingKeeseState(keese);
+            keese.CurrentState = new UpRightMovingKeeseState(keese);
         }
         public void moveDownLeft()
         {
-            keese.currentState = new DownLeftMovingKeeseState(keese);
+            keese.CurrentState = new DownLeftMovingKeeseState(keese);
         }
         public void moveDownRight()
         {
@@ -52,12 +52,12 @@ namespace LoZClone
             this.keese.Health--;
             if (this.keese.Health-- == 0)
             {
-                keese.currentState.die();
+                keese.CurrentState.die();
             }
         }
         public void die()
         {
-            keese.currentState = new DeadKeeseState(keese);
+            keese.CurrentState = new DeadKeeseState(keese);
         }
 
         public void update()

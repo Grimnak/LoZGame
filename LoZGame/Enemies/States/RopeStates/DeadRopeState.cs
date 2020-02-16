@@ -15,15 +15,15 @@ namespace LoZClone
         }
         public void moveLeft()
         {
-            rope.currentState = new LeftMovingRopeState(rope);
+            rope.CurrentState = new LeftMovingRopeState(rope);
         }
         public void moveRight()
         {
-            rope.currentState = new RightMovingRopeState(rope);
+            rope.CurrentState = new RightMovingRopeState(rope);
         }
         public void moveUp()
         {
-            rope.currentState = new UpMovingRopeState(rope);
+            rope.CurrentState = new UpMovingRopeState(rope);
         }
         public void moveDown()
         {
@@ -35,7 +35,7 @@ namespace LoZClone
             this.rope.Health--;
             if (this.rope.Health-- == 0)
             {
-                rope.currentState.die();
+                rope.CurrentState.die();
             }
         }
         public void die()

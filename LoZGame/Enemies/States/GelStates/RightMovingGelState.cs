@@ -15,7 +15,7 @@ namespace LoZClone
         }
         public void moveLeft()
         {
-            gel.currentState = new LeftMovingGelState(gel);
+            gel.CurrentState = new LeftMovingGelState(gel);
         }
         public void moveRight()
         {
@@ -23,11 +23,11 @@ namespace LoZClone
         }
         public void moveUp()
         {
-            gel.currentState = new UpMovingGelState(gel);
+            gel.CurrentState = new UpMovingGelState(gel);
         }
         public void moveDown()
         {
-            gel.currentState = new DownMovingGelState(gel);
+            gel.CurrentState = new DownMovingGelState(gel);
         }
 
         public void takeDamage()
@@ -35,12 +35,12 @@ namespace LoZClone
             this.gel.Health--;
             if (this.gel.Health-- == 0)
             {
-                gel.currentState.die();
+                gel.CurrentState.die();
             }
         }
         public void die()
         {
-            gel.currentState = new DeadGelState(gel);
+            gel.CurrentState = new DeadGelState(gel);
         }
 
         public void update()

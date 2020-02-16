@@ -16,15 +16,15 @@ namespace LoZClone
         }
         public void moveLeft()
         {
-            dodongo.State = new LeftMovingDodongoState(dodongo);
+            dodongo.CurrentState = new LeftMovingDodongoState(dodongo);
         }
         public void moveRight()
         {
-            dodongo.State = new RightMovingDodongoState(dodongo);
+            dodongo.CurrentState = new RightMovingDodongoState(dodongo);
         }
         public void moveUp()
         {
-            dodongo.State = new UpMovingDodongoState(dodongo);
+            dodongo.CurrentState = new UpMovingDodongoState(dodongo);
         }
         public void moveDown()
         {
@@ -36,12 +36,12 @@ namespace LoZClone
             this.dodongo.Health--;
             if (this.dodongo.Health-- == 0)
             {
-                dodongo.currentState.die();
+                dodongo.CurrentState.die();
             }
         }
         public void die()
         {
-            dodongo.State = new DeadDodongoState(dodongo);
+            dodongo.CurrentState = new DeadDodongoState(dodongo);
         }
 
         public void update()

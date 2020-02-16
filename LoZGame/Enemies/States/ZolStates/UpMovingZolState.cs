@@ -15,11 +15,11 @@ namespace LoZClone
         }
         public void moveLeft()
         {
-            zol.currentState = new LeftMovingZolState(zol);
+            zol.CurrentState = new LeftMovingZolState(zol);
         }
         public void moveRight()
         {
-            zol.currentState = new RightMovingZolState(zol);
+            zol.CurrentState = new RightMovingZolState(zol);
         }
         public void moveUp()
         {
@@ -27,7 +27,7 @@ namespace LoZClone
         }
         public void moveDown()
         {
-            zol.currentState = new DownMovingZolState(zol);
+            zol.CurrentState = new DownMovingZolState(zol);
         }
 
         public void takeDamage()
@@ -36,12 +36,12 @@ namespace LoZClone
             if (this.zol.Health-- == 0)
             {
                 
-                zol.currentState.die();
+                zol.CurrentState.die();
             }
         }
         public void die()
         {
-            zol.currentState = new DeadZolState(zol);
+            zol.CurrentState = new DeadZolState(zol);
         }
 
         public void update()
