@@ -6,39 +6,6 @@ namespace LoZClone
     public class CommandLoader
     {
         private CommandIdle commandIdle;
-
-        private CommandUp commandUp;
-        private CommandLeft commandLeft;
-        private CommandDown commandDown;
-        private CommandRight commandRight;
-
-        private CommandAttackA commandAttackA;
-        private CommandAttackB commandAttackB;
-
-        private CommandDamage commandDamage;
-
-        private CommandBomb commandBomb;
-        private CommandArrow commandArrow;
-        private CommandBoomerang commandBoomerang;
-        private CommandBlueCandle commandBlueCandle;
-        private CommandSilverArrow commandSilverArrow;
-        private CommandMagicBoomerang commandMagicBoomerang;
-        private CommandRedCandle commandRedCandle;
-        private CommandTriforce commandTriforce;
-
-        private CommandItemLeft commandItemLeft;
-        private CommandItemRight commandItemRight;
-
-        private CommandBlockLeft commandBlockLeft;
-        private CommandBlockRight commandBlockRight;
-
-        private CommandEnemyLeft commandEnemyLeft;
-        private CommandEnemyRight commandEnemyRight;
-
-        private CommandQuit commandQuit;
-
-        private CommandReset commandReset;
-
         private Dictionary<Keys, ICommand> dictionary;
 
         public CommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block, EntityManager entity/*, NpcManager npc*/)
@@ -47,60 +14,37 @@ namespace LoZClone
 
             commandIdle = new CommandIdle(player);
 
-            commandUp = new CommandUp(player);
-            dictionary.Add(Keys.W, commandUp);
-            commandLeft = new CommandLeft(player);
-            dictionary.Add(Keys.A, commandLeft);
-            commandDown = new CommandDown(player);
-            dictionary.Add(Keys.S, commandDown);
-            commandRight = new CommandRight(player);
-            dictionary.Add(Keys.D, commandRight);
+            dictionary.Add(Keys.W, new CommandUp(player));
+            dictionary.Add(Keys.A, new CommandLeft(player));
+            dictionary.Add(Keys.S, new CommandDown(player));
+            dictionary.Add(Keys.D, new CommandRight(player));
 
-            commandAttackA = new CommandAttackA(player, entity);
-            dictionary.Add(Keys.Z, commandAttackA);
-            commandAttackB = new CommandAttackB(player, entity);
-            dictionary.Add(Keys.N, commandAttackB);
+            dictionary.Add(Keys.Z, new CommandAttackA(player, entity));
+            dictionary.Add(Keys.N, new CommandAttackB(player, entity));
 
-            commandDamage = new CommandDamage(player);
-            dictionary.Add(Keys.E, commandDamage);
+            dictionary.Add(Keys.E, new CommandDamage(player));
 
-            commandBomb = new CommandBomb(player, entity);
-            dictionary.Add(Keys.D1, commandBomb);
-            commandArrow = new CommandArrow(player, entity);
-            dictionary.Add(Keys.D2, commandArrow);
-            commandBoomerang = new CommandBoomerang(player, entity);
-            dictionary.Add(Keys.D3, commandBoomerang);
-            commandBlueCandle = new CommandBlueCandle(player, entity);
-            dictionary.Add(Keys.D4, commandBlueCandle);
-            commandSilverArrow = new CommandSilverArrow(player, entity);
-            dictionary.Add(Keys.D5, commandSilverArrow);
-            commandMagicBoomerang = new CommandMagicBoomerang(player, entity);
-            dictionary.Add(Keys.D6, commandMagicBoomerang);
-            commandRedCandle = new CommandRedCandle(player, entity);
-            dictionary.Add(Keys.D7, commandRedCandle);
-            commandTriforce = new CommandTriforce(player, entity);
-            dictionary.Add(Keys.D8, commandTriforce);
+            dictionary.Add(Keys.D1, new CommandBomb(player, entity));
+            dictionary.Add(Keys.D2, new CommandArrow(player, entity));
+            dictionary.Add(Keys.D3, new CommandBoomerang(player, entity));
+            dictionary.Add(Keys.D4, new CommandBlueCandle(player, entity));
+            dictionary.Add(Keys.D5, new CommandSilverArrow(player, entity));
+            dictionary.Add(Keys.D6, new CommandMagicBoomerang(player, entity));
+            dictionary.Add(Keys.D7, new CommandRedCandle(player, entity));
+            dictionary.Add(Keys.D8, new CommandTriforce(player, entity));
 
-            commandItemLeft = new CommandItemLeft(item);
-            dictionary.Add(Keys.U, commandItemLeft);
-            commandItemRight = new CommandItemRight(item);
-            dictionary.Add(Keys.I, commandItemRight);
+            dictionary.Add(Keys.U, new CommandItemLeft(item));
+            dictionary.Add(Keys.I, new CommandItemRight(item));
 
-            commandBlockLeft = new CommandBlockLeft(block);
-            dictionary.Add(Keys.K, commandBlockLeft);
-            commandBlockRight = new CommandBlockRight(block);
-            dictionary.Add(Keys.L, commandBlockRight);
+            dictionary.Add(Keys.K, new CommandBlockLeft(block));
+            dictionary.Add(Keys.L, new CommandBlockRight(block));
 
-            commandEnemyLeft = new CommandEnemyLeft(/*npc*/);
-            dictionary.Add(Keys.O, commandEnemyLeft);
-            commandEnemyRight = new CommandEnemyRight(/*npc*/);
-            dictionary.Add(Keys.P, commandEnemyRight);
+            dictionary.Add(Keys.O, new CommandEnemyLeft(/*npc*/));
+            dictionary.Add(Keys.P, new CommandEnemyRight(/*npc*/));
 
-            commandQuit = new CommandQuit(game);
-            dictionary.Add(Keys.Q, commandQuit);
+            dictionary.Add(Keys.Q, new CommandQuit(game));
 
-            commandReset = new CommandReset(game, player, item, block, entity);
-            dictionary.Add(Keys.R, commandReset);
+            dictionary.Add(Keys.R, new CommandReset(game, player, item, block, entity));
         }
 
         public ICommand getIdle
