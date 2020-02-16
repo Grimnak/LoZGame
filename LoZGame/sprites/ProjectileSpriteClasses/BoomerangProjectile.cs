@@ -20,7 +20,7 @@ namespace LoZClone
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private Vector2 origin;
-        private Link player;
+        private IPlayer player;
         private int scale, dX, dY;
         private string direction;
 
@@ -37,7 +37,7 @@ namespace LoZClone
 
         public Vector2 location { get; set; }
 
-        public BoomerangProjectile(Texture2D texture, Link player, int scale, int instance)
+        public BoomerangProjectile(Texture2D texture, IPlayer player, int scale, int instance)
         {
             Texture = texture;
             frame = new Rectangle(129, 0, width, height);

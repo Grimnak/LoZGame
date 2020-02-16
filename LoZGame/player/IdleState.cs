@@ -3,13 +3,13 @@
     public class IdleState : IPlayerState
     {
         private LoZGame game;
-        private Link player;
+        private IPlayer player;
         private ISprite sprite;
 
         public IdleState(LoZGame game, IPlayer playerInstance)
         {
             this.game = game;
-            this.player = (Link)playerInstance;
+            this.player = playerInstance;
             sprite = createCorrectSprite();
         }
         private ISprite createCorrectSprite()

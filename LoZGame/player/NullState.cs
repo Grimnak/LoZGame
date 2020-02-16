@@ -3,12 +3,12 @@
     public class NullState : IPlayerState
     {
         private LoZGame game;
-        private Link player;
+        private IPlayer player;
 
         public NullState(LoZGame game, IPlayer playerInstance)
         {
             this.game = game;
-            this.player = (Link)playerInstance;
+            this.player = playerInstance;
         }
         public void idle()
         {

@@ -20,13 +20,13 @@ namespace LoZClone
         }
         public void execute()
         {
-            ((Link)player).CurrentLocation = new Vector2(218, 184);
-            ((Link)player).CurrentDirection = "Down";
-            ((Link)player).State = new NullState(game, player);
-            ((Link)player).DamageCounter = 0;
-            ((Link)player).DamageTimer = 0;
-            ((Link)player).IsDead = false;
-            ((Link)player).CurrentTint = Color.White;
+            player.CurrentLocation = new Vector2(218, 184);
+            player.CurrentDirection = "Down";
+            player.State = new NullState(game, player);
+            player.DamageCounter = 0;
+            player.DamageTimer = 0;
+            player.IsDead = false;
+            player.CurrentTint = Color.White;
             
             item.CurrentIndex = 1;
             item.cycleLeft();
