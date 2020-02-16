@@ -25,6 +25,7 @@ namespace LoZClone
             ((Link)player).State = new NullState(game, player);
             ((Link)player).DamageCounter = 0;
             ((Link)player).DamageTimer = 0;
+            ((Link)player).IsDead = false;
             
             manager.CurrentIndex = 1;
             manager.cycleLeft();
