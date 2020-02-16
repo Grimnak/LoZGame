@@ -15,7 +15,7 @@ namespace LoZClone
         private static int width = 5;
         private static int height = 16;
         private static int maxDistance = 300;
-        private static int travelRate = 5;
+        private static int travelRate = 8;
         private static int xBound = 800, yBound = 480;
 
         private Texture2D Texture;      // the texture to pull frames from
@@ -149,7 +149,7 @@ namespace LoZClone
             {
                 this.expired = true;
             }
-            if (distTraveled == maxDistance)
+            if (distTraveled >= maxDistance)
             {
                this.returning = true;
             }

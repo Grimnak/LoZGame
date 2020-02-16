@@ -132,7 +132,7 @@ namespace LoZClone
                 {
                     this.expired = true;
                 }
-                if (distTraveled == maxDistance)
+                if (distTraveled >= maxDistance)
                 {
                     this.returning = true;
                 }

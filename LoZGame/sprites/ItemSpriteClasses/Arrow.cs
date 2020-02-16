@@ -33,7 +33,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, new Vector2(2,8), scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, new Vector2(0,0), scale, SpriteEffects.None, 0f);
         }
 
     }

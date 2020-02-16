@@ -14,6 +14,7 @@ namespace LoZClone
         private static int linkSize = 32;
         private static int width = 10;
         private static int height = 16;
+        private static int frameChange = 10;
 
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle currentFrame;
@@ -83,7 +84,7 @@ namespace LoZClone
                 }
             }
 
-            if (lifeTime % 4 == 0)
+            if (lifeTime % frameChange == 0)
             {
                 this.nextFrame();
             }
