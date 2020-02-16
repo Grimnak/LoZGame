@@ -10,7 +10,7 @@
         void takeDamage();
         void attack();
         void pickupItem(int itemTime);
-        void useItem();
+        void useItem(int waitTime);
         //void usePrimaryItem();
         //void useItemAnimation1();
         //void useItemAnimation2();

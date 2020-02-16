@@ -43,7 +43,7 @@ namespace LoZClone
         public void pickupItem(int itemTime)
         {
         }
-        public void useItem()
+        public void useItem(int waitTime)
         {
         }
         public void Update()

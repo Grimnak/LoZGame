@@ -10,7 +10,7 @@ namespace LoZClone
         void attack();
         void die();
         void pickupItem(int itemTime);
-        void useItem();
+        void useItem(int waitTime);
         //void usePrimaryItem();
         //void useSecondaryItem();
         void Update();

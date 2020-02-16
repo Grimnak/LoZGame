@@ -19,6 +19,7 @@ namespace LoZClone
         private int projectileId, projectileListSize;
         private bool swordLock, spamLock, boomerangLock, triforceLock;
         private int swordInstance, boomerangInstance, triforceInstance, spamCounter;
+        public static int MaxWaitTime { get { return 30; } }
 
         public bool BoomerangOut { get { return boomerangLock; } }
 
@@ -56,7 +57,7 @@ namespace LoZClone
             ProjectileType item = (ProjectileType)itemType;
             if (!spamLock && !triforceLock)
             {
-                spamCounter = 30;
+                spamCounter = MaxWaitTime;
                 spamLock = true;
                 switch (item)
                 {

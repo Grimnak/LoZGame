@@ -68,11 +68,11 @@ namespace LoZClone
         public void pickupItem(int itemTime)
         {
         }
-        public void useItem()
+        public void useItem(int waitTime)
         {
             if (lockoutTimer <= 0)
             {
-                player.State = new UseItemState(game, player);
+                player.State = new UseItemState(game, player, waitTime);
             }
         }
         public void Update()

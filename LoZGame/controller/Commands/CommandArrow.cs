@@ -14,7 +14,7 @@
         {
             if (!((Link)player).IsDead)
             {
-                player.useItem();
+                player.useItem(ProjectileManager.MaxWaitTime);
                 entity.ProjectileManager.addItem(entity.ProjectileManager.Arrow, ((Link)player));
             }
         }

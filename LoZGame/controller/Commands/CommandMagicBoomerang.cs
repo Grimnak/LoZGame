@@ -14,7 +14,7 @@
         {
             if (!entity.ProjectileManager.BoomerangOut && !((Link)player).IsDead)
             {
-                player.useItem();
+                player.useItem(ProjectileManager.MaxWaitTime);
                 entity.ProjectileManager.addItem(entity.ProjectileManager.MagicBoomerang, (Link)player);
             }
         }
