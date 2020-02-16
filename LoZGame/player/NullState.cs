@@ -38,9 +38,9 @@
         {
             player.State = new DieState(game, player);
         }
-        public void pickupItem()
+        public void pickupItem(int itemTime)
         {
-            player.State = new PickupItemState(game, player);
+            player.State = new PickupItemState(game, player, itemTime);
         }
         public void useItem()
         {

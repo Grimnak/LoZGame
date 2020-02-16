@@ -9,7 +9,7 @@
         void moveRight();
         void takeDamage();
         void attack();
-        void pickupItem();
+        void pickupItem(int itemTime);
         void useItem();
         //void usePrimaryItem();
         //void useItemAnimation1();

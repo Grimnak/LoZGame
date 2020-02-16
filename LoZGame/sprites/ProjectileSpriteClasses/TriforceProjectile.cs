@@ -24,6 +24,7 @@ namespace LoZClone
         public bool IsHostile { get { return hostile; } }
         public Vector2 location { get; set; }
 
+
         public TriforceProjectile(Texture2D texture, Vector2 loc, int scale, int instance)
         {
             Texture = texture;
