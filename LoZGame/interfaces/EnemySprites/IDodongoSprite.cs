@@ -3,10 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public interface IEnemySprite
+    public interface IDodongoprite
     {
         void Update();
         void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint);
-        void Attack();
     }
 }
