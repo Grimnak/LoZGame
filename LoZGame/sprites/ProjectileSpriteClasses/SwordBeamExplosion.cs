@@ -11,6 +11,10 @@ namespace LoZClone
 {
     class SwordBeamExplosion : IProjectile
     {
+        private static int linkSize = 32;
+        private static int width = 10;
+        private static int height = 12;
+
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frameOne;
         private Rectangle frameTwo;
@@ -40,13 +44,12 @@ namespace LoZClone
 
         public SwordBeamExplosion(Texture2D texture, Vector2 location, string direction, int scale, int instance)
         {
-            int width = 10, height = 12;
             location = new Vector2(location.X - width * scale, location.Y - height * scale);
             Texture = texture;
-            frameOne = new Rectangle(0, 0, 10, 12);
-            frameTwo = new Rectangle(0, 12, 10, 12);
-            frameThree = new Rectangle(0, 24, 10, 12);
-            frameFour = new Rectangle(0, 36, 10, 12);
+            frameOne = new Rectangle(0, 0, width, height);
+            frameTwo = new Rectangle(0, 12, width, height);
+            frameThree = new Rectangle(0, 24, width, height);
+            frameFour = new Rectangle(0, 36, width, height);
             currentFrame = frameOne;
             lifeTime = maxLifeTime;
             this.scale = scale;

@@ -11,6 +11,10 @@ namespace LoZClone
 {
     class TriforceProjectile : IProjectile
     {
+        private static int linkSize = 32;
+        private static int width = 10;
+        private static int height = 16;
+
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle currentFrame;
         private Rectangle firstFrame;
@@ -28,11 +32,11 @@ namespace LoZClone
         public TriforceProjectile(Texture2D texture, Vector2 loc, int scale, int instance)
         {
             Texture = texture;
-            firstFrame = new Rectangle(275, 0, 10, 16);
-            secondFrame = new Rectangle(275, 16, 10, 16);
+            firstFrame = new Rectangle(275, 0, width, height);
+            secondFrame = new Rectangle(275, 16, width, height);
             currentFrame = firstFrame;
             lifeTime = LifeTime;
-            location = new Vector2(loc.X + 11, loc.Y - 32);
+            location = new Vector2(loc.X + (linkSize - width) / (2 * scale), loc.Y - linkSize);
             this.scale = scale;
             expired = false;
             this.instance = instance;
@@ -87,8 +91,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle dest = new Rectangle((int)location.X, (int)location.Y, firstFrame.Width * scale, firstFrame.Height * scale);
-            spriteBatch.Draw(Texture, dest, currentFrame, Color.White);
+            spriteBatch.Draw(Texture, this.location, currentFrame, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
         }
     }
 }

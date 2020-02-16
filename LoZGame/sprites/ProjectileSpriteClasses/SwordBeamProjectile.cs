@@ -11,6 +11,10 @@ namespace LoZClone
 {
     class SwordBeamProjectile : IProjectile
     {
+        private static int linkSize = 32;
+        private static int width = 15;
+        private static int height = 16;
+
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frameOne;
         private Rectangle frameTwo;
@@ -37,15 +41,15 @@ namespace LoZClone
         private static int speed = 5;
         private static int maxLifeTime = 40;
         private static int xBound = 800, yBound = 480;
-        private static int linkSpriteSize = 32;
+        
 
         public SwordBeamProjectile(Texture2D texture, Link player, int scale, int instance, ExplosionManager explosion)
         {
             Texture = texture;
-            frameOne = new Rectangle(0, 0, 15, 16);
-            frameTwo = new Rectangle(0, 16, 15, 16);
-            frameThree = new Rectangle(0, 32, 15, 16);
-            frameFour = new Rectangle(0, 48, 15, 16);
+            frameOne = new Rectangle(0, 0, width, height);
+            frameTwo = new Rectangle(0, 16, width, height);
+            frameThree = new Rectangle(0, 32, width, height);
+            frameFour = new Rectangle(0, 48, width, height);
             this.explosion = explosion;
             currentFrame = frameOne;
             lifeTime = maxLifeTime;
@@ -56,35 +60,35 @@ namespace LoZClone
             
             if (this.direction.Equals("Up"))
             {
-                location = new Vector2(loc.X + 16, loc.Y);
+                location = new Vector2(loc.X + (linkSize - width * scale / 2), loc.Y);
                 rotation = MathHelper.Pi;
                 dX = 0;
                 dY = -1;
-                tip = new Vector2(8, 0);
+                tip = new Vector2((width * scale) / 2, 0);
             }
             else if (this.direction.Equals("Left"))
             {
-                location = new Vector2(loc.X, loc.Y + linkSpriteSize / 2);
+                location = new Vector2(loc.X, loc.Y + (linkSize - width * scale / 2));
                 rotation = 1 * MathHelper.PiOver2;
                 dX = -1;
                 dY = 0;
-                tip = new Vector2(0, 8);
+                tip = new Vector2(0, (width * scale) / 2);
             }
             else if (this.direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + linkSpriteSize, loc.Y + linkSpriteSize / 2);
+                location = new Vector2(loc.X + linkSize, loc.Y + (linkSize - width * scale / 2));
                 rotation = -1 * MathHelper.PiOver2;
                 dX = 1;
                 dY = 0;
-                tip = new Vector2(15, 8);
+                tip = new Vector2(height * scale, (width * scale) / 2 );
             }
             else
             {
-                location = new Vector2(loc.X + linkSpriteSize / 2, loc.Y + linkSpriteSize);
+                location = new Vector2(loc.X + (linkSize - width * scale / 2), loc.Y + linkSize);
                 rotation = 0;
                 dX = 0;
                 dY = 1;
-                tip = new Vector2(8, 16);
+                tip = new Vector2((width * scale) / 2, height * scale);
             }
 
             this.instance = instance;
@@ -123,7 +127,7 @@ namespace LoZClone
 
         private void checkBounds()
         {
-            if (this.location.X >= xBound || this.location.X <= 0 || this.location.Y >= yBound || this.location.Y <= 0)
+            if (this.location.X >= xBound - height || this.location.X <= 0 || this.location.Y >= yBound - height || this.location.Y <= 0)
             {
                 this.lifeTime = 0;
             }

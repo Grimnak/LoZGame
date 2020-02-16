@@ -11,6 +11,11 @@ namespace LoZClone
 {
     class BombProjectile : IProjectile
     {
+        private static int linkSize = 32;
+        private static int width = 8;
+        private static int height = 16;
+        private static int maxLife = 120;
+
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
@@ -21,14 +26,13 @@ namespace LoZClone
         private string direction;
         private bool hostile;
         private ExplosionManager explosion;
-        private static int maxLife = 120;
         public bool IsHostile { get { return hostile; } }
         public Vector2 location { get; set; }
 
         public BombProjectile(Texture2D texture, Vector2 loc, String direction, int scale, int instance, ExplosionManager explosion)
         {
             Texture = texture;
-            frame = new Rectangle(136, 0, 8, 16);
+            frame = new Rectangle(136, 0, width, height);
             lifeTime = maxLife;
             this.instance = instance;
             this.direction = direction;
@@ -36,19 +40,19 @@ namespace LoZClone
             this.explosion = explosion;
             if (this.direction == "Up")
             {
-                location = new Vector2(loc.X + 4*scale, loc.Y - 32);
+                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y - linkSize);
             }
             else if (this.direction == "Left")
             {
-                location = new Vector2(loc.X - 16, loc.Y);
+                location = new Vector2(loc.X - linkSize + (linkSize - width*scale), loc.Y - ((height * scale) - linkSize) / 2);
             }
             else if (this.direction == "Right")
             {
-                location = new Vector2(loc.X + 32, loc.Y);
+                location = new Vector2(loc.X + linkSize, loc.Y - ((height * scale) - linkSize) / 2);
             }
             else
             {
-                location = new Vector2(loc.X + 4*scale, loc.Y + 32);
+                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y + linkSize);
             }
 
 
@@ -77,7 +81,7 @@ namespace LoZClone
             }
             if (lifeTime <= 0)
             {
-                Vector2 expolsionLoc = new Vector2(this.location.X - 4 - 16 * scale, this.location.Y - 16 * scale);
+                Vector2 expolsionLoc = new Vector2(this.location.X - width / 2 - height * scale, this.location.Y - height * scale);
                 explosion.addExplosion(explosion.Explosion, expolsionLoc);
                 expired = true;
             }

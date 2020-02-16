@@ -10,14 +10,18 @@ namespace LoZClone
 {
     class BoomerangProjectile : IProjectile
     {
+        private static int linkSize = 32;
+        private static int width = 5;
+        private static int height = 16;
         private static int maxDistance = 200;
         private static int travelRate = 5;
         private static int xBound = 800, yBound = 480;
 
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
+        private Vector2 origin;
         private Link player;
-        private int scale;
+        private int scale, dX, dY;
         private string direction;
 
         private int instance;
@@ -36,7 +40,8 @@ namespace LoZClone
         public BoomerangProjectile(Texture2D texture, Link player, int scale, int instance)
         {
             Texture = texture;
-            frame = new Rectangle(129, 0, 5, 16);
+            frame = new Rectangle(129, 0, width, height);
+            origin = new Vector2(width / 2, height / 2);
             this.scale = scale;
             this.instance = instance;
             expired = false;
@@ -51,28 +56,40 @@ namespace LoZClone
 
             if (direction.Equals("Up"))
             {
-                location = new Vector2(loc.X + 16, loc.Y);
+                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y);
+                dX = 0;
+                dY = -1;
             }
             else if (direction.Equals("Left"))
             {
-                location = new Vector2(loc.X, loc.Y + 16);
+                location = new Vector2(loc.X, loc.Y - ((width * scale) - linkSize) / 2);
+                dX = -1;
+                dY = 0;
             }
             else if (direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + 32, loc.Y + 16);
+                location = new Vector2(loc.X + linkSize, loc.Y - ((width * scale) - linkSize) / 2);
+                dX = 1;
+                dY = 0;
             }
             else
             {
-                location = new Vector2(loc.X + 16, loc.Y + 32);
+                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y + linkSize);
+                dX = 0;
+                dY = 1;
             }
             playerLoc = player.CurrentLocation;
             playerLoc = new Vector2(playerLoc.X + 16, playerLoc.Y + 16);
         }
 
-
         private void rotate()
         {
             rotation += MathHelper.PiOver4 / 2;
+        }
+
+        private void updateLoc()
+        {
+            this.location = new Vector2(this.location.X + dX * travelRate, this.location.Y + dY * travelRate);
         }
 
         private void checkBounds()
@@ -81,28 +98,6 @@ namespace LoZClone
             {
                 this.returning = true;
             }
-        }
-
-        private Vector2 updateLoc(string direction)
-        {
-            Vector2 newLoc;
-            if (direction.Equals("Up"))
-            {
-                newLoc = new Vector2(this.location.X, this.location.Y - travelRate);
-            }
-            else if (direction.Equals("Left"))
-            {
-                newLoc = new Vector2(this.location.X - travelRate, this.location.Y);
-            }
-            else if (direction.Equals("Right"))
-            {
-                newLoc = new Vector2(this.location.X + travelRate, this.location.Y);
-            }
-            else
-            {
-                newLoc = new Vector2(this.location.X, this.location.Y + travelRate);
-            }
-            return newLoc;
         }
 
         private void returnHome()
@@ -147,30 +142,30 @@ namespace LoZClone
 
         public void Update()
         {
-                this.rotate();
-                if (this.isReturned)
-                {
-                    this.expired = true;
-                }
-                if (distTraveled == maxDistance)
-                {
-                    this.returning = true;
-                }
-                if (!returning)
-                {
-                    this.location = this.updateLoc(this.direction);
-                }
-                else
-                {
-                    this.returnHome();
-                }
+            this.rotate();
+            if (this.isReturned)
+            {
+                this.expired = true;
+            }
+            if (distTraveled == maxDistance)
+            {
+                this.returning = true;
+            }
+            if (!returning)
+            {
+                this.updateLoc();
+            }
+            else
+            {
+                this.returnHome();
+            }
             distTraveled += travelRate;
             this.checkBounds();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, new Vector2(3, 8), scale, SpriteEffects.None, 0f);   
+            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, origin, scale, SpriteEffects.None, 0f);
         }
     }
 }
