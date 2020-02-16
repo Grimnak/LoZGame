@@ -12,12 +12,12 @@ namespace LoZClone
             get { return spriteBatch; }
         }
         private IPlayer link;
-        private IEnemy enemy;
         private CommandLoader commandLoader;
         private IController keyboardController;
         private ItemManager itemManager;
         private BlockManager blockManager;
         private ProjectileManager projectileManager;
+        private EnemyManager enemyManager;
 
         public LoZGame()
         {
@@ -28,7 +28,7 @@ namespace LoZClone
         protected override void Initialize()
         {
             link = new Link(this);
-            enemy = new Dodongo();
+            enemyManager = new EnemyManager();
             itemManager = new ItemManager();
             blockManager = new BlockManager();
             projectileManager = new ProjectileManager();
@@ -44,6 +44,7 @@ namespace LoZClone
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
             EnemySpriteFactory.Instance.LoadAllTextures(Content);
+            enemyManager.loadSprites(400, 240);
             itemManager.loadSprites(300, 240);
             blockManager.loadSprites(500, 240);
         }
@@ -54,7 +55,7 @@ namespace LoZClone
         {
             keyboardController.Update();
             link.Update();
-            enemy.Update();
+            enemyManager.currentEnemy.Update();
             itemManager.currentItem.Update();
             blockManager.currentBlock.Update();
             projectileManager.Update();
@@ -65,7 +66,7 @@ namespace LoZClone
             GraphicsDevice.Clear(Color.Gray);
             spriteBatch.Begin();
             link.Draw();
-            enemy.Draw(spriteBatch);
+            enemyManager.currentEnemy.Draw(spriteBatch);
             itemManager.currentItem.Draw(spriteBatch);
             blockManager.currentBlock.Draw(spriteBatch, new Vector2(240, 150), Color.White);
             projectileManager.Draw(spriteBatch);

@@ -27,8 +27,6 @@ namespace LoZClone
         {
             currentState = new LeftMovingDodongoState(this);
             currentLocation = new Vector2(400, 200);
-
-            // this.currentState = new DeadDodongoState(this);
         }
 
         public void moveLeft()
@@ -49,7 +47,7 @@ namespace LoZClone
         }
         public void attack()
         {
-            //
+
         }
         public void takeDamage()
         {

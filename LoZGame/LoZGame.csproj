@@ -124,6 +124,7 @@
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\BlockManager.cs" />
+	<Compile Include="Managers\EnemyManager.cs" />
     <Compile Include="Player\DieState.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\Arrow.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\BlueCandle.cs" />
