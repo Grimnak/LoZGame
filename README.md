@@ -47,11 +47,17 @@ R - Resets the game to its default state
 
 ## External Tools:
 GitHub
+
 Photoshop
+
 Gimp
+
 Discord
+
 Google Drive
+
 Paint
+
 
 ## Known Bugs:
 ### Movement Stuck:
