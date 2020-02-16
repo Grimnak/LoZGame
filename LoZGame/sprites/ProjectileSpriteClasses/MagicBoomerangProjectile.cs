@@ -11,12 +11,16 @@ namespace LoZClone
 {
     class MagicBoomerangProjectile : IProjectile
     {
+        private static int linkSize = 32;
+        private static int width = 5;
+        private static int height = 16;
         private static int maxDistance = 300;
         private static int travelRate = 5;
         private static int xBound = 800, yBound = 480;
 
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
+        private Vector2 origin;
         private Link player;
         private int scale;
         private string direction;
@@ -29,7 +33,7 @@ namespace LoZClone
         private float rotation;
         private int dX, dY;
         private int distTraveled;
-        private Vector2 entityLoc;
+        private Vector2 playerLoc;
 
         private bool hostile;
         public bool IsHostile { get { return hostile; } }
@@ -39,6 +43,7 @@ namespace LoZClone
         {
             Texture = texture;
             frame = new Rectangle(129, 16, 5, 16);
+            origin = new Vector2(width / 2, height / 2);
             this.scale = scale;
             this.instance = instance;
             expired = false;
@@ -53,30 +58,30 @@ namespace LoZClone
 
             if (direction.Equals("Up"))
             {
-                location = new Vector2(loc.X + 16, loc.Y);
+                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y);
                 dX = 0;
                 dY = -1;
             }
             else if (direction.Equals("Left"))
             {
-                location = new Vector2(loc.X, loc.Y + 16);
+                location = new Vector2(loc.X, loc.Y - ((width * scale) - linkSize) / 2);
                 dX = -1;
                 dY = 0;
             }
             else if (direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + 32, loc.Y + 16);
+                location = new Vector2(loc.X + linkSize, loc.Y - ((width * scale) - linkSize) / 2);
                 dX = 1;
                 dY = 0;
             }
             else
             {
-                location = new Vector2(loc.X + 16, loc.Y + 32);
+                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y + linkSize);
                 dX = 0;
                 dY = 1;
             }
-            entityLoc = player.CurrentLocation;
-            entityLoc = new Vector2(entityLoc.X + 16, entityLoc.Y + 16);
+            playerLoc = player.CurrentLocation;
+            playerLoc = new Vector2(playerLoc.X + 16, playerLoc.Y + 16);
         }
 
         private void rotate()
@@ -101,10 +106,10 @@ namespace LoZClone
         {
             float newX = this.location.X;
             float newY = this.location.Y;
-            entityLoc = player.CurrentLocation;
-            entityLoc = new Vector2(entityLoc.X + 16, entityLoc.Y + 16);
-            float diffX = entityLoc.X - newX;
-            float diffY = entityLoc.Y - newY;
+            playerLoc = player.CurrentLocation;
+            playerLoc = new Vector2(playerLoc.X + 16, playerLoc.Y + 16);
+            float diffX = playerLoc.X - newX;
+            float diffY = playerLoc.Y - newY;
             if (Math.Abs(diffX) <= 2 * travelRate && Math.Abs(diffY) <= 2 * travelRate)
             {
                 this.isReturned = true;
@@ -113,12 +118,12 @@ namespace LoZClone
 
 
             float diffTotal = (float)Math.Sqrt(Math.Pow(diffX, 2) + Math.Pow(diffY, 2));
-            if (newX != entityLoc.X)
+            if (newX != playerLoc.X)
             {
                 float changeX = (diffX / diffTotal) * travelRate;
                 newX += changeX;
             }
-            if (newY != entityLoc.Y)
+            if (newY != playerLoc.Y)
             {
                 float changeY = (diffY / diffTotal) * travelRate;
                 newY += changeY;
@@ -140,29 +145,29 @@ namespace LoZClone
         public void Update()
         {
             this.rotate();
-                if (this.isReturned)
-                {
-                    this.expired = true;
-                }
-                if (distTraveled == maxDistance)
-                {
-                    this.returning = true;
-                }
-                if (!returning)
-                {
-                    this.updateLoc();
-                }
-                else
-                {
-                    this.returnHome();
-                }
-                distTraveled += travelRate;
+            if (this.isReturned)
+            {
+                this.expired = true;
+            }
+            if (distTraveled == maxDistance)
+            {
+               this.returning = true;
+            }
+            if (!returning)
+            {
+                this.updateLoc();
+            }
+            else
+            {
+               this.returnHome();
+            }
+            distTraveled += travelRate;
             this.checkBounds();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, new Vector2(3, 8), scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, origin, scale, SpriteEffects.None, 0f);
         }
     }
 }
