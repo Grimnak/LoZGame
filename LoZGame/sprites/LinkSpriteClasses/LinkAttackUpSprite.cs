@@ -5,18 +5,28 @@ namespace LoZClone
 {
     public class LinkAttackUpSprite : ISprite
     {
-        private Texture2D spriteSheet;
-        private int spriteSheetRows, spriteSheetColumns;
-        private int spriteSheetWidth, spriteSheetHeight;
+        private Texture2D linkSprite;
+        private int linkSpriteRows, linkSpriteColumns;
+        private int linkSpriteWidth, linkSpriteHeight;
+
+        private Texture2D swordSprite;
+        private int swordSpriteRows, swordSpriteColumns;
+        private int swordSpriteWidth, swordSpriteHeight;
         private int currentFrame = 2;
 
-        public LinkAttackUpSprite(Texture2D spriteTexture, SpriteSheetData data)
+        public LinkAttackUpSprite(Texture2D linkTexture, SpriteSheetData linkData, Texture2D swordTexture, SpriteSheetData swordData)
         {
-            spriteSheet = spriteTexture;
-            spriteSheetWidth = data.Width;
-            spriteSheetHeight = data.Height;
-            spriteSheetRows = data.Rows;
-            spriteSheetColumns = data.Columns;
+            linkSprite = linkTexture;
+            linkSpriteRows = linkData.Rows;
+            linkSpriteColumns = linkData.Columns;
+            linkSpriteWidth = linkData.Width;
+            linkSpriteHeight = linkData.Height;
+
+            swordSprite = swordTexture;
+            swordSpriteRows = swordData.Rows;
+            swordSpriteColumns = swordData.Columns;
+            swordSpriteWidth = swordData.Width;
+            swordSpriteHeight = swordData.Height;
         }
 
         public void Update()
