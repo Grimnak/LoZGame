@@ -28,9 +28,9 @@ namespace LoZClone
         private SpriteSheetData rightRopeData = new SpriteSheetData("ropeRight", 40, 40, 2, 1);
 
         private Texture2D gel;
-        private SpriteSheetData gelData = new SpriteSheetData("tealGel", 25, 25, 2, 1);
+        private SpriteSheetData gelData = new SpriteSheetData("gel/tealGel", 25, 25, 2, 1);
         private Texture2D zol;
-        private SpriteSheetData zolData = new SpriteSheetData("grayXol", 50, 50, 2, 1);
+        private SpriteSheetData zolData = new SpriteSheetData("xol/grayXol", 50, 50, 2, 1);
 
         private Texture2D spikeCross;
         private SpriteSheetData spikeCrossData = new SpriteSheetData("spike", 50, 50, 1, 1);
@@ -44,26 +44,23 @@ namespace LoZClone
         private Texture2D damagedDragon;
         private SpriteSheetData damagedDragonData = new SpriteSheetData("damagedAqua", 75, 100, 1, 1);
         private Texture2D fireball;
-        private SpriteSheetData fireballData = new SpriteSheetData("fireball", 35, 35, 4, 1);
+        private SpriteSheetData fireballData = new SpriteSheetData("aquamentus", 35, 35, 4, 1);
 
         private Texture2D downDodongo;
-        private SpriteSheetData downDodongoData = new SpriteSheetData("dodongoDown", 50, 50, 1, 2);
+        private SpriteSheetData downDodongoData = new SpriteSheetData("dodongoDown", 50, 50, 1, 3);
         private Texture2D upDodongo;
-        private SpriteSheetData upDodongoData = new SpriteSheetData("dodongoUp", 50, 50, 1, 2);
+        private SpriteSheetData upDodongoData = new SpriteSheetData("dodongoUp", 50, 50, 1, 3);
         private Texture2D leftDodongo;
-        private SpriteSheetData leftDodongoData = new SpriteSheetData("dodongoLeft", 70, 50, 1, 2);
+        private SpriteSheetData leftDodongoData = new SpriteSheetData("dodongoLeft", 70, 50, 1, 3);
         private Texture2D rightDodongo;
-        private SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", 70, 50, 1, 2);
+        private SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", 70, 50, 1, 3);
 
         private Texture2D oldMan;
-        private SpriteSheetData oldManData = new SpriteSheetData("oldMan", 50, 50, 1, 1);
+        private SpriteSheetData oldManData = new SpriteSheetData("dodongoUp", 50, 50, 1, 1);
         private Texture2D merchant;
-        private SpriteSheetData merchantData = new SpriteSheetData("merchant", 50, 50, 1, 1);
+        private SpriteSheetData merchantData = new SpriteSheetData("dodongoUp", 50, 50, 1, 1);
         private Texture2D flame;
-        private SpriteSheetData flameData = new SpriteSheetData("fire", 50, 50, 1, 2);
-
-        private Texture2D deadEnemy;
-        private SpriteSheetData deadEnemyData = new SpriteSheetData("enemyDeath", 50, 50, 1, 6);
+        private SpriteSheetData flameData = new SpriteSheetData("dodongoUp", 50, 50, 1, 2);
 
 
 
@@ -102,6 +99,8 @@ namespace LoZClone
 
             spikeCross = content.Load<Texture2D>(spikeCrossData.FilePath);
 
+            fireball = content.Load<Texture2D>(fireballData.FilePath);
+
             keese = content.Load<Texture2D>(keeseData.FilePath);
 
             dragon = content.Load<Texture2D>(dragonData.FilePath);
@@ -115,8 +114,6 @@ namespace LoZClone
             oldMan = content.Load<Texture2D>(oldManData.FilePath);
             merchant = content.Load<Texture2D>(merchantData.FilePath);
             flame = content.Load<Texture2D>(flameData.FilePath);
-
-            deadEnemy = content.Load<Texture2D>(deadEnemyData.FilePath);
         }
 
         //Stalfos Sprites
@@ -204,7 +201,7 @@ namespace LoZClone
         {
             return new DragonSprite(dragon, dragonData);
         }
-        public DragonSprite createDamagedDragonSprite()
+        public DragonDamagedSprite createDamagedDragonSprite()
         {
             return new DragonDamagedSprite(damagedDragon, damagedDragonData);
         }
@@ -244,28 +241,24 @@ namespace LoZClone
             return new DodongoRightSprite(rightDodongo, rightDodongoData);
         }
 
-        // Old Man Sprite
+        //Old Man Sprite
+        /*
         public OldManSprite createOldManSprite()
         {
-            return new OldManSprite(oldMan, oldManData);
+            return new OldManSprite(oldMan);
         }
 
         //Merchant Sprite
         public MerchantSprite createMerchantSprite()
         {
-            return new MerchantSprite(merchant, merchantData);
+            return new MerchantSprite(Merchant);
         }
 
         //Flame Sprite
         public FlameSprite createFlameSprite()
         {
-            return new FlameSprite(flame, flameData);
+            return new FlameSprite(flame);
         }
-
-        public DeadEnemySprite createDeadEnemySprite()
-        {
-            return new DeadEnemySprite(deadEnemy, deadEnemyData);
-        }
-
+        */
     }
 }

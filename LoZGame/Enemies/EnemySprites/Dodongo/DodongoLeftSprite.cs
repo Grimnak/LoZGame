@@ -35,8 +35,8 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint)
         {
-            int width = spriteSheet.Width / spriteSheetColumns;
-            int height = spriteSheet.Height / spriteSheetRows;
+            int width = spriteSheetWidth / spriteSheetColumns;
+            int height =spriteSheetHeight / spriteSheetRows;
             int row = (int)((float)currentFrame / (float)spriteSheetColumns);
             int column = currentFrame % spriteSheetColumns;
 
