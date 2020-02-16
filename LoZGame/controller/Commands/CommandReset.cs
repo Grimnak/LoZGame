@@ -26,6 +26,7 @@ namespace LoZClone
             ((Link)player).DamageCounter = 0;
             ((Link)player).DamageTimer = 0;
             ((Link)player).IsDead = false;
+            ((Link)player).CurrentTint = Color.White;
             
             manager.CurrentIndex = 1;
             manager.cycleLeft();
