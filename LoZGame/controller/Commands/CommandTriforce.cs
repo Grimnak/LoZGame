@@ -14,7 +14,7 @@
         {
             if (!((Link)player).IsDead)
             {
-                player.pickupItem();
+                player.pickupItem(TriforceProjectile.LifeTime);
                 entity.ProjectileManager.addItem(entity.ProjectileManager.Triforce, ((Link)player));
             }
         }

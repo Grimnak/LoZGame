@@ -40,10 +40,10 @@ namespace LoZClone
         public void die()
         {
         }
-        public void pickupItem()
+        public void pickupItem(int itemTime)
         {
         }
-        public void useItem()
+        public void useItem(int waitTime)
         {
         }
         public void Update()

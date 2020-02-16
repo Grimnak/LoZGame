@@ -17,8 +17,9 @@ namespace LoZClone
         private List<int> deletable;
         private int scale;
         private int projectileId, projectileListSize;
-        private bool swordLock, spamLock, boomerangLock;
-        private int swordInstance, boomerangInstance, spamCounter;
+        private bool swordLock, spamLock, boomerangLock, triforceLock;
+        private int swordInstance, boomerangInstance, triforceInstance, spamCounter;
+        public static int MaxWaitTime { get { return 30; } }
 
         public bool BoomerangOut { get { return boomerangLock; } }
 
@@ -32,9 +33,11 @@ namespace LoZClone
             swordLock = false;
             boomerangLock = false;
             spamLock = false;
+            triforceLock = false;
             swordInstance = 0;
             boomerangInstance = 0;
             spamCounter = 0;
+            triforceInstance = 0;
             this.explosion = explosion;
         }
 
@@ -52,17 +55,19 @@ namespace LoZClone
             projectileId++;
             projectileListSize++;
             ProjectileType item = (ProjectileType)itemType;
-            if (!spamLock)
+            if (!spamLock && !triforceLock)
             {
-                spamCounter = 30;
+                spamCounter = MaxWaitTime;
                 spamLock = true;
                 switch (item)
                 {
                     case (ProjectileType.Bomb):
                         this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Bomb(player.CurrentLocation, player.CurrentDirection, scale, projectileId, explosion));
                         break;
-                    case (ProjectileType.Triforce):
+                    case (ProjectileType.Triforce):             
                         this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Triforce(player.CurrentLocation, scale, projectileId));
+                        triforceLock = true;
+                        triforceInstance = projectileId;
                         break;
                     case (ProjectileType.Arrow):
                         this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Arrow(player.CurrentLocation, player.CurrentDirection, scale, projectileId));
@@ -136,7 +141,10 @@ namespace LoZClone
                     {
                         boomerangLock = false;
                     }
-
+                    if (item.Value.Instance == triforceInstance)
+                    {
+                        triforceLock = false;
+                    }
 
                     deletable.Add(item.Value.Instance);
                 }

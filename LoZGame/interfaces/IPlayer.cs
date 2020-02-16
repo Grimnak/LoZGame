@@ -9,8 +9,8 @@
         void moveRight();
         void takeDamage();
         void attack();
-        void pickupItem();
-        void useItem();
+        void pickupItem(int itemTime);
+        void useItem(int waitTime);
         //void usePrimaryItem();
         //void useItemAnimation1();
         //void useItemAnimation2();

@@ -38,13 +38,13 @@
         {
             player.State = new DieState(game, player);
         }
-        public void pickupItem()
+        public void pickupItem(int itemTime)
         {
-            player.State = new PickupItemState(game, player);
+            player.State = new PickupItemState(game, player, itemTime);
         }
-        public void useItem()
+        public void useItem(int waitTime)
         {
-            player.State = new UseItemState(game, player);
+            player.State = new UseItemState(game, player, waitTime);
         }
         public void Update()
         {

@@ -144,13 +144,13 @@ namespace LoZClone
         {
             playerState.attack();
         }
-        public void pickupItem()
+        public void pickupItem(int itemTime)
         {
-            playerState.pickupItem();
+            playerState.pickupItem(itemTime);
         }
-        public void useItem()
+        public void useItem(int waitTime)
         {
-            playerState.useItem();
+            playerState.useItem(waitTime);
         }
         public void Update()
         {

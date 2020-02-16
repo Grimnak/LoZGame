@@ -7,12 +7,12 @@ namespace LoZClone
         private ISprite sprite;
         private int lockoutTimer = 0;
 
-        public PickupItemState(LoZGame game, IPlayer playerInstance)
+        public PickupItemState(LoZGame game, IPlayer playerInstance, int itemTime)
         {
             this.game = game;
             this.player = (Link)playerInstance;
             this.player.CurrentDirection = "Down";
-            lockoutTimer = 15; //wait period
+            lockoutTimer = itemTime; //wait period
             sprite = createCorrectSprite();
         }
         private ISprite createCorrectSprite()
@@ -65,14 +65,14 @@ namespace LoZClone
         {
             player.State = new DieState(game, player);
         }
-        public void pickupItem()
+        public void pickupItem(int itemTime)
         {
         }
-        public void useItem()
+        public void useItem(int waitTime)
         {
             if (lockoutTimer <= 0)
             {
-                player.State = new UseItemState(game, player);
+                player.State = new UseItemState(game, player, waitTime);
             }
         }
         public void Update()
