@@ -1,22 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace LoZClone
 {
     public class NPCManager
     {
         private List<IEnemy> NPCs;
-        private int currentNPC; 
-        private static int totalNPCs = 13;
-        public NPCManager()
+        private int currentIndex, totalNPCs;
+        private IEnemy currentNPC;
+        private LoZGame game;
+        private Vector2 location;
+
+        public NPCManager(LoZGame game, Vector2 location)
         {
-            NPCs = addNPCs();
+            this.location = location;
+            this.game = game;
+            currentIndex = 0;
+            totalNPCs = 0;
         }
 
-        private List<IEnemy> addNPCs()
+        public void loadNPCs(LoZGame game)
         {
             NPCs = new List<IEnemy>();
-            NPCs.Add(new Dodongo());
+            NPCs.Add(new Dodongo(game));
             NPCs.Add(new Dragon());
             NPCs.Add(new Stalfos());
             NPCs.Add(new Keese());
@@ -30,27 +37,41 @@ namespace LoZClone
             NPCs.Add(new Merchant());
             NPCs.Add(new Flame());
 
-            return NPCs;
+            foreach (IEnemy npc in NPCs)
+            {
+                totalNPCs++;
+            }
+            currentNPC = NPCs[currentIndex];
         }
 
-        public IEnemy cycleRight()
+        public void cycleRight()
         {
-            currentNPC++;
-            if (currentNPC >= totalNPCs)
+            currentIndex++;
+            if (currentIndex >= totalNPCs)
             {
-                currentNPC = 0;
+                currentIndex = 0;
             }
-            return NPCs[currentNPC];
+            currentNPC = NPCs[currentIndex];
         }
 
-        public IEnemy cycleLeft()
+        public void cycleLeft()
         {
-            currentNPC--;
-            if (currentNPC < 0)
+            currentIndex--;
+            if (currentIndex < 0)
             {
-                currentNPC = totalNPCs - 1;
+                currentIndex = totalNPCs - 1;
             }
-            return NPCs[currentNPC];
+            currentNPC = NPCs[currentIndex];
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            currentNPC.draw(spriteBatch);
+        }
+
+        public void Update()
+        {
+            currentNPC.update();
         }
     }
 }

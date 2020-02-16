@@ -17,11 +17,12 @@ namespace LoZClone
         private List<int> deletable;
         private int scale;
         private int projectileId, projectileListSize;
-        private bool swordLock, spamLock, boomerangLock, triforceLock;
-        private int swordInstance, boomerangInstance, triforceInstance, spamCounter;
+        private bool swordLock, spamLock, boomerangLock, triforceLock, candleLock;
+        private int swordInstance, boomerangInstance, triforceInstance, candleInstance, spamCounter;
         public static int MaxWaitTime { get { return 30; } }
 
         public bool BoomerangOut { get { return boomerangLock; } }
+        public bool FlameInUse { get { return candleLock; } }
 
         public ProjectileManager(ExplosionManager explosion)
         {
@@ -34,10 +35,12 @@ namespace LoZClone
             boomerangLock = false;
             spamLock = false;
             triforceLock = false;
+            candleLock = false;
             swordInstance = 0;
             boomerangInstance = 0;
             spamCounter = 0;
             triforceInstance = 0;
+            candleInstance = 0;
             this.explosion = explosion;
         }
 
@@ -79,7 +82,12 @@ namespace LoZClone
                         this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.RedCandle(player.CurrentLocation, player.CurrentDirection, scale, projectileId));
                         break;
                     case (ProjectileType.BlueCandle):
-                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.BlueCandle(player.CurrentLocation, player.CurrentDirection, scale, projectileId));
+                        if (!candleLock)
+                        {
+                            this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.BlueCandle(player.CurrentLocation, player.CurrentDirection, scale, projectileId));
+                            candleLock = true;
+                            candleInstance = projectileId;
+                        }
                         break;
                     case (ProjectileType.Boomerang):
                         if (!boomerangLock)
@@ -144,6 +152,10 @@ namespace LoZClone
                     if (item.Value.Instance == triforceInstance)
                     {
                         triforceLock = false;
+                    }
+                    if (item.Value.Instance == candleInstance)
+                    {
+                        candleLock = false;
                     }
 
                     deletable.Add(item.Value.Instance);

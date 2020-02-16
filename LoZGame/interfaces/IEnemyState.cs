@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
 
 namespace LoZClone
 {
@@ -10,11 +9,9 @@ namespace LoZClone
         void moveRight();
         void moveUp();
         void moveDown();
-        void attack();
         void takeDamage();
         void die();
-        void Update();
-        void Draw(SpriteBatch sb);
+        void update();
+        void draw(SpriteBatch spriteBatch);
     }
-
 }

@@ -10,6 +10,8 @@ namespace LoZClone
 {
     class TriForce : IItemSprite
     {
+        private static int frameChange = 10;
+
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle currentFrame;
         private Rectangle firstFrame;
@@ -46,7 +48,7 @@ namespace LoZClone
         {
             lifeTime++;
 
-            if (lifeTime % 4 == 0)
+            if (lifeTime % frameChange == 0)
             {
                 this.nextFrame();
                 lifeTime = 0;
@@ -55,7 +57,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, this.location, currentFrame, Color.White, rotation, new Vector2(2, 8), scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(Texture, this.location, currentFrame, Color.White, rotation, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
         }
 
     }

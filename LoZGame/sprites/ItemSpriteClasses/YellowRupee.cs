@@ -10,6 +10,8 @@ namespace LoZClone
 {
     class YellowRupee : IItemSprite
     {
+        private static int frameChange = 10;
+
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle currentFrame;
         private Rectangle firstFrame;
@@ -45,7 +47,7 @@ namespace LoZClone
             {
                 lifeTime = 0;
             }
-            if (lifeTime % 4 == 0)
+            if (lifeTime % frameChange == 0)
             {
                 this.nextFrame();
             }
