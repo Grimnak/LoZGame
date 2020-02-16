@@ -22,7 +22,7 @@ namespace LoZClone
         private int distTravelled;
 
         private static int lifeTimeMax = 210;
-        private static int travelDistance = 256;
+        private static int travelDistance = 64;
         private static int frameDelay = 10;
 
         private int instance;
@@ -90,23 +90,23 @@ namespace LoZClone
 
         public void Update()
         {
-                if (lifeTime % frameDelay == 0)
-                {
-                    this.nextFrame();
-                }
-                if (lifeTime >= lifeTimeMax / 3)
-                {
-                    float xdiff = (destination.X - location.X) / 8;
-                    float ydiff = (destination.Y - location.Y) / 8;
-                    float denom = 2 * distTravelled + 1 / distTravelled;
-                    this.location = new Vector2(this.location.X + (xdiff / denom), this.location.Y + (ydiff / denom));
-                }
-                else if (lifeTime <= 0)
-                {
-                    expired = true;
-                }
-                distTravelled++;
-                lifeTime--;
+            distTravelled++;
+            lifeTime--;
+            if (lifeTime % frameDelay == 0)
+            {
+                this.nextFrame();
+            }
+            if (lifeTime >= lifeTimeMax / 3)
+            {
+                float xdiff = (destination.X - location.X) / 8;
+                float ydiff = (destination.Y - location.Y) / 8;
+                float denom = (float)Math.Log(distTravelled);
+                this.location = new Vector2(this.location.X + (xdiff / denom), this.location.Y + (ydiff / denom));
+            }
+            else if (lifeTime <= 0)
+            {
+                expired = true;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

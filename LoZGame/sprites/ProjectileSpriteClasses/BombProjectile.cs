@@ -20,19 +20,20 @@ namespace LoZClone
         private int instance;
         private string direction;
         private bool hostile;
-        private ProjectileManager projectile;
+        private ExplosionManager explosion;
+        private static int maxLife = 120;
         public bool IsHostile { get { return hostile; } }
         public Vector2 location { get; set; }
 
-        public BombProjectile(Texture2D texture, Vector2 loc, String direction, int scale, int instance, ProjectileManager projectile)
+        public BombProjectile(Texture2D texture, Vector2 loc, String direction, int scale, int instance, ExplosionManager explosion)
         {
             Texture = texture;
             frame = new Rectangle(136, 0, 8, 16);
-            lifeTime = 60;
+            lifeTime = maxLife;
             this.instance = instance;
             this.direction = direction;
             this.hostile = false;
-            this.projectile = projectile;
+            this.explosion = explosion;
             if (this.direction == "Up")
             {
                 location = new Vector2(loc.X + 4*scale, loc.Y - 32);
@@ -77,7 +78,7 @@ namespace LoZClone
             if (lifeTime <= 0)
             {
                 Vector2 expolsionLoc = new Vector2(this.location.X - 4 - 16 * scale, this.location.Y - 16 * scale);
-                projectile.addExplosion(projectile.Explosion, expolsionLoc);
+                explosion.addExplosion(explosion.Explosion, expolsionLoc);
                 expired = true;
             }
 

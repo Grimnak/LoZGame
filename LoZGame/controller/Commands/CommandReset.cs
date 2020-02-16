@@ -8,15 +8,15 @@ namespace LoZClone
         ItemManager manager;
         BlockManager block;
         LoZGame game;
-        ProjectileManager inventory;
+        EntityManager entity;
         private static int priority = -1;
-        public CommandReset(LoZGame game, IPlayer player, ItemManager manager, BlockManager block, ProjectileManager inventory/*, NPCManager npc*/)
+        public CommandReset(LoZGame game, IPlayer player, ItemManager manager, BlockManager block, EntityManager entity/*, NPCManager npc*/)
         {
             this.game = game;
             this.player = player;
             this.manager = manager;
             this.block = block;
-            this.inventory = inventory;
+            this.entity = entity;
         }
         public void execute()
         {
@@ -31,7 +31,7 @@ namespace LoZClone
             manager.cycleLeft();
             manager.currentItem.location = new Vector2(120, 120);
 
-            inventory.Clear();
+            entity.Clear();
 
             block.CurrentIndex = 1;
             block.cycleLeft();

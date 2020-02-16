@@ -3,19 +3,19 @@
     public class CommandBoomerang : ICommand
     {
         IPlayer player;
-        ProjectileManager projectile;
+        EntityManager entity;
         private static int priority = 6;
-        public CommandBoomerang(IPlayer player, ProjectileManager projectile)
+        public CommandBoomerang(IPlayer player, EntityManager entity)
         {
             this.player = player;
-            this.projectile = projectile;
+            this.entity = entity;
         }
         public void execute()
         {
-            if (!projectile.BoomerangOut && !((Link)player).IsDead)
+            if (!entity.ProjectileManager.BoomerangOut && !((Link)player).IsDead)
             {
                 player.useItem();
-                projectile.addItem(projectile.Boomerang, (Link)player);
+                entity.ProjectileManager.addItem(entity.ProjectileManager.Boomerang, (Link)player);
             }
         }
         public int Priority

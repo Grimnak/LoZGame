@@ -3,19 +3,19 @@
     public class CommandAttackB : ICommand
     {
         IPlayer player;
-        ProjectileManager projectile;
+        EntityManager entity;
         private static int priority = 7;
-        public CommandAttackB(IPlayer player, ProjectileManager projectile)
+        public CommandAttackB(IPlayer player, EntityManager entity)
         {
             this.player = player;
-            this.projectile = projectile;
+            this.entity = entity;
         }
         public void execute()
         {
             if (!((Link)player).IsDead)
             {
                 player.attack();
-                projectile.addItem(projectile.Swordbeam, (Link)player);
+                entity.ProjectileManager.addItem(entity.ProjectileManager.Swordbeam, (Link)player);
             }
         }
         public int Priority

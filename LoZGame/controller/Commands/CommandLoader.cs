@@ -41,7 +41,7 @@ namespace LoZClone
 
         private Dictionary<Keys, ICommand> dictionary;
 
-        public CommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block, ProjectileManager projectile/*, NpcManager npc*/)
+        public CommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block, EntityManager entity/*, NpcManager npc*/)
         {
             dictionary = new Dictionary<Keys, ICommand>();
 
@@ -56,29 +56,29 @@ namespace LoZClone
             commandRight = new CommandRight(player);
             dictionary.Add(Keys.D, commandRight);
 
-            commandAttackA = new CommandAttackA(player, projectile);
+            commandAttackA = new CommandAttackA(player, entity);
             dictionary.Add(Keys.Z, commandAttackA);
-            commandAttackB = new CommandAttackB(player, projectile);
+            commandAttackB = new CommandAttackB(player, entity);
             dictionary.Add(Keys.N, commandAttackB);
 
             commandDamage = new CommandDamage(player);
             dictionary.Add(Keys.E, commandDamage);
 
-            commandBomb = new CommandBomb(player, projectile);
+            commandBomb = new CommandBomb(player, entity);
             dictionary.Add(Keys.D1, commandBomb);
-            commandArrow = new CommandArrow(player, projectile);
+            commandArrow = new CommandArrow(player, entity);
             dictionary.Add(Keys.D2, commandArrow);
-            commandBoomerang = new CommandBoomerang(player, projectile);
+            commandBoomerang = new CommandBoomerang(player, entity);
             dictionary.Add(Keys.D3, commandBoomerang);
-            commandBlueCandle = new CommandBlueCandle(player, projectile);
+            commandBlueCandle = new CommandBlueCandle(player, entity);
             dictionary.Add(Keys.D4, commandBlueCandle);
-            commandSilverArrow = new CommandSilverArrow(player, projectile);
+            commandSilverArrow = new CommandSilverArrow(player, entity);
             dictionary.Add(Keys.D5, commandSilverArrow);
-            commandMagicBoomerang = new CommandMagicBoomerang(player, projectile);
+            commandMagicBoomerang = new CommandMagicBoomerang(player, entity);
             dictionary.Add(Keys.D6, commandMagicBoomerang);
-            commandRedCandle = new CommandRedCandle(player, projectile);
+            commandRedCandle = new CommandRedCandle(player, entity);
             dictionary.Add(Keys.D7, commandRedCandle);
-            commandTriforce = new CommandTriforce(player, projectile);
+            commandTriforce = new CommandTriforce(player, entity);
             dictionary.Add(Keys.D8, commandTriforce);
 
             commandItemLeft = new CommandItemLeft(item);
@@ -99,7 +99,7 @@ namespace LoZClone
             commandQuit = new CommandQuit(game);
             dictionary.Add(Keys.Q, commandQuit);
 
-            commandReset = new CommandReset(game, player, item, block, projectile);
+            commandReset = new CommandReset(game, player, item, block, entity);
             dictionary.Add(Keys.R, commandReset);
         }
 
