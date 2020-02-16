@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public class DodongoUpSprite : IEnemySprite
+    public class DodongoUpSprite : IDodongoSprite
     {
         private Texture2D spriteSheet;
         private int spriteSheetRows, spriteSheetColumns;

@@ -48,15 +48,15 @@ namespace LoZClone
             goriya.CurrentState = new DeadGoriyaState(goriya);
         }
 
-        public void update()
+        public void Update()
         {
             goriya.currentLocation = new Vector2(goriya.currentLocation.X - 3, goriya.currentLocation.Y);
             sprite.Update();
         }
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
-            sprite.draw(sb, goriya.currentLocation, Color.White);
+            sprite.Draw(sb, goriya.currentLocation, Color.White);
         }
     }
 }

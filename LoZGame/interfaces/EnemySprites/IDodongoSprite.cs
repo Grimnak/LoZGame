@@ -5,7 +5,7 @@ namespace LoZClone
 {
     public interface IDodongoSprite
     {
-        void update();
-        void draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint);
+        void Update();
+        void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint);
     }
 }

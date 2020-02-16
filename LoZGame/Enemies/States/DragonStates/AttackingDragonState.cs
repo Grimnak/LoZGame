@@ -56,20 +56,20 @@ namespace LoZClone
             dragon.CurrentState = new DeadDragonState(dragon);
         }
 
-        public void update()
+        public void Update()
         {         
-            sprite.update();
-            fireballDownLeft.update();
-            fireballLeft.update();
-            fireballUpLeft.update();
+            sprite.Update();
+            fireballDownLeft.Update();
+            fireballLeft.Update();
+            fireballUpLeft.Update();
         }
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
-            sprite.draw(sb, dragon.currentLocation, Color.White);
-            fireballDownLeft.draw(sb, Color.White);
-            fireballLeft.draw(sb, Color.White);
-            fireballUpLeft.draw(sb, Color.White);
+            sprite.Draw(sb, dragon.currentLocation, Color.White);
+            fireballDownLeft.Draw(sb, Color.White);
+            fireballLeft.Draw(sb, Color.White);
+            fireballUpLeft.Draw(sb, Color.White);
         }
     }
 }

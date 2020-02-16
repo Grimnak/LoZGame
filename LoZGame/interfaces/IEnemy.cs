@@ -10,6 +10,6 @@ public interface IEnemy
     void attack();
     void takeDamage();
     void die();
-    void update();
-    void draw(SpriteBatch spriteBatch);
+    void Update();
+    void Draw(SpriteBatch spriteBatch);
 }

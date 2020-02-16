@@ -53,13 +53,13 @@ namespace LoZClone
         {
             currentState.die();
         }
-        public void update()
+        public void Update()
         {
-            currentState.update();
+            currentState.Update();
         }
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
-            currentState.draw(sb);
+            currentState.Draw(sb);
         }
 
         public IEnemyState CurrentState

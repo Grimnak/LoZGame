@@ -44,15 +44,15 @@ namespace LoZClone
             dodongo.CurrentState = new DeadDodongoState(dodongo);
         }
 
-        public void update()
+        public void Update()
         {
             dodongo.currentLocation = new Vector2(dodongo.currentLocation.X + 3, dodongo.currentLocation.Y);
-            sprite.update();
+            sprite.Update();
         }
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
-            sprite.draw(sb, dodongo.currentLocation, Color.White);
+            sprite.Draw(sb, dodongo.currentLocation, Color.White);
         }
     }
 }

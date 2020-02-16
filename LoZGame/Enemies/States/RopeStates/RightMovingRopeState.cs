@@ -43,15 +43,15 @@ namespace LoZClone
             rope.CurrentState = new DeadRopeState(rope);
         }
 
-        public void update()
+        public void Update()
         {
             rope.currentLocation = new Vector2(rope.currentLocation.X + 3, rope.currentLocation.Y);
-            sprite.update();
+            sprite.Update();
         }
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
-            sprite.draw(sb, rope.currentLocation, Color.White);
+            sprite.Draw(sb, rope.currentLocation, Color.White);
         }
     }
 }

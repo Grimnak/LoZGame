@@ -43,15 +43,15 @@ namespace LoZClone
             wallMaster.CurrentState = new DeadWallMasterState(wallMaster);
         }
 
-        public void update()
+        public void Update()
         {
             wallMaster.currentLocation = new Vector2(wallMaster.currentLocation.X + 3, wallMaster.currentLocation.Y);
             sprite.update();
         }
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
-            sprite.draw(sb, wallMaster.currentLocation, Color.White);
+            sprite.Draw(sb, wallMaster.currentLocation, Color.White);
         }
     }
 }

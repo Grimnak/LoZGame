@@ -43,15 +43,15 @@ namespace LoZClone
             gel.CurrentState = new DeadGelState(gel);
         }
 
-        public void update()
+        public void Update()
         {
             gel.currentLocation = new Vector2(gel.currentLocation.X + 3, gel.currentLocation.Y);
-            sprite.update();
+            sprite.Update();
         }
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
-            sprite.draw(sb, gel.currentLocation, Color.White);
+            sprite.Draw(sb, gel.currentLocation, Color.White);
         }
     }
 }

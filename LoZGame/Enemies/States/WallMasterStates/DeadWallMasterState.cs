@@ -11,7 +11,7 @@ namespace LoZClone
         public DeadWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
-            sprite = EnemySpriteFactory.Instance.createDeadWallMasterSprite();
+            // sprite = EnemySpriteFactory.Instance.createDeadWallMasterSprite();
         }
         public void moveLeft()
         {
@@ -43,15 +43,15 @@ namespace LoZClone
 
         }
 
-        public void update()
+        public void Update()
         {
             wallMaster.currentLocation = new Vector2(wallMaster.currentLocation.X, wallMaster.currentLocation.Y + 3);
-            sprite.update();
+            sprite.Update();
         }
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
-            sprite.draw(sb, wallMaster.currentLocation, Color.White);
+            sprite.Draw(sb, wallMaster.currentLocation, Color.White);
         }
     }
 }

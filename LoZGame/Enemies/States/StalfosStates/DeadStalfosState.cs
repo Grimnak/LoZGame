@@ -43,15 +43,15 @@ namespace LoZClone
 
         }
 
-        public void update()
+        public void Update()
         {
             stalfos.currentLocation = new Vector2(stalfos.currentLocation.X, stalfos.currentLocation.Y + 3);
-            sprite.update();
+            sprite.Update();
         }
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
-            sprite.draw(sb, stalfos.currentLocation, Color.White);
+            sprite.Draw(sb, stalfos.currentLocation, Color.White);
         }
     }
 }

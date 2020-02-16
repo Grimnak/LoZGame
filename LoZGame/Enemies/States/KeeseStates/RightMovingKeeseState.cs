@@ -60,15 +60,15 @@ namespace LoZClone
             keese.CurrentState = new DeadKeeseState(keese);
         }
 
-        public void update()
+        public void Update()
         {
             keese.currentLocation = new Vector2(keese.currentLocation.X + 3, keese.currentLocation.Y);
-            sprite.update();
+            sprite.Update();
         }
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
-            sprite.draw(sb, keese.currentLocation, Color.White);
+            sprite.Draw(sb, keese.currentLocation, Color.White);
         }
     }
 }

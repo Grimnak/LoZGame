@@ -43,15 +43,15 @@ namespace LoZClone
             zol.CurrentState = new DeadZolState(zol);
         }
 
-        public void update()
+        public void Update()
         {
             zol.currentLocation = new Vector2(zol.currentLocation.X - 3, zol.currentLocation.Y);
-            sprite.update();
+            sprite.Update();
         }
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
-            sprite.draw(sb, zol.currentLocation, Color.White);
+            sprite.Draw(sb, zol.currentLocation, Color.White);
         }
     }
 }

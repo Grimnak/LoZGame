@@ -51,15 +51,15 @@ namespace LoZClone
             dragon.CurrentState = new DeadDragonState(dragon);
         }
 
-        public void update()
+        public void Update()
         {
             dragon.currentLocation = new Vector2(dragon.currentLocation.X + 3, dragon.currentLocation.Y);
-            sprite.update();
+            sprite.Update();
         }
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
-            sprite.draw(sb, dragon.currentLocation, Color.White);
+            sprite.Draw(sb, dragon.currentLocation, Color.White);
         }
     }
 }

@@ -43,15 +43,15 @@ namespace LoZClone
 
         }
 
-        public void update()
+        public void Update()
         {
             spikeCross.currentLocation = new Vector2(spikeCross.currentLocation.X + 3, spikeCross.currentLocation.Y);
-            sprite.update();
+            sprite.Update();
         }
 
-        public void draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb)
         {
-            sprite.draw(sb, spikeCross.currentLocation, Color.White);
+            sprite.Draw(sb, spikeCross.currentLocation, Color.White);
         }
     }
 }
