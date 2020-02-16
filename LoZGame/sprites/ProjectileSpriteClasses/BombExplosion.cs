@@ -12,8 +12,8 @@ namespace LoZClone
     class BombExplosion : IProjectile
     {
         private static int maxLifeTime = 90;
-        private static int dissipateOne = 30;
-        private static int dissipateTwo = 15;
+        private static int dissipateOne = 20;
+        private static int dissipateTwo = 5;
 
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frameOne;

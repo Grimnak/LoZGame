@@ -31,7 +31,7 @@ namespace LoZClone
         private bool hostile;
         public bool IsHostile { get { return hostile; } }
 
-        private ProjectileManager projectile;
+        private ExplosionManager explosion;
 
         private static int frameDelay = 4;
         private static int speed = 5;
@@ -39,14 +39,14 @@ namespace LoZClone
         private static int xBound = 800, yBound = 480;
         private static int linkSpriteSize = 32;
 
-        public SwordBeamProjectile(Texture2D texture, Link player, int scale, int instance, ProjectileManager projectile)
+        public SwordBeamProjectile(Texture2D texture, Link player, int scale, int instance, ExplosionManager explosion)
         {
             Texture = texture;
             frameOne = new Rectangle(0, 0, 15, 16);
             frameTwo = new Rectangle(0, 16, 15, 16);
             frameThree = new Rectangle(0, 32, 15, 16);
             frameFour = new Rectangle(0, 48, 15, 16);
-            this.projectile = projectile;
+            this.explosion = explosion;
             currentFrame = frameOne;
             lifeTime = maxLifeTime;
             this.scale = scale;
@@ -140,7 +140,7 @@ namespace LoZClone
                 }
                 if (lifeTime <= 0)
                 {
-                    projectile.addExplosion(projectile.SwordExplosion, new Vector2(this.location.X + tip.X, this.location.Y + tip.Y));
+                    explosion.addExplosion(explosion.SwordExplosion, new Vector2(this.location.X + tip.X, this.location.Y + tip.Y));
                     expired = true;
                 }
                 this.location = new Vector2(this.location.X + (dX * speed), this.location.Y + (dY * speed));

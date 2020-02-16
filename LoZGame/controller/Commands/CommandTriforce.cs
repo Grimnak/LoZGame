@@ -3,19 +3,19 @@
     public class CommandTriforce : ICommand
     {
         IPlayer player;
-        ProjectileManager projectile;
+        EntityManager entity;
         private static int priority = 5;
-        public CommandTriforce(IPlayer player, ProjectileManager projectile)
+        public CommandTriforce(IPlayer player, EntityManager entity)
         {
             this.player = player;
-            this.projectile = projectile;
+            this.entity = entity;
         }
         public void execute()
         {
             if (!((Link)player).IsDead)
             {
                 player.pickupItem();
-                projectile.addItem(projectile.Triforce, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+                entity.ProjectileManager.addItem(entity.ProjectileManager.Triforce, ((Link)player));
             }
         }
         public int Priority

@@ -22,7 +22,7 @@ namespace LoZClone
         private int distTravelled;
 
         private static int lifeTimeMax = 210;
-        private static int travelDistance = 372;
+        private static int travelDistance = 128;
         private static int frameDelay = 10;
 
         private int instance;
@@ -103,7 +103,7 @@ namespace LoZClone
             {
                 float xdiff = (destination.X - location.X) / 8;
                 float ydiff = (destination.Y - location.Y) / 8;
-                float denom = 2 * distTravelled + 1 / distTravelled;
+                float denom = (float)Math.Log(distTravelled);
                 this.location = new Vector2(this.location.X + (xdiff / denom), this.location.Y + (ydiff / denom));
             }
             else if (lifeTime <= 0)

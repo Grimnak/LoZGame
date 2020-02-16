@@ -3,19 +3,19 @@
     public class CommandRedCandle : ICommand
     {
         IPlayer player;
-        ProjectileManager projectile;
+        EntityManager entity;
         private static int priority = 5;
-        public CommandRedCandle(IPlayer player, ProjectileManager projectile)
+        public CommandRedCandle(IPlayer player, EntityManager entity)
         {
             this.player = player;
-            this.projectile = projectile;
+            this.entity = entity;
         }
         public void execute()
         {
             if (!((Link)player).IsDead)
             {
                 player.useItem();
-                projectile.addItem(projectile.RedCandle, ((Link)player).CurrentLocation, ((Link)player).CurrentDirection);
+                entity.ProjectileManager.addItem(entity.ProjectileManager.RedCandle, ((Link)player));
             }
         }
         public int Priority
