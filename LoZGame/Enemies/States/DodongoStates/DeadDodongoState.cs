@@ -16,37 +16,26 @@ namespace LoZClone
         }
         public void moveLeft()
         {
-            dodongo.CurrentState = new LeftMovingDodongoState(dodongo);
         }
         public void moveRight()
         {
-            dodongo.CurrentState = new RightMovingDodongoState(dodongo);
         }
         public void moveUp()
         {
-            dodongo.CurrentState = new UpMovingDodongoState(dodongo);
         }
         public void moveDown()
         {
-            dodongo.CurrentState = new DownMovingDodongoState(dodongo);
         }
 
         public void takeDamage()
         {
-            this.dodongo.Health--;
-            if (this.dodongo.Health-- == 0)
-            {
-                dodongo.CurrentState.die();
-            }
         }
         public void die()
         {
-
         }
 
         public void Update()
         {
-            dodongo.currentLocation = new Vector2(dodongo.currentLocation.X, dodongo.currentLocation.Y - 3);
             sprite.Update();
         }
 

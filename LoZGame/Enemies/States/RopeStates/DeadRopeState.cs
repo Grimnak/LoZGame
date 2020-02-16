@@ -15,37 +15,31 @@ namespace LoZClone
         }
         public void moveLeft()
         {
-            rope.CurrentState = new LeftMovingRopeState(rope);
         }
         public void moveRight()
         {
-            rope.CurrentState = new RightMovingRopeState(rope);
         }
         public void moveUp()
         {
-            rope.CurrentState = new UpMovingRopeState(rope);
         }
         public void moveDown()
         {
-            // Blank b/c already moving down
         }
 
         public void takeDamage()
         {
-            this.rope.Health--;
-            if (this.rope.Health-- == 0)
-            {
-                rope.CurrentState.die();
-            }
         }
         public void die()
         {
-
         }
 
         public void Update()
         {
-            rope.currentLocation = new Vector2(rope.currentLocation.X, rope.currentLocation.Y + 3);
+            sprite.Update();
+        }
+
+        public void Update()
+        {
             sprite.Update();
         }
 
