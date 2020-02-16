@@ -7,7 +7,7 @@ namespace LoZClone
     public class LeftMovingDodongoState : IEnemyState
     {
         private Dodongo dodongo;
-        private IEnemySprite sprite;
+        private IDodongoSprite sprite;
         int health;
 
         public LeftMovingDodongoState(Dodongo dodongo)
@@ -42,7 +42,7 @@ namespace LoZClone
         }
         public void die()
         {
-            dodongo.CurrentState = new DeadDodongoState(dodongo);
+            // dodongo.CurrentState = new DeadDodongoState(dodongo);
         }
 
         public void Update()

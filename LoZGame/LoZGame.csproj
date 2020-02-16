@@ -108,7 +108,6 @@
 	<Compile Include="Enemies\States\DodongoStates\RightMovingDodongoState.cs" />
 	<Compile Include="Enemies\States\DodongoStates\UpMovingDodongoState.cs" />
 	<Compile Include="Enemies\States\DodongoStates\DownMovingDodongoState.cs" />
-	<Compile Include="Enemies\States\DodongoStates\DeadDodongoState.cs" />
     <Compile Include="Interfaces\IPlayerSprite.cs" />
     <Compile Include="Interfaces\IItemSprite.cs" />
     <Compile Include="Interfaces\IProjectile.cs" />

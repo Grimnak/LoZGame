@@ -23,13 +23,12 @@ namespace LoZClone
             }
         }
 
-        public Dodongo(LoZGame game)
+        public Dodongo()
         {
             currentState = new LeftMovingDodongoState(this);
             currentLocation = new Vector2(400, 200);
-            this.game = game;
 
-            this.currentState = DeadDodongoState(game, this);
+            // this.currentState = new DeadDodongoState(this);
         }
 
         public void moveLeft()
@@ -66,7 +65,7 @@ namespace LoZClone
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            currentState.Draw(sb);
+            currentState.Draw(spriteBatch);
         }
 
         public IEnemyState CurrentState
