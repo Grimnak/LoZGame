@@ -3,13 +3,21 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
+<<<<<<< HEAD:LoZGame/sprites/BlockSpriteClasses/LadderTileSprite.cs
     public class LadderTileSprite : ISprite
+=======
+    public class WaterTileSprite : ISprite
+>>>>>>> blocks update:LoZGame/sprites/BlockSpriteClasses/WaterTileSprite.cs
     {
         private Texture2D spriteSheet;
         private int spriteSheetRows, spriteSheetColumns;
         private int scale;
 
+<<<<<<< HEAD:LoZGame/sprites/BlockSpriteClasses/LadderTileSprite.cs
         public LadderTileSprite(Texture2D spriteTexture, SpriteSheetData data, int scale)
+=======
+        public WaterTileSprite(Texture2D spriteTexture, SpriteSheetData data, int scale)
+>>>>>>> blocks update:LoZGame/sprites/BlockSpriteClasses/WaterTileSprite.cs
         {
             spriteSheet = spriteTexture;
 
