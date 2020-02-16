@@ -3,17 +3,17 @@
 Developer version of Legend of Zelda NES emulator. Draws the player, enemies, items, blocks, and projectiles that will be used in the final game without collision detection.
 
 ## Authors:
-Eric Henderson
+Eric Henderson.939
 
-Sammy Lisa
+Sammy Lisa.5
 
-Garrett Morse
+Garrett Morse.172
 
-Aaron Rehfeldt
+Aaron Rehfeldt.2
 
-Ryan Scott
+Ryan Scott.2081
 
-Jeremy Wensink
+Jeremy Wensink.27
 
 
 ## Controls:
