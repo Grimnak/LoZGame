@@ -15,15 +15,15 @@ namespace LoZClone
         }
         public void moveLeft()
         {
-            dodongo.CurrentState = new LeftMovingDodongoState(dodongo);
+            dodongo.currentState = new LeftMovingDodongoState(dodongo);
         }
         public void moveRight()
         {
-            dodongo.CurrentState = new RightMovingDodongoState(dodongo);
+            dodongo.currentState = new RightMovingDodongoState(dodongo);
         }
         public void moveUp()
         {
-            dodongo.CurrentState = new UpMovingDodongoState(dodongo);
+            dodongo.currentState = new UpMovingDodongoState(dodongo);
         }
         public void moveDown()
         {
@@ -35,18 +35,18 @@ namespace LoZClone
             this.dodongo.Health--;
             if (this.dodongo.Health-- == 0)
             {
-                dodongo.CurrentState.die();
+                dodongo.currentState.die();
             }
         }
         public void die()
         {
-            dodongo.CurrentState = new DeadDodongoState(dodongo);
+            dodongo.currentState = new DeadDodongoState(dodongo);
         }
 
         public void update()
         {
             dodongo.currentLocation = new Vector2(dodongo.currentLocation.X, dodongo.currentLocation.Y + 3);
-            sprite.Update();
+            sprite.update();
         }
 
         public void draw(SpriteBatch sb)

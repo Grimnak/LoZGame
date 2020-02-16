@@ -6,33 +6,37 @@ namespace LoZClone
     {
         private Dragon dragon;
         private IDragonSprite sprite;
-        private FireballSprite fireball;
+        private FireballSprite fireballLeft;
+        private FireballSprite fireballDownLeft;
+        private FireballSprite fireballUpLeft;
 
         public AttackingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
-            sprite = EnemySpriteFactory.Instance.createIdleDragonSprite();
-
+            sprite = EnemySpriteFactory.Instance.createAttackingDragonSprite();
+            fireballUpLeft = EnemySpriteFactory.Instance.createUpLeftFireballSprite();
+            fireballLeft = EnemySpriteFactory.Instance.createLeftFireballSprite();
+            fireballDownLeft = EnemySpriteFactory.Instance.createDownLeftFireballSprite();
         }
         public void moveLeft()
         {
-            dragon.CurrentState = new LeftMovingDragonState(dragon);
+            dragon.currentState = new LeftMovingDragonState(dragon);
         }
         public void moveRight()
         {
-            dragon.CurrentState = new RightMovingDragonState(dragon);
+            dragon.currentState = new RightMovingDragonState(dragon);
         }
         public void moveUp()
         {
-            dragon.CurrentState = new UpMovingDragonState(dragon);
+            dragon.currentState = new UpMovingDragonState(dragon);
         }
         public void moveDown()
         {
-            dragon.CurrentState = new DownMovingDragonState(dragon);
+            dragon.currentState = new DownMovingDragonState(dragon);
         }
         public void stop()
         {
-            dragon.CurrentState = new IdleDragonState(dragon);
+            dragon.currentState = new IdleDragonState(dragon);
         }
         public void attack()
         {
@@ -44,22 +48,28 @@ namespace LoZClone
             this.dragon.Health--;
             if (this.dragon.Health-- == 0)
             {
-                dragon.CurrentState.die();
+                dragon.currentState.die();
             }
         }
         public void die()
         {
-            dragon.CurrentState = new DeadDragonState(dragon);
+            dragon.currentState = new DeadDragonState(dragon);
         }
 
         public void update()
         {         
-            sprite.Update();
+            sprite.update();
+            fireballDownLeft.update();
+            fireballLeft.update();
+            fireballUpLeft.update();
         }
 
         public void draw(SpriteBatch sb)
         {
             sprite.draw(sb, dragon.currentLocation, Color.White);
+            fireballDownLeft.draw(sb, Color.White);
+            fireballLeft.draw(sb, Color.White);
+            fireballUpLeft.draw(sb, Color.White);
         }
     }
 }

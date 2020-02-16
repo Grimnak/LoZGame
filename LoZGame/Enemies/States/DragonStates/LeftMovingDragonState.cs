@@ -19,23 +19,23 @@ namespace LoZClone
         }
         public void moveRight()
         {
-            dragon.CurrentState = new RightMovingDragonState(dragon);
+            dragon.currentState = new RightMovingDragonState(dragon);
         }
         public void moveUp()
         {
-            dragon.CurrentState = new UpMovingDragonState(dragon);
+            dragon.currentState = new UpMovingDragonState(dragon);
         }
         public void moveDown()
         {
-            dragon.CurrentState = new DownMovingDragonState(dragon);
+            dragon.currentState = new DownMovingDragonState(dragon);
         }
         public void stop()
         {
-            dragon.CurrentState = new IdleDragonState(dragon);
+            dragon.currentState = new IdleDragonState(dragon);
         }
         public void attack()
         {
-            dragon.CurrentState = new AttackingDragonState(dragon);
+            dragon.currentState = new AttackingDragonState(dragon);
         }
 
         public void takeDamage()
@@ -43,18 +43,18 @@ namespace LoZClone
             this.dragon.Health--;
             if (this.dragon.Health-- == 0)
             {
-                dragon.CurrentState.die();
+                dragon.currentState.die();
             }
         }
         public void die()
         {
-            dragon.CurrentState = new DeadDragonState(dragon);
+            dragon.currentState = new DeadDragonState(dragon);
         }
 
         public void update()
         {
             dragon.currentLocation = new Vector2(dragon.currentLocation.X - 3, dragon.currentLocation.Y);
-            sprite.Update();
+            sprite.update();
         }
 
         public void draw(SpriteBatch sb)

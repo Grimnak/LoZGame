@@ -19,15 +19,15 @@ namespace LoZClone
         }
         public void moveRight()
         {
-            stalfos.CurrentState = new RightMovingStalfosState(stalfos);
+            stalfos.currentState = new RightMovingStalfosState(stalfos);
         }
         public void moveUp()
         {
-            stalfos.CurrentState = new UpMovingStalfosState(stalfos);
+            stalfos.currentState = new UpMovingStalfosState(stalfos);
         }
         public void moveDown()
         {
-            stalfos.CurrentState = new DownMovingStalfosState(stalfos);
+            stalfos.currentState = new DownMovingStalfosState(stalfos);
         }
 
         public void takeDamage()
@@ -35,18 +35,18 @@ namespace LoZClone
             this.stalfos.Health--;
             if (this.stalfos.Health-- == 0)
             {
-                stalfos.CurrentState.die();
+                stalfos.currentState.die();
             }
         }
         public void die()
         {
-            stalfos.CurrentState = new DeadStalfosState(stalfos);
+            stalfos.currentState = new DeadStalfosState(stalfos);
         }
 
         public void update()
         {
             stalfos.currentLocation = new Vector2(stalfos.currentLocation.X - 3, stalfos.currentLocation.Y);
-            sprite.Update();
+            sprite.update();
         }
 
         public void draw(SpriteBatch sb)

@@ -15,7 +15,7 @@ namespace LoZClone
         }
         public void moveLeft()
         {
-            goriya.CurrentState = new LeftMovingGoriyaState(goriya);
+            goriya.currentState = new LeftMovingGoriyaState(goriya);
         }
         public void moveRight()
         {
@@ -23,15 +23,15 @@ namespace LoZClone
         }
         public void moveUp()
         {
-            goriya.CurrentState = new UpMovingGoriyaState(goriya);
+            goriya.currentState = new UpMovingGoriyaState(goriya);
         }
         public void moveDown()
         { 
-            goriya.CurrentState = new DownMovingGoriyaState(goriya);
+            goriya.currentState = new DownMovingGoriyaState(goriya);
         }
         public void attack()
         {
-            goriya.CurrentState = new AttackingGoriyaState(goriya);
+            goriya.currentState = new AttackingGoriyaState(goriya);
 
         }
 
@@ -40,7 +40,7 @@ namespace LoZClone
             this.goriya.Health--;
             if (this.goriya.Health-- == 0)
             {
-                goriya.CurrentState.die();
+                goriya.currentState.die();
             }
         }
         public void die()
@@ -51,7 +51,7 @@ namespace LoZClone
         public void update()
         {
             goriya.currentLocation = new Vector2(goriya.currentLocation.X + 3, goriya.currentLocation.Y);
-            sprite.Update();
+            sprite.update();
         }
 
         public void draw(SpriteBatch sb)

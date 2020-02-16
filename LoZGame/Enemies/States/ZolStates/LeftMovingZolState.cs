@@ -19,15 +19,15 @@ namespace LoZClone
         }
         public void moveRight()
         {
-            zol.CurrentState = new RightMovingZolState(zol);
+            zol.currentState = new RightMovingZolState(zol);
         }
         public void moveUp()
         {
-            zol.CurrentState = new UpMovingZolState(zol);
+            zol.currentState = new UpMovingZolState(zol);
         }
         public void moveDown()
         {
-            zol.CurrentState = new DownMovingZolState(zol);
+            zol.currentState = new DownMovingZolState(zol);
         }
 
         public void takeDamage()
@@ -35,18 +35,18 @@ namespace LoZClone
             this.zol.Health--;
             if (this.zol.Health-- == 0)
             {
-                zol.CurrentState.die();
+                zol.currentState.die();
             }
         }
         public void die()
         {
-            zol.CurrentState = new DeadZolState(zol);
+            zol.currentState = new DeadZolState(zol);
         }
 
         public void update()
         {
             zol.currentLocation = new Vector2(zol.currentLocation.X - 3, zol.currentLocation.Y);
-            sprite.Update();
+            sprite.update();
         }
 
         public void draw(SpriteBatch sb)

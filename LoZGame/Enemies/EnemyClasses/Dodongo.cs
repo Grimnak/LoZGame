@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace LoZClone
 {
-
+    
     public class Dodongo : IEnemy
     {
         private IEnemyState currentState;

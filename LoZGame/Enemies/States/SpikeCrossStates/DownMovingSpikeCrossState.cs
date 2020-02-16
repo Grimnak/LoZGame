@@ -15,15 +15,15 @@ namespace LoZClone
         }
         public void moveLeft()
         {
-            spikeCross.CurrentState = new LeftMovingSpikeCrossState(spikeCross);
+            spikeCross.currentState = new LeftMovingSpikeCrossState(spikeCross);
         }
         public void moveRight()
         {
-            spikeCross.CurrentState = new RightMovingSpikeCrossState(spikeCross);
+            spikeCross.currentState = new RightMovingSpikeCrossState(spikeCross);
         }
         public void moveUp()
         {
-            spikeCross.CurrentState = new UpMovingSpikeCrossState(spikeCross);
+            spikeCross.currentState = new UpMovingSpikeCrossState(spikeCross);
         }
         public void moveDown()
         {
@@ -31,7 +31,7 @@ namespace LoZClone
         }
         public void stop()
         {
-            spikeCross.CurrentState = new IdleSpikeCrossState(spikeCross);
+            spikeCross.currentState = new IdleSpikeCrossState(spikeCross);
         }
 
         public void takeDamage()
@@ -46,7 +46,7 @@ namespace LoZClone
         public void update()
         {
             spikeCross.currentLocation = new Vector2(spikeCross.currentLocation.X, spikeCross.currentLocation.Y + 3);
-            sprite.Update();
+            sprite.update();
         }
 
         public void draw(SpriteBatch sb)

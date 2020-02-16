@@ -15,15 +15,15 @@ namespace LoZClone
         }
         public void moveLeft()
         {
-            gel.CurrentState = new LeftMovingGelState(gel);
+            gel.currentState = new LeftMovingGelState(gel);
         }
         public void moveRight()
         {
-            gel.CurrentState = new RightMovingGelState(gel);
+            gel.currentState = new RightMovingGelState(gel);
         }
         public void moveUp()
         {
-            gel.CurrentState = new UpMovingGelState(gel);
+            gel.currentState = new UpMovingGelState(gel);
         }
         public void moveDown()
         {
@@ -35,7 +35,7 @@ namespace LoZClone
             this.gel.Health--;
             if (this.gel.Health-- == 0)
             {
-                gel.CurrentState.die();
+                gel.currentState.die();
             }
         }
         public void die()
@@ -46,7 +46,7 @@ namespace LoZClone
         public void update()
         {
             gel.currentLocation = new Vector2(gel.currentLocation.X, gel.currentLocation.Y + 3);
-            sprite.Update();
+            sprite.update();
         }
 
         public void draw(SpriteBatch sb)

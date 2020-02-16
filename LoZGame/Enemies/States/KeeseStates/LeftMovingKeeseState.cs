@@ -20,31 +20,31 @@ namespace LoZClone
         }
         public void moveRight()
         {
-            keese.CurrentState = new RightMovingKeeseState(keese);
+            keese.currentState = new RightMovingKeeseState(keese);
         }
         public void moveUp()
         {
-            keese.CurrentState = new UpMovingKeeseState(keese);
+            keese.currentState = new UpMovingKeeseState(keese);
         }
         public void moveDown()
         {
-            keese.CurrentState = new DownMovingKeeseState(keese);
+            keese.currentState = new DownMovingKeeseState(keese);
         }
         public void moveUpLeft()
         {
-            keese.CurrentState = new UpLeftMovingKeeseState(keese);
+            keese.currentState = new UpLeftMovingKeeseState(keese);
         }
         public void moveUpRight()
         {
-            keese.CurrentState = new UpRightMovingKeeseState(keese);
+            keese.currentState = new UpRightMovingKeeseState(keese);
         }
         public void moveDownLeft()
         {
-            keese.CurrentState = new DownLeftMovingKeeseState(keese);
+            keese.currentState = new DownLeftMovingKeeseState(keese);
         }
         public void moveDownRight()
         {
-            keese.CurrentState = new DownRightMovingKeeseState(keese);
+            keese.currentState = new DownRightMovingKeeseState(keese);
         }
 
         public void takeDamage()
@@ -52,18 +52,18 @@ namespace LoZClone
             this.keese.Health--;
             if (this.keese.Health-- == 0)
             {
-                keese.CurrentState.die();
+                keese.currentState.die();
             }
         }
         public void die()
         {
-            keese.CurrentState = new DeadKeeseState(keese);
+            keese.currentState = new DeadKeeseState(keese);
         }
 
         public void update()
         {
             keese.currentLocation = new Vector2(keese.currentLocation.X - 3, keese.currentLocation.Y);
-            sprite.Update();
+            sprite.update();
         }
 
         public void draw(SpriteBatch sb)

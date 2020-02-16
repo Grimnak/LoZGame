@@ -9,14 +9,25 @@ namespace LoZClone
         private int spriteSheetRows, spriteSheetColumns;
         private int spriteSheetWidth, spriteSheetHeight;
         private int currentFrame = 0, frameDelay = 0, frameDelayMax = 5;
+        private Vector2 location;
+        private int xVelocity = -4, yVelocity;
 
-        public FireballSprite(Texture2D spriteTexture, SpriteSheetData data)
+        public FireballSprite(Texture2D spriteTexture, SpriteSheetData data, string direction)
         {
             spriteSheet = spriteTexture;
             spriteSheetWidth = data.Width;
             spriteSheetHeight = data.Height;
             spriteSheetRows = data.Rows;
             spriteSheetColumns = data.Columns;
+
+            if (direction.Equals("up"))
+            {
+                yVelocity = -2;
+            }
+            else if (direction.Equals("down"))
+            {
+                yVelocity = 2;
+            }
         }
 
         public void Update()
@@ -25,6 +36,8 @@ namespace LoZClone
             if (frameDelay == frameDelayMax)
             {
                 currentFrame++;
+                location.X += xVelocity;
+                location.Y += yVelocity;
                 if (currentFrame > 3)
                 {
                     currentFrame = 0;
@@ -33,7 +46,7 @@ namespace LoZClone
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint)
+        public void Draw(SpriteBatch spriteBatch, Color spriteTint)
         {
             int width = spriteSheet.Width / spriteSheetColumns;
             int height = spriteSheet.Height / spriteSheetRows;

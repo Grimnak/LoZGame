@@ -19,15 +19,15 @@ namespace LoZClone
         }
         public void moveRight()
         {
-            wallMaster.CurrentState = new RightMovingWallMasterState(wallMaster);
+            wallMaster.currentState = new RightMovingWallMasterState(wallMaster);
         }
         public void moveUp()
         {
-            wallMaster.CurrentState = new UpMovingWallMasterState(wallMaster);
+            wallMaster.currentState = new UpMovingWallMasterState(wallMaster);
         }
         public void moveDown()
         {
-            wallMaster.CurrentState = new DownMovingWallMasterState(wallMaster);
+            wallMaster.currentState = new DownMovingWallMasterState(wallMaster);
         }
 
         public void takeDamage()
@@ -35,18 +35,18 @@ namespace LoZClone
             this.wallMaster.Health--;
             if (this.wallMaster.Health-- == 0)
             {
-                wallMaster.CurrentState.die();
+                wallMaster.currentState.die();
             }
         }
         public void die()
         {
-            wallMaster.CurrentState = new DeadWallMasterState(wallMaster);
+            wallMaster.currentState = new DeadWallMasterState(wallMaster);
         }
 
         public void update()
         {
             wallMaster.currentLocation = new Vector2(wallMaster.currentLocation.X - 3, wallMaster.currentLocation.Y);
-            sprite.Update();
+            sprite.update();
         }
 
         public void draw(SpriteBatch sb)
