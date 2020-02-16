@@ -57,7 +57,7 @@ namespace LoZClone
 
         private Texture2D oldMan;
         private SpriteSheetData oldManData = new SpriteSheetData("oldMan", 50, 50, 1, 1);
-        private Texture2D Merchant;
+        private Texture2D merchant;
         private SpriteSheetData merchantData = new SpriteSheetData("merchant", 50, 50, 1, 1);
         private Texture2D flame;
         private SpriteSheetData flameData = new SpriteSheetData("fire", 50, 50, 1, 2);
@@ -81,44 +81,44 @@ namespace LoZClone
 
         public void LoadAllTextures(ContentManager content)
         {
-            stalfos = content.Load<Texture2D>(stalfosData.spriteFileName);
+            stalfos = content.Load<Texture2D>(stalfosData.FilePath);
 
-            downGoriya = content.Load<Texture2D>(downGoriyaData.spriteFileName);
-            upGoriya = content.Load<Texture2D>(upGoriyaData.spriteFileName);
-            leftGoriya = content.Load<Texture2D>(leftGoriyaData.spriteFileName);
-            rightGoriya = content.Load<Texture2D>(rightGoriyaData.spriteFileName);
+            downGoriya = content.Load<Texture2D>(downGoriyaData.FilePath);
+            upGoriya = content.Load<Texture2D>(upGoriyaData.FilePath);
+            leftGoriya = content.Load<Texture2D>(leftGoriyaData.FilePath);
+            rightGoriya = content.Load<Texture2D>(rightGoriyaData.FilePath);
 
-            leftWallMaster = content.Load<Texture2D>(leftWallMasterData.spriteFileName);
-            rightWallMaster = content.Load<Texture2D>(rightWallMasterData.spriteFileName);
+            leftWallMaster = content.Load<Texture2D>(leftWallMasterData.FilePath);
+            rightWallMaster = content.Load<Texture2D>(rightWallMasterData.FilePath);
 
-            leftRope = content.Load<Texture2D>(leftRopeData.spriteFileName);
-            rightRope = content.Load<Texture2D>(rightRopeData.spriteFileName);
+            leftRope = content.Load<Texture2D>(leftRopeData.FilePath);
+            rightRope = content.Load<Texture2D>(rightRopeData.FilePath);
 
-            gel = content.Load<Texture2D>(gelData.spriteFileName);
-            zol = content.Load<Texture2D>(zolData.spriteFileName);
+            gel = content.Load<Texture2D>(gelData.FilePath);
+            zol = content.Load<Texture2D>(zolData.FilePath);
 
-            spikeCross = content.Load<Texture2D>(spikeCrossData.spriteFileName);
+            spikeCross = content.Load<Texture2D>(spikeCrossData.FilePath);
 
-            keese = content.Load<Texture2D>(keeseData.spriteFileName);
+            keese = content.Load<Texture2D>(keeseData.FilePath);
 
-            dragon = content.Load<Texture2D>(dragonData.spriteFileName);
-            damagedDragon = content.Load<Texture2D>(damagedDragonData.spriteFileName);
+            dragon = content.Load<Texture2D>(dragonData.FilePath);
+            damagedDragon = content.Load<Texture2D>(damagedDragonData.FilePath);
 
-            downDodongo = content.Load<Texture2D>(downDodongoData.spriteFileName);
-            upDodongo = content.Load<Texture2D>(upDodongoData.spriteFileName);
-            leftDodongo = content.Load<Texture2D>(leftDodongoData.spriteFileName);
-            rightDodongo = content.Load<Texture2D>(rightDodongoData.spriteFileName);
+            downDodongo = content.Load<Texture2D>(downDodongoData.FilePath);
+            upDodongo = content.Load<Texture2D>(upDodongoData.FilePath);
+            leftDodongo = content.Load<Texture2D>(leftDodongoData.FilePath);
+            rightDodongo = content.Load<Texture2D>(rightDodongoData.FilePath);
 
-            oldMan = content.Load<Texture2D>(oldManData.spriteFileName);
-            merchant = content.Load<Texture2D>(merchantData.spriteFileName);
-            flame = content.Load<Texture2D>(flameData.spriteFileName);
+            oldMan = content.Load<Texture2D>(oldManData.FilePath);
+            merchant = content.Load<Texture2D>(merchantData.FilePath);
+            flame = content.Load<Texture2D>(flameData.FilePath);
         }
 
         //Stalfos Sprites
 
         public StalfosSprite createStalfosSprite()
         {
-            return new StalfosSprite(stalfos);
+            return new StalfosSprite(stalfos, stalfosData);
         }
 
 
@@ -126,121 +126,121 @@ namespace LoZClone
 
         public GoriyaDownSprite createDownMovingGoriyaSprite()
         {
-            return new GoriyaDownSprite(downGoriya);
+            return new GoriyaDownSprite(downGoriya, downGoriyaData);
         }
 
         public GoriyaUpSprite createUpMovingGoriyaSprite()
         {
-            return new GoriyaUpSprite(upGoriya);
+            return new GoriyaUpSprite(upGoriya, upGoriyaData);
         }
 
         public GoriyaLeftSprite createLeftMovingGoriyaSprite()
         {
-            return new GoriyaLeftSprite(leftGoriya);
+            return new GoriyaLeftSprite(leftGoriya, leftGoriyaData);
         }
 
         public GoriyaRightSprite createRightMovingGoriyaSprite()
         {
-            return new GoriyaRightSprite(rightGoriya);
+            return new GoriyaRightSprite(rightGoriya, rightGoriyaData);
         }
 
         //Wallmaster Sprites
 
         public WallMasterLeftSprite createSpriteLeftMovingWallMaster()
         {
-            return new WallMasterLeftSprite(leftWallMaster);
+            return new WallMasterLeftSprite(leftWallMaster, leftWallMasterData);
         }
 
         public WallMasterRightSprite createRightMovingWallMasterSprite()
         {
-            return new WallMasterRightSprite(rightWallMaster);
+            return new WallMasterRightSprite(rightWallMaster, rightWallMasterData);
         }
 
         //Rope sprites
 
         public RopeLeftSprite createLeftMovingRopeSprite()
         {
-            return new RopeLeftSprite(leftRope);
+            return new RopeLeftSprite(leftRope, leftRopeData);
         }
 
         public RopeRightSprite createRightMovingRopeSprite()
         {
-            return new RopeRightSprite(rightRope);
+            return new RopeRightSprite(rightRope, rightRopeData);
         }
 
         //Gel Sprites
 
         public GelSprite createGelSprite()
         {
-            return new GelSprite(gel);
+            return new GelSprite(gel, gelData);
         }
 
         // Zol Sprites
         public ZolSprite createZolSprite()
         {
-            return new ZolSprite(zol);
+            return new ZolSprite(zol, zolData);
         }
 
         //SpikeCrossSprite
         public SpikeCrossSprite createSpikeCrossSprite()
         {
-            return new SpikeCrossSprite(spikeCross);
+            return new SpikeCrossSprite(spikeCross, spikeCrossData);
         }
 
         //Keese Sprites
 
         public KeeseSprite createDownKeeseSprite()
         {
-            return new KeeseSprite(keese);
+            return new KeeseSprite(keese, keeseData);
         }
 
         //Dragon Sprites
         public DragonSprite createDragonSprite()
         {
-            return new DragonSprite(dragon);
+            return new DragonSprite(dragon, dragonData);
         }
         public DragonSprite createDamagedDragonSprite()
         {
-            return new DragonDamagedSprite(damagedDragon);
+            return new DragonDamagedSprite(damagedDragon, damagedDragonData);
         }
         public FireballSprite createLeftFireBallSprite()
         {
-            return new FireballSprite(fireball, "left");
+            return new FireballSprite(fireball, fireballData, "left");
         }
 
         public FireballSprite createDownLeftFireBallSprite()
         {
-            return new FireballSprite(fireball, "down");
+            return new FireballSprite(fireball, fireballData, "down");
         }
 
         public FireballSprite createUpLeftFireBallSprite()
         {
-            return new FireballSprite(fireball, "up");
+            return new FireballSprite(fireball, fireballData, "up");
         }
 
         //DodongoSprites
         public DodongoDownSprite createDownMovingDodongoSprite()
         {
-            return new DodongoDownSprite(downDodongo);
+            return new DodongoDownSprite(downDodongo, downDodongoData);
         }
 
         public DodongoUpSprite createUpMovingDodongoSprite()
         {
-            return new DodongoUpSprite(upDodongo);
+            return new DodongoUpSprite(upDodongo, upDodongoData);
         }
 
         public DodongoLeftSprite createLeftMovingDodongoSprite()
         {
-            return new DodongoLeftSprite(leftDodongo);
+            return new DodongoLeftSprite(leftDodongo, leftDodongoData);
         }
 
         public DodongoRightSprite createRightMovingDodongoSprite()
         {
-            return new DodongoRightSprite(rightDodongo);
+            return new DodongoRightSprite(rightDodongo, rightDodongoData);
         }
 
         //Old Man Sprite
-        public OldManSprite createOldManSprite()
+        /*public OldManSprite createOldManSprite()
         {
             return new OldManSprite(oldMan);
         }
@@ -256,6 +256,6 @@ namespace LoZClone
         {
             return new FlameSprite(flame);
         }
-
+        */
     }
 }

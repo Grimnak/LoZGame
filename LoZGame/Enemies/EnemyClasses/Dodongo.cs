@@ -15,6 +15,13 @@ namespace LoZClone
         private int health = 10;
         public Vector2 currentLocation;
         private LoZGame game;
+        public IEnemyState State
+        {
+            set
+            {
+                currentState = value;
+            }
+        }
 
         public Dodongo(LoZGame game)
         {

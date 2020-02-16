@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public interface IDodongoprite
+    public interface IDodongoSprite
     {
-        void Update();
-        void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint);
+        void update();
+        void draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint);
     }
 }
