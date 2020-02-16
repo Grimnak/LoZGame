@@ -11,6 +11,13 @@ namespace LoZClone
 {
     class BlueCandleProjectile : IProjectile
     {
+        private static int linkSize = 32;
+        private static int width = 20;
+        private static int height = 20;
+        private static int lifeTimeMax = 210;
+        private static int travelDistance = 64;
+        private static int frameDelay = 10;
+
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle firstFrame;
         private Rectangle secondFrame;
@@ -20,10 +27,6 @@ namespace LoZClone
         private Vector2 destination;
         private int lifeTime;
         private int distTravelled;
-
-        private static int lifeTimeMax = 210;
-        private static int travelDistance = 64;
-        private static int frameDelay = 10;
 
         private int instance;
         private bool expired;
@@ -46,22 +49,22 @@ namespace LoZClone
             this.hostile = false;
             if (direction.Equals("Up"))
             {
-                location = new Vector2(loc.X - 5, loc.Y - 21);
+                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y - linkSize);
                 destination = new Vector2(this.location.X, this.location.Y - travelDistance);
             }
             else if (direction.Equals("Left"))
             {
-                location = new Vector2(loc.X - 32, loc.Y - 5);
+                location = new Vector2(loc.X - linkSize, loc.Y - ((width * scale) - linkSize) / 2);
                 destination = new Vector2(this.location.X - travelDistance, this.location.Y);
             }
             else if (direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + 32, loc.Y - 5);
+                location = new Vector2(loc.X + linkSize, loc.Y - ((width * scale) - linkSize) / 2);
                 destination = new Vector2(this.location.X + travelDistance, this.location.Y);
             }
             else
             {
-                location = new Vector2(loc.X - 5, loc.Y + 21);
+                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y + linkSize);
                 destination = new Vector2(this.location.X, this.location.Y + travelDistance);
             }
         }

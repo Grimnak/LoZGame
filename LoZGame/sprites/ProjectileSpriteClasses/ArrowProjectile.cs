@@ -12,9 +12,13 @@ namespace LoZClone
     class ArrowProjectile : IProjectile
     {
         private static int travelRate = 7;
+        private static int linkSize = 32;
+        private static int width = 5;
+        private static int height = 16;
 
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frame;
+        private Vector2 origin;
         private int lifeTime;
         private int scale;
         private string direction;
@@ -38,30 +42,31 @@ namespace LoZClone
             this.hostile = false;
             this.instance = instance;
             expired = false;
+            origin = new Vector2(width * scale / 2, height * scale / 2);
             if (this.direction.Equals("Up"))
             {
-                location = new Vector2(loc.X + 16, loc.Y);
+                location = new Vector2(loc.X - ((width * scale) - linkSize), loc.Y);
                 rotation = 0;
                 dX = 0;
                 dY = -1;
             }
             else if (this.direction.Equals("Left"))
             {
-                location = new Vector2(loc.X, loc.Y + 16);
+                location = new Vector2(loc.X, loc.Y - ((width * scale) - linkSize) / 2);
                 rotation = -1 * MathHelper.PiOver2;
                 dX = -1;
                 dY = 0;
             }
             else if (this.direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + 32, loc.Y + 16);
+                location = new Vector2(loc.X + linkSize, loc.Y - ((width * scale) - linkSize));
                 rotation = MathHelper.PiOver2;
                 dX = 1;
                 dY = 0;
             }
             else
             {
-                location = new Vector2(loc.X + 16, loc.Y + 32);
+                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y + linkSize);
                 rotation = MathHelper.Pi;
                 dX = 0;
                 dY = 1;
@@ -90,7 +95,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, new Vector2(2, 8), scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, origin, scale, SpriteEffects.None, 0f);
         }
     }
 }
