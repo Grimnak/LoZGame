@@ -10,6 +10,12 @@ namespace LoZClone
         {
             set { playerState = value; }
         }
+        private string currentWeapon;
+        public string CurrentWeapon
+        {
+            get { return currentWeapon;  }
+            set { currentWeapon = value; }
+        }
         private string currentColor;
         public string CurrentColor
         {
@@ -63,6 +69,7 @@ namespace LoZClone
             this.game = game;
             currentColor = "Green";
             currentDirection = "Down";
+            currentWeapon = "Wood";
             currentLocation = new Vector2(150, 200);
             currentTint = Color.White;
             currentSpeed = 2;
