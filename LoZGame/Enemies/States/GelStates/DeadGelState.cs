@@ -10,7 +10,7 @@ namespace LoZClone
 
         public DeadGelState(Gel gel)
         {
-            sprite = EnemySpriteFactory.Instance.createDeadGelSprite();
+            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
             this.gel = null;
         }
         public void moveLeft()

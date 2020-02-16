@@ -11,7 +11,7 @@ namespace LoZClone
         public DeadKeeseState(Keese keese)
         {
             this.keese = keese;
-            sprite = EnemySpriteFactory.Instance.createDeadKeeseSprite();
+            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
         }
 
         public void moveLeft()

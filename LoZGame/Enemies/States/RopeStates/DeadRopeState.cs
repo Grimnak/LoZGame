@@ -11,7 +11,7 @@ namespace LoZClone
         public DeadRopeState(Rope rope)
         {
             this.rope = rope;
-            sprite = EnemySpriteFactory.Instance.createDeadRopeSprite();
+            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
         }
         public void moveLeft()
         {

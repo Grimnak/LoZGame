@@ -11,7 +11,7 @@ namespace LoZClone
         public DeadGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
-            sprite = EnemySpriteFactory.Instance.createDeadGoriyaSprite();
+            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
         }
         public void moveLeft()
         {

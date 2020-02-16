@@ -9,7 +9,7 @@ namespace LoZClone
 
         public DeadDragonState(Dragon dragon)
         {
-            sprite = EnemySpriteFactory.Instance.createDeadSprite();
+            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
             this.dragon = null;
         }
         public void moveLeft()

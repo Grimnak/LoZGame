@@ -47,13 +47,13 @@ namespace LoZClone
         private SpriteSheetData fireballData = new SpriteSheetData("fireball", 35, 35, 4, 1);
 
         private Texture2D downDodongo;
-        private SpriteSheetData downDodongoData = new SpriteSheetData("dodongoDown", 50, 50, 1, 3);
+        private SpriteSheetData downDodongoData = new SpriteSheetData("dodongoDown", 50, 50, 1, 2);
         private Texture2D upDodongo;
-        private SpriteSheetData upDodongoData = new SpriteSheetData("dodongoUp", 50, 50, 1, 3);
+        private SpriteSheetData upDodongoData = new SpriteSheetData("dodongoUp", 50, 50, 1, 2);
         private Texture2D leftDodongo;
-        private SpriteSheetData leftDodongoData = new SpriteSheetData("dodongoLeft", 70, 50, 1, 3);
+        private SpriteSheetData leftDodongoData = new SpriteSheetData("dodongoLeft", 70, 50, 1, 2);
         private Texture2D rightDodongo;
-        private SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", 70, 50, 1, 3);
+        private SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", 70, 50, 1, 2);
 
         private Texture2D oldMan;
         private SpriteSheetData oldManData = new SpriteSheetData("oldMan", 50, 50, 1, 1);
@@ -61,6 +61,9 @@ namespace LoZClone
         private SpriteSheetData merchantData = new SpriteSheetData("merchant", 50, 50, 1, 1);
         private Texture2D flame;
         private SpriteSheetData flameData = new SpriteSheetData("fire", 50, 50, 1, 2);
+
+        private Texture2D deadEnemy;
+        private SpriteSheetData deadEnemyData = new SpriteSheetData("enemyDeath", 50, 50, 1, 6);
 
 
 
@@ -112,6 +115,8 @@ namespace LoZClone
             oldMan = content.Load<Texture2D>(oldManData.FilePath);
             merchant = content.Load<Texture2D>(merchantData.FilePath);
             flame = content.Load<Texture2D>(flameData.FilePath);
+
+            deadEnemy = content.Load<Texture2D>(deadEnemyData.FilePath);
         }
 
         //Stalfos Sprites
@@ -239,23 +244,28 @@ namespace LoZClone
             return new DodongoRightSprite(rightDodongo, rightDodongoData);
         }
 
-        //Old Man Sprite
-        /*public OldManSprite createOldManSprite()
+        // Old Man Sprite
+        public OldManSprite createOldManSprite()
         {
-            return new OldManSprite(oldMan);
+            return new OldManSprite(oldMan, oldManData);
         }
 
         //Merchant Sprite
         public MerchantSprite createMerchantSprite()
         {
-            return new MerchantSprite(Merchant);
+            return new MerchantSprite(merchant, merchantData);
         }
 
         //Flame Sprite
         public FlameSprite createFlameSprite()
         {
-            return new FlameSprite(flame);
+            return new FlameSprite(flame, flameData);
         }
-        */
+
+        public DeadEnemySprite createDeadEnemySprite()
+        {
+            return new DeadEnemySprite(deadEnemy, deadEnemyData);
+        }
+
     }
 }

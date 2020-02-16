@@ -11,7 +11,7 @@ namespace LoZClone
         public DeadWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
-            // sprite = EnemySpriteFactory.Instance.createDeadWallMasterSprite();
+            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
         }
         public void moveLeft()
         {

@@ -11,7 +11,7 @@ namespace LoZClone
         public DeadZolState(Zol zol)
         {
             this.zol = zol;
-            sprite = EnemySpriteFactory.Instance.createDeadZolSprite();
+            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
         }
         public void moveLeft()
         {

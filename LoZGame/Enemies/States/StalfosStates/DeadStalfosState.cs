@@ -11,7 +11,7 @@ namespace LoZClone
         public DeadStalfosState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
-            sprite = EnemySpriteFactory.Instance.createDeadStalfosSprite();
+            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
         }
         public void moveLeft()
         {

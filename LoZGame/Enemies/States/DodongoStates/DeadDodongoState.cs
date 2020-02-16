@@ -11,7 +11,7 @@ namespace LoZClone
 
         public DeadDodongoState(LoZGame game, Dodongo dodongo)
         {
-            sprite = EnemySpriteFactory.Instance.createDeadDodongoSprite();
+            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
             this.dodongo = null;
         }
         public void moveLeft()
