@@ -1,4 +1,4 @@
-# CSE 3902 - 9:10a Section - Team 3 - READMe
+# CSE 3902 - 9:10a Section - Team 3 - Readme
 
 Developer version of Legend of Zelda NES emulator. Draws the player, enemies, items, blocks, and projectiles that will be used in the final game without collision detection.
 
