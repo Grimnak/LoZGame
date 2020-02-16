@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public class IEnemyState
+    public interface IEnemyState
     {
         void moveLeft();
         void moveRight();
@@ -11,6 +12,6 @@ namespace LoZClone
         void takeDamage();
         void die();
         void update();
+        void draw(SpriteBatch spriteBatch);
     }
-
 }

@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace LoZClone
+{
+    
+    public class Dodongo : IEnemy
+    {
+        private IEnemyState currentState;
+        private int health = 10;
+        public Vector2 currentLocation;
+        private LoZGame game;
+
+        public Dodongo(LoZGame game)
+        {
+            currentState = new LeftMovingDodongoState(this);
+            currentLocation = new Vector2(400, 200);
+            this.game = game;
+
+            this.currentState = DeadDodongoState(game, this);
+        }
+
+        public void moveLeft()
+        {
+            currentState.moveLeft();
+        }
+        public void moveRight()
+        {
+            currentState.moveRight();
+        }
+        public void moveUp()
+        {
+            currentState.moveUp();
+        }
+        public void moveDown()
+        {
+            currentState.moveDown();
+        }
+        public void attack()
+        {
+            //
+        }
+        public void takeDamage()
+        {
+            currentState.takeDamage();
+        }
+        public void die()
+        {
+            currentState.die();
+        }
+        public void update()
+        {
+            currentState.update();
+        }
+        public void draw(SpriteBatch spriteBatch)
+        {
+            currentState.draw(sb);
+        }
+
+        public IEnemyState CurrentState
+        {
+            get { return currentState; }
+            set { currentState = value; }
+
+        }
+
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
+    }
+}
+
+

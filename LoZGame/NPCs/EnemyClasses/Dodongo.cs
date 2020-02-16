@@ -1,55 +1,74 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
+using System;
+using Microsoft.Xna.Framework;
+
 namespace LoZClone
 {
+
     public class Dodongo : IEnemy
     {
-        public IEnemyState state;
-        public int health = 10;
-        public Vector2 location;
-    }
-    public Dodongo()
-    {
-        state = new LeftMovingDodongoState(this);
-        location = new Vector2(400, 200);
-    }
+        private IEnemyState currentState;
+        private int health = 10;
+        public Vector2 currentLocation;
 
-    public void moveLeft()
-    {
-        state.moveLeft();
-    }
-    public void moveRight()
-    {
-        state.moveRight();
-    }
-    public void moveUp()
-    {
-        state.moveUp();
-    }
-    public void moveDown()
-    {
-        state.moveDown();
-    }
-    public void attack()
-    {
-        //
-    }
-    public void takeDamage()
-    {
-        state.takeDamage();
-    }
-    public void die()
-    {
-        state.die();
-    }
-    public void update()
-    {
-        state.update();
-    }
-    public void draw()
-    {
+        public Dodongo()
+        {
+            currentState = new LeftMovingDodongoState(this);
+            currentLocation = new Vector2(400, 200);
+        }
 
+        public void moveLeft()
+        {
+            currentState.moveLeft();
+        }
+        public void moveRight()
+        {
+            currentState.moveRight();
+        }
+        public void moveUp()
+        {
+            currentState.moveUp();
+        }
+        public void moveDown()
+        {
+            currentState.moveDown();
+        }
+        public void attack()
+        {
+            //
+        }
+        public void takeDamage()
+        {
+            currentState.takeDamage();
+        }
+        public void die()
+        {
+            currentState.die();
+        }
+        public void update()
+        {
+            currentState.update();
+        }
+        public void draw()
+        {
+
+        }
+
+        public IEnemyState CurrentState
+        {
+            get { return currentState; }
+            set { currentState = value; }
+
+        }
+
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
     }
 }
+
 

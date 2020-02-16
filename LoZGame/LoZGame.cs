@@ -12,6 +12,7 @@ namespace LoZClone
             get { return spriteBatch; }
         }
         private IPlayer link;
+        private IEnemy enemy;
         private CommandLoader commandLoader;
         private IController keyboardController;
         private ItemManager itemManager;

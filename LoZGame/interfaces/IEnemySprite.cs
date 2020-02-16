@@ -5,8 +5,8 @@ namespace LoZClone
 {
     public interface IEnemySprite
     {
-        public void Update();
-        public void Draw(SpriteBatch spriteBatch, Color spriteTint);
-        public void Attack();
+        void Update();
+        void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint);
+        void Attack();
     }
 }

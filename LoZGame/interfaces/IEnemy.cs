@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-public class IEnemy
+public interface IEnemy
 {
-    public void moveLeft();
-    public void moveRight();
-    public void moveUp();
-    public void moveDown();
-    public void attack();
-    public void takeDamage();
-    public void die();
-    public void update();
-    public void draw();
+    void moveLeft();
+    void moveRight();
+    void moveUp();
+    void moveDown();
+    void attack();
+    void takeDamage();
+    void die();
+    void update();
+    void draw(SpriteBatch spriteBatch);
 }
