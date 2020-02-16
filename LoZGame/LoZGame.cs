@@ -8,7 +8,7 @@ namespace LoZClone
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private static float UpdatesPerSecond = 300;
+        private static float UpdatesPerSecond = 50;
         public SpriteBatch SpriteBatch
         {
             get { return spriteBatch; }
@@ -44,8 +44,8 @@ namespace LoZClone
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
-            itemManager.loadSprites(300, 240);
-            blockManager.loadSprites(500, 240);
+            itemManager.loadSprites(384, 184);
+            blockManager.loadSprites(550, 184);
         }
         protected override void UnloadContent()
         {
@@ -65,7 +65,7 @@ namespace LoZClone
             spriteBatch.Begin();
             link.Draw();
             itemManager.currentItem.Draw(spriteBatch);
-            blockManager.currentBlock.Draw(spriteBatch, new Vector2(500, 240), Color.White);
+            blockManager.currentBlock.Draw(spriteBatch, new Vector2(500, 184), Color.White);
             entityManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
