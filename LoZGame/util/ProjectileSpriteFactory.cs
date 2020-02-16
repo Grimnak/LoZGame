@@ -64,11 +64,11 @@ namespace LoZClone
         {
             return new TriforceProjectile(projectileSpriteSheet, loc, scale, instance);
         }
-        public IProjectile Boomerang(Link player, int scale, int instance)
+        public IProjectile Boomerang(IPlayer player, int scale, int instance)
         {
             return new BoomerangProjectile(projectileSpriteSheet, player, scale, instance);
         }
-        public IProjectile MagicBoomerang(Link player, int scale, int instance)
+        public IProjectile MagicBoomerang(IPlayer player, int scale, int instance)
         {
             return new MagicBoomerangProjectile(projectileSpriteSheet, player, scale, instance);
         }
@@ -92,7 +92,7 @@ namespace LoZClone
         {
             return new BlueCandleProjectile(fireProjectileSpriteSheet, loc, direction, scale, instance);
         }
-        public IProjectile SwordBeam(Link player, int scale, int instance, ExplosionManager explosion)
+        public IProjectile SwordBeam(IPlayer player, int scale, int instance, ExplosionManager explosion)
         {
             return new SwordBeamProjectile(swordBeamSpriteSheet, player, scale, instance, explosion);
         }

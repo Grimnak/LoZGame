@@ -5,13 +5,13 @@ namespace LoZClone
     public class MoveLeftState : IPlayerState
     {
         private LoZGame game;
-        private Link player;
+        private IPlayer player;
         private ISprite sprite;
 
         public MoveLeftState(LoZGame gameInstance, IPlayer playerInstance)
         {
             game = gameInstance;
-            player = (Link)playerInstance;
+            player = playerInstance;
             player.CurrentDirection = "Left";
             sprite = createCorrectSprite();
         }

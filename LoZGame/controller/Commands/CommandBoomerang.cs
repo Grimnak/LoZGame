@@ -12,10 +12,10 @@
         }
         public void execute()
         {
-            if (!entity.ProjectileManager.BoomerangOut && !((Link)player).IsDead)
+            if (!entity.ProjectileManager.BoomerangOut && !player.IsDead)
             {
                 player.useItem(ProjectileManager.MaxWaitTime);
-                entity.ProjectileManager.addItem(entity.ProjectileManager.Boomerang, (Link)player);
+                entity.ProjectileManager.addItem(entity.ProjectileManager.Boomerang, player);
             }
         }
         public int Priority

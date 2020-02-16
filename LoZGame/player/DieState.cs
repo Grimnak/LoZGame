@@ -5,13 +5,13 @@ namespace LoZClone
     public class DieState : IPlayerState
     {
         private LoZGame game;
-        private Link player;
+        private IPlayer player;
         private ISprite sprite;
 
         public DieState(LoZGame game, IPlayer playerInstance)
         {
             this.game = game;
-            player = (Link)playerInstance;
+            player = playerInstance;
             player.IsDead = true;
             sprite = createCorrectSprite();
         }

@@ -53,7 +53,7 @@ namespace LoZClone
         public int Bomb { get { return (int)ProjectileType.Bomb; } }
         public int Triforce { get { return (int)ProjectileType.Triforce; } }
         public int Swordbeam { get { return (int)ProjectileType.SwordBeam; }}
-        public void addItem(int itemType, Link player)
+        public void addItem(int itemType, IPlayer player)
         {
             projectileId++;
             projectileListSize++;

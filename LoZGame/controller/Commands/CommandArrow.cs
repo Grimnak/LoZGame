@@ -2,8 +2,8 @@
 {
     public class CommandArrow: ICommand
     {
-        IPlayer player;
-        EntityManager entity;
+        private IPlayer player;
+        private EntityManager entity;
         private static int priority = 5;
         public CommandArrow(IPlayer player, EntityManager entity)
         {
@@ -12,10 +12,10 @@
         }
         public void execute()
         {
-            if (!((Link)player).IsDead)
+            if (!player.IsDead)
             {
                 player.useItem(ProjectileManager.MaxWaitTime);
-                entity.ProjectileManager.addItem(entity.ProjectileManager.Arrow, ((Link)player));
+                entity.ProjectileManager.addItem(entity.ProjectileManager.Arrow, player);
             }
         }
         public int Priority

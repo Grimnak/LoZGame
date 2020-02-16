@@ -3,14 +3,14 @@ namespace LoZClone
     public class UseItemState : IPlayerState
     {
         private LoZGame game;
-        private Link player;
+        private IPlayer player;
         private ISprite sprite;
         private int lockoutTimer = 0;
 
         public UseItemState(LoZGame game, IPlayer playerInstance, int waitTime)
         {
             this.game = game;
-            this.player = (Link)playerInstance;
+            player = playerInstance;
             lockoutTimer = waitTime; //wait period
             sprite = createCorrectSprite();
         }

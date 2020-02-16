@@ -43,7 +43,7 @@ namespace LoZClone
         private static int xBound = 800, yBound = 480;
         
 
-        public SwordBeamProjectile(Texture2D texture, Link player, int scale, int instance, ExplosionManager explosion)
+        public SwordBeamProjectile(Texture2D texture, IPlayer player, int scale, int instance, ExplosionManager explosion)
         {
             Texture = texture;
             frameOne = new Rectangle(0, 0, width, height);
