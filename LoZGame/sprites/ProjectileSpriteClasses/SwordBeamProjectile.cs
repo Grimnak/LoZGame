@@ -14,6 +14,7 @@ namespace LoZClone
         private static int linkSize = 32;
         private static int width = 15;
         private static int height = 16;
+        private static int offset = 4;
 
         private Texture2D Texture;      // the texture to pull frames from
         private Rectangle frameOne;
@@ -30,6 +31,7 @@ namespace LoZClone
         private int instance;
         private bool expired;
         private Vector2 tip;
+        private Vector2 origin;
         private static int delay = 10;
         public Vector2 location { get; set; }
         private bool hostile;
@@ -45,6 +47,8 @@ namespace LoZClone
 
         public SwordBeamProjectile(Texture2D texture, IPlayer player, int scale, int instance, ExplosionManager explosion)
         {
+
+            origin = new Vector2(width / 2, height / 2);
             Texture = texture;
             frameOne = new Rectangle(0, 0, width, height);
             frameTwo = new Rectangle(0, 16, width, height);
@@ -57,14 +61,14 @@ namespace LoZClone
             this.direction = player.CurrentDirection;
             Vector2 loc = player.CurrentLocation;
             this.hostile = false;
-            
+
             if (this.direction.Equals("Up"))
             {
                 location = new Vector2(loc.X + (linkSize - width * scale / 2), loc.Y);
                 rotation = MathHelper.Pi;
                 dX = 0;
                 dY = -1;
-                tip = new Vector2((width * scale) / 2, 0);
+                tip = new Vector2(width - offset, 0);
             }
             else if (this.direction.Equals("Left"))
             {
@@ -72,7 +76,7 @@ namespace LoZClone
                 rotation = 1 * MathHelper.PiOver2;
                 dX = -1;
                 dY = 0;
-                tip = new Vector2(0, (width * scale) / 2);
+                tip = new Vector2(-1 * offset, width);
             }
             else if (this.direction.Equals("Right"))
             {
@@ -80,7 +84,7 @@ namespace LoZClone
                 rotation = -1 * MathHelper.PiOver2;
                 dX = 1;
                 dY = 0;
-                tip = new Vector2(height * scale, (width * scale) / 2 );
+                tip = new Vector2(height * scale - offset, width);
             }
             else
             {
@@ -88,9 +92,8 @@ namespace LoZClone
                 rotation = 0;
                 dX = 0;
                 dY = 1;
-                tip = new Vector2((width * scale) / 2, height * scale);
+                tip = new Vector2(width - offset, height * scale);
             }
-
             this.instance = instance;
             expired = false;
         }
@@ -156,7 +159,7 @@ namespace LoZClone
         {
             if (lifeTime < maxLifeTime - delay)
             {
-                spriteBatch.Draw(Texture, this.location, currentFrame, Color.White, rotation, new Vector2(8, 8), scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(Texture, this.location, currentFrame, Color.White, rotation, origin, scale, SpriteEffects.None, 0f);
             }
         }
     }

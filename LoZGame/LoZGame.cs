@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LoZClone
 {
@@ -7,6 +8,7 @@ namespace LoZClone
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private static float UpdatesPerSecond = 50;
         public SpriteBatch SpriteBatch
         {
             get { return spriteBatch; }
@@ -23,6 +25,7 @@ namespace LoZClone
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
+            this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
         }
         protected override void Initialize()
         {
@@ -41,8 +44,8 @@ namespace LoZClone
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
-            itemManager.loadSprites(300, 240);
-            blockManager.loadSprites(500, 240);
+            itemManager.loadSprites(384, 184);
+            blockManager.loadSprites(550, 184);
         }
         protected override void UnloadContent()
         {
@@ -62,7 +65,7 @@ namespace LoZClone
             spriteBatch.Begin();
             link.Draw();
             itemManager.currentItem.Draw(spriteBatch);
-            blockManager.currentBlock.Draw(spriteBatch, new Vector2(500, 240), Color.White);
+            blockManager.currentBlock.Draw(spriteBatch, new Vector2(500, 184), Color.White);
             entityManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
