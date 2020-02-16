@@ -136,36 +136,41 @@ namespace LoZClone
             this.item = (ProjectileType)item;
             projectileId++;
             projectileListSize++;
-            switch (this.item)
+            if (!spamLock)
             {
-                case (ProjectileType.Boomerang):
-                    if (!boomerangLock)
-                    {
-                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Boomerang(player, scale, projectileId));
-                        boomerangLock = true;
-                        boomerangInstance = projectileId;
-                    }
-                    break;
-                case (ProjectileType.MagicBoomerang):
-                    if (!boomerangLock)
-                    {
-                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.MagicBoomerang(player, scale, projectileId));
-                        boomerangLock = true;
-                        boomerangInstance = projectileId;
-                    }
-                    
-                    break;
-                case (ProjectileType.SwordBeam):
-                    if (!swordLock)
-                    {
-                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.SwordBeam(player, scale, projectileId, this));
-                        swordLock = true;
-                        swordInstance = projectileId;
-                    }
-                    
-                    break;
-                default:
-                    break;
+                spamCounter = 30;
+                spamLock = true;
+                switch (this.item)
+                {
+                    case (ProjectileType.Boomerang):
+                        if (!boomerangLock)
+                        {
+                            this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Boomerang(player, scale, projectileId));
+                            boomerangLock = true;
+                            boomerangInstance = projectileId;
+                        }
+                        break;
+                    case (ProjectileType.MagicBoomerang):
+                        if (!boomerangLock)
+                        {
+                            this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.MagicBoomerang(player, scale, projectileId));
+                            boomerangLock = true;
+                            boomerangInstance = projectileId;
+                        }
+
+                        break;
+                    case (ProjectileType.SwordBeam):
+                        if (!swordLock)
+                        {
+                            this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.SwordBeam(player, scale, projectileId, this));
+                            swordLock = true;
+                            swordInstance = projectileId;
+                        }
+
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 

@@ -4,7 +4,7 @@
     {
         IPlayer player;
         ProjectileManager projectile;
-        private static int priority = 6;
+        private static int priority = 7;
         public CommandAttackA(IPlayer player, ProjectileManager projectile)
         {
             this.player = player;
