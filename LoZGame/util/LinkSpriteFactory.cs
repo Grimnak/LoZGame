@@ -8,6 +8,9 @@ namespace LoZClone
         private static int linkWidth = 30;
         private static int linkHeight = 30;
 
+        private static int itemWidth = 30; // items link holds in his hand during attack
+        private static int itemHeight = 30;
+
         private Texture2D greenLinkUpTexture;
         private SpriteSheetData greenLinkUpData = new SpriteSheetData("Green_Link_Up", linkWidth, linkHeight, 3, 1);
         private Texture2D blueLinkUpTexture;
@@ -50,6 +53,72 @@ namespace LoZClone
         private Texture2D redLinkPickupTexture;
         private SpriteSheetData redLinkPickupData = new SpriteSheetData("Red_Link_Pickup", linkWidth, linkHeight, 2, 1);
 
+        // items link holds in his hand during attack
+        private Texture2D greenWoodDownTexture;
+        private SpriteSheetData greenWoodDownData = new SpriteSheetData("Green_Wood_Down", itemWidth, itemHeight, 1, 2);
+        private Texture2D greenWoodLeftTexture;
+        private SpriteSheetData greenWoodLeftData = new SpriteSheetData("Green_Wood_Left", itemWidth, itemHeight, 1, 2);
+        private Texture2D greenWoodRightTexture;
+        private SpriteSheetData greenWoodRightData = new SpriteSheetData("Green_Wood_Right", itemWidth, itemHeight, 1, 2);
+        private Texture2D greenWoodUpTexture;
+        private SpriteSheetData greenWoodUpData = new SpriteSheetData("Green_Wood_Up", itemWidth, itemHeight, 1, 2);
+
+        private Texture2D blueWoodDownTexture;
+        private SpriteSheetData blueWoodDownData = new SpriteSheetData("Blue_Wood_Down", itemWidth, itemHeight, 1, 2);
+        private Texture2D blueWoodLeftTexture;
+        private SpriteSheetData blueWoodLeftData = new SpriteSheetData("Blue_Wood_Left", itemWidth, itemHeight, 1, 2);
+        private Texture2D blueWoodRightTexture;
+        private SpriteSheetData blueWoodRightData = new SpriteSheetData("Blue_Wood_Right", itemWidth, itemHeight, 1, 2);
+        private Texture2D blueWoodUpTexture;
+        private SpriteSheetData blueWoodUpData = new SpriteSheetData("Blue_Wood_Up", itemWidth, itemHeight, 1, 2);
+
+        private Texture2D redWoodDownTexture;
+        private SpriteSheetData redWoodDownData = new SpriteSheetData("Red_Wood_Down", itemWidth, itemHeight, 1, 2);
+        private Texture2D redWoodLeftTexture;
+        private SpriteSheetData redWoodLeftData = new SpriteSheetData("Red_Wood_Left", itemWidth, itemHeight, 1, 2);
+        private Texture2D redWoodRightTexture;
+        private SpriteSheetData redWoodRightData = new SpriteSheetData("Red_Wood_Right", itemWidth, itemHeight, 1, 2);
+        private Texture2D redWoodUpTexture;
+        private SpriteSheetData redWoodUpData = new SpriteSheetData("Red_Wood_Up", itemWidth, itemHeight, 1, 2);
+
+        private Texture2D WandDownTexture;
+        private SpriteSheetData WandDownData = new SpriteSheetData("Wand_Down", itemWidth, itemHeight, 1, 1);
+        private Texture2D WandLeftTexture;
+        private SpriteSheetData WandLeftData = new SpriteSheetData("Wand_Left", itemWidth, itemHeight, 1, 1);
+        private Texture2D WandRightTexture;
+        private SpriteSheetData WandRightData = new SpriteSheetData("Wand_Right", itemWidth, itemHeight, 1, 1);
+        private Texture2D WandUpTexture;
+        private SpriteSheetData WandUpData = new SpriteSheetData("Wand_Up", itemWidth, itemHeight, 1, 1);
+
+        private Texture2D greenMagicDownTexture;
+        private SpriteSheetData greenMagicDownData = new SpriteSheetData("Green_Magic_Down", itemWidth, itemHeight, 1, 2);
+        private Texture2D greenMagicLeftTexture;
+        private SpriteSheetData greenMagicLeftData = new SpriteSheetData("Green_Magic_Left", itemWidth, itemHeight, 1, 2);
+        private Texture2D greenMagicRightTexture;
+        private SpriteSheetData greenMagicRightData = new SpriteSheetData("Green_Magic_Right", itemWidth, itemHeight, 1, 2);
+        private Texture2D greenMagicUpTexture;
+        private SpriteSheetData greenMagicUpData = new SpriteSheetData("Green_Magic_Up", itemWidth, itemHeight, 1, 2);
+
+        private Texture2D blueMagicDownTexture;
+        private SpriteSheetData blueMagicDownData = new SpriteSheetData("Blue_Magic_Down", itemWidth, itemHeight, 1, 2);
+        private Texture2D blueMagicLeftTexture;
+        private SpriteSheetData blueMagicLeftData = new SpriteSheetData("Blue_Magic_Left", itemWidth, itemHeight, 1, 2);
+        private Texture2D blueMagicRightTexture;
+        private SpriteSheetData blueMagicRightData = new SpriteSheetData("Blue_Magic_Right", itemWidth, itemHeight, 1, 2);
+        private Texture2D blueMagicUpTexture;
+        private SpriteSheetData blueMagicUpData = new SpriteSheetData("Blue_Magic_Up", itemWidth, itemHeight, 1, 2);
+
+        private Texture2D redMagicDownTexture;
+        private SpriteSheetData redMagicDownData = new SpriteSheetData("Red_Magic_Down", itemWidth, itemHeight, 1, 2);
+        private Texture2D redMagicLeftTexture;
+        private SpriteSheetData redMagicLeftData = new SpriteSheetData("Red_Magic_Left", itemWidth, itemHeight, 1, 2);
+        private Texture2D redMagicRightTexture;
+        private SpriteSheetData redMagicRightData = new SpriteSheetData("Red_Magic_Right", itemWidth, itemHeight, 1, 2);
+        private Texture2D redMagicUpTexture;
+        private SpriteSheetData redMagicUpData = new SpriteSheetData("Red_Magic_Up", itemWidth, itemHeight, 1, 2);
+
+
+
 
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
 
@@ -90,6 +159,45 @@ namespace LoZClone
             greenLinkPickupTexture = content.Load<Texture2D>(greenLinkPickupData.FilePath);
             blueLinkPickupTexture = content.Load<Texture2D>(blueLinkPickupData.FilePath);
             redLinkPickupTexture = content.Load<Texture2D>(redLinkPickupData.FilePath);
+
+            // Load Attack Items
+
+            greenWoodDownTexture = content.Load<Texture2D>(greenWoodDownData.FilePath);
+            greenWoodLeftTexture = content.Load<Texture2D>(greenWoodLeftData.FilePath);
+            greenWoodRightTexture = content.Load<Texture2D>(greenWoodRightData.FilePath);
+            greenWoodUpTexture = content.Load<Texture2D>(greenWoodUpData.FilePath);
+
+            blueWoodDownTexture = content.Load<Texture2D>(blueWoodDownData.FilePath);
+            blueWoodLeftTexture = content.Load<Texture2D>(blueWoodLeftData.FilePath);
+            blueWoodRightTexture = content.Load<Texture2D>(blueWoodRightData.FilePath);
+            blueWoodUpTexture = content.Load<Texture2D>(blueWoodUpData.FilePath);
+
+            redWoodDownTexture = content.Load<Texture2D>(redWoodDownData.FilePath);
+            redWoodLeftTexture = content.Load<Texture2D>(redWoodLeftData.FilePath);
+            redWoodRightTexture = content.Load<Texture2D>(redWoodRightData.FilePath);
+            redWoodUpTexture = content.Load<Texture2D>(redWoodUpData.FilePath);
+
+            WandDownTexture = content.Load<Texture2D>(WandDownData.FilePath);
+            WandLeftTexture = content.Load<Texture2D>(WandLeftData.FilePath);
+            WandRightTexture = content.Load<Texture2D>(WandRightData.FilePath);
+            WandUpTexture = content.Load<Texture2D>(WandUpData.FilePath);
+
+            greenMagicDownTexture = content.Load<Texture2D>(greenMagicDownData.FilePath);
+            greenMagicLeftTexture = content.Load<Texture2D>(greenMagicLeftData.FilePath);
+            greenMagicRightTexture = content.Load<Texture2D>(greenMagicRightData.FilePath);
+            greenMagicUpTexture = content.Load<Texture2D>(greenMagicUpData.FilePath);
+
+            blueMagicDownTexture = content.Load<Texture2D>(blueMagicDownData.FilePath);
+            blueMagicLeftTexture = content.Load<Texture2D>(blueMagicLeftData.FilePath);
+            blueMagicRightTexture = content.Load<Texture2D>(blueMagicRightData.FilePath);
+            blueMagicUpTexture = content.Load<Texture2D>(blueMagicUpData.FilePath);
+
+            redMagicDownTexture = content.Load<Texture2D>(redMagicDownData.FilePath);
+            redMagicLeftTexture = content.Load<Texture2D>(redMagicLeftData.FilePath);
+            redMagicRightTexture = content.Load<Texture2D>(redMagicRightData.FilePath);
+            redMagicUpTexture = content.Load<Texture2D>(redMagicUpData.FilePath);
+
+
         }
 
         public LinkIdleUpSprite createSpriteLinkIdleUp(string currentColor)
@@ -213,64 +321,203 @@ namespace LoZClone
                 return new LinkMoveRightSprite(greenLinkRightTexture, greenLinkRightData);
             }
         }
-        public LinkAttackUpSprite createSpriteLinkAttackUp(string currentColor)
+        public LinkAttackUpSprite createSpriteLinkAttackUp(string currentColor, string currentWeapon)
         {
             if (currentColor.Equals("Red"))
             {
-                return new LinkAttackUpSprite(redLinkUpTexture, redLinkUpData);
+                if (currentWeapon.Equals("Wood"))
+                {
+                    return new LinkAttackUpSprite(redLinkUpTexture, redLinkUpData, redWoodUpTexture, redWoodUpData);
+                }
+                else if (currentWeapon.Equals("Magic"))
+                {
+                    return new LinkAttackUpSprite(redLinkUpTexture, redLinkUpData, redMagicUpTexture, redMagicUpData);
+                }
+                else // currentWeapon is "Wand"
+                {
+                    return new LinkAttackUpSprite(redLinkUpTexture, redLinkUpData, WandDownTexture, WandDownData);
+                }
             }
             else if (currentColor.Equals("Blue"))
             {
-                return new LinkAttackUpSprite(blueLinkUpTexture, blueLinkUpData);
+                if (currentWeapon.Equals("Wood"))
+                {
+                    return new LinkAttackUpSprite(blueLinkUpTexture, blueLinkUpData, blueWoodUpTexture, blueWoodUpData);
+                }
+                else if (currentWeapon.Equals("Magic"))
+                {
+                    return new LinkAttackUpSprite(blueLinkUpTexture, blueLinkUpData, blueMagicUpTexture, blueMagicUpData);
+                }
+                else // currentWeapon is "Wand"
+                {
+                    return new LinkAttackUpSprite(blueLinkUpTexture, blueLinkUpData, WandUpTexture, WandUpData);
+                }
+
             }
             else
             {
-                return new LinkAttackUpSprite(greenLinkUpTexture, greenLinkUpData);
+                if (currentWeapon.Equals("Wood"))
+                {
+                    return new LinkAttackUpSprite(greenLinkUpTexture, greenLinkUpData, greenWoodUpTexture, greenWoodUpData);
+                }
+                else if (currentWeapon.Equals("Magic"))
+                {
+                    return new LinkAttackUpSprite(greenLinkUpTexture, greenLinkUpData, greenMagicUpTexture, greenMagicUpData);
+                }
+                else // currentWeapon is "Wand"
+                {
+                    return new LinkAttackUpSprite(greenLinkUpTexture, greenLinkUpData, WandUpTexture, WandUpData);
+                }
+
             }
         }
-        public LinkAttackDownSprite createSpriteLinkAttackDown(string currentColor)
+        public LinkAttackDownSprite createSpriteLinkAttackDown(string currentColor, string currentWeapon)
         {
             if (currentColor.Equals("Red"))
             {
-                return new LinkAttackDownSprite(redLinkDownTexture, redLinkDownData);
+                if (currentWeapon.Equals("Wood"))
+                {
+                    return new LinkAttackDownSprite(redLinkDownTexture, redLinkDownData, redWoodDownTexture, redWoodDownData);
+                }
+                else if (currentWeapon.Equals("Magic"))
+                {
+                    return new LinkAttackDownSprite(redLinkDownTexture, redLinkDownData, redMagicDownTexture, redMagicDownData);
+                } else // currentWeapon is "Wand"
+                {
+                    return new LinkAttackDownSprite(redLinkDownTexture, redLinkDownData, WandDownTexture, WandDownData);
+                }
             }
             else if (currentColor.Equals("Blue"))
             {
-                return new LinkAttackDownSprite(blueLinkDownTexture, blueLinkDownData);
+                if (currentWeapon.Equals("Wood"))
+                {
+                    return new LinkAttackDownSprite(blueLinkDownTexture, blueLinkDownData, blueWoodDownTexture, blueWoodDownData);
+                }
+                else if (currentWeapon.Equals("Magic"))
+                {
+                    return new LinkAttackDownSprite(blueLinkDownTexture, blueLinkDownData, blueMagicDownTexture, blueMagicDownData);
+                }
+                else // currentWeapon is "Wand"
+                {
+                    return new LinkAttackDownSprite(blueLinkDownTexture, blueLinkDownData, WandDownTexture, WandDownData);
+                }
+                
             }
             else
             {
-                return new LinkAttackDownSprite(greenLinkDownTexture, greenLinkDownData);
+                if (currentWeapon.Equals("Wood"))
+                {
+                    return new LinkAttackDownSprite(greenLinkDownTexture, greenLinkDownData, greenWoodDownTexture, greenWoodDownData);
+                }
+                else if (currentWeapon.Equals("Magic"))
+                {
+                    return new LinkAttackDownSprite(greenLinkDownTexture, greenLinkDownData, greenMagicDownTexture, greenMagicDownData);
+                }
+                else // currentWeapon is "Wand"
+                {
+                    return new LinkAttackDownSprite(greenLinkDownTexture, greenLinkDownData, WandDownTexture, WandDownData);
+                }
+                
             }
         }
-        public LinkAttackLeftSprite createSpriteLinkAttackLeft(string currentColor)
+        public LinkAttackLeftSprite createSpriteLinkAttackLeft(string currentColor, string currentWeapon)
         {
             if (currentColor.Equals("Red"))
             {
-                return new LinkAttackLeftSprite(redLinkLeftTexture, redLinkLeftData);
+                if (currentWeapon.Equals("Wood"))
+                {
+                    return new LinkAttackLeftSprite(redLinkLeftTexture, redLinkLeftData, redWoodLeftTexture, redWoodLeftData);
+                }
+                else if (currentWeapon.Equals("Magic"))
+                {
+                    return new LinkAttackLeftSprite(redLinkLeftTexture, redLinkLeftData, redMagicLeftTexture, redMagicLeftData);
+                }
+                else // currentWeapon is "Wand"
+                {
+                    return new LinkAttackLeftSprite(redLinkLeftTexture, redLinkLeftData, WandDownTexture, WandDownData);
+                }
             }
             else if (currentColor.Equals("Blue"))
             {
-                return new LinkAttackLeftSprite(blueLinkLeftTexture, blueLinkLeftData);
+                if (currentWeapon.Equals("Wood"))
+                {
+                    return new LinkAttackLeftSprite(blueLinkLeftTexture, blueLinkLeftData, blueWoodLeftTexture, blueWoodLeftData);
+                }
+                else if (currentWeapon.Equals("Magic"))
+                {
+                    return new LinkAttackLeftSprite(blueLinkLeftTexture, blueLinkLeftData, blueMagicLeftTexture, blueMagicLeftData);
+                }
+                else // currentWeapon is "Wand"
+                {
+                    return new LinkAttackLeftSprite(blueLinkLeftTexture, blueLinkLeftData, WandLeftTexture, WandLeftData);
+                }
+
             }
             else
             {
-                return new LinkAttackLeftSprite(greenLinkLeftTexture, greenLinkLeftData);
+                if (currentWeapon.Equals("Wood"))
+                {
+                    return new LinkAttackLeftSprite(greenLinkLeftTexture, greenLinkLeftData, greenWoodLeftTexture, greenWoodLeftData);
+                }
+                else if (currentWeapon.Equals("Magic"))
+                {
+                    return new LinkAttackLeftSprite(greenLinkLeftTexture, greenLinkLeftData, greenMagicLeftTexture, greenMagicLeftData);
+                }
+                else // currentWeapon is "Wand"
+                {
+                    return new LinkAttackLeftSprite(greenLinkLeftTexture, greenLinkLeftData, WandLeftTexture, WandLeftData);
+                }
+
             }
         }
-        public LinkAttackRightSprite createSpriteLinkAttackRight(string currentColor)
+        public LinkAttackRightSprite createSpriteLinkAttackRight(string currentColor, string currentWeapon)
         {
             if (currentColor.Equals("Red"))
             {
-                return new LinkAttackRightSprite(redLinkRightTexture, redLinkRightData);
+                if (currentWeapon.Equals("Wood"))
+                {
+                    return new LinkAttackRightSprite(redLinkRightTexture, redLinkRightData, redWoodRightTexture, redWoodRightData);
+                }
+                else if (currentWeapon.Equals("Magic"))
+                {
+                    return new LinkAttackRightSprite(redLinkRightTexture, redLinkRightData, redMagicRightTexture, redMagicRightData);
+                }
+                else // currentWeapon is "Wand"
+                {
+                    return new LinkAttackRightSprite(redLinkRightTexture, redLinkRightData, WandDownTexture, WandDownData);
+                }
             }
             else if (currentColor.Equals("Blue"))
             {
-                return new LinkAttackRightSprite(blueLinkRightTexture, blueLinkRightData);
+                if (currentWeapon.Equals("Wood"))
+                {
+                    return new LinkAttackRightSprite(blueLinkRightTexture, blueLinkRightData, blueWoodRightTexture, blueWoodRightData);
+                }
+                else if (currentWeapon.Equals("Magic"))
+                {
+                    return new LinkAttackRightSprite(blueLinkRightTexture, blueLinkRightData, blueMagicRightTexture, blueMagicRightData);
+                }
+                else // currentWeapon is "Wand"
+                {
+                    return new LinkAttackRightSprite(blueLinkRightTexture, blueLinkRightData, WandRightTexture, WandRightData);
+                }
+
             }
             else
             {
-                return new LinkAttackRightSprite(greenLinkRightTexture, greenLinkRightData);
+                if (currentWeapon.Equals("Wood"))
+                {
+                    return new LinkAttackRightSprite(greenLinkRightTexture, greenLinkRightData, greenWoodRightTexture, greenWoodRightData);
+                }
+                else if (currentWeapon.Equals("Magic"))
+                {
+                    return new LinkAttackRightSprite(greenLinkRightTexture, greenLinkRightData, greenMagicRightTexture, greenMagicRightData);
+                }
+                else // currentWeapon is "Wand"
+                {
+                    return new LinkAttackRightSprite(greenLinkRightTexture, greenLinkRightData, WandRightTexture, WandRightData);
+                }
+
             }
         }
         public LinkPickupItemSprite createSpriteLinkPickupItem(string currentColor)

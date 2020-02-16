@@ -18,23 +18,23 @@ namespace LoZClone
         {
             if (player.CurrentDirection.Equals("Up"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkAttackUp(player.CurrentColor);
+                return LinkSpriteFactory.Instance.createSpriteLinkAttackUp(player.CurrentColor, player.CurrentWeapon);
             }
             else if (player.CurrentDirection.Equals("Down"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkAttackDown(player.CurrentColor);
+                return LinkSpriteFactory.Instance.createSpriteLinkAttackDown(player.CurrentColor, player.CurrentWeapon);
             }
             else if (player.CurrentDirection.Equals("Left"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkAttackLeft(player.CurrentColor);
+                return LinkSpriteFactory.Instance.createSpriteLinkAttackLeft(player.CurrentColor, player.CurrentWeapon);
             }
             else
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkAttackRight(player.CurrentColor);
+                return LinkSpriteFactory.Instance.createSpriteLinkAttackRight(player.CurrentColor, player.CurrentWeapon);
             }
         }
         public void idle()
-        {
+        { 
             if (lockoutTimer <= 0)
             {
                 player.State = new IdleState(game, player);
