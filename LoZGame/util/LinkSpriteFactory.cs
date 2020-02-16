@@ -8,7 +8,7 @@ namespace LoZClone
         private static int linkWidth = 30;
         private static int linkHeight = 30;
 
-        private static int itemWidth = 30; // items link holds in his hand during attack
+        private static int itemWidth = 30; // items Link holds in his hand during attack
         private static int itemHeight = 30;
 
         private Texture2D greenLinkUpTexture;

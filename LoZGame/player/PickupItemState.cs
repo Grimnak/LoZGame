@@ -3,15 +3,15 @@ namespace LoZClone
     public class PickupItemState : IPlayerState
     {
         private LoZGame game;
-        private Link player;
+        private IPlayer player;
         private ISprite sprite;
         private int lockoutTimer = 0;
 
         public PickupItemState(LoZGame game, IPlayer playerInstance, int itemTime)
         {
             this.game = game;
-            this.player = (Link)playerInstance;
-            this.player.CurrentDirection = "Down";
+            player = playerInstance;
+            player.CurrentDirection = "Down";
             lockoutTimer = itemTime; //wait period
             sprite = createCorrectSprite();
         }

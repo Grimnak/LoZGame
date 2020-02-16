@@ -12,10 +12,10 @@
         }
         public void execute()
         {
-            if (!((Link)player).IsDead)
+            if (!player.IsDead)
             {
                 player.pickupItem(TriforceProjectile.LifeTime);
-                entity.ProjectileManager.addItem(entity.ProjectileManager.Triforce, ((Link)player));
+                entity.ProjectileManager.addItem(entity.ProjectileManager.Triforce, player));
             }
         }
         public int Priority

@@ -12,10 +12,10 @@
         }
         public void execute()
         {
-            if (!((Link)player).IsDead)
+            if (!player.IsDead)
             {
                 player.attack();
-                entity.ProjectileManager.addItem(entity.ProjectileManager.Swordbeam, (Link)player);
+                entity.ProjectileManager.addItem(entity.ProjectileManager.Swordbeam, player);
             }
         }
         public int Priority

@@ -5,13 +5,13 @@ namespace LoZClone
     public class MoveRightState : IPlayerState
     {
         private LoZGame game;
-        private Link player;
+        private IPlayer player;
         private ISprite sprite;
 
         public MoveRightState(LoZGame game, IPlayer playerInstance)
         {
             this.game = game;
-            this.player = (Link)playerInstance;
+            this.player = playerInstance;
             this.player.CurrentDirection = "Right";
             sprite = createCorrectSprite();
         }
