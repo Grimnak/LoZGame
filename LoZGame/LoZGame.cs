@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LoZClone
 {
@@ -7,6 +8,7 @@ namespace LoZClone
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private static float UpdatesPerSecond = 300;
         public SpriteBatch SpriteBatch
         {
             get { return spriteBatch; }
@@ -23,6 +25,7 @@ namespace LoZClone
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
+            this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
         }
         protected override void Initialize()
         {

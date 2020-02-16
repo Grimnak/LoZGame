@@ -11,7 +11,6 @@ namespace LoZClone
 {
     class SwordBeamExplosion : IProjectile
     {
-        private static int linkSize = 32;
         private static int width = 10;
         private static int height = 12;
 
