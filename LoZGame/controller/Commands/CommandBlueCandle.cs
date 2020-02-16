@@ -4,7 +4,7 @@
     {
         IPlayer player;
         EntityManager entity;
-        private static int priority = 5;
+        private static int priority = 6;
         public CommandBlueCandle(IPlayer player, EntityManager entity)
         {
             this.player = player;
@@ -12,7 +12,7 @@
         }
         public void execute()
         {
-            if (!((Link)player).IsDead)
+            if (!entity.ProjectileManager.FlameInUse && !((Link)player).IsDead)
             {
                 player.useItem(ProjectileManager.MaxWaitTime);
                 entity.ProjectileManager.addItem(entity.ProjectileManager.BlueCandle, ((Link)player));
