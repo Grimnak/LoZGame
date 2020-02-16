@@ -46,8 +46,10 @@ namespace LoZClone
         private Texture2D TurquoiseStatueTexture;
         private SpriteSheetData turquoiseStatueData = new SpriteSheetData("turquoise_statue", 0, 0, 1, 2);
 
-        private Texture2D BrickTileTexture;
-        private SpriteSheetData brickTileData = new SpriteSheetData("brick_tile", 0, 0, 1, 1);
+        private Texture2D SpottedTileTexture;
+        private SpriteSheetData spottedTileData = new SpriteSheetData("spotted_tile", 0, 0, 1, 1);
+        private Texture2D WaterTileTexture;
+        private SpriteSheetData waterTileData = new SpriteSheetData("water_tile", 0, 0, 1, 1);
 
         private Texture2D OrangeMovableSquareTexture;
         private SpriteSheetData orangeMovableSquareData = new SpriteSheetData("orange_movable_square", 0, 0, 1, 1);
@@ -57,6 +59,14 @@ namespace LoZClone
         private SpriteSheetData enemySpawnData = new SpriteSheetData("enemySpawn", 0, 0, 3, 1);
         private Texture2D HUDElementsTexture;
         private SpriteSheetData HUDElementsData = new SpriteSheetData("hud_elements", 0, 0, 1, 1);
+        private Texture2D BasementBrickTileTexture;
+        private SpriteSheetData basementBrickTileData = new SpriteSheetData("basement_brick_tile", 0, 0, 1, 1);
+        private Texture2D LadderTileTexture;
+        private SpriteSheetData ladderTileData = new SpriteSheetData("ladder_tile", 0, 0, 1, 1);
+        private Texture2D HorizontalBricksTexture;
+        private SpriteSheetData horizontalBricksData = new SpriteSheetData("horizontal_bricks", 0, 0, 1, 1);
+        private Texture2D VerticalBricksTexture;
+        private SpriteSheetData verticalBricksData = new SpriteSheetData("vertical_bricks", 0, 0, 1, 1);
 
         private int DRAW_SCALE = 2;
 
@@ -92,11 +102,16 @@ namespace LoZClone
             BlueStatueRightTexture = content.Load<Texture2D>(blueStatueRightData.FilePath);
             BlueStatueLeftTexture = content.Load<Texture2D>(blueStatueLeftData.FilePath);
             TurquoiseStatueTexture = content.Load<Texture2D>(turquoiseStatueData.FilePath);
-            BrickTileTexture = content.Load<Texture2D>(brickTileData.FilePath);
+            SpottedTileTexture = content.Load<Texture2D>(spottedTileData.FilePath);
+            WaterTileTexture = content.Load<Texture2D>(waterTileData.FilePath);
             OrangeMovableSquareTexture = content.Load<Texture2D>(orangeMovableSquareData.FilePath);
             EnemyDeathExplosionTexture = content.Load<Texture2D>(enemyDeathExplosionData.FilePath);
             EnemySpawnTexture = content.Load<Texture2D>(enemySpawnData.FilePath);
             HUDElementsTexture = content.Load<Texture2D>(HUDElementsData.FilePath);
+            BasementBrickTileTexture = content.Load<Texture2D>(basementBrickTileData.FilePath);
+            LadderTileTexture = content.Load<Texture2D>(ladderTileData.FilePath);
+            HorizontalBricksTexture = content.Load<Texture2D>(horizontalBricksData.FilePath);
+            VerticalBricksTexture = content.Load<Texture2D>(verticalBricksData.FilePath);
         }
 
         public List<ISprite> getAll(int width, int height)
@@ -121,11 +136,16 @@ namespace LoZClone
             allBlocks.Add(this.BlueStatueRight(new Vector2(x, y), DRAW_SCALE));
             allBlocks.Add(this.TurquoiseStatueLeft(new Vector2(x, y), DRAW_SCALE));
             allBlocks.Add(this.TurquoiseStatueRight(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.BrickTile(new Vector2(x, y), DRAW_SCALE));
+            allBlocks.Add(this.SpottedTile(new Vector2(x, y), DRAW_SCALE));
+            allBlocks.Add(this.WaterTile(new Vector2(x, y), DRAW_SCALE));
             allBlocks.Add(this.OrangeMovableSquare(new Vector2(x, y), DRAW_SCALE));
             allBlocks.Add(this.EnemyDeathExplosion(new Vector2(x, y), DRAW_SCALE));
             allBlocks.Add(this.EnemySpawn(new Vector2(x, y), DRAW_SCALE));
             allBlocks.Add(this.HUDElements(new Vector2(x, y), DRAW_SCALE));
+            allBlocks.Add(this.BasementBrickTile(new Vector2(x, y), DRAW_SCALE));
+            allBlocks.Add(this.LadderTile(new Vector2(x, y), DRAW_SCALE));
+            allBlocks.Add(this.HorizontalBricks(new Vector2(x, y), DRAW_SCALE));
+            allBlocks.Add(this.VerticalBricks(new Vector2(x, y), DRAW_SCALE));
 
             return allBlocks;
         }
@@ -199,9 +219,13 @@ namespace LoZClone
         {
             return new TurquoiseStatueRightSprite(TurquoiseStatueTexture, turquoiseStatueData, scale);
         }
-        public BrickTileSprite BrickTile(Vector2 loc, int scale)
+        public SpottedTileSprite SpottedTile(Vector2 loc, int scale)
         {
-            return new BrickTileSprite(BrickTileTexture, brickTileData, scale);
+            return new SpottedTileSprite(SpottedTileTexture, spottedTileData, scale);
+        }
+        public WaterTileSprite WaterTile(Vector2 loc, int scale)
+        {
+            return new WaterTileSprite(WaterTileTexture, waterTileData, scale);
         }
         public OrangeMovableSquareSprite OrangeMovableSquare(Vector2 loc, int scale)
         {
@@ -218,6 +242,22 @@ namespace LoZClone
         public HUDElementsSprite HUDElements(Vector2 loc, int scale)
         {
             return new HUDElementsSprite(HUDElementsTexture, HUDElementsData, scale);
+        }
+        public BasementBrickTileSprite BasementBrickTile(Vector2 loc, int scale)
+        {
+            return new BasementBrickTileSprite(BasementBrickTileTexture, basementBrickTileData, scale);
+        }
+        public LadderTileSprite LadderTile(Vector2 loc, int scale)
+        {
+            return new LadderTileSprite(LadderTileTexture, ladderTileData, scale);
+        }
+        public HorizontalBricksSprite HorizontalBricks(Vector2 loc, int scale)
+        {
+            return new HorizontalBricksSprite(HorizontalBricksTexture, horizontalBricksData, scale);
+        }
+        public VerticalBricksSprite VerticalBricks(Vector2 loc, int scale)
+        {
+            return new VerticalBricksSprite(VerticalBricksTexture, verticalBricksData, scale);
         }
     }
 }
