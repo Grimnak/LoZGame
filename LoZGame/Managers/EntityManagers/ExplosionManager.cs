@@ -52,7 +52,7 @@ namespace LoZClone
                     break;
                 case (ExplosionType.BombExplode):
                     Random numGen = new Random();
-                    int selectBomb = numGen.Next(0, 4);
+                    int selectBomb = numGen.Next(0, 5);
                     switch (selectBomb)
                     {
                         case (0):

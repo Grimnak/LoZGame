@@ -5,32 +5,32 @@ namespace LoZClone
     public class CommandReset : ICommand
     {
         IPlayer player;
-        ItemManager manager;
+        ItemManager item;
         BlockManager block;
         LoZGame game;
         EntityManager entity;
         private static int priority = -1;
-        public CommandReset(LoZGame game, IPlayer player, ItemManager manager, BlockManager block, EntityManager entity/*, NPCManager npc*/)
+        public CommandReset(LoZGame game, IPlayer player, ItemManager item, BlockManager block, EntityManager entity/*, NPCManager npc*/)
         {
             this.game = game;
             this.player = player;
-            this.manager = manager;
+            this.item = item;
             this.block = block;
             this.entity = entity;
         }
         public void execute()
         {
-            ((Link)player).CurrentLocation = new Vector2(150, 200);
-            ((Link)player).CurrentDirection = "Down";
-            ((Link)player).State = new NullState(game, player);
-            ((Link)player).DamageCounter = 0;
-            ((Link)player).DamageTimer = 0;
-            ((Link)player).IsDead = false;
-            ((Link)player).CurrentTint = Color.White;
+            player.CurrentLocation = new Vector2(218, 184);
+            player.CurrentDirection = "Down";
+            player.State = new NullState(game, player);
+            player.DamageCounter = 0;
+            player.DamageTimer = 0;
+            player.IsDead = false;
+            player.CurrentTint = Color.White;
             
-            manager.CurrentIndex = 1;
-            manager.cycleLeft();
-            manager.currentItem.location = new Vector2(120, 120);
+            item.CurrentIndex = 1;
+            item.cycleLeft();
+            item.currentItem.location = new Vector2(384, 184);
 
             entity.Clear();
 

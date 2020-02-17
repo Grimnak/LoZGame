@@ -38,7 +38,7 @@ namespace LoZClone
         private void getNewDirection()
         {
             Random randomselect = new Random();
-            currentDirection = (direction)(randomselect.Next(0, 7));
+            currentDirection = (direction)(randomselect.Next(0, 8));
         }
 
         private void updateLoc()
@@ -46,10 +46,10 @@ namespace LoZClone
             switch (this.currentDirection)
             {
                 case direction.North:
-                    this.location = new Vector2(this.location.X - 1, this.location.Y);
+                    this.location = new Vector2(this.location.X, this.location.Y - 1);
                     break;
                 case direction.South:
-                    this.location = new Vector2(this.location.X + 1, this.location.Y);
+                    this.location = new Vector2(this.location.X , this.location.Y + 1);
                     break;
                 case direction.East:
                     this.location = new Vector2(this.location.X + 1, this.location.Y);

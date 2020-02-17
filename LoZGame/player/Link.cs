@@ -10,6 +10,12 @@ namespace LoZClone
         {
             set { playerState = value; }
         }
+        private string currentWeapon;
+        public string CurrentWeapon
+        {
+            get { return currentWeapon; }
+            set { currentWeapon = value; }
+        }
         private string currentColor;
         public string CurrentColor
         {
@@ -38,6 +44,7 @@ namespace LoZClone
         public int CurrentSpeed
         {
             get { return currentSpeed; }
+            set { currentSpeed = value; }
         }
         private int damageCounter;
         public int DamageCounter
@@ -63,6 +70,7 @@ namespace LoZClone
             this.game = game;
             currentColor = "Green";
             currentDirection = "Down";
+            currentWeapon = "Wood";
             currentLocation = new Vector2(150, 200);
             currentTint = Color.White;
             currentSpeed = 2;
@@ -90,17 +98,17 @@ namespace LoZClone
         //This handleBounds method will not remain here past Sprint 2.  This is a form of "collision handling" just so Link will stay in bounds.
         private void handleBounds()
         {
-            if (currentLocation.X + 50 > game.GraphicsDevice.Viewport.Width)
+            if (currentLocation.X + 30 > game.GraphicsDevice.Viewport.Width)
             {
-                currentLocation.X = game.GraphicsDevice.Viewport.Width - 50;
+                currentLocation.X = game.GraphicsDevice.Viewport.Width - 30;
             }
             else if (currentLocation.X < 0)
             {
                 currentLocation.X = 0;
             }
-            if (currentLocation.Y + 50 > game.GraphicsDevice.Viewport.Height)
+            if (currentLocation.Y + 30 > game.GraphicsDevice.Viewport.Height)
             {
-                currentLocation.Y = game.GraphicsDevice.Viewport.Height - 50;
+                currentLocation.Y = game.GraphicsDevice.Viewport.Height - 30;
             }
             else if (currentLocation.Y < 0)
             {
