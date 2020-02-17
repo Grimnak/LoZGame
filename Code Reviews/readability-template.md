@@ -1,14 +1,12 @@
-_3902 Readability Format. Please fill out according to all italicized text. Remove all italicized text, unnecessary line breaks, and non-relevant sections before publishing Code Review_
-
 # Code Readability Review
 
-### Author: Auth Name
+### Author: My Name Here
 
-### Date: mm/dd/yyyy
+### Date: mm/dd/yy
 
 ### Sprint No.: Sprint #
 
-### File Name: ./path/to/file/here.cs
+### File Name: ./path/to/file.cs
 
 ### File Author Name: File Auth Name
 
