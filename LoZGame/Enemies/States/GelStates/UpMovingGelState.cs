@@ -51,7 +51,7 @@ namespace LoZClone
 
         public void Update()
         {
-            gel.currentLocation = new Vector2(gel.currentLocation.X, gel.currentLocation.Y - 3);
+            gel.currentLocation = new Vector2(gel.currentLocation.X, gel.currentLocation.Y - 1);
             sprite.Update();
         }
 

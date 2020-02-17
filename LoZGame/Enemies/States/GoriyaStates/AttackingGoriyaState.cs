@@ -67,7 +67,6 @@ namespace LoZClone
 
         public void Update()
         {
-            goriya.currentLocation = new Vector2(goriya.currentLocation.X, goriya.currentLocation.Y + 3);
             sprite.Update();
         }
 

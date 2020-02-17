@@ -8,7 +8,7 @@ namespace LoZClone
         private Texture2D spriteSheet;
         private int spriteSheetRows, spriteSheetColumns;
         private int spriteSheetWidth, spriteSheetHeight;
-        private int currentFrame = 0, frameDelay = 0, frameDelayMax = 5;
+        private int currentFrame = 0, frameDelay = 0, frameDelayMax = 7;
 
         public GoriyaRightSprite(Texture2D spriteTexture, SpriteSheetData data)
         {

@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public class DownMovingSpikeCrossState : IEnemyState
+    public class DownMovingSpikeCrossState : ISpikeCrossState
     {
         private SpikeCross spikeCross;
         private ISpikeCrossSprite sprite;

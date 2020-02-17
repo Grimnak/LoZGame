@@ -66,7 +66,7 @@ namespace LoZClone
 
         public void Update()
         {
-            keese.currentLocation = new Vector2(keese.currentLocation.X + 3, keese.currentLocation.Y - 3);
+            keese.currentLocation = new Vector2(keese.currentLocation.X + 2, keese.currentLocation.Y - 2);
             sprite.Update();
         }
 

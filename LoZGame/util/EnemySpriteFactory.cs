@@ -1,66 +1,67 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace LoZClone
 {
     public class EnemySpriteFactory
     {
         private Texture2D stalfos;
-        private SpriteSheetData stalfosData = new SpriteSheetData("stalfos", 50, 50, 2, 1);
+        private SpriteSheetData stalfosData = new SpriteSheetData("stalfos", 25, 25, 2, 1);
 
         private Texture2D downGoriya;
-        private SpriteSheetData downGoriyaData = new SpriteSheetData("redGoriyaDown", 50, 60, 2, 1);
+        private SpriteSheetData downGoriyaData = new SpriteSheetData("redGoriyaDown", 25, 30, 2, 1);
         private Texture2D upGoriya;
-        private SpriteSheetData upGoriyaData = new SpriteSheetData("redGoriyaUp", 50, 60, 2, 1);
+        private SpriteSheetData upGoriyaData = new SpriteSheetData("redGoriyaUp", 25, 30, 2, 1);
         private Texture2D leftGoriya;
-        private SpriteSheetData leftGoriyaData = new SpriteSheetData("redGoriyaLeft", 50, 60, 2, 1);
+        private SpriteSheetData leftGoriyaData = new SpriteSheetData("redGoriyaLeft", 25, 30, 2, 1);
         private Texture2D rightGoriya;
-        private SpriteSheetData rightGoriyaData = new SpriteSheetData("redGoriyaRight", 50, 60, 2, 1);
+        private SpriteSheetData rightGoriyaData = new SpriteSheetData("redGoriyaRight", 25, 30, 2, 1);
 
         private Texture2D leftWallMaster;
-        private SpriteSheetData leftWallMasterData = new SpriteSheetData("wallMasterLeft", 50, 50, 2, 1);
+        private SpriteSheetData leftWallMasterData = new SpriteSheetData("wallMasterLeft", 25, 25, 2, 1);
         private Texture2D rightWallMaster;
-        private SpriteSheetData rightWallMasterData = new SpriteSheetData("wallMasterRight", 50, 50, 2, 1);
+        private SpriteSheetData rightWallMasterData = new SpriteSheetData("wallMasterRight", 25, 25, 2, 1);
 
         private Texture2D leftRope;
-        private SpriteSheetData leftRopeData = new SpriteSheetData("ropeLeft", 40, 40, 2, 1);
+        private SpriteSheetData leftRopeData = new SpriteSheetData("ropeLeft", 25, 25, 2, 1);
         private Texture2D rightRope;
-        private SpriteSheetData rightRopeData = new SpriteSheetData("ropeRight", 40, 40, 2, 1);
+        private SpriteSheetData rightRopeData = new SpriteSheetData("ropeRight", 25, 25, 2, 1);
 
         private Texture2D gel;
-        private SpriteSheetData gelData = new SpriteSheetData("gel/tealGel", 25, 25, 2, 1);
+        private SpriteSheetData gelData = new SpriteSheetData("gel/tealGel", 15, 15, 2, 1);
         private Texture2D zol;
-        private SpriteSheetData zolData = new SpriteSheetData("xol/grayXol", 50, 50, 2, 1);
+        private SpriteSheetData zolData = new SpriteSheetData("xol/grayXol", 25, 25, 2, 1);
 
         private Texture2D spikeCross;
-        private SpriteSheetData spikeCrossData = new SpriteSheetData("spike", 50, 50, 1, 1);
+        private SpriteSheetData spikeCrossData = new SpriteSheetData("spike", 25, 25, 1, 1);
 
         private Texture2D keese;
-        private SpriteSheetData keeseData = new SpriteSheetData("keese", 40, 40, 2, 1);
+        private SpriteSheetData keeseData = new SpriteSheetData("keese", 20, 20, 2, 1);
 
 
         private Texture2D dragon;
-        private SpriteSheetData dragonData = new SpriteSheetData("aquamentus", 75, 100, 1, 1);
+        private SpriteSheetData dragonData = new SpriteSheetData("aquamentus", 65, 85, 1, 4);
         private Texture2D damagedDragon;
-        private SpriteSheetData damagedDragonData = new SpriteSheetData("damagedAqua", 75, 100, 1, 1);
+        private SpriteSheetData damagedDragonData = new SpriteSheetData("damagedAqua", 65, 85, 1, 4);
         private Texture2D fireball;
-        private SpriteSheetData fireballData = new SpriteSheetData("aquamentus", 35, 35, 4, 1);
+        private SpriteSheetData fireballData = new SpriteSheetData("fireball", 12, 12, 1, 4);
 
         private Texture2D downDodongo;
-        private SpriteSheetData downDodongoData = new SpriteSheetData("dodongoDown", 50, 50, 1, 3);
+        private SpriteSheetData downDodongoData = new SpriteSheetData("dodongoDown", 30, 35, 1, 2);
         private Texture2D upDodongo;
-        private SpriteSheetData upDodongoData = new SpriteSheetData("dodongoUp", 50, 50, 1, 3);
+        private SpriteSheetData upDodongoData = new SpriteSheetData("dodongoUp", 30, 35, 1, 2);
         private Texture2D leftDodongo;
-        private SpriteSheetData leftDodongoData = new SpriteSheetData("dodongoLeft", 70, 50, 1, 3);
+        private SpriteSheetData leftDodongoData = new SpriteSheetData("dodongoLeft", 40, 30, 1, 2);
         private Texture2D rightDodongo;
-        private SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", 70, 50, 1, 3);
+        private SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", 40, 30, 1, 2);
 
         private Texture2D oldMan;
-        private SpriteSheetData oldManData = new SpriteSheetData("oldMan", 50, 50, 1, 1);
+        private SpriteSheetData oldManData = new SpriteSheetData("oldMan", 30, 30, 1, 1);
         private Texture2D merchant;
-        private SpriteSheetData merchantData = new SpriteSheetData("merchant", 50, 50, 1, 1);
+        private SpriteSheetData merchantData = new SpriteSheetData("merchant", 25, 25, 1, 1);
         private Texture2D flame;
-        private SpriteSheetData flameData = new SpriteSheetData("flame", 50, 50, 1, 2);
+        private SpriteSheetData flameData = new SpriteSheetData("flame", 30, 30, 1, 2);
 
          private Texture2D deadEnemy;
         private SpriteSheetData deadEnemyData = new SpriteSheetData("enemyDeath", 50, 50, 1, 2);
@@ -210,19 +211,19 @@ namespace LoZClone
         {
             return new DragonDamagedSprite(damagedDragon, damagedDragonData);
         }
-        public FireballSprite createLeftFireBallSprite()
+        public FireballSprite createLeftFireballSprite(Vector2 location)
         {
-            return new FireballSprite(fireball, fireballData, "left");
+            return new FireballSprite(fireball, fireballData, "left", location);
         }
 
-        public FireballSprite createDownLeftFireBallSprite()
+        public FireballSprite createDownLeftFireballSprite(Vector2 location)
         {
-            return new FireballSprite(fireball, fireballData, "down");
+            return new FireballSprite(fireball, fireballData, "down", location);
         }
 
-        public FireballSprite createUpLeftFireballSprite()
+        public FireballSprite createUpLeftFireballSprite(Vector2 location)
         {
-            return new FireballSprite(fireball, fireballData, "up");
+            return new FireballSprite(fireball, fireballData, "up", location);
         }
 
         //DodongoSprites

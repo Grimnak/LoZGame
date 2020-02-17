@@ -50,7 +50,7 @@ namespace LoZClone
 
         public void Update()
         {
-            dodongo.currentLocation = new Vector2(dodongo.currentLocation.X, dodongo.currentLocation.Y + 3);
+            dodongo.currentLocation = new Vector2(dodongo.currentLocation.X, dodongo.currentLocation.Y + 1);
             sprite.Update();
         }
 

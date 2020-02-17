@@ -47,7 +47,7 @@ namespace LoZClone
 
         public void Update()
         {
-            dragon.currentLocation = new Vector2(dragon.currentLocation.X - 3, dragon.currentLocation.Y);
+            dragon.currentLocation = new Vector2(dragon.currentLocation.X - 1, dragon.currentLocation.Y);
             sprite.Update();
         }
 

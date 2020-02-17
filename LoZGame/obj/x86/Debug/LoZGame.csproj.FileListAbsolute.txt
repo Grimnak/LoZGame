@@ -465,3 +465,4 @@ C:\Users\Ryan\Documents\LoZGame\LoZGame\obj\x86\Debug\LoZGame.csproj.CopyComplet
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\enemyDeath.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\merchant.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\oldMan.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\fireball.xnb

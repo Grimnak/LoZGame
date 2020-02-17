@@ -50,7 +50,7 @@ namespace LoZClone
 
         public void Update()
         {
-            rope.currentLocation = new Vector2(rope.currentLocation.X - 3, rope.currentLocation.Y);
+            rope.currentLocation = new Vector2(rope.currentLocation.X - 2, rope.currentLocation.Y);
             sprite.Update();
         }
 

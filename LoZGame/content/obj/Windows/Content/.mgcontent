@@ -29,6 +29,7 @@
     <File>C:/Users/Ryan/Documents/LoZGame/LoZGame/Content/door_up.png</File>
     <File>C:/Users/Ryan/Documents/LoZGame/LoZGame/Content/enemyDeath.png</File>
     <File>C:/Users/Ryan/Documents/LoZGame/LoZGame/Content/fire.png</File>
+    <File>C:/Users/Ryan/Documents/LoZGame/LoZGame/Content/fireball.png</File>
     <File>C:/Users/Ryan/Documents/LoZGame/LoZGame/Content/floor_tile.png</File>
     <File>C:/Users/Ryan/Documents/LoZGame/LoZGame/Content/floor_tile_dungeon.png</File>
     <File>C:/Users/Ryan/Documents/LoZGame/LoZGame/Content/gap_tile.png</File>
@@ -66,6 +67,7 @@
   <DestFiles>
     <File>ropeRight.png</File>
     <File>stalfos.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

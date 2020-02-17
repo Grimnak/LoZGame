@@ -50,7 +50,7 @@ namespace LoZClone
 
         public void Update()
         {
-            stalfos.currentLocation = new Vector2(stalfos.currentLocation.X - 3, stalfos.currentLocation.Y);
+            stalfos.currentLocation = new Vector2(stalfos.currentLocation.X - 1, stalfos.currentLocation.Y);
             sprite.Update();
         }
 

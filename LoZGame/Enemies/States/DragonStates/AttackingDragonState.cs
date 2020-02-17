@@ -16,9 +16,9 @@ namespace LoZClone
         {
             this.dragon = dragon;
             sprite = EnemySpriteFactory.Instance.createDragonSprite();
-            fireballUpLeft = EnemySpriteFactory.Instance.createUpLeftFireballSprite();
-            fireballLeft = EnemySpriteFactory.Instance.createLeftFireballSprite();
-            fireballDownLeft = EnemySpriteFactory.Instance.createDownLeftFireballSprite();
+            fireballUpLeft = EnemySpriteFactory.Instance.createUpLeftFireballSprite(dragon.currentLocation);
+            fireballLeft = EnemySpriteFactory.Instance.createLeftFireballSprite(dragon.currentLocation);
+            fireballDownLeft = EnemySpriteFactory.Instance.createDownLeftFireballSprite(dragon.currentLocation);
         }
         public void moveLeft()
         {

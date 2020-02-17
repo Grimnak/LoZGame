@@ -7,10 +7,10 @@ namespace LoZClone
 
     public class SpikeCross : IEnemy
     {
-        private IEnemyState currentState;
+        private ISpikeCrossState currentState;
         private int health = 10, lifeTime = 0, directionChange = 40;
         public Vector2 currentLocation;
-        private enum direction { Up, Down, Left, Right };
+        private enum direction { Up, Down, Left, Right, Idle};
         private direction currentDirection;
 
         public SpikeCross()
@@ -40,6 +40,9 @@ namespace LoZClone
                     break;
                 case direction.Right:
                     currentState.moveRight();
+                    break;
+                case direction.Idle:
+                    currentState.stop();
                     break;
                 default:
                     break;
@@ -72,7 +75,7 @@ namespace LoZClone
             currentState.Draw(sb);
         }
 
-        public IEnemyState CurrentState
+        public ISpikeCrossState CurrentState
         {
             get { return currentState; }
             set { currentState = value; }
