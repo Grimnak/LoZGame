@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public class RightMovingGoriyaState : IEnemyState
+    public class RightMovingGoriyaState : IGoriyaState
     {
         private Goriya goriya;
         private IGoriyaSprite sprite;
@@ -39,14 +39,14 @@ namespace LoZClone
         public void takeDamage()
         {
             this.goriya.Health--;
-            if (this.goriya.Health-- == 0)
+            if (this.goriya.Health == 0)
             {
                 goriya.CurrentState.die();
             }
         }
         public void die()
         {
-
+            goriya.CurrentState = new DeadGoriyaState(goriya);
         }
 
         public void Update()

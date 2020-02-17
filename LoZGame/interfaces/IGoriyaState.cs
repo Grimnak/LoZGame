@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public interface IEnemyState
+    public interface IGoriyaState
     {
         void moveLeft();
         void moveRight();
@@ -11,6 +11,7 @@ namespace LoZClone
         void moveDown();
         void takeDamage();
         void die();
+        void attack();
         void Update();
         void Draw(SpriteBatch spriteBatch);
     }

@@ -44,11 +44,6 @@ namespace LoZClone
             gel.CurrentState = new DeadGelState(gel);
         }
 
-        public void attack()
-        {
-        }
-
-
         public void Update()
         {
             gel.currentLocation = new Vector2(gel.currentLocation.X, gel.currentLocation.Y + 1);

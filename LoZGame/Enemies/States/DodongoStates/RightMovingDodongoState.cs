@@ -34,17 +34,14 @@ namespace LoZClone
         public void takeDamage()
         {
             this.dodongo.Health--;
-            if (this.dodongo.Health-- == 0)
+            if (this.dodongo.Health == 0)
             {
                 dodongo.CurrentState.die();
             }
         }
         public void die()
         {
-            // dodongo.CurrentState = new DeadDodongoState(dodongo);
-        }
-        public void attack() 
-        {
+            dodongo.CurrentState = new DeadDodongoState(dodongo);
         }
 
         public void Update()

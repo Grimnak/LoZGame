@@ -9,9 +9,9 @@ namespace LoZClone
         private Dodongo dodongo;
         private IDodongoSprite sprite;
 
-        public DownMovingDodongoState(IEnemy dodongo)
+        public DownMovingDodongoState(Dodongo dodongo)
         {
-            this.dodongo = (Dodongo)dodongo;
+            this.dodongo = dodongo;
             sprite = EnemySpriteFactory.Instance.createDownMovingDodongoSprite();
         }
         public void moveLeft()
@@ -41,11 +41,7 @@ namespace LoZClone
         }
         public void die()
         {
-            // dodongo.CurrentState = new DeadDodongoState(dodongo);
-        }
-        
-        public void attack() 
-        {
+            dodongo.CurrentState = new DeadDodongoState(dodongo);
         }
 
         public void Update()

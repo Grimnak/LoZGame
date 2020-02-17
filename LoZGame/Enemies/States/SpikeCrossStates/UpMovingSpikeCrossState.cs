@@ -36,19 +36,6 @@ namespace LoZClone
             spikeCross.CurrentState = new IdleSpikeCrossState(spikeCross);
         }
 
-        public void takeDamage()
-        {
-          
-        }
-        public void die()
-        {
-
-        }
-
-        public void attack()
-        {
-        }
-
         public void Update()
         {
             spikeCross.currentLocation = new Vector2(spikeCross.currentLocation.X, spikeCross.currentLocation.Y - 3);

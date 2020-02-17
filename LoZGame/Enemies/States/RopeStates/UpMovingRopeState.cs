@@ -34,7 +34,7 @@ namespace LoZClone
         public void takeDamage()
         {
             this.rope.Health--;
-            if (this.rope.Health-- == 0)
+            if (this.rope.Health == 0)
             {
                 rope.CurrentState.die();
             }
@@ -42,10 +42,6 @@ namespace LoZClone
         public void die()
         {
             rope.CurrentState = new DeadRopeState(rope);
-        }
-
-        public void attack()
-        {
         }
 
         public void Update()

@@ -35,19 +35,6 @@ namespace LoZClone
             // Blank b/c already moving down
         }
 
-        public void takeDamage()
-        {
- 
-        }
-        public void die()
-        {
-
-        }
-
-        public void attack()
-        {
-        }
-
         public void Update()
         {
             sprite.Update();

@@ -26,6 +26,7 @@ namespace LoZClone
         private void LoadEnemies()
         {
             enemyList.Add(new Dodongo());
+            enemyList.Add(new Stalfos());
             enemyList.Add(new Dragon());
             enemyList.Add(new OldMan());
             enemyList.Add(new Merchant());
@@ -33,12 +34,8 @@ namespace LoZClone
             enemyList.Add(new WallMaster());
             enemyList.Add(new Rope());
             enemyList.Add(new Zol());
-            enemyList.Add(new Zol());
             enemyList.Add(new Gel());
-            enemyList.Add(new Stalfos());
             enemyList.Add(new Keese());
-
-
         }
 
         public void loadSprites(int xloc, int yloc)

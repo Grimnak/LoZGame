@@ -52,7 +52,7 @@ namespace LoZClone
         public void takeDamage()
         {
             this.keese.Health--;
-            if (this.keese.Health-- == 0)
+            if (this.keese.Health == 0)
             {
                 keese.CurrentState.die();
             }
@@ -60,10 +60,6 @@ namespace LoZClone
         public void die()
         {
             keese.CurrentState = new DeadKeeseState(keese);
-        }
-        
-        public void attack() 
-        {
         }
 
         public void Update()

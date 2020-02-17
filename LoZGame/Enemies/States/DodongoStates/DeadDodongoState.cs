@@ -12,7 +12,7 @@ namespace LoZClone
         public DeadDodongoState(Dodongo dodongo)
         {
             sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
-            this.dodongo = null;
+            this.dodongo = dodongo;
         }
         public void moveLeft()
         {
@@ -31,10 +31,6 @@ namespace LoZClone
         {
         }
         public void die()
-        {
-        }
-
-        public void attack()
         {
         }
 

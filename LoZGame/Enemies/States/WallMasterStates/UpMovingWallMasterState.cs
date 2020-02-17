@@ -34,7 +34,7 @@ namespace LoZClone
         public void takeDamage()
         {
             this.wallMaster.Health--;
-            if (this.wallMaster.Health-- == 0)
+            if (this.wallMaster.Health == 0)
             {
                 
                 wallMaster.CurrentState.die();
@@ -43,10 +43,6 @@ namespace LoZClone
         public void die()
         {
             wallMaster.CurrentState = new DeadWallMasterState(wallMaster);
-        }
-
-        public void attack()
-        {
         }
 
         public void Update()

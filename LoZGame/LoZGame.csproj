@@ -121,6 +121,7 @@
 	<Compile Include="Enemies\States\DodongoStates\RightMovingDodongoState.cs" />
 	<Compile Include="Enemies\States\DodongoStates\UpMovingDodongoState.cs" />
 	<Compile Include="Enemies\States\DodongoStates\DownMovingDodongoState.cs" />
+    <Compile Include="Enemies\States\DodongoStates\DeadDodongoState.cs" />
     <Compile Include="Enemies\States\KeeseStates\LeftMovingKeeseState.cs" />
     <Compile Include="Enemies\States\KeeseStates\RightMovingKeeseState.cs" />
     <Compile Include="Enemies\States\KeeseStates\UpMovingKeeseState.cs" />
@@ -186,6 +187,7 @@
 	<Compile Include="Interfaces\EnemySprites\IZolSprite.cs" />
     <Compile Include="Interfaces\IKeeseState.cs" />
     <Compile Include="Interfaces\IDragonState.cs" />
+    <Compile Include="Interfaces\IGoriyaState.cs" />
     <Compile Include="Interfaces\ISpikeCrossState.cs" />
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />

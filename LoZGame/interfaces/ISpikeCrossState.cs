@@ -10,9 +10,6 @@ namespace LoZClone
         void moveUp();
         void moveDown();
         void stop();
-        void takeDamage();
-        void die();
-        void attack();
         void Update();
         void Draw(SpriteBatch spriteBatch);
     }

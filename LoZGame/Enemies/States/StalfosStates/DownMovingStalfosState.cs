@@ -44,10 +44,6 @@ namespace LoZClone
             stalfos.CurrentState = new DeadStalfosState(stalfos);
         }
 
-        public void attack()
-        {
-        }
-
         public void Update()
         {
             stalfos.currentLocation = new Vector2(stalfos.currentLocation.X, stalfos.currentLocation.Y + 1);

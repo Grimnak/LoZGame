@@ -35,7 +35,7 @@ namespace LoZClone
         public void takeDamage()
         {
             this.dragon.Health--;
-            if (this.dragon.Health-- == 0)
+            if (this.dragon.Health == 0)
             {
                 dragon.CurrentState.die();
             }

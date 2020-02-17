@@ -34,7 +34,7 @@ namespace LoZClone
         public void takeDamage()
         {
             this.gel.Health--;
-            if (this.gel.Health-- == 0)
+            if (this.gel.Health == 0)
             {
                 gel.CurrentState.die();
             }
@@ -43,11 +43,6 @@ namespace LoZClone
         {
             gel.CurrentState = new DeadGelState(gel);
         }
-
-        public void attack()
-        {
-        }
-
 
         public void Update()
         {

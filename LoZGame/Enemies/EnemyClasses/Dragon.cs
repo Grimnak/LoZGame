@@ -44,32 +44,33 @@ namespace LoZClone
                 default:
                     break;
             }
-            // this.checkBorder();
+            this.checkBorder();
             currentState.Update();
         }
-        /*   private void checkBorder()
-          {
-              if (this.currentLocation.Y < 0)
+ 
+        private void checkBorder()
+        {
+              if (this.currentLocation.Y < 50)
               {
-                  this.currentLocation = new Vector2(this.currentLocation.X, 0);
+                  this.currentLocation = new Vector2(this.currentLocation.X, 50);
                   this.lifeTime = directionChange + 1;
               }
-              if (this.currentLocation.Y > 480 - currentFrame.Height * scale)
+              if (this.currentLocation.Y > 430)
               {
-                  this.currentLocation = new Vector2(this.currentLocation.X, 480 - currentFrame.Height * scale);
+                  this.currentLocation = new Vector2(this.currentLocation.X, 430);
                   this.lifeTime = directionChange + 1;
               }
-              if (this.currentLocation.X < 0)
+              if (this.currentLocation.X < 50)
               {
-                  this.currentLocation = new Vector2(0, this.currentLocation.Y);
+                  this.currentLocation = new Vector2(40, this.currentLocation.Y);
                   this.lifeTime = directionChange + 1;
               }
-              if (this.currentLocation.X > 800 - currentFrame.Width * scale)
+              if (this.currentLocation.X > 750)
               {
-                  this.currentLocation = new Vector2(800 - currentFrame.Width * scale, this.currentLocation.Y);
+                  this.currentLocation = new Vector2(760, this.currentLocation.Y);
                   this.lifeTime = directionChange + 1;
               }
-          } */
+        } 
 
         public void takeDamage()
         {

@@ -34,11 +34,6 @@ namespace LoZClone
         {
         }
 
-        public void attack()
-        {
-        }
-
-
         public void Update()
         {
             sprite.Update();

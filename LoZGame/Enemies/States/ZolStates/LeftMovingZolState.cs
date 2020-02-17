@@ -34,7 +34,7 @@ namespace LoZClone
         public void takeDamage()
         {
             this.zol.Health--;
-            if (this.zol.Health-- == 0)
+            if (this.zol.Health == 0)
             {
                 zol.CurrentState.die();
             }
@@ -44,9 +44,6 @@ namespace LoZClone
             zol.CurrentState = new DeadZolState(zol);
         }
 
-        public void attack()
-        {
-        }
 
         public void Update()
         {

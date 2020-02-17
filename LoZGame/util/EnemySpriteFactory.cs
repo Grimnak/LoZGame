@@ -41,9 +41,9 @@ namespace LoZClone
 
 
         private Texture2D dragon;
-        private SpriteSheetData dragonData = new SpriteSheetData("aquamentus", 65, 85, 1, 4);
+        private SpriteSheetData dragonData = new SpriteSheetData("aquamentus", 55, 75, 1, 4);
         private Texture2D damagedDragon;
-        private SpriteSheetData damagedDragonData = new SpriteSheetData("damagedAqua", 65, 85, 1, 4);
+        private SpriteSheetData damagedDragonData = new SpriteSheetData("damagedAqua", 55, 75, 1, 4);
         private Texture2D fireball;
         private SpriteSheetData fireballData = new SpriteSheetData("fireball", 12, 12, 1, 4);
 
@@ -60,8 +60,6 @@ namespace LoZClone
         private SpriteSheetData oldManData = new SpriteSheetData("oldMan", 30, 30, 1, 1);
         private Texture2D merchant;
         private SpriteSheetData merchantData = new SpriteSheetData("merchant", 25, 25, 1, 1);
-        private Texture2D flame;
-        private SpriteSheetData flameData = new SpriteSheetData("flame", 30, 30, 1, 2);
 
          private Texture2D deadEnemy;
         private SpriteSheetData deadEnemyData = new SpriteSheetData("enemyDeath", 50, 50, 1, 2);
@@ -117,7 +115,6 @@ namespace LoZClone
 
             oldMan = content.Load<Texture2D>(oldManData.FilePath);
             merchant = content.Load<Texture2D>(merchantData.FilePath);
-           // flame = content.Load<Texture2D>(flameData.FilePath);
 
             deadEnemy = content.Load<Texture2D>(deadEnemyData.FilePath);
         }
@@ -260,12 +257,6 @@ namespace LoZClone
             return new MerchantSprite(merchant, merchantData);
         }
 
-        //Flame Sprite
-       // public FlameSprite createFlameSprite()
-        //{
-          //  return new FlameSprite(flame, flameData);
-        //}
-        
          //Enemy Death Sprite
         public DeadEnemySprite createDeadEnemySprite()
         {

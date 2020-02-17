@@ -34,7 +34,7 @@ namespace LoZClone
         public void takeDamage()
         {
             this.stalfos.Health--;
-            if (this.stalfos.Health-- == 0)
+            if (this.stalfos.Health == 0)
             {
                 stalfos.CurrentState.die();
             }
@@ -42,10 +42,6 @@ namespace LoZClone
         public void die()
         {
             stalfos.CurrentState = new DeadStalfosState(stalfos);
-        }
-
-        public void attack()
-        {
         }
 
         public void Update()

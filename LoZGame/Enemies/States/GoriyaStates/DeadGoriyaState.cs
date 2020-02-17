@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public class DeadGoriyaState : IEnemyState
+    public class DeadGoriyaState : IGoriyaState
     {
         private Goriya goriya;
         private DeadEnemySprite sprite;
