@@ -56,6 +56,11 @@
             return new BoomerangProjectile(this.projectileSpriteSheet, player, scale, instance);
         }
 
+        public IProjectile BoomerangEnemy(Goriya goriya, int scale, int instance)
+        {
+            return new BoomerangEnemy(this.projectileSpriteSheet, goriya, scale, instance);
+        }
+
         public IProjectile MagicBoomerang(IPlayer player, int scale, int instance)
         {
             return new MagicBoomerangProjectile(this.projectileSpriteSheet, player, scale, instance);

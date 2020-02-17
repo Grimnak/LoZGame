@@ -27,12 +27,13 @@
         private readonly int dY;
         private int distTraveled;
         private Vector2 enemyLoc;
+        private Goriya enemy;
 
         public bool IsHostile { get; }
 
         public Vector2 location { get; set; }
 
-        public BoomerangEnemy(Texture2D texture, /*IEnemy enemy,*/ int scale, int instance)
+        public BoomerangEnemy(Texture2D texture, Goriya enemy, int scale, int instance)
         {
             this.texture = texture;
             this.frame = new Rectangle(129, 16, 5, 16);
@@ -40,40 +41,41 @@
             this.instance = instance;
             this.expired = false;
             this.rotation = 0;
-            /*Vector2 loc = enemy.CurrentLocation;
-            this.direction = enemy.CurrentDirection;*/
+            Vector2 loc = enemy.currentLocation;
+            this.direction = enemy.direction;
             this.isReturned = false;
             this.returning = false;
             this.distTraveled = 0;
             this.IsHostile = true;
+            this.enemy = enemy;
 
             if (this.direction.Equals("Up"))
             {
-                //location = new Vector2(loc.X + 16, loc.Y);
+                location = new Vector2(loc.X + 16, loc.Y);
                 this.dX = 0;
                 this.dY = -1;
             }
             else if (this.direction.Equals("Left"))
             {
-                //location = new Vector2(loc.X, loc.Y + 16);
+                location = new Vector2(loc.X, loc.Y + 16);
                 this.dX = -1;
                 this.dY = 0;
             }
             else if (this.direction.Equals("Right"))
             {
-                //location = new Vector2(loc.X + 32, loc.Y + 16);
+                location = new Vector2(loc.X + 32, loc.Y + 16);
                 this.dX = 1;
                 this.dY = 0;
             }
             else
             {
-                //location = new Vector2(loc.X + 16, loc.Y + 32);
+                location = new Vector2(loc.X + 16, loc.Y + 32);
                 this.dX = 0;
                 this.dY = 1;
             }
 
-            /*entityLoc = enemy.CurrentLocation;*/
-            /*entityLoc = new Vector2(entityLoc.X + 16, entityLoc.Y + 16);*/
+            enemyLoc = enemy.currentLocation;
+            enemyLoc = new Vector2(enemyLoc.X + 16, enemyLoc.Y + 16);
         }
 
         private void rotate()
@@ -90,8 +92,8 @@
         {
             float newX = this.location.X;
             float newY = this.location.Y;
-            /*entityLoc = enemy.CurrentLocation;
-            entityLoc = new Vector2(entityLoc.X + 16, entityLoc.Y + 16);*/
+            enemyLoc = enemy.currentLocation;
+            enemyLoc = new Vector2(enemyLoc.X + 16, enemyLoc.Y + 16);
             float diffX = this.enemyLoc.X - newX;
             float diffY = this.enemyLoc.Y - newY;
             if (Math.Abs(diffX) <= 2 * travelRate && Math.Abs(diffY) <= 2 * travelRate)

@@ -8,7 +8,7 @@ namespace LoZClone
     {
         private readonly Goriya goriya;
         private readonly IGoriyaSprite sprite;
-
+        private IProjectile boomerangSprite;
         public AttackingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
@@ -29,7 +29,8 @@ namespace LoZClone
                 default:
                     break;
              }
-           
+
+            this.boomerangSprite = ProjectileSpriteFactory.Instance.BoomerangEnemy(this.goriya, 0, 0);
         }
 
         public void moveLeft()
@@ -74,11 +75,13 @@ namespace LoZClone
         public void Update()
         {
             this.sprite.Update();
+            this.boomerangSprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
             this.sprite.Draw(sb, this.goriya.currentLocation, Color.White);
+            this.boomerangSprite.Draw(sb);
         }
     }
 }
