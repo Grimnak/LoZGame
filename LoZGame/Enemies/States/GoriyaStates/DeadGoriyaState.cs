@@ -1,12 +1,13 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
     public class DeadGoriyaState : IEnemyState
     {
         private Goriya goriya;
-        private IGoriyaSprite sprite;
+        private DeadEnemySprite sprite;
 
         public DeadGoriyaState(Goriya goriya)
         {
@@ -33,9 +34,8 @@ namespace LoZClone
         {
         }
 
-        public void Update()
+        public void attack()
         {
-            sprite.Update();
         }
 
         public void Update()

@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public class RightMovingDragonState : IEnemyState
+    public class RightMovingDragonState : IDragonState
     {
         private Dragon dragon;
         private IDragonSprite sprite;
@@ -21,14 +22,7 @@ namespace LoZClone
         {
             // Blank b/c already moving right
         }
-        public void moveUp()
-        {
-            dragon.CurrentState = new UpMovingDragonState(dragon);
-        }
-        public void moveDown()
-        {
-            dragon.CurrentState = new DownMovingDragonState(dragon);
-        }
+
         public void stop()
         {
             dragon.CurrentState = new IdleDragonState(dragon);

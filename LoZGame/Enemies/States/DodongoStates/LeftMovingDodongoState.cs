@@ -44,6 +44,11 @@ namespace LoZClone
         {
             // dodongo.CurrentState = new DeadDodongoState(dodongo);
         }
+        
+        public void attack() 
+        {
+        }
+
 
         public void Update()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
@@ -42,6 +43,11 @@ namespace LoZClone
         {
             gel.CurrentState = new DeadGelState(gel);
         }
+
+        public void attack()
+        {
+        }
+
 
         public void Update()
         {

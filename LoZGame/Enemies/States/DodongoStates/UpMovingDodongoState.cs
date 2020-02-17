@@ -43,7 +43,9 @@ namespace LoZClone
         {
              // dodongo.CurrentState = new DeadDodongoState(dodongo);
         }
-
+        public void attack() 
+        {
+        }
         public void Update()
         {
             dodongo.currentLocation = new Vector2(dodongo.currentLocation.X, dodongo.currentLocation.Y - 3);

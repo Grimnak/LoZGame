@@ -56,11 +56,14 @@ namespace LoZClone
         private SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", 70, 50, 1, 3);
 
         private Texture2D oldMan;
-        private SpriteSheetData oldManData = new SpriteSheetData("dodongoUp", 50, 50, 1, 1);
+        private SpriteSheetData oldManData = new SpriteSheetData("oldMan", 50, 50, 1, 1);
         private Texture2D merchant;
-        private SpriteSheetData merchantData = new SpriteSheetData("dodongoUp", 50, 50, 1, 1);
+        private SpriteSheetData merchantData = new SpriteSheetData("merchant", 50, 50, 1, 1);
         private Texture2D flame;
-        private SpriteSheetData flameData = new SpriteSheetData("dodongoUp", 50, 50, 1, 2);
+        private SpriteSheetData flameData = new SpriteSheetData("flame", 50, 50, 1, 2);
+
+         private Texture2D deadEnemy;
+        private SpriteSheetData deadEnemyData = new SpriteSheetData("enemyDeath", 50, 50, 1, 2);
 
 
 
@@ -113,7 +116,9 @@ namespace LoZClone
 
             oldMan = content.Load<Texture2D>(oldManData.FilePath);
             merchant = content.Load<Texture2D>(merchantData.FilePath);
-            flame = content.Load<Texture2D>(flameData.FilePath);
+           // flame = content.Load<Texture2D>(flameData.FilePath);
+
+            deadEnemy = content.Load<Texture2D>(deadEnemyData.FilePath);
         }
 
         //Stalfos Sprites
@@ -148,7 +153,7 @@ namespace LoZClone
 
         //Wallmaster Sprites
 
-        public WallMasterLeftSprite createSpriteLeftMovingWallMaster()
+        public WallMasterLeftSprite createLeftMovingWallMasterSprite()
         {
             return new WallMasterLeftSprite(leftWallMaster, leftWallMasterData);
         }
@@ -191,7 +196,7 @@ namespace LoZClone
 
         //Keese Sprites
 
-        public KeeseSprite createDownKeeseSprite()
+        public KeeseSprite createKeeseSprite()
         {
             return new KeeseSprite(keese, keeseData);
         }
@@ -215,7 +220,7 @@ namespace LoZClone
             return new FireballSprite(fireball, fireballData, "down");
         }
 
-        public FireballSprite createUpLeftFireBallSprite()
+        public FireballSprite createUpLeftFireballSprite()
         {
             return new FireballSprite(fireball, fireballData, "up");
         }
@@ -242,23 +247,28 @@ namespace LoZClone
         }
 
         //Old Man Sprite
-        /*
+        
         public OldManSprite createOldManSprite()
         {
-            return new OldManSprite(oldMan);
+            return new OldManSprite(oldMan, oldManData);
         }
 
         //Merchant Sprite
         public MerchantSprite createMerchantSprite()
         {
-            return new MerchantSprite(Merchant);
+            return new MerchantSprite(merchant, merchantData);
         }
 
         //Flame Sprite
-        public FlameSprite createFlameSprite()
+       // public FlameSprite createFlameSprite()
+        //{
+          //  return new FlameSprite(flame, flameData);
+        //}
+        
+         //Enemy Death Sprite
+        public DeadEnemySprite createDeadEnemySprite()
         {
-            return new FlameSprite(flame);
+            return new DeadEnemySprite(deadEnemy, deadEnemyData);
         }
-        */
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public class UpRightMovingKeeseState : IEnemyState
+    public class UpRightMovingKeeseState : IKeeseState
     {
         private Keese keese;
         private IKeeseSprite sprite;
@@ -29,6 +30,22 @@ namespace LoZClone
         {
             keese.CurrentState = new DownMovingKeeseState(keese);
         }
+         public void moveUpLeft()
+        {
+            keese.CurrentState = new UpLeftMovingKeeseState(keese);
+        }
+        public void moveUpRight()
+        {
+           // Blank b/c already moving upRight
+        }
+        public void moveDownLeft()
+        {
+            keese.CurrentState = new DownLeftMovingKeeseState(keese);
+        }
+        public void moveDownRight()
+        {
+            keese.CurrentState = new DownRightMovingKeeseState(keese);
+        }
 
         public void takeDamage()
         {
@@ -41,6 +58,10 @@ namespace LoZClone
         public void die()
         {
             keese.CurrentState = new DeadKeeseState(keese);
+        }
+        
+        public void attack() 
+        {
         }
 
         public void Update()

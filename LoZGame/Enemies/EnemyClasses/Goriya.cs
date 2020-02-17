@@ -1,8 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-
-using System;
-using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
@@ -10,41 +8,53 @@ namespace LoZClone
     public class Goriya : IEnemy
     {
         private IEnemyState currentState;
-        private int health = 10;
+        private int health = 10, lifeTime = 0, directionChange = 40;
         public Vector2 currentLocation;
         private string currentDirection = "left";
+        private enum stateEnum { Up, Down, Left, Right, Attacking };
+        private stateEnum state;
 
         public Goriya()
         {
             currentState = new LeftMovingGoriyaState(this);
-            currentLocation = new Vector2(400, 200);
+            currentLocation = new Vector2(650, 200);
         }
 
-        public void moveLeft()
+        private void getNewState()
         {
-            currentDirection = "left";
-            currentState.moveLeft();
+            Random randomselect = new Random();
+            state = (stateEnum)(randomselect.Next(0, 7));
         }
-        public void moveRight()
-        {
-            currentDirection = "right";
-            currentState.moveRight();
-        }
-        public void moveUp()
-        {
-            currentDirection = "up";
-            currentState.moveUp();
 
-        }
-        public void moveDown()
+        private void updateLoc()
         {
-            currentDirection = "down";
-            currentState.moveDown(); 
+            switch (this.state)
+            {
+                case stateEnum.Up:
+                    currentDirection = "up";
+                    currentState.moveUp();
+                    break;
+                case stateEnum.Down:
+                    currentDirection = "down";
+                    currentState.moveDown();
+                    break;
+                case stateEnum.Left:
+                    currentDirection = "left";
+                    currentState.moveLeft();
+                    break;
+                case stateEnum.Right:
+                    currentDirection = "right";
+                    currentState.moveRight();
+                    break;
+                case stateEnum.Attacking:
+                    currentState.attack();
+                    break;
+                default:
+                    break;
+            }
+            currentState.Update();
         }
-        public void attack()
-        {
-            currentState.attack();
-        }
+
         public void takeDamage()
         {
             currentState.takeDamage();
@@ -53,10 +63,18 @@ namespace LoZClone
         {
             currentState.die();
         }
+
         public void Update()
         {
-            currentState.Update();
+            lifeTime++;
+            this.updateLoc();
+            if (lifeTime > directionChange)
+            {
+                this.getNewState();
+                lifeTime = 0;
+            }
         }
+
         public void Draw(SpriteBatch sb)
         {
             currentState.Draw(sb);

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
@@ -11,7 +12,7 @@ namespace LoZClone
         public UpMovingWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
-            sprite = EnemySpriteFactory.Instance.creatLeftWallMasterSprite();
+            sprite = EnemySpriteFactory.Instance.createLeftMovingWallMasterSprite();
         }
         public void moveLeft()
         {
@@ -44,10 +45,14 @@ namespace LoZClone
             wallMaster.CurrentState = new DeadWallMasterState(wallMaster);
         }
 
+        public void attack()
+        {
+        }
+
         public void Update()
         {
             wallMaster.currentLocation = new Vector2(wallMaster.currentLocation.X, wallMaster.currentLocation.Y-3);
-            sprite.update();
+            sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)

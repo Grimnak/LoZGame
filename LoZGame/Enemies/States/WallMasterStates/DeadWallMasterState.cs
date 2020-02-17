@@ -1,12 +1,13 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
     public class DeadWallMasterState : IEnemyState
     {
         private WallMaster wallMaster;
-        private IWallMasterSprite sprite;
+        private DeadEnemySprite sprite;
 
         public DeadWallMasterState(WallMaster wallMaster)
         {
@@ -33,9 +34,8 @@ namespace LoZClone
         {
         }
 
-        public void Update()
+        public void attack()
         {
-            sprite.Update();
         }
 
         public void Update()

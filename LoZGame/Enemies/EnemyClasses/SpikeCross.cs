@@ -1,8 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-
-using System;
-using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
@@ -10,35 +8,45 @@ namespace LoZClone
     public class SpikeCross : IEnemy
     {
         private IEnemyState currentState;
-        private int health = 10;
+        private int health = 10, lifeTime = 0, directionChange = 40;
         public Vector2 currentLocation;
+        private enum direction { Up, Down, Left, Right };
+        private direction currentDirection;
 
         public SpikeCross()
         {
             currentState = new LeftMovingSpikeCrossState(this);
-            currentLocation = new Vector2(400, 200);
+            currentLocation = new Vector2(650, 200);
         }
 
-        public void moveLeft()
+        private void getNewDirection()
         {
-            currentState.moveLeft();
+            Random randomselect = new Random();
+            currentDirection = (direction)(randomselect.Next(0, 7));
         }
-        public void moveRight()
+
+        private void updateLoc()
         {
-            currentState.moveRight();
+            switch (this.currentDirection)
+            {
+                case direction.Up:
+                    currentState.moveUp();
+                    break;
+                case direction.Down:
+                    currentState.moveDown();
+                    break;
+                case direction.Left:
+                    currentState.moveLeft();
+                    break;
+                case direction.Right:
+                    currentState.moveRight();
+                    break;
+                default:
+                    break;
+            }
+            currentState.Update();
         }
-        public void moveUp()
-        {
-            currentState.moveUp();
-        }
-        public void moveDown()
-        {
-            currentState.moveDown();
-        }
-        public void attack()
-        {
-            //
-        }
+
         public void takeDamage()
         {
             currentState.takeDamage();
@@ -47,10 +55,18 @@ namespace LoZClone
         {
             currentState.die();
         }
+
         public void Update()
         {
-            currentState.Update();
+            lifeTime++;
+            this.updateLoc();
+            if (lifeTime > directionChange)
+            {
+                this.getNewDirection();
+                lifeTime = 0;
+            }
         }
+
         public void Draw(SpriteBatch sb)
         {
             currentState.Draw(sb);

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
@@ -11,7 +12,24 @@ namespace LoZClone
         public AttackingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
-            sprite = EnemySpriteFactory.Instance.createAttackingGoriyaSprite();
+             switch (goriya.direction)
+             {
+                case "left":
+                    sprite = EnemySpriteFactory.Instance.createLeftMovingGoriyaSprite();
+                    break;
+                case "right":
+                    sprite = EnemySpriteFactory.Instance.createRightMovingGoriyaSprite();
+                    break;
+                case "up":
+                    sprite = EnemySpriteFactory.Instance.createUpMovingGoriyaSprite();
+                    break;
+                case "down":
+                    sprite = EnemySpriteFactory.Instance.createDownMovingGoriyaSprite();
+                    break;
+                default:
+                    break;
+             }
+           
         }
         public void moveLeft()
         {

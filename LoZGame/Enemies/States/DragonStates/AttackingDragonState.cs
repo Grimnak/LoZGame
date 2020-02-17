@@ -1,8 +1,10 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public class AttackingDragonState : IEnemyState
+    public class AttackingDragonState : IDragonState
     {
         private Dragon dragon;
         private IDragonSprite sprite;
@@ -13,7 +15,7 @@ namespace LoZClone
         public AttackingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
-            sprite = EnemySpriteFactory.Instance.createAttackingDragonSprite();
+            sprite = EnemySpriteFactory.Instance.createDragonSprite();
             fireballUpLeft = EnemySpriteFactory.Instance.createUpLeftFireballSprite();
             fireballLeft = EnemySpriteFactory.Instance.createLeftFireballSprite();
             fireballDownLeft = EnemySpriteFactory.Instance.createDownLeftFireballSprite();
@@ -26,14 +28,7 @@ namespace LoZClone
         {
             dragon.CurrentState = new RightMovingDragonState(dragon);
         }
-        public void moveUp()
-        {
-            dragon.CurrentState = new UpMovingDragonState(dragon);
-        }
-        public void moveDown()
-        {
-            dragon.CurrentState = new DownMovingDragonState(dragon);
-        }
+
         public void stop()
         {
             dragon.CurrentState = new IdleDragonState(dragon);

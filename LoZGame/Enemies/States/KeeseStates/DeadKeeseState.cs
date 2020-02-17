@@ -1,12 +1,13 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public class DeadKeeseState : IEnemyState
+    public class DeadKeeseState : IKeeseState
     {
         private Keese keese;
-        private IKeeseSprite sprite;
+        private DeadEnemySprite sprite;
 
         public DeadKeeseState(Keese keese)
         {
@@ -25,19 +26,6 @@ namespace LoZClone
         public void moveDown()
         {
         }
-
-        public void takeDamage()
-        {
-        }
-        public void die()
-        {
-        }
-
-        public void Update()
-        {
-            sprite.Update();
-        }
-
         public void moveUpLeft()
         {
         }
@@ -48,6 +36,17 @@ namespace LoZClone
         {
         }
         public void moveDownRight()
+        {
+        }
+
+        public void takeDamage()
+        {
+        }
+        public void die()
+        {
+        }
+
+        public void attack()
         {
         }
 

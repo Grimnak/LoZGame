@@ -1,12 +1,13 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
     public class DeadGelState : IEnemyState
     {
         private Gel gel;
-        private IGelSprite sprite;
+        private DeadEnemySprite sprite;
 
         public DeadGelState(Gel gel)
         {
@@ -33,10 +34,10 @@ namespace LoZClone
         {
         }
 
-        public void Update()
+        public void attack()
         {
-            sprite.Update();
         }
+
 
         public void Update()
         {

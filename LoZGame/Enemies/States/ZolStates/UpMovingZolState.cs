@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
@@ -42,6 +43,10 @@ namespace LoZClone
         public void die()
         {
             zol.CurrentState = new DeadZolState(zol);
+        }
+
+        public void attack()
+        {
         }
 
         public void Update()

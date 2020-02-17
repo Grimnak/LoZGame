@@ -1,44 +1,88 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-
-using System;
-using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
 
     public class Keese : IEnemy
     {
-        private IEnemyState currentState;
-        private int health = 10;
+        private IKeeseState currentState;
+        private int health = 10, lifeTime = 0, directionChange = 40;
         public Vector2 currentLocation;
+        private enum direction { Up, Down, Left, Right, UpLeft, UpRight, DownLeft, DownRight };
+        private direction currentDirection;
 
         public Keese()
         {
             currentState = new LeftMovingKeeseState(this);
-            currentLocation = new Vector2(400, 200);
+            currentLocation = new Vector2(650, 200);
         }
 
-        public void moveLeft()
+        private void getNewDirection()
         {
-            currentState.moveLeft();
+            Random randomselect = new Random();
+            currentDirection = (direction)(randomselect.Next(0, 7));
         }
-        public void moveRight()
+
+        private void updateLoc()
         {
-            currentState.moveRight();
+            switch (this.currentDirection)
+            {
+                case direction.Up:
+                    currentState.moveUp();
+                    break;
+                case direction.Down:
+                    currentState.moveDown();
+                    break;
+                case direction.Left:
+                    currentState.moveLeft();
+                    break;
+                case direction.Right:
+                    currentState.moveRight();
+                    break;
+                case direction.UpLeft:
+                    currentState.moveUpLeft();
+                    break;
+                case direction.UpRight:
+                    currentState.moveUpRight();
+                    break;
+                case direction.DownLeft:
+                    currentState.moveDownLeft();
+                    break;
+                case direction.DownRight:
+                    currentState.moveDownRight();
+                    break;
+                default:
+                    break;
+            }
+          // this.checkBorder();
+            currentState.Update();
         }
-        public void moveUp()
+      /*   private void checkBorder()
         {
-            currentState.moveUp();
-        }
-        public void moveDown()
-        {
-            currentState.moveDown();
-        }
-        public void attack()
-        {
-            //
-        }
+            if (this.currentLocation.Y < 0)
+            {
+                this.currentLocation = new Vector2(this.currentLocation.X, 0);
+                this.lifeTime = directionChange + 1;
+            }
+            if (this.currentLocation.Y > 480 - currentFrame.Height * scale)
+            {
+                this.currentLocation = new Vector2(this.currentLocation.X, 480 - currentFrame.Height * scale);
+                this.lifeTime = directionChange + 1;
+            }
+            if (this.currentLocation.X < 0)
+            {
+                this.currentLocation = new Vector2(0, this.currentLocation.Y);
+                this.lifeTime = directionChange + 1;
+            }
+            if (this.currentLocation.X > 800 - currentFrame.Width * scale)
+            {
+                this.currentLocation = new Vector2(800 - currentFrame.Width * scale, this.currentLocation.Y);
+                this.lifeTime = directionChange + 1;
+            }
+        } */
+
         public void takeDamage()
         {
             currentState.takeDamage();
@@ -47,16 +91,32 @@ namespace LoZClone
         {
             currentState.die();
         }
-        public void update()
+       /* public void Update()
         {
-            currentState.update();
+            currentState.Update();
+        } */
+
+        public void Update()
+        {
+            lifeTime++;
+            this.updateLoc();
+            if (lifeTime > directionChange)
+            {
+                this.getNewDirection();
+                lifeTime = 0;
+            }
         }
-        public void draw(SpriteBatch sb)
+           /* if (lifeTime % frameChange == 0)
+            {
+                this.nextFrame();
+            } 
+        } */
+        public void Draw(SpriteBatch sb)
         {
-            currentState.draw(sb);
+            currentState.Draw(sb);
         }
 
-        public IEnemyState CurrentState
+        public IKeeseState CurrentState
         {
             get { return currentState; }
             set { currentState = value; }

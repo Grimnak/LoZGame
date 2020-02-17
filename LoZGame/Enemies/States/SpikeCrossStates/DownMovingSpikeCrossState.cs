@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
@@ -11,7 +12,7 @@ namespace LoZClone
         public DownMovingSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            sprite = EnemySpriteFactory.Instance.createDownMovingSpikeCrossSprite();
+            sprite = EnemySpriteFactory.Instance.createSpikeCrossSprite();
         }
         public void moveLeft()
         {
@@ -41,6 +42,10 @@ namespace LoZClone
         public void die()
         {
 
+        }
+
+        public void attack()
+        {
         }
 
         public void Update()

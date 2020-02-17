@@ -3,15 +3,18 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public interface IEnemyState
+    public interface IKeeseState
     {
         void moveLeft();
         void moveRight();
         void moveUp();
         void moveDown();
+        void moveUpLeft();
+        void moveDownLeft();
+        void moveUpRight();
+        void moveDownRight();
         void takeDamage();
         void die();
-        void attack();
         void Update();
         void Draw(SpriteBatch spriteBatch);
     }

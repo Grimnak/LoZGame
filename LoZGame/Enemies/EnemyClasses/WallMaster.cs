@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace LoZClone
 {
 
-    public class Gel : IEnemy
+    public class WallMaster : IEnemy
     {
         private IEnemyState currentState;
         private int health = 10, lifeTime = 0, directionChange = 40;
@@ -13,9 +13,9 @@ namespace LoZClone
         private enum direction { Up, Down, Left, Right };
         private direction currentDirection;
 
-        public Gel()
+        public WallMaster()
         {
-            currentState = new LeftMovingGelState(this);
+            currentState = new LeftMovingWallMasterState(this);
             currentLocation = new Vector2(650, 200);
         }
 
@@ -84,7 +84,6 @@ namespace LoZClone
             get { return health; }
             set { health = value; }
         }
-
     }
 }
 

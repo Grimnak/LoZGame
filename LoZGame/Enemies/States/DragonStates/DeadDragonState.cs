@@ -1,11 +1,13 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public class DeadDragonState : IEnemyState
+    public class DeadDragonState : IDragonState
     {
         private Dragon dragon;
-        private IDragonSprite sprite;
+        private DeadEnemySprite sprite;
 
         public DeadDragonState(Dragon dragon)
         {
@@ -18,12 +20,6 @@ namespace LoZClone
         public void moveRight()
         {
         }
-        public void moveUp()
-        {
-        }
-        public void moveDown()
-        {
-        }
 
         public void takeDamage()
         {
@@ -32,6 +28,13 @@ namespace LoZClone
         {
         }
 
+        public void attack()
+        {
+        }
+        
+        public void stop()
+        {
+        }
         public void Update()
         {
             sprite.Update();

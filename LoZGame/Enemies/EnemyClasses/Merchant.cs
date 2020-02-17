@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
@@ -7,32 +8,14 @@ namespace LoZClone
     public class Merchant : IEnemy
     {
         public Vector2 currentLocation;
+        private MerchantSprite sprite;
 
         public Merchant()
         {
-            currentLocation = new Vector2(400, 200);
+            currentLocation = new Vector2(650, 200);
+            sprite = EnemySpriteFactory.Instance.createMerchantSprite();
         }
 
-        public void moveLeft()
-        {
-            //
-        }
-        public void moveRight()
-        {
-           //
-        }
-        public void moveUp()
-        {
-           //
-        }
-        public void moveDown()
-        {
-            //
-        }
-        public void attack()
-        {
-            //
-        }
         public void takeDamage()
         {
             //
@@ -43,11 +26,11 @@ namespace LoZClone
         }
         public void Update()
         {
-            currentState.Update();
+            sprite.Update();
         }
         public void Draw(SpriteBatch sb)
         {
-            currentState.Draw(sb);
+            sprite.Draw(sb, currentLocation, Color.White);
         }
     }
 }

@@ -1,12 +1,13 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
     public class DeadZolState : IEnemyState
     {
         private Zol zol;
-        private IZolSprite sprite;
+        private DeadEnemySprite sprite;
 
         public DeadZolState(Zol zol)
         {
@@ -30,6 +31,10 @@ namespace LoZClone
         { 
         }
         public void die()
+        {
+        }
+
+        public void attack()
         {
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
@@ -10,29 +11,9 @@ namespace LoZClone
 
         public Flame()
         {
-            currentLocation = new Vector2(400, 200);
+            currentLocation = new Vector2(650, 200);
         }
 
-        public void moveLeft()
-        {
-            //
-        }
-        public void moveRight()
-        {
-           //
-        }
-        public void moveUp()
-        {
-           //
-        }
-        public void moveDown()
-        {
-            //
-        }
-        public void attack()
-        {
-            //
-        }
         public void takeDamage()
         {
             //

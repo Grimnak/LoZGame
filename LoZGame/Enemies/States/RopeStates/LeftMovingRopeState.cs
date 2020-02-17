@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
@@ -41,6 +42,10 @@ namespace LoZClone
         public void die()
         {
             rope.CurrentState = new DeadRopeState(rope);
+        }
+
+        public void attack()
+        {
         }
 
         public void Update()
