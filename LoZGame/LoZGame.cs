@@ -16,7 +16,8 @@ namespace LoZClone
         private IController keyboardController;
         private ItemManager itemManager;
         private BlockManager blockManager;
-        private EntityManager entityManager;
+        private ProjectileManager projectileManager;
+        private EnemyManager enemyManager;
 
         public LoZGame()
         {
@@ -27,6 +28,7 @@ namespace LoZClone
         protected override void Initialize()
         {
             link = new Link(this);
+            enemyManager = new EnemyManager();
             itemManager = new ItemManager();
             blockManager = new BlockManager();
             entityManager = new EntityManager();
@@ -41,6 +43,8 @@ namespace LoZClone
             ItemSpriteFactory.Instance.LoadAllTextures(Content);
             BlockSpriteFactory.Instance.LoadAllTextures(Content);
             ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
+            EnemySpriteFactory.Instance.LoadAllTextures(Content);
+            enemyManager.loadSprites(400, 240);
             itemManager.loadSprites(300, 240);
             blockManager.loadSprites(500, 240);
         }
@@ -51,6 +55,7 @@ namespace LoZClone
         {
             keyboardController.Update();
             link.Update();
+            enemyManager.currentEnemy.Update();
             itemManager.currentItem.Update();
             blockManager.currentBlock.Update();
             entityManager.Update();
@@ -61,6 +66,7 @@ namespace LoZClone
             GraphicsDevice.Clear(Color.Gray);
             spriteBatch.Begin();
             link.Draw();
+            enemyManager.currentEnemy.Draw(spriteBatch);
             itemManager.currentItem.Draw(spriteBatch);
             blockManager.currentBlock.Draw(spriteBatch, new Vector2(500, 240), Color.White);
             entityManager.Draw(spriteBatch);

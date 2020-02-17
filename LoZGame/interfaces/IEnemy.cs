@@ -3,14 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 public interface IEnemy
 {
-    Vector2 Location { get; set; }
-    void moveLeft();
-    void moveRight();
-    void moveUp();
-    void moveDown();
-    void attack();
     void takeDamage();
     void die();
-    void update();
-    void draw(SpriteBatch spriteBatch);
+    void Update();
+    void Draw(SpriteBatch spriteBatch);
 }
