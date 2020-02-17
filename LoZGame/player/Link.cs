@@ -13,7 +13,7 @@ namespace LoZClone
         private string currentWeapon;
         public string CurrentWeapon
         {
-            get { return currentWeapon;  }
+            get { return currentWeapon; }
             set { currentWeapon = value; }
         }
         private string currentColor;
@@ -44,6 +44,7 @@ namespace LoZClone
         public int CurrentSpeed
         {
             get { return currentSpeed; }
+            set { currentSpeed = value; }
         }
         private int damageCounter;
         public int DamageCounter

@@ -21,7 +21,7 @@ namespace LoZClone
         string CurrentDirection { get; set; }
         Vector2 CurrentLocation { get; set; }
         Color CurrentTint { get; set; }
-        int CurrentSpeed { get; }
+        int CurrentSpeed { get; set; }
         int DamageCounter { get; set; }
         int DamageTimer { get; set; }
         bool IsDead { get; set; }
