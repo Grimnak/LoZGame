@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that makes player move down.
+    /// </summary>
     public class CommandDown : ICommand
     {
         private static readonly int PriorityValue = 2;
@@ -20,7 +23,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.player.moveDown();
+            this.player.MoveDown();
         }
     }
 }

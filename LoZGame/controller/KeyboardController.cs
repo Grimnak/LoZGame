@@ -4,6 +4,9 @@ namespace LoZClone
     using System.Linq;
     using Microsoft.Xna.Framework.Input;
 
+    /// <summary>
+    /// Controller for keyboard input.
+    /// </summary>
     public class KeyboardController : IController
     {
         private readonly CommandLoader allCommands;
@@ -71,7 +74,6 @@ namespace LoZClone
                 {
                     this.currentCommand.Execute();
                 }
-
             }
 
             this.playerCommands.Clear();

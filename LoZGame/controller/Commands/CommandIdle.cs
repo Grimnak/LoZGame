@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that makes player idle.
+    /// </summary>
     public class CommandIdle : ICommand
     {
         private static readonly int PriorityValue = 0;
@@ -20,7 +23,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.player.idle();
+            this.player.Idle();
         }
     }
 }

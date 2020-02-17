@@ -21,39 +21,39 @@
             return LinkSpriteFactory.Instance.CreateSpriteLinkDie(this.player.CurrentColor);
         }
 
-        public void idle()
+        public void Idle()
         {
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
         }
 
-        public void attack()
+        public void Attack()
         {
         }
 
-        public void die()
+        public void Die()
         {
         }
 
-        public void pickupItem(int itemTime)
+        public void PickupItem(int itemTime)
         {
         }
 
-        public void useItem(int waitTime)
+        public void UseItem(int waitTime)
         {
         }
 

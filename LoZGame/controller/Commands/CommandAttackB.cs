@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that makes player attack.
+    /// </summary>
     public class CommandAttackB : ICommand
     {
         private static readonly int PriorityValue = 7;
@@ -25,7 +28,7 @@
         {
             if (!this.player.IsDead)
             {
-                this.player.attack();
+                this.player.Attack();
                 this.entity.ProjectileManager.AddItem(this.entity.ProjectileManager.Swordbeam, this.player);
             }
         }

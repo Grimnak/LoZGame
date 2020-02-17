@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that makes player shoot an arrow.
+    /// </summary>
     public class CommandArrow : ICommand
     {
         private static readonly int PriorityValue = 5;
@@ -25,7 +28,7 @@
         {
             if (!this.player.IsDead)
             {
-                this.player.useItem(ProjectileManager.MaxWaitTime);
+                this.player.UseItem(ProjectileManager.MaxWaitTime);
                 this.entity.ProjectileManager.AddItem(this.entity.ProjectileManager.Arrow, this.player);
             }
         }

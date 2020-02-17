@@ -1,27 +1,65 @@
 namespace LoZClone
 {
+    /// <summary>
+    /// Player state interface.
+    /// </summary>
     public interface IPlayerState
     {
-        void idle();
+        /// <summary>
+        /// Transitions state to idle.
+        /// </summary>
+        void Idle();
 
-        void moveUp();
+        /// <summary>
+        /// Transitions state to moving up.
+        /// </summary>
+        void MoveUp();
 
-        void moveDown();
+        /// <summary>
+        /// Transitions state to moving down.
+        /// </summary>
+        void MoveDown();
 
-        void moveLeft();
+        /// <summary>
+        /// Transitions state to moving left.
+        /// </summary>
+        void MoveLeft();
 
-        void moveRight();
+        /// <summary>
+        /// Transitions state to moveing right.
+        /// </summary>
+        void MoveRight();
 
-        void attack();
+        /// <summary>
+        /// Transitions state to attack.
+        /// </summary>
+        void Attack();
 
-        void die();
+        /// <summary>
+        /// Transitions state to die.
+        /// </summary>
+        void Die();
 
-        void pickupItem(int itemTime);
+        /// <summary>
+        /// Transitions state to picking up and item.
+        /// </summary>
+        /// <param name="itemTime">Life time of the item.</param>
+        void PickupItem(int itemTime);
 
-        void useItem(int waitTime);
+        /// <summary>
+        /// Transitions state to using an item.
+        /// </summary>
+        /// <param name="waitTime">Life time of the item.</param>
+        void UseItem(int waitTime);
 
+        /// <summary>
+        /// Updates the state.
+        /// </summary>
         void Update();
 
+        /// <summary>
+        /// Draws the correct state sprite.
+        /// </summary>
         void Draw();
     }
 }

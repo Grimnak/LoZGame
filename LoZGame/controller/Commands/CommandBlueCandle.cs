@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that makes player shoot a flame from the blue candle.
+    /// </summary>
     public class CommandBlueCandle : ICommand
     {
         private static readonly int PriorityValue = 6;
@@ -21,7 +24,7 @@
         {
             if (!this.entity.ProjectileManager.FlameInUse && !this.player.IsDead)
             {
-                this.player.useItem(ProjectileManager.MaxWaitTime);
+                this.player.UseItem(ProjectileManager.MaxWaitTime);
                 this.entity.ProjectileManager.AddItem(this.entity.ProjectileManager.BlueCandle, this.player);
             }
         }

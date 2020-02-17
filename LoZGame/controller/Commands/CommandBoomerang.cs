@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that makes player throw a boomerang.
+    /// </summary>
     public class CommandBoomerang : ICommand
     {
         private static readonly int PriorityValue = 6;
@@ -25,7 +28,7 @@
         {
             if (!this.entity.ProjectileManager.BoomerangOut && !this.player.IsDead)
             {
-                this.player.useItem(ProjectileManager.MaxWaitTime);
+                this.player.UseItem(ProjectileManager.MaxWaitTime);
                 this.entity.ProjectileManager.AddItem(this.entity.ProjectileManager.Boomerang, this.player);
             }
         }

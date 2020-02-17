@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that makes current item cycle to the next item to its rightt.
+    /// </summary>
     public class CommandItemRight : ICommand
     {
         private static readonly int PriorityValue = -1;

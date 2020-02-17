@@ -35,7 +35,7 @@ namespace LoZClone
             }
         }
 
-        public void idle()
+        public void Idle()
         {
             if (this.lockoutTimer <= 0)
             {
@@ -43,7 +43,7 @@ namespace LoZClone
             }
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
             if (this.lockoutTimer <= 0)
             {
@@ -51,7 +51,7 @@ namespace LoZClone
             }
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
             if (this.lockoutTimer <= 0)
             {
@@ -59,7 +59,7 @@ namespace LoZClone
             }
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
             if (this.lockoutTimer <= 0)
             {
@@ -67,7 +67,7 @@ namespace LoZClone
             }
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
             if (this.lockoutTimer <= 0)
             {
@@ -75,16 +75,16 @@ namespace LoZClone
             }
         }
 
-        public void attack()
+        public void Attack()
         {
         }
 
-        public void die()
+        public void Die()
         {
             this.player.State = new DieState(this.game, this.player);
         }
 
-        public void pickupItem(int itemTime)
+        public void PickupItem(int itemTime)
         {
             if (this.lockoutTimer <= 0)
             {
@@ -92,7 +92,7 @@ namespace LoZClone
             }
         }
 
-        public void useItem(int waitTime)
+        public void UseItem(int waitTime)
         {
             if (this.lockoutTimer <= 0)
             {

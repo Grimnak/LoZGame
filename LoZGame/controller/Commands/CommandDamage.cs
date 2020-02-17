@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that makes player take damage.
+    /// </summary>
     public class CommandDamage : ICommand
     {
         private static readonly int PriorityValue = -1;
@@ -20,7 +23,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.player.takeDamage();
+            this.player.TakeDamage();
         }
     }
 }

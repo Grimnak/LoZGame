@@ -7,6 +7,9 @@
     using System.Threading.Tasks;
     using Microsoft.Xna.Framework.Input;
 
+    /// <summary>
+    /// Compares priorities of commands.
+    /// </summary>
     public class PriorityComparer : IComparer<KeyValuePair<Keys, ICommand>>
     {
         /// <inheritdoc/>

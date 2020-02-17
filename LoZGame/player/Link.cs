@@ -138,36 +138,36 @@
             }
         }
 
-        public void idle()
+        public void Idle()
         {
-            this.playerState.idle();
+            this.playerState.Idle();
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
-            this.playerState.moveUp();
+            this.playerState.MoveUp();
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
-            this.playerState.moveDown();
+            this.playerState.MoveDown();
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
-            this.playerState.moveLeft();
+            this.playerState.MoveLeft();
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
-            this.playerState.moveRight();
+            this.playerState.MoveRight();
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
             if (this.damageCounter >= 3)
             {
-                this.playerState.die();
+                this.playerState.Die();
             }
 
             if (this.damageTimer <= 0)
@@ -177,19 +177,19 @@
             }
         }
 
-        public void attack()
+        public void Attack()
         {
-            this.playerState.attack();
+            this.playerState.Attack();
         }
 
-        public void pickupItem(int itemTime)
+        public void PickupItem(int itemTime)
         {
-            this.playerState.pickupItem(itemTime);
+            this.playerState.PickupItem(itemTime);
         }
 
-        public void useItem(int waitTime)
+        public void UseItem(int waitTime)
         {
-            this.playerState.useItem(waitTime);
+            this.playerState.UseItem(waitTime);
         }
 
         public void Update()

@@ -1,7 +1,9 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
-
+    /// <summary>
+    /// Command that makes the game reset to a default state.
+    /// </summary>
     public class CommandReset : ICommand
     {
         private static readonly int PriorityValue = -1;

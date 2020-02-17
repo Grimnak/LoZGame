@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that makes the player move right.
+    /// </summary>
     public class CommandRight : ICommand
     {
         private static readonly int PriorityValue = 3;
@@ -20,7 +23,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.player.moveRight();
+            this.player.MoveRight();
         }
     }
 }

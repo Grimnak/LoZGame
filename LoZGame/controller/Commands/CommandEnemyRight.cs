@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that makes current enemy displayed cycle to the next enemy to the right.
+    /// </summary>
     public class CommandEnemyRight : ICommand
     {
         private static readonly int PriorityValue = -1;

@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that maeks the player move up.
+    /// </summary>
     public class CommandUp : ICommand
     {
         private static readonly int PriorityValue = 4;
@@ -20,7 +23,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.player.moveUp();
+            this.player.MoveUp();
         }
     }
 }

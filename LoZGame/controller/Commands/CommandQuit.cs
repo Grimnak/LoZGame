@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that exits the game.
+    /// </summary>
     public class CommandQuit : ICommand
     {
         private static readonly int PriorityValue = -1;

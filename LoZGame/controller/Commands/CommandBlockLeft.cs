@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that cycles current displayed block to the next one to its left.
+    /// </summary>
     public class CommandBlockLeft : ICommand
     {
         private static readonly int PriorityValue = -1;

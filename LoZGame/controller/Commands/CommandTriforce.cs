@@ -1,5 +1,8 @@
 ﻿namespace LoZClone
 {
+    /// <summary>
+    /// Command that makes player hold a triforce above their head.
+    /// </summary>
     public class CommandTriforce : ICommand
     {
         private static readonly int PriorityValue = 5;
@@ -25,7 +28,7 @@
         {
             if (!this.player.IsDead)
             {
-                this.player.pickupItem(TriforceProjectile.LifeTime);
+                this.player.PickupItem(TriforceProjectile.LifeTime);
                 this.entity.ProjectileManager.AddItem(this.entity.ProjectileManager.Triforce, this.player);
             }
         }

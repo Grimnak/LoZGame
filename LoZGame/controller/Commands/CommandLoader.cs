@@ -3,6 +3,9 @@ namespace LoZClone
     using System.Collections.Generic;
     using Microsoft.Xna.Framework.Input;
 
+    /// <summary>
+    /// Loads/creates all commands into a dict with their corresponding keyboard key.
+    /// </summary>
     public class CommandLoader
     {
         private readonly CommandIdle commandIdle;
