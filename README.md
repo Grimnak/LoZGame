@@ -44,9 +44,11 @@ R - Resets the game to its default state
 
 
 ## External Tools:
+Git
+
 GitHub
 
-Photoshop
+Adobe Photoshop
 
 Gimp
 
@@ -54,7 +56,7 @@ Discord
 
 Google Drive
 
-Paint
+MS Paint
 
 
 ## Known Bugs:
