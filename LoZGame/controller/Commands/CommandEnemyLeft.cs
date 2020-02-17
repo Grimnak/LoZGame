@@ -2,17 +2,17 @@
 {
     public class CommandEnemyLeft : ICommand
     {
-        //NpcManager? npc;
+        readonly EnemyManager enemy;
         private static readonly int priority = -1;
 
-        public CommandEnemyLeft(/*NpcManager? npc*/)
+        public CommandEnemyLeft(EnemyManager enemy)
         {
-            //this.npc = npc;
+            this.enemy = enemy;
         }
 
         public void execute()
         {
-            //npc.CycleNpcLeft();
+            enemy.cycleLeft();
         }
 
         public int Priority => priority;

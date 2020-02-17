@@ -8,7 +8,7 @@ namespace LoZClone
         private readonly CommandIdle commandIdle;
         private readonly Dictionary<Keys, ICommand> dictionary;
 
-        public CommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block, EntityManager entity/*, NpcManager npc*/)
+        public CommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block, EntityManager entity, EnemyManager enemy)
         {
             this.dictionary = new Dictionary<Keys, ICommand>();
 
@@ -39,12 +39,12 @@ namespace LoZClone
             this.dictionary.Add(Keys.K, new CommandBlockLeft(block));
             this.dictionary.Add(Keys.L, new CommandBlockRight(block));
 
-            this.dictionary.Add(Keys.O, new CommandEnemyLeft(/*npc*/));
-            this.dictionary.Add(Keys.P, new CommandEnemyRight(/*npc*/));
+            this.dictionary.Add(Keys.O, new CommandEnemyLeft(enemy));
+            this.dictionary.Add(Keys.P, new CommandEnemyRight(enemy));
 
             this.dictionary.Add(Keys.Q, new CommandQuit(game));
 
-            this.dictionary.Add(Keys.R, new CommandReset(game, player, item, block, entity));
+            this.dictionary.Add(Keys.R, new CommandReset(game, player, item, block, entity, enemy));
         }
 
         public ICommand getIdle => this.commandIdle;

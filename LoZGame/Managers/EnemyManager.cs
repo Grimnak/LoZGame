@@ -12,6 +12,7 @@ namespace LoZClone
     {
         private List<IEnemy> enemyList;
         public IEnemy currentEnemy;
+        private int locX, locY;
         private int currentIndex;
         private int maxIndex;
         public Vector2 location;
@@ -52,7 +53,6 @@ namespace LoZClone
 
         public void cycleLeft()
         {
-            //this.location = currentEnemy.location;
             this.currentIndex--;
 
             if (this.currentIndex < 0)
@@ -61,21 +61,24 @@ namespace LoZClone
             }
 
             this.currentEnemy = this.enemyList[this.currentIndex];
-            //this.currentEnemy.location = this.location;
         }
 
         public void cycleRight()
         {
-            //this.location = currentItem.location;
             this.currentIndex++;
             if (this.currentIndex >= this.maxIndex)
             {
                 this.currentIndex = 0;
             }
             this.currentEnemy = this.enemyList[this.currentIndex];
-            //this.currentItem.location = this.location;
         }
 
+        public void clear()
+        {
+            this.enemyList = new List<IEnemy>();
+            this.loadSprites(this.locX, this.locY);
+        }
+            
         public int CurrentIndex
         {
             get { return currentIndex; }

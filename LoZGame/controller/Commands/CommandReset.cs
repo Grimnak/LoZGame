@@ -9,15 +9,17 @@
         readonly BlockManager block;
         readonly LoZGame game;
         readonly EntityManager entity;
+        readonly EnemyManager enemy;
         private static readonly int priority = -1;
 
-        public CommandReset(LoZGame game, IPlayer player, ItemManager item, BlockManager block, EntityManager entity/*, NPCManager npc*/)
+        public CommandReset(LoZGame game, IPlayer player, ItemManager item, BlockManager block, EntityManager entity, EnemyManager ememy)
         {
             this.game = game;
             this.player = player;
             this.item = item;
             this.block = block;
             this.entity = entity;
+            this.enemy = enemy;
         }
 
         public void execute()
@@ -39,7 +41,7 @@
             this.block.CurrentIndex = 1;
             this.block.cycleLeft();
 
-            //TODO add npc defaults
+            this.enemy.clear();
         }
 
         public int Priority => priority;

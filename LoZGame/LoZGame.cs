@@ -36,7 +36,7 @@
             itemManager = new ItemManager();
             blockManager = new BlockManager();
             entityManager = new EntityManager();
-            commandLoader = new CommandLoader(this, link, itemManager, blockManager, entityManager);
+            commandLoader = new CommandLoader(this, link, itemManager, blockManager, entityManager, enemyManager);
             keyboardController = new KeyboardController(commandLoader);
             base.Initialize();
         }
@@ -48,6 +48,8 @@
             ItemSpriteFactory.Instance.LoadAllTextures(this.Content);
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
             ProjectileSpriteFactory.Instance.LoadAllTextures(this.Content);
+            EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
+            this.enemyManager.loadSprites(384, 84);
             this.itemManager.loadSprites(384, 184);
             this.blockManager.loadSprites(550, 184);
         }

@@ -249,6 +249,9 @@
     <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemLeftSprite.cs" />
     <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemRightSprite.cs" />
     <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemUpSprite.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BombExplosion.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamExplosion.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\TriforceProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\BlueCandleProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\RedCandleProjectile.cs" />
