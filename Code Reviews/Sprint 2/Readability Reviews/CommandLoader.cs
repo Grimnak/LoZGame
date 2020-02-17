@@ -10,7 +10,7 @@
 
 ### File Author Name: Jeremy Wensink.27
 
-### Time Taken to Review: 30 minutes
+### Time Taken to Review: 15 minutes
 
 ###  Comments on What is Readable
 - The dictionary as it is adding all of the various commands to it is extremely recognizable and clean.
