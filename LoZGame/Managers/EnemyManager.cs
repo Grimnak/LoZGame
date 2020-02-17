@@ -15,9 +15,11 @@ namespace LoZClone
         private int currentIndex;
         private int maxIndex;
         public Vector2 location;
+        readonly EntityManager entity;
 
-        public EnemyManager()
+        public EnemyManager(EntityManager entity)
         {
+            this.entity = entity;
             this.currentIndex = 0;
             this.maxIndex = 0;
             this.enemyList = new List<IEnemy>();
@@ -27,7 +29,7 @@ namespace LoZClone
         {
             this.enemyList.Add(new Dodongo());
             this.enemyList.Add(new Stalfos());
-            this.enemyList.Add(new Goriya());
+            this.enemyList.Add(new Goriya(this.entity));
             this.enemyList.Add(new Dragon());
             this.enemyList.Add(new OldMan());
             this.enemyList.Add(new Merchant());

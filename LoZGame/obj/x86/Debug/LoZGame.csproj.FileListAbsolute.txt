@@ -296,3 +296,7 @@ C:\Users\Ryan\Documents\LoZGame\LoZGame\obj\x86\Debug\LoZGame.csproj.CoreCompile
 C:\Users\Ryan\Documents\LoZGame\LoZGame\obj\x86\Debug\LoZGame.csproj.CopyComplete
 C:\Users\Ryan\Documents\LoZGame\LoZGame\obj\x86\Debug\LoZGame.exe
 C:\Users\Ryan\Documents\LoZGame\LoZGame\obj\x86\Debug\LoZGame.pdb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\enemies.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\File.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\grayXol.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\greenXol.xnb

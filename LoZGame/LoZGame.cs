@@ -18,7 +18,6 @@
         private ItemManager itemManager;
         private EntityManager entityManager;
         private BlockManager blockManager;
-        private readonly ProjectileManager projectileManager;
         private EnemyManager enemyManager;
 
         public LoZGame()
@@ -32,10 +31,10 @@
         protected override void Initialize()
         {
             this.link = new Link(this);
-            this.enemyManager = new EnemyManager();
+            this.entityManager = new EntityManager();
+            this.enemyManager = new EnemyManager(entityManager);
             this.itemManager = new ItemManager();
             this.blockManager = new BlockManager();
-            this.entityManager = new EntityManager();
             this.commandLoader = new CommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
             this.keyboardController = new KeyboardController(this.commandLoader);
             base.Initialize();

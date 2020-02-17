@@ -14,23 +14,21 @@ namespace LoZClone
             this.goriya = goriya;
             switch (goriya.direction)
              {
-                case "left":
+                case "Left":
                     this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingGoriyaSprite();
                     break;
-                case "right":
+                case "Right":
                     this.sprite = EnemySpriteFactory.Instance.CreateRightMovingGoriyaSprite();
                     break;
-                case "up":
+                case "Up":
                     this.sprite = EnemySpriteFactory.Instance.CreateUpMovingGoriyaSprite();
                     break;
-                case "down":
+                case "Down":
                     this.sprite = EnemySpriteFactory.Instance.CreateDownMovingGoriyaSprite();
                     break;
                 default:
                     break;
              }
-
-            this.boomerangSprite = ProjectileSpriteFactory.Instance.BoomerangEnemy(this.goriya, 0, 0);
         }
 
         public void moveLeft()
@@ -75,13 +73,11 @@ namespace LoZClone
         public void Update()
         {
             this.sprite.Update();
-            this.boomerangSprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
             this.sprite.Draw(sb, this.goriya.currentLocation, Color.White);
-            this.boomerangSprite.Draw(sb);
         }
     }
 }

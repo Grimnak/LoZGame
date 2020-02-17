@@ -7,27 +7,37 @@ namespace LoZClone
 
     public class Goriya : IEnemy
     {
+        public bool HasBoomerang
+        {
+            get { return this.hasBoomerang; }
+            set { this.hasBoomerang = value; }
+        }
+
         private IGoriyaState currentState;
         private int health = 10;
         private int lifeTime = 0;
+        private bool hasBoomerang;
         private readonly int directionChange = 40;
         public Vector2 currentLocation;
-        private string currentDirection = "left";
+        private string currentDirection = "Left";
+        readonly EntityManager entity;
 
         private enum stateEnum { Up, Down, Left, Right, Attacking };
 
         private stateEnum state;
 
-        public Goriya()
+        public Goriya(EntityManager entity)
         {
             this.currentState = new LeftMovingGoriyaState(this);
             this.currentLocation = new Vector2(650, 200);
+            this.entity = entity;
+            this.hasBoomerang = true;
         }
 
         private void getNewState()
         {
             Random randomselect = new Random();
-            this.state = (stateEnum)(randomselect.Next(0, 7));
+            this.state = (stateEnum)(randomselect.Next(0, 5));
         }
 
         private void updateLoc()
@@ -35,23 +45,27 @@ namespace LoZClone
             switch (this.state)
             {
                 case stateEnum.Up:
-                    this.currentDirection = "up";
+                    this.currentDirection = "Up";
                     this.currentState.moveUp();
                     break;
                 case stateEnum.Down:
-                    this.currentDirection = "down";
+                    this.currentDirection = "Down";
                     this.currentState.moveDown();
                     break;
                 case stateEnum.Left:
-                    this.currentDirection = "left";
+                    this.currentDirection = "Left";
                     this.currentState.moveLeft();
                     break;
                 case stateEnum.Right:
-                    this.currentDirection = "right";
+                    this.currentDirection = "Right";
                     this.currentState.moveRight();
                     break;
                 case stateEnum.Attacking:
                     this.currentState.attack();
+                    if (this.hasBoomerang)
+                    {
+                        this.entity.ProjectileManager.AddEnemyRang(this, this.currentDirection);
+                    }
                     break;
                 default:
                     break;
@@ -59,7 +73,7 @@ namespace LoZClone
             this.checkBorder();
             this.currentState.Update();
         }
-        
+
         private void checkBorder()
         {
               if (this.currentLocation.Y < 30)
