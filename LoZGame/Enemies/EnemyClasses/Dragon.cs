@@ -26,7 +26,7 @@ namespace LoZClone
         private void getNewDirection()
         {
             Random randomselect = new Random();
-            this.currentStateEnum = (stateEnum)(randomselect.Next(0, 7));
+            this.currentStateEnum = (stateEnum)(randomselect.Next(0, 5));
         }
 
         private void updateLoc()
@@ -54,9 +54,9 @@ namespace LoZClone
  
         private void checkBorder()
         {
-              if (this.currentLocation.Y < 50)
+              if (this.currentLocation.Y < 0)
               {
-                  this.currentLocation = new Vector2(this.currentLocation.X, 50);
+                  this.currentLocation = new Vector2(this.currentLocation.X, 0);
                   this.lifeTime = this.directionChange + 1;
               }
               if (this.currentLocation.Y > 430)
@@ -64,14 +64,14 @@ namespace LoZClone
                   this.currentLocation = new Vector2(this.currentLocation.X, 430);
                   this.lifeTime = this.directionChange + 1;
               }
-              if (this.currentLocation.X < 50)
+              if (this.currentLocation.X < 0)
               {
-                  this.currentLocation = new Vector2(40, this.currentLocation.Y);
+                  this.currentLocation = new Vector2(0, this.currentLocation.Y);
                   this.lifeTime = this.directionChange + 1;
               }
               if (this.currentLocation.X > 750)
               {
-                  this.currentLocation = new Vector2(760, this.currentLocation.Y);
+                  this.currentLocation = new Vector2(750, this.currentLocation.Y);
                   this.lifeTime = this.directionChange + 1;
               }
         } 

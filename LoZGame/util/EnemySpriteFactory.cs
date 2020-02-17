@@ -47,13 +47,13 @@
         private readonly SpriteSheetData fireballData = new SpriteSheetData("fireball", 12, 12, 1, 4);
 
         private Texture2D downDodongo;
-        private readonly SpriteSheetData downDodongoData = new SpriteSheetData("dodongoDown", 30, 35, 1, 2);
+        private readonly SpriteSheetData downDodongoData = new SpriteSheetData("dodongoDown", 16, 16, 1, 3);
         private Texture2D upDodongo;
-        private readonly SpriteSheetData upDodongoData = new SpriteSheetData("dodongoUp", 30, 35, 1, 2);
+        private readonly SpriteSheetData upDodongoData = new SpriteSheetData("dodongoUp", 16, 16, 1, 3);
         private Texture2D leftDodongo;
-        private readonly SpriteSheetData leftDodongoData = new SpriteSheetData("dodongoLeft", 40, 30, 1, 2);
+        private readonly SpriteSheetData leftDodongoData = new SpriteSheetData("dodongoLeft", 32, 16, 1, 3);
         private Texture2D rightDodongo;
-        private readonly SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", 40, 30, 1, 2);
+        private readonly SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", 32, 16, 1, 3);
 
         private Texture2D oldMan;
         private readonly SpriteSheetData oldManData = new SpriteSheetData("oldMan", 30, 30, 1, 1);

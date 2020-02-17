@@ -8,7 +8,7 @@
     {
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private static readonly float updatesPerSecond = 50;
+        private static readonly float updatesPerSecond = 240;
 
         public SpriteBatch SpriteBatch => this.spriteBatch;
 

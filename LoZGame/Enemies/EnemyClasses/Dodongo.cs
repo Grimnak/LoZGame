@@ -8,56 +8,59 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    
     public class Dodongo : IEnemy
     {
+        public Dodongo()
+        {
+            this.currentState = new LeftMovingDodongoState(this);
+            this.currentLocation = new Vector2(650, 200);
+        }
         private IEnemyState currentState;
         private int health = 10;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
         public Vector2 currentLocation;
         private readonly LoZGame game;
+        private Direction currentDirection;
+        private enum Direction 
+        { 
+            Up,
+            Down,
+            Left,
+            Right 
+        };
 
-        private enum direction { Up, Down, Left, Right };
-
-        private direction currentDirection;
-       
-        public Dodongo()
-        {
-            this.currentState = new LeftMovingDodongoState(this);
-            this.currentLocation = new Vector2(650, 200);
-        }
-
-        private void getNewDirection()
+        private void GetNewDirection()
         {
             Random randomselect = new Random();
-            this.currentDirection = (direction)(randomselect.Next(0, 7));
+            this.currentDirection = (Direction)randomselect.Next(0, 5);
         }
 
-        private void updateLoc()
+        private void UpdateLoc()
         {
             switch (this.currentDirection)
             {
-                case direction.Up:
+                case Direction.Up:
                     this.currentState.moveUp();
                     break;
-                case direction.Down:
+                case Direction.Down:
                     this.currentState.moveDown();
                     break;
-                case direction.Left:
+                case Direction.Left:
                     this.currentState.moveLeft();
                     break;
-                case direction.Right:
+                case Direction.Right:
                     this.currentState.moveRight();
                     break;
                 default:
                     break;
             }
-            this.checkBorder();
+
+            this.CheckBorder();
             this.currentState.Update();
         }
-   
-        private void checkBorder()
+
+        private void CheckBorder()
         {
               if (this.currentLocation.Y < 30)
               {
@@ -79,7 +82,7 @@ namespace LoZClone
                   this.currentLocation = new Vector2(770, this.currentLocation.Y);
                   this.lifeTime = this.directionChange + 1;
               }
-        } 
+        }
 
         public void takeDamage()
         {
@@ -94,10 +97,10 @@ namespace LoZClone
         public void Update()
         {
             this.lifeTime++;
-            this.updateLoc();
+            this.UpdateLoc();
             if (this.lifeTime > this.directionChange)
             {
-                this.getNewDirection();
+                this.GetNewDirection();
                 this.lifeTime = 0;
             }
         }
@@ -121,5 +124,3 @@ namespace LoZClone
         }
     }
 }
-
-

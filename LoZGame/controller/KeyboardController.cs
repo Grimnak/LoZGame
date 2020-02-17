@@ -81,11 +81,11 @@ namespace LoZClone
                 this.dict[Keys.I].execute();
             }
 
-            if (pressed.Contains(Keys.O))
+            if (pressed.Contains(Keys.O) && this.oldState.IsKeyUp(Keys.O))
             {
                 this.dict[Keys.O].execute();
             }
-            else if (pressed.Contains(Keys.P))
+            else if (pressed.Contains(Keys.P) && this.oldState.IsKeyUp(Keys.P))
             {
                 this.dict[Keys.P].execute();
             }

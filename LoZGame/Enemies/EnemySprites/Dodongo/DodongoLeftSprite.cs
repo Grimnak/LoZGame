@@ -40,7 +40,7 @@ namespace LoZClone
             int column = (int)((float)this.currentFrame / (float)this.spriteSheetRows);
 
             Rectangle sourceRectangle = new Rectangle(width * column, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width*2, height*2);
 
             spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
         }
