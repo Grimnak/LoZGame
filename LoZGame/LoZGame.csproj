@@ -197,7 +197,6 @@
     <Compile Include="Managers\EnemyManager.cs" />
     <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="Managers\ExplosionManager.cs" />
-    <Compile Include="Managers\NPCManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\BlockManager.cs" />
     <Compile Include="Managers\ProjectileManager.cs" />
@@ -250,6 +249,8 @@
     <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemRightSprite.cs" />
     <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemUpSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\BombExplosion.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BoomerangEnemy.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\MagicBoomerangEnemy.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamExplosion.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\TriforceProjectile.cs" />

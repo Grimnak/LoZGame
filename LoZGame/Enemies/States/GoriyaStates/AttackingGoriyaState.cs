@@ -8,28 +8,27 @@ namespace LoZClone
     {
         private readonly Goriya goriya;
         private readonly IGoriyaSprite sprite;
-
+        private IProjectile boomerangSprite;
         public AttackingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
             switch (goriya.direction)
              {
-                case "left":
+                case "Left":
                     this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingGoriyaSprite();
                     break;
-                case "right":
+                case "Right":
                     this.sprite = EnemySpriteFactory.Instance.CreateRightMovingGoriyaSprite();
                     break;
-                case "up":
+                case "Up":
                     this.sprite = EnemySpriteFactory.Instance.CreateUpMovingGoriyaSprite();
                     break;
-                case "down":
+                case "Down":
                     this.sprite = EnemySpriteFactory.Instance.CreateDownMovingGoriyaSprite();
                     break;
                 default:
                     break;
              }
-           
         }
 
         public void moveLeft()
