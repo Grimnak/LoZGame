@@ -1,49 +1,52 @@
-﻿namespace LoZClone
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace LoZClone
 {
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
-
-    public class FireSprite : ISprite
+    public class FireSprite : IBlockSprite
     {
-        private readonly Texture2D spriteSheet;
-        private readonly int spriteSheetRows;
-        private readonly int spriteSheetColumns;
-        private int currentFrame;
-        private readonly int totalFrames;
+        private Texture2D spriteSheet;
+        private int spriteSheetRows, spriteSheetColumns;
+        private int currentFrame, totalFrames;
         private int currentUpdate;
-        private readonly int updatesPerFrame = 5;
+        private int updatesPerFrame = 5;
+        private int spriteWidth, spriteHeight;
+        public Vector2 location { get; set; }
 
-        public FireSprite(Texture2D spriteTexture, SpriteSheetData data)
+        public FireSprite(Texture2D spriteTexture, Vector2 loc, SpriteSheetData data)
         {
-            this.spriteSheet = spriteTexture;
-            this.currentFrame = 0;
-            this.spriteSheetRows = data.Rows;
-            this.spriteSheetColumns = data.Columns;
-            this.totalFrames = this.spriteSheetRows * this.spriteSheetColumns;
+            spriteSheet = spriteTexture;
+            spriteWidth = data.Width;
+            spriteHeight = data.Height;
+            location = loc;
+            currentFrame = 0;
+            spriteSheetRows = data.Rows;
+            spriteSheetColumns = data.Columns;
+            totalFrames = spriteSheetRows * spriteSheetColumns;
         }
 
         public void Update()
         {
-            this.currentUpdate++;
-            if (this.currentUpdate == this.updatesPerFrame)
+            currentUpdate++;
+            if (currentUpdate == updatesPerFrame)
             {
-                this.currentUpdate = 0;
-                this.currentFrame++;
-                if (this.currentFrame == this.totalFrames)
-                    this.currentFrame = 0;
+                currentUpdate = 0;
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                    currentFrame = 0;
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            int width = this.spriteSheet.Width / this.spriteSheetColumns;
-            int height = this.spriteSheet.Height / this.spriteSheetRows;
-            int row = (int)((float)this.currentFrame / (float)this.spriteSheetColumns);
+            int width = spriteSheet.Width / spriteSheetColumns;
+            int height = spriteSheet.Height / spriteSheetRows;
+            int column = (int)((float)currentFrame / (float)spriteSheetRows);
 
-            Rectangle sourceRectangle = new Rectangle(0, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+            Rectangle sourceRectangle = new Rectangle(column * width, 0, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, spriteWidth, spriteHeight);
 
-            spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
+            spriteBatch.Draw(spriteSheet, destinationRectangle, sourceRectangle, Color.White);
         }
     }
 }

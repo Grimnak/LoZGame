@@ -9,66 +9,66 @@ namespace LoZClone
 {
     public class BlockSpriteFactory
     {
+        private static int blockWidth = 50, blockHeight = 50;
+        private static int verticalBlockWidth = 16, verticalBlockHeight = 64;
+        private static int horizontalBlockWidth = 64, horizontalBlockHeight = 16;
+
         private Texture2D StairsTexture;
-        private SpriteSheetData stairsData = new SpriteSheetData("stairs", 0, 0, 1, 1);
+        private SpriteSheetData stairsData = new SpriteSheetData("stairs", blockWidth, blockHeight, 1, 1);
 
         private Texture2D DoorDownTexture;
-        private SpriteSheetData doorDownData = new SpriteSheetData("door_down", 0, 0, 3, 1);
+        private SpriteSheetData doorDownData = new SpriteSheetData("door_down", blockWidth, blockHeight, 3, 1);
         private Texture2D DoorLeftTexture;
-        private SpriteSheetData doorLeftData = new SpriteSheetData("door_left", 0, 0, 3, 1);
+        private SpriteSheetData doorLeftData = new SpriteSheetData("door_left", blockWidth, blockHeight, 3, 1);
         private Texture2D DoorRightTexture;
-        private SpriteSheetData doorRightData = new SpriteSheetData("door_right", 0, 0, 3, 1);
+        private SpriteSheetData doorRightData = new SpriteSheetData("door_right", blockWidth, blockHeight, 3, 1);
         private Texture2D DoorUpTexture;
-        private SpriteSheetData doorUpData = new SpriteSheetData("door_up", 0, 0, 3, 1);
+        private SpriteSheetData doorUpData = new SpriteSheetData("door_up", blockWidth, blockHeight, 3, 1);
 
         private Texture2D FireTexture;
-        private SpriteSheetData fireData = new SpriteSheetData("fire", 0, 0, 1, 2);
+        private SpriteSheetData fireData = new SpriteSheetData("fire", blockWidth, blockHeight, 1, 2);
         private Texture2D FloorTileTexture;
-        private SpriteSheetData floorTileData = new SpriteSheetData("floor_tile", 0, 0, 1, 1);
+        private SpriteSheetData floorTileData = new SpriteSheetData("floor_tile", blockWidth, blockHeight, 1, 1);
         private Texture2D GapTileTexture;
-        private SpriteSheetData gapTileData = new SpriteSheetData("gap_tile", 0, 0, 1, 1);
+        private SpriteSheetData gapTileData = new SpriteSheetData("gap_tile", blockWidth, blockHeight, 1, 1);
         private Texture2D MovableSquareTexture;
-        private SpriteSheetData movableSquareData = new SpriteSheetData("movable_square", 0, 0, 1, 1);
+        private SpriteSheetData movableSquareData = new SpriteSheetData("movable_square", blockWidth, blockHeight, 1, 1);
 
         private Texture2D BombedOpeningDownTexture;
-        private SpriteSheetData bombedOpeningDownData = new SpriteSheetData("bombed_opening_down", 0, 0, 1, 1);
+        private SpriteSheetData bombedOpeningDownData = new SpriteSheetData("bombed_opening_down", blockWidth, blockHeight, 1, 1);
         private Texture2D BombedOpeningUpTexture;
-        private SpriteSheetData bombedOpeningUpData = new SpriteSheetData("bombed_opening_up", 0, 0, 1, 1);
+        private SpriteSheetData bombedOpeningUpData = new SpriteSheetData("bombed_opening_up", blockWidth, blockHeight, 1, 1);
         private Texture2D BombedOpeningRightTexture;
-        private SpriteSheetData bombedOpeningRightData = new SpriteSheetData("bombed_opening_right", 0, 0, 1, 1);
+        private SpriteSheetData bombedOpeningRightData = new SpriteSheetData("bombed_opening_right", blockWidth, blockHeight, 1, 1);
         private Texture2D BombedOpeningLeftTexture;
-        private SpriteSheetData bombedOpeningLeftData = new SpriteSheetData("bombed_opening_left", 0, 0, 1, 1);
+        private SpriteSheetData bombedOpeningLeftData = new SpriteSheetData("bombed_opening_left", blockWidth, blockHeight, 1, 1);
 
         private Texture2D BlueStatueRightTexture;
-        private SpriteSheetData blueStatueRightData = new SpriteSheetData("blue_statue_right", 0, 0, 1, 1);
+        private SpriteSheetData blueStatueRightData = new SpriteSheetData("blue_statue_right", blockWidth, blockHeight, 1, 1);
         private Texture2D BlueStatueLeftTexture;
-        private SpriteSheetData blueStatueLeftData = new SpriteSheetData("blue_statue_left", 0, 0, 1, 1);
+        private SpriteSheetData blueStatueLeftData = new SpriteSheetData("blue_statue_left", blockWidth, blockHeight, 1, 1);
         private Texture2D TurquoiseStatueTexture;
-        private SpriteSheetData turquoiseStatueData = new SpriteSheetData("turquoise_statue", 0, 0, 1, 2);
+        private SpriteSheetData turquoiseStatueData = new SpriteSheetData("turquoise_statue", blockWidth, blockHeight, 1, 2);
 
         private Texture2D SpottedTileTexture;
-        private SpriteSheetData spottedTileData = new SpriteSheetData("spotted_tile", 0, 0, 1, 1);
+        private SpriteSheetData spottedTileData = new SpriteSheetData("spotted_tile", blockWidth, blockHeight, 1, 1);
         private Texture2D WaterTileTexture;
-        private SpriteSheetData waterTileData = new SpriteSheetData("water_tile", 0, 0, 1, 1);
+        private SpriteSheetData waterTileData = new SpriteSheetData("water_tile", blockWidth, blockHeight, 1, 1);
 
         private Texture2D OrangeMovableSquareTexture;
-        private SpriteSheetData orangeMovableSquareData = new SpriteSheetData("orange_movable_square", 0, 0, 1, 1);
+        private SpriteSheetData orangeMovableSquareData = new SpriteSheetData("orange_movable_square", blockWidth, blockHeight, 1, 1);
         private Texture2D EnemyDeathExplosionTexture;
-        private SpriteSheetData enemyDeathExplosionData = new SpriteSheetData("enemyDeath", 0, 0, 1, 6);
+        private SpriteSheetData enemyDeathExplosionData = new SpriteSheetData("enemyDeath", blockWidth, blockHeight, 1, 6);
         private Texture2D EnemySpawnTexture;
-        private SpriteSheetData enemySpawnData = new SpriteSheetData("enemySpawn", 0, 0, 3, 1);
-        private Texture2D HUDElementsTexture;
-        private SpriteSheetData HUDElementsData = new SpriteSheetData("hud_elements", 0, 0, 1, 1);
+        private SpriteSheetData enemySpawnData = new SpriteSheetData("enemySpawn", blockWidth, blockHeight, 3, 1);
         private Texture2D BasementBrickTileTexture;
-        private SpriteSheetData basementBrickTileData = new SpriteSheetData("basement_brick_tile", 0, 0, 1, 1);
+        private SpriteSheetData basementBrickTileData = new SpriteSheetData("basement_brick_tile", blockWidth, blockHeight, 1, 1);
         private Texture2D LadderTileTexture;
-        private SpriteSheetData ladderTileData = new SpriteSheetData("ladder_tile", 0, 0, 1, 1);
+        private SpriteSheetData ladderTileData = new SpriteSheetData("ladder_tile", blockWidth, blockHeight, 1, 1);
         private Texture2D HorizontalBricksTexture;
-        private SpriteSheetData horizontalBricksData = new SpriteSheetData("horizontal_bricks", 0, 0, 1, 1);
+        private SpriteSheetData horizontalBricksData = new SpriteSheetData("horizontal_bricks", horizontalBlockWidth, horizontalBlockHeight, 1, 1);
         private Texture2D VerticalBricksTexture;
-        private SpriteSheetData verticalBricksData = new SpriteSheetData("vertical_bricks", 0, 0, 1, 1);
-
-        private int DRAW_SCALE = 2;
+        private SpriteSheetData verticalBricksData = new SpriteSheetData("vertical_bricks", verticalBlockWidth, verticalBlockHeight, 1, 1);
 
         private static BlockSpriteFactory instance = new BlockSpriteFactory();
 
@@ -107,157 +107,151 @@ namespace LoZClone
             OrangeMovableSquareTexture = content.Load<Texture2D>(orangeMovableSquareData.FilePath);
             EnemyDeathExplosionTexture = content.Load<Texture2D>(enemyDeathExplosionData.FilePath);
             EnemySpawnTexture = content.Load<Texture2D>(enemySpawnData.FilePath);
-            HUDElementsTexture = content.Load<Texture2D>(HUDElementsData.FilePath);
             BasementBrickTileTexture = content.Load<Texture2D>(basementBrickTileData.FilePath);
             LadderTileTexture = content.Load<Texture2D>(ladderTileData.FilePath);
             HorizontalBricksTexture = content.Load<Texture2D>(horizontalBricksData.FilePath);
             VerticalBricksTexture = content.Load<Texture2D>(verticalBricksData.FilePath);
         }
 
-        public List<ISprite> getAll(int width, int height)
+        public List<IBlockSprite> getAll(int width, int height)
         {
-            int x = width / 2;
-            int y = height / 2;
-            List<ISprite> allBlocks = new List<ISprite>();
-            allBlocks.Add(this.Stairs(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.DoorDown(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.DoorLeft(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.DoorRight(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.DoorUp(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.Fire(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.FloorTile(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.GapTile(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.MovableSquare(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.BombedOpeningDown(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.BombedOpeningUp(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.BombedOpeningLeft(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.BombedOpeningRight(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.BlueStatueLeft(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.BlueStatueRight(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.TurquoiseStatueLeft(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.TurquoiseStatueRight(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.SpottedTile(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.WaterTile(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.OrangeMovableSquare(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.EnemyDeathExplosion(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.EnemySpawn(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.HUDElements(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.BasementBrickTile(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.LadderTile(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.HorizontalBricks(new Vector2(x, y), DRAW_SCALE));
-            allBlocks.Add(this.VerticalBricks(new Vector2(x, y), DRAW_SCALE));
+            int x = width;
+            int y = height;
+            List<IBlockSprite> allBlocks = new List<IBlockSprite>();
+            allBlocks.Add(this.Stairs(new Vector2(x, y)));
+            allBlocks.Add(this.DoorDown(new Vector2(x, y)));
+            allBlocks.Add(this.DoorLeft(new Vector2(x, y)));
+            allBlocks.Add(this.DoorRight(new Vector2(x, y)));
+            allBlocks.Add(this.DoorUp(new Vector2(x, y)));
+            allBlocks.Add(this.Fire(new Vector2(x, y)));
+            allBlocks.Add(this.FloorTile(new Vector2(x, y)));
+            allBlocks.Add(this.GapTile(new Vector2(x, y)));
+            allBlocks.Add(this.MovableSquare(new Vector2(x, y)));
+            allBlocks.Add(this.BombedOpeningDown(new Vector2(x, y)));
+            allBlocks.Add(this.BombedOpeningUp(new Vector2(x, y)));
+            allBlocks.Add(this.BombedOpeningLeft(new Vector2(x, y)));
+            allBlocks.Add(this.BombedOpeningRight(new Vector2(x, y)));
+            allBlocks.Add(this.BlueStatueLeft(new Vector2(x, y)));
+            allBlocks.Add(this.BlueStatueRight(new Vector2(x, y)));
+            allBlocks.Add(this.TurquoiseStatueLeft(new Vector2(x, y)));
+            allBlocks.Add(this.TurquoiseStatueRight(new Vector2(x, y)));
+            allBlocks.Add(this.SpottedTile(new Vector2(x, y)));
+            allBlocks.Add(this.WaterTile(new Vector2(x, y)));
+            allBlocks.Add(this.OrangeMovableSquare(new Vector2(x, y)));
+            allBlocks.Add(this.EnemyDeathExplosion(new Vector2(x, y)));
+            allBlocks.Add(this.EnemySpawn(new Vector2(x, y)));
+            allBlocks.Add(this.BasementBrickTile(new Vector2(x, y)));
+            allBlocks.Add(this.LadderTile(new Vector2(x, y)));
+            allBlocks.Add(this.HorizontalBricks(new Vector2(x, y)));
+            allBlocks.Add(this.VerticalBricks(new Vector2(x, y)));
 
             return allBlocks;
         }
 
-        public StairsSprite Stairs(Vector2 loc, int scale)
+        public StairsSprite Stairs(Vector2 loc)
         {
-            return new StairsSprite(StairsTexture, stairsData, scale);
+            return new StairsSprite(StairsTexture, loc, stairsData);
         }
 
-        public DoorDownSprite DoorDown(Vector2 loc, int scale)
+        public DoorDownSprite DoorDown(Vector2 loc)
         {
-            return new DoorDownSprite(DoorDownTexture, doorDownData, scale);
+            return new DoorDownSprite(DoorDownTexture, loc, doorDownData);
         }
-        public DoorLeftSprite DoorLeft(Vector2 loc, int scale)
+        public DoorLeftSprite DoorLeft(Vector2 loc)
         {
-            return new DoorLeftSprite(DoorLeftTexture, doorLeftData, scale);
+            return new DoorLeftSprite(DoorLeftTexture, loc, doorLeftData);
         }
-        public DoorRightSprite DoorRight(Vector2 loc, int scale)
+        public DoorRightSprite DoorRight(Vector2 loc)
         {
-            return new DoorRightSprite(DoorRightTexture, doorRightData, scale);
+            return new DoorRightSprite(DoorRightTexture, loc, doorRightData);
         }
-        public DoorUpSprite DoorUp(Vector2 loc, int scale)
+        public DoorUpSprite DoorUp(Vector2 loc)
         {
-            return new DoorUpSprite(DoorUpTexture, doorUpData, scale);
+            return new DoorUpSprite(DoorUpTexture, loc, doorUpData);
         }
-        public FireSprite Fire(Vector2 loc, int scale)
+        public FireSprite Fire(Vector2 loc)
         {
-            return new FireSprite(FireTexture, fireData, scale);
+            return new FireSprite(FireTexture, loc, fireData);
         }
-        public FloorTileSprite FloorTile(Vector2 loc, int scale)
+        public FloorTileSprite FloorTile(Vector2 loc)
         {
-            return new FloorTileSprite(FloorTileTexture, floorTileData, scale);
+            return new FloorTileSprite(FloorTileTexture, loc, floorTileData);
         }
-        public GapTileSprite GapTile(Vector2 loc, int scale)
+        public GapTileSprite GapTile(Vector2 loc)
         {
-            return new GapTileSprite(GapTileTexture, gapTileData, scale);
+            return new GapTileSprite(GapTileTexture, loc, gapTileData);
         }
-        public MovableSquareSprite MovableSquare(Vector2 loc, int scale)
+        public MovableSquareSprite MovableSquare(Vector2 loc)
         {
-            return new MovableSquareSprite(MovableSquareTexture, movableSquareData, scale);
+            return new MovableSquareSprite(MovableSquareTexture, loc, movableSquareData);
         }
-        public BombedOpeningDownSprite BombedOpeningDown(Vector2 loc, int scale)
+        public BombedOpeningDownSprite BombedOpeningDown(Vector2 loc)
         {
-            return new BombedOpeningDownSprite(BombedOpeningDownTexture, bombedOpeningDownData, scale);
+            return new BombedOpeningDownSprite(BombedOpeningDownTexture, loc, bombedOpeningDownData);
         }
-        public BombedOpeningUpSprite BombedOpeningUp(Vector2 loc, int scale)
+        public BombedOpeningUpSprite BombedOpeningUp(Vector2 loc)
         {
-            return new BombedOpeningUpSprite(BombedOpeningUpTexture, bombedOpeningUpData, scale);
+            return new BombedOpeningUpSprite(BombedOpeningUpTexture, loc, bombedOpeningUpData);
         }
-        public BombedOpeningLeftSprite BombedOpeningLeft(Vector2 loc, int scale)
+        public BombedOpeningLeftSprite BombedOpeningLeft(Vector2 loc)
         {
-            return new BombedOpeningLeftSprite(BombedOpeningLeftTexture, bombedOpeningLeftData, scale);
+            return new BombedOpeningLeftSprite(BombedOpeningLeftTexture, loc, bombedOpeningLeftData);
         }
-        public BombedOpeningRightSprite BombedOpeningRight(Vector2 loc, int scale)
+        public BombedOpeningRightSprite BombedOpeningRight(Vector2 loc)
         {
-            return new BombedOpeningRightSprite(BombedOpeningRightTexture, bombedOpeningRightData, scale);
+            return new BombedOpeningRightSprite(BombedOpeningRightTexture, loc, bombedOpeningRightData);
         }
-        public BlueStatueRightSprite BlueStatueRight(Vector2 loc, int scale)
+        public BlueStatueRightSprite BlueStatueRight(Vector2 loc)
         {
-            return new BlueStatueRightSprite(BlueStatueRightTexture, blueStatueRightData, scale);
+            return new BlueStatueRightSprite(BlueStatueRightTexture, loc, blueStatueRightData);
         }
-        public BlueStatueLeftSprite BlueStatueLeft(Vector2 loc, int scale)
+        public BlueStatueLeftSprite BlueStatueLeft(Vector2 loc)
         {
-            return new BlueStatueLeftSprite(BlueStatueLeftTexture, blueStatueLeftData, scale);
+            return new BlueStatueLeftSprite(BlueStatueLeftTexture, loc, blueStatueLeftData);
         }
-        public TurquoiseStatueLeftSprite TurquoiseStatueLeft(Vector2 loc, int scale)
+        public TurquoiseStatueLeftSprite TurquoiseStatueLeft(Vector2 loc)
         {
-            return new TurquoiseStatueLeftSprite(TurquoiseStatueTexture, turquoiseStatueData, scale);
+            return new TurquoiseStatueLeftSprite(TurquoiseStatueTexture, loc, turquoiseStatueData);
         }
-        public TurquoiseStatueRightSprite TurquoiseStatueRight(Vector2 loc, int scale)
+        public TurquoiseStatueRightSprite TurquoiseStatueRight(Vector2 loc)
         {
-            return new TurquoiseStatueRightSprite(TurquoiseStatueTexture, turquoiseStatueData, scale);
+            return new TurquoiseStatueRightSprite(TurquoiseStatueTexture, loc, turquoiseStatueData);
         }
-        public SpottedTileSprite SpottedTile(Vector2 loc, int scale)
+        public SpottedTileSprite SpottedTile(Vector2 loc)
         {
-            return new SpottedTileSprite(SpottedTileTexture, spottedTileData, scale);
+            return new SpottedTileSprite(SpottedTileTexture, loc, spottedTileData);
         }
-        public WaterTileSprite WaterTile(Vector2 loc, int scale)
+        public WaterTileSprite WaterTile(Vector2 loc)
         {
-            return new WaterTileSprite(WaterTileTexture, waterTileData, scale);
+            return new WaterTileSprite(WaterTileTexture, loc, waterTileData);
         }
-        public OrangeMovableSquareSprite OrangeMovableSquare(Vector2 loc, int scale)
+        public OrangeMovableSquareSprite OrangeMovableSquare(Vector2 loc)
         {
-            return new OrangeMovableSquareSprite(OrangeMovableSquareTexture, orangeMovableSquareData, scale);
+            return new OrangeMovableSquareSprite(OrangeMovableSquareTexture, loc, orangeMovableSquareData);
         }
-        public EnemyDeathExplosionSprite EnemyDeathExplosion(Vector2 loc, int scale)
+        public EnemyDeathExplosionSprite EnemyDeathExplosion(Vector2 loc)
         {
-            return new EnemyDeathExplosionSprite(EnemyDeathExplosionTexture, enemyDeathExplosionData, scale);
+            return new EnemyDeathExplosionSprite(EnemyDeathExplosionTexture, loc, enemyDeathExplosionData);
         }
-        public EnemySpawnSprite EnemySpawn(Vector2 loc, int scale)
+        public EnemySpawnSprite EnemySpawn(Vector2 loc)
         {
-            return new EnemySpawnSprite(EnemySpawnTexture, enemySpawnData, scale);
+            return new EnemySpawnSprite(EnemySpawnTexture, loc, enemySpawnData);
         }
-        public HUDElementsSprite HUDElements(Vector2 loc, int scale)
+        public BasementBrickTileSprite BasementBrickTile(Vector2 loc)
         {
-            return new HUDElementsSprite(HUDElementsTexture, HUDElementsData, scale);
+            return new BasementBrickTileSprite(BasementBrickTileTexture, loc, basementBrickTileData);
         }
-        public BasementBrickTileSprite BasementBrickTile(Vector2 loc, int scale)
+        public LadderTileSprite LadderTile(Vector2 loc)
         {
-            return new BasementBrickTileSprite(BasementBrickTileTexture, basementBrickTileData, scale);
+            return new LadderTileSprite(LadderTileTexture, loc, ladderTileData);
         }
-        public LadderTileSprite LadderTile(Vector2 loc, int scale)
+        public HorizontalBricksSprite HorizontalBricks(Vector2 loc)
         {
-            return new LadderTileSprite(LadderTileTexture, ladderTileData, scale);
+            return new HorizontalBricksSprite(HorizontalBricksTexture, loc, horizontalBricksData);
         }
-        public HorizontalBricksSprite HorizontalBricks(Vector2 loc, int scale)
+        public VerticalBricksSprite VerticalBricks(Vector2 loc)
         {
-            return new HorizontalBricksSprite(HorizontalBricksTexture, horizontalBricksData, scale);
-        }
-        public VerticalBricksSprite VerticalBricks(Vector2 loc, int scale)
-        {
-            return new VerticalBricksSprite(VerticalBricksTexture, verticalBricksData, scale);
+            return new VerticalBricksSprite(VerticalBricksTexture, loc, verticalBricksData);
         }
     }
 }

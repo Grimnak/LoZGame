@@ -3,23 +3,26 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public class EnemySpawnSprite : ISprite
+    public class EnemySpawnSprite : IBlockSprite
     {
         private Texture2D spriteSheet;
         private int spriteSheetRows, spriteSheetColumns;
         private int currentFrame, totalFrames;
         private int currentUpdate;
         private int updatesPerFrame = 5;
-        private int scale;
+        private int spriteWidth, spriteHeight;
+        public Vector2 location { get; set; }
 
-        public EnemySpawnSprite(Texture2D spriteTexture, SpriteSheetData data, int scale)
+        public EnemySpawnSprite(Texture2D spriteTexture, Vector2 loc, SpriteSheetData data)
         {
             spriteSheet = spriteTexture;
+            spriteWidth = data.Width;
+            spriteHeight = data.Height;
+            location = loc;
             currentFrame = 0;
             spriteSheetRows = data.Rows;
             spriteSheetColumns = data.Columns;
             totalFrames = spriteSheetRows * spriteSheetColumns;
-            this.scale = scale;
         }
 
         public void Update()
@@ -34,16 +37,16 @@ namespace LoZClone
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint)
+        public void Draw(SpriteBatch spriteBatch)
         {
             int width = spriteSheet.Width / spriteSheetColumns;
             int height = spriteSheet.Height / spriteSheetRows;
             int row = (int)((float)currentFrame / (float)spriteSheetColumns);
 
             Rectangle sourceRectangle = new Rectangle(0, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, spriteWidth, spriteHeight);
 
-            spriteBatch.Draw(spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
+            spriteBatch.Draw(spriteSheet, destinationRectangle, sourceRectangle, Color.White);
         }
     }
 }

@@ -3,32 +3,35 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoZClone
 {
-    public class SpottedTileSprite : ISprite
+    public class SpottedTileSprite : IBlockSprite
     {
         private Texture2D spriteSheet;
         private int spriteSheetRows, spriteSheetColumns;
-        private int scale;
+        private int spriteWidth, spriteHeight;
+        public Vector2 location { get; set; }
 
-        public SpottedTileSprite(Texture2D spriteTexture, SpriteSheetData data, int scale)
+        public SpottedTileSprite(Texture2D spriteTexture, Vector2 loc, SpriteSheetData data)
         {
             spriteSheet = spriteTexture;
+            spriteWidth = data.Width;
+            spriteHeight = data.Height;
+            location = loc;
 
             spriteSheetRows = data.Rows;
             spriteSheetColumns = data.Columns;
-            this.scale = scale;
         }
 
         public void Update() { }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint)
+        public void Draw(SpriteBatch spriteBatch)
         {
             int width = spriteSheet.Width / spriteSheetColumns;
             int height = spriteSheet.Height / spriteSheetRows;
 
             Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width * scale, height * scale);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, spriteWidth, spriteHeight);
 
-            spriteBatch.Draw(spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
+            spriteBatch.Draw(spriteSheet, destinationRectangle, sourceRectangle, Color.White);
         }
     }
 }
