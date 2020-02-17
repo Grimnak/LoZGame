@@ -71,6 +71,8 @@ Paint
     Plan(s) to fix:  Implement dynamic key priorities
 
 ### Bomb Explosion Drawing:
-    Bug:  When the bomb explodes, there is ‘fuzz’ at the top and bottom of the explosion sprites due to a rendering error.
+    Bug:  When the bomb explodes -
+    - there is ‘fuzz’ at the top and bottom of the explosion sprites
+    This is believed to be an issue with the sprite rendering 
     
     Plan(s) to fix:  Refactor explosion sprites to have a small transparent gap in the png files
