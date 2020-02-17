@@ -132,10 +132,14 @@ namespace LoZClone
 
         public void Update()
         {
-            spamCounter--;
+            
             if (spamCounter <= 0)
             {
                 spamLock = false;
+            }
+            else
+            {
+                spamCounter--;
             }
             foreach (KeyValuePair<int, IProjectile> item in this.itemList)
             {
