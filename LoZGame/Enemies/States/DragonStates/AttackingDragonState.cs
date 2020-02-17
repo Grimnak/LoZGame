@@ -56,7 +56,7 @@ namespace LoZClone
         }
 
         public void Update()
-        {         
+        {
             this.sprite.Update();
             this.fireballDownLeft.Update();
             this.fireballLeft.Update();
