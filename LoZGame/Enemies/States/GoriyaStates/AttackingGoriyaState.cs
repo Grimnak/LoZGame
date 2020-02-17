@@ -6,50 +6,55 @@ namespace LoZClone
 {
     public class AttackingGoriyaState : IGoriyaState
     {
-        private Goriya goriya;
-        private IGoriyaSprite sprite;
+        private readonly Goriya goriya;
+        private readonly IGoriyaSprite sprite;
 
         public AttackingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
-             switch (goriya.direction)
+            switch (goriya.direction)
              {
                 case "left":
-                    sprite = EnemySpriteFactory.Instance.createLeftMovingGoriyaSprite();
+                    this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingGoriyaSprite();
                     break;
                 case "right":
-                    sprite = EnemySpriteFactory.Instance.createRightMovingGoriyaSprite();
+                    this.sprite = EnemySpriteFactory.Instance.CreateRightMovingGoriyaSprite();
                     break;
                 case "up":
-                    sprite = EnemySpriteFactory.Instance.createUpMovingGoriyaSprite();
+                    this.sprite = EnemySpriteFactory.Instance.CreateUpMovingGoriyaSprite();
                     break;
                 case "down":
-                    sprite = EnemySpriteFactory.Instance.createDownMovingGoriyaSprite();
+                    this.sprite = EnemySpriteFactory.Instance.CreateDownMovingGoriyaSprite();
                     break;
                 default:
                     break;
              }
            
         }
+
         public void moveLeft()
         {
-            goriya.CurrentState = new LeftMovingGoriyaState(goriya);
+            this.goriya.CurrentState = new LeftMovingGoriyaState(this.goriya);
         }
+
         public void moveRight()
         {
-            goriya.CurrentState = new RightMovingGoriyaState(goriya);
+            this.goriya.CurrentState = new RightMovingGoriyaState(this.goriya);
         }
+
         public void moveUp()
         {
-            goriya.CurrentState = new UpMovingGoriyaState(goriya);
+            this.goriya.CurrentState = new UpMovingGoriyaState(this.goriya);
         }
+
         public void moveDown()
         {
-            goriya.CurrentState = new DownMovingGoriyaState(goriya);
+            this.goriya.CurrentState = new DownMovingGoriyaState(this.goriya);
         }
+
         public void attack()
         {
-            //Blank b/c already attacking
+            // Blank b/c already attacking
         }
 
         public void takeDamage()
@@ -57,22 +62,23 @@ namespace LoZClone
             this.goriya.Health--;
             if (this.goriya.Health == 0)
             {
-                goriya.CurrentState.die();
+                this.goriya.CurrentState.die();
             }
         }
+
         public void die()
         {
-            goriya.CurrentState = new DeadGoriyaState(goriya);
+            this.goriya.CurrentState = new DeadGoriyaState(this.goriya);
         }
 
         public void Update()
         {
-            sprite.Update();
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, goriya.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.goriya.currentLocation, Color.White);
         }
     }
 }

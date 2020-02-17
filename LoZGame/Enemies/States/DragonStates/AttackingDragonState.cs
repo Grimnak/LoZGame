@@ -6,33 +6,36 @@ namespace LoZClone
 {
     public class AttackingDragonState : IDragonState
     {
-        private Dragon dragon;
-        private IDragonSprite sprite;
-        private FireballSprite fireballLeft;
-        private FireballSprite fireballDownLeft;
-        private FireballSprite fireballUpLeft;
+        private readonly Dragon dragon;
+        private readonly IDragonSprite sprite;
+        private readonly FireballSprite fireballLeft;
+        private readonly FireballSprite fireballDownLeft;
+        private readonly FireballSprite fireballUpLeft;
 
         public AttackingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
-            sprite = EnemySpriteFactory.Instance.createDragonSprite();
-            fireballUpLeft = EnemySpriteFactory.Instance.createUpLeftFireballSprite(dragon.currentLocation);
-            fireballLeft = EnemySpriteFactory.Instance.createLeftFireballSprite(dragon.currentLocation);
-            fireballDownLeft = EnemySpriteFactory.Instance.createDownLeftFireballSprite(dragon.currentLocation);
+            this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
+            this.fireballUpLeft = EnemySpriteFactory.Instance.CreateUpLeftFireballSprite(dragon.currentLocation);
+            this.fireballLeft = EnemySpriteFactory.Instance.CreateLeftFireballSprite(dragon.currentLocation);
+            this.fireballDownLeft = EnemySpriteFactory.Instance.CreateDownLeftFireballSprite(dragon.currentLocation);
         }
+
         public void moveLeft()
         {
-            dragon.CurrentState = new LeftMovingDragonState(dragon);
+            this.dragon.CurrentState = new LeftMovingDragonState(this.dragon);
         }
+
         public void moveRight()
         {
-            dragon.CurrentState = new RightMovingDragonState(dragon);
+            this.dragon.CurrentState = new RightMovingDragonState(this.dragon);
         }
 
         public void stop()
         {
-            dragon.CurrentState = new IdleDragonState(dragon);
+            this.dragon.CurrentState = new IdleDragonState(this.dragon);
         }
+
         public void attack()
         {
             // Blank b/c already attacking
@@ -43,28 +46,29 @@ namespace LoZClone
             this.dragon.Health--;
             if (this.dragon.Health == 0)
             {
-                dragon.CurrentState.die();
+                this.dragon.CurrentState.die();
             }
         }
+
         public void die()
         {
-            dragon.CurrentState = new DeadDragonState(dragon);
+            this.dragon.CurrentState = new DeadDragonState(this.dragon);
         }
 
         public void Update()
         {         
-            sprite.Update();
-            fireballDownLeft.Update();
-            fireballLeft.Update();
-            fireballUpLeft.Update();
+            this.sprite.Update();
+            this.fireballDownLeft.Update();
+            this.fireballLeft.Update();
+            this.fireballUpLeft.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, dragon.currentLocation, Color.White);
-            fireballDownLeft.Draw(sb, Color.White);
-            fireballLeft.Draw(sb, Color.White);
-            fireballUpLeft.Draw(sb, Color.White);
+            this.sprite.Draw(sb, this.dragon.currentLocation, Color.White);
+            this.fireballDownLeft.Draw(sb, Color.White);
+            this.fireballLeft.Draw(sb, Color.White);
+            this.fireballUpLeft.Draw(sb, Color.White);
         }
     }
 }

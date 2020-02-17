@@ -10,7 +10,7 @@
         readonly LoZGame game;
         readonly EntityManager entity;
         readonly EnemyManager enemy;
-        private static readonly int priority = -1;
+        private static readonly int PriorityValue = -1;
 
         public CommandReset(LoZGame game, IPlayer player, ItemManager item, BlockManager block, EntityManager entity, EnemyManager enemy)
         {
@@ -44,6 +44,6 @@
             this.enemy.clear();
         }
 
-        public int Priority => priority;
+        public int Priority => PriorityValue;
     }
 }

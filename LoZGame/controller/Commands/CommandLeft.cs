@@ -3,7 +3,7 @@
     public class CommandLeft : ICommand
     {
         readonly IPlayer player;
-        private static readonly int priority = 1;
+        private static readonly int PriorityValue = 1;
 
         public CommandLeft(IPlayer player)
         {
@@ -15,6 +15,6 @@
             this.player.moveLeft();
         }
 
-        public int Priority => priority;
+        public int Priority => PriorityValue;
     }
 }

@@ -9,50 +9,50 @@
     public class BlockSpriteFactory
     {
         private Texture2D ladderTexture;
-        private SpriteSheetData ladderData = new SpriteSheetData("ladder", 0, 0, 1, 1);
+        private readonly SpriteSheetData ladderData = new SpriteSheetData("ladder", 0, 0, 1, 1);
         private Texture2D stairsTexture;
-        private SpriteSheetData stairsData = new SpriteSheetData("stairs", 0, 0, 1, 1);
+        private readonly SpriteSheetData stairsData = new SpriteSheetData("stairs", 0, 0, 1, 1);
 
         private Texture2D doorDownTexture;
-        private SpriteSheetData doorDownData = new SpriteSheetData("door_down", 0, 0, 3, 1);
+        private readonly SpriteSheetData doorDownData = new SpriteSheetData("door_down", 0, 0, 3, 1);
         private Texture2D doorLeftTexture;
-        private SpriteSheetData doorLeftData = new SpriteSheetData("door_left", 0, 0, 3, 1);
+        private readonly SpriteSheetData doorLeftData = new SpriteSheetData("door_left", 0, 0, 3, 1);
         private Texture2D doorRightTexture;
-        private SpriteSheetData doorRightData = new SpriteSheetData("door_right", 0, 0, 3, 1);
+        private readonly SpriteSheetData doorRightData = new SpriteSheetData("door_right", 0, 0, 3, 1);
         private Texture2D doorUpTexture;
-        private SpriteSheetData doorUpData = new SpriteSheetData("door_up", 0, 0, 3, 1);
+        private readonly SpriteSheetData doorUpData = new SpriteSheetData("door_up", 0, 0, 3, 1);
 
         private Texture2D fireTexture;
-        private SpriteSheetData fireData = new SpriteSheetData("fire", 0, 0, 2, 1);
+        private readonly SpriteSheetData fireData = new SpriteSheetData("fire", 0, 0, 2, 1);
         private Texture2D floorTileTexture;
-        private SpriteSheetData floorTileData = new SpriteSheetData("floor_tile", 0, 0, 1, 1);
+        private readonly SpriteSheetData floorTileData = new SpriteSheetData("floor_tile", 0, 0, 1, 1);
         private Texture2D gapTileTexture;
-        private SpriteSheetData gapTileData = new SpriteSheetData("gap_tile", 0, 0, 1, 1);
+        private readonly SpriteSheetData gapTileData = new SpriteSheetData("gap_tile", 0, 0, 1, 1);
         private Texture2D movableSquareTexture;
-        private SpriteSheetData movableSquareData = new SpriteSheetData("movable_square", 0, 0, 1, 1);
+        private readonly SpriteSheetData movableSquareData = new SpriteSheetData("movable_square", 0, 0, 1, 1);
 
         private Texture2D bombedOpeningDownTexture;
-        private SpriteSheetData bombedOpeningDownData = new SpriteSheetData("bombed_opening_down", 0, 0, 1, 1);
+        private readonly SpriteSheetData bombedOpeningDownData = new SpriteSheetData("bombed_opening_down", 0, 0, 1, 1);
         private Texture2D bombedOpeningUpTexture;
-        private SpriteSheetData bombedOpeningUpData = new SpriteSheetData("bombed_opening_up", 0, 0, 1, 1);
+        private readonly SpriteSheetData bombedOpeningUpData = new SpriteSheetData("bombed_opening_up", 0, 0, 1, 1);
         private Texture2D bombedOpeningRightTexture;
-        private SpriteSheetData bombedOpeningRightData = new SpriteSheetData("bombed_opening_right", 0, 0, 1, 1);
+        private readonly SpriteSheetData bombedOpeningRightData = new SpriteSheetData("bombed_opening_right", 0, 0, 1, 1);
         private Texture2D bombedOpeningLeftTexture;
-        private SpriteSheetData bombedOpeningLeftData = new SpriteSheetData("bombed_opening_left", 0, 0, 1, 1);
+        private readonly SpriteSheetData bombedOpeningLeftData = new SpriteSheetData("bombed_opening_left", 0, 0, 1, 1);
 
         private Texture2D blueStatueRightTexture;
-        private SpriteSheetData blueStatueRightData = new SpriteSheetData("blue_statue_right", 0, 0, 1, 1);
+        private readonly SpriteSheetData blueStatueRightData = new SpriteSheetData("blue_statue_right", 0, 0, 1, 1);
         private Texture2D blueStatueLeftTexture;
-        private SpriteSheetData blueStatueLeftData = new SpriteSheetData("blue_statue_left", 0, 0, 1, 1);
+        private readonly SpriteSheetData blueStatueLeftData = new SpriteSheetData("blue_statue_left", 0, 0, 1, 1);
         private Texture2D turquoiseStatueTexture;
-        private SpriteSheetData turquoiseStatueData = new SpriteSheetData("turquoise_statue", 0, 0, 1, 2);
+        private readonly SpriteSheetData turquoiseStatueData = new SpriteSheetData("turquoise_statue", 0, 0, 1, 2);
 
         private Texture2D brickTileTexture;
-        private SpriteSheetData brickTileData = new SpriteSheetData("brick_tile", 0, 0, 1, 1);
+        private readonly SpriteSheetData brickTileData = new SpriteSheetData("brick_tile", 0, 0, 1, 1);
 
-        private static readonly BlockSpriteFactory instance = new BlockSpriteFactory();
+        private static readonly BlockSpriteFactory InstanceValue = new BlockSpriteFactory();
 
-        public static BlockSpriteFactory Instance => instance;
+        public static BlockSpriteFactory Instance => InstanceValue;
 
         private BlockSpriteFactory()
         {

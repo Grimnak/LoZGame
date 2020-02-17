@@ -20,3 +20,12 @@ dotnet_diagnostic.SA1400.severity = none
 
 # CS2001: Source file 'C:\Users\Garrett\Desktop\repo\LoZGame\Controller\Commands\CommandL.cs' could not be found.
 dotnet_diagnostic.CS2001.severity = silent
+
+# SA1214: Readonly fields should appear before non-readonly fields
+dotnet_diagnostic.SA1214.severity = silent
+
+# IDE0032: Use auto property
+dotnet_style_prefer_auto_properties = true:none
+
+# SA1204: Static elements should appear before instance elements
+dotnet_diagnostic.SA1204.severity = none

@@ -6,29 +6,33 @@ namespace LoZClone
 {
     public class RightMovingGelState : IEnemyState
     {
-        private Gel gel;
-        private IGelSprite sprite;
+        private readonly Gel gel;
+        private readonly IGelSprite sprite;
 
         public RightMovingGelState(Gel gel)
         {
             this.gel = gel;
-            sprite = EnemySpriteFactory.Instance.createGelSprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateGelSprite();
         }
+
         public void moveLeft()
         {
-            gel.CurrentState = new LeftMovingGelState(gel);
+            this.gel.CurrentState = new LeftMovingGelState(this.gel);
         }
+
         public void moveRight()
         {
             // Blank b/c already moving right
         }
+
         public void moveUp()
         {
-            gel.CurrentState = new UpMovingGelState(gel);
+            this.gel.CurrentState = new UpMovingGelState(this.gel);
         }
+
         public void moveDown()
         {
-            gel.CurrentState = new DownMovingGelState(gel);
+            this.gel.CurrentState = new DownMovingGelState(this.gel);
         }
 
         public void takeDamage()
@@ -36,24 +40,24 @@ namespace LoZClone
             this.gel.Health--;
             if (this.gel.Health == 0)
             {
-                gel.CurrentState.die();
+                this.gel.CurrentState.die();
             }
         }
 
         public void die()
         {
-            gel.CurrentState = new DeadGelState(gel);
+            this.gel.CurrentState = new DeadGelState(this.gel);
         }
 
         public void Update()
         {
-            gel.currentLocation = new Vector2(gel.currentLocation.X + 1, gel.currentLocation.Y);
-            sprite.Update();
+            this.gel.currentLocation = new Vector2(this.gel.currentLocation.X + 1, this.gel.currentLocation.Y);
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, gel.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.gel.currentLocation, Color.White);
         }
     }
 }

@@ -22,9 +22,9 @@
         private Texture2D explosionFiveSpriteSheet;
         private static readonly int dRAW_SCALE = 2;
 
-        private static readonly ProjectileSpriteFactory instance = new ProjectileSpriteFactory();
+        private static readonly ProjectileSpriteFactory InstanceValue = new ProjectileSpriteFactory();
 
-        public static ProjectileSpriteFactory Instance => instance;
+        public static ProjectileSpriteFactory Instance => InstanceValue;
 
         public int Scale => dRAW_SCALE;
 

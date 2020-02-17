@@ -6,33 +6,38 @@ namespace LoZClone
 {
     public class LeftMovingGoriyaState : IGoriyaState
     {
-        private Goriya goriya;
-        private IGoriyaSprite sprite;
+        private readonly Goriya goriya;
+        private readonly IGoriyaSprite sprite;
 
         public LeftMovingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
-            sprite = EnemySpriteFactory.Instance.createLeftMovingGoriyaSprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingGoriyaSprite();
         }
+
         public void moveLeft()
         {
             // Blank b/c already moving down
         }
+
         public void moveRight()
         {
-            goriya.CurrentState = new RightMovingGoriyaState(goriya);
+            this.goriya.CurrentState = new RightMovingGoriyaState(this.goriya);
         }
+
         public void moveUp()
         {
-            goriya.CurrentState = new UpMovingGoriyaState(goriya);
+            this.goriya.CurrentState = new UpMovingGoriyaState(this.goriya);
         }
+
         public void moveDown()
         {
-            goriya.CurrentState = new DownMovingGoriyaState(goriya);
+            this.goriya.CurrentState = new DownMovingGoriyaState(this.goriya);
         }
+
         public void attack()
         {
-            goriya.CurrentState = new AttackingGoriyaState(goriya);
+            this.goriya.CurrentState = new AttackingGoriyaState(this.goriya);
 
         }
 
@@ -41,23 +46,24 @@ namespace LoZClone
             this.goriya.Health--;
             if (this.goriya.Health == 0)
             {
-                goriya.CurrentState.die();
+                this.goriya.CurrentState.die();
             }
         }
+
         public void die()
         {
-            goriya.CurrentState = new DeadGoriyaState(goriya);
+            this.goriya.CurrentState = new DeadGoriyaState(this.goriya);
         }
 
         public void Update()
         {
-            goriya.currentLocation = new Vector2(goriya.currentLocation.X - 1, goriya.currentLocation.Y);
-            sprite.Update();
+            this.goriya.currentLocation = new Vector2(this.goriya.currentLocation.X - 1, this.goriya.currentLocation.Y);
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, goriya.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.goriya.currentLocation, Color.White);
         }
     }
 }

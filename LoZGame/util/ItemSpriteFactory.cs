@@ -15,9 +15,9 @@
         private Texture2D fireSpriteSheet;
         private static readonly int dRAW_SCALE = 2;
 
-        private static readonly ItemSpriteFactory instance = new ItemSpriteFactory();
+        private static readonly ItemSpriteFactory InstanceValue = new ItemSpriteFactory();
 
-        public static ItemSpriteFactory Instance => instance;
+        public static ItemSpriteFactory Instance => InstanceValue;
 
         public int Scale => dRAW_SCALE;
 

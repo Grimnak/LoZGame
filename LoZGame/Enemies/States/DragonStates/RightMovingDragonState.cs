@@ -6,18 +6,20 @@ namespace LoZClone
 {
     public class RightMovingDragonState : IDragonState
     {
-        private Dragon dragon;
-        private IDragonSprite sprite;
+        private readonly Dragon dragon;
+        private readonly IDragonSprite sprite;
 
         public RightMovingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
-            sprite = EnemySpriteFactory.Instance.createDragonSprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
         }
+
         public void moveLeft()
         {
-            dragon.CurrentState = new LeftMovingDragonState(dragon);
+            this.dragon.CurrentState = new LeftMovingDragonState(this.dragon);
         }
+
         public void moveRight()
         {
             // Blank b/c already moving right
@@ -25,11 +27,12 @@ namespace LoZClone
 
         public void stop()
         {
-            dragon.CurrentState = new IdleDragonState(dragon);
+            this.dragon.CurrentState = new IdleDragonState(this.dragon);
         }
+
         public void attack()
         {
-            dragon.CurrentState = new AttackingDragonState(dragon);
+            this.dragon.CurrentState = new AttackingDragonState(this.dragon);
         }
 
         public void takeDamage()
@@ -37,23 +40,24 @@ namespace LoZClone
             this.dragon.Health--;
             if (this.dragon.Health == 0)
             {
-                dragon.CurrentState.die();
+                this.dragon.CurrentState.die();
             }
         }
+
         public void die()
         {
-            dragon.CurrentState = new DeadDragonState(dragon);
+            this.dragon.CurrentState = new DeadDragonState(this.dragon);
         }
 
         public void Update()
         {
-            dragon.currentLocation = new Vector2(dragon.currentLocation.X + 1, dragon.currentLocation.Y);
-            sprite.Update();
+            this.dragon.currentLocation = new Vector2(this.dragon.currentLocation.X + 1, this.dragon.currentLocation.Y);
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, dragon.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.dragon.currentLocation, Color.White);
         }
     }
 }

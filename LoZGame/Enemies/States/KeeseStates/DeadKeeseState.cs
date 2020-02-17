@@ -6,35 +6,43 @@ namespace LoZClone
 {
     public class DeadKeeseState : IKeeseState
     {
-        private Keese keese;
-        private DeadEnemySprite sprite;
+        private readonly Keese keese;
+        private readonly DeadEnemySprite sprite;
 
         public DeadKeeseState(Keese keese)
         {
             this.keese = keese;
-            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
         }
+
         public void moveLeft()
         {
         }
+
         public void moveRight()
         {
         }
+
         public void moveUp()
         {
         }
+
         public void moveDown()
         {
         }
+
         public void moveUpLeft()
         {
         }
+
         public void moveUpRight()
         {
         }
+
         public void moveDownLeft()
         {
         }
+
         public void moveDownRight()
         {
         }
@@ -42,18 +50,19 @@ namespace LoZClone
         public void takeDamage()
         {
         }
+
         public void die()
         {
         }
 
         public void Update()
         {
-            sprite.Update();
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, keese.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.keese.currentLocation, Color.White);
         }
     }
 }

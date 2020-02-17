@@ -3,7 +3,7 @@
     public class CommandEnemyLeft : ICommand
     {
         readonly EnemyManager enemy;
-        private static readonly int priority = -1;
+        private static readonly int PriorityValue = -1;
 
         public CommandEnemyLeft(EnemyManager enemy)
         {
@@ -12,9 +12,9 @@
 
         public void execute()
         {
-            enemy.cycleLeft();
+            this.enemy.cycleLeft();
         }
 
-        public int Priority => priority;
+        public int Priority => PriorityValue;
     }
 }

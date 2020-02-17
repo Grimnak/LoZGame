@@ -6,17 +6,19 @@ namespace LoZClone
 {
     public class DeadDragonState : IDragonState
     {
-        private Dragon dragon;
-        private DeadEnemySprite sprite;
+        private readonly Dragon dragon;
+        private readonly DeadEnemySprite sprite;
 
         public DeadDragonState(Dragon dragon)
         {
-            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.dragon = null;
         }
+
         public void moveLeft()
         {
         }
+
         public void moveRight()
         {
         }
@@ -24,6 +26,7 @@ namespace LoZClone
         public void takeDamage()
         {
         }
+
         public void die()
         {
         }
@@ -35,14 +38,15 @@ namespace LoZClone
         public void stop()
         {
         }
+
         public void Update()
         {
-            sprite.Update();
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, dragon.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.dragon.currentLocation, Color.White);
         }
     }
 }

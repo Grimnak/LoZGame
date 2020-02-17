@@ -9,68 +9,68 @@ namespace LoZClone
         private List<IEnemy> NPCs;
         private int currentIndex, totalNPCs;
         private IEnemy currentNPC;
-        private LoZGame game;
+        private readonly LoZGame game;
         private Vector2 location;
 
         public NPCManager(LoZGame game, Vector2 location)
         {
             this.location = location;
             this.game = game;
-            currentIndex = 0;
-            totalNPCs = 0;
+            this.currentIndex = 0;
+            this.totalNPCs = 0;
         }
 
         public void loadNPCs(LoZGame game)
         {
-            NPCs = new List<IEnemy>();
-            NPCs.Add(new Dodongo());
-            NPCs.Add(new Dragon());
-            NPCs.Add(new Stalfos());
-            NPCs.Add(new Keese());
-            NPCs.Add(new Gel());
-            NPCs.Add(new Zol());
-            NPCs.Add(new Goriya());
-            NPCs.Add(new Rope());
-            NPCs.Add(new SpikeCross());
-            NPCs.Add(new WallMaster());
-            NPCs.Add(new OldMan());
-            NPCs.Add(new Merchant());
+            this.NPCs = new List<IEnemy>();
+            this.NPCs.Add(new Dodongo());
+            this.NPCs.Add(new Dragon());
+            this.NPCs.Add(new Stalfos());
+            this.NPCs.Add(new Keese());
+            this.NPCs.Add(new Gel());
+            this.NPCs.Add(new Zol());
+            this.NPCs.Add(new Goriya());
+            this.NPCs.Add(new Rope());
+            this.NPCs.Add(new SpikeCross());
+            this.NPCs.Add(new WallMaster());
+            this.NPCs.Add(new OldMan());
+            this.NPCs.Add(new Merchant());
 
-            foreach (IEnemy npc in NPCs)
+            foreach (IEnemy npc in this.NPCs)
             {
-                totalNPCs++;
+                this.totalNPCs++;
             }
-            currentNPC = NPCs[currentIndex];
+            this.currentNPC = this.NPCs[this.currentIndex];
         }
 
         public void cycleRight()
         {
-            currentIndex++;
-            if (currentIndex >= totalNPCs)
+            this.currentIndex++;
+            if (this.currentIndex >= this.totalNPCs)
             {
-                currentIndex = 0;
+                this.currentIndex = 0;
             }
-            currentNPC = NPCs[currentIndex];
+            this.currentNPC = this.NPCs[this.currentIndex];
         }
 
         public void cycleLeft()
         {
-            currentIndex--;
-            if (currentIndex < 0)
+            this.currentIndex--;
+            if (this.currentIndex < 0)
             {
-                currentIndex = totalNPCs - 1;
+                this.currentIndex = this.totalNPCs - 1;
             }
-            currentNPC = NPCs[currentIndex];
+            this.currentNPC = this.NPCs[this.currentIndex];
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            currentNPC.Draw(spriteBatch);
+            this.currentNPC.Draw(spriteBatch);
         }
 
         public void Update()
         {
-            currentNPC.Update();
+            this.currentNPC.Update();
         }
     }
 }

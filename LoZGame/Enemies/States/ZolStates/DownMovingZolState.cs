@@ -6,26 +6,30 @@ namespace LoZClone
 {
     public class DownMovingZolState : IEnemyState
     {
-        private Zol zol;
-        private IZolSprite sprite;
+        private readonly Zol zol;
+        private readonly IZolSprite sprite;
 
         public DownMovingZolState(Zol zol)
         {
             this.zol = zol;
-            sprite = EnemySpriteFactory.Instance.createZolSprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateZolSprite();
         }
+
         public void moveLeft()
         {
-            zol.CurrentState = new LeftMovingZolState(zol);
+            this.zol.CurrentState = new LeftMovingZolState(this.zol);
         }
+
         public void moveRight()
         {
-            zol.CurrentState = new RightMovingZolState(zol);
+            this.zol.CurrentState = new RightMovingZolState(this.zol);
         }
+
         public void moveUp()
         {
-            zol.CurrentState = new UpMovingZolState(zol);
+            this.zol.CurrentState = new UpMovingZolState(this.zol);
         }
+
         public void moveDown()
         {
             // Blank b/c already moving down
@@ -36,23 +40,24 @@ namespace LoZClone
             this.zol.Health--;
             if (this.zol.Health == 0)
             {
-                zol.CurrentState.die();
+                this.zol.CurrentState.die();
             }
         }
+
         public void die()
         {
-            zol.CurrentState = new DeadZolState(zol);
+            this.zol.CurrentState = new DeadZolState(this.zol);
         }
 
         public void Update()
         {
-            zol.currentLocation = new Vector2(zol.currentLocation.X, zol.currentLocation.Y + 1);
-            sprite.Update();
+            this.zol.currentLocation = new Vector2(this.zol.currentLocation.X, this.zol.currentLocation.Y + 1);
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, zol.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.zol.currentLocation, Color.White);
         }
     }
 }

@@ -6,23 +6,27 @@ namespace LoZClone
 {
     public class DeadZolState : IEnemyState
     {
-        private Zol zol;
-        private DeadEnemySprite sprite;
+        private readonly Zol zol;
+        private readonly DeadEnemySprite sprite;
 
         public DeadZolState(Zol zol)
         {
             this.zol = zol;
-            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
         }
+
         public void moveLeft()
         { 
         }
+
         public void moveRight()
         {
         }
+
         public void moveUp()
         {
         }
+
         public void moveDown()
         {
         }
@@ -30,18 +34,19 @@ namespace LoZClone
         public void takeDamage()
         { 
         }
+
         public void die()
         {
         }
 
         public void Update()
         {
-            sprite.Update();
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, zol.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.zol.currentLocation, Color.White);
         }
     }
 }

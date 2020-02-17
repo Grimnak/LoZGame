@@ -6,23 +6,27 @@ namespace LoZClone
 {
     public class DeadStalfosState : IEnemyState
     {
-        private Stalfos stalfos;
-        private DeadEnemySprite sprite;
+        private readonly Stalfos stalfos;
+        private readonly DeadEnemySprite sprite;
 
         public DeadStalfosState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
-            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
         }
+
         public void moveLeft()
         {
         }
+
         public void moveRight()
         {
         }
+
         public void moveUp()
         {
         }
+
         public void moveDown()
         {
         }
@@ -30,18 +34,19 @@ namespace LoZClone
         public void takeDamage()
         {
         }
+
         public void die()
         {
         }
 
         public void Update()
         {
-            sprite.Update();
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, stalfos.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.stalfos.currentLocation, Color.White);
         }
     }
 }

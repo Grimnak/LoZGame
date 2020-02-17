@@ -11,7 +11,7 @@ namespace LoZClone
         {
             this.game = game;
             this.player = playerInstance;
-            this.lockoutTimer = 15; //wait period
+            this.lockoutTimer = 15; // wait period
             this.sprite = this.createCorrectSprite();
         }
 

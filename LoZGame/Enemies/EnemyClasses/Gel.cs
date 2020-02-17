@@ -8,21 +8,25 @@ namespace LoZClone
     public class Gel : IEnemy
     {
         private IEnemyState currentState;
-        private int health = 10, lifeTime = 0, directionChange = 40;
+        private int health = 10;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
         public Vector2 currentLocation;
+
         private enum direction { Up, Down, Left, Right };
+
         private direction currentDirection;
 
         public Gel()
         {
-            currentState = new LeftMovingGelState(this);
-            currentLocation = new Vector2(650, 200);
+            this.currentState = new LeftMovingGelState(this);
+            this.currentLocation = new Vector2(650, 200);
         }
 
         private void getNewDirection()
         {
             Random randomselect = new Random();
-            currentDirection = (direction)(randomselect.Next(0, 7));
+            this.currentDirection = (direction)(randomselect.Next(0, 7));
         }
 
         private void updateLoc()
@@ -30,22 +34,22 @@ namespace LoZClone
             switch (this.currentDirection)
             {
                 case direction.Up:
-                    currentState.moveUp();
+                    this.currentState.moveUp();
                     break;
                 case direction.Down:
-                    currentState.moveDown();
+                    this.currentState.moveDown();
                     break;
                 case direction.Left:
-                    currentState.moveLeft();
+                    this.currentState.moveLeft();
                     break;
                 case direction.Right:
-                    currentState.moveRight();
+                    this.currentState.moveRight();
                     break;
                 default:
                     break;
             }
             this.checkBorder();
-            currentState.Update();
+            this.currentState.Update();
         }
   
         private void checkBorder()
@@ -53,61 +57,62 @@ namespace LoZClone
               if (this.currentLocation.Y < 30)
               {
                   this.currentLocation = new Vector2(this.currentLocation.X, 30);
-                  this.lifeTime = directionChange + 1;
+                  this.lifeTime = this.directionChange + 1;
               }
               if (this.currentLocation.Y > 450)
               {
                   this.currentLocation = new Vector2(this.currentLocation.X, 450);
-                  this.lifeTime = directionChange + 1;
+                  this.lifeTime = this.directionChange + 1;
               }
               if (this.currentLocation.X < 30)
               {
                   this.currentLocation = new Vector2(30, this.currentLocation.Y);
-                  this.lifeTime = directionChange + 1;
+                  this.lifeTime = this.directionChange + 1;
               }
               if (this.currentLocation.X > 770)
               {
                   this.currentLocation = new Vector2(770, this.currentLocation.Y);
-                  this.lifeTime = directionChange + 1;
+                  this.lifeTime = this.directionChange + 1;
               }
         } 
 
         public void takeDamage()
         {
-            currentState.takeDamage();
+            this.currentState.takeDamage();
         }
+
         public void die()
         {
-            currentState.die();
+            this.currentState.die();
         }
 
         public void Update()
         {
-            lifeTime++;
+            this.lifeTime++;
             this.updateLoc();
-            if (lifeTime > directionChange)
+            if (this.lifeTime > this.directionChange)
             {
                 this.getNewDirection();
-                lifeTime = 0;
+                this.lifeTime = 0;
             }
         }
 
         public void Draw(SpriteBatch sb)
         {
-            currentState.Draw(sb);
+            this.currentState.Draw(sb);
         }
 
         public IEnemyState CurrentState
         {
-            get { return currentState; }
-            set { currentState = value; }
+            get { return this.currentState; }
+            set { this.currentState = value; }
 
         }
 
         public int Health
         {
-            get { return health; }
-            set { health = value; }
+            get { return this.health; }
+            set { this.health = value; }
         }
 
     }

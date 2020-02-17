@@ -6,23 +6,27 @@ namespace LoZClone
 {
     public class DeadRopeState : IEnemyState
     {
-        private Rope rope;
-        private DeadEnemySprite sprite;
+        private readonly Rope rope;
+        private readonly DeadEnemySprite sprite;
 
         public DeadRopeState(Rope rope)
         {
             this.rope = rope;
-            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
         }
+
         public void moveLeft()
         {
         }
+
         public void moveRight()
         {
         }
+
         public void moveUp()
         {
         }
+
         public void moveDown()
         {
         }
@@ -30,18 +34,19 @@ namespace LoZClone
         public void takeDamage()
         {
         }
+
         public void die()
         {
         }
 
         public void Update()
         {
-            sprite.Update();
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, rope.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.rope.currentLocation, Color.White);
         }
     }
 }

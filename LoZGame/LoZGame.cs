@@ -18,7 +18,7 @@
         private ItemManager itemManager;
         private EntityManager entityManager;
         private BlockManager blockManager;
-        private ProjectileManager projectileManager;
+        private readonly ProjectileManager projectileManager;
         private EnemyManager enemyManager;
 
         public LoZGame()
@@ -31,13 +31,13 @@
 
         protected override void Initialize()
         {
-            link = new Link(this);
-            enemyManager = new EnemyManager();
-            itemManager = new ItemManager();
-            blockManager = new BlockManager();
-            entityManager = new EntityManager();
-            commandLoader = new CommandLoader(this, link, itemManager, blockManager, entityManager, enemyManager);
-            keyboardController = new KeyboardController(commandLoader);
+            this.link = new Link(this);
+            this.enemyManager = new EnemyManager();
+            this.itemManager = new ItemManager();
+            this.blockManager = new BlockManager();
+            this.entityManager = new EntityManager();
+            this.commandLoader = new CommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
+            this.keyboardController = new KeyboardController(this.commandLoader);
             base.Initialize();
         }
 
@@ -60,25 +60,25 @@
 
         protected override void Update(GameTime gameTime)
         {
-            keyboardController.Update();
-            link.Update();
-            enemyManager.currentEnemy.Update();
-            itemManager.currentItem.Update();
-            blockManager.currentBlock.Update();
-            entityManager.Update();
+            this.keyboardController.Update();
+            this.link.Update();
+            this.enemyManager.currentEnemy.Update();
+            this.itemManager.currentItem.Update();
+            this.blockManager.currentBlock.Update();
+            this.entityManager.Update();
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Gray);
-            spriteBatch.Begin();
-            link.Draw();
-            enemyManager.currentEnemy.Draw(spriteBatch);
-            itemManager.currentItem.Draw(spriteBatch);
-            blockManager.currentBlock.Draw(spriteBatch, new Vector2(500, 184), Color.White);
-            entityManager.Draw(spriteBatch);
-            spriteBatch.End();
+            this.GraphicsDevice.Clear(Color.Gray);
+            this.spriteBatch.Begin();
+            this.link.Draw();
+            this.enemyManager.currentEnemy.Draw(this.spriteBatch);
+            this.itemManager.currentItem.Draw(this.spriteBatch);
+            this.blockManager.currentBlock.Draw(this.spriteBatch, new Vector2(500, 184), Color.White);
+            this.entityManager.Draw(this.spriteBatch);
+            this.spriteBatch.End();
             base.Draw(gameTime);
         }
     }

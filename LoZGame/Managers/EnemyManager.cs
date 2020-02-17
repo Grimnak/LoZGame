@@ -12,42 +12,42 @@ namespace LoZClone
     {
         private List<IEnemy> enemyList;
         public IEnemy currentEnemy;
-        private int locX, locY;
+        private readonly int locX, locY;
         private int currentIndex;
         private int maxIndex;
         public Vector2 location;
 
         public EnemyManager()
         {
-            currentIndex = 0;
-            maxIndex = 0;
-            enemyList = new List<IEnemy>();
+            this.currentIndex = 0;
+            this.maxIndex = 0;
+            this.enemyList = new List<IEnemy>();
         }
 
         private void LoadEnemies()
         {
-            enemyList.Add(new Dodongo());
-            enemyList.Add(new Stalfos());
-            enemyList.Add(new Dragon());
-            enemyList.Add(new OldMan());
-            enemyList.Add(new Merchant());
-            enemyList.Add(new SpikeCross());
-            enemyList.Add(new WallMaster());
-            enemyList.Add(new Rope());
-            enemyList.Add(new Zol());
-            enemyList.Add(new Gel());
-            enemyList.Add(new Keese());
+            this.enemyList.Add(new Dodongo());
+            this.enemyList.Add(new Stalfos());
+            this.enemyList.Add(new Dragon());
+            this.enemyList.Add(new OldMan());
+            this.enemyList.Add(new Merchant());
+            this.enemyList.Add(new SpikeCross());
+            this.enemyList.Add(new WallMaster());
+            this.enemyList.Add(new Rope());
+            this.enemyList.Add(new Zol());
+            this.enemyList.Add(new Gel());
+            this.enemyList.Add(new Keese());
         }
 
         public void loadSprites(int xloc, int yloc)
         {
             this.LoadEnemies();
             this.currentEnemy = this.enemyList[this.currentIndex];
-            location.X = xloc;
-            location.Y = yloc;
-            foreach (IEnemy sprite in enemyList)
+            this.location.X = xloc;
+            this.location.Y = yloc;
+            foreach (IEnemy sprite in this.enemyList)
             {
-                maxIndex++;
+                this.maxIndex++;
             }
         }
 
@@ -81,8 +81,8 @@ namespace LoZClone
             
         public int CurrentIndex
         {
-            get { return currentIndex; }
-            set { currentIndex = value; }
+            get { return this.currentIndex; }
+            set { this.currentIndex = value; }
         }
     }
 }

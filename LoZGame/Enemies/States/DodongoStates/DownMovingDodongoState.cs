@@ -6,26 +6,30 @@ namespace LoZClone
 {
     public class DownMovingDodongoState : IEnemyState
     {
-        private Dodongo dodongo;
-        private IDodongoSprite sprite;
+        private readonly Dodongo dodongo;
+        private readonly IDodongoSprite sprite;
 
         public DownMovingDodongoState(Dodongo dodongo)
         {
             this.dodongo = dodongo;
-            sprite = EnemySpriteFactory.Instance.createDownMovingDodongoSprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateDownMovingDodongoSprite();
         }
+
         public void moveLeft()
         {
-            dodongo.CurrentState = new LeftMovingDodongoState(dodongo);
+            this.dodongo.CurrentState = new LeftMovingDodongoState(this.dodongo);
         }
+
         public void moveRight()
         {
-            dodongo.CurrentState = new RightMovingDodongoState(dodongo);
+            this.dodongo.CurrentState = new RightMovingDodongoState(this.dodongo);
         }
+
         public void moveUp()
         {
-            dodongo.CurrentState = new UpMovingDodongoState(dodongo);
+            this.dodongo.CurrentState = new UpMovingDodongoState(this.dodongo);
         }
+
         public void moveDown()
         {
             // Blank b/c already moving up
@@ -36,23 +40,24 @@ namespace LoZClone
             this.dodongo.Health--;
             if (this.dodongo.Health-- == 0)
             {
-                dodongo.CurrentState.die();
+                this.dodongo.CurrentState.die();
             }
         }
+
         public void die()
         {
-            dodongo.CurrentState = new DeadDodongoState(dodongo);
+            this.dodongo.CurrentState = new DeadDodongoState(this.dodongo);
         }
 
         public void Update()
         {
-            dodongo.currentLocation = new Vector2(dodongo.currentLocation.X, dodongo.currentLocation.Y + 1);
-            sprite.Update();
+            this.dodongo.currentLocation = new Vector2(this.dodongo.currentLocation.X, this.dodongo.currentLocation.Y + 1);
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, dodongo.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.dodongo.currentLocation, Color.White);
         }
     }
 }

@@ -4,7 +4,7 @@ namespace LoZClone
     public class CommandBlockRight : ICommand
     {
         readonly BlockManager block;
-        private static readonly int priority = -1;
+        private static readonly int PriorityValue = -1;
 
         public CommandBlockRight(BlockManager block)
         {
@@ -16,6 +16,6 @@ namespace LoZClone
             this.block.cycleRight();
         }
 
-        public int Priority => priority;
+        public int Priority => PriorityValue;
     }
 }

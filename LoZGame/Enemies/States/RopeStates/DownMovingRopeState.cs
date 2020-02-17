@@ -6,26 +6,30 @@ namespace LoZClone
 {
     public class DownMovingRopeState : IEnemyState
     {
-        private Rope rope;
-        private IRopeSprite sprite;
+        private readonly Rope rope;
+        private readonly IRopeSprite sprite;
 
         public DownMovingRopeState(Rope rope)
         {
             this.rope = rope;
-            sprite = EnemySpriteFactory.Instance.createLeftMovingRopeSprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingRopeSprite();
         }
+
         public void moveLeft()
         {
-            rope.CurrentState = new LeftMovingRopeState(rope);
+            this.rope.CurrentState = new LeftMovingRopeState(this.rope);
         }
+
         public void moveRight()
         {
-            rope.CurrentState = new RightMovingRopeState(rope);
+            this.rope.CurrentState = new RightMovingRopeState(this.rope);
         }
+
         public void moveUp()
         {
-            rope.CurrentState = new UpMovingRopeState(rope);
+            this.rope.CurrentState = new UpMovingRopeState(this.rope);
         }
+
         public void moveDown()
         {
             // Blank b/c already moving down
@@ -36,23 +40,24 @@ namespace LoZClone
             this.rope.Health--;
             if (this.rope.Health == 0)
             {
-                rope.CurrentState.die();
+                this.rope.CurrentState.die();
             }
         }
+
         public void die()
         {
-            rope.CurrentState = new DeadRopeState(rope);
+            this.rope.CurrentState = new DeadRopeState(this.rope);
         }
 
         public void Update()
         {
-            rope.currentLocation = new Vector2(rope.currentLocation.X, rope.currentLocation.Y + 2);
-            sprite.Update();
+            this.rope.currentLocation = new Vector2(this.rope.currentLocation.X, this.rope.currentLocation.Y + 2);
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, rope.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.rope.currentLocation, Color.White);
         }
     }
 }

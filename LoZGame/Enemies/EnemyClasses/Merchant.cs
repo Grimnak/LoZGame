@@ -8,29 +8,32 @@ namespace LoZClone
     public class Merchant : IEnemy
     {
         public Vector2 currentLocation;
-        private MerchantSprite sprite;
+        private readonly MerchantSprite sprite;
 
         public Merchant()
         {
-            currentLocation = new Vector2(650, 200);
-            sprite = EnemySpriteFactory.Instance.createMerchantSprite();
+            this.currentLocation = new Vector2(650, 200);
+            this.sprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
         }
 
         public void takeDamage()
         {
             //
         }
+
         public void die()
         {
            //
         }
+
         public void Update()
         {
-            sprite.Update();
+            this.sprite.Update();
         }
+
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, currentLocation, Color.White);
+            this.sprite.Draw(sb, this.currentLocation, Color.White);
         }
     }
 }

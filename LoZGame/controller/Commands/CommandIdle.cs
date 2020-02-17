@@ -3,7 +3,7 @@
     public class CommandIdle : ICommand
     {
         readonly IPlayer player;
-        private static readonly int priority = 0;
+        private static readonly int PriorityValue = 0;
 
         public CommandIdle(IPlayer player)
         {
@@ -15,6 +15,6 @@
             this.player.idle();
         }
 
-        public int Priority => priority;
+        public int Priority => PriorityValue;
     }
 }

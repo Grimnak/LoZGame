@@ -3,7 +3,7 @@
     public class CommandDown : ICommand
     {
         readonly IPlayer player;
-        private static readonly int priority = 2;
+        private static readonly int PriorityValue = 2;
 
         public CommandDown(IPlayer player)
         {
@@ -15,6 +15,6 @@
             this.player.moveDown();
         }
 
-        public int Priority => priority;
+        public int Priority => PriorityValue;
     }
 }

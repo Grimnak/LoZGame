@@ -4,7 +4,7 @@
     {
         readonly IPlayer player;
         readonly EntityManager entity;
-        private static readonly int priority = 6;
+        private static readonly int PriorityValue = 6;
 
         public CommandMagicBoomerang(IPlayer player, EntityManager entity)
         {
@@ -21,6 +21,6 @@
             }
         }
 
-        public int Priority => priority;
+        public int Priority => PriorityValue;
     }
 }

@@ -5,59 +5,61 @@ namespace LoZClone
 {
     public class FireballSprite
     {
-        private Texture2D spriteSheet;
-        private int spriteSheetRows, spriteSheetColumns;
-        private int spriteSheetWidth, spriteSheetHeight;
-        private int currentFrame = 0, frameDelay = 0, frameDelayMax = 7;
+        private readonly Texture2D spriteSheet;
+        private readonly int spriteSheetRows, spriteSheetColumns;
+        private readonly int spriteSheetWidth, spriteSheetHeight;
+        private int currentFrame = 0;
+        private int frameDelay = 0;
+        private readonly int frameDelayMax = 7;
         private Vector2 location;
-        private int xVelocity = -7, yVelocity;
+        private readonly int xVelocity = -7, yVelocity;
 
         public FireballSprite(Texture2D spriteTexture, SpriteSheetData data, string direction, Vector2 loc)
         {
-            spriteSheet = spriteTexture;
-            spriteSheetWidth = data.Width;
-            spriteSheetHeight = data.Height;
-            spriteSheetRows = data.Rows;
-            spriteSheetColumns = data.Columns;
-            location = loc;
+            this.spriteSheet = spriteTexture;
+            this.spriteSheetWidth = data.Width;
+            this.spriteSheetHeight = data.Height;
+            this.spriteSheetRows = data.Rows;
+            this.spriteSheetColumns = data.Columns;
+            this.location = loc;
 
             if (direction.Equals("up"))
             {
-                yVelocity = -2;
+                this.yVelocity = -2;
             }
             else if (direction.Equals("down"))
             {
-                yVelocity = 2;
+                this.yVelocity = 2;
             }
         }
 
         public void Update()
         {
-            frameDelay++;
-            if (frameDelay == frameDelayMax)
+            this.frameDelay++;
+            if (this.frameDelay == this.frameDelayMax)
             {
-                currentFrame++;
-                location.X += xVelocity;
-                location.Y += yVelocity;
-                if (currentFrame > 3)
+                this.currentFrame++;
+                this.location.X += this.xVelocity;
+                this.location.Y += this.yVelocity;
+                if (this.currentFrame > 3)
                 {
-                    currentFrame = 0;
+                    this.currentFrame = 0;
                 }
-                frameDelay = 0;
+                this.frameDelay = 0;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch, Color spriteTint)
         {
-            int width = spriteSheet.Width / spriteSheetColumns;
-            int height = spriteSheet.Height / spriteSheetRows;
-            int row = (int)((float)currentFrame / (float)spriteSheetColumns);
-            int column = currentFrame % spriteSheetColumns;
+            int width = this.spriteSheet.Width / this.spriteSheetColumns;
+            int height = this.spriteSheet.Height / this.spriteSheetRows;
+            int row = (int)((float)this.currentFrame / (float)this.spriteSheetColumns);
+            int column = this.currentFrame % this.spriteSheetColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, spriteSheetWidth, spriteSheetHeight);
+            Rectangle destinationRectangle = new Rectangle((int)this.location.X, (int)this.location.Y, this.spriteSheetWidth, this.spriteSheetHeight);
 
-            spriteBatch.Draw(spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
+            spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
         }
     }
 }

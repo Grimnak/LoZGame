@@ -4,7 +4,7 @@ namespace LoZClone
     public class CommandItemRight : ICommand
     {
         readonly ItemManager item;
-        private static readonly int priority = -1;
+        private static readonly int PriorityValue = -1;
 
         public CommandItemRight(ItemManager item)
         {
@@ -16,6 +16,6 @@ namespace LoZClone
             this.item.cycleRight();
         }
 
-        public int Priority => priority;
+        public int Priority => PriorityValue;
     }
 }

@@ -6,44 +6,49 @@ namespace LoZClone
 {
     public class LeftMovingSpikeCrossState : ISpikeCrossState
     {
-        private SpikeCross spikeCross;
-        private ISpikeCrossSprite sprite;
+        private readonly SpikeCross spikeCross;
+        private readonly ISpikeCrossSprite sprite;
 
         public LeftMovingSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            sprite = EnemySpriteFactory.Instance.createSpikeCrossSprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
         }
+
         public void moveLeft()
         {
             // Blank b/c already moving down
         }
+
         public void moveRight()
         {
-            spikeCross.CurrentState = new RightMovingSpikeCrossState(spikeCross);
+            this.spikeCross.CurrentState = new RightMovingSpikeCrossState(this.spikeCross);
         }
+
         public void moveUp()
         {
-            spikeCross.CurrentState = new UpMovingSpikeCrossState(spikeCross);
+            this.spikeCross.CurrentState = new UpMovingSpikeCrossState(this.spikeCross);
         }
+
         public void moveDown()
         {
-            spikeCross.CurrentState = new DownMovingSpikeCrossState(spikeCross);
+            this.spikeCross.CurrentState = new DownMovingSpikeCrossState(this.spikeCross);
         }
+
         public void stop()
         {
-            spikeCross.CurrentState = new IdleSpikeCrossState(spikeCross);
+            this.spikeCross.CurrentState = new IdleSpikeCrossState(this.spikeCross);
         }
 
         public void Update()
         {
-            spikeCross.currentLocation = new Vector2(spikeCross.currentLocation.X - 3, spikeCross.currentLocation.Y);
-            sprite.Update();
+            this.spikeCross.currentLocation = new Vector2(this.spikeCross.currentLocation.X - 3, this.spikeCross.currentLocation.Y);
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, spikeCross.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.spikeCross.currentLocation, Color.White);
         }
     }
 }

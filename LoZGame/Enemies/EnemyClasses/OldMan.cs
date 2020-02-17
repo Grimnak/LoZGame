@@ -8,29 +8,32 @@ namespace LoZClone
     public class OldMan : IEnemy
     {
         public Vector2 currentLocation;
-        private OldManSprite sprite;
+        private readonly OldManSprite sprite;
 
         public OldMan()
         {
-            currentLocation = new Vector2(650, 200);
-            sprite = EnemySpriteFactory.Instance.createOldManSprite();
+            this.currentLocation = new Vector2(650, 200);
+            this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
         }
 
         public void takeDamage()
         {
             //
         }
+
         public void die()
         {
             //
         }
+
         public void Update()
         {
-            sprite.Update();
+            this.sprite.Update();
         }
+
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, currentLocation, Color.White);
+            this.sprite.Draw(sb, this.currentLocation, Color.White);
         }
     }
 }

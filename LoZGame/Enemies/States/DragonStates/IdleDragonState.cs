@@ -6,18 +6,20 @@ namespace LoZClone
 {
     public class IdleDragonState : IDragonState
     {
-        private Dragon dragon;
-        private IDragonSprite sprite;
+        private readonly Dragon dragon;
+        private readonly IDragonSprite sprite;
 
         public IdleDragonState(Dragon dragon)
         {
             this.dragon = dragon;
-            sprite = EnemySpriteFactory.Instance.createDragonSprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
         }
+
         public void moveLeft()
         {
-            dragon.CurrentState = new LeftMovingDragonState(dragon);
+            this.dragon.CurrentState = new LeftMovingDragonState(this.dragon);
         }
+
         public void moveRight()
         {
             
@@ -27,9 +29,10 @@ namespace LoZClone
         {
             // Blank b/c already moving left
         }
+
         public void attack()
         {
-            dragon.CurrentState = new AttackingDragonState(dragon);
+            this.dragon.CurrentState = new AttackingDragonState(this.dragon);
         }
 
         public void takeDamage()
@@ -37,22 +40,23 @@ namespace LoZClone
             this.dragon.Health--;
             if (this.dragon.Health == 0)
             {
-                dragon.CurrentState.die();
+                this.dragon.CurrentState.die();
             }
         }
+
         public void die()
         {
-            dragon.CurrentState = new DeadDragonState(dragon);
+            this.dragon.CurrentState = new DeadDragonState(this.dragon);
         }
 
         public void Update()
         {         
-            sprite.Update();
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, dragon.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.dragon.currentLocation, Color.White);
         }
     }
 }

@@ -3,7 +3,7 @@
     public class CommandUp : ICommand
     {
         readonly IPlayer player;
-        private static readonly int priority = 4;
+        private static readonly int PriorityValue = 4;
 
         public CommandUp(IPlayer player)
         {
@@ -15,6 +15,6 @@
             this.player.moveUp();
         }
 
-        public int Priority => priority;
+        public int Priority => PriorityValue;
     }
 }

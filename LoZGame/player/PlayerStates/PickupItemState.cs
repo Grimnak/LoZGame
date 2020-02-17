@@ -12,7 +12,7 @@ namespace LoZClone
             this.game = game;
             this.player = playerInstance;
             this.player.CurrentDirection = "Down";
-            this.lockoutTimer = itemTime; //wait period
+            this.lockoutTimer = itemTime; // wait period
             this.sprite = this.createCorrectSprite();
         }
 

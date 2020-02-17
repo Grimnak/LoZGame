@@ -6,26 +6,30 @@ namespace LoZClone
 {
     public class DownMovingWallMasterState : IEnemyState
     {
-        private WallMaster wallMaster;
-        private IWallMasterSprite sprite;
+        private readonly WallMaster wallMaster;
+        private readonly IWallMasterSprite sprite;
 
         public DownMovingWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
-            sprite = EnemySpriteFactory.Instance.createRightMovingWallMasterSprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateRightMovingWallMasterSprite();
         }
+
         public void moveLeft()
         {
-            wallMaster.CurrentState = new LeftMovingWallMasterState(wallMaster);
+            this.wallMaster.CurrentState = new LeftMovingWallMasterState(this.wallMaster);
         }
+
         public void moveRight()
         {
-            wallMaster.CurrentState = new RightMovingWallMasterState(wallMaster);
+            this.wallMaster.CurrentState = new RightMovingWallMasterState(this.wallMaster);
         }
+
         public void moveUp()
         {
-            wallMaster.CurrentState = new UpMovingWallMasterState(wallMaster);
+            this.wallMaster.CurrentState = new UpMovingWallMasterState(this.wallMaster);
         }
+
         public void moveDown()
         {
             // Blank b/c already moving down
@@ -36,23 +40,24 @@ namespace LoZClone
             this.wallMaster.Health--;
             if (this.wallMaster.Health == 0)
             {
-                wallMaster.CurrentState.die();
+                this.wallMaster.CurrentState.die();
             }
         }
+
         public void die()
         {
-            wallMaster.CurrentState = new DeadWallMasterState(wallMaster);
+            this.wallMaster.CurrentState = new DeadWallMasterState(this.wallMaster);
         }
 
         public void Update()
         {
-            wallMaster.currentLocation = new Vector2(wallMaster.currentLocation.X, wallMaster.currentLocation.Y + 1);
-            sprite.Update();
+            this.wallMaster.currentLocation = new Vector2(this.wallMaster.currentLocation.X, this.wallMaster.currentLocation.Y + 1);
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, wallMaster.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.wallMaster.currentLocation, Color.White);
         }
     }
 }

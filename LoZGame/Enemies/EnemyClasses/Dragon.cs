@@ -8,21 +8,25 @@ namespace LoZClone
     public class Dragon : IEnemy
     {
         private IDragonState currentState;
-        private int health = 10, lifeTime = 0, directionChange = 40;
+        private int health = 10;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
         public Vector2 currentLocation;
+
         private enum stateEnum { Idle, Left, Right, Attacking};
+
         private stateEnum currentStateEnum;
 
         public Dragon()
         {
-            currentState = new LeftMovingDragonState(this);
-            currentLocation = new Vector2(650, 200);
+            this.currentState = new LeftMovingDragonState(this);
+            this.currentLocation = new Vector2(650, 200);
         }
 
         private void getNewDirection()
         {
             Random randomselect = new Random();
-            currentStateEnum = (stateEnum)(randomselect.Next(0, 7));
+            this.currentStateEnum = (stateEnum)(randomselect.Next(0, 7));
         }
 
         private void updateLoc()
@@ -30,22 +34,22 @@ namespace LoZClone
             switch (this.currentStateEnum)
             {
                 case stateEnum.Attacking:
-                    currentState.attack();
+                    this.currentState.attack();
                     break;
                 case stateEnum.Idle:
-                    currentState.stop();
+                    this.currentState.stop();
                     break;
                 case stateEnum.Left:
-                    currentState.moveLeft();
+                    this.currentState.moveLeft();
                     break;
                 case stateEnum.Right:
-                    currentState.moveRight();
+                    this.currentState.moveRight();
                     break;
                 default:
                     break;
             }
             this.checkBorder();
-            currentState.Update();
+            this.currentState.Update();
         }
  
         private void checkBorder()
@@ -53,61 +57,62 @@ namespace LoZClone
               if (this.currentLocation.Y < 50)
               {
                   this.currentLocation = new Vector2(this.currentLocation.X, 50);
-                  this.lifeTime = directionChange + 1;
+                  this.lifeTime = this.directionChange + 1;
               }
               if (this.currentLocation.Y > 430)
               {
                   this.currentLocation = new Vector2(this.currentLocation.X, 430);
-                  this.lifeTime = directionChange + 1;
+                  this.lifeTime = this.directionChange + 1;
               }
               if (this.currentLocation.X < 50)
               {
                   this.currentLocation = new Vector2(40, this.currentLocation.Y);
-                  this.lifeTime = directionChange + 1;
+                  this.lifeTime = this.directionChange + 1;
               }
               if (this.currentLocation.X > 750)
               {
                   this.currentLocation = new Vector2(760, this.currentLocation.Y);
-                  this.lifeTime = directionChange + 1;
+                  this.lifeTime = this.directionChange + 1;
               }
         } 
 
         public void takeDamage()
         {
-            currentState.takeDamage();
+            this.currentState.takeDamage();
         }
+
         public void die()
         {
-            currentState.die();
+            this.currentState.die();
         }
 
         public void Update()
         {
-            lifeTime++;
+            this.lifeTime++;
             this.updateLoc();
-            if (lifeTime > directionChange)
+            if (this.lifeTime > this.directionChange)
             {
                 this.getNewDirection();
-                lifeTime = 0;
+                this.lifeTime = 0;
             }
         }
 
         public void Draw(SpriteBatch sb)
         {
-            currentState.Draw(sb);
+            this.currentState.Draw(sb);
         }
 
         public IDragonState CurrentState
         {
-            get { return currentState; }
-            set { currentState = value; }
+            get { return this.currentState; }
+            set { this.currentState = value; }
 
         }
 
         public int Health
         {
-            get { return health; }
-            set { health = value; }
+            get { return this.health; }
+            set { this.health = value; }
         }
     }
 }

@@ -12,114 +12,114 @@ namespace LoZClone
         private static readonly int itemHeight = 30;
 
         private Texture2D greenLinkUpTexture;
-        private SpriteSheetData greenLinkUpData = new SpriteSheetData("Green_Link_Up", linkWidth, linkHeight, 3, 1);
+        private readonly SpriteSheetData greenLinkUpData = new SpriteSheetData("Green_Link_Up", linkWidth, linkHeight, 3, 1);
         private Texture2D blueLinkUpTexture;
-        private SpriteSheetData blueLinkUpData = new SpriteSheetData("Blue_Link_Up", linkWidth, linkHeight, 3, 1);
+        private readonly SpriteSheetData blueLinkUpData = new SpriteSheetData("Blue_Link_Up", linkWidth, linkHeight, 3, 1);
         private Texture2D redLinkUpTexture;
-        private SpriteSheetData redLinkUpData = new SpriteSheetData("Red_Link_Up", linkWidth, linkHeight, 3, 1);
+        private readonly SpriteSheetData redLinkUpData = new SpriteSheetData("Red_Link_Up", linkWidth, linkHeight, 3, 1);
 
         private Texture2D greenLinkDownTexture;
-        private SpriteSheetData greenLinkDownData = new SpriteSheetData("Green_Link_Down", linkWidth, linkHeight, 3, 1);
+        private readonly SpriteSheetData greenLinkDownData = new SpriteSheetData("Green_Link_Down", linkWidth, linkHeight, 3, 1);
         private Texture2D blueLinkDownTexture;
-        private SpriteSheetData blueLinkDownData = new SpriteSheetData("Blue_Link_Down", linkWidth, linkHeight, 3, 1);
+        private readonly SpriteSheetData blueLinkDownData = new SpriteSheetData("Blue_Link_Down", linkWidth, linkHeight, 3, 1);
         private Texture2D redLinkDownTexture;
-        private SpriteSheetData redLinkDownData = new SpriteSheetData("Red_Link_Down", linkWidth, linkHeight, 3, 1);
+        private readonly SpriteSheetData redLinkDownData = new SpriteSheetData("Red_Link_Down", linkWidth, linkHeight, 3, 1);
 
         private Texture2D greenLinkLeftTexture;
-        private SpriteSheetData greenLinkLeftData = new SpriteSheetData("Green_Link_Left", linkWidth, linkHeight, 3, 1);
+        private readonly SpriteSheetData greenLinkLeftData = new SpriteSheetData("Green_Link_Left", linkWidth, linkHeight, 3, 1);
         private Texture2D blueLinkLeftTexture;
-        private SpriteSheetData blueLinkLeftData = new SpriteSheetData("Blue_Link_Left", linkWidth, linkHeight, 3, 1);
+        private readonly SpriteSheetData blueLinkLeftData = new SpriteSheetData("Blue_Link_Left", linkWidth, linkHeight, 3, 1);
         private Texture2D redLinkLeftTexture;
-        private SpriteSheetData redLinkLeftData = new SpriteSheetData("Red_Link_Left", linkWidth, linkHeight, 3, 1);
+        private readonly SpriteSheetData redLinkLeftData = new SpriteSheetData("Red_Link_Left", linkWidth, linkHeight, 3, 1);
 
         private Texture2D greenLinkRightTexture;
-        private SpriteSheetData greenLinkRightData = new SpriteSheetData("Green_Link_Right", linkWidth, linkHeight, 3, 1);
+        private readonly SpriteSheetData greenLinkRightData = new SpriteSheetData("Green_Link_Right", linkWidth, linkHeight, 3, 1);
         private Texture2D blueLinkRightTexture;
-        private SpriteSheetData blueLinkRightData = new SpriteSheetData("Blue_Link_Right", linkWidth, linkHeight, 3, 1);
+        private readonly SpriteSheetData blueLinkRightData = new SpriteSheetData("Blue_Link_Right", linkWidth, linkHeight, 3, 1);
         private Texture2D redLinkRightTexture;
-        private SpriteSheetData redLinkRightData = new SpriteSheetData("Red_Link_Right", linkWidth, linkHeight, 3, 1);
+        private readonly SpriteSheetData redLinkRightData = new SpriteSheetData("Red_Link_Right", linkWidth, linkHeight, 3, 1);
 
         private Texture2D greenLinkDieTexture;
-        private SpriteSheetData greenLinkDieData = new SpriteSheetData("Green_Link_Die", linkWidth, linkHeight, 1, 17);
+        private readonly SpriteSheetData greenLinkDieData = new SpriteSheetData("Green_Link_Die", linkWidth, linkHeight, 1, 17);
         private Texture2D blueLinkDieTexture;
-        private SpriteSheetData blueLinkDieData = new SpriteSheetData("Blue_Link_Die", linkWidth, linkHeight, 1, 17);
+        private readonly SpriteSheetData blueLinkDieData = new SpriteSheetData("Blue_Link_Die", linkWidth, linkHeight, 1, 17);
         private Texture2D redLinkDieTexture;
-        private SpriteSheetData redLinkDieData = new SpriteSheetData("Red_Link_Die", linkWidth, linkHeight, 1, 17);
+        private readonly SpriteSheetData redLinkDieData = new SpriteSheetData("Red_Link_Die", linkWidth, linkHeight, 1, 17);
 
         private Texture2D greenLinkPickupTexture;
-        private SpriteSheetData greenLinkPickupData = new SpriteSheetData("Green_Link_Pickup", linkWidth, linkHeight, 2, 1);
+        private readonly SpriteSheetData greenLinkPickupData = new SpriteSheetData("Green_Link_Pickup", linkWidth, linkHeight, 2, 1);
         private Texture2D blueLinkPickupTexture;
-        private SpriteSheetData blueLinkPickupData = new SpriteSheetData("Blue_Link_Pickup", linkWidth, linkHeight, 2, 1);
+        private readonly SpriteSheetData blueLinkPickupData = new SpriteSheetData("Blue_Link_Pickup", linkWidth, linkHeight, 2, 1);
         private Texture2D redLinkPickupTexture;
-        private SpriteSheetData redLinkPickupData = new SpriteSheetData("Red_Link_Pickup", linkWidth, linkHeight, 2, 1);
+        private readonly SpriteSheetData redLinkPickupData = new SpriteSheetData("Red_Link_Pickup", linkWidth, linkHeight, 2, 1);
 
         // items link holds in his hand during attack
         private Texture2D greenWoodDownTexture;
-        private SpriteSheetData greenWoodDownData = new SpriteSheetData("Green_Wood_Down", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData greenWoodDownData = new SpriteSheetData("Green_Wood_Down", itemWidth, itemHeight, 1, 2);
         private Texture2D greenWoodLeftTexture;
-        private SpriteSheetData greenWoodLeftData = new SpriteSheetData("Green_Wood_Left", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData greenWoodLeftData = new SpriteSheetData("Green_Wood_Left", itemWidth, itemHeight, 1, 2);
         private Texture2D greenWoodRightTexture;
-        private SpriteSheetData greenWoodRightData = new SpriteSheetData("Green_Wood_Right", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData greenWoodRightData = new SpriteSheetData("Green_Wood_Right", itemWidth, itemHeight, 1, 2);
         private Texture2D greenWoodUpTexture;
-        private SpriteSheetData greenWoodUpData = new SpriteSheetData("Green_Wood_Up", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData greenWoodUpData = new SpriteSheetData("Green_Wood_Up", itemWidth, itemHeight, 1, 2);
 
         private Texture2D blueWoodDownTexture;
-        private SpriteSheetData blueWoodDownData = new SpriteSheetData("Blue_Wood_Down", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData blueWoodDownData = new SpriteSheetData("Blue_Wood_Down", itemWidth, itemHeight, 1, 2);
         private Texture2D blueWoodLeftTexture;
-        private SpriteSheetData blueWoodLeftData = new SpriteSheetData("Blue_Wood_Left", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData blueWoodLeftData = new SpriteSheetData("Blue_Wood_Left", itemWidth, itemHeight, 1, 2);
         private Texture2D blueWoodRightTexture;
-        private SpriteSheetData blueWoodRightData = new SpriteSheetData("Blue_Wood_Right", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData blueWoodRightData = new SpriteSheetData("Blue_Wood_Right", itemWidth, itemHeight, 1, 2);
         private Texture2D blueWoodUpTexture;
-        private SpriteSheetData blueWoodUpData = new SpriteSheetData("Blue_Wood_Up", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData blueWoodUpData = new SpriteSheetData("Blue_Wood_Up", itemWidth, itemHeight, 1, 2);
 
         private Texture2D redWoodDownTexture;
-        private SpriteSheetData redWoodDownData = new SpriteSheetData("Red_Wood_Down", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData redWoodDownData = new SpriteSheetData("Red_Wood_Down", itemWidth, itemHeight, 1, 2);
         private Texture2D redWoodLeftTexture;
-        private SpriteSheetData redWoodLeftData = new SpriteSheetData("Red_Wood_Left", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData redWoodLeftData = new SpriteSheetData("Red_Wood_Left", itemWidth, itemHeight, 1, 2);
         private Texture2D redWoodRightTexture;
-        private SpriteSheetData redWoodRightData = new SpriteSheetData("Red_Wood_Right", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData redWoodRightData = new SpriteSheetData("Red_Wood_Right", itemWidth, itemHeight, 1, 2);
         private Texture2D redWoodUpTexture;
-        private SpriteSheetData redWoodUpData = new SpriteSheetData("Red_Wood_Up", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData redWoodUpData = new SpriteSheetData("Red_Wood_Up", itemWidth, itemHeight, 1, 2);
 
         private Texture2D wandDownTexture;
-        private SpriteSheetData wandDownData = new SpriteSheetData("Wand_Down", itemWidth, itemHeight, 1, 1);
+        private readonly SpriteSheetData wandDownData = new SpriteSheetData("Wand_Down", itemWidth, itemHeight, 1, 1);
         private Texture2D wandLeftTexture;
-        private SpriteSheetData wandLeftData = new SpriteSheetData("Wand_Left", itemWidth, itemHeight, 1, 1);
+        private readonly SpriteSheetData wandLeftData = new SpriteSheetData("Wand_Left", itemWidth, itemHeight, 1, 1);
         private Texture2D wandRightTexture;
-        private SpriteSheetData wandRightData = new SpriteSheetData("Wand_Right", itemWidth, itemHeight, 1, 1);
+        private readonly SpriteSheetData wandRightData = new SpriteSheetData("Wand_Right", itemWidth, itemHeight, 1, 1);
         private Texture2D wandUpTexture;
-        private SpriteSheetData wandUpData = new SpriteSheetData("Wand_Up", itemWidth, itemHeight, 1, 1);
+        private readonly SpriteSheetData wandUpData = new SpriteSheetData("Wand_Up", itemWidth, itemHeight, 1, 1);
 
         private Texture2D greenMagicDownTexture;
-        private SpriteSheetData greenMagicDownData = new SpriteSheetData("Green_Magic_Down", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData greenMagicDownData = new SpriteSheetData("Green_Magic_Down", itemWidth, itemHeight, 1, 2);
         private Texture2D greenMagicLeftTexture;
-        private SpriteSheetData greenMagicLeftData = new SpriteSheetData("Green_Magic_Left", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData greenMagicLeftData = new SpriteSheetData("Green_Magic_Left", itemWidth, itemHeight, 1, 2);
         private Texture2D greenMagicRightTexture;
-        private SpriteSheetData greenMagicRightData = new SpriteSheetData("Green_Magic_Right", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData greenMagicRightData = new SpriteSheetData("Green_Magic_Right", itemWidth, itemHeight, 1, 2);
         private Texture2D greenMagicUpTexture;
-        private SpriteSheetData greenMagicUpData = new SpriteSheetData("Green_Magic_Up", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData greenMagicUpData = new SpriteSheetData("Green_Magic_Up", itemWidth, itemHeight, 1, 2);
 
         private Texture2D blueMagicDownTexture;
-        private SpriteSheetData blueMagicDownData = new SpriteSheetData("Blue_Magic_Down", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData blueMagicDownData = new SpriteSheetData("Blue_Magic_Down", itemWidth, itemHeight, 1, 2);
         private Texture2D blueMagicLeftTexture;
-        private SpriteSheetData blueMagicLeftData = new SpriteSheetData("Blue_Magic_Left", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData blueMagicLeftData = new SpriteSheetData("Blue_Magic_Left", itemWidth, itemHeight, 1, 2);
         private Texture2D blueMagicRightTexture;
-        private SpriteSheetData blueMagicRightData = new SpriteSheetData("Blue_Magic_Right", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData blueMagicRightData = new SpriteSheetData("Blue_Magic_Right", itemWidth, itemHeight, 1, 2);
         private Texture2D blueMagicUpTexture;
-        private SpriteSheetData blueMagicUpData = new SpriteSheetData("Blue_Magic_Up", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData blueMagicUpData = new SpriteSheetData("Blue_Magic_Up", itemWidth, itemHeight, 1, 2);
 
         private Texture2D redMagicDownTexture;
-        private SpriteSheetData redMagicDownData = new SpriteSheetData("Red_Magic_Down", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData redMagicDownData = new SpriteSheetData("Red_Magic_Down", itemWidth, itemHeight, 1, 2);
         private Texture2D redMagicLeftTexture;
-        private SpriteSheetData redMagicLeftData = new SpriteSheetData("Red_Magic_Left", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData redMagicLeftData = new SpriteSheetData("Red_Magic_Left", itemWidth, itemHeight, 1, 2);
         private Texture2D redMagicRightTexture;
-        private SpriteSheetData redMagicRightData = new SpriteSheetData("Red_Magic_Right", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData redMagicRightData = new SpriteSheetData("Red_Magic_Right", itemWidth, itemHeight, 1, 2);
         private Texture2D redMagicUpTexture;
-        private SpriteSheetData redMagicUpData = new SpriteSheetData("Red_Magic_Up", itemWidth, itemHeight, 1, 2);
+        private readonly SpriteSheetData redMagicUpData = new SpriteSheetData("Red_Magic_Up", itemWidth, itemHeight, 1, 2);
 
-        private static readonly LinkSpriteFactory instance = new LinkSpriteFactory();
+        private static readonly LinkSpriteFactory InstanceValue = new LinkSpriteFactory();
 
-        public static LinkSpriteFactory Instance => instance;
+        public static LinkSpriteFactory Instance => InstanceValue;
 
         private LinkSpriteFactory()
         {
@@ -152,7 +152,6 @@ namespace LoZClone
             this.redLinkPickupTexture = content.Load<Texture2D>(this.redLinkPickupData.FilePath);
 
             // Load Attack Items
-
             this.greenWoodDownTexture = content.Load<Texture2D>(this.greenWoodDownData.FilePath);
             this.greenWoodLeftTexture = content.Load<Texture2D>(this.greenWoodLeftData.FilePath);
             this.greenWoodRightTexture = content.Load<Texture2D>(this.greenWoodRightData.FilePath);

@@ -3,7 +3,7 @@
     public class CommandQuit : ICommand
     {
         readonly LoZGame game;
-        private static readonly int priority = -1;
+        private static readonly int PriorityValue = -1;
 
         public CommandQuit(LoZGame game)
         {
@@ -15,6 +15,6 @@
             this.game.Exit();
         }
 
-        public int Priority => priority;
+        public int Priority => PriorityValue;
     }
 }

@@ -6,71 +6,78 @@ namespace LoZClone
 {
     public class DownLeftMovingKeeseState : IKeeseState
     {
-        private Keese keese;
-        private IKeeseSprite sprite;
+        private readonly Keese keese;
+        private readonly IKeeseSprite sprite;
 
         public DownLeftMovingKeeseState(Keese keese)
         {
             this.keese = keese;
-            sprite = EnemySpriteFactory.Instance.createKeeseSprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateKeeseSprite();
         }
 
         public void moveLeft()
         {
-            keese.CurrentState = new LeftMovingKeeseState(keese);
-        }
-        public void moveRight()
-        {
-            keese.CurrentState = new RightMovingKeeseState(keese);
-        }
-        public void moveUp()
-        {
-            keese.CurrentState = new UpMovingKeeseState(keese);
-        }
-        public void moveDown()
-        {
-            keese.CurrentState = new DownMovingKeeseState(keese);
-        }
-        public void moveUpLeft()
-        {
-            keese.CurrentState = new UpLeftMovingKeeseState(keese);
-        }
-        public void moveUpRight()
-        {
-            keese.CurrentState = new UpRightMovingKeeseState(keese);
-        }
-        public void moveDownLeft()
-        {
-            //Blank b/c already moving downRight
-        }
-        public void moveDownRight()
-        {
-            keese.CurrentState = new DownRightMovingKeeseState(keese);
+            this.keese.CurrentState = new LeftMovingKeeseState(this.keese);
         }
 
+        public void moveRight()
+        {
+            this.keese.CurrentState = new RightMovingKeeseState(this.keese);
+        }
+
+        public void moveUp()
+        {
+            this.keese.CurrentState = new UpMovingKeeseState(this.keese);
+        }
+
+        public void moveDown()
+        {
+            this.keese.CurrentState = new DownMovingKeeseState(this.keese);
+        }
+
+        public void moveUpLeft()
+        {
+            this.keese.CurrentState = new UpLeftMovingKeeseState(this.keese);
+        }
+
+        public void moveUpRight()
+        {
+            this.keese.CurrentState = new UpRightMovingKeeseState(this.keese);
+        }
+
+        public void moveDownLeft()
+        {
+            // Blank b/c already moving downRight
+        }
+
+        public void moveDownRight()
+        {
+            this.keese.CurrentState = new DownRightMovingKeeseState(this.keese);
+        }
 
         public void takeDamage()
         {
             this.keese.Health--;
             if (this.keese.Health == 0)
             {
-                keese.CurrentState.die();
+                this.keese.CurrentState.die();
             }
         }
+
         public void die()
         {
-            keese.CurrentState = new DeadKeeseState(keese);
+            this.keese.CurrentState = new DeadKeeseState(this.keese);
         }
 
         public void Update()
         {
-            keese.currentLocation = new Vector2(keese.currentLocation.X - 2, keese.currentLocation.Y + 2);
-            sprite.Update();
+            this.keese.currentLocation = new Vector2(this.keese.currentLocation.X - 2, this.keese.currentLocation.Y + 2);
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, keese.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.keese.currentLocation, Color.White);
         }
     }
 }

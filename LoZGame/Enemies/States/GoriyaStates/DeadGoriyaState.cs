@@ -6,23 +6,27 @@ namespace LoZClone
 {
     public class DeadGoriyaState : IGoriyaState
     {
-        private Goriya goriya;
-        private DeadEnemySprite sprite;
+        private readonly Goriya goriya;
+        private readonly DeadEnemySprite sprite;
 
         public DeadGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
-            sprite = EnemySpriteFactory.Instance.createDeadEnemySprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
         }
+
         public void moveLeft()
         {
         }
+
         public void moveRight()
         {
         }
+
         public void moveUp()
         {
         }
+
         public void moveDown()
         {
         }
@@ -30,6 +34,7 @@ namespace LoZClone
         public void takeDamage()
         {
         }
+
         public void die()
         {
         }
@@ -40,12 +45,12 @@ namespace LoZClone
 
         public void Update()
         {
-            sprite.Update();
+            this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            sprite.Draw(sb, goriya.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.goriya.currentLocation, Color.White);
         }
     }
 }

@@ -3,7 +3,7 @@
     public class CommandDamage : ICommand
     {
         readonly IPlayer player;
-        private static readonly int priority = -1;
+        private static readonly int PriorityValue = -1;
 
         public CommandDamage(IPlayer player)
         {
@@ -15,6 +15,6 @@
             this.player.takeDamage();
         }
 
-        public int Priority => priority;
+        public int Priority => PriorityValue;
     }
 }

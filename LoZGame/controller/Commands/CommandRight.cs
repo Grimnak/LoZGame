@@ -3,7 +3,7 @@
     public class CommandRight : ICommand
     {
         readonly IPlayer player;
-        private static readonly int priority = 3;
+        private static readonly int PriorityValue = 3;
 
         public CommandRight(IPlayer player)
         {
@@ -15,6 +15,6 @@
             this.player.moveRight();
         }
 
-        public int Priority => priority;
+        public int Priority => PriorityValue;
     }
 }

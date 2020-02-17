@@ -8,22 +8,26 @@ namespace LoZClone
     public class Goriya : IEnemy
     {
         private IGoriyaState currentState;
-        private int health = 10, lifeTime = 0, directionChange = 40;
+        private int health = 10;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
         public Vector2 currentLocation;
         private string currentDirection = "left";
+
         private enum stateEnum { Up, Down, Left, Right, Attacking };
+
         private stateEnum state;
 
         public Goriya()
         {
-            currentState = new LeftMovingGoriyaState(this);
-            currentLocation = new Vector2(650, 200);
+            this.currentState = new LeftMovingGoriyaState(this);
+            this.currentLocation = new Vector2(650, 200);
         }
 
         private void getNewState()
         {
             Random randomselect = new Random();
-            state = (stateEnum)(randomselect.Next(0, 7));
+            this.state = (stateEnum)(randomselect.Next(0, 7));
         }
 
         private void updateLoc()
@@ -31,29 +35,29 @@ namespace LoZClone
             switch (this.state)
             {
                 case stateEnum.Up:
-                    currentDirection = "up";
-                    currentState.moveUp();
+                    this.currentDirection = "up";
+                    this.currentState.moveUp();
                     break;
                 case stateEnum.Down:
-                    currentDirection = "down";
-                    currentState.moveDown();
+                    this.currentDirection = "down";
+                    this.currentState.moveDown();
                     break;
                 case stateEnum.Left:
-                    currentDirection = "left";
-                    currentState.moveLeft();
+                    this.currentDirection = "left";
+                    this.currentState.moveLeft();
                     break;
                 case stateEnum.Right:
-                    currentDirection = "right";
-                    currentState.moveRight();
+                    this.currentDirection = "right";
+                    this.currentState.moveRight();
                     break;
                 case stateEnum.Attacking:
-                    currentState.attack();
+                    this.currentState.attack();
                     break;
                 default:
                     break;
             }
             this.checkBorder();
-            currentState.Update();
+            this.currentState.Update();
         }
         
         private void checkBorder()
@@ -61,68 +65,68 @@ namespace LoZClone
               if (this.currentLocation.Y < 30)
               {
                   this.currentLocation = new Vector2(this.currentLocation.X, 30);
-                  this.lifeTime = directionChange + 1;
+                  this.lifeTime = this.directionChange + 1;
               }
               if (this.currentLocation.Y > 450)
               {
                   this.currentLocation = new Vector2(this.currentLocation.X, 450);
-                  this.lifeTime = directionChange + 1;
+                  this.lifeTime = this.directionChange + 1;
               }
               if (this.currentLocation.X < 30)
               {
                   this.currentLocation = new Vector2(30, this.currentLocation.Y);
-                  this.lifeTime = directionChange + 1;
+                  this.lifeTime = this.directionChange + 1;
               }
               if (this.currentLocation.X > 770)
               {
                   this.currentLocation = new Vector2(770, this.currentLocation.Y);
-                  this.lifeTime = directionChange + 1;
+                  this.lifeTime = this.directionChange + 1;
               }
         } 
 
-
         public void takeDamage()
         {
-            currentState.takeDamage();
+            this.currentState.takeDamage();
         }
+
         public void die()
         {
-            currentState.die();
+            this.currentState.die();
         }
 
         public void Update()
         {
-            lifeTime++;
+            this.lifeTime++;
             this.updateLoc();
-            if (lifeTime > directionChange)
+            if (this.lifeTime > this.directionChange)
             {
                 this.getNewState();
-                lifeTime = 0;
+                this.lifeTime = 0;
             }
         }
 
         public void Draw(SpriteBatch sb)
         {
-            currentState.Draw(sb);
+            this.currentState.Draw(sb);
         }
 
         public IGoriyaState CurrentState
         {
-            get { return currentState; }
-            set { currentState = value; }
+            get { return this.currentState; }
+            set { this.currentState = value; }
 
         }
 
         public int Health
         {
-            get { return health; }
-            set { health = value; }
+            get { return this.health; }
+            set { this.health = value; }
         }
 
         public string direction
         {
-            get { return currentDirection; }
-            set { currentDirection = value; }
+            get { return this.currentDirection; }
+            set { this.currentDirection = value; }
         }
     }
 }
