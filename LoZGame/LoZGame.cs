@@ -16,6 +16,7 @@
         private CommandLoader commandLoader;
         private IController keyboardController;
         private ItemManager itemManager;
+        private EntityManager entityManager;
         private BlockManager blockManager;
         private ProjectileManager projectileManager;
         private EnemyManager enemyManager;

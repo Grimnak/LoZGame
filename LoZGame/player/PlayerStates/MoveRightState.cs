@@ -18,7 +18,7 @@
 
         private ISprite createCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.createSpriteLinkMoveRight(this.player.CurrentColor);
+            return LinkSpriteFactory.Instance.CreateSpriteLinkMoveRight(this.player.CurrentColor);
         }
 
         public void idle()

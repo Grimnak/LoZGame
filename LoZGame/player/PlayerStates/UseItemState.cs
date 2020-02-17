@@ -19,19 +19,19 @@ namespace LoZClone
         {
             if (this.player.CurrentDirection.Equals("Up"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkUseItemUp(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkUseItemUp(this.player.CurrentColor);
             }
             else if (this.player.CurrentDirection.Equals("Down"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkUseItemDown(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkUseItemDown(this.player.CurrentColor);
             }
             else if (this.player.CurrentDirection.Equals("Left"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkUseItemLeft(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkUseItemLeft(this.player.CurrentColor);
             }
             else
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkUseItemRight(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkUseItemRight(this.player.CurrentColor);
             }
         }
 

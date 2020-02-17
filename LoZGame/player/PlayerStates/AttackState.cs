@@ -19,19 +19,19 @@ namespace LoZClone
         {
             if (this.player.CurrentDirection.Equals("Up"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkAttackUp(this.player.CurrentColor, this.player.CurrentWeapon);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkAttackUp(this.player.CurrentColor, this.player.CurrentWeapon);
             }
             else if (this.player.CurrentDirection.Equals("Down"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkAttackDown(this.player.CurrentColor, this.player.CurrentWeapon);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkAttackDown(this.player.CurrentColor, this.player.CurrentWeapon);
             }
             else if (this.player.CurrentDirection.Equals("Left"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkAttackLeft(this.player.CurrentColor, this.player.CurrentWeapon);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkAttackLeft(this.player.CurrentColor, this.player.CurrentWeapon);
             }
             else
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkAttackRight(this.player.CurrentColor, this.player.CurrentWeapon);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkAttackRight(this.player.CurrentColor, this.player.CurrentWeapon);
             }
         }
 

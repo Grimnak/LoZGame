@@ -18,7 +18,7 @@ namespace LoZClone
 
         private ISprite createCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.createSpriteLinkPickupItem(this.player.CurrentColor);
+            return LinkSpriteFactory.Instance.CreateSpriteLinkPickupItem(this.player.CurrentColor);
         }
 
         public void idle()

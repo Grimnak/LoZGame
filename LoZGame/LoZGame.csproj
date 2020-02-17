@@ -9,8 +9,8 @@
     <ProjectGuid>{46E47923-0B58-4AF1-B7C4-56A26AC679D1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BlankMonoGameProject</RootNamespace>
-    <AssemblyName>BlankMonoGameProject</AssemblyName>
+    <RootNamespace>LoZGame</RootNamespace>
+    <AssemblyName>LoZGame</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -52,55 +52,156 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Controller\Commands\CommandFive.cs" />
-    <Compile Include="Controller\Commands\CommandEight.cs" />
-    <Compile Include="Controller\Commands\CommandFour.cs" />
-    <Compile Include="Controller\Commands\CommandSeven.cs" />
-    <Compile Include="Controller\Commands\CommandSix.cs" />
-    <Compile Include="Controller\Commands\CommandThree.cs" />
-    <Compile Include="Controller\Commands\CommandZ.cs" />
-    <Compile Include="Controller\Commands\CommandW.cs" />
-    <Compile Include="Controller\Commands\CommandU.cs" />
-    <Compile Include="Controller\Commands\CommandTwo.cs" />
-    <Compile Include="Controller\Commands\CommandS.cs" />
-    <Compile Include="Controller\Commands\CommandR.cs" />
-    <Compile Include="Controller\Commands\CommandQ.cs" />
-    <Compile Include="Controller\Commands\CommandP.cs" />
-    <Compile Include="Controller\Commands\CommandOne.cs" />
-    <Compile Include="Controller\Commands\CommandO.cs" />
-    <Compile Include="Controller\Commands\CommandN.cs" />
+    <Compile Include="Controller\Commands\CommandArrow.cs" />
+    <Compile Include="Controller\Commands\CommandAttackA.cs" />
+    <Compile Include="Controller\Commands\CommandAttackB.cs" />
+    <Compile Include="Controller\Commands\CommandBlockLeft.cs" />
+    <Compile Include="Controller\Commands\CommandBlockRight.cs" />
+    <Compile Include="Controller\Commands\CommandBlueCandle.cs" />
+    <Compile Include="Controller\Commands\CommandBomb.cs" />
+    <Compile Include="Controller\Commands\CommandBoomerang.cs" />
+    <Compile Include="Controller\Commands\CommandDamage.cs" />
+    <Compile Include="Controller\Commands\CommandDown.cs" />
+    <Compile Include="Controller\Commands\CommandEnemyLeft.cs" />
+    <Compile Include="Controller\Commands\CommandEnemyRight.cs" />
+    <Compile Include="Controller\Commands\CommandItemLeft.cs" />
+    <Compile Include="Controller\Commands\CommandItemRight.cs" />
+    <Compile Include="Controller\Commands\CommandLeft.cs" />
+    <Compile Include="Controller\Commands\CommandMagicBoomerang.cs" />
+    <Compile Include="Controller\Commands\CommandQuit.cs" />
+    <Compile Include="Controller\Commands\CommandRedCandle.cs" />
+    <Compile Include="Controller\Commands\CommandReset.cs" />
+    <Compile Include="Controller\Commands\CommandRight.cs" />
+    <Compile Include="Controller\Commands\CommandSilverArrow.cs" />
+    <Compile Include="Controller\Commands\CommandTriforce.cs" />
+    <Compile Include="Controller\Commands\CommandUp.cs" />
     <Compile Include="Controller\Commands\CommandIdle.cs" />
-    <Compile Include="Controller\Commands\CommandI.cs" />
-    <Compile Include="Controller\Commands\CommandE.cs" />
-    <Compile Include="Controller\Commands\CommandD.cs" />
-    <Compile Include="Controller\Commands\CommandA.cs" />
-    <Compile Include="Controller\Commands\CommandK.cs" />
-    <Compile Include="Controller\Commands\CommandL.cs" />
     <Compile Include="Controller\Commands\CommandLoader.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Controller\PriorityComparer.cs" />
+    <Compile Include="Enemies\EnemyClasses\Dodongo.cs" />
+    <Compile Include="Enemies\EnemyClasses\Dragon.cs" />
+    <Compile Include="Enemies\EnemyClasses\Gel.cs" />
+    <Compile Include="Enemies\EnemyClasses\Goriya.cs" />
+    <Compile Include="Enemies\EnemyClasses\Keese.cs" />
+    <Compile Include="Enemies\EnemyClasses\Merchant.cs" />
+    <Compile Include="Enemies\EnemyClasses\OldMan.cs" />
+    <Compile Include="Enemies\EnemyClasses\Rope.cs" />
+    <Compile Include="Enemies\EnemyClasses\SpikeCross.cs" />
+    <Compile Include="Enemies\EnemyClasses\Stalfos.cs" />
+    <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
+    <Compile Include="Enemies\EnemyClasses\Zol.cs" />
+    <Compile Include="Enemies\EnemySprites\DeadEnemySprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dodongo\DodongoDownSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dodongo\DodongoLeftSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dodongo\DodongoRightSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dodongo\DodongoUpSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dragon\DragonDamagedSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dragon\DragonSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dragon\FireballSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Gel\GelSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Goriya\GoriyaDownSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Goriya\GoriyaLeftSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Goriya\GoriyaRightSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Goriya\GoriyaUpSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Keese\KeeseSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\NPCs\MerchantSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\NPCs\OldManSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Rope\RopeLeftSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Rope\RopeRightSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\SpawnEnemySprite.cs" />
+    <Compile Include="Enemies\EnemySprites\SpikeCross\SpikeCrossSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Stalfos\StalfosSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\WallMaster\WallMasterLeftSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\WallMaster\WallMasterRightSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Zol\ZolSprite.cs" />
+    <Compile Include="Enemies\States\DodongoStates\DeadDodongoState.cs" />
+    <Compile Include="Enemies\States\DodongoStates\DownMovingDodongoState.cs" />
+    <Compile Include="Enemies\States\DodongoStates\LeftMovingDodongoState.cs" />
+    <Compile Include="Enemies\States\DodongoStates\RightMovingDodongoState.cs" />
+    <Compile Include="Enemies\States\DodongoStates\UpMovingDodongoState.cs" />
+    <Compile Include="Enemies\States\DragonStates\AttackingDragonState.cs" />
+    <Compile Include="Enemies\States\DragonStates\DeadDragonState.cs" />
+    <Compile Include="Enemies\States\DragonStates\IdleDragonState.cs" />
+    <Compile Include="Enemies\States\DragonStates\LeftMovingDragonState.cs" />
+    <Compile Include="Enemies\States\DragonStates\RightMovingDragonState.cs" />
+    <Compile Include="Enemies\States\GelStates\DeadGelState.cs" />
+    <Compile Include="Enemies\States\GelStates\DownMovingGelState.cs" />
+    <Compile Include="Enemies\States\GelStates\LeftMovingGelState.cs" />
+    <Compile Include="Enemies\States\GelStates\RightMovingGelState.cs" />
+    <Compile Include="Enemies\States\GelStates\UpMovingGelState.cs" />
+    <Compile Include="Enemies\States\GoriyaStates\AttackingGoriyaState.cs" />
+    <Compile Include="Enemies\States\GoriyaStates\DeadGoriyaState.cs" />
+    <Compile Include="Enemies\States\GoriyaStates\DownMovingGoriyaState.cs" />
+    <Compile Include="Enemies\States\GoriyaStates\LeftMovingGoriyaState.cs" />
+    <Compile Include="Enemies\States\GoriyaStates\RightMovingGoriyaState.cs" />
+    <Compile Include="Enemies\States\GoriyaStates\UpMovingGoriyaState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\DeadKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\DownLeftMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\DownMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\DownRightMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\LeftMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\RightMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\UpLeftMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\UpMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\UpRightMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\RopeStates\DeadRopeState.cs" />
+    <Compile Include="Enemies\States\RopeStates\DownMovingRopeState.cs" />
+    <Compile Include="Enemies\States\RopeStates\LeftMovingRopeState.cs" />
+    <Compile Include="Enemies\States\RopeStates\RightMovingRopeState.cs" />
+    <Compile Include="Enemies\States\RopeStates\UpMovingRopeState.cs" />
+    <Compile Include="Enemies\States\SpikeCrossStates\DownMovingSpikeCrossState.cs" />
+    <Compile Include="Enemies\States\SpikeCrossStates\IdleSpikeCrossState.cs" />
+    <Compile Include="Enemies\States\SpikeCrossStates\LeftMovingSpikeCrossState.cs" />
+    <Compile Include="Enemies\States\SpikeCrossStates\RightMovingSpikeCrossState.cs" />
+    <Compile Include="Enemies\States\SpikeCrossStates\UpMovingSpikeCrossState.cs" />
+    <Compile Include="Enemies\States\StalfosStates\DeadStalfosState.cs" />
+    <Compile Include="Enemies\States\StalfosStates\DownMovingStalfosState.cs" />
+    <Compile Include="Enemies\States\StalfosStates\LeftMovingStalfosState.cs" />
+    <Compile Include="Enemies\States\StalfosStates\RightMovingStalfosState.cs" />
+    <Compile Include="Enemies\States\StalfosStates\UpMovingStalfosState.cs" />
+    <Compile Include="Enemies\States\WallMasterStates\DeadWallMasterState.cs" />
+    <Compile Include="Enemies\States\WallMasterStates\DownMovingWallMasterState.cs" />
+    <Compile Include="Enemies\States\WallMasterStates\LeftMovingWallMasterState.cs" />
+    <Compile Include="Enemies\States\WallMasterStates\RightMovingWallMasterState.cs" />
+    <Compile Include="Enemies\States\WallMasterStates\UpMovingWallMasterState.cs" />
+    <Compile Include="Enemies\States\ZolStates\DeadZolState.cs" />
+    <Compile Include="Enemies\States\ZolStates\DownMovingZolState.cs" />
+    <Compile Include="Enemies\States\ZolStates\LeftMovingZolState.cs" />
+    <Compile Include="Enemies\States\ZolStates\RightMovingZolState.cs" />
+    <Compile Include="Enemies\States\ZolStates\UpMovingZolState.cs" />
     <Compile Include="Interfaces\IItemSprite.cs" />
     <Compile Include="Interfaces\IProjectile.cs" />
-	<Compile Include="Interfaces\EnemySprites\IDodongoSprite.cs" />
-	<Compile Include="Interfaces\EnemySprites\IDragonSprite.cs" />
-	<Compile Include="Interfaces\EnemySprites\IGelSprite.cs" />
-	<Compile Include="Interfaces\EnemySprites\IGoriyaSprite.cs" />
-	<Compile Include="Interfaces\EnemySprites\IKeeseSprite.cs" />
-	<Compile Include="Interfaces\EnemySprites\IRopeSprite.cs" />
-	<Compile Include="Interfaces\EnemySprites\ISpikeCrossSprite.cs" />
-	<Compile Include="Interfaces\EnemySprites\IStalfosSprite.cs" />
-	<Compile Include="Interfaces\EnemySprites\IWallMasterSprite.cs" />
-	<Compile Include="Interfaces\EnemySprites\IZolSprite.cs" />
+    <Compile Include="Interfaces\EnemySprites\IDodongoSprite.cs" />
+    <Compile Include="Interfaces\EnemySprites\IDragonSprite.cs" />
+    <Compile Include="Interfaces\EnemySprites\IGelSprite.cs" />
+    <Compile Include="Interfaces\EnemySprites\IGoriyaSprite.cs" />
+    <Compile Include="Interfaces\EnemySprites\IKeeseSprite.cs" />
+    <Compile Include="Interfaces\EnemySprites\IRopeSprite.cs" />
+    <Compile Include="Interfaces\EnemySprites\ISpikeCrossSprite.cs" />
+    <Compile Include="Interfaces\EnemySprites\IStalfosSprite.cs" />
+    <Compile Include="Interfaces\EnemySprites\IWallMasterSprite.cs" />
+    <Compile Include="Interfaces\EnemySprites\IZolSprite.cs" />
     <Compile Include="Interfaces\IKeeseState.cs" />
     <Compile Include="Interfaces\IDragonState.cs" />
     <Compile Include="Interfaces\IGoriyaState.cs" />
     <Compile Include="Interfaces\ISpikeCrossState.cs" />
-    <Compile Include="Managers\ProjectileManager.cs" />
+    <Compile Include="Managers\EnemyManager.cs" />
+    <Compile Include="Managers\EntityManager.cs" />
+    <Compile Include="Managers\ExplosionManager.cs" />
+    <Compile Include="Managers\NPCManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\BlockManager.cs" />
+    <Compile Include="Managers\ProjectileManager.cs" />
+    <Compile Include="Managers\ProjectileType.cs" />
     <Compile Include="Player\PlayerStates\PickupItemState.cs" />
     <Compile Include="Player\PlayerStates\UseItemState.cs" />
     <Compile Include="Player\PlayerStates\DieState.cs" />
@@ -142,6 +243,12 @@
     <Compile Include="Sprites\ItemSpriteClasses\WhiteSword.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\WoodenSword.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\YellowRupee.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkDieSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkPickupItemSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemDownSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemLeftSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemRightSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemUpSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\TriforceProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\BlueCandleProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\RedCandleProjectile.cs" />
@@ -158,9 +265,9 @@
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IPlayerState.cs" />
-	<Compile Include="Interfaces\IEnemy.cs" />
-	<Compile Include="Interfaces\IEnemySprite.cs" />
-	<Compile Include="Interfaces\IEnemyState.cs" />
+    <Compile Include="Interfaces\IEnemy.cs" />
+    <Compile Include="Interfaces\IEnemySprite.cs" />
+    <Compile Include="Interfaces\IEnemyState.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Player\PlayerStates\AttackState.cs" />
@@ -174,7 +281,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="util\SpriteSheetDataStruct.cs" />
-	<Compile Include="util\EnemySpriteFactory.cs" />
+    <Compile Include="util\EnemySpriteFactory.cs" />
     <Compile Include="Sprites\LinkSpriteClasses\LinkAttackRightSprite.cs" />
     <Compile Include="Sprites\LinkSpriteClasses\LinkAttackLeftSprite.cs" />
     <Compile Include="Sprites\LinkSpriteClasses\LinkAttackUpSprite.cs" />

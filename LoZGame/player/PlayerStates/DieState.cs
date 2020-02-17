@@ -18,7 +18,7 @@
 
         private ISprite createCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.createSpriteLinkDie(this.player.CurrentColor);
+            return LinkSpriteFactory.Instance.CreateSpriteLinkDie(this.player.CurrentColor);
         }
 
         public void idle()

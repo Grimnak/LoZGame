@@ -23,7 +23,7 @@ namespace LoZClone
         public void loadNPCs(LoZGame game)
         {
             NPCs = new List<IEnemy>();
-            NPCs.Add(new Dodongo(game));
+            NPCs.Add(new Dodongo());
             NPCs.Add(new Dragon());
             NPCs.Add(new Stalfos());
             NPCs.Add(new Keese());
@@ -35,7 +35,6 @@ namespace LoZClone
             NPCs.Add(new WallMaster());
             NPCs.Add(new OldMan());
             NPCs.Add(new Merchant());
-            NPCs.Add(new Flame());
 
             foreach (IEnemy npc in NPCs)
             {
@@ -66,12 +65,12 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            currentNPC.draw(spriteBatch);
+            currentNPC.Draw(spriteBatch);
         }
 
         public void Update()
         {
-            currentNPC.update();
+            currentNPC.Update();
         }
     }
 }

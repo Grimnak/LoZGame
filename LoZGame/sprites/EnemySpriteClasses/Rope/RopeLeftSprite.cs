@@ -45,5 +45,10 @@ namespace LoZClone
 
             spriteBatch.Draw(spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
         }
+
+        public void Attack()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

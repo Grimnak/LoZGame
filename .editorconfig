@@ -17,3 +17,6 @@ dotnet_style_require_accessibility_modifiers = for_non_interface_members:none
 
 # SA1400: Access modifier should be declared
 dotnet_diagnostic.SA1400.severity = none
+
+# CS2001: Source file 'C:\Users\Garrett\Desktop\repo\LoZGame\Controller\Commands\CommandL.cs' could not be found.
+dotnet_diagnostic.CS2001.severity = silent
