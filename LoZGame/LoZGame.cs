@@ -1,18 +1,17 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class LoZGame : Game
     {
-        private GraphicsDeviceManager graphics;
+        private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private static float UpdatesPerSecond = 50;
-        public SpriteBatch SpriteBatch
-        {
-            get { return spriteBatch; }
-        }
+        private static readonly float updatesPerSecond = 50;
+
+        public SpriteBatch SpriteBatch => this.spriteBatch;
+
         private IPlayer link;
         private CommandLoader commandLoader;
         private IController keyboardController;
@@ -22,52 +21,57 @@ namespace LoZClone
 
         public LoZGame()
         {
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            this.graphics = new GraphicsDeviceManager(this);
+            this.Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
-            this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
+            this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / updatesPerSecond);
         }
+
         protected override void Initialize()
         {
-            link = new Link(this);
-            itemManager = new ItemManager();
-            blockManager = new BlockManager();
-            entityManager = new EntityManager();
-            commandLoader = new CommandLoader(this, link, itemManager, blockManager, entityManager);
-            keyboardController = new KeyboardController(commandLoader);
+            this.link = new Link(this);
+            this.itemManager = new ItemManager();
+            this.blockManager = new BlockManager();
+            this.entityManager = new EntityManager();
+            this.commandLoader = new CommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager);
+            this.keyboardController = new KeyboardController(this.commandLoader);
             base.Initialize();
         }
+
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            LinkSpriteFactory.Instance.LoadAllTextures(Content);
-            ItemSpriteFactory.Instance.LoadAllTextures(Content);
-            BlockSpriteFactory.Instance.LoadAllTextures(Content);
-            ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
-            itemManager.loadSprites(384, 184);
-            blockManager.loadSprites(550, 184);
+            this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+            LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
+            ItemSpriteFactory.Instance.LoadAllTextures(this.Content);
+            BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
+            ProjectileSpriteFactory.Instance.LoadAllTextures(this.Content);
+            this.itemManager.loadSprites(384, 184);
+            this.blockManager.loadSprites(550, 184);
         }
+
         protected override void UnloadContent()
         {
         }
+
         protected override void Update(GameTime gameTime)
         {
-            keyboardController.Update();
-            link.Update();
-            itemManager.currentItem.Update();
-            blockManager.currentBlock.Update();
-            entityManager.Update();
+            this.keyboardController.Update();
+            this.link.Update();
+            this.itemManager.currentItem.Update();
+            this.blockManager.currentBlock.Update();
+            this.entityManager.Update();
             base.Update(gameTime);
         }
+
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Gray);
-            spriteBatch.Begin();
-            link.Draw();
-            itemManager.currentItem.Draw(spriteBatch);
-            blockManager.currentBlock.Draw(spriteBatch, new Vector2(500, 184), Color.White);
-            entityManager.Draw(spriteBatch);
-            spriteBatch.End();
+            this.GraphicsDevice.Clear(Color.Gray);
+            this.spriteBatch.Begin();
+            this.link.Draw();
+            this.itemManager.currentItem.Draw(this.spriteBatch);
+            this.blockManager.currentBlock.Draw(this.spriteBatch, new Vector2(500, 184), Color.White);
+            this.entityManager.Draw(this.spriteBatch);
+            this.spriteBatch.End();
             base.Draw(gameTime);
         }
     }

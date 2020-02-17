@@ -2,104 +2,117 @@ namespace LoZClone
 {
     public class UseItemState : IPlayerState
     {
-        private LoZGame game;
-        private IPlayer player;
-        private ISprite sprite;
+        private readonly LoZGame game;
+        private readonly IPlayer player;
+        private readonly ISprite sprite;
         private int lockoutTimer = 0;
 
         public UseItemState(LoZGame game, IPlayer playerInstance, int waitTime)
         {
             this.game = game;
-            player = playerInstance;
-            lockoutTimer = waitTime; //wait period
-            sprite = createCorrectSprite();
+            this.player = playerInstance;
+            this.lockoutTimer = waitTime; //wait period
+            this.sprite = this.createCorrectSprite();
         }
+
         private ISprite createCorrectSprite()
         {
-            if (player.CurrentDirection.Equals("Up"))
+            if (this.player.CurrentDirection.Equals("Up"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkUseItemUp(player.CurrentColor);
+                return LinkSpriteFactory.Instance.createSpriteLinkUseItemUp(this.player.CurrentColor);
             }
-            else if (player.CurrentDirection.Equals("Down"))
+            else if (this.player.CurrentDirection.Equals("Down"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkUseItemDown(player.CurrentColor);
+                return LinkSpriteFactory.Instance.createSpriteLinkUseItemDown(this.player.CurrentColor);
             }
-            else if (player.CurrentDirection.Equals("Left"))
+            else if (this.player.CurrentDirection.Equals("Left"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkUseItemLeft(player.CurrentColor);
+                return LinkSpriteFactory.Instance.createSpriteLinkUseItemLeft(this.player.CurrentColor);
             }
             else
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkUseItemRight(player.CurrentColor);
+                return LinkSpriteFactory.Instance.createSpriteLinkUseItemRight(this.player.CurrentColor);
             }
         }
+
         public void idle()
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new IdleState(game, player);
+                this.player.State = new IdleState(this.game, this.player);
             }
         }
+
         public void moveUp()
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new MoveUpState(game, player);
+                this.player.State = new MoveUpState(this.game, this.player);
             }
         }
+
         public void moveDown()
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new MoveDownState(game, player);
+                this.player.State = new MoveDownState(this.game, this.player);
             }
         }
+
         public void moveLeft()
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new MoveLeftState(game, player);
+                this.player.State = new MoveLeftState(this.game, this.player);
             }
         }
+
         public void moveRight()
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new MoveRightState(game, player);
+                this.player.State = new MoveRightState(this.game, this.player);
             }
         }
+
         public void attack()
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new AttackState(game, player);
+                this.player.State = new AttackState(this.game, this.player);
             }
         }
+
         public void die()
         {
-            player.State = new DieState(game, player);
+            this.player.State = new DieState(this.game, this.player);
         }
+
         public void pickupItem(int itemTime)
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new PickupItemState(game, player, itemTime);
+                this.player.State = new PickupItemState(this.game, this.player, itemTime);
             }
         }
+
         public void useItem(int waitTime)
         {
         }
+
         public void Update()
         {
-            if (lockoutTimer > 0)
+            if (this.lockoutTimer > 0)
             {
-                lockoutTimer--;
+                this.lockoutTimer--;
             }
-            sprite.Update();
+
+            this.sprite.Update();
         }
+
         public void Draw()
         {
-            sprite.Draw(game.SpriteBatch, player.CurrentLocation, player.CurrentTint);
+            this.sprite.Draw(this.game.SpriteBatch, this.player.CurrentLocation, this.player.CurrentTint);
         }
     }
 }

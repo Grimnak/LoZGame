@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+
 #if WINDOWS || LINUX
     /// <summary>
     /// The main class.

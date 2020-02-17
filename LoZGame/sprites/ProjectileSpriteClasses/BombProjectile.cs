@@ -1,96 +1,89 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     class BombProjectile : IProjectile
     {
-        private static int linkSize = 32;
-        private static int width = 8;
-        private static int height = 16;
-        private static int maxLife = 120;
+        private static readonly int linkSize = 32;
+        private static readonly int width = 8;
+        private static readonly int height = 16;
+        private static readonly int maxLife = 120;
 
-        private Texture2D Texture;      // the texture to pull frames from
+        private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle frame;
         private int lifeTime;
-        private int scale;
-        private bool isStatic;
+        private readonly int scale;
+        private readonly bool isStatic;
         private bool expired;
-        private int instance;
-        private string direction;
-        private bool hostile;
-        private ExplosionManager explosion;
-        public bool IsHostile { get { return hostile; } }
+        private readonly int instance;
+        private readonly string direction;
+        private readonly bool hostile;
+        private readonly ExplosionManager explosion;
+
+        public bool IsHostile => this.hostile;
+
         public Vector2 location { get; set; }
 
         public BombProjectile(Texture2D texture, Vector2 loc, String direction, int scale, int instance, ExplosionManager explosion)
         {
-            Texture = texture;
-            frame = new Rectangle(136, 0, width, height);
-            lifeTime = maxLife;
+            this.texture = texture;
+            this.frame = new Rectangle(136, 0, width, height);
+            this.lifeTime = maxLife;
             this.instance = instance;
             this.direction = direction;
             this.hostile = false;
             this.explosion = explosion;
             if (this.direction == "Up")
             {
-                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y - linkSize);
+                this.location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y - linkSize);
             }
             else if (this.direction == "Left")
             {
-                location = new Vector2(loc.X - linkSize + (linkSize - width*scale), loc.Y - ((height * scale) - linkSize) / 2);
+                this.location = new Vector2(loc.X - linkSize + (linkSize - width * scale), loc.Y - ((height * scale) - linkSize) / 2);
             }
             else if (this.direction == "Right")
             {
-                location = new Vector2(loc.X + linkSize, loc.Y - ((height * scale) - linkSize) / 2);
+                this.location = new Vector2(loc.X + linkSize, loc.Y - ((height * scale) - linkSize) / 2);
             }
             else
             {
-                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y + linkSize);
+                this.location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y + linkSize);
             }
 
-
             this.scale = scale;
-            isStatic = false;
-            expired = false;
+            this.isStatic = false;
+            this.expired = false;
         }
 
-        public bool IsExpired
-        {
-            get { return expired; }
-        }
+        public bool IsExpired => this.expired;
 
-        public int Instance
-        {
-            get { return instance; }
-        }
-
-
+        public int Instance => this.instance;
 
         public void Update()
         {
-            if (!isStatic)
+            if (!this.isStatic)
             {
-                lifeTime--;
+                this.lifeTime--;
             }
-            if (lifeTime <= 0)
+
+            if (this.lifeTime <= 0)
             {
-                Vector2 expolsionLoc = new Vector2(this.location.X - width / 2 - height * scale, this.location.Y - height * scale);
-                explosion.addExplosion(explosion.Explosion, expolsionLoc);
-                expired = true;
+                Vector2 expolsionLoc = new Vector2(this.location.X - width / 2 - height * this.scale, this.location.Y - height * this.scale);
+                this.explosion.addExplosion(this.explosion.Explosion, expolsionLoc);
+                this.expired = true;
             }
 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, this.location, frame, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(this.texture, this.location, this.frame, Color.White, 0, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
         }
     }
 }

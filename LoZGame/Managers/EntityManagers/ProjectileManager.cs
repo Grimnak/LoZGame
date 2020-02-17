@@ -1,28 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
-    public class ProjectileManager
+    public partial class ProjectileManager
     {
-        private enum ProjectileType { Bomb, SilverArrow, Triforce, Boomerang, MagicBoomerang, Arrow, RedCandle, BlueCandle, SwordBeam };
-        private ExplosionManager explosion;
-        private Dictionary<int, IProjectile> itemList;
-        private List<int> deletable;
-        private int scale;
-        private int projectileId, projectileListSize;
-        private bool swordLock, spamLock, boomerangLock, triforceLock, candleLock;
-        private int swordInstance, boomerangInstance, triforceInstance, candleInstance, spamCounter;
-        public static int MaxWaitTime { get { return 30; } }
+        private readonly ExplosionManager explosion;
+        private readonly Dictionary<int, IProjectile> itemList;
+        private readonly List<int> deletable;
+        private readonly int scale;
+        private int projectileId;
+        private int projectileListSize;
+        private bool swordLock;
+        private bool spamLock;
+        private bool boomerangLock;
+        private bool triforceLock;
+        private bool candleLock;
+        private int swordInstance;
+        private int boomerangInstance;
+        private int triforceInstance;
+        private int candleInstance;
+        private int spamCounter;
 
-        public bool BoomerangOut { get { return boomerangLock; } }
-        public bool FlameInUse { get { return candleLock; } }
+        public static int MaxWaitTime => 30;
+
+        public bool BoomerangOut => this.boomerangLock;
+
+        public bool FlameInUse => this.candleLock;
 
         public ProjectileManager(ExplosionManager explosion)
         {
@@ -30,89 +39,101 @@ namespace LoZClone
             this.projectileId = 0;
             this.projectileListSize = 0;
             this.scale = (int)ProjectileSpriteFactory.Instance.Scale;
-            deletable = new List<int>();
-            swordLock = false;
-            boomerangLock = false;
-            spamLock = false;
-            triforceLock = false;
-            candleLock = false;
-            swordInstance = 0;
-            boomerangInstance = 0;
-            spamCounter = 0;
-            triforceInstance = 0;
-            candleInstance = 0;
+            this.deletable = new List<int>();
+            this.swordLock = false;
+            this.boomerangLock = false;
+            this.spamLock = false;
+            this.triforceLock = false;
+            this.candleLock = false;
+            this.swordInstance = 0;
+            this.boomerangInstance = 0;
+            this.spamCounter = 0;
+            this.triforceInstance = 0;
+            this.candleInstance = 0;
             this.explosion = explosion;
         }
 
-        public int Arrow { get { return (int)ProjectileType.Arrow; } }
-        public int SilverArrow { get { return (int)ProjectileType.SilverArrow; } }
-        public int Boomerang { get { return (int)ProjectileType.Boomerang; } }
-        public int MagicBoomerang { get { return (int)ProjectileType.MagicBoomerang; } }
-        public int BlueCandle { get { return (int)ProjectileType.BlueCandle; } }
-        public int RedCandle { get { return (int)ProjectileType.RedCandle; } }
-        public int Bomb { get { return (int)ProjectileType.Bomb; } }
-        public int Triforce { get { return (int)ProjectileType.Triforce; } }
-        public int Swordbeam { get { return (int)ProjectileType.SwordBeam; }}
-        public void addItem(int itemType, IPlayer player)
+        public int Arrow => (int)ProjectileType.Arrow;
+
+        public int SilverArrow => (int)ProjectileType.SilverArrow;
+
+        public int Boomerang => (int)ProjectileType.Boomerang;
+
+        public int MagicBoomerang => (int)ProjectileType.MagicBoomerang;
+
+        public int BlueCandle => (int)ProjectileType.BlueCandle;
+
+        public int RedCandle => (int)ProjectileType.RedCandle;
+
+        public int Bomb => (int)ProjectileType.Bomb;
+
+        public int Triforce => (int)ProjectileType.Triforce;
+
+        public int Swordbeam => (int)ProjectileType.SwordBeam;
+
+        public void AddItem(int itemType, IPlayer player)
         {
-            projectileId++;
-            projectileListSize++;
+            this.projectileId++;
+            this.projectileListSize++;
             ProjectileType item = (ProjectileType)itemType;
-            if (!spamLock && !triforceLock)
+            if (!this.spamLock && !this.triforceLock)
             {
-                spamCounter = MaxWaitTime;
-                spamLock = true;
+                this.spamCounter = MaxWaitTime;
+                this.spamLock = true;
                 switch (item)
                 {
-                    case (ProjectileType.Bomb):
-                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Bomb(player.CurrentLocation, player.CurrentDirection, scale, projectileId, explosion));
+                    case ProjectileType.Bomb:
+                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Bomb(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId, this.explosion));
                         break;
-                    case (ProjectileType.Triforce):             
-                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Triforce(player.CurrentLocation, scale, projectileId));
-                        triforceLock = true;
-                        triforceInstance = projectileId;
+                    case ProjectileType.Triforce:
+                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Triforce(player.CurrentLocation, this.scale, this.projectileId));
+                        this.triforceLock = true;
+                        this.triforceInstance = this.projectileId;
                         break;
-                    case (ProjectileType.Arrow):
-                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Arrow(player.CurrentLocation, player.CurrentDirection, scale, projectileId));
+                    case ProjectileType.Arrow:
+                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Arrow(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
                         break;
-                    case (ProjectileType.SilverArrow):
-                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.SilverArrow(player.CurrentLocation, player.CurrentDirection, scale, projectileId));
+                    case ProjectileType.SilverArrow:
+                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.SilverArrow(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
                         break;
-                    case (ProjectileType.RedCandle):
-                        this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.RedCandle(player.CurrentLocation, player.CurrentDirection, scale, projectileId));
+                    case ProjectileType.RedCandle:
+                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.RedCandle(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
                         break;
-                    case (ProjectileType.BlueCandle):
-                        if (!candleLock)
+                    case ProjectileType.BlueCandle:
+                        if (!this.candleLock)
                         {
-                            this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.BlueCandle(player.CurrentLocation, player.CurrentDirection, scale, projectileId));
-                            candleLock = true;
-                            candleInstance = projectileId;
-                        }
-                        break;
-                    case (ProjectileType.Boomerang):
-                        if (!boomerangLock)
-                        {
-                            this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.Boomerang(player, scale, projectileId));
-                            boomerangLock = true;
-                            boomerangInstance = projectileId;
-                        }
-                        break;
-                    case (ProjectileType.MagicBoomerang):
-                        if (!boomerangLock)
-                        {
-                            this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.MagicBoomerang(player, scale, projectileId));
-                            boomerangLock = true;
-                            boomerangInstance = projectileId;
+                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.BlueCandle(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
+                            this.candleLock = true;
+                            this.candleInstance = this.projectileId;
                         }
 
                         break;
-                    case (ProjectileType.SwordBeam):
-                        if (!swordLock)
+                    case ProjectileType.Boomerang:
+                        if (!this.boomerangLock)
                         {
-                            this.itemList.Add(projectileId, ProjectileSpriteFactory.Instance.SwordBeam(player, scale, projectileId, explosion));
-                            swordLock = true;
-                            swordInstance = projectileId;
+                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Boomerang(player, this.scale, this.projectileId));
+                            this.boomerangLock = true;
+                            this.boomerangInstance = this.projectileId;
                         }
+
+                        break;
+                    case ProjectileType.MagicBoomerang:
+                        if (!this.boomerangLock)
+                        {
+                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.MagicBoomerang(player, this.scale, this.projectileId));
+                            this.boomerangLock = true;
+                            this.boomerangInstance = this.projectileId;
+                        }
+
+                        break;
+                    case ProjectileType.SwordBeam:
+                        if (!this.swordLock)
+                        {
+                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.SwordBeam(player, this.scale, this.projectileId, this.explosion));
+                            this.swordLock = true;
+                            this.swordInstance = this.projectileId;
+                        }
+
                         break;
                     default:
                         break;
@@ -120,56 +141,61 @@ namespace LoZClone
             }
         }
 
-        public void removeItem(int instance)
+        public void RemoveItem(int instance)
         {
-            itemList.Remove(instance);
-            projectileListSize--;
-            if (projectileListSize == 0)
+            this.itemList.Remove(instance);
+            this.projectileListSize--;
+            if (this.projectileListSize == 0)
             {
-                projectileId = 0;
+                this.projectileId = 0;
             }
         }
 
         public void Update()
         {
-            
-            if (spamCounter <= 0)
+            if (this.spamCounter <= 0)
             {
-                spamLock = false;
+                this.spamLock = false;
             }
             else
             {
-                spamCounter--;
+                this.spamCounter--;
             }
+
             foreach (KeyValuePair<int, IProjectile> item in this.itemList)
             {
                 if (item.Value.IsExpired)
                 {
-                    if (item.Value.Instance == swordInstance)
+                    if (item.Value.Instance == this.swordInstance)
                     {
-                        swordLock = false;
-                    }
-                    if (item.Value.Instance == boomerangInstance)
-                    {
-                        boomerangLock = false;
-                    }
-                    if (item.Value.Instance == triforceInstance)
-                    {
-                        triforceLock = false;
-                    }
-                    if (item.Value.Instance == candleInstance)
-                    {
-                        candleLock = false;
+                        this.swordLock = false;
                     }
 
-                    deletable.Add(item.Value.Instance);
+                    if (item.Value.Instance == this.boomerangInstance)
+                    {
+                        this.boomerangLock = false;
+                    }
+
+                    if (item.Value.Instance == this.triforceInstance)
+                    {
+                        this.triforceLock = false;
+                    }
+
+                    if (item.Value.Instance == this.candleInstance)
+                    {
+                        this.candleLock = false;
+                    }
+
+                    this.deletable.Add(item.Value.Instance);
                 }
             }
-            foreach (int index in deletable)
+
+            foreach (int index in this.deletable)
             {
-                this.removeItem(index);
+                this.RemoveItem(index);
             }
-            deletable.Clear();
+
+            this.deletable.Clear();
             foreach (KeyValuePair<int, IProjectile> item in this.itemList)
             {
                 item.Value.Update();

@@ -2,19 +2,19 @@
 {
     public class CommandIdle : ICommand
     {
-        IPlayer player;
-        private static int priority = 0;
+        readonly IPlayer player;
+        private static readonly int priority = 0;
+
         public CommandIdle(IPlayer player)
         {
             this.player = player;
         }
+
         public void execute()
         {
-            player.idle();
+            this.player.idle();
         }
-        public int Priority
-        {
-            get { return priority; }
-        }
+
+        public int Priority => priority;
     }
 }

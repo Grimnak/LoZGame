@@ -1,21 +1,21 @@
 ﻿
 namespace LoZClone
 {
-    public class CommandBlockLeft: ICommand
+    public class CommandBlockLeft : ICommand
     {
-        BlockManager block;
-        private static int priority = -1;
+        readonly BlockManager block;
+        private static readonly int priority = -1;
+
         public CommandBlockLeft(BlockManager block)
         {
             this.block = block;
         }
+
         public void execute()
         {
-            block.cycleLeft();
+            this.block.cycleLeft();
         }
-        public int Priority
-        {
-            get { return priority; }
-        }
+
+        public int Priority => priority;
     }
 }

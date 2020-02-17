@@ -1,26 +1,26 @@
 ﻿namespace LoZClone
 {
-    public class CommandArrow: ICommand
+    public class CommandArrow : ICommand
     {
-        private IPlayer player;
-        private EntityManager entity;
-        private static int priority = 5;
+        private readonly IPlayer player;
+        private readonly EntityManager entity;
+        private static readonly int priority = 5;
+
         public CommandArrow(IPlayer player, EntityManager entity)
         {
             this.player = player;
             this.entity = entity;
         }
+
         public void execute()
         {
-            if (!player.IsDead)
+            if (!this.player.IsDead)
             {
-                player.useItem(ProjectileManager.MaxWaitTime);
-                entity.ProjectileManager.addItem(entity.ProjectileManager.Arrow, player);
+                this.player.useItem(ProjectileManager.MaxWaitTime);
+                this.entity.ProjectileManager.AddItem(this.entity.ProjectileManager.Arrow, this.player);
             }
         }
-        public int Priority
-        {
-            get { return priority; }
-        }
+
+        public int Priority => priority;
     }
 }

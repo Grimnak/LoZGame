@@ -1,90 +1,88 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     class TriforceProjectile : IProjectile
     {
-        private static int linkSize = 32;
-        private static int width = 10;
-        private static int height = 16;
-        private static int frameChange = 10;
+        private static readonly int linkSize = 32;
+        private static readonly int width = 10;
+        private static readonly int height = 16;
+        private static readonly int frameChange = 10;
 
-        private Texture2D Texture;      // the texture to pull frames from
+        private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle currentFrame;
         private Rectangle firstFrame;
         private Rectangle secondFrame;
         private int lifeTime;
-        private int scale;
-        private int instance;
+        private readonly int scale;
+        private readonly int instance;
         private bool expired;
-        private bool isStatic; 
-        private bool hostile;
-        public bool IsHostile { get { return hostile; } }
+        private readonly bool isStatic;
+        private readonly bool hostile;
+
+        public bool IsHostile => this.hostile;
+
         public Vector2 location { get; set; }
-        public static int LifeTime { get { return 200; } }
+
+        public static int LifeTime => 200;
 
         public TriforceProjectile(Texture2D texture, Vector2 loc, int scale, int instance)
         {
-            Texture = texture;
-            firstFrame = new Rectangle(275, 0, width, height);
-            secondFrame = new Rectangle(275, 16, width, height);
-            currentFrame = firstFrame;
-            lifeTime = LifeTime;
-            location = new Vector2(loc.X + (linkSize - width) / (2 * scale), loc.Y - linkSize);
+            this.texture = texture;
+            this.firstFrame = new Rectangle(275, 0, width, height);
+            this.secondFrame = new Rectangle(275, 16, width, height);
+            this.currentFrame = this.firstFrame;
+            this.lifeTime = LifeTime;
+            this.location = new Vector2(loc.X + (linkSize - width) / (2 * scale), loc.Y - linkSize);
             this.scale = scale;
-            expired = false;
+            this.expired = false;
             this.instance = instance;
-            isStatic = false;
+            this.isStatic = false;
             this.hostile = false;
         }
+
         private void nextFrame()
         {
-            if (currentFrame == firstFrame)
+            if (this.currentFrame == this.firstFrame)
             {
-                currentFrame = secondFrame;
+                this.currentFrame = this.secondFrame;
             }
             else
             {
-                currentFrame = firstFrame;
+                this.currentFrame = this.firstFrame;
             }
         }
-        public bool IsExpired
-        {
-            get { return expired; }
-        }
 
-        public int Instance
-        {
-            get { return instance; }
-        }
+        public bool IsExpired => this.expired;
+
+        public int Instance => this.instance;
 
         public void Update()
         {
-            lifeTime--;
+            this.lifeTime--;
 
-            if (isStatic)
+            if (this.isStatic)
             {
-                if (lifeTime <= 0)
+                if (this.lifeTime <= 0)
                 {
-                    lifeTime = 200;
+                    this.lifeTime = 200;
                 }
             }
             else
             {
-                if (lifeTime <= 0)
+                if (this.lifeTime <= 0)
                 {
-                    expired = true;
+                    this.expired = true;
                 }
             }
 
-            if (lifeTime % frameChange == 0)
+            if (this.lifeTime % frameChange == 0)
             {
                 this.nextFrame();
             }
@@ -92,7 +90,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, this.location, currentFrame, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(this.texture, this.location, this.currentFrame, Color.White, 0, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
         }
     }
 }

@@ -1,175 +1,208 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     public class Link : IPlayer
     {
-        private LoZGame game;
+        private readonly LoZGame game;
         private IPlayerState playerState;
+
         public IPlayerState State
         {
-            set { playerState = value; }
+            set { this.playerState = value; }
         }
+
         private string currentWeapon;
+
         public string CurrentWeapon
         {
-            get { return currentWeapon; }
-            set { currentWeapon = value; }
+            get { return this.currentWeapon; }
+            set { this.currentWeapon = value; }
         }
+
         private string currentColor;
+
         public string CurrentColor
         {
-            get { return currentColor; }
-            set { currentColor = value; }
+            get { return this.currentColor; }
+            set { this.currentColor = value; }
         }
+
         private string currentDirection;
+
         public string CurrentDirection
         {
-            get { return currentDirection; }
-            set { currentDirection = value; }
+            get { return this.currentDirection; }
+            set { this.currentDirection = value; }
         }
+
         private Vector2 currentLocation;
+
         public Vector2 CurrentLocation
         {
-            get { return currentLocation; }
-            set { currentLocation = value; }
+            get { return this.currentLocation; }
+            set { this.currentLocation = value; }
         }
+
         private Color currentTint;
+
         public Color CurrentTint
         {
-            get { return currentTint; }
-            set { currentTint = value; }
+            get { return this.currentTint; }
+            set { this.currentTint = value; }
         }
+
         private int currentSpeed;
+
         public int CurrentSpeed
         {
-            get { return currentSpeed; }
-            set { currentSpeed = value; }
+            get { return this.currentSpeed; }
+            set { this.currentSpeed = value; }
         }
+
         private int damageCounter;
+
         public int DamageCounter
         {
-            get { return damageCounter; }
-            set { damageCounter = value; }
+            get { return this.damageCounter; }
+            set { this.damageCounter = value; }
         }
+
         private int damageTimer;
+
         public int DamageTimer
         {
-            get { return damageTimer; }
-            set { damageTimer = value; }
+            get { return this.damageTimer; }
+            set { this.damageTimer = value; }
         }
+
         private bool isDead;
+
         public bool IsDead
         {
-            get { return isDead; }
-            set { isDead = value; }
+            get { return this.isDead; }
+            set { this.isDead = value; }
         }
 
         public Link(LoZGame game)
         {
             this.game = game;
-            currentColor = "Green";
-            currentDirection = "Down";
-            currentWeapon = "Wood";
-            currentLocation = new Vector2(150, 200);
-            currentTint = Color.White;
-            currentSpeed = 2;
-            damageTimer = 0;
-            damageCounter = 0;
-            isDead = false;
+            this.currentColor = "Green";
+            this.currentDirection = "Down";
+            this.currentWeapon = "Wood";
+            this.currentLocation = new Vector2(150, 200);
+            this.currentTint = Color.White;
+            this.currentSpeed = 2;
+            this.damageTimer = 0;
+            this.damageCounter = 0;
+            this.isDead = false;
 
-            playerState = new NullState(game, this);
+            this.playerState = new NullState(game, this);
         }
+
         private void handleDamage()
         {
-            if (damageTimer > 0 && damageCounter < 3)
+            if (this.damageTimer > 0 && this.damageCounter < 3)
             {
-                damageTimer--;
-                if (damageTimer % 10 > 5)
+                this.damageTimer--;
+                if (this.damageTimer % 10 > 5)
                 {
-                    currentTint = Color.DarkSlateGray;
+                    this.currentTint = Color.DarkSlateGray;
                 }
                 else
                 {
-                    currentTint = Color.White;
+                    this.currentTint = Color.White;
                 }
             }
         }
+
         //This handleBounds method will not remain here past Sprint 2.  This is a form of "collision handling" just so Link will stay in bounds.
         private void handleBounds()
         {
-            if (currentLocation.X + 30 > game.GraphicsDevice.Viewport.Width)
+            if (this.currentLocation.X + 30 > this.game.GraphicsDevice.Viewport.Width)
             {
-                currentLocation.X = game.GraphicsDevice.Viewport.Width - 30;
+                this.currentLocation.X = this.game.GraphicsDevice.Viewport.Width - 30;
             }
-            else if (currentLocation.X < 0)
+            else if (this.currentLocation.X < 0)
             {
-                currentLocation.X = 0;
+                this.currentLocation.X = 0;
             }
-            if (currentLocation.Y + 30 > game.GraphicsDevice.Viewport.Height)
+
+            if (this.currentLocation.Y + 30 > this.game.GraphicsDevice.Viewport.Height)
             {
-                currentLocation.Y = game.GraphicsDevice.Viewport.Height - 30;
+                this.currentLocation.Y = this.game.GraphicsDevice.Viewport.Height - 30;
             }
-            else if (currentLocation.Y < 0)
+            else if (this.currentLocation.Y < 0)
             {
-                currentLocation.Y = 0;
+                this.currentLocation.Y = 0;
             }
         }
+
         public void idle()
         {
-            playerState.idle();
+            this.playerState.idle();
         }
+
         public void moveUp()
         {
-            playerState.moveUp();
+            this.playerState.moveUp();
         }
+
         public void moveDown()
         {
-            playerState.moveDown();
+            this.playerState.moveDown();
         }
+
         public void moveLeft()
         {
-            playerState.moveLeft();
+            this.playerState.moveLeft();
         }
+
         public void moveRight()
         {
-            playerState.moveRight();
+            this.playerState.moveRight();
         }
+
         public void takeDamage()
         {
-            if (damageCounter >= 3)
+            if (this.damageCounter >= 3)
             {
-                playerState.die();
+                this.playerState.die();
             }
 
-            if (damageTimer <= 0)
+            if (this.damageTimer <= 0)
             {
-                damageCounter++;
-                damageTimer = 100;
+                this.damageCounter++;
+                this.damageTimer = 100;
             }
         }
+
         public void attack()
         {
-            playerState.attack();
+            this.playerState.attack();
         }
+
         public void pickupItem(int itemTime)
         {
-            playerState.pickupItem(itemTime);
+            this.playerState.pickupItem(itemTime);
         }
+
         public void useItem(int waitTime)
         {
-            playerState.useItem(waitTime);
+            this.playerState.useItem(waitTime);
         }
+
         public void Update()
         {
-            handleDamage();
-            handleBounds();
+            this.handleDamage();
+            this.handleBounds();
 
-            playerState.Update();
+            this.playerState.Update();
         }
+
         public void Draw()
         {
-            playerState.Draw();
+            this.playerState.Draw();
         }
     }
 }

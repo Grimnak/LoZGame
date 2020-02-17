@@ -2,19 +2,19 @@
 {
     public class CommandRight : ICommand
     {
-        IPlayer player;
-        private static int priority = 3;
+        readonly IPlayer player;
+        private static readonly int priority = 3;
+
         public CommandRight(IPlayer player)
         {
             this.player = player;
         }
+
         public void execute()
         {
-            player.moveRight();
+            this.player.moveRight();
         }
-        public int Priority
-        {
-            get { return priority; }
-        }
+
+        public int Priority => priority;
     }
 }

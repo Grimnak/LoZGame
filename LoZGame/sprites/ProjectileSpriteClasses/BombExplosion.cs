@@ -1,91 +1,85 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     class BombExplosion : IProjectile
     {
-        private static int maxLifeTime = 90;
-        private static int dissipateOne = 20;
-        private static int dissipateTwo = 5;
+        private static readonly int maxLifeTime = 90;
+        private static readonly int dissipateOne = 20;
+        private static readonly int dissipateTwo = 5;
 
-        private Texture2D Texture;      // the texture to pull frames from
+        private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle frameOne;
         private Rectangle frameTwo;
         private Rectangle frameThree;
         private Rectangle currentFrame;
         private int lifeTime;
-        private int scale;
-        private float rotation;
-        private int instance;
+        private readonly int scale;
+        private readonly float rotation;
+        private readonly int instance;
         private bool expired;
 
-
         public Vector2 location { get; set; }
-        private bool hostile;
-        public bool IsHostile { get { return hostile; } }
-        
+
+        private readonly bool hostile;
+
+        public bool IsHostile => this.hostile;
 
         public BombExplosion(Texture2D texture, Vector2 location, int scale, int instance)
         {
-            Texture = texture;
+            this.texture = texture;
             this.location = location;
-            frameOne = new Rectangle(0, 0, 48, 48);
-            frameTwo = new Rectangle(0, 48, 48, 48);
-            frameThree = new Rectangle(0, 96, 48, 48);
-            currentFrame = frameOne;
-            lifeTime = maxLifeTime;
+            this.frameOne = new Rectangle(0, 0, 48, 48);
+            this.frameTwo = new Rectangle(0, 48, 48, 48);
+            this.frameThree = new Rectangle(0, 96, 48, 48);
+            this.currentFrame = this.frameOne;
+            this.lifeTime = maxLifeTime;
             this.scale = scale;
             this.hostile = true;
             this.instance = instance;
-            expired = false;
+            this.expired = false;
             this.rotation = 0;
         }
 
-        public bool IsExpired
-        {
-            get { return expired; }
-        }
+        public bool IsExpired => this.expired;
 
-        public int Instance
-        {
-            get { return instance; }
-        }
+        public int Instance => this.instance;
 
         private void nextFrame()
         {
-            if (currentFrame == frameOne)
+            if (this.currentFrame == this.frameOne)
             {
-                currentFrame = frameTwo;
+                this.currentFrame = this.frameTwo;
             }
-            else if (currentFrame == frameTwo)
+            else if (this.currentFrame == this.frameTwo)
             {
-                currentFrame = frameThree;
+                this.currentFrame = this.frameThree;
             }
         }
 
         public void Update()
         {
-            lifeTime--;
-            if (lifeTime == dissipateOne || lifeTime == dissipateTwo)
+            this.lifeTime--;
+            if (this.lifeTime == dissipateOne || this.lifeTime == dissipateTwo)
             {
                 this.nextFrame();
             }
-            if (lifeTime <= 0)
+
+            if (this.lifeTime <= 0)
             {
-                expired = true;
+                this.expired = true;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-           spriteBatch.Draw(Texture, this.location, currentFrame, Color.White, rotation, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(this.texture, this.location, this.currentFrame, Color.White, this.rotation, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
         }
     }
 }

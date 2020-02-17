@@ -2,75 +2,89 @@
 {
     public class IdleState : IPlayerState
     {
-        private LoZGame game;
-        private IPlayer player;
-        private ISprite sprite;
+        private readonly LoZGame game;
+        private readonly IPlayer player;
+        private readonly ISprite sprite;
 
         public IdleState(LoZGame game, IPlayer playerInstance)
         {
             this.game = game;
             this.player = playerInstance;
-            sprite = createCorrectSprite();
+            this.sprite = this.createCorrectSprite();
         }
+
         private ISprite createCorrectSprite()
         {
-            if (player.CurrentDirection.Equals("Up"))
+            if (this.player.CurrentDirection.Equals("Up"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkIdleUp(player.CurrentColor);
-            } else if (player.CurrentDirection.Equals("Down"))
+                return LinkSpriteFactory.Instance.CreateSpriteLinkIdleUp(this.player.CurrentColor);
+            }
+            else if (this.player.CurrentDirection.Equals("Down"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkIdleDown(player.CurrentColor);
-            } else if (player.CurrentDirection.Equals("Left"))
+                return LinkSpriteFactory.Instance.CreateSpriteLinkIdleDown(this.player.CurrentColor);
+            }
+            else if (this.player.CurrentDirection.Equals("Left"))
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkIdleLeft(player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkIdleLeft(this.player.CurrentColor);
             }
             else
             {
-                return LinkSpriteFactory.Instance.createSpriteLinkIdleRight(player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkIdleRight(this.player.CurrentColor);
             }
         }
+
         public void idle()
         {
         }
+
         public void moveUp()
         {
-            player.State = new MoveUpState(game, player);
+            this.player.State = new MoveUpState(this.game, this.player);
         }
+
         public void moveDown()
         {
-            player.State = new MoveDownState(game, player);
+            this.player.State = new MoveDownState(this.game, this.player);
         }
+
         public void moveLeft()
         {
-            player.State = new MoveLeftState(game, player);
+            this.player.State = new MoveLeftState(this.game, this.player);
         }
+
         public void moveRight()
         {
-            player.State = new MoveRightState(game, player);
+            this.player.State = new MoveRightState(this.game, this.player);
         }
+
         public void attack()
         {
-            player.State = new AttackState(game, player);
+            this.player.State = new AttackState(this.game, this.player);
         }
+
         public void die()
         {
-            player.State = new DieState(game, player);
+            this.player.State = new DieState(this.game, this.player);
         }
+
         public void pickupItem(int itemTime)
         {
-            player.State = new PickupItemState(game, player, itemTime);
+            this.player.State = new PickupItemState(this.game, this.player, itemTime);
         }
+
         public void useItem(int waitTime)
         {
-            player.State = new UseItemState(game, player, waitTime);
+            this.player.State = new UseItemState(this.game, this.player, waitTime);
         }
+
         public void Update()
         {
-            sprite.Update();
+            this.sprite.Update();
         }
+
         public void Draw()
         {
-            sprite.Draw(game.SpriteBatch, player.CurrentLocation, player.CurrentTint);
+            this.sprite.Draw(this.game.SpriteBatch, this.player.CurrentLocation, this.player.CurrentTint);
         }
     }
 }

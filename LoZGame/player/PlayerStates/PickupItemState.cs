@@ -2,90 +2,103 @@ namespace LoZClone
 {
     public class PickupItemState : IPlayerState
     {
-        private LoZGame game;
-        private IPlayer player;
-        private ISprite sprite;
+        private readonly LoZGame game;
+        private readonly IPlayer player;
+        private readonly ISprite sprite;
         private int lockoutTimer = 0;
 
         public PickupItemState(LoZGame game, IPlayer playerInstance, int itemTime)
         {
             this.game = game;
-            player = playerInstance;
-            player.CurrentDirection = "Down";
-            lockoutTimer = itemTime; //wait period
-            sprite = createCorrectSprite();
+            this.player = playerInstance;
+            this.player.CurrentDirection = "Down";
+            this.lockoutTimer = itemTime; //wait period
+            this.sprite = this.createCorrectSprite();
         }
+
         private ISprite createCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.createSpriteLinkPickupItem(player.CurrentColor);
+            return LinkSpriteFactory.Instance.createSpriteLinkPickupItem(this.player.CurrentColor);
         }
+
         public void idle()
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new IdleState(game, player);
+                this.player.State = new IdleState(this.game, this.player);
             }
         }
+
         public void moveUp()
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new MoveUpState(game, player);
+                this.player.State = new MoveUpState(this.game, this.player);
             }
         }
+
         public void moveDown()
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new MoveDownState(game, player);
+                this.player.State = new MoveDownState(this.game, this.player);
             }
         }
+
         public void moveLeft()
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new MoveLeftState(game, player);
+                this.player.State = new MoveLeftState(this.game, this.player);
             }
         }
+
         public void moveRight()
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new MoveRightState(game, player);
+                this.player.State = new MoveRightState(this.game, this.player);
             }
         }
+
         public void attack()
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new AttackState(game, player);
+                this.player.State = new AttackState(this.game, this.player);
             }
         }
+
         public void die()
         {
-            player.State = new DieState(game, player);
+            this.player.State = new DieState(this.game, this.player);
         }
+
         public void pickupItem(int itemTime)
         {
         }
+
         public void useItem(int waitTime)
         {
-            if (lockoutTimer <= 0)
+            if (this.lockoutTimer <= 0)
             {
-                player.State = new UseItemState(game, player, waitTime);
+                this.player.State = new UseItemState(this.game, this.player, waitTime);
             }
         }
+
         public void Update()
         {
-            if (lockoutTimer > 0)
+            if (this.lockoutTimer > 0)
             {
-                lockoutTimer--;
+                this.lockoutTimer--;
             }
-            sprite.Update();
+
+            this.sprite.Update();
         }
+
         public void Draw()
         {
-            sprite.Draw(game.SpriteBatch, player.CurrentLocation, player.CurrentTint);
+            this.sprite.Draw(this.game.SpriteBatch, this.player.CurrentLocation, this.player.CurrentTint);
         }
     }
 }

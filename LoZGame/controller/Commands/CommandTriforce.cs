@@ -2,25 +2,25 @@
 {
     public class CommandTriforce : ICommand
     {
-        IPlayer player;
-        EntityManager entity;
-        private static int priority = 5;
+        readonly IPlayer player;
+        readonly EntityManager entity;
+        private static readonly int priority = 5;
+
         public CommandTriforce(IPlayer player, EntityManager entity)
         {
             this.player = player;
             this.entity = entity;
         }
+
         public void execute()
         {
-            if (!player.IsDead)
+            if (!this.player.IsDead)
             {
-                player.pickupItem(TriforceProjectile.LifeTime);
-                entity.ProjectileManager.addItem(entity.ProjectileManager.Triforce, player);
+                this.player.pickupItem(TriforceProjectile.LifeTime);
+                this.entity.ProjectileManager.AddItem(this.entity.ProjectileManager.Triforce, this.player);
             }
         }
-        public int Priority
-        {
-            get { return priority; }
-        }
+
+        public int Priority => priority;
     }
 }

@@ -1,22 +1,24 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class LinkIdleLeftSprite : ISprite
     {
-        private Texture2D spriteSheet;
-        private int spriteSheetRows, spriteSheetColumns;
-        private int spriteSheetWidth, spriteSheetHeight;
-        private int currentFrame = 0;
+        private readonly Texture2D spriteSheet;
+        private readonly int spriteSheetRows;
+        private readonly int spriteSheetColumns;
+        private readonly int spriteSheetWidth;
+        private readonly int spriteSheetHeight;
+        private readonly int currentFrame = 0;
 
         public LinkIdleLeftSprite(Texture2D spriteTexture, SpriteSheetData data)
         {
-            spriteSheet = spriteTexture;
-            spriteSheetWidth = data.Width;
-            spriteSheetHeight = data.Height;
-            spriteSheetRows = data.Rows;
-            spriteSheetColumns = data.Columns;
+            this.spriteSheet = spriteTexture;
+            this.spriteSheetWidth = data.Width;
+            this.spriteSheetHeight = data.Height;
+            this.spriteSheetRows = data.Rows;
+            this.spriteSheetColumns = data.Columns;
         }
 
         public void Update()
@@ -25,15 +27,15 @@ namespace LoZClone
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint)
         {
-            int width = spriteSheet.Width / spriteSheetColumns;
-            int height = spriteSheet.Height / spriteSheetRows;
-            int row = (int)((float)currentFrame / (float)spriteSheetColumns);
-            int column = currentFrame % spriteSheetColumns;
+            int width = this.spriteSheet.Width / this.spriteSheetColumns;
+            int height = this.spriteSheet.Height / this.spriteSheetRows;
+            int row = (int)((float)this.currentFrame / (float)this.spriteSheetColumns);
+            int column = this.currentFrame % this.spriteSheetColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, spriteSheetWidth, spriteSheetHeight);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, this.spriteSheetWidth, this.spriteSheetHeight);
 
-            spriteBatch.Draw(spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
+            spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
         }
     }
 }

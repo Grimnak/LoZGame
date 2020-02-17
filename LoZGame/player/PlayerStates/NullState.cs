@@ -2,53 +2,64 @@
 {
     public class NullState : IPlayerState
     {
-        private LoZGame game;
-        private IPlayer player;
+        private readonly LoZGame game;
+        private readonly IPlayer player;
 
         public NullState(LoZGame game, IPlayer playerInstance)
         {
             this.game = game;
             this.player = playerInstance;
         }
+
         public void idle()
         {
-            player.State = new IdleState(game, player);
+            this.player.State = new IdleState(this.game, this.player);
         }
+
         public void moveUp()
         {
-            player.State = new MoveUpState(game, player);
+            this.player.State = new MoveUpState(this.game, this.player);
         }
+
         public void moveDown()
         {
-            player.State = new MoveDownState(game, player);
+            this.player.State = new MoveDownState(this.game, this.player);
         }
+
         public void moveLeft()
         {
-            player.State = new MoveLeftState(game, player);
+            this.player.State = new MoveLeftState(this.game, this.player);
         }
+
         public void moveRight()
         {
-            player.State = new MoveRightState(game, player);
+            this.player.State = new MoveRightState(this.game, this.player);
         }
+
         public void attack()
         {
-            player.State = new AttackState(game, player);
+            this.player.State = new AttackState(this.game, this.player);
         }
+
         public void die()
         {
-            player.State = new DieState(game, player);
+            this.player.State = new DieState(this.game, this.player);
         }
+
         public void pickupItem(int itemTime)
         {
-            player.State = new PickupItemState(game, player, itemTime);
+            this.player.State = new PickupItemState(this.game, this.player, itemTime);
         }
+
         public void useItem(int waitTime)
         {
-            player.State = new UseItemState(game, player, waitTime);
+            this.player.State = new UseItemState(this.game, this.player, waitTime);
         }
+
         public void Update()
         {
         }
+
         public void Draw()
         {
         }

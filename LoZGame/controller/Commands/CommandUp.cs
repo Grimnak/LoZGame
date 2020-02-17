@@ -2,20 +2,19 @@
 {
     public class CommandUp : ICommand
     {
-        IPlayer player;
-        private static int priority = 4;
+        readonly IPlayer player;
+        private static readonly int priority = 4;
+
         public CommandUp(IPlayer player)
         {
             this.player = player;
         }
+
         public void execute()
         {
-            player.moveUp();
+            this.player.moveUp();
         }
 
-        public int Priority
-        {
-            get { return priority; }
-        }
+        public int Priority => priority;
     }
 }

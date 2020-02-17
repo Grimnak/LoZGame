@@ -1,53 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     class MagicBoomerangProjectile : IProjectile
     {
-        private static int linkSize = 32;
-        private static int width = 5;
-        private static int height = 16;
-        private static int maxDistance = 300;
-        private static int travelRate = 8;
-        private static int xBound = 800, yBound = 480;
+        private static readonly int linkSize = 32;
+        private static readonly int width = 5;
+        private static readonly int height = 16;
+        private static readonly int maxDistance = 300;
+        private static readonly int travelRate = 8;
+        private static readonly int xBound = 800;
+        private static readonly int yBound = 480;
 
-        private Texture2D Texture;      // the texture to pull frames from
+        private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle frame;
         private Vector2 origin;
-        private IPlayer player;
-        private int scale;
-        private string direction;
+        private readonly IPlayer player;
+        private readonly int scale;
+        private readonly string direction;
 
-        private int instance;
+        private readonly int instance;
         private bool expired;
         private bool returning;
         private bool isReturned;
 
         private float rotation;
-        private int dX, dY;
+        private readonly int dX;
+        private readonly int dY;
         private int distTraveled;
         private Vector2 playerLoc;
 
-        private bool hostile;
-        public bool IsHostile { get { return hostile; } }
+        private readonly bool hostile;
+
+        public bool IsHostile => this.hostile;
+
         public Vector2 location { get; set; }
 
         public MagicBoomerangProjectile(Texture2D texture, IPlayer player, int scale, int instance)
         {
-            Texture = texture;
-            frame = new Rectangle(129, 16, 5, 16);
-            origin = new Vector2(width / 2, height / 2);
+            this.texture = texture;
+            this.frame = new Rectangle(129, 16, 5, 16);
+            this.origin = new Vector2(width / 2, height / 2);
             this.scale = scale;
             this.instance = instance;
-            expired = false;
-            rotation = 0;
+            this.expired = false;
+            this.rotation = 0;
             Vector2 loc = player.CurrentLocation;
             this.direction = player.CurrentDirection;
             this.isReturned = false;
@@ -56,42 +59,43 @@ namespace LoZClone
             this.distTraveled = 0;
             this.hostile = false;
 
-            if (direction.Equals("Up"))
+            if (this.direction.Equals("Up"))
             {
-                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y);
-                dX = 0;
-                dY = -1;
+                this.location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y);
+                this.dX = 0;
+                this.dY = -1;
             }
-            else if (direction.Equals("Left"))
+            else if (this.direction.Equals("Left"))
             {
-                location = new Vector2(loc.X, loc.Y - ((width * scale) - linkSize) / 2);
-                dX = -1;
-                dY = 0;
+                this.location = new Vector2(loc.X, loc.Y - ((width * scale) - linkSize) / 2);
+                this.dX = -1;
+                this.dY = 0;
             }
-            else if (direction.Equals("Right"))
+            else if (this.direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + linkSize, loc.Y - ((width * scale) - linkSize) / 2);
-                dX = 1;
-                dY = 0;
+                this.location = new Vector2(loc.X + linkSize, loc.Y - ((width * scale) - linkSize) / 2);
+                this.dX = 1;
+                this.dY = 0;
             }
             else
             {
-                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y + linkSize);
-                dX = 0;
-                dY = 1;
+                this.location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y + linkSize);
+                this.dX = 0;
+                this.dY = 1;
             }
-            playerLoc = player.CurrentLocation;
-            playerLoc = new Vector2(playerLoc.X + 16, playerLoc.Y + 16);
+
+            this.playerLoc = player.CurrentLocation;
+            this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
         }
 
         private void rotate()
         {
-            rotation += MathHelper.PiOver4 / 2;
+            this.rotation += MathHelper.PiOver4 / 2;
         }
 
         private void updateLoc()
         {
-            this.location = new Vector2(this.location.X + dX * travelRate, this.location.Y + dY * travelRate);
+            this.location = new Vector2(this.location.X + this.dX * travelRate, this.location.Y + this.dY * travelRate);
         }
 
         private void checkBounds()
@@ -106,41 +110,35 @@ namespace LoZClone
         {
             float newX = this.location.X;
             float newY = this.location.Y;
-            playerLoc = player.CurrentLocation;
-            playerLoc = new Vector2(playerLoc.X + 16, playerLoc.Y + 16);
-            float diffX = playerLoc.X - newX;
-            float diffY = playerLoc.Y - newY;
+            this.playerLoc = this.player.CurrentLocation;
+            this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
+            float diffX = this.playerLoc.X - newX;
+            float diffY = this.playerLoc.Y - newY;
             if (Math.Abs(diffX) <= 2 * travelRate && Math.Abs(diffY) <= 2 * travelRate)
             {
                 this.isReturned = true;
                 return;
             }
 
-
             float diffTotal = (float)Math.Sqrt(Math.Pow(diffX, 2) + Math.Pow(diffY, 2));
-            if (newX != playerLoc.X)
+            if (newX != this.playerLoc.X)
             {
                 float changeX = (diffX / diffTotal) * travelRate;
                 newX += changeX;
             }
-            if (newY != playerLoc.Y)
+
+            if (newY != this.playerLoc.Y)
             {
                 float changeY = (diffY / diffTotal) * travelRate;
                 newY += changeY;
             }
+
             this.location = new Vector2(newX, newY);
         }
 
+        public bool IsExpired => this.expired;
 
-        public bool IsExpired
-        {
-            get { return expired; }
-        }
-
-        public int Instance
-        {
-            get { return instance; }
-        }
+        public int Instance => this.instance;
 
         public void Update()
         {
@@ -149,25 +147,28 @@ namespace LoZClone
             {
                 this.expired = true;
             }
-            if (distTraveled >= maxDistance)
+
+            if (this.distTraveled >= maxDistance)
             {
-               this.returning = true;
+                this.returning = true;
             }
-            if (!returning)
+
+            if (!this.returning)
             {
                 this.updateLoc();
             }
             else
             {
-               this.returnHome();
+                this.returnHome();
             }
-            distTraveled += travelRate;
+
+            this.distTraveled += travelRate;
             this.checkBounds();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, this.location, frame, Color.White, rotation, origin, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(this.texture, this.location, this.frame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, 0f);
         }
     }
 }

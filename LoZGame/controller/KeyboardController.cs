@@ -1,127 +1,120 @@
-using System.Linq;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Input;
-
 namespace LoZClone
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.Xna.Framework.Input;
+
     public class KeyboardController : IController
     {
-        CommandLoader allCommands;
+        readonly CommandLoader allCommands;
         KeyboardState oldState;
-        Dictionary<Keys, ICommand> dict;
-        List<KeyValuePair<Keys, ICommand>> playerCommands;
+        readonly Dictionary<Keys, ICommand> dict;
+        readonly List<KeyValuePair<Keys, ICommand>> playerCommands;
 
         private ICommand currentCommand;
 
         public KeyboardController(CommandLoader allCommands)
         {
             this.allCommands = allCommands;
-            oldState = Keyboard.GetState();
-            dict = allCommands.getDict;
-            playerCommands = new List<KeyValuePair<Keys, ICommand>>();
+            this.oldState = Keyboard.GetState();
+            this.dict = allCommands.getDict;
+            this.playerCommands = new List<KeyValuePair<Keys, ICommand>>();
         }
-
 
         public void Update()
         {
             KeyboardState state = Keyboard.GetState();
-            
 
             Keys[] pressed = state.GetPressedKeys();
 
             foreach (Keys key in pressed)
             {
-                if (dict.ContainsKey(key) && dict[key].Priority != -1)
+                if (this.dict.ContainsKey(key) && this.dict[key].Priority != -1)
                 {
-                    
-                    playerCommands.Add(new KeyValuePair<Keys, ICommand>(key, dict[key]));
+                    this.playerCommands.Add(new KeyValuePair<Keys, ICommand>(key, this.dict[key]));
                 }
             }
-            playerCommands.Add(new KeyValuePair<Keys, ICommand>(Keys.Subtract, allCommands.getIdle));
 
-            if (playerCommands.Count > 0)
+            this.playerCommands.Add(new KeyValuePair<Keys, ICommand>(Keys.Subtract, this.allCommands.getIdle));
+
+            if (this.playerCommands.Count > 0)
             {
-                playerCommands.Sort(new PriorityComparer());
+                this.playerCommands.Sort(new PriorityComparer());
 
-                currentCommand = playerCommands[0].Value;
+                this.currentCommand = this.playerCommands[0].Value;
 
-                if (currentCommand.Priority == 7 || currentCommand.Priority == 5)
+                if (this.currentCommand.Priority == 7 || this.currentCommand.Priority == 5)
                 {
-                    Keys currentKey = playerCommands[0].Key;
-                    if (oldState.IsKeyUp(currentKey))
+                    Keys currentKey = this.playerCommands[0].Key;
+                    if (this.oldState.IsKeyUp(currentKey))
                     {
-                        currentCommand.execute();
+                        this.currentCommand.execute();
                     }
                     else
                     {
-                        allCommands.getIdle.execute();
+                        this.allCommands.getIdle.execute();
                     }
                 }
-                else if (currentCommand.Priority == 6)
+                else if (this.currentCommand.Priority == 6)
                 {
-                    Keys currentKey = playerCommands[0].Key;
-                    if (oldState.IsKeyUp(currentKey))
+                    Keys currentKey = this.playerCommands[0].Key;
+                    if (this.oldState.IsKeyUp(currentKey))
                     {
-                        currentCommand.execute();
+                        this.currentCommand.execute();
                     }
                 }
                 else
                 {
-                    currentCommand.execute();
+                    this.currentCommand.execute();
                 }
 
             }
-            playerCommands.Clear();
 
-            if (pressed.Contains(Keys.U) && oldState.IsKeyUp(Keys.U))
-            {
-                dict[Keys.U].execute();
-            }
-            else if (pressed.Contains(Keys.I) && oldState.IsKeyUp(Keys.I))
-            {
-                dict[Keys.I].execute();
-            }
+            this.playerCommands.Clear();
 
+            if (pressed.Contains(Keys.U) && this.oldState.IsKeyUp(Keys.U))
+            {
+                this.dict[Keys.U].execute();
+            }
+            else if (pressed.Contains(Keys.I) && this.oldState.IsKeyUp(Keys.I))
+            {
+                this.dict[Keys.I].execute();
+            }
 
             if (pressed.Contains(Keys.O))
             {
-                dict[Keys.O].execute();
+                this.dict[Keys.O].execute();
             }
             else if (pressed.Contains(Keys.P))
             {
-                dict[Keys.P].execute();
-            }
-        
-
-            if (pressed.Contains(Keys.L) && oldState.IsKeyUp(Keys.L))
-            {
-                dict[Keys.L].execute();
-            }
-            else if (pressed.Contains(Keys.K) && oldState.IsKeyUp(Keys.K))
-            {
-                dict[Keys.K].execute();
+                this.dict[Keys.P].execute();
             }
 
+            if (pressed.Contains(Keys.L) && this.oldState.IsKeyUp(Keys.L))
+            {
+                this.dict[Keys.L].execute();
+            }
+            else if (pressed.Contains(Keys.K) && this.oldState.IsKeyUp(Keys.K))
+            {
+                this.dict[Keys.K].execute();
+            }
 
             if (pressed.Contains(Keys.E))
             {
-                dict[Keys.E].execute();
+                this.dict[Keys.E].execute();
             }
-
 
             if (pressed.Contains(Keys.Q))
             {
-                dict[Keys.Q].execute();
+                this.dict[Keys.Q].execute();
             }
-
 
             if (pressed.Contains(Keys.R))
             {
-                dict[Keys.R].execute();
+                this.dict[Keys.R].execute();
             }
 
-                
-            oldState = state;
+            this.oldState = state;
         }
     }
 }

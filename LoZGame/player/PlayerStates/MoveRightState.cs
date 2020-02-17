@@ -1,67 +1,79 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     public class MoveRightState : IPlayerState
     {
-        private LoZGame game;
-        private IPlayer player;
-        private ISprite sprite;
+        private readonly LoZGame game;
+        private readonly IPlayer player;
+        private readonly ISprite sprite;
 
         public MoveRightState(LoZGame game, IPlayer playerInstance)
         {
             this.game = game;
             this.player = playerInstance;
             this.player.CurrentDirection = "Right";
-            sprite = createCorrectSprite();
+            this.sprite = this.createCorrectSprite();
         }
+
         private ISprite createCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.createSpriteLinkMoveRight(player.CurrentColor);
+            return LinkSpriteFactory.Instance.createSpriteLinkMoveRight(this.player.CurrentColor);
         }
+
         public void idle()
         {
-            player.State = new IdleState(game, player);
+            this.player.State = new IdleState(this.game, this.player);
         }
+
         public void moveUp()
         {
-            player.State = new MoveUpState(game, player);
+            this.player.State = new MoveUpState(this.game, this.player);
         }
+
         public void moveDown()
         {
-            player.State = new MoveDownState(game, player);
+            this.player.State = new MoveDownState(this.game, this.player);
         }
+
         public void moveLeft()
         {
-            player.State = new MoveLeftState(game, player);
+            this.player.State = new MoveLeftState(this.game, this.player);
         }
+
         public void moveRight()
         {
         }
+
         public void attack()
         {
-            player.State = new AttackState(game, player);
+            this.player.State = new AttackState(this.game, this.player);
         }
+
         public void die()
         {
-            player.State = new DieState(game, player);
+            this.player.State = new DieState(this.game, this.player);
         }
+
         public void pickupItem(int itemTime)
         {
-            player.State = new PickupItemState(game, player, itemTime);
+            this.player.State = new PickupItemState(this.game, this.player, itemTime);
         }
+
         public void useItem(int waitTime)
         {
-            player.State = new UseItemState(game, player, waitTime);
+            this.player.State = new UseItemState(this.game, this.player, waitTime);
         }
+
         public void Update()
         {
-            player.CurrentLocation = new Vector2(player.CurrentLocation.X + player.CurrentSpeed, player.CurrentLocation.Y);
-            sprite.Update();
+            this.player.CurrentLocation = new Vector2(this.player.CurrentLocation.X + this.player.CurrentSpeed, this.player.CurrentLocation.Y);
+            this.sprite.Update();
         }
+
         public void Draw()
         {
-            sprite.Draw(game.SpriteBatch, player.CurrentLocation, player.CurrentTint);
+            this.sprite.Draw(this.game.SpriteBatch, this.player.CurrentLocation, this.player.CurrentTint);
         }
     }
 }

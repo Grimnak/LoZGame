@@ -1,36 +1,42 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class LinkAttackLeftSprite : ISprite
     {
-        private Texture2D linkSprite;
-        private int linkSpriteRows, linkSpriteColumns;
-        private int linkSpriteWidth, linkSpriteHeight;
-        private int linkFrame = 2;
+        private readonly Texture2D linkSprite;
+        private readonly int linkSpriteRows;
+        private readonly int linkSpriteColumns;
+        private readonly int linkSpriteWidth;
+        private readonly int linkSpriteHeight;
+        private readonly int linkFrame = 2;
 
-        private Texture2D itemSprite;
-        private int itemSpriteRows, itemSpriteColumns;
-        private int itemSpriteWidth, itemSpriteHeight;
+        private readonly Texture2D itemSprite;
+        private readonly int itemSpriteRows;
+        private readonly int itemSpriteColumns;
+        private readonly int itemSpriteWidth;
+        private readonly int itemSpriteHeight;
         private int itemFrame = 0;
         private Vector2 itemOffset = new Vector2(24, 3);
 
-        private int frameDelay = 0, frameDelayMax = 5, counter = 0;
+        private int frameDelay = 0;
+        private readonly int frameDelayMax = 5;
+        private int counter = 0;
 
         public LinkAttackLeftSprite(Texture2D linkTexture, SpriteSheetData linkData, Texture2D itemTexture, SpriteSheetData itemData)
         {
-            linkSprite = linkTexture;
-            linkSpriteRows = linkData.Rows;
-            linkSpriteColumns = linkData.Columns;
-            linkSpriteWidth = linkData.Width;
-            linkSpriteHeight = linkData.Height;
+            this.linkSprite = linkTexture;
+            this.linkSpriteRows = linkData.Rows;
+            this.linkSpriteColumns = linkData.Columns;
+            this.linkSpriteWidth = linkData.Width;
+            this.linkSpriteHeight = linkData.Height;
 
-            itemSprite = itemTexture;
-            itemSpriteRows = itemData.Rows;
-            itemSpriteColumns = itemData.Columns;
-            itemSpriteWidth = itemData.Width;
-            itemSpriteHeight = itemData.Height;
+            this.itemSprite = itemTexture;
+            this.itemSpriteRows = itemData.Rows;
+            this.itemSpriteColumns = itemData.Columns;
+            this.itemSpriteWidth = itemData.Width;
+            this.itemSpriteHeight = itemData.Height;
         }
 
         public void Update()
@@ -38,47 +44,48 @@ namespace LoZClone
             // link goes into useItem
             // item appears 10 ticks later at full size
             // item goes half size 5 ticks later
-            frameDelay++;
-            if (frameDelay == frameDelayMax)
+            this.frameDelay++;
+            if (this.frameDelay == this.frameDelayMax)
             {
-                if (counter == 1)
+                if (this.counter == 1)
                 {
-                    itemFrame = 1;
+                    this.itemFrame = 1;
                 }
-                else if (counter == 2)
+                else if (this.counter == 2)
                 {
-                    itemFrame = 0;
+                    this.itemFrame = 0;
                 }
                 else
                 {
-                    counter = 0;
+                    this.counter = 0;
                 }
-                frameDelay = 0;
-                counter++;
+
+                this.frameDelay = 0;
+                this.counter++;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint)
         {
-            int linkWidth = linkSprite.Width / linkSpriteColumns;
-            int linkHeight = linkSprite.Height / linkSpriteRows;
-            int linkRow = (int)((float)linkFrame / (float)linkSpriteColumns);
-            int linkColumn = linkFrame % linkSpriteColumns;
+            int linkWidth = this.linkSprite.Width / this.linkSpriteColumns;
+            int linkHeight = this.linkSprite.Height / this.linkSpriteRows;
+            int linkRow = (int)((float)this.linkFrame / (float)this.linkSpriteColumns);
+            int linkColumn = this.linkFrame % this.linkSpriteColumns;
 
-            int itemWidth = itemSprite.Width / itemSpriteColumns;
-            int itemHeight = itemSprite.Height / itemSpriteRows;
-            int itemRow = (int)((float)itemFrame / (float)itemSpriteColumns);
-            int itemColumn = itemFrame % itemSpriteColumns;
+            int itemWidth = this.itemSprite.Width / this.itemSpriteColumns;
+            int itemHeight = this.itemSprite.Height / this.itemSpriteRows;
+            int itemRow = (int)((float)this.itemFrame / (float)this.itemSpriteColumns);
+            int itemColumn = this.itemFrame % this.itemSpriteColumns;
 
             Rectangle linkSrcRectangle = new Rectangle(linkWidth * linkColumn, linkHeight * linkRow, linkWidth, linkHeight);
-            Rectangle linkDstRectangle = new Rectangle((int)location.X, (int)location.Y, linkSpriteWidth, linkSpriteHeight);
+            Rectangle linkDstRectangle = new Rectangle((int)location.X, (int)location.Y, this.linkSpriteWidth, this.linkSpriteHeight);
 
             Rectangle itemSrcRectangle = new Rectangle(itemWidth * itemColumn, itemHeight * itemRow, itemWidth, itemHeight);
-            Rectangle itemDstRectangle = new Rectangle((int)location.X - (int)itemOffset.X, (int)location.Y + (int)itemOffset.Y, itemSpriteWidth, itemSpriteHeight);
+            Rectangle itemDstRectangle = new Rectangle((int)location.X - (int)this.itemOffset.X, (int)location.Y + (int)this.itemOffset.Y, this.itemSpriteWidth, this.itemSpriteHeight);
 
-            spriteBatch.Draw(linkSprite, linkDstRectangle, linkSrcRectangle, spriteTint);
+            spriteBatch.Draw(this.linkSprite, linkDstRectangle, linkSrcRectangle, spriteTint);
 
-            spriteBatch.Draw(itemSprite, itemDstRectangle, itemSrcRectangle, spriteTint);
+            spriteBatch.Draw(this.itemSprite, itemDstRectangle, itemSrcRectangle, spriteTint);
         }
     }
 }

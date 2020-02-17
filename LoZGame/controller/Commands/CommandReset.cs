@@ -1,15 +1,16 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     public class CommandReset : ICommand
     {
-        IPlayer player;
-        ItemManager item;
-        BlockManager block;
-        LoZGame game;
-        EntityManager entity;
-        private static int priority = -1;
+        readonly IPlayer player;
+        readonly ItemManager item;
+        readonly BlockManager block;
+        readonly LoZGame game;
+        readonly EntityManager entity;
+        private static readonly int priority = -1;
+
         public CommandReset(LoZGame game, IPlayer player, ItemManager item, BlockManager block, EntityManager entity/*, NPCManager npc*/)
         {
             this.game = game;
@@ -18,30 +19,29 @@ namespace LoZClone
             this.block = block;
             this.entity = entity;
         }
+
         public void execute()
         {
-            player.CurrentLocation = new Vector2(218, 184);
-            player.CurrentDirection = "Down";
-            player.State = new NullState(game, player);
-            player.DamageCounter = 0;
-            player.DamageTimer = 0;
-            player.IsDead = false;
-            player.CurrentTint = Color.White;
-            
-            item.CurrentIndex = 1;
-            item.cycleLeft();
-            item.currentItem.location = new Vector2(384, 184);
+            this.player.CurrentLocation = new Vector2(218, 184);
+            this.player.CurrentDirection = "Down";
+            this.player.State = new NullState(this.game, this.player);
+            this.player.DamageCounter = 0;
+            this.player.DamageTimer = 0;
+            this.player.IsDead = false;
+            this.player.CurrentTint = Color.White;
 
-            entity.Clear();
+            this.item.CurrentIndex = 1;
+            this.item.cycleLeft();
+            this.item.currentItem.location = new Vector2(384, 184);
 
-            block.CurrentIndex = 1;
-            block.cycleLeft();
+            this.entity.Clear();
+
+            this.block.CurrentIndex = 1;
+            this.block.cycleLeft();
 
             //TODO add npc defaults
         }
-        public int Priority
-        {
-            get { return priority; }
-        }
+
+        public int Priority => priority;
     }
 }

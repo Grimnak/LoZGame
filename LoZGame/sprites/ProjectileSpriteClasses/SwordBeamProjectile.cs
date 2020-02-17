@@ -1,62 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     class SwordBeamProjectile : IProjectile
     {
-        private static int linkSize = 32;
-        private static int width = 15;
-        private static int height = 16;
-        private static int offset = 4;
+        private static readonly int linkSize = 32;
+        private static readonly int width = 15;
+        private static readonly int height = 16;
+        private static readonly int offset = 4;
 
-        private Texture2D Texture;      // the texture to pull frames from
+        private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle frameOne;
         private Rectangle frameTwo;
         private Rectangle frameThree;
         private Rectangle frameFour;
         private Rectangle currentFrame;
-        int dX;
-        int dY;
+        readonly int dX;
+        readonly int dY;
         private int lifeTime;
-        private int scale;
-        private string direction;
-        private float rotation;
-        private int instance;
+        private readonly int scale;
+        private readonly string direction;
+        private readonly float rotation;
+        private readonly int instance;
         private bool expired;
         private Vector2 tip;
         private Vector2 origin;
-        private static int delay = 10;
+        private static readonly int delay = 10;
+
         public Vector2 location { get; set; }
-        private bool hostile;
-        public bool IsHostile { get { return hostile; } }
 
-        private ExplosionManager explosion;
+        private readonly bool hostile;
 
-        private static int frameDelay = 4;
-        private static int speed = 5;
-        private static int maxLifeTime = 40;
-        private static int xBound = 800, yBound = 480;
-        
+        public bool IsHostile => this.hostile;
+
+        private readonly ExplosionManager explosion;
+
+        private static readonly int frameDelay = 4;
+        private static readonly int speed = 5;
+        private static readonly int maxLifeTime = 40;
+        private static readonly int xBound = 800;
+        private static readonly int yBound = 480;
 
         public SwordBeamProjectile(Texture2D texture, IPlayer player, int scale, int instance, ExplosionManager explosion)
         {
-
-            origin = new Vector2(width / 2, height / 2);
-            Texture = texture;
-            frameOne = new Rectangle(0, 0, width, height);
-            frameTwo = new Rectangle(0, 16, width, height);
-            frameThree = new Rectangle(0, 32, width, height);
-            frameFour = new Rectangle(0, 48, width, height);
+            this.origin = new Vector2(width / 2, height / 2);
+            this.texture = texture;
+            this.frameOne = new Rectangle(0, 0, width, height);
+            this.frameTwo = new Rectangle(0, 16, width, height);
+            this.frameThree = new Rectangle(0, 32, width, height);
+            this.frameFour = new Rectangle(0, 48, width, height);
             this.explosion = explosion;
-            currentFrame = frameOne;
-            lifeTime = maxLifeTime;
+            this.currentFrame = this.frameOne;
+            this.lifeTime = maxLifeTime;
             this.scale = scale;
             this.direction = player.CurrentDirection;
             Vector2 loc = player.CurrentLocation;
@@ -64,67 +65,62 @@ namespace LoZClone
 
             if (this.direction.Equals("Up"))
             {
-                location = new Vector2(loc.X + (linkSize - width * scale / 2), loc.Y);
-                rotation = MathHelper.Pi;
-                dX = 0;
-                dY = -1;
-                tip = new Vector2(width - offset, 0);
+                this.location = new Vector2(loc.X + (linkSize - width * scale / 2), loc.Y);
+                this.rotation = MathHelper.Pi;
+                this.dX = 0;
+                this.dY = -1;
+                this.tip = new Vector2(width - offset, 0);
             }
             else if (this.direction.Equals("Left"))
             {
-                location = new Vector2(loc.X, loc.Y + (linkSize - width * scale / 2));
-                rotation = 1 * MathHelper.PiOver2;
-                dX = -1;
-                dY = 0;
-                tip = new Vector2(-1 * offset, width);
+                this.location = new Vector2(loc.X, loc.Y + (linkSize - width * scale / 2));
+                this.rotation = 1 * MathHelper.PiOver2;
+                this.dX = -1;
+                this.dY = 0;
+                this.tip = new Vector2(-1 * offset, width);
             }
             else if (this.direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + linkSize, loc.Y + (linkSize - width * scale / 2));
-                rotation = -1 * MathHelper.PiOver2;
-                dX = 1;
-                dY = 0;
-                tip = new Vector2(height * scale - offset, width);
+                this.location = new Vector2(loc.X + linkSize, loc.Y + (linkSize - width * scale / 2));
+                this.rotation = -1 * MathHelper.PiOver2;
+                this.dX = 1;
+                this.dY = 0;
+                this.tip = new Vector2(height * scale - offset, width);
             }
             else
             {
-                location = new Vector2(loc.X + (linkSize - width * scale / 2), loc.Y + linkSize);
-                rotation = 0;
-                dX = 0;
-                dY = 1;
-                tip = new Vector2(width - offset, height * scale);
+                this.location = new Vector2(loc.X + (linkSize - width * scale / 2), loc.Y + linkSize);
+                this.rotation = 0;
+                this.dX = 0;
+                this.dY = 1;
+                this.tip = new Vector2(width - offset, height * scale);
             }
+
             this.instance = instance;
-            expired = false;
+            this.expired = false;
         }
 
-        public bool IsExpired
-        {
-            get { return expired; }
-        }
+        public bool IsExpired => this.expired;
 
-        public int Instance
-        {
-            get { return instance; }
-        }
+        public int Instance => this.instance;
 
         private void nextFrame()
         {
-            if (currentFrame == frameOne)
+            if (this.currentFrame == this.frameOne)
             {
-                currentFrame = frameTwo;
+                this.currentFrame = this.frameTwo;
             }
-            else if (currentFrame == frameTwo)
+            else if (this.currentFrame == this.frameTwo)
             {
-                currentFrame = frameThree;
+                this.currentFrame = this.frameThree;
             }
-            else if (currentFrame == frameThree)
+            else if (this.currentFrame == this.frameThree)
             {
-                currentFrame = frameFour;
+                this.currentFrame = this.frameFour;
             }
             else
             {
-                currentFrame = frameOne;
+                this.currentFrame = this.frameOne;
             }
         }
 
@@ -138,28 +134,30 @@ namespace LoZClone
 
         public void Update()
         {
-            lifeTime--;
-            if (lifeTime < maxLifeTime - delay)
+            this.lifeTime--;
+            if (this.lifeTime < maxLifeTime - delay)
             {
-                if (lifeTime % frameDelay == 0)
+                if (this.lifeTime % frameDelay == 0)
                 {
                     this.nextFrame();
                 }
-                if (lifeTime <= 0)
+
+                if (this.lifeTime <= 0)
                 {
-                    explosion.addExplosion(explosion.SwordExplosion, new Vector2(this.location.X + tip.X, this.location.Y + tip.Y));
-                    expired = true;
+                    this.explosion.addExplosion(this.explosion.SwordExplosion, new Vector2(this.location.X + this.tip.X, this.location.Y + this.tip.Y));
+                    this.expired = true;
                 }
-                this.location = new Vector2(this.location.X + (dX * speed), this.location.Y + (dY * speed));
+
+                this.location = new Vector2(this.location.X + (this.dX * speed), this.location.Y + (this.dY * speed));
                 this.checkBounds();
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (lifeTime < maxLifeTime - delay)
+            if (this.lifeTime < maxLifeTime - delay)
             {
-                spriteBatch.Draw(Texture, this.location, currentFrame, Color.White, rotation, origin, scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(this.texture, this.location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, 0f);
             }
         }
     }

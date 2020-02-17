@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.Xna.Framework;
+
     public class BlockManager
     {
         private List<ISprite> blockList;
@@ -17,19 +17,19 @@ namespace LoZClone
 
         public BlockManager()
         {
-            currentIndex = 0;
-            maxIndex = 0;
+            this.currentIndex = 0;
+            this.maxIndex = 0;
         }
 
         public void loadSprites(int xloc, int yloc)
         {
             this.blockList = BlockSpriteFactory.Instance.getAll(xloc, yloc);
             this.currentBlock = this.blockList[this.currentIndex];
-            location.X = xloc;
-            location.Y = yloc;
-            foreach (ISprite sprite in blockList)
+            this.location.X = xloc;
+            this.location.Y = yloc;
+            foreach (ISprite sprite in this.blockList)
             {
-                maxIndex++;
+                this.maxIndex++;
             }
         }
 
@@ -40,6 +40,7 @@ namespace LoZClone
             {
                 this.currentIndex = this.maxIndex - 1;
             }
+
             this.currentBlock = this.blockList[this.currentIndex];
         }
 
@@ -50,12 +51,14 @@ namespace LoZClone
             {
                 this.currentIndex = 0;
             }
+
             this.currentBlock = this.blockList[this.currentIndex];
         }
 
-        public int CurrentIndex{
-            get { return currentIndex; }
-            set { currentIndex = value; }
+        public int CurrentIndex
+        {
+            get { return this.currentIndex; }
+            set { this.currentIndex = value; }
         }
-	}
+    }
 }

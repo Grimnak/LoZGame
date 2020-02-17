@@ -2,25 +2,25 @@
 {
     public class CommandBlueCandle : ICommand
     {
-        IPlayer player;
-        EntityManager entity;
-        private static int priority = 6;
+        readonly IPlayer player;
+        readonly EntityManager entity;
+        private static readonly int priority = 6;
+
         public CommandBlueCandle(IPlayer player, EntityManager entity)
         {
             this.player = player;
             this.entity = entity;
         }
+
         public void execute()
         {
-            if (!entity.ProjectileManager.FlameInUse && !player.IsDead)
+            if (!this.entity.ProjectileManager.FlameInUse && !this.player.IsDead)
             {
-                player.useItem(ProjectileManager.MaxWaitTime);
-                entity.ProjectileManager.addItem(entity.ProjectileManager.BlueCandle, player);
+                this.player.useItem(ProjectileManager.MaxWaitTime);
+                this.entity.ProjectileManager.AddItem(this.entity.ProjectileManager.BlueCandle, this.player);
             }
         }
-        public int Priority
-        {
-            get { return priority; }
-        }
+
+        public int Priority => priority;
     }
 }
