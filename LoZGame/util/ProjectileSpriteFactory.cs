@@ -20,13 +20,13 @@
         private Texture2D explosionThreeSpriteSheet;
         private Texture2D explosionFourSpriteSheet;
         private Texture2D explosionFiveSpriteSheet;
-        private static readonly int dRAW_SCALE = 2;
+        private static readonly int DrawScale = 2;
 
         private static readonly ProjectileSpriteFactory InstanceValue = new ProjectileSpriteFactory();
 
         public static ProjectileSpriteFactory Instance => InstanceValue;
 
-        public int Scale => dRAW_SCALE;
+        public int Scale => DrawScale;
 
         public Texture2D SpriteSheet => this.projectileSpriteSheet;
 

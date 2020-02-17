@@ -39,8 +39,8 @@
         {
             this.lifeTime = lifeTimeMax;
             this.texture = texture;
-            this.firstFrame = new Rectangle(0, 0, width, height);
-            this.secondFrame = new Rectangle(0, 30, width, height);
+            this.firstFrame = new Rectangle(0, 0, 32, 32);
+            this.secondFrame = new Rectangle(32, 0, 32, 32);
             this.currentFrame = this.firstFrame;
             this.scale = scale;
             this.instance = instance;
@@ -111,7 +111,7 @@
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.location, this.currentFrame, Color.White, 0, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(this.texture, this.location, this.currentFrame, Color.White, 0, new Vector2(0, 0), 1, SpriteEffects.None, 0f);
         }
     }
 }

@@ -8,7 +8,7 @@
     {
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private static readonly float updatesPerSecond = 240;
+        private static readonly float updatesPerSecond = 60;
 
         public SpriteBatch SpriteBatch => this.spriteBatch;
 
@@ -75,7 +75,7 @@
             this.link.Draw();
             this.enemyManager.currentEnemy.Draw(this.spriteBatch);
             this.itemManager.currentItem.Draw(this.spriteBatch);
-            this.blockManager.currentBlock.Draw(this.spriteBatch, new Vector2(500, 184), Color.White);
+            this.blockManager.currentBlock.Draw(this.spriteBatch);
             this.entityManager.Draw(this.spriteBatch);
             this.spriteBatch.End();
             base.Draw(gameTime);
