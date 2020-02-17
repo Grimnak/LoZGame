@@ -29,9 +29,9 @@ namespace LoZClone
         private SpriteSheetData rightRopeData = new SpriteSheetData("ropeRight", 25, 25, 2, 1);
 
         private Texture2D gel;
-        private SpriteSheetData gelData = new SpriteSheetData("gel/tealGel", 15, 15, 2, 1);
+        private SpriteSheetData gelData = new SpriteSheetData("tealGel", 15, 15, 2, 1);
         private Texture2D zol;
-        private SpriteSheetData zolData = new SpriteSheetData("xol/grayXol", 25, 25, 2, 1);
+        private SpriteSheetData zolData = new SpriteSheetData("grayXol", 25, 25, 2, 1);
 
         private Texture2D spikeCross;
         private SpriteSheetData spikeCrossData = new SpriteSheetData("spike", 25, 25, 1, 1);
