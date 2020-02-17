@@ -6,7 +6,6 @@ namespace LoZClone
 {
     public class KeyboardController : IController
     {
-        LoZGame game;
         CommandLoader allCommands;
         KeyboardState oldState;
         Dictionary<Keys, ICommand> dict;
@@ -14,9 +13,8 @@ namespace LoZClone
 
         private ICommand currentCommand;
 
-        public KeyboardController(LoZGame game, CommandLoader allCommands)
+        public KeyboardController(CommandLoader allCommands)
         {
-            this.game = game;
             this.allCommands = allCommands;
             oldState = Keyboard.GetState();
             dict = allCommands.getDict;

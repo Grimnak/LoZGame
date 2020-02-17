@@ -34,7 +34,7 @@ namespace LoZClone
             blockManager = new BlockManager();
             entityManager = new EntityManager();
             commandLoader = new CommandLoader(this, link, itemManager, blockManager, entityManager);
-            keyboardController = new KeyboardController(this, commandLoader);
+            keyboardController = new KeyboardController(commandLoader);
             base.Initialize();
         }
         protected override void LoadContent()

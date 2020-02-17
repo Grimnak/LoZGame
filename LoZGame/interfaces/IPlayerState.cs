@@ -11,8 +11,6 @@ namespace LoZClone
         void die();
         void pickupItem(int itemTime);
         void useItem(int waitTime);
-        //void usePrimaryItem();
-        //void useSecondaryItem();
         void Update();
         void Draw();
     }
