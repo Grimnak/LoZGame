@@ -49,7 +49,7 @@
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
             ProjectileSpriteFactory.Instance.LoadAllTextures(this.Content);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
-            this.enemyManager.loadSprites(384, 84);
+            this.enemyManager.loadSprites();
             this.itemManager.loadSprites(384, 184);
             this.blockManager.loadSprites(550, 184);
         }

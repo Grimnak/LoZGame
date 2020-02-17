@@ -44,7 +44,7 @@
             }
 
             this.currentItem = this.itemList[this.currentIndex];
-            this.currentItem.location = this.location;
+            // this.currentItem.location = this.location;
         }
 
         public void cycleRight()
@@ -57,7 +57,7 @@
             }
 
             this.currentItem = this.itemList[this.currentIndex];
-            this.currentItem.location = this.location;
+           // this.currentItem.location = this.location;
         }
 
         public int CurrentIndex

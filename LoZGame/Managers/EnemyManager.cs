@@ -12,7 +12,6 @@ namespace LoZClone
     {
         private List<IEnemy> enemyList;
         public IEnemy currentEnemy;
-        private readonly int locX, locY;
         private int currentIndex;
         private int maxIndex;
         public Vector2 location;
@@ -28,6 +27,7 @@ namespace LoZClone
         {
             this.enemyList.Add(new Dodongo());
             this.enemyList.Add(new Stalfos());
+            this.enemyList.Add(new Goriya());
             this.enemyList.Add(new Dragon());
             this.enemyList.Add(new OldMan());
             this.enemyList.Add(new Merchant());
@@ -39,12 +39,10 @@ namespace LoZClone
             this.enemyList.Add(new Keese());
         }
 
-        public void loadSprites(int xloc, int yloc)
+        public void loadSprites()
         {
             this.LoadEnemies();
             this.currentEnemy = this.enemyList[this.currentIndex];
-            this.location.X = xloc;
-            this.location.Y = yloc;
             foreach (IEnemy sprite in this.enemyList)
             {
                 this.maxIndex++;
@@ -70,15 +68,16 @@ namespace LoZClone
             {
                 this.currentIndex = 0;
             }
+
             this.currentEnemy = this.enemyList[this.currentIndex];
         }
 
         public void clear()
         {
             this.enemyList = new List<IEnemy>();
-            this.loadSprites(this.locX, this.locY);
+            this.loadSprites();
         }
-            
+
         public int CurrentIndex
         {
             get { return this.currentIndex; }

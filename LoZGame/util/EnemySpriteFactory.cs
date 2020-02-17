@@ -7,7 +7,7 @@
     public class EnemySpriteFactory
     {
         private Texture2D stalfos;
-        private readonly SpriteSheetData stalfosData = new SpriteSheetData("stalfos", 25, 25, 2, 1);
+        private readonly SpriteSheetData stalfosData = new SpriteSheetData("stalfos", 30, 35, 2, 1);
 
         private Texture2D downGoriya;
         private readonly SpriteSheetData downGoriyaData = new SpriteSheetData("redGoriyaDown", 25, 30, 2, 1);
@@ -40,9 +40,9 @@
         private readonly SpriteSheetData keeseData = new SpriteSheetData("keese", 20, 20, 2, 1);
 
         private Texture2D dragon;
-        private readonly SpriteSheetData dragonData = new SpriteSheetData("aquamentus", 55, 75, 1, 4);
+        private readonly SpriteSheetData dragonData = new SpriteSheetData("aquamentus", 50, 70, 1, 4);
         private Texture2D damagedDragon;
-        private readonly SpriteSheetData damagedDragonData = new SpriteSheetData("damagedAqua", 55, 75, 1, 4);
+        private readonly SpriteSheetData damagedDragonData = new SpriteSheetData("damagedAqua", 50, 70, 1, 4);
         private Texture2D fireball;
         private readonly SpriteSheetData fireballData = new SpriteSheetData("fireball", 12, 12, 1, 4);
 

@@ -31,6 +31,7 @@ namespace LoZClone
                 {
                     this.currentFrame = 0;
                 }
+
                 this.frameDelay = 0;
             }
         }
