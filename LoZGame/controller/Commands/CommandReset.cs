@@ -12,7 +12,7 @@
         readonly EnemyManager enemy;
         private static readonly int priority = -1;
 
-        public CommandReset(LoZGame game, IPlayer player, ItemManager item, BlockManager block, EntityManager entity, EnemyManager ememy)
+        public CommandReset(LoZGame game, IPlayer player, ItemManager item, BlockManager block, EntityManager entity, EnemyManager enemy)
         {
             this.game = game;
             this.player = player;
