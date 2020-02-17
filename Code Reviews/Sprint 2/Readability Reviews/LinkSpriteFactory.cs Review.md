@@ -10,7 +10,7 @@
 
 ### File Author Name: Garrett Morse
 
-### Time Taken to Review: ## minutes
+### Time Taken to Review: 15 minutes
 
 ###  Comments on What is Readable
 - All similar types of sprites declared in the same location.
