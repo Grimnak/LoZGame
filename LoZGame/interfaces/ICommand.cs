@@ -2,8 +2,8 @@
 {
     public interface ICommand
     {
-        void execute();
-
         int Priority { get; }
+
+        void Execute();
     }
 }

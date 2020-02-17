@@ -8,6 +8,15 @@ namespace LoZClone
         private readonly CommandIdle commandIdle;
         private readonly Dictionary<Keys, ICommand> dictionary;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CommandLoader"/> class.
+        /// </summary>
+        /// <param name="game">Game to pass to a command.</param>
+        /// <param name="player">Player to pass to a command.</param>
+        /// <param name="item">Item manager to pass to a command.</param>
+        /// <param name="block">Block manager to pass to a command.</param>
+        /// <param name="entity">Entity manager to pass to a command.</param>
+        /// <param name="enemy">Enemy manager to pass to a command.</param>
         public CommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block, EntityManager entity, EnemyManager enemy)
         {
             this.dictionary = new Dictionary<Keys, ICommand>();
@@ -47,9 +56,9 @@ namespace LoZClone
             this.dictionary.Add(Keys.R, new CommandReset(game, player, item, block, entity, enemy));
         }
 
-        public ICommand getIdle => this.commandIdle;
+        public ICommand GetIdle => this.commandIdle;
 
-        public Dictionary<Keys, ICommand> getDict => this.dictionary;
+        public Dictionary<Keys, ICommand> GetDict => this.dictionary;
 
     }
 }

@@ -7,8 +7,9 @@
     using System.Threading.Tasks;
     using Microsoft.Xna.Framework.Input;
 
-    class PriorityComparer : IComparer<KeyValuePair<Keys, ICommand>>
+    public class PriorityComparer : IComparer<KeyValuePair<Keys, ICommand>>
     {
+        /// <inheritdoc/>
         public int Compare(KeyValuePair<Keys, ICommand> x, KeyValuePair<Keys, ICommand> y)
         {
             if (x.Value.Priority > y.Value.Priority)

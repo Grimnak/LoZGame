@@ -405,6 +405,7 @@
     </None>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="stylecop.json" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

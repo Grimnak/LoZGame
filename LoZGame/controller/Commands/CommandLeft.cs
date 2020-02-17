@@ -2,19 +2,25 @@
 {
     public class CommandLeft : ICommand
     {
-        readonly IPlayer player;
         private static readonly int PriorityValue = 1;
+        private readonly IPlayer player;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CommandLeft"/> class.
+        /// </summary>
+        /// <param name="player">Player to execute a command on.</param>
         public CommandLeft(IPlayer player)
         {
             this.player = player;
         }
 
-        public void execute()
+        /// <inheritdoc/>
+        public int Priority => PriorityValue;
+
+        /// <inheritdoc/>
+        public void Execute()
         {
             this.player.moveLeft();
         }
-
-        public int Priority => PriorityValue;
     }
 }
