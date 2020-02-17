@@ -59,7 +59,14 @@ Paint
 
 ## Known Bugs:
 ### Movement Stuck:
-    Bug:  After throwing a boomerang - If boomerang key is released, movement key is pressed, boomerang key is re-pressed and movement key is released before the boomerang returns, the player will continue to move in the movement direction until the boomerang key is released
+    Bug:  After throwing a boomerang - 
+    If:
+        - boomerang key is released 
+        - movement key is pressed
+        - boomerang key is re-pressed
+        - movement key is released before the boomerang returns 
+    then: 
+    - the player will continue to move in the movement direction until the boomerang key is released
 
     Plan(s) to fix:  Implement dynamic key priorities
 
