@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class LeftMovingDragonState : IDragonState
+    public class LeftMovingDragonState : IEnemyState
     {
         private readonly Dragon dragon;
         private readonly IEnemySprite sprite;
@@ -14,14 +14,37 @@
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
         }
 
+        public void MoveUp()
+        {
+        }
+
+        public void MoveDown()
+        {
+        }
+
         public void MoveLeft()
         {
-            // Blank b/c already moving left
         }
 
         public void MoveRight()
         {
             this.dragon.CurrentState = new RightMovingDragonState(this.dragon);
+        }
+
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
+        {
         }
 
         public void Stop()

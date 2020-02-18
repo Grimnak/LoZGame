@@ -31,7 +31,30 @@
 
         public void MoveDown()
         {
-            // Blank b/c already moving up
+        }
+
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
+        {
+        }
+
+        public void Attack()
+        {
+        }
+
+        public void Stop()
+        {
         }
 
         public void TakeDamage()

@@ -12,7 +12,19 @@
 
         void MoveDown();
 
+        void MoveUpLeft();
+
+        void MoveDownLeft();
+
+        void MoveUpRight();
+
+        void MoveDownRight();
+
         void TakeDamage();
+
+        void Attack();
+
+        void Stop();
 
         void Die();
 

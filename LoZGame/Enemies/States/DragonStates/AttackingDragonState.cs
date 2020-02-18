@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class AttackingDragonState : IDragonState
+    public class AttackingDragonState : IEnemyState
     {
         private readonly Dragon dragon;
         private readonly IEnemySprite sprite;
@@ -16,6 +16,14 @@
             this.dragon.EntityManager.EnemyProjectileManager.AddFireballs(this.dragon, FireBallScale);
         }
 
+        public void MoveUp()
+        {
+        }
+
+        public void MoveDown()
+        {
+        }
+
         public void MoveLeft()
         {
             this.dragon.CurrentState = new LeftMovingDragonState(this.dragon);
@@ -26,6 +34,22 @@
             this.dragon.CurrentState = new RightMovingDragonState(this.dragon);
         }
 
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
+        {
+        }
+
         public void Stop()
         {
             this.dragon.CurrentState = new IdleDragonState(this.dragon);
@@ -33,7 +57,6 @@
 
         public void Attack()
         {
-            // Blank b/c already attacking
         }
 
         public void TakeDamage()

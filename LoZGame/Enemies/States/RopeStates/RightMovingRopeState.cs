@@ -21,7 +21,6 @@
 
         public void MoveRight()
         {
-            // Blank b/c already moving right
         }
 
         public void MoveUp()
@@ -32,6 +31,30 @@
         public void MoveDown()
         {
             this.rope.CurrentState = new DownMovingRopeState(this.rope);
+        }
+
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
+        {
+        }
+
+        public void Attack()
+        {
+        }
+
+        public void Stop()
+        {
         }
 
         public void TakeDamage()

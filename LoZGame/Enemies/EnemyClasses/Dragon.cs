@@ -6,7 +6,7 @@
 
     public class Dragon : IEnemy
     {
-        private IDragonState currentState;
+        private IEnemyState currentState;
         private int health = 10;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
@@ -119,7 +119,7 @@
             this.currentState.Draw(sb);
         }
 
-        public IDragonState CurrentState
+        public IEnemyState CurrentState
         {
             get { return this.currentState; }
             set { this.currentState = value; }

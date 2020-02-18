@@ -16,7 +16,6 @@
 
         public void MoveLeft()
         {
-            // Blank b/c already moving left
         }
 
         public void MoveRight()
@@ -32,6 +31,30 @@
         public void MoveDown()
         {
             this.gel.CurrentState = new DownMovingGelState(this.gel);
+        }
+
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
+        {
+        }
+
+        public void Attack()
+        {
+        }
+
+        public void Stop()
+        {
         }
 
         public void TakeDamage()
