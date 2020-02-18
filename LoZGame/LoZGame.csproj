@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{46E47923-0B58-4AF1-B7C4-56A26AC679D1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LoZGame</RootNamespace>
+    <AssemblyName>LoZGame</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MonoGamePlatform>Windows</MonoGamePlatform>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Controller\Commands\CommandArrow.cs" />
+    <Compile Include="Controller\Commands\CommandAttackA.cs" />
+    <Compile Include="Controller\Commands\CommandAttackB.cs" />
+    <Compile Include="Controller\Commands\CommandBlockLeft.cs" />
+    <Compile Include="Controller\Commands\CommandBlockRight.cs" />
+    <Compile Include="Controller\Commands\CommandBlueCandle.cs" />
+    <Compile Include="Controller\Commands\CommandBomb.cs" />
+    <Compile Include="Controller\Commands\CommandBoomerang.cs" />
+    <Compile Include="Controller\Commands\CommandDamage.cs" />
+    <Compile Include="Controller\Commands\CommandDown.cs" />
+    <Compile Include="Controller\Commands\CommandEnemyLeft.cs" />
+    <Compile Include="Controller\Commands\CommandEnemyRight.cs" />
+    <Compile Include="Controller\Commands\CommandItemLeft.cs" />
+    <Compile Include="Controller\Commands\CommandItemRight.cs" />
+    <Compile Include="Controller\Commands\CommandLeft.cs" />
+    <Compile Include="Controller\Commands\CommandMagicBoomerang.cs" />
+    <Compile Include="Controller\Commands\CommandQuit.cs" />
+    <Compile Include="Controller\Commands\CommandRedCandle.cs" />
+    <Compile Include="Controller\Commands\CommandReset.cs" />
+    <Compile Include="Controller\Commands\CommandRight.cs" />
+    <Compile Include="Controller\Commands\CommandSilverArrow.cs" />
+    <Compile Include="Controller\Commands\CommandTriforce.cs" />
+    <Compile Include="Controller\Commands\CommandUp.cs" />
+    <Compile Include="Controller\Commands\CommandIdle.cs" />
+    <Compile Include="Controller\Commands\CommandLoader.cs" />
+    <Compile Include="Controller\KeyboardController.cs" />
+    <Compile Include="Controller\PriorityComparer.cs" />
+    <Compile Include="Enemies\EnemyClasses\Dodongo.cs" />
+    <Compile Include="Enemies\EnemyClasses\Dragon.cs" />
+    <Compile Include="Enemies\EnemyClasses\Gel.cs" />
+    <Compile Include="Enemies\EnemyClasses\Goriya.cs" />
+    <Compile Include="Enemies\EnemyClasses\Keese.cs" />
+    <Compile Include="Enemies\EnemyClasses\Merchant.cs" />
+    <Compile Include="Enemies\EnemyClasses\OldMan.cs" />
+    <Compile Include="Enemies\EnemyClasses\Rope.cs" />
+    <Compile Include="Enemies\EnemyClasses\SpikeCross.cs" />
+    <Compile Include="Enemies\EnemyClasses\Stalfos.cs" />
+    <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
+    <Compile Include="Enemies\EnemyClasses\Zol.cs" />
+    <Compile Include="Enemies\EnemySprites\DeadEnemySprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dodongo\DodongoDownSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dodongo\DodongoLeftSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dodongo\DodongoRightSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dodongo\DodongoUpSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dragon\DragonDamagedSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dragon\DragonSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Dragon\FireballSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Gel\GelSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Goriya\GoriyaDownSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Goriya\GoriyaLeftSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Goriya\GoriyaRightSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Goriya\GoriyaUpSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Keese\KeeseSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\NPCs\MerchantSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\NPCs\OldManSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Rope\RopeLeftSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Rope\RopeRightSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\SpawnEnemySprite.cs" />
+    <Compile Include="Enemies\EnemySprites\SpikeCross\SpikeCrossSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Stalfos\StalfosSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\WallMaster\WallMasterLeftSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\WallMaster\WallMasterRightSprite.cs" />
+    <Compile Include="Enemies\EnemySprites\Zol\ZolSprite.cs" />
+    <Compile Include="Enemies\States\DodongoStates\DeadDodongoState.cs" />
+    <Compile Include="Enemies\States\DodongoStates\DownMovingDodongoState.cs" />
+    <Compile Include="Enemies\States\DodongoStates\LeftMovingDodongoState.cs" />
+    <Compile Include="Enemies\States\DodongoStates\RightMovingDodongoState.cs" />
+    <Compile Include="Enemies\States\DodongoStates\UpMovingDodongoState.cs" />
+    <Compile Include="Enemies\States\DragonStates\AttackingDragonState.cs" />
+    <Compile Include="Enemies\States\DragonStates\DeadDragonState.cs" />
+    <Compile Include="Enemies\States\DragonStates\IdleDragonState.cs" />
+    <Compile Include="Enemies\States\DragonStates\LeftMovingDragonState.cs" />
+    <Compile Include="Enemies\States\DragonStates\RightMovingDragonState.cs" />
+    <Compile Include="Enemies\States\GelStates\DeadGelState.cs" />
+    <Compile Include="Enemies\States\GelStates\DownMovingGelState.cs" />
+    <Compile Include="Enemies\States\GelStates\LeftMovingGelState.cs" />
+    <Compile Include="Enemies\States\GelStates\RightMovingGelState.cs" />
+    <Compile Include="Enemies\States\GelStates\UpMovingGelState.cs" />
+    <Compile Include="Enemies\States\GoriyaStates\AttackingGoriyaState.cs" />
+    <Compile Include="Enemies\States\GoriyaStates\DeadGoriyaState.cs" />
+    <Compile Include="Enemies\States\GoriyaStates\DownMovingGoriyaState.cs" />
+    <Compile Include="Enemies\States\GoriyaStates\LeftMovingGoriyaState.cs" />
+    <Compile Include="Enemies\States\GoriyaStates\RightMovingGoriyaState.cs" />
+    <Compile Include="Enemies\States\GoriyaStates\UpMovingGoriyaState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\DeadKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\DownLeftMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\DownMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\DownRightMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\LeftMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\RightMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\UpLeftMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\UpMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\KeeseStates\UpRightMovingKeeseState.cs" />
+    <Compile Include="Enemies\States\RopeStates\DeadRopeState.cs" />
+    <Compile Include="Enemies\States\RopeStates\DownMovingRopeState.cs" />
+    <Compile Include="Enemies\States\RopeStates\LeftMovingRopeState.cs" />
+    <Compile Include="Enemies\States\RopeStates\RightMovingRopeState.cs" />
+    <Compile Include="Enemies\States\RopeStates\UpMovingRopeState.cs" />
+    <Compile Include="Enemies\States\SpikeCrossStates\DownMovingSpikeCrossState.cs" />
+    <Compile Include="Enemies\States\SpikeCrossStates\IdleSpikeCrossState.cs" />
+    <Compile Include="Enemies\States\SpikeCrossStates\LeftMovingSpikeCrossState.cs" />
+    <Compile Include="Enemies\States\SpikeCrossStates\RightMovingSpikeCrossState.cs" />
+    <Compile Include="Enemies\States\SpikeCrossStates\UpMovingSpikeCrossState.cs" />
+    <Compile Include="Enemies\States\StalfosStates\DeadStalfosState.cs" />
+    <Compile Include="Enemies\States\StalfosStates\DownMovingStalfosState.cs" />
+    <Compile Include="Enemies\States\StalfosStates\LeftMovingStalfosState.cs" />
+    <Compile Include="Enemies\States\StalfosStates\RightMovingStalfosState.cs" />
+    <Compile Include="Enemies\States\StalfosStates\UpMovingStalfosState.cs" />
+    <Compile Include="Enemies\States\WallMasterStates\DeadWallMasterState.cs" />
+    <Compile Include="Enemies\States\WallMasterStates\DownMovingWallMasterState.cs" />
+    <Compile Include="Enemies\States\WallMasterStates\LeftMovingWallMasterState.cs" />
+    <Compile Include="Enemies\States\WallMasterStates\RightMovingWallMasterState.cs" />
+    <Compile Include="Enemies\States\WallMasterStates\UpMovingWallMasterState.cs" />
+    <Compile Include="Enemies\States\ZolStates\DeadZolState.cs" />
+    <Compile Include="Enemies\States\ZolStates\DownMovingZolState.cs" />
+    <Compile Include="Enemies\States\ZolStates\LeftMovingZolState.cs" />
+    <Compile Include="Enemies\States\ZolStates\RightMovingZolState.cs" />
+    <Compile Include="Enemies\States\ZolStates\UpMovingZolState.cs" />
+    <Compile Include="Interfaces\IBlockSprite.cs" />
+    <Compile Include="Interfaces\IItemSprite.cs" />
+    <Compile Include="Interfaces\IProjectile.cs" />
+    <Compile Include="Managers\EnemyManager.cs" />
+    <Compile Include="Managers\EntityManager.cs" />
+    <Compile Include="Managers\ExplosionManager.cs" />
+    <Compile Include="Managers\ItemManager.cs" />
+    <Compile Include="Managers\BlockManager.cs" />
+    <Compile Include="Managers\EnemyProjectileManager.cs" />
+    <Compile Include="Managers\ProjectileManager.cs" />
+    <Compile Include="Managers\ProjectileType.cs" />
+    <Compile Include="Player\PlayerStates\PickupItemState.cs" />
+    <Compile Include="Player\PlayerStates\UseItemState.cs" />
+    <Compile Include="Player\PlayerStates\DieState.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\BasementBrickTileSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\EnemyDeathExplosionSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\EnemySpawnSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\HorizontalBricksSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\LadderTileSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\OrangeMovableSquareSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\SpottedTileSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\VerticalBricksSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\WaterTileSprite.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Arrow.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\BlueCandle.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\BlueRing.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Bomb.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Boomerang.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Bow.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Clock.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Compass.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\EmptyHeart.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Fairy.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Flute.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Food.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\FullHeart.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\HalfHeart.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Health.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\HeartContainer.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Key.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Letter.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\LifePotion.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\MagicBook.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\MagicBoomerang.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\MagicKey.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\MagicRod.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\MagicShield.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\MagicSword.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Map.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\PowerBracelet.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Raft.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\RedCandle.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\RedRing.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Rupee.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\SecondPotion.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\SilverArrow.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\StepLadder.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\TriForce.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\WhiteSword.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\WoodenSword.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\YellowRupee.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkDieSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkPickupItemSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemDownSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemLeftSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemRightSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkUseItemUpSprite.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BombExplosion.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BoomerangEnemy.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\MagicBoomerangEnemy.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamExplosion.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\TriforceProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BlueCandleProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\RedCandleProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BombProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\MagicBoomerangProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\SilverArrowProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\BoomerangProjectile.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\ArrowProjectile.cs" />
+    <Compile Include="util\ProjectileSpriteFactory.cs" />
+    <Compile Include="util\ItemSpriteFactory.cs" />
+    <Compile Include="util\LinkSpriteFactory.cs" />
+    <Compile Include="util\BlockSpriteFactory.cs" />
+    <Compile Include="LoZGame.cs" />
+    <Compile Include="Interfaces\IController.cs" />
+    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Interfaces\IPlayerState.cs" />
+    <Compile Include="Interfaces\IEnemy.cs" />
+    <Compile Include="Interfaces\IEnemySprite.cs" />
+    <Compile Include="Interfaces\IEnemyState.cs" />
+    <Compile Include="Interfaces\IPlayer.cs" />
+    <Compile Include="Interfaces\ISprite.cs" />
+    <Compile Include="Player\PlayerStates\AttackState.cs" />
+    <Compile Include="Player\PlayerStates\NullState.cs" />
+    <Compile Include="Player\PlayerStates\MoveRightState.cs" />
+    <Compile Include="Player\PlayerStates\MoveLeftState.cs" />
+    <Compile Include="Player\PlayerStates\MoveDownState.cs" />
+    <Compile Include="Player\PlayerStates\MoveUpState.cs" />
+    <Compile Include="Player\PlayerStates\IdleState.cs" />
+    <Compile Include="Player\Link.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="util\SpriteSheetData.cs" />
+    <Compile Include="util\EnemySpriteFactory.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkAttackRightSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkAttackLeftSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkAttackUpSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkAttackDownSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkMoveDownSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkMoveLeftSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkMoveRightSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkMoveUpSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkIdleUpSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkIdleDownSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkIdleLeftSprite.cs" />
+    <Compile Include="Sprites\LinkSpriteClasses\LinkIdleRightSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\BombedOpeningDownSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\BombedOpeningUpSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\BombedOpeningLeftSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\BombedOpeningRightSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\DoorDownSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\DoorLeftSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\DoorRightSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\DoorUpSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\FloorTileSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\GapTileSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\MovableSquareSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\FireSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\StairsSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\BlueStatueLeftSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\BlueStatueRightSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\TurquoiseStatueRightSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\TurquoiseStatueLeftSprite.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\lib\net45\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct2D1.4.2.0\lib\net45\SharpDX.Direct2D1.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D11, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct3D11.4.2.0\lib\net45\SharpDX.Direct3D11.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D9, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct3D9.4.2.0\lib\net45\SharpDX.Direct3D9.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DXGI, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.DXGI.4.2.0\lib\net45\SharpDX.DXGI.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Mathematics, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Mathematics.4.2.0\lib\net45\SharpDX.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.MediaFoundation, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.MediaFoundation.4.2.0\lib\net45\SharpDX.MediaFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XAudio2, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.XAudio2.4.2.0\lib\net45\SharpDX.XAudio2.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XInput, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.XInput.4.2.0\lib\net45\SharpDX.XInput.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="Content\Content.mgcb" />
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\SDL2.dll">
+      <Link>x86\SDL2.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\SDL2.dll">
+      <Link>x64\SDL2.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\soft_oal.dll">
+      <Link>x86\soft_oal.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\soft_oal.dll">
+      <Link>x64\soft_oal.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\libSDL2-2.0.so.0">
+      <Link>x86\libSDL2-2.0.so.0</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\libSDL2-2.0.so.0">
+      <Link>x64\libSDL2-2.0.so.0</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x86\libopenal.so.1">
+      <Link>x86\libopenal.so.1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\x64\libopenal.so.1">
+      <Link>x64\libopenal.so.1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\libSDL2-2.0.0.dylib">
+      <Link>libSDL2-2.0.0.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\libopenal.1.dylib">
+      <Link>libopenal.1.dylib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll.config">
+      <Link>MonoGame.Framework.dll.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="stylecop.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Import Project="..\packages\MonoGame.Framework.DesktopGL.Core.3.8.0.2\build\MonoGame.Framework.DesktopGL.Core.targets" Condition="Exists('..\packages\MonoGame.Framework.DesktopGL.Core.3.8.0.2\build\MonoGame.Framework.DesktopGL.Core.targets')" />
+  <Import Project="..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets" Condition="Exists('..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets')" />
+  <Import Project="..\packages\MonoGame.Content.Builder.3.7.0.9\build\MonoGame.Content.Builder.targets" Condition="Exists('..\packages\MonoGame.Content.Builder.3.7.0.9\build\MonoGame.Content.Builder.targets')" />
+  <Import Project="..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets" Condition="Exists('..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets'))" />
+  </Target>
+</Project>
