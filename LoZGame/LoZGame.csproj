@@ -80,6 +80,10 @@
     <Compile Include="Controller\Commands\CommandRedCandle.cs" />
     <Compile Include="Controller\Commands\CommandReset.cs" />
     <Compile Include="Controller\Commands\CommandRight.cs" />
+    <Compile Include="Controller\Commands\CommandRoomDown.cs" />
+    <Compile Include="Controller\Commands\CommandRoomLeft.cs" />
+    <Compile Include="Controller\Commands\CommandRoomRight.cs" />
+    <Compile Include="Controller\Commands\CommandRoomUp.cs" />
     <Compile Include="Controller\Commands\CommandSilverArrow.cs" />
     <Compile Include="Controller\Commands\CommandTriforce.cs" />
     <Compile Include="Controller\Commands\CommandUp.cs" />

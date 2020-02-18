@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using System;
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -14,7 +15,8 @@
 
         private IPlayer link;
         private KeyboardCommandLoader keyboardCommandLoader;
-        private IController keyboardController;
+        private MouseCommandLoader mouseCommandLoader;
+        private List<IController> controllers;
         private ItemManager itemManager;
         private EntityManager entityManager;
         private BlockManager blockManager;
@@ -36,7 +38,10 @@
             this.itemManager = new ItemManager();
             this.blockManager = new BlockManager();
             this.keyboardCommandLoader = new KeyboardCommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
-            this.keyboardController = new KeyboardController(this.keyboardCommandLoader);
+            this.mouseCommandLoader = new MouseCommandLoader();
+            this.controllers = new List<IController>();
+            this.controllers.Add(new KeyboardController(this.keyboardCommandLoader));
+            this.controllers.Add(new MouseController(this.mouseCommandLoader));
             base.Initialize();
         }
 
@@ -59,7 +64,11 @@
 
         protected override void Update(GameTime gameTime)
         {
-            this.keyboardController.Update();
+            foreach (IController controller in this.controllers)
+            {
+                controller.Update();
+            }
+
             this.link.Update();
             this.enemyManager.CurrentEnemy.Update();
             this.itemManager.CurrentItem.Update();
