@@ -86,7 +86,6 @@ namespace LoZClone
             spriteBatch.Draw(this.linkSprite, linkDstRectangle, linkSrcRectangle, spriteTint);
 
             spriteBatch.Draw(this.itemSprite, itemDstRectangle, itemSrcRectangle, spriteTint);
-
         }
     }
 }

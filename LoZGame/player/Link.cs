@@ -117,7 +117,7 @@
         }
 
         // This handleBounds method will not remain here past Sprint 2.  This is a form of "collision handling" just so Link will stay in bounds.
-        private void handleBounds()
+        private void HandleBounds()
         {
             if (this.currentLocation.X + 30 > this.game.GraphicsDevice.Viewport.Width)
             {
@@ -195,7 +195,7 @@
         public void Update()
         {
             this.handleDamage();
-            this.handleBounds();
+            this.HandleBounds();
 
             this.playerState.Update();
         }

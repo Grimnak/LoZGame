@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class DownMovingStalfosState : IEnemyState
     {
         private readonly Stalfos stalfos;
@@ -15,49 +14,49 @@ namespace LoZClone
             this.sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
             this.stalfos.CurrentState = new LeftMovingStalfosState(this.stalfos);
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
             this.stalfos.CurrentState = new RightMovingStalfosState(this.stalfos);
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
             this.stalfos.CurrentState = new UpMovingStalfosState(this.stalfos);
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
             // Blank b/c already moving down
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
             this.stalfos.Health--;
             if (this.stalfos.Health-- == 0)
             {
-                this.stalfos.CurrentState.die();
+                this.stalfos.CurrentState.Die();
             }
         }
 
-        public void die()
+        public void Die()
         {
             this.stalfos.CurrentState = new DeadStalfosState(this.stalfos);
         }
 
         public void Update()
         {
-            this.stalfos.currentLocation = new Vector2(this.stalfos.currentLocation.X, this.stalfos.currentLocation.Y + 1);
+            this.stalfos.CurrentLocation = new Vector2(this.stalfos.CurrentLocation.X, this.stalfos.CurrentLocation.Y + 1);
             this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.stalfos.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.stalfos.CurrentLocation, Color.White);
         }
     }
 }

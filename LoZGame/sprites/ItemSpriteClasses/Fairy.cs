@@ -1,25 +1,21 @@
 ﻿namespace LoZClone
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     // Class to handle the completely stationary sprite
-    class Fairy : IItemSprite
+    internal class Fairy : IItemSprite
     {
-        private static readonly int directionChange = 40;
-        private static readonly int frameChange = 10;
+        private static readonly int DirectionChange = 40;
+        private static readonly int FrameChange = 10;
         private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle firstFrame;   // frames
         private Rectangle secondFrame;
         private Rectangle currentFrame; // frame to draw
         private readonly int scale;
 
-        private enum direction
+        private enum Direction
         {
             North,
             South,
@@ -31,9 +27,9 @@
             SouthWest,
         }
 
-        private direction currentDirection;
+        private Direction currentDirection;
 
-        public Vector2 location { get; set; }
+        public Vector2 Location { get; set; }
 
         private int lifeTime;
 
@@ -45,75 +41,83 @@
             this.currentFrame = this.firstFrame;
             this.lifeTime = 0;
             this.scale = scale;
-            this.location = loc;
-            this.getNewDirection();
+            this.Location = loc;
+            this.GetNewDirection();
         }
 
-        private void getNewDirection()
+        private void GetNewDirection()
         {
             Random randomselect = new Random();
-            this.currentDirection = (direction)randomselect.Next(0, 8);
+            this.currentDirection = (Direction)randomselect.Next(0, 8);
         }
 
-        private void updateLoc()
+        private void UpdateLoc()
         {
             switch (this.currentDirection)
             {
-                case direction.North:
-                    this.location = new Vector2(this.location.X, this.location.Y - 1);
+                case Direction.North:
+                    this.Location = new Vector2(this.Location.X, this.Location.Y - 1);
                     break;
-                case direction.South:
-                    this.location = new Vector2(this.location.X, this.location.Y + 1);
+
+                case Direction.South:
+                    this.Location = new Vector2(this.Location.X, this.Location.Y + 1);
                     break;
-                case direction.East:
-                    this.location = new Vector2(this.location.X + 1, this.location.Y);
+
+                case Direction.East:
+                    this.Location = new Vector2(this.Location.X + 1, this.Location.Y);
                     break;
-                case direction.West:
-                    this.location = new Vector2(this.location.X - 1, this.location.Y);
+
+                case Direction.West:
+                    this.Location = new Vector2(this.Location.X - 1, this.Location.Y);
                     break;
-                case direction.NorthEast:
-                    this.location = new Vector2(this.location.X + 1, this.location.Y - 1);
+
+                case Direction.NorthEast:
+                    this.Location = new Vector2(this.Location.X + 1, this.Location.Y - 1);
                     break;
-                case direction.NorthWest:
-                    this.location = new Vector2(this.location.X - 1, this.location.Y - 1);
+
+                case Direction.NorthWest:
+                    this.Location = new Vector2(this.Location.X - 1, this.Location.Y - 1);
                     break;
-                case direction.SouthEast:
-                    this.location = new Vector2(this.location.X + 1, this.location.Y + 1);
+
+                case Direction.SouthEast:
+                    this.Location = new Vector2(this.Location.X + 1, this.Location.Y + 1);
                     break;
-                case direction.SouthWest:
-                    this.location = new Vector2(this.location.X - 1, this.location.Y + 1);
+
+                case Direction.SouthWest:
+                    this.Location = new Vector2(this.Location.X - 1, this.Location.Y + 1);
                     break;
+
                 default:
                     break;
             }
 
-            this.checkBorder();
+            this.CheckBorder();
         }
 
-        private void checkBorder()
+        private void CheckBorder()
         {
-            if (this.location.Y < 0)
+            if (this.Location.Y < 0)
             {
-                this.location = new Vector2(this.location.X, 0);
-                this.lifeTime = directionChange + 1;
+                this.Location = new Vector2(this.Location.X, 0);
+                this.lifeTime = DirectionChange + 1;
             }
 
-            if (this.location.Y > 480 - this.currentFrame.Height * this.scale)
+            if (this.Location.Y > 480 - (this.currentFrame.Height * this.scale))
             {
-                this.location = new Vector2(this.location.X, 480 - this.currentFrame.Height * this.scale);
-                this.lifeTime = directionChange + 1;
+                this.Location = new Vector2(this.Location.X, 480 - (this.currentFrame.Height * this.scale));
+                this.lifeTime = DirectionChange + 1;
             }
 
-            if (this.location.X < 0)
+            if (this.Location.X < 0)
             {
-                this.location = new Vector2(0, this.location.Y);
-                this.lifeTime = directionChange + 1;
+                this.Location = new Vector2(0, this.Location.Y);
+                this.lifeTime = DirectionChange + 1;
             }
 
-            if (this.location.X > 800 - this.currentFrame.Width * this.scale)
+            if (this.Location.X > 800 - (this.currentFrame.Width * this.scale))
             {
-                this.location = new Vector2(800 - this.currentFrame.Width * this.scale, this.location.Y);
-                this.lifeTime = directionChange + 1;
+                this.Location = new Vector2(800 - (this.currentFrame.Width * this.scale), this.Location.Y);
+                this.lifeTime = DirectionChange + 1;
             }
         }
 
@@ -132,14 +136,14 @@
         public void Update()
         {
             this.lifeTime++;
-            this.updateLoc();
-            if (this.lifeTime > directionChange)
+            this.UpdateLoc();
+            if (this.lifeTime > DirectionChange)
             {
-                this.getNewDirection();
+                this.GetNewDirection();
                 this.lifeTime = 0;
             }
 
-            if (this.lifeTime % frameChange == 0)
+            if (this.lifeTime % FrameChange == 0)
             {
                 this.nextFrame();
             }
@@ -147,7 +151,7 @@
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.location, this.currentFrame, Color.White, 0, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(this.texture, this.Location, this.currentFrame, Color.White, 0, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
         }
     }
 }

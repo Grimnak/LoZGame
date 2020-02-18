@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class DeadZolState : IEnemyState
     {
         private readonly Zol zol;
@@ -15,27 +14,27 @@ namespace LoZClone
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
         }
 
-        public void moveLeft()
-        { 
-        }
-
-        public void moveRight()
+        public void MoveLeft()
         {
         }
 
-        public void moveUp()
+        public void MoveRight()
         {
         }
 
-        public void moveDown()
+        public void MoveUp()
         {
         }
 
-        public void takeDamage()
-        { 
+        public void MoveDown()
+        {
         }
 
-        public void die()
+        public void TakeDamage()
+        {
+        }
+
+        public void Die()
         {
         }
 
@@ -46,7 +45,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.zol.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.zol.CurrentLocation, Color.White);
         }
     }
 }

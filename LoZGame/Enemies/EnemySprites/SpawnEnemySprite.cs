@@ -1,13 +1,15 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class SpawnEnemySprite : ISprite
     {
         private readonly Texture2D spriteSheet;
-        private readonly int spriteSheetRows, spriteSheetColumns;
-        private readonly int spriteSheetWidth, spriteSheetHeight;
+        private readonly int spriteSheetRows;
+        private readonly int spriteSheetColumns;
+        private readonly int spriteSheetWidth;
+        private readonly int spriteSheetHeight;
         private int currentFrame = 0;
         private int frameDelay = 0;
         private readonly int frameDelayMax = 5;
@@ -31,6 +33,7 @@ namespace LoZClone
                 {
                     this.currentFrame = 0;
                 }
+
                 this.frameDelay = 0;
             }
         }

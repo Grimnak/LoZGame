@@ -23,7 +23,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.enemy.cycleLeft();
+            this.enemy.CycleLeft();
         }
     }
 }

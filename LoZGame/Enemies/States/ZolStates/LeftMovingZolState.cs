@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class LeftMovingZolState : IEnemyState
     {
         private readonly Zol zol;
@@ -15,49 +14,49 @@ namespace LoZClone
             this.sprite = EnemySpriteFactory.Instance.CreateZolSprite();
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
             // Blank b/c already moving left
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
             this.zol.CurrentState = new RightMovingZolState(this.zol);
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
             this.zol.CurrentState = new UpMovingZolState(this.zol);
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
             this.zol.CurrentState = new DownMovingZolState(this.zol);
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
             this.zol.Health--;
             if (this.zol.Health == 0)
             {
-                this.zol.CurrentState.die();
+                this.zol.CurrentState.Die();
             }
         }
 
-        public void die()
+        public void Die()
         {
             this.zol.CurrentState = new DeadZolState(this.zol);
         }
 
         public void Update()
         {
-            this.zol.currentLocation = new Vector2(this.zol.currentLocation.X - 1, this.zol.currentLocation.Y);
+            this.zol.CurrentLocation = new Vector2(this.zol.CurrentLocation.X - 1, this.zol.CurrentLocation.Y);
             this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.zol.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.zol.CurrentLocation, Color.White);
         }
     }
 }

@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class UpMovingGoriyaState : IGoriyaState
     {
         private readonly Goriya goriya;
@@ -15,54 +14,54 @@ namespace LoZClone
             this.sprite = EnemySpriteFactory.Instance.CreateUpMovingGoriyaSprite();
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
             this.goriya.CurrentState = new LeftMovingGoriyaState(this.goriya);
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
             this.goriya.CurrentState = new RightMovingGoriyaState(this.goriya);
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
             // Blank b/c already moving down
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
             this.goriya.CurrentState = new DownMovingGoriyaState(this.goriya);
         }
 
-        public void attack()
+        public void Attack()
         {
             this.goriya.CurrentState = new AttackingGoriyaState(this.goriya);
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
             this.goriya.Health--;
             if (this.goriya.Health == 0)
             {
-                this.goriya.CurrentState.die();
+                this.goriya.CurrentState.Die();
             }
         }
 
-        public void die()
+        public void Die()
         {
             this.goriya.CurrentState = new DeadGoriyaState(this.goriya);
         }
 
         public void Update()
         {
-            this.goriya.currentLocation = new Vector2(this.goriya.currentLocation.X, this.goriya.currentLocation.Y - 1);
+            this.goriya.CurrentLocation = new Vector2(this.goriya.CurrentLocation.X, this.goriya.CurrentLocation.Y - 1);
             this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.goriya.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.goriya.CurrentLocation, Color.White);
         }
     }
 }

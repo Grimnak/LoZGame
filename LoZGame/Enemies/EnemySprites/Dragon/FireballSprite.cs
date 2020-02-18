@@ -1,8 +1,8 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class FireballSprite
     {
         public bool IsExpired => this.expired;
@@ -19,7 +19,7 @@ namespace LoZClone
         private readonly int instance;
         private bool expired;
         private int currentFrame = 0;
-        private int scale; 
+        private readonly int scale;
         private readonly int frameDelayMax = 7;
         private Vector2 location;
         private readonly int xVelocity = -7;
@@ -54,6 +54,7 @@ namespace LoZClone
             {
                 this.expired = true;
             }
+
             if (this.lifeTime % this.frameDelayMax == 0)
             {
                 this.currentFrame++;
@@ -74,7 +75,7 @@ namespace LoZClone
             int column = this.currentFrame % this.spriteSheetColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)this.location.X, (int)this.location.Y, this.spriteSheetWidth*scale, this.spriteSheetHeight*scale);
+            Rectangle destinationRectangle = new Rectangle((int)this.location.X, (int)this.location.Y, this.spriteSheetWidth * scale, this.spriteSheetHeight * scale);
 
             spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
         }

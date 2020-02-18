@@ -1,10 +1,9 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    interface IProjectile
+    internal interface IProjectile
     {
         bool IsExpired { get; }
 
@@ -12,11 +11,10 @@
 
         bool IsHostile { get; }
 
-        Vector2 location { get; }
+        Vector2 Location { get; }
 
         void Update();
 
         void Draw(SpriteBatch spriteBatch);
-
     }
 }

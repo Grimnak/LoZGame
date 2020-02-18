@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class DeadKeeseState : IKeeseState
     {
         private readonly Keese keese;
@@ -15,43 +14,43 @@ namespace LoZClone
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
         }
 
-        public void moveUpLeft()
+        public void MoveUpLeft()
         {
         }
 
-        public void moveUpRight()
+        public void MoveUpRight()
         {
         }
 
-        public void moveDownLeft()
+        public void MoveDownLeft()
         {
         }
 
-        public void moveDownRight()
+        public void MoveDownRight()
         {
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
         }
 
-        public void die()
+        public void Die()
         {
         }
 
@@ -62,7 +61,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.keese.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.keese.CurrentLocation, Color.White);
         }
     }
 }

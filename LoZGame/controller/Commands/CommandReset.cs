@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+
     /// <summary>
     /// Command that makes the game reset to a default state.
     /// </summary>
@@ -48,15 +49,15 @@
             this.player.CurrentTint = Color.White;
 
             this.item.CurrentIndex = 1;
-            this.item.cycleLeft();
-            this.item.currentItem.location = new Vector2(384, 184);
+            this.item.CycleLeft();
+            this.item.CurrentItem.Location = new Vector2(384, 184);
 
             this.enemy.Clear();
 
             this.entity.Clear();
 
             this.block.CurrentIndex = 1;
-            this.block.cycleLeft();
+            this.block.CycleLeft();
         }
     }
 }

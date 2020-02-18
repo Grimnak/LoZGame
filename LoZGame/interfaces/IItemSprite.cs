@@ -5,7 +5,7 @@
 
     public interface IItemSprite
     {
-        Vector2 location { get; set; }
+        Vector2 Location { get; set; }
 
         void Update();
 

@@ -1,17 +1,12 @@
 ﻿namespace LoZClone
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    class SwordBeamExplosion : IProjectile
+    internal class SwordBeamExplosion : IProjectile
     {
-        private static readonly int width = 10;
-        private static readonly int height = 12;
+        private static readonly int Width = 10;
+        private static readonly int Height = 12;
 
         private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle frameOne;
@@ -19,8 +14,8 @@
         private Rectangle frameThree;
         private Rectangle frameFour;
         private Rectangle currentFrame;
-        readonly int dX;
-        readonly int dY;
+        private readonly int dX;
+        private readonly int dY;
         private int lifeTime;
         private readonly int scale;
         private readonly string direction;
@@ -29,29 +24,29 @@
         private bool expired;
         private readonly SpriteEffects effect;
 
-        public Vector2 location { get; set; }
+        public Vector2 Location { get; set; }
 
         private readonly bool hostile;
 
         public bool IsHostile => this.hostile;
 
-        private static readonly int frameDelay = 4;
-        private static readonly float speed = (float)2.5;
-        private static readonly int maxLifeTime = 60;
+        private static readonly int FrameDelay = 4;
+        private static readonly float Speed = 2.5F;
+        private static readonly int MaxLifeTime = 60;
 
         public SwordBeamExplosion(Texture2D texture, Vector2 location, string direction, int scale, int instance)
         {
-            location = new Vector2(location.X - width * scale, location.Y - height * scale);
+            location = new Vector2(location.X - (Width * scale), location.Y - (Height * scale));
             this.texture = texture;
-            this.frameOne = new Rectangle(0, 0, width, height);
-            this.frameTwo = new Rectangle(0, 12, width, height);
-            this.frameThree = new Rectangle(0, 24, width, height);
-            this.frameFour = new Rectangle(0, 36, width, height);
+            this.frameOne = new Rectangle(0, 0, Width, Height);
+            this.frameTwo = new Rectangle(0, 12, Width, Height);
+            this.frameThree = new Rectangle(0, 24, Width, Height);
+            this.frameFour = new Rectangle(0, 36, Width, Height);
             this.currentFrame = this.frameOne;
-            this.lifeTime = maxLifeTime;
+            this.lifeTime = MaxLifeTime;
             this.scale = scale;
             this.direction = direction;
-            this.location = new Vector2(location.X, location.Y);
+            this.Location = new Vector2(location.X, location.Y);
             if (this.direction.Equals("NorthEast"))
             {
                 this.effect = SpriteEffects.FlipHorizontally;
@@ -68,7 +63,7 @@
             }
             else if (this.direction.Equals("SouthEast"))
             {
-                this.location = new Vector2(this.location.X + width * scale, this.location.Y + height * scale);
+                this.Location = new Vector2(this.Location.X + (Width * scale), this.Location.Y + (Height * scale));
                 this.effect = SpriteEffects.None;
                 this.rotation = MathHelper.Pi;
                 this.dX = 1;
@@ -91,7 +86,7 @@
 
         public int Instance => this.instance;
 
-        private void nextFrame()
+        private void NextFrame()
         {
             if (this.currentFrame == this.frameOne)
             {
@@ -114,9 +109,9 @@
         public void Update()
         {
             this.lifeTime--;
-            if (this.lifeTime % frameDelay == 0)
+            if (this.lifeTime % FrameDelay == 0)
             {
-                this.nextFrame();
+                this.NextFrame();
             }
 
             if (this.lifeTime <= 0)
@@ -124,12 +119,12 @@
                 this.expired = true;
             }
 
-            this.location = new Vector2(this.location.X + (this.dX * speed), this.location.Y + (this.dY * speed));
+            this.Location = new Vector2(this.Location.X + (this.dX * Speed), this.Location.Y + (this.dY * Speed));
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.location, this.currentFrame, Color.White, this.rotation, new Vector2(0, 0), this.scale, this.effect, 0f);
+            spriteBatch.Draw(this.texture, this.Location, this.currentFrame, Color.White, this.rotation, new Vector2(0, 0), this.scale, this.effect, 0f);
         }
     }
 }

@@ -1,19 +1,14 @@
 ﻿namespace LoZClone
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    class ArrowProjectile : IProjectile
+    internal class ArrowProjectile : IProjectile
     {
-        private static readonly int travelRate = 7;
-        private static readonly int linkSize = 32;
-        private static readonly int width = 5;
-        private static readonly int height = 16;
+        private static readonly int TravelRate = 7;
+        private static readonly int LinkSize = 32;
+        private static readonly int Width = 5;
+        private static readonly int Height = 16;
 
         private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -31,7 +26,7 @@
 
         public bool IsHostile => this.hostile;
 
-        public Vector2 location { get; set; }
+        public Vector2 Location { get; set; }
 
         public ArrowProjectile(Texture2D texture, Vector2 loc, string direction, int scale, int instance)
         {
@@ -43,31 +38,31 @@
             this.hostile = false;
             this.instance = instance;
             this.expired = false;
-            this.origin = new Vector2(width * scale / 2, height * scale / 2);
+            this.origin = new Vector2(Width * scale / 2, Height * scale / 2);
             if (this.direction.Equals("Up"))
             {
-                this.location = new Vector2(loc.X - ((width * scale) - linkSize), loc.Y);
+                this.Location = new Vector2(loc.X - ((Width * scale) - LinkSize), loc.Y);
                 this.rotation = 0;
                 this.dX = 0;
                 this.dY = -1;
             }
             else if (this.direction.Equals("Left"))
             {
-                this.location = new Vector2(loc.X, loc.Y - ((width * scale) - linkSize) / 2);
+                this.Location = new Vector2(loc.X, loc.Y - (((Width * scale) - LinkSize) / 2));
                 this.rotation = -1 * MathHelper.PiOver2;
                 this.dX = -1;
                 this.dY = 0;
             }
             else if (this.direction.Equals("Right"))
             {
-                this.location = new Vector2(loc.X + linkSize, loc.Y - ((width * scale) - linkSize));
+                this.Location = new Vector2(loc.X + LinkSize, loc.Y - ((Width * scale) - LinkSize));
                 this.rotation = MathHelper.PiOver2;
                 this.dX = 1;
                 this.dY = 0;
             }
             else
             {
-                this.location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y + linkSize);
+                this.Location = new Vector2(loc.X - (((Width * scale) - LinkSize) / 2), loc.Y + LinkSize);
                 this.rotation = MathHelper.Pi;
                 this.dX = 0;
                 this.dY = 1;
@@ -86,12 +81,12 @@
                 this.expired = true;
             }
 
-            this.location = new Vector2(this.location.X + this.dX * travelRate, this.location.Y + this.dY * travelRate);
+            this.Location = new Vector2(this.Location.X + (this.dX * TravelRate), this.Location.Y + (this.dY * TravelRate));
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.location, this.frame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(this.texture, this.Location, this.frame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, 0f);
         }
     }
 }

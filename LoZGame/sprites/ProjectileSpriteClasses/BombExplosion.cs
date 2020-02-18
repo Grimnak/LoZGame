@@ -1,18 +1,13 @@
 ﻿namespace LoZClone
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    class BombExplosion : IProjectile
+    internal class BombExplosion : IProjectile
     {
-        private static readonly int maxLifeTime = 90;
-        private static readonly int dissipateOne = 20;
-        private static readonly int dissipateTwo = 5;
+        private static readonly int MaxLifeTime = 90;
+        private static readonly int DissipateOne = 20;
+        private static readonly int DissipateTwo = 5;
 
         private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle frameOne;
@@ -25,7 +20,7 @@
         private readonly int instance;
         private bool expired;
 
-        public Vector2 location { get; set; }
+        public Vector2 Location { get; set; }
 
         private readonly bool hostile;
 
@@ -34,12 +29,12 @@
         public BombExplosion(Texture2D texture, Vector2 location, int scale, int instance)
         {
             this.texture = texture;
-            this.location = location;
+            this.Location = location;
             this.frameOne = new Rectangle(0, 0, 48, 48);
             this.frameTwo = new Rectangle(0, 48, 48, 48);
             this.frameThree = new Rectangle(0, 96, 48, 48);
             this.currentFrame = this.frameOne;
-            this.lifeTime = maxLifeTime;
+            this.lifeTime = MaxLifeTime;
             this.scale = scale;
             this.hostile = true;
             this.instance = instance;
@@ -51,7 +46,7 @@
 
         public int Instance => this.instance;
 
-        private void nextFrame()
+        private void NextFrame()
         {
             if (this.currentFrame == this.frameOne)
             {
@@ -66,9 +61,9 @@
         public void Update()
         {
             this.lifeTime--;
-            if (this.lifeTime == dissipateOne || this.lifeTime == dissipateTwo)
+            if (this.lifeTime == DissipateOne || this.lifeTime == DissipateTwo)
             {
-                this.nextFrame();
+                this.NextFrame();
             }
 
             if (this.lifeTime <= 0)
@@ -79,7 +74,7 @@
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.location, this.currentFrame, Color.White, this.rotation, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(this.texture, this.Location, this.currentFrame, Color.White, this.rotation, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
         }
     }
 }

@@ -1,7 +1,5 @@
 ﻿namespace LoZClone
 {
-    using Microsoft.Xna.Framework;
-
     /// <summary>
     /// Death state for player.
     /// </summary>

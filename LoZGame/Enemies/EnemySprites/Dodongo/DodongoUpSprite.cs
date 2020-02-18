@@ -1,13 +1,15 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class DodongoUpSprite : IDodongoSprite
     {
         private readonly Texture2D spriteSheet;
-        private readonly int spriteSheetRows, spriteSheetColumns;
-        private readonly int spriteSheetWidth, spriteSheetHeight;
+        private readonly int spriteSheetRows;
+        private readonly int spriteSheetColumns;
+        private readonly int spriteSheetWidth;
+        private readonly int spriteSheetHeight;
         private int currentFrame = 0;
         private int frameDelay = 0;
         private readonly int frameDelayMax = 7;
@@ -44,7 +46,7 @@ namespace LoZClone
             int column = this.currentFrame % this.spriteSheetColumns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, this.spriteSheetWidth*2, this.spriteSheetHeight*2);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, this.spriteSheetWidth * 2, this.spriteSheetHeight * 2);
 
             spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
         }

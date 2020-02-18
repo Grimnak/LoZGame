@@ -1,55 +1,51 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class AttackingDragonState : IDragonState
     {
         private readonly Dragon dragon;
         private readonly IDragonSprite sprite;
-        private readonly FireballSprite fireballLeft;
-        private readonly FireballSprite fireballDownLeft;
-        private readonly FireballSprite fireballUpLeft;
-        private const int fireBallScale = 2;
+        private const int FireBallScale = 2;
 
         public AttackingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
-            this.dragon.EntityManager.EnemyProjectileManager.AddFireballs(this.dragon, fireBallScale);
+            this.dragon.EntityManager.EnemyProjectileManager.AddFireballs(this.dragon, FireBallScale);
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
             this.dragon.CurrentState = new LeftMovingDragonState(this.dragon);
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
             this.dragon.CurrentState = new RightMovingDragonState(this.dragon);
         }
 
-        public void stop()
+        public void Stop()
         {
             this.dragon.CurrentState = new IdleDragonState(this.dragon);
         }
 
-        public void attack()
+        public void Attack()
         {
             // Blank b/c already attacking
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
             this.dragon.Health--;
             if (this.dragon.Health == 0)
             {
-                this.dragon.CurrentState.die();
+                this.dragon.CurrentState.Die();
             }
         }
 
-        public void die()
+        public void Die()
         {
             this.dragon.CurrentState = new DeadDragonState(this.dragon);
         }
@@ -61,7 +57,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.dragon.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.dragon.CurrentLocation, Color.White);
         }
     }
 }

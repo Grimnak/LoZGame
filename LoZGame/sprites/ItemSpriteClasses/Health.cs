@@ -1,16 +1,11 @@
 ﻿namespace LoZClone
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    class Health : IItemSprite
+    internal class Health : IItemSprite
     {
-        private static readonly int frameChange = 10;
+        private static readonly int FrameChange = 10;
 
         private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle currentFrame;
@@ -19,7 +14,7 @@
         private int lifeTime;
         private readonly int scale;
 
-        public Vector2 location { get; set; }
+        public Vector2 Location { get; set; }
 
         public Health(Texture2D texture, Vector2 loc, int scale)
         {
@@ -28,11 +23,11 @@
             this.secondFrame = new Rectangle(0, 8, 7, 8);
             this.currentFrame = this.firstFrame;
             this.lifeTime = 0;
-            this.location = loc;
+            this.Location = loc;
             this.scale = scale;
         }
 
-        private void nextFrame()
+        private void NextFrame()
         {
             if (this.currentFrame == this.firstFrame)
             {
@@ -52,17 +47,16 @@
                 this.lifeTime = 0;
             }
 
-            if (this.lifeTime % frameChange == 0)
+            if (this.lifeTime % FrameChange == 0)
             {
-                this.nextFrame();
+                this.NextFrame();
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle dest = new Rectangle((int)this.location.X, (int)this.location.Y, this.firstFrame.Width * this.scale, this.firstFrame.Height * this.scale);
+            Rectangle dest = new Rectangle((int)this.Location.X, (int)this.Location.Y, this.firstFrame.Width * this.scale, this.firstFrame.Height * this.scale);
             spriteBatch.Draw(this.texture, dest, this.currentFrame, Color.White);
         }
-
     }
 }

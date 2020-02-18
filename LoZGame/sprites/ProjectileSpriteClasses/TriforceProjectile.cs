@@ -1,19 +1,14 @@
 ﻿namespace LoZClone
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    class TriforceProjectile : IProjectile
+    internal class TriforceProjectile : IProjectile
     {
-        private static readonly int linkSize = 32;
-        private static readonly int width = 10;
-        private static readonly int height = 16;
-        private static readonly int frameChange = 10;
+        private static readonly int LinkSize = 32;
+        private static readonly int Width = 10;
+        private static readonly int Height = 16;
+        private static readonly int FrameChange = 10;
 
         private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle currentFrame;
@@ -28,18 +23,18 @@
 
         public bool IsHostile => this.hostile;
 
-        public Vector2 location { get; set; }
+        public Vector2 Location { get; set; }
 
         public static int LifeTime => 200;
 
         public TriforceProjectile(Texture2D texture, Vector2 loc, int scale, int instance)
         {
             this.texture = texture;
-            this.firstFrame = new Rectangle(275, 0, width, height);
-            this.secondFrame = new Rectangle(275, 16, width, height);
+            this.firstFrame = new Rectangle(275, 0, Width, Height);
+            this.secondFrame = new Rectangle(275, 16, Width, Height);
             this.currentFrame = this.firstFrame;
             this.lifeTime = LifeTime;
-            this.location = new Vector2(loc.X + (linkSize - width) / (2 * scale), loc.Y - linkSize);
+            this.Location = new Vector2(loc.X + ((LinkSize - Width) / (2 * scale)), loc.Y - LinkSize);
             this.scale = scale;
             this.expired = false;
             this.instance = instance;
@@ -47,7 +42,7 @@
             this.hostile = false;
         }
 
-        private void nextFrame()
+        private void NextFrame()
         {
             if (this.currentFrame == this.firstFrame)
             {
@@ -82,15 +77,15 @@
                 }
             }
 
-            if (this.lifeTime % frameChange == 0)
+            if (this.lifeTime % FrameChange == 0)
             {
-                this.nextFrame();
+                this.NextFrame();
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.location, this.currentFrame, Color.White, 0, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(this.texture, this.Location, this.currentFrame, Color.White, 0, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
         }
     }
 }

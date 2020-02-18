@@ -1,46 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System.Collections.Generic;
+    using Microsoft.Xna.Framework;
+
     public class BlockManager
     {
         private List<IBlockSprite> blockList;
-        public IBlockSprite currentBlock;
+        public IBlockSprite CurrentBlock;
         private int currentIndex;
         private int maxIndex;
-        public Vector2 location;
+        public Vector2 Location;
 
         public BlockManager()
         {
-            currentIndex = 0;
-            maxIndex = 0;
+            this.currentIndex = 0;
+            this.maxIndex = 0;
         }
 
-        public void loadSprites(int xloc, int yloc)
+        public void LoadSprites(int xloc, int yloc)
         {
-            this.blockList = BlockSpriteFactory.Instance.getAll(xloc, yloc);
-            this.currentBlock = this.blockList[this.currentIndex];
-            location.X = xloc;
-            location.Y = yloc;
-            foreach (IBlockSprite sprite in blockList)
+            this.blockList = BlockSpriteFactory.Instance.GetAll(xloc, yloc);
+            this.CurrentBlock = this.blockList[this.currentIndex];
+            this.Location.X = xloc;
+            this.Location.Y = yloc;
+            foreach (IBlockSprite sprite in this.blockList)
             {
-                maxIndex++;
+                this.maxIndex++;
             }
         }
 
-        public void cycleLeft()
+        public void CycleLeft()
         {
             this.currentIndex--;
             if (this.currentIndex < 0)
             {
                 this.currentIndex = this.maxIndex - 1;
             }
-            this.currentBlock = this.blockList[this.currentIndex];
+
+            this.CurrentBlock = this.blockList[this.currentIndex];
         }
 
         public void cycleRight()
@@ -50,12 +47,14 @@ namespace LoZClone
             {
                 this.currentIndex = 0;
             }
-            this.currentBlock = this.blockList[this.currentIndex];
+
+            this.CurrentBlock = this.blockList[this.currentIndex];
         }
 
-        public int CurrentIndex{
-            get { return currentIndex; }
-            set { currentIndex = value; }
+        public int CurrentIndex
+        {
+            get { return this.currentIndex; }
+            set { this.currentIndex = value; }
         }
-	}
+    }
 }

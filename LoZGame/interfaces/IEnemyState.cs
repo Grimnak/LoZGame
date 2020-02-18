@@ -1,21 +1,20 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework.Graphics;
+
     public interface IEnemyState
     {
-        void moveLeft();
+        void MoveLeft();
 
-        void moveRight();
+        void MoveRight();
 
-        void moveUp();
+        void MoveUp();
 
-        void moveDown();
+        void MoveDown();
 
-        void takeDamage();
+        void TakeDamage();
 
-        void die();
+        void Die();
 
         void Update();
 

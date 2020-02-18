@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class DownMovingSpikeCrossState : ISpikeCrossState
     {
         private readonly SpikeCross spikeCross;
@@ -15,40 +14,40 @@ namespace LoZClone
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
             this.spikeCross.CurrentState = new LeftMovingSpikeCrossState(this.spikeCross);
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
             this.spikeCross.CurrentState = new RightMovingSpikeCrossState(this.spikeCross);
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
             this.spikeCross.CurrentState = new UpMovingSpikeCrossState(this.spikeCross);
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
             // Blank b/c already moving down
         }
 
-        public void stop()
+        public void Stop()
         {
             this.spikeCross.CurrentState = new IdleSpikeCrossState(this.spikeCross);
         }
 
         public void Update()
         {
-            this.spikeCross.currentLocation = new Vector2(this.spikeCross.currentLocation.X, this.spikeCross.currentLocation.Y + 3);
+            this.spikeCross.CurrentLocation = new Vector2(this.spikeCross.CurrentLocation.X, this.spikeCross.CurrentLocation.Y + 3);
             this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.spikeCross.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.spikeCross.CurrentLocation, Color.White);
         }
     }
 }

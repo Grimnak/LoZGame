@@ -1,19 +1,15 @@
 ﻿namespace LoZClone
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    class BombProjectile : IProjectile
+    internal class BombProjectile : IProjectile
     {
-        private static readonly int linkSize = 32;
-        private static readonly int width = 8;
-        private static readonly int height = 16;
-        private static readonly int maxLife = 120;
+        private static readonly int LinkSize = 32;
+        private static readonly int Width = 8;
+        private static readonly int Height = 16;
+        private static readonly int MaxLife = 120;
 
         private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -28,32 +24,32 @@
 
         public bool IsHostile => this.hostile;
 
-        public Vector2 location { get; set; }
+        public Vector2 Location { get; set; }
 
-        public BombProjectile(Texture2D texture, Vector2 loc, String direction, int scale, int instance, ExplosionManager explosion)
+        public BombProjectile(Texture2D texture, Vector2 loc, string direction, int scale, int instance, ExplosionManager explosion)
         {
             this.texture = texture;
-            this.frame = new Rectangle(136, 0, width, height);
-            this.lifeTime = maxLife;
+            this.frame = new Rectangle(136, 0, Width, Height);
+            this.lifeTime = MaxLife;
             this.instance = instance;
             this.direction = direction;
             this.hostile = false;
             this.explosion = explosion;
             if (this.direction == "Up")
             {
-                this.location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y - linkSize);
+                this.Location = new Vector2(loc.X - (((Width * scale) - LinkSize) / 2), loc.Y - LinkSize);
             }
             else if (this.direction == "Left")
             {
-                this.location = new Vector2(loc.X - linkSize + (linkSize - width * scale), loc.Y - ((height * scale) - linkSize) / 2);
+                this.Location = new Vector2(loc.X - LinkSize + (LinkSize - (Width * scale)), loc.Y - (((Height * scale) - LinkSize) / 2));
             }
             else if (this.direction == "Right")
             {
-                this.location = new Vector2(loc.X + linkSize, loc.Y - ((height * scale) - linkSize) / 2);
+                this.Location = new Vector2(loc.X + LinkSize, loc.Y - (((Height * scale) - LinkSize) / 2));
             }
             else
             {
-                this.location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y + linkSize);
+                this.Location = new Vector2(loc.X - (((Width * scale) - LinkSize) / 2), loc.Y + LinkSize);
             }
 
             this.scale = scale;
@@ -74,16 +70,15 @@
 
             if (this.lifeTime <= 0)
             {
-                Vector2 expolsionLoc = new Vector2(this.location.X - width / 2 - height * this.scale, this.location.Y - height * this.scale);
-                this.explosion.addExplosion(this.explosion.Explosion, expolsionLoc);
+                Vector2 expolsionLoc = new Vector2(this.Location.X - (Width / 2) - (Height * this.scale), this.Location.Y - (Height * this.scale));
+                this.explosion.AddExplosion(this.explosion.Explosion, expolsionLoc);
                 this.expired = true;
             }
-
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.location, this.frame, Color.White, 0, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(this.texture, this.Location, this.frame, Color.White, 0, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
         }
     }
 }

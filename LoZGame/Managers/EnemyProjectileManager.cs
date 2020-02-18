@@ -1,16 +1,12 @@
 ﻿namespace LoZClone
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     public partial class EnemyProjectileManager
     {
-        private const int scale = 2;
+        private const int Scale = 2;
         private readonly Dictionary<int, IProjectile> boomerangList;
         private readonly List<int> boomerangDeletable;
         private int boomerangId;
@@ -20,13 +16,12 @@
         private int fireBallId;
         private int fireBallListSize;
 
-
         public EnemyProjectileManager()
         {
             this.boomerangList = new Dictionary<int, IProjectile>();
             this.boomerangDeletable = new List<int>();
             this.boomerangId = 0;
-            this.boomerangListSize = 0; 
+            this.boomerangListSize = 0;
             this.fireBallList = new Dictionary<int, FireballSprite>();
             this.fireBallDeletable = new List<int>();
             this.fireBallId = 0;
@@ -37,13 +32,13 @@
         {
             this.fireBallId++;
             this.fireBallListSize++;
-            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateUpLeftFireballSprite(dragon.currentLocation, fireBallId, scale));
+            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateUpLeftFireballSprite(dragon.CurrentLocation, this.fireBallId, scale));
             this.fireBallId++;
             this.fireBallListSize++;
-            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateLeftFireballSprite(dragon.currentLocation, fireBallId, scale));
+            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateLeftFireballSprite(dragon.CurrentLocation, this.fireBallId, scale));
             this.fireBallId++;
             this.fireBallListSize++;
-            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateDownLeftFireballSprite(dragon.currentLocation, fireBallId, scale));
+            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateDownLeftFireballSprite(dragon.CurrentLocation, this.fireBallId, scale));
         }
 
         public void AddEnemyRang(Goriya enemy, string direction)
@@ -109,9 +104,10 @@
             {
                 boomerang.Value.Draw(spritebatch);
             }
+
             foreach (KeyValuePair<int, FireballSprite> fireBall in this.fireBallList)
             {
-                fireBall.Value.Draw(spritebatch, scale, Color.White);
+                fireBall.Value.Draw(spritebatch, Scale, Color.White);
             }
         }
     }

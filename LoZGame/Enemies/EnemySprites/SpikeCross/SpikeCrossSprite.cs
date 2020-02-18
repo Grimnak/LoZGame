@@ -1,13 +1,15 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class SpikeCrossSprite : ISpikeCrossSprite
     {
         private readonly Texture2D spriteSheet;
-        private readonly int spriteSheetRows, spriteSheetColumns;
-        private readonly int spriteSheetWidth, spriteSheetHeight;
+        private readonly int spriteSheetRows;
+        private readonly int spriteSheetColumns;
+        private readonly int spriteSheetWidth;
+        private readonly int spriteSheetHeight;
         private readonly int currentFrame = 0;
 
         public SpikeCrossSprite(Texture2D spriteTexture, SpriteSheetData data)

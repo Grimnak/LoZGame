@@ -1,54 +1,60 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class DoorDownSprite : IBlockSprite
     {
-        private Texture2D spriteSheet;
-        private int spriteSheetRows, spriteSheetColumns;
-        private int spriteWidth, spriteHeight;
-        private int currentFrame = 0, frameDelay = 0, frameDelayMax = 10;
-        public Vector2 location { get; set; }
+        private readonly Texture2D spriteSheet;
+        private readonly int spriteSheetRows;
+        private readonly int spriteSheetColumns;
+        private readonly int spriteWidth;
+        private readonly int spriteHeight;
+        private int currentFrame = 0;
+        private int frameDelay = 0;
+        private readonly int frameDelayMax = 10;
+
+        public Vector2 Location { get; set; }
 
         public DoorDownSprite(Texture2D spriteTexture, Vector2 loc, SpriteSheetData data)
         {
-            spriteSheet = spriteTexture;
-            spriteWidth = data.Width;
-            spriteHeight = data.Height;
-            location = loc;
+            this.spriteSheet = spriteTexture;
+            this.spriteWidth = data.Width;
+            this.spriteHeight = data.Height;
+            this.Location = loc;
 
-            spriteSheetRows = data.Rows;
-            spriteSheetColumns = data.Columns;
+            this.spriteSheetRows = data.Rows;
+            this.spriteSheetColumns = data.Columns;
         }
 
         public void Update()
         {
-            frameDelay++;
-            if (frameDelay == frameDelayMax)
+            this.frameDelay++;
+            if (this.frameDelay == this.frameDelayMax)
             {
-                if (currentFrame < 2)
+                if (this.currentFrame < 2)
                 {
-                    currentFrame++;
+                    this.currentFrame++;
                 }
-                else 
+                else
                 {
-                    currentFrame = 0;
+                    this.currentFrame = 0;
                 }
-                frameDelay = 0;
+
+                this.frameDelay = 0;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            int width = spriteSheet.Width / spriteSheetColumns;
-            int height = spriteSheet.Height / spriteSheetRows;
-            int row = (int)((float)currentFrame / (float)spriteSheetColumns);
+            int width = this.spriteSheet.Width / this.spriteSheetColumns;
+            int height = this.spriteSheet.Height / this.spriteSheetRows;
+            int row = (int)((float)this.currentFrame / (float)this.spriteSheetColumns);
 
             Rectangle sourceRectangle = new Rectangle(0, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, spriteWidth, spriteHeight);
+            Rectangle destinationRectangle = new Rectangle((int)this.Location.X, (int)this.Location.Y, this.spriteWidth, this.spriteHeight);
 
-            spriteBatch.Draw(spriteSheet, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, Color.White);
         }
     }
 }

@@ -25,6 +25,5 @@
         {
             this.block.cycleRight();
         }
-
     }
 }

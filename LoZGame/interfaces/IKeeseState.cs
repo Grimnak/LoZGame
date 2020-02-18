@@ -1,29 +1,28 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework.Graphics;
+
     public interface IKeeseState
     {
-        void moveLeft();
+        void MoveLeft();
 
-        void moveRight();
+        void MoveRight();
 
-        void moveUp();
+        void MoveUp();
 
-        void moveDown();
+        void MoveDown();
 
-        void moveUpLeft();
+        void MoveUpLeft();
 
-        void moveDownLeft();
+        void MoveDownLeft();
 
-        void moveUpRight();
+        void MoveUpRight();
 
-        void moveDownRight();
+        void MoveDownRight();
 
-        void takeDamage();
+        void TakeDamage();
 
-        void die();
+        void Die();
 
         void Update();
 

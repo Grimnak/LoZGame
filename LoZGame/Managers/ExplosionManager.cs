@@ -2,9 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -35,7 +32,7 @@
             this.deletable = new List<int>();
         }
 
-        public void addExplosion(int explosion, Vector2 loc)
+        public void AddExplosion(int explosion, Vector2 loc)
         {
             ExplosionType type = (ExplosionType)explosion;
 
@@ -55,6 +52,7 @@
                     this.explosionListSize++;
                     this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "SouthWest", this.scale, this.explosionId));
                     break;
+
                 case ExplosionType.BombExplode:
                     Random numGen = new Random();
                     int selectBomb = numGen.Next(0, 5);
@@ -63,18 +61,23 @@
                         case 0:
                             this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionOne(loc, this.scale, this.explosionId));
                             break;
+
                         case 1:
                             this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionTwo(loc, this.scale, this.explosionId));
                             break;
+
                         case 2:
                             this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionThree(loc, this.scale, this.explosionId));
                             break;
+
                         case 3:
                             this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionFour(loc, this.scale, this.explosionId));
                             break;
+
                         case 4:
                             this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionFive(loc, this.scale, this.explosionId));
                             break;
+
                         default:
                             break;
                     }
@@ -83,7 +86,7 @@
             }
         }
 
-        public void removeExplosion(int instance)
+        public void RemoveExplosion(int instance)
         {
             this.explosionList.Remove(instance);
             this.explosionListSize--;
@@ -105,7 +108,7 @@
 
             foreach (int index in this.deletable)
             {
-                this.removeExplosion(index);
+                this.RemoveExplosion(index);
             }
 
             this.deletable.Clear();
@@ -122,6 +125,5 @@
                 explosion.Value.Draw(spritebatch);
             }
         }
-
     }
 }

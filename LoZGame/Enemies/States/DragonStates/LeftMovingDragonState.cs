@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class LeftMovingDragonState : IDragonState
     {
         private readonly Dragon dragon;
@@ -15,49 +14,49 @@ namespace LoZClone
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
             // Blank b/c already moving left
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
             this.dragon.CurrentState = new RightMovingDragonState(this.dragon);
         }
-        
-        public void stop()
+
+        public void Stop()
         {
             this.dragon.CurrentState = new IdleDragonState(this.dragon);
         }
 
-        public void attack()
+        public void Attack()
         {
             this.dragon.CurrentState = new AttackingDragonState(this.dragon);
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
             this.dragon.Health--;
             if (this.dragon.Health == 0)
             {
-                this.dragon.CurrentState.die();
+                this.dragon.CurrentState.Die();
             }
         }
 
-        public void die()
+        public void Die()
         {
             this.dragon.CurrentState = new DeadDragonState(this.dragon);
         }
 
         public void Update()
         {
-            this.dragon.currentLocation = new Vector2(this.dragon.currentLocation.X - 1, this.dragon.currentLocation.Y);
+            this.dragon.CurrentLocation = new Vector2(this.dragon.CurrentLocation.X - 1, this.dragon.CurrentLocation.Y);
             this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.dragon.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.dragon.CurrentLocation, Color.White);
         }
     }
 }

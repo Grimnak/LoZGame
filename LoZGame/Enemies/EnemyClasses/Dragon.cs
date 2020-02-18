@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
     public class Dragon : IEnemy
     {
@@ -12,91 +11,105 @@ namespace LoZClone
         private int lifeTime = 0;
         private readonly int directionChange = 40;
         private readonly EntityManager entity;
-        public Vector2 currentLocation;
+        private Vector2 currentLocation;
 
         public EntityManager EntityManager { get { return this.entity; } }
 
-        private enum stateEnum { Idle, Left, Right, Attacking};
+        private enum StateEnum
+        {
+            Idle,
+            Left,
+            Right,
+            Attacking,
+        }
 
-        private stateEnum currentStateEnum;
+        private StateEnum currentStateEnum;
 
         public Dragon(EntityManager entity)
         {
             this.entity = entity;
             this.currentState = new LeftMovingDragonState(this);
-            this.currentLocation = new Vector2(650, 200);
+            this.CurrentLocation = new Vector2(650, 200);
         }
 
-        private void getNewDirection()
+        private void GetNewDirection()
         {
             Random randomselect = new Random();
-            this.currentStateEnum = (stateEnum)(randomselect.Next(0, 5));
+            this.currentStateEnum = (StateEnum)randomselect.Next(0, 5);
         }
 
-        private void updateLoc()
+        private void UpdateLoc()
         {
             switch (this.currentStateEnum)
             {
-                case stateEnum.Attacking:
-                    this.currentState.attack();
+                case StateEnum.Attacking:
+                    this.currentState.Attack();
                     break;
-                case stateEnum.Idle:
-                    this.currentState.stop();
+
+                case StateEnum.Idle:
+                    this.currentState.Stop();
                     break;
-                case stateEnum.Left:
-                    this.currentState.moveLeft();
+
+                case StateEnum.Left:
+                    this.currentState.MoveLeft();
                     break;
-                case stateEnum.Right:
-                    this.currentState.moveRight();
+
+                case StateEnum.Right:
+                    this.currentState.MoveRight();
                     break;
+
                 default:
                     break;
             }
-            this.checkBorder();
+
+            this.CheckBorder();
             this.currentState.Update();
         }
- 
-        private void checkBorder()
-        {
-              if (this.currentLocation.Y < 0)
-              {
-                  this.currentLocation = new Vector2(this.currentLocation.X, 0);
-                  this.lifeTime = this.directionChange + 1;
-              }
-              if (this.currentLocation.Y > 430)
-              {
-                  this.currentLocation = new Vector2(this.currentLocation.X, 430);
-                  this.lifeTime = this.directionChange + 1;
-              }
-              if (this.currentLocation.X < 0)
-              {
-                  this.currentLocation = new Vector2(0, this.currentLocation.Y);
-                  this.lifeTime = this.directionChange + 1;
-              }
-              if (this.currentLocation.X > 750)
-              {
-                  this.currentLocation = new Vector2(750, this.currentLocation.Y);
-                  this.lifeTime = this.directionChange + 1;
-              }
-        } 
 
-        public void takeDamage()
+        private void CheckBorder()
         {
-            this.currentState.takeDamage();
+            if (this.CurrentLocation.Y < 0)
+            {
+                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 0);
+                this.lifeTime = this.directionChange + 1;
+            }
+
+            if (this.CurrentLocation.Y > 430)
+            {
+                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 430);
+                this.lifeTime = this.directionChange + 1;
+            }
+
+            if (this.CurrentLocation.X < 0)
+            {
+                this.CurrentLocation = new Vector2(0, this.CurrentLocation.Y);
+                this.lifeTime = this.directionChange + 1;
+            }
+
+            if (this.CurrentLocation.X > 750)
+            {
+                this.CurrentLocation = new Vector2(750, this.CurrentLocation.Y);
+                this.lifeTime = this.directionChange + 1;
+            }
         }
 
-        public void die()
+        public void TakeDamage()
         {
-            this.currentState.die();
+            this.currentState.TakeDamage();
+        }
+
+        public void Die()
+        {
+            this.currentState.Die();
         }
 
         public void Update()
         {
             this.lifeTime++;
-            this.updateLoc();
+            this.UpdateLoc();
             if (this.lifeTime > this.directionChange)
             {
-                this.getNewDirection();
+                this.GetNewDirection();
                 this.lifeTime = 0;
             }
         }
@@ -110,7 +123,6 @@ namespace LoZClone
         {
             get { return this.currentState; }
             set { this.currentState = value; }
-
         }
 
         public int Health
@@ -118,7 +130,7 @@ namespace LoZClone
             get { return this.health; }
             set { this.health = value; }
         }
+
+        public Vector2 CurrentLocation { get => this.currentLocation; set => this.currentLocation = value; }
     }
 }
-
-

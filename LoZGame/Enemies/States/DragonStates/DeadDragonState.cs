@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class DeadDragonState : IDragonState
     {
         private readonly Dragon dragon;
@@ -15,27 +14,27 @@ namespace LoZClone
             this.dragon = null;
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
         }
 
-        public void die()
+        public void Die()
         {
         }
 
-        public void attack()
+        public void Attack()
         {
         }
-        
-        public void stop()
+
+        public void Stop()
         {
         }
 
@@ -46,7 +45,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.dragon.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.dragon.CurrentLocation, Color.White);
         }
     }
 }

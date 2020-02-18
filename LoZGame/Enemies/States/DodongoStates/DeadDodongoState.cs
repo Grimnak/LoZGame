@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class DeadDodongoState : IEnemyState
     {
         private readonly Dodongo dodongo;
@@ -15,27 +14,27 @@ namespace LoZClone
             this.dodongo = dodongo;
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
         }
 
-        public void die()
+        public void Die()
         {
         }
 
@@ -46,8 +45,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.dodongo.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.dodongo.CurrentLocation, Color.White);
         }
-
     }
 }

@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class RightMovingDodongoState : IEnemyState
     {
         private readonly Dodongo dodongo;
@@ -15,49 +14,49 @@ namespace LoZClone
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingDodongoSprite();
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
             this.dodongo.CurrentState = new LeftMovingDodongoState(this.dodongo);
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
             // Blank b/c already moving right
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
             this.dodongo.CurrentState = new UpMovingDodongoState(this.dodongo);
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
             this.dodongo.CurrentState = new DownMovingDodongoState(this.dodongo);
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
             this.dodongo.Health--;
             if (this.dodongo.Health == 0)
             {
-                this.dodongo.CurrentState.die();
+                this.dodongo.CurrentState.Die();
             }
         }
 
-        public void die()
+        public void Die()
         {
             this.dodongo.CurrentState = new DeadDodongoState(this.dodongo);
         }
 
         public void Update()
         {
-            this.dodongo.currentLocation = new Vector2(this.dodongo.currentLocation.X + 1, this.dodongo.currentLocation.Y);
+            this.dodongo.CurrentLocation = new Vector2(this.dodongo.CurrentLocation.X + 1, this.dodongo.CurrentLocation.Y);
             this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.dodongo.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.dodongo.CurrentLocation, Color.White);
         }
     }
 }

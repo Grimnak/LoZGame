@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class UpMovingGelState : IEnemyState
     {
         private readonly Gel gel;
@@ -15,49 +14,49 @@ namespace LoZClone
             this.sprite = EnemySpriteFactory.Instance.CreateGelSprite();
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
             this.gel.CurrentState = new LeftMovingGelState(this.gel);
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
             this.gel.CurrentState = new RightMovingGelState(this.gel);
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
             // Blank b/c already moving up
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
             this.gel.CurrentState = new DownMovingGelState(this.gel);
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
             this.gel.Health--;
             if (this.gel.Health == 0)
             {
-                this.gel.CurrentState.die();
+                this.gel.CurrentState.Die();
             }
         }
 
-        public void die()
+        public void Die()
         {
             this.gel.CurrentState = new DeadGelState(this.gel);
         }
 
         public void Update()
         {
-            this.gel.currentLocation = new Vector2(this.gel.currentLocation.X, this.gel.currentLocation.Y - 1);
+            this.gel.CurrentLocation = new Vector2(this.gel.CurrentLocation.X, this.gel.CurrentLocation.Y - 1);
             this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.gel.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.gel.CurrentLocation, Color.White);
         }
     }
 }

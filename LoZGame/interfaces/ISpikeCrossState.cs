@@ -1,19 +1,18 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework.Graphics;
+
     public interface ISpikeCrossState
     {
-        void moveLeft();
+        void MoveLeft();
 
-        void moveRight();
+        void MoveRight();
 
-        void moveUp();
+        void MoveUp();
 
-        void moveDown();
+        void MoveDown();
 
-        void stop();
+        void Stop();
 
         void Update();
 

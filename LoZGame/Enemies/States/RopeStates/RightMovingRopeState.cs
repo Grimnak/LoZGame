@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class RightMovingRopeState : IEnemyState
     {
         private readonly Rope rope;
@@ -15,49 +14,49 @@ namespace LoZClone
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingRopeSprite();
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
             this.rope.CurrentState = new LeftMovingRopeState(this.rope);
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
             // Blank b/c already moving right
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
             this.rope.CurrentState = new UpMovingRopeState(this.rope);
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
             this.rope.CurrentState = new DownMovingRopeState(this.rope);
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
             this.rope.Health--;
             if (this.rope.Health == 0)
             {
-                this.rope.CurrentState.die();
+                this.rope.CurrentState.Die();
             }
         }
 
-        public void die()
+        public void Die()
         {
             this.rope.CurrentState = new DeadRopeState(this.rope);
         }
 
         public void Update()
         {
-            this.rope.currentLocation = new Vector2(this.rope.currentLocation.X + 2, this.rope.currentLocation.Y);
+            this.rope.CurrentLocation = new Vector2(this.rope.CurrentLocation.X + 2, this.rope.CurrentLocation.Y);
             this.sprite.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.rope.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.rope.CurrentLocation, Color.White);
         }
     }
 }

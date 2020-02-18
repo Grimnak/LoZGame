@@ -23,7 +23,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.item.cycleLeft();
+            this.item.CycleLeft();
         }
     }
 }

@@ -1,57 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class Dodongo : IEnemy
     {
         public Dodongo()
         {
             this.currentState = new LeftMovingDodongoState(this);
-            this.currentLocation = new Vector2(650, 200);
+            this.CurrentLocation = new Vector2(650, 200);
         }
+
         private IEnemyState currentState;
         private int health = 10;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
-        public Vector2 currentLocation;
-        private readonly LoZGame game;
+        public Vector2 CurrentLocation;
         private Direction currentDirection;
-        private enum Direction 
-        { 
+
+        private enum Direction
+        {
             Up,
             Down,
             Left,
-            Right 
-        };
+            Right,
+        }
 
         private void GetNewDirection()
         {
             Random randomselect = new Random();
-            this.currentDirection = (Direction)randomselect.Next(0, 5);
+            this.CurrentDirection = (Direction)randomselect.Next(0, 5);
         }
 
         private void UpdateLoc()
         {
-            switch (this.currentDirection)
+            switch (this.CurrentDirection)
             {
                 case Direction.Up:
-                    this.currentState.moveUp();
+                    this.currentState.MoveUp();
                     break;
+
                 case Direction.Down:
-                    this.currentState.moveDown();
+                    this.currentState.MoveDown();
                     break;
+
                 case Direction.Left:
-                    this.currentState.moveLeft();
+                    this.currentState.MoveLeft();
                     break;
+
                 case Direction.Right:
-                    this.currentState.moveRight();
+                    this.currentState.MoveRight();
                     break;
+
                 default:
                     break;
             }
@@ -62,36 +63,39 @@ namespace LoZClone
 
         private void CheckBorder()
         {
-              if (this.currentLocation.Y < 30)
-              {
-                  this.currentLocation = new Vector2(this.currentLocation.X, 30);
-                  this.lifeTime = this.directionChange + 1;
-              }
-              if (this.currentLocation.Y > 450)
-              {
-                  this.currentLocation = new Vector2(this.currentLocation.X, 450);
-                  this.lifeTime = this.directionChange + 1;
-              }
-              if (this.currentLocation.X < 30)
-              {
-                  this.currentLocation = new Vector2(30, this.currentLocation.Y);
-                  this.lifeTime = this.directionChange + 1;
-              }
-              if (this.currentLocation.X > 770)
-              {
-                  this.currentLocation = new Vector2(770, this.currentLocation.Y);
-                  this.lifeTime = this.directionChange + 1;
-              }
+            if (this.CurrentLocation.Y < 30)
+            {
+                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 30);
+                this.lifeTime = this.directionChange + 1;
+            }
+
+            if (this.CurrentLocation.Y > 450)
+            {
+                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 450);
+                this.lifeTime = this.directionChange + 1;
+            }
+
+            if (this.CurrentLocation.X < 30)
+            {
+                this.CurrentLocation = new Vector2(30, this.CurrentLocation.Y);
+                this.lifeTime = this.directionChange + 1;
+            }
+
+            if (this.CurrentLocation.X > 770)
+            {
+                this.CurrentLocation = new Vector2(770, this.CurrentLocation.Y);
+                this.lifeTime = this.directionChange + 1;
+            }
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
-            this.currentState.takeDamage();
+            this.currentState.TakeDamage();
         }
 
-        public void die()
+        public void Die()
         {
-            this.currentState.die();
+            this.currentState.Die();
         }
 
         public void Update()
@@ -114,7 +118,6 @@ namespace LoZClone
         {
             get { return this.currentState; }
             set { this.currentState = value; }
-
         }
 
         public int Health
@@ -122,5 +125,9 @@ namespace LoZClone
             get { return this.health; }
             set { this.health = value; }
         }
+
+        private Direction CurrentDirection { get => CurrentDirection1; set => CurrentDirection1 = value; }
+        private Direction CurrentDirection1 { get => CurrentDirection2; set => CurrentDirection2 = value; }
+        private Direction CurrentDirection2 { get => currentDirection; set => currentDirection = value; }
     }
 }

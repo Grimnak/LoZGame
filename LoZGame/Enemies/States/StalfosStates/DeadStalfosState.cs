@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class DeadStalfosState : IEnemyState
     {
         private readonly Stalfos stalfos;
@@ -15,27 +14,27 @@ namespace LoZClone
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
         }
 
-        public void die()
+        public void Die()
         {
         }
 
@@ -46,7 +45,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.stalfos.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.stalfos.CurrentLocation, Color.White);
         }
     }
 }

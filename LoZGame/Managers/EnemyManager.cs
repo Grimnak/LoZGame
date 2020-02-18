@@ -1,21 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-
 namespace LoZClone
 {
+    using System.Collections.Generic;
+    using Microsoft.Xna.Framework;
 
     public class EnemyManager
     {
         private List<IEnemy> enemyList;
-        public IEnemy currentEnemy;
+        public IEnemy CurrentEnemy;
         private int currentIndex;
         private int maxIndex;
-        public Vector2 location;
-        readonly EntityManager entity;
+        public Vector2 Location;
+        private readonly EntityManager entity;
 
         public EnemyManager(EntityManager entity)
         {
@@ -41,17 +36,17 @@ namespace LoZClone
             this.enemyList.Add(new Keese());
         }
 
-        public void loadSprites()
+        public void LoadSprites()
         {
             this.LoadEnemies();
-            this.currentEnemy = this.enemyList[this.currentIndex];
+            this.CurrentEnemy = this.enemyList[this.currentIndex];
             foreach (IEnemy sprite in this.enemyList)
             {
                 this.maxIndex++;
             }
         }
 
-        public void cycleLeft()
+        public void CycleLeft()
         {
             this.currentIndex--;
 
@@ -60,10 +55,10 @@ namespace LoZClone
                 this.currentIndex = this.maxIndex - 1;
             }
 
-            this.currentEnemy = this.enemyList[this.currentIndex];
+            this.CurrentEnemy = this.enemyList[this.currentIndex];
         }
 
-        public void cycleRight()
+        public void CycleRight()
         {
             this.currentIndex++;
             if (this.currentIndex >= this.maxIndex)
@@ -71,13 +66,13 @@ namespace LoZClone
                 this.currentIndex = 0;
             }
 
-            this.currentEnemy = this.enemyList[this.currentIndex];
+            this.CurrentEnemy = this.enemyList[this.currentIndex];
         }
 
         public void Clear()
         {
             this.enemyList = new List<IEnemy>();
-            this.loadSprites();
+            this.LoadSprites();
         }
 
         public int CurrentIndex

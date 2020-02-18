@@ -1,11 +1,10 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 
 public interface IEnemy
 {
-    void takeDamage();
+    void TakeDamage();
 
-    void die();
+    void Die();
 
     void Update();
 

@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class DeadGoriyaState : IGoriyaState
     {
         private readonly Goriya goriya;
@@ -15,31 +14,31 @@ namespace LoZClone
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
         }
 
-        public void moveLeft()
+        public void MoveLeft()
         {
         }
 
-        public void moveRight()
+        public void MoveRight()
         {
         }
 
-        public void moveUp()
+        public void MoveUp()
         {
         }
 
-        public void moveDown()
+        public void MoveDown()
         {
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
         }
 
-        public void die()
+        public void Die()
         {
         }
 
-        public void attack()
+        public void Attack()
         {
         }
 
@@ -50,7 +49,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.goriya.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.goriya.CurrentLocation, Color.White);
         }
     }
 }

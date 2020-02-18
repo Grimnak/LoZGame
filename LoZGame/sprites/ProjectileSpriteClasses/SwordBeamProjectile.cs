@@ -1,19 +1,14 @@
 ﻿namespace LoZClone
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    class SwordBeamProjectile : IProjectile
+    internal class SwordBeamProjectile : IProjectile
     {
-        private static readonly int linkSize = 32;
-        private static readonly int width = 15;
-        private static readonly int height = 16;
-        private static readonly int offset = 4;
+        private static readonly int LinkSize = 32;
+        private static readonly int Width = 15;
+        private static readonly int Height = 16;
+        private static readonly int Offset = 4;
 
         private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle frameOne;
@@ -21,8 +16,8 @@
         private Rectangle frameThree;
         private Rectangle frameFour;
         private Rectangle currentFrame;
-        readonly int dX;
-        readonly int dY;
+        private readonly int dX;
+        private readonly int dY;
         private int lifeTime;
         private readonly int scale;
         private readonly string direction;
@@ -31,9 +26,9 @@
         private bool expired;
         private Vector2 tip;
         private Vector2 origin;
-        private static readonly int delay = 10;
+        private static readonly int Delay = 10;
 
-        public Vector2 location { get; set; }
+        public Vector2 Location { get; set; }
 
         private readonly bool hostile;
 
@@ -41,23 +36,23 @@
 
         private readonly ExplosionManager explosion;
 
-        private static readonly int frameDelay = 4;
-        private static readonly int speed = 5;
-        private static readonly int maxLifeTime = 40;
-        private static readonly int xBound = 800;
-        private static readonly int yBound = 480;
+        private static readonly int FrameDelay = 4;
+        private static readonly int Speed = 5;
+        private static readonly int MaxLifeTime = 40;
+        private static readonly int XBound = 800;
+        private static readonly int YBound = 480;
 
         public SwordBeamProjectile(Texture2D texture, IPlayer player, int scale, int instance, ExplosionManager explosion)
         {
-            this.origin = new Vector2(width / 2, height / 2);
+            this.origin = new Vector2(Width / 2, Height / 2);
             this.texture = texture;
-            this.frameOne = new Rectangle(0, 0, width, height);
-            this.frameTwo = new Rectangle(0, 16, width, height);
-            this.frameThree = new Rectangle(0, 32, width, height);
-            this.frameFour = new Rectangle(0, 48, width, height);
+            this.frameOne = new Rectangle(0, 0, Width, Height);
+            this.frameTwo = new Rectangle(0, 16, Width, Height);
+            this.frameThree = new Rectangle(0, 32, Width, Height);
+            this.frameFour = new Rectangle(0, 48, Width, Height);
             this.explosion = explosion;
             this.currentFrame = this.frameOne;
-            this.lifeTime = maxLifeTime;
+            this.lifeTime = MaxLifeTime;
             this.scale = scale;
             this.direction = player.CurrentDirection;
             Vector2 loc = player.CurrentLocation;
@@ -65,35 +60,35 @@
 
             if (this.direction.Equals("Up"))
             {
-                this.location = new Vector2(loc.X + (linkSize - width * scale / 2), loc.Y);
+                this.Location = new Vector2(loc.X + (LinkSize - (Width * scale / 2)), loc.Y);
                 this.rotation = MathHelper.Pi;
                 this.dX = 0;
                 this.dY = -1;
-                this.tip = new Vector2(width - offset, 0);
+                this.tip = new Vector2(Width - Offset, 0);
             }
             else if (this.direction.Equals("Left"))
             {
-                this.location = new Vector2(loc.X, loc.Y + (linkSize - width * scale / 2));
+                this.Location = new Vector2(loc.X, loc.Y + (LinkSize - (Width * scale / 2)));
                 this.rotation = 1 * MathHelper.PiOver2;
                 this.dX = -1;
                 this.dY = 0;
-                this.tip = new Vector2(-1 * offset, width);
+                this.tip = new Vector2(-1 * Offset, Width);
             }
             else if (this.direction.Equals("Right"))
             {
-                this.location = new Vector2(loc.X + linkSize, loc.Y + (linkSize - width * scale / 2));
+                this.Location = new Vector2(loc.X + LinkSize, loc.Y + (LinkSize - (Width * scale / 2)));
                 this.rotation = -1 * MathHelper.PiOver2;
                 this.dX = 1;
                 this.dY = 0;
-                this.tip = new Vector2(height * scale - offset, width);
+                this.tip = new Vector2((Height * scale) - Offset, Width);
             }
             else
             {
-                this.location = new Vector2(loc.X + (linkSize - width * scale / 2), loc.Y + linkSize);
+                this.Location = new Vector2(loc.X + (LinkSize - (Width * scale / 2)), loc.Y + LinkSize);
                 this.rotation = 0;
                 this.dX = 0;
                 this.dY = 1;
-                this.tip = new Vector2(width - offset, height * scale);
+                this.tip = new Vector2(Width - Offset, Height * scale);
             }
 
             this.instance = instance;
@@ -104,7 +99,7 @@
 
         public int Instance => this.instance;
 
-        private void nextFrame()
+        private void NextFrame()
         {
             if (this.currentFrame == this.frameOne)
             {
@@ -124,9 +119,9 @@
             }
         }
 
-        private void checkBounds()
+        private void CheckBounds()
         {
-            if (this.location.X >= xBound - height || this.location.X <= 0 || this.location.Y >= yBound - height || this.location.Y <= 0)
+            if (this.Location.X >= XBound - Height || this.Location.X <= 0 || this.Location.Y >= YBound - Height || this.Location.Y <= 0)
             {
                 this.lifeTime = 0;
             }
@@ -135,29 +130,29 @@
         public void Update()
         {
             this.lifeTime--;
-            if (this.lifeTime < maxLifeTime - delay)
+            if (this.lifeTime < MaxLifeTime - Delay)
             {
-                if (this.lifeTime % frameDelay == 0)
+                if (this.lifeTime % FrameDelay == 0)
                 {
-                    this.nextFrame();
+                    this.NextFrame();
                 }
 
                 if (this.lifeTime <= 0)
                 {
-                    this.explosion.addExplosion(this.explosion.SwordExplosion, new Vector2(this.location.X + this.tip.X, this.location.Y + this.tip.Y));
+                    this.explosion.AddExplosion(this.explosion.SwordExplosion, new Vector2(this.Location.X + this.tip.X, this.Location.Y + this.tip.Y));
                     this.expired = true;
                 }
 
-                this.location = new Vector2(this.location.X + (this.dX * speed), this.location.Y + (this.dY * speed));
-                this.checkBounds();
+                this.Location = new Vector2(this.Location.X + (this.dX * Speed), this.Location.Y + (this.dY * Speed));
+                this.CheckBounds();
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (this.lifeTime < maxLifeTime - delay)
+            if (this.lifeTime < MaxLifeTime - Delay)
             {
-                spriteBatch.Draw(this.texture, this.location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(this.texture, this.Location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, 0f);
             }
         }
     }

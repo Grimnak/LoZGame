@@ -1,120 +1,118 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-
-namespace LoZClone
+﻿namespace LoZClone
 {
-    class BlueCandleProjectile : IProjectile
-    {
-        private static int linkSize = 32;
-        private static int width = 20;
-        private static int height = 20;
-        private static int lifeTimeMax = 210;
-        private static int travelDistance = 64;
-        private static int frameDelay = 10;
+    using System;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
-        private Texture2D Texture;      // the texture to pull frames from
+    internal class BlueCandleProjectile : IProjectile
+    {
+        private static readonly int LinkSize = 32;
+        private static readonly int Width = 20;
+        private static readonly int Height = 20;
+        private static readonly int LifeTimeMax = 210;
+        private static readonly int TravelDistance = 64;
+        private static readonly int FrameDelay = 10;
+
+        private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle firstFrame;
         private Rectangle secondFrame;
         private Rectangle currentFrame;
-        private int scale;
-        private string direction;
+        private readonly int scale;
+        private readonly string direction;
         private Vector2 destination;
         private int lifeTime;
         private int distTravelled;
 
-        private int instance;
+        private readonly int instance;
         private bool expired;
-        private bool hostile;
-        public bool IsHostile { get { return hostile; } }
-        public Vector2 location { get; set; }
+        private readonly bool hostile;
+
+        public bool IsHostile { get { return this.hostile; } }
+
+        public Vector2 Location { get; set; }
 
         public BlueCandleProjectile(Texture2D texture, Vector2 loc, string direction, int scale, int instance)
         {
-            lifeTime = lifeTimeMax;
-            Texture = texture;
-            firstFrame = new Rectangle(0, 0, 32, 32);
-            secondFrame = new Rectangle(32, 0, 32, 32);
-            currentFrame = firstFrame;
+            this.lifeTime = LifeTimeMax;
+            this.texture = texture;
+            this.firstFrame = new Rectangle(0, 0, 32, 32);
+            this.secondFrame = new Rectangle(32, 0, 32, 32);
+            this.currentFrame = this.firstFrame;
             this.scale = 1;
             this.instance = instance;
-            expired = false;
+            this.expired = false;
             this.direction = direction;
-            distTravelled = 1;
+            this.distTravelled = 1;
             this.hostile = false;
             if (direction.Equals("Up"))
             {
-                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y - linkSize);
-                destination = new Vector2(this.location.X, this.location.Y - travelDistance);
+                this.Location = new Vector2(loc.X - (((Width * scale) - LinkSize) / 2), loc.Y - LinkSize);
+                this.destination = new Vector2(this.Location.X, this.Location.Y - TravelDistance);
             }
             else if (direction.Equals("Left"))
             {
-                location = new Vector2(loc.X - linkSize, loc.Y - ((width * scale) - linkSize) / 2);
-                destination = new Vector2(this.location.X - travelDistance, this.location.Y);
+                this.Location = new Vector2(loc.X - LinkSize, loc.Y - (((Width * scale) - LinkSize) / 2));
+                this.destination = new Vector2(this.Location.X - TravelDistance, this.Location.Y);
             }
             else if (direction.Equals("Right"))
             {
-                location = new Vector2(loc.X + linkSize, loc.Y - ((width * scale) - linkSize) / 2);
-                destination = new Vector2(this.location.X + travelDistance, this.location.Y);
+                this.Location = new Vector2(loc.X + LinkSize, loc.Y - (((Width * scale) - LinkSize) / 2));
+                this.destination = new Vector2(this.Location.X + TravelDistance, this.Location.Y);
             }
             else
             {
-                location = new Vector2(loc.X - ((width * scale) - linkSize) / 2, loc.Y + linkSize);
-                destination = new Vector2(this.location.X, this.location.Y + travelDistance);
+                this.Location = new Vector2(loc.X - (((Width * scale) - LinkSize) / 2), loc.Y + LinkSize);
+                this.destination = new Vector2(this.Location.X, this.Location.Y + TravelDistance);
             }
         }
 
         public bool IsExpired
         {
-            get { return expired; }
+            get { return this.expired; }
         }
 
         public int Instance
         {
-            get { return instance; }
+            get { return this.instance; }
         }
 
-        private void nextFrame()
+        private void NextFrame()
         {
-            if (currentFrame == firstFrame)
+            if (this.currentFrame == this.firstFrame)
             {
-                currentFrame = secondFrame;
+                this.currentFrame = this.secondFrame;
             }
             else
             {
-                currentFrame = firstFrame;
+                this.currentFrame = this.firstFrame;
             }
         }
 
         public void Update()
         {
-            distTravelled++;
-            lifeTime--;
-            if (lifeTime % frameDelay == 0)
+            this.distTravelled++;
+            this.lifeTime--;
+            if (this.lifeTime % FrameDelay == 0)
             {
-                this.nextFrame();
+                this.NextFrame();
             }
-            if (lifeTime >= lifeTimeMax / 3)
+
+            if (this.lifeTime >= LifeTimeMax / 3)
             {
-                float xdiff = (destination.X - location.X) / 8;
-                float ydiff = (destination.Y - location.Y) / 8;
-                float denom = (float)Math.Log(distTravelled);
-                this.location = new Vector2(this.location.X + (xdiff / denom), this.location.Y + (ydiff / denom));
+                float xdiff = (this.destination.X - this.Location.X) / 8;
+                float ydiff = (this.destination.Y - this.Location.Y) / 8;
+                float denom = (float)Math.Log(this.distTravelled);
+                this.Location = new Vector2(this.Location.X + (xdiff / denom), this.Location.Y + (ydiff / denom));
             }
-            else if (lifeTime <= 0)
+            else if (this.lifeTime <= 0)
             {
-                expired = true;
+                this.expired = true;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, this.location, currentFrame, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(this.texture, this.Location, this.currentFrame, Color.White, 0, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
         }
     }
 }

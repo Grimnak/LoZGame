@@ -1,37 +1,42 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class FloorTileSprite : IBlockSprite
     {
-        private Texture2D spriteSheet;
-        private int spriteSheetRows, spriteSheetColumns;
-        private int spriteWidth, spriteHeight;
-        public Vector2 location { get; set; }
+        private readonly Texture2D spriteSheet;
+        private readonly int spriteSheetRows;
+        private readonly int spriteSheetColumns;
+        private readonly int spriteWidth;
+        private readonly int spriteHeight;
+
+        public Vector2 Location { get; set; }
 
         public FloorTileSprite(Texture2D spriteTexture, Vector2 loc, SpriteSheetData data)
         {
-            spriteSheet = spriteTexture;
-            spriteWidth = data.Width;
-            spriteHeight = data.Height;
-            location = loc;
+            this.spriteSheet = spriteTexture;
+            this.spriteWidth = data.Width;
+            this.spriteHeight = data.Height;
+            this.Location = loc;
 
-            spriteSheetRows = data.Rows;
-            spriteSheetColumns = data.Columns;
+            this.spriteSheetRows = data.Rows;
+            this.spriteSheetColumns = data.Columns;
         }
 
-        public void Update() { }
+        public void Update()
+        {
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            int width = spriteSheet.Width / spriteSheetColumns;
-            int height = spriteSheet.Height / spriteSheetRows;
+            int width = this.spriteSheet.Width / this.spriteSheetColumns;
+            int height = this.spriteSheet.Height / this.spriteSheetRows;
 
             Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, spriteWidth, spriteHeight);
+            Rectangle destinationRectangle = new Rectangle((int)this.Location.X, (int)this.Location.Y, this.spriteWidth, this.spriteHeight);
 
-            spriteBatch.Draw(spriteSheet, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, Color.White);
         }
     }
 }

@@ -1,27 +1,25 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
     public class OldMan : IEnemy
     {
-        public Vector2 currentLocation;
+        public Vector2 CurrentLocation;
         private readonly OldManSprite sprite;
 
         public OldMan()
         {
-            this.currentLocation = new Vector2(650, 200);
+            this.CurrentLocation = new Vector2(650, 200);
             this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
         }
 
-        public void takeDamage()
+        public void TakeDamage()
         {
             //
         }
 
-        public void die()
+        public void Die()
         {
             //
         }
@@ -33,7 +31,7 @@ namespace LoZClone
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.currentLocation, Color.White);
+            this.sprite.Draw(sb, this.CurrentLocation, Color.White);
         }
     }
 }

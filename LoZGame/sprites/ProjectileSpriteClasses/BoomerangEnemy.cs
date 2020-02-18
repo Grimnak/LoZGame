@@ -1,14 +1,10 @@
 ﻿namespace LoZClone
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    class BoomerangEnemy : IProjectile
+    internal class BoomerangEnemy : IProjectile
     {
         private readonly Texture2D texture;      // the texture to pull frames from
         private Rectangle frame;
@@ -21,19 +17,19 @@
         private bool isReturned;
 
         private float rotation;
-        private static readonly int maxDistance = 200;
-        private static readonly int travelRate = 5;
-        private const int xBound = 800;
-        private const int yBound = 240;
+        private static readonly int MaxDistance = 200;
+        private static readonly int TravelRate = 5;
+        private const int XBound = 800;
+        private const int YBound = 240;
         private readonly int dX;
         private readonly int dY;
         private int distTraveled;
         private Vector2 enemyLoc;
-        private Goriya enemy;
+        private readonly Goriya enemy;
 
         public bool IsHostile { get; }
 
-        public Vector2 location { get; set; }
+        public Vector2 Location { get; set; }
 
         public BoomerangEnemy(Texture2D texture, Goriya enemy, int scale, int instance)
         {
@@ -43,8 +39,8 @@
             this.instance = instance;
             this.expired = false;
             this.rotation = 0;
-            Vector2 loc = enemy.currentLocation;
-            this.direction = enemy.direction;
+            Vector2 loc = enemy.CurrentLocation;
+            this.direction = enemy.Direction;
             this.isReturned = false;
             this.returning = false;
             this.distTraveled = 0;
@@ -54,52 +50,52 @@
 
             if (this.direction.Equals("Up"))
             {
-                this.location = new Vector2(loc.X + 16, loc.Y);
+                this.Location = new Vector2(loc.X + 16, loc.Y);
                 this.dX = 0;
                 this.dY = -1;
             }
             else if (this.direction.Equals("Left"))
             {
-                this.location = new Vector2(loc.X, loc.Y + 16);
+                this.Location = new Vector2(loc.X, loc.Y + 16);
                 this.dX = -1;
                 this.dY = 0;
             }
             else if (this.direction.Equals("Right"))
             {
-                this.location = new Vector2(loc.X + 32, loc.Y + 16);
+                this.Location = new Vector2(loc.X + 32, loc.Y + 16);
                 this.dX = 1;
                 this.dY = 0;
             }
             else
             {
-                location = new Vector2(loc.X + 16, loc.Y + 32);
+                this.Location = new Vector2(loc.X + 16, loc.Y + 32);
                 this.dX = 0;
                 this.dY = 1;
             }
 
-            enemyLoc = enemy.currentLocation;
-            enemyLoc = new Vector2(enemyLoc.X + 16, enemyLoc.Y + 16);
+            this.enemyLoc = enemy.CurrentLocation;
+            this.enemyLoc = new Vector2(this.enemyLoc.X + 16, this.enemyLoc.Y + 16);
         }
 
-        private void rotate()
+        private void Rotate()
         {
             this.rotation += MathHelper.PiOver4 / 2;
         }
 
-        private void updateLoc()
+        private void UpdateLoc()
         {
-            this.location = new Vector2(this.location.X + this.dX * travelRate, this.location.Y + this.dY * travelRate);
+            this.Location = new Vector2(this.Location.X + (this.dX * TravelRate), this.Location.Y + (this.dY * TravelRate));
         }
 
-        private void returnHome()
+        private void ReturnHome()
         {
-            float newX = this.location.X;
-            float newY = this.location.Y;
-            this.enemyLoc = enemy.currentLocation;
-            this.enemyLoc = new Vector2(enemyLoc.X + 16, enemyLoc.Y + 16);
+            float newX = this.Location.X;
+            float newY = this.Location.Y;
+            this.enemyLoc = this.enemy.CurrentLocation;
+            this.enemyLoc = new Vector2(this.enemyLoc.X + 16, this.enemyLoc.Y + 16);
             float diffX = this.enemyLoc.X - newX;
             float diffY = this.enemyLoc.Y - newY;
-            if (Math.Abs(diffX) <= 2 * travelRate && Math.Abs(diffY) <= 2 * travelRate)
+            if (Math.Abs(diffX) <= 2 * TravelRate && Math.Abs(diffY) <= 2 * TravelRate)
             {
                 this.isReturned = true;
                 this.enemy.HasBoomerang = true;
@@ -109,17 +105,17 @@
             float diffTotal = (float)Math.Sqrt(Math.Pow(diffX, 2) + Math.Pow(diffY, 2));
             if (newX != this.enemyLoc.X)
             {
-                float changeX = (diffX / diffTotal) * travelRate;
+                float changeX = diffX / diffTotal * TravelRate;
                 newX += changeX;
             }
 
             if (newY != this.enemyLoc.Y)
             {
-                float changeY = (diffY / diffTotal) * travelRate;
+                float changeY = diffY / diffTotal * TravelRate;
                 newY += changeY;
             }
 
-            this.location = new Vector2(newX, newY);
+            this.Location = new Vector2(newX, newY);
         }
 
         public bool IsExpired => this.expired;
@@ -128,32 +124,32 @@
 
         public void Update()
         {
-            this.rotate();
+            this.Rotate();
             if (this.isReturned)
             {
                 this.expired = true;
             }
 
-            if (this.distTraveled >= maxDistance)
+            if (this.distTraveled >= MaxDistance)
             {
                 this.returning = true;
             }
 
             if (!this.returning)
             {
-                this.updateLoc();
+                this.UpdateLoc();
             }
             else
             {
-                this.returnHome();
+                this.ReturnHome();
             }
 
-            this.distTraveled += travelRate;
+            this.distTraveled += TravelRate;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this.texture, this.location, this.frame, Color.White, this.rotation, new Vector2(3, 8), this.scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(this.texture, this.Location, this.frame, Color.White, this.rotation, new Vector2(3, 8), this.scale, SpriteEffects.None, 0f);
         }
     }
 }

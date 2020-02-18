@@ -1,11 +1,6 @@
 ﻿namespace LoZClone
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     public partial class ProjectileManager
@@ -85,20 +80,25 @@
                     case ProjectileType.Bomb:
                         this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Bomb(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId, this.explosion));
                         break;
+
                     case ProjectileType.Triforce:
                         this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Triforce(player.CurrentLocation, this.scale, this.projectileId));
                         this.triforceLock = true;
                         this.triforceInstance = this.projectileId;
                         break;
+
                     case ProjectileType.Arrow:
                         this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Arrow(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
                         break;
+
                     case ProjectileType.SilverArrow:
                         this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.SilverArrow(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
                         break;
+
                     case ProjectileType.RedCandle:
                         this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.RedCandle(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
                         break;
+
                     case ProjectileType.BlueCandle:
                         if (!this.candleLock)
                         {
@@ -108,6 +108,7 @@
                         }
 
                         break;
+
                     case ProjectileType.Boomerang:
                         if (!this.boomerangLock)
                         {
@@ -117,6 +118,7 @@
                         }
 
                         break;
+
                     case ProjectileType.MagicBoomerang:
                         if (!this.boomerangLock)
                         {
@@ -126,6 +128,7 @@
                         }
 
                         break;
+
                     case ProjectileType.SwordBeam:
                         if (!this.swordLock)
                         {
@@ -135,6 +138,7 @@
                         }
 
                         break;
+
                     default:
                         break;
                 }

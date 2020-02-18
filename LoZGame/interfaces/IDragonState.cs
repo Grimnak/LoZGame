@@ -1,21 +1,20 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework.Graphics;
+
     public interface IDragonState
     {
-        void moveLeft();
+        void MoveLeft();
 
-        void moveRight();
+        void MoveRight();
 
-        void attack();
+        void Attack();
 
-        void stop();
+        void Stop();
 
-        void takeDamage();
+        void TakeDamage();
 
-        void die();
+        void Die();
 
         void Update();
 

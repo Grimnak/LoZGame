@@ -62,6 +62,5 @@ namespace LoZClone
         public ICommand GetIdle => this.commandIdle;
 
         public Dictionary<Keys, ICommand> GetDict => this.dictionary;
-
     }
 }

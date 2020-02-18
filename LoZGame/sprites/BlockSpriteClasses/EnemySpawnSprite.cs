@@ -1,52 +1,56 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class EnemySpawnSprite : IBlockSprite
     {
-        private Texture2D spriteSheet;
-        private int spriteSheetRows, spriteSheetColumns;
-        private int currentFrame, totalFrames;
+        private readonly Texture2D spriteSheet;
+        private readonly int spriteSheetRows;
+        private readonly int spriteSheetColumns;
+        private int currentFrame;
+        private readonly int totalFrames;
         private int currentUpdate;
-        private int updatesPerFrame = 5;
-        private int spriteWidth, spriteHeight;
-        public Vector2 location { get; set; }
+        private readonly int updatesPerFrame = 5;
+        private readonly int spriteWidth;
+        private readonly int spriteHeight;
+
+        public Vector2 Location { get; set; }
 
         public EnemySpawnSprite(Texture2D spriteTexture, Vector2 loc, SpriteSheetData data)
         {
-            spriteSheet = spriteTexture;
-            spriteWidth = data.Width;
-            spriteHeight = data.Height;
-            location = loc;
-            currentFrame = 0;
-            spriteSheetRows = data.Rows;
-            spriteSheetColumns = data.Columns;
-            totalFrames = spriteSheetRows * spriteSheetColumns;
+            this.spriteSheet = spriteTexture;
+            this.spriteWidth = data.Width;
+            this.spriteHeight = data.Height;
+            this.Location = loc;
+            this.currentFrame = 0;
+            this.spriteSheetRows = data.Rows;
+            this.spriteSheetColumns = data.Columns;
+            this.totalFrames = this.spriteSheetRows * this.spriteSheetColumns;
         }
 
         public void Update()
         {
-            currentUpdate++;
-            if (currentUpdate == updatesPerFrame)
+            this.currentUpdate++;
+            if (this.currentUpdate == this.updatesPerFrame)
             {
-                currentUpdate = 0;
-                currentFrame++;
-                if (currentFrame == totalFrames)
-                    currentFrame = 0;
+                this.currentUpdate = 0;
+                this.currentFrame++;
+                if (this.currentFrame == this.totalFrames)
+                    this.currentFrame = 0;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            int width = spriteSheet.Width / spriteSheetColumns;
-            int height = spriteSheet.Height / spriteSheetRows;
-            int row = (int)((float)currentFrame / (float)spriteSheetColumns);
+            int width = this.spriteSheet.Width / this.spriteSheetColumns;
+            int height = this.spriteSheet.Height / this.spriteSheetRows;
+            int row = (int)((float)this.currentFrame / (float)this.spriteSheetColumns);
 
             Rectangle sourceRectangle = new Rectangle(0, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, spriteWidth, spriteHeight);
+            Rectangle destinationRectangle = new Rectangle((int)this.Location.X, (int)this.Location.Y, this.spriteWidth, this.spriteHeight);
 
-            spriteBatch.Draw(spriteSheet, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, Color.White);
         }
     }
 }

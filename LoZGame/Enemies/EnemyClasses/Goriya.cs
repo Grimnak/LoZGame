@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
     public class Goriya : IEnemy
     {
@@ -18,103 +17,120 @@ namespace LoZClone
         private int lifeTime = 0;
         private bool hasBoomerang;
         private readonly int directionChange = 40;
-        public Vector2 currentLocation;
+        public Vector2 CurrentLocation;
         private string currentDirection = "Left";
-        readonly EntityManager entity;
+        private readonly EntityManager entity;
 
-        private enum stateEnum { Up, Down, Left, Right, Attacking };
+        private enum StateEnum
+        {
+            Up,
+            Down,
+            Left,
+            Right,
+            Attacking,
+        }
 
-        private stateEnum state;
+        private StateEnum state;
 
         public Goriya(EntityManager entity)
         {
             this.currentState = new LeftMovingGoriyaState(this);
-            this.currentLocation = new Vector2(650, 200);
+            this.CurrentLocation = new Vector2(650, 200);
             this.entity = entity;
             this.hasBoomerang = true;
         }
 
-        private void getNewState()
+        private void GetNewState()
         {
             Random randomselect = new Random();
-            this.state = (stateEnum)(randomselect.Next(0, 5));
+            this.state = (StateEnum)randomselect.Next(0, 5);
         }
 
-        private void updateLoc()
+        private void UpdateLoc()
         {
             switch (this.state)
             {
-                case stateEnum.Up:
+                case StateEnum.Up:
                     this.currentDirection = "Up";
-                    this.currentState.moveUp();
+                    this.currentState.MoveUp();
                     break;
-                case stateEnum.Down:
+
+                case StateEnum.Down:
                     this.currentDirection = "Down";
-                    this.currentState.moveDown();
+                    this.currentState.MoveDown();
                     break;
-                case stateEnum.Left:
+
+                case StateEnum.Left:
                     this.currentDirection = "Left";
-                    this.currentState.moveLeft();
+                    this.currentState.MoveLeft();
                     break;
-                case stateEnum.Right:
+
+                case StateEnum.Right:
                     this.currentDirection = "Right";
-                    this.currentState.moveRight();
+                    this.currentState.MoveRight();
                     break;
-                case stateEnum.Attacking:
-                    this.currentState.attack();
+
+                case StateEnum.Attacking:
+                    this.currentState.Attack();
                     if (this.hasBoomerang)
                     {
                         this.entity.EnemyProjectileManager.AddEnemyRang(this, this.currentDirection);
                     }
+
                     break;
+
                 default:
                     break;
             }
-            this.checkBorder();
+
+            this.CheckBorder();
             this.currentState.Update();
         }
 
-        private void checkBorder()
+        private void CheckBorder()
         {
-              if (this.currentLocation.Y < 30)
-              {
-                  this.currentLocation = new Vector2(this.currentLocation.X, 30);
-                  this.lifeTime = this.directionChange + 1;
-              }
-              if (this.currentLocation.Y > 450)
-              {
-                  this.currentLocation = new Vector2(this.currentLocation.X, 450);
-                  this.lifeTime = this.directionChange + 1;
-              }
-              if (this.currentLocation.X < 30)
-              {
-                  this.currentLocation = new Vector2(30, this.currentLocation.Y);
-                  this.lifeTime = this.directionChange + 1;
-              }
-              if (this.currentLocation.X > 770)
-              {
-                  this.currentLocation = new Vector2(770, this.currentLocation.Y);
-                  this.lifeTime = this.directionChange + 1;
-              }
-        } 
+            if (this.CurrentLocation.Y < 30)
+            {
+                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 30);
+                this.lifeTime = this.directionChange + 1;
+            }
 
-        public void takeDamage()
-        {
-            this.currentState.takeDamage();
+            if (this.CurrentLocation.Y > 450)
+            {
+                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 450);
+                this.lifeTime = this.directionChange + 1;
+            }
+
+            if (this.CurrentLocation.X < 30)
+            {
+                this.CurrentLocation = new Vector2(30, this.CurrentLocation.Y);
+                this.lifeTime = this.directionChange + 1;
+            }
+
+            if (this.CurrentLocation.X > 770)
+            {
+                this.CurrentLocation = new Vector2(770, this.CurrentLocation.Y);
+                this.lifeTime = this.directionChange + 1;
+            }
         }
 
-        public void die()
+        public void TakeDamage()
         {
-            this.currentState.die();
+            this.currentState.TakeDamage();
+        }
+
+        public void Die()
+        {
+            this.currentState.Die();
         }
 
         public void Update()
         {
             this.lifeTime++;
-            this.updateLoc();
+            this.UpdateLoc();
             if (this.lifeTime > this.directionChange)
             {
-                this.getNewState();
+                this.GetNewState();
                 this.lifeTime = 0;
             }
         }
@@ -128,7 +144,6 @@ namespace LoZClone
         {
             get { return this.currentState; }
             set { this.currentState = value; }
-
         }
 
         public int Health
@@ -137,12 +152,10 @@ namespace LoZClone
             set { this.health = value; }
         }
 
-        public string direction
+        public string Direction
         {
             get { return this.currentDirection; }
             set { this.currentDirection = value; }
         }
     }
 }
-
-
