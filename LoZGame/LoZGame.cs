@@ -13,7 +13,7 @@
         public SpriteBatch SpriteBatch => this.spriteBatch;
 
         private IPlayer link;
-        private CommandLoader commandLoader;
+        private KeyboardCommandLoader keyboardCommandLoader;
         private IController keyboardController;
         private ItemManager itemManager;
         private EntityManager entityManager;
@@ -35,8 +35,8 @@
             this.enemyManager = new EnemyManager(this.entityManager);
             this.itemManager = new ItemManager();
             this.blockManager = new BlockManager();
-            this.commandLoader = new CommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
-            this.keyboardController = new KeyboardController(this.commandLoader);
+            this.keyboardCommandLoader = new KeyboardCommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
+            this.keyboardController = new KeyboardController(this.keyboardCommandLoader);
             base.Initialize();
         }
 

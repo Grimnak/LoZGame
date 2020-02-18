@@ -84,8 +84,10 @@
     <Compile Include="Controller\Commands\CommandTriforce.cs" />
     <Compile Include="Controller\Commands\CommandUp.cs" />
     <Compile Include="Controller\Commands\CommandIdle.cs" />
-    <Compile Include="Controller\Commands\CommandLoader.cs" />
+    <Compile Include="Controller\Commands\KeyboardCommandLoader.cs" />
+    <Compile Include="Controller\Commands\MouseCommandLoader.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
+    <Compile Include="Controller\MouseController.cs" />
     <Compile Include="Controller\PriorityComparer.cs" />
     <Compile Include="Enemies\EnemyClasses\Dodongo.cs" />
     <Compile Include="Enemies\EnemyClasses\Dragon.cs" />
