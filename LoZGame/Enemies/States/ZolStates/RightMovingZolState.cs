@@ -6,7 +6,7 @@
     public class RightMovingZolState : IEnemyState
     {
         private readonly Zol zol;
-        private readonly IZolSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public RightMovingZolState(Zol zol)
         {
@@ -21,7 +21,6 @@
 
         public void MoveRight()
         {
-            // Blank b/c already moving right
         }
 
         public void MoveUp()
@@ -32,6 +31,30 @@
         public void MoveDown()
         {
             this.zol.CurrentState = new DownMovingZolState(this.zol);
+        }
+
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
+        {
+        }
+
+        public void Attack()
+        {
+        }
+
+        public void Stop()
+        {
         }
 
         public void TakeDamage()

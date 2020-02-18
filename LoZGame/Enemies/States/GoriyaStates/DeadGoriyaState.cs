@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeadGoriyaState : IGoriyaState
+    public class DeadGoriyaState : IEnemyState
     {
         private readonly Goriya goriya;
         private readonly DeadEnemySprite sprite;
@@ -26,7 +26,27 @@
         {
         }
 
+        public void Stop()
+        {
+        }
+
         public void MoveDown()
+        {
+        }
+
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
         {
         }
 

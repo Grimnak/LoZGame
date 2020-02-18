@@ -3,7 +3,7 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class StalfosSprite : IStalfosSprite
+    public class StalfosSprite : IEnemySprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;

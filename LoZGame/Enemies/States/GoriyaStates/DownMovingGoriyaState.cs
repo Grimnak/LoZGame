@@ -3,10 +3,10 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DownMovingGoriyaState : IGoriyaState
+    public class DownMovingGoriyaState : IEnemyState
     {
         private readonly Goriya goriya;
-        private readonly IGoriyaSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public DownMovingGoriyaState(Goriya goriya)
         {
@@ -31,7 +31,26 @@
 
         public void MoveDown()
         {
-            // Blank b/c already moving down
+        }
+
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
+        {
+        }
+
+        public void Stop()
+        {
         }
 
         public void Attack()

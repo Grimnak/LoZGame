@@ -6,7 +6,7 @@
     public class RightMovingWallMasterState : IEnemyState
     {
         private readonly WallMaster wallMaster;
-        private readonly IWallMasterSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public RightMovingWallMasterState(WallMaster wallMaster)
         {
@@ -21,7 +21,6 @@
 
         public void MoveRight()
         {
-            // Blank b/c already moving right
         }
 
         public void MoveUp()
@@ -32,6 +31,30 @@
         public void MoveDown()
         {
             this.wallMaster.CurrentState = new DownMovingWallMasterState(this.wallMaster);
+        }
+
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
+        {
+        }
+
+        public void Attack()
+        {
+        }
+
+        public void Stop()
+        {
         }
 
         public void TakeDamage()

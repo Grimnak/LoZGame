@@ -3,7 +3,7 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DodongoRightSprite : IDodongoSprite
+    public class DodongoRightSprite : IEnemySprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;
@@ -49,10 +49,6 @@ namespace LoZClone
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, this.spriteSheetWidth * 2, this.spriteSheetHeight * 2);
 
             spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
-        }
-
-        public void Attack()
-        {
         }
     }
 }

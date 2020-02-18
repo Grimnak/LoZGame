@@ -3,7 +3,7 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DragonSprite : IDragonSprite
+    public class DragonSprite : IEnemySprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;

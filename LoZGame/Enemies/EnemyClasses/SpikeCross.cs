@@ -6,7 +6,7 @@
 
     public class SpikeCross : IEnemy
     {
-        private ISpikeCrossState currentState;
+        private IEnemyState currentState;
         private int health = 10;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
@@ -19,8 +19,7 @@
             Left,
             Right,
             Idle
-        }
-;
+        };
 
         private direction currentDirection;
 
@@ -119,7 +118,7 @@
             this.currentState.Draw(sb);
         }
 
-        public ISpikeCrossState CurrentState
+        public IEnemyState CurrentState
         {
             get { return this.currentState; }
             set { this.currentState = value; }

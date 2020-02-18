@@ -3,7 +3,7 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class GelSprite : IGelSprite
+    public class GelSprite : IEnemySprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;

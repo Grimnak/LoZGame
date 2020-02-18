@@ -6,7 +6,7 @@
     public class LeftMovingDodongoState : IEnemyState
     {
         private readonly Dodongo dodongo;
-        private readonly IDodongoSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public LeftMovingDodongoState(Dodongo dodongo)
         {
@@ -16,7 +16,6 @@
 
         public void MoveLeft()
         {
-            // Blank b/c already moving left
         }
 
         public void MoveRight()
@@ -32,6 +31,30 @@
         public void MoveDown()
         {
             this.dodongo.CurrentState = new DownMovingDodongoState(this.dodongo);
+        }
+
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
+        {
+        }
+
+        public void Attack()
+        {
+        }
+
+        public void Stop()
+        {
         }
 
         public void TakeDamage()

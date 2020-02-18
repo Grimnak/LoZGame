@@ -8,7 +8,5 @@
         void Update();
 
         void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint);
-
-        void Attack();
     }
 }

@@ -6,7 +6,7 @@
     public class UpMovingDodongoState : IEnemyState
     {
         private readonly Dodongo dodongo;
-        private readonly IDodongoSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public UpMovingDodongoState(Dodongo dodongo)
         {
@@ -26,12 +26,35 @@
 
         public void MoveUp()
         {
-            // Blank b/c already moving up
         }
 
         public void MoveDown()
         {
             this.dodongo.CurrentState = new DownMovingDodongoState(this.dodongo);
+        }
+
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
+        {
+        }
+
+        public void Attack()
+        {
+        }
+
+        public void Stop()
+        {
         }
 
         public void TakeDamage()

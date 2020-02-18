@@ -3,10 +3,10 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class UpMovingKeeseState : IKeeseState
+    public class UpMovingKeeseState : IEnemyState
     {
         private readonly Keese keese;
-        private readonly IKeeseSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public UpMovingKeeseState(Keese keese)
         {
@@ -26,7 +26,6 @@
 
         public void MoveUp()
         {
-            // Blank b/c already moving up
         }
 
         public void MoveDown()
@@ -52,6 +51,14 @@
         public void MoveDownRight()
         {
             this.keese.CurrentState = new DownRightMovingKeeseState(this.keese);
+        }
+
+        public void Attack()
+        {
+        }
+
+        public void Stop()
+        {
         }
 
         public void TakeDamage()

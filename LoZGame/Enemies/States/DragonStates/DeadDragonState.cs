@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeadDragonState : IDragonState
+    public class DeadDragonState : IEnemyState
     {
         private readonly Dragon dragon;
         private readonly DeadEnemySprite sprite;
@@ -14,11 +14,35 @@
             this.dragon = null;
         }
 
+        public void MoveUp()
+        {
+        }
+
+        public void MoveDown()
+        {
+        }
+
         public void MoveLeft()
         {
         }
 
         public void MoveRight()
+        {
+        }
+
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
         {
         }
 

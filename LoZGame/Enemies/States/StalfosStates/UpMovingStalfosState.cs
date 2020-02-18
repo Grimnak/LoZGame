@@ -6,7 +6,7 @@
     public class UpMovingStalfosState : IEnemyState
     {
         private readonly Stalfos stalfos;
-        private readonly IStalfosSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public UpMovingStalfosState(Stalfos stalfos)
         {
@@ -26,12 +26,35 @@
 
         public void MoveUp()
         {
-            // Blank b/c already moving up
         }
 
         public void MoveDown()
         {
             this.stalfos.CurrentState = new DownMovingStalfosState(this.stalfos);
+        }
+
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
+        {
+        }
+
+        public void Attack()
+        {
+        }
+
+        public void Stop()
+        {
         }
 
         public void TakeDamage()

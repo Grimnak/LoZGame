@@ -3,10 +3,10 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class UpMovingSpikeCrossState : ISpikeCrossState
+    public class UpMovingSpikeCrossState : IEnemyState
     {
         private readonly SpikeCross spikeCross;
-        private readonly ISpikeCrossSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public UpMovingSpikeCrossState(SpikeCross spikeCross)
         {
@@ -26,12 +26,39 @@
 
         public void MoveUp()
         {
-            // Blank b/c already moving down
         }
 
         public void MoveDown()
         {
             this.spikeCross.CurrentState = new DownMovingSpikeCrossState(this.spikeCross);
+        }
+
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
+        {
+        }
+
+        public void Attack()
+        {
+        }
+
+        public void TakeDamage()
+        {
+        }
+
+        public void Die()
+        {
         }
 
         public void Stop()

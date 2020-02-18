@@ -6,7 +6,13 @@
 
     public class Goriya : IEnemy
     {
-        private IGoriyaState currentState;
+        public bool HasBoomerang
+        {
+            get { return this.hasBoomerang; }
+            set { this.hasBoomerang = value; }
+        }
+
+        private IEnemyState currentState;
         private int health = 10;
         private int coolDown;
         private int lifeTime = 0;
@@ -139,7 +145,7 @@
             this.currentState.Draw(sb);
         }
 
-        public IGoriyaState CurrentState
+        public IEnemyState CurrentState
         {
             get { return this.currentState; }
             set { this.currentState = value; }

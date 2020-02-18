@@ -3,15 +3,23 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class IdleDragonState : IDragonState
+    public class IdleDragonState : IEnemyState
     {
         private readonly Dragon dragon;
-        private readonly IDragonSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public IdleDragonState(Dragon dragon)
         {
             this.dragon = dragon;
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
+        }
+
+        public void MoveUp()
+        {
+        }
+
+        public void MoveDown()
+        {
         }
 
         public void MoveLeft()
@@ -23,9 +31,24 @@
         {
         }
 
+        public void MoveUpLeft()
+        {
+        }
+
+        public void MoveUpRight()
+        {
+        }
+
+        public void MoveDownLeft()
+        {
+        }
+
+        public void MoveDownRight()
+        {
+        }
+
         public void Stop()
         {
-            // Blank b/c already moving left
         }
 
         public void Attack()

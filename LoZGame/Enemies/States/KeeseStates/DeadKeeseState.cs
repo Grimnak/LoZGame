@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeadKeeseState : IKeeseState
+    public class DeadKeeseState : IEnemyState
     {
         private readonly Keese keese;
         private readonly DeadEnemySprite sprite;
@@ -43,6 +43,14 @@
         }
 
         public void MoveDownRight()
+        {
+        }
+
+        public void Attack()
+        {
+        }
+
+        public void Stop()
         {
         }
 
