@@ -9,7 +9,7 @@ namespace LoZClone
     /// </summary>
     public class KeyboardController : IController
     {
-        private readonly CommandLoader allCommands;
+        private readonly KeyboardCommandLoader allCommands;
         private readonly Dictionary<Keys, ICommand> dict;
         private readonly List<KeyValuePair<Keys, ICommand>> playerCommands;
         private ICommand currentCommand;
@@ -19,7 +19,7 @@ namespace LoZClone
         /// Initializes a new instance of the <see cref="KeyboardController"/> class.
         /// </summary>
         /// <param name="allCommands">Contains all commands for the controller to execute.</param>
-        public KeyboardController(CommandLoader allCommands)
+        public KeyboardController(KeyboardCommandLoader allCommands)
         {
             this.allCommands = allCommands;
             this.oldState = Keyboard.GetState();

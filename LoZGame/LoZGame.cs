@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using System;
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -13,8 +14,9 @@
         public SpriteBatch SpriteBatch => this.spriteBatch;
 
         private IPlayer link;
-        private CommandLoader commandLoader;
-        private IController keyboardController;
+        private KeyboardCommandLoader keyboardCommandLoader;
+        private MouseCommandLoader mouseCommandLoader;
+        private List<IController> controllers;
         private ItemManager itemManager;
         private EntityManager entityManager;
         private BlockManager blockManager;
@@ -35,8 +37,11 @@
             this.enemyManager = new EnemyManager(this.entityManager);
             this.itemManager = new ItemManager();
             this.blockManager = new BlockManager();
-            this.commandLoader = new CommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
-            this.keyboardController = new KeyboardController(this.commandLoader);
+            this.keyboardCommandLoader = new KeyboardCommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
+            this.mouseCommandLoader = new MouseCommandLoader();
+            this.controllers = new List<IController>();
+            this.controllers.Add(new KeyboardController(this.keyboardCommandLoader));
+            this.controllers.Add(new MouseController(this.mouseCommandLoader));
             base.Initialize();
         }
 
@@ -59,7 +64,11 @@
 
         protected override void Update(GameTime gameTime)
         {
-            this.keyboardController.Update();
+            foreach (IController controller in this.controllers)
+            {
+                controller.Update();
+            }
+
             this.link.Update();
             this.enemyManager.CurrentEnemy.Update();
             this.itemManager.CurrentItem.Update();
