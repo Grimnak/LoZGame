@@ -77,6 +77,7 @@ namespace LoZClone
         public void Clear()
         {
             this.enemyList = new List<IEnemy>();
+            this.maxIndex = 0;
             this.loadSprites();
         }
 
