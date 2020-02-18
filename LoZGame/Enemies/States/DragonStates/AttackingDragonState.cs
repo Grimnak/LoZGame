@@ -11,14 +11,13 @@ namespace LoZClone
         private readonly FireballSprite fireballLeft;
         private readonly FireballSprite fireballDownLeft;
         private readonly FireballSprite fireballUpLeft;
+        private const int fireBallScale = 2;
 
         public AttackingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
-            this.fireballUpLeft = EnemySpriteFactory.Instance.CreateUpLeftFireballSprite(dragon.currentLocation);
-            this.fireballLeft = EnemySpriteFactory.Instance.CreateLeftFireballSprite(dragon.currentLocation);
-            this.fireballDownLeft = EnemySpriteFactory.Instance.CreateDownLeftFireballSprite(dragon.currentLocation);
+            this.dragon.EntityManager.EnemyProjectileManager.AddFireballs(this.dragon, fireBallScale);
         }
 
         public void moveLeft()
@@ -58,17 +57,11 @@ namespace LoZClone
         public void Update()
         {
             this.sprite.Update();
-            this.fireballDownLeft.Update();
-            this.fireballLeft.Update();
-            this.fireballUpLeft.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
             this.sprite.Draw(sb, this.dragon.currentLocation, Color.White);
-            this.fireballDownLeft.Draw(sb, Color.White);
-            this.fireballLeft.Draw(sb, Color.White);
-            this.fireballUpLeft.Draw(sb, Color.White);
         }
     }
 }

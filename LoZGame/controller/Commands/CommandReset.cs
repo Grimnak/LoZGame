@@ -51,9 +51,7 @@
             this.item.cycleLeft();
             this.item.currentItem.location = new Vector2(384, 184);
 
-            this.enemy.CurrentIndex = 1;
-            this.enemy.cycleLeft();
-            this.enemy.location = new Vector2(550, 184);
+            this.enemy.Clear();
 
             this.entity.Clear();
 

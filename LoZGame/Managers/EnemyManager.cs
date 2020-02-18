@@ -30,7 +30,7 @@ namespace LoZClone
             this.enemyList.Add(new Dodongo());
             this.enemyList.Add(new Stalfos());
             this.enemyList.Add(new Goriya(this.entity));
-            this.enemyList.Add(new Dragon());
+            this.enemyList.Add(new Dragon(this.entity));
             this.enemyList.Add(new OldMan());
             this.enemyList.Add(new Merchant());
             this.enemyList.Add(new SpikeCross());
@@ -74,7 +74,7 @@ namespace LoZClone
             this.currentEnemy = this.enemyList[this.currentIndex];
         }
 
-        public void clear()
+        public void Clear()
         {
             this.enemyList = new List<IEnemy>();
             this.loadSprites();

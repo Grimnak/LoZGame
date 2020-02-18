@@ -23,6 +23,8 @@
         private float rotation;
         private static readonly int maxDistance = 200;
         private static readonly int travelRate = 5;
+        private const int xBound = 800;
+        private const int yBound = 240;
         private readonly int dX;
         private readonly int dY;
         private int distTraveled;
@@ -145,6 +147,7 @@
             {
                 this.returnHome();
             }
+
             this.distTraveled += travelRate;
         }
 

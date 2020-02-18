@@ -70,7 +70,6 @@
         public int Triforce => (int)ProjectileType.Triforce;
 
         public int Swordbeam => (int)ProjectileType.SwordBeam;
-    
 
         public void AddItem(int itemType, IPlayer player)
         {
@@ -140,13 +139,6 @@
                         break;
                 }
             }
-        }
-
-        public void AddEnemyRang(Goriya enemy, string direction)
-        {
-            this.projectileId++;
-            this.projectileListSize++;
-            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.BoomerangEnemy(enemy, this.scale, this.projectileId));
         }
 
         public void RemoveItem(int instance)

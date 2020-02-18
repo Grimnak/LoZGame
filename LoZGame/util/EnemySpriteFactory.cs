@@ -199,19 +199,19 @@
             return new DragonDamagedSprite(this.damagedDragon, this.damagedDragonData);
         }
 
-        public FireballSprite CreateLeftFireballSprite(Vector2 location)
+        public FireballSprite CreateLeftFireballSprite(Vector2 location, int id, int scale)
         {
-            return new FireballSprite(this.fireball, this.fireballData, "left", location);
+            return new FireballSprite(this.fireball, this.fireballData, "left", location, id, scale);
         }
 
-        public FireballSprite CreateDownLeftFireballSprite(Vector2 location)
+        public FireballSprite CreateDownLeftFireballSprite(Vector2 location, int id, int scale)
         {
-            return new FireballSprite(this.fireball, this.fireballData, "down", location);
+            return new FireballSprite(this.fireball, this.fireballData, "down", location, id, scale);
         }
 
-        public FireballSprite CreateUpLeftFireballSprite(Vector2 location)
+        public FireballSprite CreateUpLeftFireballSprite(Vector2 location, int id, int scale)
         {
-            return new FireballSprite(this.fireball, this.fireballData, "up", location);
+            return new FireballSprite(this.fireball, this.fireballData, "up", location, id, scale);
         }
 
         // DodongoSprites

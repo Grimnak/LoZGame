@@ -64,7 +64,7 @@ namespace LoZClone
                     this.currentState.attack();
                     if (this.hasBoomerang)
                     {
-                        this.entity.ProjectileManager.AddEnemyRang(this, this.currentDirection);
+                        this.entity.EnemyProjectileManager.AddEnemyRang(this, this.currentDirection);
                     }
                     break;
                 default:

@@ -11,14 +11,18 @@ namespace LoZClone
         private int health = 10;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
+        private readonly EntityManager entity;
         public Vector2 currentLocation;
+
+        public EntityManager EntityManager { get { return this.entity; } }
 
         private enum stateEnum { Idle, Left, Right, Attacking};
 
         private stateEnum currentStateEnum;
 
-        public Dragon()
+        public Dragon(EntityManager entity)
         {
+            this.entity = entity;
             this.currentState = new LeftMovingDragonState(this);
             this.currentLocation = new Vector2(650, 200);
         }
