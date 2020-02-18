@@ -91,10 +91,20 @@
                 this.RemoveFireball(index);
             }
 
+            foreach (int index in this.boomerangDeletable)
+            {
+                this.RemoveBoomerang(index);
+            }
+
             this.fireBallDeletable.Clear();
             foreach (KeyValuePair<int, FireballSprite> fireBall in this.fireBallList)
             {
                 fireBall.Value.Update();
+            }
+
+            foreach (KeyValuePair<int, IProjectile> boomerang in this.boomerangList)
+            {
+                boomerang.Value.Update();
             }
         }
 
@@ -112,3 +122,5 @@
         }
     }
 }
+
+

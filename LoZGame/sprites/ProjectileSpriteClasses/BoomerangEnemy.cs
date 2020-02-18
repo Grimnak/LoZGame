@@ -128,6 +128,7 @@
             if (this.isReturned)
             {
                 this.expired = true;
+                this.enemy.HasBoomerang = true;
             }
 
             if (this.distTraveled >= MaxDistance)
