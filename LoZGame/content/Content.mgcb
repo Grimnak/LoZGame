@@ -13,18 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ../../etc/art/tiles/dungeonMaster.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../etc/art/tiles/dungeonMaster.png;dungeonMaster.png
-
 #begin ../../etc/art/tiles/fire.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -859,18 +847,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Link_Items.png
-
-#begin Link_Items.psd
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Link_Items.psd
 
 #begin merchant.png
 /importer:TextureImporter
