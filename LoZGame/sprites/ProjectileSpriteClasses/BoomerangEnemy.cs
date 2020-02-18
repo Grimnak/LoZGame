@@ -25,7 +25,7 @@
         private readonly int dY;
         private int distTraveled;
         private Vector2 enemyLoc;
-        private readonly Goriya enemy;
+        private Goriya enemy;
 
         public bool IsHostile { get; }
 
@@ -46,7 +46,6 @@
             this.distTraveled = 0;
             this.IsHostile = true;
             this.enemy = enemy;
-            this.enemy.HasBoomerang = false;
 
             if (this.direction.Equals("Up"))
             {
@@ -98,7 +97,6 @@
             if (Math.Abs(diffX) <= 2 * TravelRate && Math.Abs(diffY) <= 2 * TravelRate)
             {
                 this.isReturned = true;
-                this.enemy.HasBoomerang = true;
                 return;
             }
 
@@ -128,7 +126,6 @@
             if (this.isReturned)
             {
                 this.expired = true;
-                this.enemy.HasBoomerang = true;
             }
 
             if (this.distTraveled >= MaxDistance)

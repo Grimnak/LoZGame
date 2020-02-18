@@ -6,16 +6,10 @@
 
     public class Goriya : IEnemy
     {
-        public bool HasBoomerang
-        {
-            get { return this.hasBoomerang; }
-            set { this.hasBoomerang = value; }
-        }
-
         private IGoriyaState currentState;
         private int health = 10;
+        private int coolDown;
         private int lifeTime = 0;
-        private bool hasBoomerang;
         private readonly int directionChange = 40;
         public Vector2 CurrentLocation;
         private string currentDirection = "Left";
@@ -37,7 +31,7 @@
             this.currentState = new LeftMovingGoriyaState(this);
             this.CurrentLocation = new Vector2(650, 200);
             this.entity = entity;
-            this.hasBoomerang = true;
+            this.coolDown = 0;
         }
 
         private void GetNewState()
@@ -72,8 +66,9 @@
 
                 case StateEnum.Attacking:
                     this.currentState.Attack();
-                    if (this.hasBoomerang)
+                    if (this.coolDown == 0)
                     {
+                        this.coolDown = 240;
                         this.entity.EnemyProjectileManager.AddEnemyRang(this, this.currentDirection);
                     }
 
@@ -128,6 +123,10 @@
         {
             this.lifeTime++;
             this.UpdateLoc();
+            if (this.coolDown > 0)
+            {
+                this.coolDown--;
+            }
             if (this.lifeTime > this.directionChange)
             {
                 this.GetNewState();
