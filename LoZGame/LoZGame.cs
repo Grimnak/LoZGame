@@ -21,6 +21,7 @@
         private EntityManager entityManager;
         private BlockManager blockManager;
         private EnemyManager enemyManager;
+        private RoomManager roomManager;
 
         public LoZGame()
         {
@@ -37,8 +38,9 @@
             this.enemyManager = new EnemyManager(this.entityManager);
             this.itemManager = new ItemManager();
             this.blockManager = new BlockManager();
+            this.roomManager = new RoomManager();
             this.keyboardCommandLoader = new KeyboardCommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
-            this.mouseCommandLoader = new MouseCommandLoader();
+            this.mouseCommandLoader = new MouseCommandLoader(this.roomManager);
             this.controllers = new List<IController>();
             this.controllers.Add(new KeyboardController(this.keyboardCommandLoader));
             this.controllers.Add(new MouseController(this.mouseCommandLoader));

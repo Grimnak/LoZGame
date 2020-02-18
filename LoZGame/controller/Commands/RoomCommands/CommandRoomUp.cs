@@ -5,14 +5,15 @@
     /// </summary>
     public class CommandRoomUp : ICommand
     {
-        // RoomManager room;
+        private RoomManager room;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandRoomUp"/> class.
         /// </summary>
-        public CommandRoomUp(/*RoomManager room*/)
+        /// <param name="room">The room manager to execute a command on.</param>
+        public CommandRoomUp(RoomManager room)
         {
-            // this.room = room;
+            this.room = room;
         }
 
         /// <inheritdoc/>
@@ -21,7 +22,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            // room.MoveUp();
+            this.room.MoveUp();
         }
     }
 }

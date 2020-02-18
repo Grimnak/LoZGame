@@ -14,13 +14,13 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="MouseCommandLoader"/> class.
         /// </summary>
-        public MouseCommandLoader(/*RoomManager room*/)
+        public MouseCommandLoader(RoomManager room)
         {
             // this.room = room;
-            this.commandRoomUp = new CommandRoomUp(/*room*/);
-            this.commandRoomDown = new CommandRoomDown(/*room*/);
-            this.commandRoomLeft = new CommandRoomLeft(/*room*/);
-            this.commandRoomRight = new CommandRoomRight(/*room*/);
+            this.commandRoomUp = new CommandRoomUp(room);
+            this.commandRoomDown = new CommandRoomDown(room);
+            this.commandRoomLeft = new CommandRoomLeft(room);
+            this.commandRoomRight = new CommandRoomRight(room);
         }
 
         /// <summary>

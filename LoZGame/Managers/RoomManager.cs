@@ -18,6 +18,7 @@
         public RoomManager()
         {
             this.roomLayout = new List<List<Room>>();
+            // potentially change x and y starts to match upside down coordinate system
             this.currentX = 2;
             this.currentY = 0;
             this.maxX = 6;
