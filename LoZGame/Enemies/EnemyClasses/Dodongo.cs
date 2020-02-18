@@ -126,8 +126,10 @@
             set { this.health = value; }
         }
 
-        private Direction CurrentDirection { get => CurrentDirection1; set => CurrentDirection1 = value; }
-        private Direction CurrentDirection1 { get => CurrentDirection2; set => CurrentDirection2 = value; }
-        private Direction CurrentDirection2 { get => currentDirection; set => currentDirection = value; }
+        private Direction CurrentDirection { get => this.CurrentDirection1; set => this.CurrentDirection1 = value; }
+
+        private Direction CurrentDirection1 { get => this.CurrentDirection2; set => this.CurrentDirection2 = value; }
+
+        private Direction CurrentDirection2 { get => this.currentDirection; set => this.currentDirection = value; }
     }
 }

@@ -13,13 +13,13 @@
     {
         private Texture2D itemSpriteSheet;
         private Texture2D fireSpriteSheet;
-        private static readonly int DRAW_SCALE = 2;
+        private static readonly int DRAWSCALE = 2;
 
         private static readonly ItemSpriteFactory InstanceValue = new ItemSpriteFactory();
 
         public static ItemSpriteFactory Instance => InstanceValue;
 
-        public int Scale => DRAW_SCALE;
+        public int Scale => DRAWSCALE;
 
         public Texture2D SpriteSheet => this.itemSpriteSheet;
 
@@ -35,44 +35,44 @@
         public List<IItemSprite> getAll(int x, int y)
         {
             List<IItemSprite> allItems = new List<IItemSprite>();
-            allItems.Add(this.Fairy(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Health(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Triforce(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.YellowRupee(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.FullHeart(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.HalfHeart(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.EmptyHeart(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.HeartContainer(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Clock(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Rupee(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.LifePotion(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.SecondPotion(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Letter(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Map(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Food(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.WoodenSword(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.WhiteSword(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.MagicSword(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.MagicShield(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Boomerang(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.MagicBoomerang(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Bomb(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Bow(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Arrow(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.SilverArrow(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.RedCandle(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.BlueCandle(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.RedRing(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.BlueRing(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.PowerBracelet(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Flute(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Raft(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.StepLadder(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.MagicRod(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.MagicBook(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Key(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.MagicKey(new Vector2(x, y), DRAW_SCALE));
-            allItems.Add(this.Compass(new Vector2(x, y), DRAW_SCALE));
+            allItems.Add(this.Fairy(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Health(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Triforce(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.YellowRupee(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.FullHeart(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.HalfHeart(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.EmptyHeart(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.HeartContainer(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Clock(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Rupee(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.LifePotion(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.SecondPotion(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Letter(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Map(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Food(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.WoodenSword(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.WhiteSword(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.MagicSword(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.MagicShield(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Boomerang(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.MagicBoomerang(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Bomb(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Bow(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Arrow(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.SilverArrow(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.RedCandle(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.BlueCandle(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.RedRing(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.BlueRing(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.PowerBracelet(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Flute(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Raft(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.StepLadder(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.MagicRod(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.MagicBook(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Key(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.MagicKey(new Vector2(x, y), DRAWSCALE));
+            allItems.Add(this.Compass(new Vector2(x, y), DRAWSCALE));
             return allItems;
         }
 
