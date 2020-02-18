@@ -6,7 +6,7 @@
     public class LeftMovingWallMasterState : IEnemyState
     {
         private readonly WallMaster wallMaster;
-        private readonly IWallMasterSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public LeftMovingWallMasterState(WallMaster wallMaster)
         {

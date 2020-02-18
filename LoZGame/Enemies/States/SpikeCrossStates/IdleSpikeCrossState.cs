@@ -6,7 +6,7 @@
     public class IdleSpikeCrossState : ISpikeCrossState
     {
         private readonly SpikeCross spikeCross;
-        private readonly ISpikeCrossSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public IdleSpikeCrossState(SpikeCross spikeCross)
         {

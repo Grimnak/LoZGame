@@ -6,7 +6,7 @@
     public class DownMovingWallMasterState : IEnemyState
     {
         private readonly WallMaster wallMaster;
-        private readonly IWallMasterSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public DownMovingWallMasterState(WallMaster wallMaster)
         {

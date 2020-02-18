@@ -6,7 +6,7 @@
     public class LeftMovingSpikeCrossState : ISpikeCrossState
     {
         private readonly SpikeCross spikeCross;
-        private readonly ISpikeCrossSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public LeftMovingSpikeCrossState(SpikeCross spikeCross)
         {

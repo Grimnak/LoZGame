@@ -6,7 +6,7 @@
     public class UpMovingStalfosState : IEnemyState
     {
         private readonly Stalfos stalfos;
-        private readonly IStalfosSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public UpMovingStalfosState(Stalfos stalfos)
         {

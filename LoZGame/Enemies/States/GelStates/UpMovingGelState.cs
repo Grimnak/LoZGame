@@ -6,7 +6,7 @@
     public class UpMovingGelState : IEnemyState
     {
         private readonly Gel gel;
-        private readonly IGelSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public UpMovingGelState(Gel gel)
         {

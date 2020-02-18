@@ -6,7 +6,7 @@
     public class UpMovingGoriyaState : IGoriyaState
     {
         private readonly Goriya goriya;
-        private readonly IGoriyaSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public UpMovingGoriyaState(Goriya goriya)
         {

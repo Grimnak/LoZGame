@@ -6,7 +6,7 @@
     public class LeftMovingDragonState : IDragonState
     {
         private readonly Dragon dragon;
-        private readonly IDragonSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public LeftMovingDragonState(Dragon dragon)
         {

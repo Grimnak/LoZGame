@@ -6,11 +6,11 @@
     public class DeadDodongoState : IEnemyState
     {
         private readonly Dodongo dodongo;
-        private readonly DeadEnemySprite sprite;
+        private readonly IEnemySprite sprite;
 
         public DeadDodongoState(Dodongo dodongo)
         {
-            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingDodongoSprite();
             this.dodongo = dodongo;
         }
 

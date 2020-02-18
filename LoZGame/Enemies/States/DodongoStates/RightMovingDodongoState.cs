@@ -6,7 +6,7 @@
     public class RightMovingDodongoState : IEnemyState
     {
         private readonly Dodongo dodongo;
-        private readonly IDodongoSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public RightMovingDodongoState(Dodongo dodongo)
         {

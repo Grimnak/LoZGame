@@ -6,7 +6,7 @@
     public class LeftMovingRopeState : IEnemyState
     {
         private readonly Rope rope;
-        private readonly IRopeSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public LeftMovingRopeState(Rope rope)
         {

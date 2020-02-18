@@ -6,7 +6,7 @@
     public class UpMovingZolState : IEnemyState
     {
         private readonly Zol zol;
-        private readonly IZolSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public UpMovingZolState(Zol zol)
         {

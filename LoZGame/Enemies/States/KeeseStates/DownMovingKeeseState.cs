@@ -6,7 +6,7 @@
     public class DownMovingKeeseState : IKeeseState
     {
         private readonly Keese keese;
-        private readonly IKeeseSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public DownMovingKeeseState(Keese keese)
         {

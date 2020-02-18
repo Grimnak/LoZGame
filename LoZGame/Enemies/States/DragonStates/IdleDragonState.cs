@@ -6,7 +6,7 @@
     public class IdleDragonState : IDragonState
     {
         private readonly Dragon dragon;
-        private readonly IDragonSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public IdleDragonState(Dragon dragon)
         {

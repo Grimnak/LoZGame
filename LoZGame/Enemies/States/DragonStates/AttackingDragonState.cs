@@ -6,7 +6,7 @@
     public class AttackingDragonState : IDragonState
     {
         private readonly Dragon dragon;
-        private readonly IDragonSprite sprite;
+        private readonly IEnemySprite sprite;
         private const int FireBallScale = 2;
 
         public AttackingDragonState(Dragon dragon)

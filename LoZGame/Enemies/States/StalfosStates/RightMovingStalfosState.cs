@@ -6,7 +6,7 @@
     public class RightMovingStalfosState : IEnemyState
     {
         private readonly Stalfos stalfos;
-        private readonly IStalfosSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public RightMovingStalfosState(Stalfos stalfos)
         {

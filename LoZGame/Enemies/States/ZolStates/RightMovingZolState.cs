@@ -6,7 +6,7 @@
     public class RightMovingZolState : IEnemyState
     {
         private readonly Zol zol;
-        private readonly IZolSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public RightMovingZolState(Zol zol)
         {

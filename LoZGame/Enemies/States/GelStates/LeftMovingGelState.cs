@@ -6,7 +6,7 @@
     public class LeftMovingGelState : IEnemyState
     {
         private readonly Gel gel;
-        private readonly IGelSprite sprite;
+        private readonly IEnemySprite sprite;
 
         public LeftMovingGelState(Gel gel)
         {
