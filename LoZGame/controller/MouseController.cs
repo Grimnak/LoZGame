@@ -31,6 +31,38 @@
             if (state.LeftButton == ButtonState.Pressed && this.oldState.LeftButton == ButtonState.Released)
             {
                 // Vector logic
+                if (position.X > 400)
+                {
+                    if (position.Y > (3 * position.X) / 5)
+                    {
+                        this.currentCommand = this.allCommands.GetCommandRoomDown;
+                    }
+                    else if (position.Y < (480 - ((3 * position.X) / 5)))
+                    {
+                        this.currentCommand = this.allCommands.GetCommandRoomUp;
+                    }
+                    else
+                    {
+                        this.currentCommand = this.allCommands.GetCommandRoomRight;
+                    }
+                }
+                else
+                {
+                    if (position.Y > (480 - ((3 * position.X) / 5)))
+                    {
+                        this.currentCommand = this.allCommands.GetCommandRoomDown;
+                    }
+                    else if (position.Y < (3 * position.X) / 5)
+                    {
+                        this.currentCommand = this.allCommands.GetCommandRoomUp;
+                    }
+                    else
+                    {
+                        this.currentCommand = this.allCommands.GetCommandRoomLeft;
+                    }
+                }
+
+                this.currentCommand.Execute();
             }
 
             this.oldState = state;
