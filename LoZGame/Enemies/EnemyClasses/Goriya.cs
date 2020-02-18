@@ -6,12 +6,6 @@
 
     public class Goriya : IEnemy
     {
-        public bool HasBoomerang
-        {
-            get { return this.hasBoomerang; }
-            set { this.hasBoomerang = value; }
-        }
-
         private IEnemyState currentState;
         private int health = 10;
         private int coolDown;
