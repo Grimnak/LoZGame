@@ -196,6 +196,7 @@
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\ProjectileType.cs" />
     <Compile Include="Managers\RoomManager.cs" />
+    <Compile Include="Player\PlayerEssentials.cs" />
     <Compile Include="Player\PlayerStates\PickupItemState.cs" />
     <Compile Include="Player\PlayerStates\UseItemState.cs" />
     <Compile Include="Player\PlayerStates\DieState.cs" />
