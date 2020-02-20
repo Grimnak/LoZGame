@@ -1,26 +1,27 @@
 ﻿namespace LoZClone
 {
+    using global::LoZGame.util;
     using System.Collections.Generic;
     /// <summary>
     /// Manager for all dungeon rooms.
     /// </summary>
-    public class RoomManager
+    public class Dungeon
     {
-        private List<List<Room>> roomLayout;
+        private List<List<Room>> dungeonLayout;
         private int currentX;
         private int currentY;
         private int maxX;
         private int maxY;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RoomManager"/> class.
+        /// Initializes a new instance of the <see cref=""/> class.
         /// </summary>
-        public RoomManager()
+        public Dungeon(string filePath)
         {
-            this.roomLayout = new List<List<Room>>();
+            this.dungeonLayout = XMLParser.Parse(filePath);
             // potentially change x and y starts to match upside down coordinate system
             this.currentX = 2;
-            this.currentY = 0;
+            this.currentY = 0; // player spawns at curX/curY
             this.maxX = 6;
             this.maxY = 6;
         }
@@ -30,7 +31,7 @@
         /// </summary>
         public void MoveUp()
         {
-            if (this.currentY + 1 < this.maxY && this.roomLayout[this.currentX][this.currentY + 1].Exists)
+            if (this.currentY + 1 < this.maxY && this.dungeonLayout[this.currentX][this.currentY + 1].Exists)
             {
                 this.currentY++;
             }
@@ -41,7 +42,7 @@
         /// </summary>
         public void MoveDown()
         {
-            if (this.currentY - 1 > 0 && this.roomLayout[this.currentX][this.currentY - 1].Exists)
+            if (this.currentY - 1 > 0 && this.dungeonLayout[this.currentX][this.currentY - 1].Exists)
             {
                 this.currentY--;
             }
@@ -52,7 +53,7 @@
         /// </summary>
         public void MoveLeft()
         {
-            if (this.currentX - 1 > 0 && this.roomLayout[this.currentX - 1][this.currentY].Exists)
+            if (this.currentX - 1 > 0 && this.dungeonLayout[this.currentX - 1][this.currentY].Exists)
             {
                 this.currentX--;
             }
@@ -63,7 +64,7 @@
         /// </summary>
         public void MoveRight()
         {
-            if (this.currentX + 1 < this.maxX && this.roomLayout[this.currentX + 1][this.currentY].Exists)
+            if (this.currentX + 1 < this.maxX && this.dungeonLayout[this.currentX + 1][this.currentY].Exists)
             {
                 this.currentX++;
             }

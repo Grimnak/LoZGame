@@ -5,13 +5,13 @@
     /// </summary>
     public class CommandRoomDown : ICommand
     {
-        private RoomManager room;
+        private Dungeon room;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandRoomDown"/> class.
         /// </summary>
         /// <param name="room">The room manager to execute a command on.</param>
-        public CommandRoomDown(RoomManager room)
+        public CommandRoomDown(Dungeon room)
         {
             this.room = room;
         }

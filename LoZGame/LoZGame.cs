@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using global::LoZGame.util;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -21,7 +22,7 @@
         private EntityManager entityManager;
         private BlockManager blockManager;
         private EnemyManager enemyManager;
-        private RoomManager roomManager;
+        private Dungeon dungeon;
 
         public LoZGame()
         {
@@ -33,14 +34,15 @@
 
         protected override void Initialize()
         {
+            string file = "../../../../../etc/levels/dungeon1.xml";
             this.link = new Link(this);
             this.entityManager = new EntityManager();
             this.enemyManager = new EnemyManager(this.entityManager);
             this.itemManager = new ItemManager();
             this.blockManager = new BlockManager();
-            this.roomManager = new RoomManager();
+            this.dungeon = new Dungeon(file);
             this.keyboardCommandLoader = new KeyboardCommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
-            this.mouseCommandLoader = new MouseCommandLoader(this.roomManager);
+            this.mouseCommandLoader = new MouseCommandLoader(this.dungeon);
             this.controllers = new List<IController>();
             this.controllers.Add(new KeyboardController(this.keyboardCommandLoader));
             this.controllers.Add(new MouseController(this.mouseCommandLoader));

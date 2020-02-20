@@ -187,6 +187,7 @@
     <Compile Include="Interfaces\IBlockSprite.cs" />
     <Compile Include="Interfaces\IItemSprite.cs" />
     <Compile Include="Interfaces\IProjectile.cs" />
+    <Compile Include="Interfaces\ITile.cs" />
     <Compile Include="Managers\EnemyManager.cs" />
     <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="Managers\ExplosionManager.cs" />
@@ -195,12 +196,15 @@
     <Compile Include="Managers\EnemyProjectileManager.cs" />
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\ProjectileType.cs" />
-    <Compile Include="Managers\RoomManager.cs" />
+    <Compile Include="Managers\Dungeon.cs" />
     <Compile Include="Player\PlayerEssentials.cs" />
     <Compile Include="Player\PlayerStates\PickupItemState.cs" />
     <Compile Include="Player\PlayerStates\UseItemState.cs" />
     <Compile Include="Player\PlayerStates\DieState.cs" />
+    <Compile Include="Rooms\BlockTile.cs" />
     <Compile Include="Rooms\Room.cs" />
+    <Compile Include="Rooms\Tile.cs" />
+    <Compile Include="Rooms\WalkableTile.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\BasementBrickTileSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\EnemyDeathExplosionSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\EnemySpawnSprite.cs" />
@@ -267,10 +271,10 @@
     <Compile Include="Sprites\ProjectileSpriteClasses\SilverArrowProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\BoomerangProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\ArrowProjectile.cs" />
-    <Compile Include="util\ProjectileSpriteFactory.cs" />
-    <Compile Include="util\ItemSpriteFactory.cs" />
-    <Compile Include="util\LinkSpriteFactory.cs" />
-    <Compile Include="util\BlockSpriteFactory.cs" />
+    <Compile Include="Util\ProjectileSpriteFactory.cs" />
+    <Compile Include="Util\ItemSpriteFactory.cs" />
+    <Compile Include="Util\LinkSpriteFactory.cs" />
+    <Compile Include="Util\BlockSpriteFactory.cs" />
     <Compile Include="LoZGame.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
@@ -290,8 +294,8 @@
     <Compile Include="Player\Link.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="util\SpriteSheetData.cs" />
-    <Compile Include="util\EnemySpriteFactory.cs" />
+    <Compile Include="Util\SpriteSheetData.cs" />
+    <Compile Include="Util\EnemySpriteFactory.cs" />
     <Compile Include="Sprites\LinkSpriteClasses\LinkAttackRightSprite.cs" />
     <Compile Include="Sprites\LinkSpriteClasses\LinkAttackLeftSprite.cs" />
     <Compile Include="Sprites\LinkSpriteClasses\LinkAttackUpSprite.cs" />
@@ -321,7 +325,7 @@
     <Compile Include="Sprites\BlockSpriteClasses\BlueStatueRightSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\TurquoiseStatueRightSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\TurquoiseStatueLeftSprite.cs" />
-    <Compile Include="util\XMLParser.cs" />
+    <Compile Include="Util\XMLParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
@@ -356,6 +360,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
@@ -411,7 +416,6 @@
     </None>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="stylecop.json" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

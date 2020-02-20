@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dungeon level="1">
-  <drow idx="1">
-    <room idx="1">
+<dungeon xmlns="LEVEL-1">
+  <drow idx="0">
+    <!-- 0 - 0 maps to top left corner  -->
+    <room exists="False" idx="0">
       <enemies>
-        <enemy row="1" col="1">tmp</enemy>
+        <enemy X="" Y="">enemy-type</enemy>
       </enemies>
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -19,10 +22,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -33,10 +50,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -47,10 +64,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -61,10 +78,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -75,42 +92,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="2">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="1">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -121,10 +114,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -135,10 +142,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -149,10 +156,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -163,10 +170,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -177,42 +184,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="3">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="2">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -223,10 +206,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -237,10 +234,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -251,10 +248,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -265,10 +262,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -279,42 +276,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="4">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="3">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -325,10 +298,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -339,10 +326,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -353,10 +340,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -367,10 +354,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -381,42 +368,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="5">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="4">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -427,10 +390,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -441,10 +418,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -455,10 +432,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -469,10 +446,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -483,42 +460,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="6">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="5">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -529,10 +482,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -543,10 +510,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -557,10 +524,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -571,10 +538,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -585,44 +552,578 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
+
+  </drow>
+  <drow idx="1">
+    <!-- 0 - 0 maps to top left corner  -->
+    <room exists="False" idx="0">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+    </room>
+    <room exists="False" idx="1">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+    </room>
+    <room exists="False" idx="2">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+    </room>
+    <room exists="False" idx="3">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+    </room>
+    <room exists="False" idx="4">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+    </room>
+    <room exists="False" idx="5">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
+      </rrow>
+    </room>
+
   </drow>
   <drow idx="2">
-    <room idx="1">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <!-- 0 - 0 maps to top left corner  -->
+    <room exists="False" idx="0">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -633,10 +1134,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -647,10 +1162,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -661,10 +1176,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -675,10 +1190,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -689,42 +1204,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="2">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="1">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -735,10 +1226,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -749,10 +1254,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -763,10 +1268,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -777,10 +1282,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -791,42 +1296,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="3">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="2">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -837,10 +1318,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -851,10 +1346,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -865,10 +1360,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -879,10 +1374,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -893,42 +1388,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="4">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="3">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -939,10 +1410,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -953,10 +1438,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -967,10 +1452,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -981,10 +1466,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -995,42 +1480,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="5">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="4">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1041,10 +1502,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1055,10 +1530,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1069,10 +1544,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1083,10 +1558,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1097,42 +1572,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="6">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="5">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1143,10 +1594,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1157,10 +1622,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1171,10 +1636,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1185,10 +1650,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1199,44 +1664,22 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
+
   </drow>
   <drow idx="3">
-    <room idx="1">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <!-- 0 - 0 maps to top left corner  -->
+    <room exists="False" idx="0">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1247,10 +1690,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1261,10 +1718,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1275,10 +1732,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1289,10 +1746,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1303,42 +1760,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="2">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="1">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1349,10 +1782,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1363,10 +1810,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1377,10 +1824,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1391,10 +1838,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1405,42 +1852,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="3">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="2">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1451,10 +1874,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1465,10 +1902,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1479,10 +1916,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1493,10 +1930,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1507,42 +1944,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="4">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="3">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1553,10 +1966,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1567,10 +1994,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1581,10 +2008,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1595,10 +2022,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1609,42 +2036,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="5">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="4">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1655,10 +2058,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1669,10 +2086,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1683,10 +2100,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1697,10 +2114,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1711,42 +2128,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="6">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="5">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1757,10 +2150,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1771,10 +2178,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1785,10 +2192,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1799,10 +2206,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1813,44 +2220,22 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
+
   </drow>
   <drow idx="4">
-    <room idx="1">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <!-- 0 - 0 maps to top left corner  -->
+    <room exists="False" idx="0">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1861,10 +2246,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1875,10 +2274,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1889,10 +2288,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1903,10 +2302,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1917,42 +2316,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="2">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="1">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1963,10 +2338,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1977,10 +2366,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -1991,10 +2380,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2005,10 +2394,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2019,42 +2408,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="3">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="2">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2065,10 +2430,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2079,10 +2458,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2093,10 +2472,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2107,10 +2486,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2121,42 +2500,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="4">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="3">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2167,10 +2522,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2181,10 +2550,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2195,10 +2564,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2209,10 +2578,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2223,42 +2592,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="5">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="4">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2269,10 +2614,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2283,10 +2642,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2297,10 +2656,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2311,10 +2670,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2325,42 +2684,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="6">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="5">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2371,10 +2706,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2385,10 +2734,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2399,10 +2748,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2413,10 +2762,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2427,44 +2776,22 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
+
   </drow>
   <drow idx="5">
-    <room idx="1">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <!-- 0 - 0 maps to top left corner  -->
+    <room exists="False" idx="0">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2475,10 +2802,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2489,10 +2830,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2503,10 +2844,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2517,10 +2858,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2531,42 +2872,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="2">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="1">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2577,10 +2894,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2591,10 +2922,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2605,10 +2936,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2619,10 +2950,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2633,42 +2964,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="3">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="2">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2679,10 +2986,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2693,10 +3014,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2707,10 +3028,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2721,10 +3042,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2735,42 +3056,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="4">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="3">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2781,10 +3078,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2795,10 +3106,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2809,10 +3120,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2823,10 +3134,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2837,42 +3148,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="5">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="4">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2883,10 +3170,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2897,10 +3198,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2911,10 +3212,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2925,10 +3226,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2939,42 +3240,18 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-    <room idx="6">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
+    <room exists="False" idx="5">
+      <enemies>
+        <enemy X="" Y="">enemy-type</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">tmp-door-N</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2985,10 +3262,24 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
+        <tile idx="2"></tile>
+        <tile idx="3"></tile>
+        <tile idx="4"></tile>
+        <tile idx="5"></tile>
+        <tile idx="6"></tile>
+        <tile idx="7"></tile>
+        <tile idx="8"></tile>
+        <tile idx="9"></tile>
+        <tile idx="10"></tile>
+        <tile idx="11"></tile>
       </rrow>
       <rrow idx="2">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -2999,10 +3290,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="3">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -3013,10 +3304,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="4">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -3027,10 +3318,10 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
       <rrow idx="5">
-        <tile idx="1"></tile>
+        <tile type="block" idx="0">tile-name</tile>
+        <tile type="walkable" idx="1"></tile>
         <tile idx="2"></tile>
         <tile idx="3"></tile>
         <tile idx="4"></tile>
@@ -3041,650 +3332,8 @@
         <tile idx="9"></tile>
         <tile idx="10"></tile>
         <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
       </rrow>
     </room>
-  </drow>
-  <drow idx="6">
-    <room idx="1">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="2">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="3">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="4">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="5">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-    </room>
-    <room idx="2">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="2">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="3">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="4">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="5">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-    </room>
-    <room idx="3">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="2">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="3">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="4">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="5">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-    </room>
-    <room idx="4">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="2">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="3">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="4">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="5">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-    </room>
-    <room idx="5">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="2">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="3">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="4">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="5">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-    </room>
-    <room idx="6">
-      <border></border>
-      <doors></doors>
-      <rrow idx="1">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="2">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="3">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="4">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="5">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="6">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-      <rrow idx="7">
-        <tile idx="1"></tile>
-        <tile idx="2"></tile>
-        <tile idx="3"></tile>
-        <tile idx="4"></tile>
-        <tile idx="5"></tile>
-        <tile idx="6"></tile>
-        <tile idx="7"></tile>
-        <tile idx="8"></tile>
-        <tile idx="9"></tile>
-        <tile idx="10"></tile>
-        <tile idx="11"></tile>
-        <tile idx="12"></tile>
-      </rrow>
-    </room>
+
   </drow>
 </dungeon>

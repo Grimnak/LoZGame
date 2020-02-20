@@ -5,7 +5,7 @@
     /// </summary>
     public class MouseCommandLoader
     {
-        // RoomManager room;
+        // Dungeon room;
         private CommandRoomUp commandRoomUp;
         private CommandRoomDown commandRoomDown;
         private CommandRoomLeft commandRoomLeft;
@@ -14,7 +14,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="MouseCommandLoader"/> class.
         /// </summary>
-        public MouseCommandLoader(RoomManager room)
+        public MouseCommandLoader(Dungeon room)
         {
             // this.room = room;
             this.commandRoomUp = new CommandRoomUp(room);
