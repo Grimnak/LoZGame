@@ -2,7 +2,7 @@
 {
     using Microsoft.Xna.Framework;
 
-    public abstract class PlayerEssentials : IPlayer
+    public abstract class PlayerEssentials
     {
         public LoZGame Game
         {
@@ -33,7 +33,6 @@
         {
             get; set;
         }
-
 
         public Color CurrentTint
         {
@@ -112,27 +111,50 @@
             }
         }
 
-        public abstract void Idle();
+        public void Idle()
+        {
+            this.State.Idle();
+        }
 
-        public abstract void MoveUp();
+        public void MoveUp()
+        {
+            this.State.MoveUp();
+        }
 
-        public abstract void MoveDown();
+        public void MoveDown()
+        {
+            this.State.MoveDown();
+        }
 
-        public abstract void MoveLeft();
+        public void MoveLeft()
+        {
+            this.State.MoveLeft();
+        }
 
-        public abstract void MoveRight();
+        public void MoveRight()
+        {
+            this.State.MoveRight();
+        }
 
-        public abstract void Attack();
+        public void Attack()
+        {
+            this.State.Attack();
+        }
 
-        public abstract void PickupItem(int itemTime);
+        public void PickupItem(int itemTime)
+        {
+            this.State.PickupItem(itemTime);
+        }
 
-        public abstract void UseItem(int waitTime);
+        public void UseItem(int waitTime)
+        {
+            this.State.UseItem(waitTime);
+        }
 
         public void Update()
         {
             this.HandleDamage();
-            //this.HandleBounds();
-
+            // this.HandleBounds();
             this.State.Update();
         }
 

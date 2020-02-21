@@ -4,6 +4,9 @@
 
     public class Link : PlayerEssentials, IPlayer
     {
+        // private Rectangle linkBounds;
+        private LinkCollisionHandler linkCollisionHandler;
+
         public Link(LoZGame game)
         {
             this.Game = game;
@@ -16,48 +19,21 @@
             this.DamageTimer = 0;
             this.DamageCounter = 0;
             this.IsDead = false;
-
+            // this.linkBounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
             this.State = new NullState(game, this);
+            this.linkCollisionHandler = new LinkCollisionHandler(this, this.State);
         }
 
-        public override void Idle()
+        public void OnCollisionResponse(ICollider otherCollider)
         {
-            this.State.Idle();
-        }
-
-        public override void MoveUp()
-        {
-            this.State.MoveUp();
-        }
-
-        public override void MoveDown()
-        {
-            this.State.MoveDown();
-        }
-
-        public override void MoveLeft()
-        {
-            this.State.MoveLeft();
-        }
-
-        public override void MoveRight()
-        {
-            this.State.MoveRight();
-        }
-
-        public override void Attack()
-        {
-            this.State.Attack();
-        }
-
-        public override void PickupItem(int itemTime)
-        {
-            this.State.PickupItem(itemTime);
-        }
-
-        public override void UseItem(int waitTime)
-        {
-            this.State.UseItem(waitTime);
+            if (otherCollider is IEnemy)
+            {
+                this.linkCollisionHandler.OnCollisionResponse((IEnemy)otherCollider);
+            }
+            else if (otherCollider is IProjectile)
+            {
+                this.linkCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
+            }
         }
     }
 }

@@ -186,6 +186,7 @@
     <Compile Include="Enemies\States\ZolStates\UpMovingZolState.cs" />
     <Compile Include="Interfaces\IBlockSprite.cs" />
     <Compile Include="Interfaces\IItemSprite.cs" />
+    <Compile Include="Interfaces\ICollider.cs" />
     <Compile Include="Interfaces\IProjectile.cs" />
     <Compile Include="Managers\EnemyManager.cs" />
     <Compile Include="Managers\EntityManager.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\ProjectileType.cs" />
     <Compile Include="Managers\RoomManager.cs" />
+    <Compile Include="Player\LinkCollisionHandler.cs" />
     <Compile Include="Player\PlayerEssentials.cs" />
     <Compile Include="Player\PlayerStates\PickupItemState.cs" />
     <Compile Include="Player\PlayerStates\UseItemState.cs" />

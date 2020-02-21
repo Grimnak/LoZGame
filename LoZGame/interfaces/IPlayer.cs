@@ -5,7 +5,7 @@
     /// <summary>
     /// Interface for a player character.
     /// </summary>
-    public interface IPlayer
+    public interface IPlayer : ICollider
     {
         /// <summary>
         /// Sets the players state.

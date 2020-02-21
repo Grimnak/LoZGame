@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal interface IProjectile
+    public interface IProjectile /*: ICollider*/
     {
         bool IsExpired { get; }
 
