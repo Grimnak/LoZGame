@@ -10,13 +10,13 @@
      */
     public partial class Room
     {
-        private bool exists;
-        private string border;
-        private string text;
-        private List<IItemSprite> items; // a list for any and all items in a room
-        private List<IEnemy> enemies; // a list for any and all enemies in a room
-        private List<ITile> tiles; // a list for any and all tiles in a room
-        private List<Door> doors; // a list for any and all doors in a room
+        private bool exists = false;
+        private string border = null;
+        private string text = null;
+        private List<IItemSprite> items = null; // a list for any and all items in a room
+        private List<IEnemy> enemies = null; // a list for any and all enemies in a room
+        private List<ITile> tiles = null; // a list for any and all tiles in a room
+        private List<Door> doors = null; // a list for any and all doors in a room
 
         /*
          * args:
@@ -25,8 +25,11 @@
          */
         public Room(string ns, bool ex)
         {
-            this.exists = ex;
-            this.border = ns; // ns = LEVEL-1 || LEVEL-2
+            if (ex)
+            {
+                this.exists = ex;
+                this.border = ns; // ns = LEVEL-1 || LEVEL-2
+            }
         }
 
         /// <summary>
