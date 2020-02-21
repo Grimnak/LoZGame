@@ -1,31 +1,22 @@
-﻿using LoZGame.Interfaces;
-using System.Collections.Generic;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
-    /// <summary>
-    /// A dungeon room and all its necessary info.
-    /// </summary>
-    public class Room
+    using System.Collections.Generic;
+    using global::LoZGame.Interfaces;
+
+    /*
+     * A Room object represents a single dungeon room in-game.
+     * All instance fields are private so that the dungeon rooms cannot
+     * be adjusted prior to the level being loaded.
+     */
+    public partial class Room
     {
         private bool exists;
         private string border;
-        private List<IEnemy> enemies;
-        private List<ITile> tiles;
-        private List<Door> doors;
-
-        public struct Door
-        {
-
-            private string location;
-            private string kind;
-
-            public Door(string loc, string k)
-            {
-                this.location = loc;
-                this.kind = k;
-            }
-        }
+        private string text;
+        private List<IItemSprite> items; // a list for any and all items in a room
+        private List<IEnemy> enemies; // a list for any and all enemies in a room
+        private List<ITile> tiles; // a list for any and all tiles in a room
+        private List<Door> doors; // a list for any and all doors in a room
 
         /*
          * args:
@@ -35,7 +26,7 @@ namespace LoZClone
         public Room(string ns, bool ex)
         {
             this.exists = ex;
-            this.border = ns;
+            this.border = ns; // ns = LEVEL-1 || LEVEL-2
         }
 
         /// <summary>
@@ -47,12 +38,23 @@ namespace LoZClone
         }
 
         /*
+         * this method exists in case we want to change the text during runtime
+         * for any reason and also since most rooms will not normally have text
+         * args:
+         * txt => a particular string to be displayed in a room
+         */
+        public void SetText(string txt)
+        {
+            this.text = txt;
+        }
+
+        /*
          * args:
          * x => tile X location
          * y => tile Y location
          * type => type/kind of enemy at X/Y
          */
-        private void AddEnemy(int x, int y, string type)
+        public void AddEnemy(int x, int y, string type)
         {
             switch (type)
             {
@@ -68,10 +70,38 @@ namespace LoZClone
          * args:
          * x => tile X location
          * y => tile Y location
+         * name => the item's name
+         */
+        public void AddItem(int x, int y, string name)
+        {
+            // TODO
+            switch (name)
+            {
+                case "Bow":
+                    break;
+                case "HeartContainer":
+                    break;
+                case "Key":
+                    break;
+                case "Compass":
+                    break;
+                case "Boomerang":
+                    break;
+                case "TriForce":
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /*
+         * args:
+         * x => tile X location
+         * y => tile Y location
          * type => type of tile
          * name => name of tile sprite
          */
-        private void AddTile(int x, int y, string type, string name)
+        public void AddTile(int x, int y, string type, string name)
         {
             // TODO
             switch (type)
@@ -92,9 +122,9 @@ namespace LoZClone
          * location => N/E/S/W
          * kind => which kind of door sprite
          */
-        private void AddDoor(string location, string kind)
+        public void AddDoor(string location, string kind)
         {
-            this.doors.Add(new Door(location, kind)); // appending a new Door (struct above) to a room object's list of doors
+            this.doors.Add(new Door(location, kind)); // appending a new Door (Door.cs) to a room object's list of doors
         }
     }
 }

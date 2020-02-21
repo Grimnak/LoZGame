@@ -1,0 +1,109 @@
+    <room exists="True" idx="1">
+      <enemies>
+        <enemy X="0" Y="0">SpikeCross</enemy>
+        <enemy X="11" Y="0">SpikeCross</enemy>
+        <enemy X="0" Y="6">SpikeCross</enemy>
+        <enemy X="11" Y="6">SpikeCross</enemy>
+      </enemies>
+      <doors>
+        <door loc="E">locked-east</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="walkable" idx="0">floor_tile</tile>
+        <tile type="walkable" idx="1">floor_tile</tile>
+        <tile type="walkable" idx="2">floor_tile</tile>
+        <tile type="walkable" idx="3">floor_tile</tile>
+        <tile type="walkable" idx="4">floor_tile</tile>
+        <tile type="walkable" idx="5">floor_tile</tile>
+        <tile type="walkable" idx="6">floor_tile</tile>
+        <tile type="walkable" idx="7">floor_tile</tile>
+        <tile type="walkable" idx="8">floor_tile</tile>
+        <tile type="walkable" idx="9">floor_tile</tile>
+        <tile type="walkable" idx="10">floor_tile</tile>
+        <tile type="walkable" idx="11">floor_tile</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="walkable" idx="0">floor_tile</tile>
+        <tile type="walkable" idx="1">floor_tile</tile>
+        <tile type="walkable" idx="2">floor_tile</tile>
+        <tile type="walkable" idx="3">floor_tile</tile>
+        <tile type="walkable" idx="4">floor_tile</tile>
+        <tile type="walkable" idx="5">floor_tile</tile>
+        <tile type="block" idx="6">movable_square</tile>
+        <tile type="walkable" idx="7">floor_tile</tile>
+        <tile type="walkable" idx="8">floor_tile</tile>
+        <tile type="walkable" idx="9">floor_tile</tile>
+        <tile type="walkable" idx="10">floor_tile</tile>
+        <tile type="walkable" idx="11">floor_tile</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="walkable" idx="0">floor_tile</tile>
+        <tile type="walkable" idx="1">floor_tile</tile>
+        <tile type="walkable" idx="2">floor_tile</tile>
+        <tile type="walkable" idx="3">floor_tile</tile>
+        <tile type="walkable" idx="4">floor_tile</tile>
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="walkable" idx="6">floor_tile</tile>
+        <tile type="block" idx="7">movable_square</tile>
+        <tile type="walkable" idx="8">floor_tile</tile>
+        <tile type="walkable" idx="9">floor_tile</tile>
+        <tile type="walkable" idx="10">floor_tile</tile>
+        <tile type="walkable" idx="11">floor_tile</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="walkable" idx="0">floor_tile</tile>
+        <tile type="walkable" idx="1">floor_tile</tile>
+        <tile type="walkable" idx="2">floor_tile</tile>
+        <tile type="walkable" idx="3">floor_tile</tile>
+        <tile type="movable" idx="4">orange_movable_square</tile>
+        <tile type="walkable" idx="5">floor_tile</tile>
+        <tile type="walkable" idx="6">stairs</tile>
+        <tile type="walkable" idx="7">floor_tile</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="walkable" idx="9">floor_tile</tile>
+        <tile type="walkable" idx="10">floor_tile</tile>
+        <tile type="walkable" idx="11">floor_tile</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="walkable" idx="0">floor_tile</tile>
+        <tile type="walkable" idx="1">floor_tile</tile>
+        <tile type="walkable" idx="2">floor_tile</tile>
+        <tile type="walkable" idx="3">floor_tile</tile>
+        <tile type="walkable" idx="4">floor_tile</tile>
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="walkable" idx="6">floor_tile</tile>
+        <tile type="block" idx="7">movable_square</tile>
+        <tile type="walkable" idx="8">floor_tile</tile>
+        <tile type="walkable" idx="9">floor_tile</tile>
+        <tile type="walkable" idx="10">floor_tile</tile>
+        <tile type="walkable" idx="11">floor_tile</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="walkable" idx="0">floor_tile</tile>
+        <tile type="walkable" idx="1">floor_tile</tile>
+        <tile type="walkable" idx="2">floor_tile</tile>
+        <tile type="walkable" idx="3">floor_tile</tile>
+        <tile type="walkable" idx="4">floor_tile</tile>
+        <tile type="walkable" idx="5">floor_tile</tile>
+        <tile type="block" idx="6">movable_square</tile>
+        <tile type="walkable" idx="7">floor_tile</tile>
+        <tile type="walkable" idx="8">floor_tile</tile>
+        <tile type="walkable" idx="9">floor_tile</tile>
+        <tile type="walkable" idx="10">floor_tile</tile>
+        <tile type="walkable" idx="11">floor_tile</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="walkable" idx="0">floor_tile</tile>
+        <tile type="walkable" idx="1">floor_tile</tile>
+        <tile type="walkable" idx="2">floor_tile</tile>
+        <tile type="walkable" idx="3">floor_tile</tile>
+        <tile type="walkable" idx="4">floor_tile</tile>
+        <tile type="walkable" idx="5">floor_tile</tile>
+        <tile type="walkable" idx="6">floor_tile</tile>
+        <tile type="walkable" idx="7">floor_tile</tile>
+        <tile type="walkable" idx="8">floor_tile</tile>
+        <tile type="walkable" idx="9">floor_tile</tile>
+        <tile type="walkable" idx="10">floor_tile</tile>
+        <tile type="walkable" idx="11">floor_tile</tile>
+      </rrow>
+    </room>
