@@ -239,7 +239,189 @@
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="False" idx="0">
     </room>
-    <room exists="False" idx="1">
+    <!-- special case underground room -->
+    <room exists="True" idx="1">
+      <border>black</border>
+      <rrow idx="0">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="walkable" idx="7">gap_tile</tile>
+        <tile type="walkable" idx="8">gap_tile</tile>
+        <tile type="walkable" idx="9">gap_tile</tile>
+        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="walkable" idx="11">gap_tile</tile>
+        <tile type="walkable" idx="12">gap_tile</tile>
+        <tile type="walkable" idx="13">gap_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="walkable" idx="7">gap_tile</tile>
+        <tile type="walkable" idx="8">gap_tile</tile>
+        <tile type="walkable" idx="9">gap_tile</tile>
+        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="walkable" idx="11">gap_tile</tile>
+        <tile type="walkable" idx="12">gap_tile</tile>
+        <tile type="walkable" idx="13">gap_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="walkable" idx="7">gap_tile</tile>
+        <tile type="walkable" idx="8">gap_tile</tile>
+        <tile type="walkable" idx="9">gap_tile</tile>
+        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="walkable" idx="11">gap_tile</tile>
+        <tile type="walkable" idx="12">gap_tile</tile>
+        <tile type="walkable" idx="13">gap_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="walkable" idx="11">ladder_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="walkable" idx="2">gap_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="walkable" idx="4">gap_tile</tile>
+        <tile type="walkable" idx="5">gap_tile</tile>
+        <tile type="walkable" idx="6">gap_tile</tile>
+        <tile type="walkable" idx="7">gap_tile</tile>
+        <tile type="walkable" idx="8">gap_tile</tile>
+        <tile type="walkable" idx="9">gap_tile</tile>
+        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="walkable" idx="11">ladder_tile</tile>
+        <tile type="walkable" idx="12">gap_tile</tile>
+        <tile type="walkable" idx="13">gap_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="7">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="walkable" idx="2">gap_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="walkable" idx="4">gap_tile</tile>
+        <tile type="walkable" idx="5">gap_tile</tile>
+        <tile type="walkable" idx="6">gap_tile</tile>
+        <tile type="walkable" idx="7">gap_tile</tile>
+        <tile type="walkable" idx="8">gap_tile</tile>
+        <tile type="walkable" idx="9">gap_tile</tile>
+        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="walkable" idx="11">ladder_tile</tile>
+        <tile type="walkable" idx="12">gap_tile</tile>
+        <tile type="walkable" idx="13">gap_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="8">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="block" idx="3">basement_brick_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="9">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="block" idx="3">basement_brick_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
     </room>
     <room exists="True" idx="2">
       <enemies>
@@ -1352,6 +1534,7 @@
     <room exists="True" idx="3">
       <items>
         <item X="10" Y="3">Compass</item>
+      </items>
       <enemies>
         <enemy X="3" Y="0">Keese</enemy>
         <enemy X="10" Y="1">Keese</enemy>

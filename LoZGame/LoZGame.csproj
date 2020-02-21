@@ -202,9 +202,9 @@
     <Compile Include="Player\PlayerStates\UseItemState.cs" />
     <Compile Include="Player\PlayerStates\DieState.cs" />
     <Compile Include="Rooms\BlockTile.cs" />
+    <Compile Include="Rooms\Door.cs" />
     <Compile Include="Rooms\Room.cs" />
     <Compile Include="Rooms\Tile.cs" />
-    <Compile Include="Rooms\WalkableTile.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\BasementBrickTileSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\EnemyDeathExplosionSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\EnemySpawnSprite.cs" />
