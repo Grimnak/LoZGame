@@ -2,20 +2,17 @@
 {
     using Microsoft.Xna.Framework;
 
-    public class LinkCollisionHandler
+    public class PlayerCollisionHandler
     {
         private IPlayer player;
-        private IPlayerState state;
 
-        public LinkCollisionHandler(IPlayer player, IPlayerState state)
+        public PlayerCollisionHandler(IPlayer player)
         {
             this.player = player;
-            this.state = state;
         }
 
         public void OnCollisionResponse(IEnemy enemy)
         {
-            // check to see if player is dead in CollisionDetection.cs, not here
             this.player.TakeDamage();
         }
 

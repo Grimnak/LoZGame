@@ -6,10 +6,13 @@
 
     public class Dodongo : IEnemy
     {
-        public Dodongo()
+        private EnemyCollisionHandler enemyCollisionHandler;
+        private Rectangle bounds;
+
+        public Rectangle Bounds
         {
-            this.currentState = new LeftMovingDodongoState(this);
-            this.CurrentLocation = new Vector2(650, 200);
+            get { return this.bounds; }
+            set { this.bounds = value; }
         }
 
         private IEnemyState currentState;
@@ -25,6 +28,14 @@
             Down,
             Left,
             Right,
+        }
+
+        public Dodongo()
+        {
+            this.currentState = new LeftMovingDodongoState(this);
+            this.CurrentLocation = new Vector2(650, 200);
+            this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 32, 16);
+            this.enemyCollisionHandler = new EnemyCollisionHandler(this);
         }
 
         private void GetNewDirection()
@@ -107,11 +118,21 @@
                 this.GetNewDirection();
                 this.lifeTime = 0;
             }
+            this.bounds.X = (int)this.CurrentLocation.X;
+            this.bounds.Y = (int)this.CurrentLocation.Y;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             this.currentState.Draw(spriteBatch);
+        }
+
+        public void OnCollisionResponse(ICollider otherCollider)
+        {
+            if (otherCollider is IProjectile)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
+            }
         }
 
         public IEnemyState CurrentState

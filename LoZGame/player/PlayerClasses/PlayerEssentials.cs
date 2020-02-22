@@ -54,27 +54,6 @@
             get; set;
         }
 
-        public bool IsDead
-        {
-            get; set;
-        }
-
-        private void HandleDamage()
-        {
-            if (this.DamageTimer > 0 && this.DamageCounter < 3)
-            {
-                this.DamageTimer--;
-                if (this.DamageTimer % 10 > 5)
-                {
-                    this.CurrentTint = Color.DarkSlateGray;
-                }
-                else
-                {
-                    this.CurrentTint = Color.White;
-                }
-            }
-        }
-
         // This handleBounds method will not remain here past Sprint 2.  This is a form of "collision handling" just so Link will stay in bounds.
         /*private void HandleBounds()
         {
@@ -151,12 +130,7 @@
             this.State.UseItem(waitTime);
         }
 
-        public void Update()
-        {
-            this.HandleDamage();
-            // this.HandleBounds();
-            this.State.Update();
-        }
+        public abstract void Update();
 
         public void Draw()
         {

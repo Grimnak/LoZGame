@@ -6,6 +6,12 @@ namespace LoZClone
     public class EnemyManager
     {
         private List<IEnemy> enemyList;
+
+        public List<IEnemy> EnemyList
+        {
+            get { return this.enemyList; }
+        }
+
         public IEnemy CurrentEnemy;
         private int currentIndex;
         private int maxIndex;

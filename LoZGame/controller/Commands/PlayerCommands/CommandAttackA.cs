@@ -26,7 +26,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            if (!this.player.IsDead)
+            if (!(this.player.State is DieState))
             {
                 this.player.Attack();
                 this.entity.ProjectileManager.AddItem(this.entity.ProjectileManager.Swordbeam, this.player);

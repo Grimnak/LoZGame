@@ -6,6 +6,15 @@
 
     public class Keese : IEnemy
     {
+        private EnemyCollisionHandler enemyCollisionHandler;
+        private Rectangle bounds;
+
+        public Rectangle Bounds
+        {
+            get { return this.bounds; }
+            set { this.bounds = value; }
+        }
+
         private IEnemyState currentState;
         private int health = 10;
         private int lifeTime = 0;
@@ -31,6 +40,8 @@
         {
             this.currentState = new LeftMovingKeeseState(this);
             this.CurrentLocation = new Vector2(650, 200);
+            this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 20, 20);
+            this.enemyCollisionHandler = new EnemyCollisionHandler(this);
         }
 
         private void getNewDirection()
@@ -145,6 +156,14 @@
         public void Draw(SpriteBatch sb)
         {
             this.currentState.Draw(sb);
+        }
+
+        public void OnCollisionResponse(ICollider otherCollider)
+        {
+            if (otherCollider is IProjectile)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
+            }
         }
 
         public IEnemyState CurrentState

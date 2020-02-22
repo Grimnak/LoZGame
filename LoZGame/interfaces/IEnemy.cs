@@ -2,7 +2,7 @@
 {
     using Microsoft.Xna.Framework.Graphics;
 
-    public interface IEnemy /*: ICollider*/
+    public interface IEnemy : ICollider
     {
         void TakeDamage();
 

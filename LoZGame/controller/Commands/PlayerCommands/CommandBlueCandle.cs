@@ -22,7 +22,7 @@
 
         public void Execute()
         {
-            if (!this.entity.ProjectileManager.FlameInUse && !this.player.IsDead)
+            if (!this.entity.ProjectileManager.FlameInUse && !(this.player.State is DieState))
             {
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
                 this.entity.ProjectileManager.AddItem(this.entity.ProjectileManager.BlueCandle, this.player);

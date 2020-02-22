@@ -8,9 +8,9 @@
     public interface IPlayer : ICollider
     {
         /// <summary>
-        /// Sets the players state.
+        /// Gets or sets the current state of the player.
         /// </summary>
-        IPlayerState State { set; }
+        IPlayerState State { get; set; }
 
         /// <summary>
         /// Gets or sets the current weapon of the player.
@@ -51,11 +51,6 @@
         /// Gets or sets the damage timer of the player.
         /// </summary>
         int DamageTimer { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the player is or isn't dead.
-        /// </summary>
-        bool IsDead { get; set; }
 
         /// <summary>
         /// Makes player idle.
@@ -110,7 +105,7 @@
         void Update();
 
         /// <summary>
-        /// Draws the players current sprite.
+        /// Draws the player's current sprite.
         /// </summary>
         void Draw();
     }

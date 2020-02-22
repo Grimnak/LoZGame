@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -16,12 +17,16 @@
         private IPlayer link;
         private KeyboardCommandLoader keyboardCommandLoader;
         private MouseCommandLoader mouseCommandLoader;
-        private List<IController> controllers;
         private ItemManager itemManager;
         private EntityManager entityManager;
         private BlockManager blockManager;
         private EnemyManager enemyManager;
         private RoomManager roomManager;
+
+        private List<IController> controllers;
+        private List<IPlayer> players;
+        private List<IEnemy> enemies;
+        private List<IProjectile> projectiles;
 
         public LoZGame()
         {
@@ -41,9 +46,19 @@
             this.roomManager = new RoomManager();
             this.keyboardCommandLoader = new KeyboardCommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
             this.mouseCommandLoader = new MouseCommandLoader(this.roomManager);
+
             this.controllers = new List<IController>();
             this.controllers.Add(new KeyboardController(this.keyboardCommandLoader));
             this.controllers.Add(new MouseController(this.mouseCommandLoader));
+
+            this.players = new List<IPlayer>();
+            this.players.Add(this.link);
+
+            this.enemies = new List<IEnemy>();
+            this.enemies.Add(new Dodongo());
+
+            this.projectiles = new List<IProjectile>();
+
             base.Initialize();
         }
 
@@ -72,10 +87,12 @@
             }
 
             this.link.Update();
+            this.enemies.ElementAt(0).Update();
             this.enemyManager.CurrentEnemy.Update();
             this.itemManager.CurrentItem.Update();
             this.blockManager.CurrentBlock.Update();
             this.entityManager.Update();
+            CollisionDetection.Update(this.players.AsReadOnly(), this.enemies.AsReadOnly(), this.projectiles.AsReadOnly());
             base.Update(gameTime);
         }
 
@@ -84,6 +101,7 @@
             this.GraphicsDevice.Clear(Color.Gray);
             this.spriteBatch.Begin();
             this.link.Draw();
+            this.enemies.ElementAt(0).Draw(this.spriteBatch);
             this.enemyManager.CurrentEnemy.Draw(this.spriteBatch);
             this.itemManager.CurrentItem.Draw(this.spriteBatch);
             this.blockManager.CurrentBlock.Draw(this.spriteBatch);
