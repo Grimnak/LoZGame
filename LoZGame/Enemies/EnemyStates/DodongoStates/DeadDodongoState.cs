@@ -11,7 +11,6 @@
         public DeadDodongoState(Dodongo dodongo)
         {
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingDodongoSprite();
-            this.dodongo = dodongo;
         }
 
         public void MoveLeft()

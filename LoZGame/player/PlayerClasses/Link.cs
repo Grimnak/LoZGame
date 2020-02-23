@@ -50,8 +50,12 @@
             this.HandleDamage();
             this.bounds.X = (int)this.CurrentLocation.X;
             this.bounds.Y = (int)this.CurrentLocation.Y;
-            // this.HandleBounds();
             this.State.Update();
+        }
+
+        public override void Draw()
+        {
+            this.State.Draw();
         }
 
         public void OnCollisionResponse(ICollider otherCollider)

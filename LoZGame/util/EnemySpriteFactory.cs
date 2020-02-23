@@ -6,59 +6,221 @@
 
     public class EnemySpriteFactory
     {
+        private static readonly int dodongoWidthUpDown = 16;
+        private static readonly int dodongoWidthLeftRight = 32;
+        private static readonly int dodongoHeight = 16;
+
+        public static int DodongoWidthUpDown
+        {
+            get { return dodongoWidthUpDown; }
+        }
+
+        public static int DodongoWidthLeftRight
+        {
+            get { return dodongoWidthLeftRight; }
+        }
+
+        public static int DodongoHeight
+        {
+            get { return dodongoHeight; }
+        }
+
+        private static readonly int dragonWidth = 50;
+        private static readonly int dragonHeight = 70;
+
+        public static int DragonWidth
+        {
+            get { return dragonWidth; }
+        }
+
+        public static int DragonHeight
+        {
+            get { return dragonHeight; }
+        }
+
+        private static readonly int gelWidth = 15;
+        private static readonly int gelHeight = 15;
+
+        public static int GelWidth
+        {
+            get { return gelWidth; }
+        }
+
+        public static int GelHeight
+        {
+            get { return gelHeight; }
+        }
+
+        private static readonly int goriyaWidth = 25;
+        private static readonly int goriyaHeight = 30;
+
+        public static int GoriyaWidth
+        {
+            get { return goriyaWidth; }
+        }
+
+        public static int GoriyaHeight
+        {
+            get { return goriyaHeight; }
+        }
+
+        private static readonly int keeseWidth = 20;
+        private static readonly int keeseHeight = 20;
+
+        public static int KeeseWidth
+        {
+            get { return keeseWidth; }
+        }
+
+        public static int KeeseHeight
+        {
+            get { return keeseHeight; }
+        }
+
+        private static readonly int merchantWidth = 25;
+        private static readonly int merchantHeight = 25;
+
+        public static int MerchantWidth
+        {
+            get { return merchantWidth; }
+        }
+
+        public static int MerchantHeight
+        {
+            get { return merchantHeight; }
+        }
+
+        private static readonly int oldManWidth = 30;
+        private static readonly int oldManHeight = 30;
+
+        public static int OldManWidth
+        {
+            get { return oldManWidth; }
+        }
+
+        public static int OldManHeight
+        {
+            get { return oldManHeight; }
+        }
+
+        private static readonly int ropeWidth = 25;
+        private static readonly int ropeHeight = 25;
+
+        public static int RopeWidth
+        {
+            get { return ropeWidth; }
+        }
+
+        public static int RopeHeight
+        {
+            get { return ropeHeight; }
+        }
+
+        private static readonly int spikeCrossWidth = 25;
+        private static readonly int spikeCrossHeight = 25;
+
+        public static int SpikeCrossWidth
+        {
+            get { return spikeCrossWidth; }
+        }
+
+        public static int SpikeCrossHeight
+        {
+            get { return spikeCrossHeight; }
+        }
+
+        private static readonly int stalfosWidth = 30;
+        private static readonly int stalfosHeight = 35;
+
+        public static int StalfosWidth
+        {
+            get { return stalfosWidth; }
+        }
+
+        public static int StalfosHeight
+        {
+            get { return stalfosHeight; }
+        }
+
+        private static readonly int wallMasterWidth = 25;
+        private static readonly int wallMasterHeight = 25;
+
+        public static int WallMasterWidth
+        {
+            get { return wallMasterWidth; }
+        }
+
+        public static int WallMasterHeight
+        {
+            get { return wallMasterHeight; }
+        }
+
+        private static readonly int zolWidth = 25;
+        private static readonly int zolHeight = 25;
+
+        public static int ZolWidth
+        {
+            get { return zolWidth; }
+        }
+
+        public static int ZolHeight
+        {
+            get { return zolHeight; }
+        }
+
         private Texture2D stalfos;
-        private readonly SpriteSheetData stalfosData = new SpriteSheetData("stalfos", 30, 35, 2, 1);
+        private readonly SpriteSheetData stalfosData = new SpriteSheetData("stalfos", stalfosWidth, stalfosHeight, 2, 1);
 
         private Texture2D downGoriya;
-        private readonly SpriteSheetData downGoriyaData = new SpriteSheetData("redGoriyaDown", 25, 30, 2, 1);
+        private readonly SpriteSheetData downGoriyaData = new SpriteSheetData("redGoriyaDown", goriyaWidth, goriyaHeight, 2, 1);
         private Texture2D upGoriya;
-        private readonly SpriteSheetData upGoriyaData = new SpriteSheetData("redGoriyaUp", 25, 30, 2, 1);
+        private readonly SpriteSheetData upGoriyaData = new SpriteSheetData("redGoriyaUp", goriyaWidth, goriyaHeight, 2, 1);
         private Texture2D leftGoriya;
-        private readonly SpriteSheetData leftGoriyaData = new SpriteSheetData("redGoriyaLeft", 25, 30, 2, 1);
+        private readonly SpriteSheetData leftGoriyaData = new SpriteSheetData("redGoriyaLeft", goriyaWidth, goriyaHeight, 2, 1);
         private Texture2D rightGoriya;
-        private readonly SpriteSheetData rightGoriyaData = new SpriteSheetData("redGoriyaRight", 25, 30, 2, 1);
+        private readonly SpriteSheetData rightGoriyaData = new SpriteSheetData("redGoriyaRight", goriyaWidth, goriyaHeight, 2, 1);
 
         private Texture2D leftWallMaster;
-        private readonly SpriteSheetData leftWallMasterData = new SpriteSheetData("wallMasterLeft", 25, 25, 2, 1);
+        private readonly SpriteSheetData leftWallMasterData = new SpriteSheetData("wallMasterLeft", wallMasterWidth, wallMasterHeight, 2, 1);
         private Texture2D rightWallMaster;
-        private readonly SpriteSheetData rightWallMasterData = new SpriteSheetData("wallMasterRight", 25, 25, 2, 1);
+        private readonly SpriteSheetData rightWallMasterData = new SpriteSheetData("wallMasterRight", wallMasterWidth, wallMasterHeight, 2, 1);
 
         private Texture2D leftRope;
-        private readonly SpriteSheetData leftRopeData = new SpriteSheetData("ropeLeft", 25, 25, 2, 1);
+        private readonly SpriteSheetData leftRopeData = new SpriteSheetData("ropeLeft", ropeWidth, ropeHeight, 2, 1);
         private Texture2D rightRope;
-        private readonly SpriteSheetData rightRopeData = new SpriteSheetData("ropeRight", 25, 25, 2, 1);
+        private readonly SpriteSheetData rightRopeData = new SpriteSheetData("ropeRight", ropeWidth, ropeHeight, 2, 1);
 
         private Texture2D gel;
-        private readonly SpriteSheetData gelData = new SpriteSheetData("tealGel", 15, 15, 2, 1);
+        private readonly SpriteSheetData gelData = new SpriteSheetData("tealGel", gelWidth, gelHeight, 2, 1);
         private Texture2D zol;
-        private readonly SpriteSheetData zolData = new SpriteSheetData("grayXol", 25, 25, 2, 1);
+        private readonly SpriteSheetData zolData = new SpriteSheetData("grayXol", gelWidth, gelHeight, 2, 1);
 
         private Texture2D spikeCross;
-        private readonly SpriteSheetData spikeCrossData = new SpriteSheetData("spike", 25, 25, 1, 1);
+        private readonly SpriteSheetData spikeCrossData = new SpriteSheetData("spike", spikeCrossWidth, spikeCrossHeight, 1, 1);
 
         private Texture2D keese;
-        private readonly SpriteSheetData keeseData = new SpriteSheetData("keese", 20, 20, 2, 1);
+        private readonly SpriteSheetData keeseData = new SpriteSheetData("keese", keeseWidth, keeseHeight, 2, 1);
 
         private Texture2D dragon;
-        private readonly SpriteSheetData dragonData = new SpriteSheetData("aquamentus", 50, 70, 1, 4);
+        private readonly SpriteSheetData dragonData = new SpriteSheetData("aquamentus", dragonWidth, dragonHeight, 1, 4);
         private Texture2D damagedDragon;
-        private readonly SpriteSheetData damagedDragonData = new SpriteSheetData("damagedAqua", 50, 70, 1, 4);
+        private readonly SpriteSheetData damagedDragonData = new SpriteSheetData("damagedAqua", dragonWidth, dragonHeight, 1, 4);
         private Texture2D fireball;
         private readonly SpriteSheetData fireballData = new SpriteSheetData("fireball", 12, 12, 1, 4);
 
         private Texture2D downDodongo;
-        private readonly SpriteSheetData downDodongoData = new SpriteSheetData("dodongoDown", 16, 16, 1, 3);
+        private readonly SpriteSheetData downDodongoData = new SpriteSheetData("dodongoDown", dodongoWidthUpDown, dodongoHeight, 1, 3);
         private Texture2D upDodongo;
-        private readonly SpriteSheetData upDodongoData = new SpriteSheetData("dodongoUp", 16, 16, 1, 3);
+        private readonly SpriteSheetData upDodongoData = new SpriteSheetData("dodongoUp", dodongoWidthUpDown, dodongoHeight, 1, 3);
         private Texture2D leftDodongo;
-        private readonly SpriteSheetData leftDodongoData = new SpriteSheetData("dodongoLeft", 32, 16, 1, 3);
+        private readonly SpriteSheetData leftDodongoData = new SpriteSheetData("dodongoLeft", dodongoWidthLeftRight, dodongoHeight, 1, 3);
         private Texture2D rightDodongo;
-        private readonly SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", 32, 16, 1, 3);
+        private readonly SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", dodongoWidthLeftRight, dodongoHeight, 1, 3);
 
         private Texture2D oldMan;
-        private readonly SpriteSheetData oldManData = new SpriteSheetData("oldMan", 30, 30, 1, 1);
+        private readonly SpriteSheetData oldManData = new SpriteSheetData("oldMan", oldManWidth, oldManHeight, 1, 1);
         private Texture2D merchant;
-        private readonly SpriteSheetData merchantData = new SpriteSheetData("merchant", 25, 25, 1, 1);
+        private readonly SpriteSheetData merchantData = new SpriteSheetData("merchant", merchantWidth, merchantHeight, 1, 1);
 
         private Texture2D deadEnemy;
         private readonly SpriteSheetData deadEnemyData = new SpriteSheetData("enemyDeath", 50, 50, 1, 2);

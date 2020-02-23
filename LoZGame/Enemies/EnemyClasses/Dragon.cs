@@ -15,6 +15,11 @@
             set { this.bounds = value; }
         }
 
+        public LoZGame Game
+        {
+            get; set;
+        }
+
         private IEnemyState currentState;
         private int health = 10;
         private int lifeTime = 0;
@@ -34,8 +39,9 @@
 
         private StateEnum currentStateEnum;
 
-        public Dragon(EntityManager entity)
+        public Dragon(LoZGame game, EntityManager entity)
         {
+            this.Game = game;
             this.entity = entity;
             this.currentState = new LeftMovingDragonState(this);
             this.CurrentLocation = new Vector2(650, 200);
@@ -73,35 +79,7 @@
                     break;
             }
 
-            this.CheckBorder();
             this.currentState.Update();
-        }
-
-        private void CheckBorder()
-        {
-            if (this.CurrentLocation.Y < 0)
-            {
-                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 0);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.Y > 430)
-            {
-                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 430);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.X < 0)
-            {
-                this.CurrentLocation = new Vector2(0, this.CurrentLocation.Y);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.X > 750)
-            {
-                this.CurrentLocation = new Vector2(750, this.CurrentLocation.Y);
-                this.lifeTime = this.directionChange + 1;
-            }
         }
 
         public void TakeDamage()
@@ -123,6 +101,8 @@
                 this.GetNewDirection();
                 this.lifeTime = 0;
             }
+            this.bounds.X = (int)this.CurrentLocation.X;
+            this.bounds.Y = (int)this.CurrentLocation.Y;
         }
 
         public void Draw(SpriteBatch sb)

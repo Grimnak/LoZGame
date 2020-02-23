@@ -28,11 +28,6 @@
         string CurrentDirection { get; set; }
 
         /// <summary>
-        /// Gets or sets the current location of the player.
-        /// </summary>
-        Vector2 CurrentLocation { get; set; }
-
-        /// <summary>
         /// Gets or sets the current tint of the player.
         /// </summary>
         Color CurrentTint { get; set; }

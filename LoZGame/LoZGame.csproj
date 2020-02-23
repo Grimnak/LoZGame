@@ -60,8 +60,8 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Enemies\EnemyClasses\EnemyCollisionHandler.cs" />
-    <Compile Include="util\CollisionDetection.cs" />
+    <Compile Include="Collisions\EnemyCollisionHandler.cs" />
+    <Compile Include="Collisions\CollisionDetection.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandArrow.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackA.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackB.cs" />
@@ -199,7 +199,7 @@
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\ProjectileType.cs" />
     <Compile Include="Managers\RoomManager.cs" />
-    <Compile Include="Player\PlayerClasses\PlayerCollisionHandler.cs" />
+    <Compile Include="Collisions\PlayerCollisionHandler.cs" />
     <Compile Include="Player\PlayerClasses\PlayerEssentials.cs" />
     <Compile Include="Player\PlayerStates\PickupItemState.cs" />
     <Compile Include="Player\PlayerStates\UseItemState.cs" />

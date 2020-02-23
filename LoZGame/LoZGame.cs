@@ -10,6 +10,10 @@
     {
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private Rectangle leftBounds;
+        private Rectangle rightBounds;
+        private Rectangle topBounds;
+        private Rectangle bottomBounds;
         private static readonly float UpdatesPerSecond = 60;
 
         public SpriteBatch SpriteBatch => this.spriteBatch;
@@ -40,7 +44,7 @@
         {
             this.link = new Link(this);
             this.entityManager = new EntityManager();
-            this.enemyManager = new EnemyManager(this.entityManager);
+            this.enemyManager = new EnemyManager(this, this.entityManager);
             this.itemManager = new ItemManager();
             this.blockManager = new BlockManager();
             this.roomManager = new RoomManager();
@@ -53,9 +57,6 @@
 
             this.players = new List<IPlayer>();
             this.players.Add(this.link);
-
-            this.enemies = new List<IEnemy>();
-            this.enemies.Add(new Dodongo());
 
             this.projectiles = new List<IProjectile>();
 
@@ -87,12 +88,11 @@
             }
 
             this.link.Update();
-            this.enemies.ElementAt(0).Update();
             this.enemyManager.CurrentEnemy.Update();
             this.itemManager.CurrentItem.Update();
             this.blockManager.CurrentBlock.Update();
             this.entityManager.Update();
-            CollisionDetection.Update(this.players.AsReadOnly(), this.enemies.AsReadOnly(), this.projectiles.AsReadOnly());
+            CollisionDetection.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.projectiles.AsReadOnly());
             base.Update(gameTime);
         }
 
@@ -101,7 +101,6 @@
             this.GraphicsDevice.Clear(Color.Gray);
             this.spriteBatch.Begin();
             this.link.Draw();
-            this.enemies.ElementAt(0).Draw(this.spriteBatch);
             this.enemyManager.CurrentEnemy.Draw(this.spriteBatch);
             this.itemManager.CurrentItem.Draw(this.spriteBatch);
             this.blockManager.CurrentBlock.Draw(this.spriteBatch);

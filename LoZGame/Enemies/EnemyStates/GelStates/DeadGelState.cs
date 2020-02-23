@@ -10,8 +10,8 @@
 
         public DeadGelState(Gel gel)
         {
+            this.gel = gel;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
-            this.gel = null;
         }
 
         public void MoveLeft()

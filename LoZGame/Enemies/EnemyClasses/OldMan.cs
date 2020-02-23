@@ -14,11 +14,21 @@
             set { this.bounds = value; }
         }
 
-        public Vector2 CurrentLocation;
+        public LoZGame Game
+        {
+            get; set;
+        }
+
+        public Vector2 CurrentLocation
+        {
+            get; set;
+        }
+
         private readonly OldManSprite sprite;
 
-        public OldMan()
+        public OldMan(LoZGame game)
         {
+            this.Game = game;
             this.CurrentLocation = new Vector2(650, 200);
             this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
             this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 30, 30);
@@ -36,6 +46,8 @@
         public void Update()
         {
             this.sprite.Update();
+            this.bounds.X = (int)this.CurrentLocation.X;
+            this.bounds.Y = (int)this.CurrentLocation.Y;
         }
 
         public void Draw(SpriteBatch sb)
