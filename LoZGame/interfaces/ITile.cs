@@ -8,7 +8,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    interface ITile
+    public interface ITile
     {
         Vector2 Location { get; set; }
 

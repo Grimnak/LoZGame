@@ -22,7 +22,7 @@
             this.dungeonLayout = XMLParser.Parse(filePath);
             // potentially change x and y starts to match upside down coordinate system
             this.currentX = 2;
-            this.currentY = 0; // player spawns at curX/curY
+            this.currentY = 5; // player spawns at curX/curY
             this.maxX = 6;
             this.maxY = 6;
         }

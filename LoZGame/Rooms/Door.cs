@@ -5,7 +5,7 @@
      */
     public partial class Room
     {
-        private struct Door
+        public struct Door
         {
             private string location;
             private string kind;

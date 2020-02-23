@@ -33,6 +33,38 @@
         }
 
         /// <summary>
+        /// Gets the enemies list.
+        /// </summary>
+        public List<IEnemy> Enemies
+        {
+            get { return this.enemies; }
+        }
+
+        /// <summary>
+        /// Gets the items list.
+        /// </summary>
+        public List<IItemSprite> Items
+        {
+            get { return this.items; }
+        }
+
+        /// <summary>
+        /// Gets the tiles list.
+        /// </summary>
+        public List<ITile> Tiles
+        {
+            get { return this.tiles; }
+        }
+
+        /// <summary>
+        /// Gets the doors list.
+        /// </summary>
+        public List<Door> Doors
+        {
+            get { return this.doors; }
+        }
+
+        /// <summary>
         /// Gets a value indicating whether the room contains anything.
         /// </summary>
         public bool Exists
@@ -61,8 +93,44 @@
         {
             switch (type)
             {
-                // TODO
+                // commented lines require entity manager to be passed currently
+                case "Dodongo":
+                    this.enemies.Add(new Dodongo());
+                    break;
+                case "Dragon":
+                    // needs entity manager
+                    // this.enemies.Add(new Dragon());
+                    break;
+                case "Gel":
+                    this.enemies.Add(new Gel());
+                    break;
                 case "Goriya":
+                    // needs entity manager
+                    // this.enemies.Add(new Goriya());
+                    break;
+                case "Keese":
+                    this.enemies.Add(new Keese());
+                    break;
+                case "Merchant":
+                    this.enemies.Add(new Merchant());
+                    break;
+                case "OldMan":
+                    this.enemies.Add(new OldMan());
+                    break;
+                case "Rope":
+                    this.enemies.Add(new Rope());
+                    break;
+                case "SpikeCross":
+                    this.enemies.Add(new SpikeCross());
+                    break;
+                case "Stalfos":
+                    this.enemies.Add(new Stalfos());
+                    break;
+                case "WallMaster":
+                    this.enemies.Add(new WallMaster());
+                    break;
+                case "Zol":
+                    this.enemies.Add(new Zol());
                     break;
                 default:
                     break;
@@ -77,20 +145,29 @@
          */
         public void AddItem(int x, int y, string name)
         {
-            // TODO
+            // commented things will remain commented until items are separated from their sprites
             switch (name)
             {
                 case "Bow":
+                    // this.items.Add(new Bow());
                     break;
                 case "HeartContainer":
+                    // this.items.Add(new HeartContainer());
                     break;
                 case "Key":
+                    // this.items.Add(new Key());
                     break;
                 case "Compass":
+                    // this.items.Add(new Compass());
                     break;
                 case "Boomerang":
+                    // this.items.Add(new Boomerang());
                     break;
                 case "TriForce":
+                    // this.items.Add(new TriForce());
+                    break;
+                case "Map":
+                    // this.items.Add(new Map());
                     break;
                 default:
                     break;
