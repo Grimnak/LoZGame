@@ -168,6 +168,118 @@
             get { return zolHeight; }
         }
 
+        public static int GetEnemyWidth(IEnemy enemy)
+        {
+            if (enemy is Dodongo)
+            {
+                return dodongoWidthLeftRight;
+            }
+            else if (enemy is Dragon)
+            {
+                return dragonWidth;
+            }
+            else if (enemy is Gel)
+            {
+                return gelWidth;
+            }
+            else if (enemy is Goriya)
+            {
+                return goriyaWidth;
+            }
+            else if (enemy is Keese)
+            {
+                return keeseWidth;
+            }
+            else if (enemy is Merchant)
+            {
+                return merchantWidth;
+            }
+            else if (enemy is OldMan)
+            {
+                return oldManWidth;
+            }
+            else if (enemy is Rope)
+            {
+                return ropeWidth;
+            }
+            else if (enemy is SpikeCross)
+            {
+                return spikeCrossWidth;
+            }
+            else if (enemy is Stalfos)
+            {
+                return stalfosWidth;
+            }
+            else if (enemy is WallMaster)
+            {
+                return wallMasterWidth;
+            }
+            else if (enemy is Zol)
+            {
+                return zolWidth;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public static int GetEnemyHeight(IEnemy enemy)
+        {
+            if (enemy is Dodongo)
+            {
+                return dodongoHeight;
+            }
+            else if (enemy is Dragon)
+            {
+                return dragonHeight;
+            }
+            else if (enemy is Gel)
+            {
+                return gelHeight;
+            }
+            else if (enemy is Goriya)
+            {
+                return goriyaHeight;
+            }
+            else if (enemy is Keese)
+            {
+                return keeseHeight;
+            }
+            else if (enemy is Merchant)
+            {
+                return merchantHeight;
+            }
+            else if (enemy is OldMan)
+            {
+                return oldManHeight;
+            }
+            else if (enemy is Rope)
+            {
+                return ropeHeight;
+            }
+            else if (enemy is SpikeCross)
+            {
+                return spikeCrossHeight;
+            }
+            else if (enemy is Stalfos)
+            {
+                return stalfosHeight;
+            }
+            else if (enemy is WallMaster)
+            {
+                return wallMasterHeight;
+            }
+            else if (enemy is Zol)
+            {
+                return zolHeight;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         private Texture2D stalfos;
         private readonly SpriteSheetData stalfosData = new SpriteSheetData("stalfos", stalfosWidth, stalfosHeight, 2, 1);
 
