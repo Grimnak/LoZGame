@@ -18,7 +18,6 @@
         {
             this.game = game;
             this.player = playerInstance;
-            this.player.IsDead = true;
             this.sprite = this.CreateCorrectSprite();
         }
 

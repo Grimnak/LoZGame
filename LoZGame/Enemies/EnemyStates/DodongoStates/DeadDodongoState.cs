@@ -3,15 +3,14 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeadGelState : IEnemyState
+    public class DeadDodongoState : IEnemyState
     {
-        private readonly Gel gel;
-        private readonly DeadEnemySprite sprite;
+        private readonly Dodongo dodongo;
+        private readonly IEnemySprite sprite;
 
-        public DeadGelState(Gel gel)
+        public DeadDodongoState(Dodongo dodongo)
         {
-            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
-            this.gel = null;
+            this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingDodongoSprite();
         }
 
         public void MoveLeft()
@@ -69,7 +68,7 @@
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.gel.CurrentLocation, Color.White);
+            this.sprite.Draw(sb, this.dodongo.CurrentLocation, Color.White);
         }
     }
 }

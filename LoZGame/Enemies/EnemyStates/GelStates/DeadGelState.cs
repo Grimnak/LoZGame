@@ -3,23 +3,15 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeadDragonState : IEnemyState
+    public class DeadGelState : IEnemyState
     {
-        private readonly Dragon dragon;
+        private readonly Gel gel;
         private readonly DeadEnemySprite sprite;
 
-        public DeadDragonState(Dragon dragon)
+        public DeadGelState(Gel gel)
         {
+            this.gel = gel;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
-            this.dragon = null;
-        }
-
-        public void MoveUp()
-        {
-        }
-
-        public void MoveDown()
-        {
         }
 
         public void MoveLeft()
@@ -27,6 +19,14 @@
         }
 
         public void MoveRight()
+        {
+        }
+
+        public void MoveUp()
+        {
+        }
+
+        public void MoveDown()
         {
         }
 
@@ -46,19 +46,19 @@
         {
         }
 
-        public void TakeDamage()
-        {
-        }
-
-        public void Die()
-        {
-        }
-
         public void Attack()
         {
         }
 
         public void Stop()
+        {
+        }
+
+        public void TakeDamage()
+        {
+        }
+
+        public void Die()
         {
         }
 
@@ -69,7 +69,7 @@
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.dragon.CurrentLocation, Color.White);
+            this.sprite.Draw(sb, this.gel.CurrentLocation, Color.White);
         }
     }
 }

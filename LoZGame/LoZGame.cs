@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -9,6 +10,10 @@
     {
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private Rectangle leftBounds;
+        private Rectangle rightBounds;
+        private Rectangle topBounds;
+        private Rectangle bottomBounds;
         private static readonly float UpdatesPerSecond = 60;
 
         public SpriteBatch SpriteBatch => this.spriteBatch;
@@ -16,12 +21,16 @@
         private IPlayer link;
         private KeyboardCommandLoader keyboardCommandLoader;
         private MouseCommandLoader mouseCommandLoader;
-        private List<IController> controllers;
         private ItemManager itemManager;
         private EntityManager entityManager;
         private BlockManager blockManager;
         private EnemyManager enemyManager;
         private RoomManager roomManager;
+
+        private List<IController> controllers;
+        private List<IPlayer> players;
+        private List<IEnemy> enemies;
+        private List<IProjectile> projectiles;
 
         public LoZGame()
         {
@@ -35,15 +44,22 @@
         {
             this.link = new Link(this);
             this.entityManager = new EntityManager();
-            this.enemyManager = new EnemyManager(this.entityManager);
+            this.enemyManager = new EnemyManager(this, this.entityManager);
             this.itemManager = new ItemManager();
             this.blockManager = new BlockManager();
             this.roomManager = new RoomManager();
             this.keyboardCommandLoader = new KeyboardCommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
             this.mouseCommandLoader = new MouseCommandLoader(this.roomManager);
+
             this.controllers = new List<IController>();
             this.controllers.Add(new KeyboardController(this.keyboardCommandLoader));
             this.controllers.Add(new MouseController(this.mouseCommandLoader));
+
+            this.players = new List<IPlayer>();
+            this.players.Add(this.link);
+
+            this.projectiles = new List<IProjectile>();
+
             base.Initialize();
         }
 
@@ -76,6 +92,7 @@
             this.itemManager.CurrentItem.Update();
             this.blockManager.CurrentBlock.Update();
             this.entityManager.Update();
+            CollisionDetection.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.projectiles.AsReadOnly());
             base.Update(gameTime);
         }
 

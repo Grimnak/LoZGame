@@ -45,7 +45,6 @@
             this.player.State = new NullState(this.game, this.player);
             this.player.DamageCounter = 0;
             this.player.DamageTimer = 0;
-            this.player.IsDead = false;
             this.player.CurrentTint = Color.White;
 
             this.item.CurrentIndex = 1;

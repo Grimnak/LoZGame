@@ -5,15 +5,23 @@ namespace LoZClone
 
     public class EnemyManager
     {
+        private LoZGame game;
         private List<IEnemy> enemyList;
+
+        public List<IEnemy> EnemyList
+        {
+            get { return this.enemyList; }
+        }
+
         public IEnemy CurrentEnemy;
         private int currentIndex;
         private int maxIndex;
         public Vector2 Location;
         private readonly EntityManager entity;
 
-        public EnemyManager(EntityManager entity)
+        public EnemyManager(LoZGame game, EntityManager entity)
         {
+            this.game = game;
             this.entity = entity;
             this.currentIndex = 0;
             this.maxIndex = 0;
@@ -22,18 +30,18 @@ namespace LoZClone
 
         private void LoadEnemies()
         {
-            this.enemyList.Add(new Dodongo());
-            this.enemyList.Add(new Stalfos());
-            this.enemyList.Add(new Goriya(this.entity));
-            this.enemyList.Add(new Dragon(this.entity));
-            this.enemyList.Add(new OldMan());
-            this.enemyList.Add(new Merchant());
-            this.enemyList.Add(new SpikeCross());
-            this.enemyList.Add(new WallMaster());
-            this.enemyList.Add(new Rope());
-            this.enemyList.Add(new Zol());
-            this.enemyList.Add(new Gel());
-            this.enemyList.Add(new Keese());
+            this.enemyList.Add(new Dodongo(this.game));
+            this.enemyList.Add(new Stalfos(this.game));
+            this.enemyList.Add(new Goriya(this.game, this.entity));
+            this.enemyList.Add(new Dragon(this.game, this.entity));
+            this.enemyList.Add(new OldMan(this.game));
+            this.enemyList.Add(new Merchant(this.game));
+            this.enemyList.Add(new SpikeCross(this.game));
+            this.enemyList.Add(new WallMaster(this.game));
+            this.enemyList.Add(new Rope(this.game));
+            this.enemyList.Add(new Zol(this.game));
+            this.enemyList.Add(new Gel(this.game));
+            this.enemyList.Add(new Keese(this.game));
         }
 
         public void LoadSprites()

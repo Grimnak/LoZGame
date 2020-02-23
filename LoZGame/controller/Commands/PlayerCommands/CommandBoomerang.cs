@@ -26,7 +26,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            if (!this.entity.ProjectileManager.BoomerangOut && !this.player.IsDead)
+            if (!this.entity.ProjectileManager.BoomerangOut && !(this.player.State is DieState))
             {
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
                 this.entity.ProjectileManager.AddItem(this.entity.ProjectileManager.Boomerang, this.player);

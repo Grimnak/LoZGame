@@ -3,23 +3,14 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeadDodongoState : IEnemyState
+    public class DeadDragonState : IEnemyState
     {
-        private readonly Dodongo dodongo;
-        private readonly IEnemySprite sprite;
+        private readonly Dragon dragon;
+        private readonly DeadEnemySprite sprite;
 
-        public DeadDodongoState(Dodongo dodongo)
+        public DeadDragonState(Dragon dragon)
         {
-            this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingDodongoSprite();
-            this.dodongo = dodongo;
-        }
-
-        public void MoveLeft()
-        {
-        }
-
-        public void MoveRight()
-        {
+            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
         }
 
         public void MoveUp()
@@ -27,6 +18,14 @@
         }
 
         public void MoveDown()
+        {
+        }
+
+        public void MoveLeft()
+        {
+        }
+
+        public void MoveRight()
         {
         }
 
@@ -46,19 +45,19 @@
         {
         }
 
-        public void Attack()
-        {
-        }
-
-        public void Stop()
-        {
-        }
-
         public void TakeDamage()
         {
         }
 
         public void Die()
+        {
+        }
+
+        public void Attack()
+        {
+        }
+
+        public void Stop()
         {
         }
 
@@ -69,7 +68,7 @@
 
         public void Draw(SpriteBatch sb)
         {
-            this.sprite.Draw(sb, this.dodongo.CurrentLocation, Color.White);
+            this.sprite.Draw(sb, this.dragon.CurrentLocation, Color.White);
         }
     }
 }

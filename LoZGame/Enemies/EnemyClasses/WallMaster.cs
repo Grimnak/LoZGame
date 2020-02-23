@@ -6,11 +6,29 @@
 
     public class WallMaster : IEnemy
     {
+        private EnemyCollisionHandler enemyCollisionHandler;
+        private Rectangle bounds;
+
+        public Rectangle Bounds
+        {
+            get { return this.bounds; }
+            set { this.bounds = value; }
+        }
+
+        public LoZGame Game
+        {
+            get; set;
+        }
+
+        public Vector2 CurrentLocation
+        {
+            get; set;
+        }
+
         private IEnemyState currentState;
         private int health = 10;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
-        public Vector2 CurrentLocation;
 
         private enum direction
         {
@@ -23,10 +41,13 @@
 
         private direction currentDirection;
 
-        public WallMaster()
+        public WallMaster(LoZGame game)
         {
+            this.Game = game;
             this.currentState = new LeftMovingWallMasterState(this);
             this.CurrentLocation = new Vector2(650, 200);
+            this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 25, 25);
+            this.enemyCollisionHandler = new EnemyCollisionHandler(this);
         }
 
         private void getNewDirection()
@@ -58,36 +79,7 @@
                 default:
                     break;
             }
-
-            this.checkBorder();
             this.currentState.Update();
-        }
-
-        private void checkBorder()
-        {
-            if (this.CurrentLocation.Y < 30)
-            {
-                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 30);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.Y > 450)
-            {
-                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 450);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.X < 30)
-            {
-                this.CurrentLocation = new Vector2(30, this.CurrentLocation.Y);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.X > 770)
-            {
-                this.CurrentLocation = new Vector2(770, this.CurrentLocation.Y);
-                this.lifeTime = this.directionChange + 1;
-            }
         }
 
         public void TakeDamage()
@@ -109,11 +101,21 @@
                 this.getNewDirection();
                 this.lifeTime = 0;
             }
+            this.bounds.X = (int)this.CurrentLocation.X;
+            this.bounds.Y = (int)this.CurrentLocation.Y;
         }
 
         public void Draw(SpriteBatch sb)
         {
             this.currentState.Draw(sb);
+        }
+
+        public void OnCollisionResponse(ICollider otherCollider)
+        {
+            if (otherCollider is IProjectile)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
+            }
         }
 
         public IEnemyState CurrentState
