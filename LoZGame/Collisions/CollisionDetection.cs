@@ -21,7 +21,7 @@
             foreach (IEnemy enemy in enemies)
             {
                 CheckCollisions<IProjectile>(enemy, projectiles);
-                CheckBorders(enemy, CollisionDetection.GetEnemyWidth(enemy), CollisionDetection.GetEnemyHeight(enemy));
+                CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
             }
         }
 
@@ -55,118 +55,6 @@
             else if (sourceCollider.CurrentLocation.Y < 0)
             {
                 sourceCollider.CurrentLocation = new Vector2(sourceCollider.CurrentLocation.X, 0);
-            }
-        }
-
-        private static int GetEnemyWidth(ICollider collider)
-        {
-            if (collider is Dodongo)
-            {
-                return EnemySpriteFactory.DodongoWidthLeftRight;
-            }
-            else if (collider is Dragon)
-            {
-                return EnemySpriteFactory.DragonWidth;
-            }
-            else if (collider is Gel)
-            {
-                return EnemySpriteFactory.GelWidth;
-            }
-            else if (collider is Goriya)
-            {
-                return EnemySpriteFactory.GoriyaWidth;
-            }
-            else if (collider is Keese)
-            {
-                return EnemySpriteFactory.KeeseWidth;
-            }
-            else if (collider is Merchant)
-            {
-                return EnemySpriteFactory.MerchantWidth;
-            }
-            else if (collider is OldMan)
-            {
-                return EnemySpriteFactory.OldManWidth;
-            }
-            else if (collider is Rope)
-            {
-                return EnemySpriteFactory.RopeWidth;
-            }
-            else if (collider is SpikeCross)
-            {
-                return EnemySpriteFactory.SpikeCrossWidth;
-            }
-            else if (collider is Stalfos)
-            {
-                return EnemySpriteFactory.StalfosWidth;
-            }
-            else if (collider is WallMaster)
-            {
-                return EnemySpriteFactory.WallMasterWidth;
-            }
-            else if (collider is Zol)
-            {
-                return EnemySpriteFactory.ZolWidth;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
-        public static int GetEnemyHeight (ICollider collider)
-        {
-            if (collider is Dodongo)
-            {
-                return EnemySpriteFactory.DodongoHeight;
-            }
-            else if (collider is Dragon)
-            {
-                return EnemySpriteFactory.DragonHeight;
-            }
-            else if (collider is Gel)
-            {
-                return EnemySpriteFactory.GelHeight;
-            }
-            else if (collider is Goriya)
-            {
-                return EnemySpriteFactory.GoriyaHeight;
-            }
-            else if (collider is Keese)
-            {
-                return EnemySpriteFactory.KeeseHeight;
-            }
-            else if (collider is Merchant)
-            {
-                return EnemySpriteFactory.MerchantHeight;
-            }
-            else if (collider is OldMan)
-            {
-                return EnemySpriteFactory.OldManHeight;
-            }
-            else if (collider is Rope)
-            {
-                return EnemySpriteFactory.RopeHeight;
-            }
-            else if (collider is SpikeCross)
-            {
-                return EnemySpriteFactory.SpikeCrossHeight;
-            }
-            else if (collider is Stalfos)
-            {
-                return EnemySpriteFactory.StalfosHeight;
-            }
-            else if (collider is WallMaster)
-            {
-                return EnemySpriteFactory.WallMasterHeight;
-            }
-            else if (collider is Zol)
-            {
-                return EnemySpriteFactory.ZolHeight;
-            }
-            else
-            {
-                return 0;
             }
         }
     }
