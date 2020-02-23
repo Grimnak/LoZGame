@@ -10,163 +10,38 @@
         private static readonly int dodongoWidthLeftRight = 64;
         private static readonly int dodongoHeight = 32;
 
-        public static int DodongoWidthUpDown
-        {
-            get { return dodongoWidthUpDown; }
-        }
-
-        public static int DodongoWidthLeftRight
-        {
-            get { return dodongoWidthLeftRight; }
-        }
-
-        public static int DodongoHeight
-        {
-            get { return dodongoHeight; }
-        }
-
         private static readonly int dragonWidth = 50;
         private static readonly int dragonHeight = 70;
-
-        public static int DragonWidth
-        {
-            get { return dragonWidth; }
-        }
-
-        public static int DragonHeight
-        {
-            get { return dragonHeight; }
-        }
 
         private static readonly int gelWidth = 15;
         private static readonly int gelHeight = 15;
 
-        public static int GelWidth
-        {
-            get { return gelWidth; }
-        }
-
-        public static int GelHeight
-        {
-            get { return gelHeight; }
-        }
-
         private static readonly int goriyaWidth = 25;
         private static readonly int goriyaHeight = 30;
-
-        public static int GoriyaWidth
-        {
-            get { return goriyaWidth; }
-        }
-
-        public static int GoriyaHeight
-        {
-            get { return goriyaHeight; }
-        }
 
         private static readonly int keeseWidth = 20;
         private static readonly int keeseHeight = 20;
 
-        public static int KeeseWidth
-        {
-            get { return keeseWidth; }
-        }
-
-        public static int KeeseHeight
-        {
-            get { return keeseHeight; }
-        }
-
         private static readonly int merchantWidth = 25;
         private static readonly int merchantHeight = 25;
-
-        public static int MerchantWidth
-        {
-            get { return merchantWidth; }
-        }
-
-        public static int MerchantHeight
-        {
-            get { return merchantHeight; }
-        }
 
         private static readonly int oldManWidth = 30;
         private static readonly int oldManHeight = 30;
 
-        public static int OldManWidth
-        {
-            get { return oldManWidth; }
-        }
-
-        public static int OldManHeight
-        {
-            get { return oldManHeight; }
-        }
-
         private static readonly int ropeWidth = 25;
         private static readonly int ropeHeight = 25;
-
-        public static int RopeWidth
-        {
-            get { return ropeWidth; }
-        }
-
-        public static int RopeHeight
-        {
-            get { return ropeHeight; }
-        }
 
         private static readonly int spikeCrossWidth = 25;
         private static readonly int spikeCrossHeight = 25;
 
-        public static int SpikeCrossWidth
-        {
-            get { return spikeCrossWidth; }
-        }
-
-        public static int SpikeCrossHeight
-        {
-            get { return spikeCrossHeight; }
-        }
-
         private static readonly int stalfosWidth = 30;
         private static readonly int stalfosHeight = 35;
-
-        public static int StalfosWidth
-        {
-            get { return stalfosWidth; }
-        }
-
-        public static int StalfosHeight
-        {
-            get { return stalfosHeight; }
-        }
 
         private static readonly int wallMasterWidth = 25;
         private static readonly int wallMasterHeight = 25;
 
-        public static int WallMasterWidth
-        {
-            get { return wallMasterWidth; }
-        }
-
-        public static int WallMasterHeight
-        {
-            get { return wallMasterHeight; }
-        }
-
         private static readonly int zolWidth = 25;
         private static readonly int zolHeight = 25;
-
-        public static int ZolWidth
-        {
-            get { return zolWidth; }
-        }
-
-        public static int ZolHeight
-        {
-            get { return zolHeight; }
-        }
 
         public static int GetEnemyWidth(IEnemy enemy)
         {
@@ -427,7 +302,7 @@
             return new WallMasterRightSprite(this.rightWallMaster, this.rightWallMasterData);
         }
 
-        // Rope sprites
+        // Rope Sprites
         public RopeLeftSprite CreateLeftMovingRopeSprite()
         {
             return new RopeLeftSprite(this.leftRope, this.leftRopeData);
@@ -450,7 +325,7 @@
             return new ZolSprite(this.zol, this.zolData);
         }
 
-        // SpikeCrossSprite
+        // Spike Cross Sprites
         public SpikeCrossSprite CreateSpikeCrossSprite()
         {
             return new SpikeCrossSprite(this.spikeCross, this.spikeCrossData);
@@ -488,7 +363,7 @@
             return new FireballSprite(this.fireball, this.fireballData, "up", location, id, scale);
         }
 
-        // DodongoSprites
+        // Dodongo Sprites
         public DodongoDownSprite CreateDownMovingDodongoSprite()
         {
             return new DodongoDownSprite(this.downDodongo, this.downDodongoData);
@@ -509,19 +384,19 @@
             return new DodongoRightSprite(this.rightDodongo, this.rightDodongoData);
         }
 
-        // Old Man Sprite
+        // Old Man Sprites
         public OldManSprite CreateOldManSprite()
         {
             return new OldManSprite(this.oldMan, this.oldManData);
         }
 
-        // Merchant Sprite
+        // Merchant Sprites
         public MerchantSprite CreateMerchantSprite()
         {
             return new MerchantSprite(this.merchant, this.merchantData);
         }
 
-         // Enemy Death Sprite
+         // Enemy Death Sprites
         public DeadEnemySprite CreateDeadEnemySprite()
         {
             return new DeadEnemySprite(this.deadEnemy, this.deadEnemyData);
