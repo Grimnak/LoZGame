@@ -1,7 +1,6 @@
 ﻿namespace LoZClone
 {
     using System.Collections.Generic;
-    using global::LoZGame.Interfaces;
 
     /*
      * A Room object represents a single dungeon room in-game.
@@ -181,17 +180,19 @@
          * type => type of tile
          * name => name of tile sprite
          */
-        public void AddTile(int x, int y, string type, string name)
+        public void AddTile(string x, string y, string type, string name)
         {
-            // TODO
             switch (type)
             {
-                case "Movable":
+                case "movable":
+                    this.tiles.Add(new MovableTile(x, y, name));
                     break;
-
-                case "Walkable":
+                case "walkable":
+                    this.tiles.Add(new Tile(x, y, name));
                     break;
-
+                case "block":
+                    this.tiles.Add(new BlockTile(x, y, name));
+                    break;
                 default:
                     break;
             }

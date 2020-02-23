@@ -15,11 +15,13 @@
         private int maxY;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref=""/> class.
+        /// Initializes a new instance of the <see cref="Dungeon"/> class.
         /// </summary>
+        /// <param name="filePath">File path of the document to parse.</param>
         public Dungeon(string filePath)
         {
             this.dungeonLayout = XMLParser.Parse(filePath);
+
             // potentially change x and y starts to match upside down coordinate system
             this.currentX = 2;
             this.currentY = 5; // player spawns at curX/curY
