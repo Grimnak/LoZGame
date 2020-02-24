@@ -1,4 +1,4 @@
-﻿namespace LoZClone
+﻿namespace LoZGame
 {
     /// <summary>
     /// Command that cycles current displayed block to the next one to its right.

@@ -1,4 +1,4 @@
-﻿namespace LoZClone
+﻿namespace LoZGame
 {
     /// <summary>
     /// Death state for player.

@@ -1,11 +1,10 @@
-﻿namespace LoZClone
+﻿namespace LoZGame
 {
     /// <summary>
     /// Command loader for mouse commands.
     /// </summary>
     public class MouseCommandLoader
     {
-        // RoomManager room;
         private CommandRoomUp commandRoomUp;
         private CommandRoomDown commandRoomDown;
         private CommandRoomLeft commandRoomLeft;
@@ -14,9 +13,9 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="MouseCommandLoader"/> class.
         /// </summary>
-        public MouseCommandLoader(RoomManager room)
+        /// <param name="room">Dungeon to execute the command on.</param>
+        public MouseCommandLoader(Dungeon room)
         {
-            // this.room = room;
             this.commandRoomUp = new CommandRoomUp(room);
             this.commandRoomDown = new CommandRoomDown(room);
             this.commandRoomLeft = new CommandRoomLeft(room);

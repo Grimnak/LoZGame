@@ -1,4 +1,4 @@
-﻿namespace LoZClone
+﻿namespace LoZGame
 {
     using System;
     using System.Collections.Generic;
@@ -25,7 +25,7 @@
         private EntityManager entityManager;
         private BlockManager blockManager;
         private EnemyManager enemyManager;
-        private RoomManager roomManager;
+        private Dungeon dungeon;
 
         private List<IController> controllers;
         private List<IPlayer> players;
@@ -42,12 +42,13 @@
 
         protected override void Initialize()
         {
+            string file = "../../../../../etc/levels/dungeon1.xml";
             this.link = new Link(this);
             this.entityManager = new EntityManager();
             this.enemyManager = new EnemyManager(this, this.entityManager);
             this.itemManager = new ItemManager();
             this.blockManager = new BlockManager();
-            this.roomManager = new RoomManager();
+            this.dungeon = new Dungeon(file);
             this.keyboardCommandLoader = new KeyboardCommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
             this.mouseCommandLoader = new MouseCommandLoader(this.roomManager);
 

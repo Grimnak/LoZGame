@@ -1,17 +1,17 @@
-﻿namespace LoZClone
+﻿namespace LoZGame
 {
     /// <summary>
     /// Command for switching room to next one above.
     /// </summary>
     public class CommandRoomUp : ICommand
     {
-        private RoomManager room;
+        private Dungeon room;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandRoomUp"/> class.
         /// </summary>
         /// <param name="room">The room manager to execute a command on.</param>
-        public CommandRoomUp(RoomManager room)
+        public CommandRoomUp(Dungeon room)
         {
             this.room = room;
         }

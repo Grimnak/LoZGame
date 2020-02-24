@@ -1,4 +1,4 @@
-﻿namespace LoZClone
+﻿namespace LoZGame
 {
     /// <summary>
     /// Command that makes current enemy displayed cycle to the next enemy to the right.

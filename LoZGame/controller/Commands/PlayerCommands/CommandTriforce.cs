@@ -1,4 +1,4 @@
-﻿namespace LoZClone
+﻿namespace LoZGame
 {
     /// <summary>
     /// Command that makes player hold a triforce above their head.

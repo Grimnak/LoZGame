@@ -1,4 +1,4 @@
-namespace LoZClone
+namespace LoZGame
 {
     /// <summary>
     /// Item pickup state for player.

@@ -1,4 +1,4 @@
-﻿namespace LoZClone
+﻿namespace LoZGame
 {
     using System;
     using Microsoft.Xna.Framework;

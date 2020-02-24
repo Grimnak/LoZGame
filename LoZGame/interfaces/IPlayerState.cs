@@ -1,4 +1,4 @@
-namespace LoZClone
+namespace LoZGame
 {
     /// <summary>
     /// Player state interface.
