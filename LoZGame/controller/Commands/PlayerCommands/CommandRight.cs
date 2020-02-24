@@ -1,4 +1,4 @@
-﻿namespace LoZGame
+﻿namespace LoZClone
 {
     /// <summary>
     /// Command that makes the player move right.

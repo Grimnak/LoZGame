@@ -1,4 +1,4 @@
-﻿namespace LoZGame
+﻿namespace LoZClone
 {
     /// <summary>
     /// Command that makes player throw a magic boomerang.

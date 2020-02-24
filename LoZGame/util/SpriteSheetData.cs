@@ -1,4 +1,4 @@
-namespace LoZGame
+namespace LoZClone
 {
     public struct SpriteSheetData
     {

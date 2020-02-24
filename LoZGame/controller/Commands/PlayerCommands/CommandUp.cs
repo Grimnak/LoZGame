@@ -1,4 +1,4 @@
-﻿namespace LoZGame
+﻿namespace LoZClone
 {
     /// <summary>
     /// Command that maeks the player move up.

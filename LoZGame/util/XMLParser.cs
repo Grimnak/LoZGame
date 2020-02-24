@@ -1,4 +1,4 @@
-﻿namespace LoZGame.util
+﻿namespace LoZClone
 {
     using System;
     using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿namespace LoZGame
+﻿namespace LoZClone
 {
     /*
      * The Door struct is separated from Room.cs to prevent file bloat.

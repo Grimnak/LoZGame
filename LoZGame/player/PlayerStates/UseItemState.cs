@@ -1,4 +1,4 @@
-namespace LoZGame
+namespace LoZClone
 {
     /// <summary>
     /// Item using state for player.

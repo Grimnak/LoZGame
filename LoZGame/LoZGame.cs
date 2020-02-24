@@ -1,4 +1,4 @@
-﻿namespace LoZGame
+﻿namespace LoZClone
 {
     using System;
     using System.Collections.Generic;
@@ -50,7 +50,7 @@
             this.blockManager = new BlockManager();
             this.dungeon = new Dungeon(file);
             this.keyboardCommandLoader = new KeyboardCommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
-            this.mouseCommandLoader = new MouseCommandLoader(this.roomManager);
+            this.mouseCommandLoader = new MouseCommandLoader(this.dungeon);
 
             this.controllers = new List<IController>();
             this.controllers.Add(new KeyboardController(this.keyboardCommandLoader));
