@@ -46,7 +46,7 @@
             string file = "../../../../../etc/levels/dungeon1.xml";
             this.link = new Link(this);
             this.dungeon = new Dungeon(file);
-            this.keyboardCommandLoader = new KeyboardCommandLoader(this, this.link, ItemManager.Instance, BlockManager.Instance, EntityManager.Instance, EnemyManager.Instance);
+            this.keyboardCommandLoader = new KeyboardCommandLoader(this.link);
             this.mouseCommandLoader = new MouseCommandLoader(this.dungeon);
 
             this.controllers = new List<IController>();

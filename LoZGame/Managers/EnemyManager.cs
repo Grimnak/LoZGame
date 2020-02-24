@@ -8,6 +8,7 @@ namespace LoZClone
         private List<IEnemy> enemyList;
 
         private static readonly EnemyManager instance = new EnemyManager(EntityManager.Instance);
+
         public static EnemyManager Instance
         {
             get

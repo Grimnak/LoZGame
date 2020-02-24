@@ -6,15 +6,12 @@
     public class CommandBlockRight : ICommand
     {
         private static readonly int PriorityValue = -1;
-        private readonly BlockManager block;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandBlockRight"/> class.
         /// </summary>
-        /// <param name="block">The block manager to execute a command on.</param>
-        public CommandBlockRight(BlockManager block)
+        public CommandBlockRight()
         {
-            this.block = block;
         }
 
         /// <inheritdoc/>
@@ -23,7 +20,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.block.cycleRight();
+            BlockManager.Instance.cycleRight();
         }
     }
 }

@@ -6,15 +6,13 @@
     public class CommandEnemyRight : ICommand
     {
         private static readonly int PriorityValue = -1;
-        private readonly EnemyManager enemy;
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandEnemyRight"/> class.
         /// </summary>
-        /// <param name="enemy">Enemy manager to execute a command on.</param>
-        public CommandEnemyRight(EnemyManager enemy)
+        public CommandEnemyRight()
         {
-            this.enemy = enemy;
         }
 
         /// <inheritdoc/>
@@ -23,7 +21,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.enemy.CycleRight();
+            EnemyManager.Instance.CycleRight();
         }
     }
 }

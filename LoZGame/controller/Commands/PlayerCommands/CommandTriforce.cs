@@ -7,17 +7,14 @@
     {
         private static readonly int PriorityValue = 5;
         private readonly IPlayer player;
-        private readonly EntityManager entity;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandTriforce"/> class.
         /// </summary>
         /// <param name="player">Player to execute a command on.</param>
-        /// <param name="entity">Entity manager to execute a command on.</param>
-        public CommandTriforce(IPlayer player, EntityManager entity)
+        public CommandTriforce(IPlayer player)
         {
             this.player = player;
-            this.entity = entity;
         }
 
         /// <inheritdoc/>
@@ -29,7 +26,7 @@
             if (!(this.player.State is DieState))
             {
                 this.player.PickupItem(TriforceProjectile.LifeTime);
-                this.entity.ProjectileManager.AddItem(this.entity.ProjectileManager.Triforce, this.player);
+                EntityManager.Instance.ProjectileManager.AddItem(EntityManager.Instance.ProjectileManager.Triforce, this.player);
             }
         }
     }

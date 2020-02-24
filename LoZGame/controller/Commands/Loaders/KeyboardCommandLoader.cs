@@ -20,7 +20,7 @@ namespace LoZClone
         /// <param name="block">Block manager to pass to a command.</param>
         /// <param name="entity">Entity manager to pass to a command.</param>
         /// <param name="enemy">Enemy manager to pass to a command.</param>
-        public KeyboardCommandLoader(LoZGame game, IPlayer player, ItemManager item, BlockManager block, EntityManager entity, EnemyManager enemy)
+        public KeyboardCommandLoader(IPlayer player)
         {
             this.dictionary = new Dictionary<Keys, ICommand>();
 
@@ -31,32 +31,32 @@ namespace LoZClone
             this.dictionary.Add(Keys.S, new CommandDown(player));
             this.dictionary.Add(Keys.D, new CommandRight(player));
 
-            this.dictionary.Add(Keys.Z, new CommandAttackA(player, entity));
-            this.dictionary.Add(Keys.N, new CommandAttackB(player, entity));
+            this.dictionary.Add(Keys.Z, new CommandAttackA(player));
+            this.dictionary.Add(Keys.N, new CommandAttackB(player));
 
             this.dictionary.Add(Keys.E, new CommandDamage(player));
 
-            this.dictionary.Add(Keys.D1, new CommandBomb(player, entity));
-            this.dictionary.Add(Keys.D2, new CommandArrow(player, entity));
-            this.dictionary.Add(Keys.D3, new CommandBoomerang(player, entity));
-            this.dictionary.Add(Keys.D4, new CommandBlueCandle(player, entity));
-            this.dictionary.Add(Keys.D5, new CommandSilverArrow(player, entity));
-            this.dictionary.Add(Keys.D6, new CommandMagicBoomerang(player, entity));
-            this.dictionary.Add(Keys.D7, new CommandRedCandle(player, entity));
-            this.dictionary.Add(Keys.D8, new CommandTriforce(player, entity));
+            this.dictionary.Add(Keys.D1, new CommandBomb(player));
+            this.dictionary.Add(Keys.D2, new CommandArrow(player));
+            this.dictionary.Add(Keys.D3, new CommandBoomerang(player));
+            this.dictionary.Add(Keys.D4, new CommandBlueCandle(player));
+            this.dictionary.Add(Keys.D5, new CommandSilverArrow(player));
+            this.dictionary.Add(Keys.D6, new CommandMagicBoomerang(player));
+            this.dictionary.Add(Keys.D7, new CommandRedCandle(player));
+            this.dictionary.Add(Keys.D8, new CommandTriforce(player));
 
-            this.dictionary.Add(Keys.U, new CommandItemLeft(item));
-            this.dictionary.Add(Keys.I, new CommandItemRight(item));
+            this.dictionary.Add(Keys.U, new CommandItemLeft());
+            this.dictionary.Add(Keys.I, new CommandItemRight());
 
-            this.dictionary.Add(Keys.K, new CommandBlockLeft(block));
-            this.dictionary.Add(Keys.L, new CommandBlockRight(block));
+            this.dictionary.Add(Keys.K, new CommandBlockLeft());
+            this.dictionary.Add(Keys.L, new CommandBlockRight());
 
-            this.dictionary.Add(Keys.O, new CommandEnemyLeft(enemy));
-            this.dictionary.Add(Keys.P, new CommandEnemyRight(enemy));
+            this.dictionary.Add(Keys.O, new CommandEnemyLeft());
+            this.dictionary.Add(Keys.P, new CommandEnemyRight());
 
-            this.dictionary.Add(Keys.Q, new CommandQuit(game));
+            this.dictionary.Add(Keys.Q, new CommandQuit());
 
-            this.dictionary.Add(Keys.R, new CommandReset(game, player, item, block, entity, enemy));
+            this.dictionary.Add(Keys.R, new CommandReset(player));
         }
 
         /// <summary>

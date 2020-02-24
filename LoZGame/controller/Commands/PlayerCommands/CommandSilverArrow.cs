@@ -7,17 +7,15 @@
     {
         private static readonly int PriorityValue = 5;
         private readonly IPlayer player;
-        private readonly EntityManager entity;
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandSilverArrow"/> class.
         /// </summary>
         /// <param name="player">Player to execute a command on.</param>
-        /// <param name="entity">Entity manager to execute a command on.</param>
-        public CommandSilverArrow(IPlayer player, EntityManager entity)
+        public CommandSilverArrow(IPlayer player)
         {
             this.player = player;
-            this.entity = entity;
         }
 
         /// <inheritdoc/>
@@ -29,7 +27,7 @@
             if (!(this.player.State is DieState))
             {
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
-                this.entity.ProjectileManager.AddItem(this.entity.ProjectileManager.SilverArrow, this.player);
+                EntityManager.Instance.ProjectileManager.AddItem(EntityManager.Instance.ProjectileManager.SilverArrow, this.player);
             }
         }
     }
