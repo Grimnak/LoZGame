@@ -26,10 +26,12 @@
 
         private readonly MerchantSprite sprite;
 
-        public Merchant()
+
+
+        public Merchant(Vector2 location)
         {
             this.Game = LoZGame.Instance;
-            this.CurrentLocation = new Vector2(650, 200);
+            this.CurrentLocation = new Vector2(location.X, location.Y);
             this.sprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
             this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);

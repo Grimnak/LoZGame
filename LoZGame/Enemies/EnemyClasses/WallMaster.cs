@@ -25,6 +25,16 @@
             get; set;
         }
 
+        public int VelocityX
+        {
+            get; set;
+        }
+
+        public int VelocityY
+        {
+            get; set;
+        }
+
         private IEnemyState currentState;
         private int health = 10;
         private int lifeTime = 0;
@@ -37,23 +47,23 @@
             Left,
             Right
         }
-;
 
         private direction currentDirection;
 
-        public WallMaster()
+
+        public WallMaster(LoZGame game, Vector2 location)
         {
             this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingWallMasterState(this);
-            this.CurrentLocation = new Vector2(650, 200);
-            this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.CurrentLocation = new Vector2(location.X, location.Y);
+            this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 25, 25);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
         }
 
         private void getNewDirection()
         {
             Random randomselect = new Random();
-            this.currentDirection = (direction)randomselect.Next(0, 7);
+            this.currentDirection = (direction)randomselect.Next(0, 3);
         }
 
         private void updateLoc()

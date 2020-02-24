@@ -11,6 +11,8 @@
         public LeftMovingWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
+            wallMaster.VelocityX = -1;
+            wallMaster.VelocityY = 0;
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingWallMasterSprite();
         }
 
@@ -73,7 +75,7 @@
 
         public void Update()
         {
-            this.wallMaster.CurrentLocation = new Vector2(this.wallMaster.CurrentLocation.X - 1, this.wallMaster.CurrentLocation.Y);
+            this.wallMaster.CurrentLocation = new Vector2(this.wallMaster.CurrentLocation.X + this.wallMaster.VelocityX, this.wallMaster.CurrentLocation.Y + this.wallMaster.VelocityY);
             this.sprite.Update();
         }
 

@@ -11,6 +11,8 @@
         public UpMovingRopeState(Rope rope)
         {
             this.rope = rope;
+            this.rope.VelocityX = 0;
+            this.rope.VelocityY = -1;
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingRopeSprite();
         }
 
@@ -73,7 +75,7 @@
 
         public void Update()
         {
-            this.rope.CurrentLocation = new Vector2(this.rope.CurrentLocation.X, this.rope.CurrentLocation.Y - 2);
+            this.rope.CurrentLocation = new Vector2(this.rope.CurrentLocation.X + this.rope.VelocityX, this.rope.CurrentLocation.Y + this.rope.VelocityY);
             this.sprite.Update();
         }
 

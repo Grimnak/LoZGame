@@ -24,6 +24,15 @@
         {
             get; set;
         }
+        public int VelocityX
+        {
+            get; set;
+        }
+
+        public int VelocityY
+        {
+            get; set;
+        }
 
         private IEnemyState currentState;
         private int health = 10;
@@ -40,19 +49,19 @@
 
         private Direction currentDirection;
 
-        public Stalfos()
+        public Stalfos(LoZGame game, Vector2 location)
         {
             this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingStalfosState(this);
-            this.CurrentLocation = new Vector2(650, 200);
-            this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.CurrentLocation = new Vector2(location.X, location.Y);
+            this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 30, 35);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
         }
 
         private void GetNewDirection()
         {
             Random randomselect = new Random();
-            this.currentDirection = (Direction)randomselect.Next(0, 7);
+            this.currentDirection = (Direction)randomselect.Next(0, 3);
         }
 
         private void UpdateLoc()

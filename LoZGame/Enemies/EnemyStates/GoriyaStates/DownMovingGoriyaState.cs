@@ -11,6 +11,8 @@
         public DownMovingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
+            this.goriya.VelocityX = 0;
+            this.goriya.VelocityY = 1;
             this.sprite = EnemySpriteFactory.Instance.CreateDownMovingGoriyaSprite();
         }
 
@@ -74,7 +76,7 @@
 
         public void Update()
         {
-            this.goriya.CurrentLocation = new Vector2(this.goriya.CurrentLocation.X, this.goriya.CurrentLocation.Y + 1);
+            this.goriya.CurrentLocation = new Vector2(this.goriya.CurrentLocation.X + this.goriya.VelocityX, this.goriya.CurrentLocation.Y + this.goriya.VelocityY);
             this.sprite.Update();
         }
 
