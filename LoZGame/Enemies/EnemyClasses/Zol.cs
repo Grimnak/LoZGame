@@ -24,10 +24,26 @@
         {
             get; set;
         }
+        public int VelocityX
+        {
+            get; set;
+        }
+
+        public int VelocityY
+        {
+            get; set;
+        }
+        public Boolean ShouldMove
+        {
+            get; set;
+        }
 
         private IEnemyState currentState;
         private int health = 10;
         private int lifeTime = 0;
+        private int timeSinceIdle = 0;
+        private int timeInIdle = 0;
+        private int movementWaitMax = 12;
         private readonly int directionChange = 40;
 
         private enum Direction
@@ -40,21 +56,40 @@
 
         private Direction currentDirection;
 
-        public Zol(LoZGame game)
+        public Zol(LoZGame game, Vector2 location)
         {
             this.Game = game;
             this.currentState = new LeftMovingZolState(this);
-            this.CurrentLocation = new Vector2(650, 200);
+            this.CurrentLocation = new Vector2(location.X, location.Y);
             this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 25, 25);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            this.ShouldMove = true;
         }
 
         private void getNewDirection()
         {
             Random randomselect = new Random();
-            this.currentDirection = (Direction)randomselect.Next(0, 7);
+            this.currentDirection = (Direction)randomselect.Next(0, 3);
         }
-
+        private void decideToMove()
+        {
+            if (ShouldMove)
+            {
+                if (timeSinceIdle++ > movementWaitMax)
+                {
+                    ShouldMove = !ShouldMove;
+                    timeSinceIdle = 0;
+                }
+            }
+            else
+            {
+                if (timeInIdle++ > movementWaitMax)
+                {
+                    ShouldMove = !ShouldMove;
+                    timeInIdle = 0;
+                }
+            }
+        }
         private void updateLoc()
         {
             switch (this.currentDirection)
@@ -78,6 +113,7 @@
                 default:
                     break;
             }
+            this.decideToMove();
             this.currentState.Update();
         }
 

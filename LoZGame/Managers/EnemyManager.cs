@@ -30,18 +30,18 @@ namespace LoZClone
 
         private void LoadEnemies()
         {
-            this.enemyList.Add(new Dodongo(this.game));
-            this.enemyList.Add(new Stalfos(this.game));
-            this.enemyList.Add(new Goriya(this.game, this.entity));
-            this.enemyList.Add(new Dragon(this.game, this.entity));
-            this.enemyList.Add(new OldMan(this.game));
-            this.enemyList.Add(new Merchant(this.game));
-            this.enemyList.Add(new SpikeCross(this.game));
-            this.enemyList.Add(new WallMaster(this.game));
-            this.enemyList.Add(new Rope(this.game));
-            this.enemyList.Add(new Zol(this.game));
-            this.enemyList.Add(new Gel(this.game));
-            this.enemyList.Add(new Keese(this.game));
+            this.enemyList.Add(new Dodongo(this.game, new Vector2(650, 200)));
+            this.enemyList.Add(new Stalfos(this.game, new Vector2(650, 200)));
+            this.enemyList.Add(new Goriya(this.game, this.entity, new Vector2(650, 200)));
+            this.enemyList.Add(new Dragon(this.game, this.entity, new Vector2(650, 200)));
+            this.enemyList.Add(new OldMan(this.game, new Vector2(650, 200)));
+            this.enemyList.Add(new Merchant(this.game, new Vector2(650, 200)));
+            this.enemyList.Add(new SpikeCross(this.game, new Vector2(650, 200)));
+            this.enemyList.Add(new WallMaster(this.game, new Vector2(650, 200)));
+            this.enemyList.Add(new Rope(this.game, new Vector2(650, 200)));
+            this.enemyList.Add(new Zol(this.game, new Vector2(650, 200)));
+            this.enemyList.Add(new Gel(this.game, new Vector2(650, 200)));
+            this.enemyList.Add(new Keese(this.game, new Vector2(650, 200)));
         }
 
         public void LoadSprites()

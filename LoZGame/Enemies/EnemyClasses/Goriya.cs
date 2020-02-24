@@ -24,6 +24,15 @@
         {
             get; set;
         }
+        public int VelocityX
+        {
+            get; set;
+        }
+
+        public int VelocityY
+        {
+            get; set;
+        }
 
         private IEnemyState currentState;
         private int health = 10;
@@ -44,11 +53,11 @@
 
         private StateEnum state;
 
-        public Goriya(LoZGame game, EntityManager entity)
+        public Goriya(LoZGame game, EntityManager entity, Vector2 location)
         {
             this.Game = game;
             this.currentState = new LeftMovingGoriyaState(this);
-            this.CurrentLocation = new Vector2(650, 200);
+            this.CurrentLocation = new Vector2(location.X, location.Y);
             this.entity = entity;
             this.coolDown = 0;
             this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 25, 30);
@@ -58,7 +67,7 @@
         private void GetNewState()
         {
             Random randomselect = new Random();
-            this.state = (StateEnum)randomselect.Next(0, 5);
+            this.state = (StateEnum)randomselect.Next(0, 4);
         }
 
         private void UpdateLoc()

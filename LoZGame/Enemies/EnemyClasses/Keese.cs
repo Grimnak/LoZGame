@@ -24,10 +24,25 @@
         {
             get; set;
         }
+        public double VelocityX
+        {
+            get; set;
+        }
+
+        public double VelocityY
+        {
+            get; set;
+        }
+
+        public int AccelerationCurrent
+        {
+            get; set;
+        }
 
         private IEnemyState currentState;
         private int health = 10;
         private int lifeTime = 0;
+        private int accelerationMax = 5;
         private readonly int directionChange = 40;
 
         private enum direction
@@ -45,11 +60,11 @@
 
         private direction currentDirection;
 
-        public Keese(LoZGame game)
+        public Keese(LoZGame game, Vector2 location)
         {
             this.Game = game;
             this.currentState = new LeftMovingKeeseState(this);
-            this.CurrentLocation = new Vector2(650, 200);
+            this.CurrentLocation = new Vector2(location.X, location.Y);
             this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 20, 20);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
         }
@@ -58,6 +73,14 @@
         {
             Random randomselect = new Random();
             this.currentDirection = (direction)randomselect.Next(0, 7);
+        }
+
+        private void updateVelocity()
+        {
+            if (AccelerationCurrent++ > accelerationMax)
+            {
+                AccelerationCurrent = 0;
+            }
         }
 
         private void updateLoc()
@@ -99,6 +122,7 @@
                 default:
                     break;
             }
+            this.updateVelocity();
             this.currentState.Update();
         }
 
@@ -112,11 +136,6 @@
             this.currentState.Die();
         }
 
-        /* public void Update()
-         {
-             currentState.Update();
-         } */
-
         public void Update()
         {
             this.lifeTime++;
@@ -129,12 +148,6 @@
             this.bounds.X = (int)this.CurrentLocation.X;
             this.bounds.Y = (int)this.CurrentLocation.Y;
         }
-
-        /* if (lifeTime % frameChange == 0)
-         {
-             this.nextFrame();
-         }
-     } */
 
         public void Draw(SpriteBatch sb)
         {

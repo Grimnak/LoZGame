@@ -26,10 +26,10 @@
 
         private readonly OldManSprite sprite;
 
-        public OldMan(LoZGame game)
+        public OldMan(LoZGame game, Vector2 location)
         {
             this.Game = game;
-            this.CurrentLocation = new Vector2(650, 200);
+            this.CurrentLocation = new Vector2(location.X, location.Y);
             this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
             this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 30, 30);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);

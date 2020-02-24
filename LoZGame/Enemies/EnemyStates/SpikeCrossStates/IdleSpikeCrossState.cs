@@ -11,6 +11,8 @@
         public IdleSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
+            this.spikeCross.VelocityX = 0;
+            this.spikeCross.VelocityY = 0;
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
         }
 

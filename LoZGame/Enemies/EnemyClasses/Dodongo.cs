@@ -25,6 +25,15 @@
         {
             get; set;
         }
+        public int VelocityX
+        {
+            get; set;
+        }
+
+        public int VelocityY
+        {
+            get; set;
+        }
 
         private IEnemyState currentState;
         private int health = 10;
@@ -40,19 +49,19 @@
             Right,
         }
 
-        public Dodongo(LoZGame game)
+        public Dodongo(LoZGame game, Vector2 location)
         {
             this.Game = game;
             this.currentState = new LeftMovingDodongoState(this);
-            this.CurrentLocation = new Vector2(650, 200);
             this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 32, 16);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            this.CurrentLocation = new Vector2(location.X, location.Y);
         }
 
         private void GetNewDirection()
         {
             Random randomselect = new Random();
-            this.CurrentDirection = (Direction)randomselect.Next(0, 5);
+            this.CurrentDirection = (Direction)randomselect.Next(0, 3);
         }
 
         private void UpdateLoc()

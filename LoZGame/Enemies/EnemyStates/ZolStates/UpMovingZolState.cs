@@ -11,6 +11,8 @@
         public UpMovingZolState(Zol zol)
         {
             this.zol = zol;
+            zol.VelocityX = 0;
+            zol.VelocityY = 1;
             this.sprite = EnemySpriteFactory.Instance.CreateZolSprite();
         }
 
@@ -73,7 +75,10 @@
 
         public void Update()
         {
-            this.zol.CurrentLocation = new Vector2(this.zol.CurrentLocation.X, this.zol.CurrentLocation.Y - 1);
+            if (this.zol.ShouldMove)
+            {
+                this.zol.CurrentLocation = new Vector2(this.zol.CurrentLocation.X + this.zol.VelocityX, this.zol.CurrentLocation.Y + this.zol.VelocityY);
+            }
             this.sprite.Update();
         }
 

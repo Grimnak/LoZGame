@@ -11,6 +11,8 @@
         public RightMovingDodongoState(Dodongo dodongo)
         {
             this.dodongo = dodongo;
+            this.dodongo.VelocityX = 1;
+            this.dodongo.VelocityY = 0;
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingDodongoSprite();
         }
 
@@ -74,7 +76,7 @@
 
         public void Update()
         {
-            this.dodongo.CurrentLocation = new Vector2(this.dodongo.CurrentLocation.X + 1, this.dodongo.CurrentLocation.Y);
+            this.dodongo.CurrentLocation = new Vector2(this.dodongo.CurrentLocation.X + this.dodongo.VelocityX, this.dodongo.CurrentLocation.Y + this.dodongo.VelocityY);
             this.sprite.Update();
         }
 
