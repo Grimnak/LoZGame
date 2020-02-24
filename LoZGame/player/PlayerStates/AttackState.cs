@@ -1,4 +1,4 @@
-namespace LoZClone
+namespace LoZGame
 {
     /// <summary>
     /// Attack state for player.

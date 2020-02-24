@@ -1,4 +1,4 @@
-﻿namespace LoZClone
+﻿namespace LoZGame
 {
     using System.Collections.Generic;
 
@@ -28,6 +28,10 @@
             {
                 this.exists = ex;
                 this.border = ns; // ns = LEVEL-1 || LEVEL-2
+                this.doors = new List<Door>();
+                this.tiles = new List<ITile>();
+                this.enemies = new List<IEnemy>();
+                this.items = new List<IItemSprite>();
             }
         }
 
@@ -205,7 +209,8 @@
          */
         public void AddDoor(string location, string kind)
         {
-            this.doors.Add(new Door(location, kind)); // appending a new Door (Door.cs) to a room object's list of doors
+            Door newDoor = new Door(location, kind);
+            this.doors.Add(newDoor); // appending a new Door (Door.cs) to a room object's list of doors
         }
     }
 }

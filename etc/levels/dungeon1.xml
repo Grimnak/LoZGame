@@ -236,10 +236,8 @@
     </room>
   </drow>
   <drow idx="1">
-    <!-- 0 - 0 maps to top left corner  -->
     <room exists="False" idx="0">
     </room>
-    <!-- special case underground room -->
     <room exists="True" idx="1">
       <border>black</border>
       <rrow idx="0">
