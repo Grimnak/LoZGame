@@ -24,10 +24,27 @@
         {
             get; set;
         }
+        public int VelocityX
+        {
+            get; set;
+        }
+
+        public int VelocityY
+        {
+            get; set;
+        }
+
+        public Boolean ShouldMove
+        {
+            get; set;
+        }
 
         private IEnemyState currentState;
         private int health = 10;
         private int lifeTime = 0;
+        private int timeInIdle = 0;
+        private int timeSinceIdle = 0;
+        private int movementWaitMax = 12;
         private readonly int directionChange = 40;
 
         private enum direction
@@ -41,19 +58,41 @@
 
         private direction currentDirection;
 
-        public Gel(LoZGame game)
+        public Gel(LoZGame game, Vector2 location)
         {
             this.Game = game;
             this.currentState = new LeftMovingGelState(this);
             this.CurrentLocation = new Vector2(650, 200);
             this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            this.CurrentLocation = new Vector2(location.X, location.Y);
+            this.ShouldMove = true;
         }
 
         private void getNewDirection()
         {
             Random randomselect = new Random();
-            this.currentDirection = (direction)randomselect.Next(0, 7);
+            this.currentDirection = (direction)randomselect.Next(0, 3);
+        }
+
+        private void decideToMove()
+        {
+            if (ShouldMove)
+            {
+                if (timeSinceIdle++ > movementWaitMax)
+                {
+                    ShouldMove = !ShouldMove;
+                    timeSinceIdle = 0;
+                }
+            }
+            else
+            {
+                if (timeInIdle++ > movementWaitMax)
+                {
+                    ShouldMove = !ShouldMove;
+                    timeInIdle = 0;
+                }
+            }
         }
 
         private void updateLoc()
@@ -80,6 +119,7 @@
                     break;
             }
 
+            this.decideToMove();
             this.currentState.Update();
         }
 
@@ -102,6 +142,7 @@
                 this.getNewDirection();
                 this.lifeTime = 0;
             }
+
             this.bounds.X = (int)this.CurrentLocation.X;
             this.bounds.Y = (int)this.CurrentLocation.Y;
         }

@@ -19,13 +19,20 @@
         {
             get; set;
         }
+        public Vector2 CurrentLocation
+        {
+            get; set;
+        }
+        public int VelocityX
+        {
+            get; set;
+        }
 
         private IEnemyState currentState;
         private int health = 10;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
         private readonly EntityManager entity;
-        private Vector2 currentLocation;
 
         public EntityManager EntityManager { get { return this.entity; } }
 
@@ -39,20 +46,20 @@
 
         private StateEnum currentStateEnum;
 
-        public Dragon(LoZGame game, EntityManager entity)
+        public Dragon(LoZGame game, EntityManager entity, Vector2 location)
         {
             this.Game = game;
             this.entity = entity;
             this.currentState = new LeftMovingDragonState(this);
-            this.CurrentLocation = new Vector2(650, 200);
-            this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.CurrentLocation = new Vector2(location.X, location.Y);
+            this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 50, 70);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
         }
 
         private void GetNewDirection()
         {
             Random randomselect = new Random();
-            this.currentStateEnum = (StateEnum)randomselect.Next(0, 5);
+            this.currentStateEnum = (StateEnum)randomselect.Next(0, 3);
         }
 
         private void UpdateLoc()
@@ -130,6 +137,5 @@
             set { this.health = value; }
         }
 
-        public Vector2 CurrentLocation { get => this.currentLocation; set => this.currentLocation = value; }
     }
 }

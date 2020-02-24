@@ -11,6 +11,8 @@
         public LeftMovingSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
+            this.spikeCross.VelocityX = -1;
+            this.spikeCross.VelocityY = 0;
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
         }
 
@@ -69,7 +71,7 @@
 
         public void Update()
         {
-            this.spikeCross.CurrentLocation = new Vector2(this.spikeCross.CurrentLocation.X - 3, this.spikeCross.CurrentLocation.Y);
+            this.spikeCross.CurrentLocation = new Vector2(this.spikeCross.CurrentLocation.X + this.spikeCross.VelocityX, this.spikeCross.CurrentLocation.Y + this.spikeCross.VelocityY);
             this.sprite.Update();
         }
 

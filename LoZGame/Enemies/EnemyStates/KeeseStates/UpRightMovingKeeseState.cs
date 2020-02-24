@@ -11,6 +11,8 @@
         public UpRightMovingKeeseState(Keese keese)
         {
             this.keese = keese;
+            this.keese.VelocityX = .2 * this.keese.AccelerationCurrent;
+            this.keese.VelocityY = -.2 * this.keese.AccelerationCurrent;
             this.sprite = EnemySpriteFactory.Instance.CreateKeeseSprite();
         }
 
@@ -77,7 +79,7 @@
 
         public void Update()
         {
-            this.keese.CurrentLocation = new Vector2(this.keese.CurrentLocation.X + 2, this.keese.CurrentLocation.Y - 2);
+            this.keese.CurrentLocation = new Vector2(this.keese.CurrentLocation.X + (float)this.keese.VelocityX, this.keese.CurrentLocation.Y + (float)this.keese.VelocityY);
             this.sprite.Update();
         }
 
