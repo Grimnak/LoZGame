@@ -32,7 +32,12 @@
         private List<IEnemy> enemies;
         private List<IProjectile> projectiles;
 
-        public LoZGame()
+        private static readonly LoZGame instance = new LoZGame();
+
+        public static LoZGame Instance { get { return instance; } }
+
+
+        private LoZGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
