@@ -51,7 +51,7 @@
         private direction currentDirection;
 
 
-        public WallMaster(LoZGame game, Vector2 location)
+        public WallMaster(Vector2 location)
         {
             this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingWallMasterState(this);

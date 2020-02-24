@@ -60,7 +60,7 @@
 
         private direction currentDirection;
 
-        public Keese(LoZGame game, Vector2 location)
+        public Keese(Vector2 location)
         {
             this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingKeeseState(this);

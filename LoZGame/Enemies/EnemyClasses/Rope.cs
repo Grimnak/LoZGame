@@ -49,7 +49,7 @@
 
         private Direction currentDirection;
 
-        public Rope(LoZGame game, Vector2 location)
+        public Rope(Vector2 location)
         {
             this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingRopeState(this);

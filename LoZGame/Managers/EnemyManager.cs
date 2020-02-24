@@ -40,8 +40,8 @@ namespace LoZClone
         {
             this.enemyList.Add(new Dodongo(new Vector2(650, 200)));
             this.enemyList.Add(new Stalfos(new Vector2(650, 200)));
-            this.enemyList.Add(new Goriya(this.entity, new Vector2(650, 200)));
-            this.enemyList.Add(new Dragon(this.entity, new Vector2(650, 200)));
+            this.enemyList.Add(new Goriya(new Vector2(650, 200)));
+            this.enemyList.Add(new Dragon(new Vector2(650, 200)));
             this.enemyList.Add(new OldMan(new Vector2(650, 200)));
             this.enemyList.Add(new Merchant(new Vector2(650, 200)));
             this.enemyList.Add(new SpikeCross(new Vector2(650, 200)));

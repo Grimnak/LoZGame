@@ -51,7 +51,7 @@
         private direction currentDirection;
 
 
-        public SpikeCross(LoZGame game, Vector2 location)
+        public SpikeCross(Vector2 location)
         {
             this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingSpikeCrossState(this);

@@ -58,7 +58,7 @@
 
         private direction currentDirection;
 
-        public Gel(LoZGame game, Vector2 location)
+        public Gel(Vector2 location)
         {
             this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingGelState(this);

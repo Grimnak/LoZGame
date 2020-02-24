@@ -26,7 +26,7 @@
 
         private readonly OldManSprite sprite;
 
-        public OldMan(LoZGame game, Vector2 location)
+        public OldMan(Vector2 location)
         {
             this.Game = LoZGame.Instance;
             this.CurrentLocation = new Vector2(location.X, location.Y);

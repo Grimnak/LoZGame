@@ -49,7 +49,7 @@
 
         private Direction currentDirection;
 
-        public Stalfos(LoZGame game, Vector2 location)
+        public Stalfos(Vector2 location)
         {
             this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingStalfosState(this);

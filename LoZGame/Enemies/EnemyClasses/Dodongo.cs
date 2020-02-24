@@ -49,7 +49,7 @@
             Right,
         }
 
-        public Dodongo(LoZGame game, Vector2 location)
+        public Dodongo(Vector2 location)
         {
             this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingDodongoState(this);
