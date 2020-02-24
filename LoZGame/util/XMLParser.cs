@@ -36,13 +36,13 @@
                     if (ex = bool.Parse(room.Attribute("exists").Value))
                     {
                         Room droom = new Room(string.Empty + ns, ex);
-                        IEnumerable<XElement> doors = from d in room.Descendants(ns + "doors") select d; // all <door> tags in <room>
-                        IEnumerable<XElement> items = from it in room.Descendants(ns + "items") select it; // all <items> tags in <room>
-                        IEnumerable<XElement> enemies = from en in room.Descendants(ns + "enemies") select en; // all <enemy> tags in <room>
+                        IEnumerable<XElement> doors = (from d in room.Descendants(ns + "doors") select d).Elements(); // all <door> tags in <room>
+                        IEnumerable<XElement> items = (from it in room.Descendants(ns + "items") select it).Elements(); // all <items> tags in <room>
+                        IEnumerable<XElement> enemies = (from en in room.Descendants(ns + "enemies") select en).Elements(); // all <enemy> tags in <room>
                         IEnumerable<XElement> rrow = from rr in room.Descendants(ns + "rrow") select rr; // all <rrow> tags in <room>
                         Console.Write("------"); // xml debug
                         Console.Write("\nRow " + i + ", Room " + j + "\n"); // xml debug
-                        foreach (XElement doorGroup in doors.Elements()) // it's this way because my xml format is shit and i'm dumb. pretend it's not here.
+                        foreach (XElement doorGroup in doors) // it's this way because my xml format is shit and i'm dumb. pretend it's not here.
                         {
                             Console.WriteLine();
                             string doorLoc = doorGroup.Attribute("loc").Value, doorKind = doorGroup.Value;
@@ -51,7 +51,7 @@
 
                         }
                         
-                        foreach (XElement item in items.Elements()) // same as above. my code is poop.
+                        foreach (XElement item in items) // same as above. my code is poop.
                         {
                             Console.WriteLine(); // xml debug
                             int x = int.Parse(item.Attribute("X").Value), y = int.Parse(item.Attribute("Y").Value);
@@ -59,7 +59,7 @@
                             Console.Write("item: " + item.Attribute("X").Value + " " + item.Attribute("Y").Value + " " + item.Value); // xml debug 
                         }
                         
-                        foreach (XElement enemy in enemies.Elements()) // xml bad
+                        foreach (XElement enemy in enemies) // xml bad
                         {
                             Console.WriteLine(); // xml debug
                             Console.Write("enemy: " + enemy.Attribute("X").Value + " " + enemy.Attribute("Y").Value + " " + enemy.Value); // xml debug 
@@ -70,7 +70,7 @@
                         foreach (XElement trow in rrow)
                         {
                             int tcount = 0; // xml debug
-                            foreach (XElement tile in trow.Elements())
+                            foreach (XElement tile in trow.Elements()) // i have to call .Elements() because i am dumb and bad at xml
                             {
                                 string x = tile.Attribute("idx").Value, y = trow.Attribute("idx").Value, type = tile.Attribute("type").Value;
                                 tcount++; // xml debug
