@@ -47,6 +47,7 @@
         {
             if (enemy is Dodongo)
             {
+                // doesn't account for state yet
                 return dodongoWidthLeftRight;
             }
             else if (enemy is Dragon)

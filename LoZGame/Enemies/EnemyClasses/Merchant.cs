@@ -31,7 +31,7 @@
             this.Game = game;
             this.CurrentLocation = new Vector2(650, 200);
             this.sprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
-            this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 25, 25);
+            this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
         }
 
