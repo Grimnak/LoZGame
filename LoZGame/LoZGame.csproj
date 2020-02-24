@@ -107,6 +107,7 @@
     <Compile Include="Enemies\EnemyClasses\Stalfos.cs" />
     <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
+    <Compile Include="Managers\Dungeon.cs" />
     <Compile Include="Sprites\EnemySprites\DeadEnemySprite.cs" />
     <Compile Include="Sprites\EnemySprites\Dodongo\DodongoDownSprite.cs" />
     <Compile Include="Sprites\EnemySprites\Dodongo\DodongoLeftSprite.cs" />
@@ -199,7 +200,6 @@
     <Compile Include="Managers\EnemyProjectileManager.cs" />
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\ProjectileType.cs" />
-    <Compile Include="Managers\RoomManager.cs" />
     <Compile Include="Collisions\PlayerCollisionHandler.cs" />
     <Compile Include="Player\PlayerClasses\PlayerEssentials.cs" />
     <Compile Include="Player\PlayerStates\PickupItemState.cs" />
