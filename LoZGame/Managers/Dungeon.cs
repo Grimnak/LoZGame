@@ -1,7 +1,6 @@
 ﻿namespace LoZClone
 {
     using System.Collections.Generic;
-    using global::LoZGame.util;
 
     /// <summary>
     /// Manager for all dungeon rooms.
