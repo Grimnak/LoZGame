@@ -25,7 +25,7 @@
             this.DamageTimer = 0;
             this.DamageCounter = 0;
             this.State = new NullState(game, this);
-            this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
+            this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
         }
 
