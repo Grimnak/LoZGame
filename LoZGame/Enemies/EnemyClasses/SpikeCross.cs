@@ -41,9 +41,9 @@
 
         private direction currentDirection;
 
-        public SpikeCross(LoZGame game)
+        public SpikeCross()
         {
-            this.Game = game;
+            this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingSpikeCrossState(this);
             this.CurrentLocation = new Vector2(650, 200);
             this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));

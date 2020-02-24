@@ -39,9 +39,9 @@
 
         private StateEnum currentStateEnum;
 
-        public Dragon(LoZGame game, EntityManager entity)
+        public Dragon(EntityManager entity)
         {
-            this.Game = game;
+            this.Game = LoZGame.Instance;
             this.entity = entity;
             this.currentState = new LeftMovingDragonState(this);
             this.CurrentLocation = new Vector2(650, 200);

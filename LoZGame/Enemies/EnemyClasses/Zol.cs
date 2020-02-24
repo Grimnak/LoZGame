@@ -40,9 +40,9 @@
 
         private Direction currentDirection;
 
-        public Zol(LoZGame game)
+        public Zol()
         {
-            this.Game = game;
+            this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingZolState(this);
             this.CurrentLocation = new Vector2(650, 200);
             this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));

@@ -26,9 +26,9 @@
 
         private readonly OldManSprite sprite;
 
-        public OldMan(LoZGame game)
+        public OldMan()
         {
-            this.Game = game;
+            this.Game = LoZGame.Instance;
             this.CurrentLocation = new Vector2(650, 200);
             this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
             this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));

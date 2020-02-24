@@ -21,10 +21,6 @@
         private IPlayer link;
         private KeyboardCommandLoader keyboardCommandLoader;
         private MouseCommandLoader mouseCommandLoader;
-        private ItemManager itemManager;
-        private EntityManager entityManager;
-        private BlockManager blockManager;
-        private EnemyManager enemyManager;
         private Dungeon dungeon;
 
         private List<IController> controllers;
@@ -49,12 +45,8 @@
         {
             string file = "../../../../../etc/levels/dungeon1.xml";
             this.link = new Link(this);
-            this.entityManager = new EntityManager();
-            this.enemyManager = new EnemyManager(this, this.entityManager);
-            this.itemManager = new ItemManager();
-            this.blockManager = new BlockManager();
             this.dungeon = new Dungeon(file);
-            this.keyboardCommandLoader = new KeyboardCommandLoader(this, this.link, this.itemManager, this.blockManager, this.entityManager, this.enemyManager);
+            this.keyboardCommandLoader = new KeyboardCommandLoader(this, this.link, ItemManager.Instance, BlockManager.Instance, EntityManager.Instance, EnemyManager.Instance);
             this.mouseCommandLoader = new MouseCommandLoader(this.dungeon);
 
             this.controllers = new List<IController>();
@@ -77,9 +69,9 @@
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
             ProjectileSpriteFactory.Instance.LoadAllTextures(this.Content);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
-            this.enemyManager.LoadSprites();
-            this.itemManager.LoadSprites(384, 184);
-            this.blockManager.LoadSprites(550, 184);
+            EnemyManager.Instance.LoadSprites();
+            ItemManager.Instance.LoadSprites(384, 184);
+            BlockManager.Instance.LoadSprites(550, 184);
         }
 
         protected override void UnloadContent()
@@ -94,11 +86,11 @@
             }
 
             this.link.Update();
-            this.enemyManager.CurrentEnemy.Update();
-            this.itemManager.CurrentItem.Update();
-            this.blockManager.CurrentBlock.Update();
-            this.entityManager.Update();
-            CollisionDetection.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.projectiles.AsReadOnly());
+            EnemyManager.Instance.CurrentEnemy.Update();
+            ItemManager.Instance.CurrentItem.Update();
+            BlockManager.Instance.CurrentBlock.Update();
+            EntityManager.Instance.Update();
+            CollisionDetection.Update(this.players.AsReadOnly(), EnemyManager.Instance.EnemyList.AsReadOnly(), this.projectiles.AsReadOnly());
             base.Update(gameTime);
         }
 
@@ -107,10 +99,10 @@
             this.GraphicsDevice.Clear(Color.Gray);
             this.spriteBatch.Begin();
             this.link.Draw();
-            this.enemyManager.CurrentEnemy.Draw(this.spriteBatch);
-            this.itemManager.CurrentItem.Draw(this.spriteBatch);
-            this.blockManager.CurrentBlock.Draw(this.spriteBatch);
-            this.entityManager.Draw(this.spriteBatch);
+            EnemyManager.Instance.CurrentEnemy.Draw(this.spriteBatch);
+            ItemManager.Instance.CurrentItem.Draw(this.spriteBatch);
+            BlockManager.Instance.CurrentBlock.Draw(this.spriteBatch);
+            EntityManager.Instance.Draw(this.spriteBatch);
             this.spriteBatch.End();
             base.Draw(gameTime);
         }

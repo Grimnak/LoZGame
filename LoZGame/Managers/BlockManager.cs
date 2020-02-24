@@ -11,7 +11,18 @@
         private int maxIndex;
         public Vector2 Location;
 
-        public BlockManager()
+        private static readonly BlockManager instance = new BlockManager();
+
+        public static BlockManager Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+
+        private BlockManager()
         {
             this.currentIndex = 0;
             this.maxIndex = 0;

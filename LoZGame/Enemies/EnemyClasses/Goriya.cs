@@ -44,9 +44,9 @@
 
         private StateEnum state;
 
-        public Goriya(LoZGame game, EntityManager entity)
+        public Goriya(EntityManager entity)
         {
-            this.Game = game;
+            this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingGoriyaState(this);
             this.CurrentLocation = new Vector2(650, 200);
             this.entity = entity;
