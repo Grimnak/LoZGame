@@ -39,10 +39,10 @@
 
         private StateEnum currentStateEnum;
 
-        public Dragon(EntityManager entity)
+        public Dragon()
         {
             this.Game = LoZGame.Instance;
-            this.entity = entity;
+            this.entity = EntityManager.Instance;
             this.currentState = new LeftMovingDragonState(this);
             this.CurrentLocation = new Vector2(650, 200);
             this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));

@@ -44,12 +44,12 @@
 
         private StateEnum state;
 
-        public Goriya(EntityManager entity)
+        public Goriya()
         {
             this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingGoriyaState(this);
             this.CurrentLocation = new Vector2(650, 200);
-            this.entity = entity;
+            this.entity = EntityManager.Instance;
             this.coolDown = 0;
             this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
