@@ -13,9 +13,8 @@
             set { this.bounds = value; }
         }
 
-        public Link(LoZGame game)
+        public Link()
         {
-            this.Game = game;
             this.CurrentColor = "Green";
             this.CurrentDirection = "Down";
             this.CurrentWeapon = "Wood";
@@ -24,7 +23,7 @@
             this.CurrentSpeed = 2;
             this.DamageTimer = 0;
             this.DamageCounter = 0;
-            this.State = new NullState(game, this);
+            this.State = new NullState(this);
             this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
         }
@@ -58,15 +57,15 @@
             this.State.Draw();
         }
 
-        public void OnCollisionResponse(ICollider otherCollider)
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IEnemy)
             {
-                this.linkCollisionHandler.OnCollisionResponse((IEnemy)otherCollider);
+                this.linkCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
             else if (otherCollider is IProjectile)
             {
-                this.linkCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
+                this.linkCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
         }
     }

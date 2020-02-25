@@ -7,7 +7,6 @@
     /// </summary>
     public class MoveUpState : IPlayerState
     {
-        private readonly LoZGame game;
         private readonly IPlayer player;
         private readonly ISprite sprite;
 
@@ -16,9 +15,8 @@
         /// </summary>
         /// <param name="game">Current game.</param>
         /// <param name="playerInstance">Instance of player.</param>
-        public MoveUpState(LoZGame game, IPlayer playerInstance)
+        public MoveUpState(IPlayer playerInstance)
         {
-            this.game = game;
             this.player = playerInstance;
             this.player.CurrentDirection = "Up";
             this.sprite = this.CreateCorrectSprite();
@@ -27,7 +25,7 @@
         /// <inheritdoc/>
         public void Idle()
         {
-            this.player.State = new IdleState(this.game, this.player);
+            this.player.State = new IdleState(this.player);
         }
 
         /// <inheritdoc/>
@@ -38,43 +36,43 @@
         /// <inheritdoc/>
         public void MoveDown()
         {
-            this.player.State = new MoveDownState(this.game, this.player);
+            this.player.State = new MoveDownState(this.player);
         }
 
         /// <inheritdoc/>
         public void MoveLeft()
         {
-            this.player.State = new MoveLeftState(this.game, this.player);
+            this.player.State = new MoveLeftState(this.player);
         }
 
         /// <inheritdoc/>
         public void MoveRight()
         {
-            this.player.State = new MoveRightState(this.game, this.player);
+            this.player.State = new MoveRightState(this.player);
         }
 
         /// <inheritdoc/>
         public void Attack()
         {
-            this.player.State = new AttackState(this.game, this.player);
+            this.player.State = new AttackState(this.player);
         }
 
         /// <inheritdoc/>
         public void Die()
         {
-            this.player.State = new DieState(this.game, this.player);
+            this.player.State = new DieState(this.player);
         }
 
         /// <inheritdoc/>
         public void PickupItem(int itemTime)
         {
-            this.player.State = new PickupItemState(this.game, this.player, itemTime);
+            this.player.State = new PickupItemState(this.player, itemTime);
         }
 
         /// <inheritdoc/>
         public void UseItem(int waitTime)
         {
-            this.player.State = new UseItemState(this.game, this.player, waitTime);
+            this.player.State = new UseItemState(this.player, waitTime);
         }
 
         /// <inheritdoc/>
@@ -87,7 +85,7 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.game.SpriteBatch, this.player.CurrentLocation, this.player.CurrentTint);
+            this.sprite.Draw(this.player.CurrentLocation, this.player.CurrentTint);
         }
 
         private ISprite CreateCorrectSprite()

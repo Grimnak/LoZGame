@@ -15,14 +15,11 @@
             set { this.bounds = value; }
         }
 
-        public LoZGame Game
-        {
-            get; set;
-        }
         public Vector2 CurrentLocation
         {
             get; set;
         }
+
         public int VelocityX
         {
             get; set;
@@ -48,7 +45,6 @@
 
         public Dragon(Vector2 location)
         {
-            this.Game = LoZGame.Instance;
             this.entity = EntityManager.Instance;
             this.currentState = new LeftMovingDragonState(this);
             this.CurrentLocation = new Vector2(location.X, location.Y);
@@ -112,16 +108,16 @@
             this.bounds.Y = (int)this.CurrentLocation.Y;
         }
 
-        public void Draw(SpriteBatch sb)
+        public void Draw()
         {
-            this.currentState.Draw(sb);
+            this.currentState.Draw();
         }
 
-        public void OnCollisionResponse(ICollider otherCollider)
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IProjectile)
             {
-                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
+                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
         }
 

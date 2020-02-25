@@ -15,15 +15,11 @@
             set { this.bounds = value; }
         }
 
-        public LoZGame Game
-        {
-            get; set;
-        }
-
         public Vector2 CurrentLocation
         {
             get; set;
         }
+
         public int VelocityX
         {
             get; set;
@@ -33,7 +29,7 @@
         {
             get; set;
         }
-        public Boolean ShouldMove
+        public bool ShouldMove
         {
             get; set;
         }
@@ -58,7 +54,6 @@
 
         public Zol(Vector2 location)
         {
-            this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingZolState(this);
             this.CurrentLocation = new Vector2(location.X, location.Y);
             this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 25, 25);
@@ -71,6 +66,7 @@
             Random randomselect = new Random();
             this.currentDirection = (Direction)randomselect.Next(0, 3);
         }
+
         private void decideToMove()
         {
             if (ShouldMove)
@@ -90,6 +86,7 @@
                 }
             }
         }
+
         private void updateLoc()
         {
             switch (this.currentDirection)
@@ -140,16 +137,16 @@
             this.bounds.Y = (int)this.CurrentLocation.Y;
         }
 
-        public void Draw(SpriteBatch sb)
+        public void Draw()
         {
-            this.currentState.Draw(sb);
+            this.currentState.Draw();
         }
 
-        public void OnCollisionResponse(ICollider otherCollider)
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IProjectile)
             {
-                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
+                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
         }
 

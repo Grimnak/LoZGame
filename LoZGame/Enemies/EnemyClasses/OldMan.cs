@@ -14,11 +14,6 @@
             set { this.bounds = value; }
         }
 
-        public LoZGame Game
-        {
-            get; set;
-        }
-
         public Vector2 CurrentLocation
         {
             get; set;
@@ -28,7 +23,6 @@
 
         public OldMan(Vector2 location)
         {
-            this.Game = LoZGame.Instance;
             this.CurrentLocation = new Vector2(location.X, location.Y);
             this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
             this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
@@ -50,16 +44,16 @@
             this.bounds.Y = (int)this.CurrentLocation.Y;
         }
 
-        public void Draw(SpriteBatch sb)
+        public void Draw()
         {
-            this.sprite.Draw(sb, this.CurrentLocation, Color.White);
+            this.sprite.Draw(this.CurrentLocation, Color.White);
         }
 
-        public void OnCollisionResponse(ICollider otherCollider)
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IProjectile)
             {
-                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
+                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
         }
     }

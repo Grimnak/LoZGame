@@ -27,7 +27,7 @@
         {
             this.player.CurrentLocation = new Vector2(218, 184);
             this.player.CurrentDirection = "Down";
-            this.player.State = new NullState(LoZGame.Instance, this.player);
+            this.player.State = new NullState(this.player);
             this.player.DamageCounter = 0;
             this.player.DamageTimer = 0;
             this.player.CurrentTint = Color.White;

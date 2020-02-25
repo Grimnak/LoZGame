@@ -5,7 +5,6 @@
     /// </summary>
     public class DieState : IPlayerState
     {
-        private readonly LoZGame game;
         private readonly IPlayer player;
         private readonly ISprite sprite;
 
@@ -14,9 +13,8 @@
         /// </summary>
         /// <param name="game">Current game.</param>
         /// <param name="playerInstance">Instance of the player.</param>
-        public DieState(LoZGame game, IPlayer playerInstance)
+        public DieState(IPlayer playerInstance)
         {
-            this.game = game;
             this.player = playerInstance;
             this.sprite = this.CreateCorrectSprite();
         }
@@ -75,7 +73,7 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.game.SpriteBatch, this.player.CurrentLocation, this.player.CurrentTint);
+            this.sprite.Draw(this.player.CurrentLocation, this.player.CurrentTint);
         }
 
         private ISprite CreateCorrectSprite()

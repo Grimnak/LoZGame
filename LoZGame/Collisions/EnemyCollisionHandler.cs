@@ -9,11 +9,11 @@
             this.enemy = enemy;
         }
 
-        public void OnCollisionResponse(IPlayer player)
+        public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
         }
 
-        public void OnCollisionResponse(IProjectile projectile)
+        public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
             this.enemy.TakeDamage();
         }

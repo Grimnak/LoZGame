@@ -5,7 +5,6 @@ namespace LoZClone
     /// </summary>
     public class PickupItemState : IPlayerState
     {
-        private readonly LoZGame game;
         private readonly IPlayer player;
         private readonly ISprite sprite;
         private int lockoutTimer = 0;
@@ -16,9 +15,8 @@ namespace LoZClone
         /// <param name="game">Current game.</param>
         /// <param name="playerInstance">Instance of player.</param>
         /// <param name="itemTime">Lifetime of item.</param>
-        public PickupItemState(LoZGame game, IPlayer playerInstance, int itemTime)
+        public PickupItemState(IPlayer playerInstance, int itemTime)
         {
-            this.game = game;
             this.player = playerInstance;
             this.player.CurrentDirection = "Down";
             this.lockoutTimer = itemTime; // wait period
@@ -30,7 +28,7 @@ namespace LoZClone
         {
             if (this.lockoutTimer <= 0)
             {
-                this.player.State = new IdleState(this.game, this.player);
+                this.player.State = new IdleState(this.player);
             }
         }
 
@@ -39,7 +37,7 @@ namespace LoZClone
         {
             if (this.lockoutTimer <= 0)
             {
-                this.player.State = new MoveUpState(this.game, this.player);
+                this.player.State = new MoveUpState(this.player);
             }
         }
 
@@ -48,7 +46,7 @@ namespace LoZClone
         {
             if (this.lockoutTimer <= 0)
             {
-                this.player.State = new MoveDownState(this.game, this.player);
+                this.player.State = new MoveDownState(this.player);
             }
         }
 
@@ -57,7 +55,7 @@ namespace LoZClone
         {
             if (this.lockoutTimer <= 0)
             {
-                this.player.State = new MoveLeftState(this.game, this.player);
+                this.player.State = new MoveLeftState(this.player);
             }
         }
 
@@ -66,7 +64,7 @@ namespace LoZClone
         {
             if (this.lockoutTimer <= 0)
             {
-                this.player.State = new MoveRightState(this.game, this.player);
+                this.player.State = new MoveRightState(this.player);
             }
         }
 
@@ -75,14 +73,14 @@ namespace LoZClone
         {
             if (this.lockoutTimer <= 0)
             {
-                this.player.State = new AttackState(this.game, this.player);
+                this.player.State = new AttackState(this.player);
             }
         }
 
         /// <inheritdoc/>
         public void Die()
         {
-            this.player.State = new DieState(this.game, this.player);
+            this.player.State = new DieState(this.player);
         }
 
         /// <inheritdoc/>
@@ -95,7 +93,7 @@ namespace LoZClone
         {
             if (this.lockoutTimer <= 0)
             {
-                this.player.State = new UseItemState(this.game, this.player, waitTime);
+                this.player.State = new UseItemState(this.player, waitTime);
             }
         }
 
@@ -113,7 +111,7 @@ namespace LoZClone
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.game.SpriteBatch, this.player.CurrentLocation, this.player.CurrentTint);
+            this.sprite.Draw(this.player.CurrentLocation, this.player.CurrentTint);
         }
 
         private ISprite CreateCorrectSprite()

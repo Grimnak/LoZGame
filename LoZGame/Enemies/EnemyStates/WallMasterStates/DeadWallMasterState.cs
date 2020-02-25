@@ -67,9 +67,9 @@
             this.sprite.Update();
         }
 
-        public void Draw(SpriteBatch sb)
+        public void Draw()
         {
-            this.sprite.Draw(sb, this.wallMaster.CurrentLocation, Color.White);
+            this.sprite.Draw(this.wallMaster.CurrentLocation, Color.White);
         }
     }
 }

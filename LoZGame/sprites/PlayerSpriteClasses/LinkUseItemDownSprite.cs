@@ -33,7 +33,7 @@ namespace LoZClone
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint)
+        public void Draw(Vector2 location, Color spriteTint)
         {
             int width = this.spriteSheet.Width / this.spriteSheetColumns;
             int height = this.spriteSheet.Height / this.spriteSheetRows;
@@ -43,7 +43,7 @@ namespace LoZClone
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, this.spriteSheetWidth, this.spriteSheetHeight);
 
-            spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
+            LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
         }
     }
 }

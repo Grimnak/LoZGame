@@ -18,7 +18,6 @@
 
         public void MoveLeft()
         {
-            // Blank b/c already moving down
         }
 
         public void MoveRight()
@@ -75,9 +74,9 @@
             this.sprite.Update();
         }
 
-        public void Draw(SpriteBatch sb)
+        public void Draw()
         {
-            this.sprite.Draw(sb, this.spikeCross.CurrentLocation, Color.White);
+            this.sprite.Draw(this.spikeCross.CurrentLocation, Color.White);
         }
     }
 }
