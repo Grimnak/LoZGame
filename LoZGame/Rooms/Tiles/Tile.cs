@@ -14,7 +14,7 @@
     public class Tile : IBlock
     {
         private Vector2 location;
-        private string name;
+        private IBlockSprite sprite;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Tile"/> class.
@@ -24,8 +24,10 @@
         /// <param name="name">Name of the tiles sprite.</param>
         public Tile(string x, string y, string name)
         {
-            this.location = new Vector2(float.Parse(x), float.Parse(y));
-            this.name = name;
+            float rawX = float.Parse(x);
+            float rawY = float.Parse(y);
+            this.location = new Vector2((float)(16 + (64 * rawX)), (float)(16 + (64 * rawY)));
+            this.sprite = this.CreateCorrectSprite(name);
         }
 
         /// <inheritdoc/>
@@ -36,10 +38,19 @@
         }
 
         /// <inheritdoc/>
-        public string Name
+        public IBlockSprite CreateCorrectSprite(string name)
         {
-            get { return this.name; }
-            set { this.name = value; }
+            switch (name)
+            {
+                case "gap_tile":
+                    return BlockSpriteFactory.Instance.GapTile(this.location);
+                case "ladder_tile":
+                    return BlockSpriteFactory.Instance.LadderTile(this.location);
+                case "spotted_tile":
+                    return BlockSpriteFactory.Instance.SpottedTile(this.location);
+                default:
+                    return BlockSpriteFactory.Instance.FloorTile(this.location);
+            }
         }
 
         /// <inheritdoc/>
@@ -50,10 +61,7 @@
         /// <inheritdoc/>
         public void Draw(SpriteBatch spriteBatch)
         {
-            /*
-            TODO
-            spriteBatch.Draw(this.Name, )
-             */
+            this.sprite.Draw(spriteBatch);
         }
     }
 }

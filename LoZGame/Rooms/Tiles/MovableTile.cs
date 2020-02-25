@@ -14,7 +14,7 @@
     public class MovableTile : IBlock
     {
         private Vector2 location;
-        private string name;
+        private IBlockSprite sprite;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MovableTile"/> class.
@@ -24,8 +24,10 @@
         /// <param name="name">Name of the tiles sprite.</param>
         public MovableTile(string x, string y, string name)
         {
-            this.location = new Vector2(float.Parse(x), float.Parse(y));
-            this.name = name;
+            float rawX = float.Parse(x);
+            float rawY = float.Parse(y);
+            this.location = new Vector2((float)(16 + (64 * rawX)), (float)(16 + (64 * rawY)));
+            this.sprite = this.CreateCorrectSprite(name);
         }
 
         /// <inheritdoc/>
@@ -36,10 +38,21 @@
         }
 
         /// <inheritdoc/>
-        public string Name
+        public IBlockSprite CreateCorrectSprite(string name)
         {
-            get { return this.name; }
-            set { this.name = value; }
+            switch (name)
+            {
+                case "turqoise_statue_left":
+                    return BlockSpriteFactory.Instance.TurquoiseStatueLeft(this.location);
+                case "turqoise_statue_right":
+                    return BlockSpriteFactory.Instance.TurquoiseStatueRight(this.location);
+                case "blue_statue_left":
+                    return BlockSpriteFactory.Instance.BlueStatueLeft(this.location);
+                case "blue_statue_right":
+                    return BlockSpriteFactory.Instance.BlueStatueRight(this.location);
+                default:
+                    return BlockSpriteFactory.Instance.OrangeMovableSquare(this.location);
+            }
         }
 
         /// <inheritdoc/>
@@ -50,10 +63,7 @@
         /// <inheritdoc/>
         public void Draw(SpriteBatch spriteBatch)
         {
-            /*
-            TODO
-            spriteBatch.Draw(this.Name, )
-             */
+            this.sprite.Draw(spriteBatch);
         }
     }
 }

@@ -19,9 +19,11 @@
         Vector2 Location { get; set; }
 
         /// <summary>
-        /// Gets or sets the tiles name.
+        /// Creates the correct sprite for the block.
         /// </summary>
-        string Name { get; set; }
+        /// <param name="name">The name of the sprite to create.</param>
+        /// <returns>The block sprite to be drawn.</returns>
+        IBlockSprite CreateCorrectSprite(string name);
 
         /// <summary>
         /// Updates the tile.
