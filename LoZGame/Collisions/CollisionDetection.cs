@@ -46,7 +46,7 @@
             foreach (ICollider collider in targetColliders)
             {
                 CollisionSide sourceSide = GetCollisionSide(sourceCollider.Bounds, collider.Bounds);
-                CollisionSide targetSide = GetCollisionSide(sourceCollider.Bounds, collider.Bounds);
+                CollisionSide targetSide = GetCollisionSide(collider.Bounds, sourceCollider.Bounds);
                 Rectangle overlap = Rectangle.Intersect(sourceCollider.Bounds, collider.Bounds);
                 float overlapArea = overlap.Width * overlap.Height;
                 if (overlapArea > biggestOverlapArea)
