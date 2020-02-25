@@ -110,6 +110,8 @@
     <Compile Include="Interfaces\IDoorState.cs" />
     <Compile Include="Managers\Dungeon.cs" />
     <Compile Include="Rooms\BlockClasses\Door.cs" />
+    <Compile Include="Rooms\BlockStates\DoorStates\BombedDoorState.cs" />
+    <Compile Include="Rooms\BlockStates\DoorStates\HiddenDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\LockedDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\SpecialDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\UnlockedDoorState.cs" />
@@ -342,7 +344,7 @@
     <Compile Include="Sprites\BlockSpriteClasses\BlueStatueRightSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\TurquoiseStatueRightSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\TurquoiseStatueLeftSprite.cs" />
-    <Compile Include="Util\XMLParser.cs" />
+    <Compile Include="Util\XMLHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
