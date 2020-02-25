@@ -87,13 +87,12 @@
                             Console.WriteLine("Room Text Here: " + node.Value); // xml debug
                         }
                     }
-                    
                     j++;
-                    dungeon.Add(drow);
+                    drow.Add(droom);
                 }
+                dungeon.Add(drow);
                 i++;
             }
-
             return dungeon; // tmp?
         }
     }
