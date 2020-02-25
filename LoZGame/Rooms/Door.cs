@@ -1,20 +1,22 @@
-﻿namespace LoZClone
-{
-    /*
-     * The Door struct is separated from Room.cs to prevent file bloat.
-     */
-    public partial class Room
-    {
-        public struct Door
-        {
-            private string location;
-            private string kind;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-            public Door(string loc, string k)
-            {
-                this.location = loc;
-                this.kind = k;
-            }
+namespace LoZClone
+{
+    public class Door 
+    {
+        private string location; // relative location on screen
+
+        private string state { get; set; } // current state
+
+        public Door(string loc, string starting)
+        {
+            this.location = loc;
+            this.state = starting;
         }
+
     }
 }

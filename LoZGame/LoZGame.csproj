@@ -108,6 +108,7 @@
     <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
     <Compile Include="Managers\Dungeon.cs" />
+    <Compile Include="Rooms\Door.cs" />
     <Compile Include="Sprites\EnemySprites\DeadEnemySprite.cs" />
     <Compile Include="Sprites\EnemySprites\Dodongo\DodongoDownSprite.cs" />
     <Compile Include="Sprites\EnemySprites\Dodongo\DodongoLeftSprite.cs" />
@@ -206,7 +207,6 @@
     <Compile Include="Player\PlayerStates\UseItemState.cs" />
     <Compile Include="Player\PlayerStates\DieState.cs" />
     <Compile Include="Rooms\Tiles\BlockTile.cs" />
-    <Compile Include="Rooms\Door.cs" />
     <Compile Include="Rooms\Room.cs" />
     <Compile Include="Rooms\Tiles\MovableTile.cs" />
     <Compile Include="Rooms\Tiles\Tile.cs" />
@@ -432,6 +432,9 @@
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Rooms\BlockClasses\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
