@@ -11,7 +11,7 @@
     /// <summary>
     /// Interface for a tile.
     /// </summary>
-    public interface ITile
+    public interface IBlock
     {
         /// <summary>
         /// Gets or sets the tiles location vector.

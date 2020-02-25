@@ -70,12 +70,12 @@
                         foreach (XElement trow in rrow)
                         {
                             int tcount = 0; // xml debug
-                            foreach (XElement tile in trow.Elements()) // i have to call .Elements() because i am dumb and bad at xml
+                            foreach (XElement block in trow.Elements()) // i have to call .Elements() because i am dumb and bad at xml
                             {
-                                string x = tile.Attribute("idx").Value, y = trow.Attribute("idx").Value, type = tile.Attribute("type").Value;
+                                string x = block.Attribute("idx").Value, y = trow.Attribute("idx").Value, type = block.Attribute("type").Value;
                                 tcount++; // xml debug
-                                Console.Write("tile: " + tile.Value + " type: " + tile.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + tile.Attribute("idx").Value + " \n"); // xml debug
-                                droom.AddTile(x, y, type, tile.Value);
+                                Console.Write("block: " + block.Value + " type: " + block.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + block.Attribute("idx").Value + " \n"); // xml debug
+                                droom.AddBlock(x, y, type, block.Value);
                             }
                             Console.WriteLine("tcount: " + tcount + "\n");
                         }

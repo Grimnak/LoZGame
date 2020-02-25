@@ -11,7 +11,7 @@
     /// <summary>
     /// Class for a block tile.
     /// </summary>
-    public class BlockTile : ITile
+    public class BlockTile : IBlock
     {
         private Vector2 location;
         private string name;

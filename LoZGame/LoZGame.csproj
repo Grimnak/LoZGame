@@ -191,7 +191,7 @@
     <Compile Include="Interfaces\IItemSprite.cs" />
     <Compile Include="Interfaces\ICollider.cs" />
     <Compile Include="Interfaces\IProjectile.cs" />
-    <Compile Include="Interfaces\ITile.cs" />
+    <Compile Include="Interfaces\IBlock.cs" />
     <Compile Include="Managers\EnemyManager.cs" />
     <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="Managers\ExplosionManager.cs" />

@@ -11,7 +11,7 @@
     /// <summary>
     /// Class for a basic tile.
     /// </summary>
-    public class Tile : ITile
+    public class Tile : IBlock
     {
         private Vector2 location;
         private string name;

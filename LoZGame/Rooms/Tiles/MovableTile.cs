@@ -11,7 +11,7 @@
     /// <summary>
     /// Class for a basic tile.
     /// </summary>
-    public class MovableTile : ITile
+    public class MovableTile : IBlock
     {
         private Vector2 location;
         private string name;
