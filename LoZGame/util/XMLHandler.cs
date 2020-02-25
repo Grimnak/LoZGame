@@ -6,7 +6,7 @@
     using System.Xml;
     using System.Xml.Linq;
 
-    public static class XMLParser
+    public static class XMLHandler
     {
         /*
          * this method will parse a given XML document and return 
@@ -87,13 +87,12 @@
                             Console.WriteLine("Room Text Here: " + node.Value); // xml debug
                         }
                     }
-                    
                     j++;
-                    dungeon.Add(drow);
+                    drow.Add(droom);
                 }
+                dungeon.Add(drow);
                 i++;
             }
-
             return dungeon; // tmp?
         }
     }
