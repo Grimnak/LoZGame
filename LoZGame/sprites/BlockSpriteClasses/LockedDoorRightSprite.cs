@@ -3,20 +3,20 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DoorUpSprite : IBlockSprite
+    public class LockedDoorRightSprite : IBlockSprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;
         private readonly int spriteSheetColumns;
-        private readonly int spriteWidth;
-        private readonly int spriteHeight;
         private int currentFrame = 0;
         private int frameDelay = 0;
         private readonly int frameDelayMax = 10;
+        private readonly int spriteWidth;
+        private readonly int spriteHeight;
 
         public Vector2 Location { get; set; }
 
-        public DoorUpSprite(Texture2D spriteTexture, Vector2 loc, SpriteSheetData data)
+        public LockedDoorRightSprite(Texture2D spriteTexture, Vector2 loc, SpriteSheetData data)
         {
             this.spriteSheet = spriteTexture;
             this.spriteWidth = data.Width;

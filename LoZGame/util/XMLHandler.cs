@@ -6,7 +6,7 @@
     using System.Xml;
     using System.Xml.Linq;
 
-    public static class XMLParser
+    public static class XMLHandler
     {
         /*
          * this method will parse a given XML document and return 
