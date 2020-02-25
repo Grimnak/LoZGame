@@ -16,9 +16,8 @@
         /// <summary>
         /// Draws the sprite.
         /// </summary>
-        /// <param name="spriteBatch">Sprite batch to draw the sprite.</param>
         /// <param name="location">Location to draw the sprite.</param>
         /// <param name="spriteTint">Tint of the sprite.</param>
-        void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint);
+        void Draw(Vector2 location, Color spriteTint);
     }
 }

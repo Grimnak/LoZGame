@@ -15,11 +15,6 @@
             set { this.bounds = value; }
         }
 
-        public LoZGame Game
-        {
-            get; set;
-        }
-
         public Vector2 CurrentLocation
         {
             get; set;
@@ -53,7 +48,6 @@
 
         public WallMaster(Vector2 location)
         {
-            this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingWallMasterState(this);
             this.CurrentLocation = new Vector2(location.X, location.Y);
             this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 25, 25);
@@ -115,16 +109,16 @@
             this.bounds.Y = (int)this.CurrentLocation.Y;
         }
 
-        public void Draw(SpriteBatch sb)
+        public void Draw()
         {
-            this.currentState.Draw(sb);
+            this.currentState.Draw();
         }
 
-        public void OnCollisionResponse(ICollider otherCollider)
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IProjectile)
             {
-                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
+                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
         }
 

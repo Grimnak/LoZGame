@@ -7,6 +7,6 @@
     {
         void Update();
 
-        void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteTint);
+        void Draw(Vector2 location, Color spriteTint);
     }
 }

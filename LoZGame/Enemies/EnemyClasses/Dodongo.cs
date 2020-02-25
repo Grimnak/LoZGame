@@ -7,7 +7,6 @@
     public class Dodongo : IEnemy
     {
         private EnemyCollisionHandler enemyCollisionHandler;
-        private LoZGame game;
         private Rectangle bounds;
 
         public Rectangle Bounds
@@ -16,15 +15,11 @@
             set { this.bounds = value; }
         }
 
-        public LoZGame Game
-        {
-            get; set;
-        }
-
         public Vector2 CurrentLocation
         {
             get; set;
         }
+
         public int VelocityX
         {
             get; set;
@@ -51,7 +46,6 @@
 
         public Dodongo(Vector2 location)
         {
-            this.Game = LoZGame.Instance;
             this.currentState = new LeftMovingDodongoState(this);
             this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 32, 16);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
@@ -114,16 +108,16 @@
             this.bounds.Y = (int)this.CurrentLocation.Y;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            this.currentState.Draw(spriteBatch);
+            this.currentState.Draw();
         }
 
-        public void OnCollisionResponse(ICollider otherCollider)
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IProjectile)
             {
-                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
+                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
         }
 

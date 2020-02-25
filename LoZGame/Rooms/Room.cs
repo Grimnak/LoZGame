@@ -98,42 +98,42 @@
             {
                 // commented lines require entity manager to be passed currently
                 case "Dodongo":
-                    this.enemies.Add(new Dodongo());
+                    //this.enemies.Add(new Dodongo());
                     break;
                 case "Dragon":
                     // needs entity manager
-                    this.enemies.Add(new Dragon());
+                    //this.enemies.Add(new Dragon());
                     break;
                 case "Gel":
-                    this.enemies.Add(new Gel());
+                    //this.enemies.Add(new Gel());
                     break;
                 case "Goriya":
                     // needs entity manager
-                    this.enemies.Add(new Goriya());
+                    //this.enemies.Add(new Goriya());
                     break;
                 case "Keese":
-                    this.enemies.Add(new Keese());
+                    //this.enemies.Add(new Keese());
                     break;
                 case "Merchant":
-                    this.enemies.Add(new Merchant());
+                    //this.enemies.Add(new Merchant());
                     break;
                 case "OldMan":
-                    this.enemies.Add(new OldMan());
+                    //this.enemies.Add(new OldMan());
                     break;
                 case "Rope":
-                    this.enemies.Add(new Rope());
+                    //this.enemies.Add(new Rope());
                     break;
                 case "SpikeCross":
-                    this.enemies.Add(new SpikeCross());
+                    //this.enemies.Add(new SpikeCross());
                     break;
                 case "Stalfos":
-                    this.enemies.Add(new Stalfos());
+                    //this.enemies.Add(new Stalfos());
                     break;
                 case "WallMaster":
-                    this.enemies.Add(new WallMaster());
+                    //this.enemies.Add(new WallMaster());
                     break;
                 case "Zol":
-                    this.enemies.Add(new Zol());
+                    //this.enemies.Add(new Zol());
                     break;
                 default:
                     break;

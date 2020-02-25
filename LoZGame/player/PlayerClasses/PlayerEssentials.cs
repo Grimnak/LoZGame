@@ -4,11 +4,6 @@
 
     public abstract class PlayerEssentials
     {
-        public LoZGame Game
-        {
-            get; set;
-        }
-
         public IPlayerState State
         {
             get; set;

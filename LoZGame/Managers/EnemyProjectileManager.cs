@@ -117,7 +117,7 @@
 
             foreach (KeyValuePair<int, FireballSprite> fireBall in this.fireBallList)
             {
-                fireBall.Value.Draw(spritebatch, Scale, Color.White);
+                fireBall.Value.Draw(Scale, Color.White);
             }
         }
     }

@@ -11,12 +11,12 @@
             this.player = player;
         }
 
-        public void OnCollisionResponse(IEnemy enemy)
+        public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
             this.player.TakeDamage();
         }
 
-        public void OnCollisionResponse(IProjectile projectile)
+        public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
             this.player.TakeDamage();
         }

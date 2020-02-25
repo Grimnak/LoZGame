@@ -10,10 +10,6 @@
     {
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private Rectangle leftBounds;
-        private Rectangle rightBounds;
-        private Rectangle topBounds;
-        private Rectangle bottomBounds;
         private static readonly float UpdatesPerSecond = 60;
 
         public SpriteBatch SpriteBatch => this.spriteBatch;
@@ -32,7 +28,6 @@
 
         public static LoZGame Instance { get { return instance; } }
 
-
         private LoZGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
@@ -44,7 +39,7 @@
         protected override void Initialize()
         {
             string file = "../../../../../etc/levels/dungeon1.xml";
-            this.link = new Link(this);
+            this.link = new Link();
             this.dungeon = new Dungeon(file);
             this.keyboardCommandLoader = new KeyboardCommandLoader(this.link);
             this.mouseCommandLoader = new MouseCommandLoader(this.dungeon);
@@ -99,7 +94,7 @@
             this.GraphicsDevice.Clear(Color.Gray);
             this.spriteBatch.Begin();
             this.link.Draw();
-            EnemyManager.Instance.CurrentEnemy.Draw(this.spriteBatch);
+            EnemyManager.Instance.CurrentEnemy.Draw();
             ItemManager.Instance.CurrentItem.Draw(this.spriteBatch);
             BlockManager.Instance.CurrentBlock.Draw(this.spriteBatch);
             EntityManager.Instance.Draw(this.spriteBatch);
