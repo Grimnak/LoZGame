@@ -11,10 +11,10 @@
     /// <summary>
     /// Class for a block tile.
     /// </summary>
-    public class BlockTile : ITile
+    public class BlockTile : IBlock
     {
         private Vector2 location;
-        private string name;
+        private IBlockSprite sprite;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BlockTile"/> class.
@@ -24,8 +24,10 @@
         /// <param name="name">Name of the tiles sprite.</param>
         public BlockTile(string x, string y, string name)
         {
-            this.location = new Vector2(float.Parse(x), float.Parse(y));
-            this.name = name;
+            float rawX = float.Parse(x);
+            float rawY = float.Parse(y);
+            this.location = new Vector2((float)(16 + (64 * rawX)), (float)(16 + (64 * rawY)));
+            this.sprite = this.CreateCorrectSprite(name);
         }
 
         /// <inheritdoc/>
@@ -36,22 +38,28 @@
         }
 
         /// <inheritdoc/>
-        public string Name
+        public IBlockSprite CreateCorrectSprite(string name)
         {
-            get { return this.name; }
-            set { this.name = value; }
-        }
-
-        /// <inheritdoc/>
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            throw new NotImplementedException();
+            switch (name)
+            {
+                case "water_tile":
+                    return BlockSpriteFactory.Instance.WaterTile(this.location);
+                case "basement_brick_tile":
+                    return BlockSpriteFactory.Instance.BasementBrickTile(this.location);
+                default:
+                    return BlockSpriteFactory.Instance.MovableSquare(this.location);
+            }
         }
 
         /// <inheritdoc/>
         public void Update()
         {
-            throw new NotImplementedException();
+        }
+
+        /// <inheritdoc/>
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            this.sprite.Draw(spriteBatch);
         }
     }
 }

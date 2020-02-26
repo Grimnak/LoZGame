@@ -15,7 +15,7 @@
         <enemy X="11" Y="6">SpikeCross</enemy>
       </enemies>
       <doors>
-        <door loc="E">locked-east</door>
+        <door loc="E">locked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -126,8 +126,8 @@
         <enemy X="4" Y="2">Goriya</enemy>
       </enemies>
       <doors>
-        <door loc="W">locked-west</door>
-        <door loc="S">locked-south</door>
+        <door loc="W">locked</door>
+        <door loc="S">locked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -428,8 +428,8 @@
         <enemy X="8" Y="4">Key Stalfos</enemy>
       </enemies>
       <doors>
-        <door loc="N">locked-north</door>
-        <door loc="S">unlocked-south</door>
+        <door loc="N">locked</door>
+        <door loc="S">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="block" idx="0">water_tile</tile>
@@ -540,8 +540,8 @@
         <enemy X="10" Y="3">Dragon</enemy>
       </enemies>
       <doors>
-        <door loc="S">locked-south</door>
-        <door loc="E">special-east</door>
+        <door loc="S">locked</door>
+        <door loc="E">special</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -647,7 +647,7 @@
         <item X="5" Y="3">TriForce</item>
       </items>
       <doors>
-        <door loc="W">unlocked-west</door>
+        <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -682,10 +682,10 @@
         <tile type="block" idx="1">movable_square</tile>
         <tile type="walkable" idx="2">floor_tile</tile>
         <tile type="walkable" idx="3">floor_tile</tile>
-        <tile type="movable" idx="4">turqoise_statue</tile>
+        <tile type="movable" idx="4">turqoise_statue_left</tile>
         <tile type="walkable" idx="5">floor_tile</tile>
         <tile type="walkable" idx="6">floor_tile</tile>
-        <tile type="movable" idx="7">turqoise_statue</tile>
+        <tile type="movable" idx="7">turqoise_statue_right</tile>
         <tile type="walkable" idx="8">floor_tile</tile>
         <tile type="walkable" idx="9">floor_tile</tile>
         <tile type="block" idx="10">movable_square</tile>
@@ -695,12 +695,12 @@
         <tile type="walkable" idx="0">floor_tile</tile>
         <tile type="block" idx="1">movable_square</tile>
         <tile type="walkable" idx="2">floor_tile</tile>
-        <tile type="movable" idx="3">turqoise_statue</tile>
+        <tile type="movable" idx="3">turqoise_statue_left</tile>
         <tile type="walkable" idx="4">floor_tile</tile>
         <tile type="walkable" idx="5">floor_tile</tile>
         <tile type="walkable" idx="6">floor_tile</tile>
         <tile type="walkable" idx="7">floor_tile</tile>
-        <tile type="movable" idx="8">turqoise_statue</tile>
+        <tile type="movable" idx="8">turqoise_statue_right</tile>
         <tile type="walkable" idx="9">floor_tile</tile>
         <tile type="block" idx="10">movable_square</tile>
         <tile type="walkable" idx="11">floor_tile</tile>
@@ -757,7 +757,7 @@
         <enemy X="5" Y="2">OldMan</enemy>
       </enemies>
       <doors>
-        <door loc="E">unlocked-east</door>
+        <door loc="E">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">gap_tile</tile>
@@ -851,9 +851,9 @@
         <enemy X="8" Y="4">TealGel</enemy>
       </enemies>
       <doors>
-        <door loc="W">special-west</door>
-        <door loc="E">unlocked-east</door>
-        <door loc="S">locked-south</door>
+        <door loc="W">special</door>
+        <door loc="E">unlocked</door>
+        <door loc="S">locked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -966,10 +966,10 @@
         <enemy X="6" Y="4">TealGel</enemy>
       </enemies>
       <doors>
-        <door loc="N">unlocked-north</door>
-        <door loc="E">locked-east</door>
-        <door loc="S">bombed-south</door>
-        <door loc="W">unlocked-west</door>
+        <door loc="N">unlocked</door>
+        <door loc="E">locked</door>
+        <door loc="S">bombed</door>
+        <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -1080,9 +1080,9 @@
         <enemy X="8" Y="4">Goriya</enemy>
       </enemies>
       <doors>
-        <door loc="E">unlocked-east</door>
-        <door loc="S">bombed-south</door>
-        <door loc="W">locked-west</door>
+        <door loc="E">unlocked</door>
+        <door loc="S">bombed</door>
+        <door loc="W">locked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -1192,8 +1192,8 @@
         <enemy X="0" Y="5">WallMaster</enemy>
       </enemies>
       <doors>
-        <door loc="N">locked-north</door>
-        <door loc="W">unlocked-west</door>
+        <door loc="N">locked</door>
+        <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -1311,8 +1311,8 @@
         <enemy X="8" Y="6">Keese</enemy>
       </enemies>
       <doors>
-        <door loc="N">locked-north</door>
-        <door loc="E">special-east</door>
+        <door loc="N">locked</door>
+        <door loc="E">special</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -1425,10 +1425,10 @@
         <enemy X="8" Y="4">Stalfos</enemy>
       </enemies>
       <doors>
-        <door loc="N">bombed-north</door>
-        <door loc="E">unlocked-east</door>
-        <door loc="S">unlocked-south</door>
-        <door loc="W">unlocked-west</door>
+        <door loc="N">bombed</door>
+        <door loc="E">unlocked</door>
+        <door loc="S">unlocked</door>
+        <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -1544,8 +1544,8 @@
         <enemy X="3" Y="6">Keese</enemy>
       </enemies>
       <doors>
-        <door loc="N">bombed-north</door>
-        <door loc="W">unlocked-west</door>
+        <door loc="N">bombed</door>
+        <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -1845,8 +1845,8 @@
         <enemy X="3" Y="4">Stalfos</enemy>
       </enemies>
       <doors>
-        <door loc="N">unlocked-north</door>
-        <door loc="S">locked-south</door>
+        <door loc="N">unlocked</door>
+        <door loc="S">locked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -2238,7 +2238,7 @@
         <enemy X="1" Y="5">Keese</enemy>
       </enemies>
       <doors>
-        <door loc="E">unlocked-east</door>
+        <door loc="E">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -2341,9 +2341,9 @@
     </room>
     <room exists="True" idx="2">
       <doors>
-        <door loc="N">locked-north</door>
-        <door loc="E">unlocked-east</door>
-        <door loc="W">unlocked-west</door>
+        <door loc="N">locked</door>
+        <door loc="E">unlocked</door>
+        <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>
@@ -2361,16 +2361,16 @@
       </rrow>
       <rrow idx="1">
         <tile type="walkable" idx="0">floor_tile</tile>
-        <tile type="movable" idx="1">turqoise_statue</tile>
+        <tile type="movable" idx="1">blue_statue_left</tile>
         <tile type="walkable" idx="2">floor_tile</tile>
         <tile type="walkable" idx="3">floor_tile</tile>
-        <tile type="movable" idx="4">turqoise_statue</tile>
+        <tile type="movable" idx="4">blue_statue_left</tile>
         <tile type="walkable" idx="5">floor_tile</tile>
         <tile type="walkable" idx="6">floor_tile</tile>
-        <tile type="movable" idx="7">turqoise_statue</tile>
+        <tile type="movable" idx="7">blue_statue_right</tile>
         <tile type="walkable" idx="8">floor_tile</tile>
         <tile type="walkable" idx="9">floor_tile</tile>
-        <tile type="movable" idx="10">turqoise_statue</tile>
+        <tile type="movable" idx="10">blue_statue_right</tile>
         <tile type="walkable" idx="11">floor_tile</tile>
       </rrow>
       <rrow idx="2">
@@ -2389,16 +2389,16 @@
       </rrow>
       <rrow idx="3">
         <tile type="walkable" idx="0">floor_tile</tile>
-        <tile type="movable" idx="1">turqoise_statue</tile>
+        <tile type="movable" idx="1">blue_statue_left</tile>
         <tile type="walkable" idx="2">floor_tile</tile>
         <tile type="walkable" idx="3">floor_tile</tile>
-        <tile type="movable" idx="4">turqoise_statue</tile>
+        <tile type="movable" idx="4">blue_statue_left</tile>
         <tile type="walkable" idx="5">floor_tile</tile>
         <tile type="walkable" idx="6">floor_tile</tile>
-        <tile type="movable" idx="7">turqoise_statue</tile>
+        <tile type="movable" idx="7">blue_statue_right</tile>
         <tile type="walkable" idx="8">floor_tile</tile>
         <tile type="walkable" idx="9">floor_tile</tile>
-        <tile type="movable" idx="10">turqoise_statue</tile>
+        <tile type="movable" idx="10">blue_statue_right</tile>
         <tile type="walkable" idx="11">floor_tile</tile>
       </rrow>
       <rrow idx="4">
@@ -2417,16 +2417,16 @@
       </rrow>
       <rrow idx="5">
         <tile type="walkable" idx="0">floor_tile</tile>
-        <tile type="movable" idx="1">turqoise_statue</tile>
+        <tile type="movable" idx="1">blue_statue_left</tile>
         <tile type="walkable" idx="2">floor_tile</tile>
-        <tile type="walkable" idx="3">spotted_tile</tile>
-        <tile type="movable" idx="4">turqoise_statue</tile>
+        <tile type="walkable" idx="3">spotted_tile_</tile>
+        <tile type="movable" idx="4">blue_statue_left</tile>
         <tile type="walkable" idx="5">spotted_tile</tile>
         <tile type="walkable" idx="6">spotted_tile</tile>
-        <tile type="movable" idx="7">turqoise_statue</tile>
+        <tile type="movable" idx="7">blue_statue_right</tile>
         <tile type="walkable" idx="8">spotted_tile</tile>
         <tile type="walkable" idx="9">floor_tile</tile>
-        <tile type="movable" idx="10">turqoise_statue</tile>
+        <tile type="movable" idx="10">blue_statue_right</tile>
         <tile type="walkable" idx="11">floor_tile</tile>
       </rrow>
       <rrow idx="6">
@@ -2453,7 +2453,7 @@
         <enemy X="3" Y="6">Stalfos</enemy>
       </enemies>
       <doors>
-        <door loc="W">unlocked-west</door>
+        <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>

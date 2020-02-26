@@ -6,7 +6,7 @@
     using System.Xml;
     using System.Xml.Linq;
 
-    public static class XMLParser
+    public static class XMLHandler
     {
         /*
          * this method will parse a given XML document and return 
@@ -32,34 +32,41 @@
                 IEnumerable<XElement> rooms = from r in row.Descendants(ns + "room") select r; // all <room> tags within row
                 foreach (XElement room in rooms)
                 {
-                    bool ex;
-                    if (ex = bool.Parse(room.Attribute("exists").Value))
+                    bool ex = bool.Parse(room.Attribute("exists").Value);
+                    string border = string.Empty + ns;
+                    if (room.Descendants(ns + "border").Elements().Count<XElement>() > 0)
                     {
-                        Room droom = new Room(string.Empty + ns, ex);
+                        
+                        border = string.Empty + room.Descendants(ns + "border").Elements().First<XElement>().Value;
+                    }
+                    Room droom = new Room(string.Empty + border, ex);
+                    if (ex)
+                    {
                         IEnumerable<XElement> doors = (from d in room.Descendants(ns + "doors") select d).Elements(); // all <door> tags in <room>
                         IEnumerable<XElement> items = (from it in room.Descendants(ns + "items") select it).Elements(); // all <items> tags in <room>
                         IEnumerable<XElement> enemies = (from en in room.Descendants(ns + "enemies") select en).Elements(); // all <enemy> tags in <room>
                         IEnumerable<XElement> rrow = from rr in room.Descendants(ns + "rrow") select rr; // all <rrow> tags in <room>
+                        IEnumerable<XElement> text = from txt in room.Descendants(ns + "text") select txt; // all <text> tags in <room>
                         Console.Write("------"); // xml debug
                         Console.Write("\nRow " + i + ", Room " + j + "\n"); // xml debug
-                        foreach (XElement doorGroup in doors) // it's this way because my xml format is shit and i'm dumb. pretend it's not here.
+                        foreach (XElement door in doors)
                         {
                             Console.WriteLine();
-                            string doorLoc = doorGroup.Attribute("loc").Value, doorKind = doorGroup.Value;
+                            string doorLoc = door.Attribute("loc").Value, doorKind = door.Value;
                             droom.AddDoor(doorLoc, doorKind);
                             Console.Write("door: " + doorLoc + " " + doorKind + " "); // xml debug
 
                         }
-                        
-                        foreach (XElement item in items) // same as above. my code is poop.
+
+                        foreach (XElement item in items) 
                         {
                             Console.WriteLine(); // xml debug
                             int x = int.Parse(item.Attribute("X").Value), y = int.Parse(item.Attribute("Y").Value);
                             droom.AddItem(x, y, item.Value);
                             Console.Write("item: " + item.Attribute("X").Value + " " + item.Attribute("Y").Value + " " + item.Value); // xml debug 
                         }
-                        
-                        foreach (XElement enemy in enemies) // xml bad
+
+                        foreach (XElement enemy in enemies)
                         {
                             Console.WriteLine(); // xml debug
                             Console.Write("enemy: " + enemy.Attribute("X").Value + " " + enemy.Attribute("Y").Value + " " + enemy.Value); // xml debug 
@@ -70,23 +77,28 @@
                         foreach (XElement trow in rrow)
                         {
                             int tcount = 0; // xml debug
-                            foreach (XElement tile in trow.Elements()) // i have to call .Elements() because i am dumb and bad at xml
+                            foreach (XElement block in trow.Elements()) // i have to call .Elements() because i am dumb and bad at xml
                             {
-                                string x = tile.Attribute("idx").Value, y = trow.Attribute("idx").Value, type = tile.Attribute("type").Value;
+                                string x = block.Attribute("idx").Value, y = trow.Attribute("idx").Value, type = block.Attribute("type").Value;
                                 tcount++; // xml debug
-                                Console.Write("tile: " + tile.Value + " type: " + tile.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + tile.Attribute("idx").Value + " \n"); // xml debug
-                                droom.AddTile(x, y, type, tile.Value);
+                                Console.Write("block: " + block.Value + " type: " + block.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + block.Attribute("idx").Value + " \n"); // xml debug
+                                droom.AddBlock(x, y, type, block.Value);
                             }
                             Console.WriteLine("tcount: " + tcount + "\n");
                         }
                         Console.WriteLine(); // xml debug
+                        foreach (XElement node in text)
+                        {
+                            droom.SetText(node.Value);
+                            Console.WriteLine("Room Text Here: " + node.Value); // xml debug
+                        }
                     }
                     j++;
-                    dungeon.Add(drow);
+                    drow.Add(droom);
                 }
+                dungeon.Add(drow);
                 i++;
             }
-
             return dungeon; // tmp?
         }
     }

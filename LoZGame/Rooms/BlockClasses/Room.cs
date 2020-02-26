@@ -7,14 +7,14 @@
      * All instance fields are private so that the dungeon rooms cannot
      * be adjusted prior to the level being loaded.
      */
-    public partial class Room
+    public class Room
     {
         private bool exists = false;
         private string border = null;
         private string text = null;
         private List<IItemSprite> items = null; // a list for any and all items in a room
         private List<IEnemy> enemies = null; // a list for any and all enemies in a room
-        private List<ITile> tiles = null; // a list for any and all tiles in a room
+        private List<IBlock> blocks = null; // a list for any and all tiles in a room
         private List<Door> doors = null; // a list for any and all doors in a room
 
         /*
@@ -29,7 +29,7 @@
                 this.exists = ex;
                 this.border = ns; // ns = LEVEL-1 || LEVEL-2
                 this.doors = new List<Door>();
-                this.tiles = new List<ITile>();
+                this.blocks = new List<IBlock>();
                 this.enemies = new List<IEnemy>();
                 this.items = new List<IItemSprite>();
             }
@@ -54,9 +54,9 @@
         /// <summary>
         /// Gets the tiles list.
         /// </summary>
-        public List<ITile> Tiles
+        public List<IBlock> Tiles
         {
-            get { return this.tiles; }
+            get { return this.blocks; }
         }
 
         /// <summary>
@@ -64,7 +64,10 @@
         /// </summary>
         public List<Door> Doors
         {
-            get { return this.doors; }
+            get
+            {
+                return this.doors;
+            }
         }
 
         /// <summary>
@@ -98,42 +101,42 @@
             {
                 // commented lines require entity manager to be passed currently
                 case "Dodongo":
-                    //this.enemies.Add(new Dodongo());
+                    // this.enemies.Add(new Dodongo());
                     break;
                 case "Dragon":
                     // needs entity manager
-                    //this.enemies.Add(new Dragon());
+                    // this.enemies.Add(new Dragon());
                     break;
                 case "Gel":
-                    //this.enemies.Add(new Gel());
+                    // this.enemies.Add(new Gel());
                     break;
                 case "Goriya":
                     // needs entity manager
-                    //this.enemies.Add(new Goriya());
+                    // this.enemies.Add(new Goriya());
                     break;
                 case "Keese":
-                    //this.enemies.Add(new Keese());
+                    // this.enemies.Add(new Keese());
                     break;
                 case "Merchant":
-                    //this.enemies.Add(new Merchant());
+                    // this.enemies.Add(new Merchant());
                     break;
                 case "OldMan":
-                    //this.enemies.Add(new OldMan());
+                    // this.enemies.Add(new OldMan());
                     break;
                 case "Rope":
-                    //this.enemies.Add(new Rope());
+                    // this.enemies.Add(new Rope());
                     break;
                 case "SpikeCross":
-                    //this.enemies.Add(new SpikeCross());
+                    // this.enemies.Add(new SpikeCross());
                     break;
                 case "Stalfos":
-                    //this.enemies.Add(new Stalfos());
+                    // this.enemies.Add(new Stalfos());
                     break;
                 case "WallMaster":
-                    //this.enemies.Add(new WallMaster());
+                    // this.enemies.Add(new WallMaster());
                     break;
                 case "Zol":
-                    //this.enemies.Add(new Zol());
+                    // this.enemies.Add(new Zol());
                     break;
                 default:
                     break;
@@ -184,18 +187,18 @@
          * type => type of tile
          * name => name of tile sprite
          */
-        public void AddTile(string x, string y, string type, string name)
+        public void AddBlock(string x, string y, string type, string name)
         {
             switch (type)
             {
                 case "movable":
-                    this.tiles.Add(new MovableTile(x, y, name));
+                    this.blocks.Add(new MovableTile(x, y, name));
                     break;
                 case "walkable":
-                    this.tiles.Add(new Tile(x, y, name));
+                    this.blocks.Add(new Tile(x, y, name));
                     break;
                 case "block":
-                    this.tiles.Add(new BlockTile(x, y, name));
+                    this.blocks.Add(new BlockTile(x, y, name));
                     break;
                 default:
                     break;

@@ -107,7 +107,22 @@
     <Compile Include="Enemies\EnemyClasses\Stalfos.cs" />
     <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
+    <Compile Include="Interfaces\IDoorState.cs" />
     <Compile Include="Managers\Dungeon.cs" />
+    <Compile Include="Rooms\BlockClasses\Door.cs" />
+    <Compile Include="Rooms\BlockStates\DoorStates\BombedDoorState.cs" />
+    <Compile Include="Rooms\BlockStates\DoorStates\HiddenDoorState.cs" />
+    <Compile Include="Rooms\BlockStates\DoorStates\LockedDoorState.cs" />
+    <Compile Include="Rooms\BlockStates\DoorStates\SpecialDoorState.cs" />
+    <Compile Include="Rooms\BlockStates\DoorStates\UnlockedDoorState.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\UnlockedDoorDownSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\LockedDoorDownSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\UnlockedDoorLeftSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\LockedDoorLeftSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\UnlockedDoorRightSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\LockedDoorRightSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\UnlockedDoorUpSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\LockedDoorUpSprite.cs" />
     <Compile Include="Sprites\EnemySprites\DeadEnemySprite.cs" />
     <Compile Include="Sprites\EnemySprites\Dodongo\DodongoDownSprite.cs" />
     <Compile Include="Sprites\EnemySprites\Dodongo\DodongoLeftSprite.cs" />
@@ -191,7 +206,7 @@
     <Compile Include="Interfaces\IItemSprite.cs" />
     <Compile Include="Interfaces\ICollider.cs" />
     <Compile Include="Interfaces\IProjectile.cs" />
-    <Compile Include="Interfaces\ITile.cs" />
+    <Compile Include="Interfaces\IBlock.cs" />
     <Compile Include="Managers\EnemyManager.cs" />
     <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="Managers\ExplosionManager.cs" />
@@ -205,11 +220,10 @@
     <Compile Include="Player\PlayerStates\PickupItemState.cs" />
     <Compile Include="Player\PlayerStates\UseItemState.cs" />
     <Compile Include="Player\PlayerStates\DieState.cs" />
-    <Compile Include="Rooms\Tiles\BlockTile.cs" />
-    <Compile Include="Rooms\Door.cs" />
-    <Compile Include="Rooms\Room.cs" />
-    <Compile Include="Rooms\Tiles\MovableTile.cs" />
-    <Compile Include="Rooms\Tiles\Tile.cs" />
+    <Compile Include="Rooms\BlockClasses\Tiles\BlockTile.cs" />
+    <Compile Include="Rooms\BlockClasses\Room.cs" />
+    <Compile Include="Rooms\BlockClasses\Tiles\MovableTile.cs" />
+    <Compile Include="Rooms\BlockClasses\Tiles\Tile.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\BasementBrickTileSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\EnemyDeathExplosionSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\EnemySpawnSprite.cs" />
@@ -317,10 +331,10 @@
     <Compile Include="Sprites\BlockSpriteClasses\BombedOpeningUpSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\BombedOpeningLeftSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\BombedOpeningRightSprite.cs" />
-    <Compile Include="Sprites\BlockSpriteClasses\DoorDownSprite.cs" />
-    <Compile Include="Sprites\BlockSpriteClasses\DoorLeftSprite.cs" />
-    <Compile Include="Sprites\BlockSpriteClasses\DoorRightSprite.cs" />
-    <Compile Include="Sprites\BlockSpriteClasses\DoorUpSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\SpecialDoorDownSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\SpecialDoorLeftSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\SpecialDoorRightSprite.cs" />
+    <Compile Include="Sprites\BlockSpriteClasses\SpecialDoorUpSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\FloorTileSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\GapTileSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\MovableSquareSprite.cs" />
@@ -330,7 +344,7 @@
     <Compile Include="Sprites\BlockSpriteClasses\BlueStatueRightSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\TurquoiseStatueRightSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\TurquoiseStatueLeftSprite.cs" />
-    <Compile Include="Util\XMLParser.cs" />
+    <Compile Include="Util\XMLHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
@@ -433,6 +447,7 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

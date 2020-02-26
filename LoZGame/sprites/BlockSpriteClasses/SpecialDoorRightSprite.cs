@@ -3,7 +3,7 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DoorRightSprite : IBlockSprite
+    public class SpecialDoorRightSprite : IBlockSprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;
@@ -16,7 +16,7 @@ namespace LoZClone
 
         public Vector2 Location { get; set; }
 
-        public DoorRightSprite(Texture2D spriteTexture, Vector2 loc, SpriteSheetData data)
+        public SpecialDoorRightSprite(Texture2D spriteTexture, Vector2 loc, SpriteSheetData data)
         {
             this.spriteSheet = spriteTexture;
             this.spriteWidth = data.Width;

@@ -18,14 +18,32 @@
         private Texture2D StairsTexture;
         private readonly SpriteSheetData stairsData = new SpriteSheetData("stairs", BlockWidth, BlockHeight, 1, 1);
 
-        private Texture2D DoorDownTexture;
-        private readonly SpriteSheetData doorDownData = new SpriteSheetData("door_down", BlockWidth, BlockHeight, 3, 1);
-        private Texture2D DoorLeftTexture;
-        private readonly SpriteSheetData doorLeftData = new SpriteSheetData("door_left", BlockWidth, BlockHeight, 3, 1);
-        private Texture2D DoorRightTexture;
-        private readonly SpriteSheetData doorRightData = new SpriteSheetData("door_right", BlockWidth, BlockHeight, 3, 1);
-        private Texture2D DoorUpTexture;
-        private readonly SpriteSheetData doorUpData = new SpriteSheetData("door_up", BlockWidth, BlockHeight, 3, 1);
+        private Texture2D UnlockedDoorDownTexture;
+        private readonly SpriteSheetData UnlockedDoorDownData = new SpriteSheetData("unlocked_door_down", BlockWidth, BlockHeight, 3, 1);
+        private Texture2D UnlockedDoorLeftTexture;
+        private readonly SpriteSheetData UnlockedDoorLeftData = new SpriteSheetData("unlocked_door_left", BlockWidth, BlockHeight, 3, 1);
+        private Texture2D UnlockedDoorRightTexture;
+        private readonly SpriteSheetData UnlockedDoorRightData = new SpriteSheetData("unlocked_door_right", BlockWidth, BlockHeight, 3, 1);
+        private Texture2D UnlockedDoorUpTexture;
+        private readonly SpriteSheetData UnlockedDoorUpData = new SpriteSheetData("unlocked_door_up", BlockWidth, BlockHeight, 3, 1);
+
+        private Texture2D LockedDoorDownTexture;
+        private readonly SpriteSheetData LockedDoorDownData = new SpriteSheetData("locked_door_down", BlockWidth, BlockHeight, 3, 1);
+        private Texture2D LockedDoorLeftTexture;
+        private readonly SpriteSheetData LockedDoorLeftData = new SpriteSheetData("locked_door_left", BlockWidth, BlockHeight, 3, 1);
+        private Texture2D LockedDoorRightTexture;
+        private readonly SpriteSheetData LockedDoorRightData = new SpriteSheetData("locked_door_right", BlockWidth, BlockHeight, 3, 1);
+        private Texture2D LockedDoorUpTexture;
+        private readonly SpriteSheetData LockedDoorUpData = new SpriteSheetData("locked_door_up", BlockWidth, BlockHeight, 3, 1);
+
+        private Texture2D SpecialDoorDownTexture;
+        private readonly SpriteSheetData SpecialDoorDownData = new SpriteSheetData("special_door_down", BlockWidth, BlockHeight, 3, 1);
+        private Texture2D SpecialDoorLeftTexture;
+        private readonly SpriteSheetData SpecialDoorLeftData = new SpriteSheetData("special_door_left", BlockWidth, BlockHeight, 3, 1);
+        private Texture2D SpecialDoorRightTexture;
+        private readonly SpriteSheetData SpecialDoorRightData = new SpriteSheetData("special_door_right", BlockWidth, BlockHeight, 3, 1);
+        private Texture2D SpecialDoorUpTexture;
+        private readonly SpriteSheetData SpecialDoorUpData = new SpriteSheetData("special_door_up", BlockWidth, BlockHeight, 3, 1);
 
         private Texture2D FireTexture;
         private readonly SpriteSheetData fireData = new SpriteSheetData("fire", BlockWidth, BlockHeight, 1, 2);
@@ -92,10 +110,18 @@
             this.StairsTexture = content.Load<Texture2D>(this.stairsData.FilePath);
             this.MovableSquareTexture = content.Load<Texture2D>(this.movableSquareData.FilePath);
             this.GapTileTexture = content.Load<Texture2D>(this.gapTileData.FilePath);
-            this.DoorDownTexture = content.Load<Texture2D>(this.doorDownData.FilePath);
-            this.DoorLeftTexture = content.Load<Texture2D>(this.doorLeftData.FilePath);
-            this.DoorRightTexture = content.Load<Texture2D>(this.doorRightData.FilePath);
-            this.DoorUpTexture = content.Load<Texture2D>(this.doorUpData.FilePath);
+            this.UnlockedDoorDownTexture = content.Load<Texture2D>(this.UnlockedDoorDownData.FilePath);
+            this.UnlockedDoorLeftTexture = content.Load<Texture2D>(this.UnlockedDoorLeftData.FilePath);
+            this.UnlockedDoorRightTexture = content.Load<Texture2D>(this.UnlockedDoorRightData.FilePath);
+            this.UnlockedDoorUpTexture = content.Load<Texture2D>(this.UnlockedDoorUpData.FilePath);
+            this.LockedDoorDownTexture = content.Load<Texture2D>(this.LockedDoorDownData.FilePath);
+            this.LockedDoorLeftTexture = content.Load<Texture2D>(this.LockedDoorLeftData.FilePath);
+            this.LockedDoorRightTexture = content.Load<Texture2D>(this.LockedDoorRightData.FilePath);
+            this.LockedDoorUpTexture = content.Load<Texture2D>(this.LockedDoorUpData.FilePath);
+            this.SpecialDoorDownTexture = content.Load<Texture2D>(this.SpecialDoorDownData.FilePath);
+            this.SpecialDoorLeftTexture = content.Load<Texture2D>(this.SpecialDoorLeftData.FilePath);
+            this.SpecialDoorRightTexture = content.Load<Texture2D>(this.SpecialDoorRightData.FilePath);
+            this.SpecialDoorUpTexture = content.Load<Texture2D>(this.SpecialDoorUpData.FilePath);
             this.FireTexture = content.Load<Texture2D>(this.fireData.FilePath);
             this.BombedOpeningDownTexture = content.Load<Texture2D>(this.bombedOpeningDownData.FilePath);
             this.BombedOpeningUpTexture = content.Load<Texture2D>(this.bombedOpeningUpData.FilePath);
@@ -121,10 +147,18 @@
             int y = height;
             List<IBlockSprite> allBlocks = new List<IBlockSprite>();
             allBlocks.Add(this.Stairs(new Vector2(x, y)));
-            allBlocks.Add(this.DoorDown(new Vector2(x, y)));
-            allBlocks.Add(this.DoorLeft(new Vector2(x, y)));
-            allBlocks.Add(this.DoorRight(new Vector2(x, y)));
-            allBlocks.Add(this.DoorUp(new Vector2(x, y)));
+            allBlocks.Add(this.UnlockedDoorDown(new Vector2(x, y)));
+            allBlocks.Add(this.UnlockedDoorLeft(new Vector2(x, y)));
+            allBlocks.Add(this.UnlockedDoorRight(new Vector2(x, y)));
+            allBlocks.Add(this.UnlockedDoorUp(new Vector2(x, y)));
+            allBlocks.Add(this.LockedDoorDown(new Vector2(x, y)));
+            allBlocks.Add(this.LockedDoorLeft(new Vector2(x, y)));
+            allBlocks.Add(this.LockedDoorRight(new Vector2(x, y)));
+            allBlocks.Add(this.LockedDoorUp(new Vector2(x, y)));
+            allBlocks.Add(this.SpecialDoorDown(new Vector2(x, y)));
+            allBlocks.Add(this.SpecialDoorLeft(new Vector2(x, y)));
+            allBlocks.Add(this.SpecialDoorRight(new Vector2(x, y)));
+            allBlocks.Add(this.SpecialDoorUp(new Vector2(x, y)));
             allBlocks.Add(this.Fire(new Vector2(x, y)));
             allBlocks.Add(this.FloorTile(new Vector2(x, y)));
             allBlocks.Add(this.GapTile(new Vector2(x, y)));
@@ -155,24 +189,64 @@
             return new StairsSprite(this.StairsTexture, loc, this.stairsData);
         }
 
-        public DoorDownSprite DoorDown(Vector2 loc)
+        public UnlockedDoorDownSprite UnlockedDoorDown(Vector2 loc)
         {
-            return new DoorDownSprite(this.DoorDownTexture, loc, this.doorDownData);
+            return new UnlockedDoorDownSprite(this.UnlockedDoorDownTexture, loc, this.UnlockedDoorDownData);
         }
 
-        public DoorLeftSprite DoorLeft(Vector2 loc)
+        public UnlockedDoorLeftSprite UnlockedDoorLeft(Vector2 loc)
         {
-            return new DoorLeftSprite(this.DoorLeftTexture, loc, this.doorLeftData);
+            return new UnlockedDoorLeftSprite(this.UnlockedDoorLeftTexture, loc, this.UnlockedDoorLeftData);
         }
 
-        public DoorRightSprite DoorRight(Vector2 loc)
+        public UnlockedDoorRightSprite UnlockedDoorRight(Vector2 loc)
         {
-            return new DoorRightSprite(this.DoorRightTexture, loc, this.doorRightData);
+            return new UnlockedDoorRightSprite(this.UnlockedDoorRightTexture, loc, this.UnlockedDoorRightData);
         }
 
-        public DoorUpSprite DoorUp(Vector2 loc)
+        public UnlockedDoorUpSprite UnlockedDoorUp(Vector2 loc)
         {
-            return new DoorUpSprite(this.DoorUpTexture, loc, this.doorUpData);
+            return new UnlockedDoorUpSprite(this.UnlockedDoorUpTexture, loc, this.UnlockedDoorUpData);
+        }
+
+        public LockedDoorDownSprite LockedDoorDown(Vector2 loc)
+        {
+            return new LockedDoorDownSprite(this.LockedDoorDownTexture, loc, this.LockedDoorDownData);
+        }
+
+        public LockedDoorLeftSprite LockedDoorLeft(Vector2 loc)
+        {
+            return new LockedDoorLeftSprite(this.LockedDoorLeftTexture, loc, this.LockedDoorLeftData);
+        }
+
+        public LockedDoorRightSprite LockedDoorRight(Vector2 loc)
+        {
+            return new LockedDoorRightSprite(this.LockedDoorRightTexture, loc, this.LockedDoorRightData);
+        }
+
+        public LockedDoorUpSprite LockedDoorUp(Vector2 loc)
+        {
+            return new LockedDoorUpSprite(this.LockedDoorUpTexture, loc, this.LockedDoorUpData);
+        }
+
+        public SpecialDoorDownSprite SpecialDoorDown(Vector2 loc)
+        {
+            return new SpecialDoorDownSprite(this.SpecialDoorDownTexture, loc, this.SpecialDoorDownData);
+        }
+
+        public SpecialDoorLeftSprite SpecialDoorLeft(Vector2 loc)
+        {
+            return new SpecialDoorLeftSprite(this.SpecialDoorLeftTexture, loc, this.SpecialDoorLeftData);
+        }
+
+        public SpecialDoorRightSprite SpecialDoorRight(Vector2 loc)
+        {
+            return new SpecialDoorRightSprite(this.SpecialDoorRightTexture, loc, this.SpecialDoorRightData);
+        }
+
+        public SpecialDoorUpSprite SpecialDoorUp(Vector2 loc)
+        {
+            return new SpecialDoorUpSprite(this.SpecialDoorUpTexture, loc, this.SpecialDoorUpData);
         }
 
         public FireSprite Fire(Vector2 loc)

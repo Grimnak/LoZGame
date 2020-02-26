@@ -19,7 +19,7 @@
         /// <param name="filePath">File path of the document to parse.</param>
         public Dungeon(string filePath)
         {
-            this.dungeonLayout = XMLParser.Parse(filePath);
+            this.dungeonLayout = XMLHandler.Parse(filePath);
 
             // potentially change x and y starts to match upside down coordinate system
             this.currentX = 2;
