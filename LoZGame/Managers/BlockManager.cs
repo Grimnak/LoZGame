@@ -5,8 +5,8 @@
 
     public class BlockManager
     {
-        private List<IBlockSprite> blockList;
-        public IBlockSprite CurrentBlock;
+        private List<ISprite> blockList;
+        public ISprite CurrentBlock;
         private int currentIndex;
         private int maxIndex;
         public Vector2 Location;
@@ -21,7 +21,6 @@
             }
         }
 
-
         private BlockManager()
         {
             this.currentIndex = 0;
@@ -34,7 +33,7 @@
             this.CurrentBlock = this.blockList[this.currentIndex];
             this.Location.X = xloc;
             this.Location.Y = yloc;
-            foreach (IBlockSprite sprite in this.blockList)
+            foreach (ISprite sprite in this.blockList)
             {
                 this.maxIndex++;
             }

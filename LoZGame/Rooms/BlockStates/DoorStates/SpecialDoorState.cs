@@ -14,7 +14,9 @@ namespace LoZClone
     public class SpecialDoorState : IDoorState
     {
         private readonly Door door;
-        private readonly IBlockSprite sprite;
+        private readonly ISprite sprite;
+        private readonly Color spriteTint = Color.White;
+        private readonly Vector2 location;
         private readonly Vector2 UpScreenLoc = new Vector2(336, 0);
         private readonly Vector2 RightScreenLoc = new Vector2(784, 208);
         private readonly Vector2 DownScreenLoc = new Vector2(336, 416);
@@ -28,21 +30,25 @@ namespace LoZClone
                 case "N":
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp(UpScreenLoc);
+                        location = UpScreenLoc;
                         break;
                     }
                 case "E":
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight(RightScreenLoc);
+                        location = RightScreenLoc;
                         break;
                     }
                 case "S":
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown(DownScreenLoc);
+                        location = DownScreenLoc;
                         break;
                     }
                 case "W":
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft(LeftScreenLoc);
+                        location = LeftScreenLoc;
                         break;
                     }
             }
@@ -64,9 +70,9 @@ namespace LoZClone
             this.door.Open();
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            this.sprite.Draw(spriteBatch);
+            this.sprite.Draw(location, spriteTint);
         }
 
         public void Update()

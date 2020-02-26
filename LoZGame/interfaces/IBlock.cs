@@ -23,7 +23,7 @@
         /// </summary>
         /// <param name="name">The name of the sprite to create.</param>
         /// <returns>The block sprite to be drawn.</returns>
-        IBlockSprite CreateCorrectSprite(string name);
+        ISprite CreateCorrectSprite(string name);
 
         /// <summary>
         /// Updates the tile.
@@ -34,6 +34,6 @@
         /// Draws the tile.
         /// </summary>
         /// <param name="spriteBatch">Spritebatch to do the drawing.</param>
-        void Draw(SpriteBatch spriteBatch);
+        void Draw();
     }
 }

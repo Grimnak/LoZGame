@@ -11,7 +11,9 @@ namespace LoZClone
     public class BombedDoorState : IDoorState
     {
         private readonly Door door;
-        private readonly IBlockSprite sprite;
+        private readonly ISprite sprite;
+        private readonly Vector2 location;
+        private readonly Color spriteTint = Color.White;
         private readonly Vector2 UpScreenLoc = new Vector2(336, 0);
         private readonly Vector2 RightScreenLoc = new Vector2(784, 208);
         private readonly Vector2 DownScreenLoc = new Vector2(336, 416);
@@ -25,21 +27,25 @@ namespace LoZClone
                 case "N":
                     {
                         this.sprite = BlockSpriteFactory.Instance.BombedOpeningUp(UpScreenLoc);
+                        location = UpScreenLoc;
                         break;
                     }
                 case "E":
                     {
                         this.sprite = BlockSpriteFactory.Instance.BombedOpeningRight(RightScreenLoc);
+                        location = RightScreenLoc;
                         break;
                     }
                 case "S":
                     {
                         this.sprite = BlockSpriteFactory.Instance.BombedOpeningDown(DownScreenLoc);
+                        location = DownScreenLoc;
                         break;
                     }
                 case "W":
                     {
                         this.sprite = BlockSpriteFactory.Instance.BombedOpeningLeft(LeftScreenLoc);
+                        location = LeftScreenLoc;
                         break;
                     }
 
@@ -58,10 +64,9 @@ namespace LoZClone
             throw new NotImplementedException();
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            this.sprite.Draw(spriteBatch);
-            throw new NotImplementedException();
+            this.sprite.Draw(location, spriteTint);
         }
 
         public void Open()

@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class EnemySpawnSprite : IBlockSprite
+    public class EnemySpawnSprite : ISprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;
@@ -41,7 +41,7 @@
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(Vector2 location, Color spriteTint)
         {
             int width = this.spriteSheet.Width / this.spriteSheetColumns;
             int height = this.spriteSheet.Height / this.spriteSheetRows;
@@ -50,7 +50,7 @@
             Rectangle sourceRectangle = new Rectangle(0, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)this.Location.X, (int)this.Location.Y, this.spriteWidth, this.spriteHeight);
 
-            spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, Color.White);
+            LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
         }
     }
 }

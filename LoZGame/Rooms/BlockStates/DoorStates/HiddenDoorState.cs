@@ -11,7 +11,7 @@ namespace LoZClone
     public class HiddenDoorState : IDoorState
     {
         private readonly Door door;
-        private readonly IBlockSprite sprite;
+        private readonly ISprite sprite;
         private readonly Vector2 UpScreenLoc = new Vector2(336, 0);
         private readonly Vector2 RightScreenLoc = new Vector2(784, 208);
         private readonly Vector2 DownScreenLoc = new Vector2(336, 416);
@@ -34,7 +34,7 @@ namespace LoZClone
             throw new NotImplementedException();
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
             // Draw Nothing
         }

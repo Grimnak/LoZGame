@@ -17,6 +17,6 @@ namespace LoZClone
 
         void Update();
 
-        void Draw(SpriteBatch spriteBatch);
+        void Draw();
     }
 }

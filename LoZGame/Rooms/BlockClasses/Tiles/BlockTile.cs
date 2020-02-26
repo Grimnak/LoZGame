@@ -14,7 +14,8 @@
     public class BlockTile : IBlock
     {
         private Vector2 location;
-        private IBlockSprite sprite;
+        private ISprite sprite;
+        private Color spriteTint = Color.White;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BlockTile"/> class.
@@ -38,7 +39,7 @@
         }
 
         /// <inheritdoc/>
-        public IBlockSprite CreateCorrectSprite(string name)
+        public ISprite CreateCorrectSprite(string name)
         {
             switch (name)
             {
@@ -57,9 +58,9 @@
         }
 
         /// <inheritdoc/>
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            this.sprite.Draw(spriteBatch);
+            this.sprite.Draw(location, spriteTint);
         }
     }
 }
