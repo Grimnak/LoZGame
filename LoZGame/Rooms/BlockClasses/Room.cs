@@ -206,13 +206,13 @@
             switch (type)
             {
                 case "movable":
-                    this.blocks.Add(new MovableTile(x, y, name));
+                    this.blocks.Add(new MovableTile(location, name));
                     break;
                 case "walkable":
-                    this.blocks.Add(new Tile(x, y, name));
+                    this.blocks.Add(new Tile(location, name));
                     break;
                 case "block":
-                    this.blocks.Add(new BlockTile(x, y, name));
+                    this.blocks.Add(new BlockTile(location, name));
                     break;
                 default:
                     break;

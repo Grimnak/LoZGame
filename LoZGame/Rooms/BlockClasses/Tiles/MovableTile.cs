@@ -20,14 +20,11 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="MovableTile"/> class.
         /// </summary>
-        /// <param name="x">X value of the tiles location vector.</param>
-        /// <param name="y">Y value of the tiles location vector.</param>
+        /// <param name="location">The location of the tile.</param>
         /// <param name="name">Name of the tiles sprite.</param>
-        public MovableTile(string x, string y, string name)
+        public MovableTile(Vector2 location, string name)
         {
-            float rawX = float.Parse(x);
-            float rawY = float.Parse(y);
-            this.location = new Vector2((float)(16 + (64 * rawX)), (float)(16 + (64 * rawY)));
+            this.location = location;
             this.sprite = this.CreateCorrectSprite(name);
         }
 
