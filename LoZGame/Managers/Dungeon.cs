@@ -33,9 +33,9 @@
         /// </summary>
         public void MoveUp()
         {
-            if (this.currentY + 1 < this.maxY && this.dungeonLayout[this.currentX][this.currentY + 1].Exists)
+            if (this.currentY - 1 > 0 && this.dungeonLayout[this.currentX][this.currentY - 1].Exists)
             {
-                this.currentY++;
+                this.currentY--;
             }
         }
 
@@ -44,9 +44,9 @@
         /// </summary>
         public void MoveDown()
         {
-            if (this.currentY - 1 > 0 && this.dungeonLayout[this.currentX][this.currentY - 1].Exists)
+            if (this.currentY + 1 < this.maxX && this.dungeonLayout[this.currentX][this.currentY + 1].Exists)
             {
-                this.currentY--;
+                this.currentY++;
             }
         }
 
