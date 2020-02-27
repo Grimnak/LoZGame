@@ -5,8 +5,8 @@
 
     public class BlockManager
     {
-        private List<ISprite> blockList;
-        public ISprite CurrentBlock;
+        private List<IBlock> blockList;
+        public IBlock CurrentBlock;
         private int currentIndex;
         private int maxIndex;
         public Vector2 Location;
@@ -25,17 +25,25 @@
         {
             this.currentIndex = 0;
             this.maxIndex = 0;
+            this.blockList = new List<IBlock>();
+        }
+
+        private void LoadBlocks()
+        {
         }
 
         public void LoadSprites(int xloc, int yloc)
         {
-            this.blockList = BlockSpriteFactory.Instance.GetAll(xloc, yloc);
-            this.CurrentBlock = this.blockList[this.currentIndex];
-            this.Location.X = xloc;
-            this.Location.Y = yloc;
-            foreach (ISprite sprite in this.blockList)
+            this.LoadBlocks();
+            if (this.blockList.Count != 0)
             {
-                this.maxIndex++;
+                this.CurrentBlock = this.blockList[this.currentIndex];
+                this.Location.X = xloc;
+                this.Location.Y = yloc;
+                foreach (ISprite sprite in this.blockList)
+                {
+                    this.maxIndex++;
+                }
             }
         }
 

@@ -11,7 +11,6 @@
         private int maxIndex;
         public Vector2 Location;
 
-
         private static readonly ItemManager instance = new ItemManager();
 
         public static ItemManager Instance

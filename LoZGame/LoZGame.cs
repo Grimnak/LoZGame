@@ -103,7 +103,7 @@
             this.link.Draw();
             EnemyManager.Instance.CurrentEnemy.Draw();
             ItemManager.Instance.CurrentItem.Draw(this.spriteBatch);
-            BlockManager.Instance.CurrentBlock.Draw(this.spriteBatch);
+            BlockManager.Instance.CurrentBlock.Draw();
             EntityManager.Instance.Draw(this.spriteBatch);
             this.spriteBatch.End();
             base.Draw(gameTime);

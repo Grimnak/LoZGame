@@ -7,7 +7,7 @@ namespace LoZClone
     {
         private List<IEnemy> enemyList;
 
-        private static readonly EnemyManager instance = new EnemyManager(EntityManager.Instance);
+        private static readonly EnemyManager instance = new EnemyManager();
 
         public static EnemyManager Instance
         {
@@ -26,11 +26,9 @@ namespace LoZClone
         private int currentIndex;
         private int maxIndex;
         public Vector2 Location;
-        private readonly EntityManager entity;
 
-        private EnemyManager(EntityManager entity)
+        private EnemyManager()
         {
-            this.entity = entity;
             this.currentIndex = 0;
             this.maxIndex = 0;
             this.enemyList = new List<IEnemy>();
@@ -55,10 +53,15 @@ namespace LoZClone
         public void LoadSprites()
         {
             this.LoadEnemies();
-            this.CurrentEnemy = this.enemyList[this.currentIndex];
-            foreach (IEnemy sprite in this.enemyList)
+
+            if (this.enemyList.Count != 0)
             {
-                this.maxIndex++;
+                this.CurrentEnemy = this.enemyList[this.currentIndex];
+
+                foreach (IEnemy sprite in this.enemyList)
+                {
+                    this.maxIndex++;
+                }
             }
         }
 
