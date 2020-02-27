@@ -1,6 +1,6 @@
 ﻿namespace LoZClone
 {
-    using Microsoft.Xna.Framework;
+    using System;
 
     public class PlayerCollisionHandler
     {
@@ -13,6 +13,7 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
+            Console.WriteLine("Player colliding with Enemy:  Collision Side = " + collisionSide);
             this.player.TakeDamage();
         }
 

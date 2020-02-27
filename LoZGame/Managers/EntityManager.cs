@@ -8,7 +8,6 @@
         private ExplosionManager explosion;
         private EnemyProjectileManager enemyProjectile;
 
-
         private static readonly EntityManager instance = new EntityManager();
 
         public static EntityManager Instance
