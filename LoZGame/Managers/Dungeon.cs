@@ -36,6 +36,7 @@
             if (this.currentY - 1 > 0 && this.dungeonLayout[this.currentX][this.currentY - 1].Exists)
             {
                 this.currentY--;
+                this.LoadNewRoom();
             }
         }
 
@@ -47,6 +48,7 @@
             if (this.currentY + 1 < this.maxX && this.dungeonLayout[this.currentX][this.currentY + 1].Exists)
             {
                 this.currentY++;
+                this.LoadNewRoom();
             }
         }
 
@@ -58,6 +60,7 @@
             if (this.currentX - 1 > 0 && this.dungeonLayout[this.currentX - 1][this.currentY].Exists)
             {
                 this.currentX--;
+                this.LoadNewRoom();
             }
         }
 
@@ -69,6 +72,40 @@
             if (this.currentX + 1 < this.maxX && this.dungeonLayout[this.currentX + 1][this.currentY].Exists)
             {
                 this.currentX++;
+                this.LoadNewRoom();
+            }
+        }
+
+        /// <summary>
+        /// Loads new room info into managers.
+        /// </summary>
+        public void LoadNewRoom()
+        {
+            EntityManager.Instance.Clear(); // we dont add anything to entity manager after clearing since no projectiles stay when transitioning rooms.
+            EnemyManager.Instance.Clear();
+            //BlockManager.Instance.Clear();
+            //ItemManager.Instance.Clear();
+            //DoorManager.Instance.Clear();
+
+            foreach (IEnemy enemy in this.dungeonLayout[this.currentX][this.currentY].Enemies)
+            {
+                // EnemyManager.Instance.Add(enemy);
+            }
+
+            foreach (IBlock block in this.dungeonLayout[this.currentX][this.currentY].Tiles)
+            {
+                // BlockManager.Instance.Add(block);
+            }
+
+            //TODO change to IItem once separated
+            foreach (IItemSprite item in this.dungeonLayout[this.currentX][this.currentY].Items)
+            {
+                // ItemManager.Instance.Add(item);
+            }
+
+            foreach (Door door in this.dungeonLayout[this.currentX][this.currentY].Doors)
+            {
+                // DoorManager.Instance.Add(door);
             }
         }
     }
