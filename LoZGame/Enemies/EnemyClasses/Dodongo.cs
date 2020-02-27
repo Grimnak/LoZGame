@@ -47,6 +47,7 @@
             Down,
             Left,
             Right,
+            Dead,
         }
 
         public Dodongo(Vector2 location)
@@ -61,7 +62,7 @@
         private void GetNewDirection()
         {
             Random randomselect = new Random();
-            this.CurrentDirection = (Direction)randomselect.Next(0, 3);
+            this.CurrentDirection = (Direction)randomselect.Next(0, 5);
         }
 
         private void UpdateLoc()
@@ -83,7 +84,10 @@
                 case Direction.Right:
                     this.currentState.MoveRight();
                     break;
-
+                case Direction.Dead:
+                    this.currentState.Die();
+                    Console.WriteLine("Dodongo should have died.");
+                    break;
                 default:
                     break;
             }

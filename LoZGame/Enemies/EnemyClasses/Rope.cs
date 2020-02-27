@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using System;
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -34,10 +35,21 @@
             get; set;
         }
 
+        public Boolean Attacking
+        {
+            get; set;
+        }
+
+        public int AttackFactor
+        {
+            get; set;
+        }
+
         private IEnemyState currentState;
         private int health = 10;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
+        private List<IPlayer> players;
 
         private enum Direction
         {
@@ -56,6 +68,8 @@
             this.CurrentLocation = new Vector2(location.X, location.Y);
             this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 25, 25);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            Attacking = false;
+            AttackFactor = 1;
         }
 
         private void getNewDirection()
@@ -90,6 +104,48 @@
             this.currentState.Update();
         }
 
+        private void checkForLink()
+        { /*
+            players = Game.Players;
+            foreach (IPlayer player in players)
+            {
+                if (CurrentLocation.X <= player.CurrentLocation.X + 10 || CurrentLocation.X >= player.CurrentLocation.X - 10)
+                {
+                    Attacking = true;
+                    AttackFactor = 3;
+                    if (CurrentLocation.Y > player.CurrentLocation.Y)
+                    {
+                        this.currentState.MoveDown();
+                    }
+                    else
+                    {
+                        this.currentState.MoveUp();
+                    }
+                }
+                else if (CurrentLocation.Y == player.CurrentLocation.Y)
+                {
+                    Attacking = true;
+                    AttackFactor = 3;
+                    if (CurrentLocation.Y <= player.CurrentLocation.Y + 10 || CurrentLocation.Y >= player.CurrentLocation.Y - 10)
+                    {
+                        this.currentState.MoveRight();
+                    }
+                    else
+                    {
+                        this.currentState.MoveLeft();
+                    }
+                }
+                else
+                {
+                    AttackFactor = 1;
+                    Attacking = false;
+                }
+                this.currentState.Update();
+            }
+                */
+           
+        }
+        
         public void TakeDamage()
         {
             this.currentState.Die();
@@ -103,12 +159,17 @@
         public void Update()
         {
             this.lifeTime++;
-            this.updateLoc();
-            if (this.lifeTime > this.directionChange)
+            checkForLink();
+            if (!Attacking)
             {
-                this.getNewDirection();
-                this.lifeTime = 0;
+                this.updateLoc();
+                if (this.lifeTime > this.directionChange)
+                {
+                    this.getNewDirection();
+                    this.lifeTime = 0;
+                }
             }
+
             this.bounds.X = (int)this.CurrentLocation.X;
             this.bounds.Y = (int)this.CurrentLocation.Y;
         }

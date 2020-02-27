@@ -12,6 +12,8 @@
         {
             this.rope = rope;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.rope.VelocityX = 0;
+            this.rope.VelocityY = 0;
         }
 
         public void MoveLeft()

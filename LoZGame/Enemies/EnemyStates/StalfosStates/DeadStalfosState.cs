@@ -12,6 +12,8 @@
         {
             this.stalfos = stalfos;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.stalfos.VelocityX = 0;
+            this.stalfos.VelocityY = 0;
         }
 
         public void MoveLeft()

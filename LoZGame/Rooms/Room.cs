@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
     using System.Collections.Generic;
 
     /*
@@ -98,42 +99,42 @@
             {
                 // commented lines require entity manager to be passed currently
                 case "Dodongo":
-                    this.enemies.Add(new Dodongo());
+                    this.enemies.Add(new Dodongo(new Vector2(650, 200)));
                     break;
                 case "Dragon":
                     // needs entity manager
-                    this.enemies.Add(new Dragon());
+                    this.enemies.Add(new Dragon(new Vector2(650,200)));
                     break;
                 case "Gel":
-                    this.enemies.Add(new Gel());
+                    this.enemies.Add(new Gel(new Vector2(650, 200)));
                     break;
                 case "Goriya":
                     // needs entity manager
-                    this.enemies.Add(new Goriya());
+                    this.enemies.Add(new Goriya(new Vector2(650, 200)));
                     break;
                 case "Keese":
-                    this.enemies.Add(new Keese());
+                    this.enemies.Add(new Keese(new Vector2(650, 200)));
                     break;
                 case "Merchant":
-                    this.enemies.Add(new Merchant());
+                    this.enemies.Add(new Merchant(new Vector2(650, 200)));
                     break;
                 case "OldMan":
-                    this.enemies.Add(new OldMan());
+                    this.enemies.Add(new OldMan(new Vector2(650, 200)));
                     break;
                 case "Rope":
-                    this.enemies.Add(new Rope());
+                    this.enemies.Add(new Rope(new Vector2(650, 200)));
                     break;
                 case "SpikeCross":
-                    this.enemies.Add(new SpikeCross());
+                    this.enemies.Add(new SpikeCross(new Vector2(650, 200)));
                     break;
                 case "Stalfos":
-                    this.enemies.Add(new Stalfos());
+                    this.enemies.Add(new Stalfos(new Vector2(650, 200)));
                     break;
                 case "WallMaster":
-                    this.enemies.Add(new WallMaster());
+                    this.enemies.Add(new WallMaster(new Vector2(650, 200)));
                     break;
                 case "Zol":
-                    this.enemies.Add(new Zol());
+                    this.enemies.Add(new Zol(new Vector2(650, 200)));
                     break;
                 default:
                     break;

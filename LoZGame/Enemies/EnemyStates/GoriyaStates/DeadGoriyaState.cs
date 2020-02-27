@@ -12,6 +12,8 @@
         {
             this.goriya = goriya;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.goriya.VelocityX = 0;
+            this.goriya.VelocityY = 0;
         }
 
         public void MoveLeft()

@@ -211,7 +211,7 @@
         private readonly SpriteSheetData merchantData = new SpriteSheetData("merchant", merchantWidth, merchantHeight, 1, 1);
 
         private Texture2D deadEnemy;
-        private readonly SpriteSheetData deadEnemyData = new SpriteSheetData("enemyDeath", 50, 50, 1, 2);
+        private readonly SpriteSheetData deadEnemyData = new SpriteSheetData("enemyDeath", 40, 40, 1, 6);
 
         private static readonly EnemySpriteFactory InstanceValue = new EnemySpriteFactory();
 

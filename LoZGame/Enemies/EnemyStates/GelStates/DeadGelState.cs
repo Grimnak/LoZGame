@@ -12,6 +12,8 @@
         {
             this.gel = gel;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.gel.VelocityX = 0;
+            this.gel.VelocityY = 0;
         }
 
         public void MoveLeft()

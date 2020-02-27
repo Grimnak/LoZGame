@@ -3,16 +3,16 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class IdleSpikeCrossState : IEnemyState
+    public class VerticalSpikeCrossState : IEnemyState
     {
         private readonly SpikeCross spikeCross;
         private readonly IEnemySprite sprite;
 
-        public IdleSpikeCrossState(SpikeCross spikeCross)
+        public VerticalSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            this.spikeCross.VelocityX = 0;
-            this.spikeCross.VelocityY = 0;
+            this.spikeCross.VelocityX = 0 * spikeCross.AttackFactor;
+            this.spikeCross.VelocityY = 1 * spikeCross.AttackFactor;
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
         }
 
@@ -33,7 +33,6 @@
 
         public void MoveDown()
         {
-            this.spikeCross.CurrentState = new VerticalSpikeCrossState(this.spikeCross);
         }
 
         public void MoveUpLeft()
@@ -66,10 +65,12 @@
 
         public void Stop()
         {
+            this.spikeCross.CurrentState = new IdleSpikeCrossState(this.spikeCross);
         }
 
         public void Update()
         {
+            this.spikeCross.CurrentLocation = new Vector2(this.spikeCross.CurrentLocation.X + this.spikeCross.VelocityX, this.spikeCross.CurrentLocation.Y + this.spikeCross.VelocityY);
             this.sprite.Update();
         }
 

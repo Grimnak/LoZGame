@@ -107,6 +107,8 @@
     <Compile Include="Enemies\EnemyClasses\Stalfos.cs" />
     <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
+    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\HorizontalSpikeCrossState.cs" />
+    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\VerticalSpikeCrossState.cs" />
     <Compile Include="Managers\Dungeon.cs" />
     <Compile Include="Sprites\EnemySprites\DeadEnemySprite.cs" />
     <Compile Include="Sprites\EnemySprites\Dodongo\DodongoDownSprite.cs" />
