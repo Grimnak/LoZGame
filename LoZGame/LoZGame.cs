@@ -8,6 +8,11 @@
 
     public class LoZGame : Game
     {
+        public readonly int TileWidth = 64;
+        public readonly int TileHeight = 64;
+        public readonly int VerticalOffset = 16;
+        public readonly int HorizontalOffset = 16;
+
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private static readonly float UpdatesPerSecond = 60;
@@ -23,6 +28,8 @@
         private List<IPlayer> players;
         private List<IEnemy> enemies;
         private List<IProjectile> projectiles;
+
+
 
         private static readonly LoZGame instance = new LoZGame();
 

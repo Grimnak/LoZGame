@@ -141,11 +141,11 @@
             this.VerticalBricksTexture = content.Load<Texture2D>(this.verticalBricksData.FilePath);
         }
 
-        public List<IBlockSprite> GetAll(int width, int height)
+        public List<ISprite> GetAll(int width, int height)
         {
             int x = width;
             int y = height;
-            List<IBlockSprite> allBlocks = new List<IBlockSprite>();
+            List<ISprite> allBlocks = new List<ISprite>();
             allBlocks.Add(this.Stairs(new Vector2(x, y)));
             allBlocks.Add(this.UnlockedDoorDown(new Vector2(x, y)));
             allBlocks.Add(this.UnlockedDoorLeft(new Vector2(x, y)));

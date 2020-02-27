@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using System.Collections.Generic;
+    using Microsoft.Xna.Framework;
 
     /*
      * A Room object represents a single dungeon room in-game.
@@ -89,6 +90,19 @@
             this.text = txt;
         }
 
+        /// <summary>
+        /// Converts grid position in the room to a screen vector.
+        /// </summary>
+        /// <param name="gridX">X value of the grid coord.</param>
+        /// <param name="gridY">Y value of the grid coord.</param>
+        /// <returns>Vector for screen drawing.</returns>
+        public Vector2 GridToScreenVector(float gridX, float gridY)
+        {
+            return new Vector2(
+                (float)(LoZGame.Instance.HorizontalOffset + (LoZGame.Instance.TileWidth * gridX)),
+                (float)(LoZGame.Instance.VerticalOffset + (LoZGame.Instance.TileHeight * gridY)));
+        }
+
         /*
          * args:
          * x => tile X location
@@ -97,46 +111,44 @@
          */
         public void AddEnemy(int x, int y, string type)
         {
+            Vector2 location = this.GridToScreenVector((float)x, (float)y);
             switch (type)
             {
-                // commented lines require entity manager to be passed currently
                 case "Dodongo":
-                    // this.enemies.Add(new Dodongo());
+                    this.enemies.Add(new Dodongo(location));
                     break;
                 case "Dragon":
-                    // needs entity manager
-                    // this.enemies.Add(new Dragon());
+                    this.enemies.Add(new Dragon(location));
                     break;
                 case "Gel":
-                    // this.enemies.Add(new Gel());
+                    this.enemies.Add(new Gel(location));
                     break;
                 case "Goriya":
-                    // needs entity manager
-                    // this.enemies.Add(new Goriya());
+                    this.enemies.Add(new Goriya(location));
                     break;
                 case "Keese":
-                    // this.enemies.Add(new Keese());
+                    this.enemies.Add(new Keese(location));
                     break;
                 case "Merchant":
-                    // this.enemies.Add(new Merchant());
+                    this.enemies.Add(new Merchant(location));
                     break;
                 case "OldMan":
-                    // this.enemies.Add(new OldMan());
+                    this.enemies.Add(new OldMan(location));
                     break;
                 case "Rope":
-                    // this.enemies.Add(new Rope());
+                    this.enemies.Add(new Rope(location));
                     break;
                 case "SpikeCross":
-                    // this.enemies.Add(new SpikeCross());
+                    this.enemies.Add(new SpikeCross(location));
                     break;
                 case "Stalfos":
-                    // this.enemies.Add(new Stalfos());
+                    this.enemies.Add(new Stalfos(location));
                     break;
                 case "WallMaster":
-                    // this.enemies.Add(new WallMaster());
+                    this.enemies.Add(new WallMaster(location));
                     break;
                 case "Zol":
-                    // this.enemies.Add(new Zol());
+                    this.enemies.Add(new Zol(location));
                     break;
                 default:
                     break;
@@ -151,6 +163,7 @@
          */
         public void AddItem(int x, int y, string name)
         {
+            Vector2 location = this.GridToScreenVector((float)x, (float)y);
             // commented things will remain commented until items are separated from their sprites
             switch (name)
             {
@@ -189,16 +202,17 @@
          */
         public void AddBlock(string x, string y, string type, string name)
         {
+            Vector2 location = this.GridToScreenVector(float.Parse(x), float.Parse(y));
             switch (type)
             {
                 case "movable":
-                    this.blocks.Add(new MovableTile(x, y, name));
+                    this.blocks.Add(new MovableTile(location, name));
                     break;
                 case "walkable":
-                    this.blocks.Add(new Tile(x, y, name));
+                    this.blocks.Add(new Tile(location, name));
                     break;
                 case "block":
-                    this.blocks.Add(new BlockTile(x, y, name));
+                    this.blocks.Add(new BlockTile(location, name));
                     break;
                 default:
                     break;
