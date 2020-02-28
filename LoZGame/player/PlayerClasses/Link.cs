@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System;
     using Microsoft.Xna.Framework;
 
     public class Link : PlayerEssentials, IPlayer
@@ -20,12 +21,21 @@
             this.CurrentWeapon = "Wood";
             this.CurrentLocation = new Vector2(150, 200);
             this.CurrentTint = Color.White;
-            this.CurrentSpeed = 2;
+            this.MoveSpeed = 2;
             this.DamageTimer = 0;
             this.DamageCounter = 0;
             this.State = new NullState(this);
             this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
+        }
+
+        private void DamagePushback()
+        {
+            if (Math.Abs((int)this.Velocity.X) != 0 || Math.Abs((int)this.Velocity.Y) != 0)
+            {
+                this.CurrentLocation = new Vector2(this.CurrentLocation.X + this.Velocity.X, this.CurrentLocation.Y + this.Velocity.Y);
+                this.Velocity = new Vector2(this.Velocity.X + this.Acceleration.X, this.Velocity.Y + this.Acceleration.Y);
+            }
         }
 
         private void HandleDamage()
@@ -41,6 +51,7 @@
                 {
                     this.CurrentTint = Color.White;
                 }
+                this.DamagePushback();
             }
         }
 

@@ -78,7 +78,7 @@
         /// <inheritdoc/>
         public void Update()
         {
-            this.player.CurrentLocation = new Vector2(this.player.CurrentLocation.X - this.player.CurrentSpeed, this.player.CurrentLocation.Y);
+            this.player.CurrentLocation = new Vector2(this.player.CurrentLocation.X - this.player.MoveSpeed, this.player.CurrentLocation.Y);
             this.sprite.Update();
         }
 

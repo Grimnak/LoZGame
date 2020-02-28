@@ -35,7 +35,7 @@
         /// <summary>
         /// Gets or sets the current speed of the player.
         /// </summary>
-        int CurrentSpeed { get; set; }
+        int MoveSpeed { get; set; }
 
         /// <summary>
         /// Gets or sets the damage counter of the player.
@@ -46,6 +46,16 @@
         /// Gets or sets the damage timer of the player.
         /// </summary>
         int DamageTimer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the velocity of the player.
+        /// </summary>
+        Vector2 Velocity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the acceleration of the player.
+        /// </summary>
+        Vector2 Acceleration { get; set; }
 
         /// <summary>
         /// Makes player idle.

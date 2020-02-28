@@ -34,7 +34,8 @@
         {
             get; set;
         }
-        int Health { get; set; }
+
+        public int Health { get; set; }
 
         private IEnemyState currentState;
         private int health = 10;
