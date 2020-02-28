@@ -33,6 +33,7 @@
         private int health = 10;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
+        private RandomStateGenerator randomStateGenerator;
 
         private enum Direction
         {
@@ -50,6 +51,7 @@
             this.currentState = new LeftMovingStalfosState(this);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, 30, 35);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            randomStateGenerator = new RandomStateGenerator(this, 2, 6);
         }
 
         private void GetNewDirection()
@@ -97,10 +99,11 @@
         public void Update()
         {
             this.lifeTime++;
-            this.UpdateLoc();
+            //this.UpdateLoc();
             if (this.lifeTime > this.directionChange)
             {
-                this.GetNewDirection();
+               // this.GetNewDirection();
+                randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
             this.bounds.X = (int)this.Physics.Location.X;

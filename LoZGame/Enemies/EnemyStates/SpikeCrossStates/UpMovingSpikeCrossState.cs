@@ -14,6 +14,7 @@
             this.spikeCross.VelocityX = 0;
             this.spikeCross.VelocityY = -1;
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
+            this.spikeCross.CurrentState = this;
         }
 
         public void MoveLeft()

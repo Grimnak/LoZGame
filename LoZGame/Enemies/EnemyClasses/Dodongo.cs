@@ -34,7 +34,7 @@
         private int lifeTime = 0;
         private readonly int directionChange = 40;
         private Direction currentDirection;
-
+        private RandomStateGenerator randomStateGenerator;
         private enum Direction
         {
             Up,
@@ -49,9 +49,10 @@
             this.currentState = new LeftMovingDodongoState(this);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, 32, 16);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            randomStateGenerator = new RandomStateGenerator(this, 2, 6);
         }
 
-        private void GetNewDirection()
+     /*   private void GetNewDirection()
         {
             Random randomselect = new Random();
             this.CurrentDirection = (Direction)randomselect.Next(0, 3);
@@ -83,6 +84,7 @@
 
             this.currentState.Update();
         }
+        */
 
         public void TakeDamage()
         {
@@ -97,10 +99,9 @@
         public void Update()
         {
             this.lifeTime++;
-            this.UpdateLoc();
             if (this.lifeTime > this.directionChange)
             {
-                this.GetNewDirection();
+                randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
             this.bounds.X = (int)this.Physics.Location.X;

@@ -14,6 +14,7 @@
             wallMaster.VelocityX = 0;
             wallMaster.VelocityY = -1;
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingWallMasterSprite();
+            this.wallMaster.CurrentState = this;
         }
 
         public void MoveLeft()

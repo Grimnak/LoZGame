@@ -12,6 +12,7 @@
         {
             this.keese = keese;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.keese.CurrentState = this;
         }
 
         public void MoveLeft()

@@ -17,7 +17,8 @@
 
         public Physics Physics { get; set; }
 
-        public int Health { get { return health; } set { health = value; } }
+        public int Health { get; set; }
+        public IEnemyState CurrentState { get; set; }
 
         private readonly MerchantSprite sprite;
 

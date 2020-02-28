@@ -6,6 +6,7 @@
     {
         int Health { get; set; }
 
+        IEnemyState CurrentState { get; set; }
         void TakeDamage();
 
         void Die();

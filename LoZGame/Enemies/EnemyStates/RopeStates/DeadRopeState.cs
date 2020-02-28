@@ -12,6 +12,7 @@
         {
             this.rope = rope;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.rope.CurrentState = this;
         }
 
         public void MoveLeft()

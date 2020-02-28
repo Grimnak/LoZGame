@@ -13,6 +13,7 @@
             this.dragon = dragon;
             this.dragon.VelocityX = 0;
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
+            this.dragon.CurrentState = this;
         }
 
         public void MoveUp()

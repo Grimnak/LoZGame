@@ -12,6 +12,7 @@
         {
             this.zol = zol;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.zol.CurrentState = this;
         }
 
         public void MoveLeft()

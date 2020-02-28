@@ -19,6 +19,8 @@
 
         public int Health { get { return health; } set { health = value; } }
 
+        public IEnemyState CurrentState { get; set; }
+
         private readonly OldManSprite sprite;
 
         public OldMan(Vector2 location)
