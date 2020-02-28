@@ -38,7 +38,7 @@
 
         public static LoZGame Instance { get { return instance; } }
 
-        public ItemManager Items { get { return itemManager; }  }
+        public ItemManager Items { get { return itemManager; } }
 
         public BlockManager Blocks { get { return blockManager; } }
 
@@ -61,36 +61,41 @@
 
         protected override void Initialize()
         {
-            BlockSpriteFactory.Instance.LoadAllTextures(this.Content); //needs to change
-            string file = "../../../../../etc/levels/dungeon1.xml";
-            this.link = new Link();
-            this.dungeon = new Dungeon(file);
-            this.keyboardCommandLoader = new KeyboardCommandLoader(this.link, this.dungeon);
-            this.mouseCommandLoader = new MouseCommandLoader(this.dungeon);
-
             this.controllers = new List<IController>();
-            this.controllers.Add(new KeyboardController(this.keyboardCommandLoader));
-            this.controllers.Add(new MouseController(this.mouseCommandLoader));
-
             this.players = new List<IPlayer>();
-            this.players.Add(this.link);
-
             this.projectiles = new List<IProjectile>();
-
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
-            ItemSpriteFactory.Instance.LoadAllTextures(this.Content);
+            this.link = new Link();
 
+            ItemSpriteFactory.Instance.LoadAllTextures(this.Content);
             ProjectileSpriteFactory.Instance.LoadAllTextures(this.Content);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
+            BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
+
+            string file = "../../../../../etc/levels/dungeon1.xml";
+            this.dungeon = new Dungeon(file);
+
+
+            this.keyboardCommandLoader = new KeyboardCommandLoader(this.link, this.dungeon);
+            this.mouseCommandLoader = new MouseCommandLoader(this.dungeon);
+
+
+            this.controllers.Add(new KeyboardController(this.keyboardCommandLoader));
+            this.controllers.Add(new MouseController(this.mouseCommandLoader));
+
+
+            this.players.Add(this.link);
+
+
+            this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+
+
             this.itemManager.LoadSprites(384, 184);
-
-
         }
 
         protected override void UnloadContent()
