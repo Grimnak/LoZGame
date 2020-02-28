@@ -18,7 +18,8 @@
         {
             get; set;
         }
-        int Health { get; set; }
+
+        public int Health { get; set; }
 
         private readonly MerchantSprite sprite;
 

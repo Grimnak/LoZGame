@@ -8,17 +8,7 @@
         private ExplosionManager explosion;
         private EnemyProjectileManager enemyProjectile;
 
-        private static readonly EntityManager instance = new EntityManager();
-
-        public static EntityManager Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-
-        private EntityManager()
+        public EntityManager()
         {
             this.explosion = new ExplosionManager();
             this.projectile = new ProjectileManager(this.explosion);

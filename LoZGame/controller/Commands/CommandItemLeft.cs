@@ -20,7 +20,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            ItemManager.Instance.CycleLeft();
+            LoZGame.Instance.Items.CycleLeft();
         }
     }
 }

@@ -19,31 +19,31 @@
         private readonly SpriteSheetData stairsData = new SpriteSheetData("stairs", BlockWidth, BlockHeight, 1, 1);
 
         private Texture2D UnlockedDoorDownTexture;
-        private readonly SpriteSheetData UnlockedDoorDownData = new SpriteSheetData("unlocked_door_down", BlockWidth, BlockHeight, 3, 1);
+        private readonly SpriteSheetData UnlockedDoorDownData = new SpriteSheetData("unlocked_door_down", BlockWidth, BlockHeight, 1, 1);
         private Texture2D UnlockedDoorLeftTexture;
-        private readonly SpriteSheetData UnlockedDoorLeftData = new SpriteSheetData("unlocked_door_left", BlockWidth, BlockHeight, 3, 1);
+        private readonly SpriteSheetData UnlockedDoorLeftData = new SpriteSheetData("unlocked_door_left", BlockWidth, BlockHeight, 1, 1);
         private Texture2D UnlockedDoorRightTexture;
-        private readonly SpriteSheetData UnlockedDoorRightData = new SpriteSheetData("unlocked_door_right", BlockWidth, BlockHeight, 3, 1);
+        private readonly SpriteSheetData UnlockedDoorRightData = new SpriteSheetData("unlocked_door_right", BlockWidth, BlockHeight, 1, 1);
         private Texture2D UnlockedDoorUpTexture;
-        private readonly SpriteSheetData UnlockedDoorUpData = new SpriteSheetData("unlocked_door_up", BlockWidth, BlockHeight, 3, 1);
+        private readonly SpriteSheetData UnlockedDoorUpData = new SpriteSheetData("unlocked_door_up", BlockWidth, BlockHeight, 1, 1);
 
         private Texture2D LockedDoorDownTexture;
-        private readonly SpriteSheetData LockedDoorDownData = new SpriteSheetData("locked_door_down", BlockWidth, BlockHeight, 3, 1);
+        private readonly SpriteSheetData LockedDoorDownData = new SpriteSheetData("locked_door_down", BlockWidth, BlockHeight, 1, 1);
         private Texture2D LockedDoorLeftTexture;
-        private readonly SpriteSheetData LockedDoorLeftData = new SpriteSheetData("locked_door_left", BlockWidth, BlockHeight, 3, 1);
+        private readonly SpriteSheetData LockedDoorLeftData = new SpriteSheetData("locked_door_left", BlockWidth, BlockHeight, 1, 1);
         private Texture2D LockedDoorRightTexture;
-        private readonly SpriteSheetData LockedDoorRightData = new SpriteSheetData("locked_door_right", BlockWidth, BlockHeight, 3, 1);
+        private readonly SpriteSheetData LockedDoorRightData = new SpriteSheetData("locked_door_right", BlockWidth, BlockHeight, 1, 1);
         private Texture2D LockedDoorUpTexture;
-        private readonly SpriteSheetData LockedDoorUpData = new SpriteSheetData("locked_door_up", BlockWidth, BlockHeight, 3, 1);
+        private readonly SpriteSheetData LockedDoorUpData = new SpriteSheetData("locked_door_up", BlockWidth, BlockHeight, 1, 1);
 
         private Texture2D SpecialDoorDownTexture;
-        private readonly SpriteSheetData SpecialDoorDownData = new SpriteSheetData("special_door_down", BlockWidth, BlockHeight, 3, 1);
+        private readonly SpriteSheetData SpecialDoorDownData = new SpriteSheetData("special_door_down", BlockWidth, BlockHeight, 1, 1);
         private Texture2D SpecialDoorLeftTexture;
-        private readonly SpriteSheetData SpecialDoorLeftData = new SpriteSheetData("special_door_left", BlockWidth, BlockHeight, 3, 1);
+        private readonly SpriteSheetData SpecialDoorLeftData = new SpriteSheetData("special_door_left", BlockWidth, BlockHeight, 1, 1);
         private Texture2D SpecialDoorRightTexture;
-        private readonly SpriteSheetData SpecialDoorRightData = new SpriteSheetData("special_door_right", BlockWidth, BlockHeight, 3, 1);
+        private readonly SpriteSheetData SpecialDoorRightData = new SpriteSheetData("special_door_right", BlockWidth, BlockHeight, 1, 1);
         private Texture2D SpecialDoorUpTexture;
-        private readonly SpriteSheetData SpecialDoorUpData = new SpriteSheetData("special_door_up", BlockWidth, BlockHeight, 3, 1);
+        private readonly SpriteSheetData SpecialDoorUpData = new SpriteSheetData("special_door_up", BlockWidth, BlockHeight, 1, 1);
 
         private Texture2D FireTexture;
         private readonly SpriteSheetData fireData = new SpriteSheetData("fire", BlockWidth, BlockHeight, 1, 2);

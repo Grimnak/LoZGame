@@ -81,11 +81,11 @@
         /// </summary>
         public void LoadNewRoom()
         {
-            EntityManager.Instance.Clear(); // we dont add anything to entity manager after clearing since no projectiles stay when transitioning rooms.
-            EnemyManager.Instance.Clear();
-            //BlockManager.Instance.Clear();
-            //ItemManager.Instance.Clear();
-            //DoorManager.Instance.Clear();
+            LoZGame.Instance.Entities.Clear(); // we dont add anything to entity manager after clearing since no projectiles stay when transitioning rooms.
+            LoZGame.Instance.Enemies.Clear();
+            //LoZGame.Instance.Blocks.Clear();
+            //LoZGame.Instance.Items.Clear();
+            //LoZGame.Instance.Doors.Clear();
 
             foreach (IEnemy enemy in this.dungeonLayout[this.currentX][this.currentY].Enemies)
             {

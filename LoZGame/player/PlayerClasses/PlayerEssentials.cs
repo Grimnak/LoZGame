@@ -4,50 +4,27 @@
 
     public abstract class PlayerEssentials
     {
-        public IPlayerState State
-        {
-            get; set;
-        }
+        public IPlayerState State { get; set; }
 
-        public string CurrentWeapon
-        {
-            get; set;
-        }
+        public string CurrentWeapon { get; set; }
 
-        public string CurrentColor
-        {
-            get; set;
-        }
+        public string CurrentColor { get; set; }
 
-        public string CurrentDirection
-        {
-            get; set;
-        }
+        public string CurrentDirection { get; set; }
 
-        public Vector2 CurrentLocation
-        {
-            get; set;
-        }
+        public Vector2 CurrentLocation { get; set; }
 
-        public Color CurrentTint
-        {
-            get; set;
-        }
+        public Color CurrentTint { get; set; }
 
-        public int CurrentSpeed
-        {
-            get; set;
-        }
+        public int MoveSpeed { get; set; }
 
-        public int DamageCounter
-        {
-            get; set;
-        }
+        public int DamageCounter { get; set; }
 
-        public int DamageTimer
-        {
-            get; set;
-        }
+        public int DamageTimer { get; set; }
+
+        public Vector2 Velocity { get; set; }
+
+        public Vector2 Acceleration { get; set; }
 
         public void TakeDamage()
         {

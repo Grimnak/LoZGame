@@ -32,16 +32,16 @@
             this.player.DamageTimer = 0;
             this.player.CurrentTint = Color.White;
 
-            ItemManager.Instance.CurrentIndex = 1;
-            ItemManager.Instance.CycleLeft();
-            ItemManager.Instance.CurrentItem.Location = new Vector2(384, 184);
+            LoZGame.Instance.Items.CurrentIndex = 1;
+            LoZGame.Instance.Items.CycleLeft();
+            LoZGame.Instance.Items.CurrentItem.Location = new Vector2(384, 184);
 
-            EnemyManager.Instance.Clear();
+            LoZGame.Instance.Enemies.Clear();
 
-            EntityManager.Instance.Clear();
+            LoZGame.Instance.Entities.Clear();
 
-            BlockManager.Instance.CurrentIndex = 1;
-            BlockManager.Instance.CycleLeft();
+            LoZGame.Instance.Blocks.CurrentIndex = 1;
+            LoZGame.Instance.Blocks.CycleLeft();
         }
     }
 }

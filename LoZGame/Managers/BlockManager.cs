@@ -7,72 +7,37 @@
     {
         private List<IBlock> blockList;
         public IBlock CurrentBlock;
-        private int currentIndex;
-        private int maxIndex;
         public Vector2 Location;
 
-        private static readonly BlockManager instance = new BlockManager();
-
-        public static BlockManager Instance
+        public BlockManager()
         {
-            get
-            {
-                return instance;
-            }
-        }
-
-        private BlockManager()
-        {
-            this.currentIndex = 0;
-            this.maxIndex = 0;
             this.blockList = new List<IBlock>();
         }
 
-        private void LoadBlocks()
+        public void Add(IBlock block)
         {
+            blockList.Add(block);
         }
 
-        public void LoadSprites(int xloc, int yloc)
+        public void Clear()
         {
-            this.LoadBlocks();
-            if (this.blockList.Count != 0)
+            blockList.Clear();
+        }
+
+        public void Update()
+        {
+            foreach (IBlock block in blockList)
             {
-                this.CurrentBlock = this.blockList[this.currentIndex];
-                this.Location.X = xloc;
-                this.Location.Y = yloc;
-                foreach (ISprite sprite in this.blockList)
-                {
-                    this.maxIndex++;
-                }
+                block.Update();
             }
         }
 
-        public void CycleLeft()
+        public void Draw()
         {
-            this.currentIndex--;
-            if (this.currentIndex < 0)
+            foreach (IBlock block in blockList)
             {
-                this.currentIndex = this.maxIndex - 1;
+                block.Draw();
             }
-
-            this.CurrentBlock = this.blockList[this.currentIndex];
-        }
-
-        public void cycleRight()
-        {
-            this.currentIndex++;
-            if (this.currentIndex >= this.maxIndex)
-            {
-                this.currentIndex = 0;
-            }
-
-            this.CurrentBlock = this.blockList[this.currentIndex];
-        }
-
-        public int CurrentIndex
-        {
-            get { return this.currentIndex; }
-            set { this.currentIndex = value; }
         }
     }
 }

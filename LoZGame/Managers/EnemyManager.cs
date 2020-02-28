@@ -3,16 +3,16 @@ namespace LoZClone
     using System.Collections.Generic;
     using Microsoft.Xna.Framework.Graphics;
 
-    public partial class EnemyManager2
+    public class EnemyManager
     {
         private Dictionary<int, IEnemy> enemyList;
         private int enemyListSize;
         private int enemyID;
         private readonly List<int> deletable;
 
-        private static readonly EnemyManager2 instance = new EnemyManager2();
+        private static readonly EnemyManager instance = new EnemyManager();
 
-        public EnemyManager2()
+        public EnemyManager()
         {
             enemyList = new Dictionary<int, IEnemy>();
             enemyListSize = 0;
@@ -23,16 +23,16 @@ namespace LoZClone
             enemyListSize++;
             enemyList.Add(enemyID, enemy);
             enemyID++;
-            if (enemyListSize == 0)
-            {
-                enemyID = 0;
-            }
         }
 
         public void RemoveEnemy(int instance)
         {
             enemyList.Remove(instance);
             enemyListSize--;
+            if (enemyListSize == 0)
+            {
+                enemyID = 0;
+            }
         }
 
         public void Update()

@@ -13,7 +13,6 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            Console.WriteLine("Enemy colliding with Player:  Collision Side = " + collisionSide);
         }
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)

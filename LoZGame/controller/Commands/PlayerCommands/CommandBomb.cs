@@ -26,7 +26,7 @@
             if (!(this.player.State is DieState))
             {
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
-                EntityManager.Instance.ProjectileManager.AddItem(EntityManager.Instance.ProjectileManager.Bomb, this.player);
+                LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.Bomb, this.player);
             }
         }
     }

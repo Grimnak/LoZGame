@@ -29,7 +29,8 @@
         {
             get; set;
         }
-        int Health { get; set; }
+
+        public int Health { get; set; }
 
         private IEnemyState currentState;
         private int health = 10;
@@ -53,7 +54,7 @@
         public Goriya(Vector2 location)
         {
             this.currentState = new LeftMovingGoriyaState(this);
-            this.entity = EntityManager.Instance;
+            this.entity = LoZGame.Instance.Entities;
             this.CurrentLocation = new Vector2(location.X, location.Y);
             this.coolDown = 0;
             this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));

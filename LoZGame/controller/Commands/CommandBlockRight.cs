@@ -20,7 +20,6 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            BlockManager.Instance.cycleRight();
         }
     }
 }

@@ -19,10 +19,10 @@
 
         public void Execute()
         {
-            if (!EntityManager.Instance.ProjectileManager.FlameInUse && !(this.player.State is DieState))
+            if (!LoZGame.Instance.Entities.ProjectileManager.FlameInUse && !(this.player.State is DieState))
             {
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
-                EntityManager.Instance.ProjectileManager.AddItem(EntityManager.Instance.ProjectileManager.BlueCandle, this.player);
+                LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.BlueCandle, this.player);
             }
         }
 

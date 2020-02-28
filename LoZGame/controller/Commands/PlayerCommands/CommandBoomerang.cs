@@ -23,10 +23,10 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            if (!EntityManager.Instance.ProjectileManager.BoomerangOut && !(this.player.State is DieState))
+            if (!LoZGame.Instance.Entities.ProjectileManager.BoomerangOut && !(this.player.State is DieState))
             {
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
-                EntityManager.Instance.ProjectileManager.AddItem(EntityManager.Instance.ProjectileManager.Boomerang, this.player);
+                LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.Boomerang, this.player);
             }
         }
     }

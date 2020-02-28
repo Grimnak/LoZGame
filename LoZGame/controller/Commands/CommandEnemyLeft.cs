@@ -20,7 +20,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            EnemyManager.Instance.CycleLeft();
+            LoZGame.Instance.Enemies.CycleLeft();
         }
     }
 }

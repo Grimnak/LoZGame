@@ -8,9 +8,6 @@ namespace LoZClone
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;
         private readonly int spriteSheetColumns;
-        private int currentFrame = 0;
-        private int frameDelay = 0;
-        private readonly int frameDelayMax = 10;
         private readonly int spriteWidth;
         private readonly int spriteHeight;
 
@@ -35,9 +32,8 @@ namespace LoZClone
         {
             int width = this.spriteSheet.Width / this.spriteSheetColumns;
             int height = this.spriteSheet.Height / this.spriteSheetRows;
-            int row = (int)((float)this.currentFrame / (float)this.spriteSheetColumns);
 
-            Rectangle sourceRectangle = new Rectangle(0, height * row, width, height);
+            Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
             Rectangle destinationRectangle = new Rectangle((int)this.Location.X, (int)this.Location.Y, this.spriteWidth, this.spriteHeight);
 
             LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
