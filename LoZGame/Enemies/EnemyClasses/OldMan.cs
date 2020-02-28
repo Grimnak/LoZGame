@@ -18,6 +18,7 @@
         {
             get; set;
         }
+        int Health { get; set; }
 
         private readonly OldManSprite sprite;
 

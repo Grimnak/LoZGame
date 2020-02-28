@@ -29,6 +29,7 @@
         {
             get; set;
         }
+        int Health { get; set; }
 
         private IEnemyState currentState;
         private int health = 10;
@@ -129,12 +130,6 @@
         {
             get { return this.currentState; }
             set { this.currentState = value; }
-        }
-
-        public int Health
-        {
-            get { return this.health; }
-            set { this.health = value; }
         }
 
         private Direction CurrentDirection { get => this.CurrentDirection1; set => this.CurrentDirection1 = value; }
