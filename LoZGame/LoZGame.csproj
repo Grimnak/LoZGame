@@ -65,17 +65,11 @@
     <Compile Include="Controller\Commands\PlayerCommands\CommandArrow.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackA.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackB.cs" />
-    <Compile Include="Controller\Commands\CommandBlockLeft.cs" />
-    <Compile Include="Controller\Commands\CommandBlockRight.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandBlueCandle.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandBomb.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandBoomerang.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandDamage.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandDown.cs" />
-    <Compile Include="Controller\Commands\CommandEnemyLeft.cs" />
-    <Compile Include="Controller\Commands\CommandEnemyRight.cs" />
-    <Compile Include="Controller\Commands\CommandItemLeft.cs" />
-    <Compile Include="Controller\Commands\CommandItemRight.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandLeft.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandMagicBoomerang.cs" />
     <Compile Include="Controller\Commands\CommandQuit.cs" />
@@ -211,7 +205,6 @@
     <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="Managers\ExplosionManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />
-    <Compile Include="Managers\OldBlockManager.cs" />
     <Compile Include="Managers\EnemyProjectileManager.cs" />
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\ProjectileType.cs" />

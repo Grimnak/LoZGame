@@ -10,12 +10,16 @@ namespace LoZClone
         private int enemyID;
         private readonly List<int> deletable;
 
-        private static readonly EnemyManager instance = new EnemyManager();
+        private List<IEnemy> enemies;
+
+        public List<IEnemy> EnemyList { get { return enemies; } }
 
         public EnemyManager()
         {
             enemyList = new Dictionary<int, IEnemy>();
+            enemies = new List<IEnemy>();
             enemyListSize = 0;
+            deletable = new List<int>();
         }
 
         public void Add(IEnemy enemy)
@@ -29,10 +33,6 @@ namespace LoZClone
         {
             enemyList.Remove(instance);
             enemyListSize--;
-            if (enemyListSize == 0)
-            {
-                enemyID = 0;
-            }
         }
 
         public void Update()
@@ -44,19 +44,24 @@ namespace LoZClone
                     this.deletable.Add(enemy.Key);
                 }
             }
-                foreach (int index in this.deletable)
-                {
-                    this.RemoveEnemy(index);
-                }
 
-                this.deletable.Clear();
+            foreach (int index in this.deletable)
+            {
+                this.RemoveEnemy(index);
+            }
 
-                foreach (KeyValuePair<int, IEnemy> enemy in this.enemyList)
-                {
-                    enemy.Value.Update();
-                }
+            this.deletable.Clear();
+
+            this.enemies.Clear();
+
+            foreach (KeyValuePair<int, IEnemy> enemy in this.enemyList)
+            {
+                this.enemies.Add(enemy.Value);
+                enemy.Value.Update();
+            }
         }
-        public void Draw(SpriteBatch spritebatch)
+
+        public void Draw()
         {
             foreach (KeyValuePair<int, IEnemy> enemy in this.enemyList)
             {
