@@ -8,8 +8,8 @@
 
     public class BlockSpriteFactory
     {
-        private static readonly int BlockWidth = 50;
-        private static readonly int BlockHeight = 50;
+        private static readonly int BlockWidth = LoZGame.Instance.TileWidth;
+        private static readonly int BlockHeight = LoZGame.Instance.TileHeight;
         private static readonly int VerticalBlockWidth = 16;
         private static readonly int VerticalBlockHeight = 64;
         private static readonly int HorizontalBlockWidth = 64;
@@ -141,48 +141,6 @@
             this.VerticalBricksTexture = content.Load<Texture2D>(this.verticalBricksData.FilePath);
         }
 
-        public List<ISprite> GetAll(int width, int height)
-        {
-            int x = width;
-            int y = height;
-            List<ISprite> allBlocks = new List<ISprite>();
-            allBlocks.Add(this.Stairs(new Vector2(x, y)));
-            allBlocks.Add(this.UnlockedDoorDown(new Vector2(x, y)));
-            allBlocks.Add(this.UnlockedDoorLeft(new Vector2(x, y)));
-            allBlocks.Add(this.UnlockedDoorRight(new Vector2(x, y)));
-            allBlocks.Add(this.UnlockedDoorUp(new Vector2(x, y)));
-            allBlocks.Add(this.LockedDoorDown(new Vector2(x, y)));
-            allBlocks.Add(this.LockedDoorLeft(new Vector2(x, y)));
-            allBlocks.Add(this.LockedDoorRight(new Vector2(x, y)));
-            allBlocks.Add(this.LockedDoorUp(new Vector2(x, y)));
-            allBlocks.Add(this.SpecialDoorDown(new Vector2(x, y)));
-            allBlocks.Add(this.SpecialDoorLeft(new Vector2(x, y)));
-            allBlocks.Add(this.SpecialDoorRight(new Vector2(x, y)));
-            allBlocks.Add(this.SpecialDoorUp(new Vector2(x, y)));
-            allBlocks.Add(this.Fire(new Vector2(x, y)));
-            allBlocks.Add(this.FloorTile(new Vector2(x, y)));
-            allBlocks.Add(this.GapTile(new Vector2(x, y)));
-            allBlocks.Add(this.MovableSquare(new Vector2(x, y)));
-            allBlocks.Add(this.BombedOpeningDown(new Vector2(x, y)));
-            allBlocks.Add(this.BombedOpeningUp(new Vector2(x, y)));
-            allBlocks.Add(this.BombedOpeningLeft(new Vector2(x, y)));
-            allBlocks.Add(this.BombedOpeningRight(new Vector2(x, y)));
-            allBlocks.Add(this.BlueStatueLeft(new Vector2(x, y)));
-            allBlocks.Add(this.BlueStatueRight(new Vector2(x, y)));
-            allBlocks.Add(this.TurquoiseStatueLeft(new Vector2(x, y)));
-            allBlocks.Add(this.TurquoiseStatueRight(new Vector2(x, y)));
-            allBlocks.Add(this.SpottedTile(new Vector2(x, y)));
-            allBlocks.Add(this.WaterTile(new Vector2(x, y)));
-            allBlocks.Add(this.OrangeMovableSquare(new Vector2(x, y)));
-            allBlocks.Add(this.EnemyDeathExplosion(new Vector2(x, y)));
-            allBlocks.Add(this.EnemySpawn(new Vector2(x, y)));
-            allBlocks.Add(this.BasementBrickTile(new Vector2(x, y)));
-            allBlocks.Add(this.LadderTile(new Vector2(x, y)));
-            allBlocks.Add(this.HorizontalBricks(new Vector2(x, y)));
-            allBlocks.Add(this.VerticalBricks(new Vector2(x, y)));
-
-            return allBlocks;
-        }
 
         public StairsSprite Stairs(Vector2 loc)
         {

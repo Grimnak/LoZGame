@@ -46,6 +46,8 @@
                     return BlockSpriteFactory.Instance.LadderTile(this.location);
                 case "spotted_tile":
                     return BlockSpriteFactory.Instance.SpottedTile(this.location);
+                case "stairs":
+                    return BlockSpriteFactory.Instance.Stairs(this.location);
                 default:
                     return BlockSpriteFactory.Instance.FloorTile(this.location);
             }

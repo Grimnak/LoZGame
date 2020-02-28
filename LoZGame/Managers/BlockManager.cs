@@ -6,7 +6,6 @@
     public class BlockManager
     {
         private List<IBlock> blockList;
-        public IBlock CurrentBlock;
         public Vector2 Location;
 
         public BlockManager()

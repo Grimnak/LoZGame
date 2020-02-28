@@ -7,6 +7,7 @@
     {
         private EnemyCollisionHandler enemyCollisionHandler;
         private Rectangle bounds;
+        private int health;
 
         public Rectangle Bounds
         {
@@ -19,7 +20,7 @@
             get; set;
         }
 
-        public int Health { get; set; }
+        public int Health { get { return health; } set { health = value; } }
 
         private readonly MerchantSprite sprite;
 
@@ -29,6 +30,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
             this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            this.health = 5;
         }
 
         public void TakeDamage()

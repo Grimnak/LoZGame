@@ -78,33 +78,6 @@ namespace LoZClone
 
             this.playerCommands.Clear();
 
-            if (pressed.Contains(Keys.U) && this.oldState.IsKeyUp(Keys.U))
-            {
-                this.dict[Keys.U].Execute();
-            }
-            else if (pressed.Contains(Keys.I) && this.oldState.IsKeyUp(Keys.I))
-            {
-                this.dict[Keys.I].Execute();
-            }
-
-            if (pressed.Contains(Keys.O) && this.oldState.IsKeyUp(Keys.O))
-            {
-                this.dict[Keys.O].Execute();
-            }
-            else if (pressed.Contains(Keys.P) && this.oldState.IsKeyUp(Keys.P))
-            {
-                this.dict[Keys.P].Execute();
-            }
-
-            if (pressed.Contains(Keys.L) && this.oldState.IsKeyUp(Keys.L))
-            {
-                this.dict[Keys.L].Execute();
-            }
-            else if (pressed.Contains(Keys.K) && this.oldState.IsKeyUp(Keys.K))
-            {
-                this.dict[Keys.K].Execute();
-            }
-
             if (pressed.Contains(Keys.E))
             {
                 this.dict[Keys.E].Execute();
