@@ -1,104 +1,72 @@
 namespace LoZClone
 {
     using System.Collections.Generic;
-    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
-    public class EnemyManager
+    public partial class EnemyManager2
     {
-        private List<IEnemy> enemyList;
+        private Dictionary<int, IEnemy> enemyList;
+        private int enemyListSize;
+        private int enemyID;
+        private readonly List<int> deletable;
 
-        private static readonly EnemyManager instance = new EnemyManager();
+        private static readonly EnemyManager2 instance = new EnemyManager2();
 
-        public static EnemyManager Instance
+        public EnemyManager2()
         {
-            get
+            enemyList = new Dictionary<int, IEnemy>();
+            enemyListSize = 0;
+        }
+
+        public void Add(IEnemy enemy)
+        {
+            enemyListSize++;
+            enemyList.Add(enemyID, enemy);
+            enemyID++;
+            if (enemyListSize == 0)
             {
-                return instance;
+                enemyID = 0;
             }
         }
 
-        public List<IEnemy> EnemyList
+        public void RemoveEnemy(int instance)
         {
-            get { return this.enemyList; }
+            enemyList.Remove(instance);
+            enemyListSize--;
         }
 
-        public IEnemy CurrentEnemy;
-        private int currentIndex;
-        private int maxIndex;
-        public Vector2 Location;
-
-        private EnemyManager()
+        public void Update()
         {
-            this.currentIndex = 0;
-            this.maxIndex = 0;
-            this.enemyList = new List<IEnemy>();
-        }
-
-        private void LoadEnemies()
-        {
-            this.enemyList.Add(new Dodongo(new Vector2(650, 200)));
-            this.enemyList.Add(new Stalfos(new Vector2(650, 200)));
-            this.enemyList.Add(new Goriya(new Vector2(650, 200)));
-            this.enemyList.Add(new Dragon(new Vector2(650, 200)));
-            this.enemyList.Add(new OldMan(new Vector2(650, 200)));
-            this.enemyList.Add(new Merchant(new Vector2(650, 200)));
-            this.enemyList.Add(new SpikeCross(new Vector2(650, 200)));
-            this.enemyList.Add(new WallMaster(new Vector2(650, 200)));
-            this.enemyList.Add(new Rope(new Vector2(650, 200)));
-            this.enemyList.Add(new Zol(new Vector2(650, 200)));
-            this.enemyList.Add(new Gel(new Vector2(650, 200)));
-            this.enemyList.Add(new Keese(new Vector2(650, 200)));
-        }
-
-        public void LoadSprites()
-        {
-            this.LoadEnemies();
-
-            if (this.enemyList.Count != 0)
+            foreach (KeyValuePair<int, IEnemy> enemy in this.enemyList)
             {
-                this.CurrentEnemy = this.enemyList[this.currentIndex];
-
-                foreach (IEnemy sprite in this.enemyList)
+                if (enemy.Value.Health < 1)
                 {
-                    this.maxIndex++;
+                    this.deletable.Add(enemy.Key);
                 }
             }
+                foreach (int index in this.deletable)
+                {
+                    this.RemoveEnemy(index);
+                }
+
+                this.deletable.Clear();
+
+                foreach (KeyValuePair<int, IEnemy> enemy in this.enemyList)
+                {
+                    enemy.Value.Update();
+                }
         }
-
-        public void CycleLeft()
+        public void Draw(SpriteBatch spritebatch)
         {
-            this.currentIndex--;
-
-            if (this.currentIndex < 0)
+            foreach (KeyValuePair<int, IEnemy> enemy in this.enemyList)
             {
-                this.currentIndex = this.maxIndex - 1;
+                enemy.Value.Draw();
             }
-
-            this.CurrentEnemy = this.enemyList[this.currentIndex];
-        }
-
-        public void CycleRight()
-        {
-            this.currentIndex++;
-            if (this.currentIndex >= this.maxIndex)
-            {
-                this.currentIndex = 0;
-            }
-
-            this.CurrentEnemy = this.enemyList[this.currentIndex];
         }
 
         public void Clear()
         {
-            this.enemyList = new List<IEnemy>();
-            this.maxIndex = 0;
-            this.LoadSprites();
-        }
-
-        public int CurrentIndex
-        {
-            get { return this.currentIndex; }
-            set { this.currentIndex = value; }
+            enemyList = new Dictionary<int, IEnemy>();
         }
     }
 }
