@@ -9,14 +9,16 @@
     {
         private static readonly int PriorityValue = -1;
         private readonly IPlayer player;
+        private readonly Dungeon dungeon;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandReset"/> class.
         /// </summary>
         /// <param name="player">Player to execute a command on.</param>
-        public CommandReset(IPlayer player)
+        public CommandReset(IPlayer player, Dungeon dungeon)
         {
             this.player = player;
+            this.dungeon = dungeon;
         }
 
         /// <inheritdoc/>
@@ -36,12 +38,7 @@
             LoZGame.Instance.Items.CycleLeft();
             LoZGame.Instance.Items.CurrentItem.Location = new Vector2(384, 184);
 
-            LoZGame.Instance.Enemies.Clear();
-
-            LoZGame.Instance.Entities.Clear();
-
-            LoZGame.Instance.Blocks.CurrentIndex = 1;
-            LoZGame.Instance.Blocks.CycleLeft();
+            this.dungeon.Reset();
         }
     }
 }

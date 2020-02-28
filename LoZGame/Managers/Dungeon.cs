@@ -21,11 +21,25 @@
         {
             this.dungeonLayout = XMLHandler.Parse(filePath);
 
-            // potentially change x and y starts to match upside down coordinate system
+            BlockSpriteFactory.Instance.LoadAllTextures(LoZGame.Instance.Content);
+
             this.currentX = 2;
             this.currentY = 5; // player spawns at curX/curY
             this.maxX = 6;
             this.maxY = 6;
+            this.LoadNewRoom();
+        }
+
+        /// <summary>
+        /// Resets dungeon room to default.
+        /// </summary>
+        public void Reset()
+        {
+            this.currentX = 2;
+            this.currentY = 5; // player spawns at curX/curY
+            this.maxX = 6;
+            this.maxY = 6;
+            this.LoadNewRoom();
         }
 
         /// <summary>
@@ -33,7 +47,7 @@
         /// </summary>
         public void MoveUp()
         {
-            if (this.currentY - 1 > 0 && this.dungeonLayout[this.currentX][this.currentY - 1].Exists)
+            if (this.currentY - 1 >= 0 && this.dungeonLayout[this.currentY - 1][this.currentX].Exists)
             {
                 this.currentY--;
                 this.LoadNewRoom();
@@ -45,10 +59,10 @@
         /// </summary>
         public void MoveDown()
         {
-            if (this.currentY + 1 < this.maxX && this.dungeonLayout[this.currentX][this.currentY + 1].Exists)
+            if (this.currentY + 1 < this.maxX && this.dungeonLayout[this.currentY + 1][this.currentX].Exists)
             {
                 this.currentY++;
-                this.LoadNewRoom();
+                this.LoadNewRoom(); 
             }
         }
 
@@ -57,10 +71,10 @@
         /// </summary>
         public void MoveLeft()
         {
-            if (this.currentX - 1 > 0 && this.dungeonLayout[this.currentX - 1][this.currentY].Exists)
+            if (this.currentX - 1 >= 0 && this.dungeonLayout[this.currentY][this.currentX - 1].Exists)
             {
                 this.currentX--;
-                this.LoadNewRoom();
+                this.LoadNewRoom(); 
             }
         }
 
@@ -69,10 +83,10 @@
         /// </summary>
         public void MoveRight()
         {
-            if (this.currentX + 1 < this.maxX && this.dungeonLayout[this.currentX + 1][this.currentY].Exists)
+            if (this.currentX + 1 < this.maxX && this.dungeonLayout[this.currentY][this.currentX + 1].Exists)
             {
                 this.currentX++;
-                this.LoadNewRoom();
+                this.LoadNewRoom(); 
             }
         }
 
@@ -83,27 +97,27 @@
         {
             LoZGame.Instance.Entities.Clear(); // we dont add anything to entity manager after clearing since no projectiles stay when transitioning rooms.
             LoZGame.Instance.Enemies.Clear();
-            //LoZGame.Instance.Blocks.Clear();
+            LoZGame.Instance.Blocks.Clear();
             //LoZGame.Instance.Items.Clear();
             //LoZGame.Instance.Doors.Clear();
 
-            foreach (IEnemy enemy in this.dungeonLayout[this.currentX][this.currentY].Enemies)
+            foreach (IEnemy enemy in this.dungeonLayout[this.currentY][this.currentX].Enemies)
             {
-                // EnemyManager.Instance.Add(enemy);
+                LoZGame.Instance.Enemies.Add(enemy);
             }
 
-            foreach (IBlock block in this.dungeonLayout[this.currentX][this.currentY].Tiles)
+            foreach (IBlock block in this.dungeonLayout[this.currentY][this.currentX].Tiles)
             {
-                // BlockManager.Instance.Add(block);
+                LoZGame.Instance.Blocks.Add(block);
             }
 
             //TODO change to IItem once separated
-            foreach (IItemSprite item in this.dungeonLayout[this.currentX][this.currentY].Items)
+            foreach (IItemSprite item in this.dungeonLayout[this.currentY][this.currentX].Items)
             {
                 // ItemManager.Instance.Add(item);
             }
 
-            foreach (Door door in this.dungeonLayout[this.currentX][this.currentY].Doors)
+            foreach (Door door in this.dungeonLayout[this.currentY][this.currentX].Doors)
             {
                 // DoorManager.Instance.Add(door);
             }

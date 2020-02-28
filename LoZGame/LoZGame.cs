@@ -8,10 +8,10 @@
 
     public class LoZGame : Game
     {
-        public readonly int TileWidth = 64;
-        public readonly int TileHeight = 64;
-        public readonly int VerticalOffset = 16;
-        public readonly int HorizontalOffset = 16;
+        public readonly int TileWidth = 50;
+        public readonly int TileHeight = 50;
+        public readonly int VerticalOffset = 64;
+        public readonly int HorizontalOffset = 96;
 
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -25,7 +25,7 @@
         private Dungeon dungeon;
 
         private ItemManager itemManager;
-        private OldBlockManager blockManager; //get rid of eventually
+        private BlockManager blockManager;
         private EntityManager entityManager;
         private EnemyManager enemyManager;
 
@@ -40,7 +40,7 @@
 
         public ItemManager Items { get { return itemManager; }  }
 
-        public OldBlockManager Blocks { get { return blockManager; } }
+        public BlockManager Blocks { get { return blockManager; } }
 
         public EntityManager Entities { get { return entityManager; } }
 
@@ -54,17 +54,18 @@
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
 
             itemManager = new ItemManager();
-            blockManager = new OldBlockManager(); //get rid of eventually
+            blockManager = new BlockManager();
             entityManager = new EntityManager();
             enemyManager = new EnemyManager();
         }
 
         protected override void Initialize()
         {
+            BlockSpriteFactory.Instance.LoadAllTextures(this.Content); //needs to change
             string file = "../../../../../etc/levels/dungeon1.xml";
             this.link = new Link();
             this.dungeon = new Dungeon(file);
-            this.keyboardCommandLoader = new KeyboardCommandLoader(this.link);
+            this.keyboardCommandLoader = new KeyboardCommandLoader(this.link, this.dungeon);
             this.mouseCommandLoader = new MouseCommandLoader(this.dungeon);
 
             this.controllers = new List<IController>();
@@ -84,12 +85,12 @@
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
             ItemSpriteFactory.Instance.LoadAllTextures(this.Content);
-            BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
+
             ProjectileSpriteFactory.Instance.LoadAllTextures(this.Content);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
-            this.enemyManager.LoadSprites();
             this.itemManager.LoadSprites(384, 184);
-            this.blockManager.LoadSprites(300, 184); //get rid of eventually
+
+
         }
 
         protected override void UnloadContent()
@@ -104,9 +105,9 @@
             }
 
             this.link.Update();
-            this.enemyManager.CurrentEnemy.Update();
+            this.enemyManager.Update();
             this.itemManager.CurrentItem.Update();
-            //this.blockManager.CurrentBlock.Update();
+            this.blockManager.Update();
             this.entityManager.Update();
             CollisionDetection.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.projectiles.AsReadOnly());
             base.Update(gameTime);
@@ -116,10 +117,10 @@
         {
             this.GraphicsDevice.Clear(Color.Gray);
             this.spriteBatch.Begin();
-            this.link.Draw();
-            this.enemyManager.CurrentEnemy.Draw();
+            this.blockManager.Draw();
             this.itemManager.CurrentItem.Draw(this.spriteBatch);
-            //this.blockManager.CurrentBlock.Draw();
+            this.link.Draw();
+            this.enemyManager.Draw();
             this.entityManager.Draw(this.spriteBatch);
             this.spriteBatch.End();
             base.Draw(gameTime);

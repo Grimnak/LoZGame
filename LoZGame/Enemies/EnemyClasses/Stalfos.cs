@@ -30,7 +30,7 @@
             get; set;
         }
 
-        public int Health { get; set; }
+        public int Health { get { return health; } set { health = value; } }
 
         private IEnemyState currentState;
         private int health = 10;
@@ -60,7 +60,7 @@
         private void GetNewDirection()
         {
             Random randomselect = new Random();
-            this.currentDirection = (Direction)randomselect.Next(0, 3);
+            this.currentDirection = (Direction)randomselect.Next(0, 4);
         }
 
         private void UpdateLoc()

@@ -14,13 +14,9 @@ namespace LoZClone
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyboardCommandLoader"/> class.
         /// </summary>
-        /// <param name="game">Game to pass to a command.</param>
+        /// <param name="dungeon">Dungeon to pass to a command.</param>
         /// <param name="player">Player to pass to a command.</param>
-        /// <param name="item">Item manager to pass to a command.</param>
-        /// <param name="block">Block manager to pass to a command.</param>
-        /// <param name="entity">Entity manager to pass to a command.</param>
-        /// <param name="enemy">Enemy manager to pass to a command.</param>
-        public KeyboardCommandLoader(IPlayer player)
+        public KeyboardCommandLoader(IPlayer player, Dungeon dungeon)
         {
             this.dictionary = new Dictionary<Keys, ICommand>();
 
@@ -45,18 +41,9 @@ namespace LoZClone
             this.dictionary.Add(Keys.D7, new CommandRedCandle(player));
             this.dictionary.Add(Keys.D8, new CommandTriforce(player));
 
-            this.dictionary.Add(Keys.U, new CommandItemLeft());
-            this.dictionary.Add(Keys.I, new CommandItemRight());
-
-            this.dictionary.Add(Keys.K, new CommandBlockLeft());
-            this.dictionary.Add(Keys.L, new CommandBlockRight());
-
-            this.dictionary.Add(Keys.O, new CommandEnemyLeft());
-            this.dictionary.Add(Keys.P, new CommandEnemyRight());
-
             this.dictionary.Add(Keys.Q, new CommandQuit());
 
-            this.dictionary.Add(Keys.R, new CommandReset(player));
+            this.dictionary.Add(Keys.R, new CommandReset(player, dungeon));
         }
 
         /// <summary>
