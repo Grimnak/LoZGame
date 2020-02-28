@@ -21,7 +21,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            EnemyManager.Instance.CycleRight();
+            LoZGame.Instance.Enemies.CycleRight();
         }
     }
 }

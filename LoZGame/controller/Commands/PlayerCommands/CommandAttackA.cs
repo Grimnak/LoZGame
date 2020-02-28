@@ -26,7 +26,7 @@
             if (!(this.player.State is DieState))
             {
                 this.player.Attack();
-                EntityManager.Instance.ProjectileManager.AddItem(EntityManager.Instance.ProjectileManager.Swordbeam, this.player);
+                LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.Swordbeam, this.player);
             }
         }
     }

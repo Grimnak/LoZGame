@@ -47,7 +47,7 @@
 
         public Dragon(Vector2 location)
         {
-            this.entity = EntityManager.Instance;
+            this.entity = LoZGame.Instance.Entities;
             this.currentState = new LeftMovingDragonState(this);
             this.CurrentLocation = new Vector2(location.X, location.Y);
             this.Bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, 50, 70);

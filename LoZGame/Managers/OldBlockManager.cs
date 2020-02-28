@@ -11,17 +11,7 @@
         private int maxIndex;
         public Vector2 Location;
 
-        private static readonly OldBlockManager instance = new OldBlockManager();
-
-        public static OldBlockManager Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-
-        private OldBlockManager()
+        public OldBlockManager()
         {
             this.currentIndex = 0;
             this.maxIndex = 0;

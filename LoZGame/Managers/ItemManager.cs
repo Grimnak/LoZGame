@@ -11,17 +11,8 @@
         private int maxIndex;
         public Vector2 Location;
 
-        private static readonly ItemManager instance = new ItemManager();
 
-        public static ItemManager Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-
-        private ItemManager()
+        public ItemManager()
         {
             this.currentIndex = 0;
             this.maxIndex = 0;

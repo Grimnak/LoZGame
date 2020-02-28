@@ -9,17 +9,7 @@
         public IBlock CurrentBlock;
         public Vector2 Location;
 
-        private static readonly BlockManager instance = new BlockManager();
-
-        public static BlockManager Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-
-        private BlockManager()
+        public BlockManager()
         {
             this.blockList = new List<IBlock>();
         }

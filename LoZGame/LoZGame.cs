@@ -24,6 +24,11 @@
         private MouseCommandLoader mouseCommandLoader;
         private Dungeon dungeon;
 
+        private ItemManager itemManager;
+        private OldBlockManager blockManager; //get rid of eventually
+        private EntityManager entityManager;
+        private EnemyManager enemyManager;
+
         private List<IController> controllers;
         private List<IPlayer> players;
         private List<IEnemy> enemies;
@@ -33,12 +38,25 @@
 
         public static LoZGame Instance { get { return instance; } }
 
+        public ItemManager Items { get { return itemManager; }  }
+
+        public OldBlockManager Blocks { get { return blockManager; } }
+
+        public EntityManager Entities { get { return entityManager; } }
+
+        public EnemyManager Enemies { get { return enemyManager; } }
+
         private LoZGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
+
+            itemManager = new ItemManager();
+            blockManager = new OldBlockManager(); //get rid of eventually
+            entityManager = new EntityManager();
+            enemyManager = new EnemyManager();
         }
 
         protected override void Initialize()
@@ -69,9 +87,9 @@
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
             ProjectileSpriteFactory.Instance.LoadAllTextures(this.Content);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
-            EnemyManager.Instance.LoadSprites();
-            ItemManager.Instance.LoadSprites(384, 184);
-            // BlockManager.Instance.LoadSprites();
+            this.enemyManager.LoadSprites();
+            this.itemManager.LoadSprites(384, 184);
+            this.blockManager.LoadSprites(300, 184); //get rid of eventually
         }
 
         protected override void UnloadContent()
@@ -86,11 +104,11 @@
             }
 
             this.link.Update();
-            EnemyManager.Instance.CurrentEnemy.Update();
-            ItemManager.Instance.CurrentItem.Update();
-            // BlockManager.Instance.CurrentBlock.Update();
-            EntityManager.Instance.Update();
-            CollisionDetection.Update(this.players.AsReadOnly(), EnemyManager.Instance.EnemyList.AsReadOnly(), this.projectiles.AsReadOnly());
+            this.enemyManager.CurrentEnemy.Update();
+            this.itemManager.CurrentItem.Update();
+            //this.blockManager.CurrentBlock.Update();
+            this.entityManager.Update();
+            CollisionDetection.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.projectiles.AsReadOnly());
             base.Update(gameTime);
         }
 
@@ -99,10 +117,10 @@
             this.GraphicsDevice.Clear(Color.Gray);
             this.spriteBatch.Begin();
             this.link.Draw();
-            EnemyManager.Instance.CurrentEnemy.Draw();
-            ItemManager.Instance.CurrentItem.Draw(this.spriteBatch);
-            // BlockManager.Instance.CurrentBlock.Draw();
-            EntityManager.Instance.Draw(this.spriteBatch);
+            this.enemyManager.CurrentEnemy.Draw();
+            this.itemManager.CurrentItem.Draw(this.spriteBatch);
+            //this.blockManager.CurrentBlock.Draw();
+            this.entityManager.Draw(this.spriteBatch);
             this.spriteBatch.End();
             base.Draw(gameTime);
         }

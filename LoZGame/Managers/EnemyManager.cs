@@ -7,16 +7,6 @@ namespace LoZClone
     {
         private List<IEnemy> enemyList;
 
-        private static readonly EnemyManager instance = new EnemyManager();
-
-        public static EnemyManager Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-
         public List<IEnemy> EnemyList
         {
             get { return this.enemyList; }
@@ -27,7 +17,7 @@ namespace LoZClone
         private int maxIndex;
         public Vector2 Location;
 
-        private EnemyManager()
+        public EnemyManager()
         {
             this.currentIndex = 0;
             this.maxIndex = 0;
