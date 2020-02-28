@@ -71,13 +71,13 @@
 
         public void Update()
         {
-            this.spikeCross.CurrentLocation = new Vector2(this.spikeCross.CurrentLocation.X + this.spikeCross.VelocityX, this.spikeCross.CurrentLocation.Y + this.spikeCross.VelocityY);
+            this.spikeCross.Physics.Location = new Vector2(this.spikeCross.Physics.Location.X + this.spikeCross.VelocityX, this.spikeCross.Physics.Location.Y + this.spikeCross.VelocityY);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.spikeCross.CurrentLocation, Color.White);
+            this.sprite.Draw(this.spikeCross.Physics.Location, Color.White);
         }
     }
 }

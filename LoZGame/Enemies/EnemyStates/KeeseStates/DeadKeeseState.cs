@@ -70,7 +70,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.keese.CurrentLocation, Color.White);
+            this.sprite.Draw(this.keese.Physics.Location, Color.White);
         }
     }
 }

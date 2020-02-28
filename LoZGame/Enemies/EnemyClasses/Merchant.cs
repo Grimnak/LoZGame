@@ -15,10 +15,7 @@
             set { this.bounds = value; }
         }
 
-        public Vector2 CurrentLocation
-        {
-            get; set;
-        }
+        public Physics Physics { get; set; }
 
         public int Health { get; set; }
         public IEnemyState CurrentState { get; set; }
@@ -27,9 +24,9 @@
 
         public Merchant(Vector2 location)
         {
-            this.CurrentLocation = new Vector2(location.X, location.Y);
+            this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.sprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
-            this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             this.health = 5;
         }
@@ -45,13 +42,13 @@
         public void Update()
         {
             this.sprite.Update();
-            this.bounds.X = (int)this.CurrentLocation.X;
-            this.bounds.Y = (int)this.CurrentLocation.Y;
+            this.bounds.X = (int)this.Physics.Location.X;
+            this.bounds.Y = (int)this.Physics.Location.Y;
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.CurrentLocation, Color.White);
+            this.sprite.Draw(this.Physics.Location, Color.White);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

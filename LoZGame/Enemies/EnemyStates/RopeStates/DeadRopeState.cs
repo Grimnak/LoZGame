@@ -70,7 +70,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.rope.CurrentLocation, Color.White);
+            this.sprite.Draw(this.rope.Physics.Location, Color.White);
         }
     }
 }

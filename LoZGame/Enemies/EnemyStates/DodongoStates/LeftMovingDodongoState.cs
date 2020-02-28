@@ -76,13 +76,13 @@
 
         public void Update()
         {
-            this.dodongo.CurrentLocation = new Vector2(this.dodongo.CurrentLocation.X + this.dodongo.VelocityX, this.dodongo.CurrentLocation.Y + this.dodongo.VelocityY);
+            this.dodongo.Physics.Location = new Vector2(this.dodongo.Physics.Location.X + this.dodongo.VelocityX, this.dodongo.Physics.Location.Y + this.dodongo.VelocityY);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.dodongo.CurrentLocation, Color.White);
+            this.sprite.Draw(this.dodongo.Physics.Location, Color.White);
         }
     }
 }

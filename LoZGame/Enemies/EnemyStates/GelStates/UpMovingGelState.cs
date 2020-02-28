@@ -78,14 +78,14 @@
         {
             if (this.gel.ShouldMove)
             {
-                this.gel.CurrentLocation = new Vector2(this.gel.CurrentLocation.X + this.gel.VelocityX, this.gel.CurrentLocation.Y + this.gel.VelocityY);
+                this.gel.Physics.Location = new Vector2(this.gel.Physics.Location.X + this.gel.VelocityX, this.gel.Physics.Location.Y + this.gel.VelocityY);
             }
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.gel.CurrentLocation, Color.White);
+            this.sprite.Draw(this.gel.Physics.Location, Color.White);
         }
     }
 }

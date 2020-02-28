@@ -78,14 +78,14 @@
         {
             if (this.zol.ShouldMove)
             {
-                this.zol.CurrentLocation = new Vector2(this.zol.CurrentLocation.X + this.zol.VelocityX, this.zol.CurrentLocation.Y + this.zol.VelocityY);
+                this.zol.Physics.Location = new Vector2(this.zol.Physics.Location.X + this.zol.VelocityX, this.zol.Physics.Location.Y + this.zol.VelocityY);
             }
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.zol.CurrentLocation, Color.White);
+            this.sprite.Draw(this.zol.Physics.Location, Color.White);
         }
     }
 }

@@ -76,13 +76,13 @@
 
         public void Update()
         {
-            this.wallMaster.CurrentLocation = new Vector2(this.wallMaster.CurrentLocation.X + this.wallMaster.VelocityX, this.wallMaster.CurrentLocation.Y + this.wallMaster.VelocityY);
+            this.wallMaster.Physics.Location = new Vector2(this.wallMaster.Physics.Location.X + this.wallMaster.VelocityX, this.wallMaster.Physics.Location.Y + this.wallMaster.VelocityY);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.wallMaster.CurrentLocation, Color.White);
+            this.sprite.Draw(this.wallMaster.Physics.Location, Color.White);
         }
     }
 }

@@ -81,7 +81,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.dragon.CurrentLocation, Color.White);
+            this.sprite.Draw(this.dragon.Physics.Location, Color.White);
         }
     }
 }

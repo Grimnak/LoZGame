@@ -15,10 +15,7 @@
             set { this.bounds = value; }
         }
 
-        public Vector2 CurrentLocation
-        {
-            get; set;
-        }
+        public Physics Physics { get; set; }
 
         public int VelocityX
         {
@@ -53,11 +50,11 @@
 
         public Goriya(Vector2 location)
         {
+            this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.currentState = new LeftMovingGoriyaState(this);
             this.entity = LoZGame.Instance.Entities;
-            this.CurrentLocation = new Vector2(location.X, location.Y);
             this.coolDown = 0;
-            this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
         }
 
@@ -130,8 +127,8 @@
                 this.GetNewState();
                 this.lifeTime = 0;
             }
-            this.bounds.X = (int)this.CurrentLocation.X;
-            this.bounds.Y = (int)this.CurrentLocation.Y;
+            this.bounds.X = (int)this.Physics.Location.X;
+            this.bounds.Y = (int)this.Physics.Location.Y;
         }
 
         public void Draw()

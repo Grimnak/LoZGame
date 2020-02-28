@@ -78,14 +78,14 @@
         /// <inheritdoc/>
         public void Update()
         {
-            this.player.CurrentLocation = new Vector2(this.player.CurrentLocation.X - this.player.MoveSpeed, this.player.CurrentLocation.Y);
+            this.player.Physics.Location = new Vector2(this.player.Physics.Location.X - this.player.MoveSpeed, this.player.Physics.Location.Y);
             this.sprite.Update();
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.CurrentLocation, this.player.CurrentTint);
+            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint);
         }
 
         private ISprite CreateCorrectSprite()

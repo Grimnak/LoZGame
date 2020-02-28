@@ -37,7 +37,7 @@
             this.instance = instance;
             this.expired = false;
             this.rotation = 0;
-            Vector2 loc = enemy.CurrentLocation;
+            Vector2 loc = enemy.Physics.Location;
             this.direction = enemy.Direction;
             this.isReturned = false;
             this.returning = false;
@@ -70,7 +70,7 @@
                 this.dY = 1;
             }
 
-            this.enemyLoc = enemy.CurrentLocation;
+            this.enemyLoc = enemy.Physics.Location;
             this.enemyLoc = new Vector2(this.enemyLoc.X + 16, this.enemyLoc.Y + 16);
         }
 
@@ -88,7 +88,7 @@
         {
             float newX = this.Location.X;
             float newY = this.Location.Y;
-            this.enemyLoc = this.enemy.CurrentLocation;
+            this.enemyLoc = this.enemy.Physics.Location;
             this.enemyLoc = new Vector2(this.enemyLoc.X + 16, this.enemyLoc.Y + 16);
             float diffX = this.enemyLoc.X - newX;
             float diffY = this.enemyLoc.Y - newY;

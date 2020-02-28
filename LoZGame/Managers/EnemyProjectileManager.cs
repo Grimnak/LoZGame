@@ -32,13 +32,13 @@
         {
             this.fireBallId++;
             this.fireBallListSize++;
-            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateUpLeftFireballSprite(dragon.CurrentLocation, this.fireBallId, scale));
+            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateUpLeftFireballSprite(dragon.Physics.Location, this.fireBallId, scale));
             this.fireBallId++;
             this.fireBallListSize++;
-            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateLeftFireballSprite(dragon.CurrentLocation, this.fireBallId, scale));
+            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateLeftFireballSprite(dragon.Physics.Location, this.fireBallId, scale));
             this.fireBallId++;
             this.fireBallListSize++;
-            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateDownLeftFireballSprite(dragon.CurrentLocation, this.fireBallId, scale));
+            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateDownLeftFireballSprite(dragon.Physics.Location, this.fireBallId, scale));
         }
 
         public void AddEnemyRang(Goriya enemy, string direction)

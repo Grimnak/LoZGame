@@ -95,22 +95,22 @@
 
         private static void CheckBorders(ICollider sourceCollider, int sourceWidth, int sourceHeight)
         {
-            if (sourceCollider.CurrentLocation.X + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width)
+            if (sourceCollider.Physics.Location.X + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width)
             {
-                sourceCollider.CurrentLocation = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth, sourceCollider.CurrentLocation.Y);
+                sourceCollider.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth, sourceCollider.Physics.Location.Y);
             }
-            else if (sourceCollider.CurrentLocation.X < 0)
+            else if (sourceCollider.Physics.Location.X < 0)
             {
-                sourceCollider.CurrentLocation = new Vector2(0, sourceCollider.CurrentLocation.Y);
+                sourceCollider.Physics.Location = new Vector2(0, sourceCollider.Physics.Location.Y);
             }
 
-            if (sourceCollider.CurrentLocation.Y + sourceHeight > LoZGame.Instance.GraphicsDevice.Viewport.Height)
+            if (sourceCollider.Physics.Location.Y + sourceHeight > LoZGame.Instance.GraphicsDevice.Viewport.Height)
             {
-                sourceCollider.CurrentLocation = new Vector2(sourceCollider.CurrentLocation.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight);
+                sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight);
             }
-            else if (sourceCollider.CurrentLocation.Y < 0)
+            else if (sourceCollider.Physics.Location.Y < 0)
             {
-                sourceCollider.CurrentLocation = new Vector2(sourceCollider.CurrentLocation.X, 0);
+                sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, 0);
             }
         }
     }

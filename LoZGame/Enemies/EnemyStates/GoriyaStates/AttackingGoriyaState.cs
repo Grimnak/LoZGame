@@ -100,7 +100,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.goriya.CurrentLocation, Color.White);
+            this.sprite.Draw(this.goriya.Physics.Location, Color.White);
         }
     }
 }

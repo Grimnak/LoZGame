@@ -12,8 +12,6 @@
 
         public string CurrentDirection { get; set; }
 
-        public Vector2 CurrentLocation { get; set; }
-
         public Color CurrentTint { get; set; }
 
         public int MoveSpeed { get; set; }
@@ -22,9 +20,7 @@
 
         public int DamageTimer { get; set; }
 
-        public Vector2 Velocity { get; set; }
-
-        public Vector2 Acceleration { get; set; }
+        public Physics Physics { get; set; }
 
         public void TakeDamage()
         {

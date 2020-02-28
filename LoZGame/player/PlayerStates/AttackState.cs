@@ -109,7 +109,7 @@ namespace LoZClone
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.CurrentLocation, this.player.CurrentTint);
+            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint);
         }
 
         /// <summary>
