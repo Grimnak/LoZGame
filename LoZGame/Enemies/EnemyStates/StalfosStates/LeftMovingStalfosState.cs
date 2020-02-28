@@ -6,7 +6,7 @@
     public class LeftMovingStalfosState : IEnemyState
     {
         private readonly Stalfos stalfos;
-        private readonly IEnemySprite sprite;
+        private IEnemySprite sprite;
 
         public LeftMovingStalfosState(Stalfos stalfos)
         {
@@ -19,6 +19,7 @@
 
         public void MoveLeft()
         {
+            this.stalfos.CurrentState = new LeftMovingStalfosState(this.stalfos);
         }
 
         public void MoveRight()

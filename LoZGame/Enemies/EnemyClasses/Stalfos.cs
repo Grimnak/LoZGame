@@ -99,10 +99,9 @@
         public void Update()
         {
             this.lifeTime++;
-            //this.UpdateLoc();
+            this.UpdateLoc();
             if (this.lifeTime > this.directionChange)
             {
-               // this.GetNewDirection();
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
