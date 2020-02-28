@@ -110,6 +110,7 @@
     <Compile Include="Enemies\EnemyStates\DeadEnemyState.cs" />
     <Compile Include="Interfaces\IDoorState.cs" />
     <Compile Include="Managers\Dungeon.cs" />
+    <Compile Include="Managers\BlockManager.cs" />
     <Compile Include="Rooms\BlockClasses\Door.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\BombedDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\HiddenDoorState.cs" />
@@ -211,7 +212,7 @@
     <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="Managers\ExplosionManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />
-    <Compile Include="Managers\BlockManager.cs" />
+    <Compile Include="Managers\OldBlockManager.cs" />
     <Compile Include="Managers\EnemyProjectileManager.cs" />
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\ProjectileType.cs" />

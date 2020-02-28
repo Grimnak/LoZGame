@@ -73,7 +73,7 @@
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             EnemyManager.Instance.LoadSprites();
             ItemManager.Instance.LoadSprites(384, 184);
-            BlockManager.Instance.LoadSprites(550, 184);
+            // BlockManager.Instance.LoadSprites();
         }
 
         protected override void UnloadContent()

@@ -40,8 +40,8 @@
 
             EntityManager.Instance.Clear();
 
-            BlockManager.Instance.CurrentIndex = 1;
-            BlockManager.Instance.CycleLeft();
+            // BlockManager.Instance.CurrentIndex = 1;
+            // BlockManager.Instance.CycleLeft();
         }
     }
 }

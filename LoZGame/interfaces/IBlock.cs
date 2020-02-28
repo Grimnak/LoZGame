@@ -33,7 +33,6 @@
         /// <summary>
         /// Draws the tile.
         /// </summary>
-        /// <param name="spriteBatch">Spritebatch to do the drawing.</param>
         void Draw();
     }
 }
