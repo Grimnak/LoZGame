@@ -12,6 +12,7 @@
         {
             this.wallMaster = wallMaster;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.wallMaster.CurrentState = this;
         }
 
         public void MoveLeft()

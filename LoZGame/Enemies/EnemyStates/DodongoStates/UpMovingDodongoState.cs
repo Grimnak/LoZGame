@@ -14,6 +14,7 @@
             this.dodongo.VelocityX = 0;
             this.dodongo.VelocityY = -1;
             this.sprite = EnemySpriteFactory.Instance.CreateUpMovingDodongoSprite();
+            this.dodongo.CurrentState = this;
         }
 
         public void MoveLeft()

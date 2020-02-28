@@ -14,6 +14,7 @@
             this.keese.VelocityX = -.2 * this.keese.AccelerationCurrent;
             this.keese.VelocityY = 0;
             this.sprite = EnemySpriteFactory.Instance.CreateKeeseSprite();
+            this.keese.CurrentState = this;
         }
 
         public void MoveLeft()

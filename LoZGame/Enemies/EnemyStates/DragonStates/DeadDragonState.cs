@@ -11,6 +11,7 @@
         public DeadDragonState(Dragon dragon)
         {
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.dragon.CurrentState = this;
         }
 
         public void MoveUp()

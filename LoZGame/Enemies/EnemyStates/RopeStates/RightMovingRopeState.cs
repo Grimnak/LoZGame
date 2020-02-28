@@ -14,6 +14,7 @@
             this.rope.VelocityX = 1;
             this.rope.VelocityY = 0;
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingRopeSprite();
+            this.rope.CurrentState = this;
         }
 
         public void MoveLeft()

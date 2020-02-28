@@ -14,6 +14,7 @@
             this.goriya.VelocityX = 1;
             this.goriya.VelocityY = 0;
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingGoriyaSprite();
+            this.goriya.CurrentState = this;
         }
 
         public void MoveLeft()

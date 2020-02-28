@@ -20,6 +20,7 @@
         }
 
         public int Health { get; set; }
+        public IEnemyState CurrentState { get; set; }
 
         private readonly MerchantSprite sprite;
 

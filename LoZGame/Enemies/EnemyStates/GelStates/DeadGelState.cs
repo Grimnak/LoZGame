@@ -11,6 +11,7 @@
         public DeadGelState(Gel gel)
         {
             this.gel = gel;
+            this.gel.CurrentState = this;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
         }
 

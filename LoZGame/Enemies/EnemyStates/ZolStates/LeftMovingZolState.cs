@@ -14,6 +14,7 @@
             zol.VelocityX = -1;
             zol.VelocityY = 0;
             this.sprite = EnemySpriteFactory.Instance.CreateZolSprite();
+            this.zol.CurrentState = this;
         }
 
         public void MoveLeft()
