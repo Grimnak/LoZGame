@@ -55,7 +55,7 @@
             this.lifeTime = MaxLifeTime;
             this.scale = scale;
             this.direction = player.CurrentDirection;
-            Vector2 loc = player.CurrentLocation;
+            Vector2 loc = player.Physics.Location;
             this.hostile = false;
 
             if (this.direction.Equals("Up"))

@@ -76,13 +76,13 @@
 
         public void Update()
         {
-            this.goriya.CurrentLocation = new Vector2(this.goriya.CurrentLocation.X + this.goriya.VelocityX, this.goriya.CurrentLocation.Y + this.goriya.VelocityY);
+            this.goriya.Physics.Location = new Vector2(this.goriya.Physics.Location.X + this.goriya.VelocityX, this.goriya.Physics.Location.Y + this.goriya.VelocityY);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.goriya.CurrentLocation, Color.White);
+            this.sprite.Draw(this.goriya.Physics.Location, Color.White);
         }
     }
 }

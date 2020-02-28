@@ -32,8 +32,8 @@
             if (this.player.DamageTimer <= 0)
             {
                 DetermineCollisionSide(collisionSide);
-                this.player.Velocity = new Vector2(xDirection * Speed, yDirection * Speed);
-                this.player.Acceleration = new Vector2(xDirection * Acceleration, yDirection * Acceleration);
+                this.player.Physics.Velocity = new Vector2(xDirection * Speed, yDirection * Speed);
+                this.player.Physics.Acceleration = new Vector2(xDirection * Acceleration, yDirection * Acceleration);
             }
         }
 

@@ -75,13 +75,13 @@
 
         public void Update()
         {
-            this.rope.CurrentLocation = new Vector2(this.rope.CurrentLocation.X + this.rope.VelocityX, this.rope.CurrentLocation.Y + this.rope.VelocityY);
+            this.rope.Physics.Location = new Vector2(this.rope.Physics.Location.X + this.rope.VelocityX, this.rope.Physics.Location.Y + this.rope.VelocityY);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.rope.CurrentLocation, Color.White);
+            this.sprite.Draw(this.rope.Physics.Location, Color.White);
         }
     }
 }

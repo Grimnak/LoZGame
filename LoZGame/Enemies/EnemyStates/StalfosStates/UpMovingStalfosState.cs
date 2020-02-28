@@ -75,13 +75,13 @@
 
         public void Update()
         {
-            this.stalfos.CurrentLocation = new Vector2(this.stalfos.CurrentLocation.X + this.stalfos.VelocityX, this.stalfos.CurrentLocation.Y + this.stalfos.VelocityY);
+            this.stalfos.Physics.Location = new Vector2(this.stalfos.Physics.Location.X + this.stalfos.VelocityX, this.stalfos.Physics.Location.Y + this.stalfos.VelocityY);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.stalfos.CurrentLocation, Color.White);
+            this.sprite.Draw(this.stalfos.Physics.Location, Color.White);
         }
     }
 }

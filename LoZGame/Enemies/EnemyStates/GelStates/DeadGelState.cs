@@ -69,7 +69,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.gel.CurrentLocation, Color.White);
+            this.sprite.Draw(this.gel.Physics.Location, Color.White);
         }
     }
 }

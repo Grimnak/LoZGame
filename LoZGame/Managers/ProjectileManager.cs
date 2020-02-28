@@ -78,31 +78,31 @@
                 switch (item)
                 {
                     case ProjectileType.Bomb:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Bomb(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId, this.explosion));
+                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Bomb(player.Physics.Location, player.CurrentDirection, this.scale, this.projectileId, this.explosion));
                         break;
 
                     case ProjectileType.Triforce:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Triforce(player.CurrentLocation, this.scale, this.projectileId));
+                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Triforce(player.Physics.Location, this.scale, this.projectileId));
                         this.triforceLock = true;
                         this.triforceInstance = this.projectileId;
                         break;
 
                     case ProjectileType.Arrow:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Arrow(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
+                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Arrow(player.Physics.Location, player.CurrentDirection, this.scale, this.projectileId));
                         break;
 
                     case ProjectileType.SilverArrow:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.SilverArrow(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
+                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.SilverArrow(player.Physics.Location, player.CurrentDirection, this.scale, this.projectileId));
                         break;
 
                     case ProjectileType.RedCandle:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.RedCandle(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
+                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.RedCandle(player.Physics.Location, player.CurrentDirection, this.scale, this.projectileId));
                         break;
 
                     case ProjectileType.BlueCandle:
                         if (!this.candleLock)
                         {
-                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.BlueCandle(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
+                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.BlueCandle(player.Physics.Location, player.CurrentDirection, this.scale, this.projectileId));
                             this.candleLock = true;
                             this.candleInstance = this.projectileId;
                         }

@@ -75,7 +75,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.spikeCross.CurrentLocation, Color.White);
+            this.sprite.Draw(this.spikeCross.Physics.Location, Color.White);
         }
     }
 }

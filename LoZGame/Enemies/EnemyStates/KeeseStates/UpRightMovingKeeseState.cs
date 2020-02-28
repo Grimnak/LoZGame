@@ -79,13 +79,13 @@
 
         public void Update()
         {
-            this.keese.CurrentLocation = new Vector2(this.keese.CurrentLocation.X + (float)this.keese.VelocityX, this.keese.CurrentLocation.Y + (float)this.keese.VelocityY);
+            this.keese.Physics.Location = new Vector2(this.keese.Physics.Location.X + (float)this.keese.VelocityX, this.keese.Physics.Location.Y + (float)this.keese.VelocityY);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.keese.CurrentLocation, Color.White);
+            this.sprite.Draw(this.keese.Physics.Location, Color.White);
         }
     }
 }

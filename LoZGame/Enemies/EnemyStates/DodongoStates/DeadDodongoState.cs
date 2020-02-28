@@ -68,7 +68,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.dodongo.CurrentLocation, Color.White);
+            this.sprite.Draw(this.dodongo.Physics.Location, Color.White);
         }
     }
 }

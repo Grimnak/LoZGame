@@ -15,6 +15,7 @@
         /// Initializes a new instance of the <see cref="CommandReset"/> class.
         /// </summary>
         /// <param name="player">Player to execute a command on.</param>
+        /// <param name="dungeon">Dungeon to execute a command on.</param>
         public CommandReset(IPlayer player, Dungeon dungeon)
         {
             this.player = player;
@@ -27,7 +28,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.player.CurrentLocation = new Vector2(218, 184);
+            this.player.Physics.Location = new Vector2(218, 184);
             this.player.CurrentDirection = "Down";
             this.player.State = new NullState(this.player);
             this.player.DamageCounter = 0;

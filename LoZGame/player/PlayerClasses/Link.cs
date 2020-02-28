@@ -16,25 +16,25 @@
 
         public Link()
         {
+            this.Physics = new Physics(new Vector2(150, 200), new Vector2(0, 0), new Vector2(0, 0));
+            this.linkCollisionHandler = new PlayerCollisionHandler(this);
             this.CurrentColor = "Green";
             this.CurrentDirection = "Down";
             this.CurrentWeapon = "Wood";
-            this.CurrentLocation = new Vector2(150, 200);
             this.CurrentTint = Color.White;
             this.MoveSpeed = 2;
             this.DamageTimer = 0;
             this.DamageCounter = 0;
             this.State = new NullState(this);
-            this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
-            this.linkCollisionHandler = new PlayerCollisionHandler(this);
+            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
         }
 
         private void DamagePushback()
         {
-            if (Math.Abs((int)this.Velocity.X) != 0 || Math.Abs((int)this.Velocity.Y) != 0)
+            if (Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0)
             {
-                this.CurrentLocation = new Vector2(this.CurrentLocation.X + this.Velocity.X, this.CurrentLocation.Y + this.Velocity.Y);
-                this.Velocity = new Vector2(this.Velocity.X + this.Acceleration.X, this.Velocity.Y + this.Acceleration.Y);
+                this.Physics.Move();
+                this.Physics.Accelerate();
             }
         }
 
@@ -58,8 +58,8 @@
         public override void Update()
         {
             this.HandleDamage();
-            this.bounds.X = (int)this.CurrentLocation.X;
-            this.bounds.Y = (int)this.CurrentLocation.Y;
+            this.bounds.X = (int)this.Physics.Location.X;
+            this.bounds.Y = (int)this.Physics.Location.Y;
             this.State.Update();
         }
 

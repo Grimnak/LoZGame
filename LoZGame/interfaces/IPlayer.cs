@@ -48,16 +48,6 @@
         int DamageTimer { get; set; }
 
         /// <summary>
-        /// Gets or sets the velocity of the player.
-        /// </summary>
-        Vector2 Velocity { get; set; }
-
-        /// <summary>
-        /// Gets or sets the acceleration of the player.
-        /// </summary>
-        Vector2 Acceleration { get; set; }
-
-        /// <summary>
         /// Makes player idle.
         /// </summary>
         void Idle();

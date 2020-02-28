@@ -46,7 +46,7 @@
             this.instance = instance;
             this.expired = false;
             this.rotation = 0;
-            Vector2 loc = player.CurrentLocation;
+            Vector2 loc = player.Physics.Location;
             this.direction = player.CurrentDirection;
             this.isReturned = false;
             this.returning = false;
@@ -79,7 +79,7 @@
                 this.dY = 1;
             }
 
-            this.playerLoc = player.CurrentLocation;
+            this.playerLoc = player.Physics.Location;
             this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
         }
 
@@ -105,7 +105,7 @@
         {
             float newX = this.Location.X;
             float newY = this.Location.Y;
-            this.playerLoc = this.player.CurrentLocation;
+            this.playerLoc = this.player.Physics.Location;
             this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
             float diffX = this.playerLoc.X - newX;
             float diffY = this.playerLoc.Y - newY;

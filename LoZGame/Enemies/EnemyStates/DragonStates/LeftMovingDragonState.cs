@@ -74,13 +74,13 @@
 
         public void Update()
         {
-            this.dragon.CurrentLocation = new Vector2(this.dragon.CurrentLocation.X + this.dragon.VelocityX, this.dragon.CurrentLocation.Y);
+            this.dragon.Physics.Location = new Vector2(this.dragon.Physics.Location.X + this.dragon.VelocityX, this.dragon.Physics.Location.Y);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.dragon.CurrentLocation, Color.White);
+            this.sprite.Draw(this.dragon.Physics.Location, Color.White);
         }
     }
 }

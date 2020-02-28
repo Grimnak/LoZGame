@@ -15,10 +15,7 @@
             set { this.bounds = value; }
         }
 
-        public Vector2 CurrentLocation
-        {
-            get; set;
-        }
+        public Physics Physics { get; set; }
 
         public int VelocityX
         {
@@ -58,11 +55,11 @@
 
         public Gel(Vector2 location)
         {
+            this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.currentState = new LeftMovingGelState(this);
-            this.CurrentLocation = new Vector2(650, 200);
-            this.bounds = new Rectangle((int)this.CurrentLocation.X, (int)this.CurrentLocation.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.CurrentLocation = new Vector2(location.X, location.Y);
+            this.Physics.Location = new Vector2(location.X, location.Y);
             this.ShouldMove = true;
         }
 
@@ -140,8 +137,8 @@
                 this.lifeTime = 0;
             }
 
-            this.bounds.X = (int)this.CurrentLocation.X;
-            this.bounds.Y = (int)this.CurrentLocation.Y;
+            this.bounds.X = (int)this.Physics.Location.X;
+            this.bounds.Y = (int)this.Physics.Location.Y;
         }
 
         public void Draw()
