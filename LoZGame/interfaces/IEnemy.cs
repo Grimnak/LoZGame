@@ -5,6 +5,7 @@
     public interface IEnemy : ICollider
     {
         int Health { get; set; }
+
         void TakeDamage();
 
         void Die();

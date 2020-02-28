@@ -29,8 +29,6 @@
         private List<IEnemy> enemies;
         private List<IProjectile> projectiles;
 
-
-
         private static readonly LoZGame instance = new LoZGame();
 
         public static LoZGame Instance { get { return instance; } }
@@ -90,7 +88,7 @@
             this.link.Update();
             EnemyManager.Instance.CurrentEnemy.Update();
             ItemManager.Instance.CurrentItem.Update();
-            BlockManager.Instance.CurrentBlock.Update();
+            // BlockManager.Instance.CurrentBlock.Update();
             EntityManager.Instance.Update();
             CollisionDetection.Update(this.players.AsReadOnly(), EnemyManager.Instance.EnemyList.AsReadOnly(), this.projectiles.AsReadOnly());
             base.Update(gameTime);
@@ -103,7 +101,7 @@
             this.link.Draw();
             EnemyManager.Instance.CurrentEnemy.Draw();
             ItemManager.Instance.CurrentItem.Draw(this.spriteBatch);
-            BlockManager.Instance.CurrentBlock.Draw();
+            // BlockManager.Instance.CurrentBlock.Draw();
             EntityManager.Instance.Draw(this.spriteBatch);
             this.spriteBatch.End();
             base.Draw(gameTime);

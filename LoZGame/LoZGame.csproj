@@ -107,7 +107,6 @@
     <Compile Include="Enemies\EnemyClasses\Stalfos.cs" />
     <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
-    <Compile Include="Enemies\EnemyStates\DeadEnemyState.cs" />
     <Compile Include="Interfaces\IDoorState.cs" />
     <Compile Include="Managers\Dungeon.cs" />
     <Compile Include="Managers\BlockManager.cs" />

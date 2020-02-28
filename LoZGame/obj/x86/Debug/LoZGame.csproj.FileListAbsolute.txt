@@ -962,3 +962,15 @@ C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_left.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_right.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_up.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\locked_door_down.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\locked_door_left.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\locked_door_right.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\locked_door_up.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\special_door_down.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\special_door_left.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\special_door_right.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\special_door_up.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_down.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_left.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_right.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_up.xnb
