@@ -78,6 +78,10 @@
             {
                 this.linkCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
+            else if (otherCollider is IBlock)
+            {
+                this.linkCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
         }
     }
 }

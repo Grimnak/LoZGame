@@ -120,7 +120,7 @@
             this.itemManager.CurrentItem.Update();
             this.blockManager.Update();
             this.entityManager.Update();
-            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.projectiles.AsReadOnly());
+            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.projectiles.AsReadOnly());
             base.Update(gameTime);
         }
 

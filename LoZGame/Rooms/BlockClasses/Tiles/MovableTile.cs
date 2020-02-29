@@ -9,13 +9,23 @@
     using Microsoft.Xna.Framework.Graphics;
 
     /// <summary>
-    /// Class for a basic tile.
+    /// Class for a movable tile.
     /// </summary>
     public class MovableTile : IBlock
     {
-        private Vector2 location;
         private ISprite sprite;
         private Color spriteTint = Color.White;
+        private Rectangle bounds;
+
+        public Rectangle Bounds
+        {
+            get { return this.bounds; }
+            set { this.bounds = value; }
+        }
+
+        BlockCollisionHandler blockCollisionHandler;
+
+        public Physics Physics { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MovableTile"/> class.
@@ -24,15 +34,10 @@
         /// <param name="name">Name of the tiles sprite.</param>
         public MovableTile(Vector2 location, string name)
         {
-            this.location = location;
+            this.blockCollisionHandler = new BlockCollisionHandler(this);
+            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.sprite = this.CreateCorrectSprite(name);
-        }
-
-        /// <inheritdoc/>
-        public Vector2 Location
-        {
-            get { return this.location; }
-            set { this.location = value; }
+            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LoZGame.Instance.TileWidth, LoZGame.Instance.TileHeight);
         }
 
         /// <inheritdoc/>
@@ -41,27 +46,47 @@
             switch (name)
             {
                 case "turqoise_statue_left":
-                    return BlockSpriteFactory.Instance.TurquoiseStatueLeft(this.location);
+                    return BlockSpriteFactory.Instance.TurquoiseStatueLeft(this.Physics.Location);
                 case "turqoise_statue_right":
-                    return BlockSpriteFactory.Instance.TurquoiseStatueRight(this.location);
+                    return BlockSpriteFactory.Instance.TurquoiseStatueRight(this.Physics.Location);
                 case "blue_statue_left":
-                    return BlockSpriteFactory.Instance.BlueStatueLeft(this.location);
+                    return BlockSpriteFactory.Instance.BlueStatueLeft(this.Physics.Location);
                 case "blue_statue_right":
-                    return BlockSpriteFactory.Instance.BlueStatueRight(this.location);
+                    return BlockSpriteFactory.Instance.BlueStatueRight(this.Physics.Location);
                 default:
-                    return BlockSpriteFactory.Instance.OrangeMovableSquare(this.location);
+                    return BlockSpriteFactory.Instance.OrangeMovableSquare(this.Physics.Location);
             }
+        }
+
+        private void HandlePush()
+        {
+            this.Physics.Move();
         }
 
         /// <inheritdoc/>
         public void Update()
         {
+            HandlePush();
+            this.bounds.X = (int)this.Physics.Location.X;
+            this.bounds.Y = (int)this.Physics.Location.Y;
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(location, spriteTint);
+            this.sprite.Draw(this.Physics.Location, spriteTint);
+        }
+
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IPlayer)
+            {
+                this.blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IEnemy)
+            {
+                this.blockCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+            }
         }
     }
 }

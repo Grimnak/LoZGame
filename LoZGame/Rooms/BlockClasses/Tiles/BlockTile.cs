@@ -13,9 +13,19 @@
     /// </summary>
     public class BlockTile : IBlock
     {
-        private Vector2 location;
         private ISprite sprite;
         private Color spriteTint = Color.White;
+        private Rectangle bounds;
+
+        public Rectangle Bounds
+        {
+            get { return this.bounds; }
+            set { this.bounds = value; }
+        }
+
+        BlockCollisionHandler blockCollisionHandler;
+
+        public Physics Physics { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BlockTile"/> class.
@@ -24,15 +34,10 @@
         /// <param name="name">Name of the tiles sprite.</param>
         public BlockTile(Vector2 location, string name)
         {
-            this.location = location;
+            this.blockCollisionHandler = new BlockCollisionHandler(this);
+            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.sprite = this.CreateCorrectSprite(name);
-        }
-
-        /// <inheritdoc/>
-        public Vector2 Location
-        {
-            get { return this.location; }
-            set { this.location = value; }
+            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LoZGame.Instance.TileWidth, LoZGame.Instance.TileHeight);
         }
 
         /// <inheritdoc/>
@@ -41,11 +46,11 @@
             switch (name)
             {
                 case "water_tile":
-                    return BlockSpriteFactory.Instance.WaterTile(this.location);
+                    return BlockSpriteFactory.Instance.WaterTile(this.Physics.Location);
                 case "basement_brick_tile":
-                    return BlockSpriteFactory.Instance.BasementBrickTile(this.location);
+                    return BlockSpriteFactory.Instance.BasementBrickTile(this.Physics.Location);
                 default:
-                    return BlockSpriteFactory.Instance.MovableSquare(this.location);
+                    return BlockSpriteFactory.Instance.MovableSquare(this.Physics.Location);
             }
         }
 
@@ -57,7 +62,19 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(location, spriteTint);
+            this.sprite.Draw(this.Physics.Location, spriteTint);
+        }
+
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IPlayer)
+            {
+                this.blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IEnemy)
+            {
+                this.blockCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+            }
         }
     }
 }

@@ -30,6 +30,10 @@
             this.player.TakeDamage();
         }
 
+        public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
+        {
+        }
+
         private void DeterminePushbackValues(CollisionDetection.CollisionSide collisionSide)
         {
             if (this.player.DamageTimer <= 0)

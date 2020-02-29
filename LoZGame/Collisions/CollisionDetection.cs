@@ -10,7 +10,7 @@
         {
         }
 
-        public void Update(ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies, ReadOnlyCollection<IProjectile> projectiles)
+        public void Update(ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies, ReadOnlyCollection<IBlock> blocks, ReadOnlyCollection<IProjectile> projectiles)
         {
             foreach (IPlayer player in players)
             {
@@ -26,6 +26,14 @@
             {
                 CheckCollisions<IProjectile>(enemy, projectiles);
                 CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
+            }
+
+            foreach (IBlock block in blocks)
+            {
+                if (block is MovableTile)
+                {
+                    CheckCollisions<IPlayer>(block, players);
+                }
             }
         }
 

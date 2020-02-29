@@ -13,9 +13,17 @@
     /// </summary>
     public class Tile : IBlock
     {
-        private Vector2 location;
         private ISprite sprite;
         private Color spriteTint = Color.White;
+        private Rectangle bounds;
+
+        public Rectangle Bounds
+        {
+            get { return this.bounds; }
+            set { this.bounds = value; }
+        }
+
+        public Physics Physics { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Tile"/> class.
@@ -24,15 +32,9 @@
         /// <param name="name">Name of the tiles sprite.</param>
         public Tile(Vector2 location, string name)
         {
-            this.location = location;
+            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.sprite = this.CreateCorrectSprite(name);
-        }
-
-        /// <inheritdoc/>
-        public Vector2 Location
-        {
-            get { return this.location; }
-            set { this.location = value; }
+            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LoZGame.Instance.TileWidth, LoZGame.Instance.TileHeight);
         }
 
         /// <inheritdoc/>
@@ -41,15 +43,15 @@
             switch (name)
             {
                 case "gap_tile":
-                    return BlockSpriteFactory.Instance.GapTile(this.location);
+                    return BlockSpriteFactory.Instance.GapTile(this.Physics.Location);
                 case "ladder_tile":
-                    return BlockSpriteFactory.Instance.LadderTile(this.location);
+                    return BlockSpriteFactory.Instance.LadderTile(this.Physics.Location);
                 case "spotted_tile":
-                    return BlockSpriteFactory.Instance.SpottedTile(this.location);
+                    return BlockSpriteFactory.Instance.SpottedTile(this.Physics.Location);
                 case "stairs":
-                    return BlockSpriteFactory.Instance.Stairs(this.location);
+                    return BlockSpriteFactory.Instance.Stairs(this.Physics.Location);
                 default:
-                    return BlockSpriteFactory.Instance.FloorTile(this.location);
+                    return BlockSpriteFactory.Instance.FloorTile(this.Physics.Location);
             }
         }
 
@@ -61,7 +63,11 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(location, spriteTint);
+            this.sprite.Draw(this.Physics.Location, spriteTint);
+        }
+
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
         }
     }
 }

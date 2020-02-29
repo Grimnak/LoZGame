@@ -15,6 +15,10 @@
         {
         }
 
+        public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
+        {
+        }
+
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
             this.enemy.TakeDamage();
