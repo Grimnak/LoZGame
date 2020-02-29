@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -34,6 +33,11 @@
         private List<IPlayer> players;
         private List<IEnemy> enemies;
         private List<IProjectile> projectiles;
+
+        public IPlayer Link
+        {
+            get { return this.link; }
+        }
 
         private static readonly LoZGame instance = new LoZGame();
 

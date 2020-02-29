@@ -28,10 +28,25 @@
         }
 
         public int Health { get { return health; } set { health = value; } }
+        
+        public int AttackFactor
+        {
+            get; set;
+        }
+
+        public Boolean Attacking
+        {
+            get; set;
+        }
+
+        public Boolean Retreating
+        {
+            get; set;
+        }
 
         private IEnemyState currentState;
-        private int health = 10;
         private int lifeTime = 0;
+        private Vector2 initialPos;
         private readonly int directionChange = 40;
 
         private enum direction
@@ -51,7 +66,12 @@
             this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.currentState = new LeftMovingSpikeCrossState(this);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, 25, 25);
+            this.Game = LoZGame.Instance;
+            this.currentState = new IdleSpikeCrossState(this);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            Attacking = false;
+            Retreating = false;
+            initialPos = location;
         }
 
         private void getNewDirection()
@@ -62,30 +82,65 @@
 
         private void updateLoc()
         {
-            switch (this.currentDirection)
+            int spikeX = (int)CurrentLocation.X;
+            int spikeY = (int)CurrentLocation.Y;
+            int linkX = (int)Game.Link.CurrentLocation.X;
+            int linkY = (int)Game.Link.CurrentLocation.Y;
+
+            if (Attacking)
             {
-                case direction.Up:
-                    this.currentState.MoveUp();
-                    break;
+                Console.WriteLine("made it 1");
+                if (!Retreating)
+                {
+                    if (Math.Abs(CurrentLocation.X) + Math.Abs(CurrentLocation.Y) <= Math.Abs(initialPos.X) + Math.Abs(initialPos.Y) - 50)
+                    {
+                        Console.WriteLine("made it 2");
+                        AttackFactor = -1;
+                        Retreating = true;
+                    }
+                }
+                else
+                {
+                    if (Math.Abs(CurrentLocation.X) + Math.Abs(CurrentLocation.Y) == Math.Abs(initialPos.X) + Math.Abs(initialPos.Y))
+                    {
+                        Attacking = false;
+                        currentState.Stop();
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("made it 3");
+                if (spikeX == linkX)
+                {
+                    Attacking = true;
+                    AttackFactor = 3 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
+                    currentState.MoveDown();
+                   /* if (spikeY < linkY)
+                    {
 
-                case direction.Down:
-                    this.currentState.MoveDown();
-                    break;
+                        currentState.MoveDown();
+                    }
+                    else
+                    {
+                        currentState.MoveUp();
+                    } */
+                }
+                else if (spikeY == linkY)
+                {
+                    Attacking = true;
+                    AttackFactor = 3 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
+                    currentState.MoveRight();
+                  /*  if (spikeX < linkX)
+                    {
 
-                case direction.Left:
-                    this.currentState.MoveLeft();
-                    break;
-
-                case direction.Right:
-                    this.currentState.MoveRight();
-                    break;
-
-                case direction.Idle:
-                    this.currentState.Stop();
-                    break;
-
-                default:
-                    break;
+                        currentState.MoveRight();
+                    }
+                    else
+                    {
+                        currentState.MoveLeft();
+                    } */
+                }
             }
             this.currentState.Update();
         }
@@ -100,7 +155,6 @@
 
         public void Update()
         {
-            this.lifeTime++;
             this.updateLoc();
             if (this.lifeTime > this.directionChange)
             {
@@ -109,6 +163,7 @@
             }
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
+
         }
 
         public void Draw()

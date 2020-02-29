@@ -42,6 +42,7 @@
             Down,
             Left,
             Right,
+            Dead,
         }
 
         public Dodongo(Vector2 location)

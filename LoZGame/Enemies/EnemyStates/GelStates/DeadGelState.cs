@@ -13,6 +13,8 @@
             this.gel = gel;
             this.gel.CurrentState = this;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.gel.VelocityX = 0;
+            this.gel.VelocityY = 0;
         }
 
         public void MoveLeft()

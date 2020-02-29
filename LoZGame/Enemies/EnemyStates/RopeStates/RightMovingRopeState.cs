@@ -11,8 +11,8 @@
         public RightMovingRopeState(Rope rope)
         {
             this.rope = rope;
-            this.rope.VelocityX = 1;
-            this.rope.VelocityY = 0;
+            this.rope.VelocityX = 1 * rope.AttackFactor;
+            this.rope.VelocityY = 0 * rope.AttackFactor;
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingRopeSprite();
             this.rope.CurrentState = this;
         }
