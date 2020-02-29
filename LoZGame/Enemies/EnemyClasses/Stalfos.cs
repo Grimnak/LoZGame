@@ -35,16 +35,6 @@
         private readonly int directionChange = 40;
         private RandomStateGenerator randomStateGenerator;
 
-        private enum Direction
-        {
-            Up,
-            Down,
-            Left,
-            Right,
-        }
-
-        private Direction currentDirection;
-
         public Stalfos(Vector2 location)
         {
             this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
@@ -54,57 +44,20 @@
             randomStateGenerator = new RandomStateGenerator(this, 2, 6);
         }
 
-        private void GetNewDirection()
-        {
-            Random randomselect = new Random();
-            this.currentDirection = (Direction)randomselect.Next(0, 4);
-        }
-
-        private void UpdateLoc()
-        {
-            switch (this.currentDirection)
-            {
-                case Direction.Up:
-                    this.currentState.MoveUp();
-                    break;
-
-                case Direction.Down:
-                    this.currentState.MoveDown();
-                    break;
-
-                case Direction.Left:
-                    this.currentState.MoveLeft();
-                    break;
-
-                case Direction.Right:
-                    this.currentState.MoveRight();
-                    break;
-
-                default:
-                    break;
-            }
-            this.currentState.Update();
-        }
-
         public void TakeDamage()
         {
             this.currentState.TakeDamage();
         }
 
-        public void Die()
-        {
-            this.currentState.Die();
-        }
-
         public void Update()
         {
             this.lifeTime++;
-            this.UpdateLoc();
             if (this.lifeTime > this.directionChange)
             {
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
+            this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
         }

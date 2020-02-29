@@ -52,48 +52,9 @@
             randomStateGenerator = new RandomStateGenerator(this, 2, 6);
         }
 
-     /*   private void GetNewDirection()
-        {
-            Random randomselect = new Random();
-            this.CurrentDirection = (Direction)randomselect.Next(0, 3);
-        }
-
-        private void UpdateLoc()
-        {
-            switch (this.CurrentDirection)
-            {
-                case Direction.Up:
-                    this.currentState.MoveUp();
-                    break;
-
-                case Direction.Down:
-                    this.currentState.MoveDown();
-                    break;
-
-                case Direction.Left:
-                    this.currentState.MoveLeft();
-                    break;
-
-                case Direction.Right:
-                    this.currentState.MoveRight();
-                    break;
-
-                default:
-                    break;
-            }
-
-            this.currentState.Update();
-        }
-        */
-
         public void TakeDamage()
         {
             this.currentState.TakeDamage();
-        }
-
-        public void Die()
-        {
-            this.currentState.Die();
         }
 
         public void Update()
@@ -104,6 +65,7 @@
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
+            this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
         }

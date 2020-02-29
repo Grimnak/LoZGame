@@ -67,7 +67,6 @@ namespace LoZClone
                 default:
                     break;
             }
-            enemy.CurrentState.Update();
         }
 
     }

@@ -998,3 +998,15 @@ C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_do
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_left.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_right.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_up.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\locked_door_down.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\locked_door_left.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\locked_door_right.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\locked_door_up.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\special_door_down.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\special_door_left.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\special_door_right.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\special_door_up.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_down.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_left.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_right.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_up.xnb

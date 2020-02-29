@@ -28,19 +28,10 @@
         private int health = 10;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
+        private RandomStateGenerator randomStateGenerator;
         private readonly EntityManager entity;
 
         public EntityManager EntityManager { get { return this.entity; } }
-
-        private enum StateEnum
-        {
-            Idle,
-            Left,
-            Right,
-            Attacking,
-        }
-
-        private StateEnum currentStateEnum;
 
         public Dragon(Vector2 location)
         {
@@ -49,39 +40,7 @@
             this.currentState = new LeftMovingDragonState(this);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, 50, 70);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
-        }
-
-        private void GetNewDirection()
-        {
-            Random randomselect = new Random();
-            this.currentStateEnum = (StateEnum)randomselect.Next(0, 3);
-        }
-
-        private void UpdateLoc()
-        {
-            switch (this.currentStateEnum)
-            {
-                case StateEnum.Attacking:
-                    this.currentState.Attack();
-                    break;
-
-                case StateEnum.Idle:
-                    this.currentState.Stop();
-                    break;
-
-                case StateEnum.Left:
-                    this.currentState.MoveLeft();
-                    break;
-
-                case StateEnum.Right:
-                    this.currentState.MoveRight();
-                    break;
-
-                default:
-                    break;
-            }
-
-            this.currentState.Update();
+            randomStateGenerator = new RandomStateGenerator(this, 0, 4);
         }
 
         public void TakeDamage()
@@ -89,20 +48,15 @@
             this.currentState.TakeDamage();
         }
 
-        public void Die()
-        {
-            this.currentState.Die();
-        }
-
         public void Update()
         {
             this.lifeTime++;
-            this.UpdateLoc();
             if (this.lifeTime > this.directionChange)
             {
-                this.GetNewDirection();
+                randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
+            this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
         }

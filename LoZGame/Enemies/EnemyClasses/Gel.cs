@@ -41,17 +41,7 @@
         private int timeSinceIdle = 0;
         private int movementWaitMax = 12;
         private readonly int directionChange = 40;
-
-        private enum direction
-        {
-            Up,
-            Down,
-            Left,
-            Right
-        }
-;
-
-        private direction currentDirection;
+        private RandomStateGenerator randomStateGenerator;
 
         public Gel(Vector2 location)
         {
@@ -61,12 +51,7 @@
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Physics.Location = new Vector2(location.X, location.Y);
             this.ShouldMove = true;
-        }
-
-        private void getNewDirection()
-        {
-            Random randomselect = new Random();
-            this.currentDirection = (direction)randomselect.Next(0, 3);
+            this.randomStateGenerator = new RandomStateGenerator(this, 2, 6);
         }
 
         private void decideToMove()
@@ -89,34 +74,6 @@
             }
         }
 
-        private void updateLoc()
-        {
-            switch (this.currentDirection)
-            {
-                case direction.Up:
-                    this.currentState.MoveUp();
-                    break;
-
-                case direction.Down:
-                    this.currentState.MoveDown();
-                    break;
-
-                case direction.Left:
-                    this.currentState.MoveLeft();
-                    break;
-
-                case direction.Right:
-                    this.currentState.MoveRight();
-                    break;
-
-                default:
-                    break;
-            }
-
-            this.decideToMove();
-            this.currentState.Update();
-        }
-
         public void TakeDamage()
         {
             this.currentState.TakeDamage();
@@ -130,13 +87,13 @@
         public void Update()
         {
             this.lifeTime++;
-            this.updateLoc();
             if (this.lifeTime > this.directionChange)
             {
-                this.getNewDirection();
+                randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
-
+            this.decideToMove();
+            this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
         }

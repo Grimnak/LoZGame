@@ -35,6 +35,7 @@
         private int lifeTime = 0;
         private readonly int directionChange = 40;
         private string currentDirection = "Left";
+        private RandomStateGenerator randomStateGenerator;
         private readonly EntityManager entity;
 
         private enum StateEnum
@@ -56,12 +57,13 @@
             this.coolDown = 0;
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            this.randomStateGenerator = new RandomStateGenerator(this, 1, 5);
         }
 
         private void GetNewState()
         {
             Random randomselect = new Random();
-            this.state = (StateEnum)randomselect.Next(0, 4);
+            this.state = (StateEnum)randomselect.Next(0, 6);
         }
 
         private void UpdateLoc()
