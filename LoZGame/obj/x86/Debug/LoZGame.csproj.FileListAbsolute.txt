@@ -1,7 +1,7 @@
 C:\Users\Garrett\Desktop\repo\LoZGame\obj\x86\Debug\LoZGame.csprojAssemblyReference.cache
 C:\Users\16reh\Desktop\LoZGame\LoZGame\obj\x86\Debug\LoZGame.csprojAssemblyReference.cache
-C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\xol\grayXol.xnb
-C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\xol\greenXol.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Zol\grayZol.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Zol\greenZol.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\gel\blackGel.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\gel\tealGel.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Blue_Link_Die.xnb
@@ -236,8 +236,8 @@ C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Wa
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\damagedAqua.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\enemies.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\File.xnb
-C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\grayXol.xnb
-C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\greenXol.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\grayZol.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\greenZol.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Link_Items.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\redGoriyaDown.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\redGoriyaLeft.xnb
@@ -371,8 +371,8 @@ C:\Users\morse_g22txc3\Desktop\repo\LoZGame\bin\Windows\x86\Debug\Content\fire.x
 C:\Users\morse_g22txc3\Desktop\repo\LoZGame\bin\Windows\x86\Debug\Content\fireball.xnb
 C:\Users\morse_g22txc3\Desktop\repo\LoZGame\bin\Windows\x86\Debug\Content\floor_tile.xnb
 C:\Users\morse_g22txc3\Desktop\repo\LoZGame\bin\Windows\x86\Debug\Content\gap_tile.xnb
-C:\Users\morse_g22txc3\Desktop\repo\LoZGame\bin\Windows\x86\Debug\Content\grayXol.xnb
-C:\Users\morse_g22txc3\Desktop\repo\LoZGame\bin\Windows\x86\Debug\Content\greenXol.xnb
+C:\Users\morse_g22txc3\Desktop\repo\LoZGame\bin\Windows\x86\Debug\Content\grayZol.xnb
+C:\Users\morse_g22txc3\Desktop\repo\LoZGame\bin\Windows\x86\Debug\Content\greenZol.xnb
 C:\Users\morse_g22txc3\Desktop\repo\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Down.xnb
 C:\Users\morse_g22txc3\Desktop\repo\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Left.xnb
 C:\Users\morse_g22txc3\Desktop\repo\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Right.xnb
@@ -456,8 +456,8 @@ C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\basement_br
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\enemies.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\enemySpawn.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\File.xnb
-C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\grayXol.xnb
-C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\greenXol.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\grayZol.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\greenZol.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\horizontal_bricks.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\ladder_tile.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\orange_movable_square.xnb
@@ -472,8 +472,8 @@ C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\or
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\spotted_tile.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\vertical_bricks.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\water_tile.xnb
-C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\xol\grayXol.xnb
-C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\xol\greenXol.xnb
+C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Zol\grayZol.xnb
+C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Zol\greenZol.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\gel\blackGel.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\gel\tealGel.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\aquamentus.xnb
@@ -525,8 +525,8 @@ C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\floor_tile.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\floor_tile_dungeon.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\gap_tile.xnb
-C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\grayXol.xnb
-C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\greenXol.xnb
+C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\grayZol.xnb
+C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\greenZol.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Die.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Down.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Left.xnb
@@ -685,8 +685,8 @@ D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\fireball.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\floor_tile.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\floor_tile_dungeon.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\gap_tile.xnb
-D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\grayXol.xnb
-D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\greenXol.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\grayZol.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\greenZol.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Die.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Down.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Left.xnb
@@ -839,8 +839,8 @@ C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\fireball.x
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\floor_tile.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\floor_tile_dungeon.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\gap_tile.xnb
-C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\grayXol.xnb
-C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\greenXol.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\grayZol.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\greenZol.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Die.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Down.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Green_Link_Left.xnb
@@ -1010,3 +1010,5 @@ C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_d
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_left.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_right.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_up.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\grayXol.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\greenXol.xnb

@@ -27,7 +27,7 @@
             get; set;
         }
 
-        public int Health { get {return health; } set { health = value; } }
+        public int Health { get { return health; } set { health = value; } }
 
         private IEnemyState currentState;
         private int health = 10;
@@ -35,6 +35,7 @@
         private readonly int directionChange = 40;
         private Direction currentDirection;
         private RandomStateGenerator randomStateGenerator;
+
         private enum Direction
         {
             Up,

@@ -181,7 +181,7 @@
         private Texture2D gel;
         private readonly SpriteSheetData gelData = new SpriteSheetData("tealGel", gelWidth, gelHeight, 2, 1);
         private Texture2D zol;
-        private readonly SpriteSheetData zolData = new SpriteSheetData("grayXol", gelWidth, gelHeight, 2, 1);
+        private readonly SpriteSheetData zolData = new SpriteSheetData("grayZol", gelWidth, gelHeight, 2, 1);
 
         private Texture2D spikeCross;
         private readonly SpriteSheetData spikeCrossData = new SpriteSheetData("spike", spikeCrossWidth, spikeCrossHeight, 1, 1);

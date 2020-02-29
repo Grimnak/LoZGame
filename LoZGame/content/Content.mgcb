@@ -584,7 +584,7 @@
 /processorParam:TextureFormat=Color
 /build:gap_tile.png
 
-#begin grayXol.png
+#begin grayZol.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -594,7 +594,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:grayXol.png
+/build:grayZol.png
 
 #begin Green_Link_Die.png
 /importer:TextureImporter
@@ -764,7 +764,7 @@
 /processorParam:TextureFormat=Color
 /build:Green_Wood_Up.png
 
-#begin greenXol.png
+#begin greenZol.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -774,7 +774,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:greenXol.png
+/build:greenZol.png
 
 #begin horizontal_bricks.png
 /importer:TextureImporter

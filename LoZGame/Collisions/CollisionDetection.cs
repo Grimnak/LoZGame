@@ -4,28 +4,22 @@
     using System.Collections.ObjectModel;
     using Microsoft.Xna.Framework;
 
-    public static class CollisionDetection
+    public partial class CollisionDetection
     {
-        public enum CollisionSide
+        public CollisionDetection()
         {
-            None,
-            Left,
-            Right,
-            Top,
-            Bottom
         }
 
-        public static void Update(ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies, ReadOnlyCollection<IProjectile> projectiles)
+        public void Update(ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies, ReadOnlyCollection<IProjectile> projectiles)
         {
             foreach (IPlayer player in players)
             {
-                if (player.State is DieState)
+                if (!(player.State is DieState))
                 {
-                    continue;
+                    CheckCollisions<IEnemy>(player, enemies);
+                    CheckCollisions<IProjectile>(player, projectiles);
+                    CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
                 }
-                CheckCollisions<IEnemy>(player, enemies);
-                CheckCollisions<IProjectile>(player, projectiles);
-                CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
             }
 
             foreach (IEnemy enemy in enemies)
@@ -35,7 +29,7 @@
             }
         }
 
-        private static void CheckCollisions<T>(ICollider sourceCollider, ReadOnlyCollection<T> targetColliders)
+        private void CheckCollisions<T>(ICollider sourceCollider, ReadOnlyCollection<T> targetColliders)
         {
             ICollider targetCollider = null;
             CollisionSide biggestSourceSide = CollisionSide.None;
@@ -66,7 +60,7 @@
             }
         }
 
-        private static CollisionSide GetCollisionSide(Rectangle sourceRectangle, Rectangle targetRectangle)
+        private CollisionSide GetCollisionSide(Rectangle sourceRectangle, Rectangle targetRectangle)
         {
             CollisionSide sourceCollisionSide;
 
@@ -93,7 +87,7 @@
             return sourceCollisionSide;
         }
 
-        private static void CheckBorders(ICollider sourceCollider, int sourceWidth, int sourceHeight)
+        private void CheckBorders(ICollider sourceCollider, int sourceWidth, int sourceHeight)
         {
             if (sourceCollider.Physics.Location.X + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width)
             {

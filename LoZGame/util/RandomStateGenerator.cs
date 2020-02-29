@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace LoZClone
 {
-    class RandomStateGenerator
+    public class RandomStateGenerator
     {
         private Random randomSelect;
         private IEnemy enemy;
         private int min;
         private int max;
+
         public RandomStateGenerator(IEnemy enemy, int minStates,  int maxStates)
         {
             randomSelect = new Random();
