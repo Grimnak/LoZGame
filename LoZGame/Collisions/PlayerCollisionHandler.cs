@@ -18,8 +18,11 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            DeterminePushbackValues(collisionSide);
-            this.player.TakeDamage();
+            if (!(enemy is OldMan || enemy is Merchant))
+            {
+                DeterminePushbackValues(collisionSide);
+                this.player.TakeDamage();
+            }
         }
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)

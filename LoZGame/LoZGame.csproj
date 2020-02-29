@@ -60,6 +60,7 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Collisions\CollisionSide.cs" />
     <Compile Include="Collisions\EnemyCollisionHandler.cs" />
     <Compile Include="Collisions\CollisionDetection.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandArrow.cs" />
@@ -307,7 +308,7 @@
     <Compile Include="Player\PlayerClasses\Link.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\RandomMovementGenerator.cs" />
+    <Compile Include="Util\RandomStateGenerator.cs" />
     <Compile Include="util\SpriteSheetData.cs" />
     <Compile Include="util\EnemySpriteFactory.cs" />
     <Compile Include="Sprites\PlayerSpriteClasses\LinkAttackRightSprite.cs" />

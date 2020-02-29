@@ -28,6 +28,7 @@
         private BlockManager blockManager;
         private EntityManager entityManager;
         private EnemyManager enemyManager;
+        private CollisionDetection collisionDetector;
 
         private List<IController> controllers;
         private List<IPlayer> players;
@@ -57,6 +58,7 @@
             blockManager = new BlockManager();
             entityManager = new EntityManager();
             enemyManager = new EnemyManager();
+            collisionDetector = new CollisionDetection();
         }
 
         protected override void Initialize()
@@ -114,7 +116,7 @@
             this.itemManager.CurrentItem.Update();
             this.blockManager.Update();
             this.entityManager.Update();
-            CollisionDetection.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.projectiles.AsReadOnly());
+            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.projectiles.AsReadOnly());
             base.Update(gameTime);
         }
 
