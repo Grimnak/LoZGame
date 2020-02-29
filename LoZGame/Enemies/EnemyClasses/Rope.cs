@@ -42,6 +42,7 @@
 
         private IEnemyState currentState;
         private int lifeTime = 0;
+        private int health = 10;
         private readonly int directionChange = 40;
         private RandomStateGenerator randomStateGenerator;
         private List<IPlayer> players;

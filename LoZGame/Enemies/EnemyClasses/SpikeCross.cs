@@ -8,6 +8,7 @@
     {
         private EnemyCollisionHandler enemyCollisionHandler;
         private Rectangle bounds;
+        private LoZGame Game;
 
         public Rectangle Bounds
         {
@@ -45,6 +46,7 @@
         }
 
         private IEnemyState currentState;
+        private int health = 10;
         private int lifeTime = 0;
         private Vector2 initialPos;
         private readonly int directionChange = 40;
@@ -82,17 +84,17 @@
 
         private void updateLoc()
         {
-            int spikeX = (int)CurrentLocation.X;
-            int spikeY = (int)CurrentLocation.Y;
-            int linkX = (int)Game.Link.CurrentLocation.X;
-            int linkY = (int)Game.Link.CurrentLocation.Y;
+            int spikeX = (int)Physics.Location.X;
+            int spikeY = (int)Physics.Location.Y;
+            int linkX = (int)Game.Link.Physics.Location.X;
+            int linkY = (int)Game.Link.Physics.Location.Y;
 
             if (Attacking)
             {
                 Console.WriteLine("made it 1");
                 if (!Retreating)
                 {
-                    if (Math.Abs(CurrentLocation.X) + Math.Abs(CurrentLocation.Y) <= Math.Abs(initialPos.X) + Math.Abs(initialPos.Y) - 50)
+                    if (Math.Abs(Physics.Location.X) + Math.Abs(Physics.Location.Y) <= Math.Abs(initialPos.X) + Math.Abs(initialPos.Y) - 50)
                     {
                         Console.WriteLine("made it 2");
                         AttackFactor = -1;
@@ -101,7 +103,7 @@
                 }
                 else
                 {
-                    if (Math.Abs(CurrentLocation.X) + Math.Abs(CurrentLocation.Y) == Math.Abs(initialPos.X) + Math.Abs(initialPos.Y))
+                    if (Math.Abs(Physics.Location.X) + Math.Abs(Physics.Location.Y) == Math.Abs(initialPos.X) + Math.Abs(initialPos.Y))
                     {
                         Attacking = false;
                         currentState.Stop();
