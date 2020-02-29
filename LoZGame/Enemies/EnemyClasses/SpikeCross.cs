@@ -35,12 +35,12 @@
             get; set;
         }
 
-        public Boolean Attacking
+        public bool Attacking
         {
             get; set;
         }
 
-        public Boolean Retreating
+        public bool Retreating
         {
             get; set;
         }
@@ -89,14 +89,12 @@
             int linkX = (int)Game.Link.Physics.Location.X;
             int linkY = (int)Game.Link.Physics.Location.Y;
 
-            if (Attacking)
+          /*  if (Attacking)
             {
-                Console.WriteLine("made it 1");
                 if (!Retreating)
                 {
                     if (Math.Abs(Physics.Location.X) + Math.Abs(Physics.Location.Y) <= Math.Abs(initialPos.X) + Math.Abs(initialPos.Y) - 50)
                     {
-                        Console.WriteLine("made it 2");
                         AttackFactor = -1;
                         Retreating = true;
                     }
@@ -108,11 +106,13 @@
                         Attacking = false;
                         currentState.Stop();
                     }
-                }
+                } 
+
             }
             else
+            { */
+            if (!Attacking)
             {
-                Console.WriteLine("made it 3");
                 if (spikeX == linkX)
                 {
                     Attacking = true;
@@ -140,11 +140,6 @@
         public void Update()
         {
             this.updateLoc();
-            if (this.lifeTime > this.directionChange)
-            {
-                this.getNewDirection();
-                this.lifeTime = 0;
-            }
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
 
