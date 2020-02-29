@@ -118,30 +118,12 @@
                     Attacking = true;
                     AttackFactor = 3 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
                     currentState.MoveDown();
-                   /* if (spikeY < linkY)
-                    {
-
-                        currentState.MoveDown();
-                    }
-                    else
-                    {
-                        currentState.MoveUp();
-                    } */
                 }
                 else if (spikeY == linkY)
                 {
                     Attacking = true;
                     AttackFactor = 3 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
                     currentState.MoveRight();
-                  /*  if (spikeX < linkX)
-                    {
-
-                        currentState.MoveRight();
-                    }
-                    else
-                    {
-                        currentState.MoveLeft();
-                    } */
                 }
             }
             this.currentState.Update();
