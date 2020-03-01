@@ -12,17 +12,20 @@
         private int currentY;
         private int maxX;
         private int maxY;
+        private IPlayer player;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Dungeon"/> class.
         /// </summary>
         /// <param name="filePath">File path of the document to parse.</param>
-        public Dungeon(string filePath)
+        /// <param name="player">Player whose location to update.</param>
+        public Dungeon(string filePath, IPlayer player)
         {
             this.dungeonLayout = XMLHandler.Parse(filePath);
 
             BlockSpriteFactory.Instance.LoadAllTextures(LoZGame.Instance.Content);
 
+            this.player = player;
             this.currentX = 2;
             this.currentY = 5; // player spawns at curX/curY
             this.maxX = 6;
@@ -51,6 +54,9 @@
             {
                 this.currentY--;
                 this.LoadNewRoom();
+                this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
+                    (float)(LoZGame.Instance.HorizontalOffset + (LoZGame.Instance.TileWidth * 5.5)),
+                    (float)(LoZGame.Instance.VerticalOffset + (LoZGame.Instance.TileHeight * 6)));
             }
         }
 
@@ -62,7 +68,10 @@
             if (this.currentY + 1 < this.maxX && this.dungeonLayout[this.currentY + 1][this.currentX].Exists)
             {
                 this.currentY++;
-                this.LoadNewRoom(); 
+                this.LoadNewRoom();
+                this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
+                    (float)(LoZGame.Instance.HorizontalOffset + (LoZGame.Instance.TileWidth * 5.5)),
+                    (float)(LoZGame.Instance.VerticalOffset + (LoZGame.Instance.TileHeight * 0)));
             }
         }
 
@@ -74,7 +83,10 @@
             if (this.currentX - 1 >= 0 && this.dungeonLayout[this.currentY][this.currentX - 1].Exists)
             {
                 this.currentX--;
-                this.LoadNewRoom(); 
+                this.LoadNewRoom();
+                this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
+                    (float)(LoZGame.Instance.HorizontalOffset + (LoZGame.Instance.TileWidth * 11)),
+                    (float)(LoZGame.Instance.VerticalOffset + (LoZGame.Instance.TileHeight * 3)));
             }
         }
 
@@ -86,7 +98,10 @@
             if (this.currentX + 1 < this.maxX && this.dungeonLayout[this.currentY][this.currentX + 1].Exists)
             {
                 this.currentX++;
-                this.LoadNewRoom(); 
+                this.LoadNewRoom();
+                this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
+                    (float)(LoZGame.Instance.HorizontalOffset + (LoZGame.Instance.TileWidth * 0)),
+                    (float)(LoZGame.Instance.VerticalOffset + (LoZGame.Instance.TileHeight * 3)));
             }
         }
 

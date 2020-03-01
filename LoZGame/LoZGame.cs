@@ -84,7 +84,7 @@
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
 
             string file = "../../../../../etc/levels/dungeon1.xml";
-            this.dungeon = new Dungeon(file);
+            this.dungeon = new Dungeon(file, this.link);
 
 
             this.keyboardCommandLoader = new KeyboardCommandLoader(this.link, this.dungeon);
