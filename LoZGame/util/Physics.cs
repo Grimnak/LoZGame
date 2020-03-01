@@ -17,6 +17,11 @@
             this.Acceleration = acceleration;
         }
 
+        public void ResetVelocity()
+        {
+            this.Velocity = new Vector2(0, 0);
+        }
+
         public void Move()
         {
             this.Location = new Vector2(this.Location.X + this.Velocity.X, this.Location.Y + this.Velocity.Y);

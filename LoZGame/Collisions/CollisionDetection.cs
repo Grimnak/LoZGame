@@ -16,7 +16,6 @@
             {
                 if (!(player.State is DieState))
                 {
-                    // CheckCollisions<IBlock>(player, blocks);
                     CheckCollisions<IEnemy>(player, enemies);
                     CheckCollisions<IProjectile>(player, projectiles);
                     CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
@@ -34,6 +33,8 @@
                 if (block is BlockTile || block is MovableTile)
                 {
                     CheckCollisions<IPlayer>(block, players);
+                    CheckCollisions<IBlock>(block, blocks);
+                    CheckBorders(block, LoZGame.Instance.TileWidth, LoZGame.Instance.TileHeight);
                 }
             }
         }

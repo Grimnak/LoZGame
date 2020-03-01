@@ -91,6 +91,10 @@
             {
                 this.blockCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
+            else if (otherCollider is IBlock)
+            {
+                this.blockCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
         }
     }
 }
