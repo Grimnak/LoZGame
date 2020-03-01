@@ -7,6 +7,7 @@
     {
         private PlayerCollisionHandler linkCollisionHandler;
         private Rectangle bounds;
+        private int startingHealth = 5;
 
         public Rectangle Bounds
         {
@@ -17,6 +18,7 @@
         public Link()
         {
             this.Physics = new Physics(new Vector2(150, 200), new Vector2(0, 0), new Vector2(0, 0));
+            this.Health = new PlayerHealth(startingHealth);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
             this.CurrentColor = "Green";
             this.CurrentDirection = "Down";
@@ -40,7 +42,7 @@
 
         private void HandleDamage()
         {
-            if (this.DamageTimer > 0 && this.DamageCounter < 3)
+            if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
             {
                 this.DamageTimer--;
                 if (this.DamageTimer % 10 > 5)

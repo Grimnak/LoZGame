@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System;
     using Microsoft.Xna.Framework;
 
     public abstract class PlayerEssentials
@@ -22,18 +23,27 @@
 
         public Physics Physics { get; set; }
 
+        public PlayerHealth Health { get; set; }
+
         public void TakeDamage()
         {
-            if (this.DamageCounter >= 3)
+            /*    if (this.DamageCounter >= 3)
+                {
+                    this.State.Die();
+                }
+                */
+            this.Health.DamageHealth(1);
+            Console.WriteLine("Health: " + this.Health.CurrentHealth);
+            if (this.Health.CurrentHealth <= 0)
             {
                 this.State.Die();
             }
-
             if (this.DamageTimer <= 0)
             {
                 this.DamageCounter++;
                 this.DamageTimer = 100;
             }
+            
         }
 
         public void Idle()

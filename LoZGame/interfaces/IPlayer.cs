@@ -12,6 +12,8 @@
         /// </summary>
         IPlayerState State { get; set; }
 
+        PlayerHealth Health { get; set; }
+
         /// <summary>
         /// Gets or sets the current weapon of the player.
         /// </summary>

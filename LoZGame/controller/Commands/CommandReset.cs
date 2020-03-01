@@ -27,7 +27,7 @@
             this.player.Physics.Location = new Vector2(218, 184);
             this.player.CurrentDirection = "Down";
             this.player.State = new NullState(this.player);
-            this.player.DamageCounter = 0;
+            this.player.Health = new PlayerHealth(4);
             this.player.DamageTimer = 0;
             this.player.CurrentTint = Color.White;
 
