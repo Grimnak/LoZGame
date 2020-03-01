@@ -5,7 +5,6 @@
     /// </summary>
     public class CommandSilverArrow : ICommand
     {
-        private static readonly int PriorityValue = 5;
         private readonly IPlayer player;
 
 
@@ -17,9 +16,6 @@
         {
             this.player = player;
         }
-
-        /// <inheritdoc/>
-        public int Priority => PriorityValue;
 
         /// <inheritdoc/>
         public void Execute()

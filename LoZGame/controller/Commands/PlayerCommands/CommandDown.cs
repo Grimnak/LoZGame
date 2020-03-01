@@ -5,7 +5,6 @@
     /// </summary>
     public class CommandDown : ICommand
     {
-        private static readonly int PriorityValue = 1;
         private readonly IPlayer player;
 
         /// <summary>
@@ -16,9 +15,6 @@
         {
             this.player = player;
         }
-
-        /// <inheritdoc/>
-        public int Priority => PriorityValue;
 
         /// <inheritdoc/>
         public void Execute()

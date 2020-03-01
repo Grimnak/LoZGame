@@ -7,7 +7,6 @@
     /// </summary>
     public class CommandReset : ICommand
     {
-        private static readonly int PriorityValue = -1;
         private readonly IPlayer player;
         private readonly Dungeon dungeon;
 
@@ -21,9 +20,6 @@
             this.player = player;
             this.dungeon = dungeon;
         }
-
-        /// <inheritdoc/>
-        public int Priority => PriorityValue;
 
         /// <inheritdoc/>
         public void Execute()

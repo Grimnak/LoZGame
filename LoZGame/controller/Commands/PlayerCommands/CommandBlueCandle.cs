@@ -5,7 +5,6 @@
     /// </summary>
     public class CommandBlueCandle : ICommand
     {
-        private static readonly int PriorityValue = 6;
         private readonly IPlayer player;
 
         /// <summary>
@@ -25,7 +24,5 @@
                 LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.BlueCandle, this.player);
             }
         }
-
-        public int Priority => PriorityValue;
     }
 }
