@@ -1468,7 +1468,7 @@
         <tile type="walkable" idx="6">floor_tile</tile>
         <tile type="walkable" idx="7">floor_tile</tile>
         <tile type="walkable" idx="8">floor_tile</tile>
-        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
         <tile type="walkable" idx="10">floor_tile</tile>
         <tile type="walkable" idx="11">floor_tile</tile>
       </rrow>
@@ -1496,7 +1496,7 @@
         <tile type="walkable" idx="6">floor_tile</tile>
         <tile type="walkable" idx="7">floor_tile</tile>
         <tile type="walkable" idx="8">floor_tile</tile>
-        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
         <tile type="walkable" idx="10">floor_tile</tile>
         <tile type="walkable" idx="11">floor_tile</tile>
       </rrow>

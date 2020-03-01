@@ -5,7 +5,7 @@
     /// </summary>
     public class CommandUp : ICommand
     {
-        private static readonly int PriorityValue = 4;
+        private static readonly int PriorityValue = 1;
         private readonly IPlayer player;
 
         /// <summary>

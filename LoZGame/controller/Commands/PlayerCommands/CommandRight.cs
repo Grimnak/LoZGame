@@ -5,7 +5,7 @@
     /// </summary>
     public class CommandRight : ICommand
     {
-        private static readonly int PriorityValue = 3;
+        private static readonly int PriorityValue = 1;
         private readonly IPlayer player;
 
         /// <summary>
