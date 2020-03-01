@@ -34,6 +34,7 @@
         private List<IPlayer> players;
         private List<IEnemy> enemies;
         private List<IProjectile> projectiles;
+        private List<IItem> items;
 
         private static readonly LoZGame instance = new LoZGame();
 
@@ -65,6 +66,8 @@
         {
             this.controllers = new List<IController>();
             this.players = new List<IPlayer>();
+            this.projectiles = new List<IProjectile>();
+            this.items = new List<IItem>();
             this.projectiles = new List<IProjectile>();
             base.Initialize();
         }
@@ -113,7 +116,7 @@
 
             this.link.Update();
             this.enemyManager.Update();
-            this.itemManager.CurrentItem.Update();
+            this.itemManager.Update();
             this.blockManager.Update();
             this.entityManager.Update();
             this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.projectiles.AsReadOnly());
@@ -125,10 +128,10 @@
             this.GraphicsDevice.Clear(Color.Gray);
             this.spriteBatch.Begin();
             this.blockManager.Draw();
-            this.itemManager.CurrentItem.Draw(this.spriteBatch);
+            this.itemManager.Draw();
             this.link.Draw();
             this.enemyManager.Draw();
-            this.entityManager.Draw(this.spriteBatch);
+            this.entityManager.Draw();
             this.spriteBatch.End();
             base.Draw(gameTime);
         }

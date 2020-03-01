@@ -5,30 +5,31 @@
 
     internal class SwordBeamProjectile : IProjectile
     {
-        private static readonly int LinkSize = 32;
-        private static readonly int Width = 15;
-        private static readonly int Height = 16;
-        private static readonly int Offset = 4;
+        private const int LinkSize = 30;
+        private const int Offset = 4;
+        private const int Delay = 10;
 
-        private readonly Texture2D texture;      // the texture to pull frames from
+        private readonly Texture2D Texture;      // the texture to pull frames from
+        private readonly SpriteSheetData Data;
         private Rectangle frameOne;
         private Rectangle frameTwo;
         private Rectangle frameThree;
         private Rectangle frameFour;
         private Rectangle currentFrame;
-        private readonly int dX;
-        private readonly int dY;
         private int lifeTime;
         private readonly int scale;
         private readonly string direction;
         private readonly float rotation;
         private readonly int instance;
         private bool expired;
+        private float layer;
         private Vector2 tip;
         private Vector2 origin;
-        private static readonly int Delay = 10;
+        private Vector2 Size;
 
-        public Vector2 Location { get; set; }
+        public Physics Physics { get; set; }
+
+        public Rectangle Bounds { get; set; }
 
         private readonly bool hostile;
 
@@ -37,60 +38,55 @@
         private readonly ExplosionManager explosion;
 
         private static readonly int FrameDelay = 4;
-        private static readonly int Speed = 5;
+        private const int Speed = 5;
         private static readonly int MaxLifeTime = 40;
         private static readonly int XBound = 800;
         private static readonly int YBound = 480;
 
-        public SwordBeamProjectile(Texture2D texture, IPlayer player, int scale, int instance, ExplosionManager explosion)
+        public SwordBeamProjectile(Texture2D texture, SpriteSheetData data, IPlayer player, int scale, int instance, ExplosionManager explosion)
         {
-            this.origin = new Vector2(Width / 2, Height / 2);
-            this.texture = texture;
-            this.frameOne = new Rectangle(0, 0, Width, Height);
-            this.frameTwo = new Rectangle(0, 16, Width, Height);
-            this.frameThree = new Rectangle(0, 32, Width, Height);
-            this.frameFour = new Rectangle(0, 48, Width, Height);
+            this.Texture = texture;
+            this.Data = data;
+            this.scale = scale;
+            this.Size = new Vector2(this.Data.Width * this.scale, this.Data.Height * this.scale);
+            this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
+            this.frameOne = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
+            this.frameTwo = new Rectangle(0, this.Data.Height, this.Data.Width, this.Data.Height);
+            this.frameThree = new Rectangle(0, this.Data.Height * 2, this.Data.Width, this.Data.Height);
+            this.frameFour = new Rectangle(0, this.Data.Height * 3, this.Data.Width, this.Data.Height);
             this.explosion = explosion;
             this.currentFrame = this.frameOne;
             this.lifeTime = MaxLifeTime;
-            this.scale = scale;
             this.direction = player.CurrentDirection;
             Vector2 loc = player.Physics.Location;
             this.hostile = false;
 
             if (this.direction.Equals("Up"))
             {
-                this.Location = new Vector2(loc.X + (LinkSize - (Width * scale / 2)), loc.Y);
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSize - (this.Data.Width * scale / 2)), loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
                 this.rotation = MathHelper.Pi;
-                this.dX = 0;
-                this.dY = -1;
-                this.tip = new Vector2(Width - Offset, 0);
+                this.tip = new Vector2(this.Size.X - Offset, 0);
             }
             else if (this.direction.Equals("Left"))
             {
-                this.Location = new Vector2(loc.X, loc.Y + (LinkSize - (Width * scale / 2)));
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize - (this.Data.Width * scale / 2))), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
                 this.rotation = 1 * MathHelper.PiOver2;
-                this.dX = -1;
-                this.dY = 0;
-                this.tip = new Vector2(-1 * Offset, Width);
+                this.tip = new Vector2(-1 * Offset, this.Size.X / 2);
             }
             else if (this.direction.Equals("Right"))
             {
-                this.Location = new Vector2(loc.X + LinkSize, loc.Y + (LinkSize - (Width * scale / 2)));
+                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize - (this.Data.Width * scale / 2))), new Vector2(Speed, 0), new Vector2(0, 0));
                 this.rotation = -1 * MathHelper.PiOver2;
-                this.dX = 1;
-                this.dY = 0;
-                this.tip = new Vector2((Height * scale) - Offset, Width);
+                this.tip = new Vector2(this.Size.Y - Offset, this.Size.X / 2);
             }
             else
             {
-                this.Location = new Vector2(loc.X + (LinkSize - (Width * scale / 2)), loc.Y + LinkSize);
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSize - (this.Data.Width * scale / 2)), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, 0));
                 this.rotation = 0;
-                this.dX = 0;
-                this.dY = 1;
-                this.tip = new Vector2(Width - Offset, Height * scale);
+                this.tip = new Vector2((this.Size.X / 2) - Offset, this.Size.Y);
             }
-
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.layer = this.Physics.Location.Y + this.Size.Y;
             this.instance = instance;
             this.expired = false;
         }
@@ -121,7 +117,15 @@
 
         private void CheckBounds()
         {
-            if (this.Location.X >= XBound - Height || this.Location.X <= 0 || this.Location.Y >= YBound - Height || this.Location.Y <= 0)
+            if (this.Physics.Location.X >= XBound - this.tip.X || this.Physics.Location.X <= 0 || this.Physics.Location.Y >= YBound - this.tip.Y || this.Physics.Location.Y <= 0)
+            {
+                this.lifeTime = 0;
+            }
+        }
+
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IEnemy)
             {
                 this.lifeTime = 0;
             }
@@ -139,20 +143,22 @@
 
                 if (this.lifeTime <= 0)
                 {
-                    this.explosion.AddExplosion(this.explosion.SwordExplosion, new Vector2(this.Location.X + this.tip.X, this.Location.Y + this.tip.Y));
+                    this.explosion.AddExplosion(this.explosion.SwordExplosion, new Vector2(this.Physics.Location.X + this.tip.X, this.Physics.Location.Y + this.tip.Y));
                     this.expired = true;
                 }
 
-                this.Location = new Vector2(this.Location.X + (this.dX * Speed), this.Location.Y + (this.dY * Speed));
+                this.Physics.Move();
+                this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+                this.layer = this.Physics.Location.Y + this.Size.Y;
                 this.CheckBounds();
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
             if (this.lifeTime < MaxLifeTime - Delay)
             {
-                spriteBatch.Draw(this.texture, this.Location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, 0f);
+                LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
             }
         }
     }

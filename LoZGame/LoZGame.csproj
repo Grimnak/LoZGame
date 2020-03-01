@@ -63,6 +63,7 @@
     <Compile Include="Collisions\CollisionSide.cs" />
     <Compile Include="Collisions\EnemyCollisionHandler.cs" />
     <Compile Include="Collisions\CollisionDetection.cs" />
+    <Compile Include="Collisions\ItemCollisionHandler.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandArrow.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackA.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackB.cs" />
@@ -198,7 +199,7 @@
     <Compile Include="Enemies\EnemyStates\ZolStates\LeftMovingZolState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\RightMovingZolState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\UpMovingZolState.cs" />
-    <Compile Include="Interfaces\IItemSprite.cs" />
+    <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Interfaces\ICollider.cs" />
     <Compile Include="Interfaces\IProjectile.cs" />
     <Compile Include="Interfaces\IBlock.cs" />
@@ -260,7 +261,7 @@
     <Compile Include="Sprites\ItemSpriteClasses\Rupee.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\SecondPotion.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\SilverArrow.cs" />
-    <Compile Include="Sprites\ItemSpriteClasses\StepLadder.cs" />
+    <Compile Include="Sprites\ItemSpriteClasses\Ladder.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\TriForce.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\WhiteSword.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\WoodenSword.cs" />

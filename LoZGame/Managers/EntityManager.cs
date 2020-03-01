@@ -28,11 +28,11 @@
             this.EnemyProjectileManager.Update();
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            this.projectile.Draw(spriteBatch);
-            this.explosion.Draw(spriteBatch);
-            this.enemyProjectile.Draw(spriteBatch);
+            this.projectile.Draw();
+            this.explosion.Draw();
+            this.enemyProjectile.Draw();
         }
 
         public void Clear()

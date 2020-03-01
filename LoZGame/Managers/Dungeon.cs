@@ -112,7 +112,7 @@
             }
 
             //TODO change to IItem once separated
-            foreach (IItemSprite item in this.dungeonLayout[this.currentY][this.currentX].Items)
+            foreach (IItem item in this.dungeonLayout[this.currentY][this.currentX].Items)
             {
                 // ItemManager.Instance.Add(item);
             }

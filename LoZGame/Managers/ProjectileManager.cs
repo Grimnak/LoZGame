@@ -206,11 +206,11 @@
             }
         }
 
-        public void Draw(SpriteBatch spritebatch)
+        public void Draw()
         {
             foreach (KeyValuePair<int, IProjectile> item in this.itemList)
             {
-                item.Value.Draw(spritebatch);
+                item.Value.Draw();
             }
         }
     }

@@ -5,12 +5,11 @@
 
     internal class ArrowProjectile : IProjectile
     {
-        private static readonly int TravelRate = 7;
+        private static readonly int Speed = 10;
         private static readonly int LinkSize = 32;
-        private static readonly int Width = 5;
-        private static readonly int Height = 16;
 
-        private readonly Texture2D texture;      // the texture to pull frames from
+        private readonly Texture2D Texture;      // the texture to pull frames from
+        private readonly SpriteSheetData Data;
         private Rectangle frame;
         private Vector2 origin;
         private int lifeTime;
@@ -19,59 +18,69 @@
         private readonly float rotation;
         private readonly int dX;
         private readonly int dY;
-
         private readonly int instance;
         private bool expired;
         private readonly bool hostile;
+        private float layer;
+        private Vector2 Size;
 
         public bool IsHostile => this.hostile;
 
-        public Vector2 Location { get; set; }
+        public Physics Physics { get; set; }
 
-        public ArrowProjectile(Texture2D texture, Vector2 loc, string direction, int scale, int instance)
+        public Rectangle Bounds { get; set; }
+
+        public ArrowProjectile(Texture2D texture, SpriteSheetData data, Vector2 loc, string direction, int scale, int instance)
         {
-            this.texture = texture;
-            this.frame = new Rectangle(154, 0, 5, 16);
+            this.Texture = texture;
+            this.Data = data;
+            this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
+            this.frame = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
             this.lifeTime = 100;
             this.scale = scale;
             this.direction = direction;
             this.hostile = false;
             this.instance = instance;
             this.expired = false;
-            this.origin = new Vector2(Width * scale / 2, Height * scale / 2);
             if (this.direction.Equals("Up"))
             {
-                this.Location = new Vector2(loc.X - ((Width * scale) - LinkSize), loc.Y);
+                this.Physics = new Physics(new Vector2(loc.X - this.Size.X - LinkSize, loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
                 this.rotation = 0;
-                this.dX = 0;
-                this.dY = -1;
             }
             else if (this.direction.Equals("Left"))
             {
-                this.Location = new Vector2(loc.X, loc.Y - (((Width * scale) - LinkSize) / 2));
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y - ((this.Size.X - LinkSize) / 2)), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
                 this.rotation = -1 * MathHelper.PiOver2;
-                this.dX = -1;
-                this.dY = 0;
             }
             else if (this.direction.Equals("Right"))
             {
-                this.Location = new Vector2(loc.X + LinkSize, loc.Y - ((Width * scale) - LinkSize));
+                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y - (this.Size.X - LinkSize)), new Vector2(Speed, 0), new Vector2(0, 0));
                 this.rotation = MathHelper.PiOver2;
-                this.dX = 1;
-                this.dY = 0;
             }
             else
             {
-                this.Location = new Vector2(loc.X - (((Width * scale) - LinkSize) / 2), loc.Y + LinkSize);
+                this.Physics = new Physics(new Vector2(loc.X - ((this.Size.X - LinkSize) / 2), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, 0));
                 this.rotation = MathHelper.Pi;
-                this.dX = 0;
-                this.dY = 1;
             }
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.layer = this.Physics.Location.Y + this.Size.Y;
         }
 
         public bool IsExpired => this.expired;
 
         public int Instance => this.instance;
+
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IPlayer)
+            {
+                // do nothing
+            }
+            else
+            {
+                this.lifeTime = 0;
+            }
+        }
 
         public void Update()
         {
@@ -80,13 +89,14 @@
             {
                 this.expired = true;
             }
-
-            this.Location = new Vector2(this.Location.X + (this.dX * TravelRate), this.Location.Y + (this.dY * TravelRate));
+            this.Physics.Move();
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.layer = this.Physics.Location.Y + this.Size.Y;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            spriteBatch.Draw(this.texture, this.Location, this.frame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, 0f);
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.frame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }
 }
