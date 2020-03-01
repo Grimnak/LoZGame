@@ -8,6 +8,7 @@
         private IBlock block;
         private float xDirection;
         private float yDirection;
+        private const float Acceleration = -0.5f;
 
         public BlockCollisionHandler(IBlock block)
         {
@@ -30,9 +31,7 @@
         {
             DetermineCollisionSide(collisionSide);
             this.block.Physics.Velocity = new Vector2(xDirection * player.MoveSpeed, yDirection * player.MoveSpeed);
-            Console.WriteLine("Got to DeterminePushVelocity call.");
-            Console.WriteLine("Determined block collision side: " + collisionSide);
-            Console.WriteLine("Current MovableTile Velocity: " + this.block.Physics.Velocity);
+            this.block.Physics.Acceleration = new Vector2(xDirection * Acceleration, yDirection * Acceleration);
         }
 
         private void DetermineCollisionSide(CollisionDetection.CollisionSide collisionSide)

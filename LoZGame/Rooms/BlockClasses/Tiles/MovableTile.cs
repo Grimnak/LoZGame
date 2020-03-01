@@ -54,13 +54,17 @@
                 case "blue_statue_right":
                     return BlockSpriteFactory.Instance.BlueStatueRight(this.Physics.Location);
                 default:
-                    return BlockSpriteFactory.Instance.OrangeMovableSquare(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.MovableSquare(this.Physics.Location);
             }
         }
 
         private void HandlePush()
         {
-            this.Physics.Move();
+            if (Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0)
+            {
+                this.Physics.Move();
+                this.Physics.Accelerate();
+            }
         }
 
         /// <inheritdoc/>

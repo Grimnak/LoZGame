@@ -16,6 +16,7 @@
             {
                 if (!(player.State is DieState))
                 {
+                    // CheckCollisions<IBlock>(player, blocks);
                     CheckCollisions<IEnemy>(player, enemies);
                     CheckCollisions<IProjectile>(player, projectiles);
                     CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
@@ -30,7 +31,7 @@
 
             foreach (IBlock block in blocks)
             {
-                if (block is MovableTile)
+                if (block is BlockTile || block is MovableTile)
                 {
                     CheckCollisions<IPlayer>(block, players);
                 }
