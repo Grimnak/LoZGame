@@ -35,6 +35,9 @@
         private List<IProjectile> projectiles;
         private List<IItem> items;
 
+        private Color dungeonTint = Color.White;
+        public Color DungeonTint { get { return dungeonTint; } set { dungeonTint = value; } }
+
         public IPlayer Link
         {
             get { return this.link; }

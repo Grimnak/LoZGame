@@ -23,10 +23,9 @@
             this.CurrentColor = "Green";
             this.CurrentDirection = "Down";
             this.CurrentWeapon = "Wood";
-            this.CurrentTint = Color.White;
+            this.CurrentTint = LoZGame.Instance.DungeonTint;
             this.MoveSpeed = 2;
             this.DamageTimer = 0;
-            this.DamageCounter = 0;
             this.State = new NullState(this);
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
         }

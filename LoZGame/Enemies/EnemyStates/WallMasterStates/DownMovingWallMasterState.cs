@@ -6,7 +6,7 @@
     public class DownMovingWallMasterState : IEnemyState
     {
         private readonly WallMaster wallMaster;
-        private readonly IEnemySprite sprite;
+        private readonly ISprite sprite;
 
         public DownMovingWallMasterState(WallMaster wallMaster)
         {
@@ -78,7 +78,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.wallMaster.Physics.Location, Color.White);
+            this.sprite.Draw(this.wallMaster.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }

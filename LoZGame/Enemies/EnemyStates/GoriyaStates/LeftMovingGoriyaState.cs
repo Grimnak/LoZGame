@@ -6,7 +6,7 @@
     public class LeftMovingGoriyaState : IEnemyState
     {
         private readonly Goriya goriya;
-        private readonly IEnemySprite sprite;
+        private readonly ISprite sprite;
 
         public LeftMovingGoriyaState(Goriya goriya)
         {
@@ -79,7 +79,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.goriya.Physics.Location, Color.White);
+            this.sprite.Draw(this.goriya.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }

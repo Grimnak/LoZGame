@@ -6,7 +6,7 @@
     public class RightMovingGelState : IEnemyState
     {
         private readonly Gel gel;
-        private readonly IEnemySprite sprite;
+        private readonly ISprite sprite;
 
         public RightMovingGelState(Gel gel)
         {
@@ -81,7 +81,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.gel.Physics.Location, Color.White);
+            this.sprite.Draw(this.gel.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }

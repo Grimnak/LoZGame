@@ -6,7 +6,7 @@
     public class RightMovingZolState : IEnemyState
     {
         private readonly Zol zol;
-        private readonly IEnemySprite sprite;
+        private readonly ISprite sprite;
 
         public RightMovingZolState(Zol zol)
         {
@@ -81,7 +81,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.zol.Physics.Location, Color.White);
+            this.sprite.Draw(this.zol.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }
