@@ -104,6 +104,13 @@
                 (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * gridY)));
         }
 
+        public Vector2 GridToScreenSpecialVector(float gridX, float gridY)
+        {
+            return new Vector2(
+                (float)(BlockSpriteFactory.Instance.TileWidth * gridX),
+                (float)(BlockSpriteFactory.Instance.TileHeight * gridY));
+        }
+
         /*
          * args:
          * x => tile X location
@@ -210,9 +217,19 @@
                     this.blocks.Add(new MovableTile(location, name));
                     break;
                 case "walkable":
+                    if (name.Equals("ladder_tile") || name.Equals("black_tile"))
+                    {
+                        location = this.GridToScreenSpecialVector(float.Parse(x), float.Parse(y));
+                    }
+
                     this.blocks.Add(new Tile(location, name));
                     break;
                 case "block":
+                    if (name.Equals("basement_brick_tile"))
+                    {
+                        location = this.GridToScreenSpecialVector(float.Parse(x), float.Parse(y));
+                    }
+
                     this.blocks.Add(new BlockTile(location, name));
                     break;
                 default:

@@ -284,13 +284,13 @@
         <tile type="block" idx="4">basement_brick_tile</tile>
         <tile type="block" idx="5">basement_brick_tile</tile>
         <tile type="block" idx="6">basement_brick_tile</tile>
-        <tile type="walkable" idx="7">gap_tile</tile>
-        <tile type="walkable" idx="8">gap_tile</tile>
-        <tile type="walkable" idx="9">gap_tile</tile>
-        <tile type="walkable" idx="10">gap_tile</tile>
-        <tile type="walkable" idx="11">gap_tile</tile>
-        <tile type="walkable" idx="12">gap_tile</tile>
-        <tile type="walkable" idx="13">gap_tile</tile>
+        <tile type="walkable" idx="7">black_tile</tile>
+        <tile type="walkable" idx="8">black_tile</tile>
+        <tile type="walkable" idx="9">black_tile</tile>
+        <tile type="walkable" idx="10">black_tile</tile>
+        <tile type="walkable" idx="11">black_tile</tile>
+        <tile type="walkable" idx="12">black_tile</tile>
+        <tile type="walkable" idx="13">black_tile</tile>
         <tile type="block" idx="14">basement_brick_tile</tile>
         <tile type="block" idx="15">basement_brick_tile</tile>
       </rrow>
@@ -302,13 +302,13 @@
         <tile type="block" idx="4">basement_brick_tile</tile>
         <tile type="block" idx="5">basement_brick_tile</tile>
         <tile type="block" idx="6">basement_brick_tile</tile>
-        <tile type="walkable" idx="7">gap_tile</tile>
-        <tile type="walkable" idx="8">gap_tile</tile>
-        <tile type="walkable" idx="9">gap_tile</tile>
-        <tile type="walkable" idx="10">gap_tile</tile>
-        <tile type="walkable" idx="11">gap_tile</tile>
-        <tile type="walkable" idx="12">gap_tile</tile>
-        <tile type="walkable" idx="13">gap_tile</tile>
+        <tile type="walkable" idx="7">black_tile</tile>
+        <tile type="walkable" idx="8">black_tile</tile>
+        <tile type="walkable" idx="9">black_tile</tile>
+        <tile type="walkable" idx="10">black_tile</tile>
+        <tile type="walkable" idx="11">black_tile</tile>
+        <tile type="walkable" idx="12">black_tile</tile>
+        <tile type="walkable" idx="13">black_tile</tile>
         <tile type="block" idx="14">basement_brick_tile</tile>
         <tile type="block" idx="15">basement_brick_tile</tile>
       </rrow>
@@ -320,13 +320,13 @@
         <tile type="block" idx="4">basement_brick_tile</tile>
         <tile type="block" idx="5">basement_brick_tile</tile>
         <tile type="block" idx="6">basement_brick_tile</tile>
-        <tile type="walkable" idx="7">gap_tile</tile>
-        <tile type="walkable" idx="8">gap_tile</tile>
-        <tile type="walkable" idx="9">gap_tile</tile>
-        <tile type="walkable" idx="10">gap_tile</tile>
-        <tile type="walkable" idx="11">gap_tile</tile>
-        <tile type="walkable" idx="12">gap_tile</tile>
-        <tile type="walkable" idx="13">gap_tile</tile>
+        <tile type="walkable" idx="7">black_tile</tile>
+        <tile type="walkable" idx="8">black_tile</tile>
+        <tile type="walkable" idx="9">black_tile</tile>
+        <tile type="walkable" idx="10">black_tile</tile>
+        <tile type="walkable" idx="11">black_tile</tile>
+        <tile type="walkable" idx="12">black_tile</tile>
+        <tile type="walkable" idx="13">black_tile</tile>
         <tile type="block" idx="14">basement_brick_tile</tile>
         <tile type="block" idx="15">basement_brick_tile</tile>
       </rrow>
@@ -351,36 +351,36 @@
       <rrow idx="6">
         <tile type="block" idx="0">basement_brick_tile</tile>
         <tile type="block" idx="1">basement_brick_tile</tile>
-        <tile type="walkable" idx="2">gap_tile</tile>
+        <tile type="walkable" idx="2">black_tile</tile>
         <tile type="walkable" idx="3">ladder_tile</tile>
-        <tile type="walkable" idx="4">gap_tile</tile>
-        <tile type="walkable" idx="5">gap_tile</tile>
-        <tile type="walkable" idx="6">gap_tile</tile>
-        <tile type="walkable" idx="7">gap_tile</tile>
-        <tile type="walkable" idx="8">gap_tile</tile>
-        <tile type="walkable" idx="9">gap_tile</tile>
-        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="walkable" idx="4">black_tile</tile>
+        <tile type="walkable" idx="5">black_tile</tile>
+        <tile type="walkable" idx="6">black_tile</tile>
+        <tile type="walkable" idx="7">black_tile</tile>
+        <tile type="walkable" idx="8">black_tile</tile>
+        <tile type="walkable" idx="9">black_tile</tile>
+        <tile type="walkable" idx="10">black_tile</tile>
         <tile type="walkable" idx="11">ladder_tile</tile>
-        <tile type="walkable" idx="12">gap_tile</tile>
-        <tile type="walkable" idx="13">gap_tile</tile>
+        <tile type="walkable" idx="12">black_tile</tile>
+        <tile type="walkable" idx="13">black_tile</tile>
         <tile type="block" idx="14">basement_brick_tile</tile>
         <tile type="block" idx="15">basement_brick_tile</tile>
       </rrow>
       <rrow idx="7">
         <tile type="block" idx="0">basement_brick_tile</tile>
         <tile type="block" idx="1">basement_brick_tile</tile>
-        <tile type="walkable" idx="2">gap_tile</tile>
+        <tile type="walkable" idx="2">black_tile</tile>
         <tile type="walkable" idx="3">ladder_tile</tile>
-        <tile type="walkable" idx="4">gap_tile</tile>
-        <tile type="walkable" idx="5">gap_tile</tile>
-        <tile type="walkable" idx="6">gap_tile</tile>
-        <tile type="walkable" idx="7">gap_tile</tile>
-        <tile type="walkable" idx="8">gap_tile</tile>
-        <tile type="walkable" idx="9">gap_tile</tile>
-        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="walkable" idx="4">black_tile</tile>
+        <tile type="walkable" idx="5">black_tile</tile>
+        <tile type="walkable" idx="6">black_tile</tile>
+        <tile type="walkable" idx="7">black_tile</tile>
+        <tile type="walkable" idx="8">black_tile</tile>
+        <tile type="walkable" idx="9">black_tile</tile>
+        <tile type="walkable" idx="10">black_tile</tile>
         <tile type="walkable" idx="11">ladder_tile</tile>
-        <tile type="walkable" idx="12">gap_tile</tile>
-        <tile type="walkable" idx="13">gap_tile</tile>
+        <tile type="walkable" idx="12">black_tile</tile>
+        <tile type="walkable" idx="13">black_tile</tile>
         <tile type="block" idx="14">basement_brick_tile</tile>
         <tile type="block" idx="15">basement_brick_tile</tile>
       </rrow>

@@ -1,7 +1,7 @@
 ﻿namespace LoZClone
 {
     using System.Collections.Generic;
-
+    using Microsoft.Xna.Framework;
     /// <summary>
     /// Manager for all dungeon rooms.
     /// </summary>
@@ -25,12 +25,23 @@
 
             BlockSpriteFactory.Instance.LoadAllTextures(LoZGame.Instance.Content);
 
+            LoZGame.Instance.DungeonTint = Color.White;
             this.player = player;
             this.currentX = 2;
             this.currentY = 5; // player spawns at curX/curY
             this.maxX = 6;
             this.maxY = 6;
             this.LoadNewRoom();
+        }
+
+        public int CurrentRoomX
+        {
+            get { return currentX; }
+        }
+
+        public int CurrentRoomY
+        {
+            get { return currentY; }
         }
 
         /// <summary>

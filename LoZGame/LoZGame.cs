@@ -34,6 +34,7 @@
         private List<IItem> items;
 
         private Color dungeonTint = Color.White;
+
         public Color DungeonTint { get { return dungeonTint; } set { dungeonTint = value; } }
 
         public IPlayer Link
@@ -132,7 +133,10 @@
         {
             this.GraphicsDevice.Clear(Color.Gray);
             this.spriteBatch.Begin();
-            this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
+            if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
+            {
+                this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
+            }
             this.doorManager.Draw();
             this.blockManager.Draw();
             this.itemManager.Draw();

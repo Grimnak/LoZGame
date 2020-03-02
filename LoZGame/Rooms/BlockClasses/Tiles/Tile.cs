@@ -44,6 +44,8 @@
             {
                 case "gap_tile":
                     return BlockSpriteFactory.Instance.GapTile(this.Physics.Location);
+                case "black_tile":
+                    return BlockSpriteFactory.Instance.GapTile(this.Physics.Location);
                 case "ladder_tile":
                     return BlockSpriteFactory.Instance.LadderTile(this.Physics.Location);
                 case "spotted_tile":
