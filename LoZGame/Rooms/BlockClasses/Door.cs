@@ -51,5 +51,15 @@ namespace LoZClone
         {
             return this.location;
         }
+
+        public void Update()
+        {
+            this.state.Update();
+        }
+
+        public void Draw()
+        {
+            this.state.Draw();
+        }
     }
 }

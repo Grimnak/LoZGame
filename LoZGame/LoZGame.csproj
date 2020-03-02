@@ -107,6 +107,7 @@
     <Compile Include="Interfaces\IDoorState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\HorizontalSpikeCrossState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\VerticalSpikeCrossState.cs" />
+    <Compile Include="Managers\DoorManager.cs" />
     <Compile Include="Managers\Dungeon.cs" />
     <Compile Include="Managers\BlockManager.cs" />
     <Compile Include="Rooms\BlockClasses\Door.cs" />

@@ -29,25 +29,25 @@ namespace LoZClone
             {
                 case "N":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp(UpScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown(UpScreenLoc);
                         location = UpScreenLoc;
                         break;
                     }
                 case "E":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight(RightScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft(RightScreenLoc);
                         location = RightScreenLoc;
                         break;
                     }
                 case "S":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown(DownScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp(DownScreenLoc);
                         location = DownScreenLoc;
                         break;
                     }
                 case "W":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft(LeftScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight(LeftScreenLoc);
                         location = LeftScreenLoc;
                         break;
                     }
@@ -57,7 +57,6 @@ namespace LoZClone
         public void Bombed()
         {
             Console.WriteLine("Cannot Bomb Normal Door!");
-            throw new NotImplementedException();
         }
 
         public void Close()
@@ -77,7 +76,6 @@ namespace LoZClone
 
         public void Update()
         {
-            throw new NotImplementedException();
         }
     }
 }

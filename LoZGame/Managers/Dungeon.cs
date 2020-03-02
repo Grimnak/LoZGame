@@ -114,7 +114,7 @@
             LoZGame.Instance.Enemies.Clear();
             LoZGame.Instance.Blocks.Clear();
             //LoZGame.Instance.Items.Clear();
-            //LoZGame.Instance.Doors.Clear();
+            LoZGame.Instance.Doors.Clear();
 
             foreach (IEnemy enemy in this.dungeonLayout[this.currentY][this.currentX].Enemies)
             {
@@ -134,7 +134,7 @@
 
             foreach (Door door in this.dungeonLayout[this.currentY][this.currentX].Doors)
             {
-                // DoorManager.Instance.Add(door);
+                LoZGame.Instance.Doors.Add(door);
             }
         }
     }

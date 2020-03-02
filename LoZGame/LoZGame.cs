@@ -28,11 +28,11 @@
         private BlockManager blockManager;
         private EntityManager entityManager;
         private EnemyManager enemyManager;
+        private DoorManager doorManager;
         private CollisionDetection collisionDetector;
 
         private List<IController> controllers;
         private List<IPlayer> players;
-        private List<IEnemy> enemies;
         private List<IProjectile> projectiles;
         private List<IItem> items;
 
@@ -56,6 +56,8 @@
 
         public EnemyManager Enemies { get { return enemyManager; } }
 
+        public DoorManager Doors { get { return doorManager; } }
+
         private LoZGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
@@ -67,6 +69,7 @@
             blockManager = new BlockManager();
             entityManager = new EntityManager();
             enemyManager = new EnemyManager();
+            doorManager = new DoorManager();
             collisionDetector = new CollisionDetection();
         }
 
@@ -82,7 +85,7 @@
 
         protected override void LoadContent()
         {
-            background = Content.Load<Texture2D>("dungeon");
+            this.background = Content.Load<Texture2D>("dungeon");
             LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
             this.link = new Link();
 
@@ -94,20 +97,15 @@
             string file = "../../../../../etc/levels/dungeon1.xml";
             this.dungeon = new Dungeon(file, this.link);
 
-
             this.keyboardCommandLoader = new KeyboardCommandLoader(this.link, this.dungeon);
             this.mouseCommandLoader = new MouseCommandLoader(this.dungeon);
-
 
             this.controllers.Add(new KeyboardController(this.keyboardCommandLoader));
             this.controllers.Add(new MouseController(this.mouseCommandLoader));
 
-
             this.players.Add(this.link);
 
-
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
-
 
             this.itemManager.LoadSprites(384, 184);
         }
@@ -127,6 +125,7 @@
             this.enemyManager.Update();
             this.itemManager.Update();
             this.blockManager.Update();
+            this.doorManager.Update();
             this.entityManager.Update();
             this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.projectiles.AsReadOnly());
             base.Update(gameTime);
@@ -137,6 +136,7 @@
             this.GraphicsDevice.Clear(Color.Gray);
             this.spriteBatch.Begin();
             this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
+            this.doorManager.Draw();
             this.blockManager.Draw();
             this.itemManager.Draw();
             this.link.Draw();

@@ -31,7 +31,6 @@ namespace LoZClone
         public void Close()
         {
             Console.WriteLine("Cannot Close Hidden Door!");
-            throw new NotImplementedException();
         }
 
         public void Draw()
@@ -42,12 +41,10 @@ namespace LoZClone
         public void Open()
         {
             Console.WriteLine("Cannot Open Hidden Door!");
-            throw new NotImplementedException();
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
         }
     }
 }

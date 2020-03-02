@@ -26,25 +26,25 @@ namespace LoZClone
             {
                 case "N":
                 {
-                    this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp(UpScreenLoc);
+                    this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown(UpScreenLoc);
                     location = UpScreenLoc;
                     break;
                 }
                 case "E":
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight(RightScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft(RightScreenLoc);
                         location = RightScreenLoc;
                         break;
                 }
                 case "S":
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown(DownScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp(DownScreenLoc);
                         location = DownScreenLoc;
                         break;
                 }
                 case "W":
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft(LeftScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight(LeftScreenLoc);
                         location = LeftScreenLoc;
                         break;
                 }
@@ -54,13 +54,11 @@ namespace LoZClone
         public void Bombed()
         {
             Console.WriteLine("Cannot Bomb Normal Door!");
-            throw new NotImplementedException();
         }
 
         public void Close()
         {
             this.door.Close();
-            throw new NotImplementedException();
         }
 
         public void Draw()
@@ -71,12 +69,10 @@ namespace LoZClone
         public void Open()
         {
             Console.WriteLine("Cannot Open Unlocked Door!");
-            throw new NotImplementedException();
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
         }
     }
 }

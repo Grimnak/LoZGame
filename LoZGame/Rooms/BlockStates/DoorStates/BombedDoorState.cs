@@ -26,25 +26,25 @@ namespace LoZClone
             {
                 case "N":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningUp(UpScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningDown(UpScreenLoc);
                         location = UpScreenLoc;
                         break;
                     }
                 case "E":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningRight(RightScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningLeft(RightScreenLoc);
                         location = RightScreenLoc;
                         break;
                     }
                 case "S":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningDown(DownScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningUp(DownScreenLoc);
                         location = DownScreenLoc;
                         break;
                     }
                 case "W":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningLeft(LeftScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningRight(LeftScreenLoc);
                         location = LeftScreenLoc;
                         break;
                     }
@@ -55,13 +55,11 @@ namespace LoZClone
         public void Bombed()
         {
             Console.WriteLine("Cannot Bomb Bombed Door!");
-            throw new NotImplementedException();
         }
 
         public void Close()
 {
             Console.WriteLine("Cannot Close Bombed Door!");
-            throw new NotImplementedException();
         }
 
         public void Draw()
@@ -72,12 +70,10 @@ namespace LoZClone
         public void Open()
         {
             Console.WriteLine("Cannot Open Bombed Door!");
-            throw new NotImplementedException();
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
         }
     }
 }
