@@ -10,7 +10,7 @@
         {
         }
 
-        public void Update(ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies, ReadOnlyCollection<IProjectile> projectiles)
+        public void Update(ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies, ReadOnlyCollection<IBlock> blocks, ReadOnlyCollection<IProjectile> projectiles)
         {
             foreach (IPlayer player in players)
             {
@@ -26,6 +26,17 @@
             {
                 CheckCollisions<IProjectile>(enemy, projectiles);
                 CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
+            }
+
+            foreach (IBlock block in blocks)
+            {
+                if (block is BlockTile || block is MovableTile)
+                {
+                    CheckCollisions<IPlayer>(block, players);
+                    CheckCollisions<IEnemy>(block, enemies);
+                    CheckCollisions<IBlock>(block, blocks);
+                    CheckBorders(block, LoZGame.Instance.TileWidth, LoZGame.Instance.TileHeight);
+                }
             }
         }
 

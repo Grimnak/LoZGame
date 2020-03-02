@@ -83,7 +83,11 @@
             {
                 this.enemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
-            if (otherCollider is IProjectile)
+            else if (otherCollider is IBlock)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IProjectile)
             {
                 this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }

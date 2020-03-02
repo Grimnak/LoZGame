@@ -1010,5 +1010,3 @@ C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_d
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_left.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_right.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\unlocked_door_up.xnb
-D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\grayXol.xnb
-D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\greenXol.xnb
