@@ -96,13 +96,13 @@
                         break;
 
                     case ProjectileType.RedCandle:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.RedCandle(player.Physics.Location, player.CurrentDirection, this.scale, this.projectileId));
+                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.RedCandle(player.Physics.Location, player.CurrentDirection, this.scale / 2, this.projectileId));
                         break;
 
                     case ProjectileType.BlueCandle:
                         if (!this.candleLock)
                         {
-                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.BlueCandle(player.Physics.Location, player.CurrentDirection, this.scale, this.projectileId));
+                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.BlueCandle(player.Physics.Location, player.CurrentDirection, this.scale / 2, this.projectileId));
                             this.candleLock = true;
                             this.candleInstance = this.projectileId;
                         }

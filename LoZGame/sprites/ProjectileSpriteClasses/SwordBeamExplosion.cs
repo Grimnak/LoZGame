@@ -76,7 +76,7 @@
             }
 
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = this.Physics.Location.Y + this.Size.Y;
+            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
             this.instance = instance;
             this.hostile = false;
             this.expired = false;
@@ -124,13 +124,13 @@
                 this.expired = true;
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = this.Physics.Location.Y + this.Size.Y;
+            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
             this.Physics.Move();
         }
 
         public void Draw()
         {
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, this.effect, this.layer);
         }
     }
 }

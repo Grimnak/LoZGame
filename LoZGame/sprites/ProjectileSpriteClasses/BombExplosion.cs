@@ -38,7 +38,7 @@
             this.Texture = texture;
             this.Data = data;
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
-            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+            this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.frameOne = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
             this.frameTwo = new Rectangle(0, this.Data.Height, this.Data.Width, this.Data.Height);
             this.frameThree = new Rectangle(0, this.Data.Height * 2, this.Data.Width, this.Data.Height);
@@ -50,7 +50,7 @@
             this.expired = false;
             this.rotation = 0;
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = this.Physics.Location.Y + this.Size.Y;
+            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
             this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
         }
 

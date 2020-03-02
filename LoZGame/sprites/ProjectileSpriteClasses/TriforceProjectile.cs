@@ -44,7 +44,7 @@
             this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - Width) / (2 * scale)), loc.Y - LinkSize), new Vector2(0, 0), new Vector2(0, 0)); this.origin = new Vector2(data.Width / 2, data.Height / 2);
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Width * scale);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = this.Physics.Location.Y + this.Size.Y;
+            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
             this.rotation = 0;
             this.scale = scale;
             this.expired = false;

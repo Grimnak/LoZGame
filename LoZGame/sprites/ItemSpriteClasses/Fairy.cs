@@ -7,7 +7,7 @@
     // Class to handle the completely stationary sprite
     internal class Fairy : IItem
     {
-        private static readonly int DirectionChange = 40;
+        private static readonly int DirectionChange = 100;
         private static readonly int FrameChange = 10;
         private readonly Texture2D Texture;      // the texture to pull frames from
         private readonly SpriteSheetData Data;
@@ -21,6 +21,7 @@
         private Rectangle currentFrame; // frame to draw
         private readonly int scale;
         private int lifeTime;
+        private Vector2 Border;
 
         private enum Direction
         {
@@ -49,7 +50,7 @@
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Width * scale);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.CollisionHandler = new ItemCollisionHandler(this);
-            layer = this.Physics.Location.Y + this.Size.Y;
+            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
             this.rotation = 0;
             this.firstFrame = new Rectangle(0, 0, data.Width, data.Height);
             this.secondFrame = new Rectangle(0, data.Height, data.Width, data.Height);
@@ -57,6 +58,7 @@
             this.lifeTime = 0;
             this.scale = scale;
             this.GetNewDirection();
+            this.Border = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width, LoZGame.Instance.GraphicsDevice.Viewport.Height);
         }
 
         private void GetNewDirection()
@@ -82,19 +84,19 @@
                     break;
 
                 case Direction.NorthEast:
-                    this.Physics.Velocity = new Vector2(1, -1);
+                    this.Physics.Velocity = new Vector2(0.727f, -0.727f);
                     break;
 
                 case Direction.NorthWest:
-                    this.Physics.Velocity = new Vector2(-1, -1);
+                    this.Physics.Velocity = new Vector2(-0.727f, -0.727f);
                     break;
 
                 case Direction.SouthEast:
-                    this.Physics.Velocity = new Vector2(1, 1);
+                    this.Physics.Velocity = new Vector2(0.727f, 0.727f);
                     break;
 
                 case Direction.SouthWest:
-                    this.Physics.Velocity = new Vector2(-1, 1);
+                    this.Physics.Velocity = new Vector2(-0.727f, 0.727f);
                     break;
 
                 default:
@@ -104,7 +106,7 @@
 
         private void UpdateLoc()
         {
-            
+            this.Physics.Move();
             this.CheckBorder();
         }
 
@@ -118,27 +120,27 @@
 
         private void CheckBorder()
         {
-            if (this.Physics.Location.Y < 0)
+            if (this.Physics.Location.Y < this.Data.Height)
             {
-                this.Physics.Location = new Vector2(this.Physics.Location.X, 0);
+                this.Physics.Location = new Vector2(this.Physics.Location.X, this.Data.Height);
                 this.lifeTime = DirectionChange + 1;
             }
 
-            if (this.Physics.Location.Y > 480 - (this.currentFrame.Height * this.scale))
+            if (this.Physics.Location.Y > this.Border.Y - this.Size.Y)
             {
-                this.Physics.Location = new Vector2(this.Physics.Location.X, 480 - (this.currentFrame.Height * this.scale));
+                this.Physics.Location = new Vector2(this.Physics.Location.X, this.Border.Y - this.Size.Y);
                 this.lifeTime = DirectionChange + 1;
             }
 
-            if (this.Physics.Location.X < 0)
+            if (this.Physics.Location.X < this.Data.Width)
             {
-                this.Physics.Location = new Vector2(0, this.Physics.Location.Y);
+                this.Physics.Location = new Vector2(this.Data.Width, this.Physics.Location.Y);
                 this.lifeTime = DirectionChange + 1;
             }
 
-            if (this.Physics.Location.X > 800 - (this.currentFrame.Width * this.scale))
+            if (this.Physics.Location.X > this.Border.X - this.Size.X)
             {
-                this.Physics.Location = new Vector2(800 - (this.currentFrame.Width * this.scale), this.Physics.Location.Y);
+                this.Physics.Location = new Vector2(this.Border.X - this.Size.X, this.Physics.Location.Y);
                 this.lifeTime = DirectionChange + 1;
             }
         }
@@ -164,8 +166,7 @@
                 this.GetNewDirection();
                 this.lifeTime = 0;
             }
-
-            if (this.lifeTime % FrameChange == 0)
+            else if (this.lifeTime % FrameChange == 0)
             {
                 this.nextFrame();
             }

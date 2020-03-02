@@ -5,7 +5,7 @@
 
     internal class SwordBeamProjectile : IProjectile
     {
-        private const int LinkSize = 30;
+        private const int LinkSize = 26;
         private const int Offset = 4;
         private const int Delay = 10;
 
@@ -63,30 +63,30 @@
 
             if (this.direction.Equals("Up"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize - (this.Data.Width * scale / 2)), loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSize - Offset - (this.Size.X / 2)), loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
                 this.rotation = MathHelper.Pi;
-                this.tip = new Vector2(this.Size.X - Offset, 0);
+                this.tip = new Vector2(this.Size.X, 0);
             }
             else if (this.direction.Equals("Left"))
             {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize - (this.Data.Width * scale / 2))), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize - (this.Size.X / 2))), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
                 this.rotation = 1 * MathHelper.PiOver2;
                 this.tip = new Vector2(-1 * Offset, this.Size.X / 2);
             }
             else if (this.direction.Equals("Right"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize - (this.Data.Width * scale / 2))), new Vector2(Speed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize - (this.Size.X / 2))), new Vector2(Speed, 0), new Vector2(0, 0));
                 this.rotation = -1 * MathHelper.PiOver2;
-                this.tip = new Vector2(this.Size.Y - Offset, this.Size.X / 2);
+                this.tip = new Vector2(this.Size.Y, this.Size.X / 2);
             }
             else
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize - (this.Data.Width * scale / 2)), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSize - (this.Size.X / 2)), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, 0));
                 this.rotation = 0;
-                this.tip = new Vector2((this.Size.X / 2) - Offset, this.Size.Y);
+                this.tip = new Vector2(this.Size.X / 2, this.Size.Y);
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = this.Physics.Location.Y + this.Size.Y;
+            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
             this.instance = instance;
             this.expired = false;
         }
@@ -149,7 +149,7 @@
 
                 this.Physics.Move();
                 this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-                this.layer = this.Physics.Location.Y + this.Size.Y;
+                this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
                 this.CheckBounds();
             }
         }

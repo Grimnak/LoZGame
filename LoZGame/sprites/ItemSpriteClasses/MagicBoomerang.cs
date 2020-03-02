@@ -29,7 +29,7 @@
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Width * scale);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.CollisionHandler = new ItemCollisionHandler(this);
-            layer = this.Physics.Location.Y + this.Size.Y;
+            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
             this.rotation = 0;
             this.frame = new Rectangle(104, 16, 8, 16);
             this.lifeTime = 0;

@@ -65,26 +65,26 @@
 
             if (this.direction.Equals("Up"))
             {
-                this.Physics = new Physics(new Vector2(loc.X - ((this.Size.X - LinkSize) / 2), loc.Y), new Vector2(0, -1 * MaxSpeed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(0, -1 * MaxSpeed), new Vector2(0, 0));
             }
             else if (this.direction.Equals("Left"))
             {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y - ((this.Size.X - LinkSize) / 2)), new Vector2(-1 * MaxSpeed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)), new Vector2(-1 * MaxSpeed, 0), new Vector2(0, 0));
             }
             else if (this.direction.Equals("Right"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y - ((this.Size.X - LinkSize) / 2)), new Vector2(MaxSpeed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize / 2)), new Vector2(MaxSpeed, 0), new Vector2(0, 0));
             }
             else
             {
-                this.Physics = new Physics(new Vector2(loc.X - ((this.Size.X - LinkSize) / 2), loc.Y + LinkSize), new Vector2(0, MaxSpeed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y + LinkSize), new Vector2(0, MaxSpeed), new Vector2(0, 0));
             }
 
             this.playerLoc = player.Physics.Location;
             this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
             this.currentSpeed = MaxSpeed;
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = this.Physics.Location.Y + this.Size.Y;
+            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
         }
 
         private void Rotate()
@@ -130,19 +130,6 @@
             }
         }
 
-        private void SlowDown()
-        {
-            if (this.currentSpeed <= 0) 
-            {
-                this.currentSpeed = 0;
-                this.returning = true;
-            } else
-            {
-                this.currentSpeed -= Accel;
-                this.Physics.Velocity = new Vector2(this.Physics.Velocity.X * this.currentSpeed / MaxSpeed, this.Physics.Velocity.Y * this.currentSpeed / MaxSpeed);
-            }
-        }
-
         public bool IsExpired => this.expired;
 
         public int Instance => this.instance;
@@ -154,27 +141,20 @@
             {
                 this.expired = true;
             }
-            if (this.distTraveled == MaxDistance)
+            if (this.distTraveled >= MaxDistance)
             {
-                this.reachedMaxDistance = true;
+                this.returning = true;
             }
             else
             {
                 this.distTraveled += MaxSpeed;
             }
-            if (this.reachedMaxDistance)
+            if (this.returning)
             {
-                if (this.returning)
-                {
-                    this.ReturnHome();
-                } else
-
-                {
-                    this.SlowDown();
-                }
+                this.ReturnHome();
             }
             this.Physics.Move();
-            this.layer = this.Physics.Location.Y + this.Size.Y;
+            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.CheckBounds();
         }
