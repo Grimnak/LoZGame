@@ -32,7 +32,7 @@
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
         {
-            /*if (block is BlockTile || block is MovableTile)
+            if (block is BlockTile || block is MovableTile)
             {
                 if (collisionSide == CollisionDetection.CollisionSide.Right)
                 {
@@ -50,7 +50,7 @@
                 {
                     this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y - LinkSpriteFactory.LinkHeight);
                 }
-            }*/
+            }
         }
 
         private void DeterminePushbackValues(CollisionDetection.CollisionSide collisionSide)

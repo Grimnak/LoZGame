@@ -33,6 +33,7 @@
                 if (block is BlockTile || block is MovableTile)
                 {
                     CheckCollisions<IPlayer>(block, players);
+                    CheckCollisions<IEnemy>(block, enemies);
                     CheckCollisions<IBlock>(block, blocks);
                     CheckBorders(block, LoZGame.Instance.TileWidth, LoZGame.Instance.TileHeight);
                 }

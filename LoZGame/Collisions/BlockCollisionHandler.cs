@@ -29,10 +29,25 @@
 
         public void OnCollisionResponse(IBlock targetBlock, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.block != targetBlock && (this.block is BlockTile || this.block is MovableTile) && !(targetBlock is Tile))
+            /*if (this.block != targetBlock && this.block is MovableTile && !(targetBlock is Tile))
             {
-                PreventOverlap(targetBlock, collisionSide);
-            }
+                if (collisionSide == CollisionDetection.CollisionSide.Right)
+                {
+                    this.block.Physics.Location = new Vector2(targetBlock.Physics.Location.X - LoZGame.Instance.TileWidth, this.block.Physics.Location.Y);
+                }
+                else if (collisionSide == CollisionDetection.CollisionSide.Left)
+                {
+                    this.block.Physics.Location = new Vector2(targetBlock.Physics.Location.X + LoZGame.Instance.TileWidth, this.block.Physics.Location.Y);
+                }
+                else if (collisionSide == CollisionDetection.CollisionSide.Top)
+                {
+                    this.block.Physics.Location = new Vector2(this.block.Physics.Location.X, targetBlock.Physics.Location.Y + LoZGame.Instance.TileHeight);
+                }
+                else
+                {
+                    this.block.Physics.Location = new Vector2(this.block.Physics.Location.X, targetBlock.Physics.Location.Y - LoZGame.Instance.TileHeight);
+                }
+            }*/
         }
 
         private void DeterminePushVelocity(IPlayer player, CollisionDetection.CollisionSide collisionSide)
@@ -63,26 +78,6 @@
             {
                 xDirection = -1;
                 yDirection = 0;
-            }
-        }
-
-        public void PreventOverlap(ICollider collider, CollisionDetection.CollisionSide collisionSide)
-        {
-            if (collisionSide == CollisionDetection.CollisionSide.Right)
-            {
-                collider.Physics.Location = new Vector2(this.block.Physics.Location.X - collider.Bounds.X, collider.Physics.Location.Y);
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Left)
-            {
-                collider.Physics.Location = new Vector2(this.block.Physics.Location.X + collider.Bounds.X, collider.Physics.Location.Y);
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Top)
-            {
-                collider.Physics.Location = new Vector2(collider.Physics.Location.X, this.block.Physics.Location.Y + collider.Bounds.Y);
-            }
-            else
-            {
-                collider.Physics.Location = new Vector2(collider.Physics.Location.X, this.block.Physics.Location.Y - collider.Bounds.Y);
             }
         }
     }
