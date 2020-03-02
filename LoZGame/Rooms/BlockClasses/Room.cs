@@ -14,7 +14,7 @@
         private bool exists = false;
         private string border = null;
         private string text = null;
-        private List<IItemSprite> items = null; // a list for any and all items in a room
+        private List<IItem> items = null; // a list for any and all items in a room
         private List<IEnemy> enemies = null; // a list for any and all enemies in a room
         private List<IBlock> blocks = null; // a list for any and all tiles in a room
         private List<Door> doors = null; // a list for any and all doors in a room
@@ -33,7 +33,7 @@
                 this.doors = new List<Door>();
                 this.blocks = new List<IBlock>();
                 this.enemies = new List<IEnemy>();
-                this.items = new List<IItemSprite>();
+                this.items = new List<IItem>();
             }
         }
 
@@ -48,7 +48,7 @@
         /// <summary>
         /// Gets the items list.
         /// </summary>
-        public List<IItemSprite> Items
+        public List<IItem> Items
         {
             get { return this.items; }
         }

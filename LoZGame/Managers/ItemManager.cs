@@ -5,13 +5,10 @@
 
     public class ItemManager
     {
-        private List<IItemSprite> itemList;
-        public IItemSprite CurrentItem;
+        private List<IItem> itemList;
+        public IItem CurrentItem;
         private int currentIndex;
         private int maxIndex;
-        public Vector2 Location;
-
-
         public ItemManager()
         {
             this.currentIndex = 0;
@@ -22,9 +19,7 @@
         {
             this.itemList = ItemSpriteFactory.Instance.getAll(xloc, yloc);
             this.CurrentItem = this.itemList[this.currentIndex];
-            this.Location.X = xloc;
-            this.Location.Y = yloc;
-            foreach (IItemSprite sprite in this.itemList)
+            foreach (IItem sprite in this.itemList)
             {
                 this.maxIndex++;
             }
@@ -32,7 +27,6 @@
 
         public void CycleLeft()
         {
-            this.Location = this.CurrentItem.Location;
             this.currentIndex--;
 
             if (this.currentIndex < 0)
@@ -41,12 +35,10 @@
             }
 
             this.CurrentItem = this.itemList[this.currentIndex];
-            // this.currentItem.location = this.location;
         }
 
         public void CycleRight()
         {
-            this.Location = this.CurrentItem.Location;
             this.currentIndex++;
             if (this.currentIndex >= this.maxIndex)
             {
@@ -54,7 +46,16 @@
             }
 
             this.CurrentItem = this.itemList[this.currentIndex];
-            // this.currentItem.location = this.location;
+        }
+
+        public void Update()
+        {
+            this.CurrentItem.Update();
+        }
+
+        public void Draw()
+        {
+            this.CurrentItem.Draw();
         }
 
         public int CurrentIndex

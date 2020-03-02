@@ -6,35 +6,50 @@
 
     internal class BoomerangEnemy : IProjectile
     {
-        private readonly Texture2D texture;      // the texture to pull frames from
+        private static readonly int LinkSize = 32;
+        private static readonly int MaxDistance = 200;
+        private static readonly int MaxSpeed = 5;
+        private static readonly float Accel = 0.5f;
+        private static readonly int XBound = 800;
+        private static readonly int YBound = 480;
+
+        private readonly Texture2D Texture;      // the texture to pull frames from
+        private readonly SpriteSheetData Data;
         private Rectangle frame;
+        private Vector2 origin;
+        private Vector2 Size;
+        private readonly Goriya Enemy;
         private readonly int scale;
+        private readonly int dX;
+        private readonly int dY;
         private readonly string direction;
 
         private readonly int instance;
         private bool expired;
         private bool returning;
+        private bool reachedMaxDistance;
         private bool isReturned;
-
         private float rotation;
-        private static readonly int MaxDistance = 200;
-        private static readonly int TravelRate = 5;
-        private const int XBound = 800;
-        private const int YBound = 240;
-        private readonly int dX;
-        private readonly int dY;
         private int distTraveled;
-        private Vector2 enemyLoc;
-        private Goriya enemy;
+        private float currentSpeed;
+        private float layer;
+        private Vector2 playerLoc;
 
-        public bool IsHostile { get; }
+        private readonly bool hostile;
 
-        public Vector2 Location { get; set; }
+        public bool IsHostile => this.hostile;
 
-        public BoomerangEnemy(Texture2D texture, Goriya enemy, int scale, int instance)
+        public Physics Physics { get; set; }
+
+        public Rectangle Bounds { get; set; }
+
+        public BoomerangEnemy(Texture2D texture, SpriteSheetData data, Goriya enemy, int scale, int instance)
         {
-            this.texture = texture;
-            this.frame = new Rectangle(129, 0, 5, 16);
+            this.Texture = texture;
+            this.Data = data;
+            this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
+            this.frame = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
+            this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
             this.scale = scale;
             this.instance = instance;
             this.expired = false;
@@ -43,37 +58,33 @@
             this.direction = enemy.Direction;
             this.isReturned = false;
             this.returning = false;
+            this.Enemy = enemy;
             this.distTraveled = 0;
-            this.IsHostile = true;
-            this.enemy = enemy;
+            this.hostile = true;
+            this.reachedMaxDistance = false;
 
             if (this.direction.Equals("Up"))
             {
-                this.Location = new Vector2(loc.X + 16, loc.Y);
-                this.dX = 0;
-                this.dY = -1;
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(0, -1 * MaxSpeed), new Vector2(0, 0));
             }
             else if (this.direction.Equals("Left"))
             {
-                this.Location = new Vector2(loc.X, loc.Y + 16);
-                this.dX = -1;
-                this.dY = 0;
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)), new Vector2(-1 * MaxSpeed, 0), new Vector2(0, 0));
             }
             else if (this.direction.Equals("Right"))
             {
-                this.Location = new Vector2(loc.X + 32, loc.Y + 16);
-                this.dX = 1;
-                this.dY = 0;
+                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize / 2)), new Vector2(MaxSpeed, 0), new Vector2(0, 0));
             }
             else
             {
-                this.Location = new Vector2(loc.X + 16, loc.Y + 32);
-                this.dX = 0;
-                this.dY = 1;
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y + LinkSize), new Vector2(0, MaxSpeed), new Vector2(0, 0));
             }
 
-            this.enemyLoc = enemy.Physics.Location;
-            this.enemyLoc = new Vector2(this.enemyLoc.X + 16, this.enemyLoc.Y + 16);
+            this.playerLoc = enemy.Physics.Location;
+            this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
+            this.currentSpeed = MaxSpeed;
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
         }
 
         private void Rotate()
@@ -81,39 +92,42 @@
             this.rotation += MathHelper.PiOver4 / 2;
         }
 
-        private void UpdateLoc()
+        private void CheckBounds()
         {
-            this.Location = new Vector2(this.Location.X + (this.dX * TravelRate), this.Location.Y + (this.dY * TravelRate));
+            if (this.Physics.Location.X >= XBound || this.Physics.Location.X <= 0 || this.Physics.Location.Y >= YBound || this.Physics.Location.Y <= 0)
+            {
+                this.returning = true;
+            }
+        }
+
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IEnemy || otherCollider is IBlock)
+            {
+                this.returning = true;
+            }
         }
 
         private void ReturnHome()
         {
-            float newX = this.Location.X;
-            float newY = this.Location.Y;
-            this.enemyLoc = this.enemy.Physics.Location;
-            this.enemyLoc = new Vector2(this.enemyLoc.X + 16, this.enemyLoc.Y + 16);
-            float diffX = this.enemyLoc.X - newX;
-            float diffY = this.enemyLoc.Y - newY;
-            if (Math.Abs(diffX) <= 2 * TravelRate && Math.Abs(diffY) <= 2 * TravelRate)
+            this.playerLoc = this.Enemy.Physics.Location;
+            this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
+            float diffX = this.playerLoc.X - this.Physics.Location.X;
+            float diffY = this.playerLoc.Y - this.Physics.Location.Y;
+            if (Math.Abs(diffX) <= 2 * MaxSpeed && Math.Abs(diffY) <= 2 * MaxSpeed)
             {
                 this.isReturned = true;
-                return;
             }
-
-            float diffTotal = (float)Math.Sqrt(Math.Pow(diffX, 2) + Math.Pow(diffY, 2));
-            if (newX != this.enemyLoc.X)
+            else
             {
-                float changeX = diffX / diffTotal * TravelRate;
-                newX += changeX;
+                this.currentSpeed = (float)Math.Sqrt(Math.Pow(this.Physics.Velocity.X, 2) + Math.Pow(this.Physics.Velocity.Y, 2));
+                if (this.currentSpeed <= MaxSpeed)
+                {
+                    this.currentSpeed += Accel;
+                }
+                float diffTotal = (float)Math.Sqrt(Math.Pow(diffX, 2) + Math.Pow(diffY, 2));
+                this.Physics.Velocity = new Vector2(diffX / diffTotal * currentSpeed, diffY / diffTotal * currentSpeed);
             }
-
-            if (newY != this.enemyLoc.Y)
-            {
-                float changeY = diffY / diffTotal * TravelRate;
-                newY += changeY;
-            }
-
-            this.Location = new Vector2(newX, newY);
         }
 
         public bool IsExpired => this.expired;
@@ -127,27 +141,27 @@
             {
                 this.expired = true;
             }
-
             if (this.distTraveled >= MaxDistance)
             {
                 this.returning = true;
             }
-
-            if (!this.returning)
-            {
-                this.UpdateLoc();
-            }
             else
+            {
+                this.distTraveled += MaxSpeed;
+            }
+            if (this.returning)
             {
                 this.ReturnHome();
             }
-
-            this.distTraveled += TravelRate;
+            this.Physics.Move();
+            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.CheckBounds();
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            spriteBatch.Draw(this.texture, this.Location, this.frame, Color.White, this.rotation, new Vector2(3, 8), this.scale, SpriteEffects.None, 0f);
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.frame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }
 }

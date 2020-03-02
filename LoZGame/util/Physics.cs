@@ -32,5 +32,11 @@
             this.Velocity = new Vector2(this.Velocity.X + this.Acceleration.X, this.Velocity.Y + this.Acceleration.Y);
         }
 
+        public void StopMovement()
+        {
+            this.Velocity = new Vector2(0, 0);
+            this.Acceleration = new Vector2(0, 0);
+        }
+
     }
 }
