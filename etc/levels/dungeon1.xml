@@ -537,7 +537,7 @@
         <item X="11" Y="3">HeartContainer</item>
       </items>
       <enemies>
-        <enemy X="10" Y="3">Dragon</enemy>
+        <enemy X="8" Y="3">Dragon</enemy>
       </enemies>
       <doors>
         <door loc="S">locked</door>
