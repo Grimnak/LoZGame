@@ -36,7 +36,18 @@
         {
             foreach (IBlock block in blocks)
             {
-                block.Draw();
+                if (block is Tile)
+                {
+                    block.Draw();
+                }
+            }
+
+            foreach (IBlock block in blocks)
+            {
+                if (block is BlockTile || block is MovableTile)
+                {
+                    block.Draw();
+                }
             }
         }
     }

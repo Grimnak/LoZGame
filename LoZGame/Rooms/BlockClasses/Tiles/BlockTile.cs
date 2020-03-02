@@ -49,6 +49,16 @@
                     return BlockSpriteFactory.Instance.WaterTile(this.Physics.Location);
                 case "basement_brick_tile":
                     return BlockSpriteFactory.Instance.BasementBrickTile(this.Physics.Location);
+                case "fire_gap_tile":
+                    return BlockSpriteFactory.Instance.Fire(this.Physics.Location);
+                case "turqoise_statue_left":
+                    return BlockSpriteFactory.Instance.TurquoiseStatueLeft(this.Physics.Location);
+                case "turqoise_statue_right":
+                    return BlockSpriteFactory.Instance.TurquoiseStatueRight(this.Physics.Location);
+                case "blue_statue_left":
+                    return BlockSpriteFactory.Instance.BlueStatueLeft(this.Physics.Location);
+                case "blue_statue_right":
+                    return BlockSpriteFactory.Instance.BlueStatueRight(this.Physics.Location);
                 default:
                     return BlockSpriteFactory.Instance.MovableSquare(this.Physics.Location);
             }
