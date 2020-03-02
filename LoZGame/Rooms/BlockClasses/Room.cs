@@ -121,7 +121,7 @@
                 case "Dragon":
                     this.enemies.Add(new Dragon(location));
                     break;
-                case "Gel":
+                case "TealGel":
                     this.enemies.Add(new Gel(location));
                     break;
                 case "Goriya":
