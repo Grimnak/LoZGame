@@ -6,7 +6,7 @@
     public class IdleSpikeCrossState : IEnemyState
     {
         private readonly SpikeCross spikeCross;
-        private readonly IEnemySprite sprite;
+        private readonly ISprite sprite;
 
         public IdleSpikeCrossState(SpikeCross spikeCross)
         {
@@ -76,7 +76,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.spikeCross.Physics.Location, Color.White);
+            this.sprite.Draw(this.spikeCross.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }

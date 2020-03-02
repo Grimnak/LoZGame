@@ -6,7 +6,7 @@
     public class UpLeftMovingKeeseState : IEnemyState
     {
         private readonly Keese keese;
-        private readonly IEnemySprite sprite;
+        private readonly ISprite sprite;
 
         public UpLeftMovingKeeseState(Keese keese)
         {
@@ -82,7 +82,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.keese.Physics.Location, Color.White);
+            this.sprite.Draw(this.keese.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }

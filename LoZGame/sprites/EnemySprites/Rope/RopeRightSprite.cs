@@ -3,7 +3,7 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class RopeRightSprite : IEnemySprite
+    public class RopeRightSprite : ISprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;

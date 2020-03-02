@@ -3,7 +3,7 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class GoriyaDownSprite : IEnemySprite
+    public class GoriyaDownSprite : ISprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;

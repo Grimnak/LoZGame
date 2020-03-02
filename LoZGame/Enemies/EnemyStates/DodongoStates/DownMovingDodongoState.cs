@@ -6,7 +6,7 @@
     public class DownMovingDodongoState : IEnemyState
     {
         private readonly Dodongo dodongo;
-        private readonly IEnemySprite sprite;
+        private readonly ISprite sprite;
 
         public DownMovingDodongoState(Dodongo dodongo)
         {
@@ -78,7 +78,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.dodongo.Physics.Location, Color.White);
+            this.sprite.Draw(this.dodongo.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }

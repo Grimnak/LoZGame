@@ -40,11 +40,6 @@
         int MoveSpeed { get; set; }
 
         /// <summary>
-        /// Gets or sets the damage counter of the player.
-        /// </summary>
-        int DamageCounter { get; set; }
-
-        /// <summary>
         /// Gets or sets the damage timer of the player.
         /// </summary>
         int DamageTimer { get; set; }
