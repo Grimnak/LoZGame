@@ -53,7 +53,7 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
         }
 

@@ -61,13 +61,9 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.stalfos.Health--;
-            if (this.stalfos.Health == 0)
-            {
-                this.stalfos.CurrentState.Die();
-            }
+            this.stalfos.Health.DamageHealth(damageAmount);
         }
 
         public void Die()

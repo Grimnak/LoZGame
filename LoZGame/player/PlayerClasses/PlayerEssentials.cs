@@ -25,15 +25,9 @@
 
         public PlayerHealth Health { get; set; }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            /*    if (this.DamageCounter >= 3)
-                {
-                    this.State.Die();
-                }
-                */
-            this.Health.DamageHealth(1);
-            Console.WriteLine("Health: " + this.Health.CurrentHealth);
+            this.Health.DamageHealth(damageAmount);
             if (this.Health.CurrentHealth <= 0)
             {
                 this.State.Die();

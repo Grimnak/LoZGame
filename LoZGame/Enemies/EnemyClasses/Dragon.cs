@@ -22,9 +22,12 @@
             get; set;
         }
 
-        public int Health { get { return health; } set { health = value; } }
+        public PlayerHealth Health { get; set; }
+
+        public int Damage => damage;
 
         private IEnemyState currentState;
+        private int damage = 1;
         private int health = 10;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
@@ -35,6 +38,7 @@
 
         public Dragon(Vector2 location)
         {
+            this.Health = new PlayerHealth(health);
             this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.entity = LoZGame.Instance.Entities;
             this.currentState = new LeftMovingDragonState(this);
@@ -43,9 +47,9 @@
             randomStateGenerator = new RandomStateGenerator(this, 0, 4);
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.currentState.TakeDamage();
+            this.currentState.TakeDamage(damageAmount);
         }
 
         public void Update()

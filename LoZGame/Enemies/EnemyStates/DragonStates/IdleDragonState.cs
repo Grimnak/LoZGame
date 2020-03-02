@@ -58,13 +58,9 @@
             this.dragon.CurrentState = new AttackingDragonState(this.dragon);
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.dragon.Health--;
-            if (this.dragon.Health == 0)
-            {
-                this.dragon.CurrentState.Die();
-            }
+            this.dragon.Health.DamageHealth(damageAmount);
         }
 
         public void Die()

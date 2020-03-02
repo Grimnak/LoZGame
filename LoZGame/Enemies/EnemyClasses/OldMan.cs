@@ -8,6 +8,7 @@
         private EnemyCollisionHandler enemyCollisionHandler;
         private Rectangle bounds;
         private int health;
+        private int damage = 0;
 
         public Rectangle Bounds
         {
@@ -17,7 +18,9 @@
 
         public Physics Physics { get; set; }
 
-        public int Health { get { return health; } set { health = value; } }
+        public PlayerHealth Health { get; set; }
+
+        public int Damage => damage;
 
         public IEnemyState CurrentState { get; set; }
 
@@ -25,6 +28,7 @@
 
         public OldMan(Vector2 location)
         {
+            this.Health = new PlayerHealth(health);
             this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
@@ -32,7 +36,7 @@
             this.health = 5;
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
         }
 

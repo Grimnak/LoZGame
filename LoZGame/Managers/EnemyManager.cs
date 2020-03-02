@@ -39,7 +39,7 @@ namespace LoZClone
         {
             foreach (KeyValuePair<int, IEnemy> enemy in this.enemyList)
             {
-                if (enemy.Value.Health < 1)
+                if (enemy.Value.Health.CurrentHealth < 1)
                 {
                     this.deletable.Add(enemy.Key);
                 }

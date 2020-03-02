@@ -77,7 +77,8 @@
         /// <summary>
         /// Makes player take damage.
         /// </summary>
-        void TakeDamage();
+        /// /// <param name ="damageAmount">amount of damage incurred.</param>
+        void TakeDamage(int damageAmount);
 
         /// <summary>
         /// Makes player attack.

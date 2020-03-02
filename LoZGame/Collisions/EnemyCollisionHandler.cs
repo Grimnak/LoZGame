@@ -41,7 +41,7 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            this.enemy.TakeDamage();
+            this.enemy.TakeDamage(1);
         }
     }
 }

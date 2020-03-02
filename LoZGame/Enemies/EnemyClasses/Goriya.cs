@@ -27,9 +27,12 @@
             get; set;
         }
 
-        public int Health { get { return health; } set { health = value; } }
+        public PlayerHealth Health { get; set; }
+
+        public int Damage => damage;
 
         private IEnemyState currentState;
+        private int damage = 2;
         private int health = 10;
         private int coolDown;
         private int lifeTime = 0;
@@ -51,6 +54,7 @@
 
         public Goriya(Vector2 location)
         {
+            this.Health = new PlayerHealth(health);
             this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.currentState = new LeftMovingGoriyaState(this);
             this.entity = LoZGame.Instance.Entities;
@@ -106,9 +110,9 @@
             this.currentState.Update();
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.currentState.TakeDamage();
+            this.currentState.TakeDamage(damageAmount);
         }
 
         public void Die()

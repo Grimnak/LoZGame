@@ -60,13 +60,9 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.zol.Health--;
-            if (this.zol.Health == 0)
-            {
-                this.zol.CurrentState.Die();
-            }
+            this.zol.Health.DamageHealth(damageAmount);
         }
 
         public void Die()

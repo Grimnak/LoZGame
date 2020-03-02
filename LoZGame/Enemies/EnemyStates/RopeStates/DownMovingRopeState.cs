@@ -60,13 +60,9 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.rope.Health--;
-            if (this.rope.Health == 0)
-            {
-                this.rope.CurrentState.Die();
-            }
+            this.rope.Health.DamageHealth(damageAmount);
         }
 
         public void Die()

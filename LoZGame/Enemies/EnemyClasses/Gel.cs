@@ -32,10 +32,13 @@
             get; set;
         }
 
-        public int Health { get { return health; } set { health = value; } }
+        public PlayerHealth Health { get; set; }
+
+        public int Damage => damage;
 
         private IEnemyState currentState;
-        private int health = 10;
+        private int damage = 1;
+        private int health = 1;
         private int lifeTime = 0;
         private int timeInIdle = 0;
         private int timeSinceIdle = 0;
@@ -45,6 +48,7 @@
 
         public Gel(Vector2 location)
         {
+            this.Health = new PlayerHealth(health);
             this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.currentState = new LeftMovingGelState(this);
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
@@ -74,9 +78,9 @@
             }
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.currentState.TakeDamage();
+            this.currentState.TakeDamage(damageAmount);
         }
 
         public void Die()

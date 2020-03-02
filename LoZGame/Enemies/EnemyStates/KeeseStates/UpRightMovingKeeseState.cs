@@ -64,13 +64,9 @@
             this.keese.CurrentState = new DownRightMovingKeeseState(this.keese);
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.keese.Health--;
-            if (this.keese.Health == 0)
-            {
-                this.keese.CurrentState.Die();
-            }
+            this.keese.Health.DamageHealth(damageAmount);
         }
 
         public void Die()

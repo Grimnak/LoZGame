@@ -21,13 +21,14 @@
             if (!(enemy is OldMan || enemy is Merchant))
             {
                 DeterminePushbackValues(collisionSide);
-                this.player.TakeDamage();
+                this.player.TakeDamage(enemy.Damage);
             }
         }
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            this.player.TakeDamage();
+            // change once projectile classes set up
+            this.player.TakeDamage(0);
         }
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)

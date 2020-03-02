@@ -60,13 +60,9 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.wallMaster.Health--;
-            if (this.wallMaster.Health == 0)
-            {
-                this.wallMaster.CurrentState.Die();
-            }
+            this.wallMaster.Health.DamageHealth(damageAmount);
         }
 
         public void Die()
