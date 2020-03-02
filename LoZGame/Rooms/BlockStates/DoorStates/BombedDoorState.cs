@@ -14,10 +14,6 @@ namespace LoZClone
         private readonly ISprite sprite;
         private readonly Vector2 location;
         private readonly Color spriteTint = Color.White;
-        private readonly Vector2 UpScreenLoc = new Vector2(336, 0);
-        private readonly Vector2 RightScreenLoc = new Vector2(784, 208);
-        private readonly Vector2 DownScreenLoc = new Vector2(336, 416);
-        private readonly Vector2 LeftScreenLoc = new Vector2(0, 208);
 
         public BombedDoorState(Door door)
         {
@@ -26,26 +22,26 @@ namespace LoZClone
             {
                 case "N":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningDown(UpScreenLoc);
-                        location = UpScreenLoc;
+                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningDown(door.UpScreenLoc);
+                        location = door.UpScreenLoc;
                         break;
                     }
                 case "E":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningLeft(RightScreenLoc);
-                        location = RightScreenLoc;
+                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningLeft(door.RightScreenLoc);
+                        location = door.RightScreenLoc;
                         break;
                     }
                 case "S":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningUp(DownScreenLoc);
-                        location = DownScreenLoc;
+                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningUp(door.DownScreenLoc);
+                        location = door.DownScreenLoc;
                         break;
                     }
                 case "W":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningRight(LeftScreenLoc);
-                        location = LeftScreenLoc;
+                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningRight(door.LeftScreenLoc);
+                        location = door.LeftScreenLoc;
                         break;
                     }
 

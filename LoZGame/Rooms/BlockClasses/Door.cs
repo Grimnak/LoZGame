@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
 namespace LoZClone
 {
@@ -10,8 +11,39 @@ namespace LoZClone
     {
         private string location; // relative location on screen
 
+        private readonly Vector2 upScreenLoc = new Vector2(
+            BlockSpriteFactory.Instance.HorizontalOffset + (5 * BlockSpriteFactory.Instance.TileWidth), BlockSpriteFactory.Instance.DoorOffset);
+
+        private readonly Vector2 rightScreenLoc = new Vector2(
+            800 - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight, BlockSpriteFactory.Instance.VerticalOffset + (int)(BlockSpriteFactory.Instance.TileHeight * 2.5));
+
+        private readonly Vector2 downScreenLoc = new Vector2(
+            BlockSpriteFactory.Instance.HorizontalOffset + (5 * BlockSpriteFactory.Instance.TileWidth), 480 - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight);
+
+        private readonly Vector2 leftScreenLoc = new Vector2(
+            BlockSpriteFactory.Instance.DoorOffset, BlockSpriteFactory.Instance.VerticalOffset + (int)(BlockSpriteFactory.Instance.TileHeight * 2.5));
+
         private IDoorState state { get; set; } // current state
 
+        public Vector2 UpScreenLoc
+        {
+            get { return upScreenLoc; }
+        }
+
+        public Vector2 RightScreenLoc
+        {
+            get { return rightScreenLoc; }
+        }
+
+        public Vector2 DownScreenLoc
+        {
+            get { return downScreenLoc; }
+        }
+
+        public Vector2 LeftScreenLoc
+        {
+            get { return leftScreenLoc; }
+        }
         public Door(string loc, string starting)
         {
             this.location = loc;

@@ -12,10 +12,6 @@ namespace LoZClone
     {
         private readonly Door door;
         private readonly ISprite sprite;
-        private readonly Vector2 UpScreenLoc = new Vector2(336, 0);
-        private readonly Vector2 RightScreenLoc = new Vector2(784, 208);
-        private readonly Vector2 DownScreenLoc = new Vector2(336, 416);
-        private readonly Vector2 LeftScreenLoc = new Vector2(0, 208);
 
         public HiddenDoorState(Door door)
         {

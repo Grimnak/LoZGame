@@ -17,10 +17,7 @@ namespace LoZClone
         private readonly ISprite sprite;
         private readonly Color spriteTint = Color.White;
         private readonly Vector2 location;
-        private readonly Vector2 UpScreenLoc = new Vector2(336, 0);
-        private readonly Vector2 RightScreenLoc = new Vector2(784, 208);
-        private readonly Vector2 DownScreenLoc = new Vector2(336, 416);
-        private readonly Vector2 LeftScreenLoc = new Vector2(0, 208);
+
 
         public SpecialDoorState(Door door)
         {
@@ -29,26 +26,26 @@ namespace LoZClone
             {
                 case "N":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown(UpScreenLoc);
-                        location = UpScreenLoc;
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown(door.UpScreenLoc);
+                        location = door.UpScreenLoc;
                         break;
                     }
                 case "E":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft(RightScreenLoc);
-                        location = RightScreenLoc;
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft(door.RightScreenLoc);
+                        location = door.RightScreenLoc;
                         break;
                     }
                 case "S":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp(DownScreenLoc);
-                        location = DownScreenLoc;
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp(door.DownScreenLoc);
+                        location = door.DownScreenLoc;
                         break;
                     }
                 case "W":
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight(LeftScreenLoc);
-                        location = LeftScreenLoc;
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight(door.LeftScreenLoc);
+                        location = door.LeftScreenLoc;
                         break;
                     }
             }
