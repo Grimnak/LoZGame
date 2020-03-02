@@ -11,9 +11,11 @@ namespace LoZClone
     {
         private readonly KeyboardCommandLoader allCommands;
         private readonly Dictionary<Keys, ICommand> dict;
-        private readonly List<KeyValuePair<Keys, ICommand>> playerCommands;
         private ICommand currentCommand;
         private KeyboardState oldState;
+        private List<Keys> playerKeys;
+        private List<Keys> oneUseKeys;
+        private Stack<KeyValuePair<Keys, ICommand>> playerCommands;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyboardController"/> class.
@@ -24,7 +26,18 @@ namespace LoZClone
             this.allCommands = allCommands;
             this.oldState = Keyboard.GetState();
             this.dict = allCommands.GetDict;
-            this.playerCommands = new List<KeyValuePair<Keys, ICommand>>();
+            this.playerCommands = new Stack<KeyValuePair<Keys, ICommand>>();
+            this.playerKeys = new List<Keys>
+            {
+                Keys.W, Keys.Up, Keys.A, Keys.Left, Keys.S, Keys.Down, Keys.D, Keys.Right,
+                Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5, Keys.D6, Keys.D7, Keys.D8,
+                Keys.Z, Keys.N,
+            };
+            this.oneUseKeys = new List<Keys>
+            {
+                Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5,
+                Keys.D6, Keys.D7, Keys.D8, Keys.Z, Keys.N,
+            };
         }
 
         /// <inheritdoc/>
@@ -36,47 +49,40 @@ namespace LoZClone
 
             foreach (Keys key in pressed)
             {
-                if (this.dict.ContainsKey(key) && this.dict[key].Priority != -1)
+                if (this.dict.ContainsKey(key) && this.playerKeys.Contains(key) && this.oldState.IsKeyUp(key))
                 {
-                    this.playerCommands.Add(new KeyValuePair<Keys, ICommand>(key, this.dict[key]));
+                    this.playerCommands.Push(new KeyValuePair<Keys, ICommand>(key, this.dict[key]));
                 }
             }
-
-            this.playerCommands.Add(new KeyValuePair<Keys, ICommand>(Keys.Subtract, this.allCommands.GetIdle));
 
             if (this.playerCommands.Count > 0)
             {
-                this.playerCommands.Sort(new PriorityComparer());
 
-                this.currentCommand = this.playerCommands[0].Value;
+                this.currentCommand = this.playerCommands.Peek().Value;
+                this.currentCommand.Execute();
 
-                if (this.currentCommand.Priority == 7 || this.currentCommand.Priority == 5)
+                List<ICommand> removable = new List<ICommand>();
+                foreach (KeyValuePair<Keys, ICommand> command in playerCommands)
                 {
-                    Keys currentKey = this.playerCommands[0].Key;
-                    if (this.oldState.IsKeyUp(currentKey))
+                    if (state.IsKeyUp(command.Key) || this.oneUseKeys.Contains(command.Key))
                     {
-                        this.currentCommand.Execute();
-                    }
-                    else
-                    {
-                        this.allCommands.GetIdle.Execute();
+                        removable.Add(command.Value);
                     }
                 }
-                else if (this.currentCommand.Priority == 6)
+
+                for (int i = 0; i < removable.Count; i++)
                 {
-                    Keys currentKey = this.playerCommands[0].Key;
-                    if (this.oldState.IsKeyUp(currentKey))
+                    if (removable[i].Equals(this.playerCommands.Peek().Value))
                     {
-                        this.currentCommand.Execute();
+                        this.playerCommands.Pop();
                     }
                 }
-                else
-                {
-                    this.currentCommand.Execute();
-                }
+                removable.Clear();
             }
-
-            this.playerCommands.Clear();
+            else
+            {
+                this.allCommands.GetIdle.Execute();
+            }
 
             if (pressed.Contains(Keys.E))
             {

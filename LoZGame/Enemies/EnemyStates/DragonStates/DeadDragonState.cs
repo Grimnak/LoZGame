@@ -10,8 +10,10 @@
 
         public DeadDragonState(Dragon dragon)
         {
+            this.dragon = dragon;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.dragon.CurrentState = this;
+            this.dragon.VelocityX = 0;
         }
 
         public void MoveUp()
@@ -46,7 +48,7 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
         }
 

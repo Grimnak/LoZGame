@@ -79,13 +79,9 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.goriya.Health--;
-            if (this.goriya.Health == 0)
-            {
-                this.goriya.CurrentState.Die();
-            }
+            this.goriya.Health.DamageHealth(damageAmount);
         }
 
         public void Die()

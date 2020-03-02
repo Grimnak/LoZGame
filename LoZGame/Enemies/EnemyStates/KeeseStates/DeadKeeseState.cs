@@ -13,6 +13,8 @@
             this.keese = keese;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.keese.CurrentState = this;
+            this.keese.VelocityX = 0;
+            this.keese.VelocityY = 0;
         }
 
         public void MoveLeft()
@@ -55,7 +57,7 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
         }
 

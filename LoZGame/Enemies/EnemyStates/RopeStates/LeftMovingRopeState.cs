@@ -11,8 +11,8 @@
         public LeftMovingRopeState(Rope rope)
         {
             this.rope = rope;
-            this.rope.VelocityX = -1;
-            this.rope.VelocityY = 0;
+            this.rope.VelocityX = -1 * rope.AttackFactor;
+            this.rope.VelocityY = 0 * rope.AttackFactor;
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingRopeSprite();
             this.rope.CurrentState = this;
         }
@@ -60,13 +60,9 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.rope.Health--;
-            if (this.rope.Health == 0)
-            {
-                this.rope.CurrentState.Die();
-            }
+            this.rope.Health.DamageHealth(damageAmount);
         }
 
         public void Die()

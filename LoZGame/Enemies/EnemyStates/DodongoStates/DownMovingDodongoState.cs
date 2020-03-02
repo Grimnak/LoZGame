@@ -60,13 +60,9 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.dodongo.Health--;
-            if (this.dodongo.Health-- == 0)
-            {
-                this.dodongo.CurrentState.Die();
-            }
+            this.dodongo.Health.DamageHealth(damageAmount);
         }
 
         public void Die()

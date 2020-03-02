@@ -7,7 +7,6 @@
     /// </summary>
     public class CommandReset : ICommand
     {
-        private static readonly int PriorityValue = -1;
         private readonly IPlayer player;
         private readonly Dungeon dungeon;
 
@@ -23,15 +22,12 @@
         }
 
         /// <inheritdoc/>
-        public int Priority => PriorityValue;
-
-        /// <inheritdoc/>
         public void Execute()
         {
             this.player.Physics.Location = new Vector2(218, 184);
             this.player.CurrentDirection = "Down";
             this.player.State = new NullState(this.player);
-            this.player.DamageCounter = 0;
+            this.player.Health = new PlayerHealth(4);
             this.player.DamageTimer = 0;
             this.player.CurrentTint = Color.White;
 

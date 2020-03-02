@@ -13,6 +13,8 @@
             this.goriya = goriya;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.goriya.CurrentState = this;
+            this.goriya.VelocityX = 0;
+            this.goriya.VelocityY = 0;
         }
 
         public void MoveLeft()
@@ -51,7 +53,7 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
         }
 

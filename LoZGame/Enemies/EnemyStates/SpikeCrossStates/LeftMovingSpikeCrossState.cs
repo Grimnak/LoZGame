@@ -11,8 +11,8 @@
         public LeftMovingSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            this.spikeCross.VelocityX = -1;
-            this.spikeCross.VelocityY = 0;
+            this.spikeCross.VelocityX = -1 * spikeCross.AttackFactor;
+            this.spikeCross.VelocityY = 0 * spikeCross.AttackFactor;
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
             this.spikeCross.CurrentState = this;
         }
@@ -56,7 +56,7 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
         }
 

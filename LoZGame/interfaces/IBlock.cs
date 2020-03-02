@@ -11,13 +11,8 @@
     /// <summary>
     /// Interface for a tile.
     /// </summary>
-    public interface IBlock
+    public interface IBlock : ICollider
     {
-        /// <summary>
-        /// Gets or sets the tiles location vector.
-        /// </summary>
-        Vector2 Location { get; set; }
-
         /// <summary>
         /// Creates the correct sprite for the block.
         /// </summary>

@@ -6,12 +6,15 @@
     public class DeadDodongoState : IEnemyState
     {
         private readonly Dodongo dodongo;
-        private readonly IEnemySprite sprite;
+        private readonly ISprite sprite;
 
         public DeadDodongoState(Dodongo dodongo)
         {
-            this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingDodongoSprite();
             this.dodongo.CurrentState = this;
+            this.dodongo = dodongo;
+            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.dodongo.VelocityX = 0;
+            this.dodongo.VelocityY = 0;
         }
 
         public void MoveLeft()
@@ -54,7 +57,7 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
         }
 

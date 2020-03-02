@@ -2,6 +2,7 @@ namespace LoZClone
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
 
     public class DeadEnemySprite : ISprite
     {
@@ -13,6 +14,7 @@ namespace LoZClone
         private int currentFrame = 0;
         private int frameDelay = 0;
         private readonly int frameDelayMax = 5;
+        private IEnemy enemy;
 
         public DeadEnemySprite(Texture2D spriteTexture, SpriteSheetData data)
         {
@@ -29,11 +31,10 @@ namespace LoZClone
             if (this.frameDelay == this.frameDelayMax)
             {
                 this.currentFrame++;
-                if (this.currentFrame > 5)
+                if (currentFrame > 5)
                 {
-                    this.currentFrame = 0;
+                    this.enemy = null;
                 }
-
                 this.frameDelay = 0;
             }
         }

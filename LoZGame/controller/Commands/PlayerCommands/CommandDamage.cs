@@ -5,7 +5,6 @@
     /// </summary>
     public class CommandDamage : ICommand
     {
-        private static readonly int PriorityValue = -1;
         private readonly IPlayer player;
 
         /// <summary>
@@ -18,12 +17,9 @@
         }
 
         /// <inheritdoc/>
-        public int Priority => PriorityValue;
-
-        /// <inheritdoc/>
         public void Execute()
         {
-            this.player.TakeDamage();
+            this.player.TakeDamage(0);
         }
     }
 }

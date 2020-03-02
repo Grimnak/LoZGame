@@ -17,9 +17,6 @@
         }
 
         /// <inheritdoc/>
-        public int Priority => 0;
-
-        /// <inheritdoc/>
         public void Execute()
         {
             this.room.MoveDown();

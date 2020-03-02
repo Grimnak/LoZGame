@@ -60,6 +60,7 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Collisions\BlockCollisionHandler.cs" />
     <Compile Include="Collisions\CollisionSide.cs" />
     <Compile Include="Collisions\EnemyCollisionHandler.cs" />
     <Compile Include="Collisions\CollisionDetection.cs" />
@@ -90,7 +91,6 @@
     <Compile Include="Controller\Commands\Loaders\MouseCommandLoader.cs" />
     <Compile Include="Controller\Commands\Controllers\KeyboardController.cs" />
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
-    <Compile Include="Controller\PriorityComparer.cs" />
     <Compile Include="Enemies\EnemyClasses\Dodongo.cs" />
     <Compile Include="Enemies\EnemyClasses\Dragon.cs" />
     <Compile Include="Enemies\EnemyClasses\Gel.cs" />
@@ -104,6 +104,8 @@
     <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
     <Compile Include="Interfaces\IDoorState.cs" />
+    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\HorizontalSpikeCrossState.cs" />
+    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\VerticalSpikeCrossState.cs" />
     <Compile Include="Managers\Dungeon.cs" />
     <Compile Include="Managers\BlockManager.cs" />
     <Compile Include="Rooms\BlockClasses\Door.cs" />
@@ -285,6 +287,7 @@
     <Compile Include="Sprites\ProjectileSpriteClasses\SilverArrowProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\BoomerangProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\ArrowProjectile.cs" />
+    <Compile Include="Util\PlayerHealth.cs" />
     <Compile Include="Util\Physics.cs" />
     <Compile Include="Util\ProjectileSpriteFactory.cs" />
     <Compile Include="Util\ItemSpriteFactory.cs" />

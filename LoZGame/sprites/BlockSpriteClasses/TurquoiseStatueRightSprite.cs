@@ -36,7 +36,7 @@
             int column = (int)((float)this.currentFrame / (float)this.spriteSheetRows);
 
             Rectangle sourceRectangle = new Rectangle(width * column, 0, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)this.Location.X, (int)this.Location.Y, this.spriteWidth, this.spriteHeight);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, this.spriteWidth, this.spriteHeight);
 
             LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
         }

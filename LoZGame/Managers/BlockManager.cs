@@ -5,27 +5,28 @@
 
     public class BlockManager
     {
-        private List<IBlock> blockList;
-        public Vector2 Location;
+        private List<IBlock> blocks;
+
+        public List<IBlock> BlockList { get { return blocks; } }
 
         public BlockManager()
         {
-            this.blockList = new List<IBlock>();
+            this.blocks = new List<IBlock>();
         }
 
         public void Add(IBlock block)
         {
-            blockList.Add(block);
+            blocks.Add(block);
         }
 
         public void Clear()
         {
-            blockList.Clear();
+            blocks.Clear();
         }
 
         public void Update()
         {
-            foreach (IBlock block in blockList)
+            foreach (IBlock block in blocks)
             {
                 block.Update();
             }
@@ -33,7 +34,7 @@
 
         public void Draw()
         {
-            foreach (IBlock block in blockList)
+            foreach (IBlock block in blocks)
             {
                 block.Draw();
             }

@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using System;
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -27,26 +28,127 @@
             get; set;
         }
 
-        public int Health { get { return health; } set { health = value; } }
+        public PlayerHealth Health { get; set; }
+
+        public int Damage => damage;
+
+        public Boolean Attacking
+        {
+            get; set;
+        }
+
+        public int AttackFactor
+        {
+            get; set;
+        }
 
         private IEnemyState currentState;
-        private int health = 10;
         private int lifeTime = 0;
+        private int damage = 1;
+        private int health = 1;
         private readonly int directionChange = 40;
         private RandomStateGenerator randomStateGenerator;
+        private List<IPlayer> players;
+
+        private enum Direction
+        {
+            Up,
+            Down,
+            Left,
+            Right,
+        }
+
+        private Direction currentDirection;
 
         public Rope(Vector2 location)
         {
+            this.Health = new PlayerHealth(health);
             this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.currentState = new LeftMovingRopeState(this);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, 25, 25);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             randomStateGenerator = new RandomStateGenerator(this, 2, 6);
+            Attacking = false;
+            AttackFactor = 1;
         }
-     
-        public void TakeDamage()
+
+        private void getNewDirection()
         {
-            this.currentState.Die();
+            Random randomselect = new Random();
+            this.currentDirection = (Direction)randomselect.Next(0, 3);
+        }
+
+        private void updateLoc()
+        {
+            switch (this.currentDirection)
+            {
+                case Direction.Up:
+                    this.currentState.MoveUp();
+                    break;
+
+                case Direction.Down:
+                    this.currentState.MoveDown();
+                    break;
+
+                case Direction.Left:
+                    this.currentState.MoveLeft();
+                    break;
+
+                case Direction.Right:
+                    this.currentState.MoveRight();
+                    break;
+
+                default:
+                    break;
+            }
+            this.currentState.Update();
+        }
+
+        private void checkForLink()
+        { /*
+            players = Game.Players;
+            foreach (IPlayer player in players)
+            {
+                if (CurrentLocation.X <= player.CurrentLocation.X + 10 || CurrentLocation.X >= player.CurrentLocation.X - 10)
+                {
+                    Attacking = true;
+                    AttackFactor = 3;
+                    if (CurrentLocation.Y > player.CurrentLocation.Y)
+                    {
+                        this.currentState.MoveDown();
+                    }
+                    else
+                    {
+                        this.currentState.MoveUp();
+                    }
+                }
+                else if (CurrentLocation.Y == player.CurrentLocation.Y)
+                {
+                    Attacking = true;
+                    AttackFactor = 3;
+                    if (CurrentLocation.Y <= player.CurrentLocation.Y + 10 || CurrentLocation.Y >= player.CurrentLocation.Y - 10)
+                    {
+                        this.currentState.MoveRight();
+                    }
+                    else
+                    {
+                        this.currentState.MoveLeft();
+                    }
+                }
+                else
+                {
+                    AttackFactor = 1;
+                    Attacking = false;
+                }
+                this.currentState.Update();
+            }
+                */
+
+        }
+
+        public void TakeDamage(int damageAmount)
+        {
+            this.currentState.TakeDamage(damageAmount);
         }
 
         public void Update()
@@ -60,6 +162,18 @@
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
+/*
+            checkForLink();
+            if (!Attacking)
+            {
+                this.updateLoc();
+                if (this.lifeTime > this.directionChange)
+                {
+                    this.getNewDirection();
+                    this.lifeTime = 0;
+                }
+            }
+            */
         }
 
         public void Draw()
@@ -69,7 +183,15 @@
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IProjectile)
+            if (otherCollider is IPlayer)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IBlock)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IProjectile)
             {
                 this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }

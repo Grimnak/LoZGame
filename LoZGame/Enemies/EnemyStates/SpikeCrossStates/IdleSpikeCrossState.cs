@@ -24,7 +24,7 @@
 
         public void MoveRight()
         {
-            this.spikeCross.CurrentState = new RightMovingSpikeCrossState(this.spikeCross);
+            this.spikeCross.CurrentState = new HorizontalSpikeCrossState(this.spikeCross);
         }
 
         public void MoveUp()
@@ -34,7 +34,7 @@
 
         public void MoveDown()
         {
-            this.spikeCross.CurrentState = new DownMovingSpikeCrossState(this.spikeCross);
+            this.spikeCross.CurrentState = new VerticalSpikeCrossState(this.spikeCross);
         }
 
         public void MoveUpLeft()
@@ -57,7 +57,7 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
         }
 

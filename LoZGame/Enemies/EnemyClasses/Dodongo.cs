@@ -27,10 +27,13 @@
             get; set;
         }
 
-        public int Health { get { return health; } set { health = value; } }
+        public PlayerHealth Health { get; set; }
+
+        public int Damage => damage;
 
         private IEnemyState currentState;
-        private int health = 10;
+        private int damage = 2;
+        private int health = 16;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
         private Direction currentDirection;
@@ -42,10 +45,12 @@
             Down,
             Left,
             Right,
+            Dead,
         }
 
         public Dodongo(Vector2 location)
         {
+            this.Health = new PlayerHealth(health);
             this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.currentState = new LeftMovingDodongoState(this);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, 32, 16);
@@ -53,9 +58,9 @@
             randomStateGenerator = new RandomStateGenerator(this, 2, 6);
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.currentState.TakeDamage();
+            this.currentState.TakeDamage(damageAmount);
         }
 
         public void Update()
@@ -82,7 +87,11 @@
             {
                 this.enemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
-            if (otherCollider is IProjectile)
+            else if (otherCollider is IBlock)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IProjectile)
             {
                 this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }

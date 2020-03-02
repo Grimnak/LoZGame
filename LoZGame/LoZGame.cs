@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -35,6 +34,11 @@
         private List<IEnemy> enemies;
         private List<IProjectile> projectiles;
         private List<IItem> items;
+
+        public IPlayer Link
+        {
+            get { return this.link; }
+        }
 
         private static readonly LoZGame instance = new LoZGame();
 
@@ -83,7 +87,7 @@
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
 
             string file = "../../../../../etc/levels/dungeon1.xml";
-            this.dungeon = new Dungeon(file);
+            this.dungeon = new Dungeon(file, this.link);
 
 
             this.keyboardCommandLoader = new KeyboardCommandLoader(this.link, this.dungeon);
@@ -119,7 +123,7 @@
             this.itemManager.Update();
             this.blockManager.Update();
             this.entityManager.Update();
-            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.projectiles.AsReadOnly());
+            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.projectiles.AsReadOnly());
             base.Update(gameTime);
         }
 

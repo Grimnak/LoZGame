@@ -12,6 +12,8 @@
         /// </summary>
         IPlayerState State { get; set; }
 
+        PlayerHealth Health { get; set; }
+
         /// <summary>
         /// Gets or sets the current weapon of the player.
         /// </summary>
@@ -75,7 +77,8 @@
         /// <summary>
         /// Makes player take damage.
         /// </summary>
-        void TakeDamage();
+        /// /// <param name ="damageAmount">amount of damage incurred.</param>
+        void TakeDamage(int damageAmount);
 
         /// <summary>
         /// Makes player attack.

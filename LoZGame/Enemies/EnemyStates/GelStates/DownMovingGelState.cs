@@ -60,13 +60,9 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.gel.Health--;
-            if (this.gel.Health-- == 0)
-            {
-                this.gel.CurrentState.Die();
-            }
+            this.gel.Health.DamageHealth(damageAmount);
         }
 
         public void Die()

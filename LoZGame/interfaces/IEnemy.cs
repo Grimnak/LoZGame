@@ -4,10 +4,13 @@
 
     public interface IEnemy : ICollider
     {
-        int Health { get; set; }
+        PlayerHealth Health { get; set; }
+
+        int Damage { get; }
 
         IEnemyState CurrentState { get; set; }
-        void TakeDamage();
+
+        void TakeDamage(int damageAmount);
         
         void Update();
 

@@ -23,9 +23,13 @@ namespace LoZClone
             this.commandIdle = new CommandIdle(player);
 
             this.dictionary.Add(Keys.W, new CommandUp(player));
+            this.dictionary.Add(Keys.Up, new CommandUp(player));
             this.dictionary.Add(Keys.A, new CommandLeft(player));
+            this.dictionary.Add(Keys.Left, new CommandLeft(player));
             this.dictionary.Add(Keys.S, new CommandDown(player));
+            this.dictionary.Add(Keys.Down, new CommandDown(player));
             this.dictionary.Add(Keys.D, new CommandRight(player));
+            this.dictionary.Add(Keys.Right, new CommandRight(player));
 
             this.dictionary.Add(Keys.Z, new CommandAttackA(player));
             this.dictionary.Add(Keys.N, new CommandAttackB(player));

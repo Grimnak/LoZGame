@@ -13,6 +13,8 @@
             this.wallMaster = wallMaster;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.wallMaster.CurrentState = this;
+            this.wallMaster.VelocityX = 0;
+            this.wallMaster.VelocityY = 0;
         }
 
         public void MoveLeft()
@@ -55,7 +57,7 @@
         {
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
         }
 
