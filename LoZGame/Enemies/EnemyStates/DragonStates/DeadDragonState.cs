@@ -71,7 +71,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.dragon.Physics.Location, Color.White);
+            this.sprite.Draw(this.dragon.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }

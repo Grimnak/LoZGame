@@ -6,7 +6,7 @@
     public class RightMovingStalfosState : IEnemyState
     {
         private readonly Stalfos stalfos;
-        private readonly IEnemySprite sprite;
+        private readonly ISprite sprite;
 
         public RightMovingStalfosState(Stalfos stalfos)
         {
@@ -78,7 +78,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.stalfos.Physics.Location, Color.White);
+            this.sprite.Draw(this.stalfos.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }

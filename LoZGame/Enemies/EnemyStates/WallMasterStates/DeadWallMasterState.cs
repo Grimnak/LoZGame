@@ -72,7 +72,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.wallMaster.Physics.Location, Color.White);
+            this.sprite.Draw(this.wallMaster.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }

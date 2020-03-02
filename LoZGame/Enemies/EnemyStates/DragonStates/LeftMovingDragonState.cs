@@ -6,7 +6,7 @@
     public class LeftMovingDragonState : IEnemyState
     {
         private readonly Dragon dragon;
-        private readonly IEnemySprite sprite;
+        private readonly ISprite sprite;
 
         public LeftMovingDragonState(Dragon dragon)
         {
@@ -77,7 +77,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.dragon.Physics.Location, Color.White);
+            this.sprite.Draw(this.dragon.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }

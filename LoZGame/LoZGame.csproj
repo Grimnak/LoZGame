@@ -103,6 +103,7 @@
     <Compile Include="Enemies\EnemyClasses\Stalfos.cs" />
     <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
+    <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\IDoorState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\HorizontalSpikeCrossState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\VerticalSpikeCrossState.cs" />
@@ -298,10 +299,8 @@
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IPlayerState.cs" />
     <Compile Include="Interfaces\IEnemy.cs" />
-    <Compile Include="Interfaces\IEnemySprite.cs" />
     <Compile Include="Interfaces\IEnemyState.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
-    <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Player\PlayerStates\AttackState.cs" />
     <Compile Include="Player\PlayerStates\NullState.cs" />
     <Compile Include="Player\PlayerStates\MoveRightState.cs" />

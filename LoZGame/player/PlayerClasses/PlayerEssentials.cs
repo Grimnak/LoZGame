@@ -17,8 +17,6 @@
 
         public int MoveSpeed { get; set; }
 
-        public int DamageCounter { get; set; }
-
         public int DamageTimer { get; set; }
 
         public Physics Physics { get; set; }
