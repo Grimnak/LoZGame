@@ -288,7 +288,7 @@
     <Compile Include="Sprites\ProjectileSpriteClasses\SilverArrowProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\BoomerangProjectile.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\ArrowProjectile.cs" />
-    <Compile Include="Util\PlayerHealth.cs" />
+    <Compile Include="Managers\HealthManager.cs" />
     <Compile Include="Util\Physics.cs" />
     <Compile Include="Util\ProjectileSpriteFactory.cs" />
     <Compile Include="Util\ItemSpriteFactory.cs" />
