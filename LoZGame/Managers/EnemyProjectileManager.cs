@@ -108,11 +108,11 @@
             }
         }
 
-        public void Draw(SpriteBatch spritebatch)
+        public void Draw()
         {
             foreach (KeyValuePair<int, IProjectile> boomerang in this.boomerangList)
             {
-                boomerang.Value.Draw(spritebatch);
+                boomerang.Value.Draw();
             }
 
             foreach (KeyValuePair<int, FireballSprite> fireBall in this.fireBallList)

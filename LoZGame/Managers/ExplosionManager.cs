@@ -118,11 +118,11 @@
             }
         }
 
-        public void Draw(SpriteBatch spritebatch)
+        public void Draw()
         {
             foreach (KeyValuePair<int, IProjectile> explosion in this.explosionList)
             {
-                explosion.Value.Draw(spritebatch);
+                explosion.Value.Draw();
             }
         }
     }

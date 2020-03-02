@@ -3,12 +3,10 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public interface IItemSprite
+    public interface IItem : ICollider
     {
-        Vector2 Location { get; set; }
-
         void Update();
 
-        void Draw(SpriteBatch spriteBatch);
+        void Draw();
     }
 }

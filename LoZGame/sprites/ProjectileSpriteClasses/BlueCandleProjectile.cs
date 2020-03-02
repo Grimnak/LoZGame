@@ -6,75 +6,74 @@
 
     internal class BlueCandleProjectile : IProjectile
     {
-        private static readonly int LinkSize = 32;
-        private static readonly int Width = 20;
-        private static readonly int Height = 20;
+        private static readonly int LinkSize = 30;
         private static readonly int LifeTimeMax = 210;
-        private static readonly int TravelDistance = 64;
         private static readonly int FrameDelay = 10;
+        private const int Speed = 10;
+        private const float Accel = 0.1f;
 
-        private readonly Texture2D texture;      // the texture to pull frames from
+        private readonly Texture2D Texture;      // the texture to pull frames from
+        private readonly SpriteSheetData Data;
         private Rectangle firstFrame;
         private Rectangle secondFrame;
         private Rectangle currentFrame;
+        private Vector2 origin;
+        private Vector2 Size;
         private readonly int scale;
-        private readonly string direction;
-        private Vector2 destination;
         private int lifeTime;
-        private int distTravelled;
-
+        private int travelTime;
+        private float layer;
+        private float rotation;
         private readonly int instance;
         private bool expired;
         private readonly bool hostile;
 
-        public bool IsHostile { get { return this.hostile; } }
+        public bool IsHostile => this.hostile;
 
-        public Vector2 Location { get; set; }
+        public Physics Physics { get; set; }
 
-        public BlueCandleProjectile(Texture2D texture, Vector2 loc, string direction, int scale, int instance)
+        public Rectangle Bounds { get; set; }
+
+        public BlueCandleProjectile(Texture2D texture, SpriteSheetData data, Vector2 loc, string direction, int scale, int instance)
         {
+            this.rotation = 0;
             this.lifeTime = LifeTimeMax;
-            this.texture = texture;
-            this.firstFrame = new Rectangle(0, 0, 32, 32);
-            this.secondFrame = new Rectangle(32, 0, 32, 32);
+            this.Data = data;
+            this.Texture = texture;
+            this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
+            this.firstFrame = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
+            this.secondFrame = new Rectangle(0, this.Data.Height, this.Data.Width, this.Data.Height);
+            this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
             this.currentFrame = this.firstFrame;
-            this.scale = 1;
+            this.scale = scale;
             this.instance = instance;
             this.expired = false;
-            this.direction = direction;
-            this.distTravelled = 1;
             this.hostile = false;
+            this.travelTime = (int)(Speed / Accel);
+
             if (direction.Equals("Up"))
             {
-                this.Location = new Vector2(loc.X - (((Width * scale) - LinkSize) / 2), loc.Y - LinkSize);
-                this.destination = new Vector2(this.Location.X, this.Location.Y - TravelDistance);
+                this.Physics = new Physics(new Vector2(loc.X - ((LinkSize - this.Size.X) / 2), loc.Y - LinkSize), new Vector2(0, -1 * Speed), new Vector2(0, Accel));
             }
             else if (direction.Equals("Left"))
             {
-                this.Location = new Vector2(loc.X - LinkSize, loc.Y - (((Width * scale) - LinkSize) / 2));
-                this.destination = new Vector2(this.Location.X - TravelDistance, this.Location.Y);
+                this.Physics = new Physics(new Vector2(loc.X - LinkSize, loc.Y - ((LinkSize - this.Size.Y) / 2)), new Vector2(-1 * Speed, 0), new Vector2(Accel, 0));
             }
             else if (direction.Equals("Right"))
             {
-                this.Location = new Vector2(loc.X + LinkSize, loc.Y - (((Width * scale) - LinkSize) / 2));
-                this.destination = new Vector2(this.Location.X + TravelDistance, this.Location.Y);
+                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y - ((LinkSize - this.Size.Y) / 2)), new Vector2(Speed, 0), new Vector2(-1 * Accel, 0));
             }
             else
             {
-                this.Location = new Vector2(loc.X - (((Width * scale) - LinkSize) / 2), loc.Y + LinkSize);
-                this.destination = new Vector2(this.Location.X, this.Location.Y + TravelDistance);
+                this.Physics = new Physics(new Vector2(loc.X - ((LinkSize - this.Size.X) / 2), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, -1 * Accel));
             }
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
         }
 
-        public bool IsExpired
-        {
-            get { return this.expired; }
-        }
+        public bool IsExpired => this.expired;
 
-        public int Instance
-        {
-            get { return this.instance; }
-        }
+        public int Instance => this.instance;
 
         private void NextFrame()
         {
@@ -88,21 +87,33 @@
             }
         }
 
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IPlayer)
+            {
+                // do nothing
+            }
+            else
+            {
+                this.Physics.StopMovement();
+            }
+        }
+
         public void Update()
         {
-            this.distTravelled++;
             this.lifeTime--;
             if (this.lifeTime % FrameDelay == 0)
             {
                 this.NextFrame();
             }
 
-            if (this.lifeTime >= LifeTimeMax / 3)
+            if (this.lifeTime >= LifeTimeMax - this.travelTime)
             {
-                float xdiff = (this.destination.X - this.Location.X) / 8;
-                float ydiff = (this.destination.Y - this.Location.Y) / 8;
-                float denom = (float)Math.Log(this.distTravelled);
-                this.Location = new Vector2(this.Location.X + (xdiff / denom), this.Location.Y + (ydiff / denom));
+                this.Physics.Move();
+                this.Physics.Accelerate();
+                this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+                this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+
             }
             else if (this.lifeTime <= 0)
             {
@@ -110,9 +121,9 @@
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw()
         {
-            spriteBatch.Draw(this.texture, this.Location, this.currentFrame, Color.White, 0, new Vector2(0, 0), this.scale, SpriteEffects.None, 0f);
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }
 }

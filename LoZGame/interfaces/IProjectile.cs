@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public interface IProjectile /*: ICollider*/
+    public interface IProjectile : ICollider
     {
         bool IsExpired { get; }
 
@@ -11,10 +11,8 @@
 
         bool IsHostile { get; }
 
-        Vector2 Location { get; }
-
         void Update();
 
-        void Draw(SpriteBatch spriteBatch);
+        void Draw();
     }
 }

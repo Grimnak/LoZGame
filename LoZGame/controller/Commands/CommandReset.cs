@@ -33,7 +33,7 @@
 
             LoZGame.Instance.Items.CurrentIndex = 1;
             LoZGame.Instance.Items.CycleLeft();
-            LoZGame.Instance.Items.CurrentItem.Location = new Vector2(384, 184);
+            LoZGame.Instance.Items.CurrentItem.Physics.Location = new Vector2(384, 184);
 
             this.dungeon.Reset();
         }
