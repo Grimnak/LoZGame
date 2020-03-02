@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace LoZClone
 {
-    public class PlayerHealth
+    public class HealthManager
     {
         private int maxHealth;
 
         public int CurrentHealth { get; set; }
 
-        public PlayerHealth(int health)
+        public HealthManager(int health)
         {
             this.maxHealth = health;
             this.CurrentHealth = health;

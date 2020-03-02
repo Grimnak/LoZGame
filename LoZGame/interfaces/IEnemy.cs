@@ -4,7 +4,7 @@
 
     public interface IEnemy : ICollider
     {
-        PlayerHealth Health { get; set; }
+        HealthManager Health { get; set; }
 
         int Damage { get; }
 

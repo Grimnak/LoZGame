@@ -22,7 +22,7 @@
             get; set;
         }
 
-        public PlayerHealth Health { get; set; }
+        public HealthManager Health { get; set; }
 
         public int Damage => damage;
 
@@ -38,7 +38,7 @@
 
         public Dragon(Vector2 location)
         {
-            this.Health = new PlayerHealth(health);
+            this.Health = new HealthManager(health);
             this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.entity = LoZGame.Instance.Entities;
             this.currentState = new LeftMovingDragonState(this);

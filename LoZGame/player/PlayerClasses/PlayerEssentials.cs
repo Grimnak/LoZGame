@@ -23,18 +23,17 @@
 
         public Physics Physics { get; set; }
 
-        public PlayerHealth Health { get; set; }
+        public HealthManager Health { get; set; }
 
         public void TakeDamage(int damageAmount)
         {
-            this.Health.DamageHealth(damageAmount);
             if (this.Health.CurrentHealth <= 0)
             {
                 this.State.Die();
             }
             if (this.DamageTimer <= 0)
             {
-                this.DamageCounter++;
+                this.Health.DamageHealth(damageAmount);
                 this.DamageTimer = 100;
             }
             

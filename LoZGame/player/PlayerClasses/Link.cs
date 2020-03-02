@@ -18,7 +18,7 @@
         public Link()
         {
             this.Physics = new Physics(new Vector2(150, 200), new Vector2(0, 0), new Vector2(0, 0));
-            this.Health = new PlayerHealth(startingHealth);
+            this.Health = new HealthManager(startingHealth);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
             this.CurrentColor = "Green";
             this.CurrentDirection = "Down";
