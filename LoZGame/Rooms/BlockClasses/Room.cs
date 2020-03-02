@@ -100,8 +100,8 @@
         public Vector2 GridToScreenVector(float gridX, float gridY)
         {
             return new Vector2(
-                (float)(LoZGame.Instance.HorizontalOffset + (LoZGame.Instance.TileWidth * gridX)),
-                (float)(LoZGame.Instance.VerticalOffset + (LoZGame.Instance.TileHeight * gridY)));
+                (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * gridX)),
+                (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * gridY)));
         }
 
         /*

@@ -35,7 +35,7 @@
                     CheckCollisions<IPlayer>(block, players);
                     CheckCollisions<IEnemy>(block, enemies);
                     CheckCollisions<IBlock>(block, blocks);
-                    CheckBorders(block, LoZGame.Instance.TileWidth, LoZGame.Instance.TileHeight);
+                    CheckBorders(block, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
                 }
             }
         }
@@ -100,22 +100,22 @@
 
         private void CheckBorders(ICollider sourceCollider, int sourceWidth, int sourceHeight)
         {
-            if (sourceCollider.Physics.Location.X + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width - LoZGame.Instance.HorizontalOffset)
+            if (sourceCollider.Physics.Location.X + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width - BlockSpriteFactory.Instance.HorizontalOffset)
             {
-                sourceCollider.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - LoZGame.Instance.HorizontalOffset, sourceCollider.Physics.Location.Y);
+                sourceCollider.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset, sourceCollider.Physics.Location.Y);
             }
-            else if (sourceCollider.Physics.Location.X < LoZGame.Instance.HorizontalOffset)
+            else if (sourceCollider.Physics.Location.X < BlockSpriteFactory.Instance.HorizontalOffset)
             {
-                sourceCollider.Physics.Location = new Vector2(LoZGame.Instance.HorizontalOffset, sourceCollider.Physics.Location.Y);
+                sourceCollider.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, sourceCollider.Physics.Location.Y);
             }
 
-            if (sourceCollider.Physics.Location.Y + sourceHeight > LoZGame.Instance.GraphicsDevice.Viewport.Height - LoZGame.Instance.VerticalOffset)
+            if (sourceCollider.Physics.Location.Y + sourceHeight > LoZGame.Instance.GraphicsDevice.Viewport.Height - BlockSpriteFactory.Instance.VerticalOffset)
             {
-                sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - LoZGame.Instance.VerticalOffset);
+                sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset);
             }
-            else if (sourceCollider.Physics.Location.Y < LoZGame.Instance.VerticalOffset)
+            else if (sourceCollider.Physics.Location.Y < BlockSpriteFactory.Instance.VerticalOffset)
             {
-                sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, LoZGame.Instance.VerticalOffset);
+                sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
             }
         }
     }

@@ -26,11 +26,11 @@
                 }
                 else if (collisionSide == CollisionDetection.CollisionSide.Left)
                 {
-                    this.enemy.Physics.Location = new Vector2(block.Physics.Location.X + LoZGame.Instance.TileWidth, this.enemy.Physics.Location.Y);
+                    this.enemy.Physics.Location = new Vector2(block.Physics.Location.X + BlockSpriteFactory.Instance.TileWidth, this.enemy.Physics.Location.Y);
                 }
                 else if (collisionSide == CollisionDetection.CollisionSide.Top)
                 {
-                    this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, block.Physics.Location.Y + LoZGame.Instance.TileHeight);
+                    this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, block.Physics.Location.Y + BlockSpriteFactory.Instance.TileHeight);
                 }
                 else
                 {

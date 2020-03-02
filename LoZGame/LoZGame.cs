@@ -7,10 +7,7 @@
 
     public class LoZGame : Game
     {
-        public readonly int TileWidth = 54;
-        public readonly int TileHeight = 48;
-        public readonly int VerticalOffset = 72;
-        public readonly int HorizontalOffset = 79;
+
 
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;

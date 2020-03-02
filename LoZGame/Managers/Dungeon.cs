@@ -55,8 +55,8 @@
                 this.currentY--;
                 this.LoadNewRoom();
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
-                    (float)(LoZGame.Instance.HorizontalOffset + (LoZGame.Instance.TileWidth * 5.5)),
-                    (float)(LoZGame.Instance.VerticalOffset + (LoZGame.Instance.TileHeight * 6)));
+                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
             }
         }
 
@@ -70,8 +70,8 @@
                 this.currentY++;
                 this.LoadNewRoom();
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
-                    (float)(LoZGame.Instance.HorizontalOffset + (LoZGame.Instance.TileWidth * 5.5)),
-                    (float)(LoZGame.Instance.VerticalOffset + (LoZGame.Instance.TileHeight * 0)));
+                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 0)));
             }
         }
 
@@ -85,8 +85,8 @@
                 this.currentX--;
                 this.LoadNewRoom();
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
-                    (float)(LoZGame.Instance.HorizontalOffset + (LoZGame.Instance.TileWidth * 11)),
-                    (float)(LoZGame.Instance.VerticalOffset + (LoZGame.Instance.TileHeight * 3)));
+                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 11)),
+                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));
             }
         }
 
@@ -100,8 +100,8 @@
                 this.currentX++;
                 this.LoadNewRoom();
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
-                    (float)(LoZGame.Instance.HorizontalOffset + (LoZGame.Instance.TileWidth * 0)),
-                    (float)(LoZGame.Instance.VerticalOffset + (LoZGame.Instance.TileHeight * 3)));
+                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 0)),
+                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));
             }
         }
 

@@ -8,83 +8,86 @@
 
     public class BlockSpriteFactory
     {
-        private static readonly int BlockWidth = LoZGame.Instance.TileWidth;
-        private static readonly int BlockHeight = LoZGame.Instance.TileHeight;
+        private static readonly int tileWidth = 54;
+        private static readonly int tileHeight = 48;
+        private static readonly int verticalOffset = 72;
+        private static readonly int horizontalOffset = 79;
+
         private static readonly int VerticalBlockWidth = 16;
         private static readonly int VerticalBlockHeight = 64;
         private static readonly int HorizontalBlockWidth = 64;
         private static readonly int HorizontalBlockHeight = 16;
 
         private Texture2D StairsTexture;
-        private readonly SpriteSheetData stairsData = new SpriteSheetData("stairs", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData stairsData = new SpriteSheetData("stairs", tileWidth, tileHeight, 1, 1);
 
         private Texture2D UnlockedDoorDownTexture;
-        private readonly SpriteSheetData UnlockedDoorDownData = new SpriteSheetData("unlocked_door_down", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData UnlockedDoorDownData = new SpriteSheetData("unlocked_door_down", tileWidth, tileHeight, 1, 1);
         private Texture2D UnlockedDoorLeftTexture;
-        private readonly SpriteSheetData UnlockedDoorLeftData = new SpriteSheetData("unlocked_door_left", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData UnlockedDoorLeftData = new SpriteSheetData("unlocked_door_left", tileWidth, tileHeight, 1, 1);
         private Texture2D UnlockedDoorRightTexture;
-        private readonly SpriteSheetData UnlockedDoorRightData = new SpriteSheetData("unlocked_door_right", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData UnlockedDoorRightData = new SpriteSheetData("unlocked_door_right", tileWidth, tileHeight, 1, 1);
         private Texture2D UnlockedDoorUpTexture;
-        private readonly SpriteSheetData UnlockedDoorUpData = new SpriteSheetData("unlocked_door_up", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData UnlockedDoorUpData = new SpriteSheetData("unlocked_door_up", tileWidth, tileHeight, 1, 1);
 
         private Texture2D LockedDoorDownTexture;
-        private readonly SpriteSheetData LockedDoorDownData = new SpriteSheetData("locked_door_down", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData LockedDoorDownData = new SpriteSheetData("locked_door_down", tileWidth, tileHeight, 1, 1);
         private Texture2D LockedDoorLeftTexture;
-        private readonly SpriteSheetData LockedDoorLeftData = new SpriteSheetData("locked_door_left", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData LockedDoorLeftData = new SpriteSheetData("locked_door_left", tileWidth, tileHeight, 1, 1);
         private Texture2D LockedDoorRightTexture;
-        private readonly SpriteSheetData LockedDoorRightData = new SpriteSheetData("locked_door_right", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData LockedDoorRightData = new SpriteSheetData("locked_door_right", tileWidth, tileHeight, 1, 1);
         private Texture2D LockedDoorUpTexture;
-        private readonly SpriteSheetData LockedDoorUpData = new SpriteSheetData("locked_door_up", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData LockedDoorUpData = new SpriteSheetData("locked_door_up", tileWidth, tileHeight, 1, 1);
 
         private Texture2D SpecialDoorDownTexture;
-        private readonly SpriteSheetData SpecialDoorDownData = new SpriteSheetData("special_door_down", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData SpecialDoorDownData = new SpriteSheetData("special_door_down", tileWidth, tileHeight, 1, 1);
         private Texture2D SpecialDoorLeftTexture;
-        private readonly SpriteSheetData SpecialDoorLeftData = new SpriteSheetData("special_door_left", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData SpecialDoorLeftData = new SpriteSheetData("special_door_left", tileWidth, tileHeight, 1, 1);
         private Texture2D SpecialDoorRightTexture;
-        private readonly SpriteSheetData SpecialDoorRightData = new SpriteSheetData("special_door_right", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData SpecialDoorRightData = new SpriteSheetData("special_door_right", tileWidth, tileHeight, 1, 1);
         private Texture2D SpecialDoorUpTexture;
-        private readonly SpriteSheetData SpecialDoorUpData = new SpriteSheetData("special_door_up", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData SpecialDoorUpData = new SpriteSheetData("special_door_up", tileWidth, tileHeight, 1, 1);
 
         private Texture2D FireTexture;
-        private readonly SpriteSheetData fireData = new SpriteSheetData("fire", BlockWidth, BlockHeight, 1, 2);
+        private readonly SpriteSheetData fireData = new SpriteSheetData("fire", tileWidth, tileHeight, 1, 2);
         private Texture2D FloorTileTexture;
-        private readonly SpriteSheetData floorTileData = new SpriteSheetData("floor_tile", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData floorTileData = new SpriteSheetData("floor_tile", tileWidth, tileHeight, 1, 1);
         private Texture2D GapTileTexture;
-        private readonly SpriteSheetData gapTileData = new SpriteSheetData("gap_tile", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData gapTileData = new SpriteSheetData("gap_tile", tileWidth, tileHeight, 1, 1);
         private Texture2D MovableSquareTexture;
-        private readonly SpriteSheetData movableSquareData = new SpriteSheetData("movable_square", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData movableSquareData = new SpriteSheetData("movable_square", tileWidth, tileHeight, 1, 1);
 
         private Texture2D BombedOpeningDownTexture;
-        private readonly SpriteSheetData bombedOpeningDownData = new SpriteSheetData("bombed_opening_down", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData bombedOpeningDownData = new SpriteSheetData("bombed_opening_down", tileWidth, tileHeight, 1, 1);
         private Texture2D BombedOpeningUpTexture;
-        private readonly SpriteSheetData bombedOpeningUpData = new SpriteSheetData("bombed_opening_up", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData bombedOpeningUpData = new SpriteSheetData("bombed_opening_up", tileWidth, tileHeight, 1, 1);
         private Texture2D BombedOpeningRightTexture;
-        private readonly SpriteSheetData bombedOpeningRightData = new SpriteSheetData("bombed_opening_right", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData bombedOpeningRightData = new SpriteSheetData("bombed_opening_right", tileWidth, tileHeight, 1, 1);
         private Texture2D BombedOpeningLeftTexture;
-        private readonly SpriteSheetData bombedOpeningLeftData = new SpriteSheetData("bombed_opening_left", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData bombedOpeningLeftData = new SpriteSheetData("bombed_opening_left", tileWidth, tileHeight, 1, 1);
 
         private Texture2D BlueStatueRightTexture;
-        private readonly SpriteSheetData blueStatueRightData = new SpriteSheetData("blue_statue_right", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData blueStatueRightData = new SpriteSheetData("blue_statue_right", tileWidth, tileHeight, 1, 1);
         private Texture2D BlueStatueLeftTexture;
-        private readonly SpriteSheetData blueStatueLeftData = new SpriteSheetData("blue_statue_left", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData blueStatueLeftData = new SpriteSheetData("blue_statue_left", tileWidth, tileHeight, 1, 1);
         private Texture2D TurquoiseStatueTexture;
-        private readonly SpriteSheetData turquoiseStatueData = new SpriteSheetData("turquoise_statue", BlockWidth, BlockHeight, 1, 2);
+        private readonly SpriteSheetData turquoiseStatueData = new SpriteSheetData("turquoise_statue", tileWidth, tileHeight, 1, 2);
 
         private Texture2D SpottedTileTexture;
-        private readonly SpriteSheetData spottedTileData = new SpriteSheetData("spotted_tile", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData spottedTileData = new SpriteSheetData("spotted_tile", tileWidth, tileHeight, 1, 1);
         private Texture2D WaterTileTexture;
-        private readonly SpriteSheetData waterTileData = new SpriteSheetData("water_tile", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData waterTileData = new SpriteSheetData("water_tile", tileWidth, tileHeight, 1, 1);
 
         private Texture2D OrangeMovableSquareTexture;
-        private readonly SpriteSheetData orangeMovableSquareData = new SpriteSheetData("orange_movable_square", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData orangeMovableSquareData = new SpriteSheetData("orange_movable_square", tileWidth, tileHeight, 1, 1);
         private Texture2D EnemyDeathExplosionTexture;
-        private readonly SpriteSheetData enemyDeathExplosionData = new SpriteSheetData("enemyDeath", BlockWidth, BlockHeight, 1, 6);
+        private readonly SpriteSheetData enemyDeathExplosionData = new SpriteSheetData("enemyDeath", tileWidth, tileHeight, 1, 6);
         private Texture2D EnemySpawnTexture;
-        private readonly SpriteSheetData enemySpawnData = new SpriteSheetData("enemySpawn", BlockWidth, BlockHeight, 3, 1);
+        private readonly SpriteSheetData enemySpawnData = new SpriteSheetData("enemySpawn", tileWidth, tileHeight, 3, 1);
         private Texture2D BasementBrickTileTexture;
-        private readonly SpriteSheetData basementBrickTileData = new SpriteSheetData("basement_brick_tile", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData basementBrickTileData = new SpriteSheetData("basement_brick_tile", tileWidth, tileHeight, 1, 1);
         private Texture2D LadderTileTexture;
-        private readonly SpriteSheetData ladderTileData = new SpriteSheetData("ladder_tile", BlockWidth, BlockHeight, 1, 1);
+        private readonly SpriteSheetData ladderTileData = new SpriteSheetData("ladder_tile", tileWidth, tileHeight, 1, 1);
         private Texture2D HorizontalBricksTexture;
         private readonly SpriteSheetData horizontalBricksData = new SpriteSheetData("horizontal_bricks", HorizontalBlockWidth, HorizontalBlockHeight, 1, 1);
         private Texture2D VerticalBricksTexture;
@@ -98,6 +101,26 @@
             {
                 return instance;
             }
+        }
+
+        public int TileWidth
+        {
+            get { return tileWidth; }
+        }
+
+        public int TileHeight
+        {
+            get { return tileHeight; }
+        }
+
+        public int VerticalOffset
+        {
+            get { return verticalOffset; }
+        }
+
+        public int HorizontalOffset
+        {
+            get { return horizontalOffset; }
         }
 
         private BlockSpriteFactory()

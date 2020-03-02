@@ -37,7 +37,7 @@
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.sprite = this.CreateCorrectSprite(name);
-            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LoZGame.Instance.TileWidth, LoZGame.Instance.TileHeight);
+            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
         }
 
         /// <inheritdoc/>

@@ -91,7 +91,7 @@
             {
                 if (spikeCross.AttackFactor > 0)
                 {
-                    if (spikeCross.Physics.Location.X - (LoZGame.Instance.TileWidth * 6 + (LoZGame.Instance.HorizontalOffset / 2)) >= 0)
+                    if (spikeCross.Physics.Location.X - (BlockSpriteFactory.Instance.TileWidth * 6 + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) >= 0)
                     {
                         spikeCross.Retreating = true;
                         spikeCross.AttackFactor = -1;
@@ -99,7 +99,7 @@
                 }
                 else
                 {
-                    if (spikeCross.Physics.Location.X - (LoZGame.Instance.TileWidth * 6 + (LoZGame.Instance.HorizontalOffset / 2)) <= 0)
+                    if (spikeCross.Physics.Location.X - (BlockSpriteFactory.Instance.TileWidth * 6 + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) <= 0)
                     {
                         spikeCross.Retreating = true;
                         spikeCross.AttackFactor = 1;
@@ -108,7 +108,8 @@
             }
             else
             {
-                if (spikeCross.Physics.Location.X <= ((LoZGame.Instance.HorizontalOffset / 2) + 3) || spikeCross.Physics.Location.X >= (LoZGame.Instance.TileWidth * 12 + (LoZGame.Instance.HorizontalOffset / 2) - 3))
+                if (spikeCross.Physics.Location.X <= ((BlockSpriteFactory.Instance.HorizontalOffset / 2) + 3) 
+                    || spikeCross.Physics.Location.X >= (BlockSpriteFactory.Instance.TileWidth * 12 + (BlockSpriteFactory.Instance.HorizontalOffset / 2) - 3))
                 {
                     spikeCross.Attacking = false;
                     spikeCross.Retreating = false;

@@ -41,11 +41,11 @@
                 }
                 else if (collisionSide == CollisionDetection.CollisionSide.Left)
                 {
-                    this.player.Physics.Location = new Vector2(block.Physics.Location.X + LoZGame.Instance.TileWidth, this.player.Physics.Location.Y);
+                    this.player.Physics.Location = new Vector2(block.Physics.Location.X + BlockSpriteFactory.Instance.TileWidth, this.player.Physics.Location.Y);
                 }
                 else if (collisionSide == CollisionDetection.CollisionSide.Top)
                 {
-                    this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y + LoZGame.Instance.TileHeight);
+                    this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y + BlockSpriteFactory.Instance.TileHeight);
                 }
                 else
                 {
