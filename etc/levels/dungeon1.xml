@@ -682,10 +682,10 @@
         <tile type="block" idx="1">movable_square</tile>
         <tile type="walkable" idx="2">floor_tile</tile>
         <tile type="walkable" idx="3">floor_tile</tile>
-        <tile type="movable" idx="4">turqoise_statue_left</tile>
+        <tile type="block" idx="4">turqoise_statue_left</tile>
         <tile type="walkable" idx="5">floor_tile</tile>
         <tile type="walkable" idx="6">floor_tile</tile>
-        <tile type="movable" idx="7">turqoise_statue_right</tile>
+        <tile type="block" idx="7">turqoise_statue_right</tile>
         <tile type="walkable" idx="8">floor_tile</tile>
         <tile type="walkable" idx="9">floor_tile</tile>
         <tile type="block" idx="10">movable_square</tile>
@@ -695,12 +695,12 @@
         <tile type="walkable" idx="0">floor_tile</tile>
         <tile type="block" idx="1">movable_square</tile>
         <tile type="walkable" idx="2">floor_tile</tile>
-        <tile type="movable" idx="3">turqoise_statue_left</tile>
+        <tile type="block" idx="3">turqoise_statue_left</tile>
         <tile type="walkable" idx="4">floor_tile</tile>
         <tile type="walkable" idx="5">floor_tile</tile>
         <tile type="walkable" idx="6">floor_tile</tile>
         <tile type="walkable" idx="7">floor_tile</tile>
-        <tile type="movable" idx="8">turqoise_statue_right</tile>
+        <tile type="block" idx="8">turqoise_statue_right</tile>
         <tile type="walkable" idx="9">floor_tile</tile>
         <tile type="block" idx="10">movable_square</tile>
         <tile type="walkable" idx="11">floor_tile</tile>
@@ -791,12 +791,12 @@
         <tile type="walkable" idx="0">gap_tile</tile>
         <tile type="walkable" idx="1">gap_tile</tile>
         <tile type="walkable" idx="2">gap_tile</tile>
-        <tile type="walkable" idx="3">fire gap_tile</tile>
+        <tile type="block" idx="3">fire_gap_tile</tile>
         <tile type="walkable" idx="4">gap_tile</tile>
         <tile type="walkable" idx="5">gap_tile</tile>
         <tile type="walkable" idx="6">gap_tile</tile>
         <tile type="walkable" idx="7">gap_tile</tile>
-        <tile type="walkable" idx="8">fire gap_tile</tile>
+        <tile type="block" idx="8">fire_gap_tile</tile>
         <tile type="walkable" idx="9">gap_tile</tile>
         <tile type="walkable" idx="10">gap_tile</tile>
         <tile type="walkable" idx="11">gap_tile</tile>
@@ -830,6 +830,20 @@
         <tile type="walkable" idx="11">gap_tile</tile>
       </rrow>
       <rrow idx="5">
+        <tile type="walkable" idx="0">gap_tile</tile>
+        <tile type="walkable" idx="1">gap_tile</tile>
+        <tile type="walkable" idx="2">gap_tile</tile>
+        <tile type="walkable" idx="3">gap_tile</tile>
+        <tile type="walkable" idx="4">gap_tile</tile>
+        <tile type="walkable" idx="5">gap_tile</tile>
+        <tile type="walkable" idx="6">gap_tile</tile>
+        <tile type="walkable" idx="7">gap_tile</tile>
+        <tile type="walkable" idx="8">gap_tile</tile>
+        <tile type="walkable" idx="9">gap_tile</tile>
+        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="walkable" idx="11">gap_tile</tile>
+      </rrow>
+	        <rrow idx="6">
         <tile type="walkable" idx="0">gap_tile</tile>
         <tile type="walkable" idx="1">gap_tile</tile>
         <tile type="walkable" idx="2">gap_tile</tile>
@@ -2361,16 +2375,16 @@
       </rrow>
       <rrow idx="1">
         <tile type="walkable" idx="0">floor_tile</tile>
-        <tile type="movable" idx="1">blue_statue_left</tile>
+        <tile type="block" idx="1">blue_statue_left</tile>
         <tile type="walkable" idx="2">floor_tile</tile>
         <tile type="walkable" idx="3">floor_tile</tile>
-        <tile type="movable" idx="4">blue_statue_left</tile>
+        <tile type="block" idx="4">blue_statue_left</tile>
         <tile type="walkable" idx="5">floor_tile</tile>
         <tile type="walkable" idx="6">floor_tile</tile>
-        <tile type="movable" idx="7">blue_statue_right</tile>
+        <tile type="block" idx="7">blue_statue_right</tile>
         <tile type="walkable" idx="8">floor_tile</tile>
         <tile type="walkable" idx="9">floor_tile</tile>
-        <tile type="movable" idx="10">blue_statue_right</tile>
+        <tile type="block" idx="10">blue_statue_right</tile>
         <tile type="walkable" idx="11">floor_tile</tile>
       </rrow>
       <rrow idx="2">
@@ -2389,16 +2403,16 @@
       </rrow>
       <rrow idx="3">
         <tile type="walkable" idx="0">floor_tile</tile>
-        <tile type="movable" idx="1">blue_statue_left</tile>
+        <tile type="block" idx="1">blue_statue_left</tile>
         <tile type="walkable" idx="2">floor_tile</tile>
         <tile type="walkable" idx="3">floor_tile</tile>
-        <tile type="movable" idx="4">blue_statue_left</tile>
+        <tile type="block" idx="4">blue_statue_left</tile>
         <tile type="walkable" idx="5">floor_tile</tile>
         <tile type="walkable" idx="6">floor_tile</tile>
-        <tile type="movable" idx="7">blue_statue_right</tile>
+        <tile type="block" idx="7">blue_statue_right</tile>
         <tile type="walkable" idx="8">floor_tile</tile>
         <tile type="walkable" idx="9">floor_tile</tile>
-        <tile type="movable" idx="10">blue_statue_right</tile>
+        <tile type="block" idx="10">blue_statue_right</tile>
         <tile type="walkable" idx="11">floor_tile</tile>
       </rrow>
       <rrow idx="4">
@@ -2417,16 +2431,16 @@
       </rrow>
       <rrow idx="5">
         <tile type="walkable" idx="0">floor_tile</tile>
-        <tile type="movable" idx="1">blue_statue_left</tile>
+        <tile type="block" idx="1">blue_statue_left</tile>
         <tile type="walkable" idx="2">floor_tile</tile>
-        <tile type="walkable" idx="3">spotted_tile_</tile>
-        <tile type="movable" idx="4">blue_statue_left</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="block" idx="4">blue_statue_left</tile>
         <tile type="walkable" idx="5">spotted_tile</tile>
         <tile type="walkable" idx="6">spotted_tile</tile>
-        <tile type="movable" idx="7">blue_statue_right</tile>
+        <tile type="block" idx="7">blue_statue_right</tile>
         <tile type="walkable" idx="8">spotted_tile</tile>
         <tile type="walkable" idx="9">floor_tile</tile>
-        <tile type="movable" idx="10">blue_statue_right</tile>
+        <tile type="block" idx="10">blue_statue_right</tile>
         <tile type="walkable" idx="11">floor_tile</tile>
       </rrow>
       <rrow idx="6">

@@ -100,22 +100,22 @@
 
         private void CheckBorders(ICollider sourceCollider, int sourceWidth, int sourceHeight)
         {
-            if (sourceCollider.Physics.Location.X + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width)
+            if (sourceCollider.Physics.Location.X + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width - LoZGame.Instance.HorizontalOffset)
             {
-                sourceCollider.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth, sourceCollider.Physics.Location.Y);
+                sourceCollider.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - LoZGame.Instance.HorizontalOffset, sourceCollider.Physics.Location.Y);
             }
-            else if (sourceCollider.Physics.Location.X < 0)
+            else if (sourceCollider.Physics.Location.X < LoZGame.Instance.HorizontalOffset)
             {
-                sourceCollider.Physics.Location = new Vector2(0, sourceCollider.Physics.Location.Y);
+                sourceCollider.Physics.Location = new Vector2(LoZGame.Instance.HorizontalOffset, sourceCollider.Physics.Location.Y);
             }
 
-            if (sourceCollider.Physics.Location.Y + sourceHeight > LoZGame.Instance.GraphicsDevice.Viewport.Height)
+            if (sourceCollider.Physics.Location.Y + sourceHeight > LoZGame.Instance.GraphicsDevice.Viewport.Height - LoZGame.Instance.VerticalOffset)
             {
-                sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight);
+                sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - LoZGame.Instance.VerticalOffset);
             }
-            else if (sourceCollider.Physics.Location.Y < 0)
+            else if (sourceCollider.Physics.Location.Y < LoZGame.Instance.VerticalOffset)
             {
-                sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, 0);
+                sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, LoZGame.Instance.VerticalOffset);
             }
         }
     }

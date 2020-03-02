@@ -223,7 +223,6 @@ C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Re
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Red_Wood_Up.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\stairs.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\SwordBeam.xnb
-C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\SwordBeamSecondary.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\tealGel.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Text.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\turquoise_statue.xnb

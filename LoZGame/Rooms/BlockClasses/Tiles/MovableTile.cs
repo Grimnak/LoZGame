@@ -43,19 +43,7 @@
         /// <inheritdoc/>
         public ISprite CreateCorrectSprite(string name)
         {
-            switch (name)
-            {
-                case "turqoise_statue_left":
-                    return BlockSpriteFactory.Instance.TurquoiseStatueLeft(this.Physics.Location);
-                case "turqoise_statue_right":
-                    return BlockSpriteFactory.Instance.TurquoiseStatueRight(this.Physics.Location);
-                case "blue_statue_left":
-                    return BlockSpriteFactory.Instance.BlueStatueLeft(this.Physics.Location);
-                case "blue_statue_right":
-                    return BlockSpriteFactory.Instance.BlueStatueRight(this.Physics.Location);
-                default:
                     return BlockSpriteFactory.Instance.MovableSquare(this.Physics.Location);
-            }
         }
 
         private void HandlePush()

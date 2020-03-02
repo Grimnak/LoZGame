@@ -7,10 +7,10 @@
 
     public class LoZGame : Game
     {
-        public readonly int TileWidth = 50;
-        public readonly int TileHeight = 50;
-        public readonly int VerticalOffset = 64;
-        public readonly int HorizontalOffset = 96;
+        public readonly int TileWidth = 54;
+        public readonly int TileHeight = 48;
+        public readonly int VerticalOffset = 72;
+        public readonly int HorizontalOffset = 79;
 
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -22,6 +22,7 @@
         private KeyboardCommandLoader keyboardCommandLoader;
         private MouseCommandLoader mouseCommandLoader;
         private Dungeon dungeon;
+        private Texture2D background;
 
         private ItemManager itemManager;
         private BlockManager blockManager;
@@ -81,6 +82,7 @@
 
         protected override void LoadContent()
         {
+            background = Content.Load<Texture2D>("dungeon");
             LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
             this.link = new Link();
 
@@ -134,6 +136,7 @@
         {
             this.GraphicsDevice.Clear(Color.Gray);
             this.spriteBatch.Begin();
+            this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
             this.blockManager.Draw();
             this.itemManager.Draw();
             this.link.Draw();
