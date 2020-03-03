@@ -5,13 +5,13 @@
 
     public class DoorManager
     {
-        private List<Door> doors;
+        private List<IDoor> doors;
 
-        public List<Door> DoorList { get { return doors; } }
+        public List<IDoor> DoorList { get { return doors; } }
 
         public DoorManager()
         {
-            this.doors = new List<Door>();
+            this.doors = new List<IDoor>();
         }
 
         public void Add(Door door)

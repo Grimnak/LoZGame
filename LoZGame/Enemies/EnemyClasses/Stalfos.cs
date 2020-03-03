@@ -31,7 +31,7 @@
         public Stalfos(Vector2 location)
         {
             this.Health = new HealthManager(health);
-            this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
+            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.currentState = new LeftMovingStalfosState(this);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);

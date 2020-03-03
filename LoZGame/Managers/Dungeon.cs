@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
+
     /// <summary>
     /// Manager for all dungeon rooms.
     /// </summary>
@@ -14,19 +15,22 @@
         private int maxY;
         private IPlayer player;
 
+        public IPlayer Player
+        {
+            get { return player; }
+            set { this.player = value; }
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Dungeon"/> class.
         /// </summary>
         /// <param name="filePath">File path of the document to parse.</param>
         /// <param name="player">Player whose location to update.</param>
-        public Dungeon(string filePath, IPlayer player)
+        public Dungeon(string filePath)
         {
+            LoZGame.Instance.DungeonTint = Color.White;
             this.dungeonLayout = XMLHandler.Parse(filePath);
 
-            BlockSpriteFactory.Instance.LoadAllTextures(LoZGame.Instance.Content);
-
-            LoZGame.Instance.DungeonTint = Color.White;
-            this.player = player;
             this.currentX = 2;
             this.currentY = 5; // player spawns at curX/curY
             this.maxX = 6;
@@ -138,7 +142,7 @@
             }
 
             //TODO change to IItem once separated
-            foreach (IItemSprite item in this.dungeonLayout[this.currentY][this.currentX].Items)
+            foreach (IItem item in this.dungeonLayout[this.currentY][this.currentX].Items)
             {
                 // ItemManager.Instance.Add(item);
             }

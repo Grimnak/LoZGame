@@ -32,13 +32,18 @@
         private List<IProjectile> projectiles;
         private List<IItem> items;
 
-        private Color dungeonTint = Color.White;
+        private Color dungeonTint;
 
         public Color DungeonTint { get { return dungeonTint; } set { dungeonTint = value; } }
 
         public IPlayer Link
         {
             get { return this.link; }
+        }
+
+        public Dungeon Dungeon
+        {
+            get { return this.dungeon; }
         }
 
         private static readonly LoZGame instance = new LoZGame();
@@ -86,8 +91,6 @@
         protected override void LoadContent()
         {
             this.background = Content.Load<Texture2D>("dungeon");
-            LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
-            this.link = new Link();
 
             ItemSpriteFactory.Instance.LoadAllTextures(this.Content);
             ProjectileSpriteFactory.Instance.LoadAllTextures(this.Content);
@@ -95,7 +98,11 @@
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
 
             string file = "../../../../../etc/levels/dungeon1.xml";
-            this.dungeon = new Dungeon(file, this.link);
+            this.dungeon = new Dungeon(file);
+
+            LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
+            this.link = new Link(new Vector2(150, 200));
+            this.dungeon.Player = this.link;
 
             this.keyboardCommandLoader = new KeyboardCommandLoader(this.link, this.dungeon);
             this.mouseCommandLoader = new MouseCommandLoader(this.dungeon);
@@ -127,24 +134,26 @@
             this.blockManager.Update();
             this.doorManager.Update();
             this.entityManager.Update();
-            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.projectiles.AsReadOnly());
+            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.doorManager.DoorList.AsReadOnly(), this.projectiles.AsReadOnly());
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            this.GraphicsDevice.Clear(Color.Gray);
+            this.GraphicsDevice.Clear(Color.Black);
             this.spriteBatch.Begin();
             if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
             {
-                this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), Color.White, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0.0f);
+                this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), dungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0.0f);
             }
-            this.doorManager.Draw();
+
             this.blockManager.Draw();
             this.itemManager.Draw();
-            this.link.Draw();
+
             this.enemyManager.Draw();
             this.entityManager.Draw();
+            this.doorManager.Draw();
+            this.link.Draw();
             this.spriteBatch.End();
             base.Draw(gameTime);
         }

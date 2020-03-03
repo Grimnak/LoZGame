@@ -12,7 +12,7 @@
         private static readonly int tileHeight = 48;
         private static readonly int verticalOffset = 72;
         private static readonly int horizontalOffset = 79;
-        private static readonly int doorOffset = 10;
+        private static readonly int doorOffset = 30;
 
         private static readonly int VerticalBlockWidth = 16;
         private static readonly int VerticalBlockHeight = 64;
