@@ -15,7 +15,7 @@ namespace LoZClone
 
         public RandomStateGenerator(IEnemy enemy, int minStates,  int maxStates)
         {
-            randomSelect = new Random();
+            randomSelect = LoZGame.Instance.Random;
             this.enemy = enemy;
             min = minStates;
             max = maxStates;

@@ -165,8 +165,6 @@
         private readonly SpriteSheetData shieldData = new SpriteSheetData("Shield", ShieldWidth, ShieldHeight, 1, 1);
         private Texture2D silverArrowSpriteSheet;
         private readonly SpriteSheetData silverArrowData = new SpriteSheetData("SilverArrow", ArrowWidth, ArrowHeight, 1, 1);
-        private Texture2D arrowSpriteSheet;
-        private readonly SpriteSheetData arrowData = new SpriteSheetData("WoodenArrow", ArrowWidth, ArrowHeight, 1, 1);
         private Texture2D woodenArrowSpriteSheet;
         private readonly SpriteSheetData woodenArrowData = new SpriteSheetData("WoodenArrow", ArrowWidth, ArrowHeight, 1, 1);
         private Texture2D triforceSpriteSheet;
@@ -219,240 +217,198 @@
             silverArrowSpriteSheet = content.Load<Texture2D>(this.silverArrowData.FilePath);
             woodenArrowSpriteSheet = content.Load<Texture2D>(this.woodenArrowData.FilePath);
             triforceSpriteSheet = content.Load<Texture2D>(this.triforceData.FilePath);
+            fluteSpriteSheet = content.Load<Texture2D>(this.fluteData.FilePath);
 
     }
 
-
-
-        public List<IItem> getAll(int x, int y)
+        public IItemSprite Fairy(Vector2 loc, int scale)
         {
-            List<IItem> allItems = new List<IItem>();
-            allItems.Add(this.Fairy(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Health(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Triforce(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.YellowRupee(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.HeartContainer(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Clock(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Rupee(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.LifePotion(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.SecondPotion(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Letter(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Map(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Food(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.WoodenSword(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.WhiteSword(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.MagicSword(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.MagicShield(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Boomerang(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.MagicBoomerang(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Bomb(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Bow(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Arrow(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.SilverArrow(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.RedCandle(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.BlueCandle(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.RedRing(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.BlueRing(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.PowerBracelet(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Flute(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Raft(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Ladder(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.MagicRod(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.MagicBook(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Key(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.MagicKey(new Vector2(x, y), DRAWSCALE));
-            allItems.Add(this.Compass(new Vector2(x, y), DRAWSCALE));
-            return allItems;
+            return new FairySprite(this.fairySpriteSheet, this.fairyData, loc, scale);
         }
 
-        public IItem Fairy(Vector2 loc, int scale)
+        public IItemSprite Health(Vector2 loc, int scale)
         {
-            return new Fairy(this.fairySpriteSheet, this.fairyData, loc, scale);
+            return new HealthSprite(this.healthSpriteSheet, this.healthData, loc, scale);
         }
 
-        public IItem Health(Vector2 loc, int scale)
+        public IItemSprite Triforce(Vector2 loc, int scale)
         {
-            return new Health(this.healthSpriteSheet, this.healthData, loc, scale);
+            return new TriForceSprite(this.triforceSpriteSheet, this.triforceData, loc, scale);
         }
 
-        public IItem Triforce(Vector2 loc, int scale)
+        public IItemSprite YellowRupee(Vector2 loc, int scale)
         {
-            return new TriForce(this.triforceSpriteSheet, this.triforceData, loc, scale);
+            return new YellowRupeeSprite(this.yellowRupeeSpriteSheet, this.yellowRupeeData, loc, scale);
         }
 
-        public IItem YellowRupee(Vector2 loc, int scale)
+        public IItemSprite FullHeart(Vector2 loc, int scale)
         {
-            return new YellowRupee(this.yellowRupeeSpriteSheet, this.yellowRupeeData, loc, scale);
+            return new FullHeartSprite(this.healthSpriteSheet, this.healthData, loc, scale);
         }
 
-        /*public IItem FullHeart(Vector2 loc, int scale)
+        public IItemSprite HalfHeart(Vector2 loc, int scale)
         {
-            return new FullHeart(this.SpriteSheet, this.Data, loc, scale);
+            return new HalfHeartSprite(this.healthSpriteSheet, this.healthData, loc, scale);
         }
 
-        public IItem HalfHeart(Vector2 loc, int scale)
+        public IItemSprite EmptyHeart(Vector2 loc, int scale)
         {
-            return new HalfHeart(this.SpriteSheet, this.Data, loc, scale);
+            return new EmptyHeartSprite(this.healthSpriteSheet, this.healthData, loc, scale);
         }
 
-        public IItem EmptyHeart(Vector2 loc, int scale)
+        public IItemSprite HeartContainer(Vector2 loc, int scale)
         {
-            return new Fairy(this.SpriteSheet, this.Data, loc, scale);
-        }*/
-
-        public IItem HeartContainer(Vector2 loc, int scale)
-        {
-            return new HeartContainer(this.heartContainerSpriteSheet, this.heartContainerData, loc, scale);
+            return new HeartContainerSprite(this.heartContainerSpriteSheet, this.heartContainerData, loc, scale);
         }
 
-        public IItem Clock(Vector2 loc, int scale)
+        public IItemSprite Clock(Vector2 loc, int scale)
         {
-            return new Clock(this.clockSpriteSheet, this.clockData, loc, scale);
+            return new ClockSprite(this.clockSpriteSheet, this.clockData, loc, scale);
         }
 
-        public IItem Rupee(Vector2 loc, int scale)
+        public IItemSprite Rupee(Vector2 loc, int scale)
         {
-            return new Rupee(this.rupeeSpriteSheet, this.rupeeData, loc, scale);
+            return new RupeeSprite(this.rupeeSpriteSheet, this.rupeeData, loc, scale);
         }
 
-        public IItem LifePotion(Vector2 loc, int scale)
+        public IItemSprite LifePotion(Vector2 loc, int scale)
         {
-            return new LifePotion(this.lifePotionSpriteSheet, this.lifePotionData, loc, scale);
+            return new LifePotionSprite(this.lifePotionSpriteSheet, this.lifePotionData, loc, scale);
         }
 
-        public IItem SecondPotion(Vector2 loc, int scale)
+        public IItemSprite SecondPotion(Vector2 loc, int scale)
         {
-            return new SecondPotion(this.secondPotionSpriteSheet, this.secondPotionData, loc, scale);
+            return new SecondPotionSprite(this.secondPotionSpriteSheet, this.secondPotionData, loc, scale);
         }
 
-        public IItem Letter(Vector2 loc, int scale)
+        public IItemSprite Letter(Vector2 loc, int scale)
         {
-            return new Letter(this.letterSpriteSheet, this.letterData, loc, scale);
+            return new LetterSprite(this.letterSpriteSheet, this.letterData, loc, scale);
         }
 
-        public IItem Map(Vector2 loc, int scale)
+        public IItemSprite Map(Vector2 loc, int scale)
         {
-            return new Map(this.mapSpriteSheet, this.mapData, loc, scale);
+            return new MapSprite(this.mapSpriteSheet, this.mapData, loc, scale);
         }
 
-        public IItem Food(Vector2 loc, int scale)
+        public IItemSprite Food(Vector2 loc, int scale)
         {
-            return new Food(this.foodSpriteSheet, this.foodData, loc, scale);
+            return new FoodSprite(this.foodSpriteSheet, this.foodData, loc, scale);
         }
 
-        public IItem WoodenSword(Vector2 loc, int scale)
+        public IItemSprite WoodenSword(Vector2 loc, int scale)
         {
-            return new WoodenSword(this.woodenSwordSpriteSheet, this.woodenSwordData, loc, scale);
+            return new WoodenSwordSprite(this.woodenSwordSpriteSheet, this.woodenSwordData, loc, scale);
         }
 
-        public IItem WhiteSword(Vector2 loc, int scale)
+        public IItemSprite WhiteSword(Vector2 loc, int scale)
         {
-            return new WhiteSword(this.whiteSwordSpriteSheet, this.whiteSwordData, loc, scale);
+            return new WhiteSwordSprite(this.whiteSwordSpriteSheet, this.whiteSwordData, loc, scale);
         }
 
-        public IItem MagicSword(Vector2 loc, int scale)
+        public IItemSprite MagicSword(Vector2 loc, int scale)
         {
-            return new MagicSword(this.magicSwordSpriteSheet, this.magicSwordData, loc, scale);
+            return new MagicSwordSprite(this.magicSwordSpriteSheet, this.magicSwordData, loc, scale);
         }
 
-        public IItem MagicShield(Vector2 loc, int scale)
+        public IItemSprite MagicShield(Vector2 loc, int scale)
         {
-            return new MagicShield(this.shieldSpriteSheet, this.shieldData, loc, scale);
+            return new MagicShieldSprite(this.shieldSpriteSheet, this.shieldData, loc, scale);
         }
 
-        public IItem Boomerang(Vector2 loc, int scale)
+        public IItemSprite Boomerang(Vector2 loc, int scale)
         {
-            return new Boomerang(this.boomerangSpriteSheet, this.boomerangData, loc, scale);
+            return new BoomerangSprite(this.boomerangSpriteSheet, this.boomerangData, loc, scale);
         }
 
-        public IItem MagicBoomerang(Vector2 loc, int scale)
+        public IItemSprite MagicBoomerang(Vector2 loc, int scale)
         {
-            return new MagicBoomerang(this.magicBoomerangSpriteSheet, this.magicBoomerangData, loc, scale);
+            return new MagicBoomerangSprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData, loc, scale);
         }
 
-        public IItem Bomb(Vector2 loc, int scale)
+        public IItemSprite Bomb(Vector2 loc, int scale)
         {
-            return new Bomb(this.bombSpriteSheet, this.bombData, loc, scale);
+            return new BombSprite(this.bombSpriteSheet, this.bombData, loc, scale);
         }
 
-        public IItem Bow(Vector2 loc, int scale)
+        public IItemSprite Bow(Vector2 loc, int scale)
         {
-            return new Bow(this.bowSpriteSheet, this.bowData, loc, scale);
+            return new BowSprite(this.bowSpriteSheet, this.bowData, loc, scale);
         }
 
-        public IItem Arrow(Vector2 loc, int scale)
+        public IItemSprite Arrow(Vector2 loc, int scale)
         {
-            return new Arrow(this.arrowSpriteSheet, this.arrowData, loc, scale);
+            return new ArrowSprite(this.woodenArrowSpriteSheet, this.woodenArrowData, loc, scale);
         }
 
-        public IItem SilverArrow(Vector2 loc, int scale)
+        public IItemSprite SilverArrow(Vector2 loc, int scale)
         {
-            return new SilverArrow(this.silverArrowSpriteSheet, this.silverArrowData, loc, scale);
+            return new SilverArrowSprite(this.silverArrowSpriteSheet, this.silverArrowData, loc, scale);
         }
 
-        public IItem RedCandle(Vector2 loc, int scale)
+        public IItemSprite RedCandle(Vector2 loc, int scale)
         {
-            return new RedCandle(this.redCandleSpriteSheet, this.redCandleData, loc, scale);
+            return new RedCandleSprite(this.redCandleSpriteSheet, this.redCandleData, loc, scale);
         }
 
-        public IItem BlueCandle(Vector2 loc, int scale)
+        public IItemSprite BlueCandle(Vector2 loc, int scale)
         {
-            return new BlueCandle(this.blueCandleSpriteSheet, this.blueCandleData, loc, scale);
+            return new BlueCandleSprite(this.blueCandleSpriteSheet, this.blueCandleData, loc, scale);
         }
 
-        public IItem RedRing(Vector2 loc, int scale)
+        public IItemSprite RedRing(Vector2 loc, int scale)
         {
-            return new RedRing(this.redRingSpriteSheet, this.redRingData, loc, scale);
+            return new RedRingSprite(this.redRingSpriteSheet, this.redRingData, loc, scale);
         }
 
-        public IItem BlueRing(Vector2 loc, int scale)
+        public IItemSprite BlueRing(Vector2 loc, int scale)
         {
-            return new BlueRing(this.blueRingSpriteSheet, this.blueRingData, loc, scale);
+            return new BlueRingSprite(this.blueRingSpriteSheet, this.blueRingData, loc, scale);
         }
 
-        public IItem PowerBracelet(Vector2 loc, int scale)
+        public IItemSprite PowerBracelet(Vector2 loc, int scale)
         {
-            return new PowerBracelet(this.powerBraceletSpriteSheet, this.powerBraceletData, loc, scale);
+            return new PowerBraceletSprite(this.powerBraceletSpriteSheet, this.powerBraceletData, loc, scale);
         }
 
-        public IItem Flute(Vector2 loc, int scale)
+        public IItemSprite Flute(Vector2 loc, int scale)
         {
-            return new Flute(this.fluteSpriteSheet, this.fluteData, loc, scale);
+            return new FluteSprite(this.fluteSpriteSheet, this.fluteData, loc, scale);
         }
 
-        public IItem Raft(Vector2 loc, int scale)
+        public IItemSprite Raft(Vector2 loc, int scale)
         {
-            return new Raft(this.raftSpriteSheet, this.raftData, loc, scale);
+            return new RaftSprite(this.raftSpriteSheet, this.raftData, loc, scale);
         }
 
-        public IItem Ladder(Vector2 loc, int scale)
+        public IItemSprite Ladder(Vector2 loc, int scale)
         {
-            return new Ladder(this.ladderSpriteSheet, this.ladderData, loc, scale);
+            return new LadderSprite(this.ladderSpriteSheet, this.ladderData, loc, scale);
         }
 
-        public IItem MagicRod(Vector2 loc, int scale)
+        public IItemSprite MagicRod(Vector2 loc, int scale)
         {
-            return new MagicRod(this.magicRodSpriteSheet, this.magicRodData, loc, scale);
+            return new MagicRodSprite(this.magicRodSpriteSheet, this.magicRodData, loc, scale);
         }
 
-        public IItem MagicBook(Vector2 loc, int scale)
+        public IItemSprite MagicBook(Vector2 loc, int scale)
         {
-            return new MagicBook(this.magicBookSpriteSheet, this.magicBookData, loc, scale);
+            return new MagicBookSprite(this.magicBookSpriteSheet, this.magicBookData, loc, scale);
         }
 
-        public IItem Key(Vector2 loc, int scale)
+        public IItemSprite Key(Vector2 loc, int scale)
         {
-            return new Key(this.keySpriteSheet, this.keyData, loc, scale);
+            return new KeySprite(this.keySpriteSheet, this.keyData, loc, scale);
         }
 
-        public IItem MagicKey(Vector2 loc, int scale)
+        public IItemSprite MagicKey(Vector2 loc, int scale)
         {
-            return new MagicKey(this.magicKeySpriteSheet, this.magicKeyData, loc, scale);
+            return new MagicKeySprite(this.magicKeySpriteSheet, this.magicKeyData, loc, scale);
         }
 
-        public IItem Compass(Vector2 loc, int scale)
+        public IItemSprite Compass(Vector2 loc, int scale)
         {
-            return new Compass(this.compassSpriteSheet, this.compassData, loc, scale);
+            return new CompassSprite(this.compassSpriteSheet, this.compassData, loc, scale);
         }
     }
 }

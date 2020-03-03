@@ -5,13 +5,13 @@
 
     public class ItemCollisionHandler
     {
-        private IItem item;
+        private IItemSprite item;
         private const float Speed = 4;
         private const float Acceleration = -0.1f;
         private int xDirection;
         private int yDirection;
 
-        public ItemCollisionHandler(IItem item)
+        public ItemCollisionHandler(IItemSprite item)
         {
             this.item = item;
         }
