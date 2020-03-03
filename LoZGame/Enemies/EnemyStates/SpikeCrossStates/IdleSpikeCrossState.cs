@@ -11,10 +11,11 @@
         public IdleSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            this.spikeCross.VelocityX = 0;
-            this.spikeCross.VelocityY = 0;
+            this.spikeCross.Physics.ResetVelocity();
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
             this.spikeCross.CurrentState = this;
+            spikeCross.Attacking = false;
+            spikeCross.Retreating = false;
         }
 
         public void MoveLeft()

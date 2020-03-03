@@ -92,13 +92,13 @@
 
         public void Update()
         {
-            this.timer++;
+           /* this.timer++;
             if (this.timer % 10 == 0)
             {
                 this.CycleRight();
                 this.timer = 0;
-            } 
-            this.CurrentItem.Update();
+            }  
+            this.CurrentItem.Update(); */
         }
 
         public void Draw()

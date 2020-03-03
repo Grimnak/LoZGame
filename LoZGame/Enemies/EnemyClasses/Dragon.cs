@@ -17,11 +17,6 @@
 
         public Physics Physics { get; set; }
 
-        public int VelocityX
-        {
-            get; set;
-        }
-
         public HealthManager Health { get; set; }
 
         public int Damage => damage;

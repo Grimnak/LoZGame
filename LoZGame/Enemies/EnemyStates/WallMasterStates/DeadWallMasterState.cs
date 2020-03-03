@@ -13,8 +13,7 @@
             this.wallMaster = wallMaster;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.wallMaster.CurrentState = this;
-            this.wallMaster.VelocityX = 0;
-            this.wallMaster.VelocityY = 0;
+            this.wallMaster.Physics.ResetVelocity();
         }
 
         public void MoveLeft()

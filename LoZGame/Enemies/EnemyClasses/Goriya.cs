@@ -17,19 +17,11 @@
 
         public Physics Physics { get; set; }
 
-        public int VelocityX
-        {
-            get; set;
-        }
-
-        public int VelocityY
-        {
-            get; set;
-        }
-
         public HealthManager Health { get; set; }
 
         public int Damage => damage;
+
+        public int CoolDown => coolDown;
 
         private IEnemyState currentState;
         private int damage = 2;
@@ -63,7 +55,7 @@
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             this.randomStateGenerator = new RandomStateGenerator(this, 1, 5);
         }
-
+/*
         private void GetNewState()
         {
             Random randomselect = new Random();
@@ -109,7 +101,7 @@
             }
             this.currentState.Update();
         }
-
+*/
         public void TakeDamage(int damageAmount)
         {
             this.currentState.TakeDamage(damageAmount);
@@ -122,17 +114,17 @@
 
         public void Update()
         {
-            this.lifeTime++;
-            this.UpdateLoc();
             if (this.coolDown > 0)
             {
                 this.coolDown--;
             }
+            this.lifeTime++;
             if (this.lifeTime > this.directionChange)
             {
-                this.GetNewState();
+                randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
+            this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
         }

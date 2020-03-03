@@ -13,7 +13,7 @@
             this.dragon = dragon;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.dragon.CurrentState = this;
-            this.dragon.VelocityX = 0;
+            this.dragon.Physics.ResetVelocity();
         }
 
         public void MoveUp()

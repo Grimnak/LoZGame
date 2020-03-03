@@ -12,8 +12,7 @@
         public VerticalSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            this.spikeCross.VelocityX = 0;
-            this.spikeCross.VelocityY = 1;
+            this.spikeCross.Physics.Velocity = new Vector2(0, 1 * spikeCross.AttackFactor);
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
         }
 
@@ -68,7 +67,7 @@
 
         public void Update()
         {
-            this.spikeCross.Physics.Location = new Vector2(this.spikeCross.Physics.Location.X + (this.spikeCross.VelocityX * spikeCross.AttackFactor), this.spikeCross.Physics.Location.Y + (this.spikeCross.VelocityY * this.spikeCross.AttackFactor));
+            this.spikeCross.Physics.Move();
             retreatCheck();
             this.sprite.Update();
         }
@@ -80,11 +79,6 @@
 
         private void retreatCheck()
         {
-            int spikeX = (int)spikeCross.Physics.Location.X;
-            int spikeY = (int)spikeCross.Physics.Location.Y;
-            int linkX = (int)LoZGame.Instance.Link.Physics.Location.X;
-            int linkY = (int)LoZGame.Instance.Link.Physics.Location.Y;
-
             if (!spikeCross.Retreating)
             {
                 if (spikeCross.AttackFactor > 0)
@@ -92,7 +86,9 @@
                     if (spikeCross.Physics.Location.Y - (BlockSpriteFactory.Instance.TileHeight * 3.5 + (BlockSpriteFactory.Instance.VerticalOffset / 2)) >= 0)
                     {
                         spikeCross.Retreating = true;
-                        spikeCross.AttackFactor = -1;
+                       // spikeCross.AttackFactor = -1;
+                        spikeCross.Physics.Velocity = new Vector2(spikeCross.Physics.Velocity.X, -1);
+
                     }
                 }
                 else
@@ -100,7 +96,8 @@
                     if (spikeCross.Physics.Location.Y - (BlockSpriteFactory.Instance.TileHeight * 3.5 + (BlockSpriteFactory.Instance.VerticalOffset / 2)) <= 0)
                     {
                         spikeCross.Retreating = true;
-                        spikeCross.AttackFactor = 1;
+                       // spikeCross.AttackFactor = 1;
+                        spikeCross.Physics.Velocity = new Vector2(spikeCross.Physics.Velocity.X, 1);
                     }
                 }
             }

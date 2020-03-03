@@ -17,16 +17,6 @@
 
         public Physics Physics { get; set; }
 
-        public int VelocityX
-        {
-            get; set;
-        }
-
-        public int VelocityY
-        {
-            get; set;
-        }
-
         public bool ShouldMove
         {
             get; set;
