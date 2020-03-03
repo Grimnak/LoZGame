@@ -36,7 +36,7 @@
             Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
             Rectangle destinationRectangle = new Rectangle((int)this.Location.X, (int)this.Location.Y, this.spriteWidth, this.spriteHeight);
 
-            LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
+            LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, this.Location, sourceRectangle, spriteTint, 0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 0.0f);
         }
     }
 }

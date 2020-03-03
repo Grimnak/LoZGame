@@ -10,6 +10,7 @@ namespace LoZClone
         private readonly int spriteSheetColumns;
         private readonly int spriteWidth;
         private readonly int spriteHeight;
+        private float layer;
 
         public Vector2 Location { get; set; }
 
@@ -20,12 +21,15 @@ namespace LoZClone
             this.spriteHeight = data.Height;
             this.Location = loc;
 
+            this.layer = 1 / (this.Location.Y + this.spriteHeight);
+
             this.spriteSheetRows = data.Rows;
             this.spriteSheetColumns = data.Columns;
         }
 
         public void Update()
         {
+            this.layer = 1 / (this.Location.Y + this.spriteHeight);
         }
 
         public void Draw(Vector2 location, Color spriteTint)
@@ -36,7 +40,7 @@ namespace LoZClone
             Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, this.spriteWidth, this.spriteHeight);
 
-            LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
+            LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint, 0f, new Vector2(0, 0), SpriteEffects.None, this.layer);
         }
     }
 }

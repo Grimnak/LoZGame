@@ -7,8 +7,6 @@
 
     public class LoZGame : Game
     {
-
-
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private static readonly float UpdatesPerSecond = 60;
@@ -27,6 +25,7 @@
         private EnemyManager enemyManager;
         private DoorManager doorManager;
         private CollisionDetection collisionDetector;
+        private Random randomNumberGenerator;
 
         private List<IController> controllers;
         private List<IPlayer> players;
@@ -56,6 +55,8 @@
 
         public DoorManager Doors { get { return doorManager; } }
 
+        public Random Random { get { return randomNumberGenerator; } }
+
         private LoZGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
@@ -78,6 +79,7 @@
             this.projectiles = new List<IProjectile>();
             this.items = new List<IItem>();
             this.projectiles = new List<IProjectile>();
+            this.randomNumberGenerator = new Random();
             base.Initialize();
         }
 
@@ -135,7 +137,7 @@
             this.spriteBatch.Begin();
             if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
             {
-                this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
+                this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), Color.White, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0.0f);
             }
             this.doorManager.Draw();
             this.blockManager.Draw();

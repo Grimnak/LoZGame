@@ -11,6 +11,7 @@
         private readonly int spriteWidth;
         private readonly int spriteHeight;
         private readonly int currentFrame = 1;
+        private float layer;
 
         public Vector2 Location { get; set; }
 
@@ -21,24 +22,26 @@
             this.spriteHeight = data.Height;
             this.Location = loc;
 
+            this.layer = 1 / (this.Location.Y + this.spriteHeight);
+
             this.spriteSheetRows = data.Rows;
             this.spriteSheetColumns = data.Columns;
         }
 
         public void Update()
         {
+            this.layer = 1 / (this.Location.Y + this.spriteHeight);
         }
 
         public void Draw(Vector2 location, Color spriteTint)
         {
             int width = this.spriteSheet.Width / this.spriteSheetColumns;
             int height = this.spriteSheet.Height / this.spriteSheetRows;
-            int column = (int)((float)this.currentFrame / (float)this.spriteSheetRows);
 
-            Rectangle sourceRectangle = new Rectangle(width * column, 0, width, height);
+            Rectangle sourceRectangle = new Rectangle(0, 0, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, this.spriteWidth, this.spriteHeight);
 
-            LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
+            LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint, 0f, new Vector2(0, 0), SpriteEffects.None, this.layer);
         }
     }
 }
