@@ -118,12 +118,9 @@
     <Compile Include="ItemClasses\Bow.cs" />
     <Compile Include="ItemClasses\Clock.cs" />
     <Compile Include="ItemClasses\Compass.cs" />
-    <Compile Include="ItemClasses\EmptyHeart.cs" />
     <Compile Include="ItemClasses\Fairy.cs" />
     <Compile Include="ItemClasses\Flute.cs" />
     <Compile Include="ItemClasses\Food.cs" />
-    <Compile Include="ItemClasses\FullHeart.cs" />
-    <Compile Include="ItemClasses\HalfHeart.cs" />
     <Compile Include="ItemClasses\Health.cs" />
     <Compile Include="ItemClasses\HeartContainer.cs" />
     <Compile Include="ItemClasses\Key.cs" />
@@ -281,12 +278,9 @@
     <Compile Include="Sprites\ItemSpriteClasses\BowSprite.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\ClockSprite.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\CompassSprite.cs" />
-    <Compile Include="Sprites\ItemSpriteClasses\EmptyHeartSprite.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\FairySprite.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\FluteSprite.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\FoodSprite.cs" />
-    <Compile Include="Sprites\ItemSpriteClasses\FullHeartSprite.cs" />
-    <Compile Include="Sprites\ItemSpriteClasses\HalfHeartSprite.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\HealthSprite.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\HeartContainerSprite.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\KeySprite.cs" />

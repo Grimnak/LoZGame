@@ -37,9 +37,6 @@
             itemList.Add(new WhiteSword(new Vector2(xloc, yloc)));
             itemList.Add(new MagicSword(new Vector2(xloc, yloc)));
             itemList.Add(new MagicShield(new Vector2(xloc, yloc)));
-            itemList.Add(new EmptyHeart(new Vector2(xloc, yloc)));
-            itemList.Add(new HalfHeart(new Vector2(xloc, yloc)));
-            itemList.Add(new FullHeart(new Vector2(xloc, yloc)));
             itemList.Add(new Boomerang(new Vector2(xloc, yloc)));
             itemList.Add(new MagicBoomerang(new Vector2(xloc, yloc)));
             itemList.Add(new Bomb(new Vector2(xloc, yloc)));
@@ -93,7 +90,7 @@
         public void Update()
         {
             this.timer++;
-            if (this.timer % 10 == 0)
+            if (this.timer % 100 == 0)
             {
                 this.CycleRight();
                 this.timer = 0;
@@ -103,7 +100,7 @@
 
         public void Draw()
         {
-            this.CurrentItem.Draw();
+            this.CurrentItem.Draw(LoZGame.Instance.DungeonTint);
         }
 
         public int CurrentIndex
