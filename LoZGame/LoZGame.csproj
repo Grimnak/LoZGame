@@ -344,7 +344,6 @@
     <Compile Include="Interfaces\IEnemyState.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Player\PlayerStates\AttackState.cs" />
-    <Compile Include="Player\PlayerStates\NullState.cs" />
     <Compile Include="Player\PlayerStates\MoveRightState.cs" />
     <Compile Include="Player\PlayerStates\MoveLeftState.cs" />
     <Compile Include="Player\PlayerStates\MoveDownState.cs" />

@@ -26,7 +26,7 @@
             this.CurrentTint = LoZGame.Instance.DungeonTint;
             this.MoveSpeed = 2;
             this.DamageTimer = 0;
-            this.State = new NullState(this);
+            this.State = new IdleState(this);
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
         }
 
@@ -85,7 +85,7 @@
             }
             else if (otherCollider is IDoor)
             {
-                this.linkCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+                this.linkCollisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
     }
