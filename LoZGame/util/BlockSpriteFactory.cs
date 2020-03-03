@@ -12,7 +12,9 @@
         private static readonly int tileHeight = 48;
         private static readonly int verticalOffset = 72;
         private static readonly int horizontalOffset = 79;
-        private static readonly int doorOffset = 30;
+        private static readonly int doorOffset = 20;
+        private static readonly int doorWidth = 108;
+        private static readonly int doorHeight = 72;
 
         private static readonly int VerticalBlockWidth = 16;
         private static readonly int VerticalBlockHeight = 64;
@@ -23,29 +25,29 @@
         private readonly SpriteSheetData stairsData = new SpriteSheetData("stairs", tileWidth, tileHeight, 1, 1);
 
         private Texture2D UnlockedDoorDownTexture;
-        private readonly SpriteSheetData UnlockedDoorDownData = new SpriteSheetData("unlocked_door_down", tileWidth, tileHeight, 1, 1);
+        private readonly SpriteSheetData UnlockedDoorDownData = new SpriteSheetData("unlocked_door_down", doorWidth, doorHeight, 1, 1);
         private Texture2D UnlockedDoorLeftTexture;
-        private readonly SpriteSheetData UnlockedDoorLeftData = new SpriteSheetData("unlocked_door_left", tileWidth, tileHeight, 1, 1);
+        private readonly SpriteSheetData UnlockedDoorLeftData = new SpriteSheetData("unlocked_door_left", doorHeight, doorWidth, 1, 1);
         private Texture2D UnlockedDoorRightTexture;
-        private readonly SpriteSheetData UnlockedDoorRightData = new SpriteSheetData("unlocked_door_right", tileWidth, tileHeight, 1, 1);
+        private readonly SpriteSheetData UnlockedDoorRightData = new SpriteSheetData("unlocked_door_right", doorHeight, doorWidth, 1, 1);
         private Texture2D UnlockedDoorUpTexture;
-        private readonly SpriteSheetData UnlockedDoorUpData = new SpriteSheetData("unlocked_door_up", tileWidth, tileHeight, 1, 1);
+        private readonly SpriteSheetData UnlockedDoorUpData = new SpriteSheetData("unlocked_door_up", doorWidth, doorHeight, 1, 1);
 
         private Texture2D LockedDoorDownTexture;
-        private readonly SpriteSheetData LockedDoorDownData = new SpriteSheetData("locked_door_down", tileWidth, tileHeight, 1, 1);
+        private readonly SpriteSheetData LockedDoorDownData = new SpriteSheetData("locked_door_down", doorWidth, doorHeight, 1, 1);
         private Texture2D LockedDoorLeftTexture;
-        private readonly SpriteSheetData LockedDoorLeftData = new SpriteSheetData("locked_door_left", tileWidth, tileHeight, 1, 1);
+        private readonly SpriteSheetData LockedDoorLeftData = new SpriteSheetData("locked_door_left", doorHeight, doorWidth, 1, 1);
         private Texture2D LockedDoorRightTexture;
-        private readonly SpriteSheetData LockedDoorRightData = new SpriteSheetData("locked_door_right", tileWidth, tileHeight, 1, 1);
+        private readonly SpriteSheetData LockedDoorRightData = new SpriteSheetData("locked_door_right", doorHeight, doorWidth, 1, 1);
         private Texture2D LockedDoorUpTexture;
-        private readonly SpriteSheetData LockedDoorUpData = new SpriteSheetData("locked_door_up", tileWidth, tileHeight, 1, 1);
+        private readonly SpriteSheetData LockedDoorUpData = new SpriteSheetData("locked_door_up", doorWidth, doorHeight, 1, 1);
 
         private Texture2D SpecialDoorDownTexture;
         private readonly SpriteSheetData SpecialDoorDownData = new SpriteSheetData("special_door_down", tileWidth, tileHeight, 1, 1);
         private Texture2D SpecialDoorLeftTexture;
-        private readonly SpriteSheetData SpecialDoorLeftData = new SpriteSheetData("special_door_left", tileWidth, tileHeight, 1, 1);
+        private readonly SpriteSheetData SpecialDoorLeftData = new SpriteSheetData("special_door_left", doorHeight, doorWidth, 1, 1);
         private Texture2D SpecialDoorRightTexture;
-        private readonly SpriteSheetData SpecialDoorRightData = new SpriteSheetData("special_door_right", tileWidth, tileHeight, 1, 1);
+        private readonly SpriteSheetData SpecialDoorRightData = new SpriteSheetData("special_door_right", doorHeight, doorWidth, 1, 1);
         private Texture2D SpecialDoorUpTexture;
         private readonly SpriteSheetData SpecialDoorUpData = new SpriteSheetData("special_door_up", tileWidth, tileHeight, 1, 1);
 
