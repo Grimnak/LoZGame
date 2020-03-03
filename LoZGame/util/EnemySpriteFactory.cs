@@ -33,7 +33,7 @@
         private static readonly int ropeWidth = 25;
         private static readonly int ropeHeight = 25;
 
-        private static readonly int spikeCrossWidth = 54;
+        private static readonly int spikeCrossWidth = 48;
         private static readonly int spikeCrossHeight = 48;
 
         private static readonly int stalfosWidth = 48;
