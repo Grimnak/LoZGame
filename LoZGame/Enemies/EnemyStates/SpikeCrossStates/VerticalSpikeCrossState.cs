@@ -19,17 +19,14 @@
 
         public void MoveLeft()
         {
-            this.spikeCross.CurrentState = new LeftMovingSpikeCrossState(this.spikeCross);
         }
 
         public void MoveRight()
         {
-            this.spikeCross.CurrentState = new HorizontalSpikeCrossState(this.spikeCross);
         }
 
         public void MoveUp()
         {
-            this.spikeCross.CurrentState = new UpMovingSpikeCrossState(this.spikeCross);
         }
 
         public void MoveDown()

@@ -54,18 +54,6 @@
         private Vector2 initialPos;
         private readonly int directionChange = 40;
 
-        private enum direction
-        {
-            Up,
-            Down,
-            Left,
-            Right,
-            Idle
-        };
-
-        private direction currentDirection;
-
-
         public SpikeCross(Vector2 location)
         {
             this.Health = new HealthManager(health);
@@ -80,12 +68,6 @@
             initialPos = location;
         }
 
-        private void getNewDirection()
-        {
-            Random randomselect = new Random();
-            this.currentDirection = (direction)randomselect.Next(0, 4);
-        }
-
         private void updateLoc()
         {
             int spikeX = (int)Physics.Location.X;
@@ -93,28 +75,6 @@
             int linkX = (int)Game.Link.Physics.Location.X;
             int linkY = (int)Game.Link.Physics.Location.Y;
 
-          /*  if (Attacking)
-            {
-                if (!Retreating)
-                {
-                    if (Math.Abs(Physics.Location.X) + Math.Abs(Physics.Location.Y) <= Math.Abs(initialPos.X) + Math.Abs(initialPos.Y) - 50)
-                    {
-                        AttackFactor = -1;
-                        Retreating = true;
-                    }
-                }
-                else
-                {
-                    if (Math.Abs(Physics.Location.X) + Math.Abs(Physics.Location.Y) == Math.Abs(initialPos.X) + Math.Abs(initialPos.Y))
-                    {
-                        Attacking = false;
-                        currentState.Stop();
-                    }
-                } 
-
-            }
-            else
-            { */
             if (!Attacking)
             {
                 if (spikeX == linkX)
