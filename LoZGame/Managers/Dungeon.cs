@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
+
     /// <summary>
     /// Manager for all dungeon rooms.
     /// </summary>
@@ -138,7 +139,7 @@
             }
 
             //TODO change to IItem once separated
-            foreach (IItemSprite item in this.dungeonLayout[this.currentY][this.currentX].Items)
+            foreach (IItem item in this.dungeonLayout[this.currentY][this.currentX].Items)
             {
                 // ItemManager.Instance.Add(item);
             }

@@ -15,9 +15,9 @@
             set { this.bounds = value; }
         }
 
-        public Link()
+        public Link(Vector2 location)
         {
-            this.Physics = new Physics(new Vector2(150, 200), new Vector2(0, 0), new Vector2(0, 0));
+            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.Health = new HealthManager(startingHealth);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
             this.CurrentColor = "Green";
@@ -80,6 +80,10 @@
                 this.linkCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
             else if (otherCollider is IBlock)
+            {
+                this.linkCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IDoor)
             {
                 this.linkCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }

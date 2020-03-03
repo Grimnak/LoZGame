@@ -54,6 +54,10 @@
             }
         }
 
+        public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
+        {
+        }
+
         private void DeterminePushbackValues(CollisionDetection.CollisionSide collisionSide)
         {
             if (this.player.DamageTimer <= 0)

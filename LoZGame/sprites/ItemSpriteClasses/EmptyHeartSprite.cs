@@ -3,11 +3,11 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using System;
-    internal class EmptyHeartSprite : IItemSprite
+
+    internal class EmptyHeartSprite : ISprite
     {
         private readonly Texture2D Texture;      // the texture to pull frames from
         private readonly SpriteSheetData Data;
-        private ItemCollisionHandler CollisionHandler;
         private Vector2 origin;
         private Vector2 Size;
         private float rotation;
@@ -18,8 +18,6 @@
 
         public Physics Physics { get; set; }
 
-        public Rectangle Bounds { get; set; }
-
         public EmptyHeartSprite(Texture2D texture, SpriteSheetData data, Vector2 loc, int scale)
         {
             this.Data = data;
@@ -27,21 +25,11 @@
             this.Physics = new Physics(loc, new Vector2(0, 0), new Vector2(0, 0));
             this.origin = new Vector2(data.Width / 2, data.Height / 2);
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Width * scale);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.CollisionHandler = new ItemCollisionHandler(this);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+            this.layer = 1 / (0 + this.Size.Y);
             this.rotation = 0;
             this.frame = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
             this.lifeTime = 0;
             this.scale = scale;
-        }
-
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
-        {
-            if (otherCollider is IPlayer)
-            {
-                CollisionHandler.OnCollisionResponse(collisionSide);
-            }
         }
 
         private void UpdateLoc()
@@ -67,9 +55,9 @@
             }
         }
 
-        public void Draw()
+        public void Draw(Vector2 location, Color spriteTint)
         {
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.frame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.frame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }
 }

@@ -10,7 +10,7 @@
         {
         }
 
-        public void Update(ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies, ReadOnlyCollection<IBlock> blocks, ReadOnlyCollection<IProjectile> projectiles)
+        public void Update(ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies, ReadOnlyCollection<IBlock> blocks, ReadOnlyCollection<IDoor> doors, ReadOnlyCollection<IProjectile> projectiles)
         {
             foreach (IPlayer player in players)
             {
@@ -18,6 +18,7 @@
                 {
                     CheckCollisions<IEnemy>(player, enemies);
                     CheckCollisions<IProjectile>(player, projectiles);
+                    CheckCollisions<IDoor>(player, doors);
                     CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
                 }
             }
@@ -34,7 +35,6 @@
                 {
                     CheckCollisions<IPlayer>(block, players);
                     CheckCollisions<IEnemy>(block, enemies);
-                    CheckCollisions<IBlock>(block, blocks);
                     CheckBorders(block, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
                 }
             }

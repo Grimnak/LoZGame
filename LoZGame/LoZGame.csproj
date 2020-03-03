@@ -60,6 +60,7 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Collisions\DoorCollisionHandler.cs" />
     <Compile Include="Collisions\BlockCollisionHandler.cs" />
     <Compile Include="Collisions\CollisionSide.cs" />
     <Compile Include="Collisions\EnemyCollisionHandler.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
     <Compile Include="Interfaces\IItem.cs" />
+    <Compile Include="Interfaces\IDoor.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\IDoorState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\HorizontalSpikeCrossState.cs" />

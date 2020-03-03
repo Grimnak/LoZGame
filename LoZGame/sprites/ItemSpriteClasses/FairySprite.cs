@@ -5,13 +5,12 @@
     using Microsoft.Xna.Framework.Graphics;
 
     // Class to handle the completely stationary sprite
-    internal class FairySprite : IItemSprite
+    internal class FairySprite : ISprite
     {
         private static readonly int DirectionChange = 100;
         private static readonly int FrameChange = 10;
         private readonly Texture2D Texture;      // the texture to pull frames from
         private readonly SpriteSheetData Data;
-        private ItemCollisionHandler CollisionHandler;
         private Vector2 origin;
         private Vector2 Size;
         private float rotation;
@@ -39,8 +38,6 @@
 
         public Physics Physics { get; set; }
 
-        public Rectangle Bounds { get; set; }
-
         public FairySprite(Texture2D texture, SpriteSheetData data, Vector2 loc, int scale)
         {
             this.Data = data;
@@ -48,9 +45,7 @@
             this.Physics = new Physics(loc, new Vector2(0, 0), new Vector2(0, 0));
             this.origin = new Vector2(data.Width / 2, data.Height / 2);
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Width * scale);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.CollisionHandler = new ItemCollisionHandler(this);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+            this.layer = 1 / (0 + this.Size.Y);
             this.rotation = 0;
             this.firstFrame = new Rectangle(0, 0, data.Width, data.Height);
             this.secondFrame = new Rectangle(0, data.Height, data.Width, data.Height);
@@ -110,14 +105,6 @@
             this.CheckBorder();
         }
 
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
-        {
-            if (otherCollider is IPlayer)
-            {
-                this.Physics.Location = new Vector2(432, 236);
-            }
-        }
-
         private void CheckBorder()
         {
             if (this.Physics.Location.Y < this.Data.Height)
@@ -172,9 +159,9 @@
             }
         }
 
-        public void Draw()
+        public void Draw(Vector2 location, Color spriteTint)
         {
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }
 }
