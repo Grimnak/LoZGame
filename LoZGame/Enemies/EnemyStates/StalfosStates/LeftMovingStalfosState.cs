@@ -11,8 +11,7 @@
         public LeftMovingStalfosState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
-            stalfos.VelocityX = -1;
-            stalfos.VelocityY = 0;
+            stalfos.Physics.Velocity = new Vector2(-1, 0);
             this.sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
             this.stalfos.CurrentState = this;
         }
@@ -73,7 +72,7 @@
 
         public void Update()
         {
-            this.stalfos.Physics.Location = new Vector2(this.stalfos.Physics.Location.X + this.stalfos.VelocityX, this.stalfos.Physics.Location.Y + this.stalfos.VelocityY);
+            this.stalfos.Physics.Move();
             this.sprite.Update();
         }
 

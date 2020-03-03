@@ -17,19 +17,11 @@
 
         public Physics Physics { get; set; }
 
-        public int VelocityX
-        {
-            get; set;
-        }
-
-        public int VelocityY
-        {
-            get; set;
-        }
-
         public HealthManager Health { get; set; }
 
         public int Damage => damage;
+
+        public int CoolDown => coolDown;
 
         private IEnemyState currentState;
         private int damage = 2;
@@ -40,17 +32,6 @@
         private string currentDirection = "Left";
         private RandomStateGenerator randomStateGenerator;
         private readonly EntityManager entity;
-
-        private enum StateEnum
-        {
-            Up,
-            Down,
-            Left,
-            Right,
-            Attacking,
-        }
-
-        private StateEnum state;
 
         public Goriya(Vector2 location)
         {
@@ -63,53 +44,6 @@
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             this.randomStateGenerator = new RandomStateGenerator(this, 1, 5);
         }
-
-        private void GetNewState()
-        {
-            Random randomselect = new Random();
-            this.state = (StateEnum)randomselect.Next(0, 6);
-        }
-
-        private void UpdateLoc()
-        {
-            switch (this.state)
-            {
-                case StateEnum.Up:
-                    this.currentDirection = "Up";
-                    this.currentState.MoveUp();
-                    break;
-
-                case StateEnum.Down:
-                    this.currentDirection = "Down";
-                    this.currentState.MoveDown();
-                    break;
-
-                case StateEnum.Left:
-                    this.currentDirection = "Left";
-                    this.currentState.MoveLeft();
-                    break;
-
-                case StateEnum.Right:
-                    this.currentDirection = "Right";
-                    this.currentState.MoveRight();
-                    break;
-
-                case StateEnum.Attacking:
-                    this.currentState.Attack();
-                    if (this.coolDown == 0)
-                    {
-                        this.coolDown = 240;
-                        this.entity.EnemyProjectileManager.AddEnemyRang(this, this.currentDirection);
-                    }
-
-                    break;
-
-                default:
-                    break;
-            }
-            this.currentState.Update();
-        }
-
         public void TakeDamage(int damageAmount)
         {
             this.currentState.TakeDamage(damageAmount);
@@ -122,17 +56,17 @@
 
         public void Update()
         {
-            this.lifeTime++;
-            this.UpdateLoc();
             if (this.coolDown > 0)
             {
                 this.coolDown--;
             }
+            this.lifeTime++;
             if (this.lifeTime > this.directionChange)
             {
-                this.GetNewState();
+                randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
+            this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
         }

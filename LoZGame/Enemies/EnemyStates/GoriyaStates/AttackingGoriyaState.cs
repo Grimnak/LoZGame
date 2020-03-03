@@ -8,10 +8,14 @@
         private readonly Goriya goriya;
         private readonly ISprite sprite;
         private readonly IProjectile boomerangSprite;
+        private int coolDown;
+        private EntityManager entity;
 
         public AttackingGoriyaState(Goriya goriya)
         {
+            coolDown = 0;
             this.goriya = goriya;
+            this.entity = LoZGame.Instance.Entities;
             switch (goriya.Direction)
             {
                 case "Left":
@@ -91,6 +95,11 @@
 
         public void Update()
         {
+            if (this.coolDown == 0)
+            {
+                this.coolDown = 240;
+                this.entity.EnemyProjectileManager.AddEnemyRang(this.goriya, this.goriya.Direction);
+            }
             this.sprite.Update();
         }
 

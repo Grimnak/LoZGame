@@ -6,42 +6,44 @@
 
     public class EnemySpriteFactory
     {
-        private static readonly int dodongoWidthUpDown = 32;
+        //tile height = 54
+        //tile width = 48
+        private static readonly int dodongoWidthUpDown = 40;
         private static readonly int dodongoWidthLeftRight = 64;
-        private static readonly int dodongoHeight = 32;
+        private static readonly int dodongoHeight = 50;
 
-        private static readonly int dragonWidth = 50;
-        private static readonly int dragonHeight = 70;
+        private static readonly int dragonWidth = 68;
+        private static readonly int dragonHeight = 100;
 
-        private static readonly int gelWidth = 15;
-        private static readonly int gelHeight = 15;
+        private static readonly int gelWidth = 25;
+        private static readonly int gelHeight = 25;
 
-        private static readonly int goriyaWidth = 25;
-        private static readonly int goriyaHeight = 30;
+        private static readonly int goriyaWidth = 35;
+        private static readonly int goriyaHeight = 46;
 
-        private static readonly int keeseWidth = 20;
-        private static readonly int keeseHeight = 20;
+        private static readonly int keeseWidth = 48;
+        private static readonly int keeseHeight = 32;
 
-        private static readonly int merchantWidth = 25;
-        private static readonly int merchantHeight = 25;
+        private static readonly int merchantWidth = 48;
+        private static readonly int merchantHeight = 54;
 
-        private static readonly int oldManWidth = 30;
-        private static readonly int oldManHeight = 30;
+        private static readonly int oldManWidth = 48;
+        private static readonly int oldManHeight = 54;
 
         private static readonly int ropeWidth = 25;
         private static readonly int ropeHeight = 25;
 
-        private static readonly int spikeCrossWidth = 25;
-        private static readonly int spikeCrossHeight = 25;
+        private static readonly int spikeCrossWidth = 48;
+        private static readonly int spikeCrossHeight = 48;
 
-        private static readonly int stalfosWidth = 30;
-        private static readonly int stalfosHeight = 35;
+        private static readonly int stalfosWidth = 48;
+        private static readonly int stalfosHeight = 54;
 
-        private static readonly int wallMasterWidth = 25;
-        private static readonly int wallMasterHeight = 25;
+        private static readonly int wallMasterWidth = 35;
+        private static readonly int wallMasterHeight = 45;
 
-        private static readonly int zolWidth = 25;
-        private static readonly int zolHeight = 25;
+        private static readonly int zolWidth = 40;
+        private static readonly int zolHeight = 50;
 
         public static int GetEnemyWidth(IEnemy enemy)
         {

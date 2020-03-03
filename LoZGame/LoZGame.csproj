@@ -221,11 +221,7 @@
     <Compile Include="Enemies\EnemyStates\RopeStates\LeftMovingRopeState.cs" />
     <Compile Include="Enemies\EnemyStates\RopeStates\RightMovingRopeState.cs" />
     <Compile Include="Enemies\EnemyStates\RopeStates\UpMovingRopeState.cs" />
-    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\DownMovingSpikeCrossState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\IdleSpikeCrossState.cs" />
-    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\LeftMovingSpikeCrossState.cs" />
-    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\RightMovingSpikeCrossState.cs" />
-    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\UpMovingSpikeCrossState.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\DeadStalfosState.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\DownMovingStalfosState.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\LeftMovingStalfosState.cs" />

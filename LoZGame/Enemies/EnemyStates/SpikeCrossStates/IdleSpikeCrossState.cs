@@ -11,15 +11,16 @@
         public IdleSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            this.spikeCross.VelocityX = 0;
-            this.spikeCross.VelocityY = 0;
+            this.spikeCross.Physics.ResetVelocity();
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
             this.spikeCross.CurrentState = this;
+            spikeCross.Attacking = false;
+            spikeCross.Retreating = false;
         }
 
         public void MoveLeft()
         {
-            this.spikeCross.CurrentState = new LeftMovingSpikeCrossState(this.spikeCross);
+            this.spikeCross.CurrentState = new HorizontalSpikeCrossState(this.spikeCross);
         }
 
         public void MoveRight()
@@ -29,7 +30,7 @@
 
         public void MoveUp()
         {
-            this.spikeCross.CurrentState = new UpMovingSpikeCrossState(this.spikeCross);
+            this.spikeCross.CurrentState = new VerticalSpikeCrossState(this.spikeCross);
         }
 
         public void MoveDown()

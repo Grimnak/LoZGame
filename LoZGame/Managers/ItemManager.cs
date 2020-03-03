@@ -94,7 +94,7 @@
             {
                 this.CycleRight();
                 this.timer = 0;
-            } 
+            }
             this.CurrentItem.Update();
         }
 

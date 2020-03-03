@@ -18,16 +18,6 @@
 
         public Physics Physics { get; set; }
 
-        public int VelocityX
-        {
-            get; set;
-        }
-
-        public int VelocityY
-        {
-            get; set;
-        }
-
         public HealthManager Health { get; set; }
 
         public int Damage => damage;
@@ -51,39 +41,18 @@
         private int damage = 1;
         private int health = 1;
         private int lifeTime = 0;
-        private Vector2 initialPos;
         private readonly int directionChange = 40;
-
-        private enum direction
-        {
-            Up,
-            Down,
-            Left,
-            Right,
-            Idle
-        };
-
-        private direction currentDirection;
-
 
         public SpikeCross(Vector2 location)
         {
             this.Health = new HealthManager(health);
-            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-            this.currentState = new LeftMovingSpikeCrossState(this);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, 25, 25);
+            this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.Game = LoZGame.Instance;
             this.currentState = new IdleSpikeCrossState(this);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             Attacking = false;
             Retreating = false;
-            initialPos = location;
-        }
-
-        private void getNewDirection()
-        {
-            Random randomselect = new Random();
-            this.currentDirection = (direction)randomselect.Next(0, 4);
         }
 
         private void updateLoc()
@@ -93,28 +62,6 @@
             int linkX = (int)Game.Link.Physics.Location.X;
             int linkY = (int)Game.Link.Physics.Location.Y;
 
-          /*  if (Attacking)
-            {
-                if (!Retreating)
-                {
-                    if (Math.Abs(Physics.Location.X) + Math.Abs(Physics.Location.Y) <= Math.Abs(initialPos.X) + Math.Abs(initialPos.Y) - 50)
-                    {
-                        AttackFactor = -1;
-                        Retreating = true;
-                    }
-                }
-                else
-                {
-                    if (Math.Abs(Physics.Location.X) + Math.Abs(Physics.Location.Y) == Math.Abs(initialPos.X) + Math.Abs(initialPos.Y))
-                    {
-                        Attacking = false;
-                        currentState.Stop();
-                    }
-                } 
-
-            }
-            else
-            { */
             if (!Attacking)
             {
                 if (spikeX == linkX)

@@ -11,7 +11,7 @@
         public IdleDragonState(Dragon dragon)
         {
             this.dragon = dragon;
-            this.dragon.VelocityX = 0;
+            this.dragon.Physics.ResetVelocity();
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
             this.dragon.CurrentState = this;
         }

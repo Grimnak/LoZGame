@@ -11,8 +11,7 @@
         public LeftMovingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
-            this.goriya.VelocityX = -1;
-            this.goriya.VelocityY = 0;
+            this.goriya.Physics.Velocity = new Vector2(-1, 0);
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingGoriyaSprite();
             this.goriya.CurrentState = this;
         }
@@ -73,7 +72,7 @@
 
         public void Update()
         {
-            this.goriya.Physics.Location = new Vector2(this.goriya.Physics.Location.X + this.goriya.VelocityX, this.goriya.Physics.Location.Y + this.goriya.VelocityY);
+            this.goriya.Physics.Move();
             this.sprite.Update();
         }
 

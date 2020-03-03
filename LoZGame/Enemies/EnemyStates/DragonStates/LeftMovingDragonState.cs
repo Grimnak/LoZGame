@@ -11,7 +11,7 @@
         public LeftMovingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
-            this.dragon.VelocityX = -1;
+            this.dragon.Physics.Velocity = new Vector2(-1, 0);
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
             this.dragon.CurrentState = this;
         }
@@ -71,7 +71,7 @@
 
         public void Update()
         {
-            this.dragon.Physics.Location = new Vector2(this.dragon.Physics.Location.X + this.dragon.VelocityX, this.dragon.Physics.Location.Y);
+            this.dragon.Physics.Move();
             this.sprite.Update();
         }
 

@@ -17,16 +17,6 @@
 
         public Physics Physics { get; set; }
 
-        public int VelocityX
-        {
-            get; set;
-        }
-
-        public int VelocityY
-        {
-            get; set;
-        }
-
         public bool ShouldMove
         {
             get; set;
@@ -42,7 +32,8 @@
         private int lifeTime = 0;
         private int timeInIdle = 0;
         private int timeSinceIdle = 0;
-        private int movementWaitMax = 12;
+        private int movementWaitMax = 24;
+        private int idleWaitMax = 12;
         private readonly int directionChange = 40;
         private RandomStateGenerator randomStateGenerator;
 
@@ -70,10 +61,11 @@
             }
             else
             {
-                if (timeInIdle++ > movementWaitMax)
+                if (timeInIdle++ > idleWaitMax)
                 {
                     ShouldMove = !ShouldMove;
                     timeInIdle = 0;
+                    randomStateGenerator.Update();
                 }
             }
         }
@@ -93,7 +85,7 @@
             this.lifeTime++;
             if (this.lifeTime > this.directionChange)
             {
-                randomStateGenerator.Update();
+                
                 this.lifeTime = 0;
             }
             this.decideToMove();

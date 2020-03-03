@@ -11,8 +11,7 @@
         public UpMovingDodongoState(Dodongo dodongo)
         {
             this.dodongo = dodongo;
-            this.dodongo.VelocityX = 0;
-            this.dodongo.VelocityY = -1;
+            this.dodongo.Physics.Velocity = new Vector2(0, -1);
             this.sprite = EnemySpriteFactory.Instance.CreateUpMovingDodongoSprite();
             this.dodongo.CurrentState = this;
         }
@@ -72,7 +71,7 @@
 
         public void Update()
         {
-            this.dodongo.Physics.Location = new Vector2(this.dodongo.Physics.Location.X + this.dodongo.VelocityX, this.dodongo.Physics.Location.Y + this.dodongo.VelocityY);
+            this.dodongo.Physics.Location = new Vector2(this.dodongo.Physics.Location.X + this.dodongo.Physics.Velocity.X, this.dodongo.Physics.Location.Y + this.dodongo.Physics.Velocity.Y);
             this.sprite.Update();
         }
 

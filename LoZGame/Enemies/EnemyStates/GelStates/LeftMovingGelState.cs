@@ -11,8 +11,7 @@
         public LeftMovingGelState(Gel gel)
         {
             this.gel = gel;
-            this.gel.VelocityX = -1;
-            this.gel.VelocityY = 0;
+            this.gel.Physics.Velocity = new Vector2(-2, 0);
             this.sprite = EnemySpriteFactory.Instance.CreateGelSprite();
             this.gel.CurrentState = this;
         }
@@ -74,7 +73,7 @@
         {
             if (this.gel.ShouldMove)
             {
-                this.gel.Physics.Location = new Vector2(this.gel.Physics.Location.X + this.gel.VelocityX, this.gel.Physics.Location.Y + this.gel.VelocityY);
+                this.gel.Physics.Move();
             }
             this.sprite.Update();
         }

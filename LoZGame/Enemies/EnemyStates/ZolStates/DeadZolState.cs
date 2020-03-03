@@ -13,6 +13,7 @@
             this.zol = zol;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.zol.CurrentState = this;
+            this.zol.Physics.ResetVelocity();
         }
 
         public void MoveLeft()

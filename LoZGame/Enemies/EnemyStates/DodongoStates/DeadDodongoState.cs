@@ -13,8 +13,7 @@
             this.dodongo.CurrentState = this;
             this.dodongo = dodongo;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
-            this.dodongo.VelocityX = 0;
-            this.dodongo.VelocityY = 0;
+            this.dodongo.Physics.ResetVelocity();
         }
 
         public void MoveLeft()
