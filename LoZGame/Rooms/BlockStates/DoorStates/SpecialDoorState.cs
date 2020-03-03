@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LoZClone
 {
     /*
-     * The Player must kill all enemies to open these doors
+     * The Player must kill all enemies to open these doors.
      */
     public class SpecialDoorState : IDoorState
     {
@@ -28,7 +28,6 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown(door.UpScreenLoc);
                         location = door.UpScreenLoc;
                         door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, 70, 1);
                         break;
                     }
                 case "E":
@@ -36,7 +35,6 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft(door.RightScreenLoc);
                         location = door.RightScreenLoc;
                         door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, 1, 70);
                         break;
                     }
                 case "S":
@@ -44,7 +42,6 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp(door.DownScreenLoc);
                         location = door.DownScreenLoc;
                         door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, 70, 1);
                         break;
                     }
                 case "W":
@@ -52,7 +49,6 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight(door.LeftScreenLoc);
                         location = door.LeftScreenLoc;
                         door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, 1, 70);
                         break;
                     }
             }
