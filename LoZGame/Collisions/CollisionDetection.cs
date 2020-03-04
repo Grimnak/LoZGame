@@ -17,7 +17,7 @@
         {
             foreach (IPlayer player in players)
             {
-                if (!(player.State is DieState) || !(player.State is ImmobileState))
+                if (!(player.State is DieState) && !(player.State is ImmobileState))
                 {
                     CheckCollisions<IEnemy>(player, enemies);
                     CheckCollisions<IProjectile>(player, projectiles);
