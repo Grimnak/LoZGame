@@ -14,19 +14,19 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if (collisionSide == CollisionDetection.CollisionSide.Right)
+            if (door.Physics.Location == door.LeftScreenLoc)
             {
                 LoZGame.Instance.Dungeon.MoveLeft();
             }
-            else if (collisionSide == CollisionDetection.CollisionSide.Left)
+            else if (door.Physics.Location == door.RightScreenLoc)
             {
                 LoZGame.Instance.Dungeon.MoveRight();
             }
-            else if (collisionSide == CollisionDetection.CollisionSide.Top)
+            else if (door.Physics.Location == door.DownScreenLoc)
             {
                 LoZGame.Instance.Dungeon.MoveDown();
             }
-            else
+            else if (door.Physics.Location == door.UpScreenLoc)
             {
                 LoZGame.Instance.Dungeon.MoveUp();
             }
