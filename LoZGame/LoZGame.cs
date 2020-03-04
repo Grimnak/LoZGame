@@ -74,7 +74,7 @@
             entityManager = new EntityManager();
             enemyManager = new EnemyManager();
             doorManager = new DoorManager();
-            collisionDetector = new CollisionDetection();
+
         }
 
         protected override void Initialize()
@@ -99,6 +99,7 @@
 
             string file = "../../../../../etc/levels/dungeon1.xml";
             this.dungeon = new Dungeon(file);
+            collisionDetector = new CollisionDetection(dungeon);
 
             LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
             this.link = new Link(new Vector2(
