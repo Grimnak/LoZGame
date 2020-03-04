@@ -6,7 +6,7 @@
 
     internal class MagicBoomerangProjectile : IProjectile
     {
-        private static readonly int LinkSize = 32;
+        
         private static readonly int MaxDistance = 300;
         private static readonly int MaxSpeed = 5;
         private static readonly float Accel = 0.5f;
@@ -65,19 +65,19 @@
 
             if (this.direction.Equals("Up"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(0, -1 * MaxSpeed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSpriteFactory.LinkHeight / 2), loc.Y), new Vector2(0, -1 * MaxSpeed), new Vector2(0, 0));
             }
             else if (this.direction.Equals("Left"))
             {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)), new Vector2(-1 * MaxSpeed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSpriteFactory.LinkHeight / 2)), new Vector2(-1 * MaxSpeed, 0), new Vector2(0, 0));
             }
             else if (this.direction.Equals("Right"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize / 2)), new Vector2(MaxSpeed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + LinkSpriteFactory.LinkHeight, loc.Y + (LinkSpriteFactory.LinkHeight / 2)), new Vector2(MaxSpeed, 0), new Vector2(0, 0));
             }
             else
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y + LinkSize), new Vector2(0, MaxSpeed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSpriteFactory.LinkHeight / 2), loc.Y + LinkSpriteFactory.LinkHeight), new Vector2(0, MaxSpeed), new Vector2(0, 0));
             }
 
             this.playerLoc = player.Physics.Location;

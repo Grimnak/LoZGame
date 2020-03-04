@@ -233,7 +233,7 @@
 
         public ISprite Triforce(int scale)
         {
-            return new TriForceSprite(this.triforceSpriteSheet, this.triforceData, scale);
+            return new TriForceSprite(this.triforceSpriteSheet, this.triforceData, scale + 1);
         }
 
         public ISprite YellowRupee(int scale)

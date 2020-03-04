@@ -6,7 +6,7 @@
 
     internal class BombProjectile : IProjectile
     {
-        private static readonly int LinkSize = 32;
+        
         private static readonly int MaxLife = 120;
         private readonly Texture2D Texture;      // the texture to pull frames from
         private readonly SpriteSheetData Data;
@@ -45,19 +45,19 @@
             this.rotation = 0;
             if (this.direction == "Up")
             {
-                this.Physics = new Physics(new Vector2(loc.X - ((this.Size.X - LinkSize) / 2), loc.Y - LinkSize), new Vector2(0, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X - ((this.Size.X - LinkSpriteFactory.LinkHeight) / 2), loc.Y - LinkSpriteFactory.LinkHeight), new Vector2(0, 0), new Vector2(0, 0));
             }
             else if (this.direction == "Left")
             {
-                this.Physics = new Physics(new Vector2(loc.X - LinkSize + (LinkSize - this.Size.X), loc.Y - ((this.Size.Y - LinkSize) / 2)), new Vector2(0, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X - LinkSpriteFactory.LinkHeight + (LinkSpriteFactory.LinkHeight - this.Size.X), loc.Y - ((this.Size.Y - LinkSpriteFactory.LinkHeight) / 2)), new Vector2(0, 0), new Vector2(0, 0));
             }
             else if (this.direction == "Right")
             {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y - ((this.Size.Y - LinkSize) / 2)), new Vector2(0, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + LinkSpriteFactory.LinkHeight, loc.Y - ((this.Size.Y - LinkSpriteFactory.LinkHeight) / 2)), new Vector2(0, 0), new Vector2(0, 0));
             }
             else
             {
-                this.Physics = new Physics(new Vector2(loc.X - ((this.Size.X - LinkSize) / 2), loc.Y + LinkSize), new Vector2(0, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X - ((this.Size.X - LinkSpriteFactory.LinkHeight) / 2), loc.Y + LinkSpriteFactory.LinkHeight), new Vector2(0, 0), new Vector2(0, 0));
             }
 
             this.scale = scale;

@@ -6,7 +6,7 @@
 
     internal class RedCandleProjectile : IProjectile
     {
-        private static readonly int LinkSize = 32;
+        
         private static readonly int LifeTimeMax = 500;
         private static readonly int FrameDelay = 10;
         private const int Speed = 4;
@@ -54,19 +54,19 @@
             this.rotation = 0;
             if (direction.Equals("Up"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - this.Size.X) / 2), loc.Y - LinkSize), new Vector2(0, -1 * Speed), new Vector2(0, Accel));
+                this.Physics = new Physics(new Vector2(loc.X + ((LinkSpriteFactory.LinkHeight - this.Size.X) / 2), loc.Y - LinkSpriteFactory.LinkHeight), new Vector2(0, -1 * Speed), new Vector2(0, Accel));
             }
             else if (direction.Equals("Left"))
             {
-                this.Physics = new Physics(new Vector2(loc.X - LinkSize, loc.Y + ((LinkSize - this.Size.Y) / 2)), new Vector2(-1 * Speed, 0), new Vector2(Accel, 0));
+                this.Physics = new Physics(new Vector2(loc.X - LinkSpriteFactory.LinkHeight, loc.Y + ((LinkSpriteFactory.LinkHeight - this.Size.Y) / 2)), new Vector2(-1 * Speed, 0), new Vector2(Accel, 0));
             }
             else if (direction.Equals("Right"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + ((LinkSize - this.Size.Y) / 2)), new Vector2(Speed, 0), new Vector2(-1 * Accel, 0));
+                this.Physics = new Physics(new Vector2(loc.X + LinkSpriteFactory.LinkHeight, loc.Y + ((LinkSpriteFactory.LinkHeight - this.Size.Y) / 2)), new Vector2(Speed, 0), new Vector2(-1 * Accel, 0));
             }
             else
             {
-                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - this.Size.X) / 2), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, -1 * Accel));
+                this.Physics = new Physics(new Vector2(loc.X + ((LinkSpriteFactory.LinkHeight - this.Size.X) / 2), loc.Y + LinkSpriteFactory.LinkHeight), new Vector2(0, Speed), new Vector2(0, -1 * Accel));
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.layer = 1 - 1 / (this.Physics.Location.Y + this.Size.Y);

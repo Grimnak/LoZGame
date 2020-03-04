@@ -6,7 +6,7 @@
     internal class ArrowProjectile : IProjectile
     {
         private static readonly int Speed = 10;
-        private static readonly int LinkSize = 30;
+        
 
         private readonly Texture2D Texture;      // the texture to pull frames from
         private readonly SpriteSheetData Data;
@@ -45,22 +45,22 @@
             this.expired = false;
             if (this.direction.Equals("Up"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSpriteFactory.LinkHeight / 2), loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
                 this.rotation = 0;
             }
             else if (this.direction.Equals("Left"))
             {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSpriteFactory.LinkHeight / 2)), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
                 this.rotation = -1 * MathHelper.PiOver2;
             }
             else if (this.direction.Equals("Right"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize / 2)), new Vector2(Speed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + LinkSpriteFactory.LinkHeight, loc.Y + (LinkSpriteFactory.LinkHeight / 2)), new Vector2(Speed, 0), new Vector2(0, 0));
                 this.rotation = MathHelper.PiOver2;
             }
             else
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSpriteFactory.LinkHeight / 2), loc.Y + LinkSpriteFactory.LinkHeight), new Vector2(0, Speed), new Vector2(0, 0));
                 this.rotation = MathHelper.Pi;
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
