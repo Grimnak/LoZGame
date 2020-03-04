@@ -6,10 +6,10 @@
 
     internal class RedCandleProjectile : IProjectile
     {
-        private static readonly int LinkSize = 32;
+        private static readonly int LinkSize = LinkSpriteFactory.LinkHeight;
         private static readonly int LifeTimeMax = 500;
         private static readonly int FrameDelay = 10;
-        private static readonly int scale = ProjectileSpriteFactory.Instance.Scale;
+        private static readonly int scale = ProjectileSpriteFactory.Instance.Scale / 2;
         private const int Speed = 4;
         private const float Accel = 0.2f;
         private const float AccelDecay = 0.95f;
@@ -39,15 +39,15 @@
             this.travelTime = (int)(LifeTimeMax / 2);
             if (direction.Equals("Up"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - projectileWidth) / 2), loc.Y - LinkSize), new Vector2(0, -1 * Speed), new Vector2(0, Accel));
+                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - projectileWidth) / 2), loc.Y - projectileHeight), new Vector2(0, -1 * Speed), new Vector2(0, Accel));
             }
             else if (direction.Equals("Left"))
             {
-                this.Physics = new Physics(new Vector2(loc.X - LinkSize, loc.Y + ((LinkSize - projectileHeight) / 2)), new Vector2(-1 * Speed, 0), new Vector2(Accel, 0));
+                this.Physics = new Physics(new Vector2(loc.X - projectileWidth, loc.Y - ((LinkSize - projectileHeight) / 2)), new Vector2(-1 * Speed, 0), new Vector2(Accel, 0));
             }
             else if (direction.Equals("Right"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + ((LinkSize - projectileHeight) / 2)), new Vector2(Speed, 0), new Vector2(-1 * Accel, 0));
+                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y - ((LinkSize - projectileHeight) / 2)), new Vector2(Speed, 0), new Vector2(-1 * Accel, 0));
             }
             else
             {

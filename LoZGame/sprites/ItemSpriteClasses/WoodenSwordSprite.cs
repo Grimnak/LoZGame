@@ -18,7 +18,7 @@
         {
             this.Data = data;
             this.Texture = texture;
-            this.origin = new Vector2(data.Width / 2, data.Height / 2);
+            this.origin = new Vector2(0, 0);
             this.rotation = 0;
             this.frame = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
             this.scale = scale;
