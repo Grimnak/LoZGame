@@ -76,31 +76,31 @@
                 switch (item)
                 {
                     case ProjectileType.Bomb:
-                        this.itemList.Add(this.projectileId, new BombProjectile(player));
+                        this.itemList.Add(this.projectileId, new BombProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.Triforce:
-                        this.itemList.Add(this.projectileId, new TriforceProjectile(player));
+                        this.itemList.Add(this.projectileId, new TriforceProjectile(player.Physics.Location));
                         this.triforceLock = true;
                         this.triforceInstance = this.projectileId;
                         break;
 
                     case ProjectileType.Arrow:
-                        this.itemList.Add(this.projectileId, new ArrowProjectile(player));
+                        this.itemList.Add(this.projectileId, new ArrowProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.SilverArrow:
-                        this.itemList.Add(this.projectileId, new SilverArrowProjectile(player));
+                        this.itemList.Add(this.projectileId, new SilverArrowProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.RedCandle:
-                        this.itemList.Add(this.projectileId, new RedCandleProjectile(player));
+                        this.itemList.Add(this.projectileId, new RedCandleProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.BlueCandle:
                         if (!this.candleLock)
                         {
-                            this.itemList.Add(this.projectileId, new BlueCandleProjectile(player));
+                            this.itemList.Add(this.projectileId, new BlueCandleProjectile(player.Physics.Location, player.CurrentDirection));
                             this.candleLock = true;
                             this.candleInstance = this.projectileId;
                         }

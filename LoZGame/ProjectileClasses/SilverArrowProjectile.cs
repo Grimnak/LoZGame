@@ -31,20 +31,19 @@
             this.projectileWidth = ProjectileSpriteFactory.Instance.ArrowWidth * scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * scale;
             this.lifeTime = 100;
-            this.direction = direction;
             this.hostile = false;
             this.expired = false;
-            if (this.direction.Equals("Up"))
+            if (direction.Equals("Up"))
             {
                 this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
                 this.rotation = 0;
             }
-            else if (this.direction.Equals("Left"))
+            else if (direction.Equals("Left"))
             {
                 this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
                 this.rotation = -1 * MathHelper.PiOver2;
             }
-            else if (this.direction.Equals("Right"))
+            else if (direction.Equals("Right"))
             {
                 this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize / 2)), new Vector2(Speed, 0), new Vector2(0, 0));
                 this.rotation = MathHelper.PiOver2;

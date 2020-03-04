@@ -30,19 +30,16 @@
 
         public bool IsHostile => this.hostile;
 
-        private readonly ExplosionManager explosion;
-
         private static readonly int FrameDelay = 4;
         private const int Speed = 5;
         private static readonly int MaxLifeTime = 40;
         private static readonly int XBound = 800;
         private static readonly int YBound = 480;
 
-        public SwordBeamProjectile(IPlayer player, ExplosionManager explosion)
+        public SwordBeamProjectile(IPlayer player)
         {
             this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.TriforceSize * scale;
-            this.explosion = explosion;
             this.lifeTime = MaxLifeTime;
             this.direction = player.CurrentDirection;
             Vector2 loc = player.Physics.Location;
@@ -110,7 +107,9 @@
 
                 if (this.lifeTime <= 0)
                 {
-                    this.explosion.AddExplosion(this.explosion.SwordExplosion, new Vector2(this.Physics.Location.X + this.tip.X, this.Physics.Location.Y + this.tip.Y));
+                    int explosionType = LoZGame.Instance.Entities.ExplosionManager.SwordExplosion;
+                    Vector2 explosionLocation = new Vector2(this.Physics.Location.X + this.tip.X, this.Physics.Location.Y + this.tip.Y);
+                    LoZGame.Instance.Entities.ExplosionManager.AddExplosion(explosionType, explosionLocation);
                     this.expired = true;
                 }
 

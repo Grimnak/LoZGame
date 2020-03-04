@@ -5,48 +5,63 @@ namespace LoZClone
 
     public class FireballSprite : ISprite
     {
-        private const int MaxLife = 240;
-        private int lifeTime = 0;
-        private readonly Texture2D spriteSheet;
-        private Vector2 Size;
-        private readonly int spriteSheetRows;
-        private readonly int spriteSheetColumns;
-        private readonly int spriteSheetWidth;
-        private readonly int spriteSheetHeight;
-        private int currentFrame = 0;
+        private readonly Texture2D Texture;
+        private readonly SpriteSheetData Data;
+        private Rectangle frameOne;
+        private Rectangle frameTwo;
+        private Rectangle frameThree;
+        private Rectangle frameFour;
+        private Rectangle currentFrame;
         private readonly int scale;
+        private readonly float rotation;
+        private float layer;
+        private Vector2 origin;
+        private Vector2 Size;
 
-        public FireballSprite(Texture2D spriteTexture, SpriteSheetData data, string direction, int scale)
+        public FireballSprite(Texture2D texture, SpriteSheetData data, int scale)
         {
-            this.spriteSheet = spriteTexture;
-            this.spriteSheetWidth = data.Width;
-            this.spriteSheetHeight = data.Height;
-            this.spriteSheetRows = data.Rows;
-            this.spriteSheetColumns = data.Columns;
+            this.Texture = texture;
+            this.Data = data;
             this.scale = scale;
-            this.Size = new Vector2(this.spriteSheetWidth * scale, this.spriteSheetHeight * scale);
+            this.Size = new Vector2(this.Data.Width * this.scale, this.Data.Height * this.scale);
+            this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
+            this.frameOne = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
+            this.frameTwo = new Rectangle(this.Data.Width, 0, this.Data.Width, this.Data.Height);
+            this.frameThree = new Rectangle(this.Data.Width * 2, 0, this.Data.Width, this.Data.Height);
+            this.frameFour = new Rectangle(this.Data.Width * 3, 0, this.Data.Width, this.Data.Height);
+            this.currentFrame = this.frameOne;
+            this.rotation = 0;
+        }
+
+        private void NextFrame()
+        {
+            if (this.currentFrame == this.frameOne)
+            {
+                this.currentFrame = this.frameTwo;
+            }
+            else if (this.currentFrame == this.frameTwo)
+            {
+                this.currentFrame = this.frameThree;
+            }
+            else if (this.currentFrame == this.frameThree)
+            {
+                this.currentFrame = this.frameFour;
+            }
+            else
+            {
+                this.currentFrame = this.frameOne;
+            }
         }
 
         public void Update()
         {
-            this.currentFrame++;
-            if (this.currentFrame > 3)
-            {
-                this.currentFrame = 0;
-            }
+            this.NextFrame();
         }
 
         public void Draw(Vector2 location, Color spriteTint)
         {
-            int width = this.spriteSheet.Width / this.spriteSheetColumns;
-            int height = this.spriteSheet.Height / this.spriteSheetRows;
-            int row = (int)((float)this.currentFrame / (float)this.spriteSheetColumns);
-            int column = this.currentFrame % this.spriteSheetColumns;
-
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, (int)this.Size.X, (int)this.Size.Y);
-
-            LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
+            this.layer = 1 - (1 / (location.Y + this.Size.Y));
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }
 }

@@ -38,11 +38,10 @@
 
         public Rectangle Bounds { get; set; }
 
-        public BoomerangProjectile(IPlayer player, int scale, int instance)
+        public BoomerangProjectile(IPlayer player)
         {
             this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight * scale;
-            this.scale = scale;
             this.expired = false;
             Vector2 loc = player.Physics.Location;
             this.direction = player.CurrentDirection;

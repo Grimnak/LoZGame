@@ -71,7 +71,7 @@
             this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
             this.currentSpeed = MaxSpeed;
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
-            this.sprite = ProjectileSpriteFactory.Instance.MagicBoomerangEnemy();
+            this.sprite = ProjectileSpriteFactory.Instance.MagicBoomerang();
         }
 
         private void CheckBounds()

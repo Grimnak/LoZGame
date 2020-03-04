@@ -10,7 +10,6 @@
         private readonly string direction;
         private readonly float rotation;
         private bool expired;
-        private float layer;
         private readonly SpriteEffects effect;
         private ISprite sprite;
         private int projectileWidth;
@@ -28,7 +27,7 @@
         private static readonly float Speed = 2.5F;
         private static readonly int MaxLifeTime = 60;
 
-        public SwordBeamExplosion(Vector2 location, string direction, int instance)
+        public SwordBeamExplosion(Vector2 location, string direction)
         {
             this.lifeTime = MaxLifeTime;
             projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
@@ -62,7 +61,6 @@
             }
 
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
-            this.layer = 1 / (this.Physics.Location.Y + projectileHeight);
             this.hostile = false;
             this.expired = false;
             this.sprite = ProjectileSpriteFactory.Instance.SwordExplosion(this.effect, this.rotation);
@@ -72,7 +70,9 @@
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            // do nothing
+            if (!(otherCollider is IPlayer || otherCollider is IBlock)) {
+                this.expired = true;
+            }
         }
 
         public void Update()
@@ -88,7 +88,6 @@
                 this.expired = true;
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
-            this.layer = 1 / (this.Physics.Location.Y + projectileHeight);
             this.Physics.Move();
         }
 

@@ -7,8 +7,6 @@
     {
         bool IsExpired { get; }
 
-        bool IsHostile { get; }
-
         void Update();
 
         void Draw();

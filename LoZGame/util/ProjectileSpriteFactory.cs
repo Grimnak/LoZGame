@@ -22,6 +22,7 @@
         private static readonly int explosionHeight = 50;
         private static readonly int explosionWidth = 48;
         private static readonly int triforceSize = 12;
+        private static readonly int fireballSize = 12;
 
         public int SwordBeamWidth
         {
@@ -73,6 +74,11 @@
             get { return triforceSize; }
         }
 
+        public int FireballSize
+        {
+            get { return fireballSize; }
+        }
+
         public Vector2 ExplosionCenter { get { return new Vector2(ExplosionWidth / 2, ExplosionHeight / 2); } }
 
         private Texture2D flameSpriteSheet;
@@ -103,6 +109,8 @@
         private readonly SpriteSheetData ExplosionFourData = new SpriteSheetData("BombExplosionFour", explosionWidth, explosionHeight, 1, 3);
         private Texture2D explosionFiveSpriteSheet;
         private readonly SpriteSheetData explosionFiveData = new SpriteSheetData("BombExplosionFive", explosionWidth, explosionHeight, 1, 3);
+        private Texture2D fireball;
+        private readonly SpriteSheetData fireballData = new SpriteSheetData("fireball", fireballSize, fireballSize, 1, 4);
 
         private static readonly ProjectileSpriteFactory InstanceValue = new ProjectileSpriteFactory();
 
@@ -130,11 +138,17 @@
             this.explosionFourSpriteSheet = content.Load<Texture2D>(this.ExplosionFourData.FilePath);
             this.explosionFiveSpriteSheet = content.Load<Texture2D>(this.explosionFiveData.FilePath);
             this.triforceSpriteSheet = content.Load<Texture2D>(this.triforceData.FilePath);
+            this.fireball = content.Load<Texture2D>(this.fireballData.FilePath);
         }
 
         public TriforceProjectileSprite Triforce()
         {
             return new TriforceProjectileSprite(this.triforceSpriteSheet, this.triforceData, DRAWSCALE);
+        }
+
+        public FireballSprite Fireball()
+        {
+            return new FireballSprite(this.triforceSpriteSheet, this.triforceData, DRAWSCALE);
         }
 
         public BoomerangProjectileSprite Boomerang()

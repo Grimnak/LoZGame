@@ -10,7 +10,7 @@ namespace LoZClone
     class ArrowProjectile : IProjectile
     {
         private static readonly int Speed = 10;
-        private static readonly int LinkSize = 30;
+        private static readonly int LinkSize = LinkSpriteFactory.LinkHeight;
         ISprite sprite;
 
         private Rectangle frame;
@@ -20,8 +20,6 @@ namespace LoZClone
         private int projectileHeight;
         private string direction;
         private readonly float rotation;
-        private readonly int dX;
-        private readonly int dY;
         private readonly int instance;
         private bool expired;
         private readonly bool hostile;
@@ -34,26 +32,24 @@ namespace LoZClone
 
         public Rectangle Bounds { get; set; }
 
-        public ArrowProjectile(Vector2 loc, string direction, int scale, int instance)
+        public ArrowProjectile(Vector2 loc, string direction)
         {
-            this.projectileWidth = ProjectileSpriteFactory.Instance.ArrowWidth * scale;
-            this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * scale;
+            this.projectileWidth = ProjectileSpriteFactory.Instance.ArrowWidth * ProjectileSpriteFactory.Instance.Scale;
+            this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * ProjectileSpriteFactory.Instance.Scale;
             this.lifeTime = 100;
             this.hostile = false;
-            this.instance = instance;
             this.expired = false;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
-            if (this.direction.Equals("Up"))
+            if (direction.Equals("Up"))
             {
                 this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
                 this.rotation = 0;
             }
-            else if (this.direction.Equals("Left"))
+            else if (direction.Equals("Left"))
             {
                 this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
                 this.rotation = -1 * MathHelper.PiOver2;
             }
-            else if (this.direction.Equals("Right"))
+            else if (direction.Equals("Right"))
             {
                 this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize / 2)), new Vector2(Speed, 0), new Vector2(0, 0));
                 this.rotation = MathHelper.PiOver2;
@@ -64,11 +60,12 @@ namespace LoZClone
                 this.rotation = MathHelper.Pi;
             }
             this.sprite = ProjectileSpriteFactory.Instance.Arrow(rotation);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IPlayer)
+            if (otherCollider is IPlayer || otherCollider is IBlock)
             {
                 // do nothing
             }

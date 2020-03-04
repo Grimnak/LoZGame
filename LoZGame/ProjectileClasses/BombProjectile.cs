@@ -6,15 +6,13 @@
 
     internal class BombProjectile : IProjectile
     {
-        private static readonly int LinkSize = 32;
+        private static readonly int LinkSize = LinkSpriteFactory.LinkHeight;
         private static readonly int MaxLife = 120;
         private int lifeTime;
         private readonly int scale;
-        private readonly bool isStatic;
         private bool expired;
         private readonly string direction;
         private readonly bool hostile;
-        private readonly ExplosionManager explosion;
         private int projectileWidth;
         private int projectileHeight;
         private ISprite sprite;
@@ -23,14 +21,13 @@
 
         public Rectangle Bounds { get; set; }
 
-        public BombProjectile(Vector2 loc, string direction, ExplosionManager explosion)
+        public BombProjectile(Vector2 loc, string direction)
         {
             this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * scale;
             this.lifeTime = MaxLife;
             this.direction = direction;
             this.hostile = false;
-            this.explosion = explosion;
             if (this.direction == "Up")
             {
                 this.Physics = new Physics(new Vector2(loc.X - ((projectileWidth - LinkSize) / 2), loc.Y - LinkSize), new Vector2(0, 0), new Vector2(0, 0));
@@ -47,8 +44,6 @@
             {
                 this.Physics = new Physics(new Vector2(loc.X - ((projectileWidth - LinkSize) / 2), loc.Y + LinkSize), new Vector2(0, 0), new Vector2(0, 0));
             }
-
-            this.isStatic = false;
             this.expired = false;
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             this.sprite = ProjectileSpriteFactory.Instance.Bomb();
@@ -68,14 +63,13 @@
 
         public void Update()
         {
-            if (!this.isStatic)
-            {
-                this.lifeTime--;
-            }
-
+            lifeTime--;
             if (this.lifeTime <= 0)
             {
-                this.sprite.Update();
+                this.expired = true;
+                int explosiontype = (int)LoZGame.Instance.Entities.ExplosionManager.Explosion;
+                Vector2 explosionLocation = new Vector2(this.Physics.Location.X - (this.projectileWidth / 2) - this.projectileWidth, this.Physics.Location.Y - this.projectileHeight);
+                LoZGame.Instance.Entities.ExplosionManager.AddExplosion(explosiontype, explosionLocation);
             }
         }
 

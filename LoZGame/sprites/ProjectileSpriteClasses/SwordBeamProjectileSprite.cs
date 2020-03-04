@@ -5,8 +5,6 @@
 
     internal class SwordBeamProjectileSprite : ISprite
     {
-        private const int FrameChange = 10;
-
         private readonly Texture2D Texture;
         private readonly SpriteSheetData Data;
         private Rectangle frameOne;

@@ -87,6 +87,10 @@
         public void Draw()
         {
             this.sprite.Draw(this.Physics.Location, Color.White);
+            if (this.lifeTime % 5 == 0)
+            {
+                // draw white screen on top layer
+            }
         }
     }
 }

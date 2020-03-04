@@ -23,7 +23,6 @@
         private int projectileHeight;
         private bool expired;
         private bool returning;
-        private bool reachedMaxDistance;
         private bool isReturned;
         private int distTraveled;
         private float currentSpeed;
@@ -50,7 +49,6 @@
             this.Enemy = enemy;
             this.distTraveled = 0;
             this.hostile = true;
-            this.reachedMaxDistance = false;
 
             if (this.direction.Equals("Up"))
             {
@@ -73,7 +71,7 @@
             this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
             this.currentSpeed = MaxSpeed;
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, ProjectileSpriteFactory.Instance.StandardWidth, ProjectileSpriteFactory.Instance.BoomerangHeight);
-            this.sprite = ProjectileSpriteFactory.Instance.BoomerangEnemy();
+            this.sprite = ProjectileSpriteFactory.Instance.Boomerang();
         }
 
         private void CheckBounds()

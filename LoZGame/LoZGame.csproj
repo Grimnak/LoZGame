@@ -154,6 +154,15 @@
     <Compile Include="ProjectileClasses\BombExplosion.cs" />
     <Compile Include="ProjectileClasses\BombProjectile.cs" />
     <Compile Include="ProjectileClasses\BoomerangEnemy.cs" />
+    <Compile Include="ProjectileClasses\BoomerangProjectile.cs" />
+    <Compile Include="ProjectileClasses\DragonFireBall.cs" />
+    <Compile Include="ProjectileClasses\MagicBoomerangEnemy.cs" />
+    <Compile Include="ProjectileClasses\MagicBoomerangProjectile.cs" />
+    <Compile Include="ProjectileClasses\RedCandleProjectile.cs" />
+    <Compile Include="ProjectileClasses\SilverArrowProjectile.cs" />
+    <Compile Include="ProjectileClasses\SwordBeamExplosion.cs" />
+    <Compile Include="ProjectileClasses\SwordBeamProjectile.cs" />
+    <Compile Include="ProjectileClasses\TriforceProjectile.cs" />
     <Compile Include="Rooms\BlockClasses\Door.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\BombedDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\HiddenDoorState.cs" />
@@ -321,8 +330,6 @@
     <Compile Include="Sprites\PlayerSpriteClasses\LinkUseItemRightSprite.cs" />
     <Compile Include="Sprites\PlayerSpriteClasses\LinkUseItemUpSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\BombExplosionSprite.cs" />
-    <Compile Include="Sprites\ProjectileSpriteClasses\BoomerangEnemySprite.cs" />
-    <Compile Include="Sprites\ProjectileSpriteClasses\MagicBoomerangEnemySprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamExplosionSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamProjectileSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\TriforceProjectileSprite.cs" />

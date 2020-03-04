@@ -99,7 +99,7 @@
                     if (this.coolDown == 0)
                     {
                         this.coolDown = 240;
-                        this.entity.EnemyProjectileManager.AddEnemyRang(this, this.currentDirection);
+                        this.entity.EnemyProjectileManager.AddEnemyRang(this);
                     }
 
                     break;

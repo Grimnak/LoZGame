@@ -19,7 +19,6 @@ namespace LoZClone
         private string direction;
         private readonly float rotation;
         private bool expired;
-        private readonly bool hostile;
         private Vector2 Size;
 
         public bool IsExpired => this.expired;
@@ -30,28 +29,29 @@ namespace LoZClone
 
         public DragonFireBall(Vector2 loc, string direction)
         {
-            if (this.direction.Equals("NorthWest"))
+            if (direction.Equals("NorthWest"))
             {
                 this.Physics = new Physics(new Vector2(loc.X, loc.Y), new Vector2(-1 * XVelocity, -1 * YVelocity), new Vector2(0, 0));
             }
-            else if (this.direction.Equals("West"))
+            else if (direction.Equals("West"))
             {
                 this.Physics = new Physics(new Vector2(loc.X, loc.Y ), new Vector2(-1 * XVelocity, 0), new Vector2(0, 0));
             }
-            else if (this.direction.Equals("SouthWest"))
+            else if (direction.Equals("SouthWest"))
             {
                 this.Physics = new Physics(new Vector2(loc.X, loc.Y), new Vector2(-1 * XVelocity, YVelocity), new Vector2(0, 0));
             }
             this.Size = new Vector2(10, 10);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.sprite = ProjectileSpriteFactory.Instance.FireBall();
+            this.sprite = ProjectileSpriteFactory.Instance.Fireball();
+            this.expired = false;
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IPlayer)
             {
-                // do nothing
+                this.expired = true;
             }
         }
 
@@ -69,7 +69,6 @@ namespace LoZClone
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.Physics.Move();
-            this.sprite.Update();
         }
 
         public void Draw()

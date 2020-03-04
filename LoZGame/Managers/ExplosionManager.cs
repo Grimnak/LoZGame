@@ -41,16 +41,16 @@
             switch (type)
             {
                 case ExplosionType.SwordExplode:
-                    this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "NorthEast", this.scale, this.explosionId));
+                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(loc, "NorthEast"));
                     this.explosionId++;
                     this.explosionListSize++;
-                    this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "NorthWest", this.scale, this.explosionId));
+                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(loc, "NorthWest"));
                     this.explosionId++;
                     this.explosionListSize++;
-                    this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "SouthEast", this.scale, this.explosionId));
+                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(loc, "SouthEast"));
                     this.explosionId++;
                     this.explosionListSize++;
-                    this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "SouthWest", this.scale, this.explosionId));
+                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(loc, "SouthWest"));
                     break;
 
                 case ExplosionType.BombExplode:
@@ -75,7 +75,7 @@
             {
                 if (explosion.Value.IsExpired)
                 {
-                    this.deletable.Add(explosion.Value.Instance);
+                    this.deletable.Add(explosion.Key);
                 }
             }
 
@@ -85,6 +85,7 @@
             }
 
             this.deletable.Clear();
+
             foreach (KeyValuePair<int, IProjectile> explosion in this.explosionList)
             {
                 explosion.Value.Update();
