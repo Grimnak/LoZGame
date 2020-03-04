@@ -60,7 +60,7 @@
             InitialPos = this.Physics.Location;
         }
 
-        private void updateLoc()
+        private void checkForLink()
         {
             int spikeX = (int)Physics.Location.X;
             int spikeY = (int)Physics.Location.Y;
@@ -94,7 +94,7 @@
 
         public void Update()
         {
-            this.updateLoc();
+            this.checkForLink();
             this.currentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;

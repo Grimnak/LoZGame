@@ -29,12 +29,10 @@
         private IEnemyState currentState;
         private int damage = 1;
         private int health = 1;
-        private int lifeTime = 0;
         private int timeInIdle = 0;
         private int timeSinceIdle = 0;
         private int movementWaitMax = 24;
         private int idleWaitMax = 12;
-        private readonly int directionChange = 40;
         private RandomStateGenerator randomStateGenerator;
 
         public Gel(Vector2 location)
@@ -82,12 +80,6 @@
 
         public void Update()
         {
-            this.lifeTime++;
-            if (this.lifeTime > this.directionChange)
-            {
-                
-                this.lifeTime = 0;
-            }
             this.decideToMove();
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;

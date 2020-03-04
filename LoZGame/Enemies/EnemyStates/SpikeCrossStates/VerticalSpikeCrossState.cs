@@ -101,13 +101,6 @@
             }
             else
             {
-               /* if (spikeCross.Physics.Location.Y <= ((BlockSpriteFactory.Instance.VerticalOffset / 2) + 20) 
-                    || spikeCross.Physics.Location.Y >= (BlockSpriteFactory.Instance.TileHeight * 7 + (BlockSpriteFactory.Instance.VerticalOffset / 2) - 20))
-                {
-                    spikeCross.Attacking = false;
-                    spikeCross.Retreating = false;
-                    Stop();
-                } */
                 if (spikeCross.Physics.Location.Y == spikeCross.InitialPos.Y)
                 {
                     spikeCross.Attacking = false;

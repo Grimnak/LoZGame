@@ -14,8 +14,6 @@
             this.spikeCross.Physics.ResetVelocity();
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
             this.spikeCross.CurrentState = this;
-            spikeCross.Attacking = false;
-            spikeCross.Retreating = false;
         }
 
         public void MoveLeft()
