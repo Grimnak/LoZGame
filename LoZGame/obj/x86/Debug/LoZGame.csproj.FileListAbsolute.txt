@@ -1151,3 +1151,5 @@ C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\WoodenArro
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\WoodenSword.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\YellowRupee.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Flute.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\dungeon.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\Flute.xnb

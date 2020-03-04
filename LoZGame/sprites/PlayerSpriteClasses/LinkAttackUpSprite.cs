@@ -18,7 +18,7 @@ namespace LoZClone
         private readonly int itemSpriteWidth;
         private readonly int itemSpriteHeight;
         private int itemFrame = 0;
-        private Vector2 itemOffset = new Vector2(3, 24);
+        private Vector2 itemOffset = new Vector2(3, 29);
 
         private int frameDelay = 0;
         private readonly int frameDelayMax = 5;
