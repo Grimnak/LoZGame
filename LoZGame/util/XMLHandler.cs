@@ -55,7 +55,6 @@
                             string doorLoc = door.Attribute("loc").Value, doorKind = door.Value;
                             droom.AddDoor(doorLoc, doorKind);
                             Console.Write("door: " + doorLoc + " " + doorKind + " "); // xml debug
-
                         }
 
                         foreach (XElement item in items) 

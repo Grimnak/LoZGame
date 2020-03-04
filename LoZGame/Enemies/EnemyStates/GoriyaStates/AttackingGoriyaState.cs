@@ -98,7 +98,7 @@
             if (this.coolDown == 0)
             {
                 this.coolDown = 240;
-                this.entity.EnemyProjectileManager.AddEnemyRang(this.goriya, this.goriya.Direction);
+                this.entity.EnemyProjectileManager.AddEnemyRang(this.goriya);
             }
             this.sprite.Update();
         }
