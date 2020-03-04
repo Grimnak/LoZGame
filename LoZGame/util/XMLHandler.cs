@@ -70,7 +70,7 @@
                         {
                             Console.WriteLine(); // xml debug
                             Console.Write("enemy: " + enemy.Attribute("X").Value + " " + enemy.Attribute("Y").Value + " " + enemy.Value); // xml debug 
-                            int x = int.Parse(enemy.Attribute("X").Value), y = int.Parse(enemy.Attribute("Y").Value);
+                            float x = float.Parse(enemy.Attribute("X").Value), y = float.Parse(enemy.Attribute("Y").Value);
                             droom.AddEnemy(x, y, enemy.Value);
                         }
                         Console.WriteLine("\n-");

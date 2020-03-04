@@ -6,7 +6,7 @@
     public class OldMan : IEnemy
     {
         private Rectangle bounds;
-        private int health;
+        private int health = 100;
         private int damage = 0;
 
         public Rectangle Bounds

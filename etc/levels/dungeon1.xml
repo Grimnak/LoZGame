@@ -754,7 +754,7 @@
     <room exists="True" idx="0">
       <text>EASTMOST PENINSULA IS THE SECRET.</text>
       <enemies>
-        <enemy X="5" Y="2">OldMan</enemy>
+        <enemy X="5.5" Y="2">OldMan</enemy>
       </enemies>
       <doors>
         <door loc="E">unlocked</door>
@@ -2358,6 +2358,7 @@
         <door loc="N">locked</door>
         <door loc="E">unlocked</door>
         <door loc="W">unlocked</door>
+		<door loc="S">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>

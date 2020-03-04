@@ -24,8 +24,10 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.player.Physics.Location = new Vector2(218, 184);
-            this.player.CurrentDirection = "Down";
+            this.player.Physics.Location = new Vector2(
+                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
+            this.player.CurrentDirection = "Up";
             this.player.State = new IdleState(this.player);
             this.player.Health = new HealthManager(4);
             this.player.DamageTimer = 0;

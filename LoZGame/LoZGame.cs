@@ -101,7 +101,9 @@
             this.dungeon = new Dungeon(file);
 
             LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
-            this.link = new Link(new Vector2(150, 200));
+            this.link = new Link(new Vector2(
+                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6))));
             this.dungeon.Player = this.link;
 
             this.keyboardCommandLoader = new KeyboardCommandLoader(this.link, this.dungeon);
