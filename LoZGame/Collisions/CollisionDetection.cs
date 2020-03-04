@@ -6,8 +6,10 @@
 
     public partial class CollisionDetection
     {
-        public CollisionDetection()
+        Dungeon dungeon;
+        public CollisionDetection(Dungeon dungeon)
         {
+            this.dungeon = dungeon;
         }
 
         public void Update(ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies, ReadOnlyCollection<IBlock> blocks, ReadOnlyCollection<IDoor> doors, ReadOnlyCollection<IProjectile> projectiles)
@@ -100,23 +102,38 @@
 
         private void CheckBorders(ICollider sourceCollider, int sourceWidth, int sourceHeight)
         {
-            if (sourceCollider.Physics.Location.X + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width - BlockSpriteFactory.Instance.HorizontalOffset)
+            if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
             {
-                sourceCollider.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset, sourceCollider.Physics.Location.Y);
+                // is right wall
+                if (sourceCollider.Physics.Location.X + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width - BlockSpriteFactory.Instance.HorizontalOffset + 10)
+                {
+                    sourceCollider.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, sourceCollider.Physics.Location.Y);
+                }
+                // is left wall
+                else if (sourceCollider.Physics.Location.X < BlockSpriteFactory.Instance.HorizontalOffset)
+                {
+                    sourceCollider.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, sourceCollider.Physics.Location.Y);
+                }
+
+                // is bottom wall
+                if (sourceCollider.Physics.Location.Y + sourceHeight > LoZGame.Instance.GraphicsDevice.Viewport.Height - BlockSpriteFactory.Instance.VerticalOffset)
+                {
+                    sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset);
+                }
+                // is top wall
+                else if (sourceCollider.Physics.Location.Y < BlockSpriteFactory.Instance.VerticalOffset)
+                {
+                    sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
+                }
             }
-            else if (sourceCollider.Physics.Location.X < BlockSpriteFactory.Instance.HorizontalOffset)
+            else
             {
-                sourceCollider.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, sourceCollider.Physics.Location.Y);
+                if (sourceCollider.Physics.Location.Y < 0)
+                {
+                    dungeon.MoveUp();
+                }
             }
 
-            if (sourceCollider.Physics.Location.Y + sourceHeight > LoZGame.Instance.GraphicsDevice.Viewport.Height - BlockSpriteFactory.Instance.VerticalOffset)
-            {
-                sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset);
-            }
-            else if (sourceCollider.Physics.Location.Y < BlockSpriteFactory.Instance.VerticalOffset)
-            {
-                sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
-            }
         }
     }
 }

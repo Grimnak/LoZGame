@@ -1150,3 +1150,4 @@ C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\WhiteSword
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\WoodenArrow.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\WoodenSword.xnb
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\YellowRupee.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Flute.xnb

@@ -48,6 +48,11 @@
             get { return currentY; }
         }
 
+        public Room CurrentRoom
+        {
+            get { return this.dungeonLayout[this.currentY][this.currentX]; }
+        }
+
         /// <summary>
         /// Resets dungeon room to default.
         /// </summary>
@@ -84,9 +89,11 @@
             {
                 this.currentY++;
                 this.LoadNewRoom();
+
+                // bruh
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 0)));
+                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 0)) + 2);
             }
         }
 
@@ -114,8 +121,10 @@
             {
                 this.currentX++;
                 this.LoadNewRoom();
+
+                // bruh
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
-                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 0)),
+                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 0) + 6),
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));
             }
         }

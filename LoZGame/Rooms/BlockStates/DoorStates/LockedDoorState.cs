@@ -25,7 +25,6 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorDown(door.UpScreenLoc);
                         location = door.UpScreenLoc;
                         door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, 70, 1);
                         break;
                     }
                 case "E":
@@ -33,7 +32,6 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorLeft(door.RightScreenLoc);
                         location = door.RightScreenLoc;
                         door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, 1, 70);
                         break;
                     }
                 case "S":
@@ -41,7 +39,6 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorUp(door.DownScreenLoc);
                         location = door.DownScreenLoc;
                         door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, 70, 1);
                         break;
                     }
                 case "W":
@@ -49,7 +46,6 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorRight(door.LeftScreenLoc);
                         location = door.LeftScreenLoc;
                         door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, 1, 70);
                         break;
                     }
             }

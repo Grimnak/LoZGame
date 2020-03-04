@@ -19,6 +19,7 @@
         private MouseCommandLoader mouseCommandLoader;
         private Dungeon dungeon;
         private Texture2D background;
+        private SpriteFont font;
 
         private ItemManager itemManager;
         private BlockManager blockManager;
@@ -77,7 +78,7 @@
             entityManager = new EntityManager();
             enemyManager = new EnemyManager();
             doorManager = new DoorManager();
-            collisionDetector = new CollisionDetection();
+
         }
 
         protected override void Initialize()
@@ -102,9 +103,13 @@
 
             string file = "../../../../../etc/levels/dungeon1.xml";
             this.dungeon = new Dungeon(file);
+            collisionDetector = new CollisionDetection(dungeon);
+            font = Content.Load<SpriteFont>("Text");
 
             LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
-            this.link = new Link(new Vector2(150, 200));
+            this.link = new Link(new Vector2(
+                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6))));
             this.dungeon.Player = this.link;
 
             this.keyboardCommandLoader = new KeyboardCommandLoader(this.link, this.dungeon);
@@ -149,8 +154,11 @@
             }
 
             this.blockManager.Draw();
+            if (dungeon.CurrentRoomX == 0 && dungeon.CurrentRoomY == 2)
+            {
+                this.spriteBatch.DrawString(font, this.dungeon.CurrentRoom.RoomText, new Vector2(100, 100), Color.White);
+            }
             this.itemManager.Draw();
-
             this.enemyManager.Draw();
             this.entityManager.Draw();
             this.doorManager.Draw();

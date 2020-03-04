@@ -25,7 +25,7 @@ namespace LoZClone
                     this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown(door.UpScreenLoc);
                     location = door.UpScreenLoc;
                     door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                    door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, 70, 1);
+                    door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y + 1, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
                     break;
                 }
                 case "E":
@@ -33,7 +33,7 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft(door.RightScreenLoc);
                         location = door.RightScreenLoc;
                         door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, 1, 70);
+                        door.Bounds = new Rectangle((int)door.Physics.Location.X - 5, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                 }
                 case "S":
@@ -41,7 +41,7 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp(door.DownScreenLoc);
                         location = door.DownScreenLoc;
                         door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, 70, 1);
+                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y - 5, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
                         break;
                 }
                 case "W":
@@ -49,7 +49,7 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight(door.LeftScreenLoc);
                         location = door.LeftScreenLoc;
                         door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, 1, 70);
+                        door.Bounds = new Rectangle((int)door.Physics.Location.X + 5, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                 }
             }

@@ -5,8 +5,8 @@ namespace LoZClone
 
     public class LinkSpriteFactory
     {
-        private static readonly int linkWidth = 30;
-        private static readonly int linkHeight = 30;
+        private static readonly int linkWidth = 40;
+        private static readonly int linkHeight = 40;
 
         public static int LinkWidth
         {

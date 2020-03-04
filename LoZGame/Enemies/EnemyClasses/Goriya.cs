@@ -42,7 +42,7 @@
             this.coolDown = 0;
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.randomStateGenerator = new RandomStateGenerator(this, 1, 5);
+            this.randomStateGenerator = new RandomStateGenerator(this, 1, 6);
         }
         public void TakeDamage(int damageAmount)
         {

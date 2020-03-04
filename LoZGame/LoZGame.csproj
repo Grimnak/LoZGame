@@ -239,7 +239,6 @@
     <Compile Include="Enemies\EnemyStates\ZolStates\LeftMovingZolState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\RightMovingZolState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\UpMovingZolState.cs" />
-    <Compile Include="Interfaces\IItemSprite.cs" />
     <Compile Include="Interfaces\ICollider.cs" />
     <Compile Include="Interfaces\IProjectile.cs" />
     <Compile Include="Interfaces\IBlock.cs" />
