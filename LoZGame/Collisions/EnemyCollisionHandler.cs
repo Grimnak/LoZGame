@@ -14,6 +14,9 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
+            if (enemy is WallMaster) {
+                    this.enemy.CurrentState.Attack();
+            }
         }
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)

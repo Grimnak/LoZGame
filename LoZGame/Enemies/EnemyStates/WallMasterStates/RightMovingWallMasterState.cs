@@ -53,6 +53,8 @@
 
         public void Attack()
         {
+            this.wallMaster.CurrentState = new AttackingWallMasterState(this.wallMaster);
+
         }
 
         public void Stop()

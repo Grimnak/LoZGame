@@ -18,10 +18,15 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(enemy is OldMan || enemy is Merchant))
+            if (!(enemy is OldMan || enemy is Merchant || enemy is WallMaster))
             {
                 DeterminePushbackValues(collisionSide);
                 this.player.TakeDamage(enemy.Damage);
+            }
+            else if (enemy is WallMaster) {
+                this.player.State = new ImmobileState(player);
+                this.player.Physics.Location = enemy.Physics.Location;
+                this.player.Physics.Velocity = enemy.Physics.Velocity;
             }
         }
 

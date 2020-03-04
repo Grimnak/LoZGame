@@ -303,6 +303,11 @@
             return new WallMasterRightSprite(this.rightWallMaster, this.rightWallMasterData);
         }
 
+        public WallMasterAttackingSprite CreateAttackingWallMasterSprite()
+        {
+            return new WallMasterAttackingSprite(this.leftWallMaster, this.leftWallMasterData);
+        }
+
         // Rope Sprites
         public RopeLeftSprite CreateLeftMovingRopeSprite()
         {
