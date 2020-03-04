@@ -5,8 +5,8 @@
 
     internal class SwordBeamProjectile : IProjectile
     {
-        private const int LinkSize = 26;
-        private const int Offset = 4;
+        
+        private const int Offset = 2;
         private const int Delay = 10;
 
         private readonly Texture2D Texture;      // the texture to pull frames from
@@ -26,7 +26,6 @@
         private Vector2 tip;
         private Vector2 origin;
         private Vector2 Size;
-
         public Physics Physics { get; set; }
 
         public Rectangle Bounds { get; set; }
@@ -63,25 +62,25 @@
 
             if (this.direction.Equals("Up"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize - Offset - (this.Size.X / 2)), loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSpriteFactory.LinkHeight / 2) - Offset, loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
                 this.rotation = MathHelper.Pi;
                 this.tip = new Vector2(this.Size.X, 0);
             }
             else if (this.direction.Equals("Left"))
             {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize - (this.Size.X / 2))), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSpriteFactory.LinkHeight / 2)), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
                 this.rotation = 1 * MathHelper.PiOver2;
                 this.tip = new Vector2(-1 * Offset, this.Size.X / 2);
             }
             else if (this.direction.Equals("Right"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize - (this.Size.X / 2))), new Vector2(Speed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + LinkSpriteFactory.LinkHeight, loc.Y + (LinkSpriteFactory.LinkHeight / 2) + Offset), new Vector2(Speed, 0), new Vector2(0, 0));
                 this.rotation = -1 * MathHelper.PiOver2;
                 this.tip = new Vector2(this.Size.Y, this.Size.X / 2);
             }
             else
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize - (this.Size.X / 2)), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSpriteFactory.LinkHeight / 2), loc.Y + LinkSpriteFactory.LinkHeight), new Vector2(0, Speed), new Vector2(0, 0));
                 this.rotation = 0;
                 this.tip = new Vector2(this.Size.X / 2, this.Size.Y);
             }
