@@ -6,7 +6,7 @@
 
     internal class Rupee : IItem
     {
-        private static int ExpireTime = LoZGame.Instance.UpdateSpeed * 20;
+        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 
@@ -65,10 +65,6 @@
             if (this.lifeTime % 20 == 0)
             {
                 this.ReverseBob();
-            }
-            if (this.lifeTime >= ExpireTime)
-            {
-                this.expired = true;
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.UpdateLoc();

@@ -7,7 +7,7 @@
     internal class Fairy : IItem
     {
         private const int DirectionChange = 100;
-        private static int ExpireTime = LoZGame.Instance.UpdateSpeed * 20;
+        
 
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
@@ -147,10 +147,6 @@
             if (this.lifeTime % DirectionChange == 0)
             {
                 this.GetNewDirection();
-            }
-            if (this.lifeTime >= ExpireTime)
-            {
-                this.expired = true;
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.UpdateLoc();
