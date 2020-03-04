@@ -6,8 +6,6 @@
 
     public class EnemySpriteFactory
     {
-        //tile height = 54
-        //tile width = 48
         private static readonly int dodongoWidthUpDown = 40;
         private static readonly int dodongoWidthLeftRight = 64;
         private static readonly int dodongoHeight = 50;

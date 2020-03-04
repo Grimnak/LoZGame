@@ -42,6 +42,14 @@
                     CheckBorders(block, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
                 }
             }
+
+            foreach (IItem item in items)
+            {
+                if (item is Fairy)
+                {
+                    CheckBorders(item, ItemSpriteFactory.FairyWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.FairyHeight * ItemSpriteFactory.Instance.Scale);
+                }
+            }
         }
 
         private void CheckCollisions<T>(ICollider sourceCollider, ReadOnlyCollection<T> targetColliders)

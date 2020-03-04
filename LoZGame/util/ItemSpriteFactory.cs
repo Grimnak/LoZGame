@@ -9,7 +9,7 @@
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Graphics;
 
-    class ItemSpriteFactory
+    public class ItemSpriteFactory
     {
         private static readonly int DRAWSCALE = 2;
         private static readonly int TriforceSize = 12;
