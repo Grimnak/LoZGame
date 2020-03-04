@@ -21,7 +21,7 @@
             this.spriteHeight = data.Height;
             this.Location = loc;
 
-            this.layer = 1 / (this.Location.Y + this.spriteHeight);
+            this.layer = 1 - 1 / (this.Location.Y + this.spriteHeight);
 
             this.spriteSheetRows = data.Rows;
             this.spriteSheetColumns = data.Columns;
@@ -29,7 +29,7 @@
 
         public void Update()
         {
-            this.layer = 1 / (this.Location.Y + this.spriteHeight);
+            this.layer = 1 - 1 / (this.Location.Y + this.spriteHeight);
         }
 
         public void Draw(Vector2 location, Color spriteTint)

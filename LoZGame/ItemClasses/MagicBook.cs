@@ -6,6 +6,7 @@
 
     internal class MagicBook : IItem
     {
+        private static int ExpireTime = LoZGame.Instance.UpdateSpeed * 20;
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 
@@ -13,6 +14,9 @@
         private Vector2 Size;
         private float layer;
         private int lifeTime;
+        private bool expired;
+
+        public bool Expired { get { return this.expired; } set { this.expired = value; } }
 
         public Physics Physics { get; set; }
 
@@ -26,6 +30,7 @@
             this.Size = new Vector2(ItemSpriteFactory.BookWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.BookHeight * ItemSpriteFactory.Instance.Scale);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.lifeTime = 0;
+            this.expired = false;
         }
 
         private void UpdateLoc()
@@ -45,7 +50,7 @@
         {
             if (otherCollider is IPlayer)
             {
-                itemCollisionHandler.OnCollisionResponse(collisionSide);
+                this.expired = true;
             }
         }
 
@@ -57,10 +62,13 @@
         public void Update()
         {
             this.lifeTime++;
-            if (this.lifeTime > 20)
+            if (this.lifeTime % 20 == 0)
             {
-                this.lifeTime = 0;
                 this.ReverseBob();
+            }
+            if (this.lifeTime >= ExpireTime)
+            {
+                this.expired = true;
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.UpdateLoc();

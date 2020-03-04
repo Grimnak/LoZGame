@@ -7,6 +7,7 @@
     internal class Fairy : IItem
     {
         private const int DirectionChange = 100;
+        private static int ExpireTime = LoZGame.Instance.UpdateSpeed * 20;
 
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
@@ -17,6 +18,9 @@
         private float layer;
         private int lifeTime;
         private Vector2 Border;
+        private bool expired;
+
+        public bool Expired { get { return this.expired; } set { this.expired = value; } }
 
         public Physics Physics { get; set; }
 
@@ -45,6 +49,7 @@
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.Border = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width, LoZGame.Instance.GraphicsDevice.Viewport.Height);
             this.lifeTime = 0;
+            this.expired = false;
         }
 
         private void GetNewDirection()
@@ -139,10 +144,13 @@
         public void Update()
         {
             this.lifeTime++;
-            if (this.lifeTime > DirectionChange)
+            if (this.lifeTime % DirectionChange == 0)
             {
                 this.GetNewDirection();
-                this.lifeTime = 0;
+            }
+            if (this.lifeTime >= ExpireTime)
+            {
+                this.expired = true;
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.UpdateLoc();

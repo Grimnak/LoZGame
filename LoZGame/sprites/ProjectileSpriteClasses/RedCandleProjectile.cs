@@ -69,7 +69,7 @@
                 this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - this.Size.X) / 2), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, -1 * Accel));
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+            this.layer = 1 - 1 / (this.Physics.Location.Y + this.Size.Y);
         }
 
         public bool IsExpired => this.expired;
@@ -113,7 +113,7 @@
                 this.Physics.Accelerate();
                 this.Physics.Acceleration = new Vector2(this.Physics.Acceleration.X * AccelDecay, this.Physics.Acceleration.Y * AccelDecay);
                 this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-                this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+                this.layer = 1 - 1 / (this.Physics.Location.Y + this.Size.Y);
 
             }
             else if (this.lifeTime <= 0)

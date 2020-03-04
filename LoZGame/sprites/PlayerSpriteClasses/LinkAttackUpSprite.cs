@@ -83,7 +83,7 @@ namespace LoZClone
             Rectangle itemSrcRectangle = new Rectangle(itemWidth * itemColumn, itemHeight * itemRow, itemWidth, itemHeight);
             Rectangle itemDstRectangle = new Rectangle((int)location.X - (int)this.itemOffset.X, (int)location.Y - (int)this.itemOffset.Y, this.itemSpriteWidth, this.itemSpriteHeight);
 
-            float layer = location.Y + this.linkSpriteHeight;
+            float layer = 1 - 1 / (location.Y + this.linkSpriteHeight);
 
             LoZGame.Instance.SpriteBatch.Draw(this.linkSprite, linkDstRectangle, linkSrcRectangle, spriteTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, layer);
 

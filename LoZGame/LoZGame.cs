@@ -10,6 +10,7 @@
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private static readonly float UpdatesPerSecond = 60;
+        private const int DefaultUpdateSpeed = 60;
 
         public SpriteBatch SpriteBatch => this.spriteBatch;
 
@@ -62,6 +63,8 @@
 
         public Random Random { get { return randomNumberGenerator; } }
 
+        public int UpdateSpeed { get { return DefaultUpdateSpeed; } }
+
         private LoZGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
@@ -113,8 +116,6 @@
             this.players.Add(this.link);
 
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
-
-            this.itemManager.LoadSprites(384, 184);
         }
 
         protected override void UnloadContent()
