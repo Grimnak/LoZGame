@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -10,9 +11,10 @@
         private static readonly int DissipateTwo = 5;
 
         private ISprite sprite;
-        private Vector2 Size;
+        private readonly int scale = ProjectileSpriteFactory.Instance.Scale;
+        private int projectileWidth;
+        private int projectileHeight;
         private int lifeTime;
-        private readonly int instance;
         private bool expired;
 
         public Physics Physics { get; set; }
@@ -23,19 +25,45 @@
 
         public bool IsHostile => this.hostile;
 
-        public BombExplosion(Vector2 location, int scale, int instance)
+        public BombExplosion(Vector2 location)
         {
+            this.projectileWidth = ProjectileSpriteFactory.Instance.ExplosionWidth * this.scale;
+            this.projectileHeight = ProjectileSpriteFactory.Instance.ExplosionHeight * this.scale;
             this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.lifeTime = MaxLifeTime;
             this.hostile = true;
-            this.instance = instance;
             this.expired = false;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+            Random numGen = new Random();
+            int selectBomb = numGen.Next(0, 5);
+            switch (selectBomb)
+            {
+                case 0:
+                    this.sprite = ProjectileSpriteFactory.Instance.BombExplosionOne();
+                    break;
+
+                case 1:
+                    this.sprite = ProjectileSpriteFactory.Instance.BombExplosionTwo();
+                    break;
+
+                case 2:
+                    this.sprite = ProjectileSpriteFactory.Instance.BombExplosionThree();
+                    break;
+
+                case 3:
+                    this.sprite = ProjectileSpriteFactory.Instance.BombExplosionFour();
+                    break;
+
+                case 4:
+                    this.sprite = ProjectileSpriteFactory.Instance.BombExplosionFive();
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         public bool IsExpired => this.expired;
-
-        public int Instance => this.instance;
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {

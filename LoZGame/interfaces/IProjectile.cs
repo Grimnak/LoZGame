@@ -7,8 +7,6 @@
     {
         bool IsExpired { get; }
 
-        int Instance { get; }
-
         bool IsHostile { get; }
 
         void Update();

@@ -54,34 +54,7 @@
                     break;
 
                 case ExplosionType.BombExplode:
-                    Random numGen = new Random();
-                    int selectBomb = numGen.Next(0, 5);
-                    switch (selectBomb)
-                    {
-                        case 0:
-                            this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionOne(loc, this.scale, this.explosionId));
-                            break;
-
-                        case 1:
-                            this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionTwo(loc, this.scale, this.explosionId));
-                            break;
-
-                        case 2:
-                            this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionThree(loc, this.scale, this.explosionId));
-                            break;
-
-                        case 3:
-                            this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionFour(loc, this.scale, this.explosionId));
-                            break;
-
-                        case 4:
-                            this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionFive(loc, this.scale, this.explosionId));
-                            break;
-
-                        default:
-                            break;
-                    }
-
+                    this.explosionList.Add(this.explosionId, new BombExplosion(loc));
                     break;
             }
         }

@@ -12,54 +12,49 @@
         private readonly int scale;
         private readonly bool isStatic;
         private bool expired;
-        private readonly int instance;
-        private float rotation;
         private readonly string direction;
         private readonly bool hostile;
-        private readonly ExplosionManager explosion; 
-        private Vector2 origin;
-        private Vector2 Size;
+        private readonly ExplosionManager explosion;
+        private int projectileWidth;
+        private int projectileHeight;
         private ISprite sprite;
 
         public Physics Physics { get; set; }
 
         public Rectangle Bounds { get; set; }
 
-        public BombProjectile(Vector2 loc, string direction, int scale, int instance, ExplosionManager explosion)
+        public BombProjectile(Vector2 loc, string direction, ExplosionManager explosion)
         {
+            this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
+            this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * scale;
             this.lifeTime = MaxLife;
-            this.instance = instance;
             this.direction = direction;
             this.hostile = false;
             this.explosion = explosion;
-            this.rotation = 0;
             if (this.direction == "Up")
             {
-                this.Physics = new Physics(new Vector2(loc.X - ((this.Size.X - LinkSize) / 2), loc.Y - LinkSize), new Vector2(0, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X - ((projectileWidth - LinkSize) / 2), loc.Y - LinkSize), new Vector2(0, 0), new Vector2(0, 0));
             }
             else if (this.direction == "Left")
             {
-                this.Physics = new Physics(new Vector2(loc.X - LinkSize + (LinkSize - this.Size.X), loc.Y - ((this.Size.Y - LinkSize) / 2)), new Vector2(0, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X - LinkSize + (LinkSize - projectileWidth), loc.Y - ((projectileHeight - LinkSize) / 2)), new Vector2(0, 0), new Vector2(0, 0));
             }
             else if (this.direction == "Right")
             {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y - ((this.Size.Y - LinkSize) / 2)), new Vector2(0, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y - ((projectileHeight - LinkSize) / 2)), new Vector2(0, 0), new Vector2(0, 0));
             }
             else
             {
-                this.Physics = new Physics(new Vector2(loc.X - ((this.Size.X - LinkSize) / 2), loc.Y + LinkSize), new Vector2(0, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X - ((projectileWidth - LinkSize) / 2), loc.Y + LinkSize), new Vector2(0, 0), new Vector2(0, 0));
             }
 
-            this.scale = scale;
             this.isStatic = false;
             this.expired = false;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.sprite = ProjectileSpriteFactory.Instance.Bomb(this.Physics.Location, this.direction, this.scale, this.instance, this.explosion);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+            this.sprite = ProjectileSpriteFactory.Instance.Bomb();
         }
 
         public bool IsExpired => this.expired;
-
-        public int Instance => this.instance;
 
         public bool IsHostile => hostile;
 

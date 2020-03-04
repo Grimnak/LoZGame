@@ -16,17 +16,15 @@
         private Vector2 origin;
         ISprite sprite;
         private readonly Goriya Enemy;
-        private readonly int dX;
-        private readonly int dY;
         private readonly string direction;
 
-        private readonly int instance;
-        private readonly int scale;
+        private readonly int scale = ProjectileSpriteFactory.Instance.Scale;
+        private int projectileWidth;
+        private int projectileHeight;
         private bool expired;
         private bool returning;
         private bool reachedMaxDistance;
         private bool isReturned;
-        private float rotation;
         private int distTraveled;
         private float currentSpeed;
         private float layer;
@@ -40,12 +38,11 @@
 
         public Rectangle Bounds { get; set; }
 
-        public BoomerangEnemy(Goriya enemy, int scale, int instance)
+        public BoomerangEnemy(Goriya enemy)
         {
-            this.scale = scale;
-            this.instance = instance;
+            this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
+            this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight * scale;
             this.expired = false;
-            this.rotation = 0;
             Vector2 loc = enemy.Physics.Location;
             this.direction = enemy.Direction;
             this.isReturned = false;
@@ -76,12 +73,7 @@
             this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
             this.currentSpeed = MaxSpeed;
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, ProjectileSpriteFactory.Instance.StandardWidth, ProjectileSpriteFactory.Instance.BoomerangHeight);
-            this.sprite = ProjectileSpriteFactory.Instance.BoomerangEnemy(enemy, scale, instance);
-        }
-
-        private void Rotate()
-        {
-            this.rotation += MathHelper.PiOver4 / 2;
+            this.sprite = ProjectileSpriteFactory.Instance.BoomerangEnemy();
         }
 
         private void CheckBounds()
@@ -124,11 +116,8 @@
 
         public bool IsExpired => this.expired;
 
-        public int Instance => this.instance;
-
         public void Update()
         {
-            this.Rotate();
             if (this.isReturned)
             {
                 this.expired = true;
@@ -146,9 +135,9 @@
                 this.ReturnHome();
             }
             this.Physics.Move();
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             this.CheckBounds();
+            this.sprite.Update();
         }
 
         public void Draw()

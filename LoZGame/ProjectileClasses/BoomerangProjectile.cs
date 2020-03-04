@@ -14,12 +14,11 @@
         private static readonly int YBound = 480;
 
         private readonly IPlayer player;
-        private readonly int scale;
-        private readonly int dX;
-        private readonly int dY;
         private readonly string direction;
 
-        private readonly int instance;
+        private readonly int scale = ProjectileSpriteFactory.Instance.Scale;
+        private int projectileWidth;
+        private int projectileHeight;
         private bool expired;
         private bool returning;
         private bool reachedMaxDistance;
@@ -41,10 +40,10 @@
 
         public BoomerangProjectile(IPlayer player, int scale, int instance)
         {
+            this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
+            this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight * scale;
             this.scale = scale;
-            this.instance = instance;
             this.expired = false;
-            this.rotation = 0;
             Vector2 loc = player.Physics.Location;
             this.direction = player.CurrentDirection;
             this.isReturned = false;
@@ -75,7 +74,7 @@
             this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
             this.currentSpeed = MaxSpeed;
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, ProjectileSpriteFactory.Instance.StandardWidth, ProjectileSpriteFactory.Instance.BoomerangHeight);
-            this.sprite = ProjectileSpriteFactory.Instance.Boomerang(player, scale, instance);
+            this.sprite = ProjectileSpriteFactory.Instance.Boomerang();
         }
 
         private void CheckBounds()
@@ -118,8 +117,6 @@
 
         public bool IsExpired => this.expired;
 
-        public int Instance => this.instance;
-
         public void Update()
         {
             if (this.isReturned)
@@ -139,7 +136,7 @@
                 this.ReturnHome();
             }
             this.Physics.Move();
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, ProjectileSpriteFactory.Instance.StandardWidth, ProjectileSpriteFactory.Instance.BoomerangHeight);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             this.CheckBounds();
             this.sprite.Update();
         }
