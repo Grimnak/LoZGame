@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class SwordBeamExplosion : IProjectile
+    internal class SwordBeamExplosionSprite : ISprite
     {
         private readonly Texture2D Texture;      // the texture to pull frames from
         private readonly SpriteSheetData Data;
@@ -35,7 +35,7 @@
         private static readonly float Speed = 2.5F;
         private static readonly int MaxLifeTime = 60;
 
-        public SwordBeamExplosion(Texture2D texture, SpriteSheetData data, Vector2 location, string direction, int scale, int instance)
+        public SwordBeamExplosionSprite(Texture2D texture, SpriteSheetData data, Vector2 location, string direction, int scale, int instance)
         {
             this.Data = data;
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
@@ -128,9 +128,9 @@
             this.Physics.Move();
         }
 
-        public void Draw()
+        public void Draw(Vector2 location, Color spriteTint)
         {
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, this.effect, this.layer);
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }
 }

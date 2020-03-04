@@ -45,9 +45,9 @@
         {
             int width = this.spriteSheet.Width / this.spriteSheetColumns;
             int height = this.spriteSheet.Height / this.spriteSheetRows;
-            int column = (int)((float)this.currentFrame / (float)this.spriteSheetRows);
+            int row = (int)((float)this.currentFrame / (float)this.spriteSheetRows);
 
-            Rectangle sourceRectangle = new Rectangle(column * width, 0, width, height);
+            Rectangle sourceRectangle = new Rectangle(0, row * height, width, height);
             Rectangle destinationRectangle = new Rectangle((int)this.Location.X, (int)this.Location.Y, this.spriteWidth, this.spriteHeight);
 
             LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint, 0f, new Vector2(0, 0), SpriteEffects.None, 0.0f);

@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class RedCandleProjectile : IProjectile
+    internal class RedCandleProjectileSprite : ISprite
     {
         private static readonly int LinkSize = 32;
         private static readonly int LifeTimeMax = 500;
@@ -36,7 +36,7 @@
 
         public Rectangle Bounds { get; set; }
 
-        public RedCandleProjectile(Texture2D texture, SpriteSheetData data, Vector2 loc, string direction, int scale, int instance)
+        public RedCandleProjectileSprite(Texture2D texture, SpriteSheetData data, Vector2 loc, string direction, int scale, int instance)
         {
             this.lifeTime = LifeTimeMax;
             this.Data = data;
@@ -122,9 +122,9 @@
             }
         }
 
-        public void Draw()
+        public void Draw(Vector2 location, Color spriteTint)
         {
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }
 }

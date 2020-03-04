@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class SilverArrowProjectile : IProjectile
+    internal class SilverArrowProjectileSprite : ISprite
     {
         private static readonly int Speed = 10;
         private static readonly int LinkSize = 32;
@@ -30,7 +30,7 @@
 
         public Rectangle Bounds { get; set; }
 
-        public SilverArrowProjectile(Texture2D texture, SpriteSheetData data, Vector2 loc, string direction, int scale, int instance)
+        public SilverArrowProjectileSprite(Texture2D texture, SpriteSheetData data, Vector2 loc, string direction, int scale, int instance)
         {
             this.Texture = texture;
             this.Data = data;
@@ -95,9 +95,9 @@
             this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
         }
 
-        public void Draw()
+        public void Draw(Vector2 location, Color spriteTint)
         {
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.frame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }
 }

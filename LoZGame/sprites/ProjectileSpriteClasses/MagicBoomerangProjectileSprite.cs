@@ -4,10 +4,10 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class BoomerangEnemy : IProjectile
+    internal class MagicBoomerangProjectileSprite : ISprite
     {
         private static readonly int LinkSize = 32;
-        private static readonly int MaxDistance = 200;
+        private static readonly int MaxDistance = 300;
         private static readonly int MaxSpeed = 5;
         private static readonly float Accel = 0.5f;
         private static readonly int XBound = 800;
@@ -18,7 +18,7 @@
         private Rectangle frame;
         private Vector2 origin;
         private Vector2 Size;
-        private readonly Goriya Enemy;
+        private readonly IPlayer player;
         private readonly int scale;
         private readonly int dX;
         private readonly int dY;
@@ -43,7 +43,7 @@
 
         public Rectangle Bounds { get; set; }
 
-        public BoomerangEnemy(Texture2D texture, SpriteSheetData data, Goriya enemy, int scale, int instance)
+        public MagicBoomerangProjectileSprite(Texture2D texture, SpriteSheetData data, IPlayer player, int scale, int instance)
         {
             this.Texture = texture;
             this.Data = data;
@@ -54,13 +54,13 @@
             this.instance = instance;
             this.expired = false;
             this.rotation = 0;
-            Vector2 loc = enemy.Physics.Location;
-            this.direction = enemy.Direction;
+            Vector2 loc = player.Physics.Location;
+            this.direction = player.CurrentDirection;
             this.isReturned = false;
             this.returning = false;
-            this.Enemy = enemy;
+            this.player = player;
             this.distTraveled = 0;
-            this.hostile = true;
+            this.hostile = false;
             this.reachedMaxDistance = false;
 
             if (this.direction.Equals("Up"))
@@ -80,9 +80,9 @@
                 this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y + LinkSize), new Vector2(0, MaxSpeed), new Vector2(0, 0));
             }
 
-            this.playerLoc = enemy.Physics.Location;
+            this.playerLoc = player.Physics.Location;
             this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
-            this.currentSpeed = MaxSpeed;
+            this.currentSpeed = MaxSpeed; 
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
         }
@@ -110,7 +110,7 @@
 
         private void ReturnHome()
         {
-            this.playerLoc = this.Enemy.Physics.Location;
+            this.playerLoc = this.player.Physics.Location;
             this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
             float diffX = this.playerLoc.X - this.Physics.Location.X;
             float diffY = this.playerLoc.Y - this.Physics.Location.Y;
@@ -129,6 +129,7 @@
                 this.Physics.Velocity = new Vector2(diffX / diffTotal * currentSpeed, diffY / diffTotal * currentSpeed);
             }
         }
+
 
         public bool IsExpired => this.expired;
 
@@ -159,9 +160,9 @@
             this.CheckBounds();
         }
 
-        public void Draw()
+        public void Draw(Vector2 location, Color spriteTint)
         {
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.frame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }
 }

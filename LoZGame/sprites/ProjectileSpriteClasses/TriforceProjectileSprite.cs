@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class TriforceProjectile : IProjectile
+    internal class TriforceProjectileSprite : ISprite
     {
         private static readonly int LinkSize = 32;
         private static readonly int Width = 10;
@@ -33,7 +33,7 @@
 
         public static int LifeTime => 200;
 
-        public TriforceProjectile(Texture2D texture, SpriteSheetData data, Vector2 loc, int scale, int instance)
+        public TriforceProjectileSprite(Texture2D texture, SpriteSheetData data, Vector2 loc, int scale, int instance)
         {
             this.Texture = texture;
             this.Data = data;
@@ -88,9 +88,9 @@
             }
         }
 
-        public void Draw()
+        public void Draw(Vector2 location, Color spriteTint)
         {
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }
 }

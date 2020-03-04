@@ -50,7 +50,7 @@
         private readonly SpriteSheetData SpecialDoorUpData = new SpriteSheetData("special_door_up", tileWidth, tileHeight, 1, 1);
 
         private Texture2D FireTexture;
-        private readonly SpriteSheetData fireData = new SpriteSheetData("fire", tileWidth, tileHeight, 1, 2);
+        private readonly SpriteSheetData fireData = new SpriteSheetData("flame", tileWidth, tileHeight, 2, 1);
         private Texture2D FloorTileTexture;
         private readonly SpriteSheetData floorTileData = new SpriteSheetData("floor_tile", tileWidth, tileHeight, 1, 1);
         private Texture2D GapTileTexture;
@@ -169,7 +169,6 @@
             this.HorizontalBricksTexture = content.Load<Texture2D>(this.horizontalBricksData.FilePath);
             this.VerticalBricksTexture = content.Load<Texture2D>(this.verticalBricksData.FilePath);
         }
-
 
         public StairsSprite Stairs(Vector2 loc)
         {

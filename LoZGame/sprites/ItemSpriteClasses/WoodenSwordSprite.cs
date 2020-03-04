@@ -3,6 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using System;
+
     internal class WoodenSwordSprite : IItemSprite
     {
         private readonly Texture2D Texture;      // the texture to pull frames from

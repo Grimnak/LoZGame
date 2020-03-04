@@ -1,48 +1,48 @@
-﻿namespace LoZClone
-{
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
-    internal class ArrowProjectile : IProjectile
+namespace LoZClone
+{
+    class ArrowProjectile : IProjectile
     {
         private static readonly int Speed = 10;
         private static readonly int LinkSize = 30;
+        ISprite sprite;
 
-        private readonly Texture2D Texture;      // the texture to pull frames from
-        private readonly SpriteSheetData Data;
         private Rectangle frame;
         private Vector2 origin;
         private int lifeTime;
-        private readonly int scale;
-        private readonly string direction;
+        private string direction;
         private readonly float rotation;
         private readonly int dX;
         private readonly int dY;
         private readonly int instance;
         private bool expired;
         private readonly bool hostile;
-        private float layer;
         private Vector2 Size;
 
         public bool IsHostile => this.hostile;
+
+        public bool IsExpired => this.expired;
+
+        public int Instance => this.instance;
 
         public Physics Physics { get; set; }
 
         public Rectangle Bounds { get; set; }
 
-        public ArrowProjectile(Texture2D texture, SpriteSheetData data, Vector2 loc, string direction, int scale, int instance)
+        public ArrowProjectile(Vector2 loc, string direction, int scale, int instance)
         {
-            this.Texture = texture;
-            this.Data = data;
-            this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
-            this.frame = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
-            this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
             this.lifeTime = 100;
-            this.scale = scale;
-            this.direction = direction;
             this.hostile = false;
             this.instance = instance;
             this.expired = false;
+            this.Size = new Vector2(ProjectileSpriteFactory.Instance.ArrowWidth * scale, ProjectileSpriteFactory.Instance.StandardHeight * scale);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             if (this.direction.Equals("Up"))
             {
                 this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
@@ -63,13 +63,8 @@
                 this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, 0));
                 this.rotation = MathHelper.Pi;
             }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+            this.sprite = ProjectileSpriteFactory.Instance.Arrow(Physics.Location, direction, scale, instance);
         }
-
-        public bool IsExpired => this.expired;
-
-        public int Instance => this.instance;
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
@@ -90,14 +85,14 @@
             {
                 this.expired = true;
             }
-            this.Physics.Move();
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+            this.Physics.Move();
+            this.sprite.Update();
         }
 
         public void Draw()
         {
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.frame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
+            this.sprite.Draw(this.Physics.Location, Color.White);
         }
     }
 }

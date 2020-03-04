@@ -21,7 +21,7 @@
         {
             if (!(this.player.State is DieState))
             {
-                this.player.PickupItem(TriforceProjectile.LifeTime);
+                this.player.PickupItem(TriforceProjectileSprite.LifeTime);
                 LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.Triforce, this.player);
             }
         }

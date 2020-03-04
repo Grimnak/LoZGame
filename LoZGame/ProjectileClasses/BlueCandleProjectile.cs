@@ -11,13 +11,8 @@
         private static readonly int FrameDelay = 10;
         private const int Speed = 10;
         private const float Accel = 0.1f;
+        private ISprite sprite;
 
-        private readonly Texture2D Texture;      // the texture to pull frames from
-        private readonly SpriteSheetData Data;
-        private Rectangle firstFrame;
-        private Rectangle secondFrame;
-        private Rectangle currentFrame;
-        private Vector2 origin;
         private Vector2 Size;
         private readonly int scale;
         private int lifeTime;
@@ -34,17 +29,10 @@
 
         public Rectangle Bounds { get; set; }
 
-        public BlueCandleProjectile(Texture2D texture, SpriteSheetData data, Vector2 loc, string direction, int scale, int instance)
+        public BlueCandleProjectile(Vector2 loc, string direction, int scale, int instance)
         {
-            this.rotation = 0;
             this.lifeTime = LifeTimeMax;
-            this.Data = data;
-            this.Texture = texture;
-            this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
-            this.firstFrame = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
-            this.secondFrame = new Rectangle(0, this.Data.Height, this.Data.Width, this.Data.Height);
-            this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
-            this.currentFrame = this.firstFrame;
+            this.Size = new Vector2(ProjectileSpriteFactory.Instance.FlameWidth * scale, ProjectileSpriteFactory.Instance.FlameHeight * scale);
             this.scale = scale;
             this.instance = instance;
             this.expired = false;
@@ -75,18 +63,6 @@
 
         public int Instance => this.instance;
 
-        private void NextFrame()
-        {
-            if (this.currentFrame == this.firstFrame)
-            {
-                this.currentFrame = this.secondFrame;
-            }
-            else
-            {
-                this.currentFrame = this.firstFrame;
-            }
-        }
-
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IPlayer)
@@ -104,7 +80,7 @@
             this.lifeTime--;
             if (this.lifeTime % FrameDelay == 0)
             {
-                this.NextFrame();
+                this.sprite.Update();
             }
 
             if (this.lifeTime >= LifeTimeMax - this.travelTime)
@@ -113,7 +89,6 @@
                 this.Physics.Accelerate();
                 this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
                 this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
-
             }
             else if (this.lifeTime <= 0)
             {
@@ -123,7 +98,7 @@
 
         public void Draw()
         {
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
+            this.sprite.Draw(this.Physics.Location, Color.White);
         }
     }
 }

@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class SwordBeamProjectile : IProjectile
+    internal class SwordBeamProjectileSprite : ISprite
     {
         private const int LinkSize = 26;
         private const int Offset = 4;
@@ -43,7 +43,7 @@
         private static readonly int XBound = 800;
         private static readonly int YBound = 480;
 
-        public SwordBeamProjectile(Texture2D texture, SpriteSheetData data, IPlayer player, int scale, int instance, ExplosionManager explosion)
+        public SwordBeamProjectileSprite(Texture2D texture, SpriteSheetData data, IPlayer player, int scale, int instance, ExplosionManager explosion)
         {
             this.Texture = texture;
             this.Data = data;
@@ -154,11 +154,11 @@
             }
         }
 
-        public void Draw()
+        public void Draw(Vector2 location, Color spriteTint)
         {
             if (this.lifeTime < MaxLifeTime - Delay)
             {
-                LoZGame.Instance.SpriteBatch.Draw(this.Texture, this.Physics.Location, this.currentFrame, Color.White, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
+                LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
             }
         }
     }
