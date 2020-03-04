@@ -149,7 +149,6 @@
 
             this.blockManager.Draw();
             this.itemManager.Draw();
-
             this.enemyManager.Draw();
             this.entityManager.Draw();
             this.doorManager.Draw();

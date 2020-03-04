@@ -43,7 +43,7 @@ namespace LoZClone
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, this.spriteSheetWidth, this.spriteSheetHeight);
 
-            float layer = location.Y + this.spriteSheetHeight;
+            float layer = 1 - (1 / (location.Y + this.spriteSheetHeight));
 
             LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, layer);
         }
