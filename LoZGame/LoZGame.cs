@@ -144,16 +144,16 @@
         protected override void Draw(GameTime gameTime)
         {
             this.GraphicsDevice.Clear(Color.Black);
-            this.spriteBatch.Begin();
+            this.spriteBatch.Begin(SpriteSortMode.FrontToBack);
             if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
             {
-                this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), dungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0.0f);
+                this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), dungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
             }
 
             this.blockManager.Draw();
             if (dungeon.CurrentRoomX == 0 && dungeon.CurrentRoomY == 2)
             {
-                this.spriteBatch.DrawString(font, this.dungeon.CurrentRoom.RoomText, new Vector2(100, 100), Color.White);
+                this.spriteBatch.DrawString(font, this.dungeon.CurrentRoom.RoomText, new Vector2(100, 100), Color.White, 0.0f, new Vector2(0,0), 1.0f, SpriteEffects.None, 1f);
             }
             this.itemManager.Draw();
             this.enemyManager.Draw();

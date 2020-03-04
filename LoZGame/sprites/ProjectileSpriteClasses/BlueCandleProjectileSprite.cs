@@ -24,7 +24,7 @@
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
             this.firstFrame = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
             this.secondFrame = new Rectangle(0, this.Data.Height, this.Data.Width, this.Data.Height);
-            this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
+            this.origin = new Vector2(0, 0);
             this.currentFrame = this.firstFrame;
             this.scale = scale;
             this.rotation = 0;

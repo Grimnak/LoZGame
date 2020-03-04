@@ -180,6 +180,7 @@
         {
             return new RedCandleProjectileSprite(this.flameSpriteSheet, this.flameData, DRAWSCALE / 2);
         }
+
         public BlueCandleProjectileSprite BlueCandle()
         {
             return new BlueCandleProjectileSprite(this.flameSpriteSheet, this.flameData, DRAWSCALE / 2);
