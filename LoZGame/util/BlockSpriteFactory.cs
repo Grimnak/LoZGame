@@ -8,7 +8,7 @@
 
     public class BlockSpriteFactory
     {
-        private static readonly int tileWidth = 54;
+        private static readonly int tileWidth = 55;
         private static readonly int tileHeight = 48;
         private static readonly int verticalOffset = 72;
         private static readonly int horizontalOffset = 79;
@@ -129,6 +129,16 @@
         public int DoorOffset
         {
             get { return doorOffset; }
+        }
+
+        public int DoorWidth
+        {
+            get { return doorWidth; }
+        }
+
+        public int DoorHeight
+        {
+            get { return doorHeight; }
         }
 
         private BlockSpriteFactory()

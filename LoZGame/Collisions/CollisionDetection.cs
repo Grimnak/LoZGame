@@ -100,7 +100,7 @@
 
         private void CheckBorders(ICollider sourceCollider, int sourceWidth, int sourceHeight)
         {
-            if (sourceCollider.Physics.Location.X + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width - BlockSpriteFactory.Instance.HorizontalOffset)
+            if (sourceCollider.Physics.Location.X + sourceWidth > (BlockSpriteFactory.Instance.TileWidth * 12) + BlockSpriteFactory.Instance.HorizontalOffset)
             {
                 sourceCollider.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset, sourceCollider.Physics.Location.Y);
             }
