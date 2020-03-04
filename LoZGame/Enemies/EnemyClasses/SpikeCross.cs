@@ -36,6 +36,10 @@
         {
             get; set;
         }
+        public Vector2 InitialPos
+        {
+            get; set;
+        }
 
         private IEnemyState currentState;
         private int damage = 1;
@@ -53,6 +57,7 @@
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             Attacking = false;
             Retreating = false;
+            InitialPos = this.Physics.Location;
         }
 
         private void updateLoc()
@@ -77,7 +82,6 @@
                     currentState.MoveRight();
                 }
             }
-            this.currentState.Update();
         }
 
         public void TakeDamage(int damageAmount)
@@ -91,6 +95,7 @@
         public void Update()
         {
             this.updateLoc();
+            this.currentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
 
@@ -109,7 +114,7 @@
             }
             else if (otherCollider is IBlock)
             {
-                this.enemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+               // this.enemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
             else if (otherCollider is IProjectile)
             {

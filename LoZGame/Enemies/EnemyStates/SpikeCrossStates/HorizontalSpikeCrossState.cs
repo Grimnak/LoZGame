@@ -85,7 +85,6 @@
                     if (spikeCross.Physics.Location.X - (BlockSpriteFactory.Instance.TileWidth * 6 + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) >= 0)
                     {
                         spikeCross.Retreating = true;
-                      //  spikeCross.AttackFactor = -1;
                         spikeCross.Physics.Velocity = new Vector2 (-1, spikeCross.Physics.Velocity.Y);
                     }
                 }
@@ -94,15 +93,20 @@
                     if (spikeCross.Physics.Location.X - (BlockSpriteFactory.Instance.TileWidth * 6 + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) <= 0)
                     {
                         spikeCross.Retreating = true;
-                       // spikeCross.AttackFactor = 1;
                         spikeCross.Physics.Velocity = new Vector2(1, spikeCross.Physics.Velocity.Y);
                     }
                 }
             }
             else
             {
-                if (spikeCross.Physics.Location.X <= ((BlockSpriteFactory.Instance.HorizontalOffset / 2) + 3) 
+               /*  if (spikeCross.Physics.Location.X <= ((BlockSpriteFactory.Instance.HorizontalOffset / 2) + 3) 
                     || spikeCross.Physics.Location.X >= (BlockSpriteFactory.Instance.TileWidth * 12 + (BlockSpriteFactory.Instance.HorizontalOffset / 2) - 3))
+                {
+                    spikeCross.Attacking = false;
+                    spikeCross.Retreating = false;
+                    Stop();
+                } */
+                if (spikeCross.Physics.Location.X == spikeCross.InitialPos.X)
                 {
                     spikeCross.Attacking = false;
                     spikeCross.Retreating = false;
