@@ -7,6 +7,6 @@
     {
         void Update();
 
-        void Draw();
+        void Draw(Color spriteTint);
     }
 }

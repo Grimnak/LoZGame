@@ -11,7 +11,7 @@
         public UpMovingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
-            this.goriya.Physics.Velocity = new Vector2(0, 1);
+            this.goriya.Physics.Velocity = new Vector2(0, -1);
             this.sprite = EnemySpriteFactory.Instance.CreateUpMovingGoriyaSprite();
             this.goriya.CurrentState = this;
         }

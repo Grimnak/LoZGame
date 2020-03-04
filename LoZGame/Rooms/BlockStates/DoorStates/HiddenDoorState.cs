@@ -11,12 +11,10 @@ namespace LoZClone
     public class HiddenDoorState : IDoorState
     {
         private readonly Door door;
-        private readonly ISprite sprite;
 
         public HiddenDoorState(Door door)
         {
             this.door = door;
-            this.sprite = null;
         }
 
         public void Bombed()

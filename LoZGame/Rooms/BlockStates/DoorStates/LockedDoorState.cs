@@ -13,7 +13,7 @@ namespace LoZClone
         private readonly Door door;
         private readonly ISprite sprite;
         private readonly Vector2 location;
-        private readonly Color spriteTint = Color.White;
+        private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
 
         public LockedDoorState(Door door)
         {
@@ -24,24 +24,28 @@ namespace LoZClone
                     {
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorDown(door.UpScreenLoc);
                         location = door.UpScreenLoc;
+                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
                         break;
                     }
                 case "E":
                     {
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorLeft(door.RightScreenLoc);
                         location = door.RightScreenLoc;
+                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
                         break;
                     }
                 case "S":
                     {
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorUp(door.DownScreenLoc);
                         location = door.DownScreenLoc;
+                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
                         break;
                     }
                 case "W":
                     {
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorRight(door.LeftScreenLoc);
                         location = door.LeftScreenLoc;
+                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
                         break;
                     }
             }

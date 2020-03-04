@@ -9,15 +9,14 @@ using System.Threading.Tasks;
 namespace LoZClone
 {
     /*
-     * The Player must kill all enemies to open these doors
+     * The Player must kill all enemies to open these doors.
      */
     public class SpecialDoorState : IDoorState
     {
         private readonly Door door;
         private readonly ISprite sprite;
-        private readonly Color spriteTint = Color.White;
+        private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
         private readonly Vector2 location;
-
 
         public SpecialDoorState(Door door)
         {
@@ -28,24 +27,28 @@ namespace LoZClone
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown(door.UpScreenLoc);
                         location = door.UpScreenLoc;
+                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
                         break;
                     }
                 case "E":
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft(door.RightScreenLoc);
                         location = door.RightScreenLoc;
+                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
                         break;
                     }
                 case "S":
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp(door.DownScreenLoc);
                         location = door.DownScreenLoc;
+                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
                         break;
                     }
                 case "W":
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight(door.LeftScreenLoc);
                         location = door.LeftScreenLoc;
+                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
                         break;
                     }
             }

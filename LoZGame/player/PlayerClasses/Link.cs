@@ -15,9 +15,9 @@
             set { this.bounds = value; }
         }
 
-        public Link()
+        public Link(Vector2 location)
         {
-            this.Physics = new Physics(new Vector2(150, 200), new Vector2(0, 0), new Vector2(0, 0));
+            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.Health = new HealthManager(startingHealth);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
             this.CurrentColor = "Green";
@@ -26,7 +26,7 @@
             this.CurrentTint = LoZGame.Instance.DungeonTint;
             this.MoveSpeed = 2;
             this.DamageTimer = 0;
-            this.State = new NullState(this);
+            this.State = new IdleState(this);
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
         }
 
@@ -82,6 +82,10 @@
             else if (otherCollider is IBlock)
             {
                 this.linkCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IDoor)
+            {
+                this.linkCollisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
     }
