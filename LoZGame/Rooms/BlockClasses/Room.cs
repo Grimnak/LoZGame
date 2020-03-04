@@ -91,6 +91,11 @@
             this.text = txt;
         }
 
+        public string RoomText
+        {
+            get { return this.text; }
+        }
+
         /// <summary>
         /// Converts grid position in the room to a screen vector.
         /// </summary>

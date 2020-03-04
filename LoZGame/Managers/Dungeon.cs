@@ -48,6 +48,11 @@
             get { return currentY; }
         }
 
+        public Room CurrentRoom
+        {
+            get { return this.dungeonLayout[this.currentY][this.currentX]; }
+        }
+
         /// <summary>
         /// Resets dungeon room to default.
         /// </summary>
