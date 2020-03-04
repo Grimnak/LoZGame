@@ -5,6 +5,8 @@
 
     internal class SwordBeamExplosionSprite : ISprite
     {
+        private static readonly int FrameChange = 10;
+
         private readonly Texture2D Texture;      // the texture to pull frames from
         private readonly SpriteSheetData Data;
         private Rectangle frameOne;
@@ -16,75 +18,25 @@
         private readonly int scale;
         private readonly string direction;
         private readonly float rotation;
-        private readonly int instance;
-        private bool expired;
         private float layer;
         private readonly SpriteEffects effect;
         private Vector2 origin;
         private Vector2 Size;
 
-        public Physics Physics { get; set; }
-
-        public Rectangle Bounds { get; set; }
-
-        private readonly bool hostile;
-
-        public bool IsHostile => this.hostile;
-
-        private static readonly int FrameDelay = 4;
-        private static readonly float Speed = 2.5F;
-        private static readonly int MaxLifeTime = 60;
-
-        public SwordBeamExplosionSprite(Texture2D texture, SpriteSheetData data, Vector2 location, string direction, int scale, int instance)
+        public SwordBeamExplosionSprite(Texture2D texture, SpriteSheetData data, SpriteEffects effect, float rotation, int scale)
         {
             this.Data = data;
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
             this.Texture = texture;
             this.frameOne = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
-            this.frameTwo = new Rectangle(0, 12, this.Data.Width, this.Data.Height);
-            this.frameThree = new Rectangle(0, 24, this.Data.Width, this.Data.Height);
-            this.frameFour = new Rectangle(0, 36, this.Data.Width, this.Data.Height);
+            this.frameTwo = new Rectangle(0, this.Data.Height , this.Data.Width, this.Data.Height);
+            this.frameThree = new Rectangle(0, this.Data.Height * 2, this.Data.Width, this.Data.Height);
+            this.frameFour = new Rectangle(0, this.Data.Height * 3, this.Data.Width, this.Data.Height);
             this.currentFrame = this.frameOne;
-            this.lifeTime = MaxLifeTime;
             this.scale = scale;
-            this.direction = direction;
-            this.Physics = new Physics(new Vector2(location.X - this.Size.X, location.Y - this.Size.Y), new Vector2(0, 0), new Vector2(0, 0));
-            if (this.direction.Equals("NorthEast"))
-            {
-                this.Physics.Velocity = new Vector2(Speed, -1 * Speed);
-                this.effect = SpriteEffects.FlipHorizontally;
-                this.rotation = 0;
-            }
-            else if (this.direction.Equals("NorthWest"))
-            {
-                this.Physics.Velocity = new Vector2(-1 * Speed, -1 * Speed);
-                this.effect = SpriteEffects.None;
-                this.rotation = 0;
-            }
-            else if (this.direction.Equals("SouthEast"))
-            {
-                this.Physics.Velocity = new Vector2(Speed, Speed);
-                this.Physics.Location = new Vector2(this.Physics.Location.X + this.Size.X, this.Physics.Location.Y + this.Size.Y);
-                this.effect = SpriteEffects.None;
-                this.rotation = MathHelper.Pi;
-            }
-            else
-            {
-                this.rotation = 0;
-                this.Physics.Velocity = new Vector2(-1 * Speed, Speed);
-                this.effect = SpriteEffects.FlipVertically;
-            }
-
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
-            this.instance = instance;
-            this.hostile = false;
-            this.expired = false;
+            this.effect = effect;
+            this.rotation = rotation;
         }
-
-        public bool IsExpired => this.expired;
-
-        public int Instance => this.instance;
 
         private void NextFrame()
         {
@@ -106,31 +58,15 @@
             }
         }
 
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
-        {
-            // do nothing
-        }
-
         public void Update()
         {
-            this.lifeTime--;
-            if (this.lifeTime % FrameDelay == 0)
-            {
-                this.NextFrame();
-            }
-
-            if (this.lifeTime <= 0)
-            {
-                this.expired = true;
-            }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
-            this.Physics.Move();
+            this.NextFrame();
         }
 
         public void Draw(Vector2 location, Color spriteTint)
         {
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
+            this.layer = 1 - (1 / (location.Y + this.Size.Y));
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, this.effect, this.layer);
         }
     }
 }

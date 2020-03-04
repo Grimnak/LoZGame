@@ -13,7 +13,7 @@
         {
             this.dragon = dragon;
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
-            this.dragon.EntityManager.EnemyProjectileManager.AddFireballs(this.dragon, FireBallScale);
+            this.dragon.EntityManager.EnemyProjectileManager.AddFireballs(this.dragon.Physics.Location);
             this.dragon.CurrentState = this;
         }
 

@@ -5,10 +5,6 @@
 
     internal class BombExplosionSprite : ISprite
     {
-        private static readonly int MaxLifeTime = 90;
-        private static readonly int DissipateOne = 20;
-        private static readonly int DissipateTwo = 5;
-
         private readonly Texture2D Texture;      // the texture to pull frames from
         private readonly SpriteSheetData Data;
         private Rectangle frameOne;
@@ -23,11 +19,10 @@
         private readonly int instance;
         private Vector2 location;
 
-        public BombExplosionSprite(Texture2D texture, SpriteSheetData data, Vector2 location, int scale, int instance)
+        public BombExplosionSprite(Texture2D texture, SpriteSheetData data, int scale)
         {
             this.Texture = texture;
             this.Data = data;
-            this.location = location;
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
             this.frameOne = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
             this.frameTwo = new Rectangle(0, this.Data.Height, this.Data.Width, this.Data.Height);
@@ -35,7 +30,6 @@
             this.currentFrame = this.frameOne;
             this.scale = scale;
             this.rotation = 0;
-            this.layer = 1 / (this.location.Y + this.Size.Y);
             this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
         }
 
@@ -58,6 +52,7 @@
 
         public void Draw(Vector2 location, Color spriteTint)
         {
+            this.layer = 1 - (1 / (location.Y + this.Size.Y));
             LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }

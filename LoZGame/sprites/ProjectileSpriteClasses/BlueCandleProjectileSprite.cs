@@ -6,7 +6,6 @@
 
     internal class BlueCandleProjectileSprite : ISprite
     {
-
         private readonly Texture2D Texture;      // the texture to pull frames from
         private readonly SpriteSheetData Data;
         private Rectangle firstFrame;
@@ -16,14 +15,10 @@
         private Vector2 Size;
         private readonly int scale;
         private float layer;
-        private readonly int instance;
-        private int rotation;
+        private float rotation;
 
-        public Vector2 Location { get; set; }
-
-        public BlueCandleProjectileSprite(Texture2D texture, SpriteSheetData data, Vector2 loc, string direction, int scale, int instance)
+        public BlueCandleProjectileSprite(Texture2D texture, SpriteSheetData data, int scale)
         {
-            this.rotation = 0;
             this.Data = data;
             this.Texture = texture;
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
@@ -32,12 +27,8 @@
             this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
             this.currentFrame = this.firstFrame;
             this.scale = scale;
-            this.instance = instance;
-
-            this.layer = 1 / (this.Location.Y + this.Size.Y);
+            this.rotation = 0;
         }
-
-        public int Instance => this.instance;
 
         private void NextFrame()
         {
@@ -58,6 +49,7 @@
 
         public void Draw(Vector2 location, Color spriteTint)
         {
+            this.layer = 1 - (1 / (location.Y + this.Size.Y));
             LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }

@@ -16,6 +16,7 @@
         private int fireBallId;
         private int fireBallListSize;
 
+
         public EnemyProjectileManager()
         {
             this.boomerangList = new Dictionary<int, IProjectile>();
@@ -28,17 +29,17 @@
             this.fireBallListSize = 0;
         }
 
-        public void AddFireballs(Dragon dragon, int scale)
+        public void AddFireballs(Vector2 Location)
         {
             this.fireBallId++;
             this.fireBallListSize++;
-            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateUpLeftFireballSprite(dragon.Physics.Location, this.fireBallId, scale));
+            this.fireBallList.Add(this.fireBallId, new DragonFireBall(dragon.Physics.Location, "NorthWest"));
             this.fireBallId++;
             this.fireBallListSize++;
-            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateLeftFireballSprite(dragon.Physics.Location, this.fireBallId, scale));
+            this.fireBallList.Add(this.fireBallId, new DragonFireBall(dragon.Physics.Location, "West"));
             this.fireBallId++;
             this.fireBallListSize++;
-            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateDownLeftFireballSprite(dragon.Physics.Location, this.fireBallId, scale));
+            this.fireBallList.Add(this.fireBallId, new DragonFireBall(dragon.Physics.Location, "SouthWest"));
         }
 
         public void AddEnemyRang(Goriya enemy, string direction)
@@ -74,7 +75,7 @@
             {
                 if (item.Value.IsExpired)
                 {
-                    this.boomerangDeletable.Add(item.Value.Instance);
+                    this.boomerangDeletable.Add(item.Key);
                 }
             }
 
@@ -82,7 +83,7 @@
             {
                 if (fireBall.Value.IsExpired)
                 {
-                    this.fireBallDeletable.Add(fireBall.Value.Instance);
+                    this.fireBallDeletable.Add(fireBall.Key);
                 }
             }
 
