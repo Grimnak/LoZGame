@@ -7,12 +7,13 @@
     public partial class CollisionDetection
     {
         Dungeon dungeon;
+
         public CollisionDetection(Dungeon dungeon)
         {
             this.dungeon = dungeon;
         }
 
-        public void Update(ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies, ReadOnlyCollection<IBlock> blocks, ReadOnlyCollection<IDoor> doors, ReadOnlyCollection<IProjectile> projectiles)
+        public void Update(ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies, ReadOnlyCollection<IBlock> blocks, ReadOnlyCollection<IDoor> doors, ReadOnlyCollection<IItem> items, ReadOnlyCollection<IProjectile> projectiles)
         {
             foreach (IPlayer player in players)
             {
@@ -21,6 +22,7 @@
                     CheckCollisions<IEnemy>(player, enemies);
                     CheckCollisions<IProjectile>(player, projectiles);
                     CheckCollisions<IDoor>(player, doors);
+                    CheckCollisions<IItem>(player, items);
                     CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
                 }
             }
@@ -38,6 +40,14 @@
                     CheckCollisions<IPlayer>(block, players);
                     CheckCollisions<IEnemy>(block, enemies);
                     CheckBorders(block, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
+                }
+            }
+
+            foreach (IItem item in items)
+            {
+                if (item is Fairy)
+                {
+                    CheckBorders(item, ItemSpriteFactory.FairyWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.FairyHeight * ItemSpriteFactory.Instance.Scale);
                 }
             }
         }

@@ -12,7 +12,7 @@
 
         private List<IItem> items;
 
-        public List<IItem> EnemyList { get { return items; } }
+        public List<IItem> ItemList { get { return items; } }
 
         public ItemManager()
         {

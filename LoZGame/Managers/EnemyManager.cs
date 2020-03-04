@@ -1,7 +1,7 @@
 namespace LoZClone
 {
     using System.Collections.Generic;
-    using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework;
 
     public class EnemyManager
     {
