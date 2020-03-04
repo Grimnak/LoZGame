@@ -11,13 +11,15 @@
         public EntityManager()
         {
             this.explosion = new ExplosionManager();
-            this.projectile = new ProjectileManager(this.explosion);
+            this.projectile = new ProjectileManager();
             this.enemyProjectile = new EnemyProjectileManager();
         }
 
         public ProjectileManager ProjectileManager => this.projectile;
 
         public EnemyProjectileManager EnemyProjectileManager => this.enemyProjectile;
+
+        public ExplosionManager ExplosionManager => this.explosion;
 
         public bool BoomerangOut => this.projectile.BoomerangOut;
 
@@ -38,7 +40,7 @@
         public void Clear()
         {
             this.explosion = new ExplosionManager();
-            this.projectile = new ProjectileManager(this.explosion);
+            this.projectile = new ProjectileManager();
             this.enemyProjectile = new EnemyProjectileManager();
         }
     }

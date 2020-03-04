@@ -5,7 +5,6 @@
 
     public partial class ProjectileManager
     {
-        private readonly ExplosionManager explosion;
         private readonly Dictionary<int, IProjectile> itemList;
         private readonly List<int> deletable;
         private readonly int scale;
@@ -28,7 +27,7 @@
 
         public bool FlameInUse => this.candleLock;
 
-        public ProjectileManager(ExplosionManager explosion)
+        public ProjectileManager()
         {
             this.itemList = new Dictionary<int, IProjectile>();
             this.projectileId = 0;
@@ -45,7 +44,6 @@
             this.spamCounter = 0;
             this.triforceInstance = 0;
             this.candleInstance = 0;
-            this.explosion = explosion;
         }
 
         public int Arrow => (int)ProjectileType.Arrow;
@@ -78,41 +76,40 @@
                 switch (item)
                 {
                     case ProjectileType.Bomb:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Bomb(player.Physics.Location, player.CurrentDirection, this.scale, this.projectileId, this.explosion));
+                        this.itemList.Add(this.projectileId, new BombProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.Triforce:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Triforce(player.Physics.Location, this.scale, this.projectileId));
+                        this.itemList.Add(this.projectileId, new TriforceProjectile(player.Physics.Location));
                         this.triforceLock = true;
                         this.triforceInstance = this.projectileId;
                         break;
 
                     case ProjectileType.Arrow:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Arrow(player.Physics.Location, player.CurrentDirection, this.scale, this.projectileId));
+                        this.itemList.Add(this.projectileId, new ArrowProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.SilverArrow:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.SilverArrow(player.Physics.Location, player.CurrentDirection, this.scale, this.projectileId));
+                        this.itemList.Add(this.projectileId, new SilverArrowProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.RedCandle:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.RedCandle(player.Physics.Location, player.CurrentDirection, this.scale / 2, this.projectileId));
+                        this.itemList.Add(this.projectileId, new RedCandleProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.BlueCandle:
                         if (!this.candleLock)
                         {
-                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.BlueCandle(player.Physics.Location, player.CurrentDirection, this.scale / 2, this.projectileId));
+                            this.itemList.Add(this.projectileId, new BlueCandleProjectile(player.Physics.Location, player.CurrentDirection));
                             this.candleLock = true;
                             this.candleInstance = this.projectileId;
                         }
-
                         break;
 
                     case ProjectileType.Boomerang:
                         if (!this.boomerangLock)
                         {
-                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Boomerang(player, this.scale, this.projectileId));
+                            this.itemList.Add(this.projectileId, new BoomerangProjectile(player));
                             this.boomerangLock = true;
                             this.boomerangInstance = this.projectileId;
                         }
@@ -122,7 +119,7 @@
                     case ProjectileType.MagicBoomerang:
                         if (!this.boomerangLock)
                         {
-                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.MagicBoomerang(player, this.scale, this.projectileId));
+                            this.itemList.Add(this.projectileId, new MagicBoomerangProjectile(player));
                             this.boomerangLock = true;
                             this.boomerangInstance = this.projectileId;
                         }
@@ -132,7 +129,7 @@
                     case ProjectileType.SwordBeam:
                         if (!this.swordLock)
                         {
-                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.SwordBeam(player, this.scale, this.projectileId, this.explosion));
+                            this.itemList.Add(this.projectileId, new SwordBeamProjectile(player));
                             this.swordLock = true;
                             this.swordInstance = this.projectileId;
                         }
@@ -170,27 +167,27 @@
             {
                 if (item.Value.IsExpired)
                 {
-                    if (item.Value.Instance == this.swordInstance)
+                    if (item.Key == this.swordInstance)
                     {
                         this.swordLock = false;
                     }
 
-                    if (item.Value.Instance == this.boomerangInstance)
+                    if (item.Key == this.boomerangInstance)
                     {
                         this.boomerangLock = false;
                     }
 
-                    if (item.Value.Instance == this.triforceInstance)
+                    if (item.Key == this.triforceInstance)
                     {
                         this.triforceLock = false;
                     }
 
-                    if (item.Value.Instance == this.candleInstance)
+                    if (item.Key == this.candleInstance)
                     {
                         this.candleLock = false;
                     }
 
-                    this.deletable.Add(item.Value.Instance);
+                    this.deletable.Add(item.Key);
                 }
             }
 

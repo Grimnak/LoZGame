@@ -7,118 +7,77 @@
     public partial class EnemyProjectileManager
     {
         private const int Scale = 2;
-        private readonly Dictionary<int, IProjectile> boomerangList;
-        private readonly List<int> boomerangDeletable;
-        private int boomerangId;
-        private int boomerangListSize;
-        private readonly Dictionary<int, FireballSprite> fireBallList;
-        private readonly List<int> fireBallDeletable;
-        private int fireBallId;
-        private int fireBallListSize;
+        private readonly Dictionary<int, IProjectile> projectileList;
+        private readonly List<int> deletable;
+        private int projectileId;
+        private int listSize;
+
 
         public EnemyProjectileManager()
         {
-            this.boomerangList = new Dictionary<int, IProjectile>();
-            this.boomerangDeletable = new List<int>();
-            this.boomerangId = 0;
-            this.boomerangListSize = 0;
-            this.fireBallList = new Dictionary<int, FireballSprite>();
-            this.fireBallDeletable = new List<int>();
-            this.fireBallId = 0;
-            this.fireBallListSize = 0;
+            this.projectileList = new Dictionary<int, IProjectile>();
+            this.deletable = new List<int>();
+            this.projectileId = 0;
+            this.listSize = 0;
         }
 
-        public void AddFireballs(Dragon dragon, int scale)
+        public void AddFireballs(Vector2 location)
         {
-            this.fireBallId++;
-            this.fireBallListSize++;
-            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateUpLeftFireballSprite(dragon.Physics.Location, this.fireBallId, scale));
-            this.fireBallId++;
-            this.fireBallListSize++;
-            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateLeftFireballSprite(dragon.Physics.Location, this.fireBallId, scale));
-            this.fireBallId++;
-            this.fireBallListSize++;
-            this.fireBallList.Add(this.fireBallId, EnemySpriteFactory.Instance.CreateDownLeftFireballSprite(dragon.Physics.Location, this.fireBallId, scale));
+            this.projectileId++;
+            this.listSize++;
+            this.projectileList.Add(this.projectileId, new DragonFireBall(location, "NorthWest"));
+            this.projectileId++;
+            this.listSize++;
+            this.projectileList.Add(this.projectileId, new DragonFireBall(location, "West"));
+            this.projectileId++;
+            this.listSize++;
+            this.projectileList.Add(this.projectileId, new DragonFireBall(location, "SouthWest"));
         }
 
-        public void AddEnemyRang(Goriya enemy, string direction)
+        public void AddEnemyRang(Goriya enemy)
         {
-            this.boomerangId++;
-            this.boomerangListSize++;
-            this.boomerangList.Add(this.boomerangId, ProjectileSpriteFactory.Instance.BoomerangEnemy(enemy, 2, this.boomerangId));
+            this.projectileId++;
+            this.listSize++;
+            this.projectileList.Add(this.projectileId, new BoomerangEnemy(enemy));
         }
 
-        public void RemoveBoomerang(int instance)
+        public void Remove(int instance)
         {
-            this.boomerangList.Remove(instance);
-            this.boomerangListSize--;
-            if (this.boomerangListSize == 0)
+            this.projectileList.Remove(instance);
+            this.listSize--;
+            if (this.listSize == 0)
             {
-                this.boomerangId = 0;
-            }
-        }
-
-        public void RemoveFireball(int instance)
-        {
-            this.fireBallList.Remove(instance);
-            this.fireBallListSize--;
-            if (this.fireBallListSize == 0)
-            {
-                this.fireBallId = 0;
+                this.projectileId = 0;
             }
         }
 
         public void Update()
         {
-            foreach (KeyValuePair<int, IProjectile> item in this.boomerangList)
+            foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
             {
                 if (item.Value.IsExpired)
                 {
-                    this.boomerangDeletable.Add(item.Value.Instance);
+                    this.deletable.Add(item.Key);
                 }
             }
-
-            foreach (KeyValuePair<int, FireballSprite> fireBall in this.fireBallList)
+            foreach (int index in this.deletable)
             {
-                if (fireBall.Value.IsExpired)
-                {
-                    this.fireBallDeletable.Add(fireBall.Value.Instance);
-                }
+                this.Remove(index);
             }
-
-            foreach (int index in this.fireBallDeletable)
+            this.deletable.Clear();
+            foreach (KeyValuePair<int, IProjectile> projectile in this.projectileList)
             {
-                this.RemoveFireball(index);
-            }
-
-            foreach (int index in this.boomerangDeletable)
-            {
-                this.RemoveBoomerang(index);
-            }
-
-            this.fireBallDeletable.Clear();
-            foreach (KeyValuePair<int, FireballSprite> fireBall in this.fireBallList)
-            {
-                fireBall.Value.Update();
-            }
-
-            foreach (KeyValuePair<int, IProjectile> boomerang in this.boomerangList)
-            {
-                boomerang.Value.Update();
+                projectile.Value.Update();
             }
         }
 
         public void Draw()
         {
-            foreach (KeyValuePair<int, IProjectile> boomerang in this.boomerangList)
+            foreach (KeyValuePair<int, IProjectile> projectile in this.projectileList)
             {
-                boomerang.Value.Draw();
+                projectile.Value.Draw();
             }
 
-            foreach (KeyValuePair<int, FireballSprite> fireBall in this.fireBallList)
-            {
-                fireBall.Value.Draw(Scale, Color.White);
-            }
         }
     }
 }

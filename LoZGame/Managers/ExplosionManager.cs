@@ -41,47 +41,20 @@
             switch (type)
             {
                 case ExplosionType.SwordExplode:
-                    this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "NorthEast", this.scale, this.explosionId));
+                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(loc, "NorthEast"));
                     this.explosionId++;
                     this.explosionListSize++;
-                    this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "NorthWest", this.scale, this.explosionId));
+                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(loc, "NorthWest"));
                     this.explosionId++;
                     this.explosionListSize++;
-                    this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "SouthEast", this.scale, this.explosionId));
+                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(loc, "SouthEast"));
                     this.explosionId++;
                     this.explosionListSize++;
-                    this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.SwordExplosion(loc, "SouthWest", this.scale, this.explosionId));
+                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(loc, "SouthWest"));
                     break;
 
                 case ExplosionType.BombExplode:
-                    Random numGen = new Random();
-                    int selectBomb = numGen.Next(0, 5);
-                    switch (selectBomb)
-                    {
-                        case 0:
-                            this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionOne(loc, this.scale, this.explosionId));
-                            break;
-
-                        case 1:
-                            this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionTwo(loc, this.scale, this.explosionId));
-                            break;
-
-                        case 2:
-                            this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionThree(loc, this.scale, this.explosionId));
-                            break;
-
-                        case 3:
-                            this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionFour(loc, this.scale, this.explosionId));
-                            break;
-
-                        case 4:
-                            this.explosionList.Add(this.explosionId, ProjectileSpriteFactory.Instance.BombExplosionFive(loc, this.scale, this.explosionId));
-                            break;
-
-                        default:
-                            break;
-                    }
-
+                    this.explosionList.Add(this.explosionId, new BombExplosion(loc));
                     break;
             }
         }
@@ -102,7 +75,7 @@
             {
                 if (explosion.Value.IsExpired)
                 {
-                    this.deletable.Add(explosion.Value.Instance);
+                    this.deletable.Add(explosion.Key);
                 }
             }
 
@@ -112,6 +85,7 @@
             }
 
             this.deletable.Clear();
+
             foreach (KeyValuePair<int, IProjectile> explosion in this.explosionList)
             {
                 explosion.Value.Update();
