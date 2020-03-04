@@ -177,29 +177,28 @@
         public void AddItem(int x, int y, string name)
         {
             Vector2 location = this.GridToScreenVector((float)x, (float)y);
-            // commented things will remain commented until items are separated from their sprites
             switch (name)
             {
                 case "Bow":
-                    // this.items.Add(new Bow());
+                    this.items.Add(new Bow(location));
                     break;
                 case "HeartContainer":
-                    // this.items.Add(new HeartContainer());
+                    this.items.Add(new HeartContainer(location));
                     break;
                 case "Key":
-                    // this.items.Add(new Key());
+                    this.items.Add(new Key(location));
                     break;
                 case "Compass":
-                    // this.items.Add(new Compass());
+                    this.items.Add(new Compass(location));
                     break;
                 case "Boomerang":
-                    // this.items.Add(new Boomerang());
+                    this.items.Add(new Boomerang(location));
                     break;
                 case "TriForce":
-                    // this.items.Add(new TriForce());
+                    this.items.Add(new Triforce(location));
                     break;
                 case "Map":
-                    // this.items.Add(new Map());
+                    this.items.Add(new Map(location));
                     break;
                 default:
                     break;

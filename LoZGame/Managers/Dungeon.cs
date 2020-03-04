@@ -137,7 +137,7 @@
             LoZGame.Instance.Entities.Clear(); // we dont add anything to entity manager after clearing since no projectiles stay when transitioning rooms.
             LoZGame.Instance.Enemies.Clear();
             LoZGame.Instance.Blocks.Clear();
-            //LoZGame.Instance.Items.Clear();
+            LoZGame.Instance.Items.Clear();
             LoZGame.Instance.Doors.Clear();
 
             foreach (IEnemy enemy in this.dungeonLayout[this.currentY][this.currentX].Enemies)
@@ -150,10 +150,9 @@
                 LoZGame.Instance.Blocks.Add(block);
             }
 
-            //TODO change to IItem once separated
             foreach (IItem item in this.dungeonLayout[this.currentY][this.currentX].Items)
             {
-                // ItemManager.Instance.Add(item);
+                LoZGame.Instance.Items.Add(item);
             }
 
             foreach (Door door in this.dungeonLayout[this.currentY][this.currentX].Doors)

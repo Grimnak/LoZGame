@@ -18,8 +18,8 @@ namespace LoZClone
             get { return linkHeight; }
         }
 
-        private static readonly int itemWidth = 30; // items Link holds in his hand during attack
-        private static readonly int itemHeight = 30;
+        private static readonly int itemWidth = 40; // items Link holds in his hand during attack
+        private static readonly int itemHeight = 40;
 
         public static int ItemWidth
         {
