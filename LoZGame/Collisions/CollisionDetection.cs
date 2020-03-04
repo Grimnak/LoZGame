@@ -6,7 +6,7 @@
 
     public partial class CollisionDetection
     {
-        Dungeon dungeon;
+        private Dungeon dungeon;
 
         public CollisionDetection(Dungeon dungeon)
         {
