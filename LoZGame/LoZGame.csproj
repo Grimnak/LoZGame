@@ -145,9 +145,11 @@
     <Compile Include="ItemClasses\WhiteSword.cs" />
     <Compile Include="ItemClasses\WoodenSword.cs" />
     <Compile Include="ItemClasses\YellowRupee.cs" />
+    <Compile Include="Managers\DropManager.cs" />
     <Compile Include="Managers\DoorManager.cs" />
     <Compile Include="Managers\Dungeon.cs" />
     <Compile Include="Managers\BlockManager.cs" />
+    <Compile Include="Managers\ItemType.cs" />
     <Compile Include="Rooms\BlockClasses\Door.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\BombedDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\HiddenDoorState.cs" />

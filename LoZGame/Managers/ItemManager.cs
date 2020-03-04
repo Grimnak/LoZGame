@@ -3,110 +3,75 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
-    public class ItemManager
+    public partial class ItemManager
     {
-        public IItem CurrentItem;
-        private int currentIndex;
-        private int maxIndex;
-        private int timer;
+        private Dictionary<int, IItem> itemList;
+        private int itemListSize;
+        private int itemID;
+        private readonly List<int> deletable;
 
-        public List<IItem> itemList {get; set;}
+        private List<IItem> items;
+
+        public List<IItem> EnemyList { get { return items; } }
+
         public ItemManager()
         {
-            this.itemList = new List<IItem>();
-            this.timer = 0;
-            this.currentIndex = 0;
-            this.maxIndex = 0;
+            itemList = new Dictionary<int, IItem>();
+            items = new List<IItem>();
+            itemListSize = 0;
+            deletable = new List<int>();
         }
 
-        public void LoadSprites(int xloc, int yloc)
+        public void Add(IItem item)
         {
-            itemList.Add(new Fairy(new Vector2(xloc, yloc)));
-            itemList.Add(new Health(new Vector2(xloc, yloc)));
-            itemList.Add(new Triforce(new Vector2(xloc, yloc)));
-            itemList.Add(new YellowRupee(new Vector2(xloc, yloc)));
-            itemList.Add(new HeartContainer(new Vector2(xloc, yloc)));
-            itemList.Add(new Clock(new Vector2(xloc, yloc)));
-            itemList.Add(new Rupee(new Vector2(xloc, yloc)));
-            itemList.Add(new LifePotion(new Vector2(xloc, yloc)));
-            itemList.Add(new SecondPotion(new Vector2(xloc, yloc)));
-            itemList.Add(new Letter(new Vector2(xloc, yloc)));
-            itemList.Add(new Map(new Vector2(xloc, yloc)));
-            itemList.Add(new Food(new Vector2(xloc, yloc)));
-            itemList.Add(new WoodenSword(new Vector2(xloc, yloc)));
-            itemList.Add(new WhiteSword(new Vector2(xloc, yloc)));
-            itemList.Add(new MagicSword(new Vector2(xloc, yloc)));
-            itemList.Add(new MagicShield(new Vector2(xloc, yloc)));
-            itemList.Add(new Boomerang(new Vector2(xloc, yloc)));
-            itemList.Add(new MagicBoomerang(new Vector2(xloc, yloc)));
-            itemList.Add(new Bomb(new Vector2(xloc, yloc)));
-            itemList.Add(new Bow(new Vector2(xloc, yloc)));
-            itemList.Add(new Arrow(new Vector2(xloc, yloc)));
-            itemList.Add(new SilverArrow(new Vector2(xloc, yloc)));
-            itemList.Add(new RedCandle(new Vector2(xloc, yloc)));
-            itemList.Add(new BlueCandle(new Vector2(xloc, yloc)));
-            itemList.Add(new RedRing(new Vector2(xloc, yloc)));
-            itemList.Add(new BlueRing(new Vector2(xloc, yloc)));
-            itemList.Add(new PowerBracelet(new Vector2(xloc, yloc)));
-            itemList.Add(new Flute(new Vector2(xloc, yloc)));
-            itemList.Add(new Raft(new Vector2(xloc, yloc)));
-            itemList.Add(new Ladder(new Vector2(xloc, yloc)));
-            itemList.Add(new MagicRod(new Vector2(xloc, yloc)));
-            itemList.Add(new MagicBook(new Vector2(xloc, yloc)));
-            itemList.Add(new Key(new Vector2(xloc, yloc)));
-            itemList.Add(new MagicKey(new Vector2(xloc, yloc)));
-            itemList.Add(new Compass(new Vector2(xloc, yloc)));
-            this.CurrentItem = this.itemList[this.currentIndex];
-            foreach (IItem sprite in this.itemList)
-            {
-                this.maxIndex++;
-            }
+            itemListSize++;
+            itemList.Add(itemID, item);
+            itemID++;
         }
 
-        public void CycleLeft()
+        public void RemoveItem(int instance)
         {
-            this.currentIndex--;
-
-            if (this.currentIndex < 0)
-            {
-                this.currentIndex = this.maxIndex - 1;
-            }
-
-            this.CurrentItem = this.itemList[this.currentIndex];
-        }
-
-        public void CycleRight()
-        {
-            this.currentIndex++;
-            if (this.currentIndex >= this.maxIndex)
-            {
-                this.currentIndex = 0;
-            }
-
-            this.CurrentItem = this.itemList[this.currentIndex];
-            System.Console.WriteLine(this.CurrentItem);
+            itemList.Remove(instance);
+            itemListSize--;
         }
 
         public void Update()
         {
-            this.timer++;
-            if (this.timer % 100 == 0)
+            foreach (KeyValuePair<int, IItem> item in this.itemList)
             {
-                this.CycleRight();
-                this.timer = 0;
+                if (item.Value.Expired)
+                {
+                    this.deletable.Add(item.Key);
+                }
             }
-            this.CurrentItem.Update();
+
+            foreach (int index in this.deletable)
+            {
+                this.RemoveItem(index);
+            }
+
+            this.deletable.Clear();
+
+            this.items.Clear();
+
+            foreach (KeyValuePair<int, IItem> item in this.itemList)
+            {
+                this.items.Add(item.Value);
+                item.Value.Update();
+            }
         }
 
         public void Draw()
         {
-            this.CurrentItem.Draw(LoZGame.Instance.DungeonTint);
+            foreach (KeyValuePair<int, IItem> item in this.itemList)
+            {
+                item.Value.Draw(LoZGame.Instance.DungeonTint);
+            }
         }
 
-        public int CurrentIndex
+        public void Clear()
         {
-            get { return this.currentIndex; }
-            set { this.currentIndex = value; }
+            itemList = new Dictionary<int, IItem>();
         }
     }
 }

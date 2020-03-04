@@ -86,7 +86,7 @@
                 this.tip = new Vector2(this.Size.X / 2, this.Size.Y);
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+            this.layer = 1 - 1 / (this.Physics.Location.Y + this.Size.Y);
             this.instance = instance;
             this.expired = false;
         }
@@ -149,7 +149,7 @@
 
                 this.Physics.Move();
                 this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-                this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+                this.layer = 1 - 1 / (this.Physics.Location.Y + this.Size.Y);
                 this.CheckBounds();
             }
         }

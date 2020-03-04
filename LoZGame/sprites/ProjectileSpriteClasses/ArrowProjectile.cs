@@ -64,7 +64,7 @@
                 this.rotation = MathHelper.Pi;
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+            this.layer = 1 - 1 / (this.Physics.Location.Y + this.Size.Y);
         }
 
         public bool IsExpired => this.expired;
@@ -92,7 +92,7 @@
             }
             this.Physics.Move();
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+            this.layer = 1 - 1 / (this.Physics.Location.Y + this.Size.Y);
         }
 
         public void Draw()

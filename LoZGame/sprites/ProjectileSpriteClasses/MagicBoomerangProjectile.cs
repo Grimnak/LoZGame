@@ -84,7 +84,7 @@
             this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
             this.currentSpeed = MaxSpeed; 
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+            this.layer = 1 - 1 / (this.Physics.Location.Y + this.Size.Y);
         }
 
         private void Rotate()
@@ -155,7 +155,7 @@
                 this.ReturnHome();
             }
             this.Physics.Move();
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+            this.layer = 1 - 1 / (this.Physics.Location.Y + this.Size.Y);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.CheckBounds();
         }

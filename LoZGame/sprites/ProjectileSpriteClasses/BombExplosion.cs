@@ -50,7 +50,7 @@
             this.expired = false;
             this.rotation = 0;
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
+            this.layer = 1 - 1 / (this.Physics.Location.Y + this.Size.Y);
             this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
         }
 

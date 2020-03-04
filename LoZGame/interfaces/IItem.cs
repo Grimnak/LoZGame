@@ -5,6 +5,8 @@
 
     public interface IItem : ICollider
     {
+        bool Expired { get; set; }
+
         void Update();
 
         void Draw(Color spriteTint);

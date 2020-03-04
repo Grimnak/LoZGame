@@ -39,7 +39,7 @@
         {
             if (this.lifeTime > SpawnTimer || this.lifeTime % 5 <= 2)
             {
-                float layer = 1 / (location.Y + (this.Data.Height * this.scale));
+                float layer = 1 - 1 / (location.Y + (this.Data.Height * this.scale));
                 LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.frame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, layer);
             }
         }
