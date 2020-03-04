@@ -5,7 +5,7 @@
     using System;
 
     internal class Arrow : IItem
-    {\
+    {
         private static int ExpireTime = LoZGame.Instance.UpdateSpeed * 20;
 
         private ISprite sprite;
@@ -80,6 +80,5 @@
         {
             this.sprite.Draw(this.Physics.Location, spriteTint);
         }
-
     }
 }
