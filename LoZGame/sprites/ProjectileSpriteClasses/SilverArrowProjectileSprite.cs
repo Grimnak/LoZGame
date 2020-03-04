@@ -5,99 +5,35 @@
 
     internal class SilverArrowProjectileSprite : ISprite
     {
-        private static readonly int Speed = 10;
-        private static readonly int LinkSize = 32;
-
         private readonly Texture2D Texture;      // the texture to pull frames from
         private readonly SpriteSheetData Data;
         private Rectangle frame;
         private Vector2 origin;
-        private int lifeTime;
         private readonly int scale;
         private readonly string direction;
         private readonly float rotation;
-        private readonly int dX;
-        private readonly int dY;
-        private readonly int instance;
-        private bool expired;
-        private readonly bool hostile; 
         private float layer;
         private Vector2 Size;
 
-        public bool IsHostile => this.hostile;
-
-        public Physics Physics { get; set; }
-
-        public Rectangle Bounds { get; set; }
-
-        public SilverArrowProjectileSprite(Texture2D texture, SpriteSheetData data, Vector2 loc, string direction, int scale, int instance)
+        public SilverArrowProjectileSprite(Texture2D texture, SpriteSheetData data, float rotation, int scale)
         {
             this.Texture = texture;
             this.Data = data;
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
             this.frame = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
             this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
-            this.lifeTime = 100;
             this.scale = scale;
-            this.direction = direction;
-            this.hostile = false;
-            this.instance = instance;
-            this.expired = false;
-            if (this.direction.Equals("Up"))
-            {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
-                this.rotation = 0;
-            }
-            else if (this.direction.Equals("Left"))
-            {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
-                this.rotation = -1 * MathHelper.PiOver2;
-            }
-            else if (this.direction.Equals("Right"))
-            {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize / 2)), new Vector2(Speed, 0), new Vector2(0, 0));
-                this.rotation = MathHelper.PiOver2;
-            }
-            else
-            {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, 0));
-                this.rotation = MathHelper.Pi;
-            }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
-        }
-
-        public bool IsExpired => this.expired;
-
-        public int Instance => this.instance;
-
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
-        {
-            if (otherCollider is IPlayer)
-            {
-                // do nothing
-            }
-            else
-            {
-                this.lifeTime = 0;
-            }
+            this.rotation = rotation;
         }
 
         public void Update()
         {
-            this.lifeTime--;
-            if (this.lifeTime <= 0)
-            {
-                this.expired = true;
-            }
-            this.Physics.Move();
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
         }
 
         public void Draw(Vector2 location, Color spriteTint)
         {
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
+            this.layer = 1 - (1 / (location.Y + this.Size.Y));
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.frame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }
 }

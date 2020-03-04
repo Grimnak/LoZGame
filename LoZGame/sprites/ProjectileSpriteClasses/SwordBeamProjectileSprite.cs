@@ -5,45 +5,22 @@
 
     internal class SwordBeamProjectileSprite : ISprite
     {
-        private const int LinkSize = 26;
-        private const int Offset = 4;
-        private const int Delay = 10;
+        private const int FrameChange = 10;
 
-        private readonly Texture2D Texture;      // the texture to pull frames from
+        private readonly Texture2D Texture;
         private readonly SpriteSheetData Data;
         private Rectangle frameOne;
         private Rectangle frameTwo;
         private Rectangle frameThree;
         private Rectangle frameFour;
         private Rectangle currentFrame;
-        private int lifeTime;
         private readonly int scale;
-        private readonly string direction;
         private readonly float rotation;
-        private readonly int instance;
-        private bool expired;
         private float layer;
-        private Vector2 tip;
         private Vector2 origin;
         private Vector2 Size;
 
-        public Physics Physics { get; set; }
-
-        public Rectangle Bounds { get; set; }
-
-        private readonly bool hostile;
-
-        public bool IsHostile => this.hostile;
-
-        private readonly ExplosionManager explosion;
-
-        private static readonly int FrameDelay = 4;
-        private const int Speed = 5;
-        private static readonly int MaxLifeTime = 40;
-        private static readonly int XBound = 800;
-        private static readonly int YBound = 480;
-
-        public SwordBeamProjectileSprite(Texture2D texture, SpriteSheetData data, IPlayer player, int scale, int instance, ExplosionManager explosion)
+        public SwordBeamProjectileSprite(Texture2D texture, SpriteSheetData data, float rotation, int scale)
         {
             this.Texture = texture;
             this.Data = data;
@@ -54,46 +31,9 @@
             this.frameTwo = new Rectangle(0, this.Data.Height, this.Data.Width, this.Data.Height);
             this.frameThree = new Rectangle(0, this.Data.Height * 2, this.Data.Width, this.Data.Height);
             this.frameFour = new Rectangle(0, this.Data.Height * 3, this.Data.Width, this.Data.Height);
-            this.explosion = explosion;
             this.currentFrame = this.frameOne;
-            this.lifeTime = MaxLifeTime;
-            this.direction = player.CurrentDirection;
-            Vector2 loc = player.Physics.Location;
-            this.hostile = false;
-
-            if (this.direction.Equals("Up"))
-            {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize - Offset - (this.Size.X / 2)), loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
-                this.rotation = MathHelper.Pi;
-                this.tip = new Vector2(this.Size.X, 0);
-            }
-            else if (this.direction.Equals("Left"))
-            {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize - (this.Size.X / 2))), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
-                this.rotation = 1 * MathHelper.PiOver2;
-                this.tip = new Vector2(-1 * Offset, this.Size.X / 2);
-            }
-            else if (this.direction.Equals("Right"))
-            {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize - (this.Size.X / 2))), new Vector2(Speed, 0), new Vector2(0, 0));
-                this.rotation = -1 * MathHelper.PiOver2;
-                this.tip = new Vector2(this.Size.Y, this.Size.X / 2);
-            }
-            else
-            {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize - (this.Size.X / 2)), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, 0));
-                this.rotation = 0;
-                this.tip = new Vector2(this.Size.X / 2, this.Size.Y);
-            }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
-            this.instance = instance;
-            this.expired = false;
+            this.rotation = rotation;
         }
-
-        public bool IsExpired => this.expired;
-
-        public int Instance => this.instance;
 
         private void NextFrame()
         {
@@ -115,51 +55,15 @@
             }
         }
 
-        private void CheckBounds()
-        {
-            if (this.Physics.Location.X >= XBound - this.tip.X || this.Physics.Location.X <= 0 || this.Physics.Location.Y >= YBound - this.tip.Y || this.Physics.Location.Y <= 0)
-            {
-                this.lifeTime = 0;
-            }
-        }
-
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
-        {
-            if (otherCollider is IEnemy)
-            {
-                this.lifeTime = 0;
-            }
-        }
-
         public void Update()
         {
-            this.lifeTime--;
-            if (this.lifeTime < MaxLifeTime - Delay)
-            {
-                if (this.lifeTime % FrameDelay == 0)
-                {
-                    this.NextFrame();
-                }
-
-                if (this.lifeTime <= 0)
-                {
-                    this.explosion.AddExplosion(this.explosion.SwordExplosion, new Vector2(this.Physics.Location.X + this.tip.X, this.Physics.Location.Y + this.tip.Y));
-                    this.expired = true;
-                }
-
-                this.Physics.Move();
-                this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-                this.layer = 1 / (this.Physics.Location.Y + this.Size.Y);
-                this.CheckBounds();
-            }
+            this.NextFrame();
         }
 
         public void Draw(Vector2 location, Color spriteTint)
         {
-            if (this.lifeTime < MaxLifeTime - Delay)
-            {
-                LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
-            }
+            this.layer = 1 - (1 / (location.Y + this.Size.Y));
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }
 }

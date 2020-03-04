@@ -132,89 +132,79 @@
             this.triforceSpriteSheet = content.Load<Texture2D>(this.triforceData.FilePath);
         }
 
-        public TriforceProjectileSprite Triforce(Vector2 loc, int scale, int instance)
+        public TriforceProjectileSprite Triforce()
         {
-            return new TriforceProjectileSprite(this.triforceSpriteSheet, this.triforceData, loc, scale, instance);
+            return new TriforceProjectileSprite(this.triforceSpriteSheet, this.triforceData, DRAWSCALE);
         }
 
-        public BoomerangProjectileSprite Boomerang(IPlayer player, int scale, int instance)
+        public BoomerangProjectileSprite Boomerang()
         {
-            return new BoomerangProjectileSprite(this.boomerangSpriteSheet, this.boomerangData, player, scale, instance);
+            return new BoomerangProjectileSprite(this.boomerangSpriteSheet, this.boomerangData, DRAWSCALE);
         }
 
-        public BoomerangEnemySprite BoomerangEnemy(Goriya goriya, int scale, int instance)
+        public MagicBoomerangProjectileSprite MagicBoomerang()
         {
-            return new BoomerangEnemySprite(this.boomerangSpriteSheet, this.boomerangData, goriya.Physics.Location, scale, instance);
+            return new MagicBoomerangProjectileSprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData, DRAWSCALE);
         }
 
-        public MagicBoomerangProjectileSprite MagicBoomerang(IPlayer player, int scale, int instance)
+        public BombProjectileSprite Bomb()
         {
-            return new MagicBoomerangProjectileSprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData, player, scale, instance);
+            return new BombProjectileSprite(this.bombSpriteSheet, this.bombData, DRAWSCALE);
         }
 
-        public MagicBoomerangEnemySprite MagicBoomerangEnemy(Goriya goriya, int scale, int instance)
+        public ArrowProjectileSprite Arrow(float rotation)
         {
-            return new MagicBoomerangEnemySprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData, scale, instance);
+            return new ArrowProjectileSprite(this.arrowSpriteSheet, this.arrowData, rotation, DRAWSCALE);
         }
 
-        public BombProjectileSprite Bomb(Vector2 loc, string direction, int scale, int instance, ExplosionManager explosion)
+        public SilverArrowProjectileSprite SilverArrow(float rotation)
         {
-            return new BombProjectileSprite(this.bombSpriteSheet, this.bombData, loc, direction, scale, instance, explosion);
+            return new SilverArrowProjectileSprite(this.silverArrowSpriteSheet, this.silverArrowData, rotation, DRAWSCALE);
         }
 
-        public ArrowProjectileSprite Arrow(Vector2 loc, string direction, int scale, int instance)
+        public RedCandleProjectileSprite RedCandle()
         {
-            return new ArrowProjectileSprite(this.arrowSpriteSheet, this.arrowData, loc, direction, scale, instance);
+            return new RedCandleProjectileSprite(this.flameSpriteSheet, this.flameData, DRAWSCALE / 2);
         }
 
-        public SilverArrowProjectileSprite SilverArrow(Vector2 loc, string direction, int scale, int instance)
+        public BlueCandleProjectileSprite BlueCandle()
         {
-            return new SilverArrowProjectileSprite(this.silverArrowSpriteSheet, this.silverArrowData, loc, direction, scale, instance);
+            return new BlueCandleProjectileSprite(this.flameSpriteSheet, this.flameData, DRAWSCALE / 2);
         }
 
-        public RedCandleProjectileSprite RedCandle(Vector2 loc, string direction, int scale, int instance)
+        public SwordBeamProjectileSprite SwordBeam(float rotation)
         {
-            return new RedCandleProjectileSprite(this.flameSpriteSheet, this.flameData, loc, direction, scale, instance);
+            return new SwordBeamProjectileSprite(this.swordBeamSpriteSheet, this.swordBeamData, rotation, DRAWSCALE);
         }
 
-        public BlueCandleProjectileSprite BlueCandle(Vector2 loc, string direction, int scale, int instance)
+        public SwordBeamExplosionSprite SwordExplosion(SpriteEffects effect, float rotation)
         {
-            return new BlueCandleProjectileSprite(this.flameSpriteSheet, this.flameData, loc, direction, scale, instance);
+            return new SwordBeamExplosionSprite(this.swordExplosionSpriteSheet, this.swordExplosionData, effect, rotation, DRAWSCALE);
         }
 
-        public SwordBeamProjectileSprite SwordBeam(IPlayer player, int scale, int instance, ExplosionManager explosion)
+        public BombExplosionSprite BombExplosionOne()
         {
-            return new SwordBeamProjectileSprite(this.swordBeamSpriteSheet, this.swordBeamData, player, scale, instance, explosion);
+            return new BombExplosionSprite(this.explosionOneSpriteSheet, this.explosionOneData, DRAWSCALE);
         }
 
-        public SwordBeamExplosionSprite SwordExplosion(Vector2 loc, string direction, int scale, int instance)
+        public BombExplosionSprite BombExplosionTwo()
         {
-            return new SwordBeamExplosionSprite(this.swordExplosionSpriteSheet, this.swordExplosionData, loc, direction, scale, instance);
+            return new BombExplosionSprite(this.explosionTwoSpriteSheet, this.explosionTwoData, DRAWSCALE);
         }
 
-        public BombExplosionSprite BombExplosionOne(Vector2 loc, int scale, int instance)
+        public BombExplosionSprite BombExplosionThree()
         {
-            return new BombExplosionSprite(this.explosionOneSpriteSheet, this.explosionOneData, loc, scale, instance);
+            return new BombExplosionSprite(this.explosionThreeSpriteSheet, this.explosionThreeData, DRAWSCALE);
         }
 
-        public BombExplosionSprite BombExplosionTwo(Vector2 loc, int scale, int instance)
+        public BombExplosionSprite BombExplosionFour()
         {
-            return new BombExplosionSprite(this.explosionTwoSpriteSheet, this.explosionTwoData, loc, scale, instance);
+            return new BombExplosionSprite(this.explosionFourSpriteSheet, this.ExplosionFourData, DRAWSCALE);
         }
 
-        public BombExplosionSprite BombExplosionThree(Vector2 loc, int scale, int instance)
+        public BombExplosionSprite BombExplosionFive()
         {
-            return new BombExplosionSprite(this.explosionThreeSpriteSheet, this.explosionThreeData, loc, scale, instance);
-        }
-
-        public BombExplosionSprite BombExplosionFour(Vector2 loc, int scale, int instance)
-        {
-            return new BombExplosionSprite(this.explosionFourSpriteSheet, this.ExplosionFourData, loc, scale, instance);
-        }
-
-        public BombExplosionSprite BombExplosionFive(Vector2 loc, int scale, int instance)
-        {
-            return new BombExplosionSprite(this.explosionFiveSpriteSheet, this.explosionFiveData, loc, scale, instance);
+            return new BombExplosionSprite(this.explosionFiveSpriteSheet, this.explosionFiveData, DRAWSCALE);
         }
     }
 }
