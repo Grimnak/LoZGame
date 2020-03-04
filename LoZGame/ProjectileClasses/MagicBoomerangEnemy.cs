@@ -14,20 +14,17 @@
         private static readonly int YBound = 480;
 
         private readonly Goriya Enemy;
-        private readonly int scale;
-        private readonly int dX;
-        private readonly int dY;
         private readonly string direction;
 
-        private readonly int instance;
+        private readonly int scale = ProjectileSpriteFactory.Instance.Scale;
+        private int projectileWidth;
+        private int projectileHeight;
         private bool expired;
         private bool returning;
         private bool reachedMaxDistance;
         private bool isReturned;
-        private float rotation;
         private int distTraveled;
         private float currentSpeed;
-        private float layer;
         private Vector2 playerLoc;
         private ISprite sprite;
 
@@ -39,10 +36,10 @@
 
         public Rectangle Bounds { get; set; }
 
-        public MagicBoomerangEnemy(Goriya enemy, int scale, int instance)
+        public MagicBoomerangEnemy(Goriya enemy)
         {
-            this.scale = scale;
-            this.instance = instance;
+            this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth;
+            this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight;
             this.expired = false;
             Vector2 loc = enemy.Physics.Location;
             this.direction = enemy.Direction;
@@ -73,13 +70,8 @@
             this.playerLoc = enemy.Physics.Location;
             this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
             this.currentSpeed = MaxSpeed;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, ProjectileSpriteFactory.Instance.StandardWidth, ProjectileSpriteFactory.Instance.BoomerangHeight);
-            this.sprite = ProjectileSpriteFactory.Instance.MagicBoomerangEnemy(enemy, scale, instance);
-        }
-
-        private void Rotate()
-        {
-            this.rotation += MathHelper.PiOver4 / 2;
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+            this.sprite = ProjectileSpriteFactory.Instance.MagicBoomerangEnemy();
         }
 
         private void CheckBounds()
@@ -122,11 +114,8 @@
 
         public bool IsExpired => this.expired;
 
-        public int Instance => this.instance;
-
         public void Update()
         {
-            this.Rotate();
             if (this.isReturned)
             {
                 this.expired = true;

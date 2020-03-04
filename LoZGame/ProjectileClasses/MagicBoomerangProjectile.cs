@@ -12,16 +12,12 @@
         private static readonly float Accel = 0.5f;
         private static readonly int XBound = 800;
         private static readonly int YBound = 480;
-        private static readonly int projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth;
-        private static readonly int projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight;
 
         private readonly IPlayer player;
-        private readonly int scale;
-        private readonly int dX;
-        private readonly int dY;
         private readonly string direction;
-
-        private readonly int instance;
+        private int projectileWidth;
+        private int projectileHeight;
+        private int scale = ProjectileSpriteFactory.Instance.Scale;
         private bool expired;
         private bool returning;
         private bool reachedMaxDistance;
@@ -39,10 +35,10 @@
 
         public Rectangle Bounds { get; set; }
 
-        public MagicBoomerangProjectile(Texture2D texture, SpriteSheetData data, IPlayer player, int scale, int instance)
+        public MagicBoomerangProjectile(IPlayer player)
         {
-            this.scale = scale;
-            this.instance = instance;
+            this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
+            this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight * scale;
             this.expired = false;
             Vector2 loc = player.Physics.Location;
             this.direction = player.CurrentDirection;
@@ -74,7 +70,7 @@
             this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
             this.currentSpeed = MaxSpeed; 
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
-            this.sprite = ProjectileSpriteFactory.Instance.MagicBoomerang(player, scale, instance);
+            this.sprite = ProjectileSpriteFactory.Instance.MagicBoomerang();
         }
 
         private void CheckBounds()
@@ -116,8 +112,6 @@
         }
 
         public bool IsExpired => this.expired;
-
-        public int Instance => this.instance;
 
         public void Update()
         {

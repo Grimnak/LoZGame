@@ -1,48 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
-    class ArrowProjectile : IProjectile
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+
+    internal class SilverArrowProjectile : IProjectile
     {
         private static readonly int Speed = 10;
-        private static readonly int LinkSize = 30;
-        ISprite sprite;
+        private static readonly int LinkSize = 32;
+        private static readonly int scale = ProjectileSpriteFactory.Instance.Scale;
 
-        private Rectangle frame;
-        private Vector2 origin;
         private int lifeTime;
-        private int projectileWidth;
-        private int projectileHeight;
-        private string direction;
+        private readonly string direction;
         private readonly float rotation;
         private readonly int dX;
         private readonly int dY;
-        private readonly int instance;
         private bool expired;
         private readonly bool hostile;
+        private int projectileWidth;
+        private int projectileHeight;
+        private ISprite sprite;
 
         public bool IsHostile => this.hostile;
-
-        public bool IsExpired => this.expired;
 
         public Physics Physics { get; set; }
 
         public Rectangle Bounds { get; set; }
 
-        public ArrowProjectile(Vector2 loc, string direction, int scale, int instance)
+        public SilverArrowProjectile(Vector2 loc, string direction)
         {
             this.projectileWidth = ProjectileSpriteFactory.Instance.ArrowWidth * scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * scale;
             this.lifeTime = 100;
+            this.direction = direction;
             this.hostile = false;
-            this.instance = instance;
             this.expired = false;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             if (this.direction.Equals("Up"))
             {
                 this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
@@ -63,8 +54,11 @@ namespace LoZClone
                 this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, 0));
                 this.rotation = MathHelper.Pi;
             }
-            this.sprite = ProjectileSpriteFactory.Instance.Arrow(rotation);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+            this.sprite = ProjectileSpriteFactory.Instance.SilverArrow(this.rotation);
         }
+
+        public bool IsExpired => this.expired;
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
@@ -85,8 +79,8 @@ namespace LoZClone
             {
                 this.expired = true;
             }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             this.Physics.Move();
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             this.sprite.Update();
         }
 
