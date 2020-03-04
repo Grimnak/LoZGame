@@ -16,7 +16,7 @@
         private static readonly int doorWidth = 108;
         private static readonly int doorHeight = 72;
         private static readonly int fireHeight = 18;
-        private static readonly int FireWidth = 16;
+        private static readonly int fireWidth = 16;
 
         private static readonly int VerticalBlockWidth = 16;
         private static readonly int VerticalBlockHeight = 64;
@@ -54,7 +54,7 @@
         private readonly SpriteSheetData SpecialDoorUpData = new SpriteSheetData("special_door_up", tileWidth, tileHeight, 1, 1);
 
         private Texture2D FireTexture;
-        private readonly SpriteSheetData fireData = new SpriteSheetData("Flame", tileWidth, tileHeight, 2, 1);
+        private readonly SpriteSheetData fireData = new SpriteSheetData("fire", tileWidth, tileHeight, 1, 2);
         private Texture2D FloorTileTexture;
         private readonly SpriteSheetData floorTileData = new SpriteSheetData("floor_tile", tileWidth, tileHeight, 1, 1);
         private Texture2D GapTileTexture;

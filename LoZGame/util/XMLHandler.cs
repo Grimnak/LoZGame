@@ -81,8 +81,16 @@
                             {
                                 string x = block.Attribute("idx").Value, y = trow.Attribute("idx").Value, type = block.Attribute("type").Value;
                                 tcount++; // xml debug
-                                Console.Write("block: " + block.Value + " type: " + block.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + block.Attribute("idx").Value + " \n"); // xml debug
-                                droom.AddBlock(x, y, type, block.Value);
+
+                                if (type.Equals("movable"))
+                                {
+                                    droom.AddBlock(x, y, type, block.Value, block.Attribute("dir").Value);
+                                    Console.Write("block: " + block.Value + " type: " + block.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + block.Attribute("idx").Value + " Dirs: " + block.Attribute("dir").Value + "\n"); // xml debug
+                                }
+                                else {
+                                    droom.AddBlock(x, y, type, block.Value);
+                                    Console.Write("block: " + block.Value + " type: " + block.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + block.Attribute("idx").Value + " \n"); // xml debug
+                                }
                             }
                             Console.WriteLine("tcount: " + tcount + "\n");
                         }

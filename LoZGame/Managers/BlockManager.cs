@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System;
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
@@ -16,7 +17,10 @@
 
         public void Add(IBlock block)
         {
+  
             blocks.Add(block);
+            if (block is FireSprite)
+                Console.WriteLine("");
         }
 
         public void Clear()

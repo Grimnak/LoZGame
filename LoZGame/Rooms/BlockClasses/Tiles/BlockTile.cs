@@ -67,6 +67,7 @@
         /// <inheritdoc/>
         public void Update()
         {
+            this.sprite.Update(); 
         }
 
         /// <inheritdoc/>

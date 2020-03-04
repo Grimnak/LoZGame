@@ -14,7 +14,14 @@
     public class MovableTile : IBlock
     {
         private ISprite sprite;
-        private Color spriteTint = Color.White;
+        private Color spriteTint = LoZGame.Instance.DungeonTint;
+        private string dirs;
+
+        public string Dirs
+        {
+            get { return this.dirs; }
+        }
+
         private Rectangle bounds;
 
         public Rectangle Bounds
@@ -32,11 +39,13 @@
         /// </summary>
         /// <param name="location">The location of the tile.</param>
         /// <param name="name">Name of the tiles sprite.</param>
-        public MovableTile(Vector2 location, string name)
+        /// <param name="direction">Valid Directions for this.</param>
+        public MovableTile(Vector2 location, string name, string direction)
         {
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.sprite = this.CreateCorrectSprite(name);
+            this.dirs = direction;
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
         }
 

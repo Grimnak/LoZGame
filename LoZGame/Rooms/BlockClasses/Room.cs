@@ -3,6 +3,7 @@
     using Microsoft.Xna.Framework;
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
+    using System.Runtime.InteropServices;
 
     /*
      * A Room object represents a single dungeon room in-game.
@@ -211,14 +212,15 @@
          * y => tile Y location
          * type => type of tile
          * name => name of tile sprite
+         * dirs => directions for movable tile [Optional]
          */
-        public void AddBlock(string x, string y, string type, string name)
+        public void AddBlock(string x, string y, string type, string name, [Optional] string dirs)
         {
             Vector2 location = this.GridToScreenVector(float.Parse(x), float.Parse(y));
             switch (type)
             {
                 case "movable":
-                    this.blocks.Add(new MovableTile(location, name));
+                    this.blocks.Add(new MovableTile(location, name, dirs));
                     break;
                 case "walkable":
                     if (name.Equals("ladder_tile") || name.Equals("black_tile"))

@@ -2,6 +2,7 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
 
     public class FireSprite : ISprite
     {
@@ -27,17 +28,25 @@
             this.spriteSheetRows = data.Rows;
             this.spriteSheetColumns = data.Columns;
             this.totalFrames = this.spriteSheetRows * this.spriteSheetColumns;
+            this.currentUpdate = 0;
         }
 
         public void Update()
         {
             this.currentUpdate++;
+            Console.WriteLine("Fire Update");
+
             if (this.currentUpdate == this.updatesPerFrame)
             {
                 this.currentUpdate = 0;
                 this.currentFrame++;
+                Console.WriteLine("Fire If Block 1");
+
                 if (this.currentFrame == this.totalFrames)
+                {
                     this.currentFrame = 0;
+                    Console.WriteLine("Fire If Block 2");
+                }
             }
         }
 
