@@ -25,6 +25,10 @@
             }
         }
 
+        public void OnCollisionResponse(IItem item, CollisionDetection.CollisionSide collisionSide)
+        {
+        }
+
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
             // change once projectile classes set up

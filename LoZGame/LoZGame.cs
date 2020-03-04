@@ -9,7 +9,7 @@
     {
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private static readonly float UpdatesPerSecond = 15;
+        private static readonly float UpdatesPerSecond = 60;
         private const int DefaultUpdateSpeed = 60;
 
         public SpriteBatch SpriteBatch => this.spriteBatch;
@@ -32,7 +32,6 @@
         private List<IController> controllers;
         private List<IPlayer> players;
         private List<IProjectile> projectiles;
-        private List<IItem> items;
 
         private Color dungeonTint;
 
@@ -86,8 +85,6 @@
             this.controllers = new List<IController>();
             this.players = new List<IPlayer>();
             this.projectiles = new List<IProjectile>();
-            this.items = new List<IItem>();
-            this.projectiles = new List<IProjectile>();
             this.randomNumberGenerator = new Random();
             base.Initialize();
         }
@@ -140,7 +137,7 @@
             this.blockManager.Update();
             this.doorManager.Update();
             this.entityManager.Update();
-            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.doorManager.DoorList.AsReadOnly(), this.projectiles.AsReadOnly());
+            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.doorManager.DoorList.AsReadOnly(), this.itemManager.ItemList.AsReadOnly(), this.projectiles.AsReadOnly());
             base.Update(gameTime);
         }
 

@@ -50,7 +50,7 @@
         {
             if (otherCollider is IPlayer)
             {
-                this.expired = true;
+                this.itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
         }
 

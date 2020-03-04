@@ -132,7 +132,7 @@
         {
             if (otherCollider is IPlayer)
             {
-                itemCollisionHandler.OnCollisionResponse(collisionSide);
+                itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
         }
 

@@ -87,6 +87,10 @@
             {
                 this.linkCollisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
+            else if (otherCollider is IItem)
+            {
+                this.linkCollisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
+            }
         }
     }
 }
