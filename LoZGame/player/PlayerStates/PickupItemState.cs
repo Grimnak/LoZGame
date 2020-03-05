@@ -123,7 +123,14 @@ namespace LoZClone
 
         private ISprite CreateCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.CreateSpriteLinkPickupItem(this.player.CurrentColor);
+            if (item is Triforce)
+            {
+                return LinkSpriteFactory.Instance.CreateSpriteLinkPickupTriforce(this.player.CurrentColor);
+            }
+            else
+            {
+                return LinkSpriteFactory.Instance.CreateSpriteLinkPickupItem(this.player.CurrentColor);
+            }
         }
     }
 }

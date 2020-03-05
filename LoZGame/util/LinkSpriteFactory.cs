@@ -26,7 +26,7 @@ namespace LoZClone
             get { return itemWidth; }
         }
 
-        public static int ItemHieght
+        public static int ItemHeight
         {
             get { return itemHeight; }
         }
@@ -73,7 +73,7 @@ namespace LoZClone
         private Texture2D redLinkPickupTexture;
         private readonly SpriteSheetData redLinkPickupData = new SpriteSheetData("Red_Link_Pickup", linkWidth, linkHeight, 2, 1);
 
-        // items link holds in his hand during attack
+        // items Link holds in his hand during attack
         private Texture2D greenWoodDownTexture;
         private readonly SpriteSheetData greenWoodDownData = new SpriteSheetData("Green_Wood_Down", itemWidth, itemHeight, 1, 2);
         private Texture2D greenWoodLeftTexture;
@@ -554,6 +554,22 @@ namespace LoZClone
             else
             {
                 return new LinkPickupItemSprite(this.greenLinkPickupTexture, this.greenLinkPickupData);
+            }
+        }
+
+        public LinkPickupTriforceSprite CreateSpriteLinkPickupTriforce(string currentColor)
+        {
+            if (currentColor.Equals("Red"))
+            {
+                return new LinkPickupTriforceSprite(this.redLinkPickupTexture, this.redLinkPickupData);
+            }
+            else if (currentColor.Equals("Blue"))
+            {
+                return new LinkPickupTriforceSprite(this.blueLinkPickupTexture, this.blueLinkPickupData);
+            }
+            else
+            {
+                return new LinkPickupTriforceSprite(this.greenLinkPickupTexture, this.greenLinkPickupData);
             }
         }
 

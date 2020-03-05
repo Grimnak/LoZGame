@@ -30,7 +30,7 @@
             set { this.bounds = value; }
         }
 
-        BlockCollisionHandler blockCollisionHandler;
+        private BlockCollisionHandler blockCollisionHandler;
 
         public Physics Physics { get; set; }
 
@@ -87,10 +87,6 @@
             else if (otherCollider is IEnemy)
             {
                 this.blockCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IBlock)
-            {
-                this.blockCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
         }
     }

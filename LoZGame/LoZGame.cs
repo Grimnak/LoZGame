@@ -62,7 +62,10 @@
         public EnemyManager Enemies { get { return enemyManager; } }
 
         public DoorManager Doors { get { return doorManager; } }
+
         public DropManager Drops { get { return dropManager; } }
+
+        public CollisionDetection CollisionDetector { get { return collisionDetector; } }
 
         public Random Random { get { return randomNumberGenerator; } }
 

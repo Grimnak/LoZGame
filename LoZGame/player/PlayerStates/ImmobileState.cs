@@ -3,7 +3,7 @@
 namespace LoZClone
 {
     /// <summary>
-    /// Death state for player.
+    /// Immobilized state for player when Wall Master has control of him.
     /// </summary>
     public class ImmobileState : IPlayerState
     {

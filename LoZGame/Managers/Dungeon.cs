@@ -90,7 +90,6 @@
                 this.currentY++;
                 this.LoadNewRoom();
 
-                // bruh
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 0)) + 2);
