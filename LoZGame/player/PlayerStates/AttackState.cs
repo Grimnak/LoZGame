@@ -78,11 +78,11 @@ namespace LoZClone
         }
 
         /// <inheritdoc/>
-        public void PickupItem(int itemTime)
+        public void PickupItem(IItem item)
         {
             if (this.lockoutTimer <= 0)
             {
-                this.player.State = new PickupItemState(this.player, itemTime);
+                this.player.State = new PickupItemState(this.player, item);
             }
         }
 

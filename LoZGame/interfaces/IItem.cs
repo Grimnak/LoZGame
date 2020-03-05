@@ -5,6 +5,8 @@
 
     public interface IItem : ICollider
     {
+        int PickUpItemTime { get; }
+
         bool Expired { get; set; }
 
         void Update();

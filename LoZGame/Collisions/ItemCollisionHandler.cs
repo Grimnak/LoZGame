@@ -14,7 +14,6 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-             this.item.Expired = true;
         }
     }
 }

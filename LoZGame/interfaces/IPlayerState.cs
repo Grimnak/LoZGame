@@ -41,10 +41,10 @@ namespace LoZClone
         void Die();
 
         /// <summary>
-        /// Transitions state to picking up and item.
+        /// Transitions state to picking up an item.
         /// </summary>
-        /// <param name="itemTime">Life time of the item.</param>
-        void PickupItem(int itemTime);
+        /// <param name="item">Item that player is picking up.</param>
+        void PickupItem(IItem item);
 
         /// <summary>
         /// Transitions state to using an item.

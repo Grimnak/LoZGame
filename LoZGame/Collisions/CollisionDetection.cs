@@ -21,8 +21,16 @@
                 {
                     CheckCollisions<IEnemy>(player, enemies);
                     CheckCollisions<IProjectile>(player, projectiles);
-                    CheckCollisions<IDoor>(player, doors);
-                    CheckCollisions<IItem>(player, items);
+
+                    if (player.DamageTimer <= 0)
+                    {
+                        CheckCollisions<IDoor>(player, doors);
+                    }
+
+                    if (!(player.State is PickupItemState))
+                    {
+                        CheckCollisions<IItem>(player, items);
+                    }
                     CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
                 }
             }

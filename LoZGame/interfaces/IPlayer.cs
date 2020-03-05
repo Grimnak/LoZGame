@@ -83,8 +83,8 @@
         /// <summary>
         /// Makes player pickup an item.
         /// </summary>
-        /// <param name ="itemTime">Time for the item to expire.</param>
-        void PickupItem(int itemTime);
+        /// <param name ="item">Item that was picked up by the item.</param>
+        void PickupItem(IItem item);
 
         /// <summary>
         /// Makes player use an item.

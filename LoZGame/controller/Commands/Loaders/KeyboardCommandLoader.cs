@@ -43,7 +43,6 @@ namespace LoZClone
             this.dictionary.Add(Keys.D5, new CommandSilverArrow(player));
             this.dictionary.Add(Keys.D6, new CommandMagicBoomerang(player));
             this.dictionary.Add(Keys.D7, new CommandRedCandle(player));
-            this.dictionary.Add(Keys.D8, new CommandTriforce(player));
 
             this.dictionary.Add(Keys.Q, new CommandQuit());
 
