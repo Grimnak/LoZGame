@@ -8,8 +8,8 @@
     {
         private const int FlashDurataion = 10;
 
-        private static readonly int MaxLifeTime = 90;
-        private static readonly int DissipateOne = 20;
+        private static readonly int MaxLifeTime = 45;
+        private static readonly int DissipateOne = 10;
         private static readonly int DissipateTwo = 5;
 
         private ISprite sprite;
@@ -120,7 +120,7 @@
         public void Draw()
         {
             this.sprite.Draw(this.Physics.Location, Color.White);
-            if (this.lifeTime > (MaxLifeTime - FlashDurataion))
+            if (this.lifeTime > (MaxLifeTime - FlashDurataion) && this.lifeTime % 2 == 0)
             {
                 LoZGame.Instance.SpriteBatch.Draw(flashTexture, flashDestination, new Rectangle(0, 0, 1, 1), Color.White, 0.0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
             }
