@@ -14,6 +14,8 @@
 
         public SpriteBatch SpriteBatch => this.spriteBatch;
 
+        private Random randomNumberGenerator;
+
         private IPlayer link;
         private KeyboardCommandLoader keyboardCommandLoader;
         private MouseCommandLoader mouseCommandLoader;
@@ -25,9 +27,9 @@
         private BlockManager blockManager;
         private EntityManager entityManager;
         private EnemyManager enemyManager;
+        private DropManager dropManager;
         private DoorManager doorManager;
         private CollisionDetection collisionDetector;
-        private Random randomNumberGenerator;
 
         private List<IController> controllers;
         private List<IPlayer> players;
@@ -60,6 +62,7 @@
         public EnemyManager Enemies { get { return enemyManager; } }
 
         public DoorManager Doors { get { return doorManager; } }
+        public DropManager Drops { get { return dropManager; } }
 
         public Random Random { get { return randomNumberGenerator; } }
 
@@ -77,7 +80,7 @@
             entityManager = new EntityManager();
             enemyManager = new EnemyManager();
             doorManager = new DoorManager();
-
+            dropManager = new DropManager();
         }
 
         protected override void Initialize()

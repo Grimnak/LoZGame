@@ -22,7 +22,7 @@ namespace LoZClone
         {
             this.Texture = texture;
             this.Data = data;
-            this.scale = scale;
+            this.scale = (int)(scale * 1.5f);
             this.Size = new Vector2(this.Data.Width * this.scale, this.Data.Height * this.scale);
             this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
             this.frameOne = new Rectangle(0, 0, this.Data.Width, this.Data.Height);

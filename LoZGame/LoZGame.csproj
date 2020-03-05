@@ -112,6 +112,12 @@
     <Compile Include="ItemClasses\Arrow.cs" />
     <Compile Include="ItemClasses\BlueCandle.cs" />
     <Compile Include="ItemClasses\BlueRing.cs" />
+    <Compile Include="ItemClasses\DroppedFood.cs" />
+    <Compile Include="ItemClasses\DroppedSecondPotion.cs" />
+    <Compile Include="ItemClasses\DroppedPotion.cs" />
+    <Compile Include="ItemClasses\DroppedHealth.cs" />
+    <Compile Include="ItemClasses\DroppedRupee.cs" />
+    <Compile Include="ItemClasses\DroppedBomb.cs" />
     <Compile Include="ItemClasses\Bomb.cs" />
     <Compile Include="ItemClasses\Boomerang.cs" />
     <Compile Include="ItemClasses\Bow.cs" />
@@ -143,6 +149,7 @@
     <Compile Include="ItemClasses\Triforce.cs" />
     <Compile Include="ItemClasses\WhiteSword.cs" />
     <Compile Include="ItemClasses\WoodenSword.cs" />
+    <Compile Include="ItemClasses\DroppedYellowRupee.cs" />
     <Compile Include="ItemClasses\YellowRupee.cs" />
     <Compile Include="Managers\DropManager.cs" />
     <Compile Include="Managers\DoorManager.cs" />
