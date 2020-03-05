@@ -13,7 +13,6 @@ namespace LoZClone
         /// <summary>
         /// Initializes a new instance of the <see cref="ImmobileState"/> class.
         /// </summary>
-        /// <param name="game">Current game.</param>
         /// <param name="playerInstance">Instance of the player.</param>
         public ImmobileState(IPlayer playerInstance)
         {
@@ -57,7 +56,7 @@ namespace LoZClone
         }
 
         /// <inheritdoc/>
-        public void PickupItem(int itemTime)
+        public void PickupItem(IItem item)
         {
         }
 

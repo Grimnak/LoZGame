@@ -64,9 +64,9 @@
         }
 
         /// <inheritdoc/>
-        public void PickupItem(int itemTime)
+        public void PickupItem(IItem item)
         {
-            this.player.State = new PickupItemState(this.player, itemTime);
+            this.player.State = new PickupItemState(this.player, item);
         }
 
         /// <inheritdoc/>

@@ -85,7 +85,6 @@
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomRight.cs" />
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomUp.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandSilverArrow.cs" />
-    <Compile Include="Controller\Commands\PlayerCommands\CommandTriforce.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandUp.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandIdle.cs" />
     <Compile Include="Controller\Commands\Loaders\KeyboardCommandLoader.cs" />
@@ -147,7 +146,7 @@
     <Compile Include="ItemClasses\Rupee.cs" />
     <Compile Include="ItemClasses\SecondPotion.cs" />
     <Compile Include="ItemClasses\SilverArrow.cs" />
-    <Compile Include="ItemClasses\TriForce.cs" />
+    <Compile Include="ItemClasses\Triforce.cs" />
     <Compile Include="ItemClasses\WhiteSword.cs" />
     <Compile Include="ItemClasses\WoodenSword.cs" />
     <Compile Include="ItemClasses\DroppedYellowRupee.cs" />

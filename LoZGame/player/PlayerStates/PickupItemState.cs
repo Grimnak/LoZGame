@@ -1,25 +1,27 @@
 namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     /// <summary>
     /// Item pickup state for player.
     /// </summary>
     public class PickupItemState : IPlayerState
     {
         private readonly IPlayer player;
+        private readonly IItem item;
         private readonly ISprite sprite;
         private int lockoutTimer = 0;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PickupItemState"/> class.
         /// </summary>
-        /// <param name="game">Current game.</param>
         /// <param name="playerInstance">Instance of player.</param>
-        /// <param name="itemTime">Lifetime of item.</param>
-        public PickupItemState(IPlayer playerInstance, int itemTime)
+        /// <param name="item">Item that player picked up.</param>
+        public PickupItemState(IPlayer playerInstance, IItem item)
         {
             this.player = playerInstance;
-            this.player.CurrentDirection = "Down";
-            this.lockoutTimer = itemTime; // wait period
+            this.item = item;
+            this.lockoutTimer = item.PickUpItemTime;
             this.sprite = this.CreateCorrectSprite();
         }
 
@@ -28,6 +30,7 @@ namespace LoZClone
         {
             if (this.lockoutTimer <= 0)
             {
+                this.player.CurrentDirection = "Down";
                 this.player.State = new IdleState(this.player);
             }
         }
@@ -84,7 +87,7 @@ namespace LoZClone
         }
 
         /// <inheritdoc/>
-        public void PickupItem(int itemTime)
+        public void PickupItem(IItem item)
         {
         }
 
@@ -103,6 +106,10 @@ namespace LoZClone
             if (this.lockoutTimer > 0)
             {
                 this.lockoutTimer--;
+                if (this.lockoutTimer == 0)
+                {
+                    item.Expired = true;
+                }
             }
 
             this.sprite.Update();

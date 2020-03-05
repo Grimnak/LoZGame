@@ -55,7 +55,7 @@
         }
 
         /// <inheritdoc/>
-        public void PickupItem(int itemTime)
+        public void PickupItem(IItem item)
         {
         }
 

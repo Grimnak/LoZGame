@@ -8,17 +8,17 @@
     {
         private const int DirectionChange = 100;
         private static readonly int DespawnTimer = 60 * LoZGame.Instance.UpdateSpeed;
-
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
-
-
         private readonly Texture2D Texture;      // the texture to pull frames from
         private Vector2 Size;
         private float layer;
         private int lifeTime;
         private Vector2 Border;
         private bool expired;
+        private int pickUpItemTime = 0;
+
+        public int PickUpItemTime { get { return this.pickUpItemTime; } }
 
         public bool Expired { get { return this.expired; } set { this.expired = value; } }
 

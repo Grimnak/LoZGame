@@ -29,7 +29,7 @@
             {
                 this.State.Die();
             }
-            if (this.DamageTimer <= 0)
+            if (this.DamageTimer <= 0 && !(this.State is PickupItemState))
             {
                 this.Health.DamageHealth(damageAmount);
                 this.DamageTimer = 100;
@@ -67,9 +67,9 @@
             this.State.Attack();
         }
 
-        public void PickupItem(int itemTime)
+        public void PickupItem(IItem item)
         {
-            this.State.PickupItem(itemTime);
+            this.State.PickupItem(item);
         }
 
         public void UseItem(int waitTime)

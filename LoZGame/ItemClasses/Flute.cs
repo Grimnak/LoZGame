@@ -15,6 +15,9 @@
         private float layer;
         private int lifeTime;
         private bool expired;
+        private int pickUpItemTime = 50;
+
+        public int PickUpItemTime { get { return this.pickUpItemTime; } }
 
         public bool Expired { get { return this.expired; } set { this.expired = value; } }
 
@@ -50,7 +53,7 @@
         {
             if (otherCollider is IPlayer)
             {
-                this.expired = true;
+                itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
         }
 
