@@ -6,6 +6,8 @@
 
     internal class BombExplosion : IProjectile
     {
+        private const int FlashDurataion = 10;
+
         private static readonly int MaxLifeTime = 90;
         private static readonly int DissipateOne = 20;
         private static readonly int DissipateTwo = 5;
@@ -18,6 +20,8 @@
         private bool expired;
         private ProjectileCollisionHandler collisionHandler;
         private int damage;
+        private Texture2D flashTexture;
+        private Rectangle flashDestination;
 
         public int Damage { get { return damage; } set { damage = value; } }
 
@@ -67,6 +71,10 @@
                 default:
                     break;
             }
+            // initialize variables for flashing screen
+            flashTexture = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            flashTexture.SetData<Color>(new Color[] { Color.White });
+            flashDestination = new Rectangle(0, 0, LoZGame.Instance.GraphicsDevice.Viewport.Width, LoZGame.Instance.GraphicsDevice.Viewport.Height);
         }
 
         public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
@@ -112,9 +120,9 @@
         public void Draw()
         {
             this.sprite.Draw(this.Physics.Location, Color.White);
-            if (this.lifeTime % 5 == 0)
+            if (this.lifeTime > (MaxLifeTime - FlashDurataion))
             {
-                // draw white screen on top layer
+                LoZGame.Instance.SpriteBatch.Draw(flashTexture, flashDestination, new Rectangle(0, 0, 1, 1), Color.White, 0.0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
             }
         }
     }
