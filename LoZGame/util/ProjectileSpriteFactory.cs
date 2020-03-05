@@ -22,7 +22,8 @@
         private static readonly int explosionHeight = 50;
         private static readonly int explosionWidth = 48;
         private static readonly int triforceSize = 12;
-        private static readonly int fireballSize = 12;
+        private static readonly int fireballWidth = 8;
+        private static readonly int fireballHeight = 10;
 
         public int SwordBeamWidth
         {
@@ -74,9 +75,13 @@
             get { return triforceSize; }
         }
 
-        public int FireballSize
+        public int FireballHeight
         {
-            get { return fireballSize; }
+            get { return fireballHeight; }
+        }
+        public int FireballWidth
+        {
+            get { return fireballWidth; }
         }
 
         public Vector2 ExplosionCenter { get { return new Vector2(ExplosionWidth / 2, ExplosionHeight / 2); } }
@@ -109,8 +114,8 @@
         private readonly SpriteSheetData ExplosionFourData = new SpriteSheetData("BombExplosionFour", explosionWidth, explosionHeight, 1, 3);
         private Texture2D explosionFiveSpriteSheet;
         private readonly SpriteSheetData explosionFiveData = new SpriteSheetData("BombExplosionFive", explosionWidth, explosionHeight, 1, 3);
-        private Texture2D fireball;
-        private readonly SpriteSheetData fireballData = new SpriteSheetData("fireball", fireballSize, fireballSize, 1, 4);
+        private Texture2D fireballSpriteSheet;
+        private readonly SpriteSheetData fireballData = new SpriteSheetData("fireball", fireballWidth, fireballHeight, 1, 4);
 
         private static readonly ProjectileSpriteFactory InstanceValue = new ProjectileSpriteFactory();
 
@@ -138,7 +143,7 @@
             this.explosionFourSpriteSheet = content.Load<Texture2D>(this.ExplosionFourData.FilePath);
             this.explosionFiveSpriteSheet = content.Load<Texture2D>(this.explosionFiveData.FilePath);
             this.triforceSpriteSheet = content.Load<Texture2D>(this.triforceData.FilePath);
-            this.fireball = content.Load<Texture2D>(this.fireballData.FilePath);
+            this.fireballSpriteSheet = content.Load<Texture2D>(this.fireballData.FilePath);
         }
 
         public TriforceProjectileSprite Triforce()
@@ -148,7 +153,7 @@
 
         public FireballSprite Fireball()
         {
-            return new FireballSprite(this.triforceSpriteSheet, this.triforceData, DRAWSCALE);
+            return new FireballSprite(this.fireballSpriteSheet, this.fireballData, DRAWSCALE);
         }
 
         public BoomerangProjectileSprite Boomerang()

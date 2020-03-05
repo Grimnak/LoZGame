@@ -23,6 +23,7 @@
 
         public BombProjectile(Vector2 loc, string direction)
         {
+            this.scale = ProjectileSpriteFactory.Instance.Scale;
             this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * scale;
             this.lifeTime = MaxLife;
@@ -30,7 +31,7 @@
             this.hostile = false;
             if (this.direction == "Up")
             {
-                this.Physics = new Physics(new Vector2(loc.X - ((projectileWidth - LinkSize) / 2), loc.Y - LinkSize), new Vector2(0, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - this.projectileWidth) / 2), loc.Y - LinkSize), new Vector2(0, 0), new Vector2(0, 0));
             }
             else if (this.direction == "Left")
             {
@@ -68,8 +69,10 @@
             {
                 this.expired = true;
                 int explosiontype = (int)LoZGame.Instance.Entities.ExplosionManager.Explosion;
-                Vector2 explosionLocation = new Vector2(this.Physics.Location.X - (this.projectileWidth / 2) - this.projectileWidth, this.Physics.Location.Y - this.projectileHeight);
-                LoZGame.Instance.Entities.ExplosionManager.AddExplosion(explosiontype, explosionLocation);
+                Vector2 explosionCenter = new Vector2(ProjectileSpriteFactory.Instance.ExplosionCenter.X * this.scale, ProjectileSpriteFactory.Instance.ExplosionCenter.Y * this.scale);
+                Vector2 bombCenter = new Vector2(this.Physics.Location.X + (this.projectileWidth / 2), this.Physics.Location.Y + (this.projectileHeight / 2));
+                Vector2 explosionOffset = new Vector2(bombCenter.X - explosionCenter.X, bombCenter.Y - explosionCenter.Y);
+                LoZGame.Instance.Entities.ExplosionManager.AddExplosion(explosiontype, new Vector2(this.Physics.Location.X + explosionOffset.X, this.Physics.Location.Y + explosionOffset.Y));
             }
         }
 
