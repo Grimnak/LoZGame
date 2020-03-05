@@ -7,7 +7,7 @@
     internal class Fairy : IItem
     {
         private const int DirectionChange = 100;
-        
+        private static readonly int DespawnTimer = 60 * LoZGame.Instance.UpdateSpeed;
 
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
@@ -135,18 +135,16 @@
                 itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
         }
-
-        public void ReverseBob()
-        {
-            //future method which will cause items to bob up and down
-        }
-
         public void Update()
         {
             this.lifeTime++;
             if (this.lifeTime % DirectionChange == 0)
             {
                 this.GetNewDirection();
+            }
+            if (this.lifeTime > DespawnTimer)
+            {
+                this.expired = true;
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.UpdateLoc();

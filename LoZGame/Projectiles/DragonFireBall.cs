@@ -9,9 +9,9 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     class DragonFireBall : IProjectile
     {
-        private const int FrameChange = 10;
-        private const int XVelocity = 7;
-        private const int YVelocity = 2;
+        private const int FrameChange = 15;
+        private const int XVelocity = 3;
+        private const int YVelocity = 1;
         private const int MaxLife = 300;
 
         ISprite sprite;
@@ -41,10 +41,12 @@ namespace LoZClone
             {
                 this.Physics = new Physics(new Vector2(loc.X, loc.Y), new Vector2(-1 * XVelocity, YVelocity), new Vector2(0, 0));
             }
-            this.Size = new Vector2(10, 10);
+            float size = (ProjectileSpriteFactory.Instance.FireballHeight * ProjectileSpriteFactory.Instance.Scale) * 1.5f;
+            this.Size = new Vector2(size, size);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.sprite = ProjectileSpriteFactory.Instance.Fireball();
             this.expired = false;
+            this.lifeTime = MaxLife;
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
@@ -62,7 +64,6 @@ namespace LoZClone
             {
                 this.expired = true;
             }
-            this.lifeTime++;
             if (this.lifeTime % FrameChange == 0)
             {
                 this.sprite.Update();
@@ -73,7 +74,7 @@ namespace LoZClone
 
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, Color.White);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }
