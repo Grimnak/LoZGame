@@ -159,7 +159,7 @@
                     this.enemies.Add(new Stalfos(location));
                     break;
                 case "WallMaster":
-                    this.enemies.Add(new WallMaster(location));
+                    this.enemies.Add(new WallMaster(new Vector2(400, 240)));
                     break;
                 case "Zol":
                     this.enemies.Add(new Zol(location));

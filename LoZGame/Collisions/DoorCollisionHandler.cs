@@ -13,22 +13,25 @@
         }
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
-        {
-            if (door.Physics.Location == door.LeftScreenLoc)
+        {            
+            if (!(player.State is ImmobileState))
             {
-                LoZGame.Instance.Dungeon.MoveLeft();
-            }
-            else if (door.Physics.Location == door.RightScreenLoc)
-            {
-                LoZGame.Instance.Dungeon.MoveRight();
-            }
-            else if (door.Physics.Location == door.DownScreenLoc)
-            {
-                LoZGame.Instance.Dungeon.MoveDown();
-            }
-            else if (door.Physics.Location == door.UpScreenLoc)
-            {
-                LoZGame.Instance.Dungeon.MoveUp();
+              if (door.Physics.Location == door.LeftScreenLoc)
+              {
+                  LoZGame.Instance.Dungeon.MoveLeft();
+              }
+              else if (door.Physics.Location == door.RightScreenLoc)
+              {
+                  LoZGame.Instance.Dungeon.MoveRight();
+              }
+              else if (door.Physics.Location == door.DownScreenLoc)
+              {
+                  LoZGame.Instance.Dungeon.MoveDown();
+              }
+              else if (door.Physics.Location == door.UpScreenLoc)
+              {
+                  LoZGame.Instance.Dungeon.MoveUp();
+              }
             }
         }
     }

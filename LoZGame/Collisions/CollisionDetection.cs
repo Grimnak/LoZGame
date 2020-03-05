@@ -17,7 +17,7 @@
         {
             foreach (IPlayer player in players)
             {
-                if (!(player.State is DieState))
+                if (!(player.State is DieState) && !(player.State is ImmobileState))
                 {
                     CheckCollisions<IEnemy>(player, enemies);
                     CheckCollisions<IProjectile>(player, projectiles);
@@ -29,8 +29,11 @@
 
             foreach (IEnemy enemy in enemies)
             {
+                if (!(enemy is WallMaster))
+                {
+                    CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
+                }
                 CheckCollisions<IProjectile>(enemy, projectiles);
-                CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
             }
 
             foreach (IBlock block in blocks)

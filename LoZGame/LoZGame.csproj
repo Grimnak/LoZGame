@@ -203,6 +203,7 @@
     <Compile Include="Sprites\EnemySprites\Stalfos\StalfosSprite.cs" />
     <Compile Include="Sprites\EnemySprites\WallMaster\WallMasterLeftSprite.cs" />
     <Compile Include="Sprites\EnemySprites\WallMaster\WallMasterRightSprite.cs" />
+    <Compile Include="Sprites\EnemySprites\WallMaster\WallMasterAttackingSprite.cs" />
     <Compile Include="Sprites\EnemySprites\Zol\ZolSprite.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\DeadDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\DownMovingDodongoState.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="Enemies\EnemyStates\WallMasterStates\LeftMovingWallMasterState.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\RightMovingWallMasterState.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\UpMovingWallMasterState.cs" />
+    <Compile Include="Enemies\EnemyStates\WallMasterStates\AttackingWallMasterState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\DeadZolState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\DownMovingZolState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\LeftMovingZolState.cs" />
@@ -352,6 +354,7 @@
     <Compile Include="Player\PlayerStates\MoveDownState.cs" />
     <Compile Include="Player\PlayerStates\MoveUpState.cs" />
     <Compile Include="Player\PlayerStates\IdleState.cs" />
+    <Compile Include="Player\PlayerStates\ImmobileState.cs" />
     <Compile Include="Player\PlayerClasses\Link.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -29,11 +29,9 @@
         private IEnemyState currentState;
         private int damage = 2;
         private int health = 4;
-        private int lifeTime = 0;
         private int timeSinceIdle = 0;
         private int timeInIdle = 0;
         private int movementWaitMax = 12;
-        private readonly int directionChange = 40;
         private RandomStateGenerator randomStateGenerator;
 
         public Zol(Vector2 location)
@@ -63,6 +61,7 @@
                 {
                     ShouldMove = !ShouldMove;
                     timeInIdle = 0;
+                    randomStateGenerator.Update();
                 }
             }
         }
@@ -74,12 +73,6 @@
 
         public void Update()
         {
-            this.lifeTime++;
-            if (this.lifeTime > this.directionChange)
-            {
-                randomStateGenerator.Update();
-                this.lifeTime = 0;
-            }
             this.decideToMove();
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
