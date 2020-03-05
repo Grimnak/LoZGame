@@ -13,6 +13,7 @@
         private const int DefaultUpdateSpeed = 60;
         private const int InversionTime = 5;
         private BlendState bsInverter;
+
         public SpriteBatch SpriteBatch => this.spriteBatch;
 
         private int gameLife;
@@ -69,6 +70,7 @@
         public DoorManager Doors { get { return doorManager; } }
 
         public DropManager Drops { get { return dropManager; } }
+
         public string GameState { get { return gameState; } set { gameState = value; } }
 
         public CollisionDetection CollisionDetector { get { return collisionDetector; } }
@@ -159,7 +161,7 @@
             this.blockManager.Update();
             this.doorManager.Update();
             this.entityManager.Update();
-            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.doorManager.DoorList.AsReadOnly(), this.itemManager.ItemList.AsReadOnly(), this.projectiles.AsReadOnly());
+            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.doorManager.DoorList.AsReadOnly(), this.itemManager.ItemList.AsReadOnly(), this.entityManager.ProjectileManager.ProjectileList.AsReadOnly(), this.entityManager.EnemyProjectileList.AsReadOnly());
             base.Update(gameTime);
         }
 
