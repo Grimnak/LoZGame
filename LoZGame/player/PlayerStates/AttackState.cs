@@ -12,7 +12,6 @@ namespace LoZClone
         /// <summary>
         /// Initializes a new instance of the <see cref="AttackState"/> class.
         /// </summary>
-        /// <param name="game">Current game.</param>
         /// <param name="playerInstance">Instance of the player.</param>
         public AttackState(IPlayer playerInstance)
         {

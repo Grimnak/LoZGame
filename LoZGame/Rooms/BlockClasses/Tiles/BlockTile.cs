@@ -14,7 +14,7 @@
     public class BlockTile : IBlock
     {
         private ISprite sprite;
-        private Color spriteTint = Color.White;
+        private Color spriteTint = LoZGame.Instance.DungeonTint;
         private Rectangle bounds;
 
         public Rectangle Bounds
@@ -23,7 +23,7 @@
             set { this.bounds = value; }
         }
 
-        BlockCollisionHandler blockCollisionHandler;
+        private BlockCollisionHandler blockCollisionHandler;
 
         public Physics Physics { get; set; }
 

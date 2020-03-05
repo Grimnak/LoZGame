@@ -7,6 +7,9 @@
     public partial class CollisionDetection
     {
         private Dungeon dungeon;
+        private bool moveToBasement = false;
+
+        public bool MoveToBasement { get { return moveToBasement; } set { moveToBasement = value; } }
 
         public CollisionDetection(Dungeon dungeon)
         {
@@ -21,16 +24,11 @@
                 {
                     CheckCollisions<IEnemy>(player, enemies);
                     CheckCollisions<IProjectile>(player, projectiles);
-
                     if (player.DamageTimer <= 0)
                     {
                         CheckCollisions<IDoor>(player, doors);
                     }
-
-                    if (!(player.State is PickupItemState))
-                    {
-                        CheckCollisions<IItem>(player, items);
-                    }
+                    CheckCollisions<IItem>(player, items);
                     CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
                 }
             }
@@ -52,6 +50,10 @@
                     CheckCollisions<IEnemy>(block, enemies);
                     CheckBorders(block, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
                 }
+                else if (block is Tile && ((Tile)block).Name.Equals("stairs"))
+                {
+                    CheckCollisions<IPlayer>(block, players);
+                }
             }
 
             foreach (IItem item in items)
@@ -60,6 +62,13 @@
                 {
                     CheckBorders(item, ItemSpriteFactory.FairyWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.FairyHeight * ItemSpriteFactory.Instance.Scale);
                 }
+            }
+
+            // Unable to change rooms mid-foreach loop, so set a flag and change directly after.
+            if (moveToBasement)
+            {
+                dungeon.MoveDown();
+                moveToBasement = false;
             }
         }
 

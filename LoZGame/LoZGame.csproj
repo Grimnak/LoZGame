@@ -325,6 +325,7 @@
     <Compile Include="Sprites\ItemSpriteClasses\WoodenSwordSprite.cs" />
     <Compile Include="Sprites\ItemSpriteClasses\YellowRupeeSprite.cs" />
     <Compile Include="Sprites\PlayerSpriteClasses\LinkDieSprite.cs" />
+    <Compile Include="Sprites\PlayerSpriteClasses\LinkPickupTriforceSprite.cs" />
     <Compile Include="Sprites\PlayerSpriteClasses\LinkPickupItemSprite.cs" />
     <Compile Include="Sprites\PlayerSpriteClasses\LinkUseItemDownSprite.cs" />
     <Compile Include="Sprites\PlayerSpriteClasses\LinkUseItemLeftSprite.cs" />

@@ -3,16 +3,16 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class LinkPickupItemSprite : ISprite
+    public class LinkPickupTriforceSprite : ISprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;
         private readonly int spriteSheetColumns;
         private readonly int spriteSheetWidth;
         private readonly int spriteSheetHeight;
-        private readonly int currentFrame = 0;
+        private readonly int currentFrame = 1;
 
-        public LinkPickupItemSprite(Texture2D spriteTexture, SpriteSheetData data)
+        public LinkPickupTriforceSprite(Texture2D spriteTexture, SpriteSheetData data)
         {
             this.spriteSheet = spriteTexture;
             this.spriteSheetWidth = data.Width;

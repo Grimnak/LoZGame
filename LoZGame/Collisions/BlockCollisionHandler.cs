@@ -17,40 +17,18 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(player.State is ImmobileState))
+            if (!(player.State is ImmobileState) && this.block is MovableTile)
             {
-                if (this.block is MovableTile)
-                {
-                    DeterminePushVelocity(player, collisionSide);
-                }
+                DeterminePushVelocity(player, collisionSide);
+            }
+            else if (this.block is Tile && player.State is MoveDownState)
+            {
+                LoZGame.Instance.CollisionDetector.MoveToBasement = true;
             }
         }
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-        }
-
-        public void OnCollisionResponse(IBlock targetBlock, CollisionDetection.CollisionSide collisionSide)
-        {
-            /*if (this.block != targetBlock && this.block is MovableTile && !(targetBlock is Tile))
-            {
-                if (collisionSide == CollisionDetection.CollisionSide.Right)
-                {
-                    this.block.Physics.Location = new Vector2(targetBlock.Physics.Location.X - LoZGame.Instance.TileWidth, this.block.Physics.Location.Y);
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Left)
-                {
-                    this.block.Physics.Location = new Vector2(targetBlock.Physics.Location.X + LoZGame.Instance.TileWidth, this.block.Physics.Location.Y);
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Top)
-                {
-                    this.block.Physics.Location = new Vector2(this.block.Physics.Location.X, targetBlock.Physics.Location.Y + LoZGame.Instance.TileHeight);
-                }
-                else
-                {
-                    this.block.Physics.Location = new Vector2(this.block.Physics.Location.X, targetBlock.Physics.Location.Y - LoZGame.Instance.TileHeight);
-                }
-            }*/
         }
 
         private void DeterminePushVelocity(IPlayer player, CollisionDetection.CollisionSide collisionSide)
