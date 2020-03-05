@@ -56,7 +56,6 @@
 
         public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
 
-
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IEnemy)
