@@ -14,6 +14,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.wallMaster.CurrentState = this;
             this.wallMaster.Physics.ResetVelocity();
+            LoZGame.Instance.Drops.AttemptDrop(this.wallMaster.Physics.Location);
         }
 
         public void MoveLeft()

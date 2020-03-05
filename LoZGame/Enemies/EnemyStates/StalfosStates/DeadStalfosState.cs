@@ -14,6 +14,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.stalfos.CurrentState = this;
             this.stalfos.Physics.ResetVelocity();
+            LoZGame.Instance.Drops.AttemptDrop(this.stalfos.Physics.Location);
         }
 
         public void MoveLeft()
