@@ -66,6 +66,7 @@
     <Compile Include="Collisions\EnemyCollisionHandler.cs" />
     <Compile Include="Collisions\CollisionDetection.cs" />
     <Compile Include="Collisions\ItemCollisionHandler.cs" />
+    <Compile Include="Collisions\ProjectileCollisionHandler.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandArrow.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackA.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackB.cs" />

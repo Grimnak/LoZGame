@@ -17,20 +17,19 @@
         private readonly string direction;
 
         private readonly int scale = ProjectileSpriteFactory.Instance.Scale;
+        private ProjectileCollisionHandler collisionHandler;
         private int projectileWidth;
         private int projectileHeight;
         private bool expired;
         private bool returning;
-        private bool reachedMaxDistance;
         private bool isReturned;
         private int distTraveled;
         private float currentSpeed;
         private Vector2 playerLoc;
         private ISprite sprite;
+        private int damage;
 
-        private readonly bool hostile;
-
-        public bool IsHostile => this.hostile;
+        public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }
 
@@ -38,8 +37,9 @@
 
         public MagicBoomerangEnemy(Goriya enemy)
         {
-            this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth;
-            this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight;
+            this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * this.scale;
+            this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight * this.scale;
+            this.collisionHandler = new ProjectileCollisionHandler(this);
             this.expired = false;
             Vector2 loc = enemy.Physics.Location;
             this.direction = enemy.Direction;
@@ -47,8 +47,7 @@
             this.returning = false;
             this.Enemy = enemy;
             this.distTraveled = 0;
-            this.hostile = true;
-            this.reachedMaxDistance = false;
+            this.damage = 1;
 
             if (this.direction.Equals("Up"))
             {
@@ -84,9 +83,25 @@
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IEnemy || otherCollider is IBlock)
+            if (otherCollider is IEnemy)
             {
-                this.returning = true;
+                this.returning = this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IBlock)
+            {
+                this.returning = this.collisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IPlayer)
+            {
+                this.returning = this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IItem)
+            {
+                this.returning = this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IDoor)
+            {
+                this.returning = this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 
@@ -112,7 +127,7 @@
             }
         }
 
-        public bool IsExpired => this.expired;
+        public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
 
         public void Update()
         {

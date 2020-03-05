@@ -12,10 +12,13 @@
         private readonly int scale;
         private bool expired;
         private readonly string direction;
-        private readonly bool hostile;
         private int projectileWidth;
         private int projectileHeight;
         private ISprite sprite;
+        private ProjectileCollisionHandler collisionHandler;
+        private int damage;
+
+        public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }
 
@@ -28,7 +31,7 @@
             this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * scale;
             this.lifeTime = MaxLife;
             this.direction = direction;
-            this.hostile = false;
+            this.damage = 0;
             if (this.direction == "Up")
             {
                 this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - this.projectileWidth) / 2), loc.Y - LinkSize), new Vector2(0, 0), new Vector2(0, 0));
@@ -45,20 +48,36 @@
             {
                 this.Physics = new Physics(new Vector2(loc.X - ((projectileWidth - LinkSize) / 2), loc.Y + LinkSize), new Vector2(0, 0), new Vector2(0, 0));
             }
+            this.collisionHandler = new ProjectileCollisionHandler(this);
             this.expired = false;
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             this.sprite = ProjectileSpriteFactory.Instance.Bomb();
         }
 
-        public bool IsExpired => this.expired;
+        public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
 
-        public bool IsHostile => hostile;
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IPlayer)
+            if (otherCollider is IEnemy)
             {
-                this.lifeTime++;
+                this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IBlock)
+            {
+                this.collisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IPlayer)
+            {
+                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IItem)
+            {
+                this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IDoor)
+            {
+                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 

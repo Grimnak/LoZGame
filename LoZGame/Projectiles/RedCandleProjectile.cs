@@ -13,17 +13,17 @@
         private const int Speed = 4;
         private const float Accel = 0.2f;
         private const float AccelDecay = 0.95f;
-
+        private ProjectileCollisionHandler collisionHandler;
         private int lifeTime;
         private int travelTime;
 
         private bool expired;
-        private readonly bool hostile;
         private int projectileWidth;
         private int projectileHeight;
         ISprite sprite;
+        private int damage;
 
-        public bool IsHostile => this.hostile;
+        public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }
 
@@ -34,8 +34,8 @@
             this.lifeTime = LifeTimeMax;
             this.projectileWidth = ProjectileSpriteFactory.Instance.FlameWidth * scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.FlameHeight * scale;
+            this.collisionHandler = new ProjectileCollisionHandler(this);
             this.expired = false;
-            this.hostile = false;
             this.travelTime = (int)(LifeTimeMax / 2);
             if (direction.Equals("Up"))
             {
@@ -55,18 +55,32 @@
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             this.sprite = ProjectileSpriteFactory.Instance.RedCandle();
+            this.damage = 10;
         }
 
-        public bool IsExpired => this.expired;
+        public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IPlayer)
+            if (otherCollider is IEnemy)
             {
-                // do nothing
-            } else
+                this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IBlock)
             {
-                this.Physics.StopMovement();
+                this.collisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IPlayer)
+            {
+                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IItem)
+            {
+                this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IDoor)
+            {
+                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 

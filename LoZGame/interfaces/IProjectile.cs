@@ -5,7 +5,9 @@
 
     public interface IProjectile : ICollider
     {
-        bool IsExpired { get; }
+        bool IsExpired { get; set; }
+
+        int Damage {get; set;}
 
         void Update();
 

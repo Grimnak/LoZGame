@@ -17,7 +17,7 @@
         ISprite sprite;
         private readonly Goriya Enemy;
         private readonly string direction;
-
+        private ProjectileCollisionHandler collisionHandler;
         private readonly int scale = ProjectileSpriteFactory.Instance.Scale;
         private int projectileWidth;
         private int projectileHeight;
@@ -28,10 +28,8 @@
         private float currentSpeed;
         private float layer;
         private Vector2 playerLoc;
-
-        private readonly bool hostile;
-
-        public bool IsHostile => this.hostile;
+        private int damage;
+        public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }
 
@@ -41,6 +39,7 @@
         {
             this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight * scale;
+            this.collisionHandler = new ProjectileCollisionHandler(this);
             this.expired = false;
             Vector2 loc = enemy.Physics.Location;
             this.direction = enemy.Direction;
@@ -48,7 +47,7 @@
             this.returning = false;
             this.Enemy = enemy;
             this.distTraveled = 0;
-            this.hostile = true;
+            this.damage = 1;
 
             if (this.direction.Equals("Up"))
             {
@@ -84,9 +83,25 @@
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IEnemy || otherCollider is IBlock)
+            if (otherCollider is IEnemy)
             {
-                this.returning = true;
+                this.returning = this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IBlock)
+            {
+                this.returning = this.collisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IPlayer)
+            {
+                this.returning = this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IItem)
+            {
+                this.returning = this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IDoor)
+            {
+                this.returning = this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 
@@ -112,7 +127,7 @@
             }
         }
 
-        public bool IsExpired => this.expired;
+        public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
 
         public void Update()
         {

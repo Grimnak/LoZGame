@@ -12,7 +12,7 @@ namespace LoZClone
         private static readonly int Speed = 10;
         private static readonly int LinkSize = LinkSpriteFactory.LinkHeight;
         ISprite sprite;
-
+        private ProjectileCollisionHandler collisionHandler;
         private Rectangle frame;
         private Vector2 origin;
         private int lifeTime;
@@ -22,11 +22,11 @@ namespace LoZClone
         private readonly float rotation;
         private readonly int instance;
         private bool expired;
-        private readonly bool hostile;
+        private int damage;
 
-        public bool IsHostile => this.hostile;
+        public int Damage { get { return damage; } set { damage = value; } }
 
-        public bool IsExpired => this.expired;
+        public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
 
         public Physics Physics { get; set; }
 
@@ -36,8 +36,9 @@ namespace LoZClone
         {
             this.projectileWidth = ProjectileSpriteFactory.Instance.ArrowWidth * ProjectileSpriteFactory.Instance.Scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * ProjectileSpriteFactory.Instance.Scale;
+            this.collisionHandler = new ProjectileCollisionHandler(this);
             this.lifeTime = 100;
-            this.hostile = false;
+            this.damage = 1;
             this.expired = false;
             if (direction.Equals("Up"))
             {
@@ -65,13 +66,25 @@ namespace LoZClone
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IPlayer || otherCollider is IBlock)
+            if (otherCollider is IEnemy)
             {
-                // do nothing
+                this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
-            else
+            else if (otherCollider is IBlock)
             {
-                this.lifeTime = 0;
+                this.collisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IPlayer)
+            {
+                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IItem)
+            {
+                this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IDoor)
+            {
+                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 
