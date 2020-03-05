@@ -23,6 +23,10 @@ namespace LoZClone
             this.item = item;
             this.lockoutTimer = item.PickUpItemTime;
             this.sprite = this.CreateCorrectSprite();
+            if (item is Triforce)
+            {
+                LoZGame.Instance.GameState = "Win";
+            }
         }
 
         /// <inheritdoc/>
@@ -109,6 +113,10 @@ namespace LoZClone
                 if (this.lockoutTimer == 0)
                 {
                     item.Expired = true;
+                    if (this.item is Triforce)
+                    {
+                        LoZGame.Instance.Reset();
+                    }
                 }
             }
 
