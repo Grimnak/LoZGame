@@ -13,6 +13,7 @@ namespace LoZClone
         private int currentFrame = 0;
         private int frameDelay = 0;
         private readonly int frameDelayMax = 7;
+        private float layer = 1.0f;
 
         public WallMasterAttackingSprite(Texture2D spriteTexture, SpriteSheetData data)
         {
@@ -36,8 +37,7 @@ namespace LoZClone
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, this.spriteSheetWidth, this.spriteSheetHeight);
-
-            LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint);
+            LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, layer);
         }
     }
 }

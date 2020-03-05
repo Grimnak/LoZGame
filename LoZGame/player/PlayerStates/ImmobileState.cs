@@ -70,14 +70,14 @@ namespace LoZClone
         public void Update()
         {
             this.player.Physics.Move();
-            if (this.player.Physics.Location.X <= 0)
+            if (this.player.Physics.Location.X < 0)
             {
                 LoZGame.Instance.Dungeon.Reset();
                 this.player.Physics.Location = new Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
-                this.player.State = new IdleState(this.player);
                 this.player.Physics.ResetVelocity();
+                this.player.State = new IdleState(this.player);
             }
             this.sprite.Update();
         }

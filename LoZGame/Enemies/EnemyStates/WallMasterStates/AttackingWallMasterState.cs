@@ -11,7 +11,7 @@
         public AttackingWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
-            wallMaster.Physics.Velocity = new Vector2(-1, 0);
+            wallMaster.Physics.Velocity = new Vector2(-2, 0);
             this.sprite = EnemySpriteFactory.Instance.CreateAttackingWallMasterSprite();
             this.wallMaster.CurrentState = this;
         }
