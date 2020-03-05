@@ -65,8 +65,7 @@
 
         public void Draw(Vector2 location, Color spriteTint)
         {
-            this.layer = 1 - (1 / (location.Y + this.Size.Y));
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, this.effect, this.layer);
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, this.effect, 1.0f);
         }
     }
 }
