@@ -20,8 +20,12 @@ namespace LoZClone
         private readonly float rotation;
         private bool expired;
         private Vector2 Size;
+        private ProjectileCollisionHandler collisionHandler;
+        private int damage;
 
-        public bool IsExpired => this.expired;
+        public int Damage { get { return damage; } set { damage = value; } }
+
+        public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
 
         public Physics Physics { get; set; }
 
@@ -41,19 +45,37 @@ namespace LoZClone
             {
                 this.Physics = new Physics(new Vector2(loc.X, loc.Y), new Vector2(-1 * XVelocity, YVelocity), new Vector2(0, 0));
             }
+            this.collisionHandler = new ProjectileCollisionHandler(this);
             float size = (ProjectileSpriteFactory.Instance.FireballHeight * ProjectileSpriteFactory.Instance.Scale) * 1.5f;
             this.Size = new Vector2(size, size);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.sprite = ProjectileSpriteFactory.Instance.Fireball();
             this.expired = false;
             this.lifeTime = MaxLife;
+            this.damage = 2;
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IPlayer)
+            if (otherCollider is IEnemy)
             {
-                this.expired = true;
+                this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IBlock)
+            {
+                this.collisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IPlayer)
+            {
+                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IItem)
+            {
+                this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IDoor)
+            {
+                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 

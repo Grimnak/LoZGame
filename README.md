@@ -39,7 +39,7 @@ R - Resets the game to its default state
 
 4, 7 - Uses the Blue Candle/Red Candle
 
-8 - Draws Animation for picking up a Triforce
+8 - Picks up a Triforce
 
 
 

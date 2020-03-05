@@ -16,9 +16,8 @@
         private float layer;
         private int lifeTime;
         private bool expired;
-        private int pickUpItemTime = 0;
 
-        public int PickUpItemTime { get { return this.pickUpItemTime; } }
+        public int PickUpItemTime { get { return 0; } }
 
         public bool Expired { get { return this.expired; } set { this.expired = value; } }
 

@@ -14,6 +14,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.dragon.CurrentState = this;
             this.dragon.Physics.ResetVelocity();
+            LoZGame.Instance.Drops.AttemptDrop(this.dragon.Physics.Location);
         }
 
         public void MoveUp()

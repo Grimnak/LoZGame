@@ -20,6 +20,8 @@
 
         public int PickUpItemTime { get { return this.pickUpItemTime; } }
 
+        public int PickUpItemTime { get { return 0; } }
+
         public bool Expired { get { return this.expired; } set { this.expired = value; } }
 
         public Physics Physics { get; set; }

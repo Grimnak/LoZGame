@@ -15,6 +15,7 @@
             this.keese.CurrentState = this;
             this.keese.VelocityX = 0;
             this.keese.VelocityY = 0;
+            LoZGame.Instance.Drops.AttemptDrop(this.keese.Physics.Location);
         }
 
         public void MoveLeft()

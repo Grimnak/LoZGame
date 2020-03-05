@@ -14,6 +14,7 @@
             this.dodongo = dodongo;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.dodongo.Physics.ResetVelocity();
+            LoZGame.Instance.Drops.AttemptDrop(this.dodongo.Physics.Location);
         }
 
         public void MoveLeft()
