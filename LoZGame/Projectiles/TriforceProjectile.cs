@@ -11,12 +11,12 @@
         private int lifeTime;
         private readonly int scale = ProjectileSpriteFactory.Instance.Scale;
         private bool expired;
-        private readonly bool hostile;
         private ISprite sprite;
         private int projectileWidth;
         private int projectileHeight;
+        private int damage;
 
-        public bool IsHostile => this.hostile;
+        public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }
 
@@ -32,8 +32,8 @@
             this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - projectileWidth) / (2 * scale)), loc.Y - LinkSize), new Vector2(0, 0), new Vector2(0, 0));
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             this.expired = false;
-            this.hostile = false;
             this.sprite = ProjectileSpriteFactory.Instance.Triforce();
+            this.damage = 0;
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
@@ -41,7 +41,7 @@
             // do nothing
         }
 
-        public bool IsExpired => this.expired;
+        public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
 
         public void Update()
         {

@@ -14,6 +14,10 @@
         private ISprite sprite;
         private int projectileWidth;
         private int projectileHeight;
+        private ProjectileCollisionHandler collisionHandler;
+        private int damage;
+
+        public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }
 
@@ -30,6 +34,7 @@
         public SwordBeamExplosion(Vector2 location, string direction)
         {
             this.lifeTime = MaxLifeTime;
+            this.collisionHandler = new ProjectileCollisionHandler(this);
             projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             projectileHeight = ProjectileSpriteFactory.Instance.TriforceSize * scale;
             this.direction = direction;
@@ -59,19 +64,36 @@
                 this.Physics.Velocity = new Vector2(-1 * Speed, Speed);
                 this.effect = SpriteEffects.FlipVertically;
             }
-
+            this.damage = 1;
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             this.hostile = false;
             this.expired = false;
             this.sprite = ProjectileSpriteFactory.Instance.SwordExplosion(this.effect, this.rotation);
         }
 
-        public bool IsExpired => this.expired;
+        public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(otherCollider is IPlayer || otherCollider is IBlock)) {
-                this.expired = true;
+            if (otherCollider is IEnemy)
+            {
+                this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IBlock)
+            {
+                this.collisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IPlayer)
+            {
+                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IItem)
+            {
+                this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IDoor)
+            {
+                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 

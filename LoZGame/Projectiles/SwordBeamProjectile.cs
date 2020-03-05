@@ -9,18 +9,22 @@
         private const int Offset = 4;
         private const int Delay = 10;
 
+        private ProjectileCollisionHandler collisionHandler;
+
         private int lifeTime;
         private readonly int scale = ProjectileSpriteFactory.Instance.Scale;
         private readonly string direction;
         private readonly float rotation;
         private readonly int instance;
         private bool expired;
-        private float layer;
         private Vector2 tip;
         private Vector2 origin;
         private ISprite sprite;
         private int projectileWidth;
         private int projectileHeight;
+        private int damage;
+
+        public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }
 
@@ -40,6 +44,7 @@
         {
             this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.TriforceSize * scale;
+            this.collisionHandler = new ProjectileCollisionHandler(this);
             this.lifeTime = MaxLifeTime;
             this.direction = player.CurrentDirection;
             Vector2 loc = player.Physics.Location;
@@ -69,13 +74,13 @@
                 this.rotation = 0;
                 this.tip = new Vector2(projectileWidth / 2, projectileHeight);
             }
+            this.damage = 10;
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
-            this.layer = 1 / (this.Physics.Location.Y + projectileHeight);
             this.expired = false;
             this.sprite = ProjectileSpriteFactory.Instance.SwordBeam(this.rotation);
         }
 
-        public bool IsExpired => this.expired;
+        public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
 
         public int Instance => this.instance;
 
@@ -91,7 +96,23 @@
         {
             if (otherCollider is IEnemy)
             {
-                this.lifeTime = 0;
+                this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+            } 
+            else if (otherCollider is IBlock)
+            {
+                this.collisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IPlayer)
+            {
+                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IItem)
+            {
+                this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IDoor)
+            {
+                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 
