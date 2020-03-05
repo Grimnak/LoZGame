@@ -69,10 +69,8 @@
             {
                 this.expired = true;
                 int explosiontype = (int)LoZGame.Instance.Entities.ExplosionManager.Explosion;
-                Vector2 explosionCenter = new Vector2(ProjectileSpriteFactory.Instance.ExplosionCenter.X * this.scale, ProjectileSpriteFactory.Instance.ExplosionCenter.Y * this.scale);
                 Vector2 bombCenter = new Vector2(this.Physics.Location.X + (this.projectileWidth / 2), this.Physics.Location.Y + (this.projectileHeight / 2));
-                Vector2 explosionOffset = new Vector2(bombCenter.X - explosionCenter.X, bombCenter.Y - explosionCenter.Y);
-                LoZGame.Instance.Entities.ExplosionManager.AddExplosion(explosiontype, new Vector2(this.Physics.Location.X + explosionOffset.X, this.Physics.Location.Y + explosionOffset.Y));
+                LoZGame.Instance.Entities.ExplosionManager.AddExplosion(explosiontype, bombCenter);
             }
         }
 

@@ -30,7 +30,7 @@
             this.currentFrame = this.frameOne;
             this.scale = scale;
             this.rotation = 0;
-            this.origin = new Vector2(0, 0);
+            this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
         }
 
         private void NextFrame()
