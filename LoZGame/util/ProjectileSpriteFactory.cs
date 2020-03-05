@@ -79,9 +79,98 @@
         {
             get { return fireballHeight; }
         }
+
         public int FireballWidth
         {
             get { return fireballWidth; }
+        }
+
+        public static int GetProjectileWidth(IProjectile projectile)
+        {
+            if (projectile is ArrowProjectile || projectile is SilverArrowProjectile)
+            {
+                return arrowWidth * DRAWSCALE;
+            }
+            else if (projectile is BlueCandleProjectile || projectile is RedCandleProjectile)
+            {
+                return flameWidth;
+            }
+            else if (projectile is BombProjectile)
+            {
+                return standardWidth * DRAWSCALE;
+            }
+            else if (projectile is BombExplosion)
+            {
+                return explosionWidth * DRAWSCALE;
+            }
+            else if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BoomerangEnemy)
+            {
+                return standardWidth * DRAWSCALE;
+            }
+            else if (projectile is DragonFireBall)
+            {
+                return fireballWidth * DRAWSCALE;
+            }
+            else if (projectile is SwordBeamProjectile)
+            {
+                return swordBeamWidth * DRAWSCALE;
+            }
+            else if (projectile is SwordBeamExplosion)
+            {
+                return standardWidth * DRAWSCALE;
+            }
+            else if (projectile is Triforce)
+            {
+                return triforceSize * DRAWSCALE;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public static int GetProjectileHeight(IProjectile projectile)
+        {
+            if (projectile is ArrowProjectile || projectile is SilverArrowProjectile)
+            {
+                return standardHeight * DRAWSCALE;
+            }
+            else if (projectile is BlueCandleProjectile || projectile is RedCandleProjectile)
+            {
+                return flameHeight;
+            }
+            else if (projectile is BombProjectile)
+            {
+                return standardHeight * DRAWSCALE;
+            }
+            else if (projectile is BombExplosion)
+            {
+                return explosionHeight * DRAWSCALE;
+            }
+            else if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BoomerangEnemy)
+            {
+                return boomerangHeight * DRAWSCALE;
+            }
+            else if (projectile is DragonFireBall)
+            {
+                return fireballHeight * DRAWSCALE;
+            }
+            else if (projectile is SwordBeamProjectile)
+            {
+                return standardHeight * DRAWSCALE;
+            }
+            else if (projectile is SwordBeamExplosion)
+            {
+                return triforceSize * DRAWSCALE;
+            }
+            else if (projectile is Triforce)
+            {
+                return triforceSize * DRAWSCALE;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public Vector2 ExplosionCenter { get { return new Vector2(ExplosionWidth / 2, ExplosionHeight / 2); } }
@@ -124,7 +213,8 @@
         public int Scale => DRAWSCALE;
 
         private ProjectileSpriteFactory()
-        { }
+        {
+        }
 
         public void LoadAllTextures(ContentManager content)
         {

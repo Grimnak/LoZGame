@@ -7,7 +7,7 @@
     {
         bool IsExpired { get; set; }
 
-        int Damage {get; set;}
+        int Damage {get; set; }
 
         void Update();
 
