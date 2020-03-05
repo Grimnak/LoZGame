@@ -33,7 +33,7 @@
             this.lifeTime = MaxLifeTime;
             this.hostile = true;
             this.expired = false;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X - (projectileWidth / 2), (int)this.Physics.Location.Y - (projectileHeight / 2), projectileWidth, projectileHeight);
             Random numGen = new Random();
             int selectBomb = numGen.Next(0, 5);
             switch (selectBomb)
