@@ -11,8 +11,11 @@
         private SpriteBatch spriteBatch;
         private static readonly float UpdatesPerSecond = 60;
         private const int DefaultUpdateSpeed = 60;
-
+        private const int InversionTime = 5;
+        private BlendState bsInverter;
         public SpriteBatch SpriteBatch => this.spriteBatch;
+
+        private int gameLife;
 
         private Random randomNumberGenerator;
 
@@ -34,6 +37,8 @@
         private List<IController> controllers;
         private List<IPlayer> players;
         private List<IProjectile> projectiles;
+
+        private string gameState;
 
         private Color dungeonTint;
 
@@ -63,6 +68,7 @@
 
         public DoorManager Doors { get { return doorManager; } }
         public DropManager Drops { get { return dropManager; } }
+        public string GameState { get { return gameState; } set { gameState = value; } }
 
         public Random Random { get { return randomNumberGenerator; } }
 
@@ -74,7 +80,12 @@
             this.Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
-
+            gameState = "Default";
+            bsInverter = new BlendState()
+            {
+                ColorSourceBlend = Blend.InverseBlendFactor,
+                ColorDestinationBlend = Blend.InverseSourceColor,
+            };
             itemManager = new ItemManager();
             blockManager = new BlockManager();
             entityManager = new EntityManager();
@@ -129,6 +140,11 @@
 
         protected override void Update(GameTime gameTime)
         {
+            this.gameLife++;
+            if (gameLife >= DefaultUpdateSpeed)
+            {
+                gameLife = 0;
+            }
             foreach (IController controller in this.controllers)
             {
                 controller.Update();
@@ -147,7 +163,14 @@
         protected override void Draw(GameTime gameTime)
         {
             this.GraphicsDevice.Clear(Color.Black);
-            this.spriteBatch.Begin(SpriteSortMode.FrontToBack);
+            if (gameState.Equals("Win") && gameLife % (InversionTime * 2) < InversionTime)
+            {
+                this.spriteBatch.Begin(SpriteSortMode.FrontToBack, bsInverter);
+            }
+            else
+            {
+                this.spriteBatch.Begin(SpriteSortMode.FrontToBack);
+            }
             if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
             {
                 this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), dungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
@@ -165,6 +188,15 @@
             this.link.Draw();
             this.spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        public void Reset()
+        {
+            foreach (IPlayer player in this.players)
+            {
+                ICommand reset = new CommandReset(player, this.dungeon);
+                reset.Execute();
+            }
         }
     }
 }
