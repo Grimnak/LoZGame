@@ -74,9 +74,18 @@
             {
                 this.currentY--;
                 this.LoadNewRoom();
-                this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
-                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
+                if (this.currentX == 1 && this.currentY == 0)
+                {
+                    this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
+                        (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5)),
+                        (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));
+                }
+                else
+                {
+                    this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
+                        (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                        (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
+                }
             }
         }
 
@@ -90,9 +99,18 @@
                 this.currentY++;
                 this.LoadNewRoom();
 
-                this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
-                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 0)) + 2);
+                if (currentX == 1 && currentY == 1)
+                {
+                    this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
+                        (float)((BlockSpriteFactory.Instance.TileWidth * 4)),
+                        (float)((BlockSpriteFactory.Instance.TileHeight * 0)) + 2);
+                }
+                else
+                {
+                    this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
+                        (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                        (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 0)) + 2);
+                }
             }
         }
 
