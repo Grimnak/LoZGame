@@ -27,6 +27,7 @@
         public ExplosionManager()
         {
             this.explosionList = new Dictionary<int, IProjectile>();
+            this.explosions = new List<IProjectile>();
             this.explosionId = 0;
             this.explosionListSize = 0;
             this.deletable = new List<int>();

@@ -15,6 +15,7 @@
             this.explosion = new ExplosionManager();
             this.projectile = new ProjectileManager();
             this.enemyProjectile = new EnemyProjectileManager();
+            this.friendlyProjectiles = new List<IProjectile>();
         }
 
         public List<IProjectile> EnemyProjectiles { get { return this.enemyProjectile.Projectiles; } }

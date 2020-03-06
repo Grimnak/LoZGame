@@ -32,6 +32,7 @@
         public ProjectileManager()
         {
             this.projectileList = new Dictionary<int, IProjectile>();
+            this.projectiles = new List<IProjectile>();
             this.projectileId = 0;
             this.projectileListSize = 0;
             this.deletable = new List<int>();
