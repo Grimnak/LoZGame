@@ -68,10 +68,6 @@
         public override void Draw()
         {
             this.State.Draw();
-            if (LoZGame.DebuggMode)
-            {
-                LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.DebuggColor, this.Bounds, LoZGame.Instance.DebuggBox, Color.Red, 0.0f, Vector2.Zero, SpriteEffects.None, 1.0f);
-            }
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
