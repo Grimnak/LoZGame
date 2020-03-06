@@ -19,6 +19,7 @@
         private static readonly int flameWidth = 32;
         private static readonly int flameHeight = 34;
         private static readonly int arrowWidth = 5;
+        private static readonly int arrowHeight = 16;
         private static readonly int swordBeamExplosionHeight = 12;
         private static readonly int explosionHeight = 50;
         private static readonly int explosionWidth = 48;
@@ -27,7 +28,11 @@
 
         public int SwordBeamWidth
         {
-            get { return SwordBeamWidth; }
+            get { return swordBeamWidth; }
+        }
+        public int SwordBeamHeight
+        {
+            get { return standardHeight; }
         }
 
         public int BoomerangHeight
@@ -58,6 +63,11 @@
         public int ArrowWidth
         {
             get { return arrowWidth; }
+        }
+
+        public int ArrowHeight
+        {
+            get { return arrowHeight; }
         }
 
         public int ExplosionHeight

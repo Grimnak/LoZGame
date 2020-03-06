@@ -55,7 +55,7 @@
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
-            if (this.health <= 0)
+            if (this.Health.CurrentHealth <= 0)
             {
                 this.CurrentState = new DeadStalfosState(this);
             }
