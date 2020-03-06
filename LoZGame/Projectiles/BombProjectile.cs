@@ -88,6 +88,7 @@
         public void Update()
         {
             lifeTime--;
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             if (this.lifeTime <= 0)
             {
                 this.expired = true;

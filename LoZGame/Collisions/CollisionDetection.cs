@@ -98,12 +98,12 @@
             foreach (IProjectile playerProjectile in playerProjectiles)
             {
                 CheckCollisions<IBlock>(playerProjectile, blocks);
-                CheckBorders(playerProjectile, ProjectileSpriteFactory.GetProjectileWidth(playerProjectile), ProjectileSpriteFactory.GetProjectileHeight(playerProjectile));
+                CheckBorders(playerProjectile, playerProjectile.Bounds.Width, playerProjectile.Bounds.Height);
             }
 
             foreach (IProjectile enemyProjectile in enemyProjectiles)
             {
-                CheckBorders(enemyProjectile, ProjectileSpriteFactory.GetProjectileWidth(enemyProjectile), ProjectileSpriteFactory.GetProjectileHeight(enemyProjectile));
+                CheckBorders(enemyProjectile, enemyProjectile.Bounds.Width, enemyProjectile.Bounds.Height);
             }
         }
     }

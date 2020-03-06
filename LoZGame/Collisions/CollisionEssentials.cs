@@ -78,23 +78,23 @@
             if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
             {
                 // is right wall
-                if (sourceCollider.Physics.Location.X + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width - BlockSpriteFactory.Instance.HorizontalOffset + 10)
+                if (sourceCollider.Bounds.Left + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width - BlockSpriteFactory.Instance.HorizontalOffset + 10)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
                 }
                 // is left wall
-                else if (sourceCollider.Physics.Location.X < BlockSpriteFactory.Instance.HorizontalOffset)
+                else if (sourceCollider.Bounds.Left < BlockSpriteFactory.Instance.HorizontalOffset)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Left);
                 }
 
                 // is bottom wall
-                if (sourceCollider.Physics.Location.Y + sourceHeight > LoZGame.Instance.GraphicsDevice.Viewport.Height - BlockSpriteFactory.Instance.VerticalOffset)
+                if (sourceCollider.Bounds.Top + sourceHeight > LoZGame.Instance.GraphicsDevice.Viewport.Height - BlockSpriteFactory.Instance.VerticalOffset)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
                 }
                 // is top wall
-                else if (sourceCollider.Physics.Location.Y < BlockSpriteFactory.Instance.VerticalOffset)
+                else if (sourceCollider.Bounds.Top < BlockSpriteFactory.Instance.VerticalOffset)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight,CollisionSide.Top);
                 }
@@ -103,7 +103,10 @@
             {
                 if (sourceCollider.Physics.Location.Y < 0)
                 {
-                    dungeon.MoveUp();
+                    if (sourceCollider is Link)
+                    {
+                        dungeon.MoveUp();
+                    }
                 }
             }
         }
