@@ -81,12 +81,6 @@
                         this.projectileList.Add(this.projectileId, new BombProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
-                    case ProjectileType.Triforce:
-                        this.projectileList.Add(this.projectileId, new TriforceProjectile(player.Physics.Location));
-                        this.triforceLock = true;
-                        this.triforceInstance = this.projectileId;
-                        break;
-
                     case ProjectileType.Arrow:
                         this.projectileList.Add(this.projectileId, new ArrowProjectile(player.Physics.Location, player.CurrentDirection));
                         break;

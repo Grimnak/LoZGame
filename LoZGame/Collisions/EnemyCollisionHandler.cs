@@ -17,7 +17,8 @@
             if (enemy is WallMaster) {
                     this.enemy.CurrentState.Attack();
                     this.enemy.Physics.Location = player.Physics.Location;
-                // Player velocity is changed here rather than player collision because player collision is checked before new wallmaster velocity is set
+
+                    // Player velocity is changed here rather than player collision because player collision is checked before new wallmaster velocity is set
                     player.Physics.Velocity = this.enemy.Physics.Velocity;
             }
         }
@@ -50,7 +51,7 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            this.enemy.TakeDamage(1);
+            this.enemy.TakeDamage(projectile.Damage);
         }
     }
 }

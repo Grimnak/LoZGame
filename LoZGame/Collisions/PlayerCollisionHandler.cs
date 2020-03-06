@@ -36,8 +36,7 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            // change once projectile classes set up
-            this.player.TakeDamage(0);
+            this.player.TakeDamage(projectile.Damage);
         }
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
