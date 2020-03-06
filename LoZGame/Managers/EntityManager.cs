@@ -17,7 +17,7 @@
             this.enemyProjectile = new EnemyProjectileManager();
         }
 
-        public List<IProjectile> EnemyProjectiles { get { return this.enemyProjectile.Projectiles} }
+        public List<IProjectile> EnemyProjectiles { get { return this.enemyProjectile.Projectiles; } }
 
         public List<IProjectile> PlayerProjectiles { get { return this.friendlyProjectiles; } }
 

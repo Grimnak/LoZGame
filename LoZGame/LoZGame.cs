@@ -161,7 +161,7 @@
             this.blockManager.Update();
             this.doorManager.Update();
             this.entityManager.Update();
-            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.doorManager.DoorList.AsReadOnly(), this.itemManager.ItemList.AsReadOnly(), this.entityManager.ProjectileManager.ProjectileList.AsReadOnly(), this.entityManager.EnemyProjectileList.AsReadOnly());
+            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.doorManager.DoorList.AsReadOnly(), this.itemManager.ItemList.AsReadOnly(), this.entityManager.PlayerProjectiles.AsReadOnly(), this.entityManager.EnemyProjectiles.AsReadOnly());
             base.Update(gameTime);
         }
 
