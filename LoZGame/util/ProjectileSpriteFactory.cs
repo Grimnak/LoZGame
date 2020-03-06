@@ -19,9 +19,9 @@
         private static readonly int flameWidth = 32;
         private static readonly int flameHeight = 34;
         private static readonly int arrowWidth = 5;
+        private static readonly int swordBeamExplosionHeight = 12;
         private static readonly int explosionHeight = 50;
         private static readonly int explosionWidth = 48;
-        private static readonly int triforceSize = 12;
         private static readonly int fireballWidth = 8;
         private static readonly int fireballHeight = 10;
 
@@ -70,18 +70,99 @@
             get { return explosionWidth; }
         }
 
-        public int TriforceSize
+        public int SwordBeamExplosionHeight
         {
-            get { return triforceSize; }
+            get { return swordBeamExplosionHeight; }
         }
 
         public int FireballHeight
         {
             get { return fireballHeight; }
         }
+
         public int FireballWidth
         {
             get { return fireballWidth; }
+        }
+
+        public static int GetProjectileWidth(IProjectile projectile)
+        {
+            if (projectile is ArrowProjectile || projectile is SilverArrowProjectile)
+            {
+                return arrowWidth * DRAWSCALE;
+            }
+            else if (projectile is BlueCandleProjectile || projectile is RedCandleProjectile)
+            {
+                return flameWidth;
+            }
+            else if (projectile is BombProjectile)
+            {
+                return standardWidth * DRAWSCALE;
+            }
+            else if (projectile is BombExplosion)
+            {
+                return explosionWidth * DRAWSCALE;
+            }
+            else if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BoomerangEnemy)
+            {
+                return standardWidth * DRAWSCALE;
+            }
+            else if (projectile is DragonFireBall)
+            {
+                return fireballWidth * DRAWSCALE;
+            }
+            else if (projectile is SwordBeamProjectile)
+            {
+                return swordBeamWidth * DRAWSCALE;
+            }
+            else if (projectile is SwordBeamExplosion)
+            {
+                return standardWidth * DRAWSCALE;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public static int GetProjectileHeight(IProjectile projectile)
+        {
+            if (projectile is ArrowProjectile || projectile is SilverArrowProjectile)
+            {
+                return standardHeight * DRAWSCALE;
+            }
+            else if (projectile is BlueCandleProjectile || projectile is RedCandleProjectile)
+            {
+                return flameHeight;
+            }
+            else if (projectile is BombProjectile)
+            {
+                return standardHeight * DRAWSCALE;
+            }
+            else if (projectile is BombExplosion)
+            {
+                return explosionHeight * DRAWSCALE;
+            }
+            else if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BoomerangEnemy)
+            {
+                return boomerangHeight * DRAWSCALE;
+            }
+            else if (projectile is DragonFireBall)
+            {
+                return fireballHeight * DRAWSCALE;
+            }
+            else if (projectile is SwordBeamProjectile)
+            {
+                return standardHeight * DRAWSCALE;
+            }
+            else if (projectile is SwordBeamExplosion)
+            {
+                return swordBeamExplosionHeight * DRAWSCALE;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public Vector2 ExplosionCenter { get { return new Vector2(ExplosionWidth / 2, ExplosionHeight / 2); } }
@@ -98,12 +179,10 @@
         private readonly SpriteSheetData magicBoomerangData = new SpriteSheetData("MagicBoomerang", standardWidth, boomerangHeight, 1, 1);
         private Texture2D bombSpriteSheet;
         private readonly SpriteSheetData bombData = new SpriteSheetData("Bomb", standardWidth, standardHeight, 1, 1);
-        private Texture2D triforceSpriteSheet;
-        private readonly SpriteSheetData triforceData = new SpriteSheetData("Triforce", triforceSize, triforceSize, 1, 2);
         private Texture2D swordBeamSpriteSheet;
         private readonly SpriteSheetData swordBeamData = new SpriteSheetData("SwordBeam", swordBeamWidth, standardHeight, 1, 4);
         private Texture2D swordExplosionSpriteSheet;
-        private readonly SpriteSheetData swordExplosionData = new SpriteSheetData("SwordBeamExplosion", standardWidth, triforceSize, 1, 4);
+        private readonly SpriteSheetData swordExplosionData = new SpriteSheetData("SwordBeamExplosion", standardWidth, swordBeamExplosionHeight, 1, 4);
         private Texture2D explosionOneSpriteSheet;
         private readonly SpriteSheetData explosionOneData = new SpriteSheetData("BombExplosionOne", explosionWidth, explosionHeight, 1, 3);
         private Texture2D explosionTwoSpriteSheet;
@@ -124,7 +203,8 @@
         public int Scale => DRAWSCALE;
 
         private ProjectileSpriteFactory()
-        { }
+        {
+        }
 
         public void LoadAllTextures(ContentManager content)
         {
@@ -142,13 +222,7 @@
             this.explosionThreeSpriteSheet = content.Load<Texture2D>(this.explosionThreeData.FilePath);
             this.explosionFourSpriteSheet = content.Load<Texture2D>(this.ExplosionFourData.FilePath);
             this.explosionFiveSpriteSheet = content.Load<Texture2D>(this.explosionFiveData.FilePath);
-            this.triforceSpriteSheet = content.Load<Texture2D>(this.triforceData.FilePath);
             this.fireballSpriteSheet = content.Load<Texture2D>(this.fireballData.FilePath);
-        }
-
-        public TriforceProjectileSprite Triforce()
-        {
-            return new TriforceProjectileSprite(this.triforceSpriteSheet, this.triforceData, DRAWSCALE);
         }
 
         public FireballSprite Fireball()

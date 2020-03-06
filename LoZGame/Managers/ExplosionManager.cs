@@ -15,10 +15,11 @@
 
         private readonly Dictionary<int, IProjectile> explosionList;
         private readonly List<int> deletable;
-        private readonly int scale;
+        private List<IProjectile> explosions;
         private int explosionId;
         private int explosionListSize;
 
+        public List<IProjectile> Explosions { get { return this.explosions; } }
         public int SwordExplosion => (int)ExplosionType.SwordExplode;
 
         public int Explosion => (int)ExplosionType.BombExplode;
@@ -26,9 +27,9 @@
         public ExplosionManager()
         {
             this.explosionList = new Dictionary<int, IProjectile>();
+            this.explosions = new List<IProjectile>();
             this.explosionId = 0;
             this.explosionListSize = 0;
-            this.scale = (int)ProjectileSpriteFactory.Instance.Scale;
             this.deletable = new List<int>();
         }
 
@@ -84,10 +85,12 @@
                 this.RemoveExplosion(index);
             }
 
+            this.explosions.Clear();
             this.deletable.Clear();
 
             foreach (KeyValuePair<int, IProjectile> explosion in this.explosionList)
             {
+                this.explosions.Add(explosion.Value);
                 explosion.Value.Update();
             }
         }

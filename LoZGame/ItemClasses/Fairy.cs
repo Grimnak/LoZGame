@@ -135,6 +135,11 @@
                 itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
         }
+
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            itemCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+        }
         public void Update()
         {
             this.lifeTime++;

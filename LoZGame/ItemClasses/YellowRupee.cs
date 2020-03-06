@@ -57,6 +57,11 @@
             }
         }
 
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            itemCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+        }
+
         public void ReverseBob()
         {
             //future method which will cause items to bob up and down

@@ -33,7 +33,7 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft(door.RightScreenLoc);
                         location = door.RightScreenLoc;
                         door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X - 5, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
+                        door.Bounds = new Rectangle((int)door.Physics.Location.X - 12, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                 }
                 case "S":

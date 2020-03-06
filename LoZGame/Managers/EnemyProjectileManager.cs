@@ -9,13 +9,16 @@
         private const int Scale = 2;
         private readonly Dictionary<int, IProjectile> projectileList;
         private readonly List<int> deletable;
+        private List<IProjectile> projectiles;
         private int projectileId;
         private int listSize;
 
+        public List<IProjectile> Projectiles { get { return this.projectiles; } }
 
         public EnemyProjectileManager()
         {
             this.projectileList = new Dictionary<int, IProjectile>();
+            this.projectiles = new List<IProjectile>();
             this.deletable = new List<int>();
             this.projectileId = 0;
             this.listSize = 0;
@@ -64,10 +67,14 @@
             {
                 this.Remove(index);
             }
+
+            this.projectiles.Clear();
             this.deletable.Clear();
-            foreach (KeyValuePair<int, IProjectile> projectile in this.projectileList)
+
+            foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
             {
-                projectile.Value.Update();
+                this.projectiles.Add(item.Value);
+                item.Value.Update();
             }
         }
 

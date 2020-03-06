@@ -7,7 +7,7 @@ namespace LoZClone
 
     public class DropManager
     {
-        private const int DropChance = 20; 
+        private const int DropChance = 100; // percent chance of drop (0 - 100)
         private const int RupeeWeight = 40;
         private const int YellowRupeeWeight = 10;
         private const int BombWeight = 20;

@@ -5,9 +5,9 @@
 
     public partial class ProjectileManager
     {
-        private readonly Dictionary<int, IProjectile> itemList;
+        private readonly Dictionary<int, IProjectile> projectileList;
         private readonly List<int> deletable;
-        private readonly int scale;
+        private List<IProjectile> projectiles;
         private int projectileId;
         private int projectileListSize;
         private bool swordLock;
@@ -23,16 +23,18 @@
 
         public static int MaxWaitTime => 30;
 
+        public List<IProjectile> Projectiles { get { return this.projectiles; } }
+
         public bool BoomerangOut => this.boomerangLock;
 
         public bool FlameInUse => this.candleLock;
 
         public ProjectileManager()
         {
-            this.itemList = new Dictionary<int, IProjectile>();
+            this.projectileList = new Dictionary<int, IProjectile>();
+            this.projectiles = new List<IProjectile>();
             this.projectileId = 0;
             this.projectileListSize = 0;
-            this.scale = (int)ProjectileSpriteFactory.Instance.Scale;
             this.deletable = new List<int>();
             this.swordLock = false;
             this.boomerangLock = false;
@@ -76,31 +78,25 @@
                 switch (item)
                 {
                     case ProjectileType.Bomb:
-                        this.itemList.Add(this.projectileId, new BombProjectile(player.Physics.Location, player.CurrentDirection));
-                        break;
-
-                    case ProjectileType.Triforce:
-                        this.itemList.Add(this.projectileId, new TriforceProjectile(player.Physics.Location));
-                        this.triforceLock = true;
-                        this.triforceInstance = this.projectileId;
+                        this.projectileList.Add(this.projectileId, new BombProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.Arrow:
-                        this.itemList.Add(this.projectileId, new ArrowProjectile(player.Physics.Location, player.CurrentDirection));
+                        this.projectileList.Add(this.projectileId, new ArrowProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.SilverArrow:
-                        this.itemList.Add(this.projectileId, new SilverArrowProjectile(player.Physics.Location, player.CurrentDirection));
+                        this.projectileList.Add(this.projectileId, new SilverArrowProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.RedCandle:
-                        this.itemList.Add(this.projectileId, new RedCandleProjectile(player.Physics.Location, player.CurrentDirection));
+                        this.projectileList.Add(this.projectileId, new RedCandleProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.BlueCandle:
                         if (!this.candleLock)
                         {
-                            this.itemList.Add(this.projectileId, new BlueCandleProjectile(player.Physics.Location, player.CurrentDirection));
+                            this.projectileList.Add(this.projectileId, new BlueCandleProjectile(player.Physics.Location, player.CurrentDirection));
                             this.candleLock = true;
                             this.candleInstance = this.projectileId;
                         }
@@ -109,7 +105,7 @@
                     case ProjectileType.Boomerang:
                         if (!this.boomerangLock)
                         {
-                            this.itemList.Add(this.projectileId, new BoomerangProjectile(player));
+                            this.projectileList.Add(this.projectileId, new BoomerangProjectile(player));
                             this.boomerangLock = true;
                             this.boomerangInstance = this.projectileId;
                         }
@@ -119,7 +115,7 @@
                     case ProjectileType.MagicBoomerang:
                         if (!this.boomerangLock)
                         {
-                            this.itemList.Add(this.projectileId, new MagicBoomerangProjectile(player));
+                            this.projectileList.Add(this.projectileId, new MagicBoomerangProjectile(player));
                             this.boomerangLock = true;
                             this.boomerangInstance = this.projectileId;
                         }
@@ -129,7 +125,7 @@
                     case ProjectileType.SwordBeam:
                         if (!this.swordLock)
                         {
-                            this.itemList.Add(this.projectileId, new SwordBeamProjectile(player));
+                            this.projectileList.Add(this.projectileId, new SwordBeamProjectile(player));
                             this.swordLock = true;
                             this.swordInstance = this.projectileId;
                         }
@@ -144,7 +140,7 @@
 
         public void RemoveItem(int instance)
         {
-            this.itemList.Remove(instance);
+            this.projectileList.Remove(instance);
             this.projectileListSize--;
             if (this.projectileListSize == 0)
             {
@@ -163,7 +159,7 @@
                 this.spamCounter--;
             }
 
-            foreach (KeyValuePair<int, IProjectile> item in this.itemList)
+            foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
             {
                 if (item.Value.IsExpired)
                 {
@@ -196,16 +192,19 @@
                 this.RemoveItem(index);
             }
 
+            this.projectiles.Clear();
             this.deletable.Clear();
-            foreach (KeyValuePair<int, IProjectile> item in this.itemList)
+
+            foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
             {
+                this.projectiles.Add(item.Value);
                 item.Value.Update();
             }
         }
 
         public void Draw()
         {
-            foreach (KeyValuePair<int, IProjectile> item in this.itemList)
+            foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
             {
                 item.Value.Draw();
             }

@@ -17,7 +17,8 @@
             if (enemy is WallMaster) {
                     this.enemy.CurrentState.Attack();
                     this.enemy.Physics.Location = player.Physics.Location;
-                // Player velocity is changed here rather than player collision because player collision is checked before new wallmaster velocity is set
+
+                    // Player velocity is changed here rather than player collision because player collision is checked before new wallmaster velocity is set
                     player.Physics.Velocity = this.enemy.Physics.Velocity;
             }
         }
@@ -50,7 +51,27 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            this.enemy.TakeDamage(1);
+            this.enemy.TakeDamage(projectile.Damage);
+        }
+
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (collisionSide == CollisionDetection.CollisionSide.Right)
+            {
+                this.enemy.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, this.enemy.Physics.Location.Y);
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Left)
+            {
+                this.enemy.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, this.enemy.Physics.Location.Y);
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
+            {
+                this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset);
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Top)
+            {
+                this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
+            }
         }
     }
 }

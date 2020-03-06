@@ -15,15 +15,15 @@
         public bool OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
             bool boomerangReturning = false;
-            if (this.projectile is BlueCandleProjectile || this.projectile is RedCandle)
+            if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
             {
-                this.projectile.Physics.Velocity = new Vector2(0, 0);
-                this.projectile.Physics.Acceleration = new Vector2(0, 0);
+                this.projectile.Physics.StopMovement();
             }
-            else if (this.projectile is Boomerang || this.projectile is MagicBoomerang)
+            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
             {
                 boomerangReturning = true;
-            } else if(this.projectile is Bomb || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
+            }
+            else if (this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
             {
                 // do nothing
             }
@@ -36,17 +36,7 @@
 
         public bool OnCollisionResponse(IItem item, CollisionDetection.CollisionSide collisionSide)
         {
-            bool boomerangReturning = false;
-            if (this.projectile is Boomerang || this.projectile is MagicBoomerang)
-            {
-            }
-            else if (this.projectile is Boomerang || this.projectile is MagicBoomerang)
-            {
-            }
-            else
-            {
-            }
-            return boomerangReturning;
+            return false;
         }
 
         public bool OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
@@ -55,21 +45,17 @@
 
             if (!(block is Tile))
             {
-                if (this.projectile is BlueCandleProjectile || this.projectile is RedCandle)
+                if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
                 {
-                    this.projectile.Physics.Velocity = new Vector2(0, 0);
-                    this.projectile.Physics.Acceleration = new Vector2(0, 0);
+                    this.projectile.Physics.StopMovement();
                 }
-                else if (this.projectile is Boomerang || this.projectile is MagicBoomerang || this.projectile is BoomerangEnemy)
+                else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile || this.projectile is BoomerangEnemy)
                 {
-                    boomerangReturning = true;
+                    boomerangReturning = false;
                 }
-                else if (this.projectile is Bomb)
+                else if (this.projectile is BombProjectile)
                 {
                     this.PushOut(collisionSide);
-                }
-                else
-                {
                 }
             }
             return boomerangReturning;
@@ -78,16 +64,15 @@
         public bool OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
         {
             bool boomerangReturning = false;
-            if (this.projectile is BlueCandleProjectile || this.projectile is RedCandle)
+            if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
             {
-                this.projectile.Physics.Velocity = new Vector2(0, 0);
-                this.projectile.Physics.Acceleration = new Vector2(0, 0);
+                this.projectile.Physics.StopMovement();
             }
-            else if (this.projectile is Boomerang || this.projectile is MagicBoomerang)
+            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
             {
                 boomerangReturning = true;
             }
-            else if (this.projectile is Bomb) 
+            else if (this.projectile is BombProjectile) 
             {
                 this.PushOut(collisionSide);
             } 
@@ -109,8 +94,31 @@
             {
                 boomerangReturning = true;
             }
+            return boomerangReturning;
+        }
+
+        public bool OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            bool boomerangReturning = false;
+            if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
+            {
+                this.projectile.Physics.StopMovement();
+            }
+            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
+            {
+                boomerangReturning = true;
+            }
+            else if (this.projectile is BombProjectile)
+            {
+                this.PushOut(collisionSide);
+            }
+            else if (this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
+            {
+                // do nothing
+            }
             else
             {
+                this.projectile.IsExpired = true;
             }
             return boomerangReturning;
         }

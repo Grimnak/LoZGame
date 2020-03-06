@@ -36,8 +36,7 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            // change once projectile classes set up
-            this.player.TakeDamage(0);
+            this.player.TakeDamage(projectile.Damage);
         }
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
@@ -68,6 +67,26 @@
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
         {
+        }
+
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (collisionSide == CollisionDetection.CollisionSide.Right)
+            {
+                this.player.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, this.player.Physics.Location.Y);
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Left)
+            {
+                this.player.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, this.player.Physics.Location.Y);
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
+            {
+                this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset);
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Top)
+            {
+                this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
+            }
         }
 
         private void DeterminePushbackValues(CollisionDetection.CollisionSide collisionSide)

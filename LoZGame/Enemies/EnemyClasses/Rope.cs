@@ -197,6 +197,11 @@
             }
         }
 
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            enemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+        }
+
         public IEnemyState CurrentState
         {
             get { return this.currentState; }

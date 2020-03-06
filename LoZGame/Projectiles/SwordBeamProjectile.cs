@@ -43,7 +43,7 @@
         public SwordBeamProjectile(IPlayer player)
         {
             this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
-            this.projectileHeight = ProjectileSpriteFactory.Instance.TriforceSize * scale;
+            this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * scale;
             this.collisionHandler = new ProjectileCollisionHandler(this);
             this.lifeTime = 0;
             this.direction = player.CurrentDirection;
@@ -121,6 +121,12 @@
             {
                 this.CreateExplosion();
             }
+        }
+
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            this.CreateExplosion();
         }
 
         private void CreateExplosion()

@@ -5,9 +5,6 @@
     <room exists="False" idx="0">
     </room>
     <room exists="True" idx="1">
-      <items>
-        <item X="6" Y="2">Bow</item>
-      </items>
       <enemies>
         <enemy X="0" Y="0">SpikeCross</enemy>
         <enemy X="11" Y="0">SpikeCross</enemy>
@@ -241,6 +238,9 @@
     </room>
     <room exists="True" idx="1">
       <border>black</border>
+	  <items>
+        <item X="8" Y="3">Bow</item>
+      </items>
       <rrow idx="0">
         <tile type="block" idx="0">basement_brick_tile</tile>
         <tile type="block" idx="1">basement_brick_tile</tile>

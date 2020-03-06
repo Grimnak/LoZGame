@@ -91,6 +91,11 @@
             {
                 this.linkCollisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
             }
+
+        }
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            this.linkCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
     }
 }

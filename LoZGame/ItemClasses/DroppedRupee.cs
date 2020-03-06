@@ -44,6 +44,11 @@
             }
         }
 
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            itemCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+        }
+
         public void ReverseBob()
         {
             this.Physics.Acceleration = new Vector2(0, this.Physics.Acceleration.Y * -1);

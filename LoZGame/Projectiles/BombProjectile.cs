@@ -56,7 +56,6 @@
 
         public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
 
-
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IEnemy)
@@ -79,6 +78,11 @@
             {
                 this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
+        }
+
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
         public void Update()

@@ -31,6 +31,26 @@
         {
         }
 
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (collisionSide == CollisionDetection.CollisionSide.Right)
+            {
+                this.block.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, this.block.Physics.Location.Y);
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Left)
+            {
+                this.block.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, this.block.Physics.Location.Y);
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
+            {
+                this.block.Physics.Location = new Vector2(this.block.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset);
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Top)
+            {
+                this.block.Physics.Location = new Vector2(this.block.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
+            }
+        }
+
         private void DeterminePushVelocity(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
             DeterminePushDirection(collisionSide);

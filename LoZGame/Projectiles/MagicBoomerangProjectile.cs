@@ -104,6 +104,11 @@
             }
         }
 
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            this.returning = collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+        }
+
         private void ReturnHome()
         {
             this.playerLoc = this.player.Physics.Location;

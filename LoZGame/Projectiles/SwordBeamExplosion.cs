@@ -36,7 +36,7 @@
             this.lifeTime = MaxLifeTime;
             this.collisionHandler = new ProjectileCollisionHandler(this);
             projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
-            projectileHeight = ProjectileSpriteFactory.Instance.TriforceSize * scale;
+            projectileHeight = ProjectileSpriteFactory.Instance.SwordBeamExplosionHeight * scale;
             this.direction = direction;
             this.Physics = new Physics(new Vector2(location.X - projectileWidth, location.Y - projectileHeight), new Vector2(0, 0), new Vector2(0, 0));
             if (this.direction.Equals("NorthEast"))
@@ -95,6 +95,11 @@
             {
                 this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
+        }
+
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
         public void Update()
