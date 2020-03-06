@@ -77,6 +77,8 @@
             {
                 this.currentY--;
                 this.LoadNewRoom();
+
+                // Player moved to bottom side of new room (next to door, next to staircase in basement case).
                 if (this.currentX == 1 && this.currentY == 0)
                 {
                     this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
@@ -103,6 +105,7 @@
                 this.currentY++;
                 this.LoadNewRoom();
 
+                // Player moved to top side of new room (next to door, top of the ladder in the basement case).
                 if (currentX == 1 && currentY == 1)
                 {
                     this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
@@ -127,6 +130,8 @@
             {
                 this.currentX--;
                 this.LoadNewRoom();
+
+                // Player moved to right side of new room (next to door).
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 11)),
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));
@@ -143,7 +148,7 @@
                 this.currentX++;
                 this.LoadNewRoom();
 
-                // bruh
+                // Player moved to left side of new room (next to door).
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 0) + 6),
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));

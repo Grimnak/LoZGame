@@ -110,6 +110,12 @@
                 (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * gridY)));
         }
 
+        /// <summary>
+        /// Converts grid position in the room to a screen vector, without offsets of dungeon border in basement special case.
+        /// </summary>
+        /// <param name="gridX">X value of the grid coord.</param>
+        /// <param name="gridY">Y value of the grid coord.</param>
+        /// <returns>Vector for screen drawing.</returns>
         public Vector2 GridToScreenSpecialVector(float gridX, float gridY)
         {
             return new Vector2(
