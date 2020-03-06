@@ -22,7 +22,7 @@
             CheckEnemies(enemies, playerProjectiles);
             CheckBlocks(blocks, players, enemies);
             CheckItems(items);
-            CheckProjectiles(playerProjectiles, enemyProjectiles);
+            CheckProjectiles(playerProjectiles, enemyProjectiles, blocks);
 
             // Unable to change rooms mid-foreach loop, so set a flag and change directly after.
             if (moveToBasement)
@@ -58,7 +58,10 @@
                 {
                     CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
                 }
-                CheckCollisions<IProjectile>(enemy, playerProjectiles);
+                if (!(enemy is OldMan || enemy is Merchant))
+                {
+                    CheckCollisions<IProjectile>(enemy, playerProjectiles);
+                }
             }
         }
 
@@ -90,10 +93,11 @@
             }
         }
 
-        private void CheckProjectiles(ReadOnlyCollection<IProjectile> playerProjectiles, ReadOnlyCollection<IProjectile> enemyProjectiles)
+        private void CheckProjectiles(ReadOnlyCollection<IProjectile> playerProjectiles, ReadOnlyCollection<IProjectile> enemyProjectiles, ReadOnlyCollection<IBlock> blocks)
         {
             foreach (IProjectile playerProjectile in playerProjectiles)
             {
+                CheckCollisions<IBlock>(playerProjectile, blocks);
                 CheckBorders(playerProjectile, ProjectileSpriteFactory.GetProjectileWidth(playerProjectile), ProjectileSpriteFactory.GetProjectileHeight(playerProjectile));
             }
 
