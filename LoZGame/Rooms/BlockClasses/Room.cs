@@ -175,13 +175,13 @@
          * y => tile Y location
          * name => the item's name
          */
-        public void AddItem(int x, int y, string name)
+        public void AddItem(float x, float y, string name)
         {
-            Vector2 location = this.GridToScreenVector((float)x, (float)y);
+            Vector2 location = this.GridToScreenVector(x, y);
             switch (name)
             {
                 case "Bow":
-                    location = this.GridToScreenSpecialVector((float)x, (float)y);
+                    location = this.GridToScreenSpecialVector(x, y);
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
                     this.items.Add(new Bow(location));
@@ -207,6 +207,8 @@
                     this.items.Add(new Boomerang(location));
                     break;
                 case "TriForce":
+                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 5);
+                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 2);
                     this.items.Add(new Triforce(location));
                     break;
                 case "Map":
