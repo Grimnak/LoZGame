@@ -81,6 +81,11 @@
             }
         }
 
+        public void OnCollisionResponse(CollisionDetection.CollisionSide collisionSide)
+        {
+            enemyCollisionHandler.OnCollisionResponse(collisionSide);
+        }
+
         public IEnemyState CurrentState
         {
             get { return this.currentState; }

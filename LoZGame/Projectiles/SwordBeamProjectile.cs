@@ -123,6 +123,11 @@
             }
         }
 
+        public void OnCollisionResponse(CollisionDetection.CollisionSide collisionSide)
+        {
+            collisionHandler.OnCollisionResponse(collisionSide);
+        }
+
         private void CreateExplosion()
         {
             int explosionType = LoZGame.Instance.Entities.ExplosionManager.SwordExplosion;

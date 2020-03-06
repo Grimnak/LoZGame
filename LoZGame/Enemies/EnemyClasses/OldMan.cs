@@ -51,5 +51,9 @@
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
         }
+
+        public void OnCollisionResponse(CollisionDetection.CollisionSide collisionSide)
+        {
+        }
     }
 }
