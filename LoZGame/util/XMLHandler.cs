@@ -36,7 +36,6 @@
                     string border = string.Empty + ns;
                     if (room.Descendants(ns + "border").Elements().Count<XElement>() > 0)
                     {
-                        
                         border = string.Empty + room.Descendants(ns + "border").Elements().First<XElement>().Value;
                     }
                     Room droom = new Room(string.Empty + border, ex);
