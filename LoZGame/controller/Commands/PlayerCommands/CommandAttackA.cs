@@ -23,6 +23,7 @@
             {
                 this.player.Attack();
                 LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.Swordbeam, this.player);
+                LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.WoodenSword, this.player);
             }
         }
     }

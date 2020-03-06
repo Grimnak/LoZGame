@@ -66,6 +66,8 @@
 
         public int Swordbeam => (int)ProjectileType.SwordBeam;
 
+        public int WoodenSword => (int)ProjectileType.WoodenSword;
+
         public void AddItem(int itemType, IPlayer player)
         {
             this.projectileId++;
@@ -129,7 +131,10 @@
                             this.swordLock = true;
                             this.swordInstance = this.projectileId;
                         }
+                        break;
 
+                    case ProjectileType.WoodenSword:
+                        this.projectileList.Add(this.projectileId, new WoodenSwordProjectile(player));
                         break;
 
                     default:

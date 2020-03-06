@@ -172,6 +172,7 @@
     <Compile Include="Projectiles\RedCandleProjectile.cs" />
     <Compile Include="Projectiles\SilverArrowProjectile.cs" />
     <Compile Include="Projectiles\SwordBeamExplosion.cs" />
+    <Compile Include="Projectiles\WoodenSwordProjectile.cs" />
     <Compile Include="Projectiles\SwordBeamProjectile.cs" />
     <Compile Include="Rooms\BlockClasses\Door.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\BombedDoorState.cs" />
@@ -341,6 +342,7 @@
     <Compile Include="Sprites\ProjectileSpriteClasses\RedCandleProjectileSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\SilverArrowProjectileSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamExplosionSprite.cs" />
+    <Compile Include="Sprites\ProjectileSpriteClasses\GreenWoodSwordSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamProjectileSprite.cs" />
     <Compile Include="Util\DebugManager.cs" />
     <Compile Include="Util\Physics.cs" />
