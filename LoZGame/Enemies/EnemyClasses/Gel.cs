@@ -8,6 +8,9 @@
     {
         private EnemyCollisionHandler enemyCollisionHandler;
         private Rectangle bounds;
+        private bool expired;
+
+        public bool Expired { get { return this.expired; } set { this.expired = value; } }
 
         public Rectangle Bounds
         {
@@ -45,6 +48,7 @@
             this.Physics.Location = new Vector2(location.X, location.Y);
             this.ShouldMove = true;
             this.randomStateGenerator = new RandomStateGenerator(this, 2, 6);
+            this.expired = false;
         }
 
         private void decideToMove()
@@ -84,6 +88,10 @@
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
+            if (this.health <= 0)
+            {
+                this.CurrentState = new DeadGelState(this);
+            }
         }
 
         public void Draw()

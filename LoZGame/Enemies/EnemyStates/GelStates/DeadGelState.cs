@@ -15,6 +15,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.gel.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.gel.Physics.Location);
+            this.gel.Expired = true;
         }
 
         public void MoveLeft()

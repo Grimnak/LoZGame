@@ -30,8 +30,11 @@
 
         public void OnCollisionResponse(IItem item, CollisionDetection.CollisionSide collisionSide)
         {
-            item.Physics.Location = new Vector2(player.Physics.Location.X + 5, player.Physics.Location.Y - 45);
-            this.player.State = new PickupItemState(player, item);
+            if (item.PickUpItemTime >= 0)
+            {
+                item.Physics.Location = new Vector2(player.Physics.Location.X + 5, player.Physics.Location.Y - 45);
+                this.player.State = new PickupItemState(player, item);
+            }
         }
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)

@@ -7,7 +7,7 @@
     internal class DroppedBomb : IItem
     {
         private static readonly int DespawnTimer = LoZGame.Instance.UpdateSpeed * 20;
-        private static readonly int SpawnTimer = LoZGame.Instance.UpdateSpeed * 20;
+        private static readonly int SpawnTimer = LoZGame.Instance.UpdateSpeed * 1;
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 
@@ -17,7 +17,7 @@
         private int lifeTime;
         private bool expired;
 
-        public int PickUpItemTime { get { return 0; } }
+        public int PickUpItemTime { get { return -1; } }
 
         public bool Expired { get { return this.expired; } set { this.expired = value; } }
 

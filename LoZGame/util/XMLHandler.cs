@@ -60,7 +60,7 @@
                         foreach (XElement item in items) 
                         {
                             Console.WriteLine(); // xml debug
-                            int x = int.Parse(item.Attribute("X").Value), y = int.Parse(item.Attribute("Y").Value);
+                            float x = float.Parse(item.Attribute("X").Value), y = float.Parse(item.Attribute("Y").Value);
                             droom.AddItem(x, y, item.Value);
                             Console.Write("item: " + item.Attribute("X").Value + " " + item.Attribute("Y").Value + " " + item.Value); // xml debug 
                         }

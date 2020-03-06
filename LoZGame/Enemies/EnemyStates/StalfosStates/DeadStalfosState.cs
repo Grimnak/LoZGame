@@ -15,6 +15,7 @@
             this.stalfos.CurrentState = this;
             this.stalfos.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.stalfos.Physics.Location);
+            this.stalfos.Expired = true;
         }
 
         public void MoveLeft()

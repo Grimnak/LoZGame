@@ -157,7 +157,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, Color.White);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }

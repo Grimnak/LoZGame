@@ -645,7 +645,7 @@
     </room>
     <room exists="True" idx="5">
       <items>
-        <item X="6" Y="3">TriForce</item>
+        <item X="5.5" Y="3">TriForce</item>
       </items>
       <doors>
         <door loc="W">unlocked</door>

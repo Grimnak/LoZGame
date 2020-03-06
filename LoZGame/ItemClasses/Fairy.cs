@@ -16,7 +16,7 @@
         private int lifeTime;
         private Vector2 Border;
         private bool expired;
-        private int pickUpItemTime = 0;
+        private int pickUpItemTime = -1;
 
         public int PickUpItemTime { get { return this.pickUpItemTime; } }
 
@@ -44,17 +44,18 @@
         {
             this.sprite = ItemSpriteFactory.Instance.Fairy(ItemSpriteFactory.Instance.Scale);
             this.itemCollisionHandler = new ItemCollisionHandler(this);
-            this.Physics = new Physics(loc, new Vector2(0, -1), new Vector2(0, 0.1f));
+            this.Physics = new Physics(loc, Vector2.Zero, Vector2.Zero);
             this.Size = new Vector2(ItemSpriteFactory.FairyWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.FairyHeight * ItemSpriteFactory.Instance.Scale);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.Border = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width, LoZGame.Instance.GraphicsDevice.Viewport.Height);
             this.lifeTime = 0;
             this.expired = false;
+            this.GetNewDirection();
         }
 
         private void GetNewDirection()
         {
-            Random randomselect = new Random();
+            Random randomselect = LoZGame.Instance.Random;
             this.currentDirection = (Direction)randomselect.Next(0, 8);
             switch (this.currentDirection)
             {

@@ -14,6 +14,10 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
+            if (this.item.PickUpItemTime == -1) 
+            {
+                this.item.Expired = true;
+            }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)

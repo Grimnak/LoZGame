@@ -73,7 +73,7 @@
             }
             // initialize variables for flashing screen
             flashTexture = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            flashTexture.SetData<Color>(new Color[] { Color.White });
+            flashTexture.SetData<Color>(new Color[] { LoZGame.Instance.DungeonTint });
             flashDestination = new Rectangle(0, 0, LoZGame.Instance.GraphicsDevice.Viewport.Width, LoZGame.Instance.GraphicsDevice.Viewport.Height);
         }
 
@@ -124,10 +124,10 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, Color.White);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
             if (this.lifeTime > (MaxLifeTime - FlashDurataion) && this.lifeTime % 2 == 0)
             {
-                LoZGame.Instance.SpriteBatch.Draw(flashTexture, flashDestination, new Rectangle(0, 0, 1, 1), Color.White, 0.0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
+                LoZGame.Instance.SpriteBatch.Draw(flashTexture, flashDestination, new Rectangle(0, 0, 1, 1), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
             }
         }
     }
