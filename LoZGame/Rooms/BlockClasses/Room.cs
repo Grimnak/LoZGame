@@ -181,24 +181,37 @@
             switch (name)
             {
                 case "Bow":
+                    location = this.GridToScreenSpecialVector((float)x, (float)y);
+                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
+                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
                     this.items.Add(new Bow(location));
                     break;
                 case "HeartContainer":
+                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 4);
+                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
                     this.items.Add(new HeartContainer(location));
                     break;
                 case "Key":
+                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
+                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
                     this.items.Add(new Key(location));
                     break;
                 case "Compass":
+                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 4);
+                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
                     this.items.Add(new Compass(location));
                     break;
                 case "Boomerang":
+                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
+                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
                     this.items.Add(new Boomerang(location));
                     break;
                 case "TriForce":
                     this.items.Add(new Triforce(location));
                     break;
                 case "Map":
+                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
+                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
                     this.items.Add(new Map(location));
                     break;
                 default:
