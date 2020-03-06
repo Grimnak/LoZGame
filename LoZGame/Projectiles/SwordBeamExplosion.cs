@@ -16,6 +16,7 @@
         private int projectileHeight;
         private ProjectileCollisionHandler collisionHandler;
         private int damage;
+        private Vector2 boundsOffset;
 
         public int Damage { get { return damage; } set { damage = value; } }
 
@@ -44,12 +45,14 @@
                 this.Physics.Velocity = new Vector2(Speed, -1 * Speed);
                 this.effect = SpriteEffects.FlipHorizontally;
                 this.rotation = 0;
+                boundsOffset = Vector2.Zero;
             }
             else if (this.direction.Equals("NorthWest"))
             {
                 this.Physics.Velocity = new Vector2(-1 * Speed, -1 * Speed);
                 this.effect = SpriteEffects.None;
                 this.rotation = 0;
+                boundsOffset = Vector2.Zero;
             }
             else if (this.direction.Equals("SouthEast"))
             {
@@ -57,15 +60,17 @@
                 this.Physics.Location = new Vector2(this.Physics.Location.X + projectileWidth, this.Physics.Location.Y + projectileHeight);
                 this.effect = SpriteEffects.None;
                 this.rotation = MathHelper.Pi;
+                boundsOffset = new Vector2(this.projectileWidth, this.projectileHeight);
             }
             else
             {
                 this.rotation = 0;
                 this.Physics.Velocity = new Vector2(-1 * Speed, Speed);
                 this.effect = SpriteEffects.FlipVertically;
+                boundsOffset = Vector2.Zero;
             }
             this.damage = 1;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)boundsOffset.X, (int)this.Physics.Location.Y - (int)boundsOffset.Y, projectileWidth, projectileHeight);
             this.hostile = false;
             this.expired = false;
             this.sprite = ProjectileSpriteFactory.Instance.SwordExplosion(this.effect, this.rotation);
@@ -114,7 +119,7 @@
             {
                 this.expired = true;
             }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)boundsOffset.X, (int)this.Physics.Location.Y - (int)boundsOffset.Y, projectileWidth, projectileHeight);
             this.Physics.Move();
         }
 
