@@ -8,6 +8,9 @@
         private Rectangle bounds;
         private int health;
         private int damage = 0;
+        private bool expired;
+
+        public bool Expired { get { return this.expired; } set { this.expired = value; } }
 
         public Rectangle Bounds
         {
@@ -32,6 +35,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.health = 5;
+            this.expired = false;
         }
 
         public void TakeDamage(int damageAmount)

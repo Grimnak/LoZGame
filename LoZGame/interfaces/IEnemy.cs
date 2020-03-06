@@ -6,6 +6,8 @@
     {
         HealthManager Health { get; set; }
 
+        bool Expired { get; set; }
+
         int Damage { get; }
 
         IEnemyState CurrentState { get; set; }

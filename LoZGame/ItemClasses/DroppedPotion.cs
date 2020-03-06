@@ -17,7 +17,7 @@
         private int lifeTime;
         private bool expired;
 
-        public int PickUpItemTime { get { return 0; } }
+        public int PickUpItemTime { get { return -1; } }
 
         public bool Expired { get { return this.expired; } set { this.expired = value; } }
 

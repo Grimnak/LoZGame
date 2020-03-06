@@ -15,6 +15,7 @@
             this.dragon.CurrentState = this;
             this.dragon.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.dragon.Physics.Location);
+            this.dragon.Expired = true;
         }
 
         public void MoveUp()

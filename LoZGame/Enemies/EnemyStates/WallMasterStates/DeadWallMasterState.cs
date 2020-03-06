@@ -15,6 +15,7 @@
             this.wallMaster.CurrentState = this;
             this.wallMaster.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.wallMaster.Physics.Location);
+            this.wallMaster.Expired = true;
         }
 
         public void MoveLeft()

@@ -15,6 +15,7 @@
             this.zol.CurrentState = this;
             this.zol.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.zol.Physics.Location);
+            this.zol.Expired = true;
         }
 
         public void MoveLeft()

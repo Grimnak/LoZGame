@@ -16,6 +16,7 @@
             this.rope.VelocityX = 0;
             this.rope.VelocityY = 0;
             LoZGame.Instance.Drops.AttemptDrop(this.rope.Physics.Location);
+            this.rope.Expired = true;
         }
 
         public void MoveLeft()
