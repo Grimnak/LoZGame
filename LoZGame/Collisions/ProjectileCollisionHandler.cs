@@ -97,6 +97,58 @@
             return boomerangReturning;
         }
 
+        public bool OnCollisionResponse(ICollider collider, CollisionDetection.CollisionSide collisionSide)
+        {
+            bool boomerangReturning = false;
+            if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
+            {
+                this.projectile.Physics.StopMovement();
+            }
+            else if (this.projectile is Boomerang || this.projectile is MagicBoomerang)
+            {
+                boomerangReturning = true;
+            }
+            else if (this.projectile is Bomb)
+            {
+                this.PushOut(collisionSide);
+            }
+            else if (this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
+            {
+                // do nothing
+            }
+            else
+            {
+                this.projectile.IsExpired = true;
+            }
+            return boomerangReturning;
+        }
+
+        public bool OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            bool boomerangReturning = false;
+            if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
+            {
+                this.projectile.Physics.StopMovement();
+            }
+            else if (this.projectile is Boomerang || this.projectile is MagicBoomerang)
+            {
+                boomerangReturning = true;
+            }
+            else if (this.projectile is Bomb)
+            {
+                this.PushOut(collisionSide);
+            }
+            else if (this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
+            {
+                // do nothing
+            }
+            else
+            {
+                this.projectile.IsExpired = true;
+            }
+            return boomerangReturning;
+        }
+
         private void PushOut(CollisionDetection.CollisionSide collisionSide)
         {
             if (collisionSide == CollisionDetection.CollisionSide.Top)

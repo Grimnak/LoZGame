@@ -80,23 +80,23 @@
                 // is right wall
                 if (sourceCollider.Physics.Location.X + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width - BlockSpriteFactory.Instance.HorizontalOffset + 10)
                 {
-                    sourceCollider.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, sourceCollider.Physics.Location.Y);
+                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
                 }
                 // is left wall
                 else if (sourceCollider.Physics.Location.X < BlockSpriteFactory.Instance.HorizontalOffset)
                 {
-                    sourceCollider.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, sourceCollider.Physics.Location.Y);
+                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Left);
                 }
 
                 // is bottom wall
                 if (sourceCollider.Physics.Location.Y + sourceHeight > LoZGame.Instance.GraphicsDevice.Viewport.Height - BlockSpriteFactory.Instance.VerticalOffset)
                 {
-                    sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset);
+                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
                 }
                 // is top wall
                 else if (sourceCollider.Physics.Location.Y < BlockSpriteFactory.Instance.VerticalOffset)
                 {
-                    sourceCollider.Physics.Location = new Vector2(sourceCollider.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
+                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight,CollisionSide.Top);
                 }
             }
             else
