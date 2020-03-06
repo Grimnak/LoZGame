@@ -154,7 +154,7 @@
             {
                 controller.Update();
             }
-
+            this.dropManager.AttemptDrop(new Vector2(400, 240));
             this.link.Update();
             this.enemyManager.Update();
             this.itemManager.Update();

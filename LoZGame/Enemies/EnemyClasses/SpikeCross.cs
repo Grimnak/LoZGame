@@ -9,6 +9,9 @@
         private EnemyCollisionHandler enemyCollisionHandler;
         private Rectangle bounds;
         private LoZGame Game;
+        private bool expired;
+
+        public bool Expired { get { return this.expired; } set { this.expired = value; } }
 
         public Rectangle Bounds
         {
@@ -58,6 +61,7 @@
             Attacking = false;
             Retreating = false;
             InitialPos = this.Physics.Location;
+            this.expired = false;
         }
 
         private void checkForLink()
@@ -98,7 +102,6 @@
             this.currentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
-
         }
 
         public void Draw()

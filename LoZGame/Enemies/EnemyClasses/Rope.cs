@@ -9,6 +9,9 @@
     {
         private EnemyCollisionHandler enemyCollisionHandler;
         private Rectangle bounds;
+        private bool expired;
+
+        public bool Expired { get { return this.expired; } set { this.expired = value; } }
 
         public Rectangle Bounds
         {
@@ -70,6 +73,7 @@
             randomStateGenerator = new RandomStateGenerator(this, 2, 6);
             Attacking = false;
             AttackFactor = 1;
+            this.expired = false;
         }
 
         private void getNewDirection()
@@ -158,6 +162,10 @@
             {
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
+            }
+            if (this.health <= 0)
+            {
+                this.CurrentState = new DeadRopeState(this);
             }
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
