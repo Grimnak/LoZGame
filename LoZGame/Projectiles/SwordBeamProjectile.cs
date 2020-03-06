@@ -43,7 +43,7 @@
         public SwordBeamProjectile(IPlayer player)
         {
             this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
-            this.projectileHeight = ProjectileSpriteFactory.Instance.TriforceSize * scale;
+            this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * scale;
             this.collisionHandler = new ProjectileCollisionHandler(this);
             this.lifeTime = 0;
             this.direction = player.CurrentDirection;

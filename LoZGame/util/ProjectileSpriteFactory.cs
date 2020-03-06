@@ -19,9 +19,9 @@
         private static readonly int flameWidth = 32;
         private static readonly int flameHeight = 34;
         private static readonly int arrowWidth = 5;
+        private static readonly int swordBeamExplosionHeight = 12;
         private static readonly int explosionHeight = 50;
         private static readonly int explosionWidth = 48;
-        private static readonly int triforceSize = 12;
         private static readonly int fireballWidth = 8;
         private static readonly int fireballHeight = 10;
 
@@ -70,9 +70,9 @@
             get { return explosionWidth; }
         }
 
-        public int TriforceSize
+        public int SwordBeamExplosionHeight
         {
-            get { return triforceSize; }
+            get { return swordBeamExplosionHeight; }
         }
 
         public int FireballHeight
@@ -119,10 +119,6 @@
             {
                 return standardWidth * DRAWSCALE;
             }
-            else if (projectile is Triforce)
-            {
-                return triforceSize * DRAWSCALE;
-            }
             else
             {
                 return 0;
@@ -161,11 +157,7 @@
             }
             else if (projectile is SwordBeamExplosion)
             {
-                return triforceSize * DRAWSCALE;
-            }
-            else if (projectile is Triforce)
-            {
-                return triforceSize * DRAWSCALE;
+                return swordBeamExplosionHeight * DRAWSCALE;
             }
             else
             {
@@ -187,12 +179,10 @@
         private readonly SpriteSheetData magicBoomerangData = new SpriteSheetData("MagicBoomerang", standardWidth, boomerangHeight, 1, 1);
         private Texture2D bombSpriteSheet;
         private readonly SpriteSheetData bombData = new SpriteSheetData("Bomb", standardWidth, standardHeight, 1, 1);
-        private Texture2D triforceSpriteSheet;
-        private readonly SpriteSheetData triforceData = new SpriteSheetData("Triforce", triforceSize, triforceSize, 1, 2);
         private Texture2D swordBeamSpriteSheet;
         private readonly SpriteSheetData swordBeamData = new SpriteSheetData("SwordBeam", swordBeamWidth, standardHeight, 1, 4);
         private Texture2D swordExplosionSpriteSheet;
-        private readonly SpriteSheetData swordExplosionData = new SpriteSheetData("SwordBeamExplosion", standardWidth, triforceSize, 1, 4);
+        private readonly SpriteSheetData swordExplosionData = new SpriteSheetData("SwordBeamExplosion", standardWidth, swordBeamExplosionHeight, 1, 4);
         private Texture2D explosionOneSpriteSheet;
         private readonly SpriteSheetData explosionOneData = new SpriteSheetData("BombExplosionOne", explosionWidth, explosionHeight, 1, 3);
         private Texture2D explosionTwoSpriteSheet;
@@ -232,13 +222,7 @@
             this.explosionThreeSpriteSheet = content.Load<Texture2D>(this.explosionThreeData.FilePath);
             this.explosionFourSpriteSheet = content.Load<Texture2D>(this.ExplosionFourData.FilePath);
             this.explosionFiveSpriteSheet = content.Load<Texture2D>(this.explosionFiveData.FilePath);
-            this.triforceSpriteSheet = content.Load<Texture2D>(this.triforceData.FilePath);
             this.fireballSpriteSheet = content.Load<Texture2D>(this.fireballData.FilePath);
-        }
-
-        public TriforceProjectileSprite Triforce()
-        {
-            return new TriforceProjectileSprite(this.triforceSpriteSheet, this.triforceData, DRAWSCALE);
         }
 
         public FireballSprite Fireball()
