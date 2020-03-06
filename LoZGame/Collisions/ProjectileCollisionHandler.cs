@@ -78,7 +78,7 @@
             {
                 boomerangReturning = true;
             }
-            else if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile || this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
+            else if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile || this.projectile is BombProjectile)
             {
                 if (collisionSide == CollisionDetection.CollisionSide.Right)
                 {
@@ -98,31 +98,15 @@
                 }
                 this.projectile.Physics.StopMovement();
             }
+            else if (this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
+            {
+                // do nothing
+            }
             else
             {
                 this.projectile.IsExpired = true;
             }
             return boomerangReturning;
         }
-
-        /*private void PushOut(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
-        {
-            if (((BlueCandleProjectile)projectile).Direction.Equals("Up"))
-            {
-                this.projectile.Physics.Location = new Vector2(this.projectile.Physics.Location.X, projectile.Physics.Location.Y + BlockSpriteFactory.Instance.TileHeight);
-            }
-            else if (((BlueCandleProjectile)projectile).Direction.Equals("Bottom"))
-            {
-                this.projectile.Physics.Location = new Vector2(this.projectile.Physics.Location.X, projectile.Physics.Location.Y - ProjectileSpriteFactory.GetProjectileHeight(this.projectile));
-            }
-            else if (((BlueCandleProjectile)projectile).Direction.Equals("Left"))
-            {
-                this.projectile.Physics.Location = new Vector2(projectile.Physics.Location.X + BlockSpriteFactory.Instance.TileWidth, this.projectile.Physics.Location.Y);
-            }
-            else if (((BlueCandleProjectile)projectile).Direction.Equals("Right"))
-            {
-                this.projectile.Physics.Location = new Vector2(projectile.Physics.Location.X - ProjectileSpriteFactory.GetProjectileWidth(this.projectile), this.projectile.Physics.Location.Y);
-            }
-        }*/
     }
 }
