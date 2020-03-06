@@ -106,7 +106,7 @@
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            this.returning = collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
         private void ReturnHome()
