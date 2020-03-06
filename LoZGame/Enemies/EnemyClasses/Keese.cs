@@ -44,8 +44,11 @@
         private int health = 1;
         private int lifeTime = 0;
         private int accelerationMax = 5;
-        private readonly int directionChange = 40;
+        private const int DirectionChangeMin = 20;
+        private const int DirectionChangeMax = 80;
+        private int directionChange;
         private RandomStateGenerator randomStateGenerator;
+        private Random randomDirectionCooldown;
 
         public Keese(Vector2 location)
         {
@@ -55,6 +58,8 @@
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             randomStateGenerator = new RandomStateGenerator(this, 2, 10);
+            randomDirectionCooldown = LoZGame.Instance.Random;
+            directionChange = randomDirectionCooldown.Next(DirectionChangeMin, DirectionChangeMax);
             this.expired = false;
         }
 
@@ -78,6 +83,7 @@
             if (this.lifeTime > this.directionChange)
             {
                 randomStateGenerator.Update();
+                directionChange = randomDirectionCooldown.Next(DirectionChangeMin, DirectionChangeMax);
                 this.lifeTime = 0;
             }
             if (this.Health.CurrentHealth <= 0)
