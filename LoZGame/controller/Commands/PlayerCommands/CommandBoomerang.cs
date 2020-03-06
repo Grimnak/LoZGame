@@ -19,7 +19,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            if (!LoZGame.Instance.Entities.ProjectileManager.BoomerangOut && !(this.player.State is DieState))
+            if (!LoZGame.Instance.Entities.ProjectileManager.BoomerangOut && !(this.player.State is DieState || this.player.State is PickupItemState))
             {
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.Boomerang, this.player);
