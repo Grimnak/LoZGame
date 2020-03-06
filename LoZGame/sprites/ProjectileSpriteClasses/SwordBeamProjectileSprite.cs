@@ -24,7 +24,7 @@
             this.Data = data;
             this.scale = scale;
             this.Size = new Vector2(this.Data.Width * this.scale, this.Data.Height * this.scale);
-            this.origin = new Vector2(this.Data.Width / 2, 0);
+            this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
             this.frameOne = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
             this.frameTwo = new Rectangle(0, this.Data.Height, this.Data.Width, this.Data.Height);
             this.frameThree = new Rectangle(0, this.Data.Height * 2, this.Data.Width, this.Data.Height);

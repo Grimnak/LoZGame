@@ -7,16 +7,21 @@
 
     public class LoZGame : Game
     {
-        private readonly GraphicsDeviceManager graphics;
-        private SpriteBatch spriteBatch;
+        // parameters to help with debugging game
+        public static readonly bool DebuggMode = false;
         private static readonly float UpdatesPerSecond = 60;
         private const int DefaultUpdateSpeed = 60;
+
+        private Texture2D DebuggSprite;
+        private Rectangle DebuggSourceRectangle;
+
+        private readonly GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
         private const int InversionTime = 5;
         private BlendState bsInverter;
+        private int gameLife;
 
         public SpriteBatch SpriteBatch => this.spriteBatch;
-
-        private int gameLife;
 
         private Random randomNumberGenerator;
 
@@ -79,6 +84,10 @@
 
         public int UpdateSpeed { get { return DefaultUpdateSpeed; } }
 
+        public Texture2D DebuggColor{ get { return DebuggSprite; } }
+
+        public Rectangle DebuggBox { get { return DebuggSourceRectangle; } }
+
         private LoZGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
@@ -105,6 +114,10 @@
             this.players = new List<IPlayer>();
             this.projectiles = new List<IProjectile>();
             this.randomNumberGenerator = new Random();
+            this.DebuggSprite = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            this.DebuggSprite.SetData<Color>(new Color[] { Color.PaleVioletRed });
+            this.DebuggSourceRectangle = new Rectangle(0, 0, 1, 1);
+
             base.Initialize();
         }
 

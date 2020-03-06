@@ -88,7 +88,7 @@
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
-            if (this.health <= 0)
+            if (this.Health.CurrentHealth <= 0)
             {
                 this.CurrentState = new DeadGelState(this);
             }
