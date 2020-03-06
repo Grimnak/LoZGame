@@ -57,6 +57,11 @@
             }
         }
 
+        public void OnCollisionResponse(CollisionDetection.CollisionSide collisionSide)
+        {
+            itemCollisionHandler.OnCollisionResponse(collisionSide);
+        }
+
         public void Update()
         {
             this.lifeTime++;

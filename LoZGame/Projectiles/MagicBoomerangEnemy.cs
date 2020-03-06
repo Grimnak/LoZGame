@@ -105,6 +105,11 @@
             }
         }
 
+        public void OnCollisionResponse(CollisionDetection.CollisionSide collisionSide)
+        {
+            collisionHandler.OnCollisionResponse(collisionSide);
+        }
+
         private void ReturnHome()
         {
             this.playerLoc = this.Enemy.Physics.Location;

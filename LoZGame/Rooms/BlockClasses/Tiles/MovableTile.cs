@@ -89,5 +89,10 @@
                 this.blockCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
         }
+
+        public void OnCollisionResponse(CollisionDetection.CollisionSide collisionSide)
+        {
+            doorCollisionHandler.OnCollisionResponse(collisionSide);
+        }
     }
 }
