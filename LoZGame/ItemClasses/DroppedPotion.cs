@@ -7,7 +7,7 @@
     internal class DroppedPotion : IItem
     {
         private static readonly int DespawnTimer = LoZGame.Instance.UpdateSpeed * 20;
-        private static readonly int SpawnTimer = LoZGame.Instance.UpdateSpeed * 20;
+        private static readonly int SpawnTimer = LoZGame.Instance.UpdateSpeed * 1;
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

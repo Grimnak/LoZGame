@@ -137,6 +137,8 @@
             this.players.Add(this.link);
 
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+
+            this.dropManager.AttemptDrop(new Vector2(400, 240));
         }
 
         protected override void UnloadContent()
@@ -154,7 +156,6 @@
             {
                 controller.Update();
             }
-            this.dropManager.AttemptDrop(new Vector2(400, 240));
             this.link.Update();
             this.enemyManager.Update();
             this.itemManager.Update();
