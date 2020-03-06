@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework.Graphics;
-
+    using Microsoft.Xna.Framework;
     public partial class ProjectileManager
     {
         private readonly Dictionary<int, IProjectile> projectileList;
@@ -207,6 +207,10 @@
             foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
             {
                 item.Value.Draw();
+                if (LoZGame.DebuggMode)
+                {
+                    LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.DebuggColor, item.Value.Bounds, LoZGame.Instance.DebuggBox, Color.Red, 0.0f, Vector2.Zero, SpriteEffects.None, 1.0f);
+                }
             }
         }
     }

@@ -42,8 +42,8 @@
 
         public SwordBeamProjectile(IPlayer player)
         {
-            this.projectileWidth = ProjectileSpriteFactory.Instance.SwordBeamWidth;
-            this.projectileHeight = ProjectileSpriteFactory.Instance.SwordBeamHeight;             
+            this.projectileWidth = ProjectileSpriteFactory.Instance.SwordBeamWidth * scale;
+            this.projectileHeight = ProjectileSpriteFactory.Instance.SwordBeamHeight * scale;             
             this.collisionHandler = new ProjectileCollisionHandler(this);
             this.lifeTime = 0;
             this.direction = player.CurrentDirection;
@@ -160,10 +160,6 @@
         public void Draw()
         {
             this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
-            if (LoZGame.DebuggMode)
-            {
-                LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.DebuggColor, this.Bounds, LoZGame.Instance.DebuggBox, Color.Red, 0.0f, Vector2.Zero, SpriteEffects.None, 1.0f);
-            }
         }
     }
 }
