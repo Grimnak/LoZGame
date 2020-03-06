@@ -15,12 +15,7 @@
     {
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DungeonTint;
-        private string dirs;
-
-        public string Dirs
-        {
-            get { return this.dirs; }
-        }
+        private Vector2 originalLocation;
 
         private Rectangle bounds;
 
@@ -42,25 +37,38 @@
         /// <param name="direction">Valid Directions for this.</param>
         public MovableTile(Vector2 location, string name, string direction)
         {
+            this.originalLocation = location;
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.sprite = this.CreateCorrectSprite(name);
-            this.dirs = direction;
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
         }
 
         /// <inheritdoc/>
         public ISprite CreateCorrectSprite(string name)
         {
-                    return BlockSpriteFactory.Instance.MovableSquare(this.Physics.Location);
+            return BlockSpriteFactory.Instance.MovableSquare(this.Physics.Location);
         }
 
         private void HandlePush()
         {
-            if (Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0)
+            if (this.Physics.Velocity.X != 0)
             {
-                this.Physics.Move();
-                this.Physics.Accelerate();
+                if (Math.Abs(this.Physics.Location.X - this.originalLocation.X) < this.Bounds.Width && this.Physics.Location.Y == this.originalLocation.Y)
+                {
+                    this.Physics.StopMovementY();
+                    this.Physics.Move();
+                    this.Physics.Accelerate();
+                }
+            }
+            else if (this.Physics.Velocity.Y != 0)
+            {
+                if (Math.Abs(this.Physics.Location.Y - this.originalLocation.Y) < this.Bounds.Height && this.Physics.Location.X == this.originalLocation.X)
+                {
+                    this.Physics.StopMovementX();
+                    this.Physics.Move();
+                    this.Physics.Accelerate();
+                }
             }
         }
 
