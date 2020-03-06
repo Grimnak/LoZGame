@@ -117,7 +117,6 @@ namespace LoZClone
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            doorCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
     }
 }
