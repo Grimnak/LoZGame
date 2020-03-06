@@ -15,6 +15,7 @@ namespace LoZClone
         private ProjectileCollisionHandler collisionHandler;
         private Rectangle frame;
         private Vector2 origin;
+        private Vector2 BoundsOffset;
         private int lifeTime;
         private int projectileWidth;
         private int projectileHeight;
@@ -40,28 +41,36 @@ namespace LoZClone
             this.lifeTime = 100;
             this.damage = 1;
             this.expired = false;
+            loc = new Vector2(loc.X + (LinkSize / 2), loc.Y + (LinkSize / 2));
             if (direction.Equals("Up"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(0, -1 * Speed), new Vector2(0, 0));
-                this.rotation = 0;
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y - (LinkSize / 2)), new Vector2(0, -1 * Speed), new Vector2(0, 0));
+                this.rotation = 0; 
+                this.BoundsOffset = new Vector2(this.projectileWidth / 2, this.projectileHeight / 2);
+                this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileWidth, projectileHeight);
             }
             else if (direction.Equals("Left"))
             {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X - (LinkSize / 2), loc.Y), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
                 this.rotation = -1 * MathHelper.PiOver2;
+                this.BoundsOffset = new Vector2(this.projectileHeight / 2, this.projectileWidth / 2);
+                this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileHeight, projectileWidth);
             }
             else if (direction.Equals("Right"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize / 2)), new Vector2(Speed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(Speed, 0), new Vector2(0, 0));
                 this.rotation = MathHelper.PiOver2;
+                this.BoundsOffset = new Vector2(this.projectileHeight / 2, this.projectileWidth / 2);
+                this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileHeight, projectileWidth);
             }
             else
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)), new Vector2(0, Speed), new Vector2(0, 0));
                 this.rotation = MathHelper.Pi;
+                this.BoundsOffset = new Vector2(this.projectileWidth / 2, this.projectileHeight / 2);
+                this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileWidth, projectileHeight);
             }
             this.sprite = ProjectileSpriteFactory.Instance.Arrow(rotation);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
@@ -96,7 +105,7 @@ namespace LoZClone
             {
                 this.expired = true;
             }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, this.Bounds.Width, this.Bounds.Height);
             this.Physics.Move();
             this.sprite.Update();
         }

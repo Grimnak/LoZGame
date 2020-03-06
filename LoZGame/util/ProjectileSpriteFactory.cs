@@ -19,15 +19,31 @@
         private static readonly int flameWidth = 32;
         private static readonly int flameHeight = 34;
         private static readonly int arrowWidth = 5;
+        private static readonly int arrowHeight = 16;
         private static readonly int swordBeamExplosionHeight = 12;
         private static readonly int explosionHeight = 50;
         private static readonly int explosionWidth = 48;
         private static readonly int fireballWidth = 8;
         private static readonly int fireballHeight = 10;
+        private static readonly int swordWidth = 40;
+        private static readonly int swordHeight = 40;
+
+        public int SwordWidth
+        {
+            get { return swordWidth; }
+        }
+        public int SwordHeight
+        {
+            get { return swordHeight; }
+        }
 
         public int SwordBeamWidth
         {
-            get { return SwordBeamWidth; }
+            get { return swordBeamWidth; }
+        }
+        public int SwordBeamHeight
+        {
+            get { return standardHeight; }
         }
 
         public int BoomerangHeight
@@ -58,6 +74,11 @@
         public int ArrowWidth
         {
             get { return arrowWidth; }
+        }
+
+        public int ArrowHeight
+        {
+            get { return arrowHeight; }
         }
 
         public int ExplosionHeight
@@ -195,6 +216,8 @@
         private readonly SpriteSheetData explosionFiveData = new SpriteSheetData("BombExplosionFive", explosionWidth, explosionHeight, 1, 3);
         private Texture2D fireballSpriteSheet;
         private readonly SpriteSheetData fireballData = new SpriteSheetData("fireball", fireballWidth, fireballHeight, 1, 4);
+        private Texture2D greenWoodSwordSpriteSheet;
+        private readonly SpriteSheetData greenWoodSwordData = new SpriteSheetData("Green_Wood_Down", swordWidth, swordHeight, 1, 2);
 
         private static readonly ProjectileSpriteFactory InstanceValue = new ProjectileSpriteFactory();
 
@@ -223,8 +246,12 @@
             this.explosionFourSpriteSheet = content.Load<Texture2D>(this.ExplosionFourData.FilePath);
             this.explosionFiveSpriteSheet = content.Load<Texture2D>(this.explosionFiveData.FilePath);
             this.fireballSpriteSheet = content.Load<Texture2D>(this.fireballData.FilePath);
+            this.greenWoodSwordSpriteSheet = content.Load<Texture2D>(this.greenWoodSwordData.FilePath);
         }
-
+        public GreenWoodSwordSprite GreenWoodSword(float rotation)
+        {
+            return new GreenWoodSwordSprite(this.greenWoodSwordSpriteSheet, this.greenWoodSwordData, rotation);
+        }
         public FireballSprite Fireball()
         {
             return new FireballSprite(this.fireballSpriteSheet, this.fireballData, DRAWSCALE);

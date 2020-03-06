@@ -34,20 +34,29 @@
         private int health = 1;
         private int timeInIdle = 0;
         private int timeSinceIdle = 0;
-        private int movementWaitMax = 24;
-        private int idleWaitMax = 12;
+        private int movementWaitMax = 100;
+        private int movementWaitMin = 20;
+        private int movementWait;
+        private int idleWaitMin = 10;
+        private int idleWaitMax = 40;
+        private int idleWait;
         private RandomStateGenerator randomStateGenerator;
+        private Random randomWaitGenerator;
 
         public Gel(Vector2 location)
         {
             this.Health = new HealthManager(health);
             this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-            this.currentState = new LeftMovingGelState(this);
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Physics.Location = new Vector2(location.X, location.Y);
             this.ShouldMove = true;
             this.randomStateGenerator = new RandomStateGenerator(this, 2, 6);
+            this.randomWaitGenerator = LoZGame.Instance.Random;
+            this.movementWait = randomWaitGenerator.Next(movementWaitMin, movementWaitMax);
+            this.idleWait = randomWaitGenerator.Next(idleWaitMin, idleWaitMax);
+            this.CurrentState = new LeftMovingGelState(this);
+            this.randomStateGenerator.Update();
             this.expired = false;
         }
 
@@ -55,17 +64,19 @@
         {
             if (ShouldMove)
             {
-                if (timeSinceIdle++ > movementWaitMax)
+                if (timeSinceIdle++ > movementWait)
                 {
+                    movementWait = randomWaitGenerator.Next(movementWaitMin, movementWaitMax);
                     ShouldMove = !ShouldMove;
                     timeSinceIdle = 0;
                 }
             }
             else
             {
-                if (timeInIdle++ > idleWaitMax)
+                if (timeInIdle++ > idleWait)
                 {
                     ShouldMove = !ShouldMove;
+                    idleWait = randomWaitGenerator.Next(idleWaitMin, idleWaitMax);
                     timeInIdle = 0;
                     randomStateGenerator.Update();
                 }
@@ -88,7 +99,7 @@
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
-            if (this.health <= 0)
+            if (this.Health.CurrentHealth <= 0)
             {
                 this.CurrentState = new DeadGelState(this);
             }

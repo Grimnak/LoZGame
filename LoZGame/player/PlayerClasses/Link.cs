@@ -2,6 +2,7 @@
 {
     using System;
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
     public class Link : PlayerEssentials, IPlayer
     {
@@ -62,6 +63,10 @@
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
             this.State.Update();
+            if (this.Health.CurrentHealth <= 0)
+            {
+                this.State.Die();
+            }
         }
 
         public override void Draw()

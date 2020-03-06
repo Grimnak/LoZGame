@@ -343,30 +343,30 @@ namespace LoZClone
             {
                 if (currentWeapon.Equals("Wood"))
                 {
-                    return new LinkAttackUpSprite(this.redLinkUpTexture, this.redLinkUpData, this.redWoodUpTexture, this.redWoodUpData);
+                    return new LinkAttackUpSprite(this.redLinkUpTexture, this.redLinkUpData);
                 }
                 else if (currentWeapon.Equals("Magic"))
                 {
-                    return new LinkAttackUpSprite(this.redLinkUpTexture, this.redLinkUpData, this.redMagicUpTexture, this.redMagicUpData);
+                    return new LinkAttackUpSprite(this.redLinkUpTexture, this.redLinkUpData);
                 }
                 else // currentWeapon is "Wand"
                 {
-                    return new LinkAttackUpSprite(this.redLinkUpTexture, this.redLinkUpData, this.wandDownTexture, this.wandDownData);
+                    return new LinkAttackUpSprite(this.redLinkUpTexture, this.redLinkUpData);
                 }
             }
             else if (currentColor.Equals("Blue"))
             {
                 if (currentWeapon.Equals("Wood"))
                 {
-                    return new LinkAttackUpSprite(this.blueLinkUpTexture, this.blueLinkUpData, this.blueWoodUpTexture, this.blueWoodUpData);
+                    return new LinkAttackUpSprite(this.blueLinkUpTexture, this.blueLinkUpData);
                 }
                 else if (currentWeapon.Equals("Magic"))
                 {
-                    return new LinkAttackUpSprite(this.blueLinkUpTexture, this.blueLinkUpData, this.blueMagicUpTexture, this.blueMagicUpData);
+                    return new LinkAttackUpSprite(this.blueLinkUpTexture, this.blueLinkUpData);
                 }
                 else // currentWeapon is "Wand"
                 {
-                    return new LinkAttackUpSprite(this.blueLinkUpTexture, this.blueLinkUpData, this.wandUpTexture, this.wandUpData);
+                    return new LinkAttackUpSprite(this.blueLinkUpTexture, this.blueLinkUpData);
                 }
 
             }
@@ -374,15 +374,15 @@ namespace LoZClone
             {
                 if (currentWeapon.Equals("Wood"))
                 {
-                    return new LinkAttackUpSprite(this.greenLinkUpTexture, this.greenLinkUpData, this.greenWoodUpTexture, this.greenWoodUpData);
+                    return new LinkAttackUpSprite(this.greenLinkUpTexture, this.greenLinkUpData);
                 }
                 else if (currentWeapon.Equals("Magic"))
                 {
-                    return new LinkAttackUpSprite(this.greenLinkUpTexture, this.greenLinkUpData, this.greenMagicUpTexture, this.greenMagicUpData);
+                    return new LinkAttackUpSprite(this.greenLinkUpTexture, this.greenLinkUpData);
                 }
                 else // currentWeapon is "Wand"
                 {
-                    return new LinkAttackUpSprite(this.greenLinkUpTexture, this.greenLinkUpData, this.wandUpTexture, this.wandUpData);
+                    return new LinkAttackUpSprite(this.greenLinkUpTexture, this.greenLinkUpData);
                 }
 
             }
@@ -394,30 +394,30 @@ namespace LoZClone
             {
                 if (currentWeapon.Equals("Wood"))
                 {
-                    return new LinkAttackDownSprite(this.redLinkDownTexture, this.redLinkDownData, this.redWoodDownTexture, this.redWoodDownData);
+                    return new LinkAttackDownSprite(this.redLinkDownTexture, this.redLinkDownData);
                 }
                 else if (currentWeapon.Equals("Magic"))
                 {
-                    return new LinkAttackDownSprite(this.redLinkDownTexture, this.redLinkDownData, this.redMagicDownTexture, this.redMagicDownData);
+                    return new LinkAttackDownSprite(this.redLinkDownTexture, this.redLinkDownData);
                 }
                 else // currentWeapon is "Wand"
                 {
-                    return new LinkAttackDownSprite(this.redLinkDownTexture, this.redLinkDownData, this.wandDownTexture, this.wandDownData);
+                    return new LinkAttackDownSprite(this.redLinkDownTexture, this.redLinkDownData);
                 }
             }
             else if (currentColor.Equals("Blue"))
             {
                 if (currentWeapon.Equals("Wood"))
                 {
-                    return new LinkAttackDownSprite(this.blueLinkDownTexture, this.blueLinkDownData, this.blueWoodDownTexture, this.blueWoodDownData);
+                    return new LinkAttackDownSprite(this.blueLinkDownTexture, this.blueLinkDownData);
                 }
                 else if (currentWeapon.Equals("Magic"))
                 {
-                    return new LinkAttackDownSprite(this.blueLinkDownTexture, this.blueLinkDownData, this.blueMagicDownTexture, this.blueMagicDownData);
+                    return new LinkAttackDownSprite(this.blueLinkDownTexture, this.blueLinkDownData);
                 }
                 else // currentWeapon is "Wand"
                 {
-                    return new LinkAttackDownSprite(this.blueLinkDownTexture, this.blueLinkDownData, this.wandDownTexture, this.wandDownData);
+                    return new LinkAttackDownSprite(this.blueLinkDownTexture, this.blueLinkDownData);
                 }
 
             }
@@ -425,15 +425,15 @@ namespace LoZClone
             {
                 if (currentWeapon.Equals("Wood"))
                 {
-                    return new LinkAttackDownSprite(this.greenLinkDownTexture, this.greenLinkDownData, this.greenWoodDownTexture, this.greenWoodDownData);
+                    return new LinkAttackDownSprite(this.greenLinkDownTexture, this.greenLinkDownData);
                 }
                 else if (currentWeapon.Equals("Magic"))
                 {
-                    return new LinkAttackDownSprite(this.greenLinkDownTexture, this.greenLinkDownData, this.greenMagicDownTexture, this.greenMagicDownData);
+                    return new LinkAttackDownSprite(this.greenLinkDownTexture, this.greenLinkDownData);
                 }
                 else // currentWeapon is "Wand"
                 {
-                    return new LinkAttackDownSprite(this.greenLinkDownTexture, this.greenLinkDownData, this.wandDownTexture, this.wandDownData);
+                    return new LinkAttackDownSprite(this.greenLinkDownTexture, this.greenLinkDownData);
                 }
 
             }
@@ -445,30 +445,30 @@ namespace LoZClone
             {
                 if (currentWeapon.Equals("Wood"))
                 {
-                    return new LinkAttackLeftSprite(this.redLinkLeftTexture, this.redLinkLeftData, this.redWoodLeftTexture, this.redWoodLeftData);
+                    return new LinkAttackLeftSprite(this.redLinkLeftTexture, this.redLinkLeftData);
                 }
                 else if (currentWeapon.Equals("Magic"))
                 {
-                    return new LinkAttackLeftSprite(this.redLinkLeftTexture, this.redLinkLeftData, this.redMagicLeftTexture, this.redMagicLeftData);
+                    return new LinkAttackLeftSprite(this.redLinkLeftTexture, this.redLinkLeftData);
                 }
                 else // currentWeapon is "Wand"
                 {
-                    return new LinkAttackLeftSprite(this.redLinkLeftTexture, this.redLinkLeftData, this.wandDownTexture, this.wandDownData);
+                    return new LinkAttackLeftSprite(this.redLinkLeftTexture, this.redLinkLeftData);
                 }
             }
             else if (currentColor.Equals("Blue"))
             {
                 if (currentWeapon.Equals("Wood"))
                 {
-                    return new LinkAttackLeftSprite(this.blueLinkLeftTexture, this.blueLinkLeftData, this.blueWoodLeftTexture, this.blueWoodLeftData);
+                    return new LinkAttackLeftSprite(this.blueLinkLeftTexture, this.blueLinkLeftData);
                 }
                 else if (currentWeapon.Equals("Magic"))
                 {
-                    return new LinkAttackLeftSprite(this.blueLinkLeftTexture, this.blueLinkLeftData, this.blueMagicLeftTexture, this.blueMagicLeftData);
+                    return new LinkAttackLeftSprite(this.blueLinkLeftTexture, this.blueLinkLeftData);
                 }
                 else // currentWeapon is "Wand"
                 {
-                    return new LinkAttackLeftSprite(this.blueLinkLeftTexture, this.blueLinkLeftData, this.wandLeftTexture, this.wandLeftData);
+                    return new LinkAttackLeftSprite(this.blueLinkLeftTexture, this.blueLinkLeftData);
                 }
 
             }
@@ -476,15 +476,15 @@ namespace LoZClone
             {
                 if (currentWeapon.Equals("Wood"))
                 {
-                    return new LinkAttackLeftSprite(this.greenLinkLeftTexture, this.greenLinkLeftData, this.greenWoodLeftTexture, this.greenWoodLeftData);
+                    return new LinkAttackLeftSprite(this.greenLinkLeftTexture, this.greenLinkLeftData);
                 }
                 else if (currentWeapon.Equals("Magic"))
                 {
-                    return new LinkAttackLeftSprite(this.greenLinkLeftTexture, this.greenLinkLeftData, this.greenMagicLeftTexture, this.greenMagicLeftData);
+                    return new LinkAttackLeftSprite(this.greenLinkLeftTexture, this.greenLinkLeftData);
                 }
                 else // currentWeapon is "Wand"
                 {
-                    return new LinkAttackLeftSprite(this.greenLinkLeftTexture, this.greenLinkLeftData, this.wandLeftTexture, this.wandLeftData);
+                    return new LinkAttackLeftSprite(this.greenLinkLeftTexture, this.greenLinkLeftData);
                 }
 
             }
@@ -496,30 +496,30 @@ namespace LoZClone
             {
                 if (currentWeapon.Equals("Wood"))
                 {
-                    return new LinkAttackRightSprite(this.redLinkRightTexture, this.redLinkRightData, this.redWoodRightTexture, this.redWoodRightData);
+                    return new LinkAttackRightSprite(this.redLinkRightTexture, this.redLinkRightData);
                 }
                 else if (currentWeapon.Equals("Magic"))
                 {
-                    return new LinkAttackRightSprite(this.redLinkRightTexture, this.redLinkRightData, this.redMagicRightTexture, this.redMagicRightData);
+                    return new LinkAttackRightSprite(this.redLinkRightTexture, this.redLinkRightData);
                 }
                 else // currentWeapon is "Wand"
                 {
-                    return new LinkAttackRightSprite(this.redLinkRightTexture, this.redLinkRightData, this.wandDownTexture, this.wandDownData);
+                    return new LinkAttackRightSprite(this.redLinkRightTexture, this.redLinkRightData);
                 }
             }
             else if (currentColor.Equals("Blue"))
             {
                 if (currentWeapon.Equals("Wood"))
                 {
-                    return new LinkAttackRightSprite(this.blueLinkRightTexture, this.blueLinkRightData, this.blueWoodRightTexture, this.blueWoodRightData);
+                    return new LinkAttackRightSprite(this.blueLinkRightTexture, this.blueLinkRightData);
                 }
                 else if (currentWeapon.Equals("Magic"))
                 {
-                    return new LinkAttackRightSprite(this.blueLinkRightTexture, this.blueLinkRightData, this.blueMagicRightTexture, this.blueMagicRightData);
+                    return new LinkAttackRightSprite(this.blueLinkRightTexture, this.blueLinkRightData);
                 }
                 else // currentWeapon is "Wand"
                 {
-                    return new LinkAttackRightSprite(this.blueLinkRightTexture, this.blueLinkRightData, this.wandRightTexture, this.wandRightData);
+                    return new LinkAttackRightSprite(this.blueLinkRightTexture, this.blueLinkRightData);
                 }
 
             }
@@ -527,15 +527,15 @@ namespace LoZClone
             {
                 if (currentWeapon.Equals("Wood"))
                 {
-                    return new LinkAttackRightSprite(this.greenLinkRightTexture, this.greenLinkRightData, this.greenWoodRightTexture, this.greenWoodRightData);
+                    return new LinkAttackRightSprite(this.greenLinkRightTexture, this.greenLinkRightData);
                 }
                 else if (currentWeapon.Equals("Magic"))
                 {
-                    return new LinkAttackRightSprite(this.greenLinkRightTexture, this.greenLinkRightData, this.greenMagicRightTexture, this.greenMagicRightData);
+                    return new LinkAttackRightSprite(this.greenLinkRightTexture, this.greenLinkRightData);
                 }
                 else // currentWeapon is "Wand"
                 {
-                    return new LinkAttackRightSprite(this.greenLinkRightTexture, this.greenLinkRightData, this.wandRightTexture, this.wandRightData);
+                    return new LinkAttackRightSprite(this.greenLinkRightTexture, this.greenLinkRightData);
                 }
 
             }

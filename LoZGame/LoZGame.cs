@@ -7,16 +7,18 @@
 
     public class LoZGame : Game
     {
-        private readonly GraphicsDeviceManager graphics;
-        private SpriteBatch spriteBatch;
+        // parameters to help with debugging game
+        public static readonly bool DebuggMode = false;
         private static readonly float UpdatesPerSecond = 60;
         private const int DefaultUpdateSpeed = 60;
+
+        private readonly GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
         private const int InversionTime = 5;
         private BlendState bsInverter;
+        private int gameLife;
 
         public SpriteBatch SpriteBatch => this.spriteBatch;
-
-        private int gameLife;
 
         private Random randomNumberGenerator;
 
@@ -34,10 +36,10 @@
         private DropManager dropManager;
         private DoorManager doorManager;
         private CollisionDetection collisionDetector;
+        private DebugManager debuggManager;
 
         private List<IController> controllers;
         private List<IPlayer> players;
-        private List<IProjectile> projectiles;
 
         private string gameState;
 
@@ -97,14 +99,16 @@
             enemyManager = new EnemyManager();
             doorManager = new DoorManager();
             dropManager = new DropManager();
+            debuggManager = new DebugManager();
         }
 
         protected override void Initialize()
         {
             this.controllers = new List<IController>();
             this.players = new List<IPlayer>();
-            this.projectiles = new List<IProjectile>();
             this.randomNumberGenerator = new Random();
+            this.debuggManager.Initialize();
+
             base.Initialize();
         }
 
@@ -137,6 +141,8 @@
             this.players.Add(this.link);
 
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+
+            this.dropManager.AttemptDrop(new Vector2(400, 240));
         }
 
         protected override void UnloadContent()
@@ -161,6 +167,10 @@
             this.doorManager.Update();
             this.entityManager.Update();
             this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.doorManager.DoorList.AsReadOnly(), this.itemManager.ItemList.AsReadOnly(), this.entityManager.PlayerProjectiles.AsReadOnly(), this.entityManager.EnemyProjectiles.AsReadOnly());
+            if (DebuggMode)
+            {
+                this.debuggManager.Update();
+            }
             base.Update(gameTime);
         }
 
@@ -190,6 +200,10 @@
             this.entityManager.Draw();
             this.doorManager.Draw();
             this.link.Draw();
+            if (DebuggMode)
+            {
+                this.debuggManager.Draw();
+            }
             this.spriteBatch.End();
             base.Draw(gameTime);
         }

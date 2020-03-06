@@ -42,7 +42,7 @@
             this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight * scale;
             this.collisionHandler = new ProjectileCollisionHandler(this);
             this.expired = false;
-            Vector2 loc = player.Physics.Location;
+            Vector2 loc = new Vector2(player.Physics.Location.X + (LinkSize / 2), player.Physics.Location.Y + (LinkSize / 2));
             this.direction = player.CurrentDirection;
             this.isReturned = false;
             this.returning = false;
@@ -52,25 +52,25 @@
 
             if (this.direction.Equals("Up"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(0, -1 * MaxSpeed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y - (LinkSize / 2)), new Vector2(0, -1 * MaxSpeed), new Vector2(0, 0));
             }
             else if (this.direction.Equals("Left"))
             {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)), new Vector2(-1 * MaxSpeed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X - (LinkSize / 2), loc.Y), new Vector2(-1 * MaxSpeed, 0), new Vector2(0, 0));
             }
             else if (this.direction.Equals("Right"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y + (LinkSize / 2)), new Vector2(MaxSpeed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(MaxSpeed, 0), new Vector2(0, 0));
             }
             else
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y + LinkSize), new Vector2(0, MaxSpeed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)), new Vector2(0, MaxSpeed), new Vector2(0, 0));
             }
 
             this.playerLoc = player.Physics.Location;
             this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
             this.currentSpeed = MaxSpeed;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, ProjectileSpriteFactory.Instance.StandardWidth, ProjectileSpriteFactory.Instance.BoomerangHeight);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X - (projectileWidth / 2), (int)this.Physics.Location.Y - (projectileHeight / 2), projectileWidth, projectileHeight);
             this.sprite = ProjectileSpriteFactory.Instance.Boomerang();
         }
 
@@ -150,7 +150,7 @@
                 this.ReturnHome();
             }
             this.Physics.Move();
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X - (projectileWidth / 2), (int)this.Physics.Location.Y - (projectileHeight / 2), projectileWidth, projectileHeight);
             this.CheckBounds();
             this.sprite.Update();
         }

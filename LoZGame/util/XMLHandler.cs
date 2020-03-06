@@ -36,7 +36,6 @@
                     string border = string.Empty + ns;
                     if (room.Descendants(ns + "border").Elements().Count<XElement>() > 0)
                     {
-                        
                         border = string.Empty + room.Descendants(ns + "border").Elements().First<XElement>().Value;
                     }
                     Room droom = new Room(string.Empty + border, ex);
@@ -76,7 +75,7 @@
                         foreach (XElement trow in rrow)
                         {
                             int tcount = 0; // xml debug
-                            foreach (XElement block in trow.Elements()) // i have to call .Elements() because i am dumb and bad at xml
+                            foreach (XElement block in trow.Elements()) // .Elements() here b/c object references a parent with list of children and we just want the children.
                             {
                                 string x = block.Attribute("idx").Value, y = trow.Attribute("idx").Value, type = block.Attribute("type").Value;
                                 tcount++; // xml debug

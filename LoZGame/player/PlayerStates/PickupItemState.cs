@@ -119,7 +119,6 @@ namespace LoZClone
                     }
                 }
             }
-
             this.sprite.Update();
         }
 

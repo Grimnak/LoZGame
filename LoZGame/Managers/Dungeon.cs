@@ -73,10 +73,12 @@
         /// </summary>
         public void MoveUp()
         {
-            if (this.currentY - 1 >= 0 && this.dungeonLayout[this.currentY - 1][this.currentX].Exists)
+            if (this.currentY - 1 >= 0 && this.dungeonLayout[this.currentY - 1][this.currentX].Exists && (this.currentX != 1 || this.currentY - 1 != 1))
             {
                 this.currentY--;
                 this.LoadNewRoom();
+
+                // Player moved to bottom side of new room (next to door, next to staircase in basement case).
                 if (this.currentX == 1 && this.currentY == 0)
                 {
                     this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
@@ -89,6 +91,7 @@
                         (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                         (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
                 }
+
             }
         }
 
@@ -97,11 +100,12 @@
         /// </summary>
         public void MoveDown()
         {
-            if (this.currentY + 1 < this.maxX && this.dungeonLayout[this.currentY + 1][this.currentX].Exists)
+            if (this.currentY + 1 < this.maxX && this.dungeonLayout[this.currentY + 1][this.currentX].Exists && (this.currentX != 1 || this.currentY + 1 != 2))
             {
                 this.currentY++;
                 this.LoadNewRoom();
 
+                // Player moved to top side of new room (next to door, top of the ladder in the basement case).
                 if (currentX == 1 && currentY == 1)
                 {
                     this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
@@ -122,10 +126,12 @@
         /// </summary>
         public void MoveLeft()
         {
-            if (this.currentX - 1 >= 0 && this.dungeonLayout[this.currentY][this.currentX - 1].Exists)
+            if (this.currentX - 1 >= 0 && this.dungeonLayout[this.currentY][this.currentX - 1].Exists && (this.currentX - 1 != 1 || this.currentY != 1))
             {
                 this.currentX--;
                 this.LoadNewRoom();
+
+                // Player moved to right side of new room (next to door).
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 11)),
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));
@@ -137,12 +143,12 @@
         /// </summary>
         public void MoveRight()
         {
-            if (this.currentX + 1 < this.maxX && this.dungeonLayout[this.currentY][this.currentX + 1].Exists)
+            if (this.currentX + 1 < this.maxX && this.dungeonLayout[this.currentY][this.currentX + 1].Exists && (this.currentX + 1 != 2 || this.currentY != 1))
             {
                 this.currentX++;
                 this.LoadNewRoom();
 
-                // bruh
+                // Player moved to left side of new room (next to door).
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 0) + 6),
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));

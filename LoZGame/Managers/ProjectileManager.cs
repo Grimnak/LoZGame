@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework.Graphics;
-
+    using Microsoft.Xna.Framework;
     public partial class ProjectileManager
     {
         private readonly Dictionary<int, IProjectile> projectileList;
@@ -20,6 +20,8 @@
         private int triforceInstance;
         private int candleInstance;
         private int spamCounter;
+        private int primaryAttackCoolDown;
+        private bool primaryAttackLock;
 
         public static int MaxWaitTime => 30;
 
@@ -28,6 +30,8 @@
         public bool BoomerangOut => this.boomerangLock;
 
         public bool FlameInUse => this.candleLock;
+
+        public bool PrimaryAttackLock => primaryAttackLock;
 
         public ProjectileManager()
         {
@@ -41,11 +45,13 @@
             this.spamLock = false;
             this.triforceLock = false;
             this.candleLock = false;
+            this.primaryAttackLock = false;
             this.swordInstance = 0;
             this.boomerangInstance = 0;
             this.spamCounter = 0;
             this.triforceInstance = 0;
             this.candleInstance = 0;
+            this.primaryAttackCoolDown = 0;
         }
 
         public int Arrow => (int)ProjectileType.Arrow;
@@ -66,12 +72,27 @@
 
         public int Swordbeam => (int)ProjectileType.SwordBeam;
 
+        public int WoodenSword => (int)ProjectileType.WoodenSword;
+
         public void AddItem(int itemType, IPlayer player)
         {
             this.projectileId++;
             this.projectileListSize++;
             ProjectileType item = (ProjectileType)itemType;
-            if (!this.spamLock && !this.triforceLock)
+            if (item == ProjectileType.WoodenSword /*|| item == ProjectileType.WhiteSword || item == ProjectileType.MagicSword*/)
+            {
+                this.primaryAttackCoolDown = 20;
+                this.primaryAttackLock = true;
+                switch (item)
+                {
+                    case ProjectileType.WoodenSword:
+                        this.projectileList.Add(this.projectileId, new WoodenSwordProjectile(player));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (!this.spamLock && !this.triforceLock)
             {
                 this.spamCounter = MaxWaitTime;
                 this.spamLock = true;
@@ -129,9 +150,7 @@
                             this.swordLock = true;
                             this.swordInstance = this.projectileId;
                         }
-
                         break;
-
                     default:
                         break;
                 }
@@ -157,6 +176,14 @@
             else
             {
                 this.spamCounter--;
+            }
+            if (this.primaryAttackCoolDown <= 0)
+            {
+                this.primaryAttackLock = false;
+            }
+            else
+            {
+                this.primaryAttackCoolDown--;
             }
 
             foreach (KeyValuePair<int, IProjectile> item in this.projectileList)

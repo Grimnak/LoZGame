@@ -1719,7 +1719,7 @@
 /processorParam:TextureFormat=Color
 /build:Triforce.png
 
-#begin turquoise_statue.png
+#begin turquoise_statue_left.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1729,7 +1729,19 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:turquoise_statue.png
+/build:turquoise_statue_left.png
+
+#begin turquoise_statue_right.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:turquoise_statue_right.png
 
 #begin unlocked_door_down.png
 /importer:TextureImporter

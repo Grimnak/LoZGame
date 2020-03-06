@@ -75,8 +75,10 @@
         private readonly SpriteSheetData blueStatueRightData = new SpriteSheetData("blue_statue_right", tileWidth, tileHeight, 1, 1);
         private Texture2D BlueStatueLeftTexture;
         private readonly SpriteSheetData blueStatueLeftData = new SpriteSheetData("blue_statue_left", tileWidth, tileHeight, 1, 1);
-        private Texture2D TurquoiseStatueTexture;
-        private readonly SpriteSheetData turquoiseStatueData = new SpriteSheetData("turquoise_statue", tileWidth, tileHeight, 1, 2);
+        private Texture2D TurquoiseStatueLeftTexture;
+        private readonly SpriteSheetData turquoiseStatueLeftData = new SpriteSheetData("turquoise_statue_left", tileWidth, tileHeight, 1, 1);
+        private Texture2D TurquoiseStatueRightTexture;
+        private readonly SpriteSheetData turquoiseStatueRightData = new SpriteSheetData("turquoise_statue_right", tileWidth, tileHeight, 1, 1);
 
         private Texture2D SpottedTileTexture;
         private readonly SpriteSheetData spottedTileData = new SpriteSheetData("spotted_tile", tileWidth, tileHeight, 1, 1);
@@ -172,7 +174,8 @@
             this.BombedOpeningLeftTexture = content.Load<Texture2D>(this.bombedOpeningLeftData.FilePath);
             this.BlueStatueRightTexture = content.Load<Texture2D>(this.blueStatueRightData.FilePath);
             this.BlueStatueLeftTexture = content.Load<Texture2D>(this.blueStatueLeftData.FilePath);
-            this.TurquoiseStatueTexture = content.Load<Texture2D>(this.turquoiseStatueData.FilePath);
+            this.TurquoiseStatueRightTexture = content.Load<Texture2D>(this.turquoiseStatueRightData.FilePath);
+            this.TurquoiseStatueLeftTexture = content.Load<Texture2D>(this.turquoiseStatueLeftData.FilePath);
             this.SpottedTileTexture = content.Load<Texture2D>(this.spottedTileData.FilePath);
             this.WaterTileTexture = content.Load<Texture2D>(this.waterTileData.FilePath);
             this.OrangeMovableSquareTexture = content.Load<Texture2D>(this.orangeMovableSquareData.FilePath);
@@ -302,12 +305,12 @@
 
         public TurquoiseStatueLeftSprite TurquoiseStatueLeft(Vector2 loc)
         {
-            return new TurquoiseStatueLeftSprite(this.TurquoiseStatueTexture, loc, this.turquoiseStatueData);
+            return new TurquoiseStatueLeftSprite(this.TurquoiseStatueLeftTexture, loc, this.turquoiseStatueLeftData);
         }
 
         public TurquoiseStatueRightSprite TurquoiseStatueRight(Vector2 loc)
         {
-            return new TurquoiseStatueRightSprite(this.TurquoiseStatueTexture, loc, this.turquoiseStatueData);
+            return new TurquoiseStatueRightSprite(this.TurquoiseStatueRightTexture, loc, this.turquoiseStatueRightData);
         }
 
         public SpottedTileSprite SpottedTile(Vector2 loc)

@@ -19,10 +19,14 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            if (!(this.player.State is DieState))
+            if (!(this.player.State is DieState) && !LoZGame.Instance.Entities.ProjectileManager.PrimaryAttackLock)
             {
                 this.player.Attack();
-                LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.Swordbeam, this.player);
+                LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.WoodenSword, this.player);
+                if (this.player.Health.CurrentHealth == this.player.Health.MaxHealth)
+                {
+                    LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.Swordbeam, this.player);
+                }
             }
         }
     }
