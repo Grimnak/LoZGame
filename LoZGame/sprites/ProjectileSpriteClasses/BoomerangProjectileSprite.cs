@@ -38,7 +38,7 @@
 
         public void Draw(Vector2 location, Color spriteTint)
         {
-            this.layer = 1 - (1 / (location.Y + this.Size.Y));
+            this.layer = 1;
             LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.frame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, this.layer);
         }
     }

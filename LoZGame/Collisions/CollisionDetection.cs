@@ -58,10 +58,7 @@
                 {
                     CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
                 }
-                if (!(enemy is OldMan || enemy is Merchant))
-                {
-                    CheckCollisions<IProjectile>(enemy, playerProjectiles);
-                }
+                CheckCollisions<IProjectile>(enemy, playerProjectiles);
             }
         }
 
@@ -97,12 +94,14 @@
         {
             foreach (IProjectile playerProjectile in playerProjectiles)
             {
-                CheckCollisions<IBlock>(playerProjectile, blocks);
+                // CheckCollisions<IBlock>(playerProjectile, blocks);
+                // CheckBorders(playerProjectile, playerProjectile.Bounds.X, playerProjectile.Bounds.Y);
                 CheckBorders(playerProjectile, ProjectileSpriteFactory.GetProjectileWidth(playerProjectile), ProjectileSpriteFactory.GetProjectileHeight(playerProjectile));
             }
 
             foreach (IProjectile enemyProjectile in enemyProjectiles)
             {
+                // CheckBorders(enemyProjectile, enemyProjectile.Bounds.X, enemyProjectile.Bounds.Y);
                 CheckBorders(enemyProjectile, ProjectileSpriteFactory.GetProjectileWidth(enemyProjectile), ProjectileSpriteFactory.GetProjectileHeight(enemyProjectile));
             }
         }
