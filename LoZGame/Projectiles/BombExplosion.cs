@@ -103,9 +103,9 @@
             }
         }
 
-        public void OnCollisionResponse(CollisionDetection.CollisionSide collisionSide)
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            collisionHandler.OnCollisionResponse(collisionSide);
+            collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
         public void Update()

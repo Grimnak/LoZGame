@@ -90,9 +90,9 @@
             }
         }
 
-        public void OnCollisionResponse(CollisionDetection.CollisionSide collisionSide)
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            doorCollisionHandler.OnCollisionResponse(collisionSide);
+            doorCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
     }
 }

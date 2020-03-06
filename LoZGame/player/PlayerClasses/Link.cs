@@ -93,9 +93,9 @@
             }
 
         }
-        public void OnCollisionResponse(CollisionDetection.CollisionSide collisionSide)
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            this.linkCollisionHandler.OnCollisionResponse(collisionSide);
+            this.linkCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
     }
 }
