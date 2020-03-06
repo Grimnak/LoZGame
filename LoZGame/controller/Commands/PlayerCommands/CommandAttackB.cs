@@ -20,7 +20,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            if (!(this.player.State is DieState) && !LoZGame.Instance.Entities.ProjectileManager.PrimaryAttackLock)
+            if (!(this.player.State is DieState || this.player.State is PickupItemState) && !LoZGame.Instance.Entities.ProjectileManager.PrimaryAttackLock)
             {
                 this.player.Attack();
                 LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.WoodenSword, this.player);

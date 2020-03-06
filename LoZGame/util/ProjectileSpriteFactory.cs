@@ -32,6 +32,7 @@
         {
             get { return swordWidth; }
         }
+
         public int SwordHeight
         {
             get { return swordHeight; }
@@ -41,6 +42,7 @@
         {
             get { return swordBeamWidth; }
         }
+
         public int SwordBeamHeight
         {
             get { return standardHeight; }
@@ -140,6 +142,10 @@
             {
                 return standardWidth * DRAWSCALE;
             }
+            else if (projectile is WoodenSwordProjectile)
+            {
+                return swordWidth;
+            }
             else
             {
                 return 0;
@@ -179,6 +185,10 @@
             else if (projectile is SwordBeamExplosion)
             {
                 return swordBeamExplosionHeight * DRAWSCALE;
+            }
+            else if (projectile is WoodenSwordProjectile)
+            {
+                return swordHeight;
             }
             else
             {
@@ -248,10 +258,12 @@
             this.fireballSpriteSheet = content.Load<Texture2D>(this.fireballData.FilePath);
             this.greenWoodSwordSpriteSheet = content.Load<Texture2D>(this.greenWoodSwordData.FilePath);
         }
+
         public GreenWoodSwordSprite GreenWoodSword(float rotation)
         {
             return new GreenWoodSwordSprite(this.greenWoodSwordSpriteSheet, this.greenWoodSwordData, rotation);
         }
+
         public FireballSprite Fireball()
         {
             return new FireballSprite(this.fireballSpriteSheet, this.fireballData, DRAWSCALE);

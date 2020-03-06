@@ -731,7 +731,6 @@ D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\stalfos.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\SwordBeam.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\tealGel.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\Text.xnb
-D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\turquoise_statue.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\vertical_bricks.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\wallMasterLeft.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\wallMasterRight.xnb
@@ -1192,3 +1191,5 @@ C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\tu
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\turquoise_statue_right.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\turquoise_statue_left.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\turquoise_statue_right.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\turquoise_statue_left.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\turquoise_statue_right.xnb

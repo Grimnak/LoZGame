@@ -29,8 +29,8 @@
         public bool IsHostile => this.hostile;
 
         private static readonly int FrameDelay = 4;
-        private static readonly float Speed = 2.5F;
-        private static readonly int MaxLifeTime = 60;
+        private static readonly float Speed = 2.5f;
+        private static readonly int MaxLifeTime = 20;
 
         public SwordBeamExplosion(Vector2 location, string direction)
         {
@@ -69,7 +69,7 @@
                 this.effect = SpriteEffects.FlipVertically;
                 boundsOffset = Vector2.Zero;
             }
-            this.damage = 1;
+            this.damage = 0;
             this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)boundsOffset.X, (int)this.Physics.Location.Y - (int)boundsOffset.Y, projectileWidth, projectileHeight);
             this.hostile = false;
             this.expired = false;
