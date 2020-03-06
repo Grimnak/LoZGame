@@ -73,7 +73,7 @@
         /// </summary>
         public void MoveUp()
         {
-            if (this.currentY - 1 >= 0 && this.dungeonLayout[this.currentY - 1][this.currentX].Exists)
+            if (this.currentY - 1 >= 0 && this.dungeonLayout[this.currentY - 1][this.currentX].Exists && (this.currentX != 1 || this.currentY - 1 != 1))
             {
                 this.currentY--;
                 this.LoadNewRoom();
@@ -89,6 +89,7 @@
                         (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                         (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
                 }
+
             }
         }
 
@@ -97,7 +98,7 @@
         /// </summary>
         public void MoveDown()
         {
-            if (this.currentY + 1 < this.maxX && this.dungeonLayout[this.currentY + 1][this.currentX].Exists)
+            if (this.currentY + 1 < this.maxX && this.dungeonLayout[this.currentY + 1][this.currentX].Exists && (this.currentX != 1 || this.currentY + 1 != 2))
             {
                 this.currentY++;
                 this.LoadNewRoom();
@@ -122,7 +123,7 @@
         /// </summary>
         public void MoveLeft()
         {
-            if (this.currentX - 1 >= 0 && this.dungeonLayout[this.currentY][this.currentX - 1].Exists)
+            if (this.currentX - 1 >= 0 && this.dungeonLayout[this.currentY][this.currentX - 1].Exists && (this.currentX - 1 != 1 || this.currentY != 1))
             {
                 this.currentX--;
                 this.LoadNewRoom();
@@ -137,7 +138,7 @@
         /// </summary>
         public void MoveRight()
         {
-            if (this.currentX + 1 < this.maxX && this.dungeonLayout[this.currentY][this.currentX + 1].Exists)
+            if (this.currentX + 1 < this.maxX && this.dungeonLayout[this.currentY][this.currentX + 1].Exists && (this.currentX + 1 != 2 || this.currentY != 1))
             {
                 this.currentX++;
                 this.LoadNewRoom();

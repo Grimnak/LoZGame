@@ -225,7 +225,6 @@ C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\st
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\SwordBeam.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\tealGel.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Text.xnb
-C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\turquoise_statue.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Wand_Down.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Wand_Left.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\Wand_Right.xnb
@@ -1190,3 +1189,5 @@ C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\WoodenArrow.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\WoodenSword.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\YellowRupee.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\turquoise_statue_left.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\turquoise_statue_right.xnb
