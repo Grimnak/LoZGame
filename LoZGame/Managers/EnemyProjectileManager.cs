@@ -18,6 +18,7 @@
         public EnemyProjectileManager()
         {
             this.projectileList = new Dictionary<int, IProjectile>();
+            this.projectiles = new List<IProjectile>();
             this.deletable = new List<int>();
             this.projectileId = 0;
             this.listSize = 0;

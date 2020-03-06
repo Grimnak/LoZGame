@@ -60,9 +60,9 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Collisions\CollisionEssentials.cs" />
     <Compile Include="Collisions\DoorCollisionHandler.cs" />
     <Compile Include="Collisions\BlockCollisionHandler.cs" />
-    <Compile Include="Collisions\CollisionSide.cs" />
     <Compile Include="Collisions\EnemyCollisionHandler.cs" />
     <Compile Include="Collisions\CollisionDetection.cs" />
     <Compile Include="Collisions\ItemCollisionHandler.cs" />
