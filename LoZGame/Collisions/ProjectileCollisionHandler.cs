@@ -19,11 +19,11 @@
             {
                 this.projectile.Physics.StopMovement();
             }
-            else if (this.projectile is Boomerang || this.projectile is MagicBoomerang)
+            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
             {
                 boomerangReturning = true;
             }
-            else if (this.projectile is Bomb || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
+            else if (this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
             {
                 // do nothing
             }
@@ -49,11 +49,11 @@
                 {
                     this.projectile.Physics.StopMovement();
                 }
-                else if (this.projectile is Boomerang || this.projectile is MagicBoomerang || this.projectile is BoomerangEnemy)
+                else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile || this.projectile is BoomerangEnemy)
                 {
                     boomerangReturning = false;
                 }
-                else if (this.projectile is Bomb)
+                else if (this.projectile is BombProjectile)
                 {
                     this.PushOut(collisionSide);
                 }
@@ -68,11 +68,11 @@
             {
                 this.projectile.Physics.StopMovement();
             }
-            else if (this.projectile is Boomerang || this.projectile is MagicBoomerang)
+            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
             {
                 boomerangReturning = true;
             }
-            else if (this.projectile is Bomb) 
+            else if (this.projectile is BombProjectile) 
             {
                 this.PushOut(collisionSide);
             } 
@@ -104,11 +104,11 @@
             {
                 this.projectile.Physics.StopMovement();
             }
-            else if (this.projectile is Boomerang || this.projectile is MagicBoomerang)
+            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
             {
                 boomerangReturning = true;
             }
-            else if (this.projectile is Bomb)
+            else if (this.projectile is BombProjectile)
             {
                 this.PushOut(collisionSide);
             }
@@ -130,11 +130,11 @@
             {
                 this.projectile.Physics.StopMovement();
             }
-            else if (this.projectile is Boomerang || this.projectile is MagicBoomerang)
+            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
             {
                 boomerangReturning = true;
             }
-            else if (this.projectile is Bomb)
+            else if (this.projectile is BombProjectile)
             {
                 this.PushOut(collisionSide);
             }

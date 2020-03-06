@@ -126,6 +126,7 @@
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
             collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            this.CreateExplosion();
         }
 
         private void CreateExplosion()
