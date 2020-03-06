@@ -29,6 +29,7 @@
         private float layer;
         private Vector2 playerLoc;
         private int damage;
+
         public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }

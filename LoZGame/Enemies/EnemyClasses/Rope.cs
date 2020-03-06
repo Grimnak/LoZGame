@@ -147,7 +147,6 @@
                 this.currentState.Update();
             }
                 */
-
         }
 
         public void TakeDamage(int damageAmount)

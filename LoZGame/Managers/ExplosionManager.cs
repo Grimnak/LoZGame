@@ -20,6 +20,7 @@
         private int explosionListSize;
 
         public List<IProjectile> Explosions { get { return this.explosions; } }
+
         public int SwordExplosion => (int)ExplosionType.SwordExplode;
 
         public int Explosion => (int)ExplosionType.BombExplode;

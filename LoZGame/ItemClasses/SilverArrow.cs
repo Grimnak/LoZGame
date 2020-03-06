@@ -6,7 +6,6 @@
 
     internal class SilverArrow : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

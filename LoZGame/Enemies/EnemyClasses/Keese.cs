@@ -71,7 +71,6 @@
             }
         }
 
-
         public void TakeDamage(int damageAmount)
         {
             this.currentState.TakeDamage(damageAmount);

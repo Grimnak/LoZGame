@@ -76,13 +76,14 @@
         {
             this.sprite.Draw(this.spikeCross.Physics.Location, LoZGame.Instance.DungeonTint);
         }
+
         private void retreatCheck()
         {
             if (!spikeCross.Retreating)
             {
                 if (spikeCross.AttackFactor > 0)
                 {
-                    if (spikeCross.Physics.Location.X - (BlockSpriteFactory.Instance.TileWidth * 6 + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) >= 0)
+                    if (spikeCross.Physics.Location.X - ((BlockSpriteFactory.Instance.TileWidth * 6) + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) >= 0)
                     {
                         spikeCross.Retreating = true;
                         spikeCross.Physics.Velocity = new Vector2 (-1, spikeCross.Physics.Velocity.Y);
@@ -90,7 +91,7 @@
                 }
                 else
                 {
-                    if (spikeCross.Physics.Location.X - (BlockSpriteFactory.Instance.TileWidth * 6 + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) <= 0)
+                    if (spikeCross.Physics.Location.X - ((BlockSpriteFactory.Instance.TileWidth * 6) + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) <= 0)
                     {
                         spikeCross.Retreating = true;
                         spikeCross.Physics.Velocity = new Vector2(1, spikeCross.Physics.Velocity.Y);

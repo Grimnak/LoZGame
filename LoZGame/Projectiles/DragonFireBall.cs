@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+
     class DragonFireBall : IProjectile
     {
         private const int FrameChange = 15;

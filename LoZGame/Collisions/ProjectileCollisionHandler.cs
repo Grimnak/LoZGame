@@ -128,13 +128,16 @@
             if (collisionSide == CollisionDetection.CollisionSide.Top)
             {
                 this.projectile.Physics.Location = new Vector2(this.projectile.Physics.Location.X, this.projectile.Physics.Location.Y + 1);
-            } else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
             {
                 this.projectile.Physics.Location = new Vector2(this.projectile.Physics.Location.X, this.projectile.Physics.Location.Y - 1);
-            } else if (collisionSide == CollisionDetection.CollisionSide.Left)
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Left)
             {
                 this.projectile.Physics.Location = new Vector2(this.projectile.Physics.Location.X + 1, this.projectile.Physics.Location.Y);
-            } else if (collisionSide == CollisionDetection.CollisionSide.Right)
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Right)
             {
                 this.projectile.Physics.Location = new Vector2(this.projectile.Physics.Location.X - 1, this.projectile.Physics.Location.Y);
             }

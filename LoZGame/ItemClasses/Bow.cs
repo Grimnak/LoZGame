@@ -6,7 +6,6 @@
 
     internal class Bow : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

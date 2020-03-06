@@ -6,7 +6,6 @@
 
     internal class HeartContainer : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

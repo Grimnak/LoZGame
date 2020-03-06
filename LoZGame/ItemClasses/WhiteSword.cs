@@ -6,7 +6,6 @@
 
     internal class WhiteSword : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

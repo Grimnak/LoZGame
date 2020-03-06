@@ -6,7 +6,6 @@
 
     internal class SecondPotion : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

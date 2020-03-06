@@ -14,7 +14,8 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if (enemy is WallMaster) {
+            if (enemy is WallMaster)
+            {
                     this.enemy.CurrentState.Attack();
                     this.enemy.Physics.Location = player.Physics.Location;
 

@@ -25,7 +25,7 @@
             this.Size = new Vector2(this.Data.Width, this.Data.Height);
             this.origin = new Vector2(7.5f, 7.5f);
             this.frameOne = new Rectangle(0, 0, 15, 15);
-            this.frameTwo = new Rectangle(15, 0, 15,15);
+            this.frameTwo = new Rectangle(15, 0, 15, 15);
             this.currentFrame = Rectangle.Empty;
             this.rotation = rotation;
         }

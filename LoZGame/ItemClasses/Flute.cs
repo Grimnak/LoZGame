@@ -6,7 +6,6 @@
 
     internal class Flute : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

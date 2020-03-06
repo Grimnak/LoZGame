@@ -18,6 +18,7 @@
         private readonly int scale;
         private float layer;
         private float rotation;
+
         public RedCandleProjectileSprite(Texture2D texture, SpriteSheetData data, int scale)
         {
             this.Data = data;

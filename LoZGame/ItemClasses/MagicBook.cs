@@ -6,7 +6,6 @@
 
     internal class MagicBook : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

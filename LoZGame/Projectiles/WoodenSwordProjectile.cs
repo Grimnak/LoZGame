@@ -68,11 +68,9 @@
             this.expired = false;
             if (player.CurrentColor.Equals("Red"))
             {
-
             }
             else if (player.CurrentColor.Equals("Blue"))
             {
-
             }
             else
             {
@@ -81,7 +79,6 @@
         }
 
         public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
-
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {

@@ -23,7 +23,8 @@
                 DeterminePushbackValues(collisionSide);
                 this.player.TakeDamage(enemy.Damage);
             }
-            else if (enemy is WallMaster) {
+            else if (enemy is WallMaster)
+            {
                 this.player.State = new ImmobileState(player);
             }
         }

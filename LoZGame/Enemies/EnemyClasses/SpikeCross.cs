@@ -39,6 +39,7 @@
         {
             get; set;
         }
+
         public Vector2 InitialPos
         {
             get; set;

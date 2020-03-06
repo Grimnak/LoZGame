@@ -6,7 +6,6 @@
 
     internal class LifePotion : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

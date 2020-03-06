@@ -6,7 +6,6 @@
 
     internal class Ladder : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

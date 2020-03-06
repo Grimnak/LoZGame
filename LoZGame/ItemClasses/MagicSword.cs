@@ -6,7 +6,6 @@
 
     internal class MagicSword : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

@@ -85,7 +85,8 @@
                                     droom.AddBlock(x, y, type, block.Value, block.Attribute("dir").Value);
                                     Console.Write("block: " + block.Value + " type: " + block.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + block.Attribute("idx").Value + " Dirs: " + block.Attribute("dir").Value + "\n"); // xml debug
                                 }
-                                else {
+                                else
+                                {
                                     droom.AddBlock(x, y, type, block.Value);
                                     Console.Write("block: " + block.Value + " type: " + block.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + block.Attribute("idx").Value + " \n"); // xml debug
                                 }

@@ -6,7 +6,6 @@
 
     internal class BlueRing : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

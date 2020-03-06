@@ -29,7 +29,7 @@
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
             this.Texture = texture;
             this.frameOne = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
-            this.frameTwo = new Rectangle(0, this.Data.Height , this.Data.Width, this.Data.Height);
+            this.frameTwo = new Rectangle(0, this.Data.Height, this.Data.Width, this.Data.Height);
             this.frameThree = new Rectangle(0, this.Data.Height * 2, this.Data.Width, this.Data.Height);
             this.frameFour = new Rectangle(0, this.Data.Height * 3, this.Data.Width, this.Data.Height);
             this.currentFrame = this.frameOne;

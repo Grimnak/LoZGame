@@ -7,7 +7,6 @@
     {
         private readonly IPlayer player;
 
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandSilverArrow"/> class.
         /// </summary>

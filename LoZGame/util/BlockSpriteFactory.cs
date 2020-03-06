@@ -187,7 +187,6 @@
             this.VerticalBricksTexture = content.Load<Texture2D>(this.verticalBricksData.FilePath);
         }
 
-
         public StairsSprite Stairs(Vector2 loc)
         {
             return new StairsSprite(this.StairsTexture, loc, this.stairsData);

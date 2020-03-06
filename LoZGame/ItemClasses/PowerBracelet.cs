@@ -6,7 +6,6 @@
 
     internal class PowerBracelet : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 
