@@ -102,10 +102,6 @@
             if (otherCollider is IEnemy)
             {
                 this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            } 
-            else if (otherCollider is IBlock)
-            {
-                this.collisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
             else if (otherCollider is IPlayer)
             {

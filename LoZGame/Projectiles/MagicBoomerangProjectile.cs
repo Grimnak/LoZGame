@@ -86,10 +86,6 @@
             {
                this.returning = this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
-            else if (otherCollider is IBlock)
-            {
-               this.returning = this.collisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
-            }
             else if (otherCollider is IPlayer)
             {
                 this.returning = this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);

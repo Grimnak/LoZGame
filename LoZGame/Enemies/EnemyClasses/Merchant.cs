@@ -9,6 +9,7 @@
         private int health;
         private int damage = 0;
         private bool expired;
+        private EnemyCollisionHandler enemyCollisionHandler;
 
         public bool Expired { get { return this.expired; } set { this.expired = value; } }
 
@@ -33,6 +34,7 @@
             this.Health = new HealthManager(health);
             this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.sprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
+            this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.health = 5;
             this.expired = false;
@@ -54,6 +56,14 @@
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
+            if (otherCollider is IPlayer)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IProjectile)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+            }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)

@@ -62,10 +62,6 @@
             {
                 this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
-            else if (otherCollider is IBlock)
-            {
-                this.collisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
-            }
             else if (otherCollider is IPlayer)
             {
                 this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
@@ -94,6 +90,7 @@
                 this.expired = true;
                 int explosiontype = (int)LoZGame.Instance.Entities.ExplosionManager.Explosion;
                 Vector2 bombCenter = new Vector2(this.Physics.Location.X + (this.projectileWidth / 2), this.Physics.Location.Y + (this.projectileHeight / 2));
+                this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
                 LoZGame.Instance.Entities.ExplosionManager.AddExplosion(explosiontype, bombCenter);
             }
         }
