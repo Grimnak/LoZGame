@@ -27,4 +27,3 @@ _3902 Functionality Format. Please fill out according to all italicized text. Re
 - inclusion of an optional acceleration dampening vector which multiplies accelerataion by said vector on every update cycle
 - Could be used to define bounding box in the future, bounds are dependent on location and size
 	adding bounds to physics would mean everything that has to do with where an enemy is on screen and how it interacts in the environment can be made consistent accross all classes
-
