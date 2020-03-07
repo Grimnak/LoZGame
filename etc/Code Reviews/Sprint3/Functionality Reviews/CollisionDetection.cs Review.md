@@ -1,4 +1,4 @@
-# Code Functionality Review
+# Code Readability Review
 
 ### Author: Sammy Lisa
 
