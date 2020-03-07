@@ -62,3 +62,5 @@ MS Paint
     Bug:  Locked and hidden doors cannot be triggered by the player upon collision.
     
     Plan(s) to fix:  Implement unlocking via bomb use/key pickup/puzzle solving.
+
+## Suppressed Warnings:
