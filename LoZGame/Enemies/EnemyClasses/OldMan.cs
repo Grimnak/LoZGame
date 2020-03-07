@@ -6,7 +6,7 @@
     public class OldMan : IEnemy
     {
         private Rectangle bounds;
-        private int health = 100;
+        private int health;
         private int damage = 0;
         private bool expired;
         private EnemyCollisionHandler enemyCollisionHandler;
@@ -36,7 +36,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.health = 5;
+            this.health = 1;
             this.expired = false;
         }
 

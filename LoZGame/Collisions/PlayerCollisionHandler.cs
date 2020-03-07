@@ -18,13 +18,18 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(enemy is OldMan || enemy is Merchant || enemy is WallMaster))
+            if (enemy is WallMaster)
+            {
+                this.player.State = new ImmobileState(player);
+            }
+            else if (enemy is OldMan || enemy is Merchant)
+            {
+                // no damage inflicted, but fires shoot at player
+            }
+            else
             {
                 DeterminePushbackValues(collisionSide);
                 this.player.TakeDamage(enemy.Damage);
-            }
-            else if (enemy is WallMaster) {
-                this.player.State = new ImmobileState(player);
             }
         }
 

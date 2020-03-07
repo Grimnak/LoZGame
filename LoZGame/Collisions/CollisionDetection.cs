@@ -54,7 +54,7 @@
         {
             foreach (IEnemy enemy in enemies)
             {
-                if (!(enemy is WallMaster))
+                if (!(enemy is WallMaster || enemy is OldMan || enemy is Merchant))
                 {
                     CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
                 }

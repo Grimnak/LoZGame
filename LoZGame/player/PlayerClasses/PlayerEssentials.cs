@@ -34,7 +34,6 @@
                 this.Health.DamageHealth(damageAmount);
                 this.DamageTimer = 100;
             }
-            
         }
 
         public void Idle()
