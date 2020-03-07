@@ -6,7 +6,6 @@ namespace LoZClone
     public class EnemyManager
     {
         private Dictionary<int, IEnemy> enemyList;
-        private int enemyListSize;
         private int enemyID;
         private readonly List<int> deletable;
 
@@ -18,13 +17,12 @@ namespace LoZClone
         {
             enemyList = new Dictionary<int, IEnemy>();
             enemies = new List<IEnemy>();
-            enemyListSize = 0;
             deletable = new List<int>();
+            enemyID = 0;
         }
 
         public void Add(IEnemy enemy)
         {
-            enemyListSize++;
             enemyList.Add(enemyID, enemy);
             enemyID++;
         }
@@ -32,7 +30,6 @@ namespace LoZClone
         public void RemoveEnemy(int instance)
         {
             enemyList.Remove(instance);
-            enemyListSize--;
         }
 
         public void Update()
