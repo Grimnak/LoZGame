@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class EnemyDeathExplosionSprite : IBlockSprite
+    public class EnemyDeathExplosionSprite : ISprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;
@@ -41,16 +41,17 @@
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(Vector2 location, Color spriteTint)
         {
-            int width = this.spriteSheet.Width / this.spriteSheetColumns;
+            int width = this.spriteSheet.Width / this.spriteSheetColumns;  
             int height = this.spriteSheet.Height / this.spriteSheetRows;
             int column = (int)((float)this.currentFrame / (float)this.spriteSheetRows);
 
             Rectangle sourceRectangle = new Rectangle(width * column, 0, width, height);
             Rectangle destinationRectangle = new Rectangle((int)this.Location.X, (int)this.Location.Y, this.spriteWidth, this.spriteHeight);
 
-            spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, Color.White);
+            float layer = 1 - (1 / (location.Y + spriteHeight));
+            LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint, 0f, new Vector2(0, 0), SpriteEffects.None, layer);
         }
     }
 }

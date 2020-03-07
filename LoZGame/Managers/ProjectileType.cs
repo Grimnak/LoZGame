@@ -13,6 +13,7 @@
             RedCandle,
             BlueCandle,
             SwordBeam,
+            WoodenSword
         }
     }
 }

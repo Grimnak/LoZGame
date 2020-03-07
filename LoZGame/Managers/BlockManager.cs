@@ -1,60 +1,58 @@
 ﻿namespace LoZClone
 {
+    using System;
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
     public class BlockManager
     {
-        private List<IBlockSprite> blockList;
-        public IBlockSprite CurrentBlock;
-        private int currentIndex;
-        private int maxIndex;
-        public Vector2 Location;
+        private List<IBlock> blocks;
+
+        public List<IBlock> BlockList { get { return blocks; } }
 
         public BlockManager()
         {
-            this.currentIndex = 0;
-            this.maxIndex = 0;
+            this.blocks = new List<IBlock>();
         }
 
-        public void LoadSprites(int xloc, int yloc)
+        public void Add(IBlock block)
         {
-            this.blockList = BlockSpriteFactory.Instance.GetAll(xloc, yloc);
-            this.CurrentBlock = this.blockList[this.currentIndex];
-            this.Location.X = xloc;
-            this.Location.Y = yloc;
-            foreach (IBlockSprite sprite in this.blockList)
+  
+            blocks.Add(block);
+            if (block is FireSprite)
+                Console.WriteLine("");
+        }
+
+        public void Clear()
+        {
+            blocks.Clear();
+        }
+
+        public void Update()
+        {
+            foreach (IBlock block in blocks)
             {
-                this.maxIndex++;
+                block.Update();
             }
         }
 
-        public void CycleLeft()
+        public void Draw()
         {
-            this.currentIndex--;
-            if (this.currentIndex < 0)
+            foreach (IBlock block in blocks)
             {
-                this.currentIndex = this.maxIndex - 1;
+                if (block is Tile)
+                {
+                    block.Draw();
+                }
             }
 
-            this.CurrentBlock = this.blockList[this.currentIndex];
-        }
-
-        public void cycleRight()
-        {
-            this.currentIndex++;
-            if (this.currentIndex >= this.maxIndex)
+            foreach (IBlock block in blocks)
             {
-                this.currentIndex = 0;
+                if (block is BlockTile || block is MovableTile)
+                {
+                    block.Draw();
+                }
             }
-
-            this.CurrentBlock = this.blockList[this.currentIndex];
-        }
-
-        public int CurrentIndex
-        {
-            get { return this.currentIndex; }
-            set { this.currentIndex = value; }
         }
     }
 }

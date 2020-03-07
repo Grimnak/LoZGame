@@ -2,8 +2,9 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
 
-    public class FireSprite : IBlockSprite
+    public class FireSprite : ISprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;
@@ -27,21 +28,29 @@
             this.spriteSheetRows = data.Rows;
             this.spriteSheetColumns = data.Columns;
             this.totalFrames = this.spriteSheetRows * this.spriteSheetColumns;
+            this.currentUpdate = 0;
         }
 
         public void Update()
         {
             this.currentUpdate++;
+            Console.WriteLine("Fire Update");
+
             if (this.currentUpdate == this.updatesPerFrame)
             {
                 this.currentUpdate = 0;
                 this.currentFrame++;
+                Console.WriteLine("Fire If Block 1");
+
                 if (this.currentFrame == this.totalFrames)
+                {
                     this.currentFrame = 0;
+                    Console.WriteLine("Fire If Block 2");
+                }
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(Vector2 location, Color spriteTint)
         {
             int width = this.spriteSheet.Width / this.spriteSheetColumns;
             int height = this.spriteSheet.Height / this.spriteSheetRows;
@@ -50,7 +59,8 @@
             Rectangle sourceRectangle = new Rectangle(column * width, 0, width, height);
             Rectangle destinationRectangle = new Rectangle((int)this.Location.X, (int)this.Location.Y, this.spriteWidth, this.spriteHeight);
 
-            spriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, Color.White);
+            float layer = 1 - (1 / (location.Y + spriteHeight));
+            LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint, 0f, new Vector2(0, 0), SpriteEffects.None, layer);
         }
     }
 }

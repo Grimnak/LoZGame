@@ -14,7 +14,7 @@
         [STAThread]
         static void Main()
         {
-            using (var game = new LoZGame())
+            using (var game = LoZGame.Instance)
                 game.Run();
         }
     }

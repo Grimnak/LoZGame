@@ -20,7 +20,7 @@
 
         void MoveDownRight();
 
-        void TakeDamage();
+        void TakeDamage(int damageAmount);
 
         void Attack();
 
@@ -30,6 +30,6 @@
 
         void Update();
 
-        void Draw(SpriteBatch spriteBatch);
+        void Draw();
     }
 }

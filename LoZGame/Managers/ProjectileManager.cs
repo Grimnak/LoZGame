@@ -2,13 +2,12 @@
 {
     using System.Collections.Generic;
     using Microsoft.Xna.Framework.Graphics;
-
+    using Microsoft.Xna.Framework;
     public partial class ProjectileManager
     {
-        private readonly ExplosionManager explosion;
-        private readonly Dictionary<int, IProjectile> itemList;
+        private readonly Dictionary<int, IProjectile> projectileList;
         private readonly List<int> deletable;
-        private readonly int scale;
+        private List<IProjectile> projectiles;
         private int projectileId;
         private int projectileListSize;
         private bool swordLock;
@@ -21,31 +20,38 @@
         private int triforceInstance;
         private int candleInstance;
         private int spamCounter;
+        private int primaryAttackCoolDown;
+        private bool primaryAttackLock;
 
         public static int MaxWaitTime => 30;
+
+        public List<IProjectile> Projectiles { get { return this.projectiles; } }
 
         public bool BoomerangOut => this.boomerangLock;
 
         public bool FlameInUse => this.candleLock;
 
-        public ProjectileManager(ExplosionManager explosion)
+        public bool PrimaryAttackLock => primaryAttackLock;
+
+        public ProjectileManager()
         {
-            this.itemList = new Dictionary<int, IProjectile>();
+            this.projectileList = new Dictionary<int, IProjectile>();
+            this.projectiles = new List<IProjectile>();
             this.projectileId = 0;
             this.projectileListSize = 0;
-            this.scale = (int)ProjectileSpriteFactory.Instance.Scale;
             this.deletable = new List<int>();
             this.swordLock = false;
             this.boomerangLock = false;
             this.spamLock = false;
             this.triforceLock = false;
             this.candleLock = false;
+            this.primaryAttackLock = false;
             this.swordInstance = 0;
             this.boomerangInstance = 0;
             this.spamCounter = 0;
             this.triforceInstance = 0;
             this.candleInstance = 0;
-            this.explosion = explosion;
+            this.primaryAttackCoolDown = 0;
         }
 
         public int Arrow => (int)ProjectileType.Arrow;
@@ -66,53 +72,61 @@
 
         public int Swordbeam => (int)ProjectileType.SwordBeam;
 
+        public int WoodenSword => (int)ProjectileType.WoodenSword;
+
         public void AddItem(int itemType, IPlayer player)
         {
             this.projectileId++;
             this.projectileListSize++;
             ProjectileType item = (ProjectileType)itemType;
-            if (!this.spamLock && !this.triforceLock)
+            if (item == ProjectileType.WoodenSword /*|| item == ProjectileType.WhiteSword || item == ProjectileType.MagicSword*/)
+            {
+                this.primaryAttackCoolDown = 20;
+                this.primaryAttackLock = true;
+                switch (item)
+                {
+                    case ProjectileType.WoodenSword:
+                        this.projectileList.Add(this.projectileId, new WoodenSwordProjectile(player));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (!this.spamLock && !this.triforceLock)
             {
                 this.spamCounter = MaxWaitTime;
                 this.spamLock = true;
                 switch (item)
                 {
                     case ProjectileType.Bomb:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Bomb(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId, this.explosion));
-                        break;
-
-                    case ProjectileType.Triforce:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Triforce(player.CurrentLocation, this.scale, this.projectileId));
-                        this.triforceLock = true;
-                        this.triforceInstance = this.projectileId;
+                        this.projectileList.Add(this.projectileId, new BombProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.Arrow:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Arrow(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
+                        this.projectileList.Add(this.projectileId, new ArrowProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.SilverArrow:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.SilverArrow(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
+                        this.projectileList.Add(this.projectileId, new SilverArrowProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.RedCandle:
-                        this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.RedCandle(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
+                        this.projectileList.Add(this.projectileId, new RedCandleProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.BlueCandle:
                         if (!this.candleLock)
                         {
-                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.BlueCandle(player.CurrentLocation, player.CurrentDirection, this.scale, this.projectileId));
+                            this.projectileList.Add(this.projectileId, new BlueCandleProjectile(player.Physics.Location, player.CurrentDirection));
                             this.candleLock = true;
                             this.candleInstance = this.projectileId;
                         }
-
                         break;
 
                     case ProjectileType.Boomerang:
                         if (!this.boomerangLock)
                         {
-                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.Boomerang(player, this.scale, this.projectileId));
+                            this.projectileList.Add(this.projectileId, new BoomerangProjectile(player));
                             this.boomerangLock = true;
                             this.boomerangInstance = this.projectileId;
                         }
@@ -122,7 +136,7 @@
                     case ProjectileType.MagicBoomerang:
                         if (!this.boomerangLock)
                         {
-                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.MagicBoomerang(player, this.scale, this.projectileId));
+                            this.projectileList.Add(this.projectileId, new MagicBoomerangProjectile(player));
                             this.boomerangLock = true;
                             this.boomerangInstance = this.projectileId;
                         }
@@ -132,13 +146,11 @@
                     case ProjectileType.SwordBeam:
                         if (!this.swordLock)
                         {
-                            this.itemList.Add(this.projectileId, ProjectileSpriteFactory.Instance.SwordBeam(player, this.scale, this.projectileId, this.explosion));
+                            this.projectileList.Add(this.projectileId, new SwordBeamProjectile(player));
                             this.swordLock = true;
                             this.swordInstance = this.projectileId;
                         }
-
                         break;
-
                     default:
                         break;
                 }
@@ -147,7 +159,7 @@
 
         public void RemoveItem(int instance)
         {
-            this.itemList.Remove(instance);
+            this.projectileList.Remove(instance);
             this.projectileListSize--;
             if (this.projectileListSize == 0)
             {
@@ -165,32 +177,40 @@
             {
                 this.spamCounter--;
             }
+            if (this.primaryAttackCoolDown <= 0)
+            {
+                this.primaryAttackLock = false;
+            }
+            else
+            {
+                this.primaryAttackCoolDown--;
+            }
 
-            foreach (KeyValuePair<int, IProjectile> item in this.itemList)
+            foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
             {
                 if (item.Value.IsExpired)
                 {
-                    if (item.Value.Instance == this.swordInstance)
+                    if (item.Key == this.swordInstance)
                     {
                         this.swordLock = false;
                     }
 
-                    if (item.Value.Instance == this.boomerangInstance)
+                    if (item.Key == this.boomerangInstance)
                     {
                         this.boomerangLock = false;
                     }
 
-                    if (item.Value.Instance == this.triforceInstance)
+                    if (item.Key == this.triforceInstance)
                     {
                         this.triforceLock = false;
                     }
 
-                    if (item.Value.Instance == this.candleInstance)
+                    if (item.Key == this.candleInstance)
                     {
                         this.candleLock = false;
                     }
 
-                    this.deletable.Add(item.Value.Instance);
+                    this.deletable.Add(item.Key);
                 }
             }
 
@@ -199,18 +219,21 @@
                 this.RemoveItem(index);
             }
 
+            this.projectiles.Clear();
             this.deletable.Clear();
-            foreach (KeyValuePair<int, IProjectile> item in this.itemList)
+
+            foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
             {
+                this.projectiles.Add(item.Value);
                 item.Value.Update();
             }
         }
 
-        public void Draw(SpriteBatch spritebatch)
+        public void Draw()
         {
-            foreach (KeyValuePair<int, IProjectile> item in this.itemList)
+            foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
             {
-                item.Value.Draw(spritebatch);
+                item.Value.Draw();
             }
         }
     }

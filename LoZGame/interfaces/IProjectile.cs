@@ -3,18 +3,14 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal interface IProjectile
+    public interface IProjectile : ICollider
     {
-        bool IsExpired { get; }
+        bool IsExpired { get; set; }
 
-        int Instance { get; }
-
-        bool IsHostile { get; }
-
-        Vector2 Location { get; }
+        int Damage {get; set; }
 
         void Update();
 
-        void Draw(SpriteBatch spriteBatch);
+        void Draw();
     }
 }

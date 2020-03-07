@@ -11,119 +11,332 @@
 
     class ProjectileSpriteFactory
     {
-        private Texture2D projectileSpriteSheet;
-        private Texture2D fireProjectileSpriteSheet;
+        private const int DRAWSCALE = 2;
+        private static readonly int swordBeamWidth = 7;
+        private static readonly int boomerangHeight = 10;
+        private static readonly int standardHeight = 18;
+        private static readonly int standardWidth = 8;
+        private static readonly int flameWidth = 32;
+        private static readonly int flameHeight = 34;
+        private static readonly int arrowWidth = 5;
+        private static readonly int arrowHeight = 16;
+        private static readonly int swordBeamExplosionHeight = 12;
+        private static readonly int explosionHeight = 50;
+        private static readonly int explosionWidth = 48;
+        private static readonly int fireballWidth = 8;
+        private static readonly int fireballHeight = 10;
+        private static readonly int swordWidth = 40;
+        private static readonly int swordHeight = 40;
+
+        public int SwordWidth
+        {
+            get { return swordWidth; }
+        }
+
+        public int SwordHeight
+        {
+            get { return swordHeight; }
+        }
+
+        public int SwordBeamWidth
+        {
+            get { return swordBeamWidth; }
+        }
+
+        public int SwordBeamHeight
+        {
+            get { return standardHeight; }
+        }
+
+        public int BoomerangHeight
+        {
+            get { return boomerangHeight; }
+        }
+
+        public int StandardHeight
+        {
+            get { return standardHeight; }
+        }
+
+        public int StandardWidth
+        {
+            get { return standardWidth; }
+        }
+
+        public int FlameWidth
+        {
+            get { return flameWidth; }
+        }
+
+        public int FlameHeight
+        {
+            get { return flameHeight; }
+        }
+
+        public int ArrowWidth
+        {
+            get { return arrowWidth; }
+        }
+
+        public int ArrowHeight
+        {
+            get { return arrowHeight; }
+        }
+
+        public int ExplosionHeight
+        {
+            get { return explosionHeight; }
+        }
+
+        public int ExplosionWidth
+        {
+            get { return explosionWidth; }
+        }
+
+        public int SwordBeamExplosionHeight
+        {
+            get { return swordBeamExplosionHeight; }
+        }
+
+        public int FireballHeight
+        {
+            get { return fireballHeight; }
+        }
+
+        public int FireballWidth
+        {
+            get { return fireballWidth; }
+        }
+
+        public static int GetProjectileWidth(IProjectile projectile)
+        {
+            if (projectile is ArrowProjectile || projectile is SilverArrowProjectile)
+            {
+                return arrowWidth * DRAWSCALE;
+            }
+            else if (projectile is BlueCandleProjectile || projectile is RedCandleProjectile)
+            {
+                return flameWidth;
+            }
+            else if (projectile is BombProjectile)
+            {
+                return standardWidth * DRAWSCALE;
+            }
+            else if (projectile is BombExplosion)
+            {
+                return explosionWidth * DRAWSCALE;
+            }
+            else if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BoomerangEnemy)
+            {
+                return standardWidth * DRAWSCALE;
+            }
+            else if (projectile is DragonFireBall)
+            {
+                return fireballWidth * DRAWSCALE;
+            }
+            else if (projectile is SwordBeamProjectile)
+            {
+                return swordBeamWidth * DRAWSCALE;
+            }
+            else if (projectile is SwordBeamExplosion)
+            {
+                return standardWidth * DRAWSCALE;
+            }
+            else if (projectile is WoodenSwordProjectile)
+            {
+                return swordWidth;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public static int GetProjectileHeight(IProjectile projectile)
+        {
+            if (projectile is ArrowProjectile || projectile is SilverArrowProjectile)
+            {
+                return standardHeight * DRAWSCALE;
+            }
+            else if (projectile is BlueCandleProjectile || projectile is RedCandleProjectile)
+            {
+                return flameHeight;
+            }
+            else if (projectile is BombProjectile)
+            {
+                return standardHeight * DRAWSCALE;
+            }
+            else if (projectile is BombExplosion)
+            {
+                return explosionHeight * DRAWSCALE;
+            }
+            else if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BoomerangEnemy)
+            {
+                return boomerangHeight * DRAWSCALE;
+            }
+            else if (projectile is DragonFireBall)
+            {
+                return fireballHeight * DRAWSCALE;
+            }
+            else if (projectile is SwordBeamProjectile)
+            {
+                return standardHeight * DRAWSCALE;
+            }
+            else if (projectile is SwordBeamExplosion)
+            {
+                return swordBeamExplosionHeight * DRAWSCALE;
+            }
+            else if (projectile is WoodenSwordProjectile)
+            {
+                return swordHeight;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public Vector2 ExplosionCenter { get { return new Vector2(ExplosionWidth / 2, ExplosionHeight / 2); } }
+
+        private Texture2D flameSpriteSheet;
+        private readonly SpriteSheetData flameData = new SpriteSheetData("Flame", flameWidth, flameHeight, 1, 2);
+        private Texture2D arrowSpriteSheet;
+        private readonly SpriteSheetData arrowData = new SpriteSheetData("WoodenArrow", arrowWidth, standardHeight, 1, 1);
+        private Texture2D silverArrowSpriteSheet;
+        private readonly SpriteSheetData silverArrowData = new SpriteSheetData("SilverArrow", arrowWidth, standardHeight, 1, 1);
+        private Texture2D boomerangSpriteSheet;
+        private readonly SpriteSheetData boomerangData = new SpriteSheetData("Boomerang", standardWidth, boomerangHeight, 1, 1);
+        private Texture2D magicBoomerangSpriteSheet;
+        private readonly SpriteSheetData magicBoomerangData = new SpriteSheetData("MagicBoomerang", standardWidth, boomerangHeight, 1, 1);
+        private Texture2D bombSpriteSheet;
+        private readonly SpriteSheetData bombData = new SpriteSheetData("Bomb", standardWidth, standardHeight, 1, 1);
         private Texture2D swordBeamSpriteSheet;
-        private Texture2D swordBeamExplosionSpriteSheet;
+        private readonly SpriteSheetData swordBeamData = new SpriteSheetData("SwordBeam", swordBeamWidth, standardHeight, 1, 4);
+        private Texture2D swordExplosionSpriteSheet;
+        private readonly SpriteSheetData swordExplosionData = new SpriteSheetData("SwordBeamExplosion", standardWidth, swordBeamExplosionHeight, 1, 4);
         private Texture2D explosionOneSpriteSheet;
+        private readonly SpriteSheetData explosionOneData = new SpriteSheetData("BombExplosionOne", explosionWidth, explosionHeight, 1, 3);
         private Texture2D explosionTwoSpriteSheet;
+        private readonly SpriteSheetData explosionTwoData = new SpriteSheetData("BombExplosionTwo", explosionWidth, explosionHeight, 1, 3);
         private Texture2D explosionThreeSpriteSheet;
+        private readonly SpriteSheetData explosionThreeData = new SpriteSheetData("BombExplosionThree", explosionWidth, explosionHeight, 1, 3);
         private Texture2D explosionFourSpriteSheet;
+        private readonly SpriteSheetData ExplosionFourData = new SpriteSheetData("BombExplosionFour", explosionWidth, explosionHeight, 1, 3);
         private Texture2D explosionFiveSpriteSheet;
-        private static readonly int DrawScale = 2;
+        private readonly SpriteSheetData explosionFiveData = new SpriteSheetData("BombExplosionFive", explosionWidth, explosionHeight, 1, 3);
+        private Texture2D fireballSpriteSheet;
+        private readonly SpriteSheetData fireballData = new SpriteSheetData("fireball", fireballWidth, fireballHeight, 1, 4);
+        private Texture2D greenWoodSwordSpriteSheet;
+        private readonly SpriteSheetData greenWoodSwordData = new SpriteSheetData("Green_Wood_Down", swordWidth, swordHeight, 1, 2);
 
         private static readonly ProjectileSpriteFactory InstanceValue = new ProjectileSpriteFactory();
 
         public static ProjectileSpriteFactory Instance => InstanceValue;
 
-        public int Scale => DrawScale;
-
-        public Texture2D SpriteSheet => this.projectileSpriteSheet;
+        public int Scale => DRAWSCALE;
 
         private ProjectileSpriteFactory()
-        { }
+        {
+        }
 
         public void LoadAllTextures(ContentManager content)
         {
-            this.projectileSpriteSheet = content.Load<Texture2D>("Items");
-            this.fireProjectileSpriteSheet = content.Load<Texture2D>("fire");
-            this.swordBeamSpriteSheet = content.Load<Texture2D>("SwordBeam");
-            this.swordBeamExplosionSpriteSheet = content.Load<Texture2D>("SwordBeamSecondary");
-            this.explosionOneSpriteSheet = content.Load<Texture2D>("BombExplosionOne");
-            this.explosionTwoSpriteSheet = content.Load<Texture2D>("BombExplosionTwo");
-            this.explosionThreeSpriteSheet = content.Load<Texture2D>("BombExplosionThree");
-            this.explosionFourSpriteSheet = content.Load<Texture2D>("BombExplosionFour");
-            this.explosionFiveSpriteSheet = content.Load<Texture2D>("BombExplosionFive");
+            this.boomerangSpriteSheet = content.Load<Texture2D>(this.boomerangData.FilePath);
+            this.magicBoomerangSpriteSheet = content.Load<Texture2D>(this.magicBoomerangData.FilePath);
+            this.bombSpriteSheet = content.Load<Texture2D>(this.bombData.FilePath);
+            this.magicBoomerangSpriteSheet = content.Load<Texture2D>(this.magicBoomerangData.FilePath);
+            this.arrowSpriteSheet = content.Load<Texture2D>(this.arrowData.FilePath);
+            this.silverArrowSpriteSheet = content.Load<Texture2D>(this.silverArrowData.FilePath);
+            this.flameSpriteSheet = content.Load<Texture2D>(this.flameData.FilePath);
+            this.swordBeamSpriteSheet = content.Load<Texture2D>(this.swordBeamData.FilePath);
+            this.swordExplosionSpriteSheet = content.Load<Texture2D>(this.swordExplosionData.FilePath);
+            this.explosionOneSpriteSheet = content.Load<Texture2D>(this.explosionOneData.FilePath);
+            this.explosionTwoSpriteSheet = content.Load<Texture2D>(this.explosionTwoData.FilePath);
+            this.explosionThreeSpriteSheet = content.Load<Texture2D>(this.explosionThreeData.FilePath);
+            this.explosionFourSpriteSheet = content.Load<Texture2D>(this.ExplosionFourData.FilePath);
+            this.explosionFiveSpriteSheet = content.Load<Texture2D>(this.explosionFiveData.FilePath);
+            this.fireballSpriteSheet = content.Load<Texture2D>(this.fireballData.FilePath);
+            this.greenWoodSwordSpriteSheet = content.Load<Texture2D>(this.greenWoodSwordData.FilePath);
         }
 
-        public IProjectile Triforce(Vector2 loc, int scale, int instance)
+        public GreenWoodSwordSprite GreenWoodSword(float rotation)
         {
-            return new TriforceProjectile(this.projectileSpriteSheet, loc, scale, instance);
+            return new GreenWoodSwordSprite(this.greenWoodSwordSpriteSheet, this.greenWoodSwordData, rotation);
         }
 
-        public IProjectile Boomerang(IPlayer player, int scale, int instance)
+        public FireballSprite Fireball()
         {
-            return new BoomerangProjectile(this.projectileSpriteSheet, player, scale, instance);
+            return new FireballSprite(this.fireballSpriteSheet, this.fireballData, DRAWSCALE);
         }
 
-        public IProjectile BoomerangEnemy(Goriya goriya, int scale, int instance)
+        public BoomerangProjectileSprite Boomerang()
         {
-            return new BoomerangEnemy(this.projectileSpriteSheet, goriya, scale, instance);
+            return new BoomerangProjectileSprite(this.boomerangSpriteSheet, this.boomerangData, DRAWSCALE);
         }
 
-        public IProjectile MagicBoomerang(IPlayer player, int scale, int instance)
+        public MagicBoomerangProjectileSprite MagicBoomerang()
         {
-            return new MagicBoomerangProjectile(this.projectileSpriteSheet, player, scale, instance);
+            return new MagicBoomerangProjectileSprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData, DRAWSCALE);
         }
 
-        public IProjectile Bomb(Vector2 loc, string direction, int scale, int instance, ExplosionManager explosion)
+        public BombProjectileSprite Bomb()
         {
-            return new BombProjectile(this.projectileSpriteSheet, loc, direction, scale, instance, explosion);
+            return new BombProjectileSprite(this.bombSpriteSheet, this.bombData, DRAWSCALE);
         }
 
-        public IProjectile Arrow(Vector2 loc, string direction, int scale, int instance)
+        public ArrowProjectileSprite Arrow(float rotation)
         {
-            return new ArrowProjectile(this.projectileSpriteSheet, loc, direction, scale, instance);
+            return new ArrowProjectileSprite(this.arrowSpriteSheet, this.arrowData, rotation, DRAWSCALE);
         }
 
-        public IProjectile SilverArrow(Vector2 loc, string direction, int scale, int instance)
+        public SilverArrowProjectileSprite SilverArrow(float rotation)
         {
-            return new SilverArrowProjectile(this.projectileSpriteSheet, loc, direction, scale, instance);
+            return new SilverArrowProjectileSprite(this.silverArrowSpriteSheet, this.silverArrowData, rotation, DRAWSCALE);
         }
 
-        public IProjectile RedCandle(Vector2 loc, string direction, int scale, int instance)
+        public RedCandleProjectileSprite RedCandle()
         {
-            return new RedCandleProjectile(this.fireProjectileSpriteSheet, loc, direction, scale, instance);
+            return new RedCandleProjectileSprite(this.flameSpriteSheet, this.flameData, DRAWSCALE / 2);
         }
 
-        public IProjectile BlueCandle(Vector2 loc, string direction, int scale, int instance)
+        public BlueCandleProjectileSprite BlueCandle()
         {
-            return new BlueCandleProjectile(this.fireProjectileSpriteSheet, loc, direction, scale, instance);
+            return new BlueCandleProjectileSprite(this.flameSpriteSheet, this.flameData, DRAWSCALE / 2);
         }
 
-        public IProjectile SwordBeam(IPlayer player, int scale, int instance, ExplosionManager explosion)
+        public SwordBeamProjectileSprite SwordBeam(float rotation)
         {
-            return new SwordBeamProjectile(this.swordBeamSpriteSheet, player, scale, instance, explosion);
+            return new SwordBeamProjectileSprite(this.swordBeamSpriteSheet, this.swordBeamData, rotation, DRAWSCALE);
         }
 
-        public IProjectile SwordExplosion(Vector2 loc, string direction, int scale, int instance)
+        public SwordBeamExplosionSprite SwordExplosion(SpriteEffects effect, float rotation)
         {
-            return new SwordBeamExplosion(this.swordBeamExplosionSpriteSheet, loc, direction, scale, instance);
+            return new SwordBeamExplosionSprite(this.swordExplosionSpriteSheet, this.swordExplosionData, effect, rotation, DRAWSCALE);
         }
 
-        public IProjectile BombExplosionOne(Vector2 loc, int scale, int instance)
+        public BombExplosionSprite BombExplosionOne()
         {
-            return new BombExplosion(this.explosionOneSpriteSheet, loc, scale, instance);
+            return new BombExplosionSprite(this.explosionOneSpriteSheet, this.explosionOneData, DRAWSCALE);
         }
 
-        public IProjectile BombExplosionTwo(Vector2 loc, int scale, int instance)
+        public BombExplosionSprite BombExplosionTwo()
         {
-            return new BombExplosion(this.explosionTwoSpriteSheet, loc, scale, instance);
+            return new BombExplosionSprite(this.explosionTwoSpriteSheet, this.explosionTwoData, DRAWSCALE);
         }
 
-        public IProjectile BombExplosionThree(Vector2 loc, int scale, int instance)
+        public BombExplosionSprite BombExplosionThree()
         {
-            return new BombExplosion(this.explosionThreeSpriteSheet, loc, scale, instance);
+            return new BombExplosionSprite(this.explosionThreeSpriteSheet, this.explosionThreeData, DRAWSCALE);
         }
 
-        public IProjectile BombExplosionFour(Vector2 loc, int scale, int instance)
+        public BombExplosionSprite BombExplosionFour()
         {
-            return new BombExplosion(this.explosionFourSpriteSheet, loc, scale, instance);
+            return new BombExplosionSprite(this.explosionFourSpriteSheet, this.ExplosionFourData, DRAWSCALE);
         }
 
-        public IProjectile BombExplosionFive(Vector2 loc, int scale, int instance)
+        public BombExplosionSprite BombExplosionFive()
         {
-            return new BombExplosion(this.explosionFiveSpriteSheet, loc, scale, instance);
+            return new BombExplosionSprite(this.explosionFiveSpriteSheet, this.explosionFiveData, DRAWSCALE);
         }
     }
 }

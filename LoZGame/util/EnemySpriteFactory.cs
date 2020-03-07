@@ -6,62 +6,212 @@
 
     public class EnemySpriteFactory
     {
+        private static readonly int dodongoWidthUpDown = 40;
+        private static readonly int dodongoWidthLeftRight = 64;
+        private static readonly int dodongoHeight = 50;
+
+        private static readonly int dragonWidth = 68;
+        private static readonly int dragonHeight = 100;
+
+        private static readonly int gelWidth = 25;
+        private static readonly int gelHeight = 25;
+
+        private static readonly int goriyaWidth = 35;
+        private static readonly int goriyaHeight = 46;
+
+        private static readonly int keeseWidth = 48;
+        private static readonly int keeseHeight = 32;
+
+        private static readonly int merchantWidth = 48;
+        private static readonly int merchantHeight = 54;
+
+        private static readonly int oldManWidth = 48;
+        private static readonly int oldManHeight = 54;
+
+        private static readonly int ropeWidth = 25;
+        private static readonly int ropeHeight = 25;
+
+        private static readonly int spikeCrossWidth = 48;
+        private static readonly int spikeCrossHeight = 48;
+
+        private static readonly int stalfosWidth = 48;
+        private static readonly int stalfosHeight = 54;
+
+        private static readonly int wallMasterWidth = 35;
+        private static readonly int wallMasterHeight = 45;
+
+        private static readonly int zolWidth = 40;
+        private static readonly int zolHeight = 50;
+
+        public static int GetEnemyWidth(IEnemy enemy)
+        {
+            if (enemy is Dodongo)
+            {
+                // doesn't account for state yet
+                return dodongoWidthLeftRight;
+            }
+            else if (enemy is Dragon)
+            {
+                return dragonWidth;
+            }
+            else if (enemy is Gel)
+            {
+                return gelWidth;
+            }
+            else if (enemy is Goriya)
+            {
+                return goriyaWidth;
+            }
+            else if (enemy is Keese)
+            {
+                return keeseWidth;
+            }
+            else if (enemy is Merchant)
+            {
+                return merchantWidth;
+            }
+            else if (enemy is OldMan)
+            {
+                return oldManWidth;
+            }
+            else if (enemy is Rope)
+            {
+                return ropeWidth;
+            }
+            else if (enemy is SpikeCross)
+            {
+                return spikeCrossWidth;
+            }
+            else if (enemy is Stalfos)
+            {
+                return stalfosWidth;
+            }
+            else if (enemy is WallMaster)
+            {
+                return wallMasterWidth;
+            }
+            else if (enemy is Zol)
+            {
+                return zolWidth;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public static int GetEnemyHeight(IEnemy enemy)
+        {
+            if (enemy is Dodongo)
+            {
+                return dodongoHeight;
+            }
+            else if (enemy is Dragon)
+            {
+                return dragonHeight;
+            }
+            else if (enemy is Gel)
+            {
+                return gelHeight;
+            }
+            else if (enemy is Goriya)
+            {
+                return goriyaHeight;
+            }
+            else if (enemy is Keese)
+            {
+                return keeseHeight;
+            }
+            else if (enemy is Merchant)
+            {
+                return merchantHeight;
+            }
+            else if (enemy is OldMan)
+            {
+                return oldManHeight;
+            }
+            else if (enemy is Rope)
+            {
+                return ropeHeight;
+            }
+            else if (enemy is SpikeCross)
+            {
+                return spikeCrossHeight;
+            }
+            else if (enemy is Stalfos)
+            {
+                return stalfosHeight;
+            }
+            else if (enemy is WallMaster)
+            {
+                return wallMasterHeight;
+            }
+            else if (enemy is Zol)
+            {
+                return zolHeight;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         private Texture2D stalfos;
-        private readonly SpriteSheetData stalfosData = new SpriteSheetData("stalfos", 30, 35, 2, 1);
+        private readonly SpriteSheetData stalfosData = new SpriteSheetData("stalfos", stalfosWidth, stalfosHeight, 2, 1);
 
         private Texture2D downGoriya;
-        private readonly SpriteSheetData downGoriyaData = new SpriteSheetData("redGoriyaDown", 25, 30, 2, 1);
+        private readonly SpriteSheetData downGoriyaData = new SpriteSheetData("redGoriyaDown", goriyaWidth, goriyaHeight, 2, 1);
         private Texture2D upGoriya;
-        private readonly SpriteSheetData upGoriyaData = new SpriteSheetData("redGoriyaUp", 25, 30, 2, 1);
+        private readonly SpriteSheetData upGoriyaData = new SpriteSheetData("redGoriyaUp", goriyaWidth, goriyaHeight, 2, 1);
         private Texture2D leftGoriya;
-        private readonly SpriteSheetData leftGoriyaData = new SpriteSheetData("redGoriyaLeft", 25, 30, 2, 1);
+        private readonly SpriteSheetData leftGoriyaData = new SpriteSheetData("redGoriyaLeft", goriyaWidth, goriyaHeight, 2, 1);
         private Texture2D rightGoriya;
-        private readonly SpriteSheetData rightGoriyaData = new SpriteSheetData("redGoriyaRight", 25, 30, 2, 1);
+        private readonly SpriteSheetData rightGoriyaData = new SpriteSheetData("redGoriyaRight", goriyaWidth, goriyaHeight, 2, 1);
 
         private Texture2D leftWallMaster;
-        private readonly SpriteSheetData leftWallMasterData = new SpriteSheetData("wallMasterLeft", 25, 25, 2, 1);
+        private readonly SpriteSheetData leftWallMasterData = new SpriteSheetData("wallMasterLeft", wallMasterWidth, wallMasterHeight, 2, 1);
         private Texture2D rightWallMaster;
-        private readonly SpriteSheetData rightWallMasterData = new SpriteSheetData("wallMasterRight", 25, 25, 2, 1);
+        private readonly SpriteSheetData rightWallMasterData = new SpriteSheetData("wallMasterRight", wallMasterWidth, wallMasterHeight, 2, 1);
 
         private Texture2D leftRope;
-        private readonly SpriteSheetData leftRopeData = new SpriteSheetData("ropeLeft", 25, 25, 2, 1);
+        private readonly SpriteSheetData leftRopeData = new SpriteSheetData("ropeLeft", ropeWidth, ropeHeight, 2, 1);
         private Texture2D rightRope;
-        private readonly SpriteSheetData rightRopeData = new SpriteSheetData("ropeRight", 25, 25, 2, 1);
+        private readonly SpriteSheetData rightRopeData = new SpriteSheetData("ropeRight", ropeWidth, ropeHeight, 2, 1);
 
         private Texture2D gel;
-        private readonly SpriteSheetData gelData = new SpriteSheetData("tealGel", 15, 15, 2, 1);
+        private readonly SpriteSheetData gelData = new SpriteSheetData("tealGel", gelWidth, gelHeight, 2, 1);
         private Texture2D zol;
-        private readonly SpriteSheetData zolData = new SpriteSheetData("grayXol", 25, 25, 2, 1);
+        private readonly SpriteSheetData zolData = new SpriteSheetData("grayZol", gelWidth, gelHeight, 2, 1);
 
         private Texture2D spikeCross;
-        private readonly SpriteSheetData spikeCrossData = new SpriteSheetData("spike", 25, 25, 1, 1);
+        private readonly SpriteSheetData spikeCrossData = new SpriteSheetData("spike", spikeCrossWidth, spikeCrossHeight, 1, 1);
 
         private Texture2D keese;
-        private readonly SpriteSheetData keeseData = new SpriteSheetData("keese", 20, 20, 2, 1);
+        private readonly SpriteSheetData keeseData = new SpriteSheetData("keese", keeseWidth, keeseHeight, 2, 1);
 
         private Texture2D dragon;
-        private readonly SpriteSheetData dragonData = new SpriteSheetData("aquamentus", 50, 70, 1, 4);
+        private readonly SpriteSheetData dragonData = new SpriteSheetData("aquamentus", dragonWidth, dragonHeight, 1, 4);
         private Texture2D damagedDragon;
-        private readonly SpriteSheetData damagedDragonData = new SpriteSheetData("damagedAqua", 50, 70, 1, 4);
+        private readonly SpriteSheetData damagedDragonData = new SpriteSheetData("damagedAqua", dragonWidth, dragonHeight, 1, 4);
         private Texture2D fireball;
         private readonly SpriteSheetData fireballData = new SpriteSheetData("fireball", 12, 12, 1, 4);
 
         private Texture2D downDodongo;
-        private readonly SpriteSheetData downDodongoData = new SpriteSheetData("dodongoDown", 16, 16, 1, 3);
+        private readonly SpriteSheetData downDodongoData = new SpriteSheetData("dodongoDown", dodongoWidthUpDown, dodongoHeight, 1, 3);
         private Texture2D upDodongo;
-        private readonly SpriteSheetData upDodongoData = new SpriteSheetData("dodongoUp", 16, 16, 1, 3);
+        private readonly SpriteSheetData upDodongoData = new SpriteSheetData("dodongoUp", dodongoWidthUpDown, dodongoHeight, 1, 3);
         private Texture2D leftDodongo;
-        private readonly SpriteSheetData leftDodongoData = new SpriteSheetData("dodongoLeft", 32, 16, 1, 3);
+        private readonly SpriteSheetData leftDodongoData = new SpriteSheetData("dodongoLeft", dodongoWidthLeftRight, dodongoHeight, 1, 3);
         private Texture2D rightDodongo;
-        private readonly SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", 32, 16, 1, 3);
+        private readonly SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", dodongoWidthLeftRight, dodongoHeight, 1, 3);
 
         private Texture2D oldMan;
-        private readonly SpriteSheetData oldManData = new SpriteSheetData("oldMan", 30, 30, 1, 1);
+        private readonly SpriteSheetData oldManData = new SpriteSheetData("oldMan", oldManWidth, oldManHeight, 1, 1);
         private Texture2D merchant;
-        private readonly SpriteSheetData merchantData = new SpriteSheetData("merchant", 25, 25, 1, 1);
+        private readonly SpriteSheetData merchantData = new SpriteSheetData("merchant", merchantWidth, merchantHeight, 1, 1);
 
         private Texture2D deadEnemy;
-        private readonly SpriteSheetData deadEnemyData = new SpriteSheetData("enemyDeath", 50, 50, 1, 2);
+        private readonly SpriteSheetData deadEnemyData = new SpriteSheetData("enemyDeath", 40, 40, 1, 6);
 
         private static readonly EnemySpriteFactory InstanceValue = new EnemySpriteFactory();
 
@@ -153,7 +303,12 @@
             return new WallMasterRightSprite(this.rightWallMaster, this.rightWallMasterData);
         }
 
-        // Rope sprites
+        public WallMasterAttackingSprite CreateAttackingWallMasterSprite()
+        {
+            return new WallMasterAttackingSprite(this.leftWallMaster, this.leftWallMasterData);
+        }
+
+        // Rope Sprites
         public RopeLeftSprite CreateLeftMovingRopeSprite()
         {
             return new RopeLeftSprite(this.leftRope, this.leftRopeData);
@@ -176,7 +331,7 @@
             return new ZolSprite(this.zol, this.zolData);
         }
 
-        // SpikeCrossSprite
+        // Spike Cross Sprites
         public SpikeCrossSprite CreateSpikeCrossSprite()
         {
             return new SpikeCrossSprite(this.spikeCross, this.spikeCrossData);
@@ -199,22 +354,7 @@
             return new DragonDamagedSprite(this.damagedDragon, this.damagedDragonData);
         }
 
-        public FireballSprite CreateLeftFireballSprite(Vector2 location, int id, int scale)
-        {
-            return new FireballSprite(this.fireball, this.fireballData, "left", location, id, scale);
-        }
-
-        public FireballSprite CreateDownLeftFireballSprite(Vector2 location, int id, int scale)
-        {
-            return new FireballSprite(this.fireball, this.fireballData, "down", location, id, scale);
-        }
-
-        public FireballSprite CreateUpLeftFireballSprite(Vector2 location, int id, int scale)
-        {
-            return new FireballSprite(this.fireball, this.fireballData, "up", location, id, scale);
-        }
-
-        // DodongoSprites
+        // Dodongo Sprites
         public DodongoDownSprite CreateDownMovingDodongoSprite()
         {
             return new DodongoDownSprite(this.downDodongo, this.downDodongoData);
@@ -235,19 +375,19 @@
             return new DodongoRightSprite(this.rightDodongo, this.rightDodongoData);
         }
 
-        // Old Man Sprite
+        // Old Man Sprites
         public OldManSprite CreateOldManSprite()
         {
             return new OldManSprite(this.oldMan, this.oldManData);
         }
 
-        // Merchant Sprite
+        // Merchant Sprites
         public MerchantSprite CreateMerchantSprite()
         {
             return new MerchantSprite(this.merchant, this.merchantData);
         }
 
-         // Enemy Death Sprite
+         // Enemy Death Sprites
         public DeadEnemySprite CreateDeadEnemySprite()
         {
             return new DeadEnemySprite(this.deadEnemy, this.deadEnemyData);

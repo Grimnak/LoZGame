@@ -6,117 +6,92 @@
 
     public class Dragon : IEnemy
     {
+        private EnemyCollisionHandler enemyCollisionHandler;
+        private Rectangle bounds;
+        private bool expired;
+
+        public bool Expired { get { return this.expired; } set { this.expired = value; } }
+
+        public Rectangle Bounds
+        {
+            get { return this.bounds; }
+            set { this.bounds = value; }
+        }
+
+        public Physics Physics { get; set; }
+
+        public HealthManager Health { get; set; }
+
+        public int Damage => damage;
+
         private IEnemyState currentState;
+        private int damage = 1;
         private int health = 10;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
+        private RandomStateGenerator randomStateGenerator;
         private readonly EntityManager entity;
-        private Vector2 currentLocation;
 
         public EntityManager EntityManager { get { return this.entity; } }
 
-        private enum StateEnum
+        public Dragon(Vector2 location)
         {
-            Idle,
-            Left,
-            Right,
-            Attacking,
-        }
-
-        private StateEnum currentStateEnum;
-
-        public Dragon(EntityManager entity)
-        {
-            this.entity = entity;
+            this.Health = new HealthManager(health);
+            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+            this.entity = LoZGame.Instance.Entities;
             this.currentState = new LeftMovingDragonState(this);
-            this.CurrentLocation = new Vector2(650, 200);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            randomStateGenerator = new RandomStateGenerator(this, 0, 4);
+            this.expired = false;
         }
 
-        private void GetNewDirection()
+        public void TakeDamage(int damageAmount)
         {
-            Random randomselect = new Random();
-            this.currentStateEnum = (StateEnum)randomselect.Next(0, 5);
-        }
-
-        private void UpdateLoc()
-        {
-            switch (this.currentStateEnum)
-            {
-                case StateEnum.Attacking:
-                    this.currentState.Attack();
-                    break;
-
-                case StateEnum.Idle:
-                    this.currentState.Stop();
-                    break;
-
-                case StateEnum.Left:
-                    this.currentState.MoveLeft();
-                    break;
-
-                case StateEnum.Right:
-                    this.currentState.MoveRight();
-                    break;
-
-                default:
-                    break;
-            }
-
-            this.CheckBorder();
-            this.currentState.Update();
-        }
-
-        private void CheckBorder()
-        {
-            if (this.CurrentLocation.Y < 0)
-            {
-                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 0);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.Y > 430)
-            {
-                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 430);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.X < 0)
-            {
-                this.CurrentLocation = new Vector2(0, this.CurrentLocation.Y);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.X > 750)
-            {
-                this.CurrentLocation = new Vector2(750, this.CurrentLocation.Y);
-                this.lifeTime = this.directionChange + 1;
-            }
-        }
-
-        public void TakeDamage()
-        {
-            this.currentState.TakeDamage();
-        }
-
-        public void Die()
-        {
-            this.currentState.Die();
+            this.currentState.TakeDamage(damageAmount);
         }
 
         public void Update()
         {
             this.lifeTime++;
-            this.UpdateLoc();
             if (this.lifeTime > this.directionChange)
             {
-                this.GetNewDirection();
+                randomStateGenerator.Update();
                 this.lifeTime = 0;
+            }
+            if (this.Health.CurrentHealth <= 0)
+            {
+                this.CurrentState = new DeadDragonState(this);
+            }
+            this.CurrentState.Update();
+            this.bounds.X = (int)this.Physics.Location.X;
+            this.bounds.Y = (int)this.Physics.Location.Y;
+        }
+
+        public void Draw()
+        {
+            this.currentState.Draw();
+        }
+
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IPlayer)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IBlock)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IProjectile)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
         }
 
-        public void Draw(SpriteBatch sb)
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            this.currentState.Draw(sb);
+            enemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
         public IEnemyState CurrentState
@@ -124,13 +99,5 @@
             get { return this.currentState; }
             set { this.currentState = value; }
         }
-
-        public int Health
-        {
-            get { return this.health; }
-            set { this.health = value; }
-        }
-
-        public Vector2 CurrentLocation { get => this.currentLocation; set => this.currentLocation = value; }
     }
 }

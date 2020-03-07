@@ -5,12 +5,14 @@
     /// <summary>
     /// Interface for a player character.
     /// </summary>
-    public interface IPlayer
+    public interface IPlayer : ICollider
     {
         /// <summary>
-        /// Sets the players state.
+        /// Gets or sets the current state of the player.
         /// </summary>
-        IPlayerState State { set; }
+        IPlayerState State { get; set; }
+
+        HealthManager Health { get; set; }
 
         /// <summary>
         /// Gets or sets the current weapon of the player.
@@ -28,11 +30,6 @@
         string CurrentDirection { get; set; }
 
         /// <summary>
-        /// Gets or sets the current location of the player.
-        /// </summary>
-        Vector2 CurrentLocation { get; set; }
-
-        /// <summary>
         /// Gets or sets the current tint of the player.
         /// </summary>
         Color CurrentTint { get; set; }
@@ -40,22 +37,12 @@
         /// <summary>
         /// Gets or sets the current speed of the player.
         /// </summary>
-        int CurrentSpeed { get; set; }
-
-        /// <summary>
-        /// Gets or sets the damage counter of the player.
-        /// </summary>
-        int DamageCounter { get; set; }
+        int MoveSpeed { get; set; }
 
         /// <summary>
         /// Gets or sets the damage timer of the player.
         /// </summary>
         int DamageTimer { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the player is or isn't dead.
-        /// </summary>
-        bool IsDead { get; set; }
 
         /// <summary>
         /// Makes player idle.
@@ -85,7 +72,8 @@
         /// <summary>
         /// Makes player take damage.
         /// </summary>
-        void TakeDamage();
+        /// /// <param name ="damageAmount">amount of damage incurred.</param>
+        void TakeDamage(int damageAmount);
 
         /// <summary>
         /// Makes player attack.
@@ -95,8 +83,8 @@
         /// <summary>
         /// Makes player pickup an item.
         /// </summary>
-        /// <param name ="itemTime">Time for the item to expire.</param>
-        void PickupItem(int itemTime);
+        /// <param name ="item">Item that was picked up by the item.</param>
+        void PickupItem(IItem item);
 
         /// <summary>
         /// Makes player use an item.
@@ -110,7 +98,7 @@
         void Update();
 
         /// <summary>
-        /// Draws the players current sprite.
+        /// Draws the player's current sprite.
         /// </summary>
         void Draw();
     }

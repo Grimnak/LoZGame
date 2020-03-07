@@ -6,93 +6,86 @@
 
     public class Gel : IEnemy
     {
+        private EnemyCollisionHandler enemyCollisionHandler;
+        private Rectangle bounds;
+        private bool expired;
+
+        public bool Expired { get { return this.expired; } set { this.expired = value; } }
+
+        public Rectangle Bounds
+        {
+            get { return this.bounds; }
+            set { this.bounds = value; }
+        }
+
+        public Physics Physics { get; set; }
+
+        public bool ShouldMove
+        {
+            get; set;
+        }
+
+        public HealthManager Health { get; set; }
+
+        public int Damage => damage;
+
         private IEnemyState currentState;
-        private int health = 10;
-        private int lifeTime = 0;
-        private readonly int directionChange = 40;
-        public Vector2 CurrentLocation;
+        private int damage = 1;
+        private int health = 1;
+        private int timeInIdle = 0;
+        private int timeSinceIdle = 0;
+        private int movementWaitMax = 100;
+        private int movementWaitMin = 20;
+        private int movementWait;
+        private int idleWaitMin = 10;
+        private int idleWaitMax = 40;
+        private int idleWait;
+        private RandomStateGenerator randomStateGenerator;
+        private Random randomWaitGenerator;
 
-        private enum direction
+        public Gel(Vector2 location)
         {
-            Up,
-            Down,
-            Left,
-            Right
-        }
-;
-
-        private direction currentDirection;
-
-        public Gel()
-        {
-            this.currentState = new LeftMovingGelState(this);
-            this.CurrentLocation = new Vector2(650, 200);
-        }
-
-        private void getNewDirection()
-        {
-            Random randomselect = new Random();
-            this.currentDirection = (direction)randomselect.Next(0, 7);
-        }
-
-        private void updateLoc()
-        {
-            switch (this.currentDirection)
-            {
-                case direction.Up:
-                    this.currentState.MoveUp();
-                    break;
-
-                case direction.Down:
-                    this.currentState.MoveDown();
-                    break;
-
-                case direction.Left:
-                    this.currentState.MoveLeft();
-                    break;
-
-                case direction.Right:
-                    this.currentState.MoveRight();
-                    break;
-
-                default:
-                    break;
-            }
-
-            this.checkBorder();
-            this.currentState.Update();
+            this.Health = new HealthManager(health);
+            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            this.Physics.Location = new Vector2(location.X, location.Y);
+            this.ShouldMove = true;
+            this.randomStateGenerator = new RandomStateGenerator(this, 2, 6);
+            this.randomWaitGenerator = LoZGame.Instance.Random;
+            this.movementWait = randomWaitGenerator.Next(movementWaitMin, movementWaitMax);
+            this.idleWait = randomWaitGenerator.Next(idleWaitMin, idleWaitMax);
+            this.CurrentState = new LeftMovingGelState(this);
+            this.randomStateGenerator.Update();
+            this.expired = false;
         }
 
-        private void checkBorder()
+        private void decideToMove()
         {
-            if (this.CurrentLocation.Y < 30)
+            if (ShouldMove)
             {
-                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 30);
-                this.lifeTime = this.directionChange + 1;
+                if (timeSinceIdle++ > movementWait)
+                {
+                    movementWait = randomWaitGenerator.Next(movementWaitMin, movementWaitMax);
+                    ShouldMove = !ShouldMove;
+                    timeSinceIdle = 0;
+                }
             }
-
-            if (this.CurrentLocation.Y > 450)
+            else
             {
-                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 450);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.X < 30)
-            {
-                this.CurrentLocation = new Vector2(30, this.CurrentLocation.Y);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.X > 770)
-            {
-                this.CurrentLocation = new Vector2(770, this.CurrentLocation.Y);
-                this.lifeTime = this.directionChange + 1;
+                if (timeInIdle++ > idleWait)
+                {
+                    ShouldMove = !ShouldMove;
+                    idleWait = randomWaitGenerator.Next(idleWaitMin, idleWaitMax);
+                    timeInIdle = 0;
+                    randomStateGenerator.Update();
+                }
             }
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int damageAmount)
         {
-            this.currentState.TakeDamage();
+            this.currentState.TakeDamage(damageAmount);
         }
 
         public void Die()
@@ -102,30 +95,46 @@
 
         public void Update()
         {
-            this.lifeTime++;
-            this.updateLoc();
-            if (this.lifeTime > this.directionChange)
+            this.decideToMove();
+            this.CurrentState.Update();
+            this.bounds.X = (int)this.Physics.Location.X;
+            this.bounds.Y = (int)this.Physics.Location.Y;
+            if (this.Health.CurrentHealth <= 0)
             {
-                this.getNewDirection();
-                this.lifeTime = 0;
+                this.CurrentState = new DeadGelState(this);
             }
         }
 
-        public void Draw(SpriteBatch sb)
+        public void Draw()
         {
-            this.currentState.Draw(sb);
+            this.currentState.Draw();
+        }
+
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IPlayer)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IBlock)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IProjectile)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+            }
+        }
+
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        {
+            enemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
         public IEnemyState CurrentState
         {
             get { return this.currentState; }
             set { this.currentState = value; }
-        }
-
-        public int Health
-        {
-            get { return this.health; }
-            set { this.health = value; }
         }
     }
 }

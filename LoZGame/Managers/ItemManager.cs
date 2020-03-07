@@ -3,63 +3,75 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
-    public class ItemManager
+    public partial class ItemManager
     {
-        private List<IItemSprite> itemList;
-        public IItemSprite CurrentItem;
-        private int currentIndex;
-        private int maxIndex;
-        public Vector2 Location;
+        private Dictionary<int, IItem> itemList;
+        private int itemListSize;
+        private int itemID;
+        private readonly List<int> deletable;
+
+        private List<IItem> items;
+
+        public List<IItem> ItemList { get { return items; } }
 
         public ItemManager()
         {
-            this.currentIndex = 0;
-            this.maxIndex = 0;
+            itemList = new Dictionary<int, IItem>();
+            items = new List<IItem>();
+            itemListSize = 0;
+            deletable = new List<int>();
         }
 
-        public void LoadSprites(int xloc, int yloc)
+        public void Add(IItem item)
         {
-            this.itemList = ItemSpriteFactory.Instance.getAll(xloc, yloc);
-            this.CurrentItem = this.itemList[this.currentIndex];
-            this.Location.X = xloc;
-            this.Location.Y = yloc;
-            foreach (IItemSprite sprite in this.itemList)
+            itemListSize++;
+            itemList.Add(itemID, item);
+            itemID++;
+        }
+
+        public void RemoveItem(int instance)
+        {
+            itemList.Remove(instance);
+            itemListSize--;
+        }
+
+        public void Update()
+        {
+            foreach (KeyValuePair<int, IItem> item in this.itemList)
             {
-                this.maxIndex++;
+                if (item.Value.Expired)
+                {
+                    this.deletable.Add(item.Key);
+                }
+            }
+
+            foreach (int index in this.deletable)
+            {
+                this.RemoveItem(index);
+            }
+
+            this.deletable.Clear();
+
+            this.items.Clear();
+
+            foreach (KeyValuePair<int, IItem> item in this.itemList)
+            {
+                this.items.Add(item.Value);
+                item.Value.Update();
             }
         }
 
-        public void CycleLeft()
+        public void Draw()
         {
-            this.Location = this.CurrentItem.Location;
-            this.currentIndex--;
-
-            if (this.currentIndex < 0)
+            foreach (KeyValuePair<int, IItem> item in this.itemList)
             {
-                this.currentIndex = this.maxIndex - 1;
+                item.Value.Draw(LoZGame.Instance.DungeonTint);
             }
-
-            this.CurrentItem = this.itemList[this.currentIndex];
-            // this.currentItem.location = this.location;
         }
 
-        public void CycleRight()
+        public void Clear()
         {
-            this.Location = this.CurrentItem.Location;
-            this.currentIndex++;
-            if (this.currentIndex >= this.maxIndex)
-            {
-                this.currentIndex = 0;
-            }
-
-            this.CurrentItem = this.itemList[this.currentIndex];
-            // this.currentItem.location = this.location;
-        }
-
-        public int CurrentIndex
-        {
-            get { return this.currentIndex; }
-            set { this.currentIndex = value; }
+            itemList = new Dictionary<int, IItem>();
         }
     }
 }

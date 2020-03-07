@@ -6,112 +6,51 @@
 
     public class Goriya : IEnemy
     {
+        private EnemyCollisionHandler enemyCollisionHandler;
+        private Rectangle bounds;
+        private bool expired;
+
+        public bool Expired { get { return this.expired; } set { this.expired = value; } }
+
+        public Rectangle Bounds
+        {
+            get { return this.bounds; }
+            set { this.bounds = value; }
+        }
+
+        public Physics Physics { get; set; }
+
+        public HealthManager Health { get; set; }
+
+        public int Damage => damage;
+
+        public int CoolDown => coolDown;
+
         private IEnemyState currentState;
+        private int damage = 2;
         private int health = 10;
         private int coolDown;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
-        public Vector2 CurrentLocation;
         private string currentDirection = "Left";
+        private RandomStateGenerator randomStateGenerator;
         private readonly EntityManager entity;
 
-        private enum StateEnum
+        public Goriya(Vector2 location)
         {
-            Up,
-            Down,
-            Left,
-            Right,
-            Attacking,
-        }
-
-        private StateEnum state;
-
-        public Goriya(EntityManager entity)
-        {
+            this.Health = new HealthManager(health);
+            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.currentState = new LeftMovingGoriyaState(this);
-            this.CurrentLocation = new Vector2(650, 200);
-            this.entity = entity;
+            this.entity = LoZGame.Instance.Entities;
             this.coolDown = 0;
+            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            this.randomStateGenerator = new RandomStateGenerator(this, 1, 6);
+            this.expired = false;
         }
-
-        private void GetNewState()
+        public void TakeDamage(int damageAmount)
         {
-            Random randomselect = new Random();
-            this.state = (StateEnum)randomselect.Next(0, 5);
-        }
-
-        private void UpdateLoc()
-        {
-            switch (this.state)
-            {
-                case StateEnum.Up:
-                    this.currentDirection = "Up";
-                    this.currentState.MoveUp();
-                    break;
-
-                case StateEnum.Down:
-                    this.currentDirection = "Down";
-                    this.currentState.MoveDown();
-                    break;
-
-                case StateEnum.Left:
-                    this.currentDirection = "Left";
-                    this.currentState.MoveLeft();
-                    break;
-
-                case StateEnum.Right:
-                    this.currentDirection = "Right";
-                    this.currentState.MoveRight();
-                    break;
-
-                case StateEnum.Attacking:
-                    this.currentState.Attack();
-                    if (this.coolDown == 0)
-                    {
-                        this.coolDown = 240;
-                        this.entity.EnemyProjectileManager.AddEnemyRang(this, this.currentDirection);
-                    }
-
-                    break;
-
-                default:
-                    break;
-            }
-
-            this.CheckBorder();
-            this.currentState.Update();
-        }
-
-        private void CheckBorder()
-        {
-            if (this.CurrentLocation.Y < 30)
-            {
-                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 30);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.Y > 450)
-            {
-                this.CurrentLocation = new Vector2(this.CurrentLocation.X, 450);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.X < 30)
-            {
-                this.CurrentLocation = new Vector2(30, this.CurrentLocation.Y);
-                this.lifeTime = this.directionChange + 1;
-            }
-
-            if (this.CurrentLocation.X > 770)
-            {
-                this.CurrentLocation = new Vector2(770, this.CurrentLocation.Y);
-                this.lifeTime = this.directionChange + 1;
-            }
-        }
-
-        public void TakeDamage()
-        {
-            this.currentState.TakeDamage();
+            this.currentState.TakeDamage(damageAmount);
         }
 
         public void Die()
@@ -121,34 +60,55 @@
 
         public void Update()
         {
-            this.lifeTime++;
-            this.UpdateLoc();
             if (this.coolDown > 0)
             {
                 this.coolDown--;
             }
+            this.lifeTime++;
             if (this.lifeTime > this.directionChange)
             {
-                this.GetNewState();
+                randomStateGenerator.Update();
                 this.lifeTime = 0;
+            }
+            if (this.Health.CurrentHealth <= 0)
+            {
+                this.CurrentState = new DeadGoriyaState(this);
+            }
+            this.CurrentState.Update();
+            this.bounds.X = (int)this.Physics.Location.X;
+            this.bounds.Y = (int)this.Physics.Location.Y;
+        }
+
+        public void Draw()
+        {
+            this.currentState.Draw();
+        }
+
+        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IPlayer)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IBlock)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IProjectile)
+            {
+                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
         }
 
-        public void Draw(SpriteBatch sb)
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            this.currentState.Draw(sb);
+            enemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
         public IEnemyState CurrentState
         {
             get { return this.currentState; }
             set { this.currentState = value; }
-        }
-
-        public int Health
-        {
-            get { return this.health; }
-            set { this.health = value; }
         }
 
         public string Direction

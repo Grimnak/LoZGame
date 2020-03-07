@@ -1,12 +1,21 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-
-public interface IEnemy
+﻿namespace LoZClone
 {
-    void TakeDamage();
+    using Microsoft.Xna.Framework.Graphics;
 
-    void Die();
+    public interface IEnemy : ICollider
+    {
+        HealthManager Health { get; set; }
 
-    void Update();
+        bool Expired { get; set; }
 
-    void Draw(SpriteBatch spriteBatch);
+        int Damage { get; }
+
+        IEnemyState CurrentState { get; set; }
+
+        void TakeDamage(int damageAmount);
+        
+        void Update();
+
+        void Draw();
+    }
 }
