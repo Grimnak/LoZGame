@@ -21,7 +21,7 @@
             {
                 DeterminePushVelocity(player, collisionSide);
             }
-            else if (this.block is Tile && player.State is MoveDownState)
+            else if (this.block is Tile)
             {
                 LoZGame.Instance.CollisionDetector.MoveToBasement = true;
             }

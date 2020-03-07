@@ -39,6 +39,7 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
+            DeterminePushbackValues(collisionSide);
             this.player.TakeDamage(projectile.Damage);
         }
 
