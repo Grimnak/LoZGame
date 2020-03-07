@@ -141,8 +141,6 @@
             this.players.Add(this.link);
 
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
-
-            this.dropManager.AttemptDrop(new Vector2(400, 240));
         }
 
         protected override void UnloadContent()
@@ -179,7 +177,7 @@
             this.GraphicsDevice.Clear(Color.Black);
             if (gameState.Equals("Win") && gameLife % (InversionTime * 2) < InversionTime)
             {
-                this.spriteBatch.Begin(SpriteSortMode.FrontToBack, bsInverter);
+                this.spriteBatch.Begin(SpriteSortMode.FrontToBack); // 2nd param used to be bsInverter
             }
             else
             {
