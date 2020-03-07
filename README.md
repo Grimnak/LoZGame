@@ -54,7 +54,7 @@ MS Paint
 
 ## Known Bugs:
 ### Bottom Row Projectiles:
-    Bug:  Projectiles do not fire on the bottom row of the map - 
+    Bug:  Projectiles do not fire on the bottom row of the map.
 
     Plan(s) to fix:  Correct projectile collision bounds boxes.
 
