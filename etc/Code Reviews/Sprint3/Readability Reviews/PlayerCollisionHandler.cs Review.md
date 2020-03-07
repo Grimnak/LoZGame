@@ -1,22 +1,18 @@
-# Code Functionality Review
+# Code Readability Review
 
 ### Author: Sammy Lisa
 
-### Date: 3/6/2020
+### Date: 3/6/20
 
 ### Sprint No.: 3
 
-### File Name: ./LoZGame/Collisions/PlayerCollisionHandler.cs
+### File Name: ./LoZGame/Collisions/CollisionDetection.cs
 
 ### File Author Name: Eric Henderson
 
 ### Time Taken to Review: 15 minutes
 
-### Comments on Quality:
-- good use of reusable methods with the DeterminePushBack() and DeterminePushDirection(). They are intuitive and clean.
-- very few instances of hardcoding (although they are still there).
-- appropriate use of the physics location, velocity, and acceleration fields.
-
-### Potential Change to improve functionality
-- consider getting rid of the collisionSide parameter in some methods, as well as the unused door collision handler method as they aren't needed. 
-	- this is very feasible, but I understand that these params and the method are there for consistency.
+###  Comments on What is Readable
+- the functions are split in a very intuitive way, with each game object's collisions being cycled through.
+- the dirty work of collision detection is separated into another class (CollisionEssentials), allowing for this class to be organized in a simple manner.
+- variables, methods, and class names are appropriately named so that I can understand what's going on with no comments needed.
