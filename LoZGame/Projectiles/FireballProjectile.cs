@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 namespace LoZClone
 {
     using Microsoft.Xna.Framework;
-    class DragonFireBall : IProjectile
+
+    public class FireballProjectile : IProjectile
     {
         private const int FrameChange = 15;
         private const int XVelocity = 3;
         private const int YVelocity = 1;
         private const int MaxLife = 300;
 
-        ISprite sprite;
+        private ICollider collider;
+        private ISprite sprite;
         private int lifeTime;
-        private string direction;
         private readonly float rotation;
         private bool expired;
         private Vector2 Size;
@@ -31,20 +32,14 @@ namespace LoZClone
 
         public Rectangle Bounds { get; set; }
 
-        public DragonFireBall(Vector2 loc, string direction)
+        public FireballProjectile(ICollider collider, Vector2 location, Vector2 velocity)
         {
-            if (direction.Equals("NorthWest"))
+            if (collider is Dragon || collider is OldMan)
             {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y), new Vector2(-1 * XVelocity, -1 * YVelocity), new Vector2(0, 0));
+                this.collider = collider;
+                this.Physics = new Physics(location, velocity, new Vector2(0, 0));
             }
-            else if (direction.Equals("West"))
-            {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y ), new Vector2(-1 * XVelocity, 0), new Vector2(0, 0));
-            }
-            else if (direction.Equals("SouthWest"))
-            {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y), new Vector2(-1 * XVelocity, YVelocity), new Vector2(0, 0));
-            }
+
             this.collisionHandler = new ProjectileCollisionHandler(this);
             float size = (ProjectileSpriteFactory.Instance.FireballHeight * ProjectileSpriteFactory.Instance.Scale) * 1.5f;
             this.Size = new Vector2(size, size);
@@ -57,21 +52,9 @@ namespace LoZClone
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IEnemy)
-            {
-                this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IPlayer)
+            if (otherCollider is IPlayer)
             {
                 this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IItem)
-            {
-                this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IDoor)
-            {
-                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 

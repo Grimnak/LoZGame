@@ -31,8 +31,6 @@
 
         private static readonly int FrameDelay = 4;
         private const int Speed = 5;
-        private static readonly int XBound = 800;
-        private static readonly int YBound = 480;
 
         public WoodenSwordProjectile(IPlayer player)
         {
@@ -81,7 +79,6 @@
         }
 
         public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
-
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {

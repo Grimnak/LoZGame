@@ -29,6 +29,7 @@
         private float layer;
         private Vector2 playerLoc;
         private int damage;
+
         public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }
@@ -83,21 +84,9 @@
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IEnemy)
-            {
-                this.returning = this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IPlayer)
+            if (otherCollider is IPlayer)
             {
                 this.returning = this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IItem)
-            {
-                this.returning = this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IDoor)
-            {
-                this.returning = this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 

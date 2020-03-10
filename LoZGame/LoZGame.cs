@@ -8,7 +8,7 @@
     public class LoZGame : Game
     {
         // parameters to help with debugging game
-        public static readonly bool DebuggMode = false;
+        public static readonly bool DebugMode = false;
         private static readonly float UpdatesPerSecond = 60;
         private const int DefaultUpdateSpeed = 60;
 
@@ -36,7 +36,7 @@
         private DropManager dropManager;
         private DoorManager doorManager;
         private CollisionDetection collisionDetector;
-        private DebugManager debuggManager;
+        private DebugManager debugManager;
 
         private List<IController> controllers;
         private List<IPlayer> players;
@@ -99,7 +99,7 @@
             enemyManager = new EnemyManager();
             doorManager = new DoorManager();
             dropManager = new DropManager();
-            debuggManager = new DebugManager();
+            debugManager = new DebugManager();
         }
 
         protected override void Initialize()
@@ -107,7 +107,7 @@
             this.controllers = new List<IController>();
             this.players = new List<IPlayer>();
             this.randomNumberGenerator = new Random();
-            this.debuggManager.Initialize();
+            this.debugManager.Initialize();
 
             base.Initialize();
         }
@@ -165,9 +165,9 @@
             this.doorManager.Update();
             this.entityManager.Update();
             this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.doorManager.DoorList.AsReadOnly(), this.itemManager.ItemList.AsReadOnly(), this.entityManager.PlayerProjectiles.AsReadOnly(), this.entityManager.EnemyProjectiles.AsReadOnly());
-            if (DebuggMode)
+            if (DebugMode)
             {
-                this.debuggManager.Update();
+                this.debugManager.Update();
             }
             base.Update(gameTime);
         }
@@ -198,9 +198,9 @@
             this.entityManager.Draw();
             this.doorManager.Draw();
             this.link.Draw();
-            if (DebuggMode)
+            if (DebugMode)
             {
-                this.debuggManager.Draw();
+                this.debugManager.Draw();
             }
             this.spriteBatch.End();
             base.Draw(gameTime);

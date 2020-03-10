@@ -50,7 +50,6 @@ namespace LoZClone
 
             float layer = 1 - (1 / (location.Y + this.spriteSheetHeight));
 
-
             LoZGame.Instance.SpriteBatch.Draw(this.spriteSheet, destinationRectangle, sourceRectangle, spriteTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, layer);
         }
     }

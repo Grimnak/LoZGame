@@ -10,6 +10,7 @@
         private int damage = 0;
         private bool expired;
         private EnemyCollisionHandler enemyCollisionHandler;
+        private readonly EntityManager entity;
 
         public bool Expired { get { return this.expired; } set { this.expired = value; } }
 
@@ -27,16 +28,19 @@
 
         public IEnemyState CurrentState { get; set; }
 
+        public EntityManager EntityManager { get { return this.entity; } }
+
         private readonly ISprite sprite;
 
         public OldMan(Vector2 location)
         {
-            this.Health = new HealthManager(health);
             this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            this.entity = LoZGame.Instance.Entities;
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.health = 1;
+            this.Health = new HealthManager(health);
             this.expired = false;
         }
 

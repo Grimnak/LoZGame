@@ -130,7 +130,7 @@
             {
                 return standardWidth * DRAWSCALE;
             }
-            else if (projectile is DragonFireBall)
+            else if (projectile is FireballProjectile)
             {
                 return fireballWidth * DRAWSCALE;
             }
@@ -174,7 +174,7 @@
             {
                 return boomerangHeight * DRAWSCALE;
             }
-            else if (projectile is DragonFireBall)
+            else if (projectile is FireballProjectile)
             {
                 return fireballHeight * DRAWSCALE;
             }
