@@ -24,7 +24,7 @@
             }
             else if (enemy is OldMan || enemy is Merchant)
             {
-                // no damage inflicted, but fires shoot at player
+                // do nothing
             }
             else
             {

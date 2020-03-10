@@ -52,6 +52,10 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
+            if (this.enemy is OldMan && (projectile is ArrowProjectile || projectile is SilverArrowProjectile || projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is SwordBeamProjectile))
+            {
+                ((OldMan)this.enemy).EntityManager.EnemyProjectileManager.AddOldManFireballs((OldMan)this.enemy, LoZGame.Instance.Link);
+            }
             this.enemy.TakeDamage(projectile.Damage);
         }
 
@@ -73,6 +77,11 @@
             {
                 this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
             }
+        }
+
+        private void SpawnFireball()
+        {
+
         }
     }
 }

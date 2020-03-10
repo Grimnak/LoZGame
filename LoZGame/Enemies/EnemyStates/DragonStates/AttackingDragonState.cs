@@ -7,13 +7,12 @@
     {
         private readonly Dragon dragon;
         private readonly ISprite sprite;
-        private const int FireBallScale = 2;
 
         public AttackingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
-            this.dragon.EntityManager.EnemyProjectileManager.AddFireballs(this.dragon.Physics.Location);
+            this.dragon.EntityManager.EnemyProjectileManager.AddDragonFireballs(dragon);
             this.dragon.CurrentState = this;
         }
 

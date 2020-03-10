@@ -166,7 +166,7 @@
     <Compile Include="Projectiles\BombProjectile.cs" />
     <Compile Include="Projectiles\BoomerangEnemy.cs" />
     <Compile Include="Projectiles\BoomerangProjectile.cs" />
-    <Compile Include="Projectiles\DragonFireBall.cs" />
+    <Compile Include="Projectiles\FireballProjectile.cs" />
     <Compile Include="Projectiles\MagicBoomerangEnemy.cs" />
     <Compile Include="Projectiles\MagicBoomerangProjectile.cs" />
     <Compile Include="Projectiles\RedCandleProjectile.cs" />

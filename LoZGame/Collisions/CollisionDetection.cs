@@ -39,12 +39,15 @@
                 if (!(player.State is DieState) && !(player.State is ImmobileState))
                 {
                     CheckCollisions<IItem>(player, items);
-                    CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
+                    if (!CheckCollisions<IDoor>(player, doors))
+                    {
+                        CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
+                    }
+
                     if (player.DamageTimer <= 0)
                     {
                         CheckCollisions<IEnemy>(player, enemies);
                         CheckCollisions<IProjectile>(player, enemyProjectiles);
-                        CheckCollisions<IDoor>(player, doors);
                     }
                 }
             }

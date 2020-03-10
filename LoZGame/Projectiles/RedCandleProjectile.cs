@@ -66,18 +66,6 @@
             {
                 this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
-            else if (otherCollider is IPlayer)
-            {
-                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IItem)
-            {
-                this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IDoor)
-            {
-                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
-            }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)

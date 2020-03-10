@@ -10,8 +10,6 @@
         private static readonly int MaxDistance = 200;
         private static readonly int MaxSpeed = 5;
         private static readonly float Accel = 0.5f;
-        private static readonly int XBound = 800;
-        private static readonly int YBound = 480;
 
         private readonly IPlayer player;
         private readonly string direction;
@@ -74,31 +72,11 @@
             this.sprite = ProjectileSpriteFactory.Instance.Boomerang();
         }
 
-        private void CheckBounds()
-        {
-            if (this.Physics.Location.X >= XBound || this.Physics.Location.X <= 0 || this.Physics.Location.Y >= YBound || this.Physics.Location.Y <= 0)
-            {
-                this.returning = true;
-            }
-        }
-
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IEnemy)
             {
                 this.returning = this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IPlayer)
-            {
-                this.returning = this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IItem)
-            {
-                this.returning = this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IDoor)
-            {
-                this.returning = this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 
@@ -151,7 +129,6 @@
             }
             this.Physics.Move();
             this.Bounds = new Rectangle((int)this.Physics.Location.X - (projectileWidth / 2), (int)this.Physics.Location.Y - (projectileHeight / 2), projectileWidth, projectileHeight);
-            this.CheckBounds();
             this.sprite.Update();
         }
 
