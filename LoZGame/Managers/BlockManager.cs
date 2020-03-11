@@ -19,8 +19,8 @@
         {
   
             blocks.Add(block);
-            if (block is FireSprite)
-                Console.WriteLine("");
+            if (block is FireSprite);
+           
         }
 
         public void Clear()

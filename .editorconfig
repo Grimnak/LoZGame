@@ -107,3 +107,6 @@ dotnet_diagnostic.SA1208.severity = none
 
 # SA1200: Using directives should be placed correctly
 dotnet_diagnostic.SA1200.severity = none
+
+# CS0642: Possible mistaken empty statement
+dotnet_diagnostic.CS0642.severity = none
