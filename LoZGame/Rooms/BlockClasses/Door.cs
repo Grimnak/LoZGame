@@ -71,6 +71,9 @@ namespace LoZClone
                 case "bombed":
                     this.state = new HiddenDoorState(this);
                     break;
+                case "cosmetic":
+                    this.state = new CosmeticDoorState(this);
+                    break;
                 default:
                     this.state = new UnlockedDoorState(this);
                     break;
@@ -109,7 +112,7 @@ namespace LoZClone
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IPlayer)
+            if (otherCollider is IPlayer && !(this.state is CosmeticDoorState))
             {
                 this.doorCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }

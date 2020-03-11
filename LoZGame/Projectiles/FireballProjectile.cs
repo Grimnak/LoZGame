@@ -8,11 +8,7 @@ namespace LoZClone
 {
     using Microsoft.Xna.Framework;
 
-<<<<<<< HEAD:LoZGame/Projectiles/DragonFireBall.cs
-    class DragonFireBall : IProjectile
-=======
     public class FireballProjectile : IProjectile
->>>>>>> develop:LoZGame/Projectiles/FireballProjectile.cs
     {
         private const int FrameChange = 15;
         private const int XVelocity = 3;
