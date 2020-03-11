@@ -15,12 +15,13 @@
             Bottom
         }
 
-        private void CheckCollisions<T>(ICollider sourceCollider, ReadOnlyCollection<T> targetColliders)
+        private bool CheckCollisions<T>(ICollider sourceCollider, ReadOnlyCollection<T> targetColliders)
         {
             ICollider targetCollider = null;
             CollisionSide biggestSourceSide = CollisionSide.None;
             CollisionSide biggestTargetSide = CollisionSide.None;
             float biggestOverlapArea = 0;
+            bool currentlyColliding;
 
             // Identify largest collision in case of multiple occurring at once.
             foreach (ICollider collider in targetColliders)
@@ -43,7 +44,14 @@
             {
                 sourceCollider.OnCollisionResponse(targetCollider, biggestSourceSide);
                 targetCollider.OnCollisionResponse(sourceCollider, biggestTargetSide);
+                currentlyColliding = true;
             }
+            else
+            {
+                currentlyColliding = false;
+            }
+
+            return currentlyColliding;
         }
 
         private CollisionSide GetCollisionSide(Rectangle sourceRectangle, Rectangle targetRectangle)

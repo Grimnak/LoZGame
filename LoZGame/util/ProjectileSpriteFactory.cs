@@ -130,7 +130,7 @@
             {
                 return standardWidth * DRAWSCALE;
             }
-            else if (projectile is DragonFireBall)
+            else if (projectile is FireballProjectile)
             {
                 return fireballWidth * DRAWSCALE;
             }
@@ -141,6 +141,10 @@
             else if (projectile is SwordBeamExplosion)
             {
                 return standardWidth * DRAWSCALE;
+            }
+            else if (projectile is WoodenSwordProjectile)
+            {
+                return swordWidth;
             }
             else
             {
@@ -170,7 +174,7 @@
             {
                 return boomerangHeight * DRAWSCALE;
             }
-            else if (projectile is DragonFireBall)
+            else if (projectile is FireballProjectile)
             {
                 return fireballHeight * DRAWSCALE;
             }
@@ -181,6 +185,10 @@
             else if (projectile is SwordBeamExplosion)
             {
                 return swordBeamExplosionHeight * DRAWSCALE;
+            }
+            else if (projectile is WoodenSwordProjectile)
+            {
+                return swordHeight;
             }
             else
             {

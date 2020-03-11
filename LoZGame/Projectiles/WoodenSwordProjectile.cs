@@ -8,7 +8,7 @@
         private static readonly int LinkSize = LinkSpriteFactory.LinkHeight;
         private Vector2 upOffset = new Vector2(2, 29);
         private Vector2 sideOffset = new Vector2(29, 4);
-        private const int TotalLife = 20;
+        private const int TotalLife = 15;
         private const int Extended = 10;
         private const int Retracting = 5;
         private ProjectileCollisionHandler collisionHandler;
@@ -31,8 +31,6 @@
 
         private static readonly int FrameDelay = 4;
         private const int Speed = 5;
-        private static readonly int XBound = 800;
-        private static readonly int YBound = 480;
 
         public WoodenSwordProjectile(IPlayer player)
         {

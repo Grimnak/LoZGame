@@ -10,8 +10,6 @@
         private static readonly int MaxDistance = 200;
         private static readonly int MaxSpeed = 5;
         private static readonly float Accel = 0.5f;
-        private static readonly int XBound = 800;
-        private static readonly int YBound = 480;
 
         private readonly Goriya Enemy;
         private readonly string direction;
@@ -25,7 +23,7 @@
         private bool isReturned;
         private int distTraveled;
         private float currentSpeed;
-        private Vector2 playerLoc;
+        private Vector2 enemyLoc;
         private ISprite sprite;
         private int damage;
 
@@ -66,42 +64,18 @@
                 this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)), new Vector2(0, MaxSpeed), new Vector2(0, 0));
             }
 
-            this.playerLoc = enemy.Physics.Location;
-            this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
+            this.enemyLoc = enemy.Physics.Location;
+            this.enemyLoc = new Vector2(this.enemyLoc.X + 16, this.enemyLoc.Y + 16);
             this.currentSpeed = MaxSpeed;
             this.Bounds = new Rectangle((int)this.Physics.Location.X - (projectileWidth / 2), (int)this.Physics.Location.Y - (projectileHeight / 2), projectileWidth, projectileHeight);
             this.sprite = ProjectileSpriteFactory.Instance.MagicBoomerang();
         }
 
-        private void CheckBounds()
-        {
-            if (this.Physics.Location.X >= XBound || this.Physics.Location.X <= 0 || this.Physics.Location.Y >= YBound || this.Physics.Location.Y <= 0)
-            {
-                this.returning = true;
-            }
-        }
-
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IEnemy)
-            {
-                this.returning = this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IBlock)
-            {
-                this.returning = this.collisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IPlayer)
+            if (otherCollider is IPlayer)
             {
                 this.returning = this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IItem)
-            {
-                this.returning = this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IDoor)
-            {
-                this.returning = this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 
@@ -112,10 +86,10 @@
 
         private void ReturnHome()
         {
-            this.playerLoc = this.Enemy.Physics.Location;
-            this.playerLoc = new Vector2(this.playerLoc.X + 16, this.playerLoc.Y + 16);
-            float diffX = this.playerLoc.X - this.Physics.Location.X;
-            float diffY = this.playerLoc.Y - this.Physics.Location.Y;
+            this.enemyLoc = this.Enemy.Physics.Location;
+            this.enemyLoc = new Vector2(this.enemyLoc.X + 16, this.enemyLoc.Y + 16);
+            float diffX = this.enemyLoc.X - this.Physics.Location.X;
+            float diffY = this.enemyLoc.Y - this.Physics.Location.Y;
             if (Math.Abs(diffX) <= 2 * MaxSpeed && Math.Abs(diffY) <= 2 * MaxSpeed)
             {
                 this.isReturned = true;
@@ -154,7 +128,6 @@
             }
             this.Physics.Move();
             this.Bounds = new Rectangle((int)this.Physics.Location.X - (projectileWidth / 2), (int)this.Physics.Location.Y - (projectileHeight / 2), projectileWidth, projectileHeight); 
-            this.CheckBounds();
             this.sprite.Update();
         }
 

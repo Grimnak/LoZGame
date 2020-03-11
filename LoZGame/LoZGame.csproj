@@ -166,7 +166,7 @@
     <Compile Include="Projectiles\BombProjectile.cs" />
     <Compile Include="Projectiles\BoomerangEnemy.cs" />
     <Compile Include="Projectiles\BoomerangProjectile.cs" />
-    <Compile Include="Projectiles\DragonFireBall.cs" />
+    <Compile Include="Projectiles\FireballProjectile.cs" />
     <Compile Include="Projectiles\MagicBoomerangEnemy.cs" />
     <Compile Include="Projectiles\MagicBoomerangProjectile.cs" />
     <Compile Include="Projectiles\RedCandleProjectile.cs" />
@@ -344,7 +344,7 @@
     <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamExplosionSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\GreenWoodSwordSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamProjectileSprite.cs" />
-    <Compile Include="Util\DebugManager.cs" />
+    <Compile Include="Managers\DebugManager.cs" />
     <Compile Include="Util\Physics.cs" />
     <Compile Include="Util\ProjectileSpriteFactory.cs" />
     <Compile Include="Util\ItemSpriteFactory.cs" />

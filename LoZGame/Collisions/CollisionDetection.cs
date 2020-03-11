@@ -22,7 +22,7 @@
             CheckEnemies(enemies, playerProjectiles);
             CheckBlocks(blocks, players, enemies);
             CheckItems(items);
-            CheckProjectiles(playerProjectiles, enemyProjectiles, blocks);
+            CheckProjectiles(playerProjectiles, enemyProjectiles);
 
             // Unable to change rooms mid-foreach loop, so set a flag and change directly after.
             if (moveToBasement)
@@ -38,14 +38,17 @@
             {
                 if (!(player.State is DieState) && !(player.State is ImmobileState))
                 {
+                    CheckCollisions<IItem>(player, items);
+                    if (!CheckCollisions<IDoor>(player, doors))
+                    {
+                        CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
+                    }
+
                     if (player.DamageTimer <= 0)
                     {
                         CheckCollisions<IEnemy>(player, enemies);
                         CheckCollisions<IProjectile>(player, enemyProjectiles);
-                        CheckCollisions<IDoor>(player, doors);
                     }
-                    CheckCollisions<IItem>(player, items);
-                    CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
                 }
             }
         }
@@ -54,14 +57,11 @@
         {
             foreach (IEnemy enemy in enemies)
             {
-                if (!(enemy is WallMaster))
+                if (!(enemy is WallMaster || enemy is OldMan || enemy is Merchant))
                 {
                     CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
                 }
-                if (!(enemy is OldMan || enemy is Merchant))
-                {
-                    CheckCollisions<IProjectile>(enemy, playerProjectiles);
-                }
+                CheckCollisions<IProjectile>(enemy, playerProjectiles);
             }
         }
 
@@ -93,17 +93,18 @@
             }
         }
 
-        private void CheckProjectiles(ReadOnlyCollection<IProjectile> playerProjectiles, ReadOnlyCollection<IProjectile> enemyProjectiles, ReadOnlyCollection<IBlock> blocks)
+        private void CheckProjectiles(ReadOnlyCollection<IProjectile> playerProjectiles, ReadOnlyCollection<IProjectile> enemyProjectiles)
         {
             foreach (IProjectile playerProjectile in playerProjectiles)
             {
-                CheckCollisions<IBlock>(playerProjectile, blocks);
-                CheckBorders(playerProjectile, playerProjectile.Bounds.Width, playerProjectile.Bounds.Height);
+                // CheckBorders(playerProjectile, playerProjectile.Bounds.X, playerProjectile.Bounds.Y);
+                CheckBorders(playerProjectile, ProjectileSpriteFactory.GetProjectileWidth(playerProjectile), ProjectileSpriteFactory.GetProjectileHeight(playerProjectile));
             }
 
             foreach (IProjectile enemyProjectile in enemyProjectiles)
             {
-                CheckBorders(enemyProjectile, enemyProjectile.Bounds.Width, enemyProjectile.Bounds.Height);
+                // CheckBorders(enemyProjectile, enemyProjectile.Bounds.X, enemyProjectile.Bounds.Y);
+                CheckBorders(enemyProjectile, ProjectileSpriteFactory.GetProjectileWidth(enemyProjectile), ProjectileSpriteFactory.GetProjectileHeight(enemyProjectile));
             }
         }
     }

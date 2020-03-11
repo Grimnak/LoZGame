@@ -49,6 +49,5 @@
             this.Velocity = new Vector2(0, this.Velocity.Y + this.Acceleration.Y);
             this.Acceleration = new Vector2(0, this.Acceleration.Y);
         }
-
     }
 }

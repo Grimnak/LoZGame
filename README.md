@@ -17,19 +17,15 @@ Jeremy Wensink.27
 
 
 ## Controls:
-W, A, S, D - Controls the Player
-
-U, I - Cycles Items being drawn
-
-O, P - Cycles Enemy being drawn
-
-K, L - Cycles Blocks being drawn
+W, A, S, D, Arrow Ke - Controls the Player
 
 Z, N - Attack buttons for Player
 
 Q - Exits the game
 
 R - Resets the game to its default state
+
+E - Damages the player
 
 1 - Places a Bomb
 
@@ -38,9 +34,6 @@ R - Resets the game to its default state
 3, 6 - Throws a Boomerang/Magic Boomerang
 
 4, 7 - Uses the Blue Candle/Red Candle
-
-8 - Picks up a Triforce
-
 
 
 ## External Tools:
@@ -60,21 +53,14 @@ MS Paint
 
 
 ## Known Bugs:
-### Movement Stuck:
-    Bug:  After throwing a boomerang - 
-    If:
-        - boomerang key is released 
-        - movement key is pressed
-        - boomerang key is re-pressed
-        - movement key is released before the boomerang returns 
-    then: 
-    - the player will continue to move in the movement direction until the boomerang key is released
+### Bottom Row Projectiles:
+    Bug:  Projectiles do not fire on the bottom row of the map.
 
-    Plan(s) to fix:  Implement dynamic key priorities
+    Plan(s) to fix:  Correct projectile collision bounds boxes.
 
-### Bomb Explosion Drawing:
-    Bug:  When the bomb explodes -
-    - there is ‘fuzz’ at the top and bottom of the explosion sprites
-    This is believed to be an issue with the sprite rendering 
+### Door Functionality:
+    Bug:  Locked and hidden doors cannot be triggered by the player upon collision.
     
-    Plan(s) to fix:  Refactor explosion sprites to have a small transparent gap in the png files
+    Plan(s) to fix:  Implement unlocking via bomb use/key pickup/puzzle solving.
+
+## Suppressed Warnings:

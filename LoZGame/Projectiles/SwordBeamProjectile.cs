@@ -37,8 +37,6 @@
 
         private static readonly int FrameDelay = 4;
         private const int Speed = 5;
-        private static readonly int XBound = 800;
-        private static readonly int YBound = 480;
 
         public SwordBeamProjectile(IPlayer player)
         {
@@ -89,36 +87,13 @@
 
         public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
 
-        private void CheckBounds()
-        {
-            if (this.Physics.Location.X >= XBound - this.tip.X || this.Physics.Location.X <= 0 || this.Physics.Location.Y >= YBound - this.tip.Y || this.Physics.Location.Y <= 0)
-            {
-                this.expired = true;
-            }
-        }
-
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IEnemy)
             {
                 this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            } 
-            else if (otherCollider is IBlock)
-            {
-                this.collisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
-            else if (otherCollider is IPlayer)
-            {
-                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IItem)
-            {
-                this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IDoor)
-            {
-                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
-            }
+
             if (this.expired)
             {
                 this.CreateExplosion();
@@ -143,7 +118,6 @@
             lifeTime++;
             if (this.lifeTime > Delay)
             {
-                this.CheckBounds();
                 if (this.lifeTime % FrameDelay == 0)
                 {
                     this.sprite.Update();
