@@ -11,7 +11,6 @@
         public RightMovingStalfosState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
-            stalfos.Physics.Velocity = new Vector2(1, 0);
             this.sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
             this.stalfos.CurrentState = this;
         }
@@ -59,11 +58,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-            this.stalfos.Health.DamageHealth(damageAmount);
-        }
-
         public void Die()
         {
             this.stalfos.CurrentState = new DeadStalfosState(this.stalfos);
@@ -71,13 +65,13 @@
 
         public void Update()
         {
-            this.stalfos.Physics.Move();
+            this.stalfos.Physics.Location = new Vector2(this.stalfos.Physics.Location.X + this.stalfos.MoveSpeed, this.stalfos.Physics.Location.Y);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.stalfos.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.stalfos.Physics.Location, this.stalfos.CurrentTint);
         }
     }
 }

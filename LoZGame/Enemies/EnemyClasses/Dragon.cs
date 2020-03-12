@@ -22,7 +22,13 @@
 
         public HealthManager Health { get; set; }
 
+        public Color CurrentTint { get; set; }
+
+        public int MoveSpeed { get; set; }
+
         public int Damage => damage;
+
+        public int DamageTimer { get; set; }
 
         private IEnemyState currentState;
         private int damage = 1;
@@ -44,24 +50,48 @@
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             randomStateGenerator = new RandomStateGenerator(this, 0, 4);
             this.expired = false;
+            this.DamageTimer = 0;
+            this.MoveSpeed = 1;
+            this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
         public void TakeDamage(int damageAmount)
         {
-            this.currentState.TakeDamage(damageAmount);
+            if (this.DamageTimer <= 0)
+            {
+                this.Health.DamageHealth(damageAmount);
+                this.DamageTimer = 100;
+            }
+            if (this.Health.CurrentHealth <= 0)
+            {
+                this.currentState.Die();
+            }
+        }
+
+        private void HandleDamage()
+        {
+            if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
+            {
+                this.DamageTimer--;
+                if (this.DamageTimer % 10 > 5)
+                {
+                    this.CurrentTint = Color.DarkSlateGray;
+                }
+                else
+                {
+                    this.CurrentTint = Color.White;
+                }
+            }
         }
 
         public void Update()
         {
+            this.HandleDamage();
             this.lifeTime++;
             if (this.lifeTime > this.directionChange)
             {
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
-            }
-            if (this.Health.CurrentHealth <= 0)
-            {
-                this.CurrentState = new DeadDragonState(this);
             }
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;

@@ -59,11 +59,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-            this.dragon.Health.DamageHealth(damageAmount);
-        }
-
         public void Die()
         {
             this.dragon.CurrentState = new DeadDragonState(this.dragon);
@@ -76,7 +71,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.dragon.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.dragon.Physics.Location, this.dragon.CurrentTint);
         }
     }
 }

@@ -2,20 +2,22 @@
 {
     using Microsoft.Xna.Framework;
 
-    public class MoveDownState : IPlayerState
+    /// <summary>
+    /// Left moving state for player.
+    /// </summary>
+    public class MoveLeftState : IPlayerState
     {
         private readonly IPlayer player;
         private readonly ISprite sprite;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MoveDownState"/> class.
+        /// Initializes a new instance of the <see cref="MoveLeftState"/> class.
         /// </summary>
-        /// <param name="game">Current game.</param>
         /// <param name="playerInstance">Instance of player.</param>
-        public MoveDownState(IPlayer playerInstance)
+        public MoveLeftState(IPlayer playerInstance)
         {
             this.player = playerInstance;
-            this.player.CurrentDirection = "Down";
+            this.player.CurrentDirection = "Left";
             this.sprite = this.CreateCorrectSprite();
         }
 
@@ -34,12 +36,12 @@
         /// <inheritdoc/>
         public void MoveDown()
         {
+            this.player.State = new MoveDownState(this.player);
         }
 
         /// <inheritdoc/>
         public void MoveLeft()
         {
-            this.player.State = new MoveLeftState(this.player);
         }
 
         /// <inheritdoc/>
@@ -75,7 +77,7 @@
         /// <inheritdoc/>
         public void Update()
         {
-            this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, this.player.Physics.Location.Y + this.player.MoveSpeed);
+            this.player.Physics.Location = new Vector2(this.player.Physics.Location.X - this.player.MoveSpeed, this.player.Physics.Location.Y);
             this.sprite.Update();
         }
 
@@ -87,7 +89,7 @@
 
         private ISprite CreateCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.CreateSpriteLinkMoveDown(this.player.CurrentColor);
+            return LinkSpriteFactory.Instance.CreateSpriteLinkMoveLeft(this.player.CurrentColor);
         }
     }
 }

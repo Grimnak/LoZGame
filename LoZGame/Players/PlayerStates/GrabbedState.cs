@@ -1,49 +1,46 @@
-﻿namespace LoZClone
-{
-    using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
+namespace LoZClone
+{
     /// <summary>
-    /// Right moving state for player.
+    /// Immobilized state for player when Wall Master has control of him.
     /// </summary>
-    public class MoveRightState : IPlayerState
+    public class GrabbedState : IPlayerState
     {
         private readonly IPlayer player;
+        private readonly IEnemy wallMaster;
         private readonly ISprite sprite;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MoveRightState"/> class.
+        /// Initializes a new instance of the <see cref="GrabbedState"/> class.
         /// </summary>
-        /// <param name="game">Current Game.</param>
-        /// <param name="playerInstance">Instance of player.</param>
-        public MoveRightState(IPlayer playerInstance)
+        /// <param name="playerInstance">Instance of the player.</param>
+        /// <param name="wallMaster">Instance of the colliding Wall Master.</param>
+        public GrabbedState(IPlayer playerInstance, WallMaster wallMaster)
         {
             this.player = playerInstance;
-            this.player.CurrentDirection = "Right";
+            this.wallMaster = wallMaster;
             this.sprite = this.CreateCorrectSprite();
         }
 
         /// <inheritdoc/>
         public void Idle()
         {
-            this.player.State = new IdleState(this.player);
         }
 
         /// <inheritdoc/>
         public void MoveUp()
         {
-            this.player.State = new MoveUpState(this.player);
         }
 
         /// <inheritdoc/>
         public void MoveDown()
         {
-            this.player.State = new MoveDownState(this.player);
         }
 
         /// <inheritdoc/>
         public void MoveLeft()
         {
-            this.player.State = new MoveLeftState(this.player);
         }
 
         /// <inheritdoc/>
@@ -54,31 +51,37 @@
         /// <inheritdoc/>
         public void Attack()
         {
-            this.player.State = new AttackState(this.player);
         }
 
         /// <inheritdoc/>
         public void Die()
         {
-            this.player.State = new DieState(this.player);
         }
 
         /// <inheritdoc/>
         public void PickupItem(IItem item)
         {
-            this.player.State = new PickupItemState(this.player, item);
         }
 
         /// <inheritdoc/>
         public void UseItem(int waitTime)
         {
-            this.player.State = new UseItemState(this.player, waitTime);
         }
 
         /// <inheritdoc/>
         public void Update()
         {
-            this.player.Physics.Location = new Vector2(this.player.Physics.Location.X + this.player.MoveSpeed, this.player.Physics.Location.Y);
+            wallMaster.Physics.Location = player.Physics.Location;
+            this.player.Physics.Move();
+            if (this.player.Physics.Location.X < 0)
+            {
+                LoZGame.Instance.Dungeon.Reset();
+                this.player.Physics.Location = new Vector2(
+                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
+                this.player.Physics.ResetVelocity();
+                this.player.State = new IdleState(this.player);
+            }
             this.sprite.Update();
         }
 
@@ -90,7 +93,7 @@
 
         private ISprite CreateCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.CreateSpriteLinkMoveRight(this.player.CurrentColor);
+            return LinkSpriteFactory.Instance.CreateSpriteLinkIdleUp(this.player.CurrentColor);
         }
     }
 }

@@ -25,14 +25,40 @@
 
         public void TakeDamage(int damageAmount)
         {
+            if (this.DamageTimer <= 0)
+            {
+                this.Health.DamageHealth(damageAmount);
+                this.DamageTimer = 50;
+            }
             if (this.Health.CurrentHealth <= 0)
             {
                 this.State.Die();
             }
-            if (this.DamageTimer <= 0 && !(this.State is PickupItemState))
+        }
+
+        private void DamagePushback()
+        {
+            if (Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0)
             {
-                this.Health.DamageHealth(damageAmount);
-                this.DamageTimer = 100;
+                this.Physics.Move();
+                this.Physics.Accelerate();
+            }
+        }
+
+        public void HandleDamage()
+        {
+            if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
+            {
+                this.DamageTimer--;
+                if (this.DamageTimer % 10 > 5)
+                {
+                    this.CurrentTint = Color.DarkSlateGray;
+                }
+                else
+                {
+                    this.CurrentTint = Color.White;
+                }
+                this.DamagePushback();
             }
         }
 

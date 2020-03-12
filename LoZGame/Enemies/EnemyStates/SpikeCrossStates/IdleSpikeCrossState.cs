@@ -56,10 +56,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
@@ -75,7 +71,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.spikeCross.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.spikeCross.Physics.Location, this.spikeCross.CurrentTint);
         }
     }
 }

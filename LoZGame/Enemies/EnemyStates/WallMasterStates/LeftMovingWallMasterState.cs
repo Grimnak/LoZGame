@@ -11,7 +11,6 @@
         public LeftMovingWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
-            wallMaster.Physics.Velocity = new Vector2(-1, 0);
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingWallMasterSprite();
             this.wallMaster.CurrentState = this;
         }
@@ -60,11 +59,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-            this.wallMaster.Health.DamageHealth(damageAmount);
-        }
-
         public void Die()
         {
             this.wallMaster.CurrentState = new DeadWallMasterState(this.wallMaster);
@@ -72,13 +66,13 @@
 
         public void Update()
         {
-            this.wallMaster.Physics.Move();
+            this.wallMaster.Physics.Location = new Vector2(this.wallMaster.Physics.Location.X - this.wallMaster.MoveSpeed, this.wallMaster.Physics.Location.Y);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.wallMaster.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.wallMaster.Physics.Location, this.wallMaster.CurrentTint);
         }
     }
 }

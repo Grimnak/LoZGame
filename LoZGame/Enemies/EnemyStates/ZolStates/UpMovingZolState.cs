@@ -11,7 +11,6 @@
         public UpMovingZolState(Zol zol)
         {
             this.zol = zol;
-            zol.Physics.Velocity = new Vector2(0, -1);
             this.sprite = EnemySpriteFactory.Instance.CreateZolSprite();
             this.zol.CurrentState = this;
         }
@@ -59,11 +58,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-            this.zol.Health.DamageHealth(damageAmount);
-        }
-
         public void Die()
         {
             this.zol.CurrentState = new DeadZolState(this.zol);
@@ -73,14 +67,14 @@
         {
             if (this.zol.ShouldMove)
             {
-                this.zol.Physics.Move();
+                this.zol.Physics.Location = new Vector2(this.zol.Physics.Location.X, this.zol.Physics.Location.Y - this.zol.MoveSpeed);
             }
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.zol.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.zol.Physics.Location, this.zol.CurrentTint);
         }
     }
 }

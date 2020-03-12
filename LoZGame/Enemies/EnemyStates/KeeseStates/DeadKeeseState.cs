@@ -13,8 +13,6 @@
             this.keese = keese;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.keese.CurrentState = this;
-            this.keese.VelocityX = 0;
-            this.keese.VelocityY = 0;
             LoZGame.Instance.Drops.AttemptDrop(this.keese.Physics.Location);
             this.keese.Expired = true;
         }
@@ -59,10 +57,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
@@ -74,7 +68,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.keese.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.keese.Physics.Location, this.keese.CurrentTint);
         }
     }
 }

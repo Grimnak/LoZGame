@@ -13,7 +13,6 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="MoveUpState"/> class.
         /// </summary>
-        /// <param name="game">Current game.</param>
         /// <param name="playerInstance">Instance of player.</param>
         public MoveUpState(IPlayer playerInstance)
         {

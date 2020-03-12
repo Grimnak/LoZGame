@@ -13,7 +13,6 @@
             this.dragon = dragon;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.dragon.CurrentState = this;
-            this.dragon.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.dragon.Physics.Location);
             this.dragon.Expired = true;
         }
@@ -50,10 +49,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
@@ -73,7 +68,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.dragon.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.dragon.Physics.Location, this.dragon.CurrentTint);
         }
     }
 }
