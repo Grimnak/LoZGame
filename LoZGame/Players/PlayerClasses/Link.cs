@@ -31,32 +31,6 @@
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
         }
 
-        private void DamagePushback()
-        {
-            if (Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0)
-            {
-                this.Physics.Move();
-                this.Physics.Accelerate();
-            }
-        }
-
-        private void HandleDamage()
-        {
-            if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
-            {
-                this.DamageTimer--;
-                if (this.DamageTimer % 10 > 5)
-                {
-                    this.CurrentTint = Color.DarkSlateGray;
-                }
-                else
-                {
-                    this.CurrentTint = Color.White;
-                }
-                this.DamagePushback();
-            }
-        }
-
         public override void Update()
         {
             this.HandleDamage();

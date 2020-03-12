@@ -83,11 +83,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-            this.goriya.Health.DamageHealth(damageAmount);
-        }
-
         public void Die()
         {
             this.goriya.CurrentState = new DeadGoriyaState(this.goriya);
@@ -105,7 +100,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.goriya.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.goriya.Physics.Location, this.goriya.CurrentTint);
         }
     }
 }

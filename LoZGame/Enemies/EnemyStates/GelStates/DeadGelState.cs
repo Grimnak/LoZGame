@@ -13,7 +13,6 @@
             this.gel = gel;
             this.gel.CurrentState = this;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
-            this.gel.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.gel.Physics.Location);
             this.gel.Expired = true;
         }
@@ -58,10 +57,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
@@ -73,7 +68,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.gel.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.gel.Physics.Location, this.gel.CurrentTint);
         }
     }
 }

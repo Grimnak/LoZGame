@@ -27,7 +27,13 @@
 
         public HealthManager Health { get; set; }
 
+        public Color CurrentTint { get; set; }
+
+        public int MoveSpeed { get; set; }
+
         public int Damage => damage;
+
+        public int DamageTimer { get; set; }
 
         private IEnemyState currentState;
         private int damage = 2;
@@ -47,6 +53,9 @@
             this.ShouldMove = true;
             this.randomStateGenerator = new RandomStateGenerator(this, 2, 6);
             this.expired = false;
+            this.DamageTimer = 0;
+            this.MoveSpeed = 1;
+            this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
         private void decideToMove()
@@ -72,19 +81,50 @@
 
         public void TakeDamage(int damageAmount)
         {
-            this.currentState.TakeDamage(damageAmount);
+            if (this.DamageTimer <= 0)
+            {
+                this.Health.DamageHealth(damageAmount);
+                this.DamageTimer = 50;
+            }
+            if (this.Health.CurrentHealth <= 0)
+            {
+                this.currentState.Die();
+            }
+        }
+
+        private void DamagePushback()
+        {
+            if (Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0)
+            {
+                this.Physics.Move();
+                this.Physics.Accelerate();
+            }
+        }
+
+        private void HandleDamage()
+        {
+            if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
+            {
+                this.DamageTimer--;
+                if (this.DamageTimer % 10 > 5)
+                {
+                    this.CurrentTint = Color.DarkSlateGray;
+                }
+                else
+                {
+                    this.CurrentTint = Color.White;
+                }
+                this.DamagePushback();
+            }
         }
 
         public void Update()
         {
+            this.HandleDamage();
             this.decideToMove();
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
-            if (this.Health.CurrentHealth <= 0)
-            {
-                this.CurrentState = new DeadZolState(this);
-            }
         }
 
         public void Draw()

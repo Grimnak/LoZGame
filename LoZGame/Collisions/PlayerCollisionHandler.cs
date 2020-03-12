@@ -20,7 +20,7 @@
         {
             if (enemy is WallMaster)
             {
-                this.player.State = new ImmobileState(player);
+                this.player.State = new GrabbedState(player, (WallMaster)enemy);
             }
             else if (enemy is OldMan || enemy is Merchant)
             {
@@ -50,26 +50,23 @@
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(player.State is ImmobileState))
+            if (!(player.State is GrabbedState) && (block is BlockTile || block is MovableTile))
             {
-                if (block is BlockTile || block is MovableTile)
+                if (collisionSide == CollisionDetection.CollisionSide.Right)
                 {
-                    if (collisionSide == CollisionDetection.CollisionSide.Right)
-                    {
-                        this.player.Physics.Location = new Vector2(block.Physics.Location.X - LinkSpriteFactory.LinkWidth, this.player.Physics.Location.Y);
-                    }
-                    else if (collisionSide == CollisionDetection.CollisionSide.Left)
-                    {
-                        this.player.Physics.Location = new Vector2(block.Physics.Location.X + BlockSpriteFactory.Instance.TileWidth, this.player.Physics.Location.Y);
-                    }
-                    else if (collisionSide == CollisionDetection.CollisionSide.Top)
-                    {
-                        this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y + BlockSpriteFactory.Instance.TileHeight);
-                    }
-                    else
-                    {
-                        this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y - LinkSpriteFactory.LinkHeight);
-                    }
+                    this.player.Physics.Location = new Vector2(block.Physics.Location.X - LinkSpriteFactory.LinkWidth, this.player.Physics.Location.Y);
+                }
+                else if (collisionSide == CollisionDetection.CollisionSide.Left)
+                {
+                    this.player.Physics.Location = new Vector2(block.Physics.Location.X + BlockSpriteFactory.Instance.TileWidth, this.player.Physics.Location.Y);
+                }
+                else if (collisionSide == CollisionDetection.CollisionSide.Top)
+                {
+                    this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y + BlockSpriteFactory.Instance.TileHeight);
+                }
+                else
+                {
+                    this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y - LinkSpriteFactory.LinkHeight);
                 }
             }
         }

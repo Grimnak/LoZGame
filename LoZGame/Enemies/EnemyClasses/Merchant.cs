@@ -23,7 +23,13 @@
 
         public HealthManager Health { get; set; }
 
+        public Color CurrentTint { get; set; }
+
+        public int MoveSpeed { get; set; }
+
         public int Damage => damage;
+
+        public int DamageTimer { get; set; }
 
         public IEnemyState CurrentState { get; set; }
 
@@ -38,6 +44,9 @@
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.health = 1;
             this.expired = false;
+            this.DamageTimer = 0;
+            this.MoveSpeed = 0;
+            this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
         public void TakeDamage(int damageAmount)

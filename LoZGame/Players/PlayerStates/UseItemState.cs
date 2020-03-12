@@ -12,7 +12,6 @@ namespace LoZClone
         /// <summary>
         /// Initializes a new instance of the <see cref="UseItemState"/> class.
         /// </summary>
-        /// <param name="game">Current game.</param>
         /// <param name="playerInstance">Instance of player.</param>
         /// <param name="waitTime">Time for player to wait.</param>
         public UseItemState(IPlayer playerInstance, int waitTime)

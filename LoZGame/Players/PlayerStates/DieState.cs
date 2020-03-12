@@ -11,7 +11,6 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="DieState"/> class.
         /// </summary>
-        /// <param name="game">Current game.</param>
         /// <param name="playerInstance">Instance of the player.</param>
         public DieState(IPlayer playerInstance)
         {

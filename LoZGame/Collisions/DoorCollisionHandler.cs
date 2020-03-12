@@ -14,7 +14,7 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {            
-            if (!(player.State is ImmobileState) && !(player.State is IdleState))
+            if (!(player.State is GrabbedState) && !(player.State is IdleState))
             {
               if (door.Physics.Location == door.LeftScreenLoc)
               {

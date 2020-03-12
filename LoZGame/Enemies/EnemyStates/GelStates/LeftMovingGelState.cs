@@ -11,7 +11,6 @@
         public LeftMovingGelState(Gel gel)
         {
             this.gel = gel;
-            this.gel.Physics.Velocity = new Vector2(-2, 0);
             this.sprite = EnemySpriteFactory.Instance.CreateGelSprite();
             this.gel.CurrentState = this;
         }
@@ -59,11 +58,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-            this.gel.Health.DamageHealth(damageAmount);
-        }
-
         public void Die()
         {
             this.gel.CurrentState = new DeadGelState(this.gel);
@@ -73,14 +67,14 @@
         {
             if (this.gel.ShouldMove)
             {
-                this.gel.Physics.Move();
+                this.gel.Physics.Location = new Vector2(this.gel.Physics.Location.X - this.gel.MoveSpeed, this.gel.Physics.Location.Y);
             }
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.gel.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.gel.Physics.Location, this.gel.CurrentTint);
         }
     }
 }

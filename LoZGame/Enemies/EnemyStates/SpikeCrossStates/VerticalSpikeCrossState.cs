@@ -12,7 +12,7 @@
         public VerticalSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            this.spikeCross.Physics.Velocity = new Vector2(0, 1 * spikeCross.AttackFactor);
+            this.spikeCross.Physics.Velocity = new Vector2(0, 1 * spikeCross.MoveSpeed);
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
         }
 
@@ -52,10 +52,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
@@ -74,16 +70,16 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.spikeCross.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.spikeCross.Physics.Location, this.spikeCross.CurrentTint);
         }
 
         private void retreatCheck()
         {
             if (!spikeCross.Retreating)
             {
-                if (spikeCross.AttackFactor > 0)
+                if (spikeCross.MoveSpeed > 0)
                 {
-                    if (spikeCross.Physics.Location.Y - (BlockSpriteFactory.Instance.TileHeight * 3.5 + (BlockSpriteFactory.Instance.VerticalOffset / 2)) >= 0)
+                    if (spikeCross.Physics.Location.Y - ((BlockSpriteFactory.Instance.TileHeight * 3.5) + (BlockSpriteFactory.Instance.VerticalOffset / 2)) >= 0)
                     {
                         spikeCross.Retreating = true;
                         spikeCross.Physics.Velocity = new Vector2(spikeCross.Physics.Velocity.X, -1);
@@ -92,7 +88,7 @@
                 }
                 else
                 {
-                    if (spikeCross.Physics.Location.Y - (BlockSpriteFactory.Instance.TileHeight * 3.5 + (BlockSpriteFactory.Instance.VerticalOffset / 2)) <= 0)
+                    if (spikeCross.Physics.Location.Y - ((BlockSpriteFactory.Instance.TileHeight * 3.5) + (BlockSpriteFactory.Instance.VerticalOffset / 2)) <= 0)
                     {
                         spikeCross.Retreating = true;
                         spikeCross.Physics.Velocity = new Vector2(spikeCross.Physics.Velocity.X, 1);

@@ -17,7 +17,7 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(player.State is ImmobileState) && this.block is MovableTile)
+            if (!(player.State is GrabbedState) && this.block is MovableTile)
             {
                 DeterminePushVelocity(player, collisionSide);
             }
