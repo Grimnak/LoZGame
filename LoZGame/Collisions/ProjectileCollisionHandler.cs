@@ -60,9 +60,63 @@
             {
                 boomerangReturning = true;
             }
-            else if (this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
+            else if (this.projectile is BombExplosion)
             {
-                // do nothing
+                Console.WriteLine("Bomb Explosion");
+                if (door.State is HiddenDoorState)
+                {
+                    Door cousin = new Door(string.Empty, string.Empty);
+                    int Y = LoZGame.Instance.Dungeon.CurrentRoomY;
+                    int X = LoZGame.Instance.Dungeon.CurrentRoomX;
+                    switch (((Door)door).GetLoc())
+                    {
+                        case "N":
+                            foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y + 1, X).Doors)
+                            {
+                                if (cDoor.GetLoc().Equals("S"))
+                                {
+                                    
+                                    cousin = cDoor;
+                                    break;
+                                }
+                            }
+                            break;
+                        case "S":
+                            foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y - 1, X).Doors)
+                            {
+                                if (cDoor.GetLoc().Equals("N"))
+                                {
+                                    cousin = cDoor;
+                                    break;
+                                }
+                            }
+                            break;
+                        case "E":
+                            foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y, X+1).Doors)
+                            {
+                                if (cDoor.GetLoc().Equals("W"))
+                                {
+                                    cousin = cDoor;
+                                    break;
+                                }
+                            }
+                            break;
+                        default:
+                            foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y, X-1).Doors)
+                            {
+                                if (cDoor.GetLoc().Equals("E"))
+                                {
+                                    cousin = cDoor;
+                                    break;
+                                }
+                            }
+                            break;
+                    }
+                    Console.WriteLine("Cousin Location: " + cousin.GetLoc());
+                    Console.WriteLine("Door Location: " + ((Door)door).GetLoc());
+                    door.Bombed();
+                    cousin.Bombed();
+                }
             }
             else
             {

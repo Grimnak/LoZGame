@@ -14,7 +14,7 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {            
-            if (!(player.State is ImmobileState) && !(player.State is IdleState))
+            if ((this.door.State is UnlockedDoorState || this.door.State is BombedDoorState) && !(player.State is ImmobileState) && !(player.State is IdleState))
             {
               if (door.Physics.Location == door.LeftScreenLoc)
               {
@@ -32,6 +32,15 @@
               {
                   LoZGame.Instance.Dungeon.MoveUp();
               }
+            }
+        }
+
+        public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
+        {
+            Console.WriteLine("Projectile Type: " + projectile.GetType());
+            if (this.door.State is HiddenDoorState && projectile is BombExplosion)
+            {
+                this.door.Bombed();
             }
         }
     }

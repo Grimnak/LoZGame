@@ -22,7 +22,7 @@
             CheckEnemies(enemies, playerProjectiles);
             CheckBlocks(blocks, players, enemies);
             CheckItems(items);
-            CheckProjectiles(playerProjectiles, enemyProjectiles);
+            CheckProjectiles(playerProjectiles, enemyProjectiles, doors);
 
             // Unable to change rooms mid-foreach loop, so set a flag and change directly after.
             if (moveToBasement)
@@ -93,12 +93,13 @@
             }
         }
 
-        private void CheckProjectiles(ReadOnlyCollection<IProjectile> playerProjectiles, ReadOnlyCollection<IProjectile> enemyProjectiles)
+        private void CheckProjectiles(ReadOnlyCollection<IProjectile> playerProjectiles, ReadOnlyCollection<IProjectile> enemyProjectiles, ReadOnlyCollection<IDoor> doorsList)
         {
             foreach (IProjectile playerProjectile in playerProjectiles)
             {
                 // CheckBorders(playerProjectile, playerProjectile.Bounds.X, playerProjectile.Bounds.Y);
                 CheckBorders(playerProjectile, ProjectileSpriteFactory.GetProjectileWidth(playerProjectile), ProjectileSpriteFactory.GetProjectileHeight(playerProjectile));
+                CheckCollisions(playerProjectile, doorsList);
             }
 
             foreach (IProjectile enemyProjectile in enemyProjectiles)

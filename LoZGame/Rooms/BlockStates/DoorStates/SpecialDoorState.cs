@@ -76,6 +76,10 @@ namespace LoZClone
 
         public void Update()
         {
+            if (LoZGame.Instance.Enemies.EnemyList.Count == 0)
+            {
+                Open();
+            }
         }
     }
 }

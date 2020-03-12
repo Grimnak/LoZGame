@@ -7,7 +7,7 @@
     {
         private readonly Stalfos stalfos;
         private readonly DeadEnemySprite sprite;
-
+        private int frameChange;
         public DeadStalfosState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
@@ -16,6 +16,7 @@
             this.stalfos.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.stalfos.Physics.Location);
             this.stalfos.Expired = true;
+            this.frameChange = 15;
         }
 
         public void MoveLeft()
@@ -68,7 +69,9 @@
 
         public void Update()
         {
-            this.sprite.Update();
+            if (this.frameChange % 15 == 1)
+                this.sprite.Update();
+            frameChange++;
         }
 
         public void Draw()

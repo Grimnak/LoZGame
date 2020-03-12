@@ -178,6 +178,7 @@
     <Compile Include="Rooms\BlockStates\DoorStates\BombedDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\HiddenDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\LockedDoorState.cs" />
+    <Compile Include="Rooms\BlockStates\DoorStates\PuzzleDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\SpecialDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\CosmeticDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\UnlockedDoorState.cs" />

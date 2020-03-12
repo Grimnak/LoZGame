@@ -68,6 +68,14 @@
             this.LoadNewRoom();
         }
 
+        /*
+         * Given a particular X and Y value, return that room
+         */
+        public Room GetRoom(int Y, int X)
+        {
+            return this.dungeonLayout[Y][X];
+        }
+
         /// <summary>
         /// Moves current displayed room to next one above, if it exists.
         /// </summary>
