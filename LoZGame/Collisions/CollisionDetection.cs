@@ -36,7 +36,7 @@
         {
             foreach (IPlayer player in players)
             {
-                if (!(player.State is DieState) && !(player.State is ImmobileState))
+                if (!(player.State is DieState) && !(player.State is GrabbedState))
                 {
                     CheckCollisions<IItem>(player, items);
                     if (!CheckCollisions<IDoor>(player, doors))
@@ -57,7 +57,8 @@
         {
             foreach (IEnemy enemy in enemies)
             {
-                if (!(enemy is WallMaster || enemy is OldMan || enemy is Merchant))
+                // Do not check borders for Wall Masters that are being pushed back or the Old Man/Merchant.
+                if (!(enemy is WallMaster && ((WallMaster)enemy).DamageTimer <= 0) && !(enemy is OldMan || enemy is Merchant))
                 {
                     CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
                 }
@@ -97,14 +98,12 @@
         {
             foreach (IProjectile playerProjectile in playerProjectiles)
             {
-                // CheckBorders(playerProjectile, playerProjectile.Bounds.X, playerProjectile.Bounds.Y);
                 CheckBorders(playerProjectile, ProjectileSpriteFactory.GetProjectileWidth(playerProjectile), ProjectileSpriteFactory.GetProjectileHeight(playerProjectile));
                 CheckCollisions(playerProjectile, doorsList);
             }
 
             foreach (IProjectile enemyProjectile in enemyProjectiles)
             {
-                // CheckBorders(enemyProjectile, enemyProjectile.Bounds.X, enemyProjectile.Bounds.Y);
                 CheckBorders(enemyProjectile, ProjectileSpriteFactory.GetProjectileWidth(enemyProjectile), ProjectileSpriteFactory.GetProjectileHeight(enemyProjectile));
             }
         }

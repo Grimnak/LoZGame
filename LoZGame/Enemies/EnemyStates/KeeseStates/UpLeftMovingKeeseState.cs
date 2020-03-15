@@ -11,8 +11,6 @@
         public UpLeftMovingKeeseState(Keese keese)
         {
             this.keese = keese;
-            this.keese.VelocityX = -.2 * this.keese.AccelerationCurrent;
-            this.keese.VelocityY = -.2 * this.keese.AccelerationCurrent;
             this.sprite = EnemySpriteFactory.Instance.CreateKeeseSprite();
             this.keese.CurrentState = this;
         }
@@ -64,11 +62,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-            this.keese.Health.DamageHealth(damageAmount);
-        }
-
         public void Die()
         {
             this.keese.CurrentState = new DeadKeeseState(this.keese);
@@ -76,13 +69,13 @@
 
         public void Update()
         {
-            this.keese.Physics.Location = new Vector2(this.keese.Physics.Location.X + (float)this.keese.VelocityX, this.keese.Physics.Location.Y + (float)this.keese.VelocityY);
+            this.keese.Physics.Location = new Vector2(this.keese.Physics.Location.X - (int)(.2 * this.keese.MoveSpeed), this.keese.Physics.Location.Y - (int)(.2 * this.keese.MoveSpeed));
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.keese.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.keese.Physics.Location, this.keese.CurrentTint);
         }
     }
 }

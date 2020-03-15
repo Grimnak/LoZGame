@@ -13,8 +13,8 @@
         }
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
-        {            
-            if ((this.door.State is UnlockedDoorState || this.door.State is BombedDoorState) && !(player.State is ImmobileState) && !(player.State is IdleState))
+        {
+            if ((this.door.State is UnlockedDoorState || this.door.State is BombedDoorState) && (!(player.State is GrabbedState) && !(player.State is IdleState)))
             {
               if (door.Physics.Location == door.LeftScreenLoc)
               {

@@ -20,8 +20,6 @@
 
         void MoveDownRight();
 
-        void TakeDamage(int damageAmount);
-
         void Attack();
 
         void Stop();

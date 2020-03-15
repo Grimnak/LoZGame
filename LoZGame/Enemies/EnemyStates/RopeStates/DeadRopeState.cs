@@ -13,8 +13,6 @@
             this.rope = rope;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.rope.CurrentState = this;
-            this.rope.VelocityX = 0;
-            this.rope.VelocityY = 0;
             LoZGame.Instance.Drops.AttemptDrop(this.rope.Physics.Location);
             this.rope.Expired = true;
         }
@@ -59,10 +57,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
@@ -74,7 +68,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.rope.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.rope.Physics.Location, this.rope.CurrentTint);
         }
     }
 }

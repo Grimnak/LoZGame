@@ -11,18 +11,13 @@ namespace LoZClone
     {
         private string location; // relative location on screen
 
-        private readonly Vector2 upScreenLoc = new Vector2(
-            BlockSpriteFactory.Instance.HorizontalOffset + (5 * BlockSpriteFactory.Instance.TileWidth), 0);
+        private readonly Vector2 upScreenLoc = new Vector2(363, 12);
+        private readonly Vector2 downScreenLoc = new Vector2(363, 480 - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight);
 
         private readonly Vector2 rightScreenLoc = new Vector2(
-            800 - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight + 10, BlockSpriteFactory.Instance.VerticalOffset + (int)(BlockSpriteFactory.Instance.TileHeight * 2.5) - 5);
-
+            800 - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight + 11, 195);
         
-        private readonly Vector2 downScreenLoc = new Vector2(
-            BlockSpriteFactory.Instance.HorizontalOffset + (5 * BlockSpriteFactory.Instance.TileWidth), 480 - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight);
-
-        private readonly Vector2 leftScreenLoc = new Vector2(
-            0, BlockSpriteFactory.Instance.VerticalOffset + (int)(BlockSpriteFactory.Instance.TileHeight * 2.5) - 5);
+        private readonly Vector2 leftScreenLoc = new Vector2(19, 195);
 
         private IDoorState state; // current state
 

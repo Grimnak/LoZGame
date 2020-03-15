@@ -56,7 +56,7 @@
             {
                 this.projectile.Physics.StopMovement();
             }
-            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile || this.projectile is BoomerangEnemy)
+            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile || this.projectile is BoomerangEnemy || this.projectile is MagicBoomerangEnemy)
             {
                 boomerangReturning = true;
             }
@@ -128,7 +128,7 @@
         public bool OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
             bool boomerangReturning = false;
-            if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile || this.projectile is BoomerangEnemy)
+            if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile || this.projectile is BoomerangEnemy || this.projectile is MagicBoomerangEnemy)
             {
                 boomerangReturning = true;
             }

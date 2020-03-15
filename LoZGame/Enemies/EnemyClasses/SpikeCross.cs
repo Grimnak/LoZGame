@@ -8,7 +8,6 @@
     {
         private EnemyCollisionHandler enemyCollisionHandler;
         private Rectangle bounds;
-        private LoZGame Game;
         private bool expired;
 
         public bool Expired { get { return this.expired; } set { this.expired = value; } }
@@ -23,12 +22,13 @@
 
         public HealthManager Health { get; set; }
 
+        public Color CurrentTint { get; set; }
+
+        public int MoveSpeed { get; set; }
+
         public int Damage => damage;
 
-        public int AttackFactor
-        {
-            get; set;
-        }
+        public int DamageTimer { get; set; }
 
         public bool Attacking
         {
@@ -56,34 +56,35 @@
             this.Health = new HealthManager(health);
             this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.Game = LoZGame.Instance;
             this.currentState = new IdleSpikeCrossState(this);
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             Attacking = false;
             Retreating = false;
             InitialPos = this.Physics.Location;
             this.expired = false;
+            this.DamageTimer = 0;
+            this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
         private void checkForLink()
         {
             int spikeX = (int)Physics.Location.X;
             int spikeY = (int)Physics.Location.Y;
-            int linkX = (int)Game.Link.Physics.Location.X;
-            int linkY = (int)Game.Link.Physics.Location.Y;
+            int linkX = (int)LoZGame.Instance.Link.Physics.Location.X;
+            int linkY = (int)LoZGame.Instance.Link.Physics.Location.Y;
 
             if (!Attacking)
             {
                 if (spikeX == linkX)
                 {
                     Attacking = true;
-                    AttackFactor = 3 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
+                    this.MoveSpeed = 3 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
                     currentState.MoveDown();
                 }
                 else if (spikeY == linkY)
                 {
                     Attacking = true;
-                    AttackFactor = 3 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
+                    this.MoveSpeed = 3 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
                     currentState.MoveRight();
                 }
             }
@@ -118,7 +119,7 @@
             }
             else if (otherCollider is IBlock)
             {
-               // this.enemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+               this.enemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
             else if (otherCollider is IProjectile)
             {

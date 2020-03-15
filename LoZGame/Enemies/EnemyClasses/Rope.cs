@@ -33,14 +33,15 @@
 
         public HealthManager Health { get; set; }
 
+        public Color CurrentTint { get; set; }
+
+        public int MoveSpeed { get; set; }
+
         public int Damage => damage;
 
-        public Boolean Attacking
-        {
-            get; set;
-        }
+        public int DamageTimer { get; set; }
 
-        public int AttackFactor
+        public bool Attacking
         {
             get; set;
         }
@@ -72,8 +73,10 @@
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
             randomStateGenerator = new RandomStateGenerator(this, 2, 6);
             Attacking = false;
-            AttackFactor = 1;
             this.expired = false;
+            this.DamageTimer = 0;
+            this.MoveSpeed = 1;
+            this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
         private void getNewDirection()
@@ -151,20 +154,51 @@
 
         public void TakeDamage(int damageAmount)
         {
-            this.currentState.TakeDamage(damageAmount);
+            if (this.DamageTimer <= 0)
+            {
+                this.Health.DamageHealth(damageAmount);
+                this.DamageTimer = 50;
+            }
+            if (this.Health.CurrentHealth <= 0)
+            {
+                this.currentState.Die();
+            }
+        }
+
+        private void DamagePushback()
+        {
+            if (Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0)
+            {
+                this.Physics.Move();
+                this.Physics.Accelerate();
+            }
+        }
+
+        private void HandleDamage()
+        {
+            if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
+            {
+                this.DamageTimer--;
+                if (this.DamageTimer % 10 > 5)
+                {
+                    this.CurrentTint = Color.DarkSlateGray;
+                }
+                else
+                {
+                    this.CurrentTint = Color.White;
+                }
+                this.DamagePushback();
+            }
         }
 
         public void Update()
         {
+            this.HandleDamage();
             this.lifeTime++;
             if (this.lifeTime > this.directionChange)
             {
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
-            }
-            if (this.Health.CurrentHealth <= 0)
-            {
-                this.CurrentState = new DeadRopeState(this);
             }
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;

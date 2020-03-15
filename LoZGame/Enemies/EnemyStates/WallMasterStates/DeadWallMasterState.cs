@@ -13,7 +13,6 @@
             this.wallMaster = wallMaster;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.wallMaster.CurrentState = this;
-            this.wallMaster.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.wallMaster.Physics.Location);
             this.wallMaster.Expired = true;
         }
@@ -58,10 +57,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
@@ -73,7 +68,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.wallMaster.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.wallMaster.Physics.Location, this.wallMaster.CurrentTint);
         }
     }
 }

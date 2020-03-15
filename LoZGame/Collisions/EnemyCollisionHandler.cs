@@ -6,6 +6,10 @@
     public class EnemyCollisionHandler
     {
         private IEnemy enemy;
+        private float xDirection;
+        private float yDirection;
+        private const float Speed = 10;
+        private const float Acceleration = -0.5f;
 
         public EnemyCollisionHandler(IEnemy enemy)
         {
@@ -17,9 +21,9 @@
             if (enemy is WallMaster)
             {
                     this.enemy.CurrentState.Attack();
-                    this.enemy.Physics.Location = player.Physics.Location;
+                    this.enemy.Physics.Velocity = new Vector2(-2, 0);
 
-                    // Player velocity is changed here rather than player collision because player collision is checked before new wallmaster velocity is set
+                    // Player velocity is changed here rather than player collision because player collision is checked before new Wall Master velocity is set
                     player.Physics.Velocity = this.enemy.Physics.Velocity;
             }
         }
@@ -56,6 +60,10 @@
             {
                 ((OldMan)this.enemy).EntityManager.EnemyProjectileManager.AddOldManFireballs((OldMan)this.enemy, LoZGame.Instance.Link);
             }
+            if (!(this.enemy is OldMan || this.enemy is Merchant || this.enemy is SpikeCross))
+            {
+                DeterminePushbackValues(collisionSide);
+            }
             this.enemy.TakeDamage(projectile.Damage);
         }
 
@@ -79,9 +87,38 @@
             }
         }
 
-        private void SpawnFireball()
+        private void DeterminePushbackValues(CollisionDetection.CollisionSide collisionSide)
         {
+            if (this.enemy.DamageTimer <= 0)
+            {
+                DeterminePushbackDirection(collisionSide);
+                this.enemy.Physics.Velocity = new Vector2(xDirection * Speed, yDirection * Speed);
+                this.enemy.Physics.Acceleration = new Vector2(xDirection * Acceleration, yDirection * Acceleration);
+            }
+        }
 
+        private void DeterminePushbackDirection(CollisionDetection.CollisionSide collisionSide)
+        {
+            if (collisionSide == CollisionDetection.CollisionSide.Top)
+            {
+                xDirection = 0;
+                yDirection = 1;
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
+            {
+                xDirection = 0;
+                yDirection = -1;
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Left)
+            {
+                xDirection = 1;
+                yDirection = 0;
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Right)
+            {
+                xDirection = -1;
+                yDirection = 0;
+            }
         }
     }
 }

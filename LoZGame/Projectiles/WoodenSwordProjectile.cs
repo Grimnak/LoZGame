@@ -18,6 +18,7 @@
         private readonly string direction;
         private readonly float rotation;
         private bool expired;
+        private IPlayer player;
         private ISprite sprite;
         private int projectileWidth;
         private int projectileHeight;
@@ -34,6 +35,7 @@
 
         public WoodenSwordProjectile(IPlayer player)
         {
+            this.player = player;
             this.projectileWidth = ProjectileSpriteFactory.Instance.SwordWidth;
             this.projectileHeight = ProjectileSpriteFactory.Instance.SwordHeight;             
             this.collisionHandler = new ProjectileCollisionHandler(this);
@@ -93,7 +95,7 @@
             {
                 this.sprite.Update();
             }
-            if (this.lifeTime <= 0)
+            if (this.lifeTime <= 0 || player.DamageTimer > 0)
             {
                 this.expired = true;
             }

@@ -1,27 +1,27 @@
 ﻿namespace LoZClone
 {
-    /// <summary>
-    /// Idle state for player.
-    /// </summary>
-    public class IdleState : IPlayerState
+    using Microsoft.Xna.Framework;
+
+    public class MoveDownState : IPlayerState
     {
         private readonly IPlayer player;
         private readonly ISprite sprite;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IdleState"/> class.
+        /// Initializes a new instance of the <see cref="MoveDownState"/> class.
         /// </summary>
-        /// <param name="game">Current game.</param>
         /// <param name="playerInstance">Instance of player.</param>
-        public IdleState(IPlayer playerInstance)
+        public MoveDownState(IPlayer playerInstance)
         {
             this.player = playerInstance;
+            this.player.CurrentDirection = "Down";
             this.sprite = this.CreateCorrectSprite();
         }
 
         /// <inheritdoc/>
         public void Idle()
         {
+            this.player.State = new IdleState(this.player);
         }
 
         /// <inheritdoc/>
@@ -33,7 +33,6 @@
         /// <inheritdoc/>
         public void MoveDown()
         {
-            this.player.State = new MoveDownState(this.player);
         }
 
         /// <inheritdoc/>
@@ -75,6 +74,7 @@
         /// <inheritdoc/>
         public void Update()
         {
+            this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, this.player.Physics.Location.Y + this.player.MoveSpeed);
             this.sprite.Update();
         }
 
@@ -86,22 +86,7 @@
 
         private ISprite CreateCorrectSprite()
         {
-            if (this.player.CurrentDirection.Equals("Up"))
-            {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkIdleUp(this.player.CurrentColor);
-            }
-            else if (this.player.CurrentDirection.Equals("Down"))
-            {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkIdleDown(this.player.CurrentColor);
-            }
-            else if (this.player.CurrentDirection.Equals("Left"))
-            {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkIdleLeft(this.player.CurrentColor);
-            }
-            else
-            {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkIdleRight(this.player.CurrentColor);
-            }
+            return LinkSpriteFactory.Instance.CreateSpriteLinkMoveDown(this.player.CurrentColor);
         }
     }
 }

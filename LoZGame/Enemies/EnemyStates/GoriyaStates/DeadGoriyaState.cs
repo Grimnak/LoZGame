@@ -13,7 +13,6 @@
             this.goriya = goriya;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.goriya.CurrentState = this;
-            this.goriya.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.goriya.Physics.Location);
             this.goriya.Expired = true;
         }
@@ -54,10 +53,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
@@ -73,7 +68,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.goriya.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.goriya.Physics.Location, this.goriya.CurrentTint);
         }
     }
 }

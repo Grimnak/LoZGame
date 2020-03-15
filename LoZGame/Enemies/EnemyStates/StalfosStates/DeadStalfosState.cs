@@ -13,7 +13,6 @@
             this.stalfos = stalfos;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.stalfos.CurrentState = this;
-            this.stalfos.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.stalfos.Physics.Location);
             this.stalfos.Expired = true;
             this.frameChange = 15;
@@ -59,10 +58,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
@@ -76,7 +71,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.stalfos.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.stalfos.Physics.Location, this.stalfos.CurrentTint);
         }
     }
 }

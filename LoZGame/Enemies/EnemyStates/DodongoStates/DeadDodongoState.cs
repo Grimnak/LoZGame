@@ -10,10 +10,9 @@
 
         public DeadDodongoState(Dodongo dodongo)
         {
-            this.dodongo.CurrentState = this;
             this.dodongo = dodongo;
+            this.dodongo.CurrentState = this;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
-            this.dodongo.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.dodongo.Physics.Location);
             this.dodongo.Expired = true;
         }
@@ -58,10 +57,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
@@ -73,7 +68,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.dodongo.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.dodongo.Physics.Location, this.dodongo.CurrentTint);
         }
     }
 }
