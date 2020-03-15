@@ -32,13 +32,16 @@
               {
                   LoZGame.Instance.Dungeon.MoveUp();
               }
+            } else if (this.door.State is LockedDoorState && player.HasKey)
+            {
+                player.HasKey = false;
+                this.door.Open();
             }
         }
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            Console.WriteLine("Projectile Type: " + projectile.GetType());
-            if (this.door.State is HiddenDoorState && projectile is BombExplosion)
+            if ((this.door.State is LockedDoorState || this.door.State is HiddenDoorState) && projectile is BombExplosion)
             {
                 this.door.Bombed();
             }

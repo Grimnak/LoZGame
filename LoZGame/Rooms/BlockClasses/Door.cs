@@ -78,6 +78,9 @@ namespace LoZClone
                 case "cosmetic":
                     this.state = new CosmeticDoorState(this);
                     break;
+                case "puzzle":
+                    this.state = new PuzzleDoorState(this);
+                    break;
                 default:
                     this.state = new UnlockedDoorState(this);
                     break;
@@ -96,7 +99,14 @@ namespace LoZClone
 
         public void Bombed()
         {
-            this.state = new BombedDoorState(this);
+            if (this.state is LockedDoorState || this.state is SpecialDoorState)
+            {
+                this.state = new UnlockedDoorState(this);
+            }
+            else
+            {
+                this.state = new BombedDoorState(this);
+            }
         }
 
         public string GetLoc()

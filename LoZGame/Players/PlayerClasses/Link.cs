@@ -10,6 +10,14 @@
         private Rectangle bounds;
         private int startingHealth = 5;
 
+        private bool hasKey;
+
+        public bool HasKey
+        {
+            get { return hasKey; }
+            set { this.hasKey = value; }
+        }
+
         public Rectangle Bounds
         {
             get { return this.bounds; }
@@ -29,6 +37,7 @@
             this.DamageTimer = 0;
             this.State = new IdleState(this);
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
+            this.HasKey = false;
         }
 
         public override void Update()

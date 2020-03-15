@@ -56,7 +56,7 @@ namespace LoZClone
 
         public void Bombed()
         {
-            Console.WriteLine("Cannot Bomb Normal Door!");
+            this.door.Bombed();
         }
 
         public void Close()

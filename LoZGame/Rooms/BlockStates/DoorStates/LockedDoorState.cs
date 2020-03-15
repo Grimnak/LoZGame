@@ -39,6 +39,7 @@ namespace LoZClone
                 case "S":
                     {
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorUp(door.DownScreenLoc);
+                        loc = door.DownScreenLoc;
                         door.Physics = new Physics(loc, new Vector2(0, 0), new Vector2(0, 0));
                         door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y - 5, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
                         break;
@@ -56,7 +57,7 @@ namespace LoZClone
 
         public void Bombed()
         {
-            Console.WriteLine("Cannot Bomb Normal Door!");
+            this.door.Bombed();
         }
 
         public void Close()
