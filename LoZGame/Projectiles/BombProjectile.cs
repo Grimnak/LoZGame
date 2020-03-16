@@ -59,10 +59,7 @@
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             Console.WriteLine("BombProjectile.cs: " + otherCollider.GetType());
-            if (otherCollider is IEnemy)
-            {
-                this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            } else if (otherCollider is IDoor)
+            if (otherCollider is IDoor)
             {
                 this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
