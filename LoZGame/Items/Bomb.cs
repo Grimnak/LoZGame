@@ -6,9 +6,9 @@
 
     internal class Bomb : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
+        private DoorCollisionHandler doorCollisionHandler;
 
         private readonly Texture2D Texture;      // the texture to pull frames from
         private Vector2 Size;
@@ -54,6 +54,9 @@
             if (otherCollider is IPlayer)
             {
                 itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            } else if (otherCollider is IDoor)
+            {
+                itemCollisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 

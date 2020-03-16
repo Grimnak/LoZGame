@@ -81,9 +81,14 @@
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
+            Console.WriteLine("BombExplosion.cs: " + otherCollider.GetType().ToString());
             if (otherCollider is IEnemy)
             {
                 this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+            } else if (otherCollider is IDoor)
+            {
+                Console.WriteLine("Door Bomba boi");
+                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 

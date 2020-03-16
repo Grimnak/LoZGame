@@ -12,6 +12,8 @@
 
         Vector2 RightScreenLoc { get; }
 
+        IDoorState State { get; set; }
+
         void Close();
 
         void Open();

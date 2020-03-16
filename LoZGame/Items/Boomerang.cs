@@ -6,7 +6,6 @@
 
     internal class Boomerang : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

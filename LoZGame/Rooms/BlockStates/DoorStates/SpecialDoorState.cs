@@ -56,7 +56,7 @@ namespace LoZClone
 
         public void Bombed()
         {
-            Console.WriteLine("Cannot Bomb Normal Door!");
+            this.door.Bombed();
         }
 
         public void Close()
@@ -76,6 +76,10 @@ namespace LoZClone
 
         public void Update()
         {
+            if (LoZGame.Instance.Enemies.EnemyList.Count == 0)
+            {
+                Open();
+            }
         }
     }
 }

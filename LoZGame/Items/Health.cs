@@ -6,7 +6,6 @@
 
     internal class Health : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

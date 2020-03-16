@@ -6,7 +6,6 @@
 
     internal class MagicKey : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

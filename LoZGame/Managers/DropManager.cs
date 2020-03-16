@@ -55,7 +55,8 @@ namespace LoZClone
                 {
                     item = weight.Key;
                     break;
-                } else
+                }
+                else
                 {
                     checkedWeight += weight.Value;
                 }

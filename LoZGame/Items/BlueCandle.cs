@@ -6,7 +6,6 @@
 
     internal class BlueCandle : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

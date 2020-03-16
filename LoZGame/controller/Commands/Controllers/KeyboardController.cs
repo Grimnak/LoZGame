@@ -57,7 +57,6 @@ namespace LoZClone
 
             if (this.playerCommands.Count > 0)
             {
-
                 this.currentCommand = this.playerCommands.Peek().Value;
                 this.currentCommand.Execute();
 

@@ -105,7 +105,7 @@
                 // is top wall
                 else if (sourceCollider.Bounds.Top < BlockSpriteFactory.Instance.VerticalOffset)
                 {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight,CollisionSide.Top);
+                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
                 }
             }
             // Check borders for basement eception

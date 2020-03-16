@@ -191,7 +191,7 @@
             this.blockManager.Draw();
             if (dungeon.CurrentRoomX == 0 && dungeon.CurrentRoomY == 2)
             {
-                this.spriteBatch.DrawString(font, this.dungeon.CurrentRoom.RoomText, new Vector2(100, 100), Color.White, 0.0f, new Vector2(0,0), 1.0f, SpriteEffects.None, 1f);
+                this.spriteBatch.DrawString(font, this.dungeon.CurrentRoom.RoomText, new Vector2(100, 100), Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
             }
             this.itemManager.Draw();
             this.enemyManager.Draw();

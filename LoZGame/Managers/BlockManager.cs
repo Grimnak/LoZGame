@@ -17,7 +17,6 @@
 
         public void Add(IBlock block)
         {
-  
             blocks.Add(block);
             if (block is FireSprite);
            

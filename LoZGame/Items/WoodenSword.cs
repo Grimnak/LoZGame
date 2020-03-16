@@ -6,7 +6,6 @@
 
     internal class WoodenSword : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

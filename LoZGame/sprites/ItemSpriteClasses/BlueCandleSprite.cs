@@ -6,9 +6,6 @@
 
     internal class BlueCandleSprite : ISprite
     {
-        
-        
-
         private readonly Texture2D Texture;      // the texture to pull frames from
         private readonly SpriteSheetData Data;
         private Vector2 origin;

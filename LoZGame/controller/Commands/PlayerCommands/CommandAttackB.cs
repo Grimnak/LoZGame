@@ -16,7 +16,6 @@
             this.player = player;
         }
 
-
         /// <inheritdoc/>
         public void Execute()
         {

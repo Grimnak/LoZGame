@@ -6,7 +6,6 @@
 
     internal class RedRing : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

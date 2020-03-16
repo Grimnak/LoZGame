@@ -6,7 +6,6 @@
 
     internal class RedCandle : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

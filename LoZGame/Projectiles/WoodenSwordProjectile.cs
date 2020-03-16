@@ -68,11 +68,9 @@
             this.expired = false;
             if (player.CurrentColor.Equals("Red"))
             {
-
             }
             else if (player.CurrentColor.Equals("Blue"))
             {
-
             }
             else
             {

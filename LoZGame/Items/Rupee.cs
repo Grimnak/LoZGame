@@ -6,7 +6,6 @@
 
     internal class Rupee : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

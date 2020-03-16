@@ -13,8 +13,8 @@
         }
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
-        {            
-            if (!(player.State is GrabbedState) && !(player.State is IdleState))
+        {
+            if ((this.door.State is UnlockedDoorState || this.door.State is BombedDoorState) && (!(player.State is GrabbedState) && !(player.State is IdleState)))
             {
               if (door.Physics.Location == door.LeftScreenLoc)
               {
@@ -32,6 +32,18 @@
               {
                   LoZGame.Instance.Dungeon.MoveUp();
               }
+            } else if (this.door.State is LockedDoorState && player.HasKey)
+            {
+                player.HasKey = false;
+                this.door.Open();
+            }
+        }
+
+        public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
+        {
+            if ((this.door.State is LockedDoorState || this.door.State is HiddenDoorState) && projectile is BombExplosion)
+            {
+                this.door.Bombed();
             }
         }
     }

@@ -20,86 +20,112 @@
         private static readonly int SmallWidth = 5;
 
         public static int HealthWidth { get { return StandardWidth; } }
+
         public static int HealthHeight { get { return SmallHeight; } }
 
         public static int TriforceWidth { get { return TriforceSize; } }
+
         public static int TriforceHeight { get { return TriforceSize; } }
 
         public static int LadderWidth { get { return LargeWidth; } }
+
         public static int LadderHeight { get { return StandardHeight; } }
 
         public static int RaftWidth { get { return LargeWidth; } }
+
         public static int RaftHeight { get { return StandardHeight; } }
 
         public static int HeartContainerWidth { get { return LargeWidth; } }
+
         public static int HeartContainerHeight { get { return StandardHeight; } }
 
         public static int FoodWidth { get { return StandardWidth; } }
+
         public static int FoodHeight { get { return StandardHeight; } }
 
         public static int PotionWidth { get { return StandardWidth; } }
+
         public static int PotionHeight { get { return StandardHeight; } }
 
         public static int RupeeWidth { get { return StandardWidth; } }
+
         public static int RupeeHeight { get { return StandardHeight; } }
 
         public static int FairyWidth { get { return StandardWidth; } }
+
         public static int FairyHeight { get { return StandardHeight; } }
 
         public static int CandleWidth { get { return StandardWidth; } }
+
         public static int CandleHeight { get { return StandardHeight; } }
 
         public static int BombWidth { get { return StandardWidth; } }
+
         public static int BombHeight { get { return StandardHeight; } }
 
         public static int BookWidth { get { return StandardWidth; } }
+
         public static int BookHeight { get { return StandardHeight; } }
 
         public static int BowWidth { get { return StandardWidth; } }
+
         public static int BowHeight { get { return StandardHeight; } }
 
         public static int KeyWidth { get { return StandardWidth; } }
+
         public static int KeyHeight { get { return StandardHeight; } }
 
         public static int MapWidth { get { return StandardWidth; } }
+
         public static int MapHeight { get { return StandardHeight; } }
 
         public static int LetterWidth { get { return StandardWidth; } }
+
         public static int LetterHeight { get { return StandardHeight; } }
 
         public static int MagicRodWidth { get { return StandardWidth; } }
+
         public static int MagicRodHeight { get { return StandardHeight; } }
 
         public static int SwordWidth { get { return StandardWidth; } }
+
         public static int SwordHeight { get { return StandardHeight; } }
 
         public static int PowerBraceletWidth { get { return StandardWidth; } }
+
         public static int PowerBraceletHeight { get { return StandardHeight; } }
 
         public static int ShieldWidth { get { return StandardWidth; } }
+
         public static int ShieldHeight { get { return StandardHeight; } }
 
         public static int ArrowWidth { get { return SmallWidth; } }
+
         public static int ArrowHeight { get { return StandardHeight; } }
+
         public static int FluteWidth { get { return SmallWidth; } }
+
         public static int FluteHeight { get { return StandardHeight; } }
 
         public static int Width { get { return StandardWidth; } }
+
         public static int Height { get { return StandardHeight; } }
 
         public static int BoomerangWidth { get { return StandardWidth; } }
+
         public static int BoomerangHeight { get { return SmallHeight; } }
 
         public static int RingWidth { get { return StandardWidth; } }
+
         public static int RingHeight { get { return SmallHeight; } }
 
         public static int ClockWidth { get { return LargeWidth; } }
+
         public static int ClockHeight { get { return StandardHeight; } }
 
         public static int CompassWidth { get { return LargeWidth; } }
-        public static int CompassHeight { get { return StandardHeight; } }
 
-        
+        public static int CompassHeight { get { return StandardHeight; } }
 
         private Texture2D healthSpriteSheet;
         private readonly SpriteSheetData healthData = new SpriteSheetData("Health", HealthWidth, HealthHeight, 1, 2);

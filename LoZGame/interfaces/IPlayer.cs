@@ -14,6 +14,7 @@
 
         HealthManager Health { get; set; }
 
+        bool HasKey { get; set; } 
         /// <summary>
         /// Gets or sets the current weapon of the player.
         /// </summary>

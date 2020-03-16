@@ -852,7 +852,7 @@
         <tile type="walkable" idx="10">gap_tile</tile>
         <tile type="walkable" idx="11">gap_tile</tile>
       </rrow>
-	        <rrow idx="6">
+	    <rrow idx="6">
         <tile type="walkable" idx="0">gap_tile</tile>
         <tile type="walkable" idx="1">gap_tile</tile>
         <tile type="walkable" idx="2">gap_tile</tile>
@@ -874,7 +874,7 @@
         <enemy X="8" Y="4">TealGel</enemy>
       </enemies>
       <doors>
-        <door loc="W">special</door>
+        <door loc="W">puzzle</door>
         <door loc="E">unlocked</door>
         <door loc="S">locked</door>
       </doors>
@@ -927,7 +927,7 @@
         <tile type="walkable" idx="3">floor_tile</tile>
         <tile type="walkable" idx="4">floor_tile</tile>
         <tile type="walkable" idx="5">floor_tile</tile>
-        <tile type="movable" dir="All" idx="5">orange_movable_square</tile>
+        <tile type="movable,puzzle"  idx="5">orange_movable_square</tile>
         <tile type="walkable" idx="6">floor_tile</tile>
         <tile type="walkable" idx="7">floor_tile</tile>
         <tile type="walkable" idx="8">floor_tile</tile>
@@ -992,7 +992,7 @@
       <doors>
         <door loc="N">unlocked</door>
         <door loc="E">locked</door>
-        <door loc="S">bombed</door>
+        <door loc="S">hidden</door>
         <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">
@@ -1105,7 +1105,7 @@
       </enemies>
       <doors>
         <door loc="E">unlocked</door>
-        <door loc="S">bombed</door>
+        <door loc="S">hidden</door>
         <door loc="W">locked</door>
       </doors>
       <rrow idx="0">
@@ -1449,7 +1449,7 @@
         <enemy X="8" Y="4">Stalfos</enemy>
       </enemies>
       <doors>
-        <door loc="N">bombed</door>
+        <door loc="N">hidden</door>
         <door loc="E">unlocked</door>
         <door loc="S">unlocked</door>
         <door loc="W">unlocked</door>
@@ -1568,7 +1568,7 @@
         <enemy X="3" Y="6">Keese</enemy>
       </enemies>
       <doors>
-        <door loc="N">bombed</door>
+        <door loc="N">hidden</door>
         <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">
@@ -2098,7 +2098,7 @@
         <door loc="N">locked</door>
         <door loc="E">unlocked</door>
         <door loc="W">unlocked</door>
-		<door loc="S">unlocked</door>
+		<door loc="S">cosmetic</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">floor_tile</tile>

@@ -6,7 +6,6 @@
 
     internal class Food : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 

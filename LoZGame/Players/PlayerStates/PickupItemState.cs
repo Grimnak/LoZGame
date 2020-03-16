@@ -27,6 +27,10 @@ namespace LoZClone
             {
                 LoZGame.Instance.GameState = "Win";
             }
+            if (item is Key)
+            {
+                player.HasKey = true;
+            }
         }
 
         /// <inheritdoc/>

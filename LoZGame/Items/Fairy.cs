@@ -141,6 +141,7 @@
         {
             itemCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
+
         public void Update()
         {
             this.lifeTime++;

@@ -6,7 +6,6 @@
 
     internal class Raft : IItem
     {
-        
         private ISprite sprite;
         private ItemCollisionHandler itemCollisionHandler;
 
