@@ -71,18 +71,17 @@
                     switch (((Door)door).GetLoc())
                     {
                         case "N":
-                            foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y + 1, X).Doors)
+                            foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y - 1, X).Doors)
                             {
                                 if (cDoor.GetLoc().Equals("S"))
                                 {
-                                    
                                     cousin = cDoor;
                                     break;
                                 }
                             }
                             break;
                         case "S":
-                            foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y - 1, X).Doors)
+                            foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y + 1, X).Doors)
                             {
                                 if (cDoor.GetLoc().Equals("N"))
                                 {
@@ -92,7 +91,7 @@
                             }
                             break;
                         case "E":
-                            foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y, X+1).Doors)
+                            foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y, X + 1).Doors)
                             {
                                 if (cDoor.GetLoc().Equals("W"))
                                 {
@@ -102,7 +101,7 @@
                             }
                             break;
                         default:
-                            foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y, X-1).Doors)
+                            foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y, X - 1).Doors)
                             {
                                 if (cDoor.GetLoc().Equals("E"))
                                 {

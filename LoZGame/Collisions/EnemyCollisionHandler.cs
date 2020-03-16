@@ -64,7 +64,10 @@
             {
                 DeterminePushbackValues(collisionSide);
             }
-            this.enemy.TakeDamage(projectile.Damage);
+            if (!(projectile is SwordBeamExplosion) && !(projectile is BombProjectile))
+            {
+                this.enemy.TakeDamage(projectile.Damage);
+            }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
