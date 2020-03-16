@@ -61,7 +61,7 @@
         private Texture2D BombedOpeningDownTexture;
         private readonly SpriteSheetData bombedOpeningDownData = new SpriteSheetData("bombed_opening_down", doorWidth, doorHeight, 1, 1);
         private Texture2D BombedOpeningUpTexture;
-        private readonly SpriteSheetData bombedOpeningUpData = new SpriteSheetData("bombed_opening_up", doorHeight, doorWidth, 1, 1);
+        private readonly SpriteSheetData bombedOpeningUpData = new SpriteSheetData("bombed_opening_up", doorWidth, doorHeight, 1, 1);
         private Texture2D BombedOpeningRightTexture;
         private readonly SpriteSheetData bombedOpeningRightData = new SpriteSheetData("bombed_opening_right", doorHeight, doorWidth, 1, 1);
         private Texture2D BombedOpeningLeftTexture;
