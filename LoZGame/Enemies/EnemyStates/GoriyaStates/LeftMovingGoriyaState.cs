@@ -13,6 +13,7 @@
             this.goriya = goriya;
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingGoriyaSprite();
             this.goriya.CurrentState = this;
+            this.goriya.Direction = "Left";
         }
 
         public void MoveLeft()

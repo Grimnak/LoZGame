@@ -83,6 +83,7 @@
 
         private void CheckBorders(ICollider sourceCollider, int sourceWidth, int sourceHeight)
         {
+            // Check borders for all rooms except basement
             if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
             {
                 // is right wall
@@ -107,6 +108,7 @@
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight,CollisionSide.Top);
                 }
             }
+            // Check borders for basement eception
             else
             {
                 if (sourceCollider.Physics.Location.Y < 0)
@@ -114,6 +116,31 @@
                     if (sourceCollider is Link)
                     {
                         dungeon.MoveUp();
+                    }
+                    else
+                    {
+                        sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
+                    }
+                }
+                else if (sourceCollider.Physics.Location.Y > LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight)
+                {
+                    if (sourceCollider is Keese)
+                    {
+                        sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
+                    }
+                }
+                else if (sourceCollider.Physics.Location.X < 0)
+                {
+                    if (sourceCollider is Keese)
+                    {
+                        sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Left);
+                    }
+                }
+                else if (sourceCollider.Physics.Location.X > LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth)
+                {
+                    if (sourceCollider is Keese)
+                    {
+                        sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
                     }
                 }
             }
