@@ -67,6 +67,10 @@
             this.dodongo.CurrentState = new DeadDodongoState(this.dodongo);
         }
 
+        public void Stun(int stunTime)
+        {
+        }
+
         public void Update()
         {
             this.lifeTime++;

@@ -68,7 +68,7 @@
                 }
                 else
                 {
-                    //stun
+                    this.enemy.Stun(projectile.StunDuration);
                 }
             }
             if (!(projectile is SwordBeamExplosion) && !(projectile is BombProjectile))

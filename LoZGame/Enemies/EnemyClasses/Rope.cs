@@ -105,6 +105,10 @@
             }
             this.currentState.Update();
         }
+        public void Stun(int stunTime)
+        {
+            this.currentState.Stun(this.currentState, stunTime);
+        }
 
         public void TakeDamage(int damageAmount)
         {

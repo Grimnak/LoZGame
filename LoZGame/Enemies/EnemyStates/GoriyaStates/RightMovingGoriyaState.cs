@@ -69,6 +69,11 @@
             this.goriya.CurrentState = new DeadGoriyaState(this.goriya);
         }
 
+        public void Stun(int stunTime)
+        {
+            this.goriya.CurrentState = new StunnedGoriyaState(this.goriya, this, stunTime);
+        }
+
         public void Update()
         {
             if (this.goriya.CoolDown > 0)

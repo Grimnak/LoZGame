@@ -69,6 +69,11 @@
             this.rope.CurrentState = new DeadRopeState(this.rope);
         }
 
+        public void Stun(int stunTime)
+        {
+            this.rope.CurrentState = new StunnedRopeState(this.rope, this, stunTime);
+        }
+
         public void Update()
         {
             this.lifeTime++;

@@ -19,7 +19,9 @@
         IEnemyState CurrentState { get; set; }
 
         void TakeDamage(int damageAmount);
-        
+
+        void Stun(int stunTime);
+
         void Update();
 
         void Draw();

@@ -104,6 +104,11 @@
     <Compile Include="Enemies\EnemyClasses\Stalfos.cs" />
     <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
+    <Compile Include="Enemies\EnemyStates\GoriyaStates\StunnedGoriyaState.cs" />
+    <Compile Include="Enemies\EnemyStates\RopeStates\StunnedRopeState.cs" />
+    <Compile Include="Enemies\EnemyStates\StalfosStates\StunnedStalfosState.cs" />
+    <Compile Include="Enemies\EnemyStates\WallMasterStates\StunnedWallMasterState.cs" />
+    <Compile Include="Enemies\EnemyStates\ZolStates\StunnedZolState.cs" />
     <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Interfaces\IDoor.cs" />
     <Compile Include="Interfaces\ISprite.cs" />

@@ -30,6 +30,10 @@
         private Vector2 playerLoc;
         private int damage;
 
+        public int StunDuration { get { return 0; } set {/*do nothing*/} }
+
+        public bool Returning { get { return false; } set {/*do nothing*/} }
+
         public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }
@@ -86,13 +90,13 @@
         {
             if (otherCollider is IPlayer)
             {
-                this.returning = this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            this.returning = collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
         private void ReturnHome()

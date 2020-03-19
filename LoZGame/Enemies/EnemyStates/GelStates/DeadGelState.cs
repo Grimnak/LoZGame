@@ -61,6 +61,11 @@
         {
         }
 
+        public void Stun(int stunTime)
+        {
+            this.Die();
+        }
+
         public void Update()
         {
             this.sprite.Update();

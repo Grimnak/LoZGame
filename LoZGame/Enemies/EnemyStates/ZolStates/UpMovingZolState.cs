@@ -67,6 +67,12 @@
         {
             this.zol.CurrentState = new DeadZolState(this.zol);
         }
+
+        public void Stun(int stunTime)
+        {
+            this.zol.CurrentState = new StunnedZolState(this.zol, this, stunTime);
+        }
+
         private void DecideToMove()
         {
             if (this.zol.ShouldMove)

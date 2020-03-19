@@ -65,6 +65,10 @@
         {
         }
 
+        public void Stun(int stunTime)
+        {
+        }
+
         public void Update()
         {
             this.CheckForLink();

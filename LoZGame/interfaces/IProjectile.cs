@@ -7,7 +7,11 @@
     {
         bool IsExpired { get; set; }
 
-        int Damage {get; set; }
+        int Damage { get; set; }
+
+        int StunDuration { get; }
+
+        bool Returning { get; set; }
 
         void Update();
 

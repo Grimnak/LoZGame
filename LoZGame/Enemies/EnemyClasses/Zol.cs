@@ -72,6 +72,11 @@
             this.HandleDamage();
         }
 
+        public void Stun(int stunTime)
+        {
+            this.currentState.Stun(stunTime);
+        }
+
         private void DamagePushback()
         {
             if (Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0)
