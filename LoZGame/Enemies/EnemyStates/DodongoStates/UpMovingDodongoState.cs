@@ -5,14 +5,18 @@
 
     public class UpMovingDodongoState : IEnemyState
     {
-        private readonly Dodongo dodongo;
+        private readonly IEnemy dodongo;
         private readonly ISprite sprite;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
+        private RandomStateGenerator randomStateGenerator;
 
-        public UpMovingDodongoState(Dodongo dodongo)
+        public UpMovingDodongoState(IEnemy dodongo)
         {
             this.dodongo = dodongo;
             this.sprite = EnemySpriteFactory.Instance.CreateUpMovingDodongoSprite();
             this.dodongo.CurrentState = this;
+            randomStateGenerator = new RandomStateGenerator(this.dodongo, 2, 6);
         }
 
         public void MoveLeft()
@@ -65,6 +69,12 @@
 
         public void Update()
         {
+            this.lifeTime++;
+            if (this.lifeTime > this.directionChange)
+            {
+                randomStateGenerator.Update();
+                this.lifeTime = 0;
+            }
             this.dodongo.Physics.Location = new Vector2(this.dodongo.Physics.Location.X, this.dodongo.Physics.Location.Y - this.dodongo.MoveSpeed);
             this.sprite.Update();
         }

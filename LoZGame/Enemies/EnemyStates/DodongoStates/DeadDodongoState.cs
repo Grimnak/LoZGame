@@ -5,10 +5,10 @@
 
     public class DeadDodongoState : IEnemyState
     {
-        private readonly Dodongo dodongo;
+        private readonly IEnemy dodongo;
         private readonly ISprite sprite;
 
-        public DeadDodongoState(Dodongo dodongo)
+        public DeadDodongoState(IEnemy dodongo)
         {
             this.dodongo = dodongo;
             this.dodongo.CurrentState = this;

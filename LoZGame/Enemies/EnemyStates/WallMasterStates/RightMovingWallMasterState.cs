@@ -7,12 +7,16 @@
     {
         private readonly WallMaster wallMaster;
         private readonly ISprite sprite;
+        private RandomStateGenerator randomStateGenerator;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
 
         public RightMovingWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingWallMasterSprite();
             this.wallMaster.CurrentState = this;
+            this.randomStateGenerator = new RandomStateGenerator(this.wallMaster, 2, 6);
         }
 
         public void MoveLeft()
@@ -67,6 +71,12 @@
 
         public void Update()
         {
+            this.lifeTime++;
+            if (this.lifeTime > this.directionChange)
+            {
+                randomStateGenerator.Update();
+                this.lifeTime = 0;
+            }
             this.wallMaster.Physics.Location = new Vector2(this.wallMaster.Physics.Location.X + this.wallMaster.MoveSpeed, this.wallMaster.Physics.Location.Y);
             this.sprite.Update();
         }

@@ -33,9 +33,6 @@
         private IEnemyState currentState;
         private int damage = 1;
         private int health = 10;
-        private int lifeTime = 0;
-        private readonly int directionChange = 40;
-        private RandomStateGenerator randomStateGenerator;
 
         public WallMaster(Vector2 location)
         {
@@ -44,7 +41,6 @@
             this.currentState = new LeftMovingWallMasterState(this);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.randomStateGenerator = new RandomStateGenerator(this, 2, 6);
             this.expired = false;
             this.DamageTimer = 0;
             this.MoveSpeed = 1;
@@ -62,6 +58,7 @@
             {
                 this.currentState.Die();
             }
+            this.HandleDamage();
         }
 
         private void DamagePushback()
@@ -92,13 +89,6 @@
 
         public void Update()
         {
-            this.HandleDamage();
-            this.lifeTime++;
-            if (this.lifeTime > this.directionChange)
-            {
-                randomStateGenerator.Update();
-                this.lifeTime = 0;
-            }
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;

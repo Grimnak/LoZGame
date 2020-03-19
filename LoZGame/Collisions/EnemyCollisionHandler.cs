@@ -62,7 +62,14 @@
             }
             if (!(this.enemy is OldMan || this.enemy is Merchant || this.enemy is SpikeCross))
             {
-                DeterminePushbackValues(collisionSide);
+                if (!(projectile is BoomerangProjectile) && !(projectile is MagicBoomerangProjectile))
+                {
+                    DeterminePushbackValues(collisionSide);
+                }
+                else
+                {
+                    //stun
+                }
             }
             if (!(projectile is SwordBeamExplosion) && !(projectile is BombProjectile))
             {

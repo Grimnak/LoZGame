@@ -35,17 +35,8 @@
         private int health = 16;
         private int lifeTime = 0;
         private readonly int directionChange = 40;
-        private Direction currentDirection;
+        private string currentDirection;
         private RandomStateGenerator randomStateGenerator;
-
-        private enum Direction
-        {
-            Up,
-            Down,
-            Left,
-            Right,
-            Dead,
-        }
 
         public Dodongo(Vector2 location)
         {
@@ -54,7 +45,6 @@
             this.currentState = new LeftMovingDodongoState(this);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
-            randomStateGenerator = new RandomStateGenerator(this, 2, 6);
             this.expired = false;
             this.DamageTimer = 0;
             this.MoveSpeed = 1;
@@ -72,6 +62,7 @@
             {
                 this.currentState.Die();
             }
+            this.HandleDamage();
         }
 
         private void DamagePushback()
@@ -102,17 +93,6 @@
 
         public void Update()
         {
-            this.HandleDamage();
-            this.lifeTime++;
-            if (this.lifeTime > this.directionChange)
-            {
-                randomStateGenerator.Update();
-                this.lifeTime = 0;
-            }
-            if (this.Health.CurrentHealth <= 0)
-            {
-                this.CurrentState = new DeadDodongoState(this);
-            }
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
@@ -150,10 +130,6 @@
             set { this.currentState = value; }
         }
 
-        private Direction CurrentDirection { get => this.CurrentDirection1; set => this.CurrentDirection1 = value; }
-
-        private Direction CurrentDirection1 { get => this.CurrentDirection2; set => this.CurrentDirection2 = value; }
-
-        private Direction CurrentDirection2 { get => this.currentDirection; set => this.currentDirection = value; }
+        private string CurrentDirection { get => this.currentDirection; set => this.currentDirection = value; }
     }
 }

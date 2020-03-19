@@ -8,13 +8,15 @@
         private readonly Goriya goriya;
         private readonly ISprite sprite;
         private readonly IProjectile boomerangSprite;
-        private int coolDown;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
+        private RandomStateGenerator randomStateGenerator;
         private EntityManager entity;
 
         public AttackingGoriyaState(Goriya goriya)
         {
-            coolDown = 0;
             this.goriya = goriya;
+            this.goriya.CoolDown = 0;
             this.entity = LoZGame.Instance.Entities;
             switch (goriya.Direction)
             {
@@ -37,6 +39,8 @@
                 default:
                     break;
             }
+
+            randomStateGenerator = new RandomStateGenerator(this.goriya, 1, 6);
         }
 
         public void MoveLeft()
@@ -90,10 +94,16 @@
 
         public void Update()
         {
-            if (this.coolDown == 0)
+            if (this.goriya.CoolDown == 0)
             {
-                this.coolDown = 240;
+                this.goriya.CoolDown = 240;
                 this.entity.EnemyProjectileManager.AddEnemyRang(this.goriya);
+            }
+            this.lifeTime++;
+            if (this.lifeTime > this.directionChange)
+            {
+                randomStateGenerator.Update();
+                this.lifeTime = 0;
             }
             this.sprite.Update();
         }

@@ -47,12 +47,8 @@
         }
 
         private IEnemyState currentState;
-        private int lifeTime = 0;
         private int damage = 1;
         private int health = 1;
-        private readonly int directionChange = 40;
-        private RandomStateGenerator randomStateGenerator;
-        private List<IPlayer> players;
 
         private enum Direction
         {
@@ -71,7 +67,6 @@
             this.currentState = new LeftMovingRopeState(this);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
-            randomStateGenerator = new RandomStateGenerator(this, 2, 6);
             Attacking = false;
             this.expired = false;
             this.DamageTimer = 0;
@@ -111,47 +106,6 @@
             this.currentState.Update();
         }
 
-        private void checkForLink()
-        { /*
-            players = Game.Players;
-            foreach (IPlayer player in players)
-            {
-                if (CurrentLocation.X <= player.CurrentLocation.X + 10 || CurrentLocation.X >= player.CurrentLocation.X - 10)
-                {
-                    Attacking = true;
-                    AttackFactor = 3;
-                    if (CurrentLocation.Y > player.CurrentLocation.Y)
-                    {
-                        this.currentState.MoveDown();
-                    }
-                    else
-                    {
-                        this.currentState.MoveUp();
-                    }
-                }
-                else if (CurrentLocation.Y == player.CurrentLocation.Y)
-                {
-                    Attacking = true;
-                    AttackFactor = 3;
-                    if (CurrentLocation.Y <= player.CurrentLocation.Y + 10 || CurrentLocation.Y >= player.CurrentLocation.Y - 10)
-                    {
-                        this.currentState.MoveRight();
-                    }
-                    else
-                    {
-                        this.currentState.MoveLeft();
-                    }
-                }
-                else
-                {
-                    AttackFactor = 1;
-                    Attacking = false;
-                }
-                this.currentState.Update();
-            }
-                */
-        }
-
         public void TakeDamage(int damageAmount)
         {
             if (this.DamageTimer <= 0)
@@ -163,6 +117,7 @@
             {
                 this.currentState.Die();
             }
+            this.HandleDamage();
         }
 
         private void DamagePushback()
@@ -193,28 +148,9 @@
 
         public void Update()
         {
-            this.HandleDamage();
-            this.lifeTime++;
-            if (this.lifeTime > this.directionChange)
-            {
-                randomStateGenerator.Update();
-                this.lifeTime = 0;
-            }
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
-/*
-            checkForLink();
-            if (!Attacking)
-            {
-                this.updateLoc();
-                if (this.lifeTime > this.directionChange)
-                {
-                    this.getNewDirection();
-                    this.lifeTime = 0;
-                }
-            }
-            */
         }
 
         public void Draw()

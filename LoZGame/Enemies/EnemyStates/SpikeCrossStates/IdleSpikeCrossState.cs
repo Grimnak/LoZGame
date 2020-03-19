@@ -2,6 +2,7 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
 
     public class IdleSpikeCrossState : IEnemyState
     {
@@ -66,7 +67,32 @@
 
         public void Update()
         {
+            this.CheckForLink();
             this.sprite.Update();
+        }
+
+        private void CheckForLink()
+        {
+            int spikeX = (int)this.spikeCross.Physics.Location.X;
+            int spikeY = (int)this.spikeCross.Physics.Location.Y;
+            int linkX = (int)LoZGame.Instance.Link.Physics.Location.X;
+            int linkY = (int)LoZGame.Instance.Link.Physics.Location.Y;
+
+            if (!this.spikeCross.Attacking)
+            {
+                if (spikeX == linkX)
+                {
+                    this.spikeCross.Attacking = true;
+                    this.spikeCross.MoveSpeed = 3 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
+                    this.spikeCross.CurrentState.MoveDown();
+                }
+                else if (spikeY == linkY)
+                {
+                    this.spikeCross.Attacking = true;
+                    this.spikeCross.MoveSpeed = 3 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
+                    this.spikeCross.CurrentState.MoveRight();
+                }
+            }
         }
 
         public void Draw()

@@ -30,16 +30,11 @@
 
         public int DamageTimer { get; set; }
 
-        public int CoolDown => coolDown;
-
         private IEnemyState currentState;
         private int damage = 2;
         private int health = 10;
         private int coolDown;
-        private int lifeTime = 0;
-        private readonly int directionChange = 40;
         private string currentDirection = "Left";
-        private RandomStateGenerator randomStateGenerator;
         private readonly EntityManager entity;
 
         public Goriya(Vector2 location)
@@ -51,7 +46,6 @@
             this.coolDown = 0;
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.randomStateGenerator = new RandomStateGenerator(this, 1, 6);
             this.expired = false;
             this.DamageTimer = 0;
             this.MoveSpeed = 1;
@@ -69,6 +63,7 @@
             {
                 this.currentState.Die();
             }
+            this.HandleDamage();
         }
 
         private void DamagePushback()
@@ -99,17 +94,6 @@
 
         public void Update()
         {
-            this.HandleDamage();
-            if (this.coolDown > 0)
-            {
-                this.coolDown--;
-            }
-            this.lifeTime++;
-            if (this.lifeTime > this.directionChange)
-            {
-                randomStateGenerator.Update();
-                this.lifeTime = 0;
-            }
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
@@ -151,6 +135,12 @@
         {
             get { return this.currentDirection; }
             set { this.currentDirection = value; }
+        }
+
+        public int CoolDown
+        {
+            get { return this.coolDown; }
+            set { this.coolDown = value; }
         }
     }
 }

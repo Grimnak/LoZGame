@@ -7,12 +7,16 @@
     {
         private readonly Dragon dragon;
         private readonly ISprite sprite;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
+        private RandomStateGenerator randomStateGenerator;
 
         public LeftMovingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
             this.dragon.CurrentState = this;
+            randomStateGenerator = new RandomStateGenerator(this.dragon, 0, 4);
         }
 
         public void MoveUp()
@@ -65,6 +69,12 @@
 
         public void Update()
         {
+            this.lifeTime++;
+            if (this.lifeTime > this.directionChange)
+            {
+                randomStateGenerator.Update();
+                this.lifeTime = 0;
+            }
             this.dragon.Physics.Location = new Vector2(this.dragon.Physics.Location.X - this.dragon.MoveSpeed, this.dragon.Physics.Location.Y);
             this.sprite.Update();
         }

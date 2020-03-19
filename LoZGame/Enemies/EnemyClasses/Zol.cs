@@ -58,27 +58,6 @@
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
-        private void decideToMove()
-        {
-            if (ShouldMove)
-            {
-                if (timeSinceIdle++ > movementWaitMax)
-                {
-                    ShouldMove = !ShouldMove;
-                    timeSinceIdle = 0;
-                }
-            }
-            else
-            {
-                if (timeInIdle++ > movementWaitMax)
-                {
-                    ShouldMove = !ShouldMove;
-                    timeInIdle = 0;
-                    randomStateGenerator.Update();
-                }
-            }
-        }
-
         public void TakeDamage(int damageAmount)
         {
             if (this.DamageTimer <= 0)
@@ -90,6 +69,7 @@
             {
                 this.currentState.Die();
             }
+            this.HandleDamage();
         }
 
         private void DamagePushback()
@@ -120,8 +100,6 @@
 
         public void Update()
         {
-            this.HandleDamage();
-            this.decideToMove();
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;

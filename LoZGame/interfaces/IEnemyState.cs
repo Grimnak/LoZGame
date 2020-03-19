@@ -26,6 +26,8 @@
 
         void Die();
 
+       //void Stun(int maxStunTime);
+
         void Update();
 
         void Draw();

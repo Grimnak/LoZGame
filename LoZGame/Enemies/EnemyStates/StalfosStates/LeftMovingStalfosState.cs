@@ -7,12 +7,16 @@
     {
         private readonly Stalfos stalfos;
         private ISprite sprite;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
+        private RandomStateGenerator randomStateGenerator;
 
         public LeftMovingStalfosState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
             this.sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
             this.stalfos.CurrentState = this;
+            randomStateGenerator = new RandomStateGenerator(this.stalfos, 2, 6);
         }
 
         public void MoveLeft()
@@ -66,6 +70,12 @@
 
         public void Update()
         {
+            this.lifeTime++;
+            if (this.lifeTime > this.directionChange)
+            {
+                randomStateGenerator.Update();
+                this.lifeTime = 0;
+            }
             this.stalfos.Physics.Location = new Vector2(this.stalfos.Physics.Location.X - this.stalfos.MoveSpeed, this.stalfos.Physics.Location.Y);
             this.sprite.Update();
         }

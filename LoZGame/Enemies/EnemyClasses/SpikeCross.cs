@@ -66,30 +66,6 @@
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
-        private void checkForLink()
-        {
-            int spikeX = (int)Physics.Location.X;
-            int spikeY = (int)Physics.Location.Y;
-            int linkX = (int)LoZGame.Instance.Link.Physics.Location.X;
-            int linkY = (int)LoZGame.Instance.Link.Physics.Location.Y;
-
-            if (!Attacking)
-            {
-                if (spikeX == linkX)
-                {
-                    Attacking = true;
-                    this.MoveSpeed = 3 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
-                    currentState.MoveDown();
-                }
-                else if (spikeY == linkY)
-                {
-                    Attacking = true;
-                    this.MoveSpeed = 3 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
-                    currentState.MoveRight();
-                }
-            }
-        }
-
         public void TakeDamage(int damageAmount)
         {
         }
@@ -100,7 +76,6 @@
 
         public void Update()
         {
-            this.checkForLink();
             this.currentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;

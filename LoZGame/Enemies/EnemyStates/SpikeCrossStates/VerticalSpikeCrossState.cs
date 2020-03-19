@@ -8,7 +8,8 @@
     {
         private readonly SpikeCross spikeCross;
         private readonly ISprite sprite;
-
+        private bool attacking = true;
+        private bool retreating = false;
         public VerticalSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;

@@ -27,69 +27,30 @@
 
         public HealthManager Health { get; set; }
 
-        public int MoveSpeed { get; set; }
-
         public Color CurrentTint { get; set; }
+
+        public int MoveSpeed { get; set; }
 
         public int Damage => damage;
 
         public int DamageTimer { get; set; }
 
         private IEnemyState currentState;
-        private int damage = 1;
-        private int health = 1;
-        private int timeInIdle = 0;
-        private int timeSinceIdle = 0;
-        private int movementWaitMax = 100;
-        private int movementWaitMin = 20;
-        private int movementWait;
-        private int idleWaitMin = 10;
-        private int idleWaitMax = 40;
-        private int idleWait;
-        private RandomStateGenerator randomStateGenerator;
-        private Random randomWaitGenerator;
+        private int damage = 2;
+        private int health = 4;
 
         public Gel(Vector2 location)
         {
             this.Health = new HealthManager(health);
             this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.currentState = new LeftMovingGelState(this);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.enemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Physics.Location = new Vector2(location.X, location.Y);
             this.ShouldMove = true;
-            this.randomStateGenerator = new RandomStateGenerator(this, 2, 6);
-            this.randomWaitGenerator = LoZGame.Instance.Random;
-            this.movementWait = randomWaitGenerator.Next(movementWaitMin, movementWaitMax);
-            this.idleWait = randomWaitGenerator.Next(idleWaitMin, idleWaitMax);
-            this.CurrentState = new LeftMovingGelState(this);
-            this.randomStateGenerator.Update();
             this.expired = false;
             this.DamageTimer = 0;
-            this.MoveSpeed = 2;
+            this.MoveSpeed = 1;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
-        }
-
-        private void decideToMove()
-        {
-            if (ShouldMove)
-            {
-                if (timeSinceIdle++ > movementWait)
-                {
-                    movementWait = randomWaitGenerator.Next(movementWaitMin, movementWaitMax);
-                    ShouldMove = !ShouldMove;
-                    timeSinceIdle = 0;
-                }
-            }
-            else
-            {
-                if (timeInIdle++ > idleWait)
-                {
-                    ShouldMove = !ShouldMove;
-                    idleWait = randomWaitGenerator.Next(idleWaitMin, idleWaitMax);
-                    timeInIdle = 0;
-                    randomStateGenerator.Update();
-                }
-            }
         }
 
         public void TakeDamage(int damageAmount)
@@ -103,6 +64,7 @@
             {
                 this.currentState.Die();
             }
+            this.HandleDamage();
         }
 
         private void DamagePushback()
@@ -133,8 +95,6 @@
 
         public void Update()
         {
-            this.HandleDamage();
-            this.decideToMove();
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;

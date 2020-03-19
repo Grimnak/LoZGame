@@ -7,12 +7,17 @@
     {
         private readonly Zol zol;
         private readonly ISprite sprite;
+        private int timeSinceIdle = 0;
+        private int timeInIdle = 0;
+        private int movementWaitMax = 12;
+        private RandomStateGenerator randomStateGenerator;
 
         public RightMovingZolState(Zol zol)
         {
             this.zol = zol;
             this.sprite = EnemySpriteFactory.Instance.CreateZolSprite();
             this.zol.CurrentState = this;
+            this.randomStateGenerator = new RandomStateGenerator(this.zol, 2, 6);
         }
 
         public void MoveLeft()
@@ -63,11 +68,33 @@
             this.zol.CurrentState = new DeadZolState(this.zol);
         }
 
-        public void Update()
+        private void DecideToMove()
         {
             if (this.zol.ShouldMove)
             {
-                this.zol.Physics.Location = new Vector2(this.zol.Physics.Location.X + this.zol.MoveSpeed, this.zol.Physics.Location.Y);
+                if (timeSinceIdle++ > movementWaitMax)
+                {
+                    this.zol.ShouldMove = !this.zol.ShouldMove;
+                    timeSinceIdle = 0;
+                }
+            }
+            else
+            {
+                if (timeInIdle++ > movementWaitMax)
+                {
+                    this.zol.ShouldMove = !this.zol.ShouldMove;
+                    timeInIdle = 0;
+                    randomStateGenerator.Update();
+                }
+            }
+        }
+
+        public void Update()
+        {
+            this.DecideToMove();
+            if (this.zol.ShouldMove)
+            {
+                this.zol.Physics.Location = new Vector2(this.zol.Physics.Location.X, this.zol.Physics.Location.Y + this.zol.MoveSpeed);
             }
             this.sprite.Update();
         }
