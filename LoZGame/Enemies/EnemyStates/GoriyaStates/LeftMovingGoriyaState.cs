@@ -7,6 +7,9 @@
     {
         private readonly Goriya goriya;
         private readonly ISprite sprite;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
+        private RandomStateGenerator randomStateGenerator;
 
         public LeftMovingGoriyaState(Goriya goriya)
         {
@@ -14,6 +17,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingGoriyaSprite();
             this.goriya.CurrentState = this;
             this.goriya.Direction = "Left";
+            randomStateGenerator = new RandomStateGenerator(this.goriya, 1, 6);
         }
 
         public void MoveLeft()
@@ -67,6 +71,16 @@
 
         public void Update()
         {
+            if (this.goriya.CoolDown > 0)
+            {
+                this.goriya.CoolDown--;
+            }
+            this.lifeTime++;
+            if (this.lifeTime > this.directionChange)
+            {
+                randomStateGenerator.Update();
+                this.lifeTime = 0;
+            }
             this.goriya.Physics.Location = new Vector2(this.goriya.Physics.Location.X - this.goriya.MoveSpeed, this.goriya.Physics.Location.Y);
             this.sprite.Update();
         }
