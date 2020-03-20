@@ -10,7 +10,7 @@
         private static readonly int MaxDistance = 300;
         private static readonly int MaxSpeed = 5;
         private static readonly float Accel = 0.5f;
-        private static readonly int StunLength = LoZGame.Instance.UpdateSpeed * 4;
+        private static readonly int StunLength = LoZGame.Instance.UpdateSpeed * 2;
 
         private ProjectileCollisionHandler collisionHandler;
         private readonly IPlayer player;

@@ -14,6 +14,7 @@
             this.oldState = oldState;
             this.goriya = goriya;
             stunDuration = stunTime;
+            goriya.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
         public void MoveLeft()

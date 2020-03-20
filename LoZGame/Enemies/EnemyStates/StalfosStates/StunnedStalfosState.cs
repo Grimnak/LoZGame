@@ -14,6 +14,7 @@
             this.oldState = oldState;
             this.stalfos = stalfos;
             stunDuration = stunTime;
+            stalfos.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
         public void MoveLeft()

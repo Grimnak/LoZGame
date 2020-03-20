@@ -11,7 +11,7 @@
         private static readonly int MaxSpeed = 5;
         private static readonly float Accel = 0.5f;
 
-        private static readonly int StunLength = LoZGame.Instance.UpdateSpeed * 2;
+        private static readonly int StunLength = LoZGame.Instance.UpdateSpeed;
 
         private readonly IPlayer player;
         private readonly string direction;

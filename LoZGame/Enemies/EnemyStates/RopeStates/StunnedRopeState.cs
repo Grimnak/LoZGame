@@ -14,6 +14,7 @@
             this.oldState = oldState;
             this.rope = rope;
             stunDuration = stunTime;
+            rope.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
         public void MoveLeft()

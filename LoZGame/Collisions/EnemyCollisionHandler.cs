@@ -71,7 +71,7 @@
                     this.enemy.Stun(projectile.StunDuration);
                 }
             }
-            if (!(projectile is SwordBeamExplosion) && !(projectile is BombProjectile))
+            if (!(projectile is SwordBeamExplosion) && !(projectile is BombProjectile) && !(projectile is MagicBoomerangProjectile) && !(projectile is BoomerangProjectile))
             {
                 this.enemy.TakeDamage(projectile.Damage);
             }

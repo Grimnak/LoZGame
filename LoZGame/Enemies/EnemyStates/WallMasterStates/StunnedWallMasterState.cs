@@ -14,6 +14,7 @@
             this.oldState = oldState;
             this.wallMaster = wallMaster;
             stunDuration = stunTime;
+            wallMaster.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
         public void MoveLeft()

@@ -107,7 +107,7 @@
         }
         public void Stun(int stunTime)
         {
-            this.currentState.Stun(this.currentState, stunTime);
+            this.currentState.Stun(stunTime);
         }
 
         public void TakeDamage(int damageAmount)
