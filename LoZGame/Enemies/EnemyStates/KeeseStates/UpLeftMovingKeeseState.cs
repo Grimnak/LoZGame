@@ -93,7 +93,7 @@
                 this.lifeTime = 0;
             }
             this.updateMoveSpeed();
-            this.keese.Physics.Location = new Vector2(this.keese.Physics.Location.X + (int)(.2 * this.keese.MoveSpeed), this.keese.Physics.Location.Y + (int)(.2 * this.keese.MoveSpeed));
+            this.keese.Physics.Location = new Vector2(this.keese.Physics.Location.X - (int)(.2 * this.keese.MoveSpeed), this.keese.Physics.Location.Y - (int)(.2 * this.keese.MoveSpeed));
             this.sprite.Update();
         }
 

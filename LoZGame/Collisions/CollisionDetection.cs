@@ -57,8 +57,8 @@
         {
             foreach (IEnemy enemy in enemies)
             {
-                // Do not check borders for Wall Masters that are being pushed back or the Old Man/Merchant.
-                if (!(enemy is WallMaster && ((WallMaster)enemy).DamageTimer <= 0) && !(enemy is OldMan || enemy is Merchant))
+                // Do not check borders for Wall Masters that aren't being pushed back or the Old Man/Merchant.
+                if (!(enemy is WallMaster && enemy.DamageTimer <= 0) && !(enemy is OldMan || enemy is Merchant))
                 {
                     CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
                 }
