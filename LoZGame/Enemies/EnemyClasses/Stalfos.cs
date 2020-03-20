@@ -46,6 +46,7 @@
             this.MoveSpeed = 1;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
+
         public void Stun(int stunTime)
         {
             this.currentState.Stun(stunTime);
@@ -93,6 +94,7 @@
 
         public void Update()
         {
+            this.HandleDamage();
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;

@@ -30,7 +30,7 @@
         ISprite sprite;
         private int damage;
 
-        public int StunDuration { get { return StunLength; } set {/*do nothing*/} }
+        public int StunDuration { get { return StunLength; } }
 
         public bool Returning { get { return returning; } set { returning = value; } }
 

@@ -65,6 +65,7 @@
             this.DamageTimer = 0;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
+
         public void Stun(int stunTime)
         {
         }

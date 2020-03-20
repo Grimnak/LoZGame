@@ -101,6 +101,7 @@
         {
             this.sprite.Draw(this.keese.Physics.Location, this.keese.CurrentTint);
         }
+
         private void updateMoveSpeed()
         {
             if (this.keese.MoveSpeed++ > 10)

@@ -32,7 +32,8 @@
               {
                   LoZGame.Instance.Dungeon.MoveUp();
               }
-            } else if (this.door.State is LockedDoorState && player.HasKey)
+            } 
+            else if (this.door.State is LockedDoorState && player.HasKey)
             {
                 player.HasKey = false;
                 this.door.Open();

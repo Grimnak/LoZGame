@@ -99,7 +99,7 @@
             this.DecideToMove();
             if (this.zol.ShouldMove)
             {
-                this.zol.Physics.Location = new Vector2(this.zol.Physics.Location.X, this.zol.Physics.Location.Y + this.zol.MoveSpeed);
+                this.zol.Physics.Location = new Vector2(this.zol.Physics.Location.X + this.zol.MoveSpeed, this.zol.Physics.Location.Y);
             }
             this.sprite.Update();
         }

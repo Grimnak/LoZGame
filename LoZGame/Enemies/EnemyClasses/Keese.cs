@@ -109,6 +109,7 @@
 
         public void Update()
         {
+            this.HandleDamage();
             this.CurrentState.Update();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
