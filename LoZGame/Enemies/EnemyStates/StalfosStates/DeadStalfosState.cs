@@ -62,6 +62,11 @@
         {
         }
 
+        public void Stun(int stunTime)
+        {
+            this.stalfos.CurrentState = new StunnedStalfosState(this.stalfos, this, stunTime);
+        }
+
         public void Update()
         {
             if (this.frameChange % 15 == 1)

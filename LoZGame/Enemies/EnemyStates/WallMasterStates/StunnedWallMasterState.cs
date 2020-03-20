@@ -3,18 +3,18 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeadRopeState : IEnemyState
+    public class StunnedWallMasterState : IEnemyState
     {
-        private readonly Rope rope;
-        private readonly DeadEnemySprite sprite;
+        private readonly WallMaster wallMaster;
+        private readonly IEnemyState oldState;
+        private int stunDuration;
 
-        public DeadRopeState(Rope rope)
+        public StunnedWallMasterState(WallMaster wallMaster, IEnemyState oldState, int stunTime)
         {
-            this.rope = rope;
-            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
-            this.rope.CurrentState = this;
-            LoZGame.Instance.Drops.AttemptDrop(this.rope.Physics.Location);
-            this.rope.Expired = true;
+            this.oldState = oldState;
+            this.wallMaster = wallMaster;
+            stunDuration = stunTime;
+            wallMaster.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
         public void MoveLeft()
@@ -59,20 +59,26 @@
 
         public void Die()
         {
+            this.wallMaster.CurrentState = new DeadWallMasterState(this.wallMaster);
         }
 
         public void Stun(int stunTime)
         {
+            stunDuration = stunTime;
         }
 
         public void Update()
         {
-            this.sprite.Update();
+            stunDuration--;
+            if (stunDuration <= 0)
+            {
+                this.wallMaster.CurrentState = oldState;
+            }
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.rope.Physics.Location, this.rope.CurrentTint);
+            this.oldState.Draw();
         }
     }
 }

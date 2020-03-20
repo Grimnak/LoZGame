@@ -69,6 +69,11 @@
             this.wallMaster.CurrentState = new DeadWallMasterState(this.wallMaster);
         }
 
+        public void Stun(int stunTime)
+        {
+            this.wallMaster.CurrentState = new StunnedWallMasterState(this.wallMaster, this, stunTime);
+        }
+
         public void Update()
         {
             this.lifeTime++;

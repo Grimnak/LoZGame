@@ -68,6 +68,11 @@
             this.gel.CurrentState = new DeadGelState(this.gel);
         }
 
+        public void Stun(int stunTime)
+        {
+            this.Die();
+        }
+
         private void DecideToMove()
         {
             if (this.gel.ShouldMove)

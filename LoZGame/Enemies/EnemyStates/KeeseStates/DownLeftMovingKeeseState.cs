@@ -78,6 +78,11 @@
             this.keese.CurrentState = new DeadKeeseState(this.keese);
         }
 
+        public void Stun(int stunTime)
+        {
+            this.Die();
+        }
+
         public void Update()
         {
             this.lifeTime++;

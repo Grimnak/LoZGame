@@ -53,6 +53,10 @@
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
+        public void Stun(int stunTime)
+        {
+        }
+
         public void TakeDamage(int damageAmount)
         {
         }

@@ -10,6 +10,7 @@
         private static readonly int MaxDistance = 300;
         private static readonly int MaxSpeed = 5;
         private static readonly float Accel = 0.5f;
+        private static readonly int StunLength = LoZGame.Instance.UpdateSpeed * 2;
 
         private ProjectileCollisionHandler collisionHandler;
         private readonly IPlayer player;
@@ -25,6 +26,10 @@
         private Vector2 playerLoc;
         ISprite sprite;
         private int damage;
+
+        public int StunDuration { get { return StunLength; } set {/*do nothing*/} }
+
+        public bool Returning { get { return returning; } set { returning = value; } }
 
         public int Damage { get { return damage; } set { damage = value; } }
 
@@ -74,13 +79,13 @@
         {
             if (otherCollider is IEnemy)
             {
-               this.returning = this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+               this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            this.returning = collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
         private void ReturnHome()

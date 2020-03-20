@@ -18,6 +18,10 @@
         private ISprite sprite;
         private int damage;
 
+        public int StunDuration { get { return 0; } set {/*do nothing*/} }
+
+        public bool Returning { get { return false; } set {/*do nothing*/} }
+
         public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }

@@ -3,18 +3,18 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeadRopeState : IEnemyState
+    public class StunnedGoriyaState : IEnemyState
     {
-        private readonly Rope rope;
-        private readonly DeadEnemySprite sprite;
+        private readonly Goriya goriya;
+        private readonly IEnemyState oldState;
+        private int stunDuration;
 
-        public DeadRopeState(Rope rope)
+        public StunnedGoriyaState(Goriya goriya, IEnemyState oldState, int stunTime)
         {
-            this.rope = rope;
-            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
-            this.rope.CurrentState = this;
-            LoZGame.Instance.Drops.AttemptDrop(this.rope.Physics.Location);
-            this.rope.Expired = true;
+            this.oldState = oldState;
+            this.goriya = goriya;
+            stunDuration = stunTime;
+            goriya.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
         public void MoveLeft()
@@ -59,20 +59,26 @@
 
         public void Die()
         {
+            this.goriya.CurrentState = new DeadGoriyaState(this.goriya);
         }
 
         public void Stun(int stunTime)
         {
+            stunDuration = stunTime;
         }
 
         public void Update()
         {
-            this.sprite.Update();
+            stunDuration--;
+            if (stunDuration <= 0)
+            {
+                this.goriya.CurrentState = oldState;
+            }
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.rope.Physics.Location, this.rope.CurrentTint);
+            this.oldState.Draw();
         }
     }
 }

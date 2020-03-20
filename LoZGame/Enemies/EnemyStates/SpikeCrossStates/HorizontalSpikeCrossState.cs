@@ -61,6 +61,10 @@
             this.spikeCross.CurrentState = new IdleSpikeCrossState(this.spikeCross);
         }
 
+        public void Stun(int stunTime)
+        {
+        }
+
         public void Update()
         {
             this.spikeCross.Physics.Move();

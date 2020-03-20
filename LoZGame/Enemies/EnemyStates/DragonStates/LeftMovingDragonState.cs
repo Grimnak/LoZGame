@@ -67,6 +67,10 @@
             this.dragon.CurrentState = new DeadDragonState(this.dragon);
         }
 
+        public void Stun(int stunTime)
+        {
+        }
+
         public void Update()
         {
             this.lifeTime++;

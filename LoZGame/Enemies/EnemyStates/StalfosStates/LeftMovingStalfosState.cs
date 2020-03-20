@@ -68,6 +68,11 @@
             this.stalfos.CurrentState = new DeadStalfosState(this.stalfos);
         }
 
+        public void Stun(int stunTime)
+        {
+            this.stalfos.CurrentState = new StunnedStalfosState(this.stalfos, this, stunTime);
+        }
+
         public void Update()
         {
             this.lifeTime++;
