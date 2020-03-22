@@ -60,16 +60,6 @@
                     this.Physics.Move();
                     this.Physics.Accelerate();
                 }
-                else
-                {
-                    foreach (Door door in LoZGame.Instance.Doors.DoorList)
-                    {
-                        if (door.State is PuzzleDoorState)
-                        {
-                            ((PuzzleDoorState)door.State).Solve();
-                        }
-                    }
-                }
             }
             else if (this.Physics.Velocity.Y != 0)
             {
@@ -79,14 +69,18 @@
                     this.Physics.Move();
                     this.Physics.Accelerate();
                 }
-                else
+            }
+        }
+
+        private void SolveDoors()
+        {
+            if (Math.Abs(this.Physics.Location.X - this.originalLocation.X) == this.Bounds.Width - 1 || Math.Abs(this.Physics.Location.Y - this.originalLocation.Y) == this.Bounds.Height)
+            {
+                foreach (Door door in LoZGame.Instance.Doors.DoorList)
                 {
-                    foreach (Door door in LoZGame.Instance.Doors.DoorList)
+                    if (door.State is PuzzleDoorState)
                     {
-                        if (door.State is PuzzleDoorState)
-                        {
-                            ((PuzzleDoorState)door.State).Solve();
-                        }
+                        ((PuzzleDoorState)door.State).Solve();
                     }
                 }
             }
@@ -96,6 +90,7 @@
         public void Update()
         {
             HandlePush();
+            SolveDoors();
             this.bounds.X = (int)this.Physics.Location.X;
             this.bounds.Y = (int)this.Physics.Location.Y;
         }
