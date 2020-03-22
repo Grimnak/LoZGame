@@ -14,7 +14,6 @@ namespace LoZClone
         private int currentFrame = 0;
         private int frameDelay = 0;
         private readonly int frameDelayMax = 5;
-        private IEnemy enemy;
 
         public DeadEnemySprite(Texture2D spriteTexture, SpriteSheetData data)
         {
@@ -31,10 +30,6 @@ namespace LoZClone
             if (this.frameDelay == this.frameDelayMax)
             {
                 this.currentFrame++;
-                if (currentFrame > 5)
-                {
-                    this.enemy = null;
-                }
                 this.frameDelay = 0;
             }
         }

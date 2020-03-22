@@ -11,13 +11,11 @@
         private int lifeTime = 0;
         private readonly int directionChange = 40;
         private RandomStateGenerator randomStateGenerator;
-        private EntityManager entity;
+        //private EntityManager entity;
 
         public AttackingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
-            this.goriya.CoolDown = 0;
-            this.entity = LoZGame.Instance.Entities;
             switch (goriya.Direction)
             {
                 case "Left":
@@ -99,10 +97,10 @@
 
         public void Update()
         {
-            if (this.goriya.CoolDown == 0)
+            if (this.goriya.Cooldown == 0)
             {
-                this.goriya.CoolDown = 240;
-                this.entity.EnemyProjectileManager.AddEnemyRang(this.goriya);
+                this.goriya.Cooldown = 240;
+                this.goriya.EntityManager.EnemyProjectileManager.AddEnemyRang(this.goriya);
             }
             this.lifeTime++;
             if (this.lifeTime > this.directionChange)

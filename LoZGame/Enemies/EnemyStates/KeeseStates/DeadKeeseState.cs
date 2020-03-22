@@ -7,6 +7,8 @@
     {
         private readonly Keese keese;
         private readonly DeadEnemySprite sprite;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
 
         public DeadKeeseState(Keese keese)
         {
@@ -14,7 +16,6 @@
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.keese.CurrentState = this;
             LoZGame.Instance.Drops.AttemptDrop(this.keese.Physics.Location);
-            this.keese.Expired = true;
         }
 
         public void MoveLeft()
@@ -67,7 +68,12 @@
 
         public void Update()
         {
+            this.deathTimer++;
             this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.keese.Expired = true;
+            }
         }
 
         public void Draw()
