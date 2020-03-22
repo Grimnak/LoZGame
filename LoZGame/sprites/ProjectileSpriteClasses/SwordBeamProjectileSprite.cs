@@ -13,18 +13,23 @@
         private Rectangle frameFour;
         private Rectangle currentFrame;
         private readonly int scale;
+        private int totalFrames;
         private readonly float rotation;
         private float layer;
+        private int lifetime;
         private Vector2 origin;
         private Vector2 Size;
+        private SpriteEffects effect;
 
-        public SwordBeamProjectileSprite(Texture2D texture, SpriteSheetData data, float rotation, int scale)
+        public SwordBeamProjectileSprite(Texture2D texture, SpriteSheetData data, float rotation, SpriteEffects effect, int scale)
         {
             this.Texture = texture;
             this.Data = data;
             this.scale = scale;
+            this.effect = effect;
+            this.totalFrames = 0;
             this.Size = new Vector2(this.Data.Width * this.scale, this.Data.Height * this.scale);
-            this.origin = new Vector2(this.Data.Width / 2, this.Data.Height / 2);
+            this.origin = Vector2.Zero;
             this.frameOne = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
             this.frameTwo = new Rectangle(0, this.Data.Height, this.Data.Width, this.Data.Height);
             this.frameThree = new Rectangle(0, this.Data.Height * 2, this.Data.Width, this.Data.Height);
@@ -56,12 +61,12 @@
         public void Update()
         {
             this.NextFrame();
+            this.totalFrames++;
         }
 
         public void Draw(Vector2 location, Color spriteTint)
         {
-            this.layer = 1 - (1 / (location.Y + this.Size.Y));
-            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, 1.0f);
+            LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, this.effect, 1.0f);
         }
     }
 }
