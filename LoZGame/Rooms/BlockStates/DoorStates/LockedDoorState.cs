@@ -25,7 +25,7 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorDown(door.UpScreenLoc);
                         loc = door.UpScreenLoc;
                         door.Physics = new Physics(loc, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y + 1, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
+                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y - 12, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
                         break;
                     }
                 case "E":
@@ -33,7 +33,7 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorLeft(door.RightScreenLoc);
                         loc = door.RightScreenLoc;
                         door.Physics = new Physics(loc, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X - 12, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
+                        door.Bounds = new Rectangle((int)door.Physics.Location.X - 7, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                     }
                 case "S":
@@ -41,15 +41,15 @@ namespace LoZClone
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorUp(door.DownScreenLoc);
                         loc = door.DownScreenLoc;
                         door.Physics = new Physics(loc, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y - 5, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
+                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
                         break;
                     }
                 case "W":
                     {
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorRight(door.LeftScreenLoc);
-                        loc= door.LeftScreenLoc;
+                        loc = door.LeftScreenLoc;
                         door.Physics = new Physics(loc, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X + 5, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
+                        door.Bounds = new Rectangle((int)door.Physics.Location.X - 19, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                     }
             }
@@ -62,7 +62,6 @@ namespace LoZClone
 
         public void Close()
         {
-            Console.WriteLine("Cannot Close Locked Door!");
         }
 
         public void Open()

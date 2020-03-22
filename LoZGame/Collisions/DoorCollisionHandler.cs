@@ -33,10 +33,32 @@
                   LoZGame.Instance.Dungeon.MoveUp();
               }
             } 
-            else if (this.door.State is LockedDoorState && player.HasKey)
+            else if (this.door.State is LockedDoorState)
             {
-                player.HasKey = false;
-                this.door.Open();
+                if (player.HasKey)
+                {
+                    player.HasKey = false;
+                    this.door.Open();
+                }
+                else
+                {
+                    if (door.Physics.Location == door.LeftScreenLoc && !(player.CurrentDirection == "Right"))
+                    {
+                        player.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, player.Physics.Location.Y);
+                    }
+                    else if (door.Physics.Location == door.RightScreenLoc && !(player.CurrentDirection == "Left"))
+                    {
+                        player.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.X - BlockSpriteFactory.Instance.HorizontalOffset, player.Physics.Location.Y);
+                    }
+                    else if (door.Physics.Location == door.DownScreenLoc && !(player.CurrentDirection == "Up"))
+                    {
+                        player.Physics.Location = new Vector2(player.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Y - BlockSpriteFactory.Instance.VerticalOffset);
+                    }
+                    else if (door.Physics.Location == door.UpScreenLoc && !(player.CurrentDirection == "Down"))
+                    {
+                        player.Physics.Location = new Vector2(player.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
+                    }
+                }
             }
         }
 
