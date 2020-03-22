@@ -43,6 +43,10 @@
                 this.Physics.Move();
                 this.Physics.Accelerate();
             }
+            else
+            {
+                this.Physics.StopMovement();
+            }
         }
 
         public void HandleDamage()
@@ -59,6 +63,10 @@
                     this.CurrentTint = Color.White;
                 }
                 this.DamagePushback();
+            }
+            else
+            {
+                this.Physics.StopMovement();
             }
         }
 

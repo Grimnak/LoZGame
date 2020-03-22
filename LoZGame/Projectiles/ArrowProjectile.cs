@@ -9,7 +9,7 @@ namespace LoZClone
 {
     class ArrowProjectile : IProjectile
     {
-        private static readonly int Speed = 10;
+        private static readonly int Speed = 7;
         private static readonly int LinkSize = LinkSpriteFactory.LinkHeight;
         ISprite sprite;
         private ProjectileCollisionHandler collisionHandler;

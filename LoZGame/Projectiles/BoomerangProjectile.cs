@@ -7,7 +7,7 @@
     internal class BoomerangProjectile : IProjectile
     {
         private static readonly int LinkSize = 32;
-        private static readonly int MaxDistance = 200;
+        private static readonly int MaxDistance = 150;
         private static readonly int MaxSpeed = 5;
         private static readonly float Accel = 0.5f;
 

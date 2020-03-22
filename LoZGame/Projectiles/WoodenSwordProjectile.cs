@@ -109,7 +109,7 @@
             {
                 this.sprite.Update();
             }
-            if (this.lifeTime <= 0 || player.DamageTimer > 0)
+            if (this.lifeTime <= 0)
             {
                 this.expired = true;
             }

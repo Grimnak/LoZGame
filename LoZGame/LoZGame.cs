@@ -15,7 +15,6 @@
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private const int InversionTime = 5;
-        private BlendState bsInverter;
         private int gameLife;
 
         public SpriteBatch SpriteBatch => this.spriteBatch;
@@ -88,11 +87,6 @@
             this.IsMouseVisible = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
             gameState = "Default";
-            bsInverter = new BlendState()
-            {
-                ColorSourceBlend = Blend.InverseBlendFactor,
-                ColorDestinationBlend = Blend.InverseSourceColor,
-            };
             itemManager = new ItemManager();
             blockManager = new BlockManager();
             entityManager = new EntityManager();
@@ -175,14 +169,15 @@
         protected override void Draw(GameTime gameTime)
         {
             this.GraphicsDevice.Clear(Color.Black);
-            if (gameState.Equals("Win") && gameLife % (InversionTime * 2) < InversionTime)
+            /*if (gameState.Equals("Win") && gameLife % (InversionTime * 2) < InversionTime)
             {
                 this.spriteBatch.Begin(SpriteSortMode.FrontToBack); // 2nd param used to be bsInverter
             }
             else
             {
                 this.spriteBatch.Begin(SpriteSortMode.FrontToBack);
-            }
+            }*/
+            this.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
             {
                 this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), dungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
