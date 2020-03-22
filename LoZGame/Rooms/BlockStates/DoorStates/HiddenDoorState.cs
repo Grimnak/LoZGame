@@ -12,6 +12,7 @@ namespace LoZClone
     {
         private readonly Door door;
         private readonly Vector2 location;
+
         public HiddenDoorState(Door door)
         {
             this.door = door;
