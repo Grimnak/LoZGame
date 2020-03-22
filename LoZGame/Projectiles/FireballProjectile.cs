@@ -46,8 +46,8 @@ namespace LoZClone
 
             this.collisionHandler = new ProjectileCollisionHandler(this);
             float size = (ProjectileSpriteFactory.Instance.FireballHeight * ProjectileSpriteFactory.Instance.Scale) * 1.5f;
-            this.Size = new Vector2(size, size);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.Size = new Vector2(ProjectileSpriteFactory.Instance.FireballHeight * ProjectileSpriteFactory.Instance.Scale, ProjectileSpriteFactory.Instance.FireballWidth * ProjectileSpriteFactory.Instance.Scale * 1.5f);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X - ProjectileSpriteFactory.Instance.FireballHeight, (int)this.Physics.Location.Y - ProjectileSpriteFactory.Instance.FireballWidth, (int)this.Size.X, (int)this.Size.Y);
             this.sprite = ProjectileSpriteFactory.Instance.Fireball();
             this.expired = false;
             this.lifeTime = MaxLife;
@@ -78,7 +78,8 @@ namespace LoZClone
             {
                 this.sprite.Update();
             }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.Bounds = new Rectangle((int)this.Physics.Location.X - ProjectileSpriteFactory.Instance.FireballHeight, (int)this.Physics.Location.Y - ProjectileSpriteFactory.Instance.FireballWidth, (int)this.Size.X, (int)this.Size.Y);
+
             this.Physics.Move();
         }
 
