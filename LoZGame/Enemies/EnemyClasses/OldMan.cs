@@ -3,88 +3,39 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class OldMan : IEnemy
+    public class OldMan : EnemyEssentials, IEnemy
     {
-        private Rectangle bounds;
-        private int health;
-        private int damage = 0;
-        private bool expired;
-        private EnemyCollisionHandler enemyCollisionHandler;
-        private readonly EntityManager entity;
-
-        public bool Expired { get { return this.expired; } set { this.expired = value; } }
-
-        public Rectangle Bounds
-        {
-            get { return this.bounds; }
-            set { this.bounds = value; }
-        }
-
-        public Physics Physics { get; set; }
-
-        public HealthManager Health { get; set; }
-
-        public Color CurrentTint { get; set; }
-
-        public int MoveSpeed { get; set; }
-
-        public int Damage => damage;
-
-        public int DamageTimer { get; set; }
-
-        public IEnemyState CurrentState { get; set; }
-
-        public EntityManager EntityManager { get { return this.entity; } }
-
         private readonly ISprite sprite;
+
+        public EntityManager EntityManager { get; set; }
 
         public OldMan(Vector2 location)
         {
             this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
-            this.enemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.entity = LoZGame.Instance.Entities;
-            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.health = 1;
-            this.Health = new HealthManager(health);
-            this.expired = false;
+            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            this.EntityManager = LoZGame.Instance.Entities;
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.Health = new HealthManager(1);
+            this.Expired = false;
+            this.Damage = 0;
             this.DamageTimer = 0;
             this.MoveSpeed = 0;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
-        public void Stun(int stunTime)
+        public override void TakeDamage(int damageAmount)
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
-        public void Update()
+        public override void Update()
         {
             this.sprite.Update();
         }
 
-        public void Draw()
+        public override void Draw()
         {
             this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
-        }
-
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
-        {
-            if (otherCollider is IPlayer)
-            {
-                this.enemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IProjectile)
-            {
-                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
-            }
-        }
-
-        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
-        {
         }
     }
 }

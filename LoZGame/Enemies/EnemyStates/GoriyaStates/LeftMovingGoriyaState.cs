@@ -76,9 +76,9 @@
 
         public void Update()
         {
-            if (this.goriya.CoolDown > 0)
+            if (this.goriya.Cooldown > 0)
             {
-                this.goriya.CoolDown--;
+                this.goriya.Cooldown--;
             }
             this.lifeTime++;
             if (this.lifeTime > this.directionChange)

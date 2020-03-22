@@ -91,6 +91,7 @@
     <Compile Include="Controller\Commands\Loaders\MouseCommandLoader.cs" />
     <Compile Include="Controller\Commands\Controllers\KeyboardController.cs" />
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
+    <Compile Include="Enemies\EnemyClasses\EnemyEssentials.cs" />
     <Compile Include="Enemies\EnemyClasses\Dodongo.cs" />
     <Compile Include="Enemies\EnemyClasses\Dragon.cs" />
     <Compile Include="Enemies\EnemyClasses\Gel.cs" />

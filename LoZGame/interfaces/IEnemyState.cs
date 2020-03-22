@@ -26,7 +26,7 @@
 
         void Die();
 
-       void Stun(int stunTime);
+        void Stun(int stunTime);
 
         void Update();
 
