@@ -24,9 +24,12 @@
 
         public void Add(IItem item)
         {
-            itemListSize++;
-            itemList.Add(itemID, item);
-            itemID++;
+            if (!item.Expired)
+            {
+                itemListSize++;
+                itemList.Add(itemID, item);
+                itemID++;
+            }
         }
 
         public void RemoveItem(int instance)
