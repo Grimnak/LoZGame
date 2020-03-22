@@ -46,7 +46,7 @@
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
+            if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile || this.projectile is BombProjectile)
             {
                 this.projectile.Physics.StopMovement();
             }
@@ -56,7 +56,6 @@
             }
             else if (this.projectile is BombExplosion)
             {
-                Console.WriteLine("Bomb Explosion");
                 if (door.State is HiddenDoorState)
                 {
                     Door cousin = new Door(string.Empty, string.Empty);
@@ -105,8 +104,6 @@
                             }
                             break;
                     }
-                    Console.WriteLine("Cousin Location: " + cousin.GetLoc());
-                    Console.WriteLine("Door Location: " + ((Door)door).GetLoc());
                     door.Bombed();
                     cousin.Bombed();
                 }
@@ -150,26 +147,6 @@
             else
             {
                 this.projectile.IsExpired = true;
-            }
-        }
-
-        private void PushOut(CollisionDetection.CollisionSide collisionSide)
-        {
-            if (collisionSide == CollisionDetection.CollisionSide.Top)
-            {
-                this.projectile.Physics.Location = new Vector2(this.projectile.Physics.Location.X, this.projectile.Physics.Location.Y + 1);
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
-            {
-                this.projectile.Physics.Location = new Vector2(this.projectile.Physics.Location.X, this.projectile.Physics.Location.Y - 1);
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Left)
-            {
-                this.projectile.Physics.Location = new Vector2(this.projectile.Physics.Location.X + 1, this.projectile.Physics.Location.Y);
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Right)
-            {
-                this.projectile.Physics.Location = new Vector2(this.projectile.Physics.Location.X - 1, this.projectile.Physics.Location.Y);
             }
         }
     }
