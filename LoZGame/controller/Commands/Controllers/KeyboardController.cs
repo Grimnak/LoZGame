@@ -83,11 +83,6 @@ namespace LoZClone
                 this.allCommands.GetIdle.Execute();
             }
 
-            if (pressed.Contains(Keys.E))
-            {
-                this.dict[Keys.E].Execute();
-            }
-
             if (pressed.Contains(Keys.Q))
             {
                 this.dict[Keys.Q].Execute();

@@ -60,6 +60,10 @@
                     }
                 }
             }
+            else if (this.door.State is PuzzleDoorState && ((PuzzleDoorState)this.door.State).IsSolved)
+            {
+                this.door.Open();
+            }
         }
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)

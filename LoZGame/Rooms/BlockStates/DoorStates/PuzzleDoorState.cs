@@ -56,6 +56,11 @@ namespace LoZClone
             }
         }
 
+        public bool IsSolved
+        {
+            get { return this.solved; }
+        }
+
         public void Solve()
         {
             this.solved = true;

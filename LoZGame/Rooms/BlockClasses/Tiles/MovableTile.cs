@@ -60,6 +60,16 @@
                     this.Physics.Move();
                     this.Physics.Accelerate();
                 }
+                else
+                {
+                    foreach (Door door in LoZGame.Instance.Doors.DoorList)
+                    {
+                        if (door.State is PuzzleDoorState)
+                        {
+                            ((PuzzleDoorState)door.State).Solve();
+                        }
+                    }
+                }
             }
             else if (this.Physics.Velocity.Y != 0)
             {
@@ -68,6 +78,16 @@
                     this.Physics.StopMovementX();
                     this.Physics.Move();
                     this.Physics.Accelerate();
+                }
+                else
+                {
+                    foreach (Door door in LoZGame.Instance.Doors.DoorList)
+                    {
+                        if (door.State is PuzzleDoorState)
+                        {
+                            ((PuzzleDoorState)door.State).Solve();
+                        }
+                    }
                 }
             }
         }
