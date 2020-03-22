@@ -57,7 +57,6 @@ namespace LoZClone
 
         public void Bombed()
         {
-            Console.WriteLine("Cannot Bomb Normal Door!");
         }
 
         public void Close()
@@ -72,7 +71,6 @@ namespace LoZClone
 
         public void Open()
         {
-            Console.WriteLine("Cannot Open Unlocked Door!");
         }
 
         public void Update()
