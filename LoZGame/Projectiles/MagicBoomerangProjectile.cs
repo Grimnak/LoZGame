@@ -7,8 +7,8 @@
     internal class MagicBoomerangProjectile : IProjectile
     {
         private static readonly int LinkSize = 32;
-        private static readonly int MaxDistance = 300;
-        private static readonly int MaxSpeed = 5;
+        private static readonly int MaxDistance = 225;
+        private static readonly int MaxSpeed = 7;
         private static readonly float Accel = 0.5f;
         private static readonly int StunLength = LoZGame.Instance.UpdateSpeed * 2;
 
