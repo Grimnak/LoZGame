@@ -73,7 +73,6 @@
     <Compile Include="Controller\Commands\PlayerCommands\CommandBlueCandle.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandBomb.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandBoomerang.cs" />
-    <Compile Include="Controller\Commands\PlayerCommands\CommandDamage.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandDown.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandLeft.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandMagicBoomerang.cs" />
