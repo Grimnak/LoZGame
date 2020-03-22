@@ -18,6 +18,20 @@
             {
                 this.item.Expired = true;
             }
+
+            if (this.item is Fairy)
+            {
+                player.Health.CurrentHealth = player.Health.MaxHealth;
+            }
+            else if (this.item is DroppedHealth)
+            {
+                player.Health.GainHealth(4);
+            }
+            else if (this.item is HeartContainer)
+            {
+                player.Health.MaxHealth = player.Health.MaxHealth + 4;
+                player.Health.CurrentHealth = player.Health.MaxHealth;
+            }
         }
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
