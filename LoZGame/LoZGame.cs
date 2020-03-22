@@ -8,8 +8,8 @@
     public class LoZGame : Game
     {
         // parameters to help with debugging game
-        public static readonly bool DebugMode = true;
-        private static readonly float UpdatesPerSecond = 20;
+        public static readonly bool DebugMode = false;
+        private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;
 
         private readonly GraphicsDeviceManager graphics;
