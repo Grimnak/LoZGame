@@ -23,8 +23,11 @@ namespace LoZClone
 
         public void Add(IEnemy enemy)
         {
-            enemyList.Add(enemyID, enemy);
-            enemyID++;
+            if (!enemy.Expired)
+            {
+                enemyList.Add(enemyID, enemy);
+                enemyID++;
+            }
         }
 
         public void RemoveEnemy(int instance)
