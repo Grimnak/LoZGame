@@ -8,7 +8,7 @@
     {
         private PlayerCollisionHandler linkCollisionHandler;
         private Rectangle bounds;
-        private int startingHealth = 5;
+        private int startingHealth = 12;
 
         private bool hasKey;
 

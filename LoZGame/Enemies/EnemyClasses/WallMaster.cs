@@ -6,7 +6,7 @@
     {
         public WallMaster(Vector2 location)
         {
-            this.Health = new HealthManager(10);
+            this.Health = new HealthManager(12);
             this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.CurrentState = new LeftMovingWallMasterState(this);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));

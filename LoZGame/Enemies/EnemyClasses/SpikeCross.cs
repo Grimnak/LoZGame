@@ -21,7 +21,7 @@
             Retreating = false;
             InitialPos = this.Physics.Location;
             this.Expired = false;
-            this.Damage = 1;
+            this.Damage = 4;
             this.DamageTimer = 0;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }

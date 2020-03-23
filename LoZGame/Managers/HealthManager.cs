@@ -42,5 +42,10 @@ namespace LoZClone
                 this.currentHealth = maxHealth;
             }
         }
+
+        public void ResetHealth()
+        {
+            this.currentHealth = maxHealth;
+        }
     }
 }
