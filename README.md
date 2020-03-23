@@ -51,14 +51,11 @@ MS Paint
 
 
 ## Known Bugs:
-### Bottom Row Projectiles:
-    Bug:  Projectiles do not fire on the bottom row of the map.
+### Basement Item Drops:
+    Bug:  Bats can drop items in the basement walls that are unobtainable.
 
-    Plan(s) to fix:  Correct projectile collision bounds boxes.
+    Plan(s) to fix:  Add boomerang capabilities to grab items and potentially make items spawn in-bounds.
 
-### Door Functionality:
-    Bug:  Locked and hidden doors cannot be triggered by the player upon collision.
-    
-    Plan(s) to fix:  Implement unlocking via bomb use/key pickup/puzzle solving.
 
 ## Suppressed Warnings:
+The only suppressed warnings involved linter recommendations to modify spacing or order of variables, as well as some naming conventions.
