@@ -109,9 +109,9 @@
 
         private void CreateExplosion()
         {
-            int explosionType = LoZGame.Instance.Entities.ExplosionManager.SwordExplosion;
+            int explosionType = LoZGame.Instance.GameObjects.Entities.ExplosionManager.SwordExplosion;
             Vector2 explosionLocation = new Vector2(this.Physics.Location.X + this.tip.X, this.Physics.Location.Y + this.tip.Y);
-            LoZGame.Instance.Entities.ExplosionManager.AddExplosion(explosionType, explosionLocation);
+            LoZGame.Instance.GameObjects.Entities.ExplosionManager.AddExplosion(explosionType, explosionLocation);
         }
 
         public void Update()

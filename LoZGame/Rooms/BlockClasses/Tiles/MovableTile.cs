@@ -76,7 +76,7 @@
         {
             if (Math.Abs(this.Physics.Location.X - this.originalLocation.X) == this.Bounds.Width - 1 || Math.Abs(this.Physics.Location.Y - this.originalLocation.Y) == this.Bounds.Height)
             {
-                foreach (Door door in LoZGame.Instance.Doors.DoorList)
+                foreach (Door door in LoZGame.Instance.GameObjects.Doors.DoorList)
                 {
                     if (door.State is PuzzleDoorState)
                     {

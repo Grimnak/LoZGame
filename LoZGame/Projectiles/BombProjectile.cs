@@ -81,10 +81,10 @@
             if (this.lifeTime <= 0)
             {
                 this.expired = true;
-                int explosiontype = (int)LoZGame.Instance.Entities.ExplosionManager.Explosion;
+                int explosiontype = (int)LoZGame.Instance.GameObjects.Entities.ExplosionManager.Explosion;
                 Vector2 bombCenter = new Vector2(this.Physics.Location.X + (this.projectileWidth / 2), this.Physics.Location.Y + (this.projectileHeight / 2));
                 this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
-                LoZGame.Instance.Entities.ExplosionManager.AddExplosion(explosiontype, bombCenter);
+                LoZGame.Instance.GameObjects.Entities.ExplosionManager.AddExplosion(explosiontype, bombCenter);
             }
         }
 

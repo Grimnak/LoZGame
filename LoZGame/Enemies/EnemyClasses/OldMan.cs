@@ -13,7 +13,7 @@
             this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.EntityManager = LoZGame.Instance.Entities;
+            this.EntityManager = LoZGame.Instance.GameObjects.Entities;
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.Health = new HealthManager(1);
             this.Expired = false;

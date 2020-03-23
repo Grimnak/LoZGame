@@ -46,12 +46,12 @@ namespace LoZClone
         
         public void Update()
         {
-            this.doors = LoZGame.Instance.Doors.DoorList;
-            this.items = LoZGame.Instance.Items.ItemList;
-            this.explosions = LoZGame.Instance.Entities.ExplosionManager.Explosions;
-            this.projectiles = LoZGame.Instance.Entities.ProjectileManager.Projectiles;
-            this.enemyProjectiles = LoZGame.Instance.Entities.EnemyProjectiles;
-            this.enemies = LoZGame.Instance.Enemies.EnemyList;
+            this.doors = LoZGame.Instance.GameObjects.Doors.DoorList;
+            this.items = LoZGame.Instance.GameObjects.Items.ItemList;
+            this.explosions = LoZGame.Instance.GameObjects.Entities.ExplosionManager.Explosions;
+            this.projectiles = LoZGame.Instance.GameObjects.Entities.ProjectileManager.Projectiles;
+            this.enemyProjectiles = LoZGame.Instance.GameObjects.Entities.EnemyProjectiles;
+            this.enemies = LoZGame.Instance.GameObjects.Enemies.EnemyList;
             this.player = LoZGame.Instance.Link;
         }
 

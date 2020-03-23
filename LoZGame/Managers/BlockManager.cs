@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
-    public class BlockManager
+    public class BlockManager : IManager
     {
         private List<IBlock> blocks;
 
@@ -19,7 +19,6 @@
         {
             blocks.Add(block);
             if (block is FireSprite);
-           
         }
 
         public void Clear()

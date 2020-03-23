@@ -22,7 +22,7 @@
             if (!(this.player.State is DieState || this.player.State is PickupItemState || this.player.State is GrabbedState))
             {
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.Bomb, this.player);
+                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Bomb, this.player);
             }
         }
     }

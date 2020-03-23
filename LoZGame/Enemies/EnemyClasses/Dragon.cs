@@ -10,7 +10,7 @@
         {
             this.Health = new HealthManager(10);
             this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-            this.EntityManager = LoZGame.Instance.Entities;
+            this.EntityManager = LoZGame.Instance.GameObjects.Entities;
             this.CurrentState = new LeftMovingDragonState(this);
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);

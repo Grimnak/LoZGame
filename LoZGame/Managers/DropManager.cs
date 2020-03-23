@@ -70,28 +70,28 @@ namespace LoZClone
             switch (item)
             {
                 case "Rupee":
-                    LoZGame.Instance.Items.Add(new DroppedRupee(loc));
+                    LoZGame.Instance.GameObjects.Items.Add(new DroppedRupee(loc));
                     break;
                 case "YellowRupee":
-                    LoZGame.Instance.Items.Add(new DroppedYellowRupee(loc));
+                    LoZGame.Instance.GameObjects.Items.Add(new DroppedYellowRupee(loc));
                     break;
                 case "Bomb":
-                    LoZGame.Instance.Items.Add(new DroppedBomb(loc));
+                    LoZGame.Instance.GameObjects.Items.Add(new DroppedBomb(loc));
                     break;
                 case "Food":
-                    LoZGame.Instance.Items.Add(new DroppedFood(loc));
+                    LoZGame.Instance.GameObjects.Items.Add(new DroppedFood(loc));
                     break;
                 case "Potion":
-                    LoZGame.Instance.Items.Add(new DroppedPotion(loc));
+                    LoZGame.Instance.GameObjects.Items.Add(new DroppedPotion(loc));
                     break;
                 case "SecondPotion":
-                    LoZGame.Instance.Items.Add(new DroppedSecondPotion(loc));
+                    LoZGame.Instance.GameObjects.Items.Add(new DroppedSecondPotion(loc));
                     break;
                 case "Health":
-                    LoZGame.Instance.Items.Add(new DroppedHealth(loc));
+                    LoZGame.Instance.GameObjects.Items.Add(new DroppedHealth(loc));
                     break;
                 case "Fairy":
-                    LoZGame.Instance.Items.Add(new Fairy(loc));
+                    LoZGame.Instance.GameObjects.Items.Add(new Fairy(loc));
                     break;
                 default:
                     break;
@@ -107,8 +107,8 @@ namespace LoZClone
             }
         }
 
-        public void DropKey(Vector2 loc) { LoZGame.Instance.Items.Add(new Key(loc)); }
+        public void DropKey(Vector2 loc) { LoZGame.Instance.GameObjects.Items.Add(new Key(loc)); }
 
-        public void DropMagicKey(Vector2 loc) { LoZGame.Instance.Items.Add(new MagicKey(loc)); }
+        public void DropMagicKey(Vector2 loc) { LoZGame.Instance.GameObjects.Items.Add(new MagicKey(loc)); }
     }
 }

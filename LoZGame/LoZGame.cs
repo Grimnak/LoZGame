@@ -27,12 +27,9 @@
         private Texture2D background;
         private SpriteFont font;
 
-        private ItemManager itemManager;
-        private BlockManager blockManager;
-        private EntityManager entityManager;
-        private EnemyManager enemyManager;
+        private GameObjectManager gameObjectManager;
+
         private DropManager dropManager;
-        private DoorManager doorManager;
         private CollisionDetection collisionDetector;
         private DebugManager debugManager;
 
@@ -59,15 +56,7 @@
 
         public static LoZGame Instance { get { return instance; } }
 
-        public ItemManager Items { get { return itemManager; } }
-
-        public BlockManager Blocks { get { return blockManager; } }
-
-        public EntityManager Entities { get { return entityManager; } }
-
-        public EnemyManager Enemies { get { return enemyManager; } }
-
-        public DoorManager Doors { get { return doorManager; } }
+        public GameObjectManager GameObjects { get { return gameObjectManager; } }
 
         public DropManager Drops { get { return dropManager; } }
 
@@ -86,11 +75,7 @@
             this.IsMouseVisible = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
             gameState = "Default";
-            itemManager = new ItemManager();
-            blockManager = new BlockManager();
-            entityManager = new EntityManager();
-            enemyManager = new EnemyManager();
-            doorManager = new DoorManager();
+            gameObjectManager = new GameObjectManager();
             dropManager = new DropManager();
             debugManager = new DebugManager();
         }
@@ -152,12 +137,8 @@
                 controller.Update();
             }
             this.link.Update();
-            this.enemyManager.Update();
-            this.itemManager.Update();
-            this.blockManager.Update();
-            this.doorManager.Update();
-            this.entityManager.Update();
-            this.collisionDetector.Update(this.players.AsReadOnly(), this.enemyManager.EnemyList.AsReadOnly(), this.blockManager.BlockList.AsReadOnly(), this.doorManager.DoorList.AsReadOnly(), this.itemManager.ItemList.AsReadOnly(), this.entityManager.PlayerProjectiles.AsReadOnly(), this.entityManager.EnemyProjectiles.AsReadOnly());
+            this.gameObjectManager.Update();
+            this.collisionDetector.Update(this.players.AsReadOnly(), this.gameObjectManager.Enemies.EnemyList.AsReadOnly(), this.gameObjectManager.Blocks.BlockList.AsReadOnly(), this.gameObjectManager.Doors.DoorList.AsReadOnly(), this.gameObjectManager.Items.ItemList.AsReadOnly(), this.gameObjectManager.Entities.PlayerProjectiles.AsReadOnly(), this.gameObjectManager.Entities.EnemyProjectiles.AsReadOnly());
             if (DebugMode)
             {
                 this.debugManager.Update();
@@ -182,15 +163,11 @@
                 this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), dungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
             }
 
-            this.blockManager.Draw();
+            this.gameObjectManager.Draw();
             if (dungeon.CurrentRoomX == 0 && dungeon.CurrentRoomY == 2)
             {
                 this.spriteBatch.DrawString(font, this.dungeon.CurrentRoom.RoomText, new Vector2(100, 100), Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
             }
-            this.itemManager.Draw();
-            this.enemyManager.Draw();
-            this.entityManager.Draw();
-            this.doorManager.Draw();
             this.link.Draw();
             if (DebugMode)
             {
