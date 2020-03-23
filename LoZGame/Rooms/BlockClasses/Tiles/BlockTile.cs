@@ -16,7 +16,6 @@
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DungeonTint;
         private Rectangle bounds;
-        private string movableDirections = string.Empty;
 
         public Rectangle Bounds
         {

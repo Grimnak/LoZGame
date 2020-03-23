@@ -927,7 +927,7 @@
         <tile type="walkable" idx="3">floor_tile</tile>
         <tile type="walkable" idx="4">floor_tile</tile>
         <tile type="walkable" idx="5">floor_tile</tile>
-        <tile type="movable,puzzle"  idx="5" dir="">orange_movable_square</tile>
+        <tile type="movable,puzzle"  idx="5">orange_movable_square</tile>
         <tile type="walkable" idx="6">floor_tile</tile>
         <tile type="walkable" idx="7">floor_tile</tile>
         <tile type="walkable" idx="8">floor_tile</tile>
