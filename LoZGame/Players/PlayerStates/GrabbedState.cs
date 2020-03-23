@@ -76,12 +76,15 @@
             this.player.Physics.Move();
             if (this.player.Physics.Location.X < 0)
             {
-                LoZGame.Instance.Dungeon.Reset();
+                this.player.Physics.ResetVelocity();
+                this.player.State = new IdleState(this.player);
                 this.player.Physics.Location = new Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
-                this.player.Physics.ResetVelocity();
-                this.player.State = new IdleState(this.player);
+                this.player.Bounds = new Rectangle((int)this.player.Physics.Location.X, (int)this.player.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
+                LoZGame.Instance.Dungeon.CurrentRoomX = 2;
+                LoZGame.Instance.Dungeon.CurrentRoomY = 5;
+                LoZGame.Instance.Dungeon.LoadNewRoom();
             }
             this.sprite.Update();
         }

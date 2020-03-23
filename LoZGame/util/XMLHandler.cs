@@ -106,7 +106,7 @@
                 dungeon.Add(drow);
                 i++;
             }
-            return dungeon; // tmp?
+            return dungeon;
         }
     }
 }
