@@ -81,7 +81,7 @@
                 this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
                 this.tip = new Vector2(projectileWidth, projectileHeight);
             }
-            this.damage = 10;
+            this.damage = 4;
             this.expired = false;
             this.sprite = ProjectileSpriteFactory.Instance.SwordBeam(this.rotation, this.effect);
         }

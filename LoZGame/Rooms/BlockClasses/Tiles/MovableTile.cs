@@ -16,6 +16,7 @@
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DungeonTint;
         private Vector2 originalLocation;
+        private string[] invalidDirections;
 
         private Rectangle bounds;
 
@@ -29,15 +30,21 @@
 
         public Physics Physics { get; set; }
 
+        public string[] InvalidDirections
+        {
+            get { return this.invalidDirections; }
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MovableTile"/> class.
         /// </summary>
         /// <param name="location">The location of the tile.</param>
         /// <param name="name">Name of the tiles sprite.</param>
-        /// <param name="direction">Valid Directions for this.</param>
+        /// <param name="direction">Invalid Directions for this.</param>
         public MovableTile(Vector2 location, string name, string direction)
         {
             this.originalLocation = location;
+            this.invalidDirections = !string.IsNullOrEmpty(direction) ? direction.Split(',') : null;
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
             this.sprite = this.CreateCorrectSprite(name);

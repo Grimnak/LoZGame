@@ -80,10 +80,10 @@
                                 string x = block.Attribute("idx").Value, y = trow.Attribute("idx").Value;
                                 tcount++; // xml debug
                                 string[] types = block.Attribute("type").Value.Split(',');
-                                if (types.Length > 1)
+                                if (block.Attribute("dir") != null)
                                 {
-                                    droom.AddBlock(x, y, types[0], block.Value, types[1]);
-                                    Console.Write("block: " + block.Value + " type: " + block.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + block.Attribute("idx").Value + " Other: " + types[1] + "\n"); // xml debug
+                                    string direction = block.Attribute("dir").Value;
+                                    droom.AddBlock(x, y, types[0], block.Value, direction);
                                 }
                                 else
                                 {

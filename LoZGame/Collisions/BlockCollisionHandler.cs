@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using System;
+    using System.Linq;
     using Microsoft.Xna.Framework;
 
     public class BlockCollisionHandler
@@ -17,9 +18,31 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
+            bool movable = true;
             if (!(player.State is GrabbedState) && this.block is MovableTile)
             {
-                DeterminePushVelocity(player, collisionSide);
+                foreach (string direction in this.block.InvalidDirections ?? Enumerable.Empty<string>())
+                {
+                    switch (direction)
+                    {
+                        case "N":
+                            movable = !(collisionSide == CollisionDetection.CollisionSide.Bottom);
+                            break;
+                        case "S":
+                            movable = !(collisionSide == CollisionDetection.CollisionSide.Top);
+                            break;
+                        case "E":
+                            movable = !(collisionSide == CollisionDetection.CollisionSide.Right);
+                            break;
+                        case "W":
+                            movable = !(collisionSide == CollisionDetection.CollisionSide.Left);
+                            break;
+                    }
+                }
+                if (movable)
+                {
+                    DeterminePushVelocity(player, collisionSide);
+                }
             }
             else if (this.block is Tile)
             {

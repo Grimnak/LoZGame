@@ -16,12 +16,15 @@
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DungeonTint;
         private Rectangle bounds;
+        private string movableDirections = string.Empty;
 
         public Rectangle Bounds
         {
             get { return this.bounds; }
             set { this.bounds = value; }
         }
+
+        public string[] InvalidDirections { get { return null; } }
 
         private BlockCollisionHandler blockCollisionHandler;
 

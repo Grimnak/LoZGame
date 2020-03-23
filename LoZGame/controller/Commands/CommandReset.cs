@@ -29,7 +29,7 @@
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
             this.player.CurrentDirection = "Up";
             this.player.State = new IdleState(this.player);
-            this.player.Health = new HealthManager(4);
+            this.player.Health.ResetHealth();
             this.player.DamageTimer = 0;
             this.player.CurrentTint = Color.White;
 
