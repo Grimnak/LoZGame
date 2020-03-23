@@ -7,6 +7,8 @@
     {
         private readonly WallMaster wallMaster;
         private readonly DeadEnemySprite sprite;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
 
         public DeadWallMasterState(WallMaster wallMaster)
         {
@@ -14,7 +16,6 @@
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.wallMaster.CurrentState = this;
             LoZGame.Instance.Drops.AttemptDrop(this.wallMaster.Physics.Location);
-            this.wallMaster.Expired = true;
         }
 
         public void MoveLeft()
@@ -67,7 +68,12 @@
 
         public void Update()
         {
+            this.deathTimer++;
             this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.wallMaster.Expired = true;
+            }
         }
 
         public void Draw()

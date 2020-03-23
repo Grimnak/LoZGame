@@ -7,6 +7,8 @@
     {
         private readonly Dragon dragon;
         private readonly DeadEnemySprite sprite;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
 
         public DeadDragonState(Dragon dragon)
         {
@@ -14,7 +16,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.dragon.CurrentState = this;
             LoZGame.Instance.Drops.AttemptDrop(this.dragon.Physics.Location);
-            this.dragon.Expired = true;
+
         }
 
         public void MoveUp()
@@ -67,7 +69,12 @@
 
         public void Update()
         {
+            this.deathTimer++;
             this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.dragon.Expired = true;
+            }
         }
 
         public void Draw()

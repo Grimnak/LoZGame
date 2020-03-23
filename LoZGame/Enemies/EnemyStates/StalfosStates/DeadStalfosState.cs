@@ -7,15 +7,15 @@
     {
         private readonly Stalfos stalfos;
         private readonly DeadEnemySprite sprite;
-        private int frameChange;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
+
         public DeadStalfosState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.stalfos.CurrentState = this;
             LoZGame.Instance.Drops.AttemptDrop(this.stalfos.Physics.Location);
-            this.stalfos.Expired = true;
-            this.frameChange = 15;
         }
 
         public void MoveLeft()
@@ -64,14 +64,16 @@
 
         public void Stun(int stunTime)
         {
-            this.stalfos.CurrentState = new StunnedStalfosState(this.stalfos, this, stunTime);
         }
 
         public void Update()
         {
-            if (this.frameChange % 15 == 1)
-                this.sprite.Update();
-            frameChange++;
+            this.deathTimer++;
+            this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.stalfos.Expired = true;
+            }
         }
 
         public void Draw()
