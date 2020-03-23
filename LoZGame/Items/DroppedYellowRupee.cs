@@ -56,6 +56,10 @@
             {
                 this.itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
+            if (otherCollider is IProjectile)
+            {
+                this.itemCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+            }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
