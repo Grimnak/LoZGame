@@ -17,7 +17,7 @@ Jeremy Wensink.27
 
 
 ## Controls:
-W, A, S, D, Arrow Ke - Controls the Player
+W, A, S, D, Arrow Keys - Controls the Player
 
 Z, N - Attack buttons for Player
 

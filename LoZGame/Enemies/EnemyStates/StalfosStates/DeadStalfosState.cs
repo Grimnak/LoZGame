@@ -15,6 +15,7 @@
             this.stalfos = stalfos;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.stalfos.CurrentState = this;
+            this.stalfos.Bounds = Rectangle.Empty;
             LoZGame.Instance.Drops.AttemptDrop(this.stalfos.Physics.Location);
         }
 

@@ -15,6 +15,7 @@
             this.rope = rope;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.rope.CurrentState = this;
+            this.rope.Bounds = Rectangle.Empty;
             LoZGame.Instance.Drops.AttemptDrop(this.rope.Physics.Location);
         }
 

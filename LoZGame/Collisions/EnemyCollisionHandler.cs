@@ -51,7 +51,7 @@
         {
             if (this.enemy is OldMan && (projectile is ArrowProjectile || projectile is SilverArrowProjectile || projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is SwordBeamProjectile))
             {
-                ((OldMan)this.enemy).EntityManager.EnemyProjectileManager.AddOldManFireballs((OldMan)this.enemy, LoZGame.Instance.Link);
+                ((OldMan)this.enemy).ShootFireballs();
             }
             if (!(this.enemy is OldMan || this.enemy is Merchant || this.enemy is SpikeCross))
             {

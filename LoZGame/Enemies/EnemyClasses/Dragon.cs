@@ -1,10 +1,15 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System;
 
     public class Dragon : EnemyEssentials, IEnemy
     {
+        private const float FireballSpeed = 2.5f;
+        private const float FireballSpread = MathHelper.PiOver4 / 2;
+        private const int numberFireBalls = 3;
         public EntityManager EntityManager { get; set; }
+        
 
         public Dragon(Vector2 location)
         {
@@ -19,6 +24,20 @@
             this.DamageTimer = 0;
             this.MoveSpeed = 1;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
+        }
+
+        public void ShootFireballs()
+        {
+            Vector2 playerVector = this.UnitVectorToPlayer(this.Physics.Location);
+            Vector2 velocityVector = new Vector2(playerVector.X * FireballSpeed, playerVector.Y * FireballSpeed);
+            for (int i = 0; i < numberFireBalls; i++)
+            {
+                float rotation = ((-1 * ((numberFireBalls - 1) / 2)) * FireballSpread) + (i * FireballSpread);
+                Vector2 rotatedVelocity = this.RotateVector(velocityVector, rotation);
+                Vector2 fireBallLocation = new Vector2(this.Physics.Location.X, this.Physics.Location.Y);
+                Physics fireballPhysics = new Physics(fireBallLocation, rotatedVelocity, Vector2.Zero);
+                EntityManager.EnemyProjectileManager.Add(EntityManager.EnemyProjectileManager.Fireball, fireballPhysics);
+            }
         }
 
         public override void TakeDamage(int damageAmount)
