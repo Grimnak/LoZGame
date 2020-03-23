@@ -167,6 +167,7 @@
     <Compile Include="Managers\ItemType.cs" />
     <Compile Include="Managers\GameObjectManager.cs" />
     <Compile Include="Managers\ProjectileManager.cs" />
+    <Compile Include="Managers\EnemyProjectileType.cs" />
     <Compile Include="Projectiles\ArrowProjectile.cs" />
     <Compile Include="Projectiles\BlueCandleProjectile.cs" />
     <Compile Include="Projectiles\BombExplosion.cs" />

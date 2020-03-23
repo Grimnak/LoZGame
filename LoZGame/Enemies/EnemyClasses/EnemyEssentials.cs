@@ -33,6 +33,22 @@
         {
         }
 
+        public Vector2 UnitVectorToPlayer(Vector2 origin)
+        {
+            Vector2 difference = new Vector2(LoZGame.Instance.Link.Physics.Location.X - origin.X, LoZGame.Instance.Link.Physics.Location.Y - origin.Y);
+            float magnitude = (float)Math.Sqrt(Math.Pow(difference.X, 2) + Math.Pow(difference.Y, 2));
+            return new Vector2(difference.X / magnitude, difference.Y / magnitude);
+        }
+
+        public Vector2 RotateVector(Vector2 oldVector, float rot)
+        {
+            float cosRot = (float)Math.Cos(rot);
+            float sinRot = (float)Math.Sin(rot);
+            float newX = (cosRot * oldVector.X) - (sinRot * oldVector.Y);
+            float newY = (sinRot * oldVector.X) + (cosRot * oldVector.Y);
+            return new Vector2(newX, newY);
+        }
+
         public virtual void TakeDamage(int damageAmount)
         {
             if (this.DamageTimer <= 0)

@@ -15,7 +15,7 @@
 
         private Vector2 origin;
         ISprite sprite;
-        private readonly Goriya Enemy;
+        private readonly IEnemy Enemy;
         private readonly string direction;
         private ProjectileCollisionHandler collisionHandler;
         private readonly int scale = ProjectileSpriteFactory.Instance.Scale;
@@ -40,21 +40,20 @@
 
         public Rectangle Bounds { get; set; }
 
-        public BoomerangEnemy(Goriya enemy)
+        public BoomerangEnemy(IEnemy enemy, string direction)
         {
             this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight * scale;
             this.collisionHandler = new ProjectileCollisionHandler(this);
             this.expired = false;
             Vector2 loc = new Vector2(enemy.Physics.Location.X + (LinkSize / 2), enemy.Physics.Location.Y + (LinkSize / 2));
-            this.direction = enemy.Direction;
             this.isReturned = false;
             this.returning = false;
             this.Enemy = enemy;
             this.distTraveled = 0;
             this.damage = 1;
 
-            if (this.direction.Equals("Up"))
+            if (this.direction.Equals("Left"))
             {
                 this.Physics = new Physics(new Vector2(loc.X, loc.Y - (LinkSize / 2)), new Vector2(0, -1 * MaxSpeed), new Vector2(0, 0));
             }

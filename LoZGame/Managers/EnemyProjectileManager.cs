@@ -15,6 +15,10 @@
 
         public List<IProjectile> Projectiles { get { return this.projectiles; } }
 
+        public int Fireball => (int)ProjectileType.Fireball;
+
+        public int Boomerang => (int)ProjectileType.Boomerang;
+
         public EnemyProjectileManager()
         {
             this.projectileList = new Dictionary<int, IProjectile>();
@@ -24,17 +28,42 @@
             this.listSize = 0;
         }
 
-        public void AddDragonFireballs(Dragon dragon)
+        public void Add(int projectileType,  Physics physics)
+        {
+            ProjectileType projectile = (ProjectileType)projectileType;
+            this.projectileId++;
+            this.listSize++;
+            switch(projectile)
+            {
+                case ProjectileType.Fireball:
+                    projectileList.Add(projectileId, new FireballProjectile(physics));
+                    break;
+            }
+        }
+        public void Add(int projectileType, IEnemy enemy, string direction)
+        {
+            ProjectileType projectile = (ProjectileType)projectileType;
+            this.projectileId++;
+            this.listSize++;
+            switch (projectile)
+            {
+                case ProjectileType.Boomerang:
+                    projectileList.Add(projectileId, new BoomerangEnemy(enemy, direction));
+                    break;
+            }
+        }
+
+        /*public void AddDragonFireballs(Dragon dragon)
         {
             this.projectileId++;
             this.listSize++;
-            this.projectileList.Add(this.projectileId, new FireballProjectile(dragon, dragon.Physics.Location, new Vector2(-3, -1)));
+            this.projectileList.Add(this.projectileId, new FireballProjectile(dragon.Physics.Location, new Vector2(-3, -1)));
             this.projectileId++;
             this.listSize++;
-            this.projectileList.Add(this.projectileId, new FireballProjectile(dragon, dragon.Physics.Location, new Vector2(-3, 0)));
+            this.projectileList.Add(this.projectileId, new FireballProjectile(dragon.Physics.Location, new Vector2(-3, 0)));
             this.projectileId++;
             this.listSize++;
-            this.projectileList.Add(this.projectileId, new FireballProjectile(dragon, dragon.Physics.Location, new Vector2(-3, 1)));
+            this.projectileList.Add(this.projectileId, new FireballProjectile(dragon.Physics.Location, new Vector2(-3, 1)));
         }
 
         public void AddOldManFireballs(OldMan oldMan, IPlayer player)
@@ -44,10 +73,10 @@
 
             this.projectileId++;
             this.listSize++;
-            this.projectileList.Add(this.projectileId, new FireballProjectile(oldMan, leftFireBlockLocation, DetermineOldManLeftFireballVelocity(oldMan, player)));
+            this.projectileList.Add(this.projectileId, new FireballProjectile(leftFireBlockLocation, DetermineOldManLeftFireballVelocity(oldMan, player)));
             this.projectileId++;
             this.listSize++;
-            this.projectileList.Add(this.projectileId, new FireballProjectile(oldMan, rightFireBlockLocation, DetermineOldManRightFireballVelocity(oldMan, player)));
+            this.projectileList.Add(this.projectileId, new FireballProjectile(rightFireBlockLocation, DetermineOldManRightFireballVelocity(oldMan, player)));
         }
 
         private Vector2 DetermineOldManLeftFireballVelocity(OldMan oldMan, IPlayer player)
@@ -70,14 +99,7 @@
             float rightBlockDiffTotal = (float)Math.Sqrt(Math.Pow(rightBlockDiffX, 2) + Math.Pow(rightBlockDiffY, 2));
 
             return new Vector2(rightBlockDiffX / rightBlockDiffTotal * 2, rightBlockDiffY / rightBlockDiffTotal * 2);
-        }
-
-        public void AddEnemyRang(Goriya enemy)
-        {
-            this.projectileId++;
-            this.listSize++;
-            this.projectileList.Add(this.projectileId, new BoomerangEnemy(enemy));
-        }
+        }*/
 
         public void Remove(int instance)
         {
