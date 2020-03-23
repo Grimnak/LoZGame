@@ -63,7 +63,7 @@
                 this.BoundsOffset = new Vector2(this.projectileWidth / 2, this.projectileHeight / 2);
                 this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileWidth, projectileHeight);
             }
-            this.damage = 10;
+            this.damage = 8;
             this.sprite = ProjectileSpriteFactory.Instance.SilverArrow(this.rotation);
         }
 

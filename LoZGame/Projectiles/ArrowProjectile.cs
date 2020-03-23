@@ -43,7 +43,7 @@ namespace LoZClone
             this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * ProjectileSpriteFactory.Instance.Scale;
             this.collisionHandler = new ProjectileCollisionHandler(this);
             this.lifeTime = 100;
-            this.damage = 1;
+            this.damage = 4;
             this.expired = false;
             loc = new Vector2(loc.X + (LinkSize / 2), loc.Y + (LinkSize / 2));
             if (direction.Equals("Up"))
