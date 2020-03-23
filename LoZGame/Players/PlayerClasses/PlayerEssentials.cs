@@ -60,7 +60,7 @@
                 }
                 else
                 {
-                    this.CurrentTint = Color.White;
+                    this.CurrentTint = LoZGame.Instance.DungeonTint;
                 }
                 this.DamagePushback();
             }

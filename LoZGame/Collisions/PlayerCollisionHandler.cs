@@ -1,6 +1,5 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
 
     public class PlayerCollisionHandler
@@ -73,6 +72,10 @@
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
         {
+            if (door.State is LockedDoorState || door.State is HiddenDoorState)
+            {
+                PreventDoorEntry(door);
+            }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
@@ -126,6 +129,26 @@
             {
                 xDirection = -1;
                 yDirection = 0;
+            }
+        }
+
+        private void PreventDoorEntry(IDoor door)
+        {
+            if (door.Physics.Location == door.LeftScreenLoc)
+            {
+                player.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, player.Physics.Location.Y);
+            }
+            else if (door.Physics.Location == door.RightScreenLoc)
+            {
+                player.Physics.Location = new Vector2(door.RightScreenLoc.X - LinkSpriteFactory.LinkWidth - 7, player.Physics.Location.Y);
+            }
+            else if (door.Physics.Location == door.DownScreenLoc)
+            {
+                player.Physics.Location = new Vector2(player.Physics.Location.X, door.DownScreenLoc.Y - LinkSpriteFactory.LinkHeight);
+            }
+            else if (door.Physics.Location == door.UpScreenLoc)
+            {
+                player.Physics.Location = new Vector2(player.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
             }
         }
     }

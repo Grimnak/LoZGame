@@ -11,7 +11,6 @@
         private int lifeTime = 0;
         private readonly int directionChange = 40;
         private RandomStateGenerator randomStateGenerator;
-        //private EntityManager entity;
 
         public AttackingGoriyaState(Goriya goriya)
         {

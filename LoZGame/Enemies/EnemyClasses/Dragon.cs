@@ -1,6 +1,5 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
 
     public class Dragon : EnemyEssentials, IEnemy
@@ -44,7 +43,7 @@
                 }
                 else
                 {
-                    this.CurrentTint = Color.White;
+                    this.CurrentTint = LoZGame.Instance.DungeonTint;
                 }
             }
         }

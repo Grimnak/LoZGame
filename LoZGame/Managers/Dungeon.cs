@@ -26,7 +26,6 @@
         /// Initializes a new instance of the <see cref="Dungeon"/> class.
         /// </summary>
         /// <param name="filePath">File path of the document to parse.</param>
-        /// <param name="player">Player whose location to update.</param>
         public Dungeon(string filePath)
         {
             this.currentDungeonFile = filePath;

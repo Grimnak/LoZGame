@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     /// <summary>
     /// Immobilized state for player when Wall Master has control of him.
     /// </summary>
@@ -72,6 +72,7 @@ namespace LoZClone
         public void Update()
         {
             wallMaster.Physics.Location = player.Physics.Location;
+            player.Physics.Velocity = wallMaster.Physics.Velocity;
             this.player.Physics.Move();
             if (this.player.Physics.Location.X < 0)
             {

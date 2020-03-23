@@ -66,7 +66,7 @@
                 }
                 else
                 {
-                    this.CurrentTint = Color.White;
+                    this.CurrentTint = LoZGame.Instance.DungeonTint;
                 }
                 this.DamagePushback();
             }
@@ -85,7 +85,7 @@
             this.CurrentState.Draw();
         }
 
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        public virtual void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IPlayer)
             {

@@ -56,17 +56,14 @@ namespace LoZClone
 
         public void Close()
         {
-            Console.WriteLine("Cannot Close Hidden Door!");
         }
 
         public void Draw()
         {
-            // Draw Nothing
         }
 
         public void Open()
         {
-            Console.WriteLine("Cannot Open Hidden Door!");
         }
 
         public void Update()

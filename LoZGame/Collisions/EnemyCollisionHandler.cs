@@ -1,6 +1,5 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
 
     public class EnemyCollisionHandler
@@ -18,39 +17,33 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if (enemy is WallMaster)
+            if (this.enemy is WallMaster)
             {
-                    this.enemy.CurrentState.Attack();
-                    this.enemy.Physics.Velocity = new Vector2(-2, 0);
-
-                    // Player velocity is changed here rather than player collision because player collision is checked before new Wall Master velocity is set
-                    player.Physics.Velocity = this.enemy.Physics.Velocity;
+                this.enemy.CurrentState.Attack();
+                this.enemy.Physics.Velocity = new Vector2(-2, 0);
             }
         }
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(this.enemy.CurrentState is AttackingWallMasterState) && !(this.enemy is Keese))
+            if (block is BlockTile || block is MovableTile)
             {
-                    if (block is BlockTile || block is MovableTile)
-                    {
-                        if (collisionSide == CollisionDetection.CollisionSide.Right)
-                        {
-                            this.enemy.Physics.Location = new Vector2(block.Physics.Location.X - EnemySpriteFactory.GetEnemyWidth(enemy), this.enemy.Physics.Location.Y);
-                        }
-                        else if (collisionSide == CollisionDetection.CollisionSide.Left)
-                        {
-                            this.enemy.Physics.Location = new Vector2(block.Physics.Location.X + BlockSpriteFactory.Instance.TileWidth, this.enemy.Physics.Location.Y);
-                        }
-                        else if (collisionSide == CollisionDetection.CollisionSide.Top)
-                        {
-                            this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, block.Physics.Location.Y + BlockSpriteFactory.Instance.TileHeight);
-                        }
-                        else
-                        {
-                            this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, block.Physics.Location.Y - EnemySpriteFactory.GetEnemyHeight(enemy));
-                        }
-                    }
+                if (collisionSide == CollisionDetection.CollisionSide.Right)
+                {
+                    this.enemy.Physics.Location = new Vector2(block.Physics.Location.X - EnemySpriteFactory.GetEnemyWidth(enemy), this.enemy.Physics.Location.Y);
+                }
+                else if (collisionSide == CollisionDetection.CollisionSide.Left)
+                {
+                    this.enemy.Physics.Location = new Vector2(block.Physics.Location.X + BlockSpriteFactory.Instance.TileWidth, this.enemy.Physics.Location.Y);
+                }
+                else if (collisionSide == CollisionDetection.CollisionSide.Top)
+                {
+                    this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, block.Physics.Location.Y + BlockSpriteFactory.Instance.TileHeight);
+                }
+                else
+                {
+                    this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, block.Physics.Location.Y - EnemySpriteFactory.GetEnemyHeight(enemy));
+                }
             }
         }
 

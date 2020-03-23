@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     public class Door : IDoor
     {
-        private string location; // relative location on screen
+        private string location;
 
         private readonly Vector2 upScreenLoc = new Vector2(363, 12);
         private readonly Vector2 downScreenLoc = new Vector2(363, 480 - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight);
@@ -19,9 +14,7 @@ namespace LoZClone
         
         private readonly Vector2 leftScreenLoc = new Vector2(19, 195);
 
-        private IDoorState state; // current state
-
-        private Door Cousin; // for bombed doors only (maybe puzzle/special too?)
+        private IDoorState state;
 
         public IDoorState State
         {
@@ -126,13 +119,12 @@ namespace LoZClone
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            Console.WriteLine("Door.cs CollisionResponse: " + otherCollider.GetType());
-            if (otherCollider is IPlayer && !(this.state is CosmeticDoorState))
+            if (otherCollider is IPlayer && !(this.state is CosmeticDoorState || this.state is HiddenDoorState))
             {
                 this.doorCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            } else if (otherCollider is IProjectile)
+            }
+            else if (otherCollider is IProjectile)
             {
-                Console.WriteLine("Door.cs Projectile boi " + otherCollider.GetType());
                 this.doorCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
         }

@@ -1,14 +1,10 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
 
     public class Gel : EnemyEssentials, IEnemy
     {
-        public bool ShouldMove
-        {
-            get; set;
-        }
+        public bool ShouldMove { get; set; }
 
         public Gel(Vector2 location)
         {
