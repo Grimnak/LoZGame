@@ -53,15 +53,15 @@
             this.distTraveled = 0;
             this.damage = 1;
 
-            if (this.direction.Equals("Left"))
+            if (direction.Equals("Up"))
             {
                 this.Physics = new Physics(new Vector2(loc.X, loc.Y - (LinkSize / 2)), new Vector2(0, -1 * MaxSpeed), new Vector2(0, 0));
             }
-            else if (this.direction.Equals("Left"))
+            else if (direction.Equals("Left"))
             {
                 this.Physics = new Physics(new Vector2(loc.X - (LinkSize / 2), loc.Y), new Vector2(-1 * MaxSpeed, 0), new Vector2(0, 0));
             }
-            else if (this.direction.Equals("Right"))
+            else if (direction.Equals("Right"))
             {
                 this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(MaxSpeed, 0), new Vector2(0, 0));
             }

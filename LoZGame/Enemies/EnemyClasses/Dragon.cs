@@ -8,8 +8,8 @@
         private const float FireballSpeed = 2.5f;
         private const float FireballSpread = MathHelper.PiOver4 / 2;
         private const int numberFireBalls = 3;
+
         public EntityManager EntityManager { get; set; }
-        
 
         public Dragon(Vector2 location)
         {
@@ -52,19 +52,13 @@
             {
                 this.CurrentState.Die();
             }
+        }
 
-            if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
-            {
-                this.DamageTimer--;
-                if (this.DamageTimer % 10 > 5)
-                {
-                    this.CurrentTint = Color.DarkSlateGray;
-                }
-                else
-                {
-                    this.CurrentTint = LoZGame.Instance.DungeonTint;
-                }
-            }
+        public override void Update()
+        {
+            this.HandleDamage();
+            this.CurrentState.Update();
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, this.Bounds.Width, this.Bounds.Height);
         }
     }
 }

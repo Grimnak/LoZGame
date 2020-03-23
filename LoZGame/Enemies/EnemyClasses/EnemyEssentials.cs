@@ -5,9 +5,7 @@
 
     public abstract class EnemyEssentials
     {
-        private Rectangle bounds;
-
-        public Rectangle Bounds { get { return bounds; } set { bounds = value; } }
+        public Rectangle Bounds { get; set; }
 
         public EnemyCollisionHandler EnemyCollisionHandler { get; set; }
 
@@ -64,14 +62,14 @@
 
         private void DamagePushback()
         {
-            if (Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0)
+            if ((Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0) && this.Health.CurrentHealth > 0)
             {
                 this.Physics.Move();
                 this.Physics.Accelerate();
             }
         }
 
-        private void HandleDamage()
+        public void HandleDamage()
         {
             if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
             {
@@ -84,16 +82,15 @@
                 {
                     this.CurrentTint = LoZGame.Instance.DungeonTint;
                 }
-                this.DamagePushback();
             }
         }
 
         public virtual void Update()
         {
             this.HandleDamage();
+            this.DamagePushback();
             this.CurrentState.Update();
-            this.bounds.X = (int)this.Physics.Location.X;
-            this.bounds.Y = (int)this.Physics.Location.Y;
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, this.Bounds.Width, this.Bounds.Height);
         }
 
         public virtual void Draw()

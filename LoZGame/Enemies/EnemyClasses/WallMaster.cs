@@ -18,6 +18,11 @@
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
+        public override void Stun(int stunTime)
+        {
+            this.CurrentState.Stun(stunTime);
+        }
+
         public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IPlayer)

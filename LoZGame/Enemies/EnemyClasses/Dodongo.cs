@@ -17,5 +17,12 @@
             this.MoveSpeed = 1;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
+
+        public override void Update()
+        {
+            this.HandleDamage();
+            this.CurrentState.Update();
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, this.Bounds.Width, this.Bounds.Height);
+        }
     }
 }
