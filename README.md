@@ -25,8 +25,6 @@ Q - Exits the game
 
 R - Resets the game to its default state
 
-E - Damages the player
-
 1 - Places a Bomb
 
 2, 5 - Fires an Arrow/Silver Arrow
