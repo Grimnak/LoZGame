@@ -5,7 +5,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class ExplosionManager
+    public class ExplosionManager : IManager
     {
         private enum ExplosionType
         {
@@ -102,6 +102,11 @@
             {
                 explosion.Value.Draw();
             }
+        }
+
+        public void Clear()
+        {
+            this.explosions.Clear();
         }
     }
 }

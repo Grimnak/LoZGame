@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System.Collections.Generic;
 
-    public class EntityManager
+    public class EntityManager : IManager
     {
         private ProjectileManager projectile;
         private ExplosionManager explosion;

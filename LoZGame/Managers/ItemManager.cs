@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
-    public partial class ItemManager
+    public partial class ItemManager : IManager
     {
         private Dictionary<int, IItem> itemList;
         private int itemListSize;

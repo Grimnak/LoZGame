@@ -4,7 +4,7 @@
     using System;
     using System.Collections.Generic;
 
-    public partial class EnemyProjectileManager
+    public partial class EnemyProjectileManager : IManager
     {
         private const int Scale = 2;
         private readonly Dictionary<int, IProjectile> projectileList;
@@ -120,6 +120,11 @@
                 projectile.Value.Draw();
             }
 
+        }
+
+        public void Clear()
+        {
+            this.projectileList.Clear();
         }
     }
 }
