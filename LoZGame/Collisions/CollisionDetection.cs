@@ -21,7 +21,7 @@
             CheckPlayers(players, enemies, enemyProjectiles, doors, items);
             CheckEnemies(enemies, playerProjectiles);
             CheckBlocks(blocks, players, enemies);
-            CheckItems(items);
+            CheckItems(items, playerProjectiles);
             CheckProjectiles(playerProjectiles, enemyProjectiles, doors);
 
             // Unable to change rooms mid-foreach loop, so set a flag and change directly after.
@@ -83,13 +83,16 @@
             }
         }
 
-        private void CheckItems(ReadOnlyCollection<IItem> items)
+        private void CheckItems(ReadOnlyCollection<IItem> items, ReadOnlyCollection<IProjectile> projectiles)
         {
             foreach (IItem item in items)
             {
                 if (item is Fairy)
                 {
                     CheckBorders(item, ItemSpriteFactory.FairyWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.FairyHeight * ItemSpriteFactory.Instance.Scale);
+                } else
+                {
+                    CheckCollisions<IProjectile>(item, projectiles);
                 }
             }
         }
