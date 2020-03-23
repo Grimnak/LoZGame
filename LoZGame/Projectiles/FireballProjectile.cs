@@ -36,16 +36,10 @@ namespace LoZClone
 
         public Rectangle Bounds { get; set; }
 
-        public FireballProjectile(ICollider collider, Vector2 location, Vector2 velocity)
+        public FireballProjectile(Physics physics)
         {
-            if (collider is Dragon || collider is OldMan)
-            {
-                this.collider = collider;
-                this.Physics = new Physics(location, velocity, new Vector2(0, 0));
-            }
-
+            this.Physics = physics;
             this.collisionHandler = new ProjectileCollisionHandler(this);
-            float size = (ProjectileSpriteFactory.Instance.FireballHeight * ProjectileSpriteFactory.Instance.Scale) * 1.5f;
             this.Size = new Vector2(ProjectileSpriteFactory.Instance.FireballHeight * ProjectileSpriteFactory.Instance.Scale, ProjectileSpriteFactory.Instance.FireballWidth * ProjectileSpriteFactory.Instance.Scale * 1.5f);
             this.Bounds = new Rectangle((int)this.Physics.Location.X - ProjectileSpriteFactory.Instance.FireballHeight, (int)this.Physics.Location.Y - ProjectileSpriteFactory.Instance.FireballWidth, (int)this.Size.X, (int)this.Size.Y);
             this.sprite = ProjectileSpriteFactory.Instance.Fireball();
@@ -79,8 +73,8 @@ namespace LoZClone
                 this.sprite.Update();
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X - ProjectileSpriteFactory.Instance.FireballHeight, (int)this.Physics.Location.Y - ProjectileSpriteFactory.Instance.FireballWidth, (int)this.Size.X, (int)this.Size.Y);
-
             this.Physics.Move();
+            this.Physics.Accelerate();
         }
 
         public void Draw()

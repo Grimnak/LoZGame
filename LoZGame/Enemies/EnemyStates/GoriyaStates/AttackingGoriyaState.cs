@@ -11,10 +11,12 @@
         private int lifeTime = 0;
         private readonly int directionChange = 40;
         private RandomStateGenerator randomStateGenerator;
+        private bool boomerangThrown;
 
         public AttackingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
+            this.boomerangThrown = false;
             switch (goriya.Direction)
             {
                 case "Left":
@@ -78,6 +80,7 @@
 
         public void Attack()
         {
+            this.boomerangThrown = false;
         }
 
         public void Stop()
@@ -96,16 +99,17 @@
 
         public void Update()
         {
-            if (this.goriya.Cooldown == 0)
+            if (!boomerangThrown)
             {
-                this.goriya.Cooldown = 240;
-                this.goriya.EntityManager.EnemyProjectileManager.AddEnemyRang(this.goriya);
+                boomerangThrown = true;
+                this.goriya.EntityManager.EnemyProjectileManager.Add(LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Boomerang, this.goriya, this.goriya.Direction);
             }
             this.lifeTime++;
             if (this.lifeTime > this.directionChange)
             {
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
+                this.boomerangThrown = false;
             }
             this.sprite.Update();
         }
