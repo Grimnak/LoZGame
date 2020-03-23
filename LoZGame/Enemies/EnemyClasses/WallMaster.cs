@@ -1,8 +1,6 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
     public class WallMaster : EnemyEssentials, IEnemy
     {
@@ -18,6 +16,18 @@
             this.DamageTimer = 0;
             this.MoveSpeed = 1;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
+        }
+
+        public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IPlayer)
+            {
+                this.EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IProjectile)
+            {
+                this.EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+            }
         }
     }
 }

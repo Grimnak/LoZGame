@@ -108,12 +108,12 @@
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
                 }
             }
-            // Check borders for basement eception
+            // Check borders for basement exception
             else
             {
                 if (sourceCollider.Physics.Location.Y < 0)
                 {
-                    if (sourceCollider is Link)
+                    if (sourceCollider is IPlayer)
                     {
                         dungeon.MoveUp();
                     }
