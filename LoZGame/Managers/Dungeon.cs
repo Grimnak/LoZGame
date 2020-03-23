@@ -42,11 +42,13 @@
         public int CurrentRoomX
         {
             get { return currentX; }
+            set { currentX = value; }
         }
 
         public int CurrentRoomY
         {
             get { return currentY; }
+            set { currentY = value; }
         }
 
         public Room CurrentRoom
