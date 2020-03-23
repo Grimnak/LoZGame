@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class DroppedBomb : IItem
+    internal class DroppedBomb : IItem , IDrop
     {
         private static readonly int DespawnTimer = LoZGame.Instance.UpdateSpeed * 20;
         private static readonly int SpawnTimer = LoZGame.Instance.UpdateSpeed * 1;
@@ -16,6 +16,12 @@
         private float layer;
         private int lifeTime;
         private bool expired;
+        private IProjectile boomerang;
+        private bool grabbed;
+
+        public IProjectile Boomerang { get { return this.boomerang; } set { this.boomerang = value; } }
+
+        public bool IsGrabbed { get { return grabbed; } set { this.grabbed = value; } }
 
         public int PickUpItemTime { get { return -1; } }
 
@@ -34,6 +40,7 @@
             this.lifeTime = 0;
             this.expired = false;
             this.itemCollisionHandler = new ItemCollisionHandler(this);
+            this.grabbed = false;
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
@@ -42,9 +49,12 @@
             {
                 this.itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
-            if (otherCollider is IProjectile)
+            if (!grabbed)
             {
-                this.itemCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+                if (otherCollider is IProjectile)
+                {
+                    this.itemCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+                }
             }
         }
 
@@ -58,6 +68,11 @@
             this.Physics.Acceleration = new Vector2(0, this.Physics.Acceleration.Y * -1);
         }
 
+        private void TrackBoomerang()
+        {
+            this.Physics.Velocity = new Vector2(this.boomerang.Physics.Velocity.X, this.boomerang.Physics.Velocity.Y);
+        }
+
         public void Update()
         {
             this.lifeTime++;
@@ -67,9 +82,13 @@
             {
                 this.expired = true;
             }
-            if (this.lifeTime % 20 == 0)
+            if (this.lifeTime % 20 == 0 && !grabbed)
             {
                 this.ReverseBob();
+            }
+            if (grabbed)
+            {
+                this.TrackBoomerang();
             }
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
         }
