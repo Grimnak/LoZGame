@@ -7,6 +7,8 @@
     {
         private readonly Goriya goriya;
         private readonly DeadEnemySprite sprite;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
 
         public DeadGoriyaState(Goriya goriya)
         {
@@ -14,7 +16,6 @@
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.goriya.CurrentState = this;
             LoZGame.Instance.Drops.AttemptDrop(this.goriya.Physics.Location);
-            this.goriya.Expired = true;
         }
 
         public void MoveLeft()
@@ -67,7 +68,12 @@
 
         public void Update()
         {
+            this.deathTimer++;
             this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.goriya.Expired = true;
+            }
         }
 
         public void Draw()

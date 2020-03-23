@@ -7,6 +7,8 @@
     {
         private readonly Rope rope;
         private readonly DeadEnemySprite sprite;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
 
         public DeadRopeState(Rope rope)
         {
@@ -14,7 +16,6 @@
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.rope.CurrentState = this;
             LoZGame.Instance.Drops.AttemptDrop(this.rope.Physics.Location);
-            this.rope.Expired = true;
         }
 
         public void MoveLeft()
@@ -67,7 +68,12 @@
 
         public void Update()
         {
+            this.deathTimer++;
             this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.rope.Expired = true;
+            }
         }
 
         public void Draw()

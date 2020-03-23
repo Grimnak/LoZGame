@@ -7,6 +7,8 @@
     {
         private readonly Zol zol;
         private readonly DeadEnemySprite sprite;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
 
         public DeadZolState(Zol zol)
         {
@@ -15,7 +17,6 @@
             this.zol.CurrentState = this;
             this.zol.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.zol.Physics.Location);
-            this.zol.Expired = true;
         }
 
         public void MoveLeft()
@@ -68,7 +69,12 @@
 
         public void Update()
         {
+            this.deathTimer++;
             this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.zol.Expired = true;
+            }
         }
 
         public void Draw()
