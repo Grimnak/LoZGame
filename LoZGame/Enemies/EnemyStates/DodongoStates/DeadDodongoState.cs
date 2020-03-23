@@ -14,6 +14,7 @@
         {
             this.dodongo = dodongo;
             this.dodongo.CurrentState = this;
+            this.dodongo.Bounds = Rectangle.Empty;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             LoZGame.Instance.Drops.AttemptDrop(this.dodongo.Physics.Location);
         }

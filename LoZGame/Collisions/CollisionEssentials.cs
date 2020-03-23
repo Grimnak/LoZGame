@@ -124,24 +124,15 @@
                 }
                 else if (sourceCollider.Physics.Location.Y > LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight)
                 {
-                    if (sourceCollider is Keese)
-                    {
-                        sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
-                    }
+                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
                 }
                 else if (sourceCollider.Physics.Location.X < 0)
                 {
-                    if (sourceCollider is Keese)
-                    {
-                        sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Left);
-                    }
+                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Left);
                 }
                 else if (sourceCollider.Physics.Location.X > LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth)
                 {
-                    if (sourceCollider is Keese)
-                    {
-                        sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
-                    }
+                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
                 }
             }
         }
