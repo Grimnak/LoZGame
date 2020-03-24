@@ -20,13 +20,13 @@
 
         void MoveDownRight();
 
-        void TakeDamage(int damageAmount);
-
         void Attack();
 
         void Stop();
 
         void Die();
+
+        void Stun(int stunTime);
 
         void Update();
 

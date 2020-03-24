@@ -25,8 +25,8 @@
         private static readonly int explosionWidth = 48;
         private static readonly int fireballWidth = 8;
         private static readonly int fireballHeight = 10;
-        private static readonly int swordWidth = 40;
-        private static readonly int swordHeight = 40;
+        private static readonly int swordWidth = LinkSpriteFactory.LinkWidth;
+        private static readonly int swordHeight = LinkSpriteFactory.LinkHeight;
 
         public int SwordWidth
         {
@@ -130,7 +130,7 @@
             {
                 return standardWidth * DRAWSCALE;
             }
-            else if (projectile is DragonFireBall)
+            else if (projectile is FireballProjectile)
             {
                 return fireballWidth * DRAWSCALE;
             }
@@ -174,7 +174,7 @@
             {
                 return boomerangHeight * DRAWSCALE;
             }
-            else if (projectile is DragonFireBall)
+            else if (projectile is FireballProjectile)
             {
                 return fireballHeight * DRAWSCALE;
             }
@@ -259,9 +259,9 @@
             this.greenWoodSwordSpriteSheet = content.Load<Texture2D>(this.greenWoodSwordData.FilePath);
         }
 
-        public GreenWoodSwordSprite GreenWoodSword(float rotation)
+        public GreenWoodSwordSprite GreenWoodSword(float rotation, SpriteEffects effect)
         {
-            return new GreenWoodSwordSprite(this.greenWoodSwordSpriteSheet, this.greenWoodSwordData, rotation);
+            return new GreenWoodSwordSprite(this.greenWoodSwordSpriteSheet, this.greenWoodSwordData, rotation, effect);
         }
 
         public FireballSprite Fireball()
@@ -304,14 +304,14 @@
             return new BlueCandleProjectileSprite(this.flameSpriteSheet, this.flameData, DRAWSCALE / 2);
         }
 
-        public SwordBeamProjectileSprite SwordBeam(float rotation)
+        public SwordBeamProjectileSprite SwordBeam(float rotation, SpriteEffects effect)
         {
-            return new SwordBeamProjectileSprite(this.swordBeamSpriteSheet, this.swordBeamData, rotation, DRAWSCALE);
+            return new SwordBeamProjectileSprite(this.swordBeamSpriteSheet, this.swordBeamData, rotation, effect, DRAWSCALE);
         }
 
-        public SwordBeamExplosionSprite SwordExplosion(SpriteEffects effect, float rotation)
+        public SwordBeamExplosionSprite SwordExplosion(SpriteEffects effect)
         {
-            return new SwordBeamExplosionSprite(this.swordExplosionSpriteSheet, this.swordExplosionData, effect, rotation, DRAWSCALE);
+            return new SwordBeamExplosionSprite(this.swordExplosionSpriteSheet, this.swordExplosionData, effect, DRAWSCALE);
         }
 
         public BombExplosionSprite BombExplosionOne()

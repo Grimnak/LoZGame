@@ -27,6 +27,8 @@
 
         public string Name { get; }
 
+        public string[] InvalidDirections { get { return null; } }
+
         private BlockCollisionHandler blockCollisionHandler;
 
         /// <summary>

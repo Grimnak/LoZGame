@@ -3,7 +3,7 @@ namespace LoZClone
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
-    public class EnemyManager
+    public class EnemyManager : IManager
     {
         private Dictionary<int, IEnemy> enemyList;
         private int enemyID;
@@ -23,8 +23,11 @@ namespace LoZClone
 
         public void Add(IEnemy enemy)
         {
-            enemyList.Add(enemyID, enemy);
-            enemyID++;
+            if (!enemy.Expired)
+            {
+                enemyList.Add(enemyID, enemy);
+                enemyID++;
+            }
         }
 
         public void RemoveEnemy(int instance)

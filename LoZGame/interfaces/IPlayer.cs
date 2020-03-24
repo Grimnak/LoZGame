@@ -14,6 +14,7 @@
 
         HealthManager Health { get; set; }
 
+        bool HasKey { get; set; } 
         /// <summary>
         /// Gets or sets the current weapon of the player.
         /// </summary>
@@ -37,7 +38,7 @@
         /// <summary>
         /// Gets or sets the current speed of the player.
         /// </summary>
-        int MoveSpeed { get; set; }
+        float MoveSpeed { get; set; }
 
         /// <summary>
         /// Gets or sets the damage timer of the player.

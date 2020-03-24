@@ -16,17 +16,16 @@
             this.player = player;
         }
 
-
         /// <inheritdoc/>
         public void Execute()
         {
-            if (!(this.player.State is DieState || this.player.State is PickupItemState) && !LoZGame.Instance.Entities.ProjectileManager.PrimaryAttackLock)
+            if (!(this.player.State is DieState || this.player.State is PickupItemState || this.player.State is GrabbedState) && !LoZGame.Instance.GameObjects.Entities.ProjectileManager.PrimaryAttackLock)
             {
                 this.player.Attack();
-                LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.WoodenSword, this.player);
+                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.WoodenSword, this.player);
                 if (this.player.Health.CurrentHealth == this.player.Health.MaxHealth)
                 {
-                    LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.Swordbeam, this.player);
+                    LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Swordbeam, this.player);
                 }
             }
         }

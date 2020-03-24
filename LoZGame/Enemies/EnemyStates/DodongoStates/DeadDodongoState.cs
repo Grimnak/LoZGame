@@ -5,17 +5,18 @@
 
     public class DeadDodongoState : IEnemyState
     {
-        private readonly Dodongo dodongo;
+        private readonly IEnemy dodongo;
         private readonly ISprite sprite;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
 
-        public DeadDodongoState(Dodongo dodongo)
+        public DeadDodongoState(IEnemy dodongo)
         {
-            this.dodongo.CurrentState = this;
             this.dodongo = dodongo;
+            this.dodongo.CurrentState = this;
+            this.dodongo.Bounds = Rectangle.Empty;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
-            this.dodongo.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.dodongo.Physics.Location);
-            this.dodongo.Expired = true;
         }
 
         public void MoveLeft()
@@ -58,22 +59,27 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
+        public void Die()
         {
         }
 
-        public void Die()
+        public void Stun(int stunTime)
         {
         }
 
         public void Update()
         {
+            this.deathTimer++;
             this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.dodongo.Expired = true;
+            }
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.dodongo.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.dodongo.Physics.Location, this.dodongo.CurrentTint);
         }
     }
 }

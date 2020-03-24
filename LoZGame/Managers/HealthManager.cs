@@ -11,12 +11,14 @@ namespace LoZClone
         private int maxHealth;
         private int currentHealth;
 
-        public int MaxHealth {
+        public int MaxHealth
+        {
             get { return maxHealth; }
             set { maxHealth = value; }
         }
 
-        public int CurrentHealth {
+        public int CurrentHealth
+        {
             get { return currentHealth; }
             set { currentHealth = value; }
         }
@@ -39,6 +41,11 @@ namespace LoZClone
             {
                 this.currentHealth = maxHealth;
             }
+        }
+
+        public void ResetHealth()
+        {
+            this.currentHealth = maxHealth;
         }
     }
 }

@@ -15,12 +15,13 @@
             Bottom
         }
 
-        private void CheckCollisions<T>(ICollider sourceCollider, ReadOnlyCollection<T> targetColliders)
+        private bool CheckCollisions<T>(ICollider sourceCollider, ReadOnlyCollection<T> targetColliders)
         {
             ICollider targetCollider = null;
             CollisionSide biggestSourceSide = CollisionSide.None;
             CollisionSide biggestTargetSide = CollisionSide.None;
             float biggestOverlapArea = 0;
+            bool currentlyColliding;
 
             // Identify largest collision in case of multiple occurring at once.
             foreach (ICollider collider in targetColliders)
@@ -43,7 +44,14 @@
             {
                 sourceCollider.OnCollisionResponse(targetCollider, biggestSourceSide);
                 targetCollider.OnCollisionResponse(sourceCollider, biggestTargetSide);
+                currentlyColliding = true;
             }
+            else
+            {
+                currentlyColliding = false;
+            }
+
+            return currentlyColliding;
         }
 
         private CollisionSide GetCollisionSide(Rectangle sourceRectangle, Rectangle targetRectangle)
@@ -75,10 +83,11 @@
 
         private void CheckBorders(ICollider sourceCollider, int sourceWidth, int sourceHeight)
         {
+            // Check borders for all rooms except basement
             if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
             {
                 // is right wall
-                if (sourceCollider.Bounds.Left + sourceWidth > LoZGame.Instance.GraphicsDevice.Viewport.Width - BlockSpriteFactory.Instance.HorizontalOffset + 10)
+                if (sourceCollider.Bounds.Right > LoZGame.Instance.GraphicsDevice.Viewport.Width - BlockSpriteFactory.Instance.HorizontalOffset + 10)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
                 }
@@ -89,24 +98,41 @@
                 }
 
                 // is bottom wall
-                if (sourceCollider.Bounds.Top + sourceHeight > LoZGame.Instance.GraphicsDevice.Viewport.Height - BlockSpriteFactory.Instance.VerticalOffset)
+                if (sourceCollider.Bounds.Bottom > LoZGame.Instance.GraphicsDevice.Viewport.Height - BlockSpriteFactory.Instance.VerticalOffset)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
                 }
                 // is top wall
                 else if (sourceCollider.Bounds.Top < BlockSpriteFactory.Instance.VerticalOffset)
                 {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight,CollisionSide.Top);
+                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
                 }
             }
+            // Check borders for basement exception
             else
             {
                 if (sourceCollider.Physics.Location.Y < 0)
                 {
-                    if (sourceCollider is Link)
+                    if (sourceCollider is IPlayer)
                     {
                         dungeon.MoveUp();
                     }
+                    else
+                    {
+                        sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
+                    }
+                }
+                else if (sourceCollider.Physics.Location.Y > LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight)
+                {
+                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
+                }
+                else if (sourceCollider.Physics.Location.X < 0)
+                {
+                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Left);
+                }
+                else if (sourceCollider.Physics.Location.X > LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth)
+                {
+                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
                 }
             }
         }

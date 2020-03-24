@@ -7,15 +7,16 @@
     {
         private readonly WallMaster wallMaster;
         private readonly DeadEnemySprite sprite;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
 
         public DeadWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.wallMaster.CurrentState = this;
-            this.wallMaster.Physics.ResetVelocity();
+            this.wallMaster.Bounds = Rectangle.Empty;
             LoZGame.Instance.Drops.AttemptDrop(this.wallMaster.Physics.Location);
-            this.wallMaster.Expired = true;
         }
 
         public void MoveLeft()
@@ -58,22 +59,27 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
+        public void Die()
         {
         }
 
-        public void Die()
+        public void Stun(int stunTime)
         {
         }
 
         public void Update()
         {
+            this.deathTimer++;
             this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.wallMaster.Expired = true;
+            }
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.wallMaster.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.wallMaster.Physics.Location, this.wallMaster.CurrentTint);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
 
     public class PlayerCollisionHandler
@@ -18,13 +17,18 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(enemy is OldMan || enemy is Merchant || enemy is WallMaster))
+            if (enemy is WallMaster)
+            {
+                this.player.State = new GrabbedState(player, (WallMaster)enemy);
+            }
+            else if (enemy is OldMan || enemy is Merchant)
+            {
+                // do nothing
+            }
+            else
             {
                 DeterminePushbackValues(collisionSide);
                 this.player.TakeDamage(enemy.Damage);
-            }
-            else if (enemy is WallMaster) {
-                this.player.State = new ImmobileState(player);
             }
         }
 
@@ -39,37 +43,39 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
+            DeterminePushbackValues(collisionSide);
             this.player.TakeDamage(projectile.Damage);
         }
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(player.State is ImmobileState))
+            if (!(player.State is GrabbedState) && (block is BlockTile || block is MovableTile))
             {
-                if (block is BlockTile || block is MovableTile)
+                if (collisionSide == CollisionDetection.CollisionSide.Right)
                 {
-                    if (collisionSide == CollisionDetection.CollisionSide.Right)
-                    {
-                        this.player.Physics.Location = new Vector2(block.Physics.Location.X - LinkSpriteFactory.LinkWidth, this.player.Physics.Location.Y);
-                    }
-                    else if (collisionSide == CollisionDetection.CollisionSide.Left)
-                    {
-                        this.player.Physics.Location = new Vector2(block.Physics.Location.X + BlockSpriteFactory.Instance.TileWidth, this.player.Physics.Location.Y);
-                    }
-                    else if (collisionSide == CollisionDetection.CollisionSide.Top)
-                    {
-                        this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y + BlockSpriteFactory.Instance.TileHeight);
-                    }
-                    else
-                    {
-                        this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y - LinkSpriteFactory.LinkHeight);
-                    }
+                    this.player.Physics.Location = new Vector2(block.Physics.Location.X - LinkSpriteFactory.LinkWidth, this.player.Physics.Location.Y);
+                }
+                else if (collisionSide == CollisionDetection.CollisionSide.Left)
+                {
+                    this.player.Physics.Location = new Vector2(block.Physics.Location.X + BlockSpriteFactory.Instance.TileWidth, this.player.Physics.Location.Y);
+                }
+                else if (collisionSide == CollisionDetection.CollisionSide.Top)
+                {
+                    this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y + BlockSpriteFactory.Instance.TileHeight);
+                }
+                else
+                {
+                    this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y - LinkSpriteFactory.LinkHeight);
                 }
             }
         }
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
         {
+            if (door.State is LockedDoorState || door.State is HiddenDoorState)
+            {
+                PreventDoorEntry(door);
+            }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
@@ -123,6 +129,26 @@
             {
                 xDirection = -1;
                 yDirection = 0;
+            }
+        }
+
+        private void PreventDoorEntry(IDoor door)
+        {
+            if (door.Physics.Location == door.LeftScreenLoc)
+            {
+                player.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, player.Physics.Location.Y);
+            }
+            else if (door.Physics.Location == door.RightScreenLoc)
+            {
+                player.Physics.Location = new Vector2(door.RightScreenLoc.X - LinkSpriteFactory.LinkWidth - 7, player.Physics.Location.Y);
+            }
+            else if (door.Physics.Location == door.DownScreenLoc)
+            {
+                player.Physics.Location = new Vector2(player.Physics.Location.X, door.DownScreenLoc.Y - LinkSpriteFactory.LinkHeight);
+            }
+            else if (door.Physics.Location == door.UpScreenLoc)
+            {
+                player.Physics.Location = new Vector2(player.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
             }
         }
     }

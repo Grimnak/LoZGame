@@ -7,9 +7,6 @@
     // Class to handle the completely stationary sprite
     internal class FairySprite : ISprite
     {
-        
-        
-
         private static readonly int FrameChange = 10;
         private readonly Texture2D Texture;      // the texture to pull frames from
         private readonly SpriteSheetData Data;
@@ -61,7 +58,6 @@
 
         public void Draw(Vector2 location, Color spriteTint)
         {
-
             float layer = 1 - (1 / (location.Y + (this.Data.Height * this.scale)));
             LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, layer);
         }

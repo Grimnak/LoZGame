@@ -9,7 +9,7 @@ namespace LoZClone
 {
     class ArrowProjectile : IProjectile
     {
-        private static readonly int Speed = 10;
+        private static readonly int Speed = 7;
         private static readonly int LinkSize = LinkSpriteFactory.LinkHeight;
         ISprite sprite;
         private ProjectileCollisionHandler collisionHandler;
@@ -25,6 +25,10 @@ namespace LoZClone
         private bool expired;
         private int damage;
 
+        public int StunDuration { get { return 0; } set {/*do nothing*/} }
+
+        public bool Returning { get { return false; } set {/*do nothing*/} }
+
         public int Damage { get { return damage; } set { damage = value; } }
 
         public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
@@ -39,7 +43,7 @@ namespace LoZClone
             this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * ProjectileSpriteFactory.Instance.Scale;
             this.collisionHandler = new ProjectileCollisionHandler(this);
             this.lifeTime = 100;
-            this.damage = 1;
+            this.damage = 4;
             this.expired = false;
             loc = new Vector2(loc.X + (LinkSize / 2), loc.Y + (LinkSize / 2));
             if (direction.Equals("Up"))
@@ -78,18 +82,6 @@ namespace LoZClone
             if (otherCollider is IEnemy)
             {
                 this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IPlayer)
-            {
-                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IItem)
-            {
-                this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IDoor)
-            {
-                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 

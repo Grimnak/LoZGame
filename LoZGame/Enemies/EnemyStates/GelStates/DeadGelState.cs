@@ -7,15 +7,16 @@
     {
         private readonly Gel gel;
         private readonly DeadEnemySprite sprite;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
 
         public DeadGelState(Gel gel)
         {
             this.gel = gel;
             this.gel.CurrentState = this;
+            this.gel.Bounds = Rectangle.Empty;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
-            this.gel.Physics.ResetVelocity();
             LoZGame.Instance.Drops.AttemptDrop(this.gel.Physics.Location);
-            this.gel.Expired = true;
         }
 
         public void MoveLeft()
@@ -58,22 +59,28 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
 
+        public void Stun(int stunTime)
+        {
+            this.Die();
+        }
+
         public void Update()
         {
+            this.deathTimer++;
             this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.gel.Expired = true;
+            }
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.gel.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.gel.Physics.Location, this.gel.CurrentTint);
         }
     }
 }

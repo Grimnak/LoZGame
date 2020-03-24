@@ -8,14 +8,15 @@
         private readonly Goriya goriya;
         private readonly ISprite sprite;
         private readonly IProjectile boomerangSprite;
-        private int coolDown;
-        private EntityManager entity;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
+        private RandomStateGenerator randomStateGenerator;
+        private bool boomerangThrown;
 
         public AttackingGoriyaState(Goriya goriya)
         {
-            coolDown = 0;
             this.goriya = goriya;
-            this.entity = LoZGame.Instance.Entities;
+            this.boomerangThrown = false;
             switch (goriya.Direction)
             {
                 case "Left":
@@ -37,6 +38,8 @@
                 default:
                     break;
             }
+
+            randomStateGenerator = new RandomStateGenerator(this.goriya, 1, 6);
         }
 
         public void MoveLeft()
@@ -77,15 +80,11 @@
 
         public void Attack()
         {
+            this.boomerangThrown = false;
         }
 
         public void Stop()
         {
-        }
-
-        public void TakeDamage(int damageAmount)
-        {
-            this.goriya.Health.DamageHealth(damageAmount);
         }
 
         public void Die()
@@ -93,19 +92,31 @@
             this.goriya.CurrentState = new DeadGoriyaState(this.goriya);
         }
 
+        public void Stun(int stunTime)
+        {
+            this.goriya.CurrentState = new StunnedGoriyaState(this.goriya, this, stunTime);
+        }
+
         public void Update()
         {
-            if (this.coolDown == 0)
+            if (!boomerangThrown)
             {
-                this.coolDown = 240;
-                this.entity.EnemyProjectileManager.AddEnemyRang(this.goriya);
+                boomerangThrown = true;
+                this.goriya.EntityManager.EnemyProjectileManager.Add(LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Boomerang, this.goriya, this.goriya.Direction);
+            }
+            this.lifeTime++;
+            if (this.lifeTime > this.directionChange)
+            {
+                randomStateGenerator.Update();
+                this.lifeTime = 0;
+                this.boomerangThrown = false;
             }
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.goriya.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.goriya.Physics.Location, this.goriya.CurrentTint);
         }
     }
 }

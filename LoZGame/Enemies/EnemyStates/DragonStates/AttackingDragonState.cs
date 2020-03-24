@@ -7,14 +7,18 @@
     {
         private readonly Dragon dragon;
         private readonly ISprite sprite;
-        private const int FireBallScale = 2;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
+        private RandomStateGenerator randomStateGenerator;
+        private bool fireballsShot;
 
         public AttackingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
-            this.dragon.EntityManager.EnemyProjectileManager.AddFireballs(this.dragon.Physics.Location);
             this.dragon.CurrentState = this;
+            randomStateGenerator = new RandomStateGenerator(this.dragon, 0, 4);
+            fireballsShot = false;
         }
 
         public void MoveUp()
@@ -58,11 +62,7 @@
 
         public void Attack()
         {
-        }
-
-        public void TakeDamage(int damageAmount)
-        {
-            this.dragon.Health.DamageHealth(damageAmount);
+            fireballsShot = false;
         }
 
         public void Die()
@@ -70,14 +70,29 @@
             this.dragon.CurrentState = new DeadDragonState(this.dragon);
         }
 
+        public void Stun(int stunTime)
+        {
+        }
+
         public void Update()
         {
+            this.lifeTime++;
+            if (!fireballsShot)
+            {
+                this.fireballsShot = true;
+                this.dragon.ShootFireballs();
+            }
+            if (this.lifeTime > this.directionChange)
+            {
+                randomStateGenerator.Update();
+                this.lifeTime = 0;
+            }
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.dragon.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.dragon.Physics.Location, this.dragon.CurrentTint);
         }
     }
 }

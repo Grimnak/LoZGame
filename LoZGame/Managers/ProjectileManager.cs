@@ -1,9 +1,9 @@
 ﻿namespace LoZClone
 {
     using System.Collections.Generic;
-    using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework;
-    public partial class ProjectileManager
+
+    public partial class ProjectileManager : IManager
     {
         private readonly Dictionary<int, IProjectile> projectileList;
         private readonly List<int> deletable;
@@ -235,6 +235,11 @@
             {
                 item.Value.Draw();
             }
+        }
+
+        public void Clear()
+        {
+            this.projectileList.Clear();
         }
     }
 }

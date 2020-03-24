@@ -13,6 +13,8 @@
     /// </summary>
     public interface IBlock : ICollider
     {
+        string[] InvalidDirections { get; }
+
         /// <summary>
         /// Creates the correct sprite for the block.
         /// </summary>

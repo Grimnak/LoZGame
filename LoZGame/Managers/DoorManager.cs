@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
-    public class DoorManager
+    public class DoorManager : IManager
     {
         private List<IDoor> doors;
 

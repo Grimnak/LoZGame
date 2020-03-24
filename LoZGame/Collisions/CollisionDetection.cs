@@ -21,8 +21,8 @@
             CheckPlayers(players, enemies, enemyProjectiles, doors, items);
             CheckEnemies(enemies, playerProjectiles);
             CheckBlocks(blocks, players, enemies);
-            CheckItems(items);
-            CheckProjectiles(playerProjectiles, enemyProjectiles);
+            CheckItems(items, playerProjectiles);
+            CheckProjectiles(playerProjectiles, enemyProjectiles, doors);
 
             // Unable to change rooms mid-foreach loop, so set a flag and change directly after.
             if (moveToBasement)
@@ -36,16 +36,19 @@
         {
             foreach (IPlayer player in players)
             {
-                if (!(player.State is DieState) && !(player.State is ImmobileState))
+                if (!(player.State is DieState) && !(player.State is GrabbedState))
                 {
+                    CheckCollisions<IItem>(player, items);
+                    if (!CheckCollisions<IDoor>(player, doors))
+                    {
+                        CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
+                    }
+
                     if (player.DamageTimer <= 0)
                     {
                         CheckCollisions<IEnemy>(player, enemies);
                         CheckCollisions<IProjectile>(player, enemyProjectiles);
-                        CheckCollisions<IDoor>(player, doors);
                     }
-                    CheckCollisions<IItem>(player, items);
-                    CheckBorders(player, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
                 }
             }
         }
@@ -54,7 +57,8 @@
         {
             foreach (IEnemy enemy in enemies)
             {
-                if (!(enemy is WallMaster))
+                // Do not check borders for Wall Masters that aren't being pushed back or the Old Man/Merchant.
+                if (!(enemy is WallMaster && enemy.DamageTimer <= 0) && !(enemy is OldMan || enemy is Merchant))
                 {
                     CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
                 }
@@ -79,28 +83,30 @@
             }
         }
 
-        private void CheckItems(ReadOnlyCollection<IItem> items)
+        private void CheckItems(ReadOnlyCollection<IItem> items, ReadOnlyCollection<IProjectile> projectiles)
         {
             foreach (IItem item in items)
             {
                 if (item is Fairy)
                 {
                     CheckBorders(item, ItemSpriteFactory.FairyWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.FairyHeight * ItemSpriteFactory.Instance.Scale);
+                } else
+                {
+                    CheckCollisions<IProjectile>(item, projectiles);
                 }
             }
         }
 
-        private void CheckProjectiles(ReadOnlyCollection<IProjectile> playerProjectiles, ReadOnlyCollection<IProjectile> enemyProjectiles)
+        private void CheckProjectiles(ReadOnlyCollection<IProjectile> playerProjectiles, ReadOnlyCollection<IProjectile> enemyProjectiles, ReadOnlyCollection<IDoor> doorsList)
         {
             foreach (IProjectile playerProjectile in playerProjectiles)
             {
-                // CheckBorders(playerProjectile, playerProjectile.Bounds.X, playerProjectile.Bounds.Y);
                 CheckBorders(playerProjectile, ProjectileSpriteFactory.GetProjectileWidth(playerProjectile), ProjectileSpriteFactory.GetProjectileHeight(playerProjectile));
+                CheckCollisions(playerProjectile, doorsList);
             }
 
             foreach (IProjectile enemyProjectile in enemyProjectiles)
             {
-                // CheckBorders(enemyProjectile, enemyProjectile.Bounds.X, enemyProjectile.Bounds.Y);
                 CheckBorders(enemyProjectile, ProjectileSpriteFactory.GetProjectileWidth(enemyProjectile), ProjectileSpriteFactory.GetProjectileHeight(enemyProjectile));
             }
         }

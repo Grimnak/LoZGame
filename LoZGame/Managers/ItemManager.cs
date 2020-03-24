@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
-    public partial class ItemManager
+    public partial class ItemManager : IManager
     {
         private Dictionary<int, IItem> itemList;
         private int itemListSize;
@@ -24,9 +24,12 @@
 
         public void Add(IItem item)
         {
-            itemListSize++;
-            itemList.Add(itemID, item);
-            itemID++;
+            if (!item.Expired)
+            {
+                itemListSize++;
+                itemList.Add(itemID, item);
+                itemID++;
+            }
         }
 
         public void RemoveItem(int instance)

@@ -7,15 +7,16 @@
     {
         private readonly Goriya goriya;
         private readonly DeadEnemySprite sprite;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
 
         public DeadGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.goriya.CurrentState = this;
-            this.goriya.Physics.ResetVelocity();
+            this.goriya.Bounds = Rectangle.Empty;
             LoZGame.Instance.Drops.AttemptDrop(this.goriya.Physics.Location);
-            this.goriya.Expired = true;
         }
 
         public void MoveLeft()
@@ -54,10 +55,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
@@ -66,14 +63,23 @@
         {
         }
 
+        public void Stun(int stunTime)
+        {
+        }
+
         public void Update()
         {
+            this.deathTimer++;
             this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.goriya.Expired = true;
+            }
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.goriya.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.goriya.Physics.Location, this.goriya.CurrentTint);
         }
     }
 }

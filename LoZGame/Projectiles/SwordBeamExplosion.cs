@@ -16,17 +16,16 @@
         private int projectileHeight;
         private ProjectileCollisionHandler collisionHandler;
         private int damage;
-        private Vector2 boundsOffset;
+
+        public int StunDuration { get { return 0; } set {/*do nothing*/} }
+
+        public bool Returning { get { return false; } set {/*do nothing*/} }
 
         public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }
 
         public Rectangle Bounds { get; set; }
-
-        private readonly bool hostile;
-
-        public bool IsHostile => this.hostile;
 
         private static readonly int FrameDelay = 4;
         private static readonly float Speed = 2.5f;
@@ -44,36 +43,26 @@
             {
                 this.Physics.Velocity = new Vector2(Speed, -1 * Speed);
                 this.effect = SpriteEffects.FlipHorizontally;
-                this.rotation = 0;
-                boundsOffset = Vector2.Zero;
             }
             else if (this.direction.Equals("NorthWest"))
             {
                 this.Physics.Velocity = new Vector2(-1 * Speed, -1 * Speed);
                 this.effect = SpriteEffects.None;
-                this.rotation = 0;
-                boundsOffset = Vector2.Zero;
             }
             else if (this.direction.Equals("SouthEast"))
             {
                 this.Physics.Velocity = new Vector2(Speed, Speed);
-                this.Physics.Location = new Vector2(this.Physics.Location.X + projectileWidth, this.Physics.Location.Y + projectileHeight);
-                this.effect = SpriteEffects.None;
-                this.rotation = MathHelper.Pi;
-                boundsOffset = new Vector2(this.projectileWidth, this.projectileHeight);
+                this.effect = SpriteEffects.FlipHorizontally | SpriteEffects.FlipVertically;
             }
             else
             {
-                this.rotation = 0;
                 this.Physics.Velocity = new Vector2(-1 * Speed, Speed);
                 this.effect = SpriteEffects.FlipVertically;
-                boundsOffset = Vector2.Zero;
             }
             this.damage = 0;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)boundsOffset.X, (int)this.Physics.Location.Y - (int)boundsOffset.Y, projectileWidth, projectileHeight);
-            this.hostile = false;
+            this.Bounds = Rectangle.Empty;
             this.expired = false;
-            this.sprite = ProjectileSpriteFactory.Instance.SwordExplosion(this.effect, this.rotation);
+            this.sprite = ProjectileSpriteFactory.Instance.SwordExplosion(this.effect);
         }
 
         public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
@@ -83,18 +72,6 @@
             if (otherCollider is IEnemy)
             {
                 this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IPlayer)
-            {
-                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IItem)
-            {
-                this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IDoor)
-            {
-                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 
@@ -115,7 +92,6 @@
             {
                 this.expired = true;
             }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)boundsOffset.X, (int)this.Physics.Location.Y - (int)boundsOffset.Y, projectileWidth, projectileHeight);
             this.Physics.Move();
         }
 

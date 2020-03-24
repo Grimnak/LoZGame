@@ -7,15 +7,16 @@
     {
         private readonly Zol zol;
         private readonly DeadEnemySprite sprite;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
 
         public DeadZolState(Zol zol)
         {
             this.zol = zol;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.zol.CurrentState = this;
-            this.zol.Physics.ResetVelocity();
+            this.zol.Bounds = Rectangle.Empty;
             LoZGame.Instance.Drops.AttemptDrop(this.zol.Physics.Location);
-            this.zol.Expired = true;
         }
 
         public void MoveLeft()
@@ -58,17 +59,22 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
+        public void Die()
         {
         }
 
-        public void Die()
+        public void Stun(int stunTime)
         {
         }
 
         public void Update()
         {
+            this.deathTimer++;
             this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.zol.Expired = true;
+            }
         }
 
         public void Draw()

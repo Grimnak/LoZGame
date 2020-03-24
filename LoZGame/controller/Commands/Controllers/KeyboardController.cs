@@ -57,7 +57,6 @@ namespace LoZClone
 
             if (this.playerCommands.Count > 0)
             {
-
                 this.currentCommand = this.playerCommands.Peek().Value;
                 this.currentCommand.Execute();
 
@@ -82,11 +81,6 @@ namespace LoZClone
             else
             {
                 this.allCommands.GetIdle.Execute();
-            }
-
-            if (pressed.Contains(Keys.E))
-            {
-                this.dict[Keys.E].Execute();
             }
 
             if (pressed.Contains(Keys.Q))

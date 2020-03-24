@@ -7,16 +7,16 @@
     {
         private readonly Rope rope;
         private readonly DeadEnemySprite sprite;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
 
         public DeadRopeState(Rope rope)
         {
             this.rope = rope;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.rope.CurrentState = this;
-            this.rope.VelocityX = 0;
-            this.rope.VelocityY = 0;
+            this.rope.Bounds = Rectangle.Empty;
             LoZGame.Instance.Drops.AttemptDrop(this.rope.Physics.Location);
-            this.rope.Expired = true;
         }
 
         public void MoveLeft()
@@ -59,22 +59,27 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
+        public void Die()
         {
         }
 
-        public void Die()
+        public void Stun(int stunTime)
         {
         }
 
         public void Update()
         {
+            this.deathTimer++;
             this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.rope.Expired = true;
+            }
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.rope.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.rope.Physics.Location, this.rope.CurrentTint);
         }
     }
 }

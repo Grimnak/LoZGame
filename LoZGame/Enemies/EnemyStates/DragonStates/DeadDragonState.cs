@@ -7,15 +7,17 @@
     {
         private readonly Dragon dragon;
         private readonly DeadEnemySprite sprite;
+        private int deathTimer = 0;
+        private int deathTimerMax = 30;
 
         public DeadDragonState(Dragon dragon)
         {
             this.dragon = dragon;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.dragon.CurrentState = this;
-            this.dragon.Physics.ResetVelocity();
+            this.dragon.Bounds = Rectangle.Empty;
             LoZGame.Instance.Drops.AttemptDrop(this.dragon.Physics.Location);
-            this.dragon.Expired = true;
+
         }
 
         public void MoveUp()
@@ -50,10 +52,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
@@ -66,14 +64,23 @@
         {
         }
 
+        public void Stun(int stunTime)
+        {
+        }
+
         public void Update()
         {
+            this.deathTimer++;
             this.sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                this.dragon.Expired = true;
+            }
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.dragon.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.dragon.Physics.Location, this.dragon.CurrentTint);
         }
     }
 }

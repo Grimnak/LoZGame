@@ -5,15 +5,18 @@
 
     public class LeftMovingDodongoState : IEnemyState
     {
-        private readonly Dodongo dodongo;
+        private readonly IEnemy dodongo;
         private readonly ISprite sprite;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
+        private RandomStateGenerator randomStateGenerator;
 
-        public LeftMovingDodongoState(Dodongo dodongo)
+        public LeftMovingDodongoState(IEnemy dodongo)
         {
             this.dodongo = dodongo;
-            this.dodongo.Physics.Velocity = new Vector2(-1, 0);
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingDodongoSprite();
             this.dodongo.CurrentState = this;
+            randomStateGenerator = new RandomStateGenerator(this.dodongo, 2, 6);
         }
 
         public void MoveLeft()
@@ -59,25 +62,30 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-            this.dodongo.Health.DamageHealth(damageAmount);
-        }
-
         public void Die()
         {
             this.dodongo.CurrentState = new DeadDodongoState(this.dodongo);
         }
 
+        public void Stun(int stunTime)
+        {
+        }
+
         public void Update()
         {
-            this.dodongo.Physics.Location = new Vector2(this.dodongo.Physics.Location.X + this.dodongo.Physics.Velocity.X, this.dodongo.Physics.Location.Y + this.dodongo.Physics.Velocity.Y);
+            this.lifeTime++;
+            if (this.lifeTime > this.directionChange)
+            {
+                randomStateGenerator.Update();
+                this.lifeTime = 0;
+            }
+            this.dodongo.Physics.Location = new Vector2(this.dodongo.Physics.Location.X - this.dodongo.MoveSpeed, this.dodongo.Physics.Location.Y);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.dodongo.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.dodongo.Physics.Location, this.dodongo.CurrentTint);
         }
     }
 }

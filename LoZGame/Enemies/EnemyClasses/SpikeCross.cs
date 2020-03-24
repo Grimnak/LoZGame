@@ -1,139 +1,35 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
-    public class SpikeCross : IEnemy
+    public class SpikeCross : EnemyEssentials, IEnemy
     {
-        private EnemyCollisionHandler enemyCollisionHandler;
-        private Rectangle bounds;
-        private LoZGame Game;
-        private bool expired;
+        public bool Attacking { get; set; }
 
-        public bool Expired { get { return this.expired; } set { this.expired = value; } }
+        public bool Retreating { get; set; }
 
-        public Rectangle Bounds
-        {
-            get { return this.bounds; }
-            set { this.bounds = value; }
-        }
-
-        public Physics Physics { get; set; }
-
-        public HealthManager Health { get; set; }
-
-        public int Damage => damage;
-
-        public int AttackFactor
-        {
-            get; set;
-        }
-
-        public bool Attacking
-        {
-            get; set;
-        }
-
-        public bool Retreating
-        {
-            get; set;
-        }
-        public Vector2 InitialPos
-        {
-            get; set;
-        }
-
-        private IEnemyState currentState;
-        private int damage = 1;
-        private int health = 1;
-        private int lifeTime = 0;
-        private readonly int directionChange = 40;
+        public Vector2 InitialPos { get; set; }
 
         public SpikeCross(Vector2 location)
         {
-            this.Health = new HealthManager(health);
+            this.Health = new HealthManager(1);
             this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
             this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.Game = LoZGame.Instance;
-            this.currentState = new IdleSpikeCrossState(this);
-            this.enemyCollisionHandler = new EnemyCollisionHandler(this);
+            this.CurrentState = new IdleSpikeCrossState(this);
+            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             Attacking = false;
             Retreating = false;
             InitialPos = this.Physics.Location;
-            this.expired = false;
+            this.Expired = false;
+            this.Damage = 4;
+            this.DamageTimer = 0;
+            this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
-        private void checkForLink()
+        public override void Update()
         {
-            int spikeX = (int)Physics.Location.X;
-            int spikeY = (int)Physics.Location.Y;
-            int linkX = (int)Game.Link.Physics.Location.X;
-            int linkY = (int)Game.Link.Physics.Location.Y;
-
-            if (!Attacking)
-            {
-                if (spikeX == linkX)
-                {
-                    Attacking = true;
-                    AttackFactor = 3 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
-                    currentState.MoveDown();
-                }
-                else if (spikeY == linkY)
-                {
-                    Attacking = true;
-                    AttackFactor = 3 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
-                    currentState.MoveRight();
-                }
-            }
-        }
-
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
-        public void Die()
-        {
-        }
-
-        public void Update()
-        {
-            this.checkForLink();
-            this.currentState.Update();
-            this.bounds.X = (int)this.Physics.Location.X;
-            this.bounds.Y = (int)this.Physics.Location.Y;
-        }
-
-        public void Draw()
-        {
-            this.currentState.Draw();
-        }
-
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
-        {
-            if (otherCollider is IPlayer)
-            {
-                this.enemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IBlock)
-            {
-               // this.enemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IProjectile)
-            {
-                this.enemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
-            }
-        }
-
-        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
-        {
-            enemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
-        }
-
-        public IEnemyState CurrentState
-        {
-            get { return this.currentState; }
-            set { this.currentState = value; }
+            this.CurrentState.Update();
+            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, this.Bounds.Width, this.Bounds.Height);
         }
     }
 }

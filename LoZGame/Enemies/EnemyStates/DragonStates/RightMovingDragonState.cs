@@ -7,13 +7,16 @@
     {
         private readonly Dragon dragon;
         private readonly ISprite sprite;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
+        private RandomStateGenerator randomStateGenerator;
 
         public RightMovingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
-            this.dragon.Physics.Velocity = new Vector2(1, 0);
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
             this.dragon.CurrentState = this;
+            randomStateGenerator = new RandomStateGenerator(this.dragon, 0, 4);
         }
 
         public void MoveUp()
@@ -59,25 +62,30 @@
             this.dragon.CurrentState = new AttackingDragonState(this.dragon);
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-            this.dragon.Health.DamageHealth(damageAmount);
-        }
-
         public void Die()
         {
             this.dragon.CurrentState = new DeadDragonState(this.dragon);
         }
 
+        public void Stun(int stunTime)
+        {
+        }
+
         public void Update()
         {
-            this.dragon.Physics.Move();
+            this.lifeTime++;
+            if (this.lifeTime > this.directionChange)
+            {
+                randomStateGenerator.Update();
+                this.lifeTime = 0;
+            }
+            this.dragon.Physics.Location = new Vector2(this.dragon.Physics.Location.X + this.dragon.MoveSpeed, this.dragon.Physics.Location.Y);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.dragon.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.dragon.Physics.Location, this.dragon.CurrentTint);
         }
     }
 }

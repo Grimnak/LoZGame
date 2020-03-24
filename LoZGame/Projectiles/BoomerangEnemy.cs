@@ -7,7 +7,7 @@
     internal class BoomerangEnemy : IProjectile
     {
         private static readonly int LinkSize = 32;
-        private static readonly int MaxDistance = 200;
+        private static readonly int MaxDistance = 150;
         private static readonly int MaxSpeed = 5;
         private static readonly float Accel = 0.5f;
         private static readonly int XBound = 800;
@@ -15,7 +15,7 @@
 
         private Vector2 origin;
         ISprite sprite;
-        private readonly Goriya Enemy;
+        private readonly IEnemy Enemy;
         private readonly string direction;
         private ProjectileCollisionHandler collisionHandler;
         private readonly int scale = ProjectileSpriteFactory.Instance.Scale;
@@ -29,35 +29,39 @@
         private float layer;
         private Vector2 playerLoc;
         private int damage;
+
+        public int StunDuration { get { return 0; } set {/*do nothing*/} }
+
+        public bool Returning { get { return false; } set {/*do nothing*/} }
+
         public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }
 
         public Rectangle Bounds { get; set; }
 
-        public BoomerangEnemy(Goriya enemy)
+        public BoomerangEnemy(IEnemy enemy, string direction)
         {
             this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight * scale;
             this.collisionHandler = new ProjectileCollisionHandler(this);
             this.expired = false;
             Vector2 loc = new Vector2(enemy.Physics.Location.X + (LinkSize / 2), enemy.Physics.Location.Y + (LinkSize / 2));
-            this.direction = enemy.Direction;
             this.isReturned = false;
             this.returning = false;
             this.Enemy = enemy;
             this.distTraveled = 0;
             this.damage = 1;
 
-            if (this.direction.Equals("Up"))
+            if (direction.Equals("Up"))
             {
                 this.Physics = new Physics(new Vector2(loc.X, loc.Y - (LinkSize / 2)), new Vector2(0, -1 * MaxSpeed), new Vector2(0, 0));
             }
-            else if (this.direction.Equals("Left"))
+            else if (direction.Equals("Left"))
             {
                 this.Physics = new Physics(new Vector2(loc.X - (LinkSize / 2), loc.Y), new Vector2(-1 * MaxSpeed, 0), new Vector2(0, 0));
             }
-            else if (this.direction.Equals("Right"))
+            else if (direction.Equals("Right"))
             {
                 this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(MaxSpeed, 0), new Vector2(0, 0));
             }
@@ -83,27 +87,15 @@
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IEnemy)
+            if (otherCollider is IPlayer)
             {
-                this.returning = this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IPlayer)
-            {
-                this.returning = this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IItem)
-            {
-                this.returning = this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IDoor)
-            {
-                this.returning = this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
+                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            this.returning = collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
         private void ReturnHome()

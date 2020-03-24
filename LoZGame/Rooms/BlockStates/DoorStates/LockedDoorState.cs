@@ -12,7 +12,7 @@ namespace LoZClone
     {
         private readonly Door door;
         private readonly ISprite sprite;
-        private readonly Vector2 location;
+        private readonly Vector2 loc;
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
 
         public LockedDoorState(Door door)
@@ -23,29 +23,33 @@ namespace LoZClone
                 case "N":
                     {
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorDown(door.UpScreenLoc);
-                        location = door.UpScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+                        loc = door.UpScreenLoc;
+                        door.Physics = new Physics(loc, new Vector2(0, 0), new Vector2(0, 0));
+                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y - 12, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
                         break;
                     }
                 case "E":
                     {
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorLeft(door.RightScreenLoc);
-                        location = door.RightScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+                        loc = door.RightScreenLoc;
+                        door.Physics = new Physics(loc, new Vector2(0, 0), new Vector2(0, 0));
+                        door.Bounds = new Rectangle((int)door.Physics.Location.X - 7, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                     }
                 case "S":
                     {
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorUp(door.DownScreenLoc);
-                        location = door.DownScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+                        loc = door.DownScreenLoc;
+                        door.Physics = new Physics(loc, new Vector2(0, 0), new Vector2(0, 0));
+                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
                         break;
                     }
                 case "W":
                     {
                         this.sprite = BlockSpriteFactory.Instance.LockedDoorRight(door.LeftScreenLoc);
-                        location = door.LeftScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+                        loc = door.LeftScreenLoc;
+                        door.Physics = new Physics(loc, new Vector2(0, 0), new Vector2(0, 0));
+                        door.Bounds = new Rectangle((int)door.Physics.Location.X - 19, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                     }
             }
@@ -53,12 +57,11 @@ namespace LoZClone
 
         public void Bombed()
         {
-            Console.WriteLine("Cannot Bomb Normal Door!");
+            this.door.Bombed();
         }
 
         public void Close()
         {
-            Console.WriteLine("Cannot Close Locked Door!");
         }
 
         public void Open()
@@ -68,7 +71,7 @@ namespace LoZClone
 
         public void Draw()
         {
-            this.sprite.Draw(location, spriteTint);
+            this.sprite.Draw(loc, spriteTint);
         }
 
         public void Update()

@@ -77,16 +77,17 @@
                             int tcount = 0; // xml debug
                             foreach (XElement block in trow.Elements()) // .Elements() here b/c object references a parent with list of children and we just want the children.
                             {
-                                string x = block.Attribute("idx").Value, y = trow.Attribute("idx").Value, type = block.Attribute("type").Value;
+                                string x = block.Attribute("idx").Value, y = trow.Attribute("idx").Value;
                                 tcount++; // xml debug
-
-                                if (type.Equals("movable"))
+                                string[] types = block.Attribute("type").Value.Split(',');
+                                if (block.Attribute("dir") != null)
                                 {
-                                    droom.AddBlock(x, y, type, block.Value, block.Attribute("dir").Value);
-                                    Console.Write("block: " + block.Value + " type: " + block.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + block.Attribute("idx").Value + " Dirs: " + block.Attribute("dir").Value + "\n"); // xml debug
+                                    string direction = block.Attribute("dir").Value;
+                                    droom.AddBlock(x, y, types[0], block.Value, direction);
                                 }
-                                else {
-                                    droom.AddBlock(x, y, type, block.Value);
+                                else
+                                {
+                                    droom.AddBlock(x, y, types[0], block.Value);
                                     Console.Write("block: " + block.Value + " type: " + block.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + block.Attribute("idx").Value + " \n"); // xml debug
                                 }
                             }
@@ -105,7 +106,7 @@
                 dungeon.Add(drow);
                 i++;
             }
-            return dungeon; // tmp?
+            return dungeon;
         }
     }
 }

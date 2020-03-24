@@ -12,7 +12,7 @@
         public HorizontalSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            this.spikeCross.Physics.Velocity = new Vector2(1 * spikeCross.AttackFactor, 0);
+            this.spikeCross.Physics.Velocity = new Vector2(1 * spikeCross.MoveSpeed, 0);
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
         }
 
@@ -52,10 +52,6 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-        }
-
         public void Die()
         {
         }
@@ -63,6 +59,10 @@
         public void Stop()
         {
             this.spikeCross.CurrentState = new IdleSpikeCrossState(this.spikeCross);
+        }
+
+        public void Stun(int stunTime)
+        {
         }
 
         public void Update()
@@ -74,15 +74,16 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.spikeCross.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.spikeCross.Physics.Location, this.spikeCross.CurrentTint);
         }
+
         private void retreatCheck()
         {
             if (!spikeCross.Retreating)
             {
-                if (spikeCross.AttackFactor > 0)
+                if ((int)spikeCross.MoveSpeed > 0)
                 {
-                    if (spikeCross.Physics.Location.X - (BlockSpriteFactory.Instance.TileWidth * 6 + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) >= 0)
+                    if (spikeCross.Physics.Location.X - ((BlockSpriteFactory.Instance.TileWidth * 6) + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) >= 0)
                     {
                         spikeCross.Retreating = true;
                         spikeCross.Physics.Velocity = new Vector2 (-1, spikeCross.Physics.Velocity.Y);
@@ -90,7 +91,7 @@
                 }
                 else
                 {
-                    if (spikeCross.Physics.Location.X - (BlockSpriteFactory.Instance.TileWidth * 6 + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) <= 0)
+                    if (spikeCross.Physics.Location.X - ((BlockSpriteFactory.Instance.TileWidth * 6) + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) <= 0)
                     {
                         spikeCross.Retreating = true;
                         spikeCross.Physics.Velocity = new Vector2(1, spikeCross.Physics.Velocity.Y);

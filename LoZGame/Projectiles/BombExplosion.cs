@@ -23,6 +23,10 @@
         private Texture2D flashTexture;
         private Rectangle flashDestination;
 
+        public int StunDuration { get { return 0; } set {/*do nothing*/} }
+
+        public bool Returning { get { return false; } set {/*do nothing*/} }
+
         public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }
@@ -43,7 +47,7 @@
             this.hostile = true;
             this.expired = false;
             this.Bounds = new Rectangle((int)this.Physics.Location.X - (projectileWidth / 2), (int)this.Physics.Location.Y - (projectileHeight / 2), projectileWidth, projectileHeight);
-            this.damage = 1000000;
+            this.damage = 8;
             Random numGen = new Random();
             int selectBomb = numGen.Next(0, 5);
             switch (selectBomb)
@@ -81,20 +85,13 @@
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
+            Console.WriteLine("BombExplosion.cs: " + otherCollider.GetType().ToString());
             if (otherCollider is IEnemy)
             {
                 this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IPlayer)
+            } else if (otherCollider is IDoor)
             {
-                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IItem)
-            {
-                this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IDoor)
-            {
+                Console.WriteLine("Door Bomba boi");
                 this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
@@ -110,6 +107,7 @@
             if (this.lifeTime == DissipateOne || this.lifeTime == DissipateTwo)
             {
                 this.sprite.Update();
+                this.Bounds = Rectangle.Empty;
             }
 
             if (this.lifeTime <= 0)

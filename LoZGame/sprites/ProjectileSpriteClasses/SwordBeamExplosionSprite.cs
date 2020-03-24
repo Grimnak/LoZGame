@@ -23,19 +23,20 @@
         private Vector2 origin;
         private Vector2 Size;
 
-        public SwordBeamExplosionSprite(Texture2D texture, SpriteSheetData data, SpriteEffects effect, float rotation, int scale)
+        public SwordBeamExplosionSprite(Texture2D texture, SpriteSheetData data, SpriteEffects effect, int scale)
         {
             this.Data = data;
             this.Size = new Vector2(this.Data.Width * scale, this.Data.Height * scale);
             this.Texture = texture;
             this.frameOne = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
-            this.frameTwo = new Rectangle(0, this.Data.Height , this.Data.Width, this.Data.Height);
+            this.frameTwo = new Rectangle(0, this.Data.Height, this.Data.Width, this.Data.Height);
             this.frameThree = new Rectangle(0, this.Data.Height * 2, this.Data.Width, this.Data.Height);
             this.frameFour = new Rectangle(0, this.Data.Height * 3, this.Data.Width, this.Data.Height);
             this.currentFrame = this.frameOne;
             this.scale = scale;
             this.effect = effect;
-            this.rotation = rotation;
+            this.rotation = 0.0f;
+            this.origin = Vector2.Zero;
         }
 
         private void NextFrame()

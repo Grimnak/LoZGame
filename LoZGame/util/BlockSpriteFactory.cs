@@ -12,9 +12,9 @@
         private static readonly int tileHeight = 48;
         private static readonly int verticalOffset = 72;
         private static readonly int horizontalOffset = 79;
-        private static readonly int doorOffset = 20;
-        private static readonly int doorWidth = 108;
-        private static readonly int doorHeight = 72;
+        private static readonly int doorOffset = 24;
+        private static readonly int doorWidth = 90;
+        private static readonly int doorHeight = 60;
         private static readonly int fireHeight = 18;
         private static readonly int fireWidth = 16;
 
@@ -22,6 +22,11 @@
         private static readonly int VerticalBlockHeight = 64;
         private static readonly int HorizontalBlockWidth = 64;
         private static readonly int HorizontalBlockHeight = 16;
+
+        private static readonly int VerticalBombedWidth = 0;
+        private static readonly int VerticalBombedHeight = 32;
+        private static readonly int HorizontalBombedWidth = 32;
+        private static readonly int HorizontalBombedHeight = 8;
 
         private Texture2D StairsTexture;
         private readonly SpriteSheetData stairsData = new SpriteSheetData("stairs", tileWidth, tileHeight, 1, 1);
@@ -45,13 +50,22 @@
         private readonly SpriteSheetData LockedDoorUpData = new SpriteSheetData("locked_door_up", doorWidth, doorHeight, 1, 1);
 
         private Texture2D SpecialDoorDownTexture;
-        private readonly SpriteSheetData SpecialDoorDownData = new SpriteSheetData("special_door_down", tileWidth, tileHeight, 1, 1);
+        private readonly SpriteSheetData SpecialDoorDownData = new SpriteSheetData("special_door_down", doorWidth, doorHeight, 1, 1);
         private Texture2D SpecialDoorLeftTexture;
         private readonly SpriteSheetData SpecialDoorLeftData = new SpriteSheetData("special_door_left", doorHeight, doorWidth, 1, 1);
         private Texture2D SpecialDoorRightTexture;
         private readonly SpriteSheetData SpecialDoorRightData = new SpriteSheetData("special_door_right", doorHeight, doorWidth, 1, 1);
         private Texture2D SpecialDoorUpTexture;
-        private readonly SpriteSheetData SpecialDoorUpData = new SpriteSheetData("special_door_up", tileWidth, tileHeight, 1, 1);
+        private readonly SpriteSheetData SpecialDoorUpData = new SpriteSheetData("special_door_up", doorWidth, doorHeight, 1, 1);
+
+        private Texture2D BombedOpeningDownTexture;
+        private readonly SpriteSheetData bombedOpeningDownData = new SpriteSheetData("bombed_opening_down", doorWidth, doorHeight, 1, 1);
+        private Texture2D BombedOpeningUpTexture;
+        private readonly SpriteSheetData bombedOpeningUpData = new SpriteSheetData("bombed_opening_up", doorWidth, doorHeight, 1, 1);
+        private Texture2D BombedOpeningRightTexture;
+        private readonly SpriteSheetData bombedOpeningRightData = new SpriteSheetData("bombed_opening_right", doorHeight, doorWidth, 1, 1);
+        private Texture2D BombedOpeningLeftTexture;
+        private readonly SpriteSheetData bombedOpeningLeftData = new SpriteSheetData("bombed_opening_left", doorHeight, doorWidth, 1, 1);
 
         private Texture2D FireTexture;
         private readonly SpriteSheetData fireData = new SpriteSheetData("fire", tileWidth, tileHeight, 1, 2);
@@ -61,15 +75,6 @@
         private readonly SpriteSheetData gapTileData = new SpriteSheetData("gap_tile", tileWidth, tileHeight, 1, 1);
         private Texture2D MovableSquareTexture;
         private readonly SpriteSheetData movableSquareData = new SpriteSheetData("movable_square", tileWidth, tileHeight, 1, 1);
-
-        private Texture2D BombedOpeningDownTexture;
-        private readonly SpriteSheetData bombedOpeningDownData = new SpriteSheetData("bombed_opening_down", tileWidth, tileHeight, 1, 1);
-        private Texture2D BombedOpeningUpTexture;
-        private readonly SpriteSheetData bombedOpeningUpData = new SpriteSheetData("bombed_opening_up", tileWidth, tileHeight, 1, 1);
-        private Texture2D BombedOpeningRightTexture;
-        private readonly SpriteSheetData bombedOpeningRightData = new SpriteSheetData("bombed_opening_right", tileWidth, tileHeight, 1, 1);
-        private Texture2D BombedOpeningLeftTexture;
-        private readonly SpriteSheetData bombedOpeningLeftData = new SpriteSheetData("bombed_opening_left", tileWidth, tileHeight, 1, 1);
 
         private Texture2D BlueStatueRightTexture;
         private readonly SpriteSheetData blueStatueRightData = new SpriteSheetData("blue_statue_right", tileWidth, tileHeight, 1, 1);
@@ -109,7 +114,7 @@
                 return instance;
             }
         }
-
+        
         public int TileWidth
         {
             get { return tileWidth; }
@@ -186,7 +191,6 @@
             this.HorizontalBricksTexture = content.Load<Texture2D>(this.horizontalBricksData.FilePath);
             this.VerticalBricksTexture = content.Load<Texture2D>(this.verticalBricksData.FilePath);
         }
-
 
         public StairsSprite Stairs(Vector2 loc)
         {

@@ -7,13 +7,16 @@
     {
         private readonly Stalfos stalfos;
         private readonly ISprite sprite;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
+        private RandomStateGenerator randomStateGenerator;
 
         public DownMovingStalfosState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
-            stalfos.Physics.Velocity = new Vector2(0, 1);
             this.sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
             this.stalfos.CurrentState = this;
+            randomStateGenerator = new RandomStateGenerator(this.stalfos, 2, 6);
         }
 
         public void MoveLeft()
@@ -59,25 +62,31 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-            this.stalfos.Health.DamageHealth(damageAmount);
-        }
-
         public void Die()
         {
             this.stalfos.CurrentState = new DeadStalfosState(this.stalfos);
         }
 
+        public void Stun(int stunTime)
+        {
+            this.stalfos.CurrentState = new StunnedStalfosState(this.stalfos, this, stunTime);
+        }
+
         public void Update()
         {
-            this.stalfos.Physics.Move();
+            this.lifeTime++;
+            if (this.lifeTime > this.directionChange)
+            {
+                randomStateGenerator.Update();
+                this.lifeTime = 0;
+            }
+            this.stalfos.Physics.Location = new Vector2(this.stalfos.Physics.Location.X, this.stalfos.Physics.Location.Y + this.stalfos.MoveSpeed);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.stalfos.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.stalfos.Physics.Location, this.stalfos.CurrentTint);
         }
     }
 }

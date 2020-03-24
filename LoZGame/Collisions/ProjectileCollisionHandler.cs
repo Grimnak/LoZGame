@@ -12,16 +12,15 @@
             this.projectile = projectile;
         }
 
-        public bool OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
+        public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            bool boomerangReturning = false;
             if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
             {
                 this.projectile.Physics.StopMovement();
             }
             else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
             {
-                boomerangReturning = true;
+                this.projectile.Returning = true;
             }
             else if (this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
             {
@@ -31,36 +30,31 @@
             {
                 this.projectile.IsExpired = true;
             }
-            return boomerangReturning;
         }
 
-        public bool OnCollisionResponse(IItem item, CollisionDetection.CollisionSide collisionSide)
+        public void OnCollisionResponse(IItem item, CollisionDetection.CollisionSide collisionSide)
         {
-            return false;
         }
         
-        public bool OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
+        public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            bool boomerangReturning = false;
             if (this.projectile is BoomerangEnemy || this.projectile is MagicBoomerangEnemy)
             {
-                boomerangReturning = true;
+                this.projectile.Returning = true;
             }
-            return boomerangReturning;
         }
 
-        public bool OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
+        public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
         {
-            bool boomerangReturning = false;
-            if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
+            if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile || this.projectile is BombProjectile)
             {
                 this.projectile.Physics.StopMovement();
             }
-            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
+            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile || this.projectile is BoomerangEnemy || this.projectile is MagicBoomerangEnemy)
             {
-                boomerangReturning = true;
+                this.projectile.Returning = true;
             }
-            else if (this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
+            else if (this.projectile is BombExplosion)
             {
                 // do nothing
             }
@@ -68,15 +62,13 @@
             {
                 this.projectile.IsExpired = true;
             }
-            return boomerangReturning;
         }
 
-        public bool OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            bool boomerangReturning = false;
-            if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
+            if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile || this.projectile is BoomerangEnemy || this.projectile is MagicBoomerangEnemy)
             {
-                boomerangReturning = true;
+                this.projectile.Returning = true;
             }
             else if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile || this.projectile is BombProjectile)
             {
@@ -106,7 +98,6 @@
             {
                 this.projectile.IsExpired = true;
             }
-            return boomerangReturning;
         }
     }
 }

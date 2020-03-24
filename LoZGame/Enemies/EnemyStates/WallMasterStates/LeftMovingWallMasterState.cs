@@ -7,13 +7,16 @@
     {
         private readonly WallMaster wallMaster;
         private readonly ISprite sprite;
+        private RandomStateGenerator randomStateGenerator;
+        private int lifeTime = 0;
+        private readonly int directionChange = 40;
 
         public LeftMovingWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
-            wallMaster.Physics.Velocity = new Vector2(-1, 0);
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingWallMasterSprite();
             this.wallMaster.CurrentState = this;
+            this.randomStateGenerator = new RandomStateGenerator(this.wallMaster, 2, 6);
         }
 
         public void MoveLeft()
@@ -60,25 +63,31 @@
         {
         }
 
-        public void TakeDamage(int damageAmount)
-        {
-            this.wallMaster.Health.DamageHealth(damageAmount);
-        }
-
         public void Die()
         {
             this.wallMaster.CurrentState = new DeadWallMasterState(this.wallMaster);
         }
 
+        public void Stun(int stunTime)
+        {
+            this.wallMaster.CurrentState = new StunnedWallMasterState(this.wallMaster, this, stunTime);
+        }
+
         public void Update()
         {
-            this.wallMaster.Physics.Move();
+            this.lifeTime++;
+            if (this.lifeTime > this.directionChange)
+            {
+                randomStateGenerator.Update();
+                this.lifeTime = 0;
+            }
+            this.wallMaster.Physics.Location = new Vector2(this.wallMaster.Physics.Location.X - this.wallMaster.MoveSpeed, this.wallMaster.Physics.Location.Y);
             this.sprite.Update();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.wallMaster.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.wallMaster.Physics.Location, this.wallMaster.CurrentTint);
         }
     }
 }

@@ -44,7 +44,6 @@
 
         public void Draw(Vector2 location, Color spriteTint)
         {
-
             float layer = 1 - (1 / (location.Y + (this.Data.Height * this.scale)));
             LoZGame.Instance.SpriteBatch.Draw(this.Texture, location, this.currentFrame, spriteTint, this.rotation, this.origin, this.scale, SpriteEffects.None, layer);
         }

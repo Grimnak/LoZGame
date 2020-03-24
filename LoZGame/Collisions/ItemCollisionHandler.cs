@@ -6,6 +6,7 @@
     public class ItemCollisionHandler
     {
         private IItem item;
+        private Vector2 GrabbedOffset;
 
         public ItemCollisionHandler(IItem item)
         {
@@ -17,6 +18,48 @@
             if (this.item.PickUpItemTime == -1) 
             {
                 this.item.Expired = true;
+            }
+
+            if (this.item is Fairy)
+            {
+                player.Health.CurrentHealth = player.Health.MaxHealth;
+            }
+            else if (this.item is DroppedHealth)
+            {
+                player.Health.GainHealth(4);
+            }
+            else if (this.item is HeartContainer)
+            {
+                player.Health.MaxHealth = player.Health.MaxHealth + 4;
+                player.Health.CurrentHealth = player.Health.MaxHealth;
+            }
+        }
+
+        
+        public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
+        {
+            /*
+            if (projectile is MagicBoomerangProjectile || projectile is BoomerangProjectile)
+            {
+                if (this.item is IDrop) { }
+                if (!this.item.IsGrabbed)
+                {
+                    this.boomerang = projectile;
+                    //this.GrabbedOffset = new Vector2((this.item.Bounds.Width - this.boomerang.Bounds.Width) / 2, (this.item.Bounds.Height - this.boomerang.Bounds.Height) / 2);
+                    this.grabbed = true;
+                }
+                this.item.Physics.Location = new Vector2(this.boomerang.Physics.Location.X - GrabbedOffset.X, this.boomerang.Physics.Location.Y - this.GrabbedOffset.Y);
+                this.item.Bounds = new Rectangle((int)this.item.Physics.Location.X, (int)this.item.Physics.Location.Y, this.item.Bounds.Width, this.item.Bounds.Height);
+            }
+            */
+        }
+        
+
+        public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (door.State is HiddenDoorState)
+            {
+                door.Bombed();
             }
         }
 

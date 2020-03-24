@@ -23,6 +23,8 @@
             set { this.bounds = value; }
         }
 
+        public string[] InvalidDirections { get { return null; } }
+
         private BlockCollisionHandler blockCollisionHandler;
 
         public Physics Physics { get; set; }

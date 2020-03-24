@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System;
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
@@ -26,7 +27,6 @@
         /// Initializes a new instance of the <see cref="Dungeon"/> class.
         /// </summary>
         /// <param name="filePath">File path of the document to parse.</param>
-        /// <param name="player">Player whose location to update.</param>
         public Dungeon(string filePath)
         {
             this.currentDungeonFile = filePath;
@@ -43,11 +43,13 @@
         public int CurrentRoomX
         {
             get { return currentX; }
+            set { currentX = value; }
         }
 
         public int CurrentRoomY
         {
             get { return currentY; }
+            set { currentY = value; }
         }
 
         public Room CurrentRoom
@@ -66,6 +68,14 @@
             this.maxX = 6;
             this.maxY = 6;
             this.LoadNewRoom();
+        }
+
+        /*
+         * Given a particular X and Y value, return that room
+         */
+        public Room GetRoom(int Y, int X)
+        {
+            return this.dungeonLayout[Y][X];
         }
 
         /// <summary>
@@ -91,7 +101,8 @@
                         (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                         (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
                 }
-
+                this.player.CurrentDirection = "Up";
+                this.player.State = new IdleState(this.player);
             }
         }
 
@@ -118,6 +129,8 @@
                         (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                         (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 0)) + 2);
                 }
+                this.player.CurrentDirection = "Down";
+                this.player.State = new IdleState(this.player);
             }
         }
 
@@ -135,6 +148,8 @@
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 11)),
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));
+                this.player.CurrentDirection = "Left";
+                this.player.State = new IdleState(this.player);
             }
         }
 
@@ -152,6 +167,8 @@
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 0) + 6),
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));
+                this.player.CurrentDirection = "Right";
+                this.player.State = new IdleState(this.player);
             }
         }
 
@@ -160,30 +177,26 @@
         /// </summary>
         public void LoadNewRoom()
         {
-            LoZGame.Instance.Entities.Clear(); // we dont add anything to entity manager after clearing since no projectiles stay when transitioning rooms.
-            LoZGame.Instance.Enemies.Clear();
-            LoZGame.Instance.Blocks.Clear();
-            LoZGame.Instance.Items.Clear();
-            LoZGame.Instance.Doors.Clear();
+            LoZGame.Instance.GameObjects.Clear();
 
             foreach (IEnemy enemy in this.dungeonLayout[this.currentY][this.currentX].Enemies)
             {
-                LoZGame.Instance.Enemies.Add(enemy);
+                LoZGame.Instance.GameObjects.Enemies.Add(enemy);
             }
 
             foreach (IBlock block in this.dungeonLayout[this.currentY][this.currentX].Tiles)
             {
-                LoZGame.Instance.Blocks.Add(block);
+                LoZGame.Instance.GameObjects.Blocks.Add(block);
             }
 
             foreach (IItem item in this.dungeonLayout[this.currentY][this.currentX].Items)
             {
-                LoZGame.Instance.Items.Add(item);
+                LoZGame.Instance.GameObjects.Items.Add(item);
             }
 
             foreach (Door door in this.dungeonLayout[this.currentY][this.currentX].Doors)
             {
-                LoZGame.Instance.Doors.Add(door);
+                LoZGame.Instance.GameObjects.Doors.Add(door);
             }
         }
     }

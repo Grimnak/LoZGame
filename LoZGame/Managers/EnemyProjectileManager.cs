@@ -1,10 +1,10 @@
 ﻿namespace LoZClone
 {
-    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
+    using System;
+    using System.Collections.Generic;
 
-    public partial class EnemyProjectileManager
+    public partial class EnemyProjectileManager : IManager
     {
         private const int Scale = 2;
         private readonly Dictionary<int, IProjectile> projectileList;
@@ -15,6 +15,10 @@
 
         public List<IProjectile> Projectiles { get { return this.projectiles; } }
 
+        public int Fireball => (int)ProjectileType.Fireball;
+
+        public int Boomerang => (int)ProjectileType.Boomerang;
+
         public EnemyProjectileManager()
         {
             this.projectileList = new Dictionary<int, IProjectile>();
@@ -24,24 +28,29 @@
             this.listSize = 0;
         }
 
-        public void AddFireballs(Vector2 location)
+        public void Add(int projectileType,  Physics physics)
         {
+            ProjectileType projectile = (ProjectileType)projectileType;
             this.projectileId++;
             this.listSize++;
-            this.projectileList.Add(this.projectileId, new DragonFireBall(location, "NorthWest"));
-            this.projectileId++;
-            this.listSize++;
-            this.projectileList.Add(this.projectileId, new DragonFireBall(location, "West"));
-            this.projectileId++;
-            this.listSize++;
-            this.projectileList.Add(this.projectileId, new DragonFireBall(location, "SouthWest"));
+            switch(projectile)
+            {
+                case ProjectileType.Fireball:
+                    projectileList.Add(projectileId, new FireballProjectile(physics));
+                    break;
+            }
         }
-
-        public void AddEnemyRang(Goriya enemy)
+        public void Add(int projectileType, IEnemy enemy, string direction)
         {
+            ProjectileType projectile = (ProjectileType)projectileType;
             this.projectileId++;
             this.listSize++;
-            this.projectileList.Add(this.projectileId, new BoomerangEnemy(enemy));
+            switch (projectile)
+            {
+                case ProjectileType.Boomerang:
+                    projectileList.Add(projectileId, new BoomerangEnemy(enemy, direction));
+                    break;
+            }
         }
 
         public void Remove(int instance)
@@ -85,6 +94,11 @@
                 projectile.Value.Draw();
             }
 
+        }
+
+        public void Clear()
+        {
+            this.projectileList.Clear();
         }
     }
 }

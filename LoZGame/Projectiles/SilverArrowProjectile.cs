@@ -18,6 +18,10 @@
         private ISprite sprite;
         private int damage;
 
+        public int StunDuration { get { return 0; } set {/*do nothing*/} }
+
+        public bool Returning { get { return false; } set {/*do nothing*/} }
+
         public int Damage { get { return damage; } set { damage = value; } }
 
         public Physics Physics { get; set; }
@@ -59,7 +63,7 @@
                 this.BoundsOffset = new Vector2(this.projectileWidth / 2, this.projectileHeight / 2);
                 this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileWidth, projectileHeight);
             }
-            this.damage = 10;
+            this.damage = 8;
             this.sprite = ProjectileSpriteFactory.Instance.SilverArrow(this.rotation);
         }
 
@@ -70,18 +74,6 @@
             if (otherCollider is IEnemy)
             {
                 this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IPlayer)
-            {
-                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IItem)
-            {
-                this.collisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IDoor)
-            {
-                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 

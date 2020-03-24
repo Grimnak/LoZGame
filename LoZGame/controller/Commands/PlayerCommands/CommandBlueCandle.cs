@@ -18,10 +18,10 @@
 
         public void Execute()
         {
-            if (!LoZGame.Instance.Entities.ProjectileManager.FlameInUse && !(this.player.State is DieState || this.player.State is PickupItemState))
+            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.FlameInUse && !(this.player.State is DieState || this.player.State is PickupItemState || this.player.State is GrabbedState))
             {
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.Entities.ProjectileManager.AddItem(LoZGame.Instance.Entities.ProjectileManager.BlueCandle, this.player);
+                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.BlueCandle, this.player);
             }
         }
     }
