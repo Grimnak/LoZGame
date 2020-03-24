@@ -1,6 +1,6 @@
 # CSE 3902 - 9:10a Section - Team 3 - Readme
 
-Developer version of Legend of Zelda NES emulator. Draws the player, enemies, items, blocks, and projectiles that will be used in the final game without collision detection.
+Developer version of Legend of Zelda NES emulator.  This is a functioning version of the first dungeon, featuring room transitions, combat, items, and collision detection and handling.
 
 ## Authors:
 Eric Henderson.939
@@ -55,6 +55,11 @@ MS Paint
     Bug:  Bats can drop items in the basement walls that are unobtainable.
 
     Plan(s) to fix:  Add boomerang capabilities to grab items and potentially make items spawn in-bounds.
+    
+### Slingshotting Wall Masters:
+    Bug:  If player is currently getting knocked back and collides with a Wall Master, the player will fly off the screen in the direction of the knockback.
+    
+    Plan(s) to fix:  Disable ability for Wall Masters to pick the player up while the player is damaged.
 
 
 ## Suppressed Warnings:
