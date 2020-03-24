@@ -77,7 +77,7 @@
         private void DeterminePushVelocity(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
             DeterminePushDirection(collisionSide);
-            this.block.Physics.Velocity = new Vector2(xDirection * player.MoveSpeed, yDirection * player.MoveSpeed);
+            this.block.Physics.Velocity = new Vector2(xDirection * (int)player.MoveSpeed, yDirection * (int)player.MoveSpeed);
             this.block.Physics.Acceleration = new Vector2(xDirection * Acceleration, yDirection * Acceleration);
         }
 

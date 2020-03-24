@@ -81,7 +81,7 @@
         {
             if (!spikeCross.Retreating)
             {
-                if (spikeCross.MoveSpeed > 0)
+                if ((int)spikeCross.MoveSpeed > 0)
                 {
                     if (spikeCross.Physics.Location.Y - ((BlockSpriteFactory.Instance.TileHeight * 3.5) + (BlockSpriteFactory.Instance.VerticalOffset / 2)) >= 0)
                     {
