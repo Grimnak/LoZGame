@@ -101,7 +101,8 @@
                         (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                         (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
                 }
-
+                this.player.CurrentDirection = "Up";
+                this.player.State = new IdleState(this.player);
             }
         }
 
@@ -128,6 +129,8 @@
                         (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                         (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 0)) + 2);
                 }
+                this.player.CurrentDirection = "Down";
+                this.player.State = new IdleState(this.player);
             }
         }
 
@@ -145,6 +148,8 @@
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 11)),
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));
+                this.player.CurrentDirection = "Left";
+                this.player.State = new IdleState(this.player);
             }
         }
 
@@ -162,6 +167,8 @@
                 this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 0) + 6),
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));
+                this.player.CurrentDirection = "Right";
+                this.player.State = new IdleState(this.player);
             }
         }
 

@@ -38,7 +38,7 @@
         /// <summary>
         /// Gets or sets the current speed of the player.
         /// </summary>
-        int MoveSpeed { get; set; }
+        float MoveSpeed { get; set; }
 
         /// <summary>
         /// Gets or sets the damage timer of the player.

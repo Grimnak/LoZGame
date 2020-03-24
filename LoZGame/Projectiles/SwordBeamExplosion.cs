@@ -60,7 +60,7 @@
                 this.effect = SpriteEffects.FlipVertically;
             }
             this.damage = 0;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+            this.Bounds = Rectangle.Empty;
             this.expired = false;
             this.sprite = ProjectileSpriteFactory.Instance.SwordExplosion(this.effect);
         }
@@ -92,7 +92,6 @@
             {
                 this.expired = true;
             }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             this.Physics.Move();
         }
 
