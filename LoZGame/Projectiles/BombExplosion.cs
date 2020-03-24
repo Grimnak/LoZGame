@@ -107,6 +107,7 @@
             if (this.lifeTime == DissipateOne || this.lifeTime == DissipateTwo)
             {
                 this.sprite.Update();
+                this.Bounds = Rectangle.Empty;
             }
 
             if (this.lifeTime <= 0)

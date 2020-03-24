@@ -33,7 +33,7 @@
             this.CurrentDirection = "Up";
             this.CurrentWeapon = "Wood";
             this.CurrentTint = LoZGame.Instance.DungeonTint;
-            this.MoveSpeed = 2;
+            this.MoveSpeed = 2.5f;
             this.DamageTimer = 0;
             this.State = new IdleState(this);
             this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);

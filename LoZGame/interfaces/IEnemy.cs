@@ -12,7 +12,7 @@
 
         int DamageTimer { get; set; }
 
-        int MoveSpeed { get; set; }
+        float MoveSpeed { get; set; }
 
         Color CurrentTint { get; set; }
 

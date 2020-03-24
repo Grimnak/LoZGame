@@ -15,7 +15,7 @@
 
         public Color CurrentTint { get; set; }
 
-        public int MoveSpeed { get; set; }
+        public float MoveSpeed { get; set; }
 
         public int DamageTimer { get; set; }
 
