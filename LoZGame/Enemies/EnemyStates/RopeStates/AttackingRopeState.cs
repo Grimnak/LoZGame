@@ -2,10 +2,9 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using System;
     using System.Collections.Generic;
 
-    public class RightMovingRopeState : IEnemyState
+    public class AttackingRopeState : IEnemyState
     {
         private readonly Rope rope;
         private readonly ISprite sprite;
@@ -14,14 +13,19 @@
         private RandomStateGenerator randomStateGenerator;
         private List<IPlayer> players;
 
-        public RightMovingRopeState(Rope rope)
+        public AttackingRopeState(Rope rope)
         {
             this.rope = rope;
-            this.sprite = EnemySpriteFactory.Instance.CreateRightMovingRopeSprite();
+            if (this.rope.MoveSpeed > 0)
+            {
+                this.sprite = EnemySpriteFactory.Instance.CreateRightMovingRopeSprite();
+            }else
+            {
+                this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingRopeSprite();
+            }
             this.rope.CurrentState = this;
-            this.rope.Direction = "right";
-            this.rope.MoveSpeed = 1;
             randomStateGenerator = new RandomStateGenerator(this.rope, 2, 6);
+            this.rope.Attacking = true;
         }
 
         public void MoveLeft()
@@ -31,6 +35,7 @@
 
         public void MoveRight()
         {
+            this.rope.CurrentState = new RightMovingRopeState(this.rope);
         }
 
         public void MoveUp()
@@ -80,41 +85,25 @@
 
         public void Update()
         {
-            this.CheckForLink();
-            this.lifeTime++;
-            if (this.lifeTime > this.directionChange)
+            if (this.rope.Direction.Equals("horizontal"))
             {
-                randomStateGenerator.Update();
-                this.lifeTime = 0;
+                this.rope.Physics.Location = new Vector2(this.rope.Physics.Location.X + this.rope.MoveSpeed, this.rope.Physics.Location.Y);
+
             }
-            this.rope.Physics.Location = new Vector2(this.rope.Physics.Location.X + this.rope.MoveSpeed, this.rope.Physics.Location.Y);
+            else
+            {
+                this.rope.Physics.Location = new Vector2(this.rope.Physics.Location.X, this.rope.Physics.Location.Y + this.rope.MoveSpeed);
+            }
+            if (this.rope.Attacking == false)
+            {
+                this.randomStateGenerator.Update();
+            }
             this.sprite.Update();
         }
 
         public void Draw()
         {
             this.sprite.Draw(this.rope.Physics.Location, this.rope.CurrentTint);
-        }
-
-        private void CheckForLink()
-        {
-            int ropeX = (int)this.rope.Physics.Location.X;
-            int ropeY = (int)this.rope.Physics.Location.Y;
-            int linkX = (int)LoZGame.Instance.Link.Physics.Location.X;
-            int linkY = (int)LoZGame.Instance.Link.Physics.Location.Y;
-
-            if (ropeX == linkX)
-            {
-                this.rope.MoveSpeed = 3 * (linkY - ropeY) / Math.Abs(linkY - ropeY);
-                this.rope.Direction = "vertical";
-                this.rope.CurrentState.Attack();
-            }
-            else if (ropeY == linkY)
-            {
-                this.rope.MoveSpeed = 3 * (linkX - ropeX) / Math.Abs(linkX - ropeX);
-                this.rope.Direction = "horizontal";
-                this.rope.CurrentState.Attack();
-            }
         }
     }
 }

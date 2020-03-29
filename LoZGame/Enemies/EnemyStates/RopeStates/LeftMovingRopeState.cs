@@ -2,6 +2,7 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
     using System.Collections.Generic;
 
     public class LeftMovingRopeState : IEnemyState
@@ -18,6 +19,8 @@
             this.rope = rope;
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingRopeSprite();
             this.rope.CurrentState = this;
+            this.rope.Direction = "left";
+            this.rope.MoveSpeed = 1;
             randomStateGenerator = new RandomStateGenerator(this.rope, 2, 6);
         }
 
@@ -58,6 +61,7 @@
 
         public void Attack()
         {
+            this.rope.CurrentState = new AttackingRopeState(this.rope);
         }
 
         public void Stop()
@@ -76,6 +80,7 @@
 
         public void Update()
         {
+            this.CheckForLink();
             this.lifeTime++;
             if (this.lifeTime > this.directionChange)
             {
@@ -92,44 +97,24 @@
         }
 
         private void CheckForLink()
-        { /*
-            players = Game.Players;
-            foreach (IPlayer player in players)
+        {
+            int ropeX = (int)this.rope.Physics.Location.X;
+            int ropeY = (int)this.rope.Physics.Location.Y;
+            int linkX = (int)LoZGame.Instance.Link.Physics.Location.X;
+            int linkY = (int)LoZGame.Instance.Link.Physics.Location.Y;
+
+            if (ropeX == linkX)
             {
-                if (CurrentLocation.X <= player.CurrentLocation.X + 10 || CurrentLocation.X >= player.CurrentLocation.X - 10)
-                {
-                    Attacking = true;
-                    AttackFactor = 3;
-                    if (CurrentLocation.Y > player.CurrentLocation.Y)
-                    {
-                        this.currentState.MoveDown();
-                    }
-                    else
-                    {
-                        this.currentState.MoveUp();
-                    }
-                }
-                else if (CurrentLocation.Y == player.CurrentLocation.Y)
-                {
-                    Attacking = true;
-                    AttackFactor = 3;
-                    if (CurrentLocation.Y <= player.CurrentLocation.Y + 10 || CurrentLocation.Y >= player.CurrentLocation.Y - 10)
-                    {
-                        this.currentState.MoveRight();
-                    }
-                    else
-                    {
-                        this.currentState.MoveLeft();
-                    }
-                }
-                else
-                {
-                    AttackFactor = 1;
-                    Attacking = false;
-                }
-                this.currentState.Update();
+                this.rope.MoveSpeed = 3 * (linkY - ropeY) / Math.Abs(linkY - ropeY);
+                this.rope.Direction = "vertical";
+                this.rope.CurrentState.Attack();
             }
-                */
+            else if (ropeY == linkY)
+            {
+                this.rope.MoveSpeed = 3 * (linkX - ropeX) / Math.Abs(linkX - ropeX);
+                this.rope.Direction = "horizontal";
+                this.rope.CurrentState.Attack();
+            }
         }
     }
 }

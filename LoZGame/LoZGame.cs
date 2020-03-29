@@ -7,7 +7,7 @@
 
     public class LoZGame : Game
     {
-        public static readonly bool DebugMode = false;
+        public static readonly bool DebugMode = true;
         private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;
 

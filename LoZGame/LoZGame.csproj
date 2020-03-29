@@ -106,6 +106,7 @@
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
     <Compile Include="Enemies\EnemyStates\GelStates\IdleGelState.cs" />
     <Compile Include="Enemies\EnemyStates\GoriyaStates\StunnedGoriyaState.cs" />
+    <Compile Include="Enemies\EnemyStates\RopeStates\AttackingRopeState.cs" />
     <Compile Include="Enemies\EnemyStates\RopeStates\StunnedRopeState.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\StunnedStalfosState.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\StunnedWallMasterState.cs" />
