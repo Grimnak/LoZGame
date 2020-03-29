@@ -19,6 +19,7 @@
             this.player = playerInstance;
             this.player.CurrentDirection = "Left";
             this.sprite = this.CreateCorrectSprite();
+            this.player.Physics.MovementVelocity = new Vector2(-1 * this.player.MoveSpeed, 0);
         }
 
         /// <inheritdoc/>
@@ -77,7 +78,6 @@
         /// <inheritdoc/>
         public void Update()
         {
-            this.player.Physics.Location = new Vector2(this.player.Physics.Location.X - this.player.MoveSpeed, this.player.Physics.Location.Y);
             this.sprite.Update();
         }
 

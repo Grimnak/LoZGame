@@ -60,35 +60,35 @@ namespace LoZClone
             foreach (IDoor door in this.doors)
             {
                 this.DebuggSprite.SetData<Color>(new Color[] { DoorColor });
-                LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, door.Bounds, this.DebuggSourceRectangle, DoorColor, 0.0f, Vector2.Zero, SpriteEffects.None, DoorLayer);
+                LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, door.Physics.Bounds, this.DebuggSourceRectangle, DoorColor, 0.0f, Vector2.Zero, SpriteEffects.None, DoorLayer);
             }
             foreach (IItem item in this.items)
             {
                 this.DebuggSprite.SetData<Color>(new Color[] {ItemColor });
-                LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, item.Bounds, this.DebuggSourceRectangle, ItemColor, 0.0f, Vector2.Zero, SpriteEffects.None, ItemLayer);
+                LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, item.Physics.Bounds, this.DebuggSourceRectangle, ItemColor, 0.0f, Vector2.Zero, SpriteEffects.None, ItemLayer);
             }
             foreach (IProjectile projectile in this.projectiles)
             {
                 this.DebuggSprite.SetData<Color>(new Color[] { ProjectileColor });
-                LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, projectile.Bounds, this.DebuggSourceRectangle, ProjectileColor, 0.0f, Vector2.Zero, SpriteEffects.None, ProjectileLayer);
+                LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, projectile.Physics.Bounds, this.DebuggSourceRectangle, ProjectileColor, 0.0f, Vector2.Zero, SpriteEffects.None, ProjectileLayer);
             }
             foreach (IProjectile projectile in this.enemyProjectiles)
             {
                 this.DebuggSprite.SetData<Color>(new Color[] { EnemyProjectileColor });
-                LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, projectile.Bounds, this.DebuggSourceRectangle, EnemyProjectileColor, 0.0f, Vector2.Zero, SpriteEffects.None, EnemyProjectileLayer);
+                LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, projectile.Physics.Bounds, this.DebuggSourceRectangle, EnemyProjectileColor, 0.0f, Vector2.Zero, SpriteEffects.None, EnemyProjectileLayer);
             }
             foreach (IProjectile explosion in this.explosions)
             {
                 this.DebuggSprite.SetData<Color>(new Color[] { ExplosionColor });
-                LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, explosion.Bounds, this.DebuggSourceRectangle, ExplosionColor, 0.0f, Vector2.Zero, SpriteEffects.None, ExplosionLayer);
+                LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, explosion.Physics.Bounds, this.DebuggSourceRectangle, ExplosionColor, 0.0f, Vector2.Zero, SpriteEffects.None, ExplosionLayer);
             }
             foreach (IEnemy enemy in this.enemies)
             {
                 this.DebuggSprite.SetData<Color>(new Color[] { EnemyColor });
-                LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, enemy.Bounds, this.DebuggSourceRectangle, EnemyColor, 0.0f, Vector2.Zero, SpriteEffects.None, EnemyLayer);
+                LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, enemy.Physics.Bounds, this.DebuggSourceRectangle, EnemyColor, 0.0f, Vector2.Zero, SpriteEffects.None, EnemyLayer);
             }
             this.DebuggSprite.SetData<Color>(new Color[] { PlayerColor });
-            LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, player.Bounds, this.DebuggSourceRectangle, PlayerColor, 0.0f, Vector2.Zero, SpriteEffects.None, PlayerLayer);
+            LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, player.Physics.Bounds, this.DebuggSourceRectangle, PlayerColor, 0.0f, Vector2.Zero, SpriteEffects.None, PlayerLayer);
         }
     }
 }

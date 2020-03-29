@@ -13,6 +13,7 @@
             this.wallMaster = wallMaster;
             this.sprite = EnemySpriteFactory.Instance.CreateAttackingWallMasterSprite();
             this.wallMaster.CurrentState = this;
+            this.wallMaster.Physics.MovementVelocity = new Vector2(-2 * this.wallMaster.MoveSpeed, 0);
         }
 
         public void MoveLeft()
@@ -65,7 +66,6 @@
 
         public void Update()
         {
-            this.wallMaster.Physics.Location = new Vector2(this.wallMaster.Physics.Location.X - (2 * this.wallMaster.MoveSpeed), this.wallMaster.Physics.Location.Y);
             if (this.wallMaster.Physics.Location.X <= 0)
             {
                 this.wallMaster.CurrentState = new RightMovingWallMasterState(this.wallMaster);

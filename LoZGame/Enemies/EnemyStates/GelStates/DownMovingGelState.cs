@@ -30,6 +30,7 @@
             this.movementTime = randomNumGenerator.Next(minMovementTime, maxMovementTime);
             this.idleTime = randomNumGenerator.Next(minIdleTime, maxIdleTime);
             this.lifeTime = 0;
+            this.gel.Physics.MovementVelocity = new Vector2(0, this.gel.MoveSpeed);
         }
 
         public void MoveLeft()
@@ -108,7 +109,7 @@
             this.DecideToMove();
             if (this.moving)
             {
-                this.gel.Physics.Location = new Vector2(this.gel.Physics.Location.X, this.gel.Physics.Location.Y + this.gel.MoveSpeed);
+                this.gel.Physics.Move();
             }
             this.sprite.Update();
         }

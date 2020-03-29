@@ -7,6 +7,7 @@
     {
         private readonly WallMaster wallMaster;
         private readonly IEnemyState oldState;
+        private Vector2 oldVelocity;
         private int stunDuration;
 
         public StunnedWallMasterState(WallMaster wallMaster, IEnemyState oldState, int stunTime)
@@ -15,6 +16,8 @@
             this.wallMaster = wallMaster;
             stunDuration = stunTime;
             wallMaster.CurrentTint = LoZGame.Instance.DungeonTint;
+            oldVelocity = this.wallMaster.Physics.MovementVelocity;
+            this.wallMaster.Physics.MovementVelocity = Vector2.Zero;
         }
 
         public void MoveLeft()
@@ -73,6 +76,7 @@
             if (stunDuration <= 0)
             {
                 this.wallMaster.CurrentState = oldState;
+                this.wallMaster.Physics.MovementVelocity = oldVelocity;
             }
         }
 

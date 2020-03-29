@@ -7,9 +7,10 @@
         public Dodongo(Vector2 location)
         {
             this.Health = new HealthManager(32);
-            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+            this.Physics = new Physics(location);
+            this.Physics.Mass = -1;
             this.CurrentState = new LeftMovingDodongoState(this);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
             this.Damage = 4;
@@ -22,7 +23,7 @@
         {
             this.HandleDamage();
             this.CurrentState.Update();
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, this.Bounds.Width, this.Bounds.Height);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, this.Physics.Bounds.Width, this.Physics.Bounds.Height);
         }
     }
 }

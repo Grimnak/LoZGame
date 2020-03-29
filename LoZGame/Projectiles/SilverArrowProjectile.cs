@@ -26,7 +26,7 @@
 
         public Physics Physics { get; set; }
 
-        public Rectangle Bounds { get; set; }
+        
 
         public SilverArrowProjectile(Vector2 loc, string direction)
         {
@@ -37,31 +37,39 @@
             loc = new Vector2(loc.X + (LinkSize / 2), loc.Y + (LinkSize / 2));
             if (direction.Equals("Up"))
             {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y - (LinkSize / 2)), new Vector2(0, -1 * Speed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y - (LinkSize / 2)));
+                this.Physics.MovementVelocity = new Vector2(0, -1 * Speed);
+                this.Physics.MovementAcceleration = Vector2.Zero;
                 this.rotation = 0;
                 this.BoundsOffset = new Vector2(this.projectileWidth / 2, this.projectileHeight / 2);
-                this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileWidth, projectileHeight);
+                this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileWidth, projectileHeight);
             }
             else if (direction.Equals("Left"))
             {
-                this.Physics = new Physics(new Vector2(loc.X - (LinkSize / 2), loc.Y), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X - (LinkSize / 2), loc.Y));
+                this.Physics.MovementVelocity = new Vector2(-1 * Speed, 0);
+                this.Physics.MovementAcceleration = Vector2.Zero;
                 this.rotation = -1 * MathHelper.PiOver2;
                 this.BoundsOffset = new Vector2(this.projectileHeight / 2, this.projectileWidth / 2);
-                this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileHeight, projectileWidth);
+                this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileHeight, projectileWidth);
             }
             else if (direction.Equals("Right"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y), new Vector2(Speed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 2), loc.Y));
+                this.Physics.MovementVelocity = new Vector2(Speed, 0);
+                this.Physics.MovementAcceleration = Vector2.Zero;
                 this.rotation = MathHelper.PiOver2;
                 this.BoundsOffset = new Vector2(this.projectileHeight / 2, this.projectileWidth / 2);
-                this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileHeight, projectileWidth);
+                this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.Physics.Location.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileHeight, projectileWidth);
             }
             else
             {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)), new Vector2(0, Speed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y + (LinkSize / 2)));
+                this.Physics.MovementVelocity = new Vector2(0, Speed);
+                this.Physics.MovementAcceleration = Vector2.Zero;
                 this.rotation = MathHelper.Pi;
                 this.BoundsOffset = new Vector2(this.projectileWidth / 2, this.projectileHeight / 2);
-                this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileWidth, projectileHeight);
+                this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, projectileWidth, projectileHeight);
             }
             this.damage = 8;
             this.sprite = ProjectileSpriteFactory.Instance.SilverArrow(this.rotation);
@@ -85,7 +93,6 @@
         public void Update()
         {
             this.Physics.Move();
-            this.Bounds = new Rectangle((int)this.Physics.Location.X - (int)this.BoundsOffset.X, (int)this.Physics.Location.Y - (int)this.BoundsOffset.Y, this.Bounds.Width, this.Bounds.Height);
             this.sprite.Update();
         }
 

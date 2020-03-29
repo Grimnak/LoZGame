@@ -23,6 +23,7 @@ namespace LoZClone
             this.item = item;
             this.lockoutTimer = item.PickUpItemTime;
             this.sprite = this.CreateCorrectSprite();
+            this.player.Physics.MovementVelocity = Vector2.Zero;
             if (item is Triforce)
             {
                 LoZGame.Instance.GameState = "Win";

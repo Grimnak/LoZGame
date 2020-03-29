@@ -24,6 +24,7 @@
             randomStateGenerator = new RandomStateGenerator(this.keese, 2, 10);
             randomDirectionCooldown = LoZGame.Instance.Random;
             directionChange = randomDirectionCooldown.Next(DirectionChangeMin, DirectionChangeMax);
+            this.keese.Physics.MovementVelocity = new Vector2(0, -1 * this.keese.MoveSpeed);
         }
 
         public void MoveLeft()
@@ -93,7 +94,6 @@
                 this.lifeTime = 0;
             }
             this.updateMoveSpeed();
-            this.keese.Physics.Location = new Vector2(this.keese.Physics.Location.X, this.keese.Physics.Location.Y - (int)(.2 * this.keese.MoveSpeed));
             this.sprite.Update();
         }
 
@@ -104,9 +104,19 @@
 
         private void updateMoveSpeed()
         {
-            if (this.keese.MoveSpeed++ > 10)
+            if (lifeTime < directionChange / 2)
             {
-                this.keese.MoveSpeed = 0;
+                if (this.keese.Physics.MovementVelocity.Length() <= this.keese.MaxMoveSpeed)
+                {
+                    this.keese.Physics.MovementVelocity *= 1.05f;
+                }
+            }
+            else
+            {
+                if (this.keese.Physics.MovementVelocity.Length() >= this.keese.MinMoveSpeed)
+                {
+                    this.keese.Physics.MovementVelocity /= 1.05f;
+                }
             }
         }
     }

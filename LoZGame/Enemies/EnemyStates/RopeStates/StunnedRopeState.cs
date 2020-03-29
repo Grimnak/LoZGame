@@ -7,14 +7,17 @@
     {
         private readonly Rope rope;
         private readonly IEnemyState oldState;
+        private Vector2 oldVelocity;
         private int stunDuration;
 
         public StunnedRopeState(Rope rope, IEnemyState oldState, int stunTime)
         {
             this.oldState = oldState;
             this.rope = rope;
+            this.oldVelocity = this.rope.Physics.MovementVelocity;
             stunDuration = stunTime;
             rope.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.rope.Physics.MovementVelocity = Vector2.Zero;
         }
 
         public void MoveLeft()
@@ -73,6 +76,7 @@
             if (stunDuration <= 0)
             {
                 this.rope.CurrentState = oldState;
+                this.rope.Physics.MovementVelocity = oldVelocity;
             }
         }
 

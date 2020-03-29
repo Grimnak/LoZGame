@@ -38,7 +38,7 @@
 
         private void DamagePushback()
         {
-            if (Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0)
+            if (Math.Abs((int)this.Physics.MovementVelocity.X) != 0 || Math.Abs((int)this.Physics.MovementVelocity.Y) != 0)
             {
                 this.Physics.Move();
                 this.Physics.Accelerate();
@@ -109,10 +109,6 @@
         {
             this.State.UseItem(waitTime);
         }
-
-        public abstract void Update();
-
-        public abstract void Draw();
 
     }
 }

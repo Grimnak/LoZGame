@@ -27,7 +27,7 @@
             }
             else
             {
-                DeterminePushbackValues(collisionSide);
+                DeterminePushbackValues(enemy.Physics.GetMomentum());
                 this.player.TakeDamage(enemy.Damage);
             }
         }
@@ -43,7 +43,7 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            DeterminePushbackValues(collisionSide);
+            DeterminePushbackValues(projectile.Physics.GetMomentum());
             this.player.TakeDamage(projectile.Damage);
         }
 
@@ -67,6 +67,8 @@
                 {
                     this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y - LinkSpriteFactory.LinkHeight);
                 }
+                this.player.Physics.SetLocation();
+                this.player.Physics.StopMovement();
             }
         }
 
@@ -98,37 +100,13 @@
             }
         }
 
-        private void DeterminePushbackValues(CollisionDetection.CollisionSide collisionSide)
+        private void DeterminePushbackValues(Vector2 momentum)
         {
             if (this.player.DamageTimer <= 0)
             {
-                DeterminePushbackDirection(collisionSide);
-                this.player.Physics.Velocity = new Vector2(xDirection * Speed, yDirection * Speed);
-                this.player.Physics.Acceleration = new Vector2(xDirection * Acceleration, yDirection * Acceleration);
-            }
-        }
-
-        private void DeterminePushbackDirection(CollisionDetection.CollisionSide collisionSide)
-        {
-            if (collisionSide == CollisionDetection.CollisionSide.Top)
-            {
-                xDirection = 0;
-                yDirection = 1;
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
-            {
-                xDirection = 0;
-                yDirection = -1;
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Left)
-            {
-                xDirection = 1;
-                yDirection = 0;
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Right)
-            {
-                xDirection = -1;
-                yDirection = 0;
+                Vector2 force = new Vector2(momentum.X / momentum.Length(), momentum.Y / momentum.Length());
+                force *= Acceleration;
+                this.player.Physics.SetForce(momentum, force);
             }
         }
 

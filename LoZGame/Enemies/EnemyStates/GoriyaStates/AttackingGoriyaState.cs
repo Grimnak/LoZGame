@@ -9,7 +9,7 @@
         private readonly ISprite sprite;
         private readonly IProjectile boomerangSprite;
         private int lifeTime = 0;
-        private readonly int directionChange = 40;
+        private readonly int directionChange = 120;
         private RandomStateGenerator randomStateGenerator;
         private bool boomerangThrown;
 
@@ -38,7 +38,7 @@
                 default:
                     break;
             }
-
+            this.goriya.Physics.MovementVelocity = Vector2.Zero;
             randomStateGenerator = new RandomStateGenerator(this.goriya, 1, 6);
         }
 

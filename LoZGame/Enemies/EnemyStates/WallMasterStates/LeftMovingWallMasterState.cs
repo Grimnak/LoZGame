@@ -17,6 +17,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingWallMasterSprite();
             this.wallMaster.CurrentState = this;
             this.randomStateGenerator = new RandomStateGenerator(this.wallMaster, 2, 6);
+            this.wallMaster.Physics.MovementVelocity = new Vector2(-1 * this.wallMaster.MoveSpeed, 0);
         }
 
         public void MoveLeft()
@@ -81,7 +82,6 @@
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
-            this.wallMaster.Physics.Location = new Vector2(this.wallMaster.Physics.Location.X - this.wallMaster.MoveSpeed, this.wallMaster.Physics.Location.Y);
             this.sprite.Update();
         }
 

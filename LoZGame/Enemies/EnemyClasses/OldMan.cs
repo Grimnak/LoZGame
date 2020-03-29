@@ -14,13 +14,13 @@
 
         public OldMan(Vector2 location)
         {
-            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+            this.Physics = new Physics(location);
             this.FlameOneLoc = new Vector2(location.X - 100, location.Y + 20);
             this.FlameTwoLoc = new Vector2(location.X + 160, location.Y + 20);
             this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.EntityManager = LoZGame.Instance.GameObjects.Entities;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.Health = new HealthManager(1);
             this.Expired = false;
             this.Damage = 0;
@@ -35,8 +35,10 @@
             Vector2 playerVectorTwo = this.UnitVectorToPlayer(this.FlameTwoLoc);
             Vector2 velocityVectorOne = new Vector2(playerVectorOne.X * FireballSpeed, playerVectorOne.Y * FireballSpeed);
             Vector2 velocityVectorTwo = new Vector2(playerVectorTwo.X * FireballSpeed, playerVectorTwo.Y * FireballSpeed);
-            Physics fireballOnePhysics = new Physics(new Vector2(FlameOneLoc.X, FlameOneLoc.Y), velocityVectorOne, Vector2.Zero);
-            Physics fireballTwoPhysics = new Physics(new Vector2(FlameTwoLoc.X, FlameTwoLoc.Y), velocityVectorTwo, Vector2.Zero);
+            Physics fireballOnePhysics = new Physics(new Vector2(FlameOneLoc.X, FlameOneLoc.Y));
+            fireballOnePhysics.MovementVelocity = velocityVectorOne;
+            Physics fireballTwoPhysics = new Physics(new Vector2(FlameTwoLoc.X, FlameTwoLoc.Y));
+            fireballTwoPhysics.MovementVelocity = velocityVectorTwo;
             EntityManager.EnemyProjectileManager.Add(EntityManager.EnemyProjectileManager.Fireball, fireballOnePhysics);
             EntityManager.EnemyProjectileManager.Add(EntityManager.EnemyProjectileManager.Fireball, fireballTwoPhysics);
         }

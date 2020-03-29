@@ -25,7 +25,7 @@
 
         public Physics Physics { get; set; }
 
-        public Rectangle Bounds { get; set; }
+        
 
         private static readonly int FrameDelay = 4;
         private static readonly float Speed = 2.5f;
@@ -38,29 +38,29 @@
             projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             projectileHeight = ProjectileSpriteFactory.Instance.SwordBeamExplosionHeight * scale;
             this.direction = direction;
-            this.Physics = new Physics(new Vector2(location.X - projectileWidth, location.Y - projectileHeight), new Vector2(0, 0), new Vector2(0, 0));
+            this.Physics = new Physics(new Vector2(location.X - projectileWidth, location.Y - projectileHeight));
             if (this.direction.Equals("NorthEast"))
             {
-                this.Physics.Velocity = new Vector2(Speed, -1 * Speed);
+                this.Physics.MovementVelocity = new Vector2(Speed, -1 * Speed);
                 this.effect = SpriteEffects.FlipHorizontally;
             }
             else if (this.direction.Equals("NorthWest"))
             {
-                this.Physics.Velocity = new Vector2(-1 * Speed, -1 * Speed);
+                this.Physics.MovementVelocity = new Vector2(-1 * Speed, -1 * Speed);
                 this.effect = SpriteEffects.None;
             }
             else if (this.direction.Equals("SouthEast"))
             {
-                this.Physics.Velocity = new Vector2(Speed, Speed);
+                this.Physics.MovementVelocity = new Vector2(Speed, Speed);
                 this.effect = SpriteEffects.FlipHorizontally | SpriteEffects.FlipVertically;
             }
             else
             {
-                this.Physics.Velocity = new Vector2(-1 * Speed, Speed);
+                this.Physics.MovementVelocity = new Vector2(-1 * Speed, Speed);
                 this.effect = SpriteEffects.FlipVertically;
             }
             this.damage = 0;
-            this.Bounds = Rectangle.Empty;
+            this.Physics.Bounds = Rectangle.Empty;
             this.expired = false;
             this.sprite = ProjectileSpriteFactory.Instance.SwordExplosion(this.effect);
         }

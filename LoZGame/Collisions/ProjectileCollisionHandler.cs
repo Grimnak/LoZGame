@@ -74,20 +74,25 @@
             {
                 if (collisionSide == CollisionDetection.CollisionSide.Right)
                 {
-                    this.projectile.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, this.projectile.Physics.Location.Y);
+                    int side = LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10;
+                    this.projectile.Physics.Bounds = new Rectangle(side, this.projectile.Physics.Bounds.Y, this.projectile.Physics.Bounds.Width, this.projectile.Physics.Bounds.Height);
                 }
                 else if (collisionSide == CollisionDetection.CollisionSide.Left)
                 {
-                    this.projectile.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, this.projectile.Physics.Location.Y);
+                    int side = BlockSpriteFactory.Instance.HorizontalOffset;
+                    this.projectile.Physics.Bounds = new Rectangle(side, this.projectile.Physics.Bounds.Y, this.projectile.Physics.Bounds.Width, this.projectile.Physics.Bounds.Height);
                 }
                 else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
                 {
-                    this.projectile.Physics.Location = new Vector2(this.projectile.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset);
+                    int side = LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight;
+                    this.projectile.Physics.Bounds = new Rectangle(this.projectile.Physics.Bounds.X, side, this.projectile.Physics.Bounds.Width, this.projectile.Physics.Bounds.Height);
                 }
                 else if (collisionSide == CollisionDetection.CollisionSide.Top)
                 {
-                    this.projectile.Physics.Location = new Vector2(this.projectile.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
+                    int side = BlockSpriteFactory.Instance.VerticalOffset;
+                    this.projectile.Physics.Bounds = new Rectangle(this.projectile.Physics.Bounds.X, side, this.projectile.Physics.Bounds.Width, this.projectile.Physics.Bounds.Height);
                 }
+                this.projectile.Physics.SetLocation();
                 this.projectile.Physics.StopMovement();
             }
             else if (this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)

@@ -19,6 +19,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingRopeSprite();
             this.rope.CurrentState = this;
             randomStateGenerator = new RandomStateGenerator(this.rope, 2, 6);
+            this.rope.Physics.MovementVelocity = new Vector2(-1 * this.rope.MoveSpeed, 0);
         }
 
         public void MoveLeft()
@@ -82,7 +83,6 @@
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
-            this.rope.Physics.Location = new Vector2(this.rope.Physics.Location.X - this.rope.MoveSpeed, this.rope.Physics.Location.Y);
             this.sprite.Update();
         }
 

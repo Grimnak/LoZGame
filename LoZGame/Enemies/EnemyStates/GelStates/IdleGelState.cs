@@ -24,6 +24,7 @@
             randomNumGenerator = LoZGame.Instance.Random;
             this.idleTime = randomNumGenerator.Next(minIdleTime, maxIdleTime);
             this.lifeTime = 0;
+            this.gel.Physics.MovementVelocity = Vector2.Zero;
         }
 
         public void MoveLeft()

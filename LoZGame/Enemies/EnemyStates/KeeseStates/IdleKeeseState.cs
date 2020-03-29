@@ -2,30 +2,24 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using System;
 
-    public class UpLeftMovingKeeseState : IEnemyState
+    public class IdleKeeseState : IEnemyState
     {
         private readonly Keese keese;
-        private readonly ISprite sprite;
-        private int lifeTime = 0;
-        private int accelerationMax = 5;
-        private const int DirectionChangeMin = 20;
-        private const int DirectionChangeMax = 80;
-        private int directionChange;
+        private readonly KeeseSprite sprite;
         private RandomStateGenerator randomStateGenerator;
-        private Random randomDirectionCooldown;
+        private int idleTimer = 0;
+        private int idleMax = 5;
 
-        public UpLeftMovingKeeseState(Keese keese)
+        public IdleKeeseState(Keese keese)
         {
             this.keese = keese;
             this.sprite = EnemySpriteFactory.Instance.CreateKeeseSprite();
-            this.keese.CurrentState = this;
             randomStateGenerator = new RandomStateGenerator(this.keese, 2, 10);
-            randomDirectionCooldown = LoZGame.Instance.Random;
-            directionChange = randomDirectionCooldown.Next(DirectionChangeMin, DirectionChangeMax);
-            this.keese.Physics.MovementVelocity = new Vector2(-1 * this.keese.MoveSpeed, -1 * this.keese.MoveSpeed);
-            this.keese.Physics.MovementVelocity *= (float)Math.Sqrt(0.5);
+            this.keese.CurrentState = this;
+            this.keese.Physics.Bounds = Rectangle.Empty;
+            LoZGame.Instance.Drops.AttemptDrop(this.keese.Physics.Location);
+            this.keese.Physics.MovementVelocity = Vector2.Zero;
         }
 
         public void MoveLeft()
@@ -50,6 +44,7 @@
 
         public void MoveUpLeft()
         {
+            this.keese.CurrentState = new UpLeftMovingKeeseState(this.keese);
         }
 
         public void MoveUpRight()
@@ -87,38 +82,17 @@
 
         public void Update()
         {
-            this.lifeTime++;
-            if (this.lifeTime > this.directionChange)
-            {
-                randomStateGenerator.Update();
-                directionChange = randomDirectionCooldown.Next(DirectionChangeMin, DirectionChangeMax);
-                this.lifeTime = 0;
-            }
-            this.updateMoveSpeed();
+            this.idleTimer++;
             this.sprite.Update();
+            if (idleTimer >= idleMax)
+            {
+                this.randomStateGenerator.Update();
+            }
         }
 
         public void Draw()
         {
             this.sprite.Draw(this.keese.Physics.Location, this.keese.CurrentTint);
-        }
-
-        private void updateMoveSpeed()
-        {
-            if (lifeTime < directionChange / 2)
-            {
-                if (this.keese.Physics.MovementVelocity.Length() <= this.keese.MaxMoveSpeed)
-                {
-                    this.keese.Physics.MovementVelocity *= 1.05f;
-                }
-            }
-            else
-            {
-                if (this.keese.Physics.MovementVelocity.Length() >= this.keese.MinMoveSpeed)
-                {
-                    this.keese.Physics.MovementVelocity /= 1.05f;
-                }
-            }
         }
     }
 }

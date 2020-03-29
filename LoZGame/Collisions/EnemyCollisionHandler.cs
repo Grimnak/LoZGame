@@ -20,7 +20,7 @@
             if (this.enemy is WallMaster)
             {
                 this.enemy.CurrentState.Attack();
-                this.enemy.Physics.Velocity = new Vector2(-2, 0);
+                this.enemy.Physics.MovementVelocity = new Vector2(-2, 0);
             }
         }
 
@@ -57,7 +57,7 @@
             {
                 if (!(projectile is BoomerangProjectile) && !(projectile is MagicBoomerangProjectile))
                 {
-                    DeterminePushbackValues(collisionSide);
+                    DeterminePushbackValues(projectile.Physics.GetMomentum());
                 }
                 else
                 {
@@ -70,8 +70,23 @@
             }
         }
 
+        public void ReverseVelocity(CollisionDetection.CollisionSide collisionSide)
+        {
+            if (collisionSide == CollisionDetection.CollisionSide.Top || collisionSide == CollisionDetection.CollisionSide.Bottom)
+            {
+                this.enemy.Physics.MovementVelocity = new Vector2(this.enemy.Physics.MovementVelocity.X, this.enemy.Physics.MovementVelocity.Y * -1);
+            } else
+            {
+                this.enemy.Physics.MovementVelocity = new Vector2(this.enemy.Physics.MovementVelocity.X * -1, this.enemy.Physics.MovementVelocity.Y);
+            }
+        }
+
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
+            if (this.enemy is Keese)
+            {
+                this.ReverseVelocity(collisionSide);
+            }
             if (LoZGame.Instance.Dungeon.CurrentRoomX != 1 || LoZGame.Instance.Dungeon.CurrentRoomY != 1)
             {
                 if (collisionSide == CollisionDetection.CollisionSide.Right)
@@ -112,37 +127,13 @@
             }
         }
 
-        private void DeterminePushbackValues(CollisionDetection.CollisionSide collisionSide)
+        private void DeterminePushbackValues(Vector2 momentum)
         {
             if (this.enemy.DamageTimer <= 0)
             {
-                DeterminePushbackDirection(collisionSide);
-                this.enemy.Physics.Velocity = new Vector2(xDirection * Speed, yDirection * Speed);
-                this.enemy.Physics.Acceleration = new Vector2(xDirection * Acceleration, yDirection * Acceleration);
-            }
-        }
-
-        private void DeterminePushbackDirection(CollisionDetection.CollisionSide collisionSide)
-        {
-            if (collisionSide == CollisionDetection.CollisionSide.Top)
-            {
-                xDirection = 0;
-                yDirection = 1;
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
-            {
-                xDirection = 0;
-                yDirection = -1;
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Left)
-            {
-                xDirection = 1;
-                yDirection = 0;
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Right)
-            {
-                xDirection = -1;
-                yDirection = 0;
+                Vector2 force = new Vector2(momentum.X / momentum.Length(), momentum.Y / momentum.Length());
+                force *= Acceleration;
+                this.enemy.Physics.SetForce(momentum, force);
             }
         }
     }

@@ -7,6 +7,7 @@
     {
         private readonly Zol zol;
         private readonly IEnemyState oldState;
+        private Vector2 oldVelocity;
         private int stunDuration;
 
         public StunnedZolState(Zol zol, IEnemyState oldState, int stunTime)
@@ -15,6 +16,8 @@
             this.zol = zol;
             stunDuration = stunTime;
             zol.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.oldVelocity = new Vector2(this.zol.Physics.MovementVelocity.X, this.zol.Physics.MovementVelocity.Y);
+            this.zol.Physics.MovementVelocity = Vector2.Zero;
         }
 
         public void MoveLeft()
@@ -73,6 +76,7 @@
             if (stunDuration <= 0)
             {
                 this.zol.CurrentState = oldState;
+                this.zol.Physics.MovementVelocity = oldVelocity;
             }
         }
 

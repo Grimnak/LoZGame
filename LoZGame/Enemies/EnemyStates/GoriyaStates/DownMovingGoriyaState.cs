@@ -18,6 +18,7 @@
             this.goriya.CurrentState = this;
             this.goriya.Direction = "Down";
             randomStateGenerator = new RandomStateGenerator(this.goriya, 1, 6);
+            this.goriya.Physics.MovementVelocity = new Vector2(0, this.goriya.MoveSpeed);
         }
 
         public void MoveLeft()
@@ -86,7 +87,6 @@
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
-            this.goriya.Physics.Location = new Vector2(this.goriya.Physics.Location.X, this.goriya.Physics.Location.Y + this.goriya.MoveSpeed);
             this.sprite.Update();
         }
 

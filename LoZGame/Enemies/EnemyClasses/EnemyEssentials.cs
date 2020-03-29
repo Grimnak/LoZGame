@@ -5,8 +5,6 @@
 
     public abstract class EnemyEssentials
     {
-        public Rectangle Bounds { get; set; }
-
         public EnemyCollisionHandler EnemyCollisionHandler { get; set; }
 
         public RandomStateGenerator RandomStateGenerator { get; set; }
@@ -60,20 +58,12 @@
             }
         }
 
-        private void DamagePushback()
-        {
-            if ((Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0) && this.Health.CurrentHealth > 0)
-            {
-                this.Physics.Move();
-                this.Physics.Accelerate();
-            }
-        }
-
         public void HandleDamage()
         {
             if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
             {
                 this.DamageTimer--;
+                this.Physics.MovementVelocity *= 0.95f;
                 if (this.DamageTimer % 10 > 5)
                 {
                     this.CurrentTint = Color.DarkSlateGray;
@@ -82,15 +72,17 @@
                 {
                     this.CurrentTint = LoZGame.Instance.DungeonTint;
                 }
+            } else
+            {
+                this.Physics.ForceVelocity = Vector2.Zero;
             }
         }
 
         public virtual void Update()
         {
             this.HandleDamage();
-            this.DamagePushback();
+            this.Physics.Move();
             this.CurrentState.Update();
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, this.Bounds.Width, this.Bounds.Height);
         }
 
         public virtual void Draw()

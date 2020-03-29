@@ -14,10 +14,11 @@
         public Dragon(Vector2 location)
         {
             this.Health = new HealthManager(32);
-            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+            this.Physics = new Physics(location);
+            this.Physics.Mass = -1;
             this.EntityManager = LoZGame.Instance.GameObjects.Entities;
             this.CurrentState = new LeftMovingDragonState(this);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
             this.Damage = 4;
@@ -42,34 +43,25 @@
                 float rotation = ((-1 * ((NumberFireballs - 1) / 2)) * FireballSpread) + (i * FireballSpread);
                 Vector2 rotatedVelocity = this.RotateVector(velocityVector, rotation);
                 Vector2 fireBallLocation = new Vector2(this.Physics.Location.X, this.Physics.Location.Y);
-                Physics fireballPhysics = new Physics(fireBallLocation, rotatedVelocity, Vector2.Zero);
+                Physics fireballPhysics = new Physics(fireBallLocation);
+                fireballPhysics.MovementVelocity = rotatedVelocity;
                 EntityManager.EnemyProjectileManager.Add(EntityManager.EnemyProjectileManager.Fireball, fireballPhysics);
             }
         }
 
-        public override void TakeDamage(int damageAmount)
+        private void CheckLeftBound()
         {
-            if (this.DamageTimer <= 0)
+            int leftBound = BlockSpriteFactory.Instance.HorizontalOffset + (7 * BlockSpriteFactory.Instance.TileWidth);
+            if (this.Physics.Location.X < leftBound)
             {
-                this.Health.DamageHealth(damageAmount);
-                this.DamageTimer = 100;
-            }
-
-            if (this.Health.CurrentHealth <= 0)
-            {
-                this.CurrentState.Die();
+                this.Physics.Location = new Vector2(leftBound, this.Physics.Location.Y);
             }
         }
 
         public override void Update()
         {
-            if (this.Physics.Location.X < BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 7))
-            {
-                this.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 7), this.Physics.Location.Y);
-            }
-            this.HandleDamage();
-            this.CurrentState.Update();
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, this.Bounds.Width, this.Bounds.Height);
+            base.Update();
+            this.CheckLeftBound();
         }
     }
 }

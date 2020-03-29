@@ -22,8 +22,8 @@
 
         public Rectangle Bounds
         {
-            get { return this.bounds; }
-            set { this.bounds = value; }
+            get { return this.Physics.Bounds; }
+            set { this.Physics.Bounds = value; }
         }
 
         private BlockCollisionHandler blockCollisionHandler;
@@ -46,9 +46,9 @@
             this.originalLocation = location;
             this.invalidDirections = !string.IsNullOrEmpty(direction) ? direction.Split(',') : null;
             this.blockCollisionHandler = new BlockCollisionHandler(this);
-            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+            this.Physics = new Physics(location);
             this.sprite = this.CreateCorrectSprite(name);
-            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
         }
 
         /// <inheritdoc/>
@@ -59,18 +59,18 @@
 
         private void HandlePush()
         {
-            if (this.Physics.Velocity.X != 0)
+            if (this.Physics.MovementVelocity.X != 0)
             {
-                if (Math.Abs(this.Physics.Location.X - this.originalLocation.X) < this.Bounds.Width && this.Physics.Location.Y == this.originalLocation.Y)
+                if (Math.Abs(this.Physics.Location.X - this.originalLocation.X) < this.Physics.Bounds.Width && this.Physics.Location.Y == this.originalLocation.Y)
                 {
                     this.Physics.StopMovementY();
                     this.Physics.Move();
                     this.Physics.Accelerate();
                 }
             }
-            else if (this.Physics.Velocity.Y != 0)
+            else if (this.Physics.MovementVelocity.Y != 0)
             {
-                if (Math.Abs(this.Physics.Location.Y - this.originalLocation.Y) < this.Bounds.Height && this.Physics.Location.X == this.originalLocation.X)
+                if (Math.Abs(this.Physics.Location.Y - this.originalLocation.Y) < this.Physics.Bounds.Height && this.Physics.Location.X == this.originalLocation.X)
                 {
                     this.Physics.StopMovementX();
                     this.Physics.Move();
@@ -81,7 +81,7 @@
 
         private void SolveDoors()
         {
-            if (Math.Abs(this.Physics.Location.X - this.originalLocation.X) == this.Bounds.Width - 1 || Math.Abs(this.Physics.Location.Y - this.originalLocation.Y) == this.Bounds.Height)
+            if (Math.Abs(this.Physics.Location.X - this.originalLocation.X) == this.Physics.Bounds.Width - 1 || Math.Abs(this.Physics.Location.Y - this.originalLocation.Y) == this.Physics.Bounds.Height)
             {
                 foreach (Door door in LoZGame.Instance.GameObjects.Doors.DoorList)
                 {
@@ -98,8 +98,6 @@
         {
             HandlePush();
             SolveDoors();
-            this.bounds.X = (int)this.Physics.Location.X;
-            this.bounds.Y = (int)this.Physics.Location.Y;
         }
 
         /// <inheritdoc/>
