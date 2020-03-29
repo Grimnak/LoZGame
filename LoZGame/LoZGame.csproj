@@ -110,7 +110,11 @@
     <Compile Include="Enemies\EnemyStates\StalfosStates\StunnedStalfosState.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\StunnedWallMasterState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\StunnedZolState.cs" />
+    <Compile Include="GameStates\DeathState.cs" />
+    <Compile Include="GameStates\InventoryState.cs" />
+    <Compile Include="GameStates\TitleScreenState.cs" />
     <Compile Include="Interfaces\IDrop.cs" />
+    <Compile Include="Interfaces\IGameState.cs" />
     <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Interfaces\IDoor.cs" />
     <Compile Include="Interfaces\IManager.cs" />
