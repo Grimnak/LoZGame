@@ -14,13 +14,15 @@ namespace LoZClone
         private static readonly Color EnemyProjectileColor = Color.Purple; 
         private static readonly Color ExplosionColor = Color.DarkOliveGreen;
         private static readonly Color DoorColor = Color.Yellow;
+        private static readonly Color BlockColor = Color.Aqua;
 
-        private static readonly float EnemyLayer = 0.996f;
-        private static readonly float PlayerLayer = 1.0f;
+        private static readonly float BlockLayer = 0.994f;
         private static readonly float ItemLayer = 0.995f;
-        private static readonly float ProjectileLayer = 0.998f;
+        private static readonly float EnemyLayer = 0.996f;
         private static readonly float EnemyProjectileLayer = 0.997f;
+        private static readonly float ProjectileLayer = 0.998f;
         private static readonly float ExplosionLayer = 0.999f;
+        private static readonly float PlayerLayer = 1.0f;
         private static readonly float DoorLayer = 1.0f;
 
         private Texture2D DebuggSprite;
@@ -33,6 +35,7 @@ namespace LoZClone
         private List<IProjectile> enemyProjectiles;
         private List<IEnemy> enemies;
         private List<IItem> items;
+        private List<IBlock> blocks;
 
         public DebugManager()
         {
@@ -53,6 +56,7 @@ namespace LoZClone
             this.enemyProjectiles = LoZGame.Instance.GameObjects.Entities.EnemyProjectiles;
             this.enemies = LoZGame.Instance.GameObjects.Enemies.EnemyList;
             this.player = LoZGame.Instance.Link;
+            this.blocks = LoZGame.Instance.GameObjects.Blocks.BlockList;
         }
 
         public void Draw()
@@ -86,6 +90,14 @@ namespace LoZClone
             {
                 this.DebuggSprite.SetData<Color>(new Color[] { EnemyColor });
                 LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, enemy.Physics.Bounds, this.DebuggSourceRectangle, EnemyColor, 0.0f, Vector2.Zero, SpriteEffects.None, EnemyLayer);
+            }
+            foreach (IBlock block in this.blocks)
+            {
+                if (!(block is Tile))
+                {
+                    this.DebuggSprite.SetData<Color>(new Color[] { BlockColor });
+                    LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, block.Physics.Bounds, this.DebuggSourceRectangle, BlockColor, 0.0f, Vector2.Zero, SpriteEffects.None, BlockLayer);
+                }
             }
             this.DebuggSprite.SetData<Color>(new Color[] { PlayerColor });
             LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, player.Physics.Bounds, this.DebuggSourceRectangle, PlayerColor, 0.0f, Vector2.Zero, SpriteEffects.None, PlayerLayer);

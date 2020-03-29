@@ -91,16 +91,21 @@
                 // Player moved to bottom side of new room (next to door, next to staircase in basement case).
                 if (this.currentX == 1 && this.currentY == 0)
                 {
-                    this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
-                        (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5)),
-                        (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));
+                    this.player.Physics.Bounds = new Microsoft.Xna.Framework.Rectangle(
+                        BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5),
+                        BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
+                        this.player.Physics.Bounds.Width,
+                        this.player.Physics.Bounds.Height);
                 }
                 else
                 {
-                    this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
-                        (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                        (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
+                    this.player.Physics.Bounds = new Microsoft.Xna.Framework.Rectangle(
+                        (int)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                        BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6),
+                        this.player.Physics.Bounds.Width,
+                        this.player.Physics.Bounds.Height);
                 }
+                this.player.Physics.SetLocation();
                 this.player.CurrentDirection = "Up";
                 this.player.State = new IdleState(this.player);
             }
@@ -119,16 +124,21 @@
                 // Player moved to top side of new room (next to door, top of the ladder in the basement case).
                 if (currentX == 1 && currentY == 1)
                 {
-                    this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
-                        (float)(BlockSpriteFactory.Instance.TileWidth * 4),
-                        (float)(BlockSpriteFactory.Instance.TileHeight * 0) + 2);
+                    this.player.Physics.Bounds = new Microsoft.Xna.Framework.Rectangle(
+                        BlockSpriteFactory.Instance.TileWidth * 4,
+                        (BlockSpriteFactory.Instance.TileHeight * 0) + 2,
+                        this.player.Physics.Bounds.Width,
+                        this.player.Physics.Bounds.Height);
                 }
                 else
                 {
-                    this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
-                        (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                        (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 0)) + 2);
+                    this.player.Physics.Bounds = new Microsoft.Xna.Framework.Rectangle(
+                        (int)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                        BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 0) + 2,
+                        this.player.Physics.Bounds.Width,
+                        this.player.Physics.Bounds.Height);
                 }
+                this.player.Physics.SetLocation();
                 this.player.CurrentDirection = "Down";
                 this.player.State = new IdleState(this.player);
             }
@@ -145,9 +155,12 @@
                 this.LoadNewRoom();
 
                 // Player moved to right side of new room (next to door).
-                this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
-                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 11)),
-                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));
+                this.player.Physics.Bounds = new Microsoft.Xna.Framework.Rectangle(
+                    BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 11),
+                    BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
+                    this.player.Physics.Bounds.Width,
+                    this.player.Physics.Bounds.Height);
+                this.player.Physics.SetLocation();
                 this.player.CurrentDirection = "Left";
                 this.player.State = new IdleState(this.player);
             }
@@ -164,9 +177,12 @@
                 this.LoadNewRoom();
 
                 // Player moved to left side of new room (next to door).
-                this.player.Physics.Location = new Microsoft.Xna.Framework.Vector2(
-                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 0) + 6),
-                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3)));
+                this.player.Physics.Bounds = new Microsoft.Xna.Framework.Rectangle(
+                    BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 0) + 6,
+                    BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
+                    this.player.Physics.Bounds.Width,
+                    this.player.Physics.Bounds.Height);
+                this.player.Physics.SetLocation();
                 this.player.CurrentDirection = "Right";
                 this.player.State = new IdleState(this.player);
             }

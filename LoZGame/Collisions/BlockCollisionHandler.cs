@@ -43,35 +43,24 @@
                 {
                     DeterminePushVelocity(player, collisionSide);
                 }
+                else 
+                { 
+                    this.SetNewBounds(player.Physics, collisionSide); 
+                }
             }
             else if (this.block is Tile)
             {
                 LoZGame.Instance.CollisionDetector.MoveToBasement = true;
             }
+            else if (block is BlockTile)
+            {
+                this.SetNewBounds(player.Physics, collisionSide);
+            }
         }
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-        }
-
-        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
-        {
-            if (collisionSide == CollisionDetection.CollisionSide.Right)
-            {
-                this.block.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, this.block.Physics.Location.Y);
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Left)
-            {
-                this.block.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, this.block.Physics.Location.Y);
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
-            {
-                this.block.Physics.Location = new Vector2(this.block.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset);
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Top)
-            {
-                this.block.Physics.Location = new Vector2(this.block.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
-            }
+            this.SetNewBounds(enemy.Physics, collisionSide);
         }
 
         private void DeterminePushVelocity(IPlayer player, CollisionDetection.CollisionSide collisionSide)
@@ -102,6 +91,34 @@
             {
                 xDirection = -1;
                 yDirection = 0;
+            }
+        }
+        
+        private void SetNewBounds(Physics physics, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (collisionSide == CollisionDetection.CollisionSide.Right)
+            {
+                int side = block.Physics.Bounds.Right;
+                physics.Bounds = new Rectangle(side, physics.Bounds.Y, physics.Bounds.Width, physics.Bounds.Height);
+                physics.StopMotionX();
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Left)
+            {
+                int side = block.Physics.Bounds.Left - physics.Bounds.Width;
+                physics.Bounds = new Rectangle(side, physics.Bounds.Y, physics.Bounds.Width, physics.Bounds.Height);
+                physics.StopMotionX();
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Top)
+            {
+                int side = block.Physics.Bounds.Top - physics.Bounds.Height;
+                physics.Bounds = new Rectangle(physics.Bounds.X, side, physics.Bounds.Width, physics.Bounds.Height);
+                physics.StopMotionY();
+            }
+            else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
+            {
+                int side = block.Physics.Bounds.Bottom;
+                physics.Bounds = new Rectangle(physics.Bounds.X, side, physics.Bounds.Width, physics.Bounds.Height);
+                physics.StopMotionY();
             }
         }
     }

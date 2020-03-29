@@ -26,25 +26,6 @@
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
         {
-            if (block is BlockTile || block is MovableTile)
-            {
-                if (collisionSide == CollisionDetection.CollisionSide.Right)
-                {
-                    this.enemy.Physics.Location = new Vector2(block.Physics.Location.X - EnemySpriteFactory.GetEnemyWidth(enemy), this.enemy.Physics.Location.Y);
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Left)
-                {
-                    this.enemy.Physics.Location = new Vector2(block.Physics.Location.X + BlockSpriteFactory.Instance.TileWidth, this.enemy.Physics.Location.Y);
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Top)
-                {
-                    this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, block.Physics.Location.Y + BlockSpriteFactory.Instance.TileHeight);
-                }
-                else
-                {
-                    this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, block.Physics.Location.Y - EnemySpriteFactory.GetEnemyHeight(enemy));
-                }
-            }
         }
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
@@ -91,49 +72,59 @@
             {
                 if (collisionSide == CollisionDetection.CollisionSide.Right)
                 {
-                    this.enemy.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, this.enemy.Physics.Location.Y);
+                    this.enemy.Physics.Bounds = new Rectangle(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, this.enemy.Physics.Bounds.Y, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
+                    this.enemy.Physics.StopMotionX();
                 }
                 else if (collisionSide == CollisionDetection.CollisionSide.Left)
                 {
-                    this.enemy.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, this.enemy.Physics.Location.Y);
+                    this.enemy.Physics.Bounds = new Rectangle(BlockSpriteFactory.Instance.HorizontalOffset, this.enemy.Physics.Bounds.Y, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
+                    this.enemy.Physics.StopMotionX();
                 }
                 else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
                 {
-                    this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset);
+                    this.enemy.Physics.Bounds = new Rectangle(this.enemy.Physics.Bounds.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
+                    this.enemy.Physics.StopMotionY();
                 }
                 else if (collisionSide == CollisionDetection.CollisionSide.Top)
                 {
-                    this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
+                    this.enemy.Physics.Bounds = new Rectangle(this.enemy.Physics.Bounds.X, BlockSpriteFactory.Instance.VerticalOffset, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
+                    this.enemy.Physics.StopMotionY();
                 }
             }
             else
             {
                 if (collisionSide == CollisionDetection.CollisionSide.Right)
                 {
-                    this.enemy.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth, this.enemy.Physics.Location.Y);
+                    this.enemy.Physics.Bounds = new Rectangle(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth, this.enemy.Physics.Bounds.Y, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
+                    this.enemy.Physics.StopMotionX();
                 }
                 else if (collisionSide == CollisionDetection.CollisionSide.Left)
                 {
-                    this.enemy.Physics.Location = new Vector2(0, this.enemy.Physics.Location.Y);
+                    this.enemy.Physics.Bounds = new Rectangle(0, this.enemy.Physics.Bounds.Y, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
+                    this.enemy.Physics.StopMotionX();
                 }
                 else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
                 {
-                    this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight);
+                    this.enemy.Physics.Bounds = new Rectangle(this.enemy.Physics.Bounds.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
+                    this.enemy.Physics.StopMotionY();
                 }
                 else if (collisionSide == CollisionDetection.CollisionSide.Top)
                 {
-                    this.enemy.Physics.Location = new Vector2(this.enemy.Physics.Location.X, 0);
+                    this.enemy.Physics.Bounds = new Rectangle(this.enemy.Physics.Bounds.X, 0, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
+                    this.enemy.Physics.StopMotionY();
                 }
             }
+            this.enemy.Physics.SetLocation();
+            
         }
 
         private void DeterminePushbackValues(Vector2 momentum)
         {
             if (this.enemy.DamageTimer <= 0)
             {
-                Vector2 force = new Vector2(momentum.X / momentum.Length(), momentum.Y / momentum.Length());
-                force *= Acceleration;
-                this.enemy.Physics.SetForce(momentum, force);
+                Vector2 friction = new Vector2(momentum.X / momentum.Length(), momentum.Y / momentum.Length());
+                friction *= Acceleration;
+                this.enemy.Physics.SetForce(momentum, friction);
             }
         }
     }

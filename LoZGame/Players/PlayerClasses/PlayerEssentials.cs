@@ -40,12 +40,11 @@
         {
             if (Math.Abs((int)this.Physics.MovementVelocity.X) != 0 || Math.Abs((int)this.Physics.MovementVelocity.Y) != 0)
             {
-                this.Physics.Move();
                 this.Physics.Accelerate();
             }
             else
             {
-                this.Physics.StopMovement();
+                this.Physics.StopKnockback();
             }
         }
 
@@ -66,7 +65,7 @@
             }
             else
             {
-                this.Physics.StopMovement();
+                this.Physics.StopKnockback();
             }
         }
 

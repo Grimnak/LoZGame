@@ -40,10 +40,6 @@
             this.HandleDamage();
             this.Physics.Move();
             this.State.Update();
-            if (this.Health.CurrentHealth <= 0)
-            {
-                this.State.Die();
-            }
         }
 
         public void Draw()

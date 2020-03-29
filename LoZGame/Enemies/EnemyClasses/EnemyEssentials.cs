@@ -63,7 +63,6 @@
             if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
             {
                 this.DamageTimer--;
-                this.Physics.MovementVelocity *= 0.95f;
                 if (this.DamageTimer % 10 > 5)
                 {
                     this.CurrentTint = Color.DarkSlateGray;
@@ -74,7 +73,7 @@
                 }
             } else
             {
-                this.Physics.ForceVelocity = Vector2.Zero;
+                this.Physics.StopKnockback();
             }
         }
 
