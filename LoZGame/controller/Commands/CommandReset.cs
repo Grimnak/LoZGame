@@ -33,8 +33,6 @@
             this.player.DamageTimer = 0;
             this.player.CurrentTint = Color.White;
 
-            LoZGame.Instance.GameState = "Default";
-
             this.dungeon.Reset();
         }
     }

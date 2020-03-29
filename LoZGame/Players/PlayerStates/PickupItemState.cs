@@ -25,7 +25,7 @@ namespace LoZClone
             this.sprite = this.CreateCorrectSprite();
             if (item is Triforce)
             {
-                LoZGame.Instance.GameState = "Win";
+
             }
             if (item is Key)
             {

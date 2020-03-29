@@ -37,8 +37,9 @@
         private List<IController> controllers;
         private List<IPlayer> players;
 
-
         private Color dungeonTint;
+
+        private static readonly LoZGame instance = new LoZGame();
 
         public Color DungeonTint { get { return dungeonTint; } set { dungeonTint = value; } }
 
@@ -47,12 +48,11 @@
             get { return this.link; }
         }
 
-        public Dungeon Dungeon
-        {
-            get { return this.dungeon; }
-        }
+        public Dungeon Dungeon { get { return this.dungeon; } }
 
-        private static readonly LoZGame instance = new LoZGame();
+        public List<IController> Controllers { get { return controllers; } }
+
+        public List<IPlayer> Players { get { return players; } }
 
         public static LoZGame Instance { get { return instance; } }
 
@@ -67,6 +67,10 @@
         public Random Random { get { return randomNumberGenerator; } }
 
         public int UpdateSpeed { get { return DefaultUpdateSpeed; } }
+
+        public Texture2D Background { get { return background; } }
+
+        public SpriteFont Font { get { return font; } }
 
         private LoZGame()
         {
@@ -128,48 +132,24 @@
 
         protected override void Update(GameTime gameTime)
         {
-            this.gameLife++;
-            if (gameLife >= DefaultUpdateSpeed)
-            {
-                gameLife = 0;
-            }
-            foreach (IController controller in this.controllers)
-            {
-                controller.Update();
-            }
-            this.link.Update();
-            this.gameObjectManager.Update();
-            this.collisionDetector.Update(this.players.AsReadOnly(), this.gameObjectManager.Enemies.EnemyList.AsReadOnly(), this.gameObjectManager.Blocks.BlockList.AsReadOnly(), this.gameObjectManager.Doors.DoorList.AsReadOnly(), this.gameObjectManager.Items.ItemList.AsReadOnly(), this.gameObjectManager.Entities.PlayerProjectiles.AsReadOnly(), this.gameObjectManager.Entities.EnemyProjectiles.AsReadOnly());
+            this.gameState.Update();
+
             if (DebugMode)
             {
                 this.debugManager.Update();
             }
+
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             this.GraphicsDevice.Clear(Color.Black);
-            /*if (gameState.Equals("Win") && gameLife % (InversionTime * 2) < InversionTime)
-            {
-                this.spriteBatch.Begin(SpriteSortMode.FrontToBack); // 2nd param used to be bsInverter
-            }
-            else
-            {
-                this.spriteBatch.Begin(SpriteSortMode.FrontToBack);
-            }*/
-            this.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
-            {
-                this.spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), dungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
-            }
 
-            this.gameObjectManager.Draw();
-            if (dungeon.CurrentRoomX == 0 && dungeon.CurrentRoomY == 2)
-            {
-                this.spriteBatch.DrawString(font, this.dungeon.CurrentRoom.RoomText, new Vector2(100, 100), Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
-            }
-            this.link.Draw();
+            this.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+
+            this.gameState.Draw();
+
             if (DebugMode)
             {
                 this.debugManager.Draw();
