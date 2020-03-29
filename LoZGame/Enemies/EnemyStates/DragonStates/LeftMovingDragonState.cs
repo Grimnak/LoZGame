@@ -17,6 +17,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
             this.dragon.CurrentState = this;
             randomStateGenerator = new RandomStateGenerator(this.dragon, 0, 4);
+            this.dragon.Physics.MovementVelocity = new Vector2(-1 * this.dragon.MoveSpeed, 0);
         }
 
         public void MoveUp()
@@ -79,7 +80,6 @@
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
-            this.dragon.Physics.Location = new Vector2(this.dragon.Physics.Location.X - this.dragon.MoveSpeed, this.dragon.Physics.Location.Y);
             this.sprite.Update();
         }
 

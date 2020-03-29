@@ -7,7 +7,6 @@
     public class Link : PlayerEssentials, IPlayer
     {
         private PlayerCollisionHandler linkCollisionHandler;
-        private Rectangle bounds;
         private int startingHealth = 12;
 
         private bool hasKey;
@@ -18,15 +17,11 @@
             set { this.hasKey = value; }
         }
 
-        public Rectangle Bounds
-        {
-            get { return this.bounds; }
-            set { this.bounds = value; }
-        }
+
 
         public Link(Vector2 location)
         {
-            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+            this.Physics = new Physics(location);
             this.Health = new HealthManager(startingHealth);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
             this.CurrentColor = "Green";
@@ -36,23 +31,18 @@
             this.MoveSpeed = 2.5f;
             this.DamageTimer = 0;
             this.State = new IdleState(this);
-            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
             this.HasKey = false;
         }
 
-        public override void Update()
+        public void Update()
         {
             this.HandleDamage();
-            this.bounds.X = (int)this.Physics.Location.X;
-            this.bounds.Y = (int)this.Physics.Location.Y;
+            this.Physics.Move();
             this.State.Update();
-            if (this.Health.CurrentHealth <= 0)
-            {
-                this.State.Die();
-            }
         }
 
-        public override void Draw()
+        public void Draw()
         {
             this.State.Draw();
         }

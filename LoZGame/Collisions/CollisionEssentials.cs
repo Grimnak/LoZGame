@@ -26,9 +26,9 @@
             // Identify largest collision in case of multiple occurring at once.
             foreach (ICollider collider in targetColliders)
             {
-                CollisionSide sourceSide = GetCollisionSide(sourceCollider.Bounds, collider.Bounds);
-                CollisionSide targetSide = GetCollisionSide(collider.Bounds, sourceCollider.Bounds);
-                Rectangle overlap = Rectangle.Intersect(sourceCollider.Bounds, collider.Bounds);
+                CollisionSide sourceSide = GetCollisionSide(sourceCollider.Physics.Bounds, collider.Physics.Bounds);
+                CollisionSide targetSide = GetCollisionSide(collider.Physics.Bounds, sourceCollider.Physics.Bounds);
+                Rectangle overlap = Rectangle.Intersect(sourceCollider.Physics.Bounds, collider.Physics.Bounds);
                 float overlapArea = overlap.Width * overlap.Height;
                 if (overlapArea > biggestOverlapArea)
                 {
@@ -87,23 +87,23 @@
             if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
             {
                 // is right wall
-                if (sourceCollider.Bounds.Right > LoZGame.Instance.GraphicsDevice.Viewport.Width - BlockSpriteFactory.Instance.HorizontalOffset + 10)
+                if (sourceCollider.Physics.Bounds.Right > LoZGame.Instance.GraphicsDevice.Viewport.Width - BlockSpriteFactory.Instance.HorizontalOffset + 10)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
                 }
                 // is left wall
-                else if (sourceCollider.Bounds.Left < BlockSpriteFactory.Instance.HorizontalOffset)
+                else if (sourceCollider.Physics.Bounds.Left < BlockSpriteFactory.Instance.HorizontalOffset)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Left);
                 }
 
                 // is bottom wall
-                if (sourceCollider.Bounds.Bottom > LoZGame.Instance.GraphicsDevice.Viewport.Height - BlockSpriteFactory.Instance.VerticalOffset)
+                if (sourceCollider.Physics.Bounds.Bottom > LoZGame.Instance.GraphicsDevice.Viewport.Height - BlockSpriteFactory.Instance.VerticalOffset)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
                 }
                 // is top wall
-                else if (sourceCollider.Bounds.Top < BlockSpriteFactory.Instance.VerticalOffset)
+                else if (sourceCollider.Physics.Bounds.Top < BlockSpriteFactory.Instance.VerticalOffset)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
                 }

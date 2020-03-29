@@ -22,22 +22,22 @@
 
         public Physics Physics { get; set; }
 
-        public Rectangle Bounds { get; set; }
+        
 
         public Rupee(Vector2 loc)
         {
             this.sprite = ItemSpriteFactory.Instance.Rupee(ItemSpriteFactory.Instance.Scale);
             this.itemCollisionHandler = new ItemCollisionHandler(this);
-            this.Physics = new Physics(loc, new Vector2(0, -1), new Vector2(0, 0.1f));
+            this.Physics = new Physics(loc);
             this.Size = new Vector2(ItemSpriteFactory.RupeeWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.RupeeHeight * ItemSpriteFactory.Instance.Scale);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.lifeTime = 0;
             this.expired = false;
         }
 
         private void UpdateLoc()
         {
-            if ((int)Math.Abs(this.Physics.Velocity.X) > 0 || (int)Math.Abs(this.Physics.Velocity.Y) > 0)
+            if ((int)Math.Abs(this.Physics.MovementVelocity.X) > 0 || (int)Math.Abs(this.Physics.MovementVelocity.Y) > 0)
             {
                 this.Physics.Move();
                 this.Physics.Accelerate();
@@ -73,7 +73,7 @@
             {
                 this.ReverseBob();
             }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.UpdateLoc();
             this.sprite.Update();
         }

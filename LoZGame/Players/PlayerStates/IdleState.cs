@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
     /// <summary>
     /// Idle state for player.
     /// </summary>
@@ -16,6 +17,7 @@
         {
             this.player = playerInstance;
             this.sprite = this.CreateCorrectSprite();
+            this.player.Physics.MovementVelocity = Vector2.Zero;
         }
 
         /// <inheritdoc/>

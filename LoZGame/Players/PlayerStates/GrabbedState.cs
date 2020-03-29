@@ -72,16 +72,16 @@
         public void Update()
         {
             wallMaster.Physics.Location = player.Physics.Location;
-            player.Physics.Velocity = wallMaster.Physics.Velocity;
+            player.Physics.MovementVelocity = wallMaster.Physics.MovementVelocity;
             this.player.Physics.Move();
             if (this.player.Physics.Location.X < 0)
             {
-                this.player.Physics.ResetVelocity();
+                this.player.Physics.StopVelocity();
                 this.player.State = new IdleState(this.player);
                 this.player.Physics.Location = new Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
-                this.player.Bounds = new Rectangle((int)this.player.Physics.Location.X, (int)this.player.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
+                this.player.Physics.Bounds = new Rectangle((int)this.player.Physics.Location.X, (int)this.player.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
                 LoZGame.Instance.Dungeon.CurrentRoomX = 2;
                 LoZGame.Instance.Dungeon.CurrentRoomY = 5;
                 LoZGame.Instance.Dungeon.LoadNewRoom();

@@ -11,7 +11,7 @@
 
         private readonly Vector2 rightScreenLoc = new Vector2(
             800 - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight + 11, 195);
-        
+
         private readonly Vector2 leftScreenLoc = new Vector2(19, 195);
 
         private IDoorState state;
@@ -23,13 +23,6 @@
         }
 
         private DoorCollisionHandler doorCollisionHandler;
-        private Rectangle bounds;
-
-        public Rectangle Bounds
-        {
-            get { return this.bounds; }
-            set { this.bounds = value; }
-        }
 
         public Physics Physics { get; set; }
 
@@ -57,6 +50,7 @@
         {
             this.location = loc;
             this.doorCollisionHandler = new DoorCollisionHandler(this);
+            this.SetPhysics();
             switch (starting)
             {
                 case "locked":
@@ -77,6 +71,33 @@
                 default:
                     this.state = new UnlockedDoorState(this);
                     break;
+            }
+        }
+
+        private void SetPhysics()
+        {
+            switch (this.location)
+            {
+                case "N":
+                    {
+                        this.Physics = new Physics(this.upScreenLoc);
+                        break;
+                    }
+                case "E":
+                    {
+                        this.Physics = new Physics(this.rightScreenLoc);
+                        break;
+                    }
+                case "S":
+                    {
+                        this.Physics = new Physics(this.downScreenLoc);
+                        break;
+                    }
+                case "W":
+                    {
+                        this.Physics = new Physics(this.leftScreenLoc);
+                        break;
+                    }
             }
         }
 

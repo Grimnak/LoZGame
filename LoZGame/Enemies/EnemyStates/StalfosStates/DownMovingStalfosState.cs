@@ -17,6 +17,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
             this.stalfos.CurrentState = this;
             randomStateGenerator = new RandomStateGenerator(this.stalfos, 2, 6);
+            this.stalfos.Physics.MovementVelocity = new Vector2(0, this.stalfos.MoveSpeed);
         }
 
         public void MoveLeft()
@@ -80,7 +81,6 @@
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
-            this.stalfos.Physics.Location = new Vector2(this.stalfos.Physics.Location.X, this.stalfos.Physics.Location.Y + this.stalfos.MoveSpeed);
             this.sprite.Update();
         }
 

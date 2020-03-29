@@ -2,52 +2,58 @@
 {
     using Microsoft.Xna.Framework;
 
-    public class Physics
+    public class Physics: PhysicsHelper
     {
-        public Vector2 Location { get; set; }
-
-        public Vector2 Velocity { get; set; }
-
-        public Vector2 Acceleration { get; set; }
-
-        public Physics(Vector2 location, Vector2 velocity, Vector2 acceleration)
+        public Physics(Vector2 location)
         {
             this.Location = location;
-            this.Velocity = velocity;
-            this.Acceleration = acceleration;
+            this.Depth = 0.0f;
+            this.Mass = 1;
+            this.MovementVelocity = Vector2.Zero;
+            this.MovementAcceleration = Vector2.Zero;
+            this.ForceVelocity = Vector2.Zero;
+            this.ForceAcceleration = Vector2.Zero;
+            this.MasterMovement = Vector2.Zero;
+            this.Bounds = Rectangle.Empty;
         }
 
-        public void ResetVelocity()
+        public void SetLocation()
         {
-            this.Velocity = new Vector2(0, 0);
+            this.Location = new Vector2(this.Bounds.X, this.Bounds.Y);
         }
 
         public void Move()
         {
-            this.Location = new Vector2(this.Location.X + this.Velocity.X, this.Location.Y + this.Velocity.Y);
+            Vector2 totalVelocity = Vector2.Zero;
+            totalVelocity.X = this.MovementVelocity.X + this.ForceVelocity.X + this.MasterMovement.X;
+            totalVelocity.Y = this.MovementVelocity.Y + this.ForceVelocity.Y + this.MasterMovement.Y;
+            this.Bounds = new Rectangle(this.Bounds.X + (int)totalVelocity.X, this.Bounds.Y + (int)totalVelocity.Y, this.Bounds.Width, this.Bounds.Height);
+            this.Location = new Vector2(this.Bounds.X, this.Bounds.Y);
         }
 
         public void Accelerate()
         {
-            this.Velocity = new Vector2(this.Velocity.X + this.Acceleration.X, this.Velocity.Y + this.Acceleration.Y);
+            Vector2 totalAcceleration = Vector2.Zero;
+            totalAcceleration.X = this.MovementAcceleration.X + this.ForceAcceleration.X;
+            totalAcceleration.Y = this.MovementAcceleration.Y + this.ForceAcceleration.Y;
+            this.MovementVelocity = new Vector2(this.MovementVelocity.X + totalAcceleration.X, this.MovementVelocity.Y + totalAcceleration.Y);
         }
 
-        public void StopMovement()
+        public void SetForce(Vector2 momentum, Vector2 force)
         {
-            this.Velocity = new Vector2(0, 0);
-            this.Acceleration = new Vector2(0, 0);
+            if (this.Mass > 0)
+            {
+                this.ForceVelocity = new Vector2(momentum.X / this.Mass, momentum.Y / this.Mass);
+                this.ForceAcceleration = new Vector2(force.X / this.Mass, force.Y / this.Mass);
+            }
         }
 
-        public void StopMovementY()
+        public Vector2 GetMomentum()
         {
-            this.Velocity = new Vector2(this.Velocity.X + this.Acceleration.X, 0);
-            this.Acceleration = new Vector2(this.Acceleration.X, 0);
-        }
-
-        public void StopMovementX()
-        {
-            this.Velocity = new Vector2(0, this.Velocity.Y + this.Acceleration.Y);
-            this.Acceleration = new Vector2(0, this.Acceleration.Y);
+            Vector2 momentum = Vector2.Zero;
+            momentum.X = this.MovementVelocity.X + this.ForceVelocity.X;
+            momentum.Y = this.MovementVelocity.Y + this.ForceVelocity.Y;
+            return momentum;
         }
     }
 }

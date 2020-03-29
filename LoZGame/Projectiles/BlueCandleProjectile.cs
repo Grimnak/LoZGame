@@ -31,7 +31,7 @@
 
         public Physics Physics { get; set; }
 
-        public Rectangle Bounds { get; set; }
+        
 
         public BlueCandleProjectile(Vector2 loc, string direction)
         {
@@ -41,24 +41,32 @@
             this.collisionHandler = new ProjectileCollisionHandler(this);
             this.expired = false;
             this.travelTime = (int)(LifeTimeMax / 2);
-            this.damage = 1;
+            this.damage = 10;
             if (direction.Equals("Up"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - projectileWidth) / 2), loc.Y - LinkSize), new Vector2(0, -1 * Speed), new Vector2(0, Accel));
+                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - projectileWidth) / 2), loc.Y - projectileHeight));
+                this.Physics.MovementVelocity = new Vector2(0, -1 * Speed);
+                this.Physics.MovementAcceleration = new Vector2(0, Accel);
             }
             else if (direction.Equals("Left"))
             {
-                this.Physics = new Physics(new Vector2(loc.X - LinkSize, loc.Y - ((LinkSize - projectileHeight) / 2)), new Vector2(-1 * Speed, 0), new Vector2(Accel, 0));
+                this.Physics = new Physics(new Vector2(loc.X - projectileWidth, loc.Y - ((LinkSize - projectileHeight) / 2)));
+                this.Physics.MovementVelocity = new Vector2(-1 * Speed, 0);
+                this.Physics.MovementAcceleration = new Vector2(Accel, 0);
             }
             else if (direction.Equals("Right"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y - ((LinkSize - projectileHeight) / 2)), new Vector2(Speed, 0), new Vector2(-1 * Accel, 0));
+                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y - ((LinkSize - projectileHeight) / 2)));
+                this.Physics.MovementVelocity = new Vector2(Speed, 0);
+                this.Physics.MovementAcceleration = new Vector2(-1 * Accel, 0);
             }
             else
             {
-                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - projectileWidth) / 2), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, -1 * Accel));
+                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - projectileWidth) / 2), loc.Y + LinkSize));
+                this.Physics.MovementVelocity = new Vector2(0, Speed);
+                this.Physics.MovementAcceleration = new Vector2(0, -1 * Accel);
             }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             this.sprite = ProjectileSpriteFactory.Instance.BlueCandle();
         }
 
@@ -89,8 +97,7 @@
             {
                 this.Physics.Move();
                 this.Physics.Accelerate();
-                this.Physics.Acceleration = new Vector2(this.Physics.Acceleration.X * AccelDecay, this.Physics.Acceleration.Y * AccelDecay);
-                this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+                this.Physics.MovementAcceleration = new Vector2(this.Physics.MovementAcceleration.X * AccelDecay, this.Physics.MovementAcceleration.Y * AccelDecay);
             }
             else if (this.lifeTime <= 0)
             {

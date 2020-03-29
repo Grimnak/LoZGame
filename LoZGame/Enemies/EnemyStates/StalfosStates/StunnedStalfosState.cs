@@ -7,12 +7,14 @@
     {
         private readonly Stalfos stalfos;
         private readonly IEnemyState oldState;
+        private Vector2 oldVelocity;
         private int stunDuration;
 
         public StunnedStalfosState(Stalfos stalfos, IEnemyState oldState, int stunTime)
         {
             this.oldState = oldState;
             this.stalfos = stalfos;
+            this.oldVelocity = this.stalfos.Physics.MovementVelocity;
             stunDuration = stunTime;
             stalfos.CurrentTint = LoZGame.Instance.DungeonTint;
         }
@@ -73,6 +75,7 @@
             if (stunDuration <= 0)
             {
                 this.stalfos.CurrentState = oldState;
+                this.stalfos.Physics.MovementVelocity = oldVelocity;
             }
         }
 

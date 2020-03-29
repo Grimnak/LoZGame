@@ -13,7 +13,6 @@ namespace LoZClone
         private readonly Door door;
         private readonly ISprite sprite;
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
-        private readonly Vector2 location;
 
         public CosmeticDoorState(Door door)
         {
@@ -23,25 +22,21 @@ namespace LoZClone
                 case "N":
                 {
                     this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown(door.UpScreenLoc);
-                    location = door.UpScreenLoc;
                     break;
                 }
                 case "E":
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft(door.RightScreenLoc);
-                        location = door.RightScreenLoc;
                         break;
                 }
                 case "S":
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp(door.DownScreenLoc);
-                        location = door.DownScreenLoc;
                         break;
                 }
                 case "W":
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight(door.LeftScreenLoc);
-                        location = door.LeftScreenLoc;
                         break;
                 }
             }
@@ -59,7 +54,7 @@ namespace LoZClone
 
         public void Draw()
         {
-            this.sprite.Draw(location, spriteTint);
+            this.sprite.Draw(this.door.Physics.Location, spriteTint);
         }
 
         public void Open()

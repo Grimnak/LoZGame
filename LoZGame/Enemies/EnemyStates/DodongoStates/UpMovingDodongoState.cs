@@ -17,6 +17,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateUpMovingDodongoSprite();
             this.dodongo.CurrentState = this;
             randomStateGenerator = new RandomStateGenerator(this.dodongo, 2, 6);
+            this.dodongo.Physics.MovementVelocity = new Vector2(0, -1 * this.dodongo.MoveSpeed);
         }
 
         public void MoveLeft()
@@ -79,7 +80,6 @@
                 randomStateGenerator.Update();
                 this.lifeTime = 0;
             }
-            this.dodongo.Physics.Location = new Vector2(this.dodongo.Physics.Location.X, this.dodongo.Physics.Location.Y - this.dodongo.MoveSpeed);
             this.sprite.Update();
         }
 

@@ -18,6 +18,7 @@
             this.sprite = EnemySpriteFactory.Instance.CreateZolSprite();
             this.zol.CurrentState = this;
             this.randomStateGenerator = new RandomStateGenerator(this.zol, 2, 6);
+            this.zol.Physics.MovementVelocity = new Vector2(0, -1 * this.zol.MoveSpeed);
         }
 
         public void MoveLeft()
@@ -99,7 +100,7 @@
             this.DecideToMove();
             if (this.zol.ShouldMove)
             {
-                this.zol.Physics.Location = new Vector2(this.zol.Physics.Location.X, this.zol.Physics.Location.Y - this.zol.MoveSpeed);
+                this.zol.Physics.Move();
             }
             this.sprite.Update();
         }

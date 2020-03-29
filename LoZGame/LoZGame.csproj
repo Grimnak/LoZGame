@@ -106,6 +106,7 @@
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
     <Compile Include="Enemies\EnemyStates\GelStates\IdleGelState.cs" />
     <Compile Include="Enemies\EnemyStates\GoriyaStates\StunnedGoriyaState.cs" />
+    <Compile Include="Enemies\EnemyStates\KeeseStates\IdleKeeseState.cs" />
     <Compile Include="Enemies\EnemyStates\RopeStates\StunnedRopeState.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\StunnedStalfosState.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\StunnedWallMasterState.cs" />
@@ -364,6 +365,8 @@
     <Compile Include="Sprites\ProjectileSpriteClasses\GreenWoodSwordSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamProjectileSprite.cs" />
     <Compile Include="Managers\DebugManager.cs" />
+    <Compile Include="Util\PhysicHelper.cs" />
+    <Compile Include="Util\PhysicsEssentials.cs" />
     <Compile Include="Util\Physics.cs" />
     <Compile Include="Util\ProjectileSpriteFactory.cs" />
     <Compile Include="Util\ItemSpriteFactory.cs" />

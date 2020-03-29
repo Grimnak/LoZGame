@@ -1,5 +1,6 @@
 namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
     /// <summary>
     /// Attack state for player.
     /// </summary>
@@ -18,6 +19,7 @@ namespace LoZClone
             this.player = playerInstance;
             this.lockoutTimer = 15; // wait period
             this.sprite = this.CreateCorrectSprite();
+            this.player.Physics.MovementVelocity = Vector2.Zero;
         }
 
         /// <inheritdoc/>

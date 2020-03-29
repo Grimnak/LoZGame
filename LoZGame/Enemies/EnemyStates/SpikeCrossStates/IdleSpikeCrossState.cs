@@ -12,7 +12,7 @@
         public IdleSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            this.spikeCross.Physics.ResetVelocity();
+            this.spikeCross.Physics.StopVelocity();
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
             this.spikeCross.CurrentState = this;
         }

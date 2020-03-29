@@ -12,7 +12,7 @@
         public VerticalSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            this.spikeCross.Physics.Velocity = new Vector2(0, 1 * spikeCross.MoveSpeed);
+            this.spikeCross.Physics.MovementVelocity = new Vector2(0, 1 * spikeCross.MoveSpeed);
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
         }
 
@@ -86,7 +86,7 @@
                     if (spikeCross.Physics.Location.Y - ((BlockSpriteFactory.Instance.TileHeight * 3.5) + (BlockSpriteFactory.Instance.VerticalOffset / 2)) >= 0)
                     {
                         spikeCross.Retreating = true;
-                        spikeCross.Physics.Velocity = new Vector2(spikeCross.Physics.Velocity.X, -1);
+                        spikeCross.Physics.MovementVelocity = new Vector2(spikeCross.Physics.MovementVelocity.X, -1);
 
                     }
                 }
@@ -95,7 +95,7 @@
                     if (spikeCross.Physics.Location.Y - ((BlockSpriteFactory.Instance.TileHeight * 3.5) + (BlockSpriteFactory.Instance.VerticalOffset / 2)) <= 0)
                     {
                         spikeCross.Retreating = true;
-                        spikeCross.Physics.Velocity = new Vector2(spikeCross.Physics.Velocity.X, 1);
+                        spikeCross.Physics.MovementVelocity = new Vector2(spikeCross.Physics.MovementVelocity.X, 1);
                     }
                 }
             }

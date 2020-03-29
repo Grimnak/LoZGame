@@ -29,15 +29,15 @@
 
         public Physics Physics { get; set; }
 
-        public Rectangle Bounds { get; set; }
+        
 
         public DroppedYellowRupee(Vector2 loc)
         {
             this.sprite = ItemSpriteFactory.Instance.YellowRupee(ItemSpriteFactory.Instance.Scale);
             this.itemCollisionHandler = new ItemCollisionHandler(this);
-            this.Physics = new Physics(loc, new Vector2(0, -1), new Vector2(0, 0.1f));
+            this.Physics = new Physics(loc);
             this.Size = new Vector2(ItemSpriteFactory.RupeeWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.RupeeHeight * ItemSpriteFactory.Instance.Scale);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.lifeTime = 0;
             this.expired = false;
             this.itemCollisionHandler = new ItemCollisionHandler(this);
@@ -66,12 +66,12 @@
 
         public void ReverseBob()
         {
-            this.Physics.Acceleration = new Vector2(0, this.Physics.Acceleration.Y * -1);
+            this.Physics.MovementAcceleration = new Vector2(0, this.Physics.MovementAcceleration.Y * -1);
         }
 
         private void TrackBoomerang()
         {
-            this.Physics.Velocity = new Vector2(this.boomerang.Physics.Velocity.X, this.boomerang.Physics.Velocity.Y);
+            this.Physics.MovementVelocity = new Vector2(this.boomerang.Physics.MovementVelocity.X, this.boomerang.Physics.MovementVelocity.Y);
         }
 
         public void Update()
@@ -91,7 +91,7 @@
             {
                 this.TrackBoomerang();
             }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
         }
 
         public void Draw(Color spriteTint)

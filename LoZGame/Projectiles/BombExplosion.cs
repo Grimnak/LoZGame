@@ -31,7 +31,7 @@
 
         public Physics Physics { get; set; }
 
-        public Rectangle Bounds { get; set; }
+        
 
         private readonly bool hostile;
 
@@ -42,11 +42,11 @@
             this.projectileWidth = ProjectileSpriteFactory.Instance.ExplosionWidth * this.scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.ExplosionHeight * this.scale;
             this.collisionHandler = new ProjectileCollisionHandler(this);
-            this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
+            this.Physics = new Physics(new Vector2(location.X, location.Y));
             this.lifeTime = MaxLifeTime;
             this.hostile = true;
             this.expired = false;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X - (projectileWidth / 2), (int)this.Physics.Location.Y - (projectileHeight / 2), projectileWidth, projectileHeight);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X - (projectileWidth / 2), (int)this.Physics.Location.Y - (projectileHeight / 2), projectileWidth, projectileHeight);
             this.damage = 8;
             Random numGen = new Random();
             int selectBomb = numGen.Next(0, 5);
@@ -107,7 +107,7 @@
             if (this.lifeTime == DissipateOne || this.lifeTime == DissipateTwo)
             {
                 this.sprite.Update();
-                this.Bounds = Rectangle.Empty;
+                this.Physics.Bounds = Rectangle.Empty;
             }
 
             if (this.lifeTime <= 0)

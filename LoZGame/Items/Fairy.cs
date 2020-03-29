@@ -24,7 +24,7 @@
 
         public Physics Physics { get; set; }
 
-        public Rectangle Bounds { get; set; }
+        
 
         private enum Direction
         {
@@ -44,9 +44,9 @@
         {
             this.sprite = ItemSpriteFactory.Instance.Fairy(ItemSpriteFactory.Instance.Scale);
             this.itemCollisionHandler = new ItemCollisionHandler(this);
-            this.Physics = new Physics(loc, Vector2.Zero, Vector2.Zero);
+            this.Physics = new Physics(loc);
             this.Size = new Vector2(ItemSpriteFactory.FairyWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.FairyHeight * ItemSpriteFactory.Instance.Scale);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.Border = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width, LoZGame.Instance.GraphicsDevice.Viewport.Height);
             this.lifeTime = 0;
             this.expired = false;
@@ -60,35 +60,35 @@
             switch (this.currentDirection)
             {
                 case Direction.North:
-                    this.Physics.Velocity = new Vector2(0, -1);
+                    this.Physics.MovementVelocity = new Vector2(0, -1);
                     break;
 
                 case Direction.South:
-                    this.Physics.Velocity = new Vector2(0, 1);
+                    this.Physics.MovementVelocity = new Vector2(0, 1);
                     break;
 
                 case Direction.East:
-                    this.Physics.Velocity = new Vector2(1, 0);
+                    this.Physics.MovementVelocity = new Vector2(1, 0);
                     break;
 
                 case Direction.West:
-                    this.Physics.Velocity = new Vector2(-1, 0);
+                    this.Physics.MovementVelocity = new Vector2(-1, 0);
                     break;
 
                 case Direction.NorthEast:
-                    this.Physics.Velocity = new Vector2(0.727f, -0.727f);
+                    this.Physics.MovementVelocity = new Vector2(0.727f, -0.727f);
                     break;
 
                 case Direction.NorthWest:
-                    this.Physics.Velocity = new Vector2(-0.727f, -0.727f);
+                    this.Physics.MovementVelocity = new Vector2(-0.727f, -0.727f);
                     break;
 
                 case Direction.SouthEast:
-                    this.Physics.Velocity = new Vector2(0.727f, 0.727f);
+                    this.Physics.MovementVelocity = new Vector2(0.727f, 0.727f);
                     break;
 
                 case Direction.SouthWest:
-                    this.Physics.Velocity = new Vector2(-0.727f, 0.727f);
+                    this.Physics.MovementVelocity = new Vector2(-0.727f, 0.727f);
                     break;
 
                 default:
@@ -153,7 +153,7 @@
             {
                 this.expired = true;
             }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
             this.UpdateLoc();
             this.sprite.Update();
         }

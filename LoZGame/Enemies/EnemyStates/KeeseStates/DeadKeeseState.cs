@@ -15,8 +15,9 @@
             this.keese = keese;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.keese.CurrentState = this;
-            this.keese.Bounds = Rectangle.Empty;
+            this.keese.Physics.Bounds = Rectangle.Empty;
             LoZGame.Instance.Drops.AttemptDrop(this.keese.Physics.Location);
+            this.keese.Physics.MovementVelocity = Vector2.Zero;
         }
 
         public void MoveLeft()

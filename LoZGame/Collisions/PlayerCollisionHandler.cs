@@ -27,7 +27,7 @@
             }
             else
             {
-                DeterminePushbackValues(collisionSide);
+                DeterminePushbackValues(enemy.Physics.GetMomentum());
                 this.player.TakeDamage(enemy.Damage);
             }
         }
@@ -43,31 +43,12 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            DeterminePushbackValues(collisionSide);
+            DeterminePushbackValues(projectile.Physics.GetMomentum());
             this.player.TakeDamage(projectile.Damage);
         }
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(player.State is GrabbedState) && (block is BlockTile || block is MovableTile))
-            {
-                if (collisionSide == CollisionDetection.CollisionSide.Right)
-                {
-                    this.player.Physics.Location = new Vector2(block.Physics.Location.X - LinkSpriteFactory.LinkWidth, this.player.Physics.Location.Y);
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Left)
-                {
-                    this.player.Physics.Location = new Vector2(block.Physics.Location.X + BlockSpriteFactory.Instance.TileWidth, this.player.Physics.Location.Y);
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Top)
-                {
-                    this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y + BlockSpriteFactory.Instance.TileHeight);
-                }
-                else
-                {
-                    this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, block.Physics.Location.Y - LinkSpriteFactory.LinkHeight);
-                }
-            }
         }
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
@@ -82,53 +63,38 @@
         {
             if (collisionSide == CollisionDetection.CollisionSide.Right)
             {
-                this.player.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, this.player.Physics.Location.Y);
+                int side = LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10;
+                this.player.Physics.Bounds = new Rectangle(side, this.player.Physics.Bounds.Y, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
+                this.player.Physics.StopMotionX();
             }
             else if (collisionSide == CollisionDetection.CollisionSide.Left)
             {
-                this.player.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, this.player.Physics.Location.Y);
+                int side = BlockSpriteFactory.Instance.HorizontalOffset;
+                this.player.Physics.Bounds = new Rectangle(side, this.player.Physics.Bounds.Y, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
+                this.player.Physics.StopMotionX();
             }
             else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
             {
-                this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset);
+                int side = LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight -BlockSpriteFactory.Instance.VerticalOffset;
+                this.player.Physics.Bounds = new Rectangle(this.player.Physics.Bounds.X, side, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
+                this.player.Physics.StopMotionY();
             }
             else if (collisionSide == CollisionDetection.CollisionSide.Top)
             {
-                this.player.Physics.Location = new Vector2(this.player.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
+                int side = BlockSpriteFactory.Instance.VerticalOffset;
+                this.player.Physics.Bounds = new Rectangle(this.player.Physics.Bounds.X, side, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
+                this.player.Physics.StopMotionY();
             }
+            this.player.Physics.SetLocation();
         }
 
-        private void DeterminePushbackValues(CollisionDetection.CollisionSide collisionSide)
+        private void DeterminePushbackValues(Vector2 momentum)
         {
             if (this.player.DamageTimer <= 0)
             {
-                DeterminePushbackDirection(collisionSide);
-                this.player.Physics.Velocity = new Vector2(xDirection * Speed, yDirection * Speed);
-                this.player.Physics.Acceleration = new Vector2(xDirection * Acceleration, yDirection * Acceleration);
-            }
-        }
-
-        private void DeterminePushbackDirection(CollisionDetection.CollisionSide collisionSide)
-        {
-            if (collisionSide == CollisionDetection.CollisionSide.Top)
-            {
-                xDirection = 0;
-                yDirection = 1;
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
-            {
-                xDirection = 0;
-                yDirection = -1;
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Left)
-            {
-                xDirection = 1;
-                yDirection = 0;
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Right)
-            {
-                xDirection = -1;
-                yDirection = 0;
+                Vector2 force = new Vector2(momentum.X / momentum.Length(), momentum.Y / momentum.Length());
+                force *= Acceleration;
+                this.player.Physics.SetForce(momentum, force);
             }
         }
 
@@ -136,20 +102,25 @@
         {
             if (door.Physics.Location == door.LeftScreenLoc)
             {
-                player.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, player.Physics.Location.Y);
+                player.Physics.Bounds = new Rectangle((int)BlockSpriteFactory.Instance.HorizontalOffset, player.Physics.Bounds.Y, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
+                this.player.Physics.StopMotionX();
             }
             else if (door.Physics.Location == door.RightScreenLoc)
             {
-                player.Physics.Location = new Vector2(door.RightScreenLoc.X - LinkSpriteFactory.LinkWidth - 7, player.Physics.Location.Y);
+                player.Physics.Bounds = new Rectangle((int)door.RightScreenLoc.X - LinkSpriteFactory.LinkWidth - 7, player.Physics.Bounds.Y, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
+                this.player.Physics.StopMotionX();
             }
             else if (door.Physics.Location == door.DownScreenLoc)
             {
-                player.Physics.Location = new Vector2(player.Physics.Location.X, door.DownScreenLoc.Y - LinkSpriteFactory.LinkHeight);
+                player.Physics.Bounds = new Rectangle(player.Physics.Bounds.X, (int)door.DownScreenLoc.Y - LinkSpriteFactory.LinkHeight, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
+                this.player.Physics.StopMotionY();
             }
             else if (door.Physics.Location == door.UpScreenLoc)
             {
-                player.Physics.Location = new Vector2(player.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
+                player.Physics.Bounds = new Rectangle(player.Physics.Bounds.X, (int)BlockSpriteFactory.Instance.VerticalOffset, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
+                this.player.Physics.StopMotionY();
             }
+            this.player.Physics.SetLocation();
         }
     }
 }

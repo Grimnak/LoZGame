@@ -32,7 +32,7 @@
 
         public Physics Physics { get; set; }
 
-        public Rectangle Bounds { get; set; }
+        
 
         private static readonly int FrameDelay = 4;
         private const int Speed = 5;
@@ -48,37 +48,45 @@
 
             if (this.direction.Equals("Up"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - projectileWidth) / 2), loc.Y - LinkSize), new Vector2(0, -1 * Speed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - projectileWidth) / 2), loc.Y - LinkSize));
+                this.Physics.MovementVelocity = new Vector2(0, -1 * Speed);
+                this.Physics.MovementAcceleration = Vector2.Zero;
                 this.rotation = 0;
                 this.effect = SpriteEffects.FlipVertically;
                 this.Physics.Location = new Vector2(this.Physics.Location.X - DrawOffset, this.Physics.Location.Y);
-                this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+                this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
                 this.tip = new Vector2(projectileWidth, 0);
             }
             else if (this.direction.Equals("Left"))
             {
-                this.Physics = new Physics(new Vector2(loc.X, loc.Y + ((LinkSize - projectileWidth) / 2)), new Vector2(-1 * Speed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X, loc.Y + ((LinkSize - projectileWidth) / 2)));
+                this.Physics.MovementVelocity = new Vector2(-1 * Speed, 0);
+                this.Physics.MovementAcceleration = Vector2.Zero;
                 this.rotation = MathHelper.PiOver2;
                 this.effect = SpriteEffects.None;
                 this.Physics.Location = new Vector2(this.Physics.Location.X, this.Physics.Location.Y + DrawOffset);
-                this.Bounds = new Rectangle((int)this.Physics.Location.X - this.projectileHeight, (int)this.Physics.Location.Y, projectileHeight, projectileWidth);
+                this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X - this.projectileHeight, (int)this.Physics.Location.Y, projectileHeight, projectileWidth);
                 this.tip = new Vector2(-1 * projectileWidth, projectileHeight / 2);
             }
             else if (this.direction.Equals("Right"))
             {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize * 2), loc.Y + ((LinkSize - projectileWidth) / 2)), new Vector2(Speed, 0), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + (LinkSize * 2), loc.Y + ((LinkSize - projectileWidth) / 2)));
+                this.Physics.MovementVelocity = new Vector2(Speed, 0);
+                this.Physics.MovementAcceleration = Vector2.Zero;
                 this.rotation = MathHelper.PiOver2;
                 this.effect = SpriteEffects.FlipVertically;
                 this.Physics.Location = new Vector2(this.Physics.Location.X, this.Physics.Location.Y + DrawOffset);
-                this.Bounds = new Rectangle((int)this.Physics.Location.X - this.projectileHeight, (int)this.Physics.Location.Y, projectileHeight, projectileWidth);
+                this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X - this.projectileHeight, (int)this.Physics.Location.Y, projectileHeight, projectileWidth);
                 this.tip = new Vector2(projectileWidth, projectileHeight / 2);
             }
             else
             {
-                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - projectileWidth) / 2), loc.Y + LinkSize), new Vector2(0, Speed), new Vector2(0, 0));
+                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - projectileWidth) / 2), loc.Y + LinkSize));
+                this.Physics.MovementVelocity = new Vector2(0, Speed);
+                this.Physics.MovementAcceleration = Vector2.Zero;
                 this.rotation = 0;
                 this.effect = SpriteEffects.None;
-                this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
+                this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
                 this.tip = new Vector2(projectileWidth, projectileHeight);
             }
             this.damage = 4;
@@ -128,7 +136,6 @@
                     this.CreateExplosion();
                 }
                 this.Physics.Move();
-                this.Bounds = new Rectangle((int)this.Bounds.X + (int)this.Physics.Velocity.X, (int)this.Bounds.Y + (int)this.Physics.Velocity.Y, this.Bounds.Width, this.Bounds.Height);
             }
         }
 
