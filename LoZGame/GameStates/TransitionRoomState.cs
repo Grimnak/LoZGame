@@ -8,44 +8,49 @@
 
     public class TransitionRoomState : IGameState
     {
+        public TransitionRoomState()
+        {
+
+        }
+
         public void Death()
         {
-            throw new NotImplementedException();
+            // Can't die in a transition.
         }
 
         public void Inventory()
         {
-            throw new NotImplementedException();
+            // Can't access inventory in a transition.
         }
 
         public void PlayGame()
         {
-            throw new NotImplementedException();
+            LoZGame.Instance.GameState = new PlayGameState();
         }
 
         public void TitleScreen()
         {
-            throw new NotImplementedException();
+            LoZGame.Instance.GameState = new TitleScreenState();
         }
 
         public void TransitionRoom()
         {
-            throw new NotImplementedException();
+            // Can't go to a state you are already in.
         }
 
         public void WinGame()
         {
-            throw new NotImplementedException();
+            // Can't win in a transition.
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            // TODO
         }
 
         public void Draw()
         {
-            throw new NotImplementedException();
+            // TODO
         }
     }
 }

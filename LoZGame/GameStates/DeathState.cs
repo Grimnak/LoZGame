@@ -8,44 +8,49 @@
 
     class DeathState : IGameState
     {
+        public DeathState()
+        {
+
+        }
+
         public void Death()
         {
-            throw new NotImplementedException();
+            // Can't transition to a state you're already in.
         }
 
         public void Inventory()
         {
-            throw new NotImplementedException();
+            // Can't access inventory while dead.
         }
 
         public void PlayGame()
         {
-            throw new NotImplementedException();
+            LoZGame.Instance.GameState = new PlayGameState();
         }
 
         public void TitleScreen()
         {
-            throw new NotImplementedException();
+            LoZGame.Instance.GameState = new TitleScreenState();
         }
 
         public void TransitionRoom()
         {
-            throw new NotImplementedException();
+            // Can't transition room while dead.
         }
 
         public void WinGame()
         {
-            throw new NotImplementedException();
+            // Can't win game while dead.
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            // TODO
         }
 
         public void Draw()
         {
-            throw new NotImplementedException();
+            // TODO
         }
     }
 }

@@ -8,44 +8,50 @@
 
     public class PlayGameState : IGameState
     {
+
+        public PlayGameState()
+        {
+
+        }
+
         public void Death()
         {
-            throw new NotImplementedException();
+            LoZGame.Instance.GameState = new DeathState();
         }
 
         public void Inventory()
         {
-            throw new NotImplementedException();
+            LoZGame.Instance.GameState = new InventoryState();
         }
 
         public void PlayGame()
         {
-            throw new NotImplementedException();
+            // Can't transition into a state you are already in.
         }
 
         public void TitleScreen()
         {
-            throw new NotImplementedException();
+            LoZGame.Instance.GameState = new TitleScreenState();
         }
 
         public void TransitionRoom()
         {
-            throw new NotImplementedException();
+            LoZGame.Instance.GameState = new TransitionRoomState();
         }
 
         public void WinGame()
         {
-            throw new NotImplementedException();
+            LoZGame.Instance.GameState = new WinGameState();
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            // TODO
         }
 
         public void Draw()
         {
-            throw new NotImplementedException();
+            // TODO
         }
     }
 }

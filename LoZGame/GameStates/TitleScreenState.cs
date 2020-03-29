@@ -8,44 +8,50 @@
 
     public class TitleScreenState : IGameState
     {
+        public TitleScreenState()
+        {
+
+        }
+
         public void Death()
         {
-            throw new NotImplementedException();
+            // Can't die on title screen.
         }
 
         public void Inventory()
         {
-            throw new NotImplementedException();
+            // Can't access inventory on title screen.
         }
 
         public void PlayGame()
         {
-            throw new NotImplementedException();
+            LoZGame.Instance.GameState = new PlayGameState();
         }
 
         public void TitleScreen()
         {
-            throw new NotImplementedException();
+            // Can do a hard reset while in this state already.
+            LoZGame.Instance.GameState = new TitleScreenState();
         }
 
         public void TransitionRoom()
         {
-            throw new NotImplementedException();
+            // Can't transition room from title screen.
         }
 
         public void WinGame()
         {
-            throw new NotImplementedException();
+            // Can't win game from the title screen.
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            // TODO
         }
 
         public void Draw()
         {
-            throw new NotImplementedException();
+            // TODO
         }
     }
 }

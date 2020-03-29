@@ -21,6 +21,7 @@
         private Random randomNumberGenerator;
 
         private IPlayer link;
+        private IGameState gameState;
         private KeyboardCommandLoader keyboardCommandLoader;
         private MouseCommandLoader mouseCommandLoader;
         private Dungeon dungeon;
@@ -36,7 +37,6 @@
         private List<IController> controllers;
         private List<IPlayer> players;
 
-        private string gameState;
 
         private Color dungeonTint;
 
@@ -60,7 +60,7 @@
 
         public DropManager Drops { get { return dropManager; } }
 
-        public string GameState { get { return gameState; } set { gameState = value; } }
+        public IGameState GameState { get { return gameState; } set { gameState = value; } }
 
         public CollisionDetection CollisionDetector { get { return collisionDetector; } }
 
@@ -74,7 +74,6 @@
             this.Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
-            gameState = "Default";
             gameObjectManager = new GameObjectManager();
             dropManager = new DropManager();
             debugManager = new DebugManager();
@@ -86,6 +85,8 @@
             this.players = new List<IPlayer>();
             this.randomNumberGenerator = new Random();
             this.debugManager.Initialize();
+
+            this.gameState = new PlayGameState();
 
             base.Initialize();
         }

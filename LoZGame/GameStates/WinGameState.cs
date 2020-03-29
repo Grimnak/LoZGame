@@ -8,44 +8,49 @@
 
     public class WinGameState : IGameState
     {
+        public WinGameState()
+        {
+
+        }
+
         public void Death()
         {
-            throw new NotImplementedException();
+            // Can't die while winning.
         }
 
         public void Inventory()
         {
-            throw new NotImplementedException();
+            // Can't access inventory while winning.
         }
 
         public void PlayGame()
         {
-            throw new NotImplementedException();
+            LoZGame.Instance.GameState = new PlayGameState();
         }
 
         public void TitleScreen()
         {
-            throw new NotImplementedException();
+            LoZGame.Instance.GameState = new TitleScreenState();
         }
 
         public void TransitionRoom()
         {
-            throw new NotImplementedException();
+            // Can't transition room while winning.
         }
 
         public void WinGame()
         {
-            throw new NotImplementedException();
+            // Can't transition to a state you're already in.
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            // TODO
         }
 
         public void Draw()
         {
-            throw new NotImplementedException();
+            // TODO
         }
     }
 }
