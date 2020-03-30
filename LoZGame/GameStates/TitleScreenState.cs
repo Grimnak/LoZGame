@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -10,7 +11,25 @@
     {
         public TitleScreenState()
         {
-            // TODO once title screen sprites ready to go.
+            LoZGame.Instance.GameObjects.Clear();
+            LoZGame.Instance.Players.Clear();
+            LoZGame.Instance.Controllers.Clear();
+
+            LoZGame.Instance.Dungeon = new Dungeon(1);
+            LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
+
+            LoZGame.Instance.Players.Add(new Link(new Vector2(
+                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)))));
+
+            LoZGame.Instance.Dungeon.Player = LoZGame.Instance.Players[0];
+
+            KeyboardCommandLoader keyboardLoader = new KeyboardCommandLoader(LoZGame.Instance.Players[0]);
+            LoZGame.Instance.Controllers.Add(new KeyboardController(keyboardLoader));
+
+            MouseCommandLoader mouseLoader = new MouseCommandLoader();
+            LoZGame.Instance.Controllers.Add(new MouseController(mouseLoader));
+
         }
 
         public void Death()
@@ -47,9 +66,16 @@
         public void Update()
         {
             // TODO update title screen image
+
+
+            foreach (IController controller in LoZGame.Instance.Controllers)
+            {
+                controller.Update();
+            }
+
             ///temporary reset
-            CommandReset temp = new CommandReset(LoZGame.Instance.Players[0]);
-            temp.Execute();
+            //CommandReset temp = new CommandReset(LoZGame.Instance.Players[0]);
+            //temp.Execute();
         }
 
         public void Draw()

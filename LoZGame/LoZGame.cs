@@ -90,8 +90,6 @@
             this.randomNumberGenerator = new Random();
             this.debugManager.Initialize();
 
-            this.gameState = new PlayGameState();
-
             base.Initialize();
         }
 
@@ -103,24 +101,11 @@
             ProjectileSpriteFactory.Instance.LoadAllTextures(this.Content);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
+            LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
 
-            this.dungeon = new Dungeon(1);
-            collisionDetector = new CollisionDetection(dungeon);
             font = Content.Load<SpriteFont>("Text");
 
-            LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
-            this.link = new Link(new Vector2(
-                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6))));
-            this.dungeon.Player = this.link;
-
-            this.keyboardCommandLoader = new KeyboardCommandLoader(this.link);
-            this.mouseCommandLoader = new MouseCommandLoader();
-
-            this.controllers.Add(new KeyboardController(this.keyboardCommandLoader));
-            this.controllers.Add(new MouseController(this.mouseCommandLoader));
-
-            this.players.Add(this.link);
+            this.gameState = new TitleScreenState();
 
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
         }
