@@ -47,40 +47,50 @@ namespace LoZClone
 
             Keys[] pressed = state.GetPressedKeys();
 
-            foreach (Keys key in pressed)
+            if (LoZGame.Instance.GameState is PlayGameState)
             {
-                if (this.dict.ContainsKey(key) && this.playerKeys.Contains(key) && this.oldState.IsKeyUp(key))
+                foreach (Keys key in pressed)
                 {
-                    this.playerCommands.Push(new KeyValuePair<Keys, ICommand>(key, this.dict[key]));
-                }
-            }
-
-            if (this.playerCommands.Count > 0)
-            {
-                this.currentCommand = this.playerCommands.Peek().Value;
-                this.currentCommand.Execute();
-
-                List<ICommand> removable = new List<ICommand>();
-                foreach (KeyValuePair<Keys, ICommand> command in playerCommands)
-                {
-                    if (state.IsKeyUp(command.Key) || this.oneUseKeys.Contains(command.Key))
+                    if (this.dict.ContainsKey(key) && this.playerKeys.Contains(key) && this.oldState.IsKeyUp(key))
                     {
-                        removable.Add(command.Value);
+                        this.playerCommands.Push(new KeyValuePair<Keys, ICommand>(key, this.dict[key]));
                     }
                 }
 
-                for (int i = 0; i < removable.Count; i++)
+                if (this.playerCommands.Count > 0)
                 {
-                    if (removable[i].Equals(this.playerCommands.Peek().Value))
+                    this.currentCommand = this.playerCommands.Peek().Value;
+                    this.currentCommand.Execute();
+
+                    List<ICommand> removable = new List<ICommand>();
+                    foreach (KeyValuePair<Keys, ICommand> command in playerCommands)
                     {
-                        this.playerCommands.Pop();
+                        if (state.IsKeyUp(command.Key) || this.oneUseKeys.Contains(command.Key))
+                        {
+                            removable.Add(command.Value);
+                        }
                     }
+
+                    for (int i = 0; i < removable.Count; i++)
+                    {
+                        if (removable[i].Equals(this.playerCommands.Peek().Value))
+                        {
+                            this.playerCommands.Pop();
+                        }
+                    }
+                    removable.Clear();
                 }
-                removable.Clear();
+                else
+                {
+                    this.allCommands.GetIdle.Execute();
+                }
             }
-            else
+            else if (LoZGame.Instance.GameState is TitleScreenState)
             {
-                this.allCommands.GetIdle.Execute();
+                if (pressed.Contains(Keys.Enter))
+                {
+                    LoZGame.Instance.GameState.PlayGame();
+                }
             }
 
             if (pressed.Contains(Keys.Q))
