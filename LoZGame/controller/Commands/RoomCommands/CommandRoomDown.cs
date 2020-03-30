@@ -16,7 +16,10 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            LoZGame.Instance.Dungeon.MoveDown();
+            if (LoZGame.Instance.GameState is PlayGameState)
+            {
+                LoZGame.Instance.Dungeon.MoveDown();
+            }
         }
     }
 }
