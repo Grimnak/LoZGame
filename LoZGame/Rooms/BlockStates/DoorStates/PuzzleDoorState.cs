@@ -55,6 +55,8 @@ namespace LoZClone
 
         public void Solve()
         {
+            SoundEffectsFactory.Instance.PlaySolved();
+            SoundEffectsFactory.Instance.PlayDoorUnlock();
             this.solved = true;
         }
 

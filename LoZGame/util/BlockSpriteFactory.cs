@@ -209,7 +209,7 @@
 
         public UnlockedDoorRightSprite UnlockedDoorRight(Vector2 loc)
         {
-            return new UnlockedDoorRightSprite(this.UnlockedDoorRightTexture, loc, this.UnlockedDoorRightData);
+            return new UnlockedDoorRightSprite(this.UnlockedDoorRightTexture, loc, this.UnlockedDoorRightData); 
         }
 
         public UnlockedDoorUpSprite UnlockedDoorUp(Vector2 loc)

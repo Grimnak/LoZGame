@@ -22,20 +22,34 @@
 
             if (this.item is Fairy)
             {
+                SoundEffectsFactory.Instance.PlayGetItem();
                 player.Health.CurrentHealth = player.Health.MaxHealth;
             }
             else if (this.item is DroppedHealth)
             {
+                SoundEffectsFactory.Instance.PlayGetHeartOrKey();
                 player.Health.GainHealth(4);
             }
             else if (this.item is HeartContainer)
             {
+                SoundEffectsFactory.Instance.PlayGetItem();
                 player.Health.MaxHealth = player.Health.MaxHealth + 4;
                 player.Health.CurrentHealth = player.Health.MaxHealth;
             }
+            else if (this.item is DroppedRupee)
+            {
+                SoundEffectsFactory.Instance.PlayGetRupee();
+            }
+            else if (this.item is Key)
+            {
+                SoundEffectsFactory.Instance.PlayGetHeartOrKey();
+            }
+            else
+            {
+                SoundEffectsFactory.Instance.PlayGetItem();
+            }
         }
 
-        
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
             /*

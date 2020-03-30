@@ -2,13 +2,13 @@
 {
     using System;
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Audio;
     using Microsoft.Xna.Framework.Graphics;
 
     public class Link : PlayerEssentials, IPlayer
     {
         private PlayerCollisionHandler linkCollisionHandler;
         private int startingHealth = 12;
-
         private bool hasKey;
 
         public bool HasKey

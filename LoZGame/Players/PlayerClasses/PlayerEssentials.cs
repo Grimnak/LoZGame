@@ -27,11 +27,13 @@
         {
             if (this.DamageTimer <= 0)
             {
+                SoundEffectsFactory.Instance.PlayLinkHurt();
                 this.Health.DamageHealth(damageAmount);
                 this.DamageTimer = 50;
             }
             if (this.Health.CurrentHealth <= 0)
             {
+                SoundEffectsFactory.Instance.PlayLinkDie();
                 this.State.Die();
             }
         }

@@ -27,6 +27,7 @@
         private Dungeon dungeon;
         private Texture2D background;
         private SpriteFont font;
+        private SoundEffectsFactory music;
 
         private GameObjectManager gameObjectManager;
 
@@ -79,6 +80,7 @@
             this.IsMouseVisible = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
             gameObjectManager = new GameObjectManager();
+            music = new SoundEffectsFactory();
             dropManager = new DropManager();
             debugManager = new DebugManager();
         }

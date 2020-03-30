@@ -1195,3 +1195,8 @@ C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\turquoise_
 C:\Users\Ryan\Documents\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\turquoise_statue_right.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\turquoise_statue_left.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\turquoise_statue_right.xnb
+C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\sample_wav.xnb
+C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\obj\x86\Debug\LoZGame.csproj.GenerateResource.cache
+C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resources.resx
+C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resources.Designer.cs
+C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\obj\x86\Debug\LoZClone.Properties.Resources.resources
