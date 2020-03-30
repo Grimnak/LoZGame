@@ -10,7 +10,7 @@
     {
         public TitleScreenState()
         {
-
+            // TODO once title screen sprites ready to go.
         }
 
         public void Death()

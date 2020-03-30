@@ -16,6 +16,7 @@
         private int maxY;
         private IPlayer player;
         private string currentDungeonFile;
+        private int dungeonNumber;
 
         public IPlayer Player
         {
@@ -26,10 +27,11 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Dungeon"/> class.
         /// </summary>
-        /// <param name="filePath">File path of the document to parse.</param>
-        public Dungeon(string filePath)
+        /// <param name="dungeonNumber">Number of the dungeon whose file is to be parsed.</param>
+        public Dungeon(int dungeonNumber)
         {
-            this.currentDungeonFile = filePath;
+            this.dungeonNumber = dungeonNumber;
+            this.currentDungeonFile = "../../../../../etc/levels/dungeon" + this.dungeonNumber + ".xml"; ;
             LoZGame.Instance.DungeonTint = Color.White;
             this.dungeonLayout = XMLHandler.Parse(this.currentDungeonFile);
 
@@ -56,6 +58,8 @@
         {
             get { return this.dungeonLayout[this.currentY][this.currentX]; }
         }
+
+        public int DungeonNumber { get { return dungeonNumber; } }
 
         /// <summary>
         /// Resets dungeon room to default.

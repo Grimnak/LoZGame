@@ -33,6 +33,10 @@
                 player.Health.MaxHealth = player.Health.MaxHealth + 4;
                 player.Health.CurrentHealth = player.Health.MaxHealth;
             }
+            else if (this.item is Triforce)
+            {
+                LoZGame.Instance.GameState.WinGame();
+            }
         }
 
         

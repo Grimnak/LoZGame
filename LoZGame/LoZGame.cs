@@ -48,7 +48,7 @@
             get { return this.link; }
         }
 
-        public Dungeon Dungeon { get { return this.dungeon; } }
+        public Dungeon Dungeon { get { return this.dungeon; } set { this.dungeon = value; } }
 
         public List<IController> Controllers { get { return controllers; } }
 
@@ -62,7 +62,7 @@
 
         public IGameState GameState { get { return gameState; } set { gameState = value; } }
 
-        public CollisionDetection CollisionDetector { get { return collisionDetector; } }
+        public CollisionDetection CollisionDetector { get { return collisionDetector; } set { collisionDetector = value; } }
 
         public Random Random { get { return randomNumberGenerator; } }
 
@@ -104,8 +104,7 @@
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
 
-            string file = "../../../../../etc/levels/dungeon1.xml";
-            this.dungeon = new Dungeon(file);
+            this.dungeon = new Dungeon(1);
             collisionDetector = new CollisionDetection(dungeon);
             font = Content.Load<SpriteFont>("Text");
 

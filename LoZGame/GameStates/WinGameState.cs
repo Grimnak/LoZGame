@@ -8,9 +8,16 @@
 
     public class WinGameState : IGameState
     {
+
+        private int currentDungeon;
+        private static int maxDungeon = 1;
+        private int lockout;
+        private int lockoutMax = 15; //verify
+
         public WinGameState()
         {
-
+            lockout = 0;
+            currentDungeon = 1;
         }
 
         public void Death()
@@ -46,6 +53,28 @@
         public void Update()
         {
             // TODO
+            lockout++;
+
+            // Triforce animation playing time
+            if (lockout < lockoutMax)
+            {
+
+            }
+            else
+            {
+                // Transition to new dungeon or title screen.
+                if (LoZGame.Instance.Dungeon.DungeonNumber < maxDungeon)
+                {
+                    LoZGame.Instance.Dungeon = new Dungeon(LoZGame.Instance.Dungeon.DungeonNumber + 1);
+                    LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
+                    LoZGame.Instance.GameState.PlayGame();
+                }
+                else
+                {
+                    LoZGame.Instance.GameState.TitleScreen();
+                }
+            }
+
         }
 
         public void Draw()
