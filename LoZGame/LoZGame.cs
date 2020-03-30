@@ -116,9 +116,9 @@
 
         protected override void Update(GameTime gameTime)
         {
-            foreach (IController controller in LoZGame.Instance.Controllers)
+            for (int i = 0; i < controllers.Count; i++)
             {
-                controller.Update();
+                controllers[i].Update();
             }
 
             this.gameState.Update();

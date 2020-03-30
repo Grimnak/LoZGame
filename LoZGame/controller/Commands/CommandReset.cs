@@ -38,7 +38,7 @@
             LoZGame.Instance.Dungeon.Reset();
 
             // Temporary, will change to title screen state once completed.
-            LoZGame.Instance.GameState.PlayGame();
+            LoZGame.Instance.GameState.TitleScreen();
         }
     }
 }

@@ -14,7 +14,6 @@
         {
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
-            LoZGame.Instance.Controllers.Clear();
 
             LoZGame.Instance.Dungeon = new Dungeon(1);
             LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
@@ -25,12 +24,30 @@
 
             LoZGame.Instance.Dungeon.Player = LoZGame.Instance.Players[0];
 
+
             KeyboardCommandLoader keyboardLoader = new KeyboardCommandLoader(LoZGame.Instance.Players[0]);
-            LoZGame.Instance.Controllers.Add(new KeyboardController(keyboardLoader));
-
             MouseCommandLoader mouseLoader = new MouseCommandLoader();
-            LoZGame.Instance.Controllers.Add(new MouseController(mouseLoader));
+            if (LoZGame.Instance.Controllers.Count == 0)
+            {
+                LoZGame.Instance.Controllers.Add(new KeyboardController(keyboardLoader));
 
+
+                LoZGame.Instance.Controllers.Add(new MouseController(mouseLoader));
+            }
+            else
+            {
+                for (int i = 0; i < LoZGame.Instance.Controllers.Count; i++)
+                {
+                    if (LoZGame.Instance.Controllers[i] is KeyboardController)
+                    {
+                        LoZGame.Instance.Controllers[i] = new KeyboardController(keyboardLoader);
+                    }
+                    else if (LoZGame.Instance.Controllers[i] is MouseController)
+                    {
+                        LoZGame.Instance.Controllers[i] = new MouseController(mouseLoader);
+                    }
+                }
+            }
         }
 
         public void Death()
@@ -69,9 +86,9 @@
             // TODO update title screen image
 
 
-            foreach (IController controller in LoZGame.Instance.Controllers)
+            for (int i = 0; i < LoZGame.Instance.Controllers.Count; i++)
             {
-                controller.Update();
+                LoZGame.Instance.Controllers[i].Update();
             }
 
             ///temporary reset
