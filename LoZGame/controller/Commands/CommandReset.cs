@@ -15,10 +15,9 @@
         /// </summary>
         /// <param name="player">Player to execute a command on.</param>
         /// <param name="dungeon">Dungeon to execute a command on.</param>
-        public CommandReset(IPlayer player, Dungeon dungeon)
+        public CommandReset(IPlayer player)
         {
             this.player = player;
-            this.dungeon = dungeon;
         }
 
         /// <inheritdoc/>
@@ -36,7 +35,10 @@
             this.player.DamageTimer = 0;
             this.player.CurrentTint = Color.White;
 
-            this.dungeon.Reset();
+            LoZGame.Instance.Dungeon.Reset();
+
+            // Temporary, will change to title screen state once completed.
+            LoZGame.Instance.GameState.PlayGame();
         }
     }
 }

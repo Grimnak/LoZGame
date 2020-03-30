@@ -114,8 +114,8 @@
                     (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6))));
             this.dungeon.Player = this.link;
 
-            this.keyboardCommandLoader = new KeyboardCommandLoader(this.link, this.dungeon);
-            this.mouseCommandLoader = new MouseCommandLoader(this.dungeon);
+            this.keyboardCommandLoader = new KeyboardCommandLoader(this.link);
+            this.mouseCommandLoader = new MouseCommandLoader();
 
             this.controllers.Add(new KeyboardController(this.keyboardCommandLoader));
             this.controllers.Add(new MouseController(this.mouseCommandLoader));
@@ -131,6 +131,11 @@
 
         protected override void Update(GameTime gameTime)
         {
+            foreach (IController controller in LoZGame.Instance.Controllers)
+            {
+                controller.Update();
+            }
+
             this.gameState.Update();
 
             if (DebugMode)
@@ -161,7 +166,7 @@
         {
             foreach (IPlayer player in this.players)
             {
-                ICommand reset = new CommandReset(player, this.dungeon);
+                ICommand reset = new CommandReset(player);
                 reset.Execute();
             }
         }

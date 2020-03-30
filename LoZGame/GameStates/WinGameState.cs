@@ -53,7 +53,7 @@
         public void Update()
         {
             // TODO
-            lockout++;
+            this.lockout++;
 
             // Triforce animation playing time
             if (lockout < lockoutMax)
@@ -71,7 +71,9 @@
                 }
                 else
                 {
-                    LoZGame.Instance.GameState.TitleScreen();
+                    //Temporary
+                    //LoZGame.Instance.GameState.TitleScreen();
+                    LoZGame.Instance.GameState.PlayGame();
                 }
             }
 

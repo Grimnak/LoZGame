@@ -49,10 +49,6 @@
         public void Update()
         {
             // TODO
-            foreach (IController controller in LoZGame.Instance.Controllers)
-            {
-                controller.Update();
-            }
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Update();

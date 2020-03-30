@@ -16,7 +16,7 @@ namespace LoZClone
         /// </summary>
         /// <param name="dungeon">Dungeon to pass to a command.</param>
         /// <param name="player">Player to pass to a command.</param>
-        public KeyboardCommandLoader(IPlayer player, Dungeon dungeon)
+        public KeyboardCommandLoader(IPlayer player)
         {
             this.dictionary = new Dictionary<Keys, ICommand>();
 
@@ -44,7 +44,7 @@ namespace LoZClone
 
             this.dictionary.Add(Keys.Q, new CommandQuit());
 
-            this.dictionary.Add(Keys.R, new CommandReset(player, dungeon));
+            this.dictionary.Add(Keys.R, new CommandReset(player));
         }
 
         /// <summary>
