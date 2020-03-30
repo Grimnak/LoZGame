@@ -92,6 +92,7 @@
     <Compile Include="Controller\Commands\Loaders\MouseCommandLoader.cs" />
     <Compile Include="Controller\Commands\Controllers\KeyboardController.cs" />
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
+    <Compile Include="DeathState.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyEssentials.cs" />
     <Compile Include="Enemies\EnemyClasses\Dodongo.cs" />
     <Compile Include="Enemies\EnemyClasses\Dragon.cs" />
@@ -107,11 +108,13 @@
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
     <Compile Include="Enemies\EnemyStates\GelStates\IdleGelState.cs" />
     <Compile Include="Enemies\EnemyStates\GoriyaStates\StunnedGoriyaState.cs" />
+    <Compile Include="Enemies\EnemyStates\KeeseStates\IdleKeeseState.cs" />
     <Compile Include="Enemies\EnemyStates\RopeStates\StunnedRopeState.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\StunnedStalfosState.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\StunnedWallMasterState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\StunnedZolState.cs" />
     <Compile Include="Interfaces\IDrop.cs" />
+    <Compile Include="Interfaces\IGameState.cs" />
     <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Interfaces\IDoor.cs" />
     <Compile Include="Interfaces\IManager.cs" />
@@ -119,6 +122,7 @@
     <Compile Include="Interfaces\IDoorState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\HorizontalSpikeCrossState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\VerticalSpikeCrossState.cs" />
+    <Compile Include="InventoryState.cs" />
     <Compile Include="Items\Arrow.cs" />
     <Compile Include="Items\BlueCandle.cs" />
     <Compile Include="Items\BlueRing.cs" />
@@ -171,6 +175,7 @@
     <Compile Include="Managers\GameObjectManager.cs" />
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\EnemyProjectileType.cs" />
+    <Compile Include="PlayGameState.cs" />
     <Compile Include="Projectiles\ArrowProjectile.cs" />
     <Compile Include="Projectiles\BlueCandleProjectile.cs" />
     <Compile Include="Projectiles\BombExplosion.cs" />
@@ -364,6 +369,10 @@
     <Compile Include="Sprites\ProjectileSpriteClasses\GreenWoodSwordSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamProjectileSprite.cs" />
     <Compile Include="Managers\DebugManager.cs" />
+    <Compile Include="TitleScreenState.cs" />
+    <Compile Include="TransitionRoomState.cs" />
+    <Compile Include="Util\PhysicsEssentials.cs" />
+    <Compile Include="Util\PhysicsHelper.cs" />
     <Compile Include="Util\SoundEffectsFactory.cs" />
     <Compile Include="Util\Physics.cs" />
     <Compile Include="Util\ProjectileSpriteFactory.cs" />
@@ -420,6 +429,7 @@
     <Compile Include="Sprites\BlockSpriteClasses\TurquoiseStatueRightSprite.cs" />
     <Compile Include="Sprites\BlockSpriteClasses\TurquoiseStatueLeftSprite.cs" />
     <Compile Include="Util\XMLHandler.cs" />
+    <Compile Include="WinGameState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
