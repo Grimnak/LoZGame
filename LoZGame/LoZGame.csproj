@@ -365,9 +365,9 @@
     <Compile Include="Sprites\ProjectileSpriteClasses\GreenWoodSwordSprite.cs" />
     <Compile Include="Sprites\ProjectileSpriteClasses\SwordBeamProjectileSprite.cs" />
     <Compile Include="Managers\DebugManager.cs" />
-    <Compile Include="Util\PhysicHelper.cs" />
     <Compile Include="Util\PhysicsEssentials.cs" />
     <Compile Include="Util\Physics.cs" />
+    <Compile Include="Util\PhysicsHelper.cs" />
     <Compile Include="Util\ProjectileSpriteFactory.cs" />
     <Compile Include="Util\ItemSpriteFactory.cs" />
     <Compile Include="Util\LinkSpriteFactory.cs" />
