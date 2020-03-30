@@ -161,14 +161,5 @@
             this.spriteBatch.End();
             base.Draw(gameTime);
         }
-
-        public void Reset()
-        {
-            foreach (IPlayer player in this.players)
-            {
-                ICommand reset = new CommandReset(player);
-                reset.Execute();
-            }
-        }
     }
 }

@@ -46,7 +46,10 @@
 
         public void Update()
         {
-            // TODO
+            // TODO update title screen image
+            ///temporary reset
+            CommandReset temp = new CommandReset(LoZGame.Instance.Players[0]);
+            temp.Execute();
         }
 
         public void Draw()

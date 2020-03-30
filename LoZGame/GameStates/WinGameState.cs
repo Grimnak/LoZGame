@@ -12,7 +12,7 @@
         private int currentDungeon;
         private static int maxDungeon = 1;
         private int lockout;
-        private int lockoutMax = 15; //verify
+        private int lockoutMax = 200; //verify
 
         public WinGameState()
         {
@@ -58,7 +58,12 @@
             // Triforce animation playing time
             if (lockout < lockoutMax)
             {
+                foreach (IPlayer player in LoZGame.Instance.Players)
+                {
+                    player.Update();
+                }
 
+                LoZGame.Instance.GameObjects.Update();
             }
             else
             {
@@ -71,9 +76,7 @@
                 }
                 else
                 {
-                    //Temporary
-                    //LoZGame.Instance.GameState.TitleScreen();
-                    LoZGame.Instance.GameState.PlayGame();
+                    LoZGame.Instance.GameState.TitleScreen();
                 }
             }
 
@@ -82,6 +85,13 @@
         public void Draw()
         {
             // TODO
+
+            foreach (IPlayer player in LoZGame.Instance.Players)
+            {
+                player.Draw();
+            }
+
+            LoZGame.Instance.GameObjects.Draw();
         }
     }
 }
