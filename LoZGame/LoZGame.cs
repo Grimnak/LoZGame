@@ -109,6 +109,7 @@
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
+            ScreenSpriteFactory.Instance.LoadAllTextures(this.Content);
 
             font = Content.Load<SpriteFont>("Text");
 
