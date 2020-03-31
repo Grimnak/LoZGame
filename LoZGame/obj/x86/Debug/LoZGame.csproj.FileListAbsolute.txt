@@ -1212,3 +1212,9 @@ C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resource
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resources.Designer.cs
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\LoZTitle.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\LoZTitle.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\dungeonHole.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\LoZTitle.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Properties\Resources.resx
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Properties\Resources.Designer.cs
+D:\LoZRepo\LoZGame\obj\x86\Debug\LoZClone.Properties.Resources.resources
+D:\LoZRepo\LoZGame\obj\x86\Debug\LoZGame.csproj.GenerateResource.cache
