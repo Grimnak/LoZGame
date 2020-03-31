@@ -37,19 +37,25 @@
 
         public BoomerangProjectile(Physics source, string direction)
         {
-            this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
-            this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight * scale;
-            this.collisionHandler = new ProjectileCollisionHandler(this);
-            this.Data = new EntityData();
-            this.expired = false;
-            Vector2 loc = new Vector2(source.Bounds.X + (source.Bounds.Width / 2), source.Bounds.Y + (source.Bounds.Height / 2));
-            this.InitializeDirection(this, source.Bounds, new Vector2(projectileWidth, projectileHeight), direction);
-            this.Physics.MovementVelocity *= Speed;
+            this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth;
+            this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight;
+            this.source = source;
             this.isReturned = false;
             this.returning = false;
-            this.source = source;
             this.distTraveled = 0;
             this.damage = 0;
+            int locationOffset = (projectileWidth * 3) / 4;
+            Vector2 sourceCenter = source.Bounds.Center.ToVector2();
+            this.Data = new EntityData();
+            this.collisionHandler = new ProjectileCollisionHandler(this);
+            this.InitializeDirection(this, source.Bounds, new Vector2(projectileWidth, projectileHeight), direction);
+            this.Physics.MovementVelocity *= Speed;
+            this.Physics.Location *= locationOffset;
+            this.Physics.Location = new Vector2(sourceCenter.X + this.Physics.Location.X, sourceCenter.Y + this.Physics.Location.Y);
+            this.Physics.Bounds = new Rectangle(this.Physics.Location.ToPoint() - this.Physics.BoundsOffset.ToPoint(), (this.Physics.BoundsOffset * 2).ToPoint());
+            this.Physics.BoundsOffset *= 2;
+            this.Physics.SetLocation();
+            this.expired = false;
             this.sprite = ProjectileSpriteFactory.Instance.Boomerang();
         }
 
@@ -104,11 +110,12 @@
             }
             this.Physics.Move();
             this.sprite.Update();
+            this.Data.Rotation += MathHelper.PiOver4 / 2;
         }
 
         public void Draw()
         {
-            sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Data.Rotation, this.Data.SpriteEffect, this.Physics.Depth);
         }
     }
 }

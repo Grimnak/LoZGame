@@ -12,7 +12,6 @@
         private ProjectileCollisionHandler collisionHandler;
 
         private int lifeTime;
-        private readonly int scale = ProjectileSpriteFactory.Instance.Scale;
         private readonly string direction;
         private readonly float rotation;
         private bool expired;
@@ -38,15 +37,21 @@
 
         public SwordBeamProjectile(Physics source, string direction)
         {
-            this.projectileWidth = ProjectileSpriteFactory.Instance.SwordBeamWidth * scale;
-            this.projectileHeight = ProjectileSpriteFactory.Instance.SwordBeamHeight * scale;
+            this.projectileWidth = ProjectileSpriteFactory.Instance.SwordBeamWidth;
+            this.projectileHeight = ProjectileSpriteFactory.Instance.SwordBeamHeight;
+            int locationOffset = (projectileWidth * 3) / 4;
+            Vector2 sourceCenter = source.Bounds.Center.ToVector2();
             this.Data = new EntityData();
             this.collisionHandler = new ProjectileCollisionHandler(this);
             this.lifeTime = 0;
-            this.direction = direction;
             this.InitializeDirection(this, source.Bounds, new Vector2(projectileWidth, projectileHeight), direction);
             this.Physics.MovementVelocity *= Speed;
-            this.damage = 4;
+            this.Physics.Location *= locationOffset;
+            this.Physics.Location = new Vector2(sourceCenter.X + this.Physics.Location.X, sourceCenter.Y + this.Physics.Location.Y);
+            this.Physics.Bounds = new Rectangle(this.Physics.Location.ToPoint() - this.Physics.BoundsOffset.ToPoint(), (this.Physics.BoundsOffset * 2).ToPoint());
+            this.Physics.BoundsOffset *= 2;
+            this.Physics.SetLocation();
+            this.damage = 2;
             this.expired = false;
             this.sprite = ProjectileSpriteFactory.Instance.SwordBeam();
         }
@@ -104,7 +109,7 @@
         {
             if (this.lifeTime > Delay)
             {
-                this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
+                this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Data.Rotation, this.Data.SpriteEffect, this.Physics.Depth);
             }
         }
     }
