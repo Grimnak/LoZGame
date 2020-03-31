@@ -13,12 +13,16 @@ namespace LoZClone
         {
             this.SetUp(this);
             this.Width = ProjectileSpriteFactory.Instance.ArrowWidth;
-            this.Height = ProjectileSpriteFactory.Instance.ArrowHeight;
-            this.Offset = (this.Height * 3) / 4;
+            this.Heigth = ProjectileSpriteFactory.Instance.ArrowHeight;
+            this.Offset = this.Heigth / 2;
             this.Speed = 5;
             this.Damage = 2;
             this.Source = source;
             this.InitializeDirection();
+            if (this.Physics.CurrentDirection == Physics.Direction.East || this.Physics.CurrentDirection == Physics.Direction.West)
+            {
+                this.CorrectProjectile();
+            }
             this.Sprite = ProjectileSpriteFactory.Instance.Arrow();
         }
     }

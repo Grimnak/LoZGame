@@ -14,7 +14,7 @@
 
         public int Width { get; set; }
 
-        public int Height { get; set; }
+        public int Heigth { get; set; }
 
         public int Offset { get; set; }
 
@@ -46,7 +46,7 @@
             this.Acceleration = 0;
             this.Damage = 0;
             this.Width = 0;
-            this.Height = 0;
+            this.Heigth = 0;
             this.Offset = 0;
             this.Source = new Physics(Vector2.Zero);
             this.Physics = new Physics(Vector2.Zero);
@@ -59,24 +59,29 @@
         {
             this.Physics = new Physics(Source.Bounds.Center.ToVector2());
             Vector2 unitDirection;
-            switch (this.Source.CurrentDirection)
+            this.Physics.CurrentDirection = Source.CurrentDirection;
+            switch (this.Physics.CurrentDirection)
             {
                 case Physics.Direction.North:
                     unitDirection = new Vector2(0, -1);
+                    this.Physics.BoundsOffset = new Vector2(Width / 2, Heigth / 2);
                     break;
                 case Physics.Direction.South:
                     unitDirection = new Vector2(0, 1);
                     this.Data.SpriteEffect = SpriteEffects.FlipVertically;
+                    this.Physics.BoundsOffset = new Vector2(Width / 2, Heigth / 2);
                     break;
                 case Physics.Direction.East:
                     unitDirection = new Vector2(1, 0);
                     this.Data.Rotation = MathHelper.PiOver2;
                     this.Data.SpriteEffect = SpriteEffects.None;
+                    this.Physics.BoundsOffset = new Vector2(Heigth / 2, Width / 2);
                     break;
                 case Physics.Direction.West:
                     unitDirection = new Vector2(-1, 0);
                     this.Data.Rotation = MathHelper.PiOver2;
                     this.Data.SpriteEffect = SpriteEffects.FlipVertically;
+                    this.Physics.BoundsOffset = new Vector2(Heigth / 2, Width / 2);
                     break;
                 default:
                     unitDirection = Vector2.Zero;
@@ -85,8 +90,18 @@
             this.Physics.Location += unitDirection * Offset;
             this.Physics.MovementVelocity = unitDirection * Speed;
             this.Physics.MovementAcceleration = unitDirection * Acceleration;
-            this.Physics.BoundsOffset = new Vector2(Width, Height);
-            this.Physics.Bounds = new Rectangle((this.Physics.Location - (this.Physics.BoundsOffset / 2)).ToPoint(), new Point(Width, Width));
+            this.Physics.Bounds = new Rectangle((this.Physics.Location - this.Physics.BoundsOffset).ToPoint(), (this.Physics.BoundsOffset * 2).ToPoint());
+            this.Physics.BoundsOffset *= 2;
+            this.Physics.SetLocation();
+        }
+
+        /// <summary>
+        /// temporaray method just to correct swordbeam and arrow until i caan find a better solution
+        /// TODO: Find a way to remove this method
+        /// </summary>
+        public void CorrectProjectile()
+        {
+            this.Physics.BoundsOffset = new Vector2((this.Physics.BoundsOffset.X * 5) / 8, this.Physics.BoundsOffset.Y * 2);
             this.Physics.SetLocation();
         }
 

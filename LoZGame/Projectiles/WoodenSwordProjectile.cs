@@ -13,8 +13,8 @@
         {
             this.SetUp(this);
             this.Width = ProjectileSpriteFactory.Instance.SwordWidth;
-            this.Height = ProjectileSpriteFactory.Instance.SwordHeight;
-            this.Offset = (this.Height * 3) / 4;
+            this.Heigth = ProjectileSpriteFactory.Instance.SwordHeight;
+            this.Offset = ((this.Heigth * 3) / 4) - 4;
             this.Speed = 5;
             this.Damage = 2;
             this.Source = source.Physics;

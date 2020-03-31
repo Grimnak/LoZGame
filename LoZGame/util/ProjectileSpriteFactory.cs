@@ -12,19 +12,19 @@
     class ProjectileSpriteFactory
     {
         private const int DRAWSCALE = 2;
-        private static readonly int swordBeamWidth = 7;
-        private static readonly int boomerangHeight = 10;
-        private static readonly int standardHeight = 18;
-        private static readonly int standardWidth = 8;
+        private static readonly int swordBeamWidth = 14;
+        private static readonly int boomerangHeight = 20;
+        private static readonly int standardHeight = 36;
+        private static readonly int standardWidth = 16;
         private static readonly int flameWidth = 32;
         private static readonly int flameHeight = 34;
-        private static readonly int arrowWidth = 5;
-        private static readonly int arrowHeight = 16;
+        private static readonly int arrowWidth = 10;
+        private static readonly int arrowHeight = 32;
         private static readonly int swordBeamExplosionHeight = 24;
         private static readonly int explosionHeight = 100;
         private static readonly int explosionWidth = 96;
-        private static readonly int fireballWidth = 8;
-        private static readonly int fireballHeight = 10;
+        private static readonly int fireballWidth = 16;
+        private static readonly int fireballHeight = 20;
         private static readonly int swordWidth = LinkSpriteFactory.LinkWidth;
         private static readonly int swordHeight = LinkSpriteFactory.LinkHeight;
 
@@ -267,19 +267,19 @@
         private void LoadData()
         {
             this.flameData = new SpriteData(new Vector2(flameWidth, flameHeight), flameSpriteSheet, 2, 1);
-            this.arrowData = new SpriteData(new Vector2(arrowWidth, standardHeight) * DRAWSCALE, arrowSpriteSheet, 1, 1);
-            this.silverArrowData = new SpriteData(new Vector2(arrowWidth, standardHeight) * DRAWSCALE, silverArrowSpriteSheet, 1, 1);
-            this.boomerangData = new SpriteData(new Vector2(standardWidth, boomerangHeight) * DRAWSCALE, boomerangSpriteSheet, 1, 1);
-            this.magicBoomerangData = new SpriteData(new Vector2(standardWidth, boomerangHeight) * DRAWSCALE, magicBoomerangSpriteSheet, 1, 1);
-            this.bombData = new SpriteData(new Vector2(standardWidth, standardHeight) * DRAWSCALE, bombSpriteSheet, 1, 1);
-            this.swordBeamData = new SpriteData(new Vector2(swordBeamWidth, standardHeight) * DRAWSCALE, swordBeamSpriteSheet, 4, 1);
-            this.swordExplosionData = new SpriteData(new Vector2(standardWidth, swordBeamExplosionHeight) * DRAWSCALE, swordExplosionSpriteSheet, 4, 1);
-            this.explosionOneData = new SpriteData(new Vector2(explosionWidth, explosionHeight) * DRAWSCALE, explosionOneSpriteSheet, 3, 1);
-            this.explosionTwoData = new SpriteData(new Vector2(explosionWidth, explosionHeight) * DRAWSCALE, explosionTwoSpriteSheet, 3, 1);
-            this.explosionThreeData = new SpriteData(new Vector2(explosionWidth, explosionHeight) * DRAWSCALE, explosionThreeSpriteSheet, 3, 1);
-            this.ExplosionFourData = new SpriteData(new Vector2(explosionWidth, explosionHeight) * DRAWSCALE, explosionFourSpriteSheet, 3, 1);
-            this.explosionFiveData = new SpriteData(new Vector2(explosionWidth, explosionHeight) * DRAWSCALE, explosionFiveSpriteSheet, 3, 1);
-            this.fireballData = new SpriteData(new Vector2(fireballWidth, fireballHeight) * DRAWSCALE, fireballSpriteSheet, 4, 1);
+            this.arrowData = new SpriteData(new Vector2(arrowWidth, standardHeight), arrowSpriteSheet, 1, 1);
+            this.silverArrowData = new SpriteData(new Vector2(arrowWidth, standardHeight), silverArrowSpriteSheet, 1, 1);
+            this.boomerangData = new SpriteData(new Vector2(standardWidth, boomerangHeight), boomerangSpriteSheet, 1, 1);
+            this.magicBoomerangData = new SpriteData(new Vector2(standardWidth, boomerangHeight), magicBoomerangSpriteSheet, 1, 1);
+            this.bombData = new SpriteData(new Vector2(standardWidth, standardHeight), bombSpriteSheet, 1, 1);
+            this.swordBeamData = new SpriteData(new Vector2(swordBeamWidth, standardHeight), swordBeamSpriteSheet, 4, 1);
+            this.swordExplosionData = new SpriteData(new Vector2(standardWidth, swordBeamExplosionHeight), swordExplosionSpriteSheet, 4, 1);
+            this.explosionOneData = new SpriteData(new Vector2(explosionWidth, explosionHeight), explosionOneSpriteSheet, 3, 1);
+            this.explosionTwoData = new SpriteData(new Vector2(explosionWidth, explosionHeight), explosionTwoSpriteSheet, 3, 1);
+            this.explosionThreeData = new SpriteData(new Vector2(explosionWidth, explosionHeight), explosionThreeSpriteSheet, 3, 1);
+            this.ExplosionFourData = new SpriteData(new Vector2(explosionWidth, explosionHeight), explosionFourSpriteSheet, 3, 1);
+            this.explosionFiveData = new SpriteData(new Vector2(explosionWidth, explosionHeight), explosionFiveSpriteSheet, 3, 1);
+            this.fireballData = new SpriteData(new Vector2(fireballWidth, fireballHeight), fireballSpriteSheet, 4, 1);
             this.greenWoodSwordData = new SpriteData(new Vector2(swordWidth, swordHeight), greenWoodSwordSpriteSheet, 1, 2);
         }
 
