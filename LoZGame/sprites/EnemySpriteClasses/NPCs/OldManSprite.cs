@@ -3,7 +3,7 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class OldManSprite : ISprite
+    public class OldManSprite : SpriteEssentials, ISprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;
@@ -12,7 +12,7 @@ namespace LoZClone
         private readonly int spriteSheetHeight;
         private readonly int currentFrame = 0;
 
-        public OldManSprite(Texture2D spriteTexture, SpriteSheetData data)
+        public OldManSprite(Texture2D spriteTexture, SpriteData data)
         {
             this.spriteSheet = spriteTexture;
             this.spriteSheetWidth = data.Width;

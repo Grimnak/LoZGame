@@ -34,12 +34,13 @@ namespace LoZClone
 
         public Physics Physics { get; set; }
 
-        
+        public EntityData Data { get; set; }
 
         public FireballProjectile(Physics physics)
         {
             this.Physics = physics;
             this.collisionHandler = new ProjectileCollisionHandler(this);
+            this.Data = new EntityData();
             this.Size = new Vector2(ProjectileSpriteFactory.Instance.FireballHeight * ProjectileSpriteFactory.Instance.Scale, ProjectileSpriteFactory.Instance.FireballWidth * ProjectileSpriteFactory.Instance.Scale * 1.5f);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X - ProjectileSpriteFactory.Instance.FireballHeight, (int)this.Physics.Location.Y - ProjectileSpriteFactory.Instance.FireballWidth, (int)this.Size.X, (int)this.Size.Y);
             this.sprite = ProjectileSpriteFactory.Instance.Fireball();
@@ -78,7 +79,7 @@ namespace LoZClone
 
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
         }
     }
 }

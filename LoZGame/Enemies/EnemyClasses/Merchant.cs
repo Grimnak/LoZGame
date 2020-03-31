@@ -26,12 +26,13 @@
 
         public override void Update()
         {
+            this.Physics.Depth = 1 - (1 / this.Physics.Bounds.Bottom);
             this.sprite.Update();
         }
 
         public override void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
         }
     }
 }

@@ -62,6 +62,7 @@
         {
             base.Update();
             this.CheckLeftBound();
+            this.Physics.SetDepth();
         }
     }
 }

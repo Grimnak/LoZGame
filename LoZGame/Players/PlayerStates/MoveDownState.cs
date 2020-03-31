@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System;
 
     public class MoveDownState : IPlayerState
     {
@@ -76,12 +77,16 @@
         public void Update()
         {
             this.sprite.Update();
+            if (this.sprite.CurrentFrame >= 2)
+            {
+                this.sprite.SetFrame(0);
+            }
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint);
+            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint, this.player.Physics.Depth);
         }
 
         private ISprite CreateCorrectSprite()

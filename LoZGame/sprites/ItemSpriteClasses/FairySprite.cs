@@ -5,11 +5,11 @@
     using Microsoft.Xna.Framework.Graphics;
 
     // Class to handle the completely stationary sprite
-    internal class FairySprite : ISprite
+    internal class FairySprite : SpriteEssentials, ISprite
     {
         private static readonly int FrameChange = 10;
         private readonly Texture2D Texture;      // the texture to pull frames from
-        private readonly SpriteSheetData Data;
+        private readonly SpriteData Data;
         private Vector2 origin;
         private Vector2 Size;
         private float rotation;
@@ -21,7 +21,7 @@
 
         public Physics Physics { get; set; }
 
-        public FairySprite(Texture2D texture, SpriteSheetData data, int scale)
+        public FairySprite(Texture2D texture, SpriteData data, int scale)
         {
             this.Data = data;
             this.Texture = texture;

@@ -116,7 +116,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.gel.Physics.Location, this.gel.CurrentTint);
+            this.sprite.Draw(this.gel.Physics.Location, this.gel.CurrentTint, this.gel.Physics.Depth);
         }
     }
 }

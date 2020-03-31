@@ -85,7 +85,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.dragon.Physics.Location, this.dragon.CurrentTint);
+            this.sprite.Draw(this.dragon.Physics.Location, this.dragon.CurrentTint, this.dragon.Physics.Depth);
         }
     }
 }

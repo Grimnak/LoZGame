@@ -6,7 +6,7 @@
     public class IdleKeeseState : IEnemyState
     {
         private readonly Keese keese;
-        private readonly KeeseSprite sprite;
+        private readonly ISprite sprite;
         private RandomStateGenerator randomStateGenerator;
         private int idleTimer = 0;
         private int idleMax = 5;
@@ -92,7 +92,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.keese.Physics.Location, this.keese.CurrentTint);
+            this.sprite.Draw(this.keese.Physics.Location, this.keese.CurrentTint, this.keese.Physics.Depth);
         }
     }
 }

@@ -25,7 +25,7 @@
 
         public Physics Physics { get; set; }
 
-        
+        public EntityData Data { get; set; }
 
         private static readonly int FrameDelay = 4;
         private static readonly float Speed = 2.5f;
@@ -37,8 +37,10 @@
             this.collisionHandler = new ProjectileCollisionHandler(this);
             projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             projectileHeight = ProjectileSpriteFactory.Instance.SwordBeamExplosionHeight * scale;
+            this.Data = new EntityData();
             this.direction = direction;
             this.Physics = new Physics(new Vector2(location.X - projectileWidth, location.Y - projectileHeight));
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, 0, 0);
             if (this.direction.Equals("NorthEast"))
             {
                 this.Physics.MovementVelocity = new Vector2(Speed, -1 * Speed);
@@ -62,7 +64,7 @@
             this.damage = 0;
             this.Physics.Bounds = Rectangle.Empty;
             this.expired = false;
-            this.sprite = ProjectileSpriteFactory.Instance.SwordExplosion(this.effect);
+            this.sprite = ProjectileSpriteFactory.Instance.SwordExplosion();
         }
 
         public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
@@ -97,7 +99,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Data.Rotation, this.Data.SpriteEffect, this.Physics.Depth);
         }
     }
 }

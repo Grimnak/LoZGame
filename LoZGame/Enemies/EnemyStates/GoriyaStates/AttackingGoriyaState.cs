@@ -116,7 +116,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.goriya.Physics.Location, this.goriya.CurrentTint);
+            this.sprite.Draw(this.goriya.Physics.Location, this.goriya.CurrentTint, this.goriya.Physics.Depth);
         }
     }
 }

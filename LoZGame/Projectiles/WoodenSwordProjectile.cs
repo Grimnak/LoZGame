@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class WoodenSwordProjectile : IProjectile
+    internal class WoodenSwordProjectile : ProjectileEssentials, IProjectile
     {
         private static readonly int LinkSize = LinkSpriteFactory.LinkHeight;
         private const int DrawOffset = 4;
@@ -18,7 +18,7 @@
         private readonly string direction;
         private readonly float rotation;
         private bool expired;
-        private IPlayer player;
+        private Physics source;
         private ISprite sprite;
         private int projectileWidth;
         private int projectileHeight;
@@ -32,62 +32,39 @@
 
         public Physics Physics { get; set; }
 
-        
+        public EntityData Data { get; set; }
 
-        private static readonly int FrameDelay = 4;
-        private const int Speed = 5;
+        private static readonly int FrameDelay = 5;
+        private const int Speed = 0;
 
-        public WoodenSwordProjectile(IPlayer player)
+        public WoodenSwordProjectile(IPlayer source, string direction)
         {
-            this.player = player;
-            this.projectileWidth = ProjectileSpriteFactory.Instance.SwordWidth;
-            this.projectileHeight = ProjectileSpriteFactory.Instance.SwordHeight;             
+            this.projectileWidth = LinkSpriteFactory.LinkWidth;
+            this.projectileHeight = LinkSpriteFactory.LinkHeight;
+            int locationOffset = (projectileWidth * 3) / 4;
+            this.source = source.Physics;
+            Vector2 sourceCenter = this.source.Bounds.Center.ToVector2();
+            this.Data = new EntityData();
             this.collisionHandler = new ProjectileCollisionHandler(this);
-            this.lifeTime = TotalLife;
-            this.direction = player.CurrentDirection;
-            Vector2 loc = new Vector2(player.Physics.Location.X, player.Physics.Location.Y);
-            if (this.direction.Equals("Up"))
-            {
-                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - projectileWidth) / 2), loc.Y - ((3 * LinkSize) / 4)));
-                this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
-                this.rotation = 0.0f;
-                this.effect = SpriteEffects.FlipVertically;
-                this.Physics.Location = new Vector2(this.Physics.Location.X - DrawOffset, this.Physics.Location.Y);
-            }
-            else if (this.direction.Equals("Left"))
-            {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize / 4), loc.Y + ((LinkSize - projectileWidth) / 2)));
-                this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X - projectileHeight, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
-                this.rotation = MathHelper.PiOver2;
-                this.effect = SpriteEffects.None;
-                this.Physics.Location = new Vector2(this.Physics.Location.X, this.Physics.Location.Y + DrawOffset);
-            }
-            else if (this.direction.Equals("Right"))
-            {
-                this.Physics = new Physics(new Vector2(loc.X + (LinkSize * 2) - (LinkSize / 4), loc.Y + ((LinkSize - projectileWidth) / 2)));
-                this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X - projectileHeight, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
-                this.rotation = MathHelper.PiOver2;
-                this.effect = SpriteEffects.FlipVertically;
-                this.Physics.Location = new Vector2(this.Physics.Location.X, this.Physics.Location.Y + DrawOffset);
-            }
-            else
-            {
-                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - projectileWidth) / 2), loc.Y + ((3 * LinkSize) / 4)));
-                this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
-                this.rotation = 0.0f;
-                this.effect = SpriteEffects.None;
-            }
+            this.lifeTime = 0;
+            this.InitializeDirection(this, source.Physics.Bounds, new Vector2(projectileWidth, projectileHeight), direction);
+            this.Physics.MovementVelocity *= Speed;
+            this.Physics.Location *= locationOffset;
+            this.Physics.Location = new Vector2(sourceCenter.X + this.Physics.Location.X, sourceCenter.Y + this.Physics.Location.Y);
+            this.Physics.Bounds = new Rectangle(this.Physics.Location.ToPoint() - this.Physics.BoundsOffset.ToPoint(), (this.Physics.BoundsOffset * 2).ToPoint());
+            this.Physics.BoundsOffset *= 2;
+            this.Physics.SetLocation();
             this.damage = 2;
             this.expired = false;
-            if (player.CurrentColor.Equals("Red"))
+            if (source.CurrentColor.Equals("Red"))
             {
             }
-            else if (player.CurrentColor.Equals("Blue"))
+            else if (source.CurrentColor.Equals("Blue"))
             {
             }
             else
             {
-                this.sprite = ProjectileSpriteFactory.Instance.GreenWoodSword(this.rotation, this.effect);
+                this.sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
             }
         }
 
@@ -103,23 +80,23 @@
 
         public void Update()
         {
-            lifeTime--;
-            this.Physics.MovementVelocity = new Vector2(this.player.Physics.MovementVelocity.X, this.player.Physics.MovementVelocity.Y);
-            if (this.lifeTime == Extended || this.lifeTime == Retracting)
+            lifeTime++;
+            this.Physics.MovementVelocity = new Vector2(this.source.MovementVelocity.X, this.source.MovementVelocity.Y);
+            if (this.lifeTime == Retracting || this.lifeTime == Extended)
             {
-                this.sprite.Update();
+                this.sprite.NextFrame();
             }
-            if (this.lifeTime <= 0)
+            if (this.lifeTime >= TotalLife)
             {
                 this.expired = true;
             }
             this.Physics.Move();
-            this.Physics.Bounds = new Rectangle(this.Physics.Bounds.X + (int)this.Physics.MovementVelocity.X, this.Physics.Bounds.Y + (int)this.Physics.MovementVelocity.Y, this.Physics.Bounds.Width, this.Physics.Bounds.Height);
+            this.Physics.SetDepth();
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Data.Rotation, this.Data.SpriteEffect, this.Physics.Depth);
         }
     }
 }

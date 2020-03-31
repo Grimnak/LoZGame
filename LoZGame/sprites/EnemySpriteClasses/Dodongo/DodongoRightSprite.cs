@@ -3,7 +3,7 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DodongoRightSprite : ISprite
+    public class DodongoRightSprite : SpriteEssentials, ISprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;
@@ -14,7 +14,7 @@ namespace LoZClone
         private int frameDelay = 0;
         private readonly int frameDelayMax = 7;
 
-        public DodongoRightSprite(Texture2D spriteTexture, SpriteSheetData data)
+        public DodongoRightSprite(Texture2D spriteTexture, SpriteData data)
         {
             this.spriteSheet = spriteTexture;
             this.spriteSheetWidth = data.Width;

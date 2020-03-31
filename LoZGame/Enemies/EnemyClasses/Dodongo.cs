@@ -23,7 +23,7 @@
         {
             this.HandleDamage();
             this.CurrentState.Update();
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, this.Physics.Bounds.Width, this.Physics.Bounds.Height);
+            this.Physics.SetDepth(); ;
         }
     }
 }

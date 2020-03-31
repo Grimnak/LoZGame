@@ -30,6 +30,7 @@
         {
             this.HandleDamage();
             this.CurrentState.Update();
+            this.Physics.SetDepth();
         }
     }
 }

@@ -23,6 +23,10 @@
 
         public HealthManager Health { get; set; }
 
+        public int AnimationSpeed { get; set; }
+
+        public int FrameDelay { get; set; }
+
         public void TakeDamage(int damageAmount)
         {
             if (this.DamageTimer <= 0)

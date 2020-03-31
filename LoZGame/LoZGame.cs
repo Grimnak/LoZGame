@@ -97,6 +97,7 @@
             this.debugManager.Initialize();
 
             base.Initialize();
+            Console.WriteLine("Initialized");
         }
 
         protected override void LoadContent()
@@ -115,6 +116,7 @@
             this.gameState = new TitleScreenState();
 
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+            Console.WriteLine("Loaded");
         }
 
         protected override void UnloadContent()
@@ -134,7 +136,7 @@
             {
                 this.debugManager.Update();
             }
-
+            Console.WriteLine("Updated");
             base.Update(gameTime);
         }
 
@@ -146,11 +148,15 @@
 
             this.gameState.Draw();
 
+            this.spriteBatch.End();
+
             if (DebugMode)
             {
+                this.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
                 this.debugManager.Draw();
+                this.spriteBatch.End();
             }
-            this.spriteBatch.End();
+            Console.WriteLine("Draw");
             base.Draw(gameTime);
         }
     }

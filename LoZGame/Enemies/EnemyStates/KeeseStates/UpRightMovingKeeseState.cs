@@ -101,7 +101,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.keese.Physics.Location, this.keese.CurrentTint);
+            this.sprite.Draw(this.keese.Physics.Location, this.keese.CurrentTint, this.keese.Physics.Depth);
         }
 
         private void updateMoveSpeed()

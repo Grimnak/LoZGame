@@ -74,7 +74,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.spikeCross.Physics.Location, this.spikeCross.CurrentTint);
+            this.sprite.Draw(this.spikeCross.Physics.Location, this.spikeCross.CurrentTint, this.spikeCross.Physics.Depth);
         }
 
         private void retreatCheck()

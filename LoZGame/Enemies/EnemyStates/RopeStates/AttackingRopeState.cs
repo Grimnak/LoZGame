@@ -103,7 +103,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.rope.Physics.Location, this.rope.CurrentTint);
+            this.sprite.Draw(this.rope.Physics.Location, this.rope.CurrentTint, this.rope.Physics.Depth);
         }
     }
 }

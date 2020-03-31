@@ -26,13 +26,14 @@
 
         public Physics Physics { get; set; }
 
-        
+        public EntityData Data { get; set; }
 
         public BombProjectile(Vector2 loc, string direction)
         {
             this.scale = ProjectileSpriteFactory.Instance.Scale;
             this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * scale;
+            this.Data = new EntityData();
             this.lifeTime = MaxLife;
             this.direction = direction;
             this.damage = 0;
@@ -89,7 +90,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Data.Rotation, this.Data.SpriteEffect, this.Physics.Depth);
         }
     }
 }

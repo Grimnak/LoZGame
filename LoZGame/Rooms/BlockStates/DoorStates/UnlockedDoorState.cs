@@ -22,28 +22,28 @@ namespace LoZClone
             {
                 case "N":
                 {
-                    this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown(door.UpScreenLoc);
+                    this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
                     location = door.UpScreenLoc;
                     door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y - 12, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
                     break;
                 }
                 case "E":
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft(door.RightScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
                         location = door.RightScreenLoc;
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X - 7, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                 }
                 case "S":
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp(door.DownScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
                         location = door.DownScreenLoc;
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
                         break;
                 }
                 case "W":
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight(door.LeftScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
                         location = door.LeftScreenLoc;
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X - 19, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
                         break;
@@ -62,7 +62,7 @@ namespace LoZClone
 
         public void Draw()
         {
-            this.sprite.Draw(location, spriteTint);
+            this.sprite.Draw(location, spriteTint, this.door.Physics.Depth);
         }
 
         public void Open()
