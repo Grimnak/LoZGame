@@ -80,7 +80,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.dodongo.Physics.Location, this.dodongo.CurrentTint);
+            this.sprite.Draw(this.dodongo.Physics.Location, this.dodongo.CurrentTint, this.dodongo.Physics.Depth);
         }
     }
 }

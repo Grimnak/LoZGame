@@ -15,6 +15,7 @@
         public OldMan(Vector2 location)
         {
             this.Physics = new Physics(location);
+            this.Physics.SetDepth();
             this.FlameOneLoc = new Vector2(location.X - 100, location.Y + 20);
             this.FlameTwoLoc = new Vector2(location.X + 160, location.Y + 20);
             this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
@@ -54,7 +55,7 @@
 
         public override void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
         }
     }
 }

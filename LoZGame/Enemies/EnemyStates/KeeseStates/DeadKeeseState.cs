@@ -6,7 +6,7 @@
     public class DeadKeeseState : IEnemyState
     {
         private readonly Keese keese;
-        private readonly DeadEnemySprite sprite;
+        private readonly ISprite sprite;
         private int deathTimer = 0;
         private int deathTimerMax = 30;
 
@@ -80,7 +80,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.keese.Physics.Location, this.keese.CurrentTint);
+            this.sprite.Draw(this.keese.Physics.Location, this.keese.CurrentTint, this.keese.Physics.Depth);
         }
     }
 }

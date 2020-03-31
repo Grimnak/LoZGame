@@ -7,19 +7,33 @@
         public Physics(Vector2 location)
         {
             this.Location = location;
-            this.Depth = 0.0f;
+            this.Depth = 1.0f;
             this.Mass = 1;
+            this.Rotation = 0.0f;
             this.MovementVelocity = Vector2.Zero;
             this.MovementAcceleration = Vector2.Zero;
             this.ForceVelocity = Vector2.Zero;
             this.ForceAcceleration = Vector2.Zero;
             this.MasterMovement = Vector2.Zero;
             this.Bounds = Rectangle.Empty;
+            this.BoundsOffset = Vector2.Zero;
+        }
+
+        public void SetDepth()
+        {
+            if (this.Bounds.Bottom != 0)
+            {
+                this.Depth = 1 - (1 / this.Bounds.Bottom);
+            }
+            else
+            {
+                this.Depth = 0.0f;
+            }
         }
 
         public void SetLocation()
         {
-            this.Location = new Vector2(this.Bounds.X, this.Bounds.Y);
+            this.Location = new Vector2(this.Bounds.X + this.BoundsOffset.X, this.Bounds.Y + this.BoundsOffset.Y);
         }
 
         public void Move()
@@ -28,7 +42,7 @@
             totalVelocity.X = this.MovementVelocity.X + this.ForceVelocity.X + this.MasterMovement.X;
             totalVelocity.Y = this.MovementVelocity.Y + this.ForceVelocity.Y + this.MasterMovement.Y;
             this.Bounds = new Rectangle(this.Bounds.X + (int)totalVelocity.X, this.Bounds.Y + (int)totalVelocity.Y, this.Bounds.Width, this.Bounds.Height);
-            this.Location = new Vector2(this.Bounds.X, this.Bounds.Y);
+            this.Location = new Vector2(this.Bounds.X + this.BoundsOffset.X, this.Bounds.Y + this.BoundsOffset.Y);
         }
 
         public void Accelerate()

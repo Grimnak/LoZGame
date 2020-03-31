@@ -87,7 +87,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.stalfos.Physics.Location, this.stalfos.CurrentTint);
+            this.sprite.Draw(this.stalfos.Physics.Location, this.stalfos.CurrentTint, this.stalfos.Physics.Depth);
         }
     }
 }

@@ -40,6 +40,7 @@
             this.Physics = new Physics(location);
             this.sprite = this.CreateCorrectSprite(name);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
+            this.Physics.Depth = 0.002f;
         }
 
         /// <inheritdoc/>
@@ -48,21 +49,21 @@
             switch (name)
             {
                 case "water_tile":
-                    return BlockSpriteFactory.Instance.WaterTile(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.WaterTile();
                 case "basement_brick_tile":
-                    return BlockSpriteFactory.Instance.BasementBrickTile(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.BasementBrickTile();
                 case "fire_gap_tile":
-                    return BlockSpriteFactory.Instance.Fire(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.Fire();
                 case "turqoise_statue_left":
-                    return BlockSpriteFactory.Instance.TurquoiseStatueLeft(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.TurquoiseStatueLeft();
                 case "turqoise_statue_right":
-                    return BlockSpriteFactory.Instance.TurquoiseStatueRight(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.TurquoiseStatueRight();
                 case "blue_statue_left":
-                    return BlockSpriteFactory.Instance.BlueStatueLeft(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.BlueStatueLeft();
                 case "blue_statue_right":
-                    return BlockSpriteFactory.Instance.BlueStatueRight(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.BlueStatueRight();
                 default:
-                    return BlockSpriteFactory.Instance.MovableSquare(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.MovableSquare();
             }
         }
 
@@ -75,7 +76,7 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, spriteTint);
+            this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

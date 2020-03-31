@@ -3,7 +3,7 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class LinkAttackLeftSprite : ISprite
+    public class LinkAttackLeftSprite : SpriteEssentials, ISprite
     {
         private readonly Texture2D linkSprite;
         private readonly int linkSpriteRows;
@@ -17,7 +17,7 @@ namespace LoZClone
         private readonly int frameDelayMax = 5;
         private int counter = 0;
 
-        public LinkAttackLeftSprite(Texture2D linkTexture, SpriteSheetData linkData)
+        public LinkAttackLeftSprite(Texture2D linkTexture, SpriteData linkData)
         {
             this.linkSprite = linkTexture;
             this.linkSpriteRows = linkData.Rows;

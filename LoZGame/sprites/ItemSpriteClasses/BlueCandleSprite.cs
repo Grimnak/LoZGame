@@ -4,17 +4,17 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class BlueCandleSprite : ISprite
+    internal class BlueCandleSprite : SpriteEssentials, ISprite
     {
         private readonly Texture2D Texture;      // the texture to pull frames from
-        private readonly SpriteSheetData Data;
+        private readonly SpriteData Data;
         private Vector2 origin;
         private float rotation;
         private Rectangle frame;
         private int lifeTime;
         private readonly int scale;
 
-        public BlueCandleSprite(Texture2D texture, SpriteSheetData data, int scale)
+        public BlueCandleSprite(Texture2D texture, SpriteData data, int scale)
         {
             this.Data = data;
             this.Texture = texture;

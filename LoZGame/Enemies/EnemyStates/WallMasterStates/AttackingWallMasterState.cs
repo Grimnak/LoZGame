@@ -75,7 +75,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.wallMaster.Physics.Location, this.wallMaster.CurrentTint);
+            this.sprite.Draw(this.wallMaster.Physics.Location, this.wallMaster.CurrentTint, this.wallMaster.Physics.Depth);
         }
     }
 }

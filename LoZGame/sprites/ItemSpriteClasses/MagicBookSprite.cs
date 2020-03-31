@@ -4,17 +4,17 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class MagicBookSprite : ISprite
+    internal class MagicBookSprite : SpriteEssentials, ISprite
     {
         private readonly Texture2D Texture;      // the texture to pull frames from
-        private readonly SpriteSheetData Data;
+        private readonly SpriteData Data;
         private Vector2 origin;
         private float rotation;
         private Rectangle frame;
         private int lifeTime;
         private readonly int scale;
 
-        public MagicBookSprite(Texture2D texture, SpriteSheetData data, int scale)
+        public MagicBookSprite(Texture2D texture, SpriteData data, int scale)
         {
             this.Data = data;
             this.Texture = texture;

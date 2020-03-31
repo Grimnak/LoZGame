@@ -49,12 +49,13 @@
             this.Physics = new Physics(location);
             this.sprite = this.CreateCorrectSprite(name);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
+            this.Physics.Depth = 0.002f;
         }
 
         /// <inheritdoc/>
         public ISprite CreateCorrectSprite(string name)
         {
-            return BlockSpriteFactory.Instance.MovableSquare(this.Physics.Location);
+            return BlockSpriteFactory.Instance.MovableSquare();
         }
 
         private void HandlePush()
@@ -103,7 +104,7 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, spriteTint);
+            this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

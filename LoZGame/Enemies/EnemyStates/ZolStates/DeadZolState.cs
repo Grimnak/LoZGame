@@ -6,7 +6,7 @@
     public class DeadZolState : IEnemyState
     {
         private readonly Zol zol;
-        private readonly DeadEnemySprite sprite;
+        private readonly ISprite sprite;
         private int deathTimer = 0;
         private int deathTimerMax = 30;
 
@@ -80,7 +80,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.zol.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.zol.Physics.Location, LoZGame.Instance.DungeonTint, this.zol.Physics.Depth);
         }
     }
 }

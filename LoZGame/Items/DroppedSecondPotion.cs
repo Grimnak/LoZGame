@@ -4,100 +4,38 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class DroppedSecondPotion : IItem, IDrop
+    internal class DroppedSecondPotion : ItemEssentials, IItem
     {
         private static readonly int DespawnTimer = LoZGame.Instance.UpdateSpeed * 20;
         private static readonly int SpawnTimer = LoZGame.Instance.UpdateSpeed * 1;
-        private ISprite sprite;
-        private ItemCollisionHandler itemCollisionHandler;
-
-        private readonly Texture2D Texture;      // the texture to pull frames from
-        private Vector2 Size;
-        private float layer;
-        private int lifeTime;
-        private bool expired;
-        private IProjectile boomerang;
-        private bool grabbed;
-
-        public IProjectile Boomerang { get { return this.boomerang; } set { this.boomerang = value; } }
-
-        public bool IsGrabbed { get { return grabbed; } set { this.grabbed = value; } }
-
-        public int PickUpItemTime { get { return -1; } }
-
-        public bool Expired { get { return this.expired; } set { this.expired = value; } }
-
-        public Physics Physics { get; set; }
-
         
-
         public DroppedSecondPotion(Vector2 loc)
         {
-            this.sprite = ItemSpriteFactory.Instance.SecondPotion(ItemSpriteFactory.Instance.Scale);
-            this.Physics = new Physics(loc);
-            this.Size = new Vector2(ItemSpriteFactory.PotionWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.PotionHeight * ItemSpriteFactory.Instance.Scale);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.lifeTime = 0;
-            this.expired = false;
+            this.Sprite = ItemSpriteFactory.Instance.SecondPotion();
             this.itemCollisionHandler = new ItemCollisionHandler(this);
-            this.grabbed = false;
+            this.Physics = new Physics(loc);
+            this.PickUpItemTime = -1;
+            this.LifeTime = 0;
+            Vector2 size = new Vector2(ItemSpriteFactory.RupeeWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.RupeeHeight * ItemSpriteFactory.Instance.Scale);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)size.X, (int)size.Y);
+            this.Expired = false;
+            this.StartBob();
         }
 
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        public override void Update()
         {
-            if (otherCollider is IPlayer)
+            base.Update();
+            if (this.LifeTime >= DespawnTimer)
             {
-                this.itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                this.Expired = true;
             }
-            if (!grabbed)
-            {
-                if (otherCollider is IProjectile)
-                {
-                    this.itemCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
-                }
-            }
         }
 
-        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        public override void Draw(Color spriteTint)
         {
-            itemCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
-        }
-
-        public void ReverseBob()
-        {
-            this.Physics.MovementAcceleration = new Vector2(0, this.Physics.MovementAcceleration.Y * -1);
-        }
-
-        private void TrackBoomerang()
-        {
-            this.Physics.MovementVelocity = new Vector2(this.boomerang.Physics.MovementVelocity.X, this.boomerang.Physics.MovementVelocity.Y);
-        }
-
-        public void Update()
-        {
-            this.lifeTime++;
-            this.Physics.Move();
-            this.Physics.Accelerate();
-            if (this.lifeTime >= DespawnTimer)
+            if ((this.LifeTime > SpawnTimer && this.LifeTime < (DespawnTimer - (4 * SpawnTimer))) || this.LifeTime % 4 < 2)
             {
-                this.expired = true;
-            }
-            if (this.lifeTime % 20 == 0 && !grabbed)
-            {
-                this.ReverseBob();
-            }
-            if (grabbed)
-            {
-                this.TrackBoomerang();
-            }
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-        }
-
-        public void Draw(Color spriteTint)
-        {
-            if ((this.lifeTime > SpawnTimer && this.lifeTime < (DespawnTimer - (4 * SpawnTimer))) || this.lifeTime % 4 < 2)
-            {
-                this.sprite.Draw(this.Physics.Location, spriteTint);
+                base.Draw(spriteTint);
             }
         }
     }

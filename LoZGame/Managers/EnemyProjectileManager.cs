@@ -48,7 +48,7 @@
             switch (projectile)
             {
                 case ProjectileType.Boomerang:
-                    projectileList.Add(projectileId, new BoomerangEnemy(enemy, direction));
+                    projectileList.Add(projectileId, new BoomerangProjectile(enemy.Physics, direction));
                     break;
             }
         }

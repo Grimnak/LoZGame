@@ -6,7 +6,7 @@
     public class DeadRopeState : IEnemyState
     {
         private readonly Rope rope;
-        private readonly DeadEnemySprite sprite;
+        private readonly ISprite sprite;
         private int deathTimer = 0;
         private int deathTimerMax = 30;
 
@@ -80,7 +80,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.rope.Physics.Location, this.rope.CurrentTint);
+            this.sprite.Draw(this.rope.Physics.Location, this.rope.CurrentTint, this.rope.Physics.Depth);
         }
     }
 }

@@ -82,6 +82,7 @@
             this.HandleDamage();
             this.Physics.Move();
             this.CurrentState.Update();
+            this.Physics.SetDepth();
         }
 
         public virtual void Draw()

@@ -6,7 +6,7 @@
     public class DeadStalfosState : IEnemyState
     {
         private readonly Stalfos stalfos;
-        private readonly DeadEnemySprite sprite;
+        private readonly ISprite sprite;
         private int deathTimer = 0;
         private int deathTimerMax = 30;
 
@@ -80,7 +80,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.stalfos.Physics.Location, this.stalfos.CurrentTint);
+            this.sprite.Draw(this.stalfos.Physics.Location, this.stalfos.CurrentTint, this.stalfos.Physics.Depth);
         }
     }
 }

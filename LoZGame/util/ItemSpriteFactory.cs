@@ -11,13 +11,12 @@
 
     public class ItemSpriteFactory
     {
-        private static readonly int DRAWSCALE = 2;
-        private static readonly int TriforceSize = 12;
-        private static readonly int SmallHeight = 10;
-        private static readonly int StandardHeight = 18;
-        private static readonly int StandardWidth = 8;
-        private static readonly int LargeWidth = 16;
-        private static readonly int SmallWidth = 5;
+        private static readonly int TriforceSize = 24;
+        private static readonly int SmallHeight = 20;
+        private static readonly int StandardHeight = 36;
+        private static readonly int StandardWidth = 16;
+        private static readonly int LargeWidth = 32;
+        private static readonly int SmallWidth = 10;
 
         public static int HealthWidth { get { return StandardWidth; } }
 
@@ -128,298 +127,328 @@
         public static int CompassHeight { get { return StandardHeight; } }
 
         private Texture2D healthSpriteSheet;
-        private readonly SpriteSheetData healthData = new SpriteSheetData("Health", HealthWidth, HealthHeight, 1, 2);
+        private SpriteData healthData;
         private Texture2D fairySpriteSheet;
-        private readonly SpriteSheetData fairyData = new SpriteSheetData("Fairy", FairyWidth, FairyHeight, 1, 2);
+        private SpriteData fairyData;
         private Texture2D yellowRupeeSpriteSheet;
-        private readonly SpriteSheetData yellowRupeeData = new SpriteSheetData("YellowRupee", RupeeWidth, RupeeHeight, 1, 2);
+        private SpriteData yellowRupeeData;
         private Texture2D blueCandleSpriteSheet;
-        private readonly SpriteSheetData blueCandleData = new SpriteSheetData("BlueCandle", CandleWidth, CandleHeight, 1, 1);
+        private SpriteData blueCandleData;
         private Texture2D redCandleSpriteSheet;
-        private readonly SpriteSheetData redCandleData = new SpriteSheetData("RedCandle", CandleWidth, CandleHeight, 1, 1);
+        private SpriteData redCandleData;
         private Texture2D blueRingSpriteSheet;
-        private readonly SpriteSheetData blueRingData = new SpriteSheetData("BlueRing", RingWidth, RingHeight, 1, 1);
+        private SpriteData blueRingData;
         private Texture2D redRingSpriteSheet;
-        private readonly SpriteSheetData redRingData = new SpriteSheetData("RedRing", RingWidth, RingHeight, 1, 1);
+        private SpriteData redRingData;
         private Texture2D bombSpriteSheet;
-        private readonly SpriteSheetData bombData = new SpriteSheetData("Bomb", BombWidth, BombHeight, 1, 1);
+        private SpriteData bombData;
         private Texture2D magicBookSpriteSheet;
-        private readonly SpriteSheetData magicBookData = new SpriteSheetData("Book", BookWidth, BookHeight, 1, 1);
+        private SpriteData magicBookData;
         private Texture2D boomerangSpriteSheet;
-        private readonly SpriteSheetData boomerangData = new SpriteSheetData("Boomerang", BoomerangWidth, BoomerangHeight, 1, 1);
+        private SpriteData boomerangData;
         private Texture2D magicBoomerangSpriteSheet;
-        private readonly SpriteSheetData magicBoomerangData = new SpriteSheetData("MagicBoomerang", BoomerangWidth, BoomerangHeight, 1, 1);
+        private SpriteData magicBoomerangData;
         private Texture2D bowSpriteSheet;
-        private readonly SpriteSheetData bowData = new SpriteSheetData("Bow", BowWidth, BowHeight, 1, 1);
+        private SpriteData bowData;
         private Texture2D clockSpriteSheet;
-        private readonly SpriteSheetData clockData = new SpriteSheetData("Clock", ClockWidth, ClockHeight, 1, 1);
+        private SpriteData clockData;
         private Texture2D compassSpriteSheet;
-        private readonly SpriteSheetData compassData = new SpriteSheetData("Compass", CompassWidth, CompassHeight, 1, 1);
+        private SpriteData compassData;
         private Texture2D foodSpriteSheet;
-        private readonly SpriteSheetData foodData = new SpriteSheetData("Food", FoodWidth, FoodHeight, 1, 1);
+        private SpriteData foodData;
         private Texture2D heartContainerSpriteSheet;
-        private readonly SpriteSheetData heartContainerData = new SpriteSheetData("HeartContainer", HeartContainerWidth, HeartContainerHeight, 1, 1);
+        private SpriteData heartContainerData;
         private Texture2D keySpriteSheet;
-        private readonly SpriteSheetData keyData = new SpriteSheetData("Key", KeyWidth, KeyHeight, 1, 1);
+        private SpriteData keyData;
         private Texture2D ladderSpriteSheet;
-        private readonly SpriteSheetData ladderData = new SpriteSheetData("Ladder", LadderWidth, LadderHeight, 1, 1);
+        private SpriteData ladderData;
         private Texture2D letterSpriteSheet;
-        private readonly SpriteSheetData letterData = new SpriteSheetData("Letter", LetterWidth, LetterHeight, 1, 1);
+        private SpriteData letterData;
         private Texture2D lifePotionSpriteSheet;
-        private readonly SpriteSheetData lifePotionData = new SpriteSheetData("LifePotion", PotionWidth, PotionHeight, 1, 1);
+        private SpriteData lifePotionData;
         private Texture2D magicKeySpriteSheet;
-        private readonly SpriteSheetData magicKeyData = new SpriteSheetData("MagicKey", KeyWidth, KeyHeight, 1, 1);
+        private SpriteData magicKeyData;
         private Texture2D magicRodSpriteSheet;
-        private readonly SpriteSheetData magicRodData = new SpriteSheetData("MagicRod", MagicRodWidth, MagicRodHeight, 1, 1);
+        private SpriteData magicRodData;
         private Texture2D woodenSwordSpriteSheet;
-        private readonly SpriteSheetData woodenSwordData = new SpriteSheetData("WoodenSword", SwordWidth, SwordHeight, 1, 1);
+        private SpriteData woodenSwordData;
         private Texture2D whiteSwordSpriteSheet;
-        private readonly SpriteSheetData whiteSwordData = new SpriteSheetData("WhiteSword", SwordWidth, SwordHeight, 1, 1);
+        private SpriteData whiteSwordData;
         private Texture2D magicSwordSpriteSheet;
-        private readonly SpriteSheetData magicSwordData = new SpriteSheetData("MagicSword", SwordWidth, SwordHeight, 1, 1);
+        private SpriteData magicSwordData;
         private Texture2D mapSpriteSheet;
-        private readonly SpriteSheetData mapData = new SpriteSheetData("Map", MapWidth, MapHeight, 1, 1);
+        private SpriteData mapData;
         private Texture2D powerBraceletSpriteSheet;
-        private readonly SpriteSheetData powerBraceletData = new SpriteSheetData("PowerBracelet", PowerBraceletWidth, PowerBraceletHeight, 1, 1);
+        private SpriteData powerBraceletData;
         private Texture2D raftSpriteSheet;
-        private readonly SpriteSheetData raftData = new SpriteSheetData("Raft", RaftWidth, RaftHeight, 1, 1);
+        private SpriteData raftData;
         private Texture2D rupeeSpriteSheet;
-        private readonly SpriteSheetData rupeeData = new SpriteSheetData("Rupee", RupeeWidth, RupeeHeight, 1, 1);
+        private SpriteData rupeeData;
         private Texture2D secondPotionSpriteSheet;
-        private readonly SpriteSheetData secondPotionData = new SpriteSheetData("SecondPotion", PotionWidth, PotionHeight, 1, 1);
+        private SpriteData secondPotionData;
         private Texture2D shieldSpriteSheet;
-        private readonly SpriteSheetData shieldData = new SpriteSheetData("Shield", ShieldWidth, ShieldHeight, 1, 1);
+        private SpriteData shieldData;
         private Texture2D silverArrowSpriteSheet;
-        private readonly SpriteSheetData silverArrowData = new SpriteSheetData("SilverArrow", ArrowWidth, ArrowHeight, 1, 1);
+        private SpriteData silverArrowData;
         private Texture2D woodenArrowSpriteSheet;
-        private readonly SpriteSheetData woodenArrowData = new SpriteSheetData("WoodenArrow", ArrowWidth, ArrowHeight, 1, 1);
+        private SpriteData woodenArrowData;
         private Texture2D triforceSpriteSheet;
-        private readonly SpriteSheetData triforceData = new SpriteSheetData("Triforce", TriforceWidth, TriforceHeight, 1, 2);
+        private SpriteData triforceData;
         private Texture2D fluteSpriteSheet;
-        private readonly SpriteSheetData fluteData = new SpriteSheetData("Flute", FluteWidth, FluteHeight, 1, 2);
+        private SpriteData fluteData;
 
         private static readonly ItemSpriteFactory InstanceValue = new ItemSpriteFactory();
 
         public static ItemSpriteFactory Instance => InstanceValue;
 
-        public int Scale => DRAWSCALE;
+        public int Scale => 1;
 
         private ItemSpriteFactory()
         { }
 
         public void LoadAllTextures(ContentManager content)
         {
-            healthSpriteSheet = content.Load<Texture2D>(this.healthData.FilePath);
-            fairySpriteSheet = content.Load<Texture2D>(this.fairyData.FilePath);
-            yellowRupeeSpriteSheet = content.Load<Texture2D>(this.yellowRupeeData.FilePath);
-            blueCandleSpriteSheet = content.Load<Texture2D>(this.blueCandleData.FilePath);
-            redCandleSpriteSheet = content.Load<Texture2D>(this.redCandleData.FilePath);
-            blueRingSpriteSheet = content.Load<Texture2D>(this.blueRingData.FilePath);
-            redRingSpriteSheet = content.Load<Texture2D>(this.redRingData.FilePath);
-            bombSpriteSheet = content.Load<Texture2D>(this.bombData.FilePath);
-            magicBookSpriteSheet = content.Load<Texture2D>(this.magicBookData.FilePath);
-            boomerangSpriteSheet = content.Load<Texture2D>(this.boomerangData.FilePath);
-            magicBoomerangSpriteSheet = content.Load<Texture2D>(this.magicBoomerangData.FilePath);
-            bowSpriteSheet = content.Load<Texture2D>(this.bowData.FilePath);
-            clockSpriteSheet = content.Load<Texture2D>(this.clockData.FilePath);
-            compassSpriteSheet = content.Load<Texture2D>(this.compassData.FilePath);
-            foodSpriteSheet = content.Load<Texture2D>(this.foodData.FilePath);
-            heartContainerSpriteSheet = content.Load<Texture2D>(this.heartContainerData .FilePath);
-            keySpriteSheet = content.Load<Texture2D>(this.keyData.FilePath);
-            ladderSpriteSheet = content.Load<Texture2D>(this.ladderData.FilePath);
-            letterSpriteSheet = content.Load<Texture2D>(this.letterData.FilePath);
-            lifePotionSpriteSheet = content.Load<Texture2D>(this.lifePotionData.FilePath);
-            magicKeySpriteSheet = content.Load<Texture2D>(this.magicKeyData.FilePath);
-            magicRodSpriteSheet = content.Load<Texture2D>(this.magicRodData.FilePath);
-            woodenSwordSpriteSheet = content.Load<Texture2D>(this.woodenSwordData.FilePath);
-            whiteSwordSpriteSheet = content.Load<Texture2D>(this.whiteSwordData.FilePath);
-            magicSwordSpriteSheet = content.Load<Texture2D>(this.magicSwordData.FilePath);
-            mapSpriteSheet = content.Load<Texture2D>(this.mapData.FilePath);
-            powerBraceletSpriteSheet = content.Load<Texture2D>(this.powerBraceletData.FilePath);
-            raftSpriteSheet = content.Load<Texture2D>(this.raftData.FilePath);
-            rupeeSpriteSheet = content.Load<Texture2D>(this.rupeeData.FilePath);
-            secondPotionSpriteSheet = content.Load<Texture2D>(this.secondPotionData.FilePath);
-            shieldSpriteSheet = content.Load<Texture2D>(this.shieldData.FilePath);
-            silverArrowSpriteSheet = content.Load<Texture2D>(this.silverArrowData.FilePath);
-            woodenArrowSpriteSheet = content.Load<Texture2D>(this.woodenArrowData.FilePath);
-            triforceSpriteSheet = content.Load<Texture2D>(this.triforceData.FilePath);
-            fluteSpriteSheet = content.Load<Texture2D>(this.fluteData.FilePath);
-
-    }
-
-        public ISprite Fairy(int scale)
-        {
-            return new FairySprite(this.fairySpriteSheet, this.fairyData, scale);
+            this.LoadTextures(content);
+            this.LoadData();
         }
 
-        public ISprite Health(int scale)
+        private void LoadTextures(ContentManager content)
         {
-            return new HealthSprite(this.healthSpriteSheet, this.healthData, scale);
+            healthSpriteSheet = content.Load<Texture2D>("Health");
+            fairySpriteSheet = content.Load<Texture2D>("Fairy");
+            yellowRupeeSpriteSheet = content.Load<Texture2D>("YellowRupee");
+            blueCandleSpriteSheet = content.Load<Texture2D>("BlueCandle");
+            redCandleSpriteSheet = content.Load<Texture2D>("RedCandle");
+            blueRingSpriteSheet = content.Load<Texture2D>("BlueRing");
+            redRingSpriteSheet = content.Load<Texture2D>("RedRing");
+            bombSpriteSheet = content.Load<Texture2D>("Bomb");
+            magicBookSpriteSheet = content.Load<Texture2D>("Book");
+            boomerangSpriteSheet = content.Load<Texture2D>("Boomerang");
+            magicBoomerangSpriteSheet = content.Load<Texture2D>("MagicBoomerang");
+            bowSpriteSheet = content.Load<Texture2D>("Bow");
+            clockSpriteSheet = content.Load<Texture2D>("Clock");
+            compassSpriteSheet = content.Load<Texture2D>("Compass");
+            foodSpriteSheet = content.Load<Texture2D>("Food");
+            heartContainerSpriteSheet = content.Load<Texture2D>("HeartContainer");
+            keySpriteSheet = content.Load<Texture2D>("Key");
+            letterSpriteSheet = content.Load<Texture2D>("Letter");
+            lifePotionSpriteSheet = content.Load<Texture2D>("LifePotion");
+            magicKeySpriteSheet = content.Load<Texture2D>("MagicKey");
+            magicRodSpriteSheet = content.Load<Texture2D>("MagicRod");
+            woodenSwordSpriteSheet = content.Load<Texture2D>("WoodenSword");
+            whiteSwordSpriteSheet = content.Load<Texture2D>("WhiteSword");
+            magicSwordSpriteSheet = content.Load<Texture2D>("MagicSword");
+            mapSpriteSheet = content.Load<Texture2D>("Map");
+            powerBraceletSpriteSheet = content.Load<Texture2D>("PowerBracelet");
+            rupeeSpriteSheet = content.Load<Texture2D>("Rupee");
+            secondPotionSpriteSheet = content.Load<Texture2D>("SecondPotion");
+            shieldSpriteSheet = content.Load<Texture2D>("Shield");
+            silverArrowSpriteSheet = content.Load<Texture2D>("SilverArrow");
+            woodenArrowSpriteSheet = content.Load<Texture2D>("WoodenArrow");
+            triforceSpriteSheet = content.Load<Texture2D>("Triforce");
+            fluteSpriteSheet = content.Load<Texture2D>("Flute");
         }
 
-        public ISprite Triforce(int scale)
+        private void LoadData()
         {
-            return new TriForceSprite(this.triforceSpriteSheet, this.triforceData, scale + 1);
+            healthData = new SpriteData(new Vector2(HealthWidth, HealthHeight), healthSpriteSheet, 1, 2);
+            fairyData = new SpriteData(new Vector2(FairyWidth, FairyHeight), fairySpriteSheet, 1, 2);
+            yellowRupeeData = new SpriteData(new Vector2(RupeeWidth, RupeeHeight), yellowRupeeSpriteSheet, 1, 2);
+            blueCandleData = new SpriteData(new Vector2(CandleWidth, CandleHeight), blueCandleSpriteSheet, 1, 1);
+            redCandleData = new SpriteData(new Vector2(CandleWidth, CandleHeight), redCandleSpriteSheet, 1, 1);
+            blueRingData = new SpriteData(new Vector2(RingWidth, RingHeight), blueRingSpriteSheet, 1, 1);
+            redRingData = new SpriteData(new Vector2(RingWidth, RingHeight), redRingSpriteSheet, 1, 1);
+            bombData = new SpriteData(new Vector2(BombWidth, BombHeight), bombSpriteSheet, 1, 1);
+            magicBookData = new SpriteData(new Vector2(BookWidth, BookHeight), magicBookSpriteSheet, 1, 1);
+            boomerangData = new SpriteData(new Vector2(BoomerangWidth, BoomerangHeight), boomerangSpriteSheet, 1, 1);
+            magicBoomerangData = new SpriteData(new Vector2(BoomerangWidth, BoomerangHeight), magicBoomerangSpriteSheet, 1, 1);
+            bowData = new SpriteData(new Vector2(BowWidth, BowHeight), bowSpriteSheet, 1, 1);
+            clockData = new SpriteData(new Vector2(ClockWidth, ClockHeight), clockSpriteSheet, 1, 1);
+            compassData = new SpriteData(new Vector2(CompassWidth, CompassHeight), compassSpriteSheet, 1, 1);
+            foodData = new SpriteData(new Vector2(FoodWidth, FoodHeight), foodSpriteSheet, 1, 1);
+            heartContainerData = new SpriteData(new Vector2(HeartContainerWidth, HeartContainerHeight), heartContainerSpriteSheet, 1, 1);
+            keyData = new SpriteData(new Vector2(KeyWidth, KeyHeight), keySpriteSheet, 1, 1);
+            letterData = new SpriteData(new Vector2(LetterWidth, LetterHeight), letterSpriteSheet, 1, 1);
+            lifePotionData = new SpriteData(new Vector2(PotionWidth, PotionHeight), lifePotionSpriteSheet, 1, 1);
+            magicKeyData = new SpriteData(new Vector2(KeyWidth, KeyHeight), magicKeySpriteSheet, 1, 1);
+            magicRodData = new SpriteData(new Vector2(MagicRodWidth, MagicRodHeight), magicRodSpriteSheet, 1, 1);
+            woodenSwordData = new SpriteData(new Vector2(SwordWidth, SwordHeight), woodenSwordSpriteSheet, 1, 1);
+            whiteSwordData = new SpriteData(new Vector2(SwordWidth, SwordHeight), whiteSwordSpriteSheet, 1, 1);
+            magicSwordData = new SpriteData(new Vector2(SwordWidth, SwordHeight), magicSwordSpriteSheet, 1, 1);
+            mapData = new SpriteData(new Vector2(MapWidth, MapHeight), mapSpriteSheet, 1, 1);
+            powerBraceletData = new SpriteData(new Vector2(PowerBraceletWidth, PowerBraceletHeight), powerBraceletSpriteSheet, 1, 1);
+            rupeeData = new SpriteData(new Vector2(RupeeWidth, RupeeHeight), rupeeSpriteSheet, 1, 1);
+            secondPotionData = new SpriteData(new Vector2(PotionWidth, PotionHeight), secondPotionSpriteSheet, 1, 1);
+            shieldData = new SpriteData(new Vector2(ShieldWidth, ShieldHeight), shieldSpriteSheet, 1, 1);
+            silverArrowData = new SpriteData(new Vector2(ArrowWidth, ArrowHeight), silverArrowSpriteSheet, 1, 1);
+            woodenArrowData = new SpriteData(new Vector2(ArrowWidth, ArrowHeight), woodenArrowSpriteSheet, 1, 1);
+            triforceData = new SpriteData(new Vector2(TriforceWidth, TriforceHeight), triforceSpriteSheet, 1, 2);
+            fluteData = new SpriteData(new Vector2(FluteWidth, FluteHeight), fairySpriteSheet, 1, 1);
         }
 
-        public ISprite YellowRupee(int scale)
+        public ISprite Fairy()
         {
-            return new YellowRupeeSprite(this.yellowRupeeSpriteSheet, this.yellowRupeeData, scale);
+            return new Sprite(this.fairySpriteSheet, this.fairyData);
         }
 
-        public ISprite HeartContainer(int scale)
+        public ISprite Health()
         {
-            return new HeartContainerSprite(this.heartContainerSpriteSheet, this.heartContainerData, scale);
+            return new Sprite(this.healthSpriteSheet, this.healthData);
         }
 
-        public ISprite Clock(int scale)
+        public ISprite Triforce()
         {
-            return new ClockSprite(this.clockSpriteSheet, this.clockData, scale);
+            return new Sprite(this.triforceSpriteSheet, this.triforceData);
         }
 
-        public ISprite Rupee(int scale)
+        public ISprite YellowRupee()
         {
-            return new RupeeSprite(this.rupeeSpriteSheet, this.rupeeData, scale);
+            return new Sprite(this.yellowRupeeSpriteSheet, this.yellowRupeeData);
         }
 
-        public ISprite LifePotion(int scale)
+        public ISprite HeartContainer()
         {
-            return new LifePotionSprite(this.lifePotionSpriteSheet, this.lifePotionData, scale);
+            return new Sprite(this.heartContainerSpriteSheet, this.heartContainerData);
         }
 
-        public ISprite SecondPotion(int scale)
+        public ISprite Clock()
         {
-            return new SecondPotionSprite(this.secondPotionSpriteSheet, this.secondPotionData, scale);
+            return new Sprite(this.clockSpriteSheet, this.clockData);
         }
 
-        public ISprite Letter(int scale)
+        public ISprite Rupee()
         {
-            return new LetterSprite(this.letterSpriteSheet, this.letterData, scale);
+            return new Sprite(this.rupeeSpriteSheet, this.rupeeData);
         }
 
-        public ISprite Map(int scale)
+        public ISprite LifePotion()
         {
-            return new MapSprite(this.mapSpriteSheet, this.mapData, scale);
+            return new Sprite(this.lifePotionSpriteSheet, this.lifePotionData);
         }
 
-        public ISprite Food(int scale)
+        public ISprite SecondPotion()
         {
-            return new FoodSprite(this.foodSpriteSheet, this.foodData, scale);
+            return new Sprite(this.secondPotionSpriteSheet, this.secondPotionData);
         }
 
-        public ISprite WoodenSword(int scale)
+        public ISprite Letter()
         {
-            return new WoodenSwordSprite(this.woodenSwordSpriteSheet, this.woodenSwordData, scale);
+            return new Sprite(this.letterSpriteSheet, this.letterData);
         }
 
-        public ISprite WhiteSword(int scale)
+        public ISprite Map()
         {
-            return new WhiteSwordSprite(this.whiteSwordSpriteSheet, this.whiteSwordData, scale);
+            return new Sprite(this.mapSpriteSheet, this.mapData);
         }
 
-        public ISprite MagicSword(int scale)
+        public ISprite Food()
         {
-            return new MagicSwordSprite(this.magicSwordSpriteSheet, this.magicSwordData, scale);
+            return new Sprite(this.foodSpriteSheet, this.foodData);
         }
 
-        public ISprite MagicShield(int scale)
+        public ISprite WoodenSword()
         {
-            return new MagicShieldSprite(this.shieldSpriteSheet, this.shieldData, scale);
+            return new Sprite(this.woodenSwordSpriteSheet, this.woodenSwordData);
         }
 
-        public ISprite Boomerang(int scale)
+        public ISprite WhiteSword()
         {
-            return new BoomerangSprite(this.boomerangSpriteSheet, this.boomerangData, scale);
+            return new Sprite(this.whiteSwordSpriteSheet, this.whiteSwordData);
         }
 
-        public ISprite MagicBoomerang(int scale)
+        public ISprite MagicSword()
         {
-            return new MagicBoomerangSprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData, scale);
+            return new Sprite(this.magicSwordSpriteSheet, this.magicSwordData);
         }
 
-        public ISprite Bomb(int scale)
+        public ISprite MagicShield()
         {
-            return new BombSprite(this.bombSpriteSheet, this.bombData, scale);
+            return new Sprite(this.shieldSpriteSheet, this.shieldData);
         }
 
-        public ISprite Bow(int scale)
+        public ISprite Boomerang()
         {
-            return new BowSprite(this.bowSpriteSheet, this.bowData, scale);
+            return new Sprite(this.boomerangSpriteSheet, this.boomerangData);
         }
 
-        public ISprite Arrow(int scale)
+        public ISprite MagicBoomerang()
         {
-            return new ArrowSprite(this.woodenArrowSpriteSheet, this.woodenArrowData, scale);
+            return new Sprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData);
         }
 
-        public ISprite SilverArrow( int scale)
+        public ISprite Bomb()
         {
-            return new SilverArrowSprite(this.silverArrowSpriteSheet, this.silverArrowData, scale);
+            return new Sprite(this.bombSpriteSheet, this.bombData);
         }
 
-        public ISprite RedCandle(int scale)
+        public ISprite Bow()
         {
-            return new RedCandleSprite(this.redCandleSpriteSheet, this.redCandleData, scale);
+            return new Sprite(this.bowSpriteSheet, this.bowData);
         }
 
-        public ISprite BlueCandle(int scale)
+        public ISprite Arrow()
         {
-            return new BlueCandleSprite(this.blueCandleSpriteSheet, this.blueCandleData, scale);
+            return new Sprite(this.woodenArrowSpriteSheet, this.woodenArrowData);
         }
 
-        public ISprite RedRing(int scale)
+        public ISprite SilverArrow( )
         {
-            return new RedRingSprite(this.redRingSpriteSheet, this.redRingData, scale);
+            return new Sprite(this.silverArrowSpriteSheet, this.silverArrowData);
         }
 
-        public ISprite BlueRing(int scale)
+        public ISprite RedCandle()
         {
-            return new BlueRingSprite(this.blueRingSpriteSheet, this.blueRingData, scale);
+            return new Sprite(this.redCandleSpriteSheet, this.redCandleData);
         }
 
-        public ISprite PowerBracelet(int scale)
+        public ISprite BlueCandle()
         {
-            return new PowerBraceletSprite(this.powerBraceletSpriteSheet, this.powerBraceletData, scale);
+            return new Sprite(this.blueCandleSpriteSheet, this.blueCandleData);
         }
 
-        public ISprite Flute(int scale)
+        public ISprite RedRing()
         {
-            return new FluteSprite(this.fluteSpriteSheet, this.fluteData, scale);
+            return new Sprite(this.redRingSpriteSheet, this.redRingData);
         }
 
-        public ISprite Raft(int scale)
+        public ISprite BlueRing()
         {
-            return new RaftSprite(this.raftSpriteSheet, this.raftData, scale);
+            return new Sprite(this.blueRingSpriteSheet, this.blueRingData);
         }
 
-        public ISprite Ladder(int scale)
+        public ISprite PowerBracelet()
         {
-            return new LadderSprite(this.ladderSpriteSheet, this.ladderData, scale);
+            return new Sprite(this.powerBraceletSpriteSheet, this.powerBraceletData);
         }
 
-        public ISprite MagicRod(int scale)
+        public ISprite Flute()
         {
-            return new MagicRodSprite(this.magicRodSpriteSheet, this.magicRodData, scale);
+            return new Sprite(this.fluteSpriteSheet, this.fluteData);
         }
 
-        public ISprite MagicBook(int scale)
+        public ISprite MagicRod()
         {
-            return new MagicBookSprite(this.magicBookSpriteSheet, this.magicBookData, scale);
+            return new Sprite(this.magicRodSpriteSheet, this.magicRodData);
         }
 
-        public ISprite Key(int scale)
+        public ISprite MagicBook()
         {
-            return new KeySprite(this.keySpriteSheet, this.keyData, scale);
+            return new Sprite(this.magicBookSpriteSheet, this.magicBookData);
         }
 
-        public ISprite MagicKey(int scale)
+        public ISprite Key()
         {
-            return new MagicKeySprite(this.magicKeySpriteSheet, this.magicKeyData, scale);
+            return new Sprite(this.keySpriteSheet, this.keyData);
         }
 
-        public ISprite Compass(int scale)
+        public ISprite MagicKey()
         {
-            return new CompassSprite(this.compassSpriteSheet, this.compassData, scale);
+            return new Sprite(this.magicKeySpriteSheet, this.magicKeyData);
+        }
+
+        public ISprite Compass()
+        {
+            return new Sprite(this.compassSpriteSheet, this.compassData);
         }
     }
 }

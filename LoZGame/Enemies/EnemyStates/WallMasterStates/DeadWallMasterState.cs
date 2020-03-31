@@ -6,7 +6,7 @@
     public class DeadWallMasterState : IEnemyState
     {
         private readonly WallMaster wallMaster;
-        private readonly DeadEnemySprite sprite;
+        private readonly ISprite sprite;
         private int deathTimer = 0;
         private int deathTimerMax = 30;
 
@@ -80,7 +80,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.wallMaster.Physics.Location, this.wallMaster.CurrentTint);
+            this.sprite.Draw(this.wallMaster.Physics.Location, this.wallMaster.CurrentTint, this.wallMaster.Physics.Depth);
         }
     }
 }

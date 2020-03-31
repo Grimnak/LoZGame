@@ -4,11 +4,11 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class TriForceSprite : ISprite
+    internal class TriForceSprite : SpriteEssentials, ISprite
     {
         private const int FrameChange = 10;
         private readonly Texture2D Texture;      // the texture to pull frames from
-        private readonly SpriteSheetData Data;
+        private readonly SpriteData Data;
         private Vector2 origin;
         private float rotation;
         private Rectangle currentFrame;
@@ -17,7 +17,7 @@
         private int lifeTime;
         private readonly int scale;
 
-        public TriForceSprite(Texture2D texture, SpriteSheetData data, int scale)
+        public TriForceSprite(Texture2D texture, SpriteData data, int scale)
         {
             this.Data = data;
             this.Texture = texture;
