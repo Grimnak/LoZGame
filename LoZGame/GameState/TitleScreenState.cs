@@ -2,11 +2,6 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class TitleScreenState : IGameState
     {
@@ -30,7 +25,6 @@
             LoZGame.Instance.Players.Add(LoZGame.Instance.Link);
 
             LoZGame.Instance.Dungeon.Player = LoZGame.Instance.Link;
-
 
             KeyboardCommandLoader keyboardLoader = new KeyboardCommandLoader(LoZGame.Instance.Players[0]);
             MouseCommandLoader mouseLoader = new MouseCommandLoader();

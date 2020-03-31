@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class Sprite: ISprite
+    public class Sprite : ISprite
     {
         private Rectangle frame;
         private int totalFrames;
