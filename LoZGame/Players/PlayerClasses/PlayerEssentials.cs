@@ -35,6 +35,7 @@
             {
                 SoundEffectsFactory.Instance.PlayLinkDie();
                 this.State.Die();
+                LoZGame.Instance.GameState.Death();
             }
         }
 
