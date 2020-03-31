@@ -16,6 +16,7 @@
         public TitleScreenState()
         {
             this.sprite = ScreenSpriteFactory.Instance.TitleScreen();
+            this.sprite.FrameDelay = 20;
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
 
@@ -106,8 +107,9 @@
         public void Draw()
         {
             // TODO
-            this.sprite.Draw(new Vector2(0, 0), this.spriteTint);
-            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "TITLE SCREEN - PRESS ENTER", new Vector2(100, 100), Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+            this.sprite.Draw(new Vector2(0, 0), this.spriteTint, 1.0f);
+            Console.WriteLine("Title Frame: " + this.sprite.CurrentFrame);
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "TITLE SCREEN - PRESS ENTER " + this.sprite.CurrentFrame, new Vector2(100, 100), Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
         }
     }
 }

@@ -31,13 +31,14 @@
 
         public Physics Physics { get; set; }
 
-        
+        public EntityData Data { get; set; }
 
         public RedCandleProjectile(Vector2 loc, string direction)
         {
             this.lifeTime = LifeTimeMax;
             this.projectileWidth = ProjectileSpriteFactory.Instance.FlameWidth * scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.FlameHeight * scale;
+            this.Data = new EntityData();
             this.collisionHandler = new ProjectileCollisionHandler(this);
             this.expired = false;
             this.travelTime = (int)(LifeTimeMax / 2);
@@ -107,7 +108,8 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.Physics.Depth = 1 - (1 / this.Physics.Bounds.Bottom);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
         }
     }
 }

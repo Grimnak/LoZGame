@@ -107,7 +107,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.zol.Physics.Location, this.zol.CurrentTint);
+            this.sprite.Draw(this.zol.Physics.Location, this.zol.CurrentTint, this.zol.Physics.Depth);
         }
     }
 }

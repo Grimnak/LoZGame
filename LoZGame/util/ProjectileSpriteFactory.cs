@@ -126,7 +126,7 @@
             {
                 return explosionWidth * DRAWSCALE;
             }
-            else if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BoomerangEnemy)
+            else if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
             {
                 return standardWidth * DRAWSCALE;
             }
@@ -170,7 +170,7 @@
             {
                 return explosionHeight * DRAWSCALE;
             }
-            else if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BoomerangEnemy)
+            else if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
             {
                 return boomerangHeight * DRAWSCALE;
             }
@@ -199,35 +199,35 @@
         public Vector2 ExplosionCenter { get { return new Vector2(ExplosionWidth / 2, ExplosionHeight / 2); } }
 
         private Texture2D flameSpriteSheet;
-        private readonly SpriteSheetData flameData = new SpriteSheetData("Flame", flameWidth, flameHeight, 1, 2);
+        private SpriteData flameData;
         private Texture2D arrowSpriteSheet;
-        private readonly SpriteSheetData arrowData = new SpriteSheetData("WoodenArrow", arrowWidth, standardHeight, 1, 1);
+        private SpriteData arrowData;
         private Texture2D silverArrowSpriteSheet;
-        private readonly SpriteSheetData silverArrowData = new SpriteSheetData("SilverArrow", arrowWidth, standardHeight, 1, 1);
+        private SpriteData silverArrowData;
         private Texture2D boomerangSpriteSheet;
-        private readonly SpriteSheetData boomerangData = new SpriteSheetData("Boomerang", standardWidth, boomerangHeight, 1, 1);
+        private SpriteData boomerangData;
         private Texture2D magicBoomerangSpriteSheet;
-        private readonly SpriteSheetData magicBoomerangData = new SpriteSheetData("MagicBoomerang", standardWidth, boomerangHeight, 1, 1);
+        private SpriteData magicBoomerangData;
         private Texture2D bombSpriteSheet;
-        private readonly SpriteSheetData bombData = new SpriteSheetData("Bomb", standardWidth, standardHeight, 1, 1);
+        private SpriteData bombData;
         private Texture2D swordBeamSpriteSheet;
-        private readonly SpriteSheetData swordBeamData = new SpriteSheetData("SwordBeam", swordBeamWidth, standardHeight, 1, 4);
+        private SpriteData swordBeamData;
         private Texture2D swordExplosionSpriteSheet;
-        private readonly SpriteSheetData swordExplosionData = new SpriteSheetData("SwordBeamExplosion", standardWidth, swordBeamExplosionHeight, 1, 4);
+        private SpriteData swordExplosionData;
         private Texture2D explosionOneSpriteSheet;
-        private readonly SpriteSheetData explosionOneData = new SpriteSheetData("BombExplosionOne", explosionWidth, explosionHeight, 1, 3);
+        private SpriteData explosionOneData;
         private Texture2D explosionTwoSpriteSheet;
-        private readonly SpriteSheetData explosionTwoData = new SpriteSheetData("BombExplosionTwo", explosionWidth, explosionHeight, 1, 3);
+        private SpriteData explosionTwoData;
         private Texture2D explosionThreeSpriteSheet;
-        private readonly SpriteSheetData explosionThreeData = new SpriteSheetData("BombExplosionThree", explosionWidth, explosionHeight, 1, 3);
+        private SpriteData explosionThreeData;
         private Texture2D explosionFourSpriteSheet;
-        private readonly SpriteSheetData ExplosionFourData = new SpriteSheetData("BombExplosionFour", explosionWidth, explosionHeight, 1, 3);
+        private SpriteData ExplosionFourData;
         private Texture2D explosionFiveSpriteSheet;
-        private readonly SpriteSheetData explosionFiveData = new SpriteSheetData("BombExplosionFive", explosionWidth, explosionHeight, 1, 3);
+        private SpriteData explosionFiveData;
         private Texture2D fireballSpriteSheet;
-        private readonly SpriteSheetData fireballData = new SpriteSheetData("fireball", fireballWidth, fireballHeight, 1, 4);
+        private SpriteData fireballData;
         private Texture2D greenWoodSwordSpriteSheet;
-        private readonly SpriteSheetData greenWoodSwordData = new SpriteSheetData("Green_Wood_Down", swordWidth, swordHeight, 1, 2);
+        private SpriteData greenWoodSwordData;
 
         private static readonly ProjectileSpriteFactory InstanceValue = new ProjectileSpriteFactory();
 
@@ -241,102 +241,126 @@
 
         public void LoadAllTextures(ContentManager content)
         {
-            this.boomerangSpriteSheet = content.Load<Texture2D>(this.boomerangData.FilePath);
-            this.magicBoomerangSpriteSheet = content.Load<Texture2D>(this.magicBoomerangData.FilePath);
-            this.bombSpriteSheet = content.Load<Texture2D>(this.bombData.FilePath);
-            this.magicBoomerangSpriteSheet = content.Load<Texture2D>(this.magicBoomerangData.FilePath);
-            this.arrowSpriteSheet = content.Load<Texture2D>(this.arrowData.FilePath);
-            this.silverArrowSpriteSheet = content.Load<Texture2D>(this.silverArrowData.FilePath);
-            this.flameSpriteSheet = content.Load<Texture2D>(this.flameData.FilePath);
-            this.swordBeamSpriteSheet = content.Load<Texture2D>(this.swordBeamData.FilePath);
-            this.swordExplosionSpriteSheet = content.Load<Texture2D>(this.swordExplosionData.FilePath);
-            this.explosionOneSpriteSheet = content.Load<Texture2D>(this.explosionOneData.FilePath);
-            this.explosionTwoSpriteSheet = content.Load<Texture2D>(this.explosionTwoData.FilePath);
-            this.explosionThreeSpriteSheet = content.Load<Texture2D>(this.explosionThreeData.FilePath);
-            this.explosionFourSpriteSheet = content.Load<Texture2D>(this.ExplosionFourData.FilePath);
-            this.explosionFiveSpriteSheet = content.Load<Texture2D>(this.explosionFiveData.FilePath);
-            this.fireballSpriteSheet = content.Load<Texture2D>(this.fireballData.FilePath);
-            this.greenWoodSwordSpriteSheet = content.Load<Texture2D>(this.greenWoodSwordData.FilePath);
+            this.LoadTextures(content);
+            this.LoadData();
         }
 
-        public GreenWoodSwordSprite GreenWoodSword(float rotation, SpriteEffects effect)
+        private void LoadTextures(ContentManager content)
         {
-            return new GreenWoodSwordSprite(this.greenWoodSwordSpriteSheet, this.greenWoodSwordData, rotation, effect);
+            this.boomerangSpriteSheet = content.Load<Texture2D>("Boomerang");
+            this.magicBoomerangSpriteSheet = content.Load<Texture2D>("MagicBoomerang");
+            this.bombSpriteSheet = content.Load<Texture2D>("Bomb");
+            this.arrowSpriteSheet = content.Load<Texture2D>("WoodenArrow");
+            this.silverArrowSpriteSheet = content.Load<Texture2D>("SilverArrow");
+            this.flameSpriteSheet = content.Load<Texture2D>("Flame");
+            this.swordBeamSpriteSheet = content.Load<Texture2D>("SwordBeam");
+            this.swordExplosionSpriteSheet = content.Load<Texture2D>("SwordBeamExplosion");
+            this.explosionOneSpriteSheet = content.Load<Texture2D>("BombExplosionOne");
+            this.explosionTwoSpriteSheet = content.Load<Texture2D>("BombExplosionTwo");
+            this.explosionThreeSpriteSheet = content.Load<Texture2D>("BombExplosionThree");
+            this.explosionFourSpriteSheet = content.Load<Texture2D>("BombExplosionFour");
+            this.explosionFiveSpriteSheet = content.Load<Texture2D>("BombExplosionFive");
+            this.fireballSpriteSheet = content.Load<Texture2D>("fireball");
+            this.greenWoodSwordSpriteSheet = content.Load<Texture2D>("Green_Wood_Up");
         }
 
-        public FireballSprite Fireball()
+        private void LoadData()
         {
-            return new FireballSprite(this.fireballSpriteSheet, this.fireballData, DRAWSCALE);
+            this.flameData = new SpriteData(new Vector2(flameWidth, flameHeight), flameSpriteSheet, 2, 1);
+            this.arrowData = new SpriteData(new Vector2(arrowWidth, standardHeight) * DRAWSCALE, arrowSpriteSheet, 1, 1);
+            this.silverArrowData = new SpriteData(new Vector2(arrowWidth, standardHeight) * DRAWSCALE, silverArrowSpriteSheet, 1, 1);
+            this.boomerangData = new SpriteData(new Vector2(standardWidth, boomerangHeight) * DRAWSCALE, boomerangSpriteSheet, 1, 1);
+            this.magicBoomerangData = new SpriteData(new Vector2(standardWidth, boomerangHeight) * DRAWSCALE, magicBoomerangSpriteSheet, 1, 1);
+            this.bombData = new SpriteData(new Vector2(standardWidth, standardHeight) * DRAWSCALE, bombSpriteSheet, 1, 1);
+            this.swordBeamData = new SpriteData(new Vector2(swordBeamWidth, standardHeight) * DRAWSCALE, swordBeamSpriteSheet, 4, 1);
+            this.swordExplosionData = new SpriteData(new Vector2(standardWidth, swordBeamExplosionHeight) * DRAWSCALE, swordExplosionSpriteSheet, 4, 1);
+            this.explosionOneData = new SpriteData(new Vector2(explosionWidth, explosionHeight) * DRAWSCALE, explosionOneSpriteSheet, 3, 1);
+            this.explosionTwoData = new SpriteData(new Vector2(explosionWidth, explosionHeight) * DRAWSCALE, explosionTwoSpriteSheet, 3, 1);
+            this.explosionThreeData = new SpriteData(new Vector2(explosionWidth, explosionHeight) * DRAWSCALE, explosionThreeSpriteSheet, 3, 1);
+            this.ExplosionFourData = new SpriteData(new Vector2(explosionWidth, explosionHeight) * DRAWSCALE, explosionFourSpriteSheet, 3, 1);
+            this.explosionFiveData = new SpriteData(new Vector2(explosionWidth, explosionHeight) * DRAWSCALE, explosionFiveSpriteSheet, 3, 1);
+            this.fireballData = new SpriteData(new Vector2(fireballWidth, fireballHeight) * DRAWSCALE, fireballSpriteSheet, 4, 1);
+            this.greenWoodSwordData = new SpriteData(new Vector2(swordWidth, swordHeight), greenWoodSwordSpriteSheet, 1, 2);
         }
 
-        public BoomerangProjectileSprite Boomerang()
+        public Sprite GreenWoodSword()
         {
-            return new BoomerangProjectileSprite(this.boomerangSpriteSheet, this.boomerangData, DRAWSCALE);
+            return new Sprite(this.greenWoodSwordSpriteSheet, this.greenWoodSwordData);
         }
 
-        public MagicBoomerangProjectileSprite MagicBoomerang()
+        public Sprite Fireball()
         {
-            return new MagicBoomerangProjectileSprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData, DRAWSCALE);
+            return new Sprite(this.fireballSpriteSheet, this.fireballData);
         }
 
-        public BombProjectileSprite Bomb()
+        public Sprite Boomerang()
         {
-            return new BombProjectileSprite(this.bombSpriteSheet, this.bombData, DRAWSCALE);
+            return new Sprite(this.boomerangSpriteSheet, this.boomerangData);
         }
 
-        public ArrowProjectileSprite Arrow(float rotation)
+        public Sprite MagicBoomerang()
         {
-            return new ArrowProjectileSprite(this.arrowSpriteSheet, this.arrowData, rotation, DRAWSCALE);
+            return new Sprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData);
         }
 
-        public SilverArrowProjectileSprite SilverArrow(float rotation)
+        public Sprite Bomb()
         {
-            return new SilverArrowProjectileSprite(this.silverArrowSpriteSheet, this.silverArrowData, rotation, DRAWSCALE);
+            return new Sprite(this.bombSpriteSheet, this.bombData);
         }
 
-        public RedCandleProjectileSprite RedCandle()
+        public Sprite Arrow()
         {
-            return new RedCandleProjectileSprite(this.flameSpriteSheet, this.flameData, DRAWSCALE / 2);
+            return new Sprite(this.arrowSpriteSheet, this.arrowData);
         }
 
-        public BlueCandleProjectileSprite BlueCandle()
+        public Sprite SilverArrow()
         {
-            return new BlueCandleProjectileSprite(this.flameSpriteSheet, this.flameData, DRAWSCALE / 2);
+            return new Sprite(this.silverArrowSpriteSheet, this.silverArrowData);
         }
 
-        public SwordBeamProjectileSprite SwordBeam(float rotation, SpriteEffects effect)
+        public Sprite RedCandle()
         {
-            return new SwordBeamProjectileSprite(this.swordBeamSpriteSheet, this.swordBeamData, rotation, effect, DRAWSCALE);
+            return new Sprite(this.flameSpriteSheet, this.flameData);
         }
 
-        public SwordBeamExplosionSprite SwordExplosion(SpriteEffects effect)
+        public Sprite BlueCandle()
         {
-            return new SwordBeamExplosionSprite(this.swordExplosionSpriteSheet, this.swordExplosionData, effect, DRAWSCALE);
+            return new Sprite(this.flameSpriteSheet, this.flameData);
         }
 
-        public BombExplosionSprite BombExplosionOne()
+        public Sprite SwordBeam()
         {
-            return new BombExplosionSprite(this.explosionOneSpriteSheet, this.explosionOneData, DRAWSCALE);
+            return new Sprite(this.swordBeamSpriteSheet, this.swordBeamData);
         }
 
-        public BombExplosionSprite BombExplosionTwo()
+        public Sprite SwordExplosion()
         {
-            return new BombExplosionSprite(this.explosionTwoSpriteSheet, this.explosionTwoData, DRAWSCALE);
+            return new Sprite(this.swordExplosionSpriteSheet, this.swordExplosionData);
         }
 
-        public BombExplosionSprite BombExplosionThree()
+        public Sprite BombExplosionOne()
         {
-            return new BombExplosionSprite(this.explosionThreeSpriteSheet, this.explosionThreeData, DRAWSCALE);
+            return new Sprite(this.explosionOneSpriteSheet, this.explosionOneData);
         }
 
-        public BombExplosionSprite BombExplosionFour()
+        public Sprite BombExplosionTwo()
         {
-            return new BombExplosionSprite(this.explosionFourSpriteSheet, this.ExplosionFourData, DRAWSCALE);
+            return new Sprite(this.explosionTwoSpriteSheet, this.explosionTwoData);
         }
 
-        public BombExplosionSprite BombExplosionFive()
+        public Sprite BombExplosionThree()
         {
-            return new BombExplosionSprite(this.explosionFiveSpriteSheet, this.explosionFiveData, DRAWSCALE);
+            return new Sprite(this.explosionThreeSpriteSheet, this.explosionThreeData);
+        }
+
+        public Sprite BombExplosionFour()
+        {
+            return new Sprite(this.explosionFourSpriteSheet, this.ExplosionFourData);
+        }
+
+        public Sprite BombExplosionFive()
+        {
+            return new Sprite(this.explosionFiveSpriteSheet, this.explosionFiveData);
         }
     }
 }

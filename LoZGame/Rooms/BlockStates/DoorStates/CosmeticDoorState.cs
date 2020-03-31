@@ -21,22 +21,22 @@ namespace LoZClone
             {
                 case "N":
                 {
-                    this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown(door.UpScreenLoc);
+                    this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
                     break;
                 }
                 case "E":
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft(door.RightScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
                         break;
                 }
                 case "S":
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp(door.DownScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
                         break;
                 }
                 case "W":
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight(door.LeftScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
                         break;
                 }
             }
@@ -54,7 +54,7 @@ namespace LoZClone
 
         public void Draw()
         {
-            this.sprite.Draw(this.door.Physics.Location, spriteTint);
+            this.sprite.Draw(this.door.Physics.Location, spriteTint, this.door.Physics.Depth);
         }
 
         public void Open()

@@ -38,7 +38,7 @@
         
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.projectile is BoomerangEnemy || this.projectile is MagicBoomerangEnemy)
+            if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
             {
                 this.projectile.Returning = true;
             }
@@ -50,7 +50,7 @@
             {
                 this.projectile.Physics.StopMovement();
             }
-            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile || this.projectile is BoomerangEnemy || this.projectile is MagicBoomerangEnemy)
+            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
             {
                 this.projectile.Returning = true;
             }
@@ -66,7 +66,7 @@
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile || this.projectile is BoomerangEnemy || this.projectile is MagicBoomerangEnemy)
+            if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
             {
                 this.projectile.Returning = true;
             }

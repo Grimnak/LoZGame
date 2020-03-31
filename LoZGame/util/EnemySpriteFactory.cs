@@ -157,61 +157,61 @@
         }
 
         private Texture2D stalfos;
-        private readonly SpriteSheetData stalfosData = new SpriteSheetData("stalfos", stalfosWidth, stalfosHeight, 2, 1);
+        private SpriteData stalfosData;
 
         private Texture2D downGoriya;
-        private readonly SpriteSheetData downGoriyaData = new SpriteSheetData("redGoriyaDown", goriyaWidth, goriyaHeight, 2, 1);
+        private SpriteData downGoriyaData;
         private Texture2D upGoriya;
-        private readonly SpriteSheetData upGoriyaData = new SpriteSheetData("redGoriyaUp", goriyaWidth, goriyaHeight, 2, 1);
+        private SpriteData upGoriyaData;
         private Texture2D leftGoriya;
-        private readonly SpriteSheetData leftGoriyaData = new SpriteSheetData("redGoriyaLeft", goriyaWidth, goriyaHeight, 2, 1);
+        private SpriteData leftGoriyaData;
         private Texture2D rightGoriya;
-        private readonly SpriteSheetData rightGoriyaData = new SpriteSheetData("redGoriyaRight", goriyaWidth, goriyaHeight, 2, 1);
+        private SpriteData rightGoriyaData;
 
         private Texture2D leftWallMaster;
-        private readonly SpriteSheetData leftWallMasterData = new SpriteSheetData("wallMasterLeft", wallMasterWidth, wallMasterHeight, 2, 1);
+        private SpriteData leftWallMasterData;
         private Texture2D rightWallMaster;
-        private readonly SpriteSheetData rightWallMasterData = new SpriteSheetData("wallMasterRight", wallMasterWidth, wallMasterHeight, 2, 1);
+        private SpriteData rightWallMasterData;
 
         private Texture2D leftRope;
-        private readonly SpriteSheetData leftRopeData = new SpriteSheetData("ropeLeft", ropeWidth, ropeHeight, 2, 1);
+        private SpriteData leftRopeData;
         private Texture2D rightRope;
-        private readonly SpriteSheetData rightRopeData = new SpriteSheetData("ropeRight", ropeWidth, ropeHeight, 2, 1);
+        private SpriteData rightRopeData;
 
         private Texture2D gel;
-        private readonly SpriteSheetData gelData = new SpriteSheetData("tealGel", gelWidth, gelHeight, 2, 1);
+        private SpriteData gelData;
         private Texture2D zol;
-        private readonly SpriteSheetData zolData = new SpriteSheetData("grayZol", gelWidth, gelHeight, 2, 1);
+        private SpriteData zolData;
 
         private Texture2D spikeCross;
-        private readonly SpriteSheetData spikeCrossData = new SpriteSheetData("spike", spikeCrossWidth, spikeCrossHeight, 1, 1);
+        private SpriteData spikeCrossData;
 
         private Texture2D keese;
-        private readonly SpriteSheetData keeseData = new SpriteSheetData("keese", keeseWidth, keeseHeight, 2, 1);
+        private SpriteData keeseData;
 
         private Texture2D dragon;
-        private readonly SpriteSheetData dragonData = new SpriteSheetData("aquamentus", dragonWidth, dragonHeight, 1, 4);
+        private SpriteData dragonData;
         private Texture2D damagedDragon;
-        private readonly SpriteSheetData damagedDragonData = new SpriteSheetData("damagedAqua", dragonWidth, dragonHeight, 1, 4);
+        private SpriteData damagedDragonData;
         private Texture2D fireball;
-        private readonly SpriteSheetData fireballData = new SpriteSheetData("fireball", 12, 12, 1, 4);
+        private SpriteData fireballData;
 
         private Texture2D downDodongo;
-        private readonly SpriteSheetData downDodongoData = new SpriteSheetData("dodongoDown", dodongoWidthUpDown, dodongoHeight, 1, 3);
+        private SpriteData downDodongoData;
         private Texture2D upDodongo;
-        private readonly SpriteSheetData upDodongoData = new SpriteSheetData("dodongoUp", dodongoWidthUpDown, dodongoHeight, 1, 3);
+        private SpriteData upDodongoData;
         private Texture2D leftDodongo;
-        private readonly SpriteSheetData leftDodongoData = new SpriteSheetData("dodongoLeft", dodongoWidthLeftRight, dodongoHeight, 1, 3);
+        private SpriteData leftDodongoData;
         private Texture2D rightDodongo;
-        private readonly SpriteSheetData rightDodongoData = new SpriteSheetData("dodongoRight", dodongoWidthLeftRight, dodongoHeight, 1, 3);
+        private SpriteData rightDodongoData;
 
         private Texture2D oldMan;
-        private readonly SpriteSheetData oldManData = new SpriteSheetData("oldMan", oldManWidth, oldManHeight, 1, 1);
+        private SpriteData oldManData;
         private Texture2D merchant;
-        private readonly SpriteSheetData merchantData = new SpriteSheetData("merchant", merchantWidth, merchantHeight, 1, 1);
+        private SpriteData merchantData;
 
         private Texture2D deadEnemy;
-        private readonly SpriteSheetData deadEnemyData = new SpriteSheetData("enemyDeath", 40, 40, 1, 6);
+        private SpriteData deadEnemyData;
 
         private static readonly EnemySpriteFactory InstanceValue = new EnemySpriteFactory();
 
@@ -229,168 +229,198 @@
 
         public void LoadAllTextures(ContentManager content)
         {
-            this.stalfos = content.Load<Texture2D>(this.stalfosData.FilePath);
+            this.LoadTextures(content);
+            this.LoadData();
+        }
 
-            this.downGoriya = content.Load<Texture2D>(this.downGoriyaData.FilePath);
-            this.upGoriya = content.Load<Texture2D>(this.upGoriyaData.FilePath);
-            this.leftGoriya = content.Load<Texture2D>(this.leftGoriyaData.FilePath);
-            this.rightGoriya = content.Load<Texture2D>(this.rightGoriyaData.FilePath);
+        private void LoadTextures(ContentManager content)
+        {
+            this.stalfos = content.Load<Texture2D>("stalfos");
 
-            this.leftWallMaster = content.Load<Texture2D>(this.leftWallMasterData.FilePath);
-            this.rightWallMaster = content.Load<Texture2D>(this.rightWallMasterData.FilePath);
+            this.downGoriya = content.Load<Texture2D>("redGoriyaDown");
+            this.upGoriya = content.Load<Texture2D>("redGoriyaUp");
+            this.leftGoriya = content.Load<Texture2D>("redGoriyaLeft");
+            this.rightGoriya = content.Load<Texture2D>("redGoriyaRight");
 
-            this.leftRope = content.Load<Texture2D>(this.leftRopeData.FilePath);
-            this.rightRope = content.Load<Texture2D>(this.rightRopeData.FilePath);
+            this.leftWallMaster = content.Load<Texture2D>("wallMasterLeft");
+            this.rightWallMaster = content.Load<Texture2D>("wallMasterRight");
 
-            this.gel = content.Load<Texture2D>(this.gelData.FilePath);
-            this.zol = content.Load<Texture2D>(this.zolData.FilePath);
+            this.leftRope = content.Load<Texture2D>("ropeLeft");
+            this.rightRope = content.Load<Texture2D>("ropeRight");
 
-            this.spikeCross = content.Load<Texture2D>(this.spikeCrossData.FilePath);
+            this.gel = content.Load<Texture2D>("tealGel");
+            this.zol = content.Load<Texture2D>("grayZol");
 
-            this.fireball = content.Load<Texture2D>(this.fireballData.FilePath);
+            this.spikeCross = content.Load<Texture2D>("spike");
 
-            this.keese = content.Load<Texture2D>(this.keeseData.FilePath);
+            this.keese = content.Load<Texture2D>("keese");
 
-            this.dragon = content.Load<Texture2D>(this.dragonData.FilePath);
-            this.damagedDragon = content.Load<Texture2D>(this.damagedDragonData.FilePath);
+            this.dragon = content.Load<Texture2D>("aquamentus");
+            this.damagedDragon = content.Load<Texture2D>("damagedAqua");
 
-            this.downDodongo = content.Load<Texture2D>(this.downDodongoData.FilePath);
-            this.upDodongo = content.Load<Texture2D>(this.upDodongoData.FilePath);
-            this.leftDodongo = content.Load<Texture2D>(this.leftDodongoData.FilePath);
-            this.rightDodongo = content.Load<Texture2D>(this.rightDodongoData.FilePath);
+            this.downDodongo = content.Load<Texture2D>("dodongoDown");
+            this.upDodongo = content.Load<Texture2D>("dodongoUp");
+            this.leftDodongo = content.Load<Texture2D>("dodongoLeft");
+            this.rightDodongo = content.Load<Texture2D>("dodongoRight");
 
-            this.oldMan = content.Load<Texture2D>(this.oldManData.FilePath);
-            this.merchant = content.Load<Texture2D>(this.merchantData.FilePath);
+            this.oldMan = content.Load<Texture2D>("oldMan");
+            this.merchant = content.Load<Texture2D>("merchant");
 
-            this.deadEnemy = content.Load<Texture2D>(this.deadEnemyData.FilePath);
+            this.deadEnemy = content.Load<Texture2D>("enemyDeath");
+        }
+
+        private void LoadData()
+        {
+            this.stalfosData = new SpriteData(new Vector2(stalfosWidth, stalfosHeight), stalfos, 2, 1);
+            this.downGoriyaData = new SpriteData(new Vector2(goriyaWidth, goriyaHeight), downGoriya, 2, 1);
+            this.upGoriyaData = new SpriteData(new Vector2(goriyaWidth, goriyaHeight), upGoriya, 2, 1);
+            this.leftGoriyaData = new SpriteData(new Vector2(goriyaWidth, goriyaHeight), leftGoriya, 2, 1);
+            this.rightGoriyaData = new SpriteData(new Vector2(goriyaWidth, goriyaHeight), rightGoriya, 2, 1);
+            this.leftWallMasterData = new SpriteData(new Vector2(wallMasterWidth, wallMasterHeight), leftWallMaster, 2, 1);
+            this.rightWallMasterData = new SpriteData(new Vector2(wallMasterWidth, wallMasterHeight), rightWallMaster, 2, 1);
+            this.leftRopeData = new SpriteData(new Vector2(ropeWidth, ropeHeight), leftRope, 2, 1);
+            this.rightRopeData = new SpriteData(new Vector2(ropeWidth, ropeHeight), rightRope, 2, 1);
+            this.gelData = new SpriteData(new Vector2(gelWidth, gelHeight), gel, 2, 1);
+            this.zolData = new SpriteData(new Vector2(gelWidth, gelHeight), zol, 2, 1);
+            this.spikeCrossData = new SpriteData(new Vector2(spikeCrossWidth, spikeCrossHeight), spikeCross, 1, 1);
+            this.keeseData = new SpriteData(new Vector2(keeseWidth, keeseHeight), keese, 2, 1);
+            this.dragonData = new SpriteData(new Vector2(dragonWidth, dragonHeight), dragon, 1, 4);
+            this.damagedDragonData = new SpriteData(new Vector2(dragonWidth, dragonHeight), damagedDragon, 1, 4);
+            this.downDodongoData = new SpriteData(new Vector2(dodongoWidthUpDown, dodongoHeight), downDodongo, 1, 3);
+            this.upDodongoData = new SpriteData(new Vector2(dodongoWidthUpDown, dodongoHeight), upDodongo, 1, 3);
+            this.leftDodongoData = new SpriteData(new Vector2(dodongoWidthLeftRight, dodongoHeight), leftDodongo, 1, 3);
+            this.rightDodongoData = new SpriteData(new Vector2(dodongoWidthLeftRight, dodongoHeight), rightDodongo, 1, 3);
+            this.oldManData = new SpriteData(new Vector2(oldManWidth, oldManHeight), oldMan, 1, 1);
+            this.merchantData = new SpriteData(new Vector2(merchantWidth, merchantHeight), merchant, 1, 1);
+            this.deadEnemyData = new SpriteData(new Vector2(40, 40), deadEnemy, 1, 6);
         }
 
         // Stalfos Sprites
-        public StalfosSprite CreateStalfosSprite()
+        public ISprite CreateStalfosSprite()
         {
-            return new StalfosSprite(this.stalfos, this.stalfosData);
+            return new Sprite(this.stalfos, this.stalfosData);
         }
 
         // Goriya Sprites
-        public GoriyaDownSprite CreateDownMovingGoriyaSprite()
+        public ISprite CreateDownMovingGoriyaSprite()
         {
-            return new GoriyaDownSprite(this.downGoriya, this.downGoriyaData);
+            return new Sprite(this.downGoriya, this.downGoriyaData);
         }
 
-        public GoriyaUpSprite CreateUpMovingGoriyaSprite()
+        public ISprite CreateUpMovingGoriyaSprite()
         {
-            return new GoriyaUpSprite(this.upGoriya, this.upGoriyaData);
+            return new Sprite(this.upGoriya, this.upGoriyaData);
         }
 
-        public GoriyaLeftSprite CreateLeftMovingGoriyaSprite()
+        public ISprite CreateLeftMovingGoriyaSprite()
         {
-            return new GoriyaLeftSprite(this.leftGoriya, this.leftGoriyaData);
+            return new Sprite(this.leftGoriya, this.leftGoriyaData);
         }
 
-        public GoriyaRightSprite CreateRightMovingGoriyaSprite()
+        public ISprite CreateRightMovingGoriyaSprite()
         {
-            return new GoriyaRightSprite(this.rightGoriya, this.rightGoriyaData);
+            return new Sprite(this.rightGoriya, this.rightGoriyaData);
         }
 
         // Wallmaster Sprites
-        public WallMasterLeftSprite CreateLeftMovingWallMasterSprite()
+        public ISprite CreateLeftMovingWallMasterSprite()
         {
-            return new WallMasterLeftSprite(this.leftWallMaster, this.leftWallMasterData);
+            return new Sprite(this.leftWallMaster, this.leftWallMasterData);
         }
 
-        public WallMasterRightSprite CreateRightMovingWallMasterSprite()
+        public ISprite CreateRightMovingWallMasterSprite()
         {
-            return new WallMasterRightSprite(this.rightWallMaster, this.rightWallMasterData);
+            return new Sprite(this.rightWallMaster, this.rightWallMasterData);
         }
 
-        public WallMasterAttackingSprite CreateAttackingWallMasterSprite()
+        public ISprite CreateAttackingWallMasterSprite()
         {
-            return new WallMasterAttackingSprite(this.leftWallMaster, this.leftWallMasterData);
+            return new Sprite(this.leftWallMaster, this.leftWallMasterData);
         }
 
         // Rope Sprites
-        public RopeLeftSprite CreateLeftMovingRopeSprite()
+        public ISprite CreateLeftMovingRopeSprite()
         {
-            return new RopeLeftSprite(this.leftRope, this.leftRopeData);
+            return new Sprite(this.leftRope, this.leftRopeData);
         }
 
-        public RopeRightSprite CreateRightMovingRopeSprite()
+        public ISprite CreateRightMovingRopeSprite()
         {
-            return new RopeRightSprite(this.rightRope, this.rightRopeData);
+            return new Sprite(this.rightRope, this.rightRopeData);
         }
 
         // Gel Sprites
-        public GelSprite CreateGelSprite()
+        public ISprite CreateGelSprite()
         {
-            return new GelSprite(this.gel, this.gelData);
+            return new Sprite(this.gel, this.gelData);
         }
 
         // Zol Sprites
-        public ZolSprite CreateZolSprite()
+        public ISprite CreateZolSprite()
         {
-            return new ZolSprite(this.zol, this.zolData);
+            return new Sprite(this.zol, this.zolData);
         }
 
         // Spike Cross Sprites
-        public SpikeCrossSprite CreateSpikeCrossSprite()
+        public ISprite CreateSpikeCrossSprite()
         {
-            return new SpikeCrossSprite(this.spikeCross, this.spikeCrossData);
+            return new Sprite(this.spikeCross, this.spikeCrossData);
         }
 
         // Keese Sprites
-        public KeeseSprite CreateKeeseSprite()
+        public ISprite CreateKeeseSprite()
         {
-            return new KeeseSprite(this.keese, this.keeseData);
+            return new Sprite(this.keese, this.keeseData);
         }
 
         // Dragon Sprites
-        public DragonSprite CreateDragonSprite()
+        public ISprite CreateDragonSprite()
         {
-            return new DragonSprite(this.dragon, this.dragonData);
+            return new Sprite(this.dragon, this.dragonData);
         }
 
-        public DragonDamagedSprite CreateDamagedDragonSprite()
+        public ISprite CreateDamagedDragonSprite()
         {
-            return new DragonDamagedSprite(this.damagedDragon, this.damagedDragonData);
+            return new Sprite(this.damagedDragon, this.damagedDragonData);
         }
 
         // Dodongo Sprites
-        public DodongoDownSprite CreateDownMovingDodongoSprite()
+        public ISprite CreateDownMovingDodongoSprite()
         {
-            return new DodongoDownSprite(this.downDodongo, this.downDodongoData);
+            return new Sprite(this.downDodongo, this.downDodongoData);
         }
 
-        public DodongoUpSprite CreateUpMovingDodongoSprite()
+        public ISprite CreateUpMovingDodongoSprite()
         {
-            return new DodongoUpSprite(this.upDodongo, this.upDodongoData);
+            return new Sprite(this.upDodongo, this.upDodongoData);
         }
 
-        public DodongoLeftSprite CreateLeftMovingDodongoSprite()
+        public ISprite CreateLeftMovingDodongoSprite()
         {
-            return new DodongoLeftSprite(this.leftDodongo, this.leftDodongoData);
+            return new Sprite(this.leftDodongo, this.leftDodongoData);
         }
 
-        public DodongoRightSprite CreateRightMovingDodongoSprite()
+        public ISprite CreateRightMovingDodongoSprite()
         {
-            return new DodongoRightSprite(this.rightDodongo, this.rightDodongoData);
+            return new Sprite(this.rightDodongo, this.rightDodongoData);
         }
 
         // Old Man Sprites
-        public OldManSprite CreateOldManSprite()
+        public ISprite CreateOldManSprite()
         {
-            return new OldManSprite(this.oldMan, this.oldManData);
+            return new Sprite(this.oldMan, this.oldManData);
         }
 
         // Merchant Sprites
-        public MerchantSprite CreateMerchantSprite()
+        public ISprite CreateMerchantSprite()
         {
-            return new MerchantSprite(this.merchant, this.merchantData);
+            return new Sprite(this.merchant, this.merchantData);
         }
 
          // Enemy Death Sprites
-        public DeadEnemySprite CreateDeadEnemySprite()
+        public ISprite CreateDeadEnemySprite()
         {
-            return new DeadEnemySprite(this.deadEnemy, this.deadEnemyData);
+            return new Sprite(this.deadEnemy, this.deadEnemyData);
         }
     }
 }

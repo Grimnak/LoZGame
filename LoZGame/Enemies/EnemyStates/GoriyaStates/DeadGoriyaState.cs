@@ -6,7 +6,7 @@
     public class DeadGoriyaState : IEnemyState
     {
         private readonly Goriya goriya;
-        private readonly DeadEnemySprite sprite;
+        private readonly ISprite sprite;
         private int deathTimer = 0;
         private int deathTimerMax = 30;
 
@@ -80,7 +80,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.goriya.Physics.Location, this.goriya.CurrentTint);
+            this.sprite.Draw(this.goriya.Physics.Location, this.goriya.CurrentTint, this.goriya.Physics.Depth);
         }
     }
 }

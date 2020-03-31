@@ -31,7 +31,7 @@
 
         public Physics Physics { get; set; }
 
-        
+        public EntityData Data { get; set; }
 
         private readonly bool hostile;
 
@@ -42,6 +42,7 @@
             SoundEffectsFactory.Instance.PlayBombExplosion();
             this.projectileWidth = ProjectileSpriteFactory.Instance.ExplosionWidth * this.scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.ExplosionHeight * this.scale;
+            this.Data = new EntityData();
             this.collisionHandler = new ProjectileCollisionHandler(this);
             this.Physics = new Physics(new Vector2(location.X, location.Y));
             this.lifeTime = MaxLifeTime;
@@ -108,7 +109,7 @@
             if (this.lifeTime == DissipateOne || this.lifeTime == DissipateTwo)
             {
                 this.sprite.Update();
-                this.Physics.Bounds = Rectangle.Empty;
+                this.Physics.Bounds = new Rectangle(this.Physics.Bounds.X, this.Physics.Bounds.Y, 0, 0);
             }
 
             if (this.lifeTime <= 0)
@@ -119,7 +120,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
             if (this.lifeTime > (MaxLifeTime - FlashDurataion) && this.lifeTime % 2 == 0)
             {
                 LoZGame.Instance.SpriteBatch.Draw(flashTexture, flashDestination, new Rectangle(0, 0, 1, 1), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);

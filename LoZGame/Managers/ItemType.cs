@@ -123,12 +123,6 @@
                 case ItemType.Flute:
                     this.Add(new Flute(location));
                     break;
-                case ItemType.Raft:
-                    this.Add(new Raft(location));
-                    break;
-                case ItemType.Ladder:
-                    this.Add(new Ladder(location));
-                    break;
                 case ItemType.MagicRod:
                     this.Add(new MagicRod(location));
                     break;

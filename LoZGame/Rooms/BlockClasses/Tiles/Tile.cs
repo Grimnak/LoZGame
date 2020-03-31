@@ -43,6 +43,7 @@
             this.Name = name;
             this.sprite = this.CreateCorrectSprite(name);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
+            this.Physics.Depth = 0.001f;
         }
 
         /// <inheritdoc/>
@@ -51,17 +52,17 @@
             switch (name)
             {
                 case "gap_tile":
-                    return BlockSpriteFactory.Instance.GapTile(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.GapTile();
                 case "black_tile":
-                    return BlockSpriteFactory.Instance.GapTile(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.GapTile();
                 case "ladder_tile":
-                    return BlockSpriteFactory.Instance.LadderTile(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.LadderTile();
                 case "spotted_tile":
-                    return BlockSpriteFactory.Instance.SpottedTile(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.SpottedTile();
                 case "stairs":
-                    return BlockSpriteFactory.Instance.Stairs(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.Stairs();
                 default:
-                    return BlockSpriteFactory.Instance.FloorTile(this.Physics.Location);
+                    return BlockSpriteFactory.Instance.FloorTile();
             }
         }
 
@@ -73,7 +74,7 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, spriteTint);
+            this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

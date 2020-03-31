@@ -22,6 +22,7 @@ namespace LoZClone
             this.player = playerInstance;
             this.lockoutTimer = 15; // wait period
             this.sprite = this.CreateCorrectSprite();
+            this.sprite.SetFrame(2);
             this.player.Physics.MovementVelocity = Vector2.Zero;
         }
 
@@ -106,14 +107,12 @@ namespace LoZClone
             {
                 this.lockoutTimer--;
             }
-
-            this.sprite.Update();
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint);
+            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint, this.player.Physics.Depth);
         }
 
         /// <summary>

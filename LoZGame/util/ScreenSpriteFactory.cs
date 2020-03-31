@@ -1,4 +1,5 @@
 ﻿using LoZClone;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -36,7 +37,7 @@ namespace LoZClone
         }
 
         private Texture2D titleSpriteSheet;
-        private readonly SpriteSheetData titleData = new SpriteSheetData("LoZTitle", titleScreenWidth, titleScreenHeight, 1, 7);
+        private SpriteData titleData;
 
         private static readonly ScreenSpriteFactory InstanceValue = new ScreenSpriteFactory();
 
@@ -46,12 +47,13 @@ namespace LoZClone
 
         public void LoadAllTextures(ContentManager content)
         {
-            this.titleSpriteSheet = content.Load<Texture2D>(this.titleData.FilePath);
-        }
+            this.titleSpriteSheet = content.Load<Texture2D>("LoZTitle");
+            titleData = new SpriteData(new Vector2(titleScreenWidth, titleScreenHeight), titleSpriteSheet, 1, 7);
+    }
 
-        public TitleSprite TitleScreen()
+        public ISprite TitleScreen()
         {
-            return new TitleSprite(this.titleSpriteSheet, this.titleData, DRAWSCALE);
+            return new Sprite(this.titleSpriteSheet, this.titleData);
         }
     }
 }

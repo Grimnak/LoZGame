@@ -3,7 +3,7 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class WallMasterAttackingSprite : ISprite
+    public class WallMasterAttackingSprite : SpriteEssentials, ISprite
     {
         private readonly Texture2D spriteSheet;
         private readonly int spriteSheetRows;
@@ -15,7 +15,7 @@ namespace LoZClone
         private readonly int frameDelayMax = 7;
         private float layer = 1.0f;
 
-        public WallMasterAttackingSprite(Texture2D spriteTexture, SpriteSheetData data)
+        public WallMasterAttackingSprite(Texture2D spriteTexture, SpriteData data)
         {
             this.spriteSheet = spriteTexture;
             this.spriteSheetWidth = data.Width;
