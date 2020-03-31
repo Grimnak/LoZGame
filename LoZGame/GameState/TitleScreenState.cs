@@ -91,6 +91,7 @@
         {
             // TODO update title screen image
 
+            this.sprite.Update();
 
             for (int i = 0; i < LoZGame.Instance.Controllers.Count; i++)
             {

@@ -80,6 +80,7 @@
         private LoZGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
+            graphics.GraphicsProfile = GraphicsProfile.HiDef;
             this.Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);

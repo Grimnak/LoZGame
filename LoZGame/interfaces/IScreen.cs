@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoZClone.Interfaces
+namespace LoZClone
 {
-    interface IScreen
+    public interface IScreen
     {
         void Temporary(); // will be filled in at a later, more relevant date
     }

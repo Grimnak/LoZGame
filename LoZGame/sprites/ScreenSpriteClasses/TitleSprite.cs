@@ -1,4 +1,4 @@
-﻿using LoZClone.Interfaces;
+﻿using LoZClone;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoZClone.Sprites.ScreenSpriteClasses
+namespace LoZClone
 {
-    internal class TitleSprite : ISprite
+    public class TitleSprite : ISprite
     {
         private readonly Texture2D Texture;
         private readonly SpriteSheetData Data;
@@ -51,8 +51,10 @@ namespace LoZClone.Sprites.ScreenSpriteClasses
             int row = (int)((float)this.currentFrame / (float)this.Data.Columns);
             int column = this.currentFrame % this.Data.Columns;
 
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, this.Data.Width, this.Data.Height);
+            Rectangle sourceRectangle = new Rectangle(width * currentFrame, 0, 800, height);
+
+            Rectangle destinationRectangle = new Rectangle(0, 0, this.Data.Width, this.Data.Height);
+
             this.layer = 1 - (1 / (location.Y + this.Data.Height));
             LoZGame.Instance.SpriteBatch.Draw(this.Texture, destinationRectangle, sourceRectangle, spriteTint, 0.0f, new Vector2(0,0), SpriteEffects.None, layer);
         }

@@ -1,6 +1,4 @@
-﻿using LoZClone.Interfaces;
-using LoZClone.Sprites.Sc;
-using LoZClone.Sprites.ScreenSpriteClasses;
+﻿using LoZClone;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LoZClone
 {
-    class ScreenSpriteFactory
+    public class ScreenSpriteFactory
     {
         private const int DRAWSCALE = 1;
         private static readonly int titleScreenWidth = 800;
