@@ -26,11 +26,6 @@
         string CurrentColor { get; set; }
 
         /// <summary>
-        /// Gets or sets the current direction of the player.
-        /// </summary>
-        string CurrentDirection { get; set; }
-
-        /// <summary>
         /// Gets or sets the current tint of the player.
         /// </summary>
         Color CurrentTint { get; set; }

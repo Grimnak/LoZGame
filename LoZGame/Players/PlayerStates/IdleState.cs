@@ -86,15 +86,15 @@
 
         private ISprite CreateCorrectSprite()
         {
-            if (this.player.CurrentDirection.Equals("Up"))
+            if (this.player.Physics.CurrentDirection == Physics.Direction.North)
             {
                 return LinkSpriteFactory.Instance.CreateSpriteLinkIdleUp(this.player.CurrentColor);
             }
-            else if (this.player.CurrentDirection.Equals("Down"))
+            else if (this.player.Physics.CurrentDirection == Physics.Direction.South)
             {
                 return LinkSpriteFactory.Instance.CreateSpriteLinkIdleDown(this.player.CurrentColor);
             }
-            else if (this.player.CurrentDirection.Equals("Left"))
+            else if (this.player.Physics.CurrentDirection == Physics.Direction.West)
             {
                 return LinkSpriteFactory.Instance.CreateSpriteLinkIdleLeft(this.player.CurrentColor);
             }

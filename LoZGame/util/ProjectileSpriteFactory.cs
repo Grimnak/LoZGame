@@ -20,9 +20,9 @@
         private static readonly int flameHeight = 34;
         private static readonly int arrowWidth = 5;
         private static readonly int arrowHeight = 16;
-        private static readonly int swordBeamExplosionHeight = 12;
-        private static readonly int explosionHeight = 50;
-        private static readonly int explosionWidth = 48;
+        private static readonly int swordBeamExplosionHeight = 24;
+        private static readonly int explosionHeight = 100;
+        private static readonly int explosionWidth = 96;
         private static readonly int fireballWidth = 8;
         private static readonly int fireballHeight = 10;
         private static readonly int swordWidth = LinkSpriteFactory.LinkWidth;

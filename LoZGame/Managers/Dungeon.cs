@@ -110,7 +110,7 @@
                         this.player.Physics.Bounds.Height);
                 }
                 this.player.Physics.SetLocation();
-                this.player.CurrentDirection = "Up";
+                this.player.Physics.CurrentDirection = Physics.Direction.North;
                 this.player.State = new IdleState(this.player);
             }
         }
@@ -143,7 +143,7 @@
                         this.player.Physics.Bounds.Height);
                 }
                 this.player.Physics.SetLocation();
-                this.player.CurrentDirection = "Down";
+                this.player.Physics.CurrentDirection = Physics.Direction.South;
                 this.player.State = new IdleState(this.player);
             }
         }
@@ -165,7 +165,7 @@
                     this.player.Physics.Bounds.Width,
                     this.player.Physics.Bounds.Height);
                 this.player.Physics.SetLocation();
-                this.player.CurrentDirection = "Left";
+                this.player.Physics.CurrentDirection = Physics.Direction.West;
                 this.player.State = new IdleState(this.player);
             }
         }
@@ -187,7 +187,7 @@
                     this.player.Physics.Bounds.Width,
                     this.player.Physics.Bounds.Height);
                 this.player.Physics.SetLocation();
-                this.player.CurrentDirection = "Right";
+                this.player.Physics.CurrentDirection = Physics.Direction.East;
                 this.player.State = new IdleState(this.player);
             }
         }

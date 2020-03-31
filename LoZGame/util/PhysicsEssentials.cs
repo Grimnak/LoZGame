@@ -4,6 +4,19 @@
 
     public partial class PhysicsEssentials
     {
+        public enum Direction
+        {
+            None,
+            North,
+            South,
+            East,
+            West,
+            NorthEast,
+            NorthWest,
+            SouthEast,
+            SouthWest
+        }
+
         public float Depth { get; set; }
 
         public int Mass { get; set; }
@@ -25,5 +38,7 @@
         public Rectangle Bounds { get; set; }
 
         public Vector2 BoundsOffset { get; set; }
+
+        public Direction CurrentDirection { get; set; }
     }
 }

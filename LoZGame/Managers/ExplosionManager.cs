@@ -43,16 +43,32 @@
             switch (type)
             {
                 case ExplosionType.SwordExplode:
-                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(loc, "NorthEast"));
+                    Physics tempPhysics = new Physics(loc)
+                    {
+                        CurrentDirection = Physics.Direction.NorthEast
+                    };
+                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(tempPhysics));
                     this.explosionId++;
                     this.explosionListSize++;
-                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(loc, "NorthWest"));
+                    tempPhysics = new Physics(loc)
+                    {
+                        CurrentDirection = Physics.Direction.NorthWest
+                    };
+                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(tempPhysics));
                     this.explosionId++;
                     this.explosionListSize++;
-                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(loc, "SouthEast"));
+                    tempPhysics = new Physics(loc)
+                    {
+                        CurrentDirection = Physics.Direction.SouthEast
+                    };
+                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(tempPhysics));
                     this.explosionId++;
                     this.explosionListSize++;
-                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(loc, "SouthWest"));
+                    tempPhysics = new Physics(loc)
+                    {
+                        CurrentDirection = Physics.Direction.SouthWest
+                    };
+                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(tempPhysics));
                     break;
 
                 case ExplosionType.BombExplode:
