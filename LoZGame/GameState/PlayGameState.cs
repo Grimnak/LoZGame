@@ -49,10 +49,6 @@
         public void Update()
         {
             // TODO
-            foreach (IController controller in LoZGame.Instance.Controllers)
-            {
-                controller.Update();
-            }
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Update();
@@ -67,7 +63,15 @@
             // TODO
             if (LoZGame.Instance.Dungeon.CurrentRoomX != 1 || LoZGame.Instance.Dungeon.CurrentRoomY != 1)
             {
-                LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+                if (LoZGame.Instance.Dungeon.CurrentRoomX != 0 || LoZGame.Instance.Dungeon.CurrentRoomY != 2)
+                {
+                    LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+                }
+                else
+                {
+                    LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.BackgroundHole, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+                }
+
             }
 
             LoZGame.Instance.GameObjects.Draw();

@@ -2,7 +2,7 @@
 {
     using Microsoft.Xna.Framework;
 
-    public partial class PhysicsHelper: PhysicsEssentials
+    public partial class PhysicsHelper : PhysicsEssentials
     {
         public void StopVelocity()
         {

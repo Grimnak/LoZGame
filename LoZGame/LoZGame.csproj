@@ -9,7 +9,7 @@
     <ProjectGuid>{46E47923-0B58-4AF1-B7C4-56A26AC679D1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LoZGame</RootNamespace>
+    <RootNamespace>LoZClone</RootNamespace>
     <AssemblyName>LoZGame</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
@@ -56,6 +56,7 @@
     </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
+  <PropertyGroup />
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
@@ -91,6 +92,8 @@
     <Compile Include="Controller\Commands\Loaders\MouseCommandLoader.cs" />
     <Compile Include="Controller\Commands\Controllers\KeyboardController.cs" />
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
+    <Compile Include="Enemies\EnemyStates\KeeseStates\IdleKeeseState.cs" />
+    <Compile Include="GameState\DeathState.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyEssentials.cs" />
     <Compile Include="Enemies\EnemyClasses\Dodongo.cs" />
     <Compile Include="Enemies\EnemyClasses\Dragon.cs" />
@@ -106,17 +109,11 @@
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
     <Compile Include="Enemies\EnemyStates\GelStates\IdleGelState.cs" />
     <Compile Include="Enemies\EnemyStates\GoriyaStates\StunnedGoriyaState.cs" />
-    <Compile Include="Enemies\EnemyStates\KeeseStates\IdleKeeseState.cs" />
+    <Compile Include="Enemies\EnemyStates\RopeStates\AttackingRopeState.cs" />
     <Compile Include="Enemies\EnemyStates\RopeStates\StunnedRopeState.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\StunnedStalfosState.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\StunnedWallMasterState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\StunnedZolState.cs" />
-    <Compile Include="GameStates\DeathState.cs" />
-    <Compile Include="GameStates\InventoryState.cs" />
-    <Compile Include="GameStates\PlayGameState.cs" />
-    <Compile Include="GameStates\TitleScreenState.cs" />
-    <Compile Include="GameStates\TransitionRoomState.cs" />
-    <Compile Include="GameStates\WinGameState.cs" />
     <Compile Include="Interfaces\IDrop.cs" />
     <Compile Include="Interfaces\IGameState.cs" />
     <Compile Include="Interfaces\IItem.cs" />
@@ -126,6 +123,7 @@
     <Compile Include="Interfaces\IDoorState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\HorizontalSpikeCrossState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\VerticalSpikeCrossState.cs" />
+    <Compile Include="GameState\InventoryState.cs" />
     <Compile Include="Items\Arrow.cs" />
     <Compile Include="Items\BlueCandle.cs" />
     <Compile Include="Items\BlueRing.cs" />
@@ -177,6 +175,7 @@
     <Compile Include="Managers\GameObjectManager.cs" />
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\EnemyProjectileType.cs" />
+    <Compile Include="GameState\PlayGameState.cs" />
     <Compile Include="Projectiles\ArrowProjectile.cs" />
     <Compile Include="Projectiles\BlueCandleProjectile.cs" />
     <Compile Include="Projectiles\BombExplosion.cs" />
@@ -190,6 +189,12 @@
     <Compile Include="Projectiles\SwordBeamExplosion.cs" />
     <Compile Include="Projectiles\WoodenSwordProjectile.cs" />
     <Compile Include="Projectiles\SwordBeamProjectile.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Rooms\BlockClasses\Door.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\BombedDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\CosmeticDoorState.cs" />
@@ -269,9 +274,10 @@
     <Compile Include="Rooms\BlockClasses\Tiles\Tile.cs" />
     <Compile Include="Managers\HealthManager.cs" />
     <Compile Include="Managers\DebugManager.cs" />
-    <Compile Include="Util\EntityData.cs" />
     <Compile Include="Util\PhysicHelper.cs" />
     <Compile Include="Util\PhysicsEssentials.cs" />
+    <Compile Include="Util\PhysicsHelper.cs" />
+    <Compile Include="Util\SoundEffectsFactory.cs" />
     <Compile Include="Util\Physics.cs" />
     <Compile Include="Util\ProjectileSpriteFactory.cs" />
     <Compile Include="Util\ItemSpriteFactory.cs" />
@@ -298,6 +304,7 @@
     <Compile Include="Sprites\SpriteData.cs" />
     <Compile Include="util\EnemySpriteFactory.cs" />
     <Compile Include="Util\XMLHandler.cs" />
+    <Compile Include="GameState\WinGameState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
@@ -336,6 +343,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Resources\LOZ_Door_Unlock.wav" />
+    <None Include="Resources\LOZ_Arrow_Boomerang.wav" />
+    <None Include="Resources\LOZ_Secret.wav" />
+    <None Include="Resources\LOZ_Stairs.wav" />
+    <None Include="Resources\LOZ_Boss_Scream1.wav" />
+    <None Include="Resources\LOZ_Get_Item.wav" />
+    <None Include="Resources\LOZ_Link_Hurt.wav" />
+    <None Include="Resources\LOZ_Key_Appear.wav" />
+    <None Include="Resources\LOZ_Get_Rupee.wav" />
+    <None Include="Resources\LOZ_Get_Heart.wav" />
+    <None Include="Resources\LOZ_Link_Die.wav" />
+    <None Include="Resources\LOZ_Candle.wav" />
+    <None Include="Resources\LOZ_Bomb_Drop.wav" />
+    <None Include="Resources\LOZ_Bomb_Blow.wav" />
+    <None Include="Resources\LOZ_Enemy_Die.wav" />
+    <None Include="Resources\LOZ_Enemy_Hit.wav" />
+    <None Include="Resources\LOZ_Sword_Shoot.wav" />
+    <None Include="Resources\LOZ_Sword_Slash.wav" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
@@ -401,6 +426,14 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

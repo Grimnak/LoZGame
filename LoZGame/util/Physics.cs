@@ -2,7 +2,7 @@
 {
     using Microsoft.Xna.Framework;
 
-    public class Physics: PhysicsHelper
+    public class Physics : PhysicsHelper
     {
         public Physics(Vector2 location)
         {

@@ -5,21 +5,21 @@
     /// </summary>
     public class CommandRoomLeft : ICommand
     {
-        private Dungeon room;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandRoomLeft"/> class.
         /// </summary>
-        /// <param name="room">The room manager to execute a command on.</param>
-        public CommandRoomLeft(Dungeon room)
+        public CommandRoomLeft()
         {
-            this.room = room;
         }
 
         /// <inheritdoc/>
         public void Execute()
         {
-            this.room.MoveLeft();
+            if (LoZGame.Instance.GameState is PlayGameState)
+            {
+                LoZGame.Instance.Dungeon.MoveLeft();
+            }
         }
     }
 }

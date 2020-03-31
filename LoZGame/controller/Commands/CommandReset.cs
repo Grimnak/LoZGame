@@ -15,10 +15,9 @@
         /// </summary>
         /// <param name="player">Player to execute a command on.</param>
         /// <param name="dungeon">Dungeon to execute a command on.</param>
-        public CommandReset(IPlayer player, Dungeon dungeon)
+        public CommandReset(IPlayer player)
         {
             this.player = player;
-            this.dungeon = dungeon;
         }
 
         /// <inheritdoc/>
@@ -27,7 +26,7 @@
             this.player.Physics.Bounds = new Rectangle(
                     (int)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                     BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6),
-                    this.player.Physics.Bounds.Width, 
+                    this.player.Physics.Bounds.Width,
                     this.player.Physics.Bounds.Height);
             this.player.Physics.SetLocation();
             this.player.CurrentDirection = "Up";
@@ -36,7 +35,10 @@
             this.player.DamageTimer = 0;
             this.player.CurrentTint = Color.White;
 
-            this.dungeon.Reset();
+            LoZGame.Instance.Dungeon.Reset();
+
+            // Temporary, will change to title screen state once completed.
+            LoZGame.Instance.GameState.TitleScreen();
         }
     }
 }

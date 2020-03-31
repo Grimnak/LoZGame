@@ -26,7 +26,9 @@
         private MouseCommandLoader mouseCommandLoader;
         private Dungeon dungeon;
         private Texture2D background;
+        private Texture2D backgroundHole;
         private SpriteFont font;
+        private SoundEffectsFactory music;
 
         private GameObjectManager gameObjectManager;
 
@@ -46,9 +48,10 @@
         public IPlayer Link
         {
             get { return this.link; }
+            set { this.link = value; }
         }
 
-        public Dungeon Dungeon { get { return this.dungeon; } }
+        public Dungeon Dungeon { get { return this.dungeon; } set { this.dungeon = value; } }
 
         public List<IController> Controllers { get { return controllers; } }
 
@@ -62,13 +65,15 @@
 
         public IGameState GameState { get { return gameState; } set { gameState = value; } }
 
-        public CollisionDetection CollisionDetector { get { return collisionDetector; } }
+        public CollisionDetection CollisionDetector { get { return collisionDetector; } set { collisionDetector = value; } }
 
         public Random Random { get { return randomNumberGenerator; } }
 
         public int UpdateSpeed { get { return DefaultUpdateSpeed; } }
 
         public Texture2D Background { get { return background; } }
+
+        public Texture2D BackgroundHole { get { return backgroundHole; } }
 
         public SpriteFont Font { get { return font; } }
 
@@ -79,6 +84,7 @@
             this.IsMouseVisible = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
             gameObjectManager = new GameObjectManager();
+            music = new SoundEffectsFactory();
             dropManager = new DropManager();
             debugManager = new DebugManager();
         }
@@ -90,8 +96,6 @@
             this.randomNumberGenerator = new Random();
             this.debugManager.Initialize();
 
-            this.gameState = new PlayGameState();
-
             base.Initialize();
             Console.WriteLine("Initialized");
         }
@@ -99,30 +103,17 @@
         protected override void LoadContent()
         {
             this.background = Content.Load<Texture2D>("dungeon");
+            this.backgroundHole = Content.Load<Texture2D>("dungeonHole");
 
             ItemSpriteFactory.Instance.LoadAllTextures(this.Content);
             ProjectileSpriteFactory.Instance.LoadAllTextures(this.Content);
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
+            LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
 
-            string file = "../../../../../etc/levels/dungeon1.xml";
-            this.dungeon = new Dungeon(file);
-            collisionDetector = new CollisionDetection(dungeon);
             font = Content.Load<SpriteFont>("Text");
 
-            LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
-            this.link = new Link(new Vector2(
-                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6))));
-            this.dungeon.Player = this.link;
-
-            this.keyboardCommandLoader = new KeyboardCommandLoader(this.link, this.dungeon);
-            this.mouseCommandLoader = new MouseCommandLoader(this.dungeon);
-
-            this.controllers.Add(new KeyboardController(this.keyboardCommandLoader));
-            this.controllers.Add(new MouseController(this.mouseCommandLoader));
-
-            this.players.Add(this.link);
+            this.gameState = new TitleScreenState();
 
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
             Console.WriteLine("Loaded");
@@ -134,6 +125,11 @@
 
         protected override void Update(GameTime gameTime)
         {
+            for (int i = 0; i < controllers.Count; i++)
+            {
+                controllers[i].Update();
+            }
+
             this.gameState.Update();
 
             if (DebugMode)
@@ -162,15 +158,6 @@
             }
             Console.WriteLine("Draw");
             base.Draw(gameTime);
-        }
-
-        public void Reset()
-        {
-            foreach (IPlayer player in this.players)
-            {
-                ICommand reset = new CommandReset(player, this.dungeon);
-                reset.Execute();
-            }
         }
     }
 }

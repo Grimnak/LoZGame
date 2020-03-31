@@ -49,11 +49,13 @@
         {
             if (this.DamageTimer <= 0)
             {
+                SoundEffectsFactory.Instance.PlayEnemyHit();
                 this.Health.DamageHealth(damageAmount);
                 this.DamageTimer = 50;
             }
             if (this.Health.CurrentHealth <= 0)
             {
+                SoundEffectsFactory.Instance.PlayEnemyDie();
                 this.CurrentState.Die();
             }
         }
@@ -106,7 +108,7 @@
             }
         }
 
-        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        public virtual void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
             EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }

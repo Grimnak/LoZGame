@@ -39,6 +39,7 @@
 
         public BombExplosion(Vector2 location)
         {
+            SoundEffectsFactory.Instance.PlayBombExplosion();
             this.projectileWidth = ProjectileSpriteFactory.Instance.ExplosionWidth * this.scale;
             this.projectileHeight = ProjectileSpriteFactory.Instance.ExplosionHeight * this.scale;
             this.Data = new EntityData();

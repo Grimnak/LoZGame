@@ -5,21 +5,21 @@
     /// </summary>
     public class CommandRoomUp : ICommand
     {
-        private Dungeon room;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandRoomUp"/> class.
         /// </summary>
-        /// <param name="room">The room manager to execute a command on.</param>
-        public CommandRoomUp(Dungeon room)
+        public CommandRoomUp()
         {
-            this.room = room;
         }
 
         /// <inheritdoc/>
         public void Execute()
         {
-            this.room.MoveUp();
+            if (LoZGame.Instance.GameState is PlayGameState)
+            {
+                LoZGame.Instance.Dungeon.MoveUp();
+            }
         }
     }
 }

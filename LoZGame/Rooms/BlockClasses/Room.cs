@@ -244,7 +244,7 @@
                     this.blocks.Add(new MovableTile(location, name, dirs));
                     break;
                 case "walkable":
-                    if (name.Equals("ladder_tile") || name.Equals("black_tile"))
+                    if (name.Equals("ladder_tile"))
                     {
                         location = this.GridToScreenSpecialVector(float.Parse(x), float.Parse(y));
                     }
