@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Threading;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -80,6 +81,7 @@
         private LoZGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
+            graphics.GraphicsProfile = GraphicsProfile.HiDef;
             this.Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
@@ -110,13 +112,19 @@
             EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
+            ScreenSpriteFactory.Instance.LoadAllTextures(this.Content);
 
             font = Content.Load<SpriteFont>("Text");
-
+            Thread bgLoad = new Thread(new ThreadStart(BusyWait));
             this.gameState = new TitleScreenState();
 
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
             Console.WriteLine("Loaded");
+        }
+
+        private void BusyWait()
+        {
+            return;
         }
 
         protected override void UnloadContent()

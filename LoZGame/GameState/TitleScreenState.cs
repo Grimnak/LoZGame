@@ -10,8 +10,13 @@
 
     public class TitleScreenState : IGameState
     {
+        private readonly ISprite sprite;
+        private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
+
         public TitleScreenState()
         {
+            this.sprite = ScreenSpriteFactory.Instance.TitleScreen();
+            this.sprite.FrameDelay = 20;
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
 
@@ -87,21 +92,24 @@
         {
             // TODO update title screen image
 
+            this.sprite.Update();
 
             for (int i = 0; i < LoZGame.Instance.Controllers.Count; i++)
             {
                 LoZGame.Instance.Controllers[i].Update();
             }
 
-            ///temporary reset
-            //CommandReset temp = new CommandReset(LoZGame.Instance.Players[0]);
-            //temp.Execute();
+            // temporary reset
+            // CommandReset temp = new CommandReset(LoZGame.Instance.Players[0]);
+            // temp.Execute();
         }
 
         public void Draw()
         {
             // TODO
-            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "TITLE SCREEN - PRESS ENTER", new Vector2(100, 100), Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+            this.sprite.Draw(new Vector2(0, 0), this.spriteTint, 1.0f);
+            Console.WriteLine("Title Frame: " + this.sprite.CurrentFrame);
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "TITLE SCREEN - PRESS ENTER " + this.sprite.CurrentFrame, new Vector2(100, 100), Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
         }
     }
 }

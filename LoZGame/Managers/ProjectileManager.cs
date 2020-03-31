@@ -86,8 +86,8 @@
                 switch (item)
                 {
                     case ProjectileType.WoodenSword:
-                        this.projectileList.Add(this.projectileId, new WoodenSwordProjectile(player, player.CurrentDirection));
                         SoundEffectsFactory.Instance.PlaySwordShoot();
+                        this.projectileList.Add(this.projectileId, new WoodenSwordProjectile(player, player.CurrentDirection));
                         break;
                     default:
                         break;
@@ -110,8 +110,8 @@
                         break;
 
                     case ProjectileType.SilverArrow:
-                        this.projectileList.Add(this.projectileId, new SilverArrowProjectile(player.Physics, player.CurrentDirection));
                         SoundEffectsFactory.Instance.PlayArrowOrBoomShoot();
+                        this.projectileList.Add(this.projectileId, new SilverArrowProjectile(player.Physics, player.CurrentDirection));
                         break;
 
                     case ProjectileType.RedCandle:
@@ -132,8 +132,8 @@
                     case ProjectileType.Boomerang:
                         if (!this.boomerangLock)
                         {
-                            SoundEffectsFactory.Instance.PlayArrowOrBoomShoot();
                             this.projectileList.Add(this.projectileId, new BoomerangProjectile(player.Physics, player.CurrentDirection));
+                            SoundEffectsFactory.Instance.PlayArrowOrBoomShoot();
                             this.boomerangLock = true;
                             this.boomerangInstance = this.projectileId;
                         }
