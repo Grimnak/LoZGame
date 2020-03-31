@@ -17,7 +17,7 @@
         public MoveRightState(IPlayer playerInstance)
         {
             this.player = playerInstance;
-            this.player.CurrentDirection = "Right";
+            this.player.Physics.CurrentDirection = Physics.Direction.East;
             this.sprite = this.CreateCorrectSprite();
             this.player.Physics.MovementVelocity = new Vector2(this.player.MoveSpeed, 0);
         }

@@ -23,7 +23,7 @@
             this.Health = new HealthManager(startingHealth);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
             this.CurrentColor = "Green";
-            this.CurrentDirection = "Up";
+            this.Physics.CurrentDirection = Physics.Direction.North;
             this.CurrentWeapon = "Wood";
             this.CurrentTint = LoZGame.Instance.DungeonTint;
             this.MoveSpeed = 2.5f;

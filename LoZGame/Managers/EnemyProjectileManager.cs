@@ -40,7 +40,7 @@
                     break;
             }
         }
-        public void Add(int projectileType, IEnemy enemy, string direction)
+        public void Add(int projectileType, IEnemy enemy)
         {
             ProjectileType projectile = (ProjectileType)projectileType;
             this.projectileId++;
@@ -48,7 +48,7 @@
             switch (projectile)
             {
                 case ProjectileType.Boomerang:
-                    projectileList.Add(projectileId, new BoomerangProjectile(enemy.Physics, direction));
+                    projectileList.Add(projectileId, new BoomerangProjectile(enemy.Physics));
                     break;
             }
         }

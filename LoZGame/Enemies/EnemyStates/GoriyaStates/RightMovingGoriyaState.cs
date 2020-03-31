@@ -16,7 +16,7 @@
             this.goriya = goriya;
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingGoriyaSprite();
             this.goriya.CurrentState = this;
-            this.goriya.Direction = "Right";
+            this.goriya.Physics.CurrentDirection = Physics.Direction.East;
             randomStateGenerator = new RandomStateGenerator(this.goriya, 1, 6);
             this.goriya.Physics.MovementVelocity = new Vector2(this.goriya.MoveSpeed, 0);
         }

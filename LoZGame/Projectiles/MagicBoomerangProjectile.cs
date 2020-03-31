@@ -7,116 +7,53 @@
     internal class MagicBoomerangProjectile : ProjectileEssentials, IProjectile
     {
         private static readonly int MaxDistance = 225;
-        private static readonly int Speed = 7;
-        private static readonly float Accel = 0.5f;
-        private static readonly int StunLength = LoZGame.Instance.UpdateSpeed * 2;
-
-        private ProjectileCollisionHandler collisionHandler;
-        private readonly Physics source;
-        private readonly string direction;
-        private int projectileWidth;
-        private int projectileHeight;
-        private int scale = ProjectileSpriteFactory.Instance.Scale;
-        private bool expired;
-        private bool returning;
-        private bool isReturned;
         private int distTraveled;
-        private Vector2 sourceLoc;
-        ISprite sprite;
-        private int damage;
 
-        public int StunDuration { get { return StunLength; } set {/*do nothing*/} }
-
-        public bool Returning { get { return returning; } set { returning = value; } }
-
-        public int Damage { get { return damage; } set { damage = value; } }
-
-        public Physics Physics { get; set; }
-
-        public EntityData Data { get; set; }
-
-        public MagicBoomerangProjectile(Physics source, string direction)
+        public MagicBoomerangProjectile(Physics source)
         {
-            this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
-            this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight * scale;
-            this.source = source;
-            this.isReturned = false;
-            this.returning = false;
-            this.distTraveled = 0;
-            this.damage = 0;
-            int locationOffset = (projectileWidth * 3) / 4;
-            Vector2 sourceCenter = source.Bounds.Center.ToVector2();
-            this.Data = new EntityData();
-            this.collisionHandler = new ProjectileCollisionHandler(this);
-            this.InitializeDirection(this, source.Bounds, new Vector2(projectileWidth, projectileHeight), direction);
-            this.Physics.MovementVelocity *= Speed;
-            this.Physics.Location *= locationOffset;
-            this.Physics.Location = new Vector2(sourceCenter.X + this.Physics.Location.X, sourceCenter.Y + this.Physics.Location.Y);
-            this.Physics.Bounds = new Rectangle(this.Physics.Location.ToPoint() - this.Physics.BoundsOffset.ToPoint(), (this.Physics.BoundsOffset * 2).ToPoint());
-            this.Physics.BoundsOffset *= 2;
-            this.Physics.SetLocation();
-            this.expired = false;
-            this.sprite = ProjectileSpriteFactory.Instance.Arrow();
-            this.sprite = ProjectileSpriteFactory.Instance.MagicBoomerang();
-        }
-
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
-        {
-            if (otherCollider is IEnemy)
-            {
-               this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            }
-        }
-
-        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
-        {
-            collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            this.SetUp(this);
+            this.Width = ProjectileSpriteFactory.Instance.StandardWidth;
+            this.Height = ProjectileSpriteFactory.Instance.BoomerangHeight;
+            this.Offset = (this.Height * 3) / 4;
+            this.StunDuration = LoZGame.Instance.UpdateSpeed * 2;
+            this.Speed = 7;
+            this.Source = source;
+            this.InitializeDirection();
+            this.Sprite = ProjectileSpriteFactory.Instance.MagicBoomerang();
         }
 
         private void ReturnHome()
         {
-            if (this.Physics.Bounds.Intersects(this.source.Bounds))
+            if (this.Physics.Bounds.Intersects(this.Source.Bounds))
             {
-                this.isReturned = true;
+                this.IsExpired = true;
             }
             else
             {
-                this.sourceLoc = new Vector2(this.source.Bounds.X + (this.source.Bounds.Width / 2), this.source.Bounds.Y + (this.source.Bounds.Height / 2));
-                float diffX = this.sourceLoc.X  - (this.Physics.Bounds.X + (this.Physics.Bounds.Width / 2));
-                float diffY = this.sourceLoc.Y - (this.Physics.Bounds.Y + (this.Physics.Bounds.Height / 2));
+                Vector2 sourceLoc = new Vector2(this.Source.Bounds.X + (this.Source.Bounds.Width / 2), this.Source.Bounds.Y + (this.Source.Bounds.Height / 2));
+                float diffX = sourceLoc.X - (this.Physics.Bounds.X + (this.Physics.Bounds.Width / 2));
+                float diffY = sourceLoc.Y - (this.Physics.Bounds.Y + (this.Physics.Bounds.Height / 2));
                 float diffTotal = (float)Math.Sqrt(Math.Pow(diffX, 2) + Math.Pow(diffY, 2));
                 this.Physics.MovementVelocity = new Vector2(diffX / diffTotal * Speed, diffY / diffTotal * Speed);
             }
         }
 
-        public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
-
-        public void Update()
+        public override void Update()
         {
-            if (this.isReturned)
-            {
-                this.expired = true;
-            }
+            base.Update();
             if (this.distTraveled >= MaxDistance)
             {
-                this.returning = true;
+                this.Returning = true;
             }
             else
             {
-                this.distTraveled += Speed;
+                this.distTraveled += (int)this.Speed;
             }
-            if (this.returning)
+            if (this.Returning)
             {
                 this.ReturnHome();
             }
-            this.Physics.Move();
-            this.sprite.Update();
             this.Data.Rotation += MathHelper.PiOver4 / 2;
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Data.Rotation, this.Data.SpriteEffect, this.Physics.Depth);
         }
     }
 }

@@ -17,6 +17,7 @@
             this.MasterMovement = Vector2.Zero;
             this.Bounds = Rectangle.Empty;
             this.BoundsOffset = Vector2.Zero;
+            this.CurrentDirection = Direction.None;
         }
 
         public void SetDepth()

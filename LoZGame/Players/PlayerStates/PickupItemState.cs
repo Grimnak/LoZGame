@@ -39,7 +39,7 @@ namespace LoZClone
         {
             if (this.lockoutTimer <= 0)
             {
-                this.player.CurrentDirection = "Down";
+                this.player.Physics.CurrentDirection = Physics.Direction.South;
                 this.player.State = new IdleState(this.player);
             }
         }
