@@ -18,11 +18,13 @@
             LoZGame.Instance.Dungeon = new Dungeon(1);
             LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
 
-            LoZGame.Instance.Players.Add(new Link(new Vector2(
+            LoZGame.Instance.Link = new Link(new Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)))));
+                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6))));
 
-            LoZGame.Instance.Dungeon.Player = LoZGame.Instance.Players[0];
+            LoZGame.Instance.Players.Add(LoZGame.Instance.Link);
+
+            LoZGame.Instance.Dungeon.Player = LoZGame.Instance.Link;
 
 
             KeyboardCommandLoader keyboardLoader = new KeyboardCommandLoader(LoZGame.Instance.Players[0]);

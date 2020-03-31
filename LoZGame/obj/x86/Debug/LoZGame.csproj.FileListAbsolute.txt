@@ -1200,3 +1200,8 @@ C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\obj\x86\Debug\LoZGame.csproj.
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resources.resx
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resources.Designer.cs
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\obj\x86\Debug\LoZClone.Properties.Resources.resources
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resources.resx
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resources.Designer.cs
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\obj\x86\Debug\LoZClone.Properties.Resources.resources
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\obj\x86\Debug\LoZGame.csproj.GenerateResource.cache
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\dungeonHole.xnb

@@ -46,6 +46,7 @@
             this.projectileHeight = ProjectileSpriteFactory.Instance.BoomerangHeight * scale;
             this.collisionHandler = new ProjectileCollisionHandler(this);
             this.expired = false;
+            this.direction = direction;
             Vector2 loc = new Vector2(enemy.Physics.Location.X + (LinkSize / 2), enemy.Physics.Location.Y + (LinkSize / 2));
             this.isReturned = false;
             this.returning = false;

@@ -26,6 +26,7 @@
         private MouseCommandLoader mouseCommandLoader;
         private Dungeon dungeon;
         private Texture2D background;
+        private Texture2D backgroundHole;
         private SpriteFont font;
         private SoundEffectsFactory music;
 
@@ -47,6 +48,7 @@
         public IPlayer Link
         {
             get { return this.link; }
+            set { this.link = value; }
         }
 
         public Dungeon Dungeon { get { return this.dungeon; } set { this.dungeon = value; } }
@@ -70,6 +72,8 @@
         public int UpdateSpeed { get { return DefaultUpdateSpeed; } }
 
         public Texture2D Background { get { return background; } }
+
+        public Texture2D BackgroundHole { get { return backgroundHole; } }
 
         public SpriteFont Font { get { return font; } }
 
@@ -98,6 +102,7 @@
         protected override void LoadContent()
         {
             this.background = Content.Load<Texture2D>("dungeon");
+            this.backgroundHole = Content.Load<Texture2D>("dungeonHole");
 
             ItemSpriteFactory.Instance.LoadAllTextures(this.Content);
             ProjectileSpriteFactory.Instance.LoadAllTextures(this.Content);
