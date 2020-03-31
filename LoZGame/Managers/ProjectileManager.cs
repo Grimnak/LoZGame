@@ -112,7 +112,6 @@
                     case ProjectileType.SilverArrow:
                         this.projectileList.Add(this.projectileId, new SilverArrowProjectile(player.Physics, player.CurrentDirection));
                         SoundEffectsFactory.Instance.PlayArrowOrBoomShoot();
-                        this.projectileList.Add(this.projectileId, new SilverArrowProjectile(player.Physics.Location, player.CurrentDirection));
                         break;
 
                     case ProjectileType.RedCandle:

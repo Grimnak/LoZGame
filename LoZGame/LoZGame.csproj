@@ -114,6 +114,8 @@
     <Compile Include="Enemies\EnemyStates\StalfosStates\StunnedStalfosState.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\StunnedWallMasterState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\StunnedZolState.cs" />
+    <Compile Include="GameState\TitleScreenState.cs" />
+    <Compile Include="GameState\TransitionRoomState.cs" />
     <Compile Include="Interfaces\IDrop.cs" />
     <Compile Include="Interfaces\IGameState.cs" />
     <Compile Include="Interfaces\IItem.cs" />
@@ -274,7 +276,7 @@
     <Compile Include="Rooms\BlockClasses\Tiles\Tile.cs" />
     <Compile Include="Managers\HealthManager.cs" />
     <Compile Include="Managers\DebugManager.cs" />
-    <Compile Include="Util\PhysicHelper.cs" />
+    <Compile Include="Util\EntityData.cs" />
     <Compile Include="Util\PhysicsEssentials.cs" />
     <Compile Include="Util\PhysicsHelper.cs" />
     <Compile Include="Util\SoundEffectsFactory.cs" />

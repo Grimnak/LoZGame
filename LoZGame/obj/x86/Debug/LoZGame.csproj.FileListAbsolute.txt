@@ -1205,3 +1205,8 @@ C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\obj\x86\Debug\LoZClone.Properties.Resources.resources
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\obj\x86\Debug\LoZGame.csproj.GenerateResource.cache
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\dungeonHole.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\obj\x86\Debug\LoZClone.Properties.Resources.resources
+C:\Users\16reh\Desktop\LoZGame\LoZGame\obj\x86\Debug\LoZGame.csproj.GenerateResource.cache
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\dungeonHole.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resources.resx
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resources.Designer.cs

@@ -98,6 +98,7 @@
             {
                 this.Physics.Move();
                 this.Physics.Accelerate();
+                this.Physics.SetDepth();
                 this.Physics.MovementAcceleration = new Vector2(this.Physics.MovementAcceleration.X * AccelDecay, this.Physics.MovementAcceleration.Y * AccelDecay);
             }
             else if (this.lifeTime <= 0)
@@ -108,8 +109,7 @@
 
         public void Draw()
         {
-            this.Physics.Depth = 1 - (1 / this.Physics.Bounds.Bottom);
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Data.Rotation, this.Data.SpriteEffect, this.Physics.Depth);
         }
     }
 }

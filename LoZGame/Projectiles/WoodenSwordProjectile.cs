@@ -50,8 +50,10 @@
             this.InitializeDirection(this, source.Physics.Bounds, new Vector2(projectileWidth, projectileHeight), direction);
             this.Physics.MovementVelocity *= Speed;
             this.Physics.Location *= locationOffset;
-            this.Physics.Location = new Vector2(this.Physics.Location.X + sourceCenter.X, this.Physics.Location.Y + sourceCenter.Y);
-            this.Physics.Bounds = new Rectangle(this.Physics.Location.ToPoint() - this.Physics.BoundsOffset.ToPoint(), (this.Physics.BoundsOffset * 2).ToPoint()); 
+            this.Physics.Location = new Vector2(sourceCenter.X + this.Physics.Location.X, sourceCenter.Y + this.Physics.Location.Y);
+            this.Physics.Bounds = new Rectangle(this.Physics.Location.ToPoint() - this.Physics.BoundsOffset.ToPoint(), (this.Physics.BoundsOffset * 2).ToPoint());
+            this.Physics.BoundsOffset *= 2;
+            this.Physics.SetLocation();
             this.damage = 2;
             this.expired = false;
             if (source.CurrentColor.Equals("Red"))
@@ -89,11 +91,11 @@
                 this.expired = true;
             }
             this.Physics.Move();
+            this.Physics.SetDepth();
         }
 
         public void Draw()
         {
-            this.Physics.Depth = 1 - (1 / this.Physics.Bounds.Bottom);
             this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Data.Rotation, this.Data.SpriteEffect, this.Physics.Depth);
         }
     }
