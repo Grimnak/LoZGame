@@ -15,6 +15,8 @@ namespace LoZClone
         private const int DRAWSCALE = 1;
         private static readonly int titleScreenWidth = 800;
         private static readonly int titleScreenHeight = 480;
+        private static readonly int enterWidth = 232;
+        private static readonly int enterHeight = 44;
 
         public int TitleScreenWidth
         {
@@ -24,6 +26,16 @@ namespace LoZClone
         public int TitleScreenHeight
         {
             get { return titleScreenHeight; }
+        }
+
+        public int EnterWidth
+        {
+            get { return enterWidth; }
+        }
+
+        public int EnterHeight
+        {
+            get { return enterHeight; }
         }
 
         public static int GetScreenWidth(IScreen screen)
@@ -38,6 +50,8 @@ namespace LoZClone
 
         private Texture2D titleSpriteSheet;
         private SpriteData titleData;
+        private Texture2D enterSpriteSheet;
+        private SpriteData enterData;
 
         private static readonly ScreenSpriteFactory InstanceValue = new ScreenSpriteFactory();
 
@@ -49,11 +63,18 @@ namespace LoZClone
         {
             this.titleSpriteSheet = content.Load<Texture2D>("LoZTitle");
             titleData = new SpriteData(new Vector2(titleScreenWidth, titleScreenHeight), titleSpriteSheet, 1, 7);
+            this.enterSpriteSheet = content.Load<Texture2D>("pressEnter");
+            enterData = new SpriteData(new Vector2(enterWidth, enterHeight), enterSpriteSheet, 1, 1);
     }
 
         public ISprite TitleScreen()
         {
             return new Sprite(this.titleSpriteSheet, this.titleData);
+        }
+
+        public ISprite PressEnter()
+        {
+            return new Sprite(this.enterSpriteSheet, this.enterData);
         }
     }
 }
