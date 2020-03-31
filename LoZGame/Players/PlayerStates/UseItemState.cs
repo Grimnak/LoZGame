@@ -115,15 +115,15 @@ namespace LoZClone
 
         private ISprite CreateCorrectSprite()
         {
-            if (this.player.CurrentDirection.Equals("Up"))
+            if (this.player.Physics.CurrentDirection == Physics.Direction.North)
             {
                 return LinkSpriteFactory.Instance.CreateSpriteLinkUseItemUp(this.player.CurrentColor);
             }
-            else if (this.player.CurrentDirection.Equals("Down"))
+            else if (this.player.Physics.CurrentDirection == Physics.Direction.South)
             {
                 return LinkSpriteFactory.Instance.CreateSpriteLinkUseItemDown(this.player.CurrentColor);
             }
-            else if (this.player.CurrentDirection.Equals("Left"))
+            else if (this.player.Physics.CurrentDirection == Physics.Direction.West)
             {
                 return LinkSpriteFactory.Instance.CreateSpriteLinkUseItemLeft(this.player.CurrentColor);
             }

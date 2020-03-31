@@ -15,7 +15,7 @@
         public MoveDownState(IPlayer playerInstance)
         {
             this.player = playerInstance;
-            this.player.CurrentDirection = "Down";
+            this.player.Physics.CurrentDirection = Physics.Direction.South;
             this.sprite = this.CreateCorrectSprite();
             this.player.Physics.MovementVelocity = new Vector2(0, this.player.MoveSpeed);
         }

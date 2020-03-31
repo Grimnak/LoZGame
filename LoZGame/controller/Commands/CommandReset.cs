@@ -29,7 +29,7 @@
                     this.player.Physics.Bounds.Width,
                     this.player.Physics.Bounds.Height);
             this.player.Physics.SetLocation();
-            this.player.CurrentDirection = "Up";
+            this.player.Physics.CurrentDirection = Physics.Direction.North;
             this.player.State = new IdleState(this.player);
             this.player.Health.ResetHealth();
             this.player.DamageTimer = 0;

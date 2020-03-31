@@ -102,7 +102,7 @@
             if (!boomerangThrown)
             {
                 boomerangThrown = true;
-                this.goriya.EntityManager.EnemyProjectileManager.Add(LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Boomerang, this.goriya, this.goriya.Direction);
+                this.goriya.EntityManager.EnemyProjectileManager.Add(LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Boomerang, this.goriya.Physics);
             }
             this.lifeTime++;
             if (this.lifeTime > this.directionChange)

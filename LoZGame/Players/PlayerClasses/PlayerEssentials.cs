@@ -11,8 +11,6 @@
 
         public string CurrentColor { get; set; }
 
-        public string CurrentDirection { get; set; }
-
         public Color CurrentTint { get; set; }
 
         public float MoveSpeed { get; set; }

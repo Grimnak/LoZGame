@@ -17,7 +17,7 @@
         public MoveUpState(IPlayer playerInstance)
         {
             this.player = playerInstance;
-            this.player.CurrentDirection = "Up";
+            this.player.Physics.CurrentDirection = Physics.Direction.North;
             this.sprite = this.CreateCorrectSprite();
             this.player.Physics.MovementVelocity = new Vector2(0, -1 * this.player.MoveSpeed);
         }
