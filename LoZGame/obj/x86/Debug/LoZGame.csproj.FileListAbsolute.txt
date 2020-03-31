@@ -1211,3 +1211,4 @@ C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\dungeonHole
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resources.resx
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resources.Designer.cs
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\LoZTitle.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\LoZTitle.xnb
