@@ -1210,3 +1210,4 @@ C:\Users\16reh\Desktop\LoZGame\LoZGame\obj\x86\Debug\LoZGame.csproj.GenerateReso
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\dungeonHole.xnb
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resources.resx
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Properties\Resources.Designer.cs
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\LoZTitle.xnb

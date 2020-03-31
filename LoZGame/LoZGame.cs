@@ -115,16 +115,15 @@
             ScreenSpriteFactory.Instance.LoadAllTextures(this.Content);
 
             font = Content.Load<SpriteFont>("Text");
-            Thread bgLoad = new Thread(new ThreadStart(BusyWait));
-            this.gameState = new TitleScreenState();
-
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+            this.StartGame();
             Console.WriteLine("Loaded");
         }
-
-        private void BusyWait()
+        
+        private void StartGame()
         {
-            return;
+            this.GameState = new TitleScreenState();
+            this.GameState.TitleScreen();
         }
 
         protected override void UnloadContent()
