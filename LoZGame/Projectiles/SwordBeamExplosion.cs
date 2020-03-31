@@ -20,8 +20,10 @@
             this.lifeTime = MaxLifeTime;
             this.Speed = 2.5f;
             Width = ProjectileSpriteFactory.Instance.StandardWidth * scale;
-            Height = ProjectileSpriteFactory.Instance.SwordBeamExplosionHeight * scale;
+            Heigth = ProjectileSpriteFactory.Instance.SwordBeamExplosionHeight * scale;
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, 0, 0);
+            this.Physics.BoundsOffset = new Vector2(Width, Heigth) / 4;
+            this.Physics.SetLocation();
             this.Sprite = ProjectileSpriteFactory.Instance.SwordExplosion();
 
             switch (this.Physics.CurrentDirection)

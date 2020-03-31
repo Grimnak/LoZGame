@@ -15,8 +15,8 @@
         {
             this.SetUp(this);
             this.Width = ProjectileSpriteFactory.Instance.FlameWidth;
-            this.Height = ProjectileSpriteFactory.Instance.FlameHeight;
-            this.Offset = (this.Height * 3) / 4;
+            this.Heigth = ProjectileSpriteFactory.Instance.FlameHeight;
+            this.Offset = (this.Heigth * 3) / 4;
             this.Speed = 5;
             this.Acceleration = -0.25f;
             this.Damage = 10;

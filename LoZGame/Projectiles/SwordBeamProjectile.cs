@@ -11,12 +11,16 @@
         {
             this.SetUp(this);
             this.Width = ProjectileSpriteFactory.Instance.SwordBeamWidth;
-            this.Height = ProjectileSpriteFactory.Instance.SwordBeamHeight;
-            this.Offset = (this.Height * 3) / 4;
+            this.Heigth = ProjectileSpriteFactory.Instance.SwordBeamHeight;
+            this.Offset = this.Heigth / 2;
             this.Speed = 5;
             this.Damage = 2;
             this.Source = source;
             this.InitializeDirection();
+            if (this.Physics.CurrentDirection == Physics.Direction.East || this.Physics.CurrentDirection == Physics.Direction.West)
+            {
+                this.CorrectProjectile();
+            }
             this.Sprite = ProjectileSpriteFactory.Instance.SwordBeam();
             this.lifeTime = 0;
         }
@@ -40,10 +44,10 @@
         {
             int explosionType = LoZGame.Instance.GameObjects.Entities.ExplosionManager.SwordExplosion;
             Vector2 explosionLoc = Vector2.Zero;
-            if (this.Physics.CurrentDirection == Physics.Direction.North) { explosionLoc = new Vector2(this.Physics.Bounds.Left + (this.Physics.Bounds.Width / 2), this.Physics.Bounds.Top); }
-            else if (this.Physics.CurrentDirection == Physics.Direction.South) { explosionLoc = new Vector2(this.Physics.Bounds.Left + (this.Physics.Bounds.Width / 2), this.Physics.Bounds.Bottom); }
-            else if (this.Physics.CurrentDirection == Physics.Direction.West) { explosionLoc = new Vector2(this.Physics.Bounds.Left, this.Physics.Bounds.Top + (this.Physics.Bounds.Height / 2)); }
-            else if (this.Physics.CurrentDirection == Physics.Direction.East) { explosionLoc = new Vector2(this.Physics.Bounds.Right, this.Physics.Bounds.Top + (this.Physics.Bounds.Height / 2)); }
+            if (this.Physics.CurrentDirection == Physics.Direction.North) { explosionLoc = new Vector2(this.Physics.Bounds.Left + (this.Width / 2), this.Physics.Bounds.Top); }
+            else if (this.Physics.CurrentDirection == Physics.Direction.South) { explosionLoc = new Vector2(this.Physics.Bounds.Left + (this.Width / 2), this.Physics.Bounds.Bottom); }
+            else if (this.Physics.CurrentDirection == Physics.Direction.West) { explosionLoc = new Vector2(this.Physics.Bounds.Left, this.Physics.Bounds.Top + (this.Heigth / 2)); }
+            else if (this.Physics.CurrentDirection == Physics.Direction.East) { explosionLoc = new Vector2(this.Physics.Bounds.Right, this.Physics.Bounds.Top + (this.Heigth / 2)); }
             LoZGame.Instance.GameObjects.Entities.ExplosionManager.AddExplosion(explosionType, explosionLoc);
         }
 

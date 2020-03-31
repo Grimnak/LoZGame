@@ -13,8 +13,8 @@
         {
             this.SetUp(this);
             this.Width = ProjectileSpriteFactory.Instance.StandardWidth;
-            this.Height = ProjectileSpriteFactory.Instance.BoomerangHeight;
-            this.Offset = (this.Height * 3) / 4;
+            this.Heigth = ProjectileSpriteFactory.Instance.BoomerangHeight;
+            this.Offset = (this.Heigth * 3) / 4;
             this.StunDuration = LoZGame.Instance.UpdateSpeed * 2;
             this.Speed = 7;
             this.Source = source;
