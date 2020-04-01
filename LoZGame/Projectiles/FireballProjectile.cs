@@ -8,78 +8,38 @@ namespace LoZClone
 {
     using Microsoft.Xna.Framework;
 
-    public class FireballProjectile : IProjectile
+    public class FireballProjectile : ProjectileEssentials, IProjectile
     {
         private const int FrameChange = 15;
         private const int XVelocity = 3;
         private const int YVelocity = 1;
         private const int MaxLife = 300;
-
-        private ICollider collider;
-        private ISprite sprite;
         private int lifeTime;
-        private readonly float rotation;
-        private bool expired;
-        private Vector2 Size;
-        private ProjectileCollisionHandler collisionHandler;
-        private int damage;
-
-        public int StunDuration { get { return 0; } set {/*do nothing*/} }
-
-        public bool Returning { get { return false; } set {/*do nothing*/} }
-
-        public int Damage { get { return damage; } set { damage = value; } }
-
-        public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
-
-        public Physics Physics { get; set; }
-
-        public EntityData Data { get; set; }
 
         public FireballProjectile(Physics physics)
         {
+            this.SetUp(this);
             this.Physics = physics;
-            this.collisionHandler = new ProjectileCollisionHandler(this);
             this.Data = new EntityData();
-            this.Size = new Vector2(ProjectileSpriteFactory.Instance.FireballHeight * ProjectileSpriteFactory.Instance.Scale, ProjectileSpriteFactory.Instance.FireballWidth * ProjectileSpriteFactory.Instance.Scale * 1.5f);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X - ProjectileSpriteFactory.Instance.FireballHeight, (int)this.Physics.Location.Y - ProjectileSpriteFactory.Instance.FireballWidth, (int)this.Size.X, (int)this.Size.Y);
-            this.sprite = ProjectileSpriteFactory.Instance.Fireball();
-            this.expired = false;
+            this.Width = ProjectileSpriteFactory.Instance.FireballWidth;
+            this.Heigth = ProjectileSpriteFactory.Instance.FireballHeight;
+            this.Physics.Bounds = new Rectangle((this.Physics.Location - (new Vector2(Width, Heigth) / 2)).ToPoint(), new Point(Width, Heigth));
+            this.Physics.BoundsOffset = new Vector2(this.Width, this.Heigth);
+            this.Physics.SetLocation();
+            this.Sprite = ProjectileSpriteFactory.Instance.Fireball();
+            this.IsExpired = false;
             this.lifeTime = MaxLife;
-            this.damage = 2;
+            this.Damage = 2;
         }
 
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        public override void Update()
         {
-            if (otherCollider is IPlayer)
-            {
-                this.collisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-        }
-
-        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
-        {
-            collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
-        }
-
-        public void Update()
-        {
+            base.Update();
             this.lifeTime--;
             if (this.lifeTime <= 0)
             {
-                this.expired = true;
+                this.IsExpired = true;
             }
-            if (this.lifeTime % FrameChange == 0)
-            {
-                this.sprite.Update();
-            }
-            this.Physics.Move();
-            this.Physics.Accelerate();
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
         }
     }
 }

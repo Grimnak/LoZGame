@@ -22,6 +22,7 @@ namespace LoZClone
             this.sprite = this.CreateCorrectSprite();
             this.sprite.CurrentFrame = 2;
             this.player.Physics.MovementVelocity = Vector2.Zero;
+            this.sprite.SetFrame(2);
         }
 
         /// <inheritdoc/>

@@ -23,7 +23,7 @@
         private int primaryAttackCoolDown;
         private bool primaryAttackLock;
 
-        public static int MaxWaitTime => 30;
+        public static int MaxWaitTime => 15;
 
         public List<IProjectile> Projectiles { get { return this.projectiles; } }
 
