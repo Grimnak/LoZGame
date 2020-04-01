@@ -38,7 +38,7 @@
             {
                 if (!(projectile is BoomerangProjectile) && !(projectile is MagicBoomerangProjectile))
                 {
-                    DeterminePushbackValues(projectile.Physics.GetMomentum());
+                    DetermineDirectPushback(projectile.Physics);
                 }
                 else
                 {
@@ -48,6 +48,29 @@
             if (!(projectile is SwordBeamExplosion) && !(projectile is BombProjectile) && !(projectile is MagicBoomerangProjectile) && !(projectile is BoomerangProjectile))
             {
                 this.enemy.TakeDamage(projectile.Damage);
+            }
+        }
+
+        private void DetermineDirectPushback(Physics source)
+        {
+            if (this.enemy.DamageTimer <= 0)
+            {
+                float sourceMomentum = source.GetMomentum().Length();
+                switch (source.CurrentDirection)
+                {
+                    case Physics.Direction.North:
+                        this.enemy.Physics.SetForce(new Vector2(0, -1) * sourceMomentum, new Vector2(0, -1) * Acceleration);
+                        break;
+                    case Physics.Direction.South:
+                        this.enemy.Physics.SetForce(new Vector2(0, 1) * sourceMomentum, new Vector2(0, -1) * Acceleration);
+                        break;
+                    case Physics.Direction.East:
+                        this.enemy.Physics.SetForce(new Vector2(1, 0) * sourceMomentum, new Vector2(0, -1) * Acceleration);
+                        break;
+                    case Physics.Direction.West:
+                        this.enemy.Physics.SetForce(new Vector2(-1, 0) * sourceMomentum, new Vector2(0, -1) * Acceleration);
+                        break;
+                }
             }
         }
 
@@ -68,7 +91,7 @@
             {
                 this.ReverseVelocity(collisionSide);
             }
-            if (LoZGame.Instance.Dungeon.CurrentRoomX != 1 || LoZGame.Instance.Dungeon.CurrentRoomY != 1)
+            else if (LoZGame.Instance.Dungeon.CurrentRoomX != 1 || LoZGame.Instance.Dungeon.CurrentRoomY != 1)
             {
                 if (collisionSide == CollisionDetection.CollisionSide.Right)
                 {

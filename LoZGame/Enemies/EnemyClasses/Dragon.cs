@@ -29,22 +29,23 @@
 
         public void ShootFireballs()
         {
-            Vector2 playerVector = this.UnitVectorToPlayer(this.Physics.Location);
-            Vector2 velocityVector;
-            if (playerVector.X < 0)
+            Vector2 velocityVector = this.UnitVectorToPlayer(this.Physics.Bounds.Location.ToVector2());
+            /*if (playerVector.X < 0)
             {
                 velocityVector = new Vector2(playerVector.X * FireballSpeed, playerVector.Y * FireballSpeed);
             } else
             {
-                velocityVector = new Vector2(-1 * FireballSpeed, 0);
-            }
+                velocityVector = new Vector2(-1s * FireballSpeed, 0);
+            }*/
+            velocityVector *= FireballSpeed;
             for (int i = 0; i < NumberFireballs; i++)
             {
-                float rotation = ((-1 * ((NumberFireballs - 1) / 2)) * FireballSpread) + (i * FireballSpread);
+                float rotation = ((-1 * (float)(NumberFireballs - 1) / 2.0f) * FireballSpread) + (i * FireballSpread);
                 Vector2 rotatedVelocity = this.RotateVector(velocityVector, rotation);
-                Vector2 fireBallLocation = new Vector2(this.Physics.Location.X, this.Physics.Location.Y);
-                Physics fireballPhysics = new Physics(fireBallLocation);
-                fireballPhysics.MovementVelocity = rotatedVelocity;
+                Physics fireballPhysics = new Physics(this.Physics.Bounds.Location.ToVector2())
+                {
+                    MovementVelocity = new Vector2(rotatedVelocity.X, rotatedVelocity.Y)
+                };
                 EntityManager.EnemyProjectileManager.Add(EntityManager.EnemyProjectileManager.Fireball, fireballPhysics);
             }
         }
@@ -55,7 +56,7 @@
             if (this.Physics.Bounds.X < leftBound)
             {
                 this.Physics.Bounds = new Rectangle(new Point(leftBound, this.Physics.Bounds.Y), new Point(this.Physics.Bounds.Width, this.Physics.Bounds.Height));
-                this.RandomStateGenerator.Update();
+                this.Physics.MovementVelocity = Vector2.Zero;
             }
         }
 
