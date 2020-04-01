@@ -23,8 +23,8 @@
         private static readonly int swordBeamExplosionHeight = 24;
         private static readonly int explosionHeight = 100;
         private static readonly int explosionWidth = 96;
-        private static readonly int fireballWidth = 16;
-        private static readonly int fireballHeight = 20;
+        private static readonly int fireballWidth = 32;
+        private static readonly int fireballHeight = 40;
         private static readonly int swordWidth = LinkSpriteFactory.LinkWidth;
         private static readonly int swordHeight = LinkSpriteFactory.LinkHeight;
 
@@ -279,7 +279,7 @@
             this.explosionThreeData = new SpriteData(new Vector2(explosionWidth, explosionHeight), explosionThreeSpriteSheet, 3, 1);
             this.ExplosionFourData = new SpriteData(new Vector2(explosionWidth, explosionHeight), explosionFourSpriteSheet, 3, 1);
             this.explosionFiveData = new SpriteData(new Vector2(explosionWidth, explosionHeight), explosionFiveSpriteSheet, 3, 1);
-            this.fireballData = new SpriteData(new Vector2(fireballWidth, fireballHeight), fireballSpriteSheet, 4, 1);
+            this.fireballData = new SpriteData(new Vector2(fireballWidth, fireballHeight), fireballSpriteSheet, 1, 4);
             this.greenWoodSwordData = new SpriteData(new Vector2(swordWidth, swordHeight), greenWoodSwordSpriteSheet, 1, 2);
         }
 

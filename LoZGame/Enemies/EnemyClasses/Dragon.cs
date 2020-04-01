@@ -52,9 +52,10 @@
         private void CheckLeftBound()
         {
             int leftBound = BlockSpriteFactory.Instance.HorizontalOffset + (7 * BlockSpriteFactory.Instance.TileWidth);
-            if (this.Physics.Location.X < leftBound)
+            if (this.Physics.Bounds.X < leftBound)
             {
-                this.Physics.Location = new Vector2(leftBound, this.Physics.Location.Y);
+                this.Physics.Bounds = new Rectangle(new Point(leftBound, this.Physics.Bounds.Y), new Point(this.Physics.Bounds.Width, this.Physics.Bounds.Height));
+                this.RandomStateGenerator.Update();
             }
         }
 
@@ -62,7 +63,6 @@
         {
             base.Update();
             this.CheckLeftBound();
-            this.Physics.SetDepth();
         }
     }
 }

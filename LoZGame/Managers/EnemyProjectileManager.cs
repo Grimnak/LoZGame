@@ -38,18 +38,10 @@
                 case ProjectileType.Fireball:
                     projectileList.Add(projectileId, new FireballProjectile(physics));
                     break;
-            }
-        }
-        public void Add(int projectileType, IEnemy enemy)
-        {
-            ProjectileType projectile = (ProjectileType)projectileType;
-            this.projectileId++;
-            this.listSize++;
-            switch (projectile)
-            {
                 case ProjectileType.Boomerang:
-                    projectileList.Add(projectileId, new BoomerangProjectile(enemy.Physics));
+                    projectileList.Add(projectileId, new BoomerangProjectile(physics));
                     break;
+
             }
         }
 

@@ -27,7 +27,7 @@
             }
             else
             {
-                DeterminePushbackValues(enemy.Physics.GetMomentum());
+                DeterminePushbackValues(enemy.Physics);
                 this.player.TakeDamage(enemy.Damage);
             }
         }
@@ -44,7 +44,7 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            DeterminePushbackValues(projectile.Physics.GetMomentum());
+            DetermineDirectPushback(projectile.Physics);
             this.player.TakeDamage(projectile.Damage);
         }
 
@@ -89,13 +89,41 @@
             this.player.Physics.SetLocation();
         }
 
-        private void DeterminePushbackValues(Vector2 momentum)
+        private void DetermineDirectPushback(Physics source)
         {
             if (this.player.DamageTimer <= 0)
             {
-                Vector2 force = new Vector2(momentum.X / momentum.Length(), momentum.Y / momentum.Length());
-                force *= Acceleration;
-                this.player.Physics.SetForce(momentum, force);
+                float sourceMomentum = source.GetMomentum().Length();
+                switch (source.CurrentDirection)
+                {
+                    case Physics.Direction.North:
+                        this.player.Physics.SetForce(new Vector2(0, -1) * sourceMomentum, new Vector2(0, -1) * Acceleration);
+                        break;
+                    case Physics.Direction.South:
+                        this.player.Physics.SetForce(new Vector2(0, 1) * sourceMomentum, new Vector2(0, -1) * Acceleration);
+                        break;
+                    case Physics.Direction.East:
+                        this.player.Physics.SetForce(new Vector2(1, 0) * sourceMomentum, new Vector2(0, -1) * Acceleration);
+                        break;
+                    case Physics.Direction.West:
+                        this.player.Physics.SetForce(new Vector2(-1, 0) * sourceMomentum, new Vector2(0, -1) * Acceleration);
+                        break;
+                }
+            }
+        }
+
+        private void DeterminePushbackValues(Physics source)
+        {
+            if (this.player.DamageTimer <= 0)
+            {
+                float sourceMomentum = source.GetMomentum().Length();
+                if (sourceMomentum < 1) { sourceMomentum = 1; }
+                Vector2 sourceToPlayer = (source.Bounds.Center - this.player.Physics.Bounds.Center).ToVector2();
+                sourceToPlayer.Normalize();
+                Vector2 friction = new Vector2(sourceToPlayer.X, sourceToPlayer.Y);
+                sourceToPlayer *= sourceMomentum;
+                friction *= Acceleration;
+                this.player.Physics.SetForce(sourceToPlayer, friction);
             }
         }
 
