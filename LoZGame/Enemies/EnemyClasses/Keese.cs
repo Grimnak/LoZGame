@@ -6,9 +6,19 @@
     {
         private const float MinMovementSpeed = 1.5f;
         private const float MaxMovementSpeed = 5.0f;
+        private const float Accel = 0.025f;
+        private static int directionChangeMax = LoZGame.Instance.UpdateSpeed * 4;
+        private static int directionChangeMin = LoZGame.Instance.UpdateSpeed;
 
         public float MaxMoveSpeed { get { return MaxMovementSpeed; } }
+
         public float MinMoveSpeed { get { return MinMovementSpeed; } }
+
+        public float Acceleration => Accel;
+
+        public int MaxChangeTime => directionChangeMax;
+
+        public int MinChangeTime => directionChangeMin;
 
         public Keese(Vector2 location)
         {
@@ -38,6 +48,25 @@
             else if (otherCollider is IProjectile)
             {
                 this.EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+            }
+        }
+
+        public void UpdateMoveSpeed(int lifeTime, int directionChange)
+        {
+            Vector2 normalVel = this.Physics.MovementVelocity / this.Physics.MovementVelocity.Length();
+            if (lifeTime < directionChange / 2)
+            {
+                if (this.Physics.MovementVelocity.Length() <= this.MaxMoveSpeed)
+                {
+                    this.Physics.MovementVelocity += normalVel * this.Acceleration;
+                }
+            }
+            else
+            {
+                if (this.Physics.MovementVelocity.Length() >= this.MinMoveSpeed)
+                {
+                    this.Physics.MovementVelocity -= normalVel * this.Acceleration;
+                }
             }
         }
     }

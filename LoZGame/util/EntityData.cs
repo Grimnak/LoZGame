@@ -5,22 +5,7 @@
 
     public class EntityData
     {
-        public enum Directions
-        {
-            North,
-            South,
-            East,
-            West,
-            NorthEast,
-            NorthWest,
-            SouthEast,
-            SouthWest,
-            Unknown
-        } 
-
-        public Directions Direction { get; set; }
-
-        public float MovementSpeed { get; }
+        public float MovementSpeed { get; set; }
 
         public SpriteEffects SpriteEffect { get; set; }
 
@@ -30,8 +15,10 @@
 
         public EntityData()
         {
-            this.Direction = Directions.Unknown;
             this.MovementSpeed = 0;
+            this.SpriteEffect = SpriteEffects.None;
+            this.Origin = Vector2.Zero;
+            this.Rotation = 0.0f;
         }
     }
 }

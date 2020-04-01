@@ -143,7 +143,6 @@
             {
                 this.debugManager.Update();
             }
-            Console.WriteLine("Updated");
             base.Update(gameTime);
         }
 
@@ -163,7 +162,6 @@
                 this.debugManager.Draw();
                 this.spriteBatch.End();
             }
-            Console.WriteLine("Draw");
             base.Draw(gameTime);
         }
     }
