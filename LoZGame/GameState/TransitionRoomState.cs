@@ -5,17 +5,14 @@
 
     public class TransitionRoomState : IGameState
     {
-        private Room oldRoom;
         private LevelOneMasterSprite sprite;
         private string direction;
         private int transitionSpeed = 5;
 
-        public TransitionRoomState(Room oldRoom, string direction)
+        public TransitionRoomState(string direction)
         {
-            this.oldRoom = oldRoom;
             this.direction = direction;
             this.sprite = CreateCorrectLevelSprite();
-            this.sprite.CurrentPosition(new Vector2(LoZGame.Instance.Dungeon.CurrentRoomX, LoZGame.Instance.Dungeon.CurrentRoomY));
 
             // Unload everything we have to unload.
             // Replace with master level for transition and swap back when finished.

@@ -63,7 +63,7 @@
 
         public LevelOneMasterSprite CreateLevelOneMaster()
         {
-            return new LevelOneMasterSprite(this.levelOneMasterSpriteSheet);
+            return new LevelOneMasterSprite(this.levelOneMasterSpriteSheet, new Vector2(LoZGame.Instance.Dungeon.CurrentRoomX, LoZGame.Instance.Dungeon.CurrentRoomY));
         }
     }
 }
