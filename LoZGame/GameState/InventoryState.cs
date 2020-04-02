@@ -30,7 +30,7 @@
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
-        public void TransitionRoom()
+        public void TransitionRoom(string direction)
         {
             // Can't transition room while accessing inventory.
         }

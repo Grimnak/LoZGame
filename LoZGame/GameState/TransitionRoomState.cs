@@ -5,9 +5,20 @@
 
     public class TransitionRoomState : IGameState
     {
-        public TransitionRoomState()
-        {
+        private Room oldRoom;
+        private LevelOneMasterSprite sprite;
+        private string direction;
+        private int transitionSpeed = 5;
 
+        public TransitionRoomState(Room oldRoom, string direction)
+        {
+            this.oldRoom = oldRoom;
+            this.direction = direction;
+            this.sprite = CreateCorrectLevelSprite();
+            this.sprite.CurrentPosition(new Vector2(LoZGame.Instance.Dungeon.CurrentRoomX, LoZGame.Instance.Dungeon.CurrentRoomY));
+
+            // Unload everything we have to unload.
+            // Replace with master level for transition and swap back when finished.
         }
 
         public void Death()
@@ -30,7 +41,7 @@
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
-        public void TransitionRoom()
+        public void TransitionRoom(string direction)
         {
             // Can't go to a state you are already in.
         }
@@ -42,12 +53,17 @@
 
         public void Update()
         {
-            // TODO
+            this.sprite.Update(direction, transitionSpeed);
         }
 
         public void Draw()
         {
-            // TODO
+            this.sprite.Draw(LoZGame.Instance.DungeonTint);
+        }
+
+        private LevelOneMasterSprite CreateCorrectLevelSprite()
+        {
+            return ScreenSpriteFactory.Instance.CreateLevelOneMaster();
         }
     }
 }

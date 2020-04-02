@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    class DeathState : IGameState
+    public class DeathState : IGameState
     {
         private int deathTime;
         private static int deathTimeMax = 85;
@@ -34,7 +34,7 @@
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
-        public void TransitionRoom()
+        public void TransitionRoom(string direction)
         {
             // Can't transition room while dead.
         }
@@ -46,7 +46,6 @@
 
         public void Update()
         {
-            // TODO
             this.deathTime++;
             if (this.deathTime < deathTimeMax)
             {
@@ -55,7 +54,7 @@
                     player.Update();
                 }
             }
-            else if(this.deathTime > gameOverTime)
+            else if (this.deathTime > gameOverTime)
             {
                 LoZGame.Instance.GameState.TitleScreen();
             }
@@ -63,7 +62,6 @@
 
         public void Draw()
         {
-            // TODO
             if (this.deathTime < deathTimeMax)
             {
                 foreach (IPlayer player in LoZGame.Instance.Players)

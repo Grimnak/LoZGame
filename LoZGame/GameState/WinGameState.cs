@@ -37,7 +37,7 @@
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
-        public void TransitionRoom()
+        public void TransitionRoom(string direction)
         {
             // Can't transition room while winning.
         }
@@ -49,7 +49,6 @@
 
         public void Update()
         {
-            // TODO
             this.lockout++;
 
             // Triforce animation playing time
@@ -81,7 +80,6 @@
 
         public void Draw()
         {
-            // TODO
             LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
 
             foreach (IPlayer player in LoZGame.Instance.Players)

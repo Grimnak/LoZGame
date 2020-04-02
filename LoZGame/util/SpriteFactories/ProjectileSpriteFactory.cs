@@ -283,84 +283,84 @@
             this.greenWoodSwordData = new SpriteData(new Vector2(swordWidth, swordHeight), greenWoodSwordSpriteSheet, 1, 2);
         }
 
-        public Sprite GreenWoodSword()
+        public ISprite GreenWoodSword()
         {
-            return new Sprite(this.greenWoodSwordSpriteSheet, this.greenWoodSwordData);
+            return new ObjectSprite(this.greenWoodSwordSpriteSheet, this.greenWoodSwordData);
         }
 
-        public Sprite Fireball()
+        public ISprite Fireball()
         {
-            return new Sprite(this.fireballSpriteSheet, this.fireballData);
+            return new ObjectSprite(this.fireballSpriteSheet, this.fireballData);
         }
 
-        public Sprite Boomerang()
+        public ISprite Boomerang()
         {
-            return new Sprite(this.boomerangSpriteSheet, this.boomerangData);
+            return new ObjectSprite(this.boomerangSpriteSheet, this.boomerangData);
         }
 
-        public Sprite MagicBoomerang()
+        public ISprite MagicBoomerang()
         {
-            return new Sprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData);
+            return new ObjectSprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData);
         }
 
-        public Sprite Bomb()
+        public ISprite Bomb()
         {
-            return new Sprite(this.bombSpriteSheet, this.bombData);
+            return new ObjectSprite(this.bombSpriteSheet, this.bombData);
         }
 
-        public Sprite Arrow()
+        public ISprite Arrow()
         {
-            return new Sprite(this.arrowSpriteSheet, this.arrowData);
+            return new ObjectSprite(this.arrowSpriteSheet, this.arrowData);
         }
 
-        public Sprite SilverArrow()
+        public ISprite SilverArrow()
         {
-            return new Sprite(this.silverArrowSpriteSheet, this.silverArrowData);
+            return new ObjectSprite(this.silverArrowSpriteSheet, this.silverArrowData);
         }
 
-        public Sprite RedCandle()
+        public ISprite RedCandle()
         {
-            return new Sprite(this.flameSpriteSheet, this.flameData);
+            return new ObjectSprite(this.flameSpriteSheet, this.flameData);
         }
 
-        public Sprite BlueCandle()
+        public ISprite BlueCandle()
         {
-            return new Sprite(this.flameSpriteSheet, this.flameData);
+            return new ObjectSprite(this.flameSpriteSheet, this.flameData);
         }
 
-        public Sprite SwordBeam()
+        public ISprite SwordBeam()
         {
-            return new Sprite(this.swordBeamSpriteSheet, this.swordBeamData);
+            return new ObjectSprite(this.swordBeamSpriteSheet, this.swordBeamData);
         }
 
-        public Sprite SwordExplosion()
+        public ISprite SwordExplosion()
         {
-            return new Sprite(this.swordExplosionSpriteSheet, this.swordExplosionData);
+            return new ObjectSprite(this.swordExplosionSpriteSheet, this.swordExplosionData);
         }
 
-        public Sprite BombExplosionOne()
+        public ISprite BombExplosionOne()
         {
-            return new Sprite(this.explosionOneSpriteSheet, this.explosionOneData);
+            return new ObjectSprite(this.explosionOneSpriteSheet, this.explosionOneData);
         }
 
-        public Sprite BombExplosionTwo()
+        public ISprite BombExplosionTwo()
         {
-            return new Sprite(this.explosionTwoSpriteSheet, this.explosionTwoData);
+            return new ObjectSprite(this.explosionTwoSpriteSheet, this.explosionTwoData);
         }
 
-        public Sprite BombExplosionThree()
+        public ISprite BombExplosionThree()
         {
-            return new Sprite(this.explosionThreeSpriteSheet, this.explosionThreeData);
+            return new ObjectSprite(this.explosionThreeSpriteSheet, this.explosionThreeData);
         }
 
-        public Sprite BombExplosionFour()
+        public ISprite BombExplosionFour()
         {
-            return new Sprite(this.explosionFourSpriteSheet, this.ExplosionFourData);
+            return new ObjectSprite(this.explosionFourSpriteSheet, this.ExplosionFourData);
         }
 
-        public Sprite BombExplosionFive()
+        public ISprite BombExplosionFive()
         {
-            return new Sprite(this.explosionFiveSpriteSheet, this.explosionFiveData);
+            return new ObjectSprite(this.explosionFiveSpriteSheet, this.explosionFiveData);
         }
     }
 }

@@ -210,6 +210,8 @@
         private Texture2D merchant;
         private SpriteData merchantData;
 
+        private Texture2D spawnEnemy;
+        private SpriteData spawnEnemyData;
         private Texture2D deadEnemy;
         private SpriteData deadEnemyData;
 
@@ -266,6 +268,7 @@
             this.oldMan = content.Load<Texture2D>("oldMan");
             this.merchant = content.Load<Texture2D>("merchant");
 
+            this.spawnEnemy = content.Load<Texture2D>("enemySpawn");
             this.deadEnemy = content.Load<Texture2D>("enemyDeath");
         }
 
@@ -292,135 +295,142 @@
             this.rightDodongoData = new SpriteData(new Vector2(dodongoWidthLeftRight, dodongoHeight), rightDodongo, 1, 3);
             this.oldManData = new SpriteData(new Vector2(oldManWidth, oldManHeight), oldMan, 1, 1);
             this.merchantData = new SpriteData(new Vector2(merchantWidth, merchantHeight), merchant, 1, 1);
+            this.spawnEnemyData = new SpriteData(new Vector2(40, 40), spawnEnemy, 3, 1);
             this.deadEnemyData = new SpriteData(new Vector2(40, 40), deadEnemy, 1, 6);
         }
 
         // Stalfos Sprites
         public ISprite CreateStalfosSprite()
         {
-            return new Sprite(this.stalfos, this.stalfosData);
+            return new ObjectSprite(this.stalfos, this.stalfosData);
         }
 
         // Goriya Sprites
         public ISprite CreateDownMovingGoriyaSprite()
         {
-            return new Sprite(this.downGoriya, this.downGoriyaData);
+            return new ObjectSprite(this.downGoriya, this.downGoriyaData);
         }
 
         public ISprite CreateUpMovingGoriyaSprite()
         {
-            return new Sprite(this.upGoriya, this.upGoriyaData);
+            return new ObjectSprite(this.upGoriya, this.upGoriyaData);
         }
 
         public ISprite CreateLeftMovingGoriyaSprite()
         {
-            return new Sprite(this.leftGoriya, this.leftGoriyaData);
+            return new ObjectSprite(this.leftGoriya, this.leftGoriyaData);
         }
 
         public ISprite CreateRightMovingGoriyaSprite()
         {
-            return new Sprite(this.rightGoriya, this.rightGoriyaData);
+            return new ObjectSprite(this.rightGoriya, this.rightGoriyaData);
         }
 
         // Wallmaster Sprites
         public ISprite CreateLeftMovingWallMasterSprite()
         {
-            return new Sprite(this.leftWallMaster, this.leftWallMasterData);
+            return new ObjectSprite(this.leftWallMaster, this.leftWallMasterData);
         }
 
         public ISprite CreateRightMovingWallMasterSprite()
         {
-            return new Sprite(this.rightWallMaster, this.rightWallMasterData);
+            return new ObjectSprite(this.rightWallMaster, this.rightWallMasterData);
         }
 
         public ISprite CreateAttackingWallMasterSprite()
         {
-            return new Sprite(this.leftWallMaster, this.leftWallMasterData);
+            return new ObjectSprite(this.leftWallMaster, this.leftWallMasterData);
         }
 
         // Rope Sprites
         public ISprite CreateLeftMovingRopeSprite()
         {
-            return new Sprite(this.leftRope, this.leftRopeData);
+            return new ObjectSprite(this.leftRope, this.leftRopeData);
         }
 
         public ISprite CreateRightMovingRopeSprite()
         {
-            return new Sprite(this.rightRope, this.rightRopeData);
+            return new ObjectSprite(this.rightRope, this.rightRopeData);
         }
 
         // Gel Sprites
         public ISprite CreateGelSprite()
         {
-            return new Sprite(this.gel, this.gelData);
+            return new ObjectSprite(this.gel, this.gelData);
         }
 
         // Zol Sprites
         public ISprite CreateZolSprite()
         {
-            return new Sprite(this.zol, this.zolData);
+            return new ObjectSprite(this.zol, this.zolData);
         }
 
         // Spike Cross Sprites
         public ISprite CreateSpikeCrossSprite()
         {
-            return new Sprite(this.spikeCross, this.spikeCrossData);
+            return new ObjectSprite(this.spikeCross, this.spikeCrossData);
         }
 
         // Keese Sprites
         public ISprite CreateKeeseSprite()
         {
-            return new Sprite(this.keese, this.keeseData);
+            return new ObjectSprite(this.keese, this.keeseData);
         }
 
         // Dragon Sprites
         public ISprite CreateDragonSprite()
         {
-            return new Sprite(this.dragon, this.dragonData);
+            return new ObjectSprite(this.dragon, this.dragonData);
         }
 
         public ISprite CreateDamagedDragonSprite()
         {
-            return new Sprite(this.damagedDragon, this.damagedDragonData);
+            return new ObjectSprite(this.damagedDragon, this.damagedDragonData);
         }
 
         // Dodongo Sprites
         public ISprite CreateDownMovingDodongoSprite()
         {
-            return new Sprite(this.downDodongo, this.downDodongoData);
+            return new ObjectSprite(this.downDodongo, this.downDodongoData);
         }
 
         public ISprite CreateUpMovingDodongoSprite()
         {
-            return new Sprite(this.upDodongo, this.upDodongoData);
+            return new ObjectSprite(this.upDodongo, this.upDodongoData);
         }
 
         public ISprite CreateLeftMovingDodongoSprite()
         {
-            return new Sprite(this.leftDodongo, this.leftDodongoData);
+            return new ObjectSprite(this.leftDodongo, this.leftDodongoData);
         }
 
         public ISprite CreateRightMovingDodongoSprite()
         {
-            return new Sprite(this.rightDodongo, this.rightDodongoData);
+            return new ObjectSprite(this.rightDodongo, this.rightDodongoData);
         }
 
         // Old Man Sprites
         public ISprite CreateOldManSprite()
         {
-            return new Sprite(this.oldMan, this.oldManData);
+            return new ObjectSprite(this.oldMan, this.oldManData);
         }
 
         // Merchant Sprites
         public ISprite CreateMerchantSprite()
         {
-            return new Sprite(this.merchant, this.merchantData);
+            return new ObjectSprite(this.merchant, this.merchantData);
         }
 
-         // Enemy Death Sprites
+        // Enemy Spawn Sprites
+        public ISprite EnemySpawn()
+        {
+            return new ObjectSprite(this.spawnEnemy, this.spawnEnemyData);
+        }
+
+        // Enemy Death Sprites
         public ISprite CreateDeadEnemySprite()
         {
-            return new Sprite(this.deadEnemy, this.deadEnemyData);
+            return new ObjectSprite(this.deadEnemy, this.deadEnemyData);
         }
     }
 }

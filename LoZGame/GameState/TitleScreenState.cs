@@ -8,11 +8,9 @@
         private readonly ISprite sprite;
         private readonly ISprite enter;
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
-        private bool nextBlink;
 
         public TitleScreenState()
         {
-            this.nextBlink = false;
             this.sprite = ScreenSpriteFactory.Instance.TitleScreen();
             this.enter = ScreenSpriteFactory.Instance.PressEnter();
             this.sprite.FrameDelay = 10;
@@ -30,14 +28,11 @@
 
             LoZGame.Instance.Dungeon.Player = LoZGame.Instance.Link;
 
-
             KeyboardCommandLoader keyboardLoader = new KeyboardCommandLoader(LoZGame.Instance.Players[0]);
             MouseCommandLoader mouseLoader = new MouseCommandLoader();
             if (LoZGame.Instance.Controllers.Count == 0)
             {
                 LoZGame.Instance.Controllers.Add(new KeyboardController(keyboardLoader));
-
-
                 LoZGame.Instance.Controllers.Add(new MouseController(mouseLoader));
             }
             else
@@ -77,7 +72,7 @@
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
-        public void TransitionRoom()
+        public void TransitionRoom(string direction)
         {
             // Can't transition room from title screen.
         }
@@ -89,8 +84,6 @@
 
         public void Update()
         {
-            // TODO update title screen image
-
             this.sprite.Update();
             for (int i = 0; i < LoZGame.Instance.Controllers.Count; i++)
             {
@@ -104,7 +97,6 @@
 
         public void Draw()
         {
-            // TODO
             this.sprite.Draw(new Vector2(0, 0), this.spriteTint, 1.0f);
             if (this.sprite.CurrentFrame > 3)
                 this.enter.Draw(new Vector2(284, 350), this.spriteTint, 1.0f);

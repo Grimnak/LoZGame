@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+
     /// <summary>
     /// Idle state for player.
     /// </summary>

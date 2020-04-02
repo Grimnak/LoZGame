@@ -1,6 +1,7 @@
 namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+
     /// <summary>
     /// Item using state for player.
     /// </summary>

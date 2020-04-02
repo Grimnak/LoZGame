@@ -1,57 +1,40 @@
-﻿using LoZClone;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Content;
+    using Microsoft.Xna.Framework.Graphics;
+
     public class ScreenSpriteFactory
     {
         private const int DRAWSCALE = 1;
-        private static readonly int titleScreenWidth = 800;
-        private static readonly int titleScreenHeight = 480;
+        private static readonly int screenWidth = LoZGame.Instance.GraphicsDevice.Viewport.X;
+        private static readonly int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Y;
         private static readonly int enterWidth = 232;
         private static readonly int enterHeight = 44;
 
-        public int TitleScreenWidth
-        {
-            get { return titleScreenWidth; }
-        }
+        public int TitleScreenWidth => screenWidth;
 
-        public int TitleScreenHeight
-        {
-            get { return titleScreenHeight; }
-        }
+        public int TitleScreenHeight => screenHeight;
 
-        public int EnterWidth
-        {
-            get { return enterWidth; }
-        }
+        public int EnterWidth => enterWidth;
 
-        public int EnterHeight
-        {
-            get { return enterHeight; }
-        }
+        public int EnterHeight => enterHeight;
 
         public static int GetScreenWidth(IScreen screen)
         {
-            return titleScreenWidth;
+            return screenWidth;
         }
 
         public static int GetScreenHeight(IScreen screen)
         {
-            return titleScreenHeight;
+            return screenHeight;
         }
 
         private Texture2D titleSpriteSheet;
         private SpriteData titleData;
         private Texture2D enterSpriteSheet;
         private SpriteData enterData;
+        private Texture2D levelOneMasterSpriteSheet;
 
         private static readonly ScreenSpriteFactory InstanceValue = new ScreenSpriteFactory();
 
@@ -62,19 +45,25 @@ namespace LoZClone
         public void LoadAllTextures(ContentManager content)
         {
             this.titleSpriteSheet = content.Load<Texture2D>("LoZTitle");
-            titleData = new SpriteData(new Vector2(titleScreenWidth, titleScreenHeight), titleSpriteSheet, 1, 7);
+            this.titleData = new SpriteData(new Vector2(screenWidth, screenHeight), titleSpriteSheet, 1, 7);
             this.enterSpriteSheet = content.Load<Texture2D>("pressEnter");
-            enterData = new SpriteData(new Vector2(enterWidth, enterHeight), enterSpriteSheet, 1, 1);
+            this.enterData = new SpriteData(new Vector2(enterWidth, enterHeight), enterSpriteSheet, 1, 1);
+            this.levelOneMasterSpriteSheet = content.Load<Texture2D>("LevelOneMaster");
     }
 
         public ISprite TitleScreen()
         {
-            return new Sprite(this.titleSpriteSheet, this.titleData);
+            return new ObjectSprite(this.titleSpriteSheet, this.titleData);
         }
 
         public ISprite PressEnter()
         {
-            return new Sprite(this.enterSpriteSheet, this.enterData);
+            return new ObjectSprite(this.enterSpriteSheet, this.enterData);
+        }
+
+        public LevelOneMasterSprite CreateLevelOneMaster()
+        {
+            return new LevelOneMasterSprite(this.levelOneMasterSpriteSheet);
         }
     }
 }

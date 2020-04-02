@@ -288,167 +288,167 @@
 
         public ISprite Fairy()
         {
-            return new Sprite(this.fairySpriteSheet, this.fairyData);
+            return new ObjectSprite(this.fairySpriteSheet, this.fairyData);
         }
 
         public ISprite Health()
         {
-            return new Sprite(this.healthSpriteSheet, this.healthData);
+            return new ObjectSprite(this.healthSpriteSheet, this.healthData);
         }
 
         public ISprite Triforce()
         {
-            return new Sprite(this.triforceSpriteSheet, this.triforceData);
+            return new ObjectSprite(this.triforceSpriteSheet, this.triforceData);
         }
 
         public ISprite YellowRupee()
         {
-            return new Sprite(this.yellowRupeeSpriteSheet, this.yellowRupeeData);
+            return new ObjectSprite(this.yellowRupeeSpriteSheet, this.yellowRupeeData);
         }
 
         public ISprite HeartContainer()
         {
-            return new Sprite(this.heartContainerSpriteSheet, this.heartContainerData);
+            return new ObjectSprite(this.heartContainerSpriteSheet, this.heartContainerData);
         }
 
         public ISprite Clock()
         {
-            return new Sprite(this.clockSpriteSheet, this.clockData);
+            return new ObjectSprite(this.clockSpriteSheet, this.clockData);
         }
 
         public ISprite Rupee()
         {
-            return new Sprite(this.rupeeSpriteSheet, this.rupeeData);
+            return new ObjectSprite(this.rupeeSpriteSheet, this.rupeeData);
         }
 
         public ISprite LifePotion()
         {
-            return new Sprite(this.lifePotionSpriteSheet, this.lifePotionData);
+            return new ObjectSprite(this.lifePotionSpriteSheet, this.lifePotionData);
         }
 
         public ISprite SecondPotion()
         {
-            return new Sprite(this.secondPotionSpriteSheet, this.secondPotionData);
+            return new ObjectSprite(this.secondPotionSpriteSheet, this.secondPotionData);
         }
 
         public ISprite Letter()
         {
-            return new Sprite(this.letterSpriteSheet, this.letterData);
+            return new ObjectSprite(this.letterSpriteSheet, this.letterData);
         }
 
         public ISprite Map()
         {
-            return new Sprite(this.mapSpriteSheet, this.mapData);
+            return new ObjectSprite(this.mapSpriteSheet, this.mapData);
         }
 
         public ISprite Food()
         {
-            return new Sprite(this.foodSpriteSheet, this.foodData);
+            return new ObjectSprite(this.foodSpriteSheet, this.foodData);
         }
 
         public ISprite WoodenSword()
         {
-            return new Sprite(this.woodenSwordSpriteSheet, this.woodenSwordData);
+            return new ObjectSprite(this.woodenSwordSpriteSheet, this.woodenSwordData);
         }
 
         public ISprite WhiteSword()
         {
-            return new Sprite(this.whiteSwordSpriteSheet, this.whiteSwordData);
+            return new ObjectSprite(this.whiteSwordSpriteSheet, this.whiteSwordData);
         }
 
         public ISprite MagicSword()
         {
-            return new Sprite(this.magicSwordSpriteSheet, this.magicSwordData);
+            return new ObjectSprite(this.magicSwordSpriteSheet, this.magicSwordData);
         }
 
         public ISprite MagicShield()
         {
-            return new Sprite(this.shieldSpriteSheet, this.shieldData);
+            return new ObjectSprite(this.shieldSpriteSheet, this.shieldData);
         }
 
         public ISprite Boomerang()
         {
-            return new Sprite(this.boomerangSpriteSheet, this.boomerangData);
+            return new ObjectSprite(this.boomerangSpriteSheet, this.boomerangData);
         }
 
         public ISprite MagicBoomerang()
         {
-            return new Sprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData);
+            return new ObjectSprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData);
         }
 
         public ISprite Bomb()
         {
-            return new Sprite(this.bombSpriteSheet, this.bombData);
+            return new ObjectSprite(this.bombSpriteSheet, this.bombData);
         }
 
         public ISprite Bow()
         {
-            return new Sprite(this.bowSpriteSheet, this.bowData);
+            return new ObjectSprite(this.bowSpriteSheet, this.bowData);
         }
 
         public ISprite Arrow()
         {
-            return new Sprite(this.woodenArrowSpriteSheet, this.woodenArrowData);
+            return new ObjectSprite(this.woodenArrowSpriteSheet, this.woodenArrowData);
         }
 
         public ISprite SilverArrow( )
         {
-            return new Sprite(this.silverArrowSpriteSheet, this.silverArrowData);
+            return new ObjectSprite(this.silverArrowSpriteSheet, this.silverArrowData);
         }
 
         public ISprite RedCandle()
         {
-            return new Sprite(this.redCandleSpriteSheet, this.redCandleData);
+            return new ObjectSprite(this.redCandleSpriteSheet, this.redCandleData);
         }
 
         public ISprite BlueCandle()
         {
-            return new Sprite(this.blueCandleSpriteSheet, this.blueCandleData);
+            return new ObjectSprite(this.blueCandleSpriteSheet, this.blueCandleData);
         }
 
         public ISprite RedRing()
         {
-            return new Sprite(this.redRingSpriteSheet, this.redRingData);
+            return new ObjectSprite(this.redRingSpriteSheet, this.redRingData);
         }
 
         public ISprite BlueRing()
         {
-            return new Sprite(this.blueRingSpriteSheet, this.blueRingData);
+            return new ObjectSprite(this.blueRingSpriteSheet, this.blueRingData);
         }
 
         public ISprite PowerBracelet()
         {
-            return new Sprite(this.powerBraceletSpriteSheet, this.powerBraceletData);
+            return new ObjectSprite(this.powerBraceletSpriteSheet, this.powerBraceletData);
         }
 
         public ISprite Flute()
         {
-            return new Sprite(this.fluteSpriteSheet, this.fluteData);
+            return new ObjectSprite(this.fluteSpriteSheet, this.fluteData);
         }
 
         public ISprite MagicRod()
         {
-            return new Sprite(this.magicRodSpriteSheet, this.magicRodData);
+            return new ObjectSprite(this.magicRodSpriteSheet, this.magicRodData);
         }
 
         public ISprite MagicBook()
         {
-            return new Sprite(this.magicBookSpriteSheet, this.magicBookData);
+            return new ObjectSprite(this.magicBookSpriteSheet, this.magicBookData);
         }
 
         public ISprite Key()
         {
-            return new Sprite(this.keySpriteSheet, this.keyData);
+            return new ObjectSprite(this.keySpriteSheet, this.keyData);
         }
 
         public ISprite MagicKey()
         {
-            return new Sprite(this.magicKeySpriteSheet, this.magicKeyData);
+            return new ObjectSprite(this.magicKeySpriteSheet, this.magicKeyData);
         }
 
         public ISprite Compass()
         {
-            return new Sprite(this.compassSpriteSheet, this.compassData);
+            return new ObjectSprite(this.compassSpriteSheet, this.compassData);
         }
     }
 }
