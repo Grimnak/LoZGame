@@ -32,7 +32,7 @@
 
         public void TransitionRoom(string direction)
         {
-            LoZGame.Instance.GameState = new TransitionRoomState(LoZGame.Instance.Dungeon.CurrentRoom, direction);
+            LoZGame.Instance.GameState = new TransitionRoomState(direction);
         }
 
         public void WinGame()

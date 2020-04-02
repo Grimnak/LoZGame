@@ -205,7 +205,7 @@
     <Compile Include="Rooms\BlockStates\DoorStates\SpecialDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\UnlockedDoorState.cs" />
     <Compile Include="Sprites\LevelOneMasterSprite.cs" />
-    <Compile Include="Sprites\Sprite.cs" />
+    <Compile Include="Sprites\ObjectSprite.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\DeadDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\DownMovingDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\LeftMovingDodongoState.cs" />

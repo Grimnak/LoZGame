@@ -1,20 +1,20 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     public class LevelOneMasterSprite
     {
+        private readonly int screenWidth = LoZGame.Instance.GraphicsDevice.Viewport.X;
+        private readonly int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Y;
         private Texture2D texture;
-        private int screenWidth = LoZGame.Instance.GraphicsDevice.Viewport.X;
-        private int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Y;
         private Rectangle position;
         private int lifeTime;
 
-        public LevelOneMasterSprite(Texture2D texture)
+        public LevelOneMasterSprite(Texture2D texture, Vector2 currentRoomLocation)
         {
             this.texture = texture;
+            this.position = new Rectangle((int)currentRoomLocation.X * screenWidth, (int)currentRoomLocation.Y * screenHeight, screenWidth, screenHeight);
             this.lifeTime = 0;
         }
 
@@ -43,11 +43,6 @@
         {
             Rectangle destination = new Rectangle((int)position.X, (int)position.Y, position.Width, position.Height);
             LoZGame.Instance.SpriteBatch.Draw(texture, destination, tint);
-        }
-
-        public void CurrentPosition(Vector2 currentRoom)
-        {
-            this.position = new Rectangle((int)currentRoom.X * screenWidth, (int)currentRoom.Y * screenHeight, screenWidth, screenHeight);
         }
     }
 }
