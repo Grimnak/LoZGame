@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Audio;
 namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+
     /// <summary>
     /// Attack state for player.
     /// </summary>

@@ -37,7 +37,7 @@
         /// <summary>
         /// Game state for room transitions.
         /// </summary>
-        void TransitionRoom();
+        void TransitionRoom(string direction);
 
         /// <summary>
         /// Updates the current state.

@@ -1,10 +1,9 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class Sprite: ISprite
+    public class ObjectSprite : ISprite
     {
         private Rectangle frame;
         private int totalFrames;
@@ -24,7 +23,7 @@
 
         public int TotalFrames => totalFrames;
 
-        public Sprite(Texture2D texture, SpriteData data)
+        public ObjectSprite(Texture2D texture, SpriteData data)
         {
             this.lifeTime = 0;
             this.FrameDelay = 5;

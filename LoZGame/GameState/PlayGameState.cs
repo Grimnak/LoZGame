@@ -5,7 +5,6 @@
 
     public class PlayGameState : IGameState
     {
-
         public PlayGameState()
         {
 
@@ -31,9 +30,9 @@
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
-        public void TransitionRoom()
+        public void TransitionRoom(string direction)
         {
-            LoZGame.Instance.GameState = new TransitionRoomState();
+            LoZGame.Instance.GameState = new TransitionRoomState(LoZGame.Instance.Dungeon.CurrentRoom, direction);
         }
 
         public void WinGame()
@@ -43,7 +42,6 @@
 
         public void Update()
         {
-            // TODO
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Update();
@@ -55,7 +53,6 @@
 
         public void Draw()
         {
-            // TODO
             if (LoZGame.Instance.Dungeon.CurrentRoomX != 1 || LoZGame.Instance.Dungeon.CurrentRoomY != 1)
             {
                 if (LoZGame.Instance.Dungeon.CurrentRoomX != 0 || LoZGame.Instance.Dungeon.CurrentRoomY != 2)

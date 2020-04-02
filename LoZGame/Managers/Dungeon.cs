@@ -95,7 +95,7 @@
                 // Player moved to bottom side of new room (next to door, next to staircase in basement case).
                 if (this.currentX == 1 && this.currentY == 0)
                 {
-                    this.player.Physics.Bounds = new Microsoft.Xna.Framework.Rectangle(
+                    this.player.Physics.Bounds = new Rectangle(
                         BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5),
                         BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
                         this.player.Physics.Bounds.Width,
@@ -103,7 +103,7 @@
                 }
                 else
                 {
-                    this.player.Physics.Bounds = new Microsoft.Xna.Framework.Rectangle(
+                    this.player.Physics.Bounds = new Rectangle(
                         (int)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                         BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6),
                         this.player.Physics.Bounds.Width,
@@ -128,7 +128,7 @@
                 // Player moved to top side of new room (next to door, top of the ladder in the basement case).
                 if (currentX == 1 && currentY == 1)
                 {
-                    this.player.Physics.Bounds = new Microsoft.Xna.Framework.Rectangle(
+                    this.player.Physics.Bounds = new Rectangle(
                         BlockSpriteFactory.Instance.TileWidth * 4,
                         (BlockSpriteFactory.Instance.TileHeight * 0) + 2,
                         this.player.Physics.Bounds.Width,
@@ -136,7 +136,7 @@
                 }
                 else
                 {
-                    this.player.Physics.Bounds = new Microsoft.Xna.Framework.Rectangle(
+                    this.player.Physics.Bounds = new Rectangle(
                         (int)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                         BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 0) + 2,
                         this.player.Physics.Bounds.Width,
@@ -159,7 +159,7 @@
                 this.LoadNewRoom();
 
                 // Player moved to right side of new room (next to door).
-                this.player.Physics.Bounds = new Microsoft.Xna.Framework.Rectangle(
+                this.player.Physics.Bounds = new Rectangle(
                     BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 11),
                     BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
                     this.player.Physics.Bounds.Width,
@@ -181,7 +181,7 @@
                 this.LoadNewRoom();
 
                 // Player moved to left side of new room (next to door).
-                this.player.Physics.Bounds = new Microsoft.Xna.Framework.Rectangle(
+                this.player.Physics.Bounds = new Rectangle(
                     BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 0) + 6,
                     BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
                     this.player.Physics.Bounds.Width,
