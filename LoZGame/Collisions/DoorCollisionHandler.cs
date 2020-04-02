@@ -17,19 +17,19 @@
             {
                 if (door.Physics.Location == door.LeftScreenLoc)
                 {
-                    LoZGame.Instance.Dungeon.MoveLeft();
+                    LoZGame.Instance.GameState.TransitionRoom("Left");
                 }
                 else if (door.Physics.Location == door.RightScreenLoc)
                 {
-                    LoZGame.Instance.Dungeon.MoveRight();
+                    LoZGame.Instance.GameState.TransitionRoom("Right");
                 }
                 else if (door.Physics.Location == door.DownScreenLoc)
                 {
-                    LoZGame.Instance.Dungeon.MoveDown();
+                    LoZGame.Instance.GameState.TransitionRoom("Down");
                 }
                 else if (door.Physics.Location == door.UpScreenLoc)
                 {
-                    LoZGame.Instance.Dungeon.MoveUp();
+                    LoZGame.Instance.GameState.TransitionRoom("Up");
                 }
             } 
             else if (this.door.State is LockedDoorState && player.HasKey)

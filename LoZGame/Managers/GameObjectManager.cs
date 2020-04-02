@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
     public class GameObjectManager : IManager
     {
-
         private ItemManager itemManager;
         private BlockManager blockManager;
         private EntityManager entityManager;
