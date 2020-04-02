@@ -1434,3 +1434,4 @@ D:\LoZRepo\LoZGame\obj\x86\Debug\LoZGame.csproj.GenerateResource.cache
 C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\pressEnter.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\pressEnter.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\LevelOneMaster.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\LevelOneMaster.xnb

@@ -30,7 +30,6 @@
         private Texture2D backgroundHole;
         private SpriteFont font;
         private SoundEffectsFactory music;
-
         private GameObjectManager gameObjectManager;
 
         private DropManager dropManager;
@@ -113,6 +112,7 @@
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
             ScreenSpriteFactory.Instance.LoadAllTextures(this.Content);
+            GameData.Instance.LoadAllData();
 
             font = Content.Load<SpriteFont>("Text");
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
@@ -123,7 +123,6 @@
         private void StartGame()
         {
             this.GameState = new TitleScreenState();
-            this.GameState.TitleScreen();
         }
 
         protected override void UnloadContent()
