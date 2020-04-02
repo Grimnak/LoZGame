@@ -67,7 +67,6 @@
             }
             */
         }
-        
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
         {

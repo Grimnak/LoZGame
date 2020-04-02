@@ -7,15 +7,20 @@
     {
         private LevelOneMasterSprite sprite;
         private string direction;
-        private int transitionSpeed = 5;
+        private int transitionSpeed;
+        private int lockout;
 
         public TransitionRoomState(string direction)
         {
             this.direction = direction;
+            this.lockout = 0;
+            this.transitionSpeed = 5;
             this.sprite = CreateCorrectLevelSprite();
 
             // Unload everything we have to unload.
-            // Replace with master level for transition and swap back when finished.
+            LoZGame.Instance.GameObjects.Enemies.Clear();
+            LoZGame.Instance.GameObjects.Items.Clear();
+            LoZGame.Instance.GameObjects.Entities.Clear();
         }
 
         public void Death()
@@ -50,7 +55,60 @@
 
         public void Update()
         {
-            this.sprite.Update(direction, transitionSpeed);
+            this.lockout += this.transitionSpeed;
+            switch (this.direction)
+            {
+                case "Up":
+                    if (this.lockout < LoZGame.Instance.GraphicsDevice.Viewport.Height)
+                    {
+                        this.sprite.Update(this.direction, this.transitionSpeed);
+                    }
+                    else
+                    {
+                        LoZGame.Instance.Dungeon.MoveUp();
+                        LoZGame.Instance.GameState.PlayGame();
+                    }
+                    break;
+
+                case "Down":
+                    if (this.lockout < LoZGame.Instance.GraphicsDevice.Viewport.Height)
+                    {
+                        this.sprite.Update(this.direction, this.transitionSpeed);
+                    }
+                    else
+                    {
+                        LoZGame.Instance.Dungeon.MoveDown();
+                        LoZGame.Instance.GameState.PlayGame();
+                    }
+                    break;
+
+                case "Left":
+                    if (this.lockout < LoZGame.Instance.GraphicsDevice.Viewport.Width)
+                    {
+                        this.sprite.Update(this.direction, this.transitionSpeed);
+                    }
+                    else
+                    {
+                        LoZGame.Instance.Dungeon.MoveLeft();
+                        LoZGame.Instance.GameState.PlayGame();
+                    }
+                    break;
+
+                case "Right":
+                    if (this.lockout < LoZGame.Instance.GraphicsDevice.Viewport.Width)
+                    {
+                        this.sprite.Update(this.direction, this.transitionSpeed);
+                    }
+                    else
+                    {
+                        LoZGame.Instance.Dungeon.MoveRight();
+                        LoZGame.Instance.GameState.PlayGame();
+                    }
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         public void Draw()

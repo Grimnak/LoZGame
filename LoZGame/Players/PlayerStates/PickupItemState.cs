@@ -28,7 +28,7 @@ namespace LoZClone
             {
                 LoZGame.Instance.GameState.WinGame();
             }
-            if (item is Key)
+            else if (item is Key)
             {
                 player.HasKey = true;
             }

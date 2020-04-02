@@ -7,7 +7,6 @@
     {
         public PlayGameState()
         {
-
         }
 
         public void Death()
