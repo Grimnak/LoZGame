@@ -32,9 +32,9 @@
                     LoZGame.Instance.GameState.TransitionRoom("Up");
                 }
             } 
-            else if (this.door.State is LockedDoorState && player.HasKey)
+            else if (this.door.State is LockedDoorState && player.Inventory.HasKey())
             {
-                player.HasKey = false;
+                player.Inventory.UseKey();
                 IDoor cousin = FindCousinDoor();
                 cousin.Open();
                 this.door.Open();

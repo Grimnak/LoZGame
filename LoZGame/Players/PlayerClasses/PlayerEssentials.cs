@@ -21,6 +21,8 @@
 
         public HealthManager Health { get; set; }
 
+        public InventoryManager Inventory { get; set; }
+
         public int AnimationSpeed { get; set; }
 
         public int FrameDelay { get; set; }

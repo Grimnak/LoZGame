@@ -21,8 +21,7 @@
         {
             if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.BoomerangOut && !(this.player.State is DieState || this.player.State is PickupItemState || this.player.State is GrabbedState))
             {
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Boomerang, this.player);
+                this.player.Inventory.UseBoomerang();
             }
         }
     }
