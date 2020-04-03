@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System;
     using Microsoft.Xna.Framework;
 
     public class PlayerCollisionHandler : CollisionEssentials
@@ -27,8 +28,12 @@
             }
             else
             {
-                this.DeterminePushbackValues(enemy.Physics, this.player.Physics);
-                this.player.TakeDamage(enemy.Damage);
+                if (!(this.player.State is PickupItemState))
+                {
+                    Console.Write("Colliding with: " + enemy + "\n");
+                    this.DeterminePushbackValues(enemy.Physics, this.player.Physics);
+                    this.player.TakeDamage(enemy.Damage);
+                }
             }
         }
 
@@ -46,6 +51,7 @@
         {
             if (!(this.player.State is PickupItemState))
             {
+                DetermineDirectPushback(player.Physics, projectile.Physics);
                 this.player.TakeDamage(projectile.Damage);
             }
         }

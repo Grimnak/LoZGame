@@ -69,6 +69,7 @@
             this.KnockbackVelocity += this.Friction;
             this.bounds = new Rectangle(this.boundsLocation.ToPoint(), this.bounds.Size);
             this.SetLocation();
+            Console.WriteLine("Physics.HandleKnockBack():  set location of " + this.Bounds + " with " + this.KnockbackVelocity);
         }
 
         public void Accelerate()
@@ -76,7 +77,7 @@
             this.MovementVelocity += this.MovementAcceleration;
         }
 
-        public void Knockback(Vector2 momentum)
+        public void SetKnockback(Vector2 momentum)
         {
             if (IsMoveable)
             {

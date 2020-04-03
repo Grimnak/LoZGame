@@ -7,6 +7,11 @@
 
     public class CollisionEssentials
     {
+        /// <summary>
+        /// Pushes the player back based on relative position of the two colliding objects.
+        /// </summary>
+        /// <param name="source">The object applying the force.</param>
+        /// <param name="target">The object receiving the force.</param>
         public void DeterminePushbackValues(Physics source, Physics target)
         {
             float sourceMomentum = source.GetMomentum();
@@ -17,19 +22,25 @@
             Vector2 knockbackVector = (target.Bounds.Center - source.Bounds.Center).ToVector2();
             knockbackVector.Normalize();
             knockbackVector *= sourceMomentum;
-            Console.WriteLine("Attempted knockback with vector " + knockbackVector.ToString());
-            target.Knockback(knockbackVector);
+            Console.WriteLine("DeterminePushbackValues:  Attempted knockback with vector " + knockbackVector.ToString());
+            target.SetKnockback(knockbackVector);
         }
 
+        /// <summary>
+        /// Pushes the player back based on the direction the source is traveling.
+        /// </summary>
+        /// <param name="source">The object applying the force.</param>
+        /// <param name="target">The object receiving the force.</param>
         public void DetermineDirectPushback(Physics source, Physics target)
         {
+            Vector2 knockbackVector = Vector2.Zero;
             float sourceMomentum = source.GetMomentum();
             if (sourceMomentum < source.Mass)
             {
                 sourceMomentum = source.Mass;
             }
-            Console.WriteLine("Attempted direct knockback with magnitude " + sourceMomentum.ToString());
-            Vector2 knockbackVector = Vector2.Zero;
+            Console.WriteLine("DetermineDirectPushback:  Attempted direct knockback with magnitude " + sourceMomentum.ToString());
+
             switch (source.CurrentDirection)
             {
                 case PhysicsEssentials.Direction.North:
@@ -49,7 +60,7 @@
                     break;
             }
             knockbackVector *= sourceMomentum;
-            target.Knockback(knockbackVector);
+            target.SetKnockback(knockbackVector);
         }
 
         public void ReverseKnockback(Physics target, CollisionDetection.CollisionSide side)
@@ -86,7 +97,6 @@
                 case CollisionDetection.CollisionSide.Top:
                     side = source.Bounds.Top - target.Bounds.Height;
                     target.Bounds = new Rectangle(target.Bounds.X, side, target.Bounds.Width, target.Bounds.Height);
-
                     break;
                 case CollisionDetection.CollisionSide.Bottom:
                     side = source.Bounds.Bottom;
