@@ -1,13 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     public class CosmeticDoorState : IDoorState
     {
         private readonly Door door;
@@ -44,7 +38,6 @@ namespace LoZClone
 
         public void Bombed()
         {
-            Console.WriteLine("Cannot Bomb Normal Door!");
         }
 
         public void Close()
@@ -59,7 +52,6 @@ namespace LoZClone
 
         public void Open()
         {
-            Console.WriteLine("Cannot Open Unlocked Door!");
         }
 
         public void Update()

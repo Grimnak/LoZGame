@@ -76,7 +76,6 @@
             base.OnCollisionResponse(otherCollider, collisionSide);
             if (otherCollider is IDoor)
             {
-                Console.WriteLine("Door Bomba boi");
                 this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }

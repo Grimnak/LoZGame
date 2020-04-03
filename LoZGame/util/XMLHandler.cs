@@ -71,7 +71,7 @@
                             float x = float.Parse(enemy.Attribute("X").Value), y = float.Parse(enemy.Attribute("Y").Value);
                             droom.AddEnemy(x, y, enemy.Value);
                         }
-                        Console.WriteLine("\n-");
+                        // Console.WriteLine("\n-");
                         foreach (XElement trow in rrow)
                         {
                             int tcount = 0; // xml debug
@@ -90,9 +90,9 @@
                                     droom.AddBlock(x, y, types[0], block.Value);
                                 }
                             }
-                            Console.WriteLine("tcount: " + tcount + "\n");
+                            // Console.WriteLine("tcount: " + tcount + "\n");
                         }
-                        Console.WriteLine(); // xml debug
+                        // Console.WriteLine(); // xml debug
                         foreach (XElement node in text)
                         {
                             droom.SetText(node.Value);
