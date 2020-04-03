@@ -8,9 +8,23 @@ namespace LoZClone
 {
     public class InventoryManager
     {
+        public enum ItemType
+        {
+            Bomb,
+            Arrow,
+            SilverArrow,
+            Boomerang,
+            MagicBoomerang,
+            RedCandle,
+            BlueCandle
+        }
+
+
         private static readonly int maxBombs = 8;
 
         private IPlayer player;
+
+        private ItemType selectedItem;
 
         private int numBombs;
         private int numRupees;
@@ -35,6 +49,38 @@ namespace LoZClone
             this.hasSilverArrow = false;
             this.hasRedFlame = false;
             this.hasBlueFlame = false;
+
+            this.selectedItem = ItemType.Bomb;
+        }
+
+        public void UseItem()
+        {
+            switch (this.selectedItem)
+            {
+                case ItemType.Bomb:
+                    this.UseBomb();
+                    break;
+                case ItemType.Arrow:
+                    this.UseArrow();
+                    break;
+                case ItemType.SilverArrow:
+                    this.UseSilverArrow();
+                    break;
+                case ItemType.Boomerang:
+                    this.UseBoomerang();
+                    break;
+                case ItemType.MagicBoomerang:
+                    this.UseMagicBoomerang();
+                    break;
+                case ItemType.RedCandle:
+                    this.UseRedCandle();
+                    break;
+                case ItemType.BlueCandle:
+                    this.UseBlueCandle();
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void GainRupees(int amount)
@@ -95,7 +141,7 @@ namespace LoZClone
 
         public void UseBoomerang()
         {
-            if (this.hasBoomerang)
+            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.BoomerangOut && this.hasBoomerang)
             {
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Boomerang, this.player);
@@ -104,7 +150,7 @@ namespace LoZClone
 
         public void UseMagicBoomerang()
         {
-            if (this.hasMagicBoomerang)
+            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.BoomerangOut && this.hasMagicBoomerang)
             {
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.MagicBoomerang, this.player);
@@ -132,12 +178,14 @@ namespace LoZClone
 
         public void UseBlueCandle()
         {
-            if (this.HasBlueFlame)
+            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.FlameInUse && this.HasBlueFlame)
             {
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.BlueCandle, this.player);
             }
         }
+
+        public ItemType SelectedItem { set { this.selectedItem = value; } }
 
         public int Rupees { get { return this.numRupees; } }
 

@@ -19,10 +19,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            if (!(this.player.State is DieState || this.player.State is PickupItemState || this.player.State is GrabbedState))
-            {
-                this.player.Inventory.UseSilverArrow();
-            }
+            this.player.Inventory.SelectedItem = InventoryManager.ItemType.SilverArrow;
         }
     }
 }

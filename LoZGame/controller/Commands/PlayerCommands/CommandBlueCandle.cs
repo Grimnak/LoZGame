@@ -18,10 +18,7 @@
 
         public void Execute()
         {
-            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.FlameInUse && !(this.player.State is DieState || this.player.State is PickupItemState || this.player.State is GrabbedState))
-            {
-                this.player.Inventory.UseBlueCandle();
-            }
+            this.player.Inventory.SelectedItem = InventoryManager.ItemType.BlueCandle;
         }
     }
 }
