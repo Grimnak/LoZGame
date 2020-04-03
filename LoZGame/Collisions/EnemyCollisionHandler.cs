@@ -35,21 +35,6 @@
             {
                 ((OldMan)this.enemy).ShootFireballs();
             }
-            if (!(this.enemy is OldMan || this.enemy is Merchant || this.enemy is SpikeCross))
-            {
-                if (!(projectile is BoomerangProjectile) && !(projectile is MagicBoomerangProjectile))
-                {
-                    if (this.enemy.DamageTimer > 0)
-                    {
-                        Console.WriteLine("Attempted direct knockback from projectile ith direction " + projectile.Physics.CurrentDirection.ToString());
-                        DetermineDirectPushback(projectile.Physics, this.enemy.Physics);
-                    }
-                }
-                else
-                {
-                    this.enemy.Stun(projectile.StunDuration);
-                }
-            }
             if (!(projectile is SwordBeamExplosion) && !(projectile is BombProjectile) && !(projectile is MagicBoomerangProjectile) && !(projectile is BoomerangProjectile))
             {
                 this.enemy.TakeDamage(projectile.Damage);

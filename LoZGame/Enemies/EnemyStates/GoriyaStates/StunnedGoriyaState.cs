@@ -13,9 +13,9 @@
         public StunnedGoriyaState(Goriya goriya, IEnemyState oldState, int stunTime)
         {
             this.oldState = oldState;
+            this.goriya = goriya;
             this.oldVelocity = this.goriya.Physics.MovementVelocity;
             this.goriya.Physics.MovementVelocity = Vector2.Zero;
-            this.goriya = goriya;
             stunDuration = stunTime;
             goriya.CurrentTint = LoZGame.Instance.DungeonTint;
         }
