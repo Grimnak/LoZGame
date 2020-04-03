@@ -120,6 +120,7 @@
         {
             this.CollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
+
         public virtual void Update()
         {
             this.Physics.Move();

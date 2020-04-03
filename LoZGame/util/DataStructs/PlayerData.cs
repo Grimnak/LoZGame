@@ -10,7 +10,6 @@ namespace LoZClone
         private const float PlayerRedRes = 2;
         private const float PlayerBlueRes = 4;
 
-
         public float PlayerSpeed => PlayerSpd;
 
         public float PlayerGreenResistance => PlayerGreenRes;

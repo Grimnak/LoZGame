@@ -9,7 +9,7 @@
         private int currentDungeon;
         private static int maxDungeon = 1;
         private int lockout;
-        private int lockoutMax = 200; //verify
+        private int lockoutMax = 200; // verify
 
         public WinGameState()
         {

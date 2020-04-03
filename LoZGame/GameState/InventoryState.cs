@@ -7,7 +7,7 @@
     {
         public InventoryState()
         {
-
+            // No need to change.
         }
 
         public void Death()

@@ -37,7 +37,7 @@
             if (item.PickUpItemTime >= 0)
             {
                 item.Physics.Location = new Vector2(player.Physics.Location.X + 5, player.Physics.Location.Y - 45);
-                item.Physics.Bounds = new Rectangle(new Point((int)item.Physics.Location.X, (int)item.Physics.Location.Y), new Point(0,0));
+                item.Physics.Bounds = new Rectangle(new Point((int)item.Physics.Location.X, (int)item.Physics.Location.Y), new Point(0, 0));
                 this.player.State = new PickupItemState(player, item);
             }
         }

@@ -15,7 +15,7 @@
             this.dragon = dragon;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.dragon.CurrentState = this;
-            this.dragon.Physics.Bounds = new Rectangle(dragon.Physics.Bounds.Location, Point.Zero); ;
+            this.dragon.Physics.Bounds = new Rectangle(dragon.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.dragon.Physics.Location);
             this.dragon.Physics.MovementVelocity = Vector2.Zero;
         }

@@ -31,7 +31,6 @@
 
         public EnemyResistanceData EnemyResistanceData => enemyResData;
 
-
         private static readonly GameData InstanceValue = new GameData();
 
         public static GameData Instance => InstanceValue;

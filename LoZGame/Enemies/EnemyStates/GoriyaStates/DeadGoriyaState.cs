@@ -15,7 +15,7 @@
             this.goriya = goriya;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.goriya.CurrentState = this;
-            this.goriya.Physics.Bounds = new Rectangle(goriya.Physics.Bounds.Location, Point.Zero); ;
+            this.goriya.Physics.Bounds = new Rectangle(goriya.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.goriya.Physics.Location);
             this.goriya.Physics.MovementVelocity = Vector2.Zero;
         }
