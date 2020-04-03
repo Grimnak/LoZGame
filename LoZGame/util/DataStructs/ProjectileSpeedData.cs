@@ -5,6 +5,5 @@ namespace LoZClone
 
     public struct ProjectileSpeedData
     {
-
     }
 }

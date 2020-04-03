@@ -88,7 +88,6 @@
                                 else
                                 {
                                     droom.AddBlock(x, y, types[0], block.Value);
-                                    //Console.Write("block: " + block.Value + " type: " + block.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + block.Attribute("idx").Value + " \n"); // xml debug
                                 }
                             }
                             Console.WriteLine("tcount: " + tcount + "\n");

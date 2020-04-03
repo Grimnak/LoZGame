@@ -9,7 +9,6 @@
         private Vector2 FlameOneLoc;
         private Vector2 FlameTwoLoc;
 
-
         public EntityManager EntityManager { get; set; }
 
         public OldMan(Vector2 location)

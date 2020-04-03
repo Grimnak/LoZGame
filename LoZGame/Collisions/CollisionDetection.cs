@@ -90,7 +90,8 @@
                 if (item is Fairy)
                 {
                     CheckBorders(item, ItemSpriteFactory.FairyWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.FairyHeight * ItemSpriteFactory.Instance.Scale);
-                } else
+                } 
+                else
                 {
                     CheckCollisions<IProjectile>(item, projectiles);
                 }

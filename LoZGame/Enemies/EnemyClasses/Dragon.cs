@@ -16,6 +16,7 @@
             this.Health = new HealthManager(32);
             this.Physics = new Physics(location);
             this.Physics.Mass = 10;
+            this.Physics.IsMoveable = false;
             this.EntityManager = LoZGame.Instance.GameObjects.Entities;
             this.CurrentState = new LeftMovingDragonState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));

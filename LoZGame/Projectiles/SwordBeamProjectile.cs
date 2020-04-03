@@ -7,6 +7,7 @@
     {
         private static readonly int drawDelay = LoZGame.Instance.UpdateSpeed / 4;
         private int lifeTime;
+
         public SwordBeamProjectile(Physics source)
         {
             this.SetUp(this);
@@ -44,10 +45,22 @@
         {
             int explosionType = LoZGame.Instance.GameObjects.Entities.ExplosionManager.SwordExplosion;
             Vector2 explosionLoc = Vector2.Zero;
-            if (this.Physics.CurrentDirection == Physics.Direction.North) { explosionLoc = new Vector2(this.Physics.Bounds.Left + (this.Width / 2), this.Physics.Bounds.Top); }
-            else if (this.Physics.CurrentDirection == Physics.Direction.South) { explosionLoc = new Vector2(this.Physics.Bounds.Left + (this.Width / 2), this.Physics.Bounds.Bottom); }
-            else if (this.Physics.CurrentDirection == Physics.Direction.West) { explosionLoc = new Vector2(this.Physics.Bounds.Left, this.Physics.Bounds.Top + (this.Heigth / 2)); }
-            else if (this.Physics.CurrentDirection == Physics.Direction.East) { explosionLoc = new Vector2(this.Physics.Bounds.Right, this.Physics.Bounds.Top + (this.Heigth / 2)); }
+            if (this.Physics.CurrentDirection == Physics.Direction.North) 
+            { 
+                explosionLoc = new Vector2(this.Physics.Bounds.Left + (this.Width / 2), this.Physics.Bounds.Top); 
+            }
+            else if (this.Physics.CurrentDirection == Physics.Direction.South) 
+            { 
+                explosionLoc = new Vector2(this.Physics.Bounds.Left + (this.Width / 2), this.Physics.Bounds.Bottom); 
+            }
+            else if (this.Physics.CurrentDirection == Physics.Direction.West) 
+            { 
+                explosionLoc = new Vector2(this.Physics.Bounds.Left, this.Physics.Bounds.Top + (this.Heigth / 2)); 
+            }
+            else if (this.Physics.CurrentDirection == Physics.Direction.East) 
+            {
+                explosionLoc = new Vector2(this.Physics.Bounds.Right, this.Physics.Bounds.Top + (this.Heigth / 2)); 
+            }
             LoZGame.Instance.GameObjects.Entities.ExplosionManager.AddExplosion(explosionType, explosionLoc);
         }
 

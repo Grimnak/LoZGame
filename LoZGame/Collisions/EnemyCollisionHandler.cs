@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System;
 
     public class EnemyCollisionHandler : CollisionEssentials
     {
@@ -40,7 +41,8 @@
                 {
                     if (this.enemy.DamageTimer > 0)
                     {
-                        DetermineDirectPushback(this.enemy.Physics, projectile.Physics);
+                        Console.WriteLine("Attempted direct knockback from projectile ith direction " + projectile.Physics.CurrentDirection.ToString());
+                        DetermineDirectPushback(projectile.Physics, this.enemy.Physics);
                     }
                 }
                 else
@@ -59,7 +61,8 @@
             if (collisionSide == CollisionDetection.CollisionSide.Top || collisionSide == CollisionDetection.CollisionSide.Bottom)
             {
                 this.enemy.Physics.MovementVelocity = new Vector2(this.enemy.Physics.MovementVelocity.X, this.enemy.Physics.MovementVelocity.Y * -1);
-            } else
+            } 
+            else
             {
                 this.enemy.Physics.MovementVelocity = new Vector2(this.enemy.Physics.MovementVelocity.X * -1, this.enemy.Physics.MovementVelocity.Y);
             }

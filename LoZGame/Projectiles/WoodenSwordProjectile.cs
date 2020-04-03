@@ -23,11 +23,11 @@
             this.lifeTime = 0;
             if (source.CurrentColor.Equals("Red"))
             {
-                //this.Sprite = ProjectileSpriteFactory.Instance.RedWoodSword();
+                // this.Sprite = ProjectileSpriteFactory.Instance.RedWoodSword();
             }
             else if (source.CurrentColor.Equals("Blue"))
             {
-                //this.Sprite = ProjectileSpriteFactory.Instance.BlueWoodSword();
+                // this.Sprite = ProjectileSpriteFactory.Instance.BlueWoodSword();
             }
             else
             {

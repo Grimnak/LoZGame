@@ -9,8 +9,7 @@
         private readonly Keese keese;
         private readonly ISprite sprite;
         private int lifeTime = 0;
-        private int accelerationMax = 5;
-        
+        private int accelerationMax = 5;        
         
         private int directionChange;
         private RandomStateGenerator randomStateGenerator;
