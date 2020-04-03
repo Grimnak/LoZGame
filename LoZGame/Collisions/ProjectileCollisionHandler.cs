@@ -3,7 +3,7 @@
     using System;
     using Microsoft.Xna.Framework;
 
-    public class ProjectileCollisionHandler
+    public class ProjectileCollisionHandler : CollisionEssentials
     {
         private IProjectile projectile;
 
@@ -72,30 +72,7 @@
             }
             else if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile || this.projectile is BombProjectile)
             {
-                if (collisionSide == CollisionDetection.CollisionSide.Right)
-                {
-                    int side = LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10;
-                    this.projectile.Physics.Bounds = new Rectangle(side, this.projectile.Physics.Bounds.Y, this.projectile.Physics.Bounds.Width, this.projectile.Physics.Bounds.Height);
-                    this.projectile.Physics.StopMotionX();
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Left)
-                {
-                    int side = BlockSpriteFactory.Instance.HorizontalOffset;
-                    this.projectile.Physics.Bounds = new Rectangle(side, this.projectile.Physics.Bounds.Y, this.projectile.Physics.Bounds.Width, this.projectile.Physics.Bounds.Height);
-                    this.projectile.Physics.StopMotionX();
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
-                {
-                    int side = LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight;
-                    this.projectile.Physics.Bounds = new Rectangle(this.projectile.Physics.Bounds.X, side, this.projectile.Physics.Bounds.Width, this.projectile.Physics.Bounds.Height);
-                    this.projectile.Physics.StopMotionY();
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Top)
-                {
-                    int side = BlockSpriteFactory.Instance.VerticalOffset;
-                    this.projectile.Physics.Bounds = new Rectangle(this.projectile.Physics.Bounds.X, side, this.projectile.Physics.Bounds.Width, this.projectile.Physics.Bounds.Height);
-                    this.projectile.Physics.StopMotionY();
-                }
+                this.SetRoomBounds(this.projectile.Physics, collisionSide);
                 this.projectile.Physics.SetLocation();
             }
             else if (this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)

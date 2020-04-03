@@ -1,140 +1,129 @@
 ﻿namespace LoZClone
 {
     using System;
-    using System.Collections.ObjectModel;
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
-    public partial class CollisionDetection
+    public class CollisionEssentials
     {
-        public enum CollisionSide
+        public void DeterminePushbackValues(Physics source, Physics target)
         {
-            None,
-            Left,
-            Right,
-            Top,
-            Bottom
+            float sourceMomentum = source.GetMomentum().Length();
+            if (sourceMomentum < 1)
+            {
+                sourceMomentum = source.Mass;
+            }
+            Vector2 knockbackVector = (target.Bounds.Center - source.Bounds.Center).ToVector2();
+            knockbackVector *= sourceMomentum;
+            target.Knockback(knockbackVector);
         }
 
-        private bool CheckCollisions<T>(ICollider sourceCollider, ReadOnlyCollection<T> targetColliders)
+        public void DetermineDirectPushback(Physics source, Physics target)
         {
-            ICollider targetCollider = null;
-            CollisionSide biggestSourceSide = CollisionSide.None;
-            CollisionSide biggestTargetSide = CollisionSide.None;
-            float biggestOverlapArea = 0;
-            bool currentlyColliding;
-
-            // Identify largest collision in case of multiple occurring at once.
-            foreach (ICollider collider in targetColliders)
+            float sourceMomentum = source.GetMomentum().Length();
+            if (sourceMomentum < source.Mass)
             {
-                CollisionSide sourceSide = GetCollisionSide(sourceCollider.Physics.Bounds, collider.Physics.Bounds);
-                CollisionSide targetSide = GetCollisionSide(collider.Physics.Bounds, sourceCollider.Physics.Bounds);
-                Rectangle overlap = Rectangle.Intersect(sourceCollider.Physics.Bounds, collider.Physics.Bounds);
-                float overlapArea = overlap.Width * overlap.Height;
-                if (overlapArea > biggestOverlapArea)
-                {
-                    biggestOverlapArea = overlapArea;
-                    targetCollider = collider;
-                    biggestSourceSide = sourceSide;
-                    biggestTargetSide = targetSide;
-                }
+                sourceMomentum = source.Mass;
             }
-
-            // Handle each collision appropriately.
-            if (targetCollider != null && biggestSourceSide != CollisionSide.None && biggestTargetSide != CollisionSide.None)
+            switch (source.CurrentDirection)
             {
-                sourceCollider.OnCollisionResponse(targetCollider, biggestSourceSide);
-                targetCollider.OnCollisionResponse(sourceCollider, biggestTargetSide);
-                currentlyColliding = true;
+                case Physics.Direction.North:
+                    target.Knockback(new Vector2(0, -1) * sourceMomentum);
+                    break;
+                case Physics.Direction.South:
+                    target.Knockback(new Vector2(0, 1) * sourceMomentum);
+                    break;
+                case Physics.Direction.East:
+                    target.Knockback(new Vector2(1, 0) * sourceMomentum);
+                    break;
+                case Physics.Direction.West:
+                    target.Knockback(new Vector2(-1, 0) * sourceMomentum);
+                    break;
+            }
+        }
+
+        public void ReverseKnockback(Physics target, CollisionDetection.CollisionSide side)
+        {
+            if (side == CollisionDetection.CollisionSide.Top || side == CollisionDetection.CollisionSide.Bottom)
+            {
+                target.KnockbackVelocity = new Vector2(target.KnockbackVelocity.X, target.KnockbackVelocity.Y * -1);
+            } else
+            {
+                target.KnockbackVelocity = new Vector2(target.KnockbackVelocity.X * -1, target.KnockbackVelocity.Y);
+            }
+        }
+
+        public void ReverseMovement(Physics target, CollisionDetection.CollisionSide side)
+        {
+            if (side == CollisionDetection.CollisionSide.Top || side == CollisionDetection.CollisionSide.Bottom)
+            {
+                target.MovementVelocity = new Vector2(target.MovementVelocity.X, target.MovementVelocity.Y * -1);
             }
             else
             {
-                currentlyColliding = false;
+                target.MovementVelocity = new Vector2(target.MovementVelocity.X * -1, target.MovementVelocity.Y);
             }
-
-            return currentlyColliding;
         }
 
-        private CollisionSide GetCollisionSide(Rectangle sourceRectangle, Rectangle targetRectangle)
+        public void SetBlockBounds(Physics source, Physics target, CollisionDetection.CollisionSide collisionSide)
         {
-            CollisionSide sourceCollisionSide;
-
-            float avgWidth = 0.5f * (sourceRectangle.Width + targetRectangle.Width);
-            float avgHeight = 0.5f * (sourceRectangle.Height + targetRectangle.Height);
-            float xDistance = sourceRectangle.Center.X - targetRectangle.Center.X;
-            float yDistance = sourceRectangle.Center.Y - targetRectangle.Center.Y;
-
-            if (targetRectangle.IsEmpty || sourceRectangle.IsEmpty || Math.Abs(xDistance) > avgWidth || Math.Abs(yDistance) > avgHeight)
+            int side = 0;
+            switch (collisionSide)
             {
-                sourceCollisionSide = CollisionSide.None;
-            }
-            else
-            {
-                float yWidth = avgWidth * yDistance;
-                float xHeight = avgHeight * xDistance;
+                case CollisionDetection.CollisionSide.Top:
+                    side = source.Bounds.Top - target.Bounds.Height;
+                    target.Bounds = new Rectangle(target.Bounds.X, side, target.Bounds.Width, target.Bounds.Height);
 
-                if (yWidth > xHeight)
-                    sourceCollisionSide = (yWidth > -xHeight) ? CollisionSide.Top : CollisionSide.Right;
-                else
-                    sourceCollisionSide = (yWidth > -xHeight) ? CollisionSide.Left : CollisionSide.Bottom;
+                    break;
+                case CollisionDetection.CollisionSide.Bottom:
+                    side = source.Bounds.Bottom;
+                    target.Bounds = new Rectangle(target.Bounds.X, side, target.Bounds.Width, target.Bounds.Height);
+                    break;
+                case CollisionDetection.CollisionSide.Left:
+                    side = source.Bounds.Left - target.Bounds.Width;
+                    target.Bounds = new Rectangle(side, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
+                    break;
+                case CollisionDetection.CollisionSide.Right:
+                    side = source.Bounds.Right;
+                    target.Bounds = new Rectangle(side, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
+                    break;
+                default:
+                    break;
             }
-
-            return sourceCollisionSide;
+            this.ReverseKnockback(target, collisionSide);
+            target.SetLocation();
         }
 
-        private void CheckBorders(ICollider sourceCollider, int sourceWidth, int sourceHeight)
+        public void SetRoomBounds(Physics target, CollisionDetection.CollisionSide collisionSide)
         {
-            // Check borders for all rooms except basement
-            if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
+            int verticalOffset = 0, rightOffset = 0, leftOffset = 0;
+            if (LoZGame.Instance.Dungeon.CurrentRoomX != 1 || LoZGame.Instance.Dungeon.CurrentRoomY != 1)
             {
-                // is right wall
-                if (sourceCollider.Physics.Bounds.Right > LoZGame.Instance.GraphicsDevice.Viewport.Width - BlockSpriteFactory.Instance.HorizontalOffset + 10)
-                {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
-                }
-                // is left wall
-                else if (sourceCollider.Physics.Bounds.Left < BlockSpriteFactory.Instance.HorizontalOffset)
-                {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Left);
-                }
+                verticalOffset = BlockSpriteFactory.Instance.VerticalOffset;
+                rightOffset = BlockSpriteFactory.Instance.HorizontalOffset + 10;
+                leftOffset = BlockSpriteFactory.Instance.HorizontalOffset;
+            }
 
-                // is bottom wall
-                if (sourceCollider.Physics.Bounds.Bottom > LoZGame.Instance.GraphicsDevice.Viewport.Height - BlockSpriteFactory.Instance.VerticalOffset)
-                {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
-                }
-                // is top wall
-                else if (sourceCollider.Physics.Bounds.Top < BlockSpriteFactory.Instance.VerticalOffset)
-                {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
-                }
-            }
-            // Check borders for basement exception
-            else
+            switch (collisionSide)
             {
-                if (sourceCollider.Physics.Location.Y < 0)
-                {
-                    if (sourceCollider is IPlayer)
-                    {
-                        dungeon.MoveUp();
-                    }
-                    else
-                    {
-                        sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
-                    }
-                }
-                else if (sourceCollider.Physics.Location.Y > LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight)
-                {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
-                }
-                else if (sourceCollider.Physics.Location.X < 0)
-                {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Left);
-                }
-                else if (sourceCollider.Physics.Location.X > LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth)
-                {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
-                }
+                case CollisionDetection.CollisionSide.Top:
+                    target.Bounds = new Rectangle(target.Bounds.X, verticalOffset, target.Bounds.Width, target.Bounds.Height);
+                    break;
+                case CollisionDetection.CollisionSide.Bottom:
+                    target.Bounds = new Rectangle(target.Bounds.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - target.Bounds.Height - verticalOffset, target.Bounds.Width, target.Bounds.Height);
+                    break;
+                case CollisionDetection.CollisionSide.Left:
+                    target.Bounds = new Rectangle(leftOffset, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
+                    break;
+                case CollisionDetection.CollisionSide.Right:
+                    target.Bounds = new Rectangle(LoZGame.Instance.GraphicsDevice.Viewport.Width - target.Bounds.Width - rightOffset, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
+                    break;
+                default:
+                    break;
             }
+            this.ReverseKnockback(target, collisionSide);
+            target.SetLocation();
         }
     }
 }

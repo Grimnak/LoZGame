@@ -14,7 +14,7 @@
         {
             this.gel = gel;
             this.gel.CurrentState = this;
-            this.gel.Physics.Bounds = Rectangle.Empty;
+            this.gel.Physics.Bounds = new Rectangle(gel.Physics.Bounds.Location, Point.Zero);
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             LoZGame.Instance.Drops.AttemptDrop(this.gel.Physics.Location);
             this.gel.Physics.MovementVelocity = Vector2.Zero;

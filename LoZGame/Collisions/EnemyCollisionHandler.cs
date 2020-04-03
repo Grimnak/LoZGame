@@ -2,7 +2,7 @@
 {
     using Microsoft.Xna.Framework;
 
-    public class EnemyCollisionHandler
+    public class EnemyCollisionHandler : CollisionEssentials
     {
         private IEnemy enemy;
         private float xDirection;
@@ -38,7 +38,10 @@
             {
                 if (!(projectile is BoomerangProjectile) && !(projectile is MagicBoomerangProjectile))
                 {
-                    DetermineDirectPushback(projectile.Physics);
+                    if (this.enemy.DamageTimer > 0)
+                    {
+                        DetermineDirectPushback(this.enemy.Physics, projectile.Physics);
+                    }
                 }
                 else
                 {
@@ -48,29 +51,6 @@
             if (!(projectile is SwordBeamExplosion) && !(projectile is BombProjectile) && !(projectile is MagicBoomerangProjectile) && !(projectile is BoomerangProjectile))
             {
                 this.enemy.TakeDamage(projectile.Damage);
-            }
-        }
-
-        private void DetermineDirectPushback(Physics source)
-        {
-            if (this.enemy.DamageTimer <= 0)
-            {
-                float sourceMomentum = source.GetMomentum().Length();
-                switch (source.CurrentDirection)
-                {
-                    case Physics.Direction.North:
-                        this.enemy.Physics.SetForce(new Vector2(0, -1) * sourceMomentum, new Vector2(0, -1) * Acceleration);
-                        break;
-                    case Physics.Direction.South:
-                        this.enemy.Physics.SetForce(new Vector2(0, 1) * sourceMomentum, new Vector2(0, -1) * Acceleration);
-                        break;
-                    case Physics.Direction.East:
-                        this.enemy.Physics.SetForce(new Vector2(1, 0) * sourceMomentum, new Vector2(0, -1) * Acceleration);
-                        break;
-                    case Physics.Direction.West:
-                        this.enemy.Physics.SetForce(new Vector2(-1, 0) * sourceMomentum, new Vector2(0, -1) * Acceleration);
-                        break;
-                }
             }
         }
 
@@ -89,66 +69,13 @@
         {
             if (this.enemy is Keese)
             {
-                this.ReverseVelocity(collisionSide);
-            }
-            else if (LoZGame.Instance.Dungeon.CurrentRoomX != 1 || LoZGame.Instance.Dungeon.CurrentRoomY != 1)
-            {
-                if (collisionSide == CollisionDetection.CollisionSide.Right)
-                {
-                    this.enemy.Physics.Bounds = new Rectangle(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, this.enemy.Physics.Bounds.Y, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
-                    this.enemy.Physics.StopMotionX();
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Left)
-                {
-                    this.enemy.Physics.Bounds = new Rectangle(BlockSpriteFactory.Instance.HorizontalOffset, this.enemy.Physics.Bounds.Y, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
-                    this.enemy.Physics.StopMotionX();
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
-                {
-                    this.enemy.Physics.Bounds = new Rectangle(this.enemy.Physics.Bounds.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
-                    this.enemy.Physics.StopMotionY();
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Top)
-                {
-                    this.enemy.Physics.Bounds = new Rectangle(this.enemy.Physics.Bounds.X, BlockSpriteFactory.Instance.VerticalOffset, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
-                    this.enemy.Physics.StopMotionY();
-                }
+                this.ReverseMovement(this.enemy.Physics, collisionSide);
             }
             else
             {
-                if (collisionSide == CollisionDetection.CollisionSide.Right)
-                {
-                    this.enemy.Physics.Bounds = new Rectangle(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth, this.enemy.Physics.Bounds.Y, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
-                    this.enemy.Physics.StopMotionX();
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Left)
-                {
-                    this.enemy.Physics.Bounds = new Rectangle(0, this.enemy.Physics.Bounds.Y, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
-                    this.enemy.Physics.StopMotionX();
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
-                {
-                    this.enemy.Physics.Bounds = new Rectangle(this.enemy.Physics.Bounds.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
-                    this.enemy.Physics.StopMotionY();
-                }
-                else if (collisionSide == CollisionDetection.CollisionSide.Top)
-                {
-                    this.enemy.Physics.Bounds = new Rectangle(this.enemy.Physics.Bounds.X, 0, this.enemy.Physics.Bounds.Width, this.enemy.Physics.Bounds.Height);
-                    this.enemy.Physics.StopMotionY();
-                }
+                this.SetRoomBounds(this.enemy.Physics, collisionSide);
             }
-            this.enemy.Physics.SetLocation();
             
-        }
-
-        private void DeterminePushbackValues(Vector2 momentum)
-        {
-            if (this.enemy.DamageTimer <= 0)
-            {
-                Vector2 friction = new Vector2(momentum.X / momentum.Length(), momentum.Y / momentum.Length());
-                friction *= Acceleration;
-                this.enemy.Physics.SetForce(momentum, friction);
-            }
         }
     }
 }

@@ -44,35 +44,35 @@
             switch (this.currentDirection)
             {
                 case Direction.North:
-                    this.Physics.ForceVelocity = new Vector2(0, -1);
+                    this.Physics.KnockbackVelocity = new Vector2(0, -1);
                     break;
 
                 case Direction.South:
-                    this.Physics.ForceVelocity = new Vector2(0, 1);
+                    this.Physics.KnockbackVelocity = new Vector2(0, 1);
                     break;
 
                 case Direction.East:
-                    this.Physics.ForceVelocity = new Vector2(1, 0);
+                    this.Physics.KnockbackVelocity = new Vector2(1, 0);
                     break;
 
                 case Direction.West:
-                    this.Physics.ForceVelocity = new Vector2(-1, 0);
+                    this.Physics.KnockbackVelocity = new Vector2(-1, 0);
                     break;
 
                 case Direction.NorthEast:
-                    this.Physics.ForceVelocity = new Vector2(0.727f, -0.727f);
+                    this.Physics.KnockbackVelocity = new Vector2(0.727f, -0.727f);
                     break;
 
                 case Direction.NorthWest:
-                    this.Physics.ForceVelocity = new Vector2(-0.727f, -0.727f);
+                    this.Physics.KnockbackVelocity = new Vector2(-0.727f, -0.727f);
                     break;
 
                 case Direction.SouthEast:
-                    this.Physics.ForceVelocity = new Vector2(0.727f, 0.727f);
+                    this.Physics.KnockbackVelocity = new Vector2(0.727f, 0.727f);
                     break;
 
                 case Direction.SouthWest:
-                    this.Physics.ForceVelocity = new Vector2(-0.727f, 0.727f);
+                    this.Physics.KnockbackVelocity = new Vector2(-0.727f, 0.727f);
                     break;
 
                 default:

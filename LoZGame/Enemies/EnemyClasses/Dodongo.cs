@@ -8,7 +8,7 @@
         {
             this.Health = new HealthManager(32);
             this.Physics = new Physics(location);
-            this.Physics.Mass = -1;
+            this.Physics.Mass = 10;
             this.CurrentState = new LeftMovingDodongoState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);

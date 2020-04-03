@@ -15,7 +15,7 @@
             this.zol = zol;
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.zol.CurrentState = this;
-            this.zol.Physics.Bounds = Rectangle.Empty;
+            this.zol.Physics.Bounds = new Rectangle(zol.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.zol.Physics.Location);
             this.zol.Physics.MovementVelocity = Vector2.Zero;
         }

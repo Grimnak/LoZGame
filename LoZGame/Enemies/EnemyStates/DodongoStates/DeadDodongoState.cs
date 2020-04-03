@@ -14,7 +14,7 @@
         {
             this.dodongo = dodongo;
             this.dodongo.CurrentState = this;
-            this.dodongo.Physics.Bounds = Rectangle.Empty;
+            this.dodongo.Physics.Bounds = new Rectangle(dodongo.Physics.Bounds.Location, Point.Zero);
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             LoZGame.Instance.Drops.AttemptDrop(this.dodongo.Physics.Location);
             this.dodongo.Physics.MovementVelocity = Vector2.Zero;

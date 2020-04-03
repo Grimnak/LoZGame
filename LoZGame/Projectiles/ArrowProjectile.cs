@@ -15,6 +15,7 @@ namespace LoZClone
             this.Width = ProjectileSpriteFactory.Instance.ArrowWidth;
             this.Heigth = ProjectileSpriteFactory.Instance.ArrowHeight;
             this.Offset = this.Heigth / 2;
+            this.Physics.Mass = 10;
             this.Speed = 5;
             this.Damage = 2;
             this.Source = source;

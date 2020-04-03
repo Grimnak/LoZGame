@@ -65,6 +65,10 @@
             if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
             {
                 this.DamageTimer--;
+                if (this.DamageTimer > 25)
+                {
+                    this.Physics.HandleKnockBack();
+                }
                 if (this.DamageTimer % 10 > 5)
                 {
                     this.CurrentTint = Color.DarkSlateGray;
