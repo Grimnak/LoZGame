@@ -5,8 +5,8 @@
 
     public class LevelOneMasterSprite
     {
-        private readonly int screenWidth = LoZGame.Instance.GraphicsDevice.Viewport.X;
-        private readonly int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Y;
+        private readonly int screenWidth = LoZGame.Instance.GraphicsDevice.Viewport.Width;
+        private readonly int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Height;
         private Texture2D texture;
         private Rectangle position;
 
@@ -38,8 +38,9 @@
 
         public void Draw(Color tint) 
         {
-            Rectangle destination = new Rectangle((int)position.X, (int)position.Y, position.Width, position.Height);
-            LoZGame.Instance.SpriteBatch.Draw(this.texture, destination, tint);
+            // Rectangle destination = new Rectangle((int)position.X, (int)position.Y, position.Width, position.Height);
+            Rectangle destination = new Rectangle(0, 0, screenWidth, screenHeight);
+            LoZGame.Instance.SpriteBatch.Draw(this.texture, destination, position, tint);
         }
     }
 }
