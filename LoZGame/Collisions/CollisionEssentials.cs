@@ -57,7 +57,8 @@
             if (side == CollisionDetection.CollisionSide.Top || side == CollisionDetection.CollisionSide.Bottom)
             {
                 target.KnockbackVelocity = new Vector2(target.KnockbackVelocity.X, target.KnockbackVelocity.Y * -1);
-            } else
+            } 
+            else
             {
                 target.KnockbackVelocity = new Vector2(target.KnockbackVelocity.X * -1, target.KnockbackVelocity.Y);
             }
@@ -106,12 +107,11 @@
 
         public void SetRoomBounds(Physics target, CollisionDetection.CollisionSide collisionSide)
         {
-            int verticalOffset = 0, rightOffset = 0, leftOffset = 0;
+            int verticalOffset = 0, horizontalOffset = 0;
             if (LoZGame.Instance.Dungeon.CurrentRoomX != 1 || LoZGame.Instance.Dungeon.CurrentRoomY != 1)
             {
                 verticalOffset = BlockSpriteFactory.Instance.VerticalOffset;
-                rightOffset = BlockSpriteFactory.Instance.HorizontalOffset + 10;
-                leftOffset = BlockSpriteFactory.Instance.HorizontalOffset;
+                horizontalOffset = BlockSpriteFactory.Instance.HorizontalOffset;
             }
 
             switch (collisionSide)
@@ -123,10 +123,10 @@
                     target.Bounds = new Rectangle(target.Bounds.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - target.Bounds.Height - verticalOffset, target.Bounds.Width, target.Bounds.Height);
                     break;
                 case CollisionDetection.CollisionSide.Left:
-                    target.Bounds = new Rectangle(leftOffset, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
+                    target.Bounds = new Rectangle(horizontalOffset, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
                     break;
                 case CollisionDetection.CollisionSide.Right:
-                    target.Bounds = new Rectangle(LoZGame.Instance.GraphicsDevice.Viewport.Width - target.Bounds.Width - rightOffset, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
+                    target.Bounds = new Rectangle(LoZGame.Instance.GraphicsDevice.Viewport.Width - target.Bounds.Width - horizontalOffset + 10, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
                     break;
                 default:
                     break;

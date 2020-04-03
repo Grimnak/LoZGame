@@ -100,7 +100,7 @@
 
         /// <summary>
         /// temporaray method just to correct swordbeam and arrow until i caan find a better solution
-        /// TODO: Find a way to remove this method
+        /// TODO: Find a way to remove this method.
         /// </summary>
         public void CorrectProjectile()
         {

@@ -391,7 +391,7 @@
             return new ObjectSprite(this.woodenArrowSpriteSheet, this.woodenArrowData);
         }
 
-        public ISprite SilverArrow( )
+        public ISprite SilverArrow()
         {
             return new ObjectSprite(this.silverArrowSpriteSheet, this.silverArrowData);
         }

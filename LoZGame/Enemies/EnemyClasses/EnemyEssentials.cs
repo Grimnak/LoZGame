@@ -77,7 +77,8 @@
                 {
                     this.CurrentTint = LoZGame.Instance.DungeonTint;
                 }
-            } else
+            } 
+            else
             {
                 this.Physics.StopKnockback();
             }

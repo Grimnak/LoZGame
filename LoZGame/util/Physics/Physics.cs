@@ -2,6 +2,7 @@
 {
     using Microsoft.Xna.Framework;
     using System;
+
     public class Physics : PhysicsHelper
     {
         private Rectangle bounds;

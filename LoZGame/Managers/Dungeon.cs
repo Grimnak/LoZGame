@@ -31,7 +31,7 @@
         public Dungeon(int dungeonNumber)
         {
             this.dungeonNumber = dungeonNumber;
-            this.currentDungeonFile = "../../../../../etc/levels/dungeon" + this.dungeonNumber + ".xml"; ;
+            this.currentDungeonFile = "../../../../../etc/levels/dungeon" + this.dungeonNumber + ".xml";
             LoZGame.Instance.DungeonTint = Color.White;
             this.dungeonLayout = XMLHandler.Parse(this.currentDungeonFile);
 
