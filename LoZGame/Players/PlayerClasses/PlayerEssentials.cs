@@ -56,10 +56,6 @@
                 }
                 this.Physics.HandleKnockBack();
             }
-            else
-            {
-                this.Physics.StopKnockback();
-            }
         }
 
         public void Idle()
