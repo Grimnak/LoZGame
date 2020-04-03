@@ -66,6 +66,7 @@
             this.boundsLocation += this.KnockbackVelocity;
             this.bounds = new Rectangle(this.boundsLocation.ToPoint(), this.bounds.Size);
             this.SetLocation();
+            Console.WriteLine("Physics.HandleKnockBack():  set location of " + this.Bounds + " with " + this.KnockbackVelocity);
         }
 
         public void Accelerate()
@@ -73,11 +74,11 @@
             this.MovementVelocity += this.MovementAcceleration;
         }
 
-        public void Knockback(Vector2 momentum)
+        public void SetKnockback(Vector2 momentum)
         {
             if (IsMoveable)
             {
-                Console.WriteLine("set knockback to " + momentum.ToString());
+                Console.WriteLine("Physics.Knockback():  set knockback to " + momentum.ToString());
                 this.KnockbackVelocity = momentum;
             }
         }
@@ -85,7 +86,7 @@
         public float GetMomentum()
         {
             float momentum = MovementVelocity.Length() * Mass;
-            Console.WriteLine("returned momentum of " + momentum.ToString());
+            Console.WriteLine("Physics.GetMomentum():  returned momentum of " + momentum.ToString());
             return momentum;
         }
     }
