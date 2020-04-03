@@ -29,9 +29,9 @@
 
         public Vector2 MovementAcceleration { get; set; }
 
-        public Vector2 ForceVelocity { get; set; }
+        public Vector2 KnockbackVelocity { get; set; }
 
-        public Vector2 ForceAcceleration { get; set; }
+        public Vector2 Friction { get; set; }
 
         public Vector2 MasterMovement { get; set; }
 

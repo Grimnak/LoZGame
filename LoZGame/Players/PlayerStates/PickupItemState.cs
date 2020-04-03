@@ -26,6 +26,7 @@ namespace LoZClone
             this.player.Physics.MovementVelocity = Vector2.Zero;
             if (item is Triforce)
             {
+                this.sprite.SetFrame(2);
                 LoZGame.Instance.GameState.WinGame();
             }
             else if (item is Key)
@@ -120,7 +121,6 @@ namespace LoZClone
                     item.Expired = true;
                 }
             }
-            this.sprite.Update();
         }
 
         /// <inheritdoc/>
