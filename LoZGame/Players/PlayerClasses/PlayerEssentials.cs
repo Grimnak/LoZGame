@@ -58,10 +58,6 @@
                 {
                     this.Physics.HandleKnockBack();
                 }
-                else
-                {
-                    this.Physics.StopKnockback();
-                }
             }
         }
 

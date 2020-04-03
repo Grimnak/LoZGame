@@ -20,7 +20,7 @@
                 {
                     if (enemy.DamageTimer > 0)
                     {
-                        Console.WriteLine("Attempted direct knockback from projectile ith direction " + projectile.Physics.CurrentDirection.ToString());
+                        Console.WriteLine("Attempted direct knockback from projectile with direction " + projectile.Physics.CurrentDirection.ToString());
                         DetermineDirectPushback(projectile.Physics, enemy.Physics);
                     }
                 }

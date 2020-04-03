@@ -44,7 +44,10 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            this.player.TakeDamage(projectile.Damage);
+            if (!(this.player.State is PickupItemState))
+            {
+                this.player.TakeDamage(projectile.Damage);
+            }
         }
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
