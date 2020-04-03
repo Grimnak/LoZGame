@@ -39,6 +39,17 @@
             else if (this.item is DroppedRupee)
             {
                 SoundEffectsFactory.Instance.PlayGetRupee();
+                player.Inventory.GainRupees(1);
+            }
+            else if (item is DroppedYellowRupee)
+            {
+                SoundEffectsFactory.Instance.PlayGetRupee();
+                player.Inventory.GainRupees(5);
+            }
+            else if (item is DroppedBomb)
+            {
+                SoundEffectsFactory.Instance.PlayGetItem();
+                player.Inventory.GainBombs();
             }
             else if (this.item is Key)
             {
