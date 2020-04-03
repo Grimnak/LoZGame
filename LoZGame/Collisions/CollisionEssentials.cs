@@ -9,38 +9,47 @@
     {
         public void DeterminePushbackValues(Physics source, Physics target)
         {
-            float sourceMomentum = source.GetMomentum().Length();
-            if (sourceMomentum < 1)
+            float sourceMomentum = source.GetMomentum();
+            if (sourceMomentum < source.Mass)
             {
                 sourceMomentum = source.Mass;
             }
             Vector2 knockbackVector = (target.Bounds.Center - source.Bounds.Center).ToVector2();
+            knockbackVector.Normalize();
             knockbackVector *= sourceMomentum;
+            Console.WriteLine("Attempted knockback with vector " + knockbackVector.ToString());
             target.Knockback(knockbackVector);
         }
 
         public void DetermineDirectPushback(Physics source, Physics target)
         {
-            float sourceMomentum = source.GetMomentum().Length();
+            float sourceMomentum = source.GetMomentum();
             if (sourceMomentum < source.Mass)
             {
                 sourceMomentum = source.Mass;
             }
+            Console.WriteLine("Attempted direct knockback with magnitude " + sourceMomentum.ToString());
+            Vector2 knockbackVector = Vector2.Zero;
             switch (source.CurrentDirection)
             {
-                case Physics.Direction.North:
-                    target.Knockback(new Vector2(0, -1) * sourceMomentum);
+                case PhysicsEssentials.Direction.North:
+                    knockbackVector = new Vector2(0, -1);
                     break;
-                case Physics.Direction.South:
-                    target.Knockback(new Vector2(0, 1) * sourceMomentum);
+                case PhysicsEssentials.Direction.South:
+                    knockbackVector = new Vector2(0, 1);
                     break;
-                case Physics.Direction.East:
-                    target.Knockback(new Vector2(1, 0) * sourceMomentum);
+                case PhysicsEssentials.Direction.East:
+                    knockbackVector = new Vector2(1, 0);
                     break;
-                case Physics.Direction.West:
-                    target.Knockback(new Vector2(-1, 0) * sourceMomentum);
+                case PhysicsEssentials.Direction.West:
+                    knockbackVector = new Vector2(-1, 0);
+                    break;
+                default:
+                    DeterminePushbackValues(source, target);
                     break;
             }
+            knockbackVector *= sourceMomentum;
+            target.Knockback(knockbackVector);
         }
 
         public void ReverseKnockback(Physics target, CollisionDetection.CollisionSide side)

@@ -41,18 +41,6 @@
             }
         }
 
-        private void DamagePushback()
-        {
-            if (Math.Abs((int)this.Physics.MovementVelocity.X) != 0 || Math.Abs((int)this.Physics.MovementVelocity.Y) != 0)
-            {
-                this.Physics.Accelerate();
-            }
-            else
-            {
-                this.Physics.StopKnockback();
-            }
-        }
-
         public void HandleDamage()
         {
             if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
@@ -66,7 +54,7 @@
                 {
                     this.CurrentTint = LoZGame.Instance.DungeonTint;
                 }
-                this.DamagePushback();
+                this.Physics.HandleKnockBack();
             }
             else
             {

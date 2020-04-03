@@ -28,13 +28,14 @@
             this.Heigth = ProjectileSpriteFactory.Instance.ExplosionHeight;
             this.Physics = new Physics(new Vector2(location.X, location.Y));
             this.collisionHandler = new ProjectileCollisionHandler(this);
-            this.lifeTime = MaxLifeTime;
+            this.lifeTime = MaxLifeTime + 1;
             this.IsExpired = false;
             this.Physics.BoundsOffset = new Vector2(this.Width, this.Heigth) / 2;
             this.Physics.Bounds = new Rectangle((this.Physics.Location - this.Physics.BoundsOffset).ToPoint(), new Point(this.Width, this.Heigth));
             this.Physics.BoundsOffset *= 2;
             this.Physics.SetLocation();
             this.Damage = 8;
+            this.Physics.Mass = 5;
             Random numGen = new Random();
             int selectBomb = numGen.Next(0, 5);
             switch (selectBomb)
@@ -83,10 +84,13 @@
         public override void Update()
         {
             this.lifeTime--;
+            if (this.lifeTime < MaxLifeTime)
+            {
+                this.Physics.Bounds = new Rectangle(this.Physics.Bounds.X, this.Physics.Bounds.Y, 0, 0);
+            }
             if (this.lifeTime == DissipateOne || this.lifeTime == DissipateTwo)
             {
                 this.Sprite.NextFrame();
-                this.Physics.Bounds = new Rectangle(this.Physics.Bounds.X, this.Physics.Bounds.Y, 0, 0);
             }
 
             if (this.lifeTime <= 0)

@@ -17,6 +17,8 @@
             SouthWest
         }
 
+        public bool IsMoveable { get; set; }
+
         public float Depth { get; set; }
 
         public int Mass { get; set; }
@@ -34,8 +36,6 @@
         public Vector2 Friction { get; set; }
 
         public Vector2 MasterMovement { get; set; }
-
-        public Rectangle Bounds { get; set; }
 
         public Vector2 BoundsOffset { get; set; }
 

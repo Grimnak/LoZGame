@@ -40,7 +40,7 @@
                 {
                     if (this.enemy.DamageTimer > 0)
                     {
-                        DetermineDirectPushback(this.enemy.Physics, projectile.Physics);
+                        DetermineDirectPushback(projectile.Physics, this.enemy.Physics);
                     }
                 }
                 else
