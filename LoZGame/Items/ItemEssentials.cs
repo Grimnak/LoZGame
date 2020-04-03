@@ -25,7 +25,7 @@
 
         public Physics Physics { get; set; }
 
-        public ItemCollisionHandler itemCollisionHandler {get; set; }
+        public ItemCollisionHandler itemCollisionHandler { get; set; }
 
         public void StartBob()
         {

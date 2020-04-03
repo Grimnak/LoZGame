@@ -1,5 +1,4 @@
-﻿
-namespace LoZClone
+﻿namespace LoZClone
 {
     using System;
     using System.Collections.Generic;

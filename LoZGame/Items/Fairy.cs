@@ -8,6 +8,7 @@
     {
         private const int DirectionChange = 100;
         private static readonly int DespawnTimer = 60 * LoZGame.Instance.UpdateSpeed;
+
         private enum Direction
         {
             North,

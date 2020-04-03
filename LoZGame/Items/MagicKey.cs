@@ -8,7 +8,6 @@
     {
         public MagicKey(Vector2 loc)
         {
-
             this.Sprite = ItemSpriteFactory.Instance.MagicKey();
             this.itemCollisionHandler = new ItemCollisionHandler(this);
             this.Physics = new Physics(loc);

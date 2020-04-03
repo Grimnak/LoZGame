@@ -61,7 +61,10 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            this.SetBlockBounds(this.block.Physics, enemy.Physics, collisionSide);
+            if (!(enemy is Keese))
+            {
+                this.SetBlockBounds(this.block.Physics, enemy.Physics, collisionSide);
+            }
         }
 
         private void DeterminePushVelocity(IPlayer player, CollisionDetection.CollisionSide collisionSide)

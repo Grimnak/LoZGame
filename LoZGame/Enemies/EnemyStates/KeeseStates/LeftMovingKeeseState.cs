@@ -11,7 +11,6 @@
         private int lifeTime = 0;
         private int accelerationMax = 5;
         
-        
         private int directionChange;
         private RandomStateGenerator randomStateGenerator;
         private Random randomDirectionCooldown;
