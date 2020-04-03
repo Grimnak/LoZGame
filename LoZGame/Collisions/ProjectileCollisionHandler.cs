@@ -14,6 +14,21 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
+            if (!(projectile.IsExpired && (enemy is OldMan || enemy is Merchant || enemy is SpikeCross)))
+            {
+                if (!(projectile is BoomerangProjectile) && !(projectile is MagicBoomerangProjectile))
+                {
+                    if (enemy.DamageTimer > 0)
+                    {
+                        Console.WriteLine("Attempted direct knockback from projectile ith direction " + projectile.Physics.CurrentDirection.ToString());
+                        DetermineDirectPushback(projectile.Physics, enemy.Physics);
+                    }
+                }
+                else
+                {
+                    enemy.Stun(projectile.StunDuration);
+                }
+            }
             if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
             {
                 this.projectile.Physics.StopMovement();
@@ -22,7 +37,7 @@
             {
                 this.projectile.Returning = true;
             }
-            else if (this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
+            else if (this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion || this.projectile is WoodenSwordProjectile)
             {
                 // do nothing
             }
@@ -38,6 +53,10 @@
         
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
+            if (!projectile.IsExpired)
+            {
+                DetermineDirectPushback(projectile.Physics, player.Physics);
+            }
             if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
             {
                 this.projectile.Returning = true;

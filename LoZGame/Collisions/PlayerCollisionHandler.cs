@@ -44,7 +44,6 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            this.DetermineDirectPushback(projectile.Physics, this.player.Physics);
             this.player.TakeDamage(projectile.Damage);
         }
 
