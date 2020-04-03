@@ -31,7 +31,7 @@
             {
                 SoundEffectsFactory.Instance.PlayLinkHurt();
                 this.Health.DamageHealth(damageAmount);
-                this.DamageTimer = 50;
+                this.DamageTimer = LoZGame.Instance.UpdateSpeed;
             }
             if (this.Health.CurrentHealth <= 0)
             {
@@ -54,11 +54,14 @@
                 {
                     this.CurrentTint = LoZGame.Instance.DungeonTint;
                 }
-                this.Physics.HandleKnockBack();
-            }
-            else
-            {
-                this.Physics.StopKnockback();
+                if (this.DamageTimer > (LoZGame.Instance.UpdateSpeed - (LoZGame.Instance.UpdateSpeed / (this.Physics.Mass * 2))))
+                {
+                    this.Physics.HandleKnockBack();
+                }
+                else
+                {
+                    this.Physics.StopKnockback();
+                }
             }
         }
 

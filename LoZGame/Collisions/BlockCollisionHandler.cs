@@ -43,10 +43,11 @@
                 {
                     DeterminePushVelocity(player, collisionSide);
                 }
-                else 
+                /*else
                 {
                     this.SetBlockBounds(this.block.Physics, player.Physics, collisionSide);
-                }
+                }*/
+                this.SetBlockBounds(this.block.Physics, player.Physics, collisionSide);
             }
             else if (this.block is Tile)
             {
