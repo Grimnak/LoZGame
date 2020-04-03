@@ -38,6 +38,7 @@
 
         public void LoadAllData()
         {
+            /*
             playerData = default;
             projectileDmgData = default;
             projectileSpdData = default;
@@ -46,6 +47,7 @@
             enemySpdData = default;
             enemyMassData = default;
             enemyResData = default;
+            */
         }
     }
 }

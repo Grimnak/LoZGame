@@ -122,7 +122,8 @@
         
         private void StartGame()
         {
-            this.GameState = new TitleScreenState();
+            this.gameState = new TitleScreenState();
+            this.gameState.TitleScreen();
         }
 
         protected override void UnloadContent()
