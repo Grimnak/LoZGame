@@ -67,11 +67,13 @@
         {
             if (side == CollisionDetection.CollisionSide.Top || side == CollisionDetection.CollisionSide.Bottom)
             {
-                target.KnockbackVelocity = new Vector2(target.KnockbackVelocity.X, target.KnockbackVelocity.Y * -1);
+                target.KnockbackVelocity = new Vector2(target.KnockbackVelocity.X, (target.KnockbackVelocity.Y * -1) / 2);
+                target.Friction = new Vector2(target.Friction.X, target.Friction.Y * -1);
             } 
             else
             {
-                target.KnockbackVelocity = new Vector2(target.KnockbackVelocity.X * -1, target.KnockbackVelocity.Y);
+                target.KnockbackVelocity = new Vector2((target.KnockbackVelocity.X * -1) / 2, target.KnockbackVelocity.Y);
+                target.Friction = new Vector2(target.Friction.X * -1, target.Friction.Y);
             }
         }
 

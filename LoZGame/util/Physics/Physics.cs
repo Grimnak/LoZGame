@@ -63,7 +63,10 @@
 
         public void HandleKnockBack()
         {
+            Console.WriteLine(KnockbackVelocity.ToString());
+            Console.WriteLine(Friction.ToString());
             this.boundsLocation += this.KnockbackVelocity;
+            this.KnockbackVelocity += this.Friction;
             this.bounds = new Rectangle(this.boundsLocation.ToPoint(), this.bounds.Size);
             this.SetLocation();
             Console.WriteLine("Physics.HandleKnockBack():  set location of " + this.Bounds + " with " + this.KnockbackVelocity);
@@ -78,15 +81,14 @@
         {
             if (IsMoveable)
             {
-                Console.WriteLine("Physics.Knockback():  set knockback to " + momentum.ToString());
                 this.KnockbackVelocity = momentum;
+                this.Friction = (momentum * -1) * ((float)(this.Mass * 2) / (float)LoZGame.Instance.UpdateSpeed); 
             }
         }
 
         public float GetMomentum()
         {
             float momentum = MovementVelocity.Length() * Mass;
-            Console.WriteLine("Physics.GetMomentum():  returned momentum of " + momentum.ToString());
             return momentum;
         }
     }

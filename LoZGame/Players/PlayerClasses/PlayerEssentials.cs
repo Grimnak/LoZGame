@@ -21,6 +21,8 @@
 
         public HealthManager Health { get; set; }
 
+        public InventoryManager Inventory { get; set; }
+
         public int AnimationSpeed { get; set; }
 
         public int FrameDelay { get; set; }
@@ -31,7 +33,7 @@
             {
                 SoundEffectsFactory.Instance.PlayLinkHurt();
                 this.Health.DamageHealth(damageAmount);
-                this.DamageTimer = 50;
+                this.DamageTimer = LoZGame.Instance.UpdateSpeed;
             }
             if (this.Health.CurrentHealth <= 0)
             {
@@ -54,7 +56,10 @@
                 {
                     this.CurrentTint = LoZGame.Instance.DungeonTint;
                 }
-                this.Physics.HandleKnockBack();
+                if (this.DamageTimer > (LoZGame.Instance.UpdateSpeed - (LoZGame.Instance.UpdateSpeed / (this.Physics.Mass * 2))))
+                {
+                    this.Physics.HandleKnockBack();
+                }
             }
         }
 
