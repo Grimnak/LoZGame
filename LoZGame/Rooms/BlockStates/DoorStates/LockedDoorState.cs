@@ -17,7 +17,9 @@
             {
                 case "N":
                     {
-                        if (this.isLevel1)
+                        this.sprite = BlockSpriteFactory.Instance.LockedDoorDown();
+
+                       /* if (this.isLevel1)
                         {
                             this.sprite = BlockSpriteFactory.Instance.LockedDoorDown();
                         }
@@ -25,46 +27,52 @@
                         {
                             this.sprite = BlockSpriteFactory.Instance.LockedDoorDown2();
 
-                        }
+                        }*/
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y - 12, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
                         break;
                     }
                 case "E":
                     {
-                        if (this.isLevel1)
+                        this.sprite = BlockSpriteFactory.Instance.LockedDoorLeft();
+
+                        /*if (this.isLevel1)
                         {
                             this.sprite = BlockSpriteFactory.Instance.LockedDoorLeft();
                         }
                         else
                         {
                             this.sprite = BlockSpriteFactory.Instance.LockedDoorLeft2();
-                        }
+                        }*/
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X - 7, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                     }
                 case "S":
                     {
-                        if (this.isLevel1)
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.LockedDoorUp();
-                        }
-                        else
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.LockedDoorUp2();
-                        }
+                        this.sprite = BlockSpriteFactory.Instance.LockedDoorUp();
+
+                        /* if (this.isLevel1)
+                         {
+                             this.sprite = BlockSpriteFactory.Instance.LockedDoorUp();
+                         }
+                         else
+                         {
+                             this.sprite = BlockSpriteFactory.Instance.LockedDoorUp2();
+                         }*/
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
                         break;
                     }
                 case "W":
                     {
-                        if (this.isLevel1)
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.LockedDoorRight();
-                        }
-                        else
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.LockedDoorRight2();
-                        }
+                        this.sprite = BlockSpriteFactory.Instance.LockedDoorRight();
+
+                        /* if (this.isLevel1)
+                         {
+                             this.sprite = BlockSpriteFactory.Instance.LockedDoorRight();
+                         }
+                         else
+                         {
+                             this.sprite = BlockSpriteFactory.Instance.LockedDoorRight2();
+                         }*/
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X - 20, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                     }

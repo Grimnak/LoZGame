@@ -18,50 +18,58 @@
             {
                 case "N":
                 {
-                        if (this.isLevel1)
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
+
+                      /*  if (this.isLevel1)
                         {
                             this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
                         }
                         else
                         {
                             this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown2();
-                        }
+                        }*/
                         break;
                 }
                 case "E":
                 {
-                        if (this.isLevel1)
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
+
+                       /* if (this.isLevel1)
                         {
                             this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
                         }
                         else
                         {
                             this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft2();
-                        }
+                        }*/
                         break;
                 }
                 case "S":
                 {
-                        if (this.isLevel1)
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
+
+                       /* if (this.isLevel1)
                         {
                             this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
                         }
                         else
                         {
                             this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp2();
-                        }
+                        }*/
                         break;
                 }
                 case "W":
                 {
-                        if (this.isLevel1)
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
+
+                      /*  if (this.isLevel1)
                         {
                             this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
                         }
                         else
                         {
                             this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight2();
-                        }
+                        }*/
                         break;
                 }
             }

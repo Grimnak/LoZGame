@@ -20,49 +20,57 @@
             {
                 case "N":
                     {
-                        if (this.isLevel1)
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
-                        }
-                        else
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown2();
-                        }
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
+
+                        /*   if (this.isLevel1)
+                           {
+                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
+                           }
+                           else
+                           {
+                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown2();
+                           }*/
                         break;
                     }
                 case "E":
                     {
-                        if (this.isLevel1)
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
-                        } else
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft2();
-                        }
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
+
+                        /*   if (this.isLevel1)
+                           {
+                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
+                           } else
+                           {
+                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft2();
+                           }*/
                         break;
                     }
                 case "S":
                     {
-                        if (this.isLevel1)
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
-                        }
-                        else
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp2();
-                        }
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
+
+                        /*  if (this.isLevel1)
+                          {
+                              this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
+                          }
+                          else
+                          {
+                              this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp2();
+                          }*/
                         break;
                     }
                 case "W":
                     {
-                        if (this.isLevel1)
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight();
+
+                      /*  if (this.isLevel1)
                         {
                             this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight();
                         }
                         else
                         {
                             this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight2();
-                        }
+                        }*/
                         break;
                     }
             }
