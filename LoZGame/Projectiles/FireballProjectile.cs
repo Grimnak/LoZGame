@@ -13,6 +13,7 @@ namespace LoZClone
         private const int FrameChange = 15;
         private const int MaxLife = 300;
         private int lifeTime;
+        private ProjectileDamageData projectileDamageData;
 
         public FireballProjectile(Physics physics)
         {
@@ -31,7 +32,7 @@ namespace LoZClone
             this.Sprite = ProjectileSpriteFactory.Instance.Fireball();
             this.IsExpired = false;
             this.lifeTime = MaxLife;
-            this.Damage = 2;
+            this.Damage =projectileDamageData.FireballDamage;
         }
 
         public override void Update()

@@ -11,6 +11,7 @@
         private static readonly int MaxLifeTime = 45;
         private static readonly int DissipateOne = 10;
         private static readonly int DissipateTwo = 5;
+        private ProjectileDamageData projectileDamageData;
 
         private ISprite sprite;
         private int projectileWidth;
@@ -34,7 +35,7 @@
             this.Physics.Bounds = new Rectangle((this.Physics.Location - this.Physics.BoundsOffset).ToPoint(), new Point(this.Width, this.Heigth));
             this.Physics.BoundsOffset *= 2;
             this.Physics.SetLocation();
-            this.Damage = 8;
+            this.Damage = projectileDamageData.BombDamage;
             this.Physics.Mass = 5;
             Random numGen = new Random();
             int selectBomb = numGen.Next(0, 5);

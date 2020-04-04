@@ -8,7 +8,8 @@
     {
         private static readonly int MaxDistance = 150;
         private int distTraveled;
-        
+        private ProjectileSpeedData projectileSpeedData;
+
         public BoomerangProjectile(Physics source)
         {
             this.SetUp(this);

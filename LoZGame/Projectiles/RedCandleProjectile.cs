@@ -10,6 +10,8 @@
         private const int TravelTime = 100;
         private const float AccelDecay = 0.95f;
         private int lifeTime;
+        private ProjectileDamageData projectileDamageData;
+        private ProjectileSpeedData projectileSpeedData;
 
         public RedCandleProjectile(Physics source)
         {
@@ -17,9 +19,9 @@
             this.Width = ProjectileSpriteFactory.Instance.FlameWidth;
             this.Heigth = ProjectileSpriteFactory.Instance.FlameHeight;
             this.Offset = (this.Heigth * 3) / 4;
-            this.Speed = 5;
             this.Acceleration = -0.25f;
-            this.Damage = 10;
+            this.Speed = projectileSpeedData.CandleSpeed;
+            this.Damage = projectileDamageData.CandleDamage;
             this.Source = source;
             this.InitializeDirection();
             this.Data.SpriteEffect = SpriteEffects.None;

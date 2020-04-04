@@ -9,6 +9,10 @@ namespace LoZClone
 {
     class ArrowProjectile : ProjectileEssentials, IProjectile
     {
+
+        private ProjectileDamageData projectileDamageData;
+        private ProjectileSpeedData projectileSpeedData;
+
         public ArrowProjectile(Physics source)
         {
             this.SetUp(this);
@@ -16,8 +20,8 @@ namespace LoZClone
             this.Heigth = ProjectileSpriteFactory.Instance.ArrowHeight;
             this.Offset = this.Heigth / 2;
             this.Physics.Mass = 10;
-            this.Speed = 5;
-            this.Damage = 2;
+            this.Speed = projectileSpeedData.LinkArrowSpeed;
+            this.Damage = projectileDamageData.LinkArrowDamage;
             this.Source = source;
             this.InitializeDirection();
             if (this.Physics.CurrentDirection == Physics.Direction.East || this.Physics.CurrentDirection == Physics.Direction.West)
