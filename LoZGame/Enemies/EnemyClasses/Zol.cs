@@ -6,8 +6,13 @@
     {
         public bool ShouldMove { get; set; }
 
+        private EnemyDamageData enemyDamageData;
+        private EnemySpeedData enemySpeedData;
+
         public Zol(Vector2 location)
         {
+            this.enemyDamageData = new EnemyDamageData();
+            this.enemySpeedData = new EnemySpeedData();
             this.Health = new HealthManager(8);
             this.Physics = new Physics(location);
             this.CurrentState = new LeftMovingZolState(this);
@@ -15,9 +20,9 @@
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.ShouldMove = true;
             this.Expired = false;
-            this.Damage = 4;
+            this.Damage = enemyDamageData.ZolDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = 1;
+            this.MoveSpeed = enemySpeedData.ZolSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 

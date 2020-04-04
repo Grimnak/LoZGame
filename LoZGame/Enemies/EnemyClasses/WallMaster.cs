@@ -4,17 +4,22 @@
 
     public class WallMaster : EnemyEssentials, IEnemy
     {
+        private EnemyDamageData enemyDamageData;
+        private EnemySpeedData enemySpeedData;
+
         public WallMaster(Vector2 location)
         {
+            this.enemyDamageData = new EnemyDamageData();
+            this.enemySpeedData = new EnemySpeedData();
             this.Health = new HealthManager(12);
             this.Physics = new Physics(location);
             this.CurrentState = new LeftMovingWallMasterState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = 1;
+            this.Damage = enemyDamageData.WallMasterDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = 1;
+            this.MoveSpeed = enemySpeedData.WallMasterSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 

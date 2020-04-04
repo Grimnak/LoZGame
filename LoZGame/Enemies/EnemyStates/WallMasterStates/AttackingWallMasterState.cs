@@ -8,6 +8,9 @@
         private readonly WallMaster wallMaster;
         private readonly ISprite sprite;
 
+        private EnemyDamageData enemyDamageData;
+        private EnemySpeedData enemySpeedData;
+
         public AttackingWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
