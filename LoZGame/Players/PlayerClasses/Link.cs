@@ -37,7 +37,7 @@
 
         public void Update()
         {
-            this.Physics.Depth = 1 - (1 / this.Physics.Bounds.Bottom);
+            this.Physics.SetDepth();
             this.HandleDamage();
             this.Physics.Move();
             this.State.Update();
