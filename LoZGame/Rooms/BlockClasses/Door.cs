@@ -16,6 +16,8 @@
 
         private IDoorState state;
 
+        private string kind;
+
         public IDoorState State
         {
             get { return this.state; }
@@ -51,18 +53,31 @@
             this.location = loc;
             this.doorCollisionHandler = new DoorCollisionHandler(this);
             this.SetPhysics();
+            this.kind = starting;
             switch (starting)
             {
                 case "locked":
                     this.state = new LockedDoorState(this);
                     break;
+                case "locked2":
+                    this.state = new LockedDoorState(this);
+                    break;
                 case "special":
+                    this.state = new SpecialDoorState(this);
+                    break;
+                case "special2":
                     this.state = new SpecialDoorState(this);
                     break;
                 case "hidden":
                     this.state = new HiddenDoorState(this);
                     break;
+                case "hidden2":
+                    this.state = new HiddenDoorState(this);
+                    break;
                 case "cosmetic":
+                    this.state = new CosmeticDoorState(this);
+                    break;
+                case "cosmetic2":
                     this.state = new CosmeticDoorState(this);
                     break;
                 case "puzzle":
@@ -126,6 +141,11 @@
         public string GetLoc()
         {
             return this.location;
+        }
+
+        public string GetKind()
+        {
+            return this.kind;
         }
 
         public void Update()
