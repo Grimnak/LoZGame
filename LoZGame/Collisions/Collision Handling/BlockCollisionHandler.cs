@@ -4,7 +4,7 @@
     using System.Linq;
     using Microsoft.Xna.Framework;
 
-    public class BlockCollisionHandler : CollisionEssentials
+    public class BlockCollisionHandler : CollisionInteractions
     {
         private IBlock block;
         private float xDirection;

@@ -3,7 +3,7 @@
     using System;
     using Microsoft.Xna.Framework;
 
-    public class ProjectileCollisionHandler : CollisionEssentials
+    public class ProjectileCollisionHandler : CollisionInteractions
     {
         private IProjectile projectile;
 

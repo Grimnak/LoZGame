@@ -61,7 +61,7 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Collisions\Collision Detection\CollisionEssentials.cs" />
+    <Compile Include="Collisions\Collision Detection\CollisionInteractions.cs" />
     <Compile Include="Collisions\Collision Detection\CollisionCalculations.cs" />
     <Compile Include="Collisions\Collision Handling\DoorCollisionHandler.cs" />
     <Compile Include="Collisions\Collision Handling\BlockCollisionHandler.cs" />

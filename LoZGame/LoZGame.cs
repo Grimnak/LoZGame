@@ -98,7 +98,6 @@
             this.debugManager.Initialize();
 
             base.Initialize();
-            Console.WriteLine("Initialized");
         }
 
         protected override void LoadContent()
@@ -117,7 +116,6 @@
             font = Content.Load<SpriteFont>("Text");
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
             this.StartGame();
-            Console.WriteLine("Loaded");
         }
         
         private void StartGame()

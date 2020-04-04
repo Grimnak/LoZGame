@@ -5,7 +5,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class CollisionEssentials
+    public class CollisionInteractions
     {
         /// <summary>
         /// Pushes the player back based on relative position of the two colliding objects.
