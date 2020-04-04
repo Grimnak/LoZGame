@@ -3,7 +3,7 @@
     using System;
     using Microsoft.Xna.Framework;
 
-    public class PlayerCollisionHandler : CollisionEssentials
+    public class PlayerCollisionHandler : CollisionInteractions
     {
         private IPlayer player;
         private float xDirection;

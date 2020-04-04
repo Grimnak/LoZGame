@@ -2,7 +2,7 @@
 {
     using Microsoft.Xna.Framework;
 
-    public class DoorCollisionHandler
+    public class DoorCollisionHandler : CollisionInteractions
     {
         private IDoor door;
 

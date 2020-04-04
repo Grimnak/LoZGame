@@ -3,7 +3,7 @@
     using System;
     using Microsoft.Xna.Framework;
 
-    public class ItemCollisionHandler
+    public class ItemCollisionHandler : CollisionInteractions
     {
         private IItem item;
         private Vector2 GrabbedOffset;

@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using System;
 
-    public class EnemyCollisionHandler : CollisionEssentials
+    public class EnemyCollisionHandler : CollisionInteractions
     {
         private IEnemy enemy;
         private float xDirection;
