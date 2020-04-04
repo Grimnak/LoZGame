@@ -86,14 +86,21 @@
             {
                 if (spikeX == linkX)
                 {
+                    if (linkY - spikeY != 0)
+                    {
+
+                        this.spikeCross.MoveSpeed = 3 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
+                    }
                     this.spikeCross.Attacking = true;
-                    this.spikeCross.MoveSpeed = 3 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
                     this.spikeCross.CurrentState.MoveDown();
                 }
                 else if (spikeY == linkY)
                 {
+                    if (linkX - spikeX != 0)
+                    {
+                        this.spikeCross.MoveSpeed = 3 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
+                    }
                     this.spikeCross.Attacking = true;
-                    this.spikeCross.MoveSpeed = 3 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
                     this.spikeCross.CurrentState.MoveRight();
                 }
             }
