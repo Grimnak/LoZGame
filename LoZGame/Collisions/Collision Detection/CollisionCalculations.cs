@@ -1,11 +1,16 @@
 ﻿namespace LoZClone
 {
-    using System;
     using System.Collections.ObjectModel;
     using Microsoft.Xna.Framework;
 
+    /// <summary>
+    /// Contains the calculations necessary to determine if a collision is occurring between two objects or the wall.
+    /// </summary>
     public partial class CollisionDetection
     {
+        /// <summary>
+        /// This collision enum represents the side of an object that underwent a collision.
+        /// </summary>
         public enum CollisionSide
         {
             None,
