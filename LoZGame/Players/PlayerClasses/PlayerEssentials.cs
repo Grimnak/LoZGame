@@ -27,7 +27,7 @@
 
         public int FrameDelay { get; set; }
 
-        public void TakeDamage(int damageAmount)
+        public virtual void TakeDamage(int damageAmount)
         {
             if (this.DamageTimer <= 0)
             {

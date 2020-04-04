@@ -45,6 +45,11 @@
             return new Vector2(newX, newY);
         }
 
+        public void FacePlayer()
+        {
+            
+        }
+
         public virtual void TakeDamage(int damageAmount)
         {
             if (this.DamageTimer <= 0)
@@ -76,10 +81,6 @@
                 if (this.DamageTimer > (LoZGame.Instance.UpdateSpeed - (LoZGame.Instance.UpdateSpeed / (this.Physics.Mass * 2))))
                 {
                     this.Physics.HandleKnockBack();
-                }
-                else
-                {
-                    this.Physics.StopKnockback();
                 }
             }
         }
