@@ -61,14 +61,14 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Collisions\CollisionEssentials.cs" />
-    <Compile Include="Collisions\CollisionDetectionEssentials.cs" />
-    <Compile Include="Collisions\DoorCollisionHandler.cs" />
-    <Compile Include="Collisions\BlockCollisionHandler.cs" />
-    <Compile Include="Collisions\EnemyCollisionHandler.cs" />
-    <Compile Include="Collisions\CollisionDetection.cs" />
-    <Compile Include="Collisions\ItemCollisionHandler.cs" />
-    <Compile Include="Collisions\ProjectileCollisionHandler.cs" />
+    <Compile Include="Collisions\Collision Detection\CollisionEssentials.cs" />
+    <Compile Include="Collisions\Collision Detection\CollisionCalculations.cs" />
+    <Compile Include="Collisions\Collision Handling\DoorCollisionHandler.cs" />
+    <Compile Include="Collisions\Collision Handling\BlockCollisionHandler.cs" />
+    <Compile Include="Collisions\Collision Handling\EnemyCollisionHandler.cs" />
+    <Compile Include="Collisions\Collision Detection\CollisionDetection.cs" />
+    <Compile Include="Collisions\Collision Handling\ItemCollisionHandler.cs" />
+    <Compile Include="Collisions\Collision Handling\ProjectileCollisionHandler.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandArrow.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackA.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackB.cs" />
@@ -267,7 +267,7 @@
     <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\ProjectileType.cs" />
-    <Compile Include="Collisions\PlayerCollisionHandler.cs" />
+    <Compile Include="Collisions\Collision Handling\PlayerCollisionHandler.cs" />
     <Compile Include="Players\PlayerClasses\PlayerEssentials.cs" />
     <Compile Include="Players\PlayerStates\PickupItemState.cs" />
     <Compile Include="Players\PlayerStates\UseItemState.cs" />
