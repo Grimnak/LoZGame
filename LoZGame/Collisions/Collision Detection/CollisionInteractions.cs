@@ -3,8 +3,10 @@
     using System;
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
 
+    /// <summary>
+    /// Contains the various push and knockback interactions that may occur once a collision is detected.
+    /// </summary>
     public class CollisionInteractions
     {
         /// <summary>
