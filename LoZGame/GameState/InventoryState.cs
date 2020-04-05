@@ -5,9 +5,17 @@
 
     public class InventoryState : IGameState
     {
+        private ISprite sprite;
+        private int transitionSpeed;
+        private int lockout;
+        private Vector2 position;
+
         public InventoryState()
         {
-            // No need to change.
+            this.lockout = 0;
+            this.transitionSpeed = 5;
+            this.sprite = CreateCorrectLevelSprite();
+            this.position = new Vector2(0, -LoZGame.Instance.GraphicsDevice.Viewport.Height);
         }
 
         public void Death()
@@ -42,12 +50,21 @@
 
         public void Update()
         {
-            // TODO
+            this.lockout += this.transitionSpeed;
+            if (this.lockout < LoZGame.Instance.GraphicsDevice.Viewport.Height)
+            {
+                this.position.Y += transitionSpeed;
+            }
         }
 
         public void Draw()
         {
-            // TODO
+            this.sprite.Draw(position, LoZGame.Instance.DungeonTint, 1.0f);
+        }
+
+        private ISprite CreateCorrectLevelSprite()
+        {
+            return ScreenSpriteFactory.Instance.CreateInventory();
         }
     }
 }

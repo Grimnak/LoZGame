@@ -38,7 +38,6 @@
 
         public void Draw(Color tint) 
         {
-            // Rectangle destination = new Rectangle((int)position.X, (int)position.Y, position.Width, position.Height);
             Rectangle destination = new Rectangle(0, 0, screenWidth, screenHeight);
             LoZGame.Instance.SpriteBatch.Draw(this.texture, destination, position, tint);
         }

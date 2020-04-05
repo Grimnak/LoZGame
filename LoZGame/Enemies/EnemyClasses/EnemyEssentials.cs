@@ -29,6 +29,10 @@
         {
         }
 
+        public virtual void FacePlayer()
+        {
+        }
+
         public Vector2 UnitVectorToPlayer(Vector2 origin)
         {
             Vector2 unitVector = LoZGame.Instance.Link.Physics.Bounds.Center.ToVector2() - origin;
@@ -43,11 +47,6 @@
             float newX = (cosRot * oldVector.X) - (sinRot * oldVector.Y);
             float newY = (sinRot * oldVector.X) + (cosRot * oldVector.Y);
             return new Vector2(newX, newY);
-        }
-
-        public void FacePlayer()
-        {
-            
         }
 
         public virtual void TakeDamage(int damageAmount)
@@ -119,7 +118,7 @@
 
         public virtual void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            this.EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
     }
 }

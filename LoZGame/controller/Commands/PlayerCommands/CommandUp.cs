@@ -1,7 +1,7 @@
 ﻿namespace LoZClone
 {
     /// <summary>
-    /// Command that maeks the player move up.
+    /// Command that makes the player move up.
     /// </summary>
     public class CommandUp : ICommand
     {

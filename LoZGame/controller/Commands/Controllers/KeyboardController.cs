@@ -31,7 +31,7 @@ namespace LoZClone
             {
                 Keys.W, Keys.Up, Keys.A, Keys.Left, Keys.S, Keys.Down, Keys.D, Keys.Right,
                 Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5, Keys.D6, Keys.D7, Keys.D8,
-                Keys.Z, Keys.N,
+                Keys.Z, Keys.N, Keys.I,
             };
             this.oneUseKeys = new List<Keys>
             {

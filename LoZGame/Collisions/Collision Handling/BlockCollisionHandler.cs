@@ -56,13 +56,16 @@
             }
             else if (block is BlockTile)
             {
-                this.SetBlockBounds(this.block.Physics, player.Physics, collisionSide);
+                if (!(player.State is GrabbedState))
+                {
+                    this.SetBlockBounds(this.block.Physics, player.Physics, collisionSide);
+                }
             }
         }
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(enemy is Keese))
+            if (!(enemy is Keese || enemy is WallMaster))
             {
                 this.SetBlockBounds(this.block.Physics, enemy.Physics, collisionSide);
             }
