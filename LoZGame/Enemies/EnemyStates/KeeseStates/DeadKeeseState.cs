@@ -8,7 +8,7 @@
         private readonly Keese keese;
         private readonly ISprite sprite;
         private int deathTimer = 0;
-        private int deathTimerMax = 30;
+        private int deathTimerMax;
 
         public DeadKeeseState(Keese keese)
         {
@@ -17,6 +17,7 @@
             this.keese.CurrentState = this;
             this.keese.Physics.Bounds = new Rectangle(keese.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.keese.Physics.Location);
+            deathTimerMax = zol.EnemySpeedData.DeathTimerMax;
             this.keese.Physics.MovementVelocity = Vector2.Zero;
         }
 

@@ -11,13 +11,15 @@
 
         public EntityManager EntityManager { get; set; }
 
-        private EnemyDamageData enemyDamageData;
-        private EnemySpeedData enemySpeedData;
+        public EnemyDamageData EnemyDamageData { get; set; }
+
+        public EnemySpeedData EnemySpeedData { get; set; }
+
         public Goriya(Vector2 location)
         {
-            this.enemyDamageData = new EnemyDamageData();
-            this.enemySpeedData = new EnemySpeedData();
-            this.Health = new HealthManager(12);
+            this.EnemyDamageData = new EnemyDamageData();
+            this.EnemySpeedData = new EnemySpeedData();
+            this.Health = new HealthManager(EnemyDamageData.GoriyaHealth);
             this.Physics = new Physics(location);
             this.CurrentState = new LeftMovingGoriyaState(this);
             this.EntityManager = LoZGame.Instance.GameObjects.Entities;
@@ -25,9 +27,9 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = enemyDamageData.GoriyaDamage;
+            this.Damage = EnemyDamageData.GoriyaDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = enemySpeedData.GoriyaSpeed;
+            this.MoveSpeed = EnemySpeedData.GoriyaSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 

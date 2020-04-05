@@ -17,8 +17,11 @@ namespace LoZClone
         private const int dragonSpd = 1;
         private const int dodongoSpd = 1;
         private const int goriyaSpd = 1;
+        private const int oldManSpd = 1;
+        private const int merchantSpd = 1;
 
         private const int directionChange = 40;
+        private const int deathTimerMax = 30;
 
         public int StalfosSpeed => stalfosSpd;
 
@@ -45,6 +48,13 @@ namespace LoZClone
 
         public int GoriyaSpeed => goriyaSpd;
 
+        public int OldManSpeed => oldManSpd;
+
+        public int MerchantSpeed => merchantSpd;
+
         public int DirectionChange => directionChange;
+
+        public int DeathTimerMax => deathTimerMax;
+
     }
 }

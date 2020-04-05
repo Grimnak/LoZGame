@@ -10,14 +10,15 @@
 
         public Vector2 InitialPos { get; set; }
 
-        private EnemyDamageData enemyDamageData;
-        private EnemySpeedData enemySpeedData;
+        public EnemyDamageData EnemyDamageData { get; set; }
+
+        public EnemySpeedData EnemySpeedData { get; set; }
 
         public SpikeCross(Vector2 location)
         {
-            this.enemyDamageData = new EnemyDamageData();
-            this.enemySpeedData = new EnemySpeedData();
-            this.Health = new HealthManager(1);
+            this.EnemyDamageData = new EnemyDamageData();
+            this.EnemySpeedData = new EnemySpeedData();
+            this.Health = new HealthManager(EnemyDamageData.SpikeCrossHealth);
             this.Physics = new Physics(new Vector2(location.X, location.Y));
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.CurrentState = new IdleSpikeCrossState(this);
@@ -26,7 +27,7 @@
             Retreating = false;
             InitialPos = this.Physics.Location;
             this.Expired = false;
-            this.Damage = enemyDamageData.SpikeCrossDamage;
+            this.Damage = EnemyDamageData.SpikeCrossDamage;
             this.DamageTimer = 0;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }

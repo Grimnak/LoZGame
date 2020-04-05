@@ -4,14 +4,15 @@
 
     public class Dodongo : EnemyEssentials, IEnemy
     {
-        private EnemyDamageData enemyDamageData;
-        private EnemySpeedData enemySpeedData;
+        public EnemyDamageData EnemyDamageData { get; set; }
+
+        public EnemySpeedData EnemySpeedData { get; set; }
 
         public Dodongo(Vector2 location)
         {
-            this.enemyDamageData = new EnemyDamageData();
-            this.enemySpeedData = new EnemySpeedData();
-            this.Health = new HealthManager(32);
+            this.EnemyDamageData = new EnemyDamageData();
+            this.EnemySpeedData = new EnemySpeedData();
+            this.Health = new HealthManager(EnemyDamageData.DodongoHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = 10;
             this.Physics.IsMoveable = false;
@@ -19,9 +20,9 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = enemyDamageData.DodongoDamage;
+            this.Damage = EnemyDamageData.DodongoDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = enemySpeedData.DodongoSpeed;
+            this.MoveSpeed = EnemySpeedData.DodongoSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 

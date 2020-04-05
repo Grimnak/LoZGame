@@ -20,22 +20,23 @@
 
         public int MinChangeTime => directionChangeMin;
 
-        private EnemyDamageData enemyDamageData;
-        private EnemySpeedData enemySpeedData;
+        public EnemyDamageData EnemyDamageData { get; set; }
+
+        public EnemySpeedData EnemySpeedData { get; set; }
 
         public Keese(Vector2 location)
         {
-            this.enemyDamageData = new EnemyDamageData();
-            this.enemySpeedData = new EnemySpeedData();
-            this.Health = new HealthManager(2);
+            this.EnemyDamageData = new EnemyDamageData();
+            this.EnemySpeedData = new EnemySpeedData();
+            this.Health = new HealthManager(EnemyDamageData.KeeseHealth);
             this.Physics = new Physics(location);
             this.CurrentState = new IdleKeeseState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = enemyDamageData.KeeseDamage;
+            this.Damage = EnemyDamageData.KeeseDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = enemySpeedData.MinKeeseSpeed;
+            this.MoveSpeed = EnemySpeedData.MinKeeseSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 

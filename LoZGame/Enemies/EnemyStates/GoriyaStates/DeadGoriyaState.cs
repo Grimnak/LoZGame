@@ -8,7 +8,7 @@
         private readonly Goriya goriya;
         private readonly ISprite sprite;
         private int deathTimer = 0;
-        private int deathTimerMax = 30;
+        private int deathTimerMax;
 
         public DeadGoriyaState(Goriya goriya)
         {
@@ -17,6 +17,7 @@
             this.goriya.CurrentState = this;
             this.goriya.Physics.Bounds = new Rectangle(goriya.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.goriya.Physics.Location);
+            deathTimerMax = goriya.EnemySpeedData.DeathTimerMax;
             this.goriya.Physics.MovementVelocity = Vector2.Zero;
         }
 

@@ -6,17 +6,23 @@
     {
         private readonly ISprite sprite;
 
+        public EnemyDamageData EnemyDamageData { get; set; }
+
+        public EnemySpeedData EnemySpeedData { get; set; }
+
         public Merchant(Vector2 location)
         {
-            this.Health = new HealthManager(1);
+            this.EnemyDamageData = new EnemyDamageData();
+            this.EnemySpeedData = new EnemySpeedData();
+            this.Health = new HealthManager(EnemyDamageData.MerchantHealth);
             this.Physics = new Physics(location);
             this.sprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.Expired = false;
-            this.Damage = 0;
+            this.Damage = EnemyDamageData.MerchantDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = 0;
+            this.MoveSpeed = EnemySpeedData.MerchantSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 

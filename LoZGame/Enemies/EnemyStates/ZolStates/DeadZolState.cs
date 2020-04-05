@@ -8,7 +8,7 @@
         private readonly Zol zol;
         private readonly ISprite sprite;
         private int deathTimer = 0;
-        private int deathTimerMax = 30;
+        private int deathTimerMax;
 
         public DeadZolState(Zol zol)
         {
@@ -18,6 +18,7 @@
             this.zol.Physics.Bounds = new Rectangle(zol.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.zol.Physics.Location);
             this.zol.Physics.MovementVelocity = Vector2.Zero;
+            deathTimerMax = zol.EnemySpeedData.DeathTimerMax;
         }
 
         public void MoveLeft()

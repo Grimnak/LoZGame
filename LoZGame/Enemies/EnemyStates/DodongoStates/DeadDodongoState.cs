@@ -8,7 +8,7 @@
         private readonly IEnemy dodongo;
         private readonly ISprite sprite;
         private int deathTimer = 0;
-        private int deathTimerMax = 30;
+        private int deathTimerMax;
 
         public DeadDodongoState(IEnemy dodongo)
         {
@@ -17,6 +17,7 @@
             this.dodongo.Physics.Bounds = new Rectangle(dodongo.Physics.Bounds.Location, Point.Zero);
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             LoZGame.Instance.Drops.AttemptDrop(this.dodongo.Physics.Location);
+            deathTimerMax = zol.EnemySpeedData.DeathTimerMax;
             this.dodongo.Physics.MovementVelocity = Vector2.Zero;
         }
 

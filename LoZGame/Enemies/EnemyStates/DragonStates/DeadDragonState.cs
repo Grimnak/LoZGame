@@ -8,7 +8,7 @@
         private readonly Dragon dragon;
         private readonly ISprite sprite;
         private int deathTimer = 0;
-        private int deathTimerMax = 30;
+        private int deathTimerMax;
 
         public DeadDragonState(Dragon dragon)
         {
@@ -17,6 +17,7 @@
             this.dragon.CurrentState = this;
             this.dragon.Physics.Bounds = new Rectangle(dragon.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.dragon.Physics.Location);
+            deathTimerMax = zol.EnemySpeedData.DeathTimerMax;
             this.dragon.Physics.MovementVelocity = Vector2.Zero;
         }
 

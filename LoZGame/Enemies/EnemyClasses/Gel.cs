@@ -6,21 +6,22 @@
     {
         public bool ShouldMove { get; set; }
 
-        private EnemyDamageData enemyDamageData;
-        private EnemySpeedData enemySpeedData;
+        public EnemyDamageData EnemyDamageData { get; set; }
+
+        public EnemySpeedData EnemySpeedData { get; set; }
 
         public Gel(Vector2 location)
         {
-            this.enemyDamageData = new EnemyDamageData();
-            this.enemySpeedData = new EnemySpeedData();
-            this.Health = new HealthManager(2);
+            this.EnemyDamageData = new EnemyDamageData();
+            this.EnemySpeedData = new EnemySpeedData();
+            this.Health = new HealthManager(EnemyDamageData.GelHealth);
             this.Physics = new Physics(location);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = enemyDamageData.GelDamage;
+            this.Damage = EnemyDamageData.GelDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = enemySpeedData.GelSpeed;
+            this.MoveSpeed = EnemySpeedData.GelSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
             this.CurrentState = new IdleGelState(this);
 

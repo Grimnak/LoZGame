@@ -6,23 +6,25 @@
     {
         public bool ShouldMove { get; set; }
 
-        private EnemyDamageData enemyDamageData;
-        private EnemySpeedData enemySpeedData;
+
+        public EnemyDamageData EnemyDamageData { get; set; }
+
+        public EnemySpeedData EnemySpeedData { get; set; }
 
         public Zol(Vector2 location)
         {
-            this.enemyDamageData = new EnemyDamageData();
-            this.enemySpeedData = new EnemySpeedData();
-            this.Health = new HealthManager(8);
+            this.EnemyDamageData = new EnemyDamageData();
+            this.EnemySpeedData = new EnemySpeedData();
+            this.Health = new HealthManager(EnemyDamageData.ZolHealth);
             this.Physics = new Physics(location);
             this.CurrentState = new LeftMovingZolState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.ShouldMove = true;
             this.Expired = false;
-            this.Damage = enemyDamageData.ZolDamage;
+            this.Damage = EnemyDamageData.ZolDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = enemySpeedData.ZolSpeed;
+            this.MoveSpeed = EnemySpeedData.ZolSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
