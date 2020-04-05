@@ -1,6 +1,5 @@
 ﻿namespace LoZClone
 {
-    using System;
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
@@ -24,7 +23,6 @@
             Vector2 knockbackVector = (target.Bounds.Center - source.Bounds.Center).ToVector2();
             knockbackVector.Normalize();
             knockbackVector *= sourceMomentum;
-            Console.WriteLine("DeterminePushbackValues:  Attempted knockback with vector " + knockbackVector.ToString());
             target.SetKnockback(knockbackVector);
         }
 
@@ -41,7 +39,6 @@
             {
                 sourceMomentum = source.Mass;
             }
-            Console.WriteLine("DetermineDirectPushback:  Attempted direct knockback with magnitude " + sourceMomentum.ToString());
 
             switch (source.CurrentDirection)
             {
