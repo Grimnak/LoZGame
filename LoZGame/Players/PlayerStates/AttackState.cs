@@ -102,6 +102,12 @@ namespace LoZClone
         }
 
         /// <inheritdoc/>
+        public void Stun(int stunTime)
+        {
+            this.player.State = new StunnedState(this.player, this.player.State, stunTime);
+        }
+
+        /// <inheritdoc/>
         public void Update()
         {
             if (this.lockoutTimer > 0)

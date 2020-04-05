@@ -45,7 +45,6 @@
         {
             if (!(this.player.State is PickupItemState))
             {
-                DetermineDirectPushback(projectile.Physics, this.player.Physics);
                 this.player.TakeDamage(projectile.Damage);
             }
         }

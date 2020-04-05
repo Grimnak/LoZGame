@@ -51,6 +51,11 @@
             if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
             {
                 this.projectile.Returning = true;
+                player.Stun(projectile.StunDuration);
+            }
+            else
+            {
+                DetermineDirectPushback(this.projectile.Physics, player.Physics);
             }
         }
 

@@ -53,6 +53,12 @@ namespace LoZClone
         void UseItem(int waitTime);
 
         /// <summary>
+        /// Transitions state to becoming stunned for a period of time.
+        /// </summary>
+        /// <param name="stunTime">The amount of time the player remains immobile.</param>
+        void Stun(int stunTime);
+
+        /// <summary>
         /// Updates the state.
         /// </summary>
         void Update();

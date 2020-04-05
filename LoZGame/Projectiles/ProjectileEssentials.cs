@@ -99,7 +99,7 @@
         }
 
         /// <summary>
-        /// temporaray method just to correct swordbeam and arrow until i caan find a better solution
+        /// temporary method just to correct swordbeam and arrow until i caan find a better solution
         /// TODO: Find a way to remove this method.
         /// </summary>
         public void CorrectProjectile()
@@ -110,7 +110,11 @@
 
         public virtual void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IEnemy)
+            if (otherCollider is IPlayer)
+            {
+                this.CollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IEnemy)
             {
                 this.CollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
