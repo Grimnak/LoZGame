@@ -1,6 +1,5 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
 
     public class ProjectileCollisionHandler : CollisionInteractions
@@ -16,17 +15,13 @@
         {
             if (!(projectile.IsExpired && (enemy is OldMan || enemy is Merchant || enemy is SpikeCross)))
             {
-                if (!(projectile is BoomerangProjectile) && !(projectile is MagicBoomerangProjectile))
+                if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
                 {
-                    if (enemy.DamageTimer > 0)
-                    {
-                        //Console.WriteLine("Attempted direct knockback from projectile with direction " + projectile.Physics.CurrentDirection.ToString());
-                        DetermineDirectPushback(projectile.Physics, enemy.Physics);
-                    }
+                    enemy.Stun(projectile.StunDuration);
                 }
                 else
                 {
-                    enemy.Stun(projectile.StunDuration);
+                    DetermineDirectPushback(projectile.Physics, enemy.Physics);
                 }
             }
             if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
@@ -53,10 +48,6 @@
         
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!projectile.IsExpired)
-            {
-                DetermineDirectPushback(projectile.Physics, player.Physics);
-            }
             if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
             {
                 this.projectile.Returning = true;

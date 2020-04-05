@@ -1,15 +1,10 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
-    using System;
 
     public class EnemyCollisionHandler : CollisionInteractions
     {
         private IEnemy enemy;
-        private float xDirection;
-        private float yDirection;
-        private const float Speed = 10;
-        private const float Acceleration = -0.5f;
 
         public EnemyCollisionHandler(IEnemy enemy)
         {
@@ -35,7 +30,7 @@
             {
                 ((OldMan)this.enemy).ShootFireballs();
             }
-            if (!(projectile is SwordBeamExplosion) && !(projectile is BombProjectile) && !(projectile is MagicBoomerangProjectile) && !(projectile is BoomerangProjectile))
+            if (!(projectile is BombProjectile))
             {
                 this.enemy.TakeDamage(projectile.Damage);
             }

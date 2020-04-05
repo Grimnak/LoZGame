@@ -54,6 +54,15 @@
             this.Location = new Vector2(this.bounds.X + this.BoundsOffset.X, this.bounds.Y + this.BoundsOffset.Y);
         }
 
+        public void SetKnockback(Vector2 momentum)
+        {
+            if (IsMoveable)
+            {
+                this.KnockbackVelocity = momentum;
+                this.Friction = (momentum * -1) * ((float)(this.Mass * 2) / (float)LoZGame.Instance.UpdateSpeed);
+            }
+        }
+
         public void Move()
         {
             this.boundsLocation += this.MovementVelocity;
@@ -63,27 +72,15 @@
 
         public void HandleKnockBack()
         {
-            Console.WriteLine(KnockbackVelocity.ToString());
-            Console.WriteLine(Friction.ToString());
             this.boundsLocation += this.KnockbackVelocity;
             this.KnockbackVelocity += this.Friction;
             this.bounds = new Rectangle(this.boundsLocation.ToPoint(), this.bounds.Size);
             this.SetLocation();
-            Console.WriteLine("Physics.HandleKnockBack():  set location of " + this.Bounds + " with " + this.KnockbackVelocity);
         }
 
         public void Accelerate()
         {
             this.MovementVelocity += this.MovementAcceleration;
-        }
-
-        public void SetKnockback(Vector2 momentum)
-        {
-            if (IsMoveable)
-            {
-                this.KnockbackVelocity = momentum;
-                this.Friction = (momentum * -1) * ((float)(this.Mass * 2) / (float)LoZGame.Instance.UpdateSpeed); 
-            }
         }
 
         public float GetMomentum()

@@ -1,15 +1,10 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
 
     public class PlayerCollisionHandler : CollisionInteractions
     {
         private IPlayer player;
-        private float xDirection;
-        private float yDirection;
-        private const float Speed = 10;
-        private const float Acceleration = -0.5f;
 
         public PlayerCollisionHandler(IPlayer player)
         {
@@ -30,7 +25,6 @@
             {
                 if (!(this.player.State is PickupItemState))
                 {
-                    Console.Write("Colliding with: " + enemy + "\n");
                     this.DeterminePushbackValues(enemy.Physics, this.player.Physics);
                     this.player.TakeDamage(enemy.Damage);
                 }
@@ -51,7 +45,7 @@
         {
             if (!(this.player.State is PickupItemState))
             {
-                DetermineDirectPushback(player.Physics, projectile.Physics);
+                DetermineDirectPushback(projectile.Physics, this.player.Physics);
                 this.player.TakeDamage(projectile.Damage);
             }
         }
