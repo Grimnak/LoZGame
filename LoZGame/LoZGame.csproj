@@ -179,6 +179,7 @@
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\EnemyProjectileType.cs" />
     <Compile Include="GameState\PlayGameState.cs" />
+    <Compile Include="Players\PlayerStates\StunnedState.cs" />
     <Compile Include="Projectiles\ArrowProjectile.cs" />
     <Compile Include="Projectiles\BlueCandleProjectile.cs" />
     <Compile Include="Projectiles\BombExplosion.cs" />

@@ -54,9 +54,12 @@
         {
             if (this.DamageTimer <= 0)
             {
-                SoundEffectsFactory.Instance.PlayEnemyHit();
                 this.Health.DamageHealth(damageAmount);
-                this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                if (damageAmount > 0)
+                {
+                    SoundEffectsFactory.Instance.PlayEnemyHit();
+                    this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                }
             }
             if (this.Health.CurrentHealth <= 0)
             {

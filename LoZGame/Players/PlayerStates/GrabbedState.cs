@@ -69,6 +69,11 @@
         }
 
         /// <inheritdoc/>
+        public void Stun(int stunTime)
+        {
+        }
+
+        /// <inheritdoc/>
         public void Update()
         {
             wallMaster.Physics.Location = player.Physics.Location;
