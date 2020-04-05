@@ -14,7 +14,6 @@ namespace LoZClone
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyboardCommandLoader"/> class.
         /// </summary>
-        /// <param name="dungeon">Dungeon to pass to a command.</param>
         /// <param name="player">Player to pass to a command.</param>
         public KeyboardCommandLoader(IPlayer player)
         {
@@ -33,6 +32,7 @@ namespace LoZClone
 
             this.dictionary.Add(Keys.Z, new CommandAttackA(player));
             this.dictionary.Add(Keys.N, new CommandAttackB(player));
+            this.dictionary.Add(Keys.I, new CommandInventory());
 
             this.dictionary.Add(Keys.D1, new CommandBomb(player));
             this.dictionary.Add(Keys.D2, new CommandArrow(player));

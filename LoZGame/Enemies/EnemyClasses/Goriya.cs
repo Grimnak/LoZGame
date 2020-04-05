@@ -1,7 +1,7 @@
 ﻿namespace LoZClone
 {
-    using Microsoft.Xna.Framework;
     using System;
+    using Microsoft.Xna.Framework;
 
     public class Goriya : EnemyEssentials, IEnemy
     {
@@ -32,7 +32,7 @@
             this.CurrentState.Stun(stunTime);
         }
 
-        public void FacePlayer()
+        public override void FacePlayer()
         {
             Vector2 playerLoc = UnitVectorToPlayer(this.Physics.Bounds.Center.ToVector2());
             if (Math.Abs(playerLoc.X) > Math.Abs(playerLoc.Y))
@@ -57,7 +57,6 @@
                     this.Physics.CurrentDirection = PhysicsEssentials.Direction.South;
                 }
             }
-
         }
     }
 }

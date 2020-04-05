@@ -82,6 +82,7 @@
     <Compile Include="Controller\Commands\PlayerCommands\CommandRedCandle.cs" />
     <Compile Include="Controller\Commands\CommandReset.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandRight.cs" />
+    <Compile Include="Controller\Commands\PlayerCommands\CommandInventory.cs" />
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomDown.cs" />
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomLeft.cs" />
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomRight.cs" />
