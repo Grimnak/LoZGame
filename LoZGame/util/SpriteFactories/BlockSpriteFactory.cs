@@ -10,6 +10,8 @@
     {
         private static readonly int tileWidth = 55;
         private static readonly int tileHeight = 48;
+        private static readonly int movableTileWidth = 54;
+        private static readonly int movableTileHeight = 47;
         private static readonly int verticalOffset = 72;
         private static readonly int horizontalOffset = 79;
         private static readonly int doorOffset = 24;
@@ -119,6 +121,16 @@
         public int TileHeight
         {
             get { return tileHeight; }
+        }
+
+        public int MovableTileWidth
+        {
+            get { return movableTileWidth; }
+        }
+
+        public int MovableTileHeight
+        {
+            get { return movableTileHeight; }
         }
 
         public int VerticalOffset

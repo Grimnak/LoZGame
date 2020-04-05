@@ -318,7 +318,7 @@
     <Compile Include="Util\SpriteFactories\LinkSpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\ProjectileSpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\ScreenSpriteFactory.cs" />
-    <Compile Include="Util\SpriteFactories\SoundEffectsFactory.cs" />
+    <Compile Include="Util\Audio\SoundEffectsFactory.cs" />
     <Compile Include="Util\XMLHandler.cs" />
     <Compile Include="GameState\WinGameState.cs" />
   </ItemGroup>

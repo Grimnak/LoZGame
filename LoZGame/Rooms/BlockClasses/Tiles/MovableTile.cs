@@ -62,7 +62,7 @@
         {
             if (this.Physics.MovementVelocity.X != 0)
             {
-                if (Math.Abs(this.Physics.Location.X - this.originalLocation.X) < this.Physics.Bounds.Width && this.Physics.Location.Y == this.originalLocation.Y)
+                if (Math.Abs(this.Physics.Location.X - this.originalLocation.X) <= this.Physics.Bounds.Width && this.Physics.Location.Y == this.originalLocation.Y)
                 {
                     this.Physics.StopMovementY();
                     this.Physics.Move();
@@ -71,7 +71,7 @@
             }
             else if (this.Physics.MovementVelocity.Y != 0)
             {
-                if (Math.Abs(this.Physics.Location.Y - this.originalLocation.Y) < this.Physics.Bounds.Height && this.Physics.Location.X == this.originalLocation.X)
+                if (Math.Abs(this.Physics.Location.Y - this.originalLocation.Y) <= this.Physics.Bounds.Height && this.Physics.Location.X == this.originalLocation.X)
                 {
                     this.Physics.StopMovementX();
                     this.Physics.Move();
@@ -82,7 +82,7 @@
 
         private void SolveDoors()
         {
-            if (Math.Abs(this.Physics.Location.X - this.originalLocation.X) == this.Physics.Bounds.Width - 1 || Math.Abs(this.Physics.Location.Y - this.originalLocation.Y) == this.Physics.Bounds.Height)
+            if (Math.Abs(this.Physics.Location.X - this.originalLocation.X) >= this.Physics.Bounds.Width || Math.Abs(this.Physics.Location.Y - this.originalLocation.Y) >= this.Physics.Bounds.Height)
             {
                 foreach (Door door in LoZGame.Instance.GameObjects.Doors.DoorList)
                 {
