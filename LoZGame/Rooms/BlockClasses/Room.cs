@@ -13,6 +13,8 @@
     public class Room
     {
         private bool exists = false;
+        private bool allEnemiesDead = false;
+        private Tuple<bool, Vector2> keyLocation = Tuple.Create(false, new Vector2(0, 0));
         private string border = null;
         private string text = null;
         private List<IItem> items = null; // a list for any and all items in a room
@@ -95,6 +97,11 @@
         public string RoomText
         {
             get { return this.text; }
+        }
+
+        public Tuple<bool, Vector2> KeyLocation
+        {
+            get { return this.keyLocation; }
         }
 
         /// <summary>
@@ -200,7 +207,7 @@
                 case "Key":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.items.Add(new Key(location));
+                    this.keyLocation = Tuple.Create(true, location);
                     break;
                 case "Compass":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 4);

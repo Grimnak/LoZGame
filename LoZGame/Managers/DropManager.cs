@@ -15,6 +15,7 @@
         private const int SecondPotionWeight = 5;
         private const int HealthWeight = 25;
         private const int FairyWeight = 5;
+        private Room room;
 
         private Dictionary<string, int> itemWeights;
 
@@ -106,7 +107,13 @@
             }
         }
 
-        public void DropKey(Vector2 loc) { LoZGame.Instance.GameObjects.Items.Add(new Key(loc)); }
+        public void DropKey()
+        {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.KeyLocation.Item1 && LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1)
+            {
+                LoZGame.Instance.GameObjects.Items.Add(new Key(LoZGame.Instance.Dungeon.CurrentRoom.KeyLocation.Item2));
+            }
+        }
 
         public void DropMagicKey(Vector2 loc) { LoZGame.Instance.GameObjects.Items.Add(new MagicKey(loc)); }
     }

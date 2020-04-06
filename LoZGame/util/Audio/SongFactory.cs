@@ -49,5 +49,10 @@
                 triforceTune.PlayLooping();
             }
         }
+
+        public void StopDungeonSong()
+        {
+            dungeonSong.Stop();
+        }
     }
 }

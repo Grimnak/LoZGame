@@ -71,6 +71,7 @@
                     SoundEffectsFactory.Instance.PlayEnemyDie();
                 }
                 this.CurrentState.Die();
+                LoZGame.Instance.Drops.DropKey();
             }
         }
 

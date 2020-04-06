@@ -40,6 +40,7 @@
             }
             if (this.Health.CurrentHealth <= 0)
             {
+                SongFactory.Instance.StopDungeonSong();
                 SoundEffectsFactory.Instance.PlayLinkDie();
                 this.State.Die();
                 LoZGame.Instance.GameState.Death();
