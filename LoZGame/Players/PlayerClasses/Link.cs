@@ -21,25 +21,10 @@
             this.CurrentWeapon = "Wood";
             this.CurrentTint = LoZGame.Instance.DungeonTint;
             this.MoveSpeed = 2.5f;
-            this.AnimationSpeed = 5;
-            this.FrameDelay = 0;
             this.DamageTimer = 0;
             this.State = new IdleState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
 
-        }
-
-        public void Update()
-        {
-            this.Physics.SetDepth();
-            this.HandleDamage();
-            this.Physics.Move();
-            this.State.Update();
-        }
-
-        public void Draw()
-        {
-            this.State.Draw();
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

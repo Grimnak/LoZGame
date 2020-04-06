@@ -1,8 +1,8 @@
 ﻿namespace LoZClone
 {
+    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using System;
 
     public class IdleSpikeCrossState : IEnemyState
     {
@@ -84,21 +84,20 @@
 
             if (!this.spikeCross.Attacking)
             {
-                if (spikeX == linkX)
+                if (Math.Abs(linkX - spikeX) < (this.spikeCross.Physics.Bounds.Width / 2))
                 {
                     if (linkY - spikeY != 0)
                     {
-
-                        this.spikeCross.MoveSpeed = 3 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
+                        this.spikeCross.MoveSpeed = 2 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
                     }
                     this.spikeCross.Attacking = true;
                     this.spikeCross.CurrentState.MoveDown();
                 }
-                else if (spikeY == linkY)
+                else if (Math.Abs(linkY - spikeY) < (this.spikeCross.Physics.Bounds.Height / 2))
                 {
                     if (linkX - spikeX != 0)
                     {
-                        this.spikeCross.MoveSpeed = 3 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
+                        this.spikeCross.MoveSpeed = 2 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
                     }
                     this.spikeCross.Attacking = true;
                     this.spikeCross.CurrentState.MoveRight();
