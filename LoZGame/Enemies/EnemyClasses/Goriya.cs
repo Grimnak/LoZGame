@@ -13,7 +13,7 @@
 
         public Goriya(Vector2 location)
         {
-            this.Health = new HealthManager(12);
+            this.Health = new HealthManager(8);
             this.Physics = new Physics(location);
             this.CurrentState = new LeftMovingGoriyaState(this);
             this.EntityManager = LoZGame.Instance.GameObjects.Entities;

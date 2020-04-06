@@ -72,6 +72,7 @@
                 }
                 this.CurrentState.Die();
                 LoZGame.Instance.Drops.DropKey();
+                LoZGame.Instance.Drops.DropBoomerang();
             }
         }
 

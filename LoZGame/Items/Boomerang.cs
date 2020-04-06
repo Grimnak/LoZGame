@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class Boomerang : ItemEssentials, IItem
+    public class Boomerang : ItemEssentials, IItem
     {
         public Boomerang(Vector2 loc)
         {

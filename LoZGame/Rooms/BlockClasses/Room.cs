@@ -13,7 +13,8 @@
     public class Room
     {
         private bool exists = false;
-        private Tuple<bool, Vector2> keyLocation = Tuple.Create(false, new Vector2(0, 0));
+        private Key droppedKey = null;
+        private Boomerang droppedBoomerang = null;
         private string border = null;
         private string text = null;
         private List<IItem> items = null; // a list for any and all items in a room
@@ -98,10 +99,9 @@
             get { return this.text; }
         }
 
-        public Tuple<bool, Vector2> KeyLocation
-        {
-            get { return this.keyLocation; }
-        }
+        public Key DroppedKey => this.droppedKey;
+
+        public Boomerang DroppedBoomerang => this.droppedBoomerang;
 
         /// <summary>
         /// Converts grid position in the room to a screen vector.
@@ -171,7 +171,7 @@
                     this.enemies.Add(new Stalfos(location));
                     break;
                 case "WallMaster":
-                    this.enemies.Add(new WallMaster(new Vector2(400, 240)));
+                    this.enemies.Add(new WallMaster(location));
                     break;
                 case "Zol":
                     this.enemies.Add(new Zol(location));
@@ -206,8 +206,8 @@
                 case "Key":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.keyLocation = Tuple.Create(true, location);
-                    break;
+                    this.droppedKey = new Key(location);
+                    break; 
                 case "Compass":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 4);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
@@ -216,7 +216,7 @@
                 case "Boomerang":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.items.Add(new Boomerang(location));
+                    this.droppedBoomerang = new Boomerang(location);
                     break;
                 case "TriForce":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 5);

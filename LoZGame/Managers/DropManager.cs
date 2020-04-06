@@ -108,9 +108,18 @@
 
         public void DropKey()
         {
-            if (LoZGame.Instance.Dungeon.CurrentRoom.KeyLocation.Item1 && LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1)
+            if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey != null && LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1)
             {
-                LoZGame.Instance.GameObjects.Items.Add(new Key(LoZGame.Instance.Dungeon.CurrentRoom.KeyLocation.Item2));
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey);
+                SoundFactory.Instance.PlayKeyAppears();
+            }
+        }
+
+        public void DropBoomerang()
+        {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedBoomerang != null && LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1)
+            {
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedBoomerang);
             }
         }
 

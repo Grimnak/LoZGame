@@ -85,7 +85,6 @@
             this.IsMouseVisible = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
             gameObjectManager = new GameObjectManager();
-            music = new SoundFactory();
             dropManager = new DropManager();
             debugManager = new DebugManager();
         }

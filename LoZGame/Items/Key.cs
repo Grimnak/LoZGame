@@ -4,11 +4,10 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class Key : ItemEssentials, IItem
+    public class Key : ItemEssentials, IItem
     {
         public Key(Vector2 loc)
         {
-            SoundFactory.Instance.PlayKeyAppears();
             this.Sprite = ItemSpriteFactory.Instance.Key();
             this.itemCollisionHandler = new ItemCollisionHandler(this);
             this.Physics = new Physics(loc);
