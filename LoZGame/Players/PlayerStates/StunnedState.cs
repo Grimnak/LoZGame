@@ -3,22 +3,29 @@
     using Microsoft.Xna.Framework;
 
     /// <summary>
-    /// Death state for player.
+    /// Immobilized state for player when hit by a boomerang.
     /// </summary>
-    public class DieState : IPlayerState
+    public class StunnedState : IPlayerState
     {
         private readonly IPlayer player;
-        private readonly ISprite sprite;
+        private readonly IPlayerState oldState;
+        private Vector2 oldVelocity;
+        private int stunDuration;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DieState"/> class.
+        /// Initializes a new instance of the <see cref="StunnedState"/> class.
         /// </summary>
         /// <param name="playerInstance">Instance of the player.</param>
-        public DieState(IPlayer playerInstance)
+        /// <param name="oldState">The state the player was in prior to being stunned.</param>
+        /// <param name="stunTime">The amount of time the player is immobile.</param>
+        public StunnedState(IPlayer playerInstance, IPlayerState oldState, int stunTime)
         {
             this.player = playerInstance;
-            this.sprite = this.CreateCorrectSprite();
+            this.oldState = oldState;
+            this.oldVelocity = this.player.Physics.MovementVelocity;
             this.player.Physics.MovementVelocity = Vector2.Zero;
+            this.stunDuration = stunTime;
+            this.player.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
         /// <inheritdoc/>
@@ -54,6 +61,7 @@
         /// <inheritdoc/>
         public void Die()
         {
+            this.player.State = new DieState(this.player);
         }
 
         /// <inheritdoc/>
@@ -69,26 +77,24 @@
         /// <inheritdoc/>
         public void Stun(int stunTime)
         {
+            stunDuration = stunTime;
         }
 
         /// <inheritdoc/>
         public void Update()
         {
-            if (this.sprite.CurrentFrame < this.sprite.TotalFrames - 1)
+            stunDuration--;
+            if (stunDuration <= 0)
             {
-                this.sprite.Update();
+                this.player.State = oldState;
+                this.player.Physics.MovementVelocity = oldVelocity;
             }
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint, this.player.Physics.Depth);
-        }
-
-        private ISprite CreateCorrectSprite()
-        {
-            return LinkSpriteFactory.Instance.CreateSpriteLinkDie(this.player.CurrentColor);
+            this.oldState.Draw();
         }
     }
 }

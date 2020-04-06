@@ -29,6 +29,10 @@
         {
         }
 
+        public virtual void FacePlayer()
+        {
+        }
+
         public Vector2 UnitVectorToPlayer(Vector2 origin)
         {
             Vector2 unitVector = LoZGame.Instance.Link.Physics.Bounds.Center.ToVector2() - origin;
@@ -45,18 +49,16 @@
             return new Vector2(newX, newY);
         }
 
-        public void FacePlayer()
-        {
-            
-        }
-
         public virtual void TakeDamage(int damageAmount)
         {
             if (this.DamageTimer <= 0)
             {
-                SoundEffectsFactory.Instance.PlayEnemyHit();
                 this.Health.DamageHealth(damageAmount);
-                this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                if (damageAmount > 0)
+                {
+                    SoundEffectsFactory.Instance.PlayEnemyHit();
+                    this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                }
             }
             if (this.Health.CurrentHealth <= 0)
             {
@@ -123,7 +125,7 @@
 
         public virtual void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            this.EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
     }
 }

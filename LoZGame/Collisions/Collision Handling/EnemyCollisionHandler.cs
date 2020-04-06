@@ -13,7 +13,7 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.enemy is WallMaster)
+            if (this.enemy is WallMaster && !(player.State is PickupItemState))
             {
                 this.enemy.CurrentState.Attack();
                 this.enemy.Physics.MovementVelocity = new Vector2(-2, 0);

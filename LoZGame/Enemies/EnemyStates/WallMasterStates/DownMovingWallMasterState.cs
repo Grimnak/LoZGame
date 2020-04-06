@@ -18,7 +18,6 @@
             this.wallMaster.CurrentState = this;
             this.randomStateGenerator = new RandomStateGenerator(this.wallMaster, 2, 6);
             this.wallMaster.Physics.MovementVelocity = new Vector2(0, this.wallMaster.MoveSpeed);
-
         }
 
         public void MoveLeft()

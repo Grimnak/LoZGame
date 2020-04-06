@@ -76,6 +76,12 @@
         }
 
         /// <inheritdoc/>
+        public void Stun(int stunTime)
+        {
+            this.player.State = new StunnedState(this.player, this.player.State, stunTime);
+        }
+
+        /// <inheritdoc/>
         public void Update()
         {
             this.sprite.Update();

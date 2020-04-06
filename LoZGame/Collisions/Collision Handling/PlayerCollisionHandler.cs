@@ -13,7 +13,7 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (enemy is WallMaster)
+            if (enemy is WallMaster && !(this.player.State is PickupItemState))
             {
                 this.player.State = new GrabbedState(player, (WallMaster)enemy);
             }
@@ -45,7 +45,6 @@
         {
             if (!(this.player.State is PickupItemState))
             {
-                DetermineDirectPushback(projectile.Physics, this.player.Physics);
                 this.player.TakeDamage(projectile.Damage);
             }
         }

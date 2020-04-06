@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System;
     using Microsoft.Xna.Framework;
 
     public class WallMaster : EnemyEssentials, IEnemy
@@ -23,16 +24,39 @@
             this.CurrentState.Stun(stunTime);
         }
 
-        public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        public override void FacePlayer()
         {
-            if (otherCollider is IPlayer)
+            Vector2 playerLoc = UnitVectorToPlayer(this.Physics.Bounds.Center.ToVector2());
+            if (Math.Abs(playerLoc.X) > Math.Abs(playerLoc.Y))
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                if (playerLoc.X < 0)
+                {
+                    this.CurrentState = new LeftMovingWallMasterState(this);
+                }
+                else
+                {
+                    this.CurrentState = new RightMovingWallMasterState(this);
+                }
             }
-            else if (otherCollider is IProjectile)
+            else
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+                if (playerLoc.Y < 0)
+                {
+                    this.CurrentState = new UpMovingWallMasterState(this);
+                }
+                else
+                {
+                    this.CurrentState = new DownMovingWallMasterState(this);
+                }
             }
+        }
+
+        public override void Update()
+        {
+            this.HandleDamage();
+            this.Physics.Move();
+            this.CurrentState.Update();
+            this.Physics.SetDepth();
         }
     }
 }

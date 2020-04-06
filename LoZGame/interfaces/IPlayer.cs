@@ -90,6 +90,12 @@
         void UseItem(int waitTime);
 
         /// <summary>
+        /// Makes the player become stunned for a period of time.
+        /// </summary>
+        /// <param name="stunTime">The amount of time the player remains immobile.</param>
+        void Stun(int stunTime);
+
+        /// <summary>
         /// Updates the player.
         /// </summary>
         void Update();

@@ -1,7 +1,7 @@
 ﻿namespace LoZClone
 {
     /// <summary>
-    /// Command that makes player attack.
+    /// Command that makes player use an item.
     /// </summary>
     public class CommandAttackB : ICommand
     {

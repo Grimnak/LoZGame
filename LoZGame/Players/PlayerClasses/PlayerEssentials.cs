@@ -31,9 +31,12 @@
         {
             if (this.DamageTimer <= 0)
             {
-                SoundEffectsFactory.Instance.PlayLinkHurt();
                 this.Health.DamageHealth(damageAmount);
-                this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                if (damageAmount > 0)
+                {
+                    SoundEffectsFactory.Instance.PlayLinkHurt();
+                    this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                }
             }
             if (this.Health.CurrentHealth <= 0)
             {
@@ -101,6 +104,11 @@
         public void UseItem(int waitTime)
         {
             this.State.UseItem(waitTime);
+        }
+
+        public void Stun(int stunTime)
+        {
+            this.State.Stun(stunTime);
         }
 
     }

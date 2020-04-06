@@ -82,6 +82,7 @@
     <Compile Include="Controller\Commands\PlayerCommands\CommandRedCandle.cs" />
     <Compile Include="Controller\Commands\CommandReset.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandRight.cs" />
+    <Compile Include="Controller\Commands\PlayerCommands\CommandInventory.cs" />
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomDown.cs" />
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomLeft.cs" />
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomRight.cs" />
@@ -179,6 +180,7 @@
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\EnemyProjectileType.cs" />
     <Compile Include="GameState\PlayGameState.cs" />
+    <Compile Include="Players\PlayerStates\StunnedState.cs" />
     <Compile Include="Projectiles\ArrowProjectile.cs" />
     <Compile Include="Projectiles\BlueCandleProjectile.cs" />
     <Compile Include="Projectiles\BombExplosion.cs" />

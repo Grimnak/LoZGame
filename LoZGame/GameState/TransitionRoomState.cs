@@ -16,11 +16,6 @@
             this.lockout = 0;
             this.transitionSpeed = 5;
             this.sprite = CreateCorrectLevelSprite();
-
-            // Unload everything we have to unload.
-            LoZGame.Instance.GameObjects.Enemies.Clear();
-            LoZGame.Instance.GameObjects.Items.Clear();
-            LoZGame.Instance.GameObjects.Entities.Clear();
         }
 
         public void Death()
