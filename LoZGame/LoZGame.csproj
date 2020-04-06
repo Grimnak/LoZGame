@@ -283,7 +283,6 @@
     <Compile Include="Managers\DebugManager.cs" />
     <Compile Include="GameState\TitleScreenState.cs" />
     <Compile Include="GameState\TransitionRoomState.cs" />
-    <Compile Include="Util\Audio\SongFactory.cs" />
     <Compile Include="Util\DataStructs\EnemyDamageData.cs" />
     <Compile Include="Util\DataStructs\EnemyMassData.cs" />
     <Compile Include="Util\DataStructs\EnemyResistanceData.cs" />
@@ -322,7 +321,7 @@
     <Compile Include="Util\SpriteFactories\LinkSpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\ProjectileSpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\ScreenSpriteFactory.cs" />
-    <Compile Include="Util\Audio\SoundEffectsFactory.cs" />
+    <Compile Include="Util\Audio\SoundFactory.cs" />
     <Compile Include="Util\XMLHandler.cs" />
     <Compile Include="GameState\WinGameState.cs" />
   </ItemGroup>

@@ -22,47 +22,47 @@
 
             if (this.item is Fairy)
             {
-                SoundEffectsFactory.Instance.PlayGetItem();
+                SoundFactory.Instance.PlayGetItem();
                 player.Health.CurrentHealth = player.Health.MaxHealth;
             }
             else if (this.item is DroppedHealth)
             {
-                SoundEffectsFactory.Instance.PlayGetHeartOrKey();
+                SoundFactory.Instance.PlayGetHeartOrKey();
                 player.Health.GainHealth(4);
             }
             else if (this.item is HeartContainer)
             {
-                SoundEffectsFactory.Instance.PlayGetItem();
+                SoundFactory.Instance.PlayGetItem();
                 player.Health.MaxHealth = player.Health.MaxHealth + 4;
                 player.Health.CurrentHealth = player.Health.MaxHealth;
             }
             else if (this.item is DroppedRupee)
             {
-                SoundEffectsFactory.Instance.PlayGetRupee();
+                SoundFactory.Instance.PlayGetRupee();
                 player.Inventory.GainRupees(1);
             }
             else if (item is DroppedYellowRupee)
             {
-                SoundEffectsFactory.Instance.PlayGetRupee();
+                SoundFactory.Instance.PlayGetRupee();
                 player.Inventory.GainRupees(5);
             }
             else if (item is DroppedBomb)
             {
-                SoundEffectsFactory.Instance.PlayGetItem();
+                SoundFactory.Instance.PlayGetItem();
                 player.Inventory.GainBombs();
             }
             else if (this.item is Key)
             {
-                SoundEffectsFactory.Instance.PlayGetHeartOrKey();
+                SoundFactory.Instance.PlayGetHeartOrKey();
             }
             else if (this.item is Triforce)
             {
-                SoundEffectsFactory.Instance.PlayGetItem();
-                SongFactory.Instance.PlayTriforceTune();
+                SoundFactory.Instance.PlayGetItem();
+                SoundFactory.Instance.PlayTriforceTune();
             }
             else
             {
-                SoundEffectsFactory.Instance.PlayGetItem();
+                SoundFactory.Instance.PlayGetItem();
             }
         }
 

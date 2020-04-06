@@ -31,7 +31,7 @@
         private Texture2D background;
         private Texture2D backgroundHole;
         private SpriteFont font;
-        private SoundEffectsFactory music;
+        private SoundFactory music;
         private GameObjectManager gameObjectManager;
 
         private DropManager dropManager;
@@ -88,6 +88,7 @@
             this.Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
+            
             this.gameObjectManager = new GameObjectManager();
             this.music = new SoundEffectsFactory();
             this.dropManager = new DropManager();

@@ -8,7 +8,7 @@
     {
         public Key(Vector2 loc)
         {
-            SoundEffectsFactory.Instance.PlayKeyAppears();
+            SoundFactory.Instance.PlayKeyAppears();
             this.Sprite = ItemSpriteFactory.Instance.Key();
             this.itemCollisionHandler = new ItemCollisionHandler(this);
             this.Physics = new Physics(loc);

@@ -86,7 +86,7 @@
                 switch (item)
                 {
                     case ProjectileType.WoodenSword:
-                        SoundEffectsFactory.Instance.PlaySwordShoot();
+                        SoundFactory.Instance.PlaySwordShoot();
                         this.projectileList.Add(this.projectileId, new WoodenSwordProjectile(player));
                         break;
                     default:
@@ -100,29 +100,29 @@
                 switch (item)
                 {
                     case ProjectileType.Bomb:
-                        SoundEffectsFactory.Instance.PlayBombDrop();
+                        SoundFactory.Instance.PlayBombDrop();
                         this.projectileList.Add(this.projectileId, new BombProjectile(player.Physics));
                         break;
 
                     case ProjectileType.Arrow:
-                        SoundEffectsFactory.Instance.PlayArrowOrBoomShoot();
+                        SoundFactory.Instance.PlayArrowOrBoomShoot();
                         this.projectileList.Add(this.projectileId, new ArrowProjectile(player.Physics));
                         break;
 
                     case ProjectileType.SilverArrow:
-                        SoundEffectsFactory.Instance.PlayArrowOrBoomShoot();
+                        SoundFactory.Instance.PlayArrowOrBoomShoot();
                         this.projectileList.Add(this.projectileId, new SilverArrowProjectile(player.Physics));
                         break;
 
                     case ProjectileType.RedCandle:
-                        SoundEffectsFactory.Instance.PlayCandleShoot();
+                        SoundFactory.Instance.PlayCandleShoot();
                         this.projectileList.Add(this.projectileId, new RedCandleProjectile(player.Physics));
                         break;
 
                     case ProjectileType.BlueCandle:
                         if (!this.candleLock)
                         {
-                            SoundEffectsFactory.Instance.PlayCandleShoot();
+                            SoundFactory.Instance.PlayCandleShoot();
                             this.projectileList.Add(this.projectileId, new BlueCandleProjectile(player.Physics));
                             this.candleLock = true;
                             this.candleInstance = this.projectileId;
@@ -133,7 +133,7 @@
                         if (!this.boomerangLock)
                         {
                             this.projectileList.Add(this.projectileId, new BoomerangProjectile(player.Physics));
-                            SoundEffectsFactory.Instance.PlayArrowOrBoomShoot();
+                            SoundFactory.Instance.PlayArrowOrBoomShoot();
                             this.boomerangLock = true;
                             this.boomerangInstance = this.projectileId;
                         }
@@ -144,7 +144,7 @@
                         if (!this.boomerangLock)
                         {
                             this.projectileList.Add(this.projectileId, new MagicBoomerangProjectile(player.Physics));
-                            SoundEffectsFactory.Instance.PlayArrowOrBoomShoot();
+                            SoundFactory.Instance.PlayArrowOrBoomShoot();
                             this.boomerangLock = true;
                             this.boomerangInstance = this.projectileId;
                         }
@@ -154,7 +154,7 @@
                     case ProjectileType.SwordBeam:
                         if (!this.swordLock)
                         {
-                            SoundEffectsFactory.Instance.PlaySwordShoot();
+                            SoundFactory.Instance.PlaySwordShoot();
                             this.projectileList.Add(this.projectileId, new SwordBeamProjectile(player.Physics));
                             this.swordLock = true;
                             this.swordInstance = this.projectileId;

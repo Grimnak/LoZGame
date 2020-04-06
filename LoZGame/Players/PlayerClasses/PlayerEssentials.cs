@@ -30,14 +30,14 @@
                 this.Health.DamageHealth(damageAmount);
                 if (damageAmount > 0)
                 {
-                    SoundEffectsFactory.Instance.PlayLinkHurt();
+                    SoundFactory.Instance.PlayLinkHurt();
                     this.DamageTimer = LoZGame.Instance.UpdateSpeed;
                 }
             }
             if (this.Health.CurrentHealth <= 0)
             {
-                SongFactory.Instance.StopDungeonSong();
-                SoundEffectsFactory.Instance.PlayLinkDie();
+                SoundFactory.Instance.StopDungeonSong();
+                SoundFactory.Instance.PlayLinkDie();
                 this.State.Die();
                 LoZGame.Instance.GameState.Death();
             }

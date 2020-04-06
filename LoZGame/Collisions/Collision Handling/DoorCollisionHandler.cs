@@ -38,7 +38,7 @@
                 IDoor cousin = FindCousinDoor();
                 cousin.Open();
                 this.door.Open();
-                SoundEffectsFactory.Instance.PlayDoorUnlock();
+                SoundFactory.Instance.PlayDoorUnlock();
             }
             else if (this.door.State is PuzzleDoorState && ((PuzzleDoorState)this.door.State).IsSolved)
             {

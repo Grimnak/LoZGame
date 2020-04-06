@@ -56,7 +56,7 @@
                 this.Health.DamageHealth(damageAmount);
                 if (damageAmount > 0)
                 {
-                    SoundEffectsFactory.Instance.PlayEnemyHit();
+                    SoundFactory.Instance.PlayEnemyHit();
                     this.DamageTimer = LoZGame.Instance.UpdateSpeed;
                 }
             }
@@ -64,11 +64,11 @@
             {
                 if (this is Dragon)
                 {
-                    SoundEffectsFactory.Instance.PlayDragonDie();
+                    SoundFactory.Instance.PlayDragonDie();
                 }
                 else
                 {
-                    SoundEffectsFactory.Instance.PlayEnemyDie();
+                    SoundFactory.Instance.PlayEnemyDie();
                 }
                 this.CurrentState.Die();
                 LoZGame.Instance.Drops.DropKey();
