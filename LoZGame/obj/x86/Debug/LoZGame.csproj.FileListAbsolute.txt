@@ -1441,3 +1441,5 @@ C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\LevelOneMaster.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\LoZTitle.xnb
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\pressEnter.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\playerHUD.xnb
+D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\playerMap.xnb
