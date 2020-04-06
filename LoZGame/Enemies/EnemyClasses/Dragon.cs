@@ -1,7 +1,7 @@
 ﻿namespace LoZClone
 {
-    using Microsoft.Xna.Framework;
     using System;
+    using Microsoft.Xna.Framework;
 
     public class Dragon : EnemyEssentials, IEnemy
     {
@@ -31,13 +31,7 @@
         public void ShootFireballs()
         {
             Vector2 velocityVector = this.UnitVectorToPlayer(this.Physics.Bounds.Location.ToVector2());
-            /*if (playerVector.X < 0)
-            {
-                velocityVector = new Vector2(playerVector.X * FireballSpeed, playerVector.Y * FireballSpeed);
-            } else
-            {
-                velocityVector = new Vector2(-1s * FireballSpeed, 0);
-            }*/
+
             velocityVector *= FireballSpeed;
             for (int i = 0; i < NumberFireballs; i++)
             {
@@ -51,6 +45,9 @@
             }
         }
 
+        /// <summary>
+        /// Prevents the dragon from moving into the player area in the appropriate room.
+        /// </summary>
         private void CheckLeftBound()
         {
             int leftBound = BlockSpriteFactory.Instance.HorizontalOffset + (7 * BlockSpriteFactory.Instance.TileWidth);
