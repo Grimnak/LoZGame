@@ -3,37 +3,45 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class PlayGameState : IGameState
+    public class CloseInventoryState : IGameState
     {
+        private ISprite sprite;
+        private int transitionSpeed;
+        private int lockout;
+        private Vector2 position;
         private int screenWidth = LoZGame.Instance.GraphicsDevice.Viewport.Width;
         private int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Height;
 
-        public PlayGameState()
+        public CloseInventoryState()
         {
+            this.lockout = 0;
+            this.transitionSpeed = 5;
+            this.sprite = CreateCorrectLevelSprite();
+            this.position = new Vector2(0, 0);
         }
 
         /// <inheritdoc></inheritdoc>
         public void Death()
         {
-            LoZGame.Instance.GameState = new DeathState();
+            // Can't die while accessing inventory.
         }
 
         /// <inheritdoc></inheritdoc>
         public void OpenInventory()
         {
-            LoZGame.Instance.GameState = new OpenInventoryState();
+            // Inventory already opened.
         }
 
         /// <inheritdoc></inheritdoc>
         public void CloseInventory()
         {
-            // Can't close inventory when it's not open.
+            // Can't transition to a state you're already in.
         }
 
         /// <inheritdoc></inheritdoc>
         public void PlayGame()
         {
-            // Can't transition into a state you are already in.
+            LoZGame.Instance.GameState = new PlayGameState();
         }
 
         /// <inheritdoc></inheritdoc>
@@ -45,25 +53,27 @@
         /// <inheritdoc></inheritdoc>
         public void TransitionRoom(string direction)
         {
-            LoZGame.Instance.GameState = new TransitionRoomState(direction);
+            // Can't transition room while accessing inventory.
         }
 
         /// <inheritdoc></inheritdoc>
         public void WinGame()
         {
-            LoZGame.Instance.GameState = new WinGameState();
+            // Can't win game while accessing inventory.
         }
 
         /// <inheritdoc></inheritdoc>
         public void Update()
         {
-            foreach (IPlayer player in LoZGame.Instance.Players)
+            this.lockout += this.transitionSpeed;
+            if (this.lockout < screenHeight)
             {
-                player.Update();
+                this.position.Y -= transitionSpeed;
             }
-            LoZGame.Instance.GameObjects.Update();
-            LoZGame.Instance.CollisionDetector.Update(LoZGame.Instance.Players.AsReadOnly(), LoZGame.Instance.GameObjects.Enemies.EnemyList.AsReadOnly(), LoZGame.Instance.GameObjects.Blocks.BlockList.AsReadOnly(), LoZGame.Instance.GameObjects.Doors.DoorList.AsReadOnly(), LoZGame.Instance.GameObjects.Items.ItemList.AsReadOnly(), LoZGame.Instance.GameObjects.Entities.PlayerProjectiles.AsReadOnly(), LoZGame.Instance.GameObjects.Entities.EnemyProjectiles.AsReadOnly());
-
+            else
+            {
+                LoZGame.Instance.GameState.PlayGame();
+            }
         }
 
         /// <inheritdoc></inheritdoc>
@@ -82,19 +92,18 @@
 
             }
 
-            LoZGame.Instance.GameObjects.Draw();
-
-            if (LoZGame.Instance.Dungeon.CurrentRoomX == 0 && LoZGame.Instance.Dungeon.CurrentRoomY == 2)
-            {
-                LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, LoZGame.Instance.Dungeon.CurrentRoom.RoomText, new Vector2(100, 100), Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
-            }
-
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Draw();
             }
 
-            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "Health: " + LoZGame.Instance.Link.Health.CurrentHealth.ToString() + "| Bombs: " + LoZGame.Instance.Link.Inventory.Bombs.ToString() + "| Rupees: " + LoZGame.Instance.Link.Inventory.Rupees.ToString(), new Vector2(0,0), Color.Black, 0, new Vector2(0,0), 1, SpriteEffects.None, 1.0f);
+            LoZGame.Instance.GameObjects.Draw();
+            this.sprite.Draw(position, LoZGame.Instance.DungeonTint, 1.0f);
+        }
+
+        private ISprite CreateCorrectLevelSprite()
+        {
+            return ScreenSpriteFactory.Instance.CreateInventory();
         }
     }
 }

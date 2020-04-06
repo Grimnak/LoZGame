@@ -52,38 +52,51 @@
             }
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Death()
         {
             // Can't die on title screen.
         }
 
-        public void Inventory()
+        /// <inheritdoc></inheritdoc>
+        public void OpenInventory()
         {
-            // Can't access inventory on title screen.
+            // Can't access inventory from title screen.
         }
 
+        /// <inheritdoc></inheritdoc>
+        public void CloseInventory()
+        {
+            // Can't close inventory when it's not open.
+        }
+
+        /// <inheritdoc></inheritdoc>
         public void PlayGame()
         {
             SoundFactory.Instance.PlayDungeonSong();
             LoZGame.Instance.GameState = new PlayGameState();
         }
 
+        /// <inheritdoc></inheritdoc>
         public void TitleScreen()
         {
-            // Can do a hard reset while in this state already.
+            // Can perform a hard reset while in this state already.
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
+        /// <inheritdoc></inheritdoc>
         public void TransitionRoom(string direction)
         {
             // Can't transition room from title screen.
         }
 
+        /// <inheritdoc></inheritdoc>
         public void WinGame()
         {
             // Can't win game from the title screen.
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Update()
         {
             this.sprite.Update();
@@ -97,6 +110,7 @@
             // temp.Execute();
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Draw()
         {
             this.sprite.Draw(new Vector2(0, 0), this.spriteTint, 1.0f);
