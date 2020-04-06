@@ -5,7 +5,6 @@
     /// </summary>
     public class CommandRoomUp : ICommand
     {
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandRoomUp"/> class.
         /// </summary>

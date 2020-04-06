@@ -61,14 +61,14 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Collisions\CollisionEssentials.cs" />
-    <Compile Include="Collisions\CollisionDetectionEssentials.cs" />
-    <Compile Include="Collisions\DoorCollisionHandler.cs" />
-    <Compile Include="Collisions\BlockCollisionHandler.cs" />
-    <Compile Include="Collisions\EnemyCollisionHandler.cs" />
-    <Compile Include="Collisions\CollisionDetection.cs" />
-    <Compile Include="Collisions\ItemCollisionHandler.cs" />
-    <Compile Include="Collisions\ProjectileCollisionHandler.cs" />
+    <Compile Include="Collisions\Collision Detection\CollisionInteractions.cs" />
+    <Compile Include="Collisions\Collision Detection\CollisionCalculations.cs" />
+    <Compile Include="Collisions\Collision Handling\DoorCollisionHandler.cs" />
+    <Compile Include="Collisions\Collision Handling\BlockCollisionHandler.cs" />
+    <Compile Include="Collisions\Collision Handling\EnemyCollisionHandler.cs" />
+    <Compile Include="Collisions\Collision Detection\CollisionDetection.cs" />
+    <Compile Include="Collisions\Collision Handling\ItemCollisionHandler.cs" />
+    <Compile Include="Collisions\Collision Handling\ProjectileCollisionHandler.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandArrow.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackA.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackB.cs" />
@@ -82,6 +82,7 @@
     <Compile Include="Controller\Commands\PlayerCommands\CommandRedCandle.cs" />
     <Compile Include="Controller\Commands\CommandReset.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandRight.cs" />
+    <Compile Include="Controller\Commands\CommandInventory.cs" />
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomDown.cs" />
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomLeft.cs" />
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomRight.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Enemies\EnemyStates\StalfosStates\StunnedStalfosState.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\StunnedWallMasterState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\StunnedZolState.cs" />
+    <Compile Include="GameState\CloseInventoryState.cs" />
     <Compile Include="Interfaces\IDrop.cs" />
     <Compile Include="Interfaces\IGameState.cs" />
     <Compile Include="Interfaces\IItem.cs" />
@@ -125,7 +127,7 @@
     <Compile Include="Interfaces\IDoorState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\HorizontalSpikeCrossState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\VerticalSpikeCrossState.cs" />
-    <Compile Include="GameState\InventoryState.cs" />
+    <Compile Include="GameState\OpenInventoryState.cs" />
     <Compile Include="Items\Arrow.cs" />
     <Compile Include="Items\BlueCandle.cs" />
     <Compile Include="Items\BlueRing.cs" />
@@ -173,11 +175,13 @@
     <Compile Include="Managers\BlockManager.cs" />
     <Compile Include="Managers\EnemyProjectileManager.cs" />
     <Compile Include="Managers\ExplosionManager.cs" />
+    <Compile Include="Managers\InventoryManager.cs" />
     <Compile Include="Managers\ItemType.cs" />
     <Compile Include="Managers\GameObjectManager.cs" />
     <Compile Include="Managers\ProjectileManager.cs" />
     <Compile Include="Managers\EnemyProjectileType.cs" />
     <Compile Include="GameState\PlayGameState.cs" />
+    <Compile Include="Players\PlayerStates\StunnedState.cs" />
     <Compile Include="Projectiles\ArrowProjectile.cs" />
     <Compile Include="Projectiles\BlueCandleProjectile.cs" />
     <Compile Include="Projectiles\BombExplosion.cs" />
@@ -266,7 +270,7 @@
     <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="Managers\ItemManager.cs" />
     <Compile Include="Managers\ProjectileType.cs" />
-    <Compile Include="Collisions\PlayerCollisionHandler.cs" />
+    <Compile Include="Collisions\Collision Handling\PlayerCollisionHandler.cs" />
     <Compile Include="Players\PlayerClasses\PlayerEssentials.cs" />
     <Compile Include="Players\PlayerStates\PickupItemState.cs" />
     <Compile Include="Players\PlayerStates\UseItemState.cs" />
@@ -317,7 +321,7 @@
     <Compile Include="Util\SpriteFactories\LinkSpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\ProjectileSpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\ScreenSpriteFactory.cs" />
-    <Compile Include="Util\SpriteFactories\SoundEffectsFactory.cs" />
+    <Compile Include="Util\Audio\SoundFactory.cs" />
     <Compile Include="Util\XMLHandler.cs" />
     <Compile Include="GameState\WinGameState.cs" />
   </ItemGroup>
@@ -353,11 +357,15 @@
       <HintPath>..\packages\SharpDX.XInput.4.2.0\lib\net45\SharpDX.XInput.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Resources\triforce_tune.wav" />
+    <None Include="Resources\dungeon_song.wav" />
+    <None Include="Resources\title_song.wav" />
     <None Include="Resources\LOZ_Door_Unlock.wav" />
     <None Include="Resources\LOZ_Arrow_Boomerang.wav" />
     <None Include="Resources\LOZ_Secret.wav" />

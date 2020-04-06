@@ -1,16 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
-    /*
-     * The Player must kill all enemies to open these doors.
-     */
+    using Microsoft.Xna.Framework;
+
     public class PuzzleDoorState : IDoorState
     {
         private readonly Door door;
@@ -55,14 +46,13 @@ namespace LoZClone
 
         public void Solve()
         {
-            SoundEffectsFactory.Instance.PlaySolved();
-            SoundEffectsFactory.Instance.PlayDoorUnlock();
+            SoundFactory.Instance.PlaySolved();
+            SoundFactory.Instance.PlayDoorUnlock();
             this.solved = true;
         }
 
         public void Bombed()
         {
-            Console.WriteLine("Cannot Bomb Normal Door!");
         }
 
         public void Close()

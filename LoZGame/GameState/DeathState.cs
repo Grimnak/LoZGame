@@ -14,36 +14,49 @@
             this.deathTime = 0;
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Death()
         {
             // Can't transition to a state you're already in.
         }
 
-        public void Inventory()
+        /// <inheritdoc></inheritdoc>
+        public void OpenInventory()
         {
             // Can't access inventory while dead.
         }
 
+        /// <inheritdoc></inheritdoc>
+        public void CloseInventory()
+        {
+            // Can't close inventory when it's not open.
+        }
+
+        /// <inheritdoc></inheritdoc>
         public void PlayGame()
         {
             LoZGame.Instance.GameState = new PlayGameState();
         }
 
+        /// <inheritdoc></inheritdoc>
         public void TitleScreen()
         {
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
+        /// <inheritdoc></inheritdoc>
         public void TransitionRoom(string direction)
         {
             // Can't transition room while dead.
         }
 
+        /// <inheritdoc></inheritdoc>
         public void WinGame()
         {
             // Can't win game while dead.
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Update()
         {
             this.deathTime++;
@@ -60,6 +73,7 @@
             }
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Draw()
         {
             if (this.deathTime < deathTimeMax)

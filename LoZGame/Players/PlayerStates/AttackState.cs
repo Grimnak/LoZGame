@@ -19,7 +19,7 @@ namespace LoZClone
         /// <param name="playerInstance">Instance of the player.</param>
         public AttackState(IPlayer playerInstance)
         {
-            SoundEffectsFactory.Instance.PlaySwordSlash();
+            SoundFactory.Instance.PlaySwordSlash();
             this.player = playerInstance;
             this.lockoutTimer = 15; // wait period
             this.sprite = this.CreateCorrectSprite();
@@ -99,6 +99,12 @@ namespace LoZClone
             {
                 this.player.State = new UseItemState(this.player, waitTime);
             }
+        }
+
+        /// <inheritdoc/>
+        public void Stun(int stunTime)
+        {
+            this.player.State = new StunnedState(this.player, this.player.State, stunTime);
         }
 
         /// <inheritdoc/>

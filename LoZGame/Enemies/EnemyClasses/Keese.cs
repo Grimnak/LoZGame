@@ -39,18 +39,6 @@
             this.CurrentState.Stun(stunTime);
         }
 
-        public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
-        {
-            if (otherCollider is IPlayer)
-            {
-                this.EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IProjectile)
-            {
-                this.EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
-            }
-        }
-
         public void UpdateMoveSpeed(int lifeTime, int directionChange)
         {
             Vector2 normalVel = this.Physics.MovementVelocity / this.Physics.MovementVelocity.Length();

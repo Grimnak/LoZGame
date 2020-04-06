@@ -1,5 +1,4 @@
-﻿
-namespace LoZClone
+﻿namespace LoZClone
 {
     using System;
     using System.Collections.Generic;
@@ -107,7 +106,13 @@ namespace LoZClone
             }
         }
 
-        public void DropKey(Vector2 loc) { LoZGame.Instance.GameObjects.Items.Add(new Key(loc)); }
+        public void DropKey()
+        {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.KeyLocation.Item1 && LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1)
+            {
+                LoZGame.Instance.GameObjects.Items.Add(new Key(LoZGame.Instance.Dungeon.CurrentRoom.KeyLocation.Item2));
+            }
+        }
 
         public void DropMagicKey(Vector2 loc) { LoZGame.Instance.GameObjects.Items.Add(new MagicKey(loc)); }
     }

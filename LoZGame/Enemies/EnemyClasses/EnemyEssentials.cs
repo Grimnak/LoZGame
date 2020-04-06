@@ -29,6 +29,10 @@
         {
         }
 
+        public virtual void FacePlayer()
+        {
+        }
+
         public Vector2 UnitVectorToPlayer(Vector2 origin)
         {
             Vector2 unitVector = LoZGame.Instance.Link.Physics.Bounds.Center.ToVector2() - origin;
@@ -49,14 +53,25 @@
         {
             if (this.DamageTimer <= 0)
             {
-                SoundEffectsFactory.Instance.PlayEnemyHit();
                 this.Health.DamageHealth(damageAmount);
-                this.DamageTimer = 50;
+                if (damageAmount > 0)
+                {
+                    SoundFactory.Instance.PlayEnemyHit();
+                    this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                }
             }
             if (this.Health.CurrentHealth <= 0)
             {
-                SoundEffectsFactory.Instance.PlayEnemyDie();
+                if (this is Dragon)
+                {
+                    SoundFactory.Instance.PlayDragonDie();
+                }
+                else
+                {
+                    SoundFactory.Instance.PlayEnemyDie();
+                }
                 this.CurrentState.Die();
+                LoZGame.Instance.Drops.DropKey();
             }
         }
 
@@ -65,10 +80,6 @@
             if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
             {
                 this.DamageTimer--;
-                if (this.DamageTimer > 25)
-                {
-                    this.Physics.HandleKnockBack();
-                }
                 if (this.DamageTimer % 10 > 5)
                 {
                     this.CurrentTint = Color.DarkSlateGray;
@@ -77,9 +88,10 @@
                 {
                     this.CurrentTint = LoZGame.Instance.DungeonTint;
                 }
-            } else
-            {
-                this.Physics.StopKnockback();
+                if (this.DamageTimer > (LoZGame.Instance.UpdateSpeed - (LoZGame.Instance.UpdateSpeed / (this.Physics.Mass * 2))))
+                {
+                    this.Physics.HandleKnockBack();
+                }
             }
         }
 
@@ -114,7 +126,7 @@
 
         public virtual void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            this.EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
     }
 }

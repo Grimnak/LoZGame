@@ -8,6 +8,7 @@
         {
             this.Health = new HealthManager(8);
             this.Physics = new Physics(location);
+            this.Physics.Mass = 3;
             this.CurrentState = new LeftMovingStalfosState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);

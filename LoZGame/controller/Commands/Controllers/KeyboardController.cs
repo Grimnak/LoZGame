@@ -93,6 +93,11 @@ namespace LoZClone
                 }
             }
 
+            if (pressed.Contains(Keys.I) && this.oldState.IsKeyUp(Keys.I))
+            {
+                this.dict[Keys.I].Execute();
+            }
+
             if (pressed.Contains(Keys.Q))
             {
                 this.dict[Keys.Q].Execute();

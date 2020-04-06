@@ -11,6 +11,8 @@
         public static readonly bool DebugMode = false;
         private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;
+        private readonly int gameWidth;
+        private readonly int gameHeight;
 
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -29,7 +31,7 @@
         private Texture2D background;
         private Texture2D backgroundHole;
         private SpriteFont font;
-        private SoundEffectsFactory music;
+        private SoundFactory music;
         private GameObjectManager gameObjectManager;
 
         private DropManager dropManager;
@@ -45,11 +47,7 @@
 
         public Color DungeonTint { get { return dungeonTint; } set { dungeonTint = value; } }
 
-        public IPlayer Link
-        {
-            get { return this.link; }
-            set { this.link = value; }
-        }
+        public IPlayer Link { get { return this.link; } set { this.link = value; } }
 
         public Dungeon Dungeon { get { return this.dungeon; } set { this.dungeon = value; } }
 
@@ -80,14 +78,21 @@
         private LoZGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
-            graphics.GraphicsProfile = GraphicsProfile.HiDef;
+            this.graphics.PreferredBackBufferWidth = 800;
+            this.graphics.PreferredBackBufferHeight = 580;
+            this.gameWidth = LoZGame.Instance.GraphicsDevice.Viewport.Width;
+            this.gameHeight = LoZGame.Instance.GraphicsDevice.Viewport.Height + 100;
+            this.graphics.GraphicsProfile = GraphicsProfile.HiDef;
+            this.graphics.ApplyChanges();
+
             this.Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
-            gameObjectManager = new GameObjectManager();
-            music = new SoundEffectsFactory();
-            dropManager = new DropManager();
-            debugManager = new DebugManager();
+            
+            this.gameObjectManager = new GameObjectManager();
+            this.music = new SoundEffectsFactory();
+            this.dropManager = new DropManager();
+            this.debugManager = new DebugManager();
         }
 
         protected override void Initialize()
@@ -98,7 +103,6 @@
             this.debugManager.Initialize();
 
             base.Initialize();
-            Console.WriteLine("Initialized");
         }
 
         protected override void LoadContent()
@@ -117,7 +121,6 @@
             font = Content.Load<SpriteFont>("Text");
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
             this.StartGame();
-            Console.WriteLine("Loaded");
         }
         
         private void StartGame()

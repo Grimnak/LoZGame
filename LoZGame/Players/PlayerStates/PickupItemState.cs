@@ -31,7 +31,31 @@ namespace LoZClone
             }
             else if (item is Key)
             {
-                player.HasKey = true;
+                player.Inventory.GainKey();
+            }
+            else if (item is Bow)
+            {
+                player.Inventory.HasBow = true;
+            }
+            else if (item is Boomerang)
+            {
+                player.Inventory.HasBoomerang = true;
+            }
+            else if (item is MagicBoomerang)
+            {
+                player.Inventory.HasMagicBoomerang = true;
+            }
+            else if (item is SilverArrow)
+            {
+                player.Inventory.HasSilverArrow = true;
+            }
+            else if (item is RedCandle)
+            {
+                player.Inventory.HasRedFlame = true;
+            }
+            else if (item is BlueCandle)
+            {
+                player.Inventory.HasBlueFlame = true;
             }
         }
 
@@ -107,6 +131,15 @@ namespace LoZClone
             if (this.lockoutTimer <= 0)
             {
                 this.player.State = new UseItemState(this.player, waitTime);
+            }
+        }
+
+        /// <inheritdoc/>
+        public void Stun(int stunTime)
+        {
+            if (this.lockoutTimer <= 0)
+            {
+                this.player.State = new StunnedState(this.player, this.player.State, stunTime);
             }
         }
 

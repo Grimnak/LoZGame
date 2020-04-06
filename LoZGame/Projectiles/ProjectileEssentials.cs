@@ -59,29 +59,32 @@
         {
             this.Physics = new Physics(Source.Bounds.Center.ToVector2());
             Vector2 unitDirection;
-            this.Physics.CurrentDirection = Source.CurrentDirection;
-            switch (this.Physics.CurrentDirection)
+            switch (this.Source.CurrentDirection)
             {
                 case Physics.Direction.North:
                     unitDirection = new Vector2(0, -1);
                     this.Physics.BoundsOffset = new Vector2(Width / 2, Heigth / 2);
+                    this.Physics.CurrentDirection = Physics.Direction.North;
                     break;
                 case Physics.Direction.South:
                     unitDirection = new Vector2(0, 1);
                     this.Data.SpriteEffect = SpriteEffects.FlipVertically;
                     this.Physics.BoundsOffset = new Vector2(Width / 2, Heigth / 2);
+                    this.Physics.CurrentDirection = Physics.Direction.South;
                     break;
                 case Physics.Direction.East:
                     unitDirection = new Vector2(1, 0);
                     this.Data.Rotation = MathHelper.PiOver2;
                     this.Data.SpriteEffect = SpriteEffects.None;
                     this.Physics.BoundsOffset = new Vector2(Heigth / 2, Width / 2);
+                    this.Physics.CurrentDirection = Physics.Direction.East;
                     break;
                 case Physics.Direction.West:
                     unitDirection = new Vector2(-1, 0);
                     this.Data.Rotation = MathHelper.PiOver2;
                     this.Data.SpriteEffect = SpriteEffects.FlipVertically;
                     this.Physics.BoundsOffset = new Vector2(Heigth / 2, Width / 2);
+                    this.Physics.CurrentDirection = Physics.Direction.West;
                     break;
                 default:
                     unitDirection = Vector2.Zero;
@@ -96,8 +99,8 @@
         }
 
         /// <summary>
-        /// temporaray method just to correct swordbeam and arrow until i caan find a better solution
-        /// TODO: Find a way to remove this method
+        /// temporary method just to correct swordbeam and arrow until i caan find a better solution
+        /// TODO: Find a way to remove this method.
         /// </summary>
         public void CorrectProjectile()
         {
@@ -107,7 +110,11 @@
 
         public virtual void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IEnemy)
+            if (otherCollider is IPlayer)
+            {
+                this.CollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IEnemy)
             {
                 this.CollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
@@ -117,6 +124,7 @@
         {
             this.CollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
+
         public virtual void Update()
         {
             this.Physics.Move();

@@ -68,7 +68,7 @@ namespace LoZClone
             }
             foreach (IItem item in this.items)
             {
-                this.DebuggSprite.SetData<Color>(new Color[] {ItemColor });
+                this.DebuggSprite.SetData<Color>(new Color[] { ItemColor });
                 LoZGame.Instance.SpriteBatch.Draw(this.DebuggSprite, item.Physics.Bounds, this.DebuggSourceRectangle, ItemColor, 0.0f, Vector2.Zero, SpriteEffects.None, ItemLayer);
             }
             foreach (IProjectile projectile in this.projectiles)

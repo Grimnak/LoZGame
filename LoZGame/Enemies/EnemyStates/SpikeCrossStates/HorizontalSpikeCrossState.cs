@@ -86,7 +86,7 @@
                     if (spikeCross.Physics.Location.X - ((BlockSpriteFactory.Instance.TileWidth * 6) + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) >= 0)
                     {
                         spikeCross.Retreating = true;
-                        spikeCross.Physics.MovementVelocity = new Vector2 (-1, spikeCross.Physics.MovementVelocity.Y);
+                        spikeCross.Physics.MovementVelocity = new Vector2(-1, spikeCross.Physics.MovementVelocity.Y);
                     }
                 }
                 else

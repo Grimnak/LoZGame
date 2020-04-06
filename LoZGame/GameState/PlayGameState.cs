@@ -5,40 +5,56 @@
 
     public class PlayGameState : IGameState
     {
+        private int screenWidth = LoZGame.Instance.GraphicsDevice.Viewport.Width;
+        private int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Height;
+
         public PlayGameState()
         {
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Death()
         {
             LoZGame.Instance.GameState = new DeathState();
         }
 
-        public void Inventory()
+        /// <inheritdoc></inheritdoc>
+        public void OpenInventory()
         {
-            LoZGame.Instance.GameState = new InventoryState();
+            LoZGame.Instance.GameState = new OpenInventoryState();
         }
 
+        /// <inheritdoc></inheritdoc>
+        public void CloseInventory()
+        {
+            // Can't close inventory when it's not open.
+        }
+
+        /// <inheritdoc></inheritdoc>
         public void PlayGame()
         {
             // Can't transition into a state you are already in.
         }
 
+        /// <inheritdoc></inheritdoc>
         public void TitleScreen()
         {
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
+        /// <inheritdoc></inheritdoc>
         public void TransitionRoom(string direction)
         {
             LoZGame.Instance.GameState = new TransitionRoomState(direction);
         }
 
+        /// <inheritdoc></inheritdoc>
         public void WinGame()
         {
             LoZGame.Instance.GameState = new WinGameState();
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Update()
         {
             foreach (IPlayer player in LoZGame.Instance.Players)
@@ -50,17 +66,18 @@
 
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Draw()
         {
             if (LoZGame.Instance.Dungeon.CurrentRoomX != 1 || LoZGame.Instance.Dungeon.CurrentRoomY != 1)
             {
                 if (LoZGame.Instance.Dungeon.CurrentRoomX != 0 || LoZGame.Instance.Dungeon.CurrentRoomY != 2)
                 {
-                    LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+                    LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, 0, screenWidth, screenHeight), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
                 }
                 else
                 {
-                    LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.BackgroundHole, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+                    LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.BackgroundHole, new Rectangle(0, 0, screenWidth, screenHeight), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
                 }
 
             }
@@ -76,6 +93,8 @@
             {
                 player.Draw();
             }
+
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "Health: " + LoZGame.Instance.Link.Health.CurrentHealth.ToString() + "| Bombs: " + LoZGame.Instance.Link.Inventory.Bombs.ToString() + "| Rupees: " + LoZGame.Instance.Link.Inventory.Rupees.ToString(), new Vector2(0,0), Color.Black, 0, new Vector2(0,0), 1, SpriteEffects.None, 1.0f);
         }
     }
 }

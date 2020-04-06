@@ -14,7 +14,8 @@
 
         HealthManager Health { get; set; }
 
-        bool HasKey { get; set; } 
+        InventoryManager Inventory { get; set; }
+
         /// <summary>
         /// Gets or sets the current weapon of the player.
         /// </summary>
@@ -87,6 +88,12 @@
         /// </summary>
         /// <param name ="waitTime">Time for the player to wait.</param>
         void UseItem(int waitTime);
+
+        /// <summary>
+        /// Makes the player become stunned for a period of time.
+        /// </summary>
+        /// <param name="stunTime">The amount of time the player remains immobile.</param>
+        void Stun(int stunTime);
 
         /// <summary>
         /// Updates the player.

@@ -67,6 +67,11 @@
         }
 
         /// <inheritdoc/>
+        public void Stun(int stunTime)
+        {
+        }
+
+        /// <inheritdoc/>
         public void Update()
         {
             if (this.sprite.CurrentFrame < this.sprite.TotalFrames - 1)

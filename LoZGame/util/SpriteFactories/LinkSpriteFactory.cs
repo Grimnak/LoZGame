@@ -1,8 +1,8 @@
 namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Graphics;
-    using Microsoft.Xna.Framework;
 
     public class LinkSpriteFactory
     {
@@ -18,7 +18,6 @@ namespace LoZClone
             get { return (int)DrawSize.Y; }
         }
 
-        // declare data for link
         private SpriteData greenLinkUpData;
         private SpriteData blueLinkUpData;
         private SpriteData redLinkUpData;
@@ -38,7 +37,6 @@ namespace LoZClone
         private SpriteData blueLinkPickupData;
         private SpriteData redLinkPickupData;
 
-        //declare textures for link and items
         private Texture2D greenLinkUpTexture;
         private Texture2D blueLinkUpTexture;
         private Texture2D redLinkUpTexture;

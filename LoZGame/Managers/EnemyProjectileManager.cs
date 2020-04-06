@@ -33,7 +33,7 @@
             ProjectileType projectile = (ProjectileType)projectileType;
             this.projectileId++;
             this.listSize++;
-            switch(projectile)
+            switch (projectile)
             {
                 case ProjectileType.Fireball:
                     projectileList.Add(projectileId, new FireballProjectile(physics));

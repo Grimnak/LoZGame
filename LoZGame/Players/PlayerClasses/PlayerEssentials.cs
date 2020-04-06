@@ -21,39 +21,29 @@
 
         public HealthManager Health { get; set; }
 
-        public int AnimationSpeed { get; set; }
+        public InventoryManager Inventory { get; set; }
 
-        public int FrameDelay { get; set; }
-
-        public void TakeDamage(int damageAmount)
+        public virtual void TakeDamage(int damageAmount)
         {
             if (this.DamageTimer <= 0)
             {
-                SoundEffectsFactory.Instance.PlayLinkHurt();
                 this.Health.DamageHealth(damageAmount);
-                this.DamageTimer = 50;
+                if (damageAmount > 0)
+                {
+                    SoundFactory.Instance.PlayLinkHurt();
+                    this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                }
             }
             if (this.Health.CurrentHealth <= 0)
             {
-                SoundEffectsFactory.Instance.PlayLinkDie();
+                SoundFactory.Instance.StopDungeonSong();
+                SoundFactory.Instance.PlayLinkDie();
                 this.State.Die();
                 LoZGame.Instance.GameState.Death();
             }
         }
 
-        private void DamagePushback()
-        {
-            if (Math.Abs((int)this.Physics.MovementVelocity.X) != 0 || Math.Abs((int)this.Physics.MovementVelocity.Y) != 0)
-            {
-                this.Physics.Accelerate();
-            }
-            else
-            {
-                this.Physics.StopKnockback();
-            }
-        }
-
-        public void HandleDamage()
+        private void HandleDamage()
         {
             if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
             {
@@ -66,11 +56,23 @@
                 {
                     this.CurrentTint = LoZGame.Instance.DungeonTint;
                 }
-                this.DamagePushback();
+                if (this.DamageTimer > (LoZGame.Instance.UpdateSpeed - (LoZGame.Instance.UpdateSpeed / (this.Physics.Mass * 2))))
+                {
+                    this.Physics.HandleKnockBack();
+                }
             }
-            else
+        }
+
+        /// <summary>
+        /// Prevents the player from moving beyond the boss area in the appropriate room.
+        /// </summary>
+        private void CheckRightBound()
+        {
+            int rightBound = BlockSpriteFactory.Instance.HorizontalOffset + (9 * BlockSpriteFactory.Instance.TileWidth) - this.Physics.Bounds.Width;
+            if (LoZGame.Instance.Dungeon.CurrentRoomX == 4 && LoZGame.Instance.Dungeon.CurrentRoomY == 1 && this.Physics.Bounds.X > rightBound)
             {
-                this.Physics.StopKnockback();
+                this.Physics.Bounds = new Rectangle(new Point(rightBound, this.Physics.Bounds.Y), new Point(this.Physics.Bounds.Width, this.Physics.Bounds.Height));
+                this.Physics.MovementVelocity = Vector2.Zero;
             }
         }
 
@@ -114,5 +116,23 @@
             this.State.UseItem(waitTime);
         }
 
+        public void Stun(int stunTime)
+        {
+            this.State.Stun(stunTime);
+        }
+
+        public void Update()
+        {
+            this.Physics.SetDepth();
+            this.HandleDamage();
+            this.CheckRightBound();
+            this.Physics.Move();
+            this.State.Update();
+        }
+
+        public void Draw()
+        {
+            this.State.Draw();
+        }
     }
 }

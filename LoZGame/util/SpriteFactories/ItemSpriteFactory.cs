@@ -251,9 +251,9 @@
 
         private void LoadData()
         {
-            healthData = new SpriteData(new Vector2(HealthWidth, HealthHeight), healthSpriteSheet, 1, 2);
-            fairyData = new SpriteData(new Vector2(FairyWidth, FairyHeight), fairySpriteSheet, 1, 2);
-            yellowRupeeData = new SpriteData(new Vector2(RupeeWidth, RupeeHeight), yellowRupeeSpriteSheet, 1, 2);
+            healthData = new SpriteData(new Vector2(HealthWidth, HealthHeight), healthSpriteSheet, 2, 1);
+            fairyData = new SpriteData(new Vector2(FairyWidth, FairyHeight), fairySpriteSheet, 2, 1);
+            yellowRupeeData = new SpriteData(new Vector2(RupeeWidth, RupeeHeight), yellowRupeeSpriteSheet, 2, 1);
             blueCandleData = new SpriteData(new Vector2(CandleWidth, CandleHeight), blueCandleSpriteSheet, 1, 1);
             redCandleData = new SpriteData(new Vector2(CandleWidth, CandleHeight), redCandleSpriteSheet, 1, 1);
             blueRingData = new SpriteData(new Vector2(RingWidth, RingHeight), blueRingSpriteSheet, 1, 1);
@@ -282,7 +282,7 @@
             shieldData = new SpriteData(new Vector2(ShieldWidth, ShieldHeight), shieldSpriteSheet, 1, 1);
             silverArrowData = new SpriteData(new Vector2(ArrowWidth, ArrowHeight), silverArrowSpriteSheet, 1, 1);
             woodenArrowData = new SpriteData(new Vector2(ArrowWidth, ArrowHeight), woodenArrowSpriteSheet, 1, 1);
-            triforceData = new SpriteData(new Vector2(TriforceWidth, TriforceHeight), triforceSpriteSheet, 1, 2);
+            triforceData = new SpriteData(new Vector2(TriforceWidth, TriforceHeight), triforceSpriteSheet, 2, 1);
             fluteData = new SpriteData(new Vector2(FluteWidth, FluteHeight), fairySpriteSheet, 1, 1);
         }
 
@@ -391,7 +391,7 @@
             return new ObjectSprite(this.woodenArrowSpriteSheet, this.woodenArrowData);
         }
 
-        public ISprite SilverArrow( )
+        public ISprite SilverArrow()
         {
             return new ObjectSprite(this.silverArrowSpriteSheet, this.silverArrowData);
         }

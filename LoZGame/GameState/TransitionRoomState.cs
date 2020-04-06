@@ -16,43 +16,51 @@
             this.lockout = 0;
             this.transitionSpeed = 5;
             this.sprite = CreateCorrectLevelSprite();
-
-            // Unload everything we have to unload.
-            LoZGame.Instance.GameObjects.Enemies.Clear();
-            LoZGame.Instance.GameObjects.Items.Clear();
-            LoZGame.Instance.GameObjects.Entities.Clear();
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Death()
         {
             // Can't die in a transition.
         }
 
-        public void Inventory()
+        /// <inheritdoc></inheritdoc>
+        public void OpenInventory()
         {
-            // Can't access inventory in a transition.
+            // Can't access inventory while transitioning rooms.
         }
 
+        /// <inheritdoc></inheritdoc>
+        public void CloseInventory()
+        {
+            // Can't close inventory when it's not open.
+        }
+
+        /// <inheritdoc></inheritdoc>
         public void PlayGame()
         {
             LoZGame.Instance.GameState = new PlayGameState();
         }
 
+        /// <inheritdoc></inheritdoc>
         public void TitleScreen()
         {
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
+        /// <inheritdoc></inheritdoc>
         public void TransitionRoom(string direction)
         {
             // Can't go to a state you are already in.
         }
 
+        /// <inheritdoc></inheritdoc>
         public void WinGame()
         {
             // Can't win in a transition.
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Update()
         {
             this.lockout += this.transitionSpeed;
@@ -111,6 +119,7 @@
             }
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Draw()
         {
             this.sprite.Draw(LoZGame.Instance.DungeonTint);

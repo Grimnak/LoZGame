@@ -1,45 +1,76 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     /*
-     * The Player must kill all enemies to open these doors.
+     * The player must kill all enemies to open these doors.
      */
     public class SpecialDoorState : IDoorState
     {
         private readonly Door door;
         private readonly ISprite sprite;
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
+        private bool isLevel1;
 
         public SpecialDoorState(Door door)
         {
             this.door = door;
+            this.isLevel1 = this.door.GetKind().Equals("special");
             switch (door.GetLoc())
             {
                 case "N":
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
+
+                        /*   if (this.isLevel1)
+                           {
+                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
+                           }
+                           else
+                           {
+                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown2();
+                           }*/
                         break;
                     }
                 case "E":
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
+
+                        /*   if (this.isLevel1)
+                           {
+                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
+                           } else
+                           {
+                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft2();
+                           }*/
                         break;
                     }
                 case "S":
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
+
+                        /*  if (this.isLevel1)
+                          {
+                              this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
+                          }
+                          else
+                          {
+                              this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp2();
+                          }*/
                         break;
                     }
                 case "W":
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight();
+
+                      /*  if (this.isLevel1)
+                        {
+                            this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight();
+                        }
+                        else
+                        {
+                            this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight2();
+                        }*/
                         break;
                     }
             }

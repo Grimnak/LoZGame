@@ -46,14 +46,14 @@
                         IEnumerable<XElement> enemies = (from en in room.Descendants(ns + "enemies") select en).Elements(); // all <enemy> tags in <room>
                         IEnumerable<XElement> rrow = from rr in room.Descendants(ns + "rrow") select rr; // all <rrow> tags in <room>
                         IEnumerable<XElement> text = from txt in room.Descendants(ns + "text") select txt; // all <text> tags in <room>
-                        //Console.Write("------"); // xml debug
-                        //Console.Write("\nRow " + i + ", Room " + j + "\n"); // xml debug
+                        // Console.Write("------"); // xml debug
+                        // Console.Write("\nRow " + i + ", Room " + j + "\n"); // xml debug
                         foreach (XElement door in doors)
                         {
                             Console.WriteLine();
                             string doorLoc = door.Attribute("loc").Value, doorKind = door.Value;
                             droom.AddDoor(doorLoc, doorKind);
-                            //Console.Write("door: " + doorLoc + " " + doorKind + " "); // xml debug
+                            // Console.Write("door: " + doorLoc + " " + doorKind + " "); // xml debug
                         }
 
                         foreach (XElement item in items) 
@@ -61,17 +61,17 @@
                             Console.WriteLine(); // xml debug
                             float x = float.Parse(item.Attribute("X").Value), y = float.Parse(item.Attribute("Y").Value);
                             droom.AddItem(x, y, item.Value);
-                            //Console.Write("item: " + item.Attribute("X").Value + " " + item.Attribute("Y").Value + " " + item.Value); // xml debug 
+                            // Console.Write("item: " + item.Attribute("X").Value + " " + item.Attribute("Y").Value + " " + item.Value); // xml debug 
                         }
 
                         foreach (XElement enemy in enemies)
                         {
                             Console.WriteLine(); // xml debug
-                            //Console.Write("enemy: " + enemy.Attribute("X").Value + " " + enemy.Attribute("Y").Value + " " + enemy.Value); // xml debug 
+                            // Console.Write("enemy: " + enemy.Attribute("X").Value + " " + enemy.Attribute("Y").Value + " " + enemy.Value); // xml debug 
                             float x = float.Parse(enemy.Attribute("X").Value), y = float.Parse(enemy.Attribute("Y").Value);
                             droom.AddEnemy(x, y, enemy.Value);
                         }
-                        Console.WriteLine("\n-");
+                        // Console.WriteLine("\n-");
                         foreach (XElement trow in rrow)
                         {
                             int tcount = 0; // xml debug
@@ -88,16 +88,14 @@
                                 else
                                 {
                                     droom.AddBlock(x, y, types[0], block.Value);
-                                    //Console.Write("block: " + block.Value + " type: " + block.Attribute("type").Value + " Y: " + trow.Attribute("idx").Value + " X: " + block.Attribute("idx").Value + " \n"); // xml debug
                                 }
                             }
-                            Console.WriteLine("tcount: " + tcount + "\n");
+                            // Console.WriteLine("tcount: " + tcount + "\n");
                         }
-                        Console.WriteLine(); // xml debug
+                        // Console.WriteLine(); // xml debug
                         foreach (XElement node in text)
                         {
                             droom.SetText(node.Value);
-                            //Console.WriteLine("Room Text Here: " + node.Value); // xml debug
                         }
                     }
                     j++;

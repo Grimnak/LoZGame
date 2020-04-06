@@ -28,35 +28,23 @@
             this.CurrentState.Stun(stunTime);
         }
 
-        public virtual void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (this.Attacking == true)
             {
                 this.Attacking = false;
             }
-
-            if (otherCollider is IPlayer)
-            {
-                this.EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IBlock)
-            {
-                this.EnemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
-            }
-            else if (otherCollider is IProjectile)
-            {
-                this.EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
-            }
+            base.OnCollisionResponse(otherCollider, collisionSide);
         }
 
-        public virtual void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        public override void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
             if (this.Attacking == true)
             {
                 this.Attacking = false;
             }
 
-            EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            base.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
     }
 }
