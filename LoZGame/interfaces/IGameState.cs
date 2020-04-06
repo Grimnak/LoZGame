@@ -26,7 +26,12 @@
         /// <summary>
         /// Game state goes to access inventory.
         /// </summary>
-        void Inventory();
+        void OpenInventory();
+
+        /// <summary>
+        /// Game state goes to close inventory.
+        /// </summary>
+        void CloseInventory();
 
         /// <summary>
         /// Game state goes to win state.

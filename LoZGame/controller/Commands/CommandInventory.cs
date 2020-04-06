@@ -15,7 +15,14 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            LoZGame.Instance.GameState = new InventoryState();
+            if (LoZGame.Instance.GameState is PlayGameState)
+            {
+                LoZGame.Instance.GameState.OpenInventory();
+            }
+            else if (LoZGame.Instance.GameState is OpenInventoryState)
+            {
+                LoZGame.Instance.GameState.CloseInventory();
+            }
         }
     }
 }
