@@ -10,6 +10,8 @@
         private static int maxDungeon = 1;
         private int lockout;
         private int lockoutMax = 200; // verify
+        private int screenWidth = LoZGame.Instance.GraphicsDevice.Viewport.Width;
+        private int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Height;
 
         public WinGameState()
         {
@@ -17,36 +19,49 @@
             currentDungeon = 1;
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Death()
         {
             // Can't die while winning.
         }
 
-        public void Inventory()
+        /// <inheritdoc></inheritdoc>
+        public void OpenInventory()
         {
             // Can't access inventory while winning.
         }
 
+        /// <inheritdoc></inheritdoc>
+        public void CloseInventory()
+        {
+            // Can't close inventory when it's not open.
+        }
+
+        /// <inheritdoc></inheritdoc>
         public void PlayGame()
         {
             LoZGame.Instance.GameState = new PlayGameState();
         }
 
+        /// <inheritdoc></inheritdoc>
         public void TitleScreen()
         {
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
+        /// <inheritdoc></inheritdoc>
         public void TransitionRoom(string direction)
         {
             // Can't transition room while winning.
         }
 
+        /// <inheritdoc></inheritdoc>
         public void WinGame()
         {
             // Can't transition to a state you're already in.
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Update()
         {
             this.lockout++;
@@ -78,9 +93,10 @@
 
         }
 
+        /// <inheritdoc></inheritdoc>
         public void Draw()
         {
-            LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, 0, 800, 480), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+            LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, 0, screenWidth, screenHeight), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
 
             foreach (IPlayer player in LoZGame.Instance.Players)
             {

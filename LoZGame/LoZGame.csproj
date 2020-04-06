@@ -82,7 +82,7 @@
     <Compile Include="Controller\Commands\PlayerCommands\CommandRedCandle.cs" />
     <Compile Include="Controller\Commands\CommandReset.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandRight.cs" />
-    <Compile Include="Controller\Commands\PlayerCommands\CommandInventory.cs" />
+    <Compile Include="Controller\Commands\CommandInventory.cs" />
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomDown.cs" />
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomLeft.cs" />
     <Compile Include="Controller\Commands\RoomCommands\CommandRoomRight.cs" />
@@ -116,6 +116,7 @@
     <Compile Include="Enemies\EnemyStates\StalfosStates\StunnedStalfosState.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\StunnedWallMasterState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\StunnedZolState.cs" />
+    <Compile Include="GameState\CloseInventoryState.cs" />
     <Compile Include="Interfaces\IDrop.cs" />
     <Compile Include="Interfaces\IGameState.cs" />
     <Compile Include="Interfaces\IItem.cs" />
@@ -126,7 +127,7 @@
     <Compile Include="Interfaces\IDoorState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\HorizontalSpikeCrossState.cs" />
     <Compile Include="Enemies\EnemyStates\SpikeCrossStates\VerticalSpikeCrossState.cs" />
-    <Compile Include="GameState\InventoryState.cs" />
+    <Compile Include="GameState\OpenInventoryState.cs" />
     <Compile Include="Items\Arrow.cs" />
     <Compile Include="Items\BlueCandle.cs" />
     <Compile Include="Items\BlueRing.cs" />
