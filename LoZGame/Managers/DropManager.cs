@@ -15,7 +15,6 @@
         private const int SecondPotionWeight = 5;
         private const int HealthWeight = 25;
         private const int FairyWeight = 5;
-        private Room room;
 
         private Dictionary<string, int> itemWeights;
 

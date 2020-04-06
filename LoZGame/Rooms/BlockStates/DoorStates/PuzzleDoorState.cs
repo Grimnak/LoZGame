@@ -46,8 +46,8 @@
 
         public void Solve()
         {
-            SoundEffectsFactory.Instance.PlaySolved();
-            SoundEffectsFactory.Instance.PlayDoorUnlock();
+            SoundFactory.Instance.PlaySolved();
+            SoundFactory.Instance.PlayDoorUnlock();
             this.solved = true;
         }
 

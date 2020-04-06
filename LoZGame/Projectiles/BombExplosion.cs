@@ -23,7 +23,7 @@
         public BombExplosion(Vector2 location)
         {
             this.SetUp(this);
-            SoundEffectsFactory.Instance.PlayBombExplosion();
+            SoundFactory.Instance.PlayBombExplosion();
             this.Width = ProjectileSpriteFactory.Instance.ExplosionWidth;
             this.Heigth = ProjectileSpriteFactory.Instance.ExplosionHeight;
             this.Physics = new Physics(new Vector2(location.X, location.Y));

@@ -13,7 +13,6 @@
     public class Room
     {
         private bool exists = false;
-        private bool allEnemiesDead = false;
         private Tuple<bool, Vector2> keyLocation = Tuple.Create(false, new Vector2(0, 0));
         private string border = null;
         private string text = null;
