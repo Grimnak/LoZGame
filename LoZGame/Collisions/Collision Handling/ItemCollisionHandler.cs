@@ -55,6 +55,11 @@
             {
                 SoundEffectsFactory.Instance.PlayGetHeartOrKey();
             }
+            else if (this.item is Triforce)
+            {
+                SoundEffectsFactory.Instance.PlayGetItem();
+                SongFactory.Instance.PlayTriforceTune();
+            }
             else
             {
                 SoundEffectsFactory.Instance.PlayGetItem();

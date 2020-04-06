@@ -60,7 +60,14 @@
             }
             if (this.Health.CurrentHealth <= 0)
             {
-                SoundEffectsFactory.Instance.PlayEnemyDie();
+                if (this is Dragon)
+                {
+                    SoundEffectsFactory.Instance.PlayDragonDie();
+                }
+                else
+                {
+                    SoundEffectsFactory.Instance.PlayEnemyDie();
+                }
                 this.CurrentState.Die();
             }
         }

@@ -11,6 +11,7 @@
 
         public TitleScreenState()
         {
+            SongFactory.Instance.PlayTitleSong();
             this.sprite = ScreenSpriteFactory.Instance.TitleScreen();
             this.enter = ScreenSpriteFactory.Instance.PressEnter();
             this.sprite.FrameDelay = 10;
@@ -63,6 +64,7 @@
 
         public void PlayGame()
         {
+            SongFactory.Instance.PlayDungeonSong();
             LoZGame.Instance.GameState = new PlayGameState();
         }
 

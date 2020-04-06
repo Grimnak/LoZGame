@@ -280,6 +280,7 @@
     <Compile Include="Managers\DebugManager.cs" />
     <Compile Include="GameState\TitleScreenState.cs" />
     <Compile Include="GameState\TransitionRoomState.cs" />
+    <Compile Include="Util\Audio\SongFactory.cs" />
     <Compile Include="Util\DataStructs\EnemyDamageData.cs" />
     <Compile Include="Util\DataStructs\EnemyMassData.cs" />
     <Compile Include="Util\DataStructs\EnemyResistanceData.cs" />
@@ -359,6 +360,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Resources\triforce_tune.wav" />
+    <None Include="Resources\dungeon_song.wav" />
+    <None Include="Resources\title_song.wav" />
     <None Include="Resources\LOZ_Door_Unlock.wav" />
     <None Include="Resources\LOZ_Arrow_Boomerang.wav" />
     <None Include="Resources\LOZ_Secret.wav" />
