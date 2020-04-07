@@ -8,6 +8,8 @@ namespace LoZClone
         private const int stalfosSpd = 1;
         private const float minKeeseSpd = 1.5f;
         private const float maxKeeseSpd = 5.0f;
+        private const float keeseAccel = .025f;
+        private const float keeseAccelMax = 5.0f;
         private const int ropeSpd = 1;
         private const float gelSpd = 2.5f;
         private const int zolSpd = 4;
@@ -22,6 +24,7 @@ namespace LoZClone
 
         private const int directionChange = 40;
         private const int deathTimerMax = 30;
+        private const int keeseIdleMax = 5;
 
         public int StalfosSpeed => stalfosSpd;
 
@@ -31,6 +34,9 @@ namespace LoZClone
 
         public float MaxKeeseSpeed => maxKeeseSpd;
 
+        public float KeeseAccel => keeseAccel;
+
+        public float MaxKeeseAccel => keeseAccelMax;
 
         public float GelSpeed => gelSpd;
 
@@ -56,5 +62,6 @@ namespace LoZClone
 
         public int DeathTimerMax => deathTimerMax;
 
+        public int KeeseIdleMax => keeseIdleMax;
     }
 }

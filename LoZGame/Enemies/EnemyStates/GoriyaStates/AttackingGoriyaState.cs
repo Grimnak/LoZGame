@@ -9,12 +9,13 @@
         private readonly ISprite sprite;
         private readonly IProjectile boomerangSprite;
         private int lifeTime = 0;
-        private readonly int directionChange = 40;
+        private int directionChange;
         private RandomStateGenerator randomStateGenerator;
 
         public AttackingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
+            this.directionChange = this.goriya.EnemySpeedData.DirectionChange * 2;
             this.goriya.FacePlayer();
             switch (goriya.Physics.CurrentDirection)
             {

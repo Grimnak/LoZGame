@@ -4,17 +4,8 @@
 
     public class Keese : EnemyEssentials, IEnemy
     {
-        private const float MinMovementSpeed = 1.5f;
-        private const float MaxMovementSpeed = 5.0f;
-        private const float Accel = 0.025f;
         private static int directionChangeMax = LoZGame.Instance.UpdateSpeed * 4;
         private static int directionChangeMin = LoZGame.Instance.UpdateSpeed;
-
-        public float MaxMoveSpeed { get { return MaxMovementSpeed; } }
-
-        public float MinMoveSpeed { get { return MinMovementSpeed; } }
-
-        public float Acceleration => Accel;
 
         public int MaxChangeTime => directionChangeMax;
 
@@ -62,16 +53,16 @@
             Vector2 normalVel = this.Physics.MovementVelocity / this.Physics.MovementVelocity.Length();
             if (lifeTime < directionChange / 2)
             {
-                if (this.Physics.MovementVelocity.Length() <= this.MaxMoveSpeed)
+                if (this.Physics.MovementVelocity.Length() <= this.EnemySpeedData.MaxKeeseSpeed)
                 {
-                    this.Physics.MovementVelocity += normalVel * this.Acceleration;
+                    this.Physics.MovementVelocity += normalVel * this.EnemySpeedData.KeeseAccel;
                 }
             }
             else
             {
-                if (this.Physics.MovementVelocity.Length() >= this.MinMoveSpeed)
+                if (this.Physics.MovementVelocity.Length() >= this.EnemySpeedData.MinKeeseSpeed)
                 {
-                    this.Physics.MovementVelocity -= normalVel * this.Acceleration;
+                    this.Physics.MovementVelocity -= normalVel * this.EnemySpeedData.KeeseAccel;
                 }
             }
         }

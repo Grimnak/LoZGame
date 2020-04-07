@@ -8,12 +8,13 @@
         private readonly Dragon dragon;
         private readonly ISprite sprite;
         private int lifeTime = 0;
-        private readonly int directionChange = 40;
+        private int directionChange;
         private RandomStateGenerator randomStateGenerator;
 
         public RightMovingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
+            this.directionChange = this.dragon.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
             this.dragon.CurrentState = this;
             randomStateGenerator = new RandomStateGenerator(this.dragon, 0, 4);

@@ -8,12 +8,13 @@
         private readonly Goriya goriya;
         private readonly ISprite sprite;
         private int lifeTime = 0;
-        private readonly int directionChange = 40;
+        private int directionChange;
         private RandomStateGenerator randomStateGenerator;
 
         public UpMovingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
+            this.directionChange = this.goriya.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateUpMovingGoriyaSprite();
             this.goriya.CurrentState = this;
             this.goriya.Physics.CurrentDirection = Physics.Direction.North;

@@ -8,8 +8,6 @@
     {
         private readonly Rope rope;
         private readonly ISprite sprite;
-        private int lifeTime = 0;
-        private readonly int directionChange = 40;
         private RandomStateGenerator randomStateGenerator;
         private List<IPlayer> players;
 

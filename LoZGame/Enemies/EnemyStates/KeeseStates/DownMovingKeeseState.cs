@@ -9,7 +9,7 @@
         private readonly Keese keese;
         private readonly ISprite sprite;
         private int lifeTime = 0;
-        private int accelerationMax = 5;
+        private float accelerationMax;
         private int directionChange;
         private RandomStateGenerator randomStateGenerator;
         private Random randomDirectionCooldown;
@@ -22,6 +22,7 @@
             randomStateGenerator = new RandomStateGenerator(this.keese, 2, 10);
             randomDirectionCooldown = LoZGame.Instance.Random;
             directionChange = randomDirectionCooldown.Next(this.keese.MinChangeTime, this.keese.MaxChangeTime);
+            accelerationMax = this.keese.EnemySpeedData.MaxKeeseAccel;
             this.keese.Physics.MovementVelocity = new Vector2(0, this.keese.MoveSpeed);
         }
 

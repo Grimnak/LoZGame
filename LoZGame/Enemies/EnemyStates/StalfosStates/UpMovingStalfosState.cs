@@ -8,12 +8,13 @@
         private readonly Stalfos stalfos;
         private readonly ISprite sprite;
         private int lifeTime = 0;
-        private readonly int directionChange = 40;
+        private int directionChange;
         private RandomStateGenerator randomStateGenerator;
 
         public UpMovingStalfosState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
+            this.directionChange = this.stalfos.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
             this.stalfos.CurrentState = this;
             randomStateGenerator = new RandomStateGenerator(this.stalfos, 2, 6);

@@ -81,6 +81,6 @@ namespace LoZClone
 
         public int OldManHealth => oldManHP;
 
-        public int MerchantHealth => merchantHP
+        public int MerchantHealth => merchantHP;
     }
 }

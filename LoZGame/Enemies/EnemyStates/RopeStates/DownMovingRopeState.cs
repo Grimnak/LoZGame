@@ -10,7 +10,7 @@
         private readonly Rope rope;
         private readonly ISprite sprite;
         private int lifeTime = 0;
-        private readonly int directionChange = 40;
+        private int directionChange;
         private RandomStateGenerator randomStateGenerator;
         private List<IPlayer> players;
 
@@ -20,7 +20,8 @@
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingRopeSprite();
             this.rope.CurrentState = this;
             this.rope.Physics.CurrentDirection = Physics.Direction.South;
-            this.rope.MoveSpeed = 1;
+            this.rope.MoveSpeed = this.rope.EnemySpeedData.RopeSpeed;
+            this.directionChange = this.rope.EnemySpeedData.DirectionChange;
             randomStateGenerator = new RandomStateGenerator(this.rope, 2, 6);
             this.rope.Physics.MovementVelocity = new Vector2(0, this.rope.MoveSpeed);
         }

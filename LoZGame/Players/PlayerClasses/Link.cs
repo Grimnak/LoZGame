@@ -10,11 +10,11 @@
         private PlayerCollisionHandler linkCollisionHandler;
         private int startingHealth;
 
-        public PlayerData playerData { get; set; }
+        public PlayerData PlayerData { get; set; }
 
         public Link(Vector2 location)
         {
-            playerData = new PlayerData();
+            PlayerData = new PlayerData();
             this.Physics = new Physics(location);
             this.Health = new HealthManager(startingHealth);
             this.Inventory = new InventoryManager(this);
@@ -23,9 +23,9 @@
             this.Physics.CurrentDirection = Physics.Direction.North;
             this.CurrentWeapon = "Wood";
             this.CurrentTint = LoZGame.Instance.DungeonTint;
-            startingHealth = this.playerData.StartingHealth;
-            this.MoveSpeed = this.playerData.PlayerSpeed;
-            this.AnimationSpeed = this.playerData.AnimationSpeed;
+            startingHealth = this.PlayerData.StartingHealth;
+            this.MoveSpeed = this.PlayerData.PlayerSpeed;
+            this.AnimationSpeed = this.PlayerData.AnimationSpeed;
             this.FrameDelay = 0;
             this.DamageTimer = 0;
             this.State = new IdleState(this);

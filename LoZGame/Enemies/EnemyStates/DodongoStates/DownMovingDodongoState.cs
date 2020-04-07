@@ -8,12 +8,13 @@
         private readonly IEnemy dodongo;
         private readonly ISprite sprite;
         private int lifeTime = 0;
-        private readonly int directionChange = 40;
+        private int directionChange;
         private RandomStateGenerator randomStateGenerator;
 
         public DownMovingDodongoState(IEnemy dodongo)
         {
             this.dodongo = dodongo;
+            this.directionChange = this.dodongo.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateDownMovingDodongoSprite();
             this.dodongo.CurrentState = this;
             randomStateGenerator = new RandomStateGenerator(this.dodongo, 2, 6);
