@@ -10,15 +10,15 @@
 
         public Rope(Vector2 location)
         {
-            this.Health = new HealthManager(2);
+            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.RopeHealth);
             this.Physics = new Physics(location);
             this.CurrentState = new LeftMovingRopeState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = 2;
+            this.Damage = GameData.Instance.EnemyDamageData.RopeDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = 1;
+            this.MoveSpeed = GameData.Instance.EnemySpeedData.RopeSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
             this.Attacking = false;
         }

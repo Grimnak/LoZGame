@@ -8,15 +8,15 @@
 
         public Merchant(Vector2 location)
         {
-            this.Health = new HealthManager(1);
+            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.MerchantHealth);
             this.Physics = new Physics(location);
             this.sprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.Expired = false;
-            this.Damage = 0;
+            this.Damage = GameData.Instance.EnemyDamageData.MerchantDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = 0;
+            this.MoveSpeed = GameData.Instance.EnemySpeedData.MerchantSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 

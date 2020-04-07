@@ -9,7 +9,6 @@
         private readonly ISprite sprite;
         private RandomStateGenerator randomStateGenerator;
         private int idleTimer = 0;
-        private int idleMax = 5;
 
         public IdleKeeseState(Keese keese)
         {
@@ -84,7 +83,7 @@
         {
             this.idleTimer++;
             this.sprite.Update();
-            if (idleTimer >= idleMax)
+            if (idleTimer >= GameData.Instance.EnemySpeedData.KeeseIdleMax)
             {
                 this.randomStateGenerator.Update();
             }

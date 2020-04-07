@@ -11,9 +11,10 @@
 
         public EntityManager EntityManager { get; set; }
 
+
         public Goriya(Vector2 location)
         {
-            this.Health = new HealthManager(8);
+            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.GoriyaHealth);
             this.Physics = new Physics(location);
             this.CurrentState = new LeftMovingGoriyaState(this);
             this.EntityManager = LoZGame.Instance.GameObjects.Entities;
@@ -21,9 +22,9 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = 4;
+            this.Damage = GameData.Instance.EnemyDamageData.GoriyaDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = 1;
+            this.MoveSpeed = GameData.Instance.EnemySpeedData.GoriyaSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
@@ -52,7 +53,7 @@
                 {
                     this.Physics.CurrentDirection = PhysicsEssentials.Direction.North;
                 }
-                else 
+                else
                 {
                     this.Physics.CurrentDirection = PhysicsEssentials.Direction.South;
                 }

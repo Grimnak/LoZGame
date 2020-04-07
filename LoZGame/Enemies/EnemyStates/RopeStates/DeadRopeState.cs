@@ -8,7 +8,7 @@
         private readonly Rope rope;
         private readonly ISprite sprite;
         private int deathTimer = 0;
-        private int deathTimerMax = 30;
+        private int deathTimerMax;
 
         public DeadRopeState(Rope rope)
         {
@@ -17,6 +17,7 @@
             this.rope.CurrentState = this;
             this.rope.Physics.Bounds = new Rectangle(rope.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.rope.Physics.Location);
+            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.rope.Physics.MovementVelocity = Vector2.Zero;
         }
 

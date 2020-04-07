@@ -19,6 +19,7 @@ namespace LoZClone
         private const int EnemyBoomerangDmg = 2;
         private const int EnemyArrowDmg = 2;
 
+
         public int LinkArrowDamage => LinkArrowDmg;
 
         public int LinkSilverArrowDamage => LinkSilverArrowDmg;
@@ -35,7 +36,7 @@ namespace LoZClone
 
         public int MagicSwordDamage => MagicSwordDmg;
 
-        public int CandleDamageDamage => CandleDmg;
+        public int CandleDamage => CandleDmg;
 
         public int BombDamage => BombDmg;
 

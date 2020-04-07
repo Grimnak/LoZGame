@@ -17,9 +17,9 @@
             this.Width = ProjectileSpriteFactory.Instance.FlameWidth;
             this.Heigth = ProjectileSpriteFactory.Instance.FlameHeight;
             this.Offset = (this.Heigth * 3) / 4;
-            this.Speed = 5;
             this.Acceleration = -0.25f;
-            this.Damage = 10;
+            this.Speed = GameData.Instance.ProjectileSpeedData.CandleSpeed;
+            this.Damage = GameData.Instance.ProjectileDamageData.CandleDamage;
             this.Source = source;
             this.InitializeDirection();
             this.Data.SpriteEffect = SpriteEffects.None;

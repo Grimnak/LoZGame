@@ -10,14 +10,15 @@
         private readonly Rope rope;
         private readonly ISprite sprite;
         private int lifeTime = 0;
-        private readonly int directionChange = 40;
+        private int directionChange;
         private RandomStateGenerator randomStateGenerator;
         private List<IPlayer> players;
 
         public UpMovingRopeState(Rope rope)
         {
             this.rope = rope;
-            this.rope.MoveSpeed = 1;
+            this.rope.MoveSpeed = GameData.Instance.EnemySpeedData.RopeSpeed;
+            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingRopeSprite();
             this.rope.CurrentState = this;
             this.rope.Physics.CurrentDirection = Physics.Direction.North;

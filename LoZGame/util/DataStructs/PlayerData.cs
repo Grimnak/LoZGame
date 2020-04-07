@@ -5,18 +5,32 @@ namespace LoZClone
 
     public struct PlayerData
     {
-        private const float PlayerSpd = 2.5f;
-        private const float PlayerGreenRes = 1;
+        private const float playerSpd = 2.5f;
+        private const int animationSpd = 5;
+        private const float playerGreenRes = 1;
         private const float PlayerRedRes = 2;
-        private const float PlayerBlueRes = 4;
+        private const float playerBlueRes = 4;
 
-        public float PlayerSpeed => PlayerSpd;
+        private const int startingHP = 12;
 
-        public float PlayerGreenResistance => PlayerGreenRes;
+        private const int lockoutWaitTime = 15;
 
-        public float PlayerRedResistance => PlayerBlueRes;
+        private const int maxFrames = 2;
+
+        public float PlayerSpeed => playerSpd;
+
+        public int AnimationSpeed => animationSpd;
+
+        public float PlayerGreenResistance => playerGreenRes;
+
+        public float PlayerRedResistance => playerBlueRes;
         
         public float PlayerBlueResistance => PlayerRedRes;
 
+        public int StartingHealth => startingHP;
+
+        public int LockoutWaitTime => lockoutWaitTime;
+
+        public int MaxFrames => maxFrames;
     }
 }

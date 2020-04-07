@@ -1443,3 +1443,5 @@ C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content
 C:\Users\sclis\Documents\ZeldaGame\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\pressEnter.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\playerHUD.xnb
 D:\LoZRepo\LoZGame\bin\Windows\x86\Debug\Content\playerMap.xnb
+C:\Users\Ryan\Documents\LoZGame\LoZGame\obj\x86\Debug\LoZClone.Properties.Resources.resources
+C:\Users\Ryan\Documents\LoZGame\LoZGame\obj\x86\Debug\LoZGame.csproj.GenerateResource.cache

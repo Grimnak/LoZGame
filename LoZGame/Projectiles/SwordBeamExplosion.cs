@@ -10,6 +10,7 @@
         private readonly string direction;
         private readonly float rotation;
         private int damage;
+        private ProjectileSpeedData projectileSpeedData;
 
         private static readonly int MaxLifeTime = 20;
 
@@ -18,7 +19,7 @@
             this.SetUp(this);
             this.Physics = physics;
             this.lifeTime = MaxLifeTime;
-            this.Speed = 2.5f;
+            this.Speed = projectileSpeedData.SwordBeamExplosionSpeed;
             Width = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             Heigth = ProjectileSpriteFactory.Instance.SwordBeamExplosionHeight * scale;
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, 0, 0);

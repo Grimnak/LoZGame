@@ -22,9 +22,9 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.Health = new HealthManager(1);
             this.Expired = false;
-            this.Damage = 0;
+            this.Damage = GameData.Instance.EnemyDamageData.OldManDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = 0;
+            this.MoveSpeed = GameData.Instance.EnemySpeedData.OldManSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 

@@ -8,7 +8,7 @@
         private readonly Stalfos stalfos;
         private readonly ISprite sprite;
         private int deathTimer = 0;
-        private int deathTimerMax = 30;
+        private int deathTimerMax;
 
         public DeadStalfosState(Stalfos stalfos)
         {
@@ -17,6 +17,7 @@
             this.stalfos.CurrentState = this;
             this.stalfos.Physics.Bounds = new Rectangle(stalfos.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.stalfos.Physics.Location);
+            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.stalfos.Physics.MovementVelocity = Vector2.Zero;
         }
 

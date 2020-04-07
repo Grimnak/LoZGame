@@ -16,7 +16,7 @@
             this.Heigth = ProjectileSpriteFactory.Instance.BoomerangHeight;
             this.Offset = (this.Heigth * 3) / 4;
             this.StunDuration = LoZGame.Instance.UpdateSpeed * 2;
-            this.Speed = 7;
+            this.Speed = GameData.Instance.ProjectileSpeedData.LinkMagicBoomerangSpeed;
             this.Source = source;
             this.InitializeDirection();
             this.Sprite = ProjectileSpriteFactory.Instance.MagicBoomerang();

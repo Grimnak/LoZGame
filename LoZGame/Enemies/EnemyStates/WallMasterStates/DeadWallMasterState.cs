@@ -8,7 +8,7 @@
         private readonly WallMaster wallMaster;
         private readonly ISprite sprite;
         private int deathTimer = 0;
-        private int deathTimerMax = 30;
+        private int deathTimerMax;
 
         public DeadWallMasterState(WallMaster wallMaster)
         {
@@ -17,6 +17,7 @@
             this.wallMaster.CurrentState = this;
             this.wallMaster.Physics.Bounds = new Rectangle(wallMaster.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.wallMaster.Physics.Location);
+            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.wallMaster.Physics.MovementVelocity = Vector2.Zero;
         }
 

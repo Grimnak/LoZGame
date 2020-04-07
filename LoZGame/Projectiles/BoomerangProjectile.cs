@@ -8,7 +8,7 @@
     {
         private static readonly int MaxDistance = 150;
         private int distTraveled;
-        
+
         public BoomerangProjectile(Physics source)
         {
             this.SetUp(this);
@@ -16,7 +16,7 @@
             this.Heigth = ProjectileSpriteFactory.Instance.BoomerangHeight;
             this.Offset = (this.Heigth * 3) / 4;
             this.StunDuration = LoZGame.Instance.UpdateSpeed;
-            this.Speed = 5;
+            this.Speed = GameData.Instance.ProjectileSpeedData.LinkBoomerangSpeed;
             this.Source = source;
             this.InitializeDirection();
             this.Sprite = ProjectileSpriteFactory.Instance.Boomerang();

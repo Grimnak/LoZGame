@@ -4,17 +4,8 @@
 
     public class Keese : EnemyEssentials, IEnemy
     {
-        private const float MinMovementSpeed = 1.5f;
-        private const float MaxMovementSpeed = 5.0f;
-        private const float Accel = 0.025f;
         private static int directionChangeMax = LoZGame.Instance.UpdateSpeed * 4;
         private static int directionChangeMin = LoZGame.Instance.UpdateSpeed;
-
-        public float MaxMoveSpeed { get { return MaxMovementSpeed; } }
-
-        public float MinMoveSpeed { get { return MinMovementSpeed; } }
-
-        public float Acceleration => Accel;
 
         public int MaxChangeTime => directionChangeMax;
 
@@ -22,15 +13,15 @@
 
         public Keese(Vector2 location)
         {
-            this.Health = new HealthManager(2);
+            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.KeeseHealth);
             this.Physics = new Physics(location);
             this.CurrentState = new IdleKeeseState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.MoveSpeed = MinMovementSpeed;
-            this.Damage = 2;
+            this.Damage = GameData.Instance.EnemyDamageData.KeeseDamage;
             this.DamageTimer = 0;
+            this.MoveSpeed = GameData.Instance.EnemySpeedData.MinKeeseSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
@@ -44,16 +35,16 @@
             Vector2 normalVel = this.Physics.MovementVelocity / this.Physics.MovementVelocity.Length();
             if (lifeTime < directionChange / 2)
             {
-                if (this.Physics.MovementVelocity.Length() <= this.MaxMoveSpeed)
+                if (this.Physics.MovementVelocity.Length() <= GameData.Instance.EnemySpeedData.MaxKeeseSpeed)
                 {
-                    this.Physics.MovementVelocity += normalVel * this.Acceleration;
+                    this.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedData.KeeseAccel;
                 }
             }
             else
             {
-                if (this.Physics.MovementVelocity.Length() >= this.MinMoveSpeed)
+                if (this.Physics.MovementVelocity.Length() >= GameData.Instance.EnemySpeedData.MinKeeseSpeed)
                 {
-                    this.Physics.MovementVelocity -= normalVel * this.Acceleration;
+                    this.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedData.KeeseAccel;
                 }
             }
         }

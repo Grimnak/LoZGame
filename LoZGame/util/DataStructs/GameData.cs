@@ -37,16 +37,14 @@
 
         public void LoadAllData()
         {
-            /*
-            playerData = default;
-            projectileDmgData = default;
-            projectileSpdData = default;
-            projectileMassData = default;
-            enemyDamageData = default;
-            enemySpdData = default;
-            enemyMassData = default;
-            enemyResData = default;
-            */
+            playerData = new PlayerData();
+            projectileDmgData = new ProjectileDamageData();
+            projectileSpdData = new ProjectileSpeedData();
+            projectileMassData = new ProjectileMassData();
+            enemyDamageData = new EnemyDamageData();
+            enemySpdData = new EnemySpeedData();
+            enemyMassData = new EnemyMassData();
+            enemyResData = new EnemyResistanceData();
         }
     }
 }

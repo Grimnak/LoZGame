@@ -8,16 +8,16 @@
 
         public Zol(Vector2 location)
         {
-            this.Health = new HealthManager(8);
+            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.ZolHealth);
             this.Physics = new Physics(location);
             this.CurrentState = new LeftMovingZolState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.ShouldMove = true;
             this.Expired = false;
-            this.Damage = 4;
+            this.Damage = GameData.Instance.EnemyDamageData.ZolDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = 1;
+            this.MoveSpeed = GameData.Instance.EnemySpeedData.ZolSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 

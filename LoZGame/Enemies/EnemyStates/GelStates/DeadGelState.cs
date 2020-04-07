@@ -8,7 +8,7 @@
         private readonly Gel gel;
         private readonly ISprite sprite;
         private int deathTimer = 0;
-        private int deathTimerMax = 30;
+        private int deathTimerMax;
 
         public DeadGelState(Gel gel)
         {
@@ -17,6 +17,7 @@
             this.gel.Physics.Bounds = new Rectangle(gel.Physics.Bounds.Location, Point.Zero);
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             LoZGame.Instance.Drops.AttemptDrop(this.gel.Physics.Location);
+            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.gel.Physics.MovementVelocity = Vector2.Zero;
         }
 

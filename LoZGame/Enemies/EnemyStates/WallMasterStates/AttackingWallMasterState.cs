@@ -8,12 +8,15 @@
         private readonly WallMaster wallMaster;
         private readonly ISprite sprite;
 
+        private EnemyDamageData enemyDamageData;
+        private EnemySpeedData enemySpeedData;
+
         public AttackingWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
             this.sprite = EnemySpriteFactory.Instance.CreateAttackingWallMasterSprite();
             this.wallMaster.CurrentState = this;
-            this.wallMaster.Physics.MovementVelocity = new Vector2(-2 * this.wallMaster.MoveSpeed, 0);
+            this.wallMaster.Physics.MovementVelocity = new Vector2(GameData.Instance.EnemySpeedData.WallMasterAttackSpeed, 0);
         }
 
         public void MoveLeft()

@@ -9,11 +9,12 @@
         private readonly ISprite sprite;
         private RandomStateGenerator randomStateGenerator;
         private int lifeTime = 0;
-        private readonly int directionChange = 40;
+        private int directionChange;
 
         public RightMovingWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
+            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingWallMasterSprite();
             this.wallMaster.CurrentState = this;
             this.randomStateGenerator = new RandomStateGenerator(this.wallMaster, 2, 6);
