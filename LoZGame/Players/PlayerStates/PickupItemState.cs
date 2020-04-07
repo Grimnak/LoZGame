@@ -26,7 +26,7 @@ namespace LoZClone
             this.player.Physics.MovementVelocity = Vector2.Zero;
             if (item is Triforce)
             {
-                this.sprite.SetFrame(this.player.PlayerData.MaxFrames);
+                this.sprite.SetFrame(GameData.Instance.PlayerData.MaxFrames);
                 LoZGame.Instance.GameState.WinGame();
             }
             else if (item is Key)

@@ -83,7 +83,7 @@
         {
             this.idleTimer++;
             this.sprite.Update();
-            if (idleTimer >= this.keese.EnemySpeedData.KeeseIdleMax)
+            if (idleTimer >= GameData.Instance.EnemySpeedData.KeeseIdleMax)
             {
                 this.randomStateGenerator.Update();
             }

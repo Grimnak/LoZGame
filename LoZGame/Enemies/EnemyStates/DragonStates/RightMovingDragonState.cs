@@ -14,7 +14,7 @@
         public RightMovingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
-            this.directionChange = this.dragon.EnemySpeedData.DirectionChange;
+            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
             this.dragon.CurrentState = this;
             randomStateGenerator = new RandomStateGenerator(this.dragon, 0, 4);

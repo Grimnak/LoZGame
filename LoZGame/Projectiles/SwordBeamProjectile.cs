@@ -7,8 +7,6 @@
     {
         private static readonly int drawDelay = LoZGame.Instance.UpdateSpeed / 4;
         private int lifeTime;
-        private ProjectileDamageData projectileDamageData;
-        private ProjectileSpeedData projectileSpeedData;
 
         public SwordBeamProjectile(Physics source)
         {
@@ -16,8 +14,8 @@
             this.Width = ProjectileSpriteFactory.Instance.SwordBeamWidth;
             this.Heigth = ProjectileSpriteFactory.Instance.SwordBeamHeight;
             this.Offset = this.Heigth / 2;
-            this.Speed = projectileSpeedData.SwordBeamSpeed;
-            this.Damage = projectileDamageData.SwordBeamDamage;
+            this.Speed = GameData.Instance.ProjectileSpeedData.SwordBeamSpeed;
+            this.Damage = GameData.Instance.ProjectileDamageData.SwordBeamDamage;
             this.Source = source;
             this.InitializeDirection();
             if (this.Physics.CurrentDirection == Physics.Direction.East || this.Physics.CurrentDirection == Physics.Direction.West)

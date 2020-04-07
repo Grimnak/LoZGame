@@ -21,9 +21,9 @@ namespace LoZClone
         {
             SoundEffectsFactory.Instance.PlaySwordSlash();
             this.player = playerInstance;
-            this.lockoutTimer = this.player.PlayerData.LockoutWaitTime; // wait period
+            this.lockoutTimer = GameData.Instance.PlayerData.LockoutWaitTime; // wait period
             this.sprite = this.CreateCorrectSprite();
-            this.sprite.SetFrame(this.player.PlayerData.MaxFrames);
+            this.sprite.SetFrame(GameData.Instance.PlayerData.MaxFrames);
             this.player.Physics.MovementVelocity = Vector2.Zero;
         }
 

@@ -14,7 +14,7 @@
         public RightMovingWallMasterState(WallMaster wallMaster)
         {
             this.wallMaster = wallMaster;
-            this.directionChange = this.wallMaster.EnemySpeedData.DirectionChange;
+            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingWallMasterSprite();
             this.wallMaster.CurrentState = this;
             this.randomStateGenerator = new RandomStateGenerator(this.wallMaster, 2, 6);

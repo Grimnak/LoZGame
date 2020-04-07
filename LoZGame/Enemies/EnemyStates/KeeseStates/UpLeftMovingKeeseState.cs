@@ -22,7 +22,7 @@
             randomStateGenerator = new RandomStateGenerator(this.keese, 2, 10);
             randomDirectionCooldown = LoZGame.Instance.Random;
             directionChange = randomDirectionCooldown.Next(this.keese.MinChangeTime, this.keese.MaxChangeTime);
-            accelerationMax = this.keese.EnemySpeedData.MaxKeeseAccel;
+            accelerationMax = GameData.Instance.EnemySpeedData.MaxKeeseAccel;
             this.keese.Physics.MovementVelocity = new Vector2(-1 * this.keese.MoveSpeed, -1 * this.keese.MoveSpeed);
             this.keese.Physics.MovementVelocity *= (float)Math.Sqrt(0.5);
         }

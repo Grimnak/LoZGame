@@ -9,16 +9,10 @@
         private Vector2 FlameOneLoc;
         private Vector2 FlameTwoLoc;
 
-        public EnemyDamageData EnemyDamageData { get; set; }
-
-        public EnemySpeedData EnemySpeedData { get; set; }
-
         public EntityManager EntityManager { get; set; }
 
         public OldMan(Vector2 location)
         {
-            this.EnemyDamageData = new EnemyDamageData();
-            this.EnemySpeedData = new EnemySpeedData();
             this.Physics = new Physics(location);
             this.FlameOneLoc = new Vector2(location.X - 100, location.Y + 20);
             this.FlameTwoLoc = new Vector2(location.X + 160, location.Y + 20);
@@ -28,9 +22,9 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.Health = new HealthManager(1);
             this.Expired = false;
-            this.Damage = EnemyDamageData.OldManDamage;
+            this.Damage = GameData.Instance.EnemyDamageData.OldManDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = EnemySpeedData.OldManSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedData.OldManSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 

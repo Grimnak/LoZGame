@@ -9,17 +9,11 @@
         private const float FireballSpread = MathHelper.PiOver4 / 2;
         private const int NumberFireballs = 3;
 
-        public EnemyDamageData EnemyDamageData { get; set; }
-
-        public EnemySpeedData EnemySpeedData { get; set; }
-
         public EntityManager EntityManager { get; set; }
 
         public Dragon(Vector2 location)
         {
-            this.EnemyDamageData = new EnemyDamageData();
-            this.EnemySpeedData = new EnemySpeedData();
-            this.Health = new HealthManager(EnemyDamageData.DragonHealth);
+            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.DragonHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = 10;
             this.Physics.IsMoveable = false;
@@ -28,9 +22,9 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = EnemyDamageData.DragonDamage;
+            this.Damage = GameData.Instance.EnemyDamageData.DragonDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = EnemySpeedData.DragonSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedData.DragonSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 

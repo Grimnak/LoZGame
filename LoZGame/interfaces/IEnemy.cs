@@ -14,10 +14,6 @@
 
         float MoveSpeed { get; set; }
 
-        EnemyDamageData EnemyDamageData { get; set; }
-
-        EnemySpeedData EnemySpeedData { get; set; }
-
         Color CurrentTint { get; set; }
 
         IEnemyState CurrentState { get; set; }

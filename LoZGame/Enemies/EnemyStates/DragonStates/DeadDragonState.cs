@@ -17,7 +17,7 @@
             this.dragon.CurrentState = this;
             this.dragon.Physics.Bounds = new Rectangle(dragon.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.dragon.Physics.Location);
-            deathTimerMax = this.dragon.EnemySpeedData.DeathTimerMax;
+            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.dragon.Physics.MovementVelocity = Vector2.Zero;
         }
 

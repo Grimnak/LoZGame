@@ -4,23 +4,19 @@
 
     public class Stalfos : EnemyEssentials, IEnemy
     {
-        public EnemyDamageData EnemyDamageData { get; set; }
 
-        public EnemySpeedData EnemySpeedData { get; set; }
         public Stalfos(Vector2 location)
         {
-            this.EnemyDamageData = new EnemyDamageData();
-            this.EnemySpeedData = new EnemySpeedData();
-            this.Health = new HealthManager(EnemyDamageData.StalfosHealth);
+            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.StalfosHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = 3;
             this.CurrentState = new LeftMovingStalfosState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = EnemyDamageData.StalfosDamage;
+            this.Damage = GameData.Instance.EnemyDamageData.StalfosDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = EnemySpeedData.StalfosSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedData.StalfosSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 

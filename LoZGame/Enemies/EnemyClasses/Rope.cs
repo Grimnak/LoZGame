@@ -8,23 +8,17 @@
 
         public string Direction { get; set; }
 
-        public EnemyDamageData EnemyDamageData { get; set; }
-
-        public EnemySpeedData EnemySpeedData { get; set; }
-
         public Rope(Vector2 location)
         {
-            this.EnemyDamageData = new EnemyDamageData();
-            this.EnemySpeedData = new EnemySpeedData();
-            this.Health = new HealthManager(EnemyDamageData.RopeHealth);
+            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.RopeHealth);
             this.Physics = new Physics(location);
             this.CurrentState = new LeftMovingRopeState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = EnemyDamageData.RopeDamage;
+            this.Damage = GameData.Instance.EnemyDamageData.RopeDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = EnemySpeedData.RopeSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedData.RopeSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
             this.Attacking = false;
         }

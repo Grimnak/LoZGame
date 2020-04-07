@@ -20,8 +20,8 @@
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingRopeSprite();
             this.rope.CurrentState = this;
             this.rope.Physics.CurrentDirection = Physics.Direction.South;
-            this.rope.MoveSpeed = this.rope.EnemySpeedData.RopeSpeed;
-            this.directionChange = this.rope.EnemySpeedData.DirectionChange;
+            this.rope.MoveSpeed = GameData.Instance.EnemySpeedData.RopeSpeed;
+            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             randomStateGenerator = new RandomStateGenerator(this.rope, 2, 6);
             this.rope.Physics.MovementVelocity = new Vector2(0, this.rope.MoveSpeed);
         }

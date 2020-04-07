@@ -17,7 +17,7 @@
             this.gel.Physics.Bounds = new Rectangle(gel.Physics.Bounds.Location, Point.Zero);
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             LoZGame.Instance.Drops.AttemptDrop(this.gel.Physics.Location);
-            deathTimerMax = gel.EnemySpeedData.DeathTimerMax;
+            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.gel.Physics.MovementVelocity = Vector2.Zero;
         }
 

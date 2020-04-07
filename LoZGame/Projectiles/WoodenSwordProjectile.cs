@@ -8,8 +8,6 @@
         private int lifeTime;
         private int totalLife;
         private Point sourceOffset;
-        private ProjectileDamageData projectileDamageData;
-        private ProjectileSpeedData projectileSpeedData;
 
         public WoodenSwordProjectile(IPlayer source)
         {
@@ -17,8 +15,8 @@
             this.Width = ProjectileSpriteFactory.Instance.SwordWidth;
             this.Heigth = ProjectileSpriteFactory.Instance.SwordHeight;
             this.Offset = ((this.Heigth * 3) / 4) - 4;
-            this.Speed = projectileSpeedData.WoodSwordSpeed;
-            this.Damage = projectileDamageData.WoodSwordDamage;
+            this.Speed = GameData.Instance.ProjectileSpeedData.WoodSwordSpeed;
+            this.Damage = GameData.Instance.ProjectileDamageData.WoodSwordDamage;
             this.Source = source.Physics;
             this.InitializeDirection();
             this.sourceOffset = this.Physics.Bounds.Location - this.Source.Bounds.Location;

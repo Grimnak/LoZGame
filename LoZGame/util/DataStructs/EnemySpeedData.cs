@@ -25,6 +25,7 @@ namespace LoZClone
         private const int directionChange = 40;
         private const int deathTimerMax = 30;
         private const int keeseIdleMax = 5;
+        private const int zolMaxWait = 12;
 
         public int StalfosSpeed => stalfosSpd;
 
@@ -63,5 +64,8 @@ namespace LoZClone
         public int DeathTimerMax => deathTimerMax;
 
         public int KeeseIdleMax => keeseIdleMax;
+
+        public int ZolMaxWait => zolMaxWait;
+
     }
 }

@@ -17,7 +17,7 @@
             this.stalfos.CurrentState = this;
             this.stalfos.Physics.Bounds = new Rectangle(stalfos.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.stalfos.Physics.Location);
-            deathTimerMax = stalfos.EnemySpeedData.DeathTimerMax;
+            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.stalfos.Physics.MovementVelocity = Vector2.Zero;
         }
 

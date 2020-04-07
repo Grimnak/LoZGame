@@ -17,7 +17,7 @@
             this.keese.CurrentState = this;
             this.keese.Physics.Bounds = new Rectangle(keese.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.keese.Physics.Location);
-            deathTimerMax = this.keese.EnemySpeedData.DeathTimerMax;
+            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.keese.Physics.MovementVelocity = Vector2.Zero;
         }
 

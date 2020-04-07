@@ -15,7 +15,7 @@
         public AttackingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
-            this.directionChange = this.goriya.EnemySpeedData.DirectionChange * 2;
+            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange * 2;
             this.goriya.FacePlayer();
             switch (goriya.Physics.CurrentDirection)
             {

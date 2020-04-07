@@ -9,7 +9,7 @@
         private readonly ISprite sprite;
         private int timeSinceIdle = 0;
         private int timeInIdle = 0;
-        private int movementWaitMax = 12;
+        private int movementWaitMax;
         private RandomStateGenerator randomStateGenerator;
 
         public DownMovingZolState(Zol zol)
@@ -17,6 +17,7 @@
             this.zol = zol;
             this.sprite = EnemySpriteFactory.Instance.CreateZolSprite();
             this.zol.CurrentState = this;
+            this.movementWaitMax = GameData.Instance.EnemySpeedData.ZolMaxWait;
             this.randomStateGenerator = new RandomStateGenerator(this.zol, 2, 6);
             this.zol.Physics.MovementVelocity = new Vector2(0, this.zol.MoveSpeed);
         }

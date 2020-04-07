@@ -17,7 +17,7 @@
             this.goriya.CurrentState = this;
             this.goriya.Physics.Bounds = new Rectangle(goriya.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.goriya.Physics.Location);
-            deathTimerMax = goriya.EnemySpeedData.DeathTimerMax;
+            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.goriya.Physics.MovementVelocity = Vector2.Zero;
         }
 

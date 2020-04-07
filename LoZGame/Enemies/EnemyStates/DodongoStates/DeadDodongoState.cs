@@ -17,7 +17,7 @@
             this.dodongo.Physics.Bounds = new Rectangle(dodongo.Physics.Bounds.Location, Point.Zero);
             this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             LoZGame.Instance.Drops.AttemptDrop(this.dodongo.Physics.Location);
-            deathTimerMax = this.dodongo.EnemySpeedData.DeathTimerMax;
+            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.dodongo.Physics.MovementVelocity = Vector2.Zero;
         }
 

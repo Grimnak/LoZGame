@@ -16,8 +16,6 @@
 
         InventoryManager Inventory { get; set; }
 
-        PlayerData PlayerData { get; set; }
-
         /// <summary>
         /// Gets or sets the current weapon of the player.
         /// </summary>

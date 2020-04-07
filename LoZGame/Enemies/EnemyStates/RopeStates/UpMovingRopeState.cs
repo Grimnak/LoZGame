@@ -17,8 +17,8 @@
         public UpMovingRopeState(Rope rope)
         {
             this.rope = rope;
-            this.rope.MoveSpeed = this.rope.EnemySpeedData.RopeSpeed;
-            this.directionChange = this.rope.EnemySpeedData.DirectionChange;
+            this.rope.MoveSpeed = GameData.Instance.EnemySpeedData.RopeSpeed;
+            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingRopeSprite();
             this.rope.CurrentState = this;
             this.rope.Physics.CurrentDirection = Physics.Direction.North;

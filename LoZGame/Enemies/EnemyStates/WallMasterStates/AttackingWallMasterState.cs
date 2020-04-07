@@ -16,7 +16,7 @@
             this.wallMaster = wallMaster;
             this.sprite = EnemySpriteFactory.Instance.CreateAttackingWallMasterSprite();
             this.wallMaster.CurrentState = this;
-            this.wallMaster.Physics.MovementVelocity = new Vector2(this.wallMaster.EnemySpeedData.WallMasterAttackSpeed, 0);
+            this.wallMaster.Physics.MovementVelocity = new Vector2(GameData.Instance.EnemySpeedData.WallMasterAttackSpeed, 0);
         }
 
         public void MoveLeft()

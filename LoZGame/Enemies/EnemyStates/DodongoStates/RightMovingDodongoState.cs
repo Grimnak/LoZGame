@@ -14,7 +14,7 @@
         public RightMovingDodongoState(IEnemy dodongo)
         {
             this.dodongo = dodongo;
-            this.directionChange = this.dodongo.EnemySpeedData.DirectionChange;
+            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateRightMovingDodongoSprite();
             this.dodongo.CurrentState = this;
             randomStateGenerator = new RandomStateGenerator(this.dodongo, 2, 6);

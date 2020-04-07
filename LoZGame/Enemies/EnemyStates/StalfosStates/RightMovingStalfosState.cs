@@ -14,7 +14,7 @@
         public RightMovingStalfosState(Stalfos stalfos)
         {
             this.stalfos = stalfos;
-            this.directionChange = this.stalfos.EnemySpeedData.DirectionChange;
+            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateStalfosSprite();
             this.stalfos.CurrentState = this;
             randomStateGenerator = new RandomStateGenerator(this.stalfos, 2, 6);

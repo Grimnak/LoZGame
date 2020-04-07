@@ -17,7 +17,7 @@
             this.rope.CurrentState = this;
             this.rope.Physics.Bounds = new Rectangle(rope.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.rope.Physics.Location);
-            deathTimerMax = rope.EnemySpeedData.DeathTimerMax;
+            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.rope.Physics.MovementVelocity = Vector2.Zero;
         }
 

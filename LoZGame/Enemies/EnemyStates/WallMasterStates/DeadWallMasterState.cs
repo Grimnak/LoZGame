@@ -17,7 +17,7 @@
             this.wallMaster.CurrentState = this;
             this.wallMaster.Physics.Bounds = new Rectangle(wallMaster.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.wallMaster.Physics.Location);
-            deathTimerMax = wallMaster.EnemySpeedData.DeathTimerMax;
+            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.wallMaster.Physics.MovementVelocity = Vector2.Zero;
         }
 

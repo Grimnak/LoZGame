@@ -14,7 +14,7 @@
         public LeftMovingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
-            this.directionChange = this.goriya.EnemySpeedData.DirectionChange;
+            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingGoriyaSprite();
             this.goriya.CurrentState = this;
             this.goriya.Physics.CurrentDirection = Physics.Direction.West;

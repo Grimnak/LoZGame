@@ -14,7 +14,7 @@
         public UpMovingGoriyaState(Goriya goriya)
         {
             this.goriya = goriya;
-            this.directionChange = this.goriya.EnemySpeedData.DirectionChange;
+            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateUpMovingGoriyaSprite();
             this.goriya.CurrentState = this;
             this.goriya.Physics.CurrentDirection = Physics.Direction.North;
