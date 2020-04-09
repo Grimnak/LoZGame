@@ -34,6 +34,14 @@
             {
                 this.enemy.TakeDamage(projectile.Damage);
             }
+            else
+            {
+                if (this.enemy is Dodongo)
+                {
+                    projectile.IsExpired = true;
+                    this.enemy.CurrentState.Attack();
+                }
+            }
         }
 
         public void ReverseVelocity(CollisionDetection.CollisionSide collisionSide)

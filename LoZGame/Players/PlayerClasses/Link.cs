@@ -8,22 +8,18 @@
     public class Link : PlayerEssentials, IPlayer
     {
         private PlayerCollisionHandler linkCollisionHandler;
-        private int startingHealth;
 
         public Link(Vector2 location)
         {
             this.Physics = new Physics(location);
-            this.Health = new HealthManager(startingHealth);
+            this.Health = new HealthManager(GameData.Instance.PlayerData.StartingHealth);
             this.Inventory = new InventoryManager(this);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
             this.CurrentColor = "Green";
             this.Physics.CurrentDirection = Physics.Direction.North;
             this.CurrentWeapon = "Wood";
             this.CurrentTint = LoZGame.Instance.DungeonTint;
-            startingHealth = GameData.Instance.PlayerData.StartingHealth;
             this.MoveSpeed = GameData.Instance.PlayerData.PlayerSpeed;
-            this.AnimationSpeed = GameData.Instance.PlayerData.AnimationSpeed;
-            this.FrameDelay = 0;
             this.DamageTimer = 0;
             this.State = new IdleState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
