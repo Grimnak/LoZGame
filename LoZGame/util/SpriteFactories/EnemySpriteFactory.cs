@@ -6,9 +6,12 @@
 
     public class EnemySpriteFactory
     {
-        private static readonly int dodongoWidthUpDown = 40;
+
+        private static readonly int dodongoWidthDown = 40;
+        private static readonly int dodongoWidthUp = 40;
         private static readonly int dodongoWidthLeftRight = 64;
-        private static readonly int dodongoHeight = 50;
+
+        private static readonly int dodongoHeight = 32;
 
         private static readonly int dragonWidth = 68;
         private static readonly int dragonHeight = 100;
@@ -30,6 +33,7 @@
 
         private static readonly int ropeWidth = 40;
         private static readonly int ropeHeight = 40;
+
 
         private static readonly int spikeCrossWidth = 48;
         private static readonly int spikeCrossHeight = 48;
@@ -205,6 +209,11 @@
         private Texture2D rightDodongo;
         private SpriteData rightDodongoData;
 
+        private SpriteData attackingDownDodongoData;
+        private SpriteData attackingUpDodongoData;
+        private SpriteData attackingLeftDodongoData;
+        private SpriteData attackingRightDodongoData;
+
         private Texture2D oldMan;
         private SpriteData oldManData;
         private Texture2D merchant;
@@ -289,8 +298,8 @@
             this.keeseData = new SpriteData(new Vector2(keeseWidth, keeseHeight), keese, 2, 1);
             this.dragonData = new SpriteData(new Vector2(dragonWidth, dragonHeight), dragon, 1, 4);
             this.damagedDragonData = new SpriteData(new Vector2(dragonWidth, dragonHeight), damagedDragon, 1, 4);
-            this.downDodongoData = new SpriteData(new Vector2(dodongoWidthUpDown, dodongoHeight), downDodongo, 1, 3);
-            this.upDodongoData = new SpriteData(new Vector2(dodongoWidthUpDown, dodongoHeight), upDodongo, 1, 3);
+            this.downDodongoData = new SpriteData(new Vector2(dodongoWidthDown, dodongoHeight), downDodongo, 1, 3);
+            this.upDodongoData = new SpriteData(new Vector2(dodongoWidthUp, dodongoHeight), upDodongo, 1, 3);
             this.leftDodongoData = new SpriteData(new Vector2(dodongoWidthLeftRight, dodongoHeight), leftDodongo, 1, 3);
             this.rightDodongoData = new SpriteData(new Vector2(dodongoWidthLeftRight, dodongoHeight), rightDodongo, 1, 3);
             this.oldManData = new SpriteData(new Vector2(oldManWidth, oldManHeight), oldMan, 1, 1);

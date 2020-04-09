@@ -21,12 +21,5 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedData.DodongoSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
-
-        public override void Update()
-        {
-            this.HandleDamage();
-            this.CurrentState.Update();
-            this.Physics.SetDepth();
-        }
     }
 }

@@ -94,6 +94,7 @@
     <Compile Include="Controller\Commands\Loaders\MouseCommandLoader.cs" />
     <Compile Include="Controller\Commands\Controllers\KeyboardController.cs" />
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
+    <Compile Include="Enemies\EnemyStates\DodongoStates\AttackingDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\KeeseStates\IdleKeeseState.cs" />
     <Compile Include="GameState\DeathState.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyEssentials.cs" />

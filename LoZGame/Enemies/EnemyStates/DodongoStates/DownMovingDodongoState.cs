@@ -14,6 +14,7 @@
         public DownMovingDodongoState(IEnemy dodongo)
         {
             this.dodongo = dodongo;
+            this.dodongo.Physics.CurrentDirection = Physics.Direction.South;
             this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             this.sprite = EnemySpriteFactory.Instance.CreateDownMovingDodongoSprite();
             this.dodongo.CurrentState = this;
@@ -58,6 +59,7 @@
 
         public void Attack()
         {
+            this.dodongo.CurrentState = new AttackingDodongoState(this.dodongo, this);
         }
 
         public void Stop()
@@ -82,6 +84,10 @@
                 this.lifeTime = 0;
             }
             this.sprite.Update();
+            if (this.sprite.CurrentFrame >= 2)
+            {
+                this.sprite.SetFrame(0);
+            }
         }
 
         public void Draw()
