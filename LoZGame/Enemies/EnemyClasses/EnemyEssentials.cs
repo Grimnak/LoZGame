@@ -99,6 +99,7 @@
             this.Physics.Move();
             this.CurrentState.Update();
             this.Physics.SetDepth();
+            Console.WriteLine("Enemy: " + this.Physics.Depth + "\tBottom Bounds: " + this.Physics.Bounds.Bottom);
         }
 
         public virtual void Draw()
