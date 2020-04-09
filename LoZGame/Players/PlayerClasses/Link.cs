@@ -8,14 +8,12 @@
     public class Link : PlayerEssentials, IPlayer
     {
         private PlayerCollisionHandler linkCollisionHandler;
-        private int startingHealth;
 
         public Link(Vector2 location)
         {
-            startingHealth = GameData.Instance.PlayerData.StartingHealth;
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.PlayerData.Mass;
-            this.Health = new HealthManager(startingHealth);
+            this.Health = new HealthManager(GameData.Instance.PlayerData.StartingHealth);
             this.Inventory = new InventoryManager(this);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
             this.CurrentColor = "Green";

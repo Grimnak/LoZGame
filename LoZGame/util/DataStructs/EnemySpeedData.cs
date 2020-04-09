@@ -25,6 +25,7 @@ namespace LoZClone
 
         private const int directionChange = 40;
         private const int deathTimerMax = 30;
+        private const int dodongoMaxFram = 2;
         private const int keeseIdleMax = 5;
         private const int zolMaxWait = 12;
 
@@ -65,6 +66,8 @@ namespace LoZClone
         public int DirectionChange => directionChange;
 
         public int DeathTimerMax => deathTimerMax;
+
+        public int DodongoMaxFrame => dodongoMaxFram;
 
         public int KeeseIdleMax => keeseIdleMax;
 

@@ -108,6 +108,7 @@
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\UpRightMovingFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FollowFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\StunnedFireSnakeState.cs" />
+    <Compile Include="Enemies\EnemyStates\DodongoStates\AttackingDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\KeeseStates\IdleKeeseState.cs" />
     <Compile Include="GameState\DeathState.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyEssentials.cs" />

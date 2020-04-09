@@ -15,6 +15,7 @@ namespace LoZClone
         private const int MagicSwordDmg = 8;
         private const int CandleDmg = 8;
         private const int BombDmg = 8;
+        private const int BombDodongoDmg = 16;
         private const int FireballDmg = 4;
         private const int EnemyBoomerangDmg = 2;
         private const int EnemyArrowDmg = 2;
@@ -39,6 +40,8 @@ namespace LoZClone
         public int CandleDamage => CandleDmg;
 
         public int BombDamage => BombDmg;
+
+        public int BombDodongoDamage => BombDodongoDmg;
 
         public int FireballDamage => FireballDmg;
 
