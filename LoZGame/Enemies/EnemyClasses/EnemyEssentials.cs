@@ -49,6 +49,11 @@
             return new Vector2(newX, newY);
         }
 
+        public virtual void AddChild()
+        {
+            // most enemies dont have any children
+        }
+
         public virtual void TakeDamage(int damageAmount)
         {
             if (this.DamageTimer <= 0)

@@ -18,6 +18,7 @@ namespace LoZClone
         private const int goriyaDmg = 4;
         private const int oldManDmg = 0;
         private const int merchantDmg = 0;
+        private const int fireSnakeDmg = 6;
 
         // Health Values
         private const int stalfosHP = 8;
@@ -32,6 +33,7 @@ namespace LoZClone
         private const int goriyaHP = 12;
         private const int oldManHP = 1;
         private const int merchantHP = 1;
+        private const int fireSnakeHP = 12;
 
         // Damage Accessors
         public int StalfosDamage => stalfosDmg;
@@ -58,6 +60,8 @@ namespace LoZClone
 
         public int MerchantDamage => merchantDmg;
 
+        public int FireSnakeDamage => fireSnakeDmg;
+
         // Health Accessors
         public int StalfosHealth => stalfosHP;
 
@@ -82,5 +86,7 @@ namespace LoZClone
         public int OldManHealth => oldManHP;
 
         public int MerchantHealth => merchantHP;
+
+        public int FireSnakeHP => fireSnakeHP;
     }
 }

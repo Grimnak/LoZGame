@@ -14,6 +14,7 @@
         private static EnemySpeedData enemySpdData;
         private static EnemyMassData enemyMassData;
         private static EnemyResistanceData enemyResData;
+        private static EnemyMiscData enemyMiscData;
 
         public PlayerData PlayerData => playerData;
 
@@ -31,6 +32,8 @@
 
         public EnemyResistanceData EnemyResistanceData => enemyResData;
 
+        public EnemyMiscData EnemyMiscData => enemyMiscData;
+
         private static readonly GameData InstanceValue = new GameData();
 
         public static GameData Instance => InstanceValue;
@@ -45,6 +48,7 @@
             enemySpdData = new EnemySpeedData();
             enemyMassData = new EnemyMassData();
             enemyResData = new EnemyResistanceData();
+            enemyMiscData = default;
         }
     }
 }
