@@ -222,7 +222,7 @@
         <door loc="W">hidden2</door>
         <door loc="S">unlocked2</door>
 	  </doors>
-        <text>DODONGO DISLIKES SMOKE.</text>
+          <text>DON'T FEED THE ANIMALS.</text>
         <enemies>
           <enemy X="5.5" Y="2">OldMan</enemy>
         </enemies>
