@@ -16,7 +16,6 @@
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.DragonHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.DragonMass;
-            this.Physics.Mass = 10;
             this.Physics.IsMoveable = false;
             this.EntityManager = LoZGame.Instance.GameObjects.Entities;
             this.CurrentState = new LeftMovingDragonState(this);

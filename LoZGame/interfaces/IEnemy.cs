@@ -18,6 +18,8 @@
 
         IEnemyState CurrentState { get; set; }
 
+        void AddChild();
+
         void TakeDamage(int damageAmount);
 
         void Stun(int stunTime);

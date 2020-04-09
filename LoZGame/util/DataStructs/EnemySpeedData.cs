@@ -21,6 +21,7 @@ namespace LoZClone
         private const float goriyaSpd = 1;
         private const float oldManSpd = 0;
         private const float merchantSpd = 0;
+        private const float fireSnakeSspd = 2;
 
         private const int directionChange = 40;
         private const int deathTimerMax = 30;
@@ -60,6 +61,8 @@ namespace LoZClone
 
         public float MerchantSpeed => merchantSpd;
 
+        public float FireSnakeSpeed => fireSnakeSspd;
+
         public int DirectionChange => directionChange;
 
         public int DeathTimerMax => deathTimerMax;
@@ -69,6 +72,7 @@ namespace LoZClone
         public int KeeseIdleMax => keeseIdleMax;
 
         public int ZolMaxWait => zolMaxWait;
+
 
     }
 }

@@ -15,6 +15,7 @@ namespace LoZClone
         private const int dodongoMass = 24;
         private const int spikeCrossMass = 16;
         private const int wallMasterMass = 14;
+        private const int fireSnakeMass = 20;
 
         public int StalfosMass { get { return stalfosMass; } }
         
@@ -35,5 +36,7 @@ namespace LoZClone
         public int SpikeCrossMass { get { return spikeCrossMass; } }
 
         public int WallMasterMass { get { return wallMasterMass; } }
+
+        public int FireSnakeMass => fireSnakeMass;
     }
 }
