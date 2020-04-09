@@ -28,8 +28,8 @@
         private static readonly int oldManWidth = 48;
         private static readonly int oldManHeight = 54;
 
-        private static readonly int ropeWidth = 25;
-        private static readonly int ropeHeight = 25;
+        private static readonly int ropeWidth = 40;
+        private static readonly int ropeHeight = 40;
 
         private static readonly int spikeCrossWidth = 48;
         private static readonly int spikeCrossHeight = 48;

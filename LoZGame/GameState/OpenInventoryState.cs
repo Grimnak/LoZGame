@@ -12,7 +12,7 @@
 
         public OpenInventoryState()
         {
-            this.lockout = 0;
+            this.lockout = -174;
             this.transitionSpeed = 5;
             this.sprite = CreateCorrectLevelSprite();
             this.position = new Vector2(0, -(LoZGame.Instance.ScreenHeight + LoZGame.Instance.InventoryOffset));
