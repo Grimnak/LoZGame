@@ -10,7 +10,6 @@
         private static int maxDungeon = 2;
         private int lockout;
         private int lockoutMax = 440; // verify
-        private int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Height;
 
         public WinGameState()
         {
@@ -97,7 +96,7 @@
         /// <inheritdoc></inheritdoc>
         public void Draw()
         {
-            LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, 0, LoZGame.Instance.ScreenWidth, screenHeight), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+            LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, LoZGame.Instance.InventoryOffset, LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
 
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
