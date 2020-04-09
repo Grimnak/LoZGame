@@ -952,7 +952,6 @@
         <enemy X="3" Y="2">Keese</enemy>
         <enemy X="3" Y="4">Keese</enemy>
         <enemy X="1" Y="5">Keese</enemy>
-        <enemy X="5" Y="5">Rope</enemy>
       </enemies>
       <doors>
         <door loc="E">unlocked</door>
