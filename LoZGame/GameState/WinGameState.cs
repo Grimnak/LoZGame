@@ -40,6 +40,7 @@
         /// <inheritdoc></inheritdoc>
         public void PlayGame()
         {
+            SoundFactory.Instance.PlayDungeonSong();
             LoZGame.Instance.GameState = new PlayGameState();
         }
 
@@ -82,6 +83,7 @@
                 if (LoZGame.Instance.Dungeon.DungeonNumber < maxDungeon)
                 {
                     LoZGame.Instance.Dungeon = new Dungeon(LoZGame.Instance.Dungeon.DungeonNumber + 1);
+                    LoZGame.Instance.Dungeon.Player = LoZGame.Instance.Link;
                     LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
                     LoZGame.Instance.GameState.PlayGame();
                 }
