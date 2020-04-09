@@ -23,7 +23,7 @@
 
             LoZGame.Instance.Link = new Link(new Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6))));
+                    (float)(BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 6))));
 
             LoZGame.Instance.Players.Add(LoZGame.Instance.Link);
 

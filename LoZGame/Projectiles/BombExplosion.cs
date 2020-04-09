@@ -68,7 +68,7 @@
             // initialize variables for flashing screen
             flashTexture = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             flashTexture.SetData<Color>(new Color[] { LoZGame.Instance.DungeonTint });
-            flashDestination = new Rectangle(0, 0, LoZGame.Instance.GraphicsDevice.Viewport.Width, LoZGame.Instance.GraphicsDevice.Viewport.Height);
+            flashDestination = new Rectangle(0, 0, LoZGame.Instance.ScreenWidth, LoZGame.Instance.GraphicsDevice.Viewport.Height);
         }
 
         public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

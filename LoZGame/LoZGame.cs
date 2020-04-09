@@ -8,9 +8,18 @@
 
     public class LoZGame : Game
     {
-        public static readonly bool DebugMode = false;
+        public static readonly bool DebugMode = true;
         private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;
+        private readonly int screenWidth;
+        private readonly int screenHeight;
+        private readonly int inventoryOffset;
+
+        public int ScreenWidth => this.screenWidth;
+
+        public int ScreenHeight => this.screenHeight;
+
+        public int InventoryOffset => this.inventoryOffset;
 
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -80,13 +89,21 @@
         private LoZGame()
         {
             this.graphics = new GraphicsDeviceManager(this);
-            graphics.GraphicsProfile = GraphicsProfile.HiDef;
+            this.graphics.PreferredBackBufferWidth = 800;
+            this.graphics.PreferredBackBufferHeight = 654;
+            this.graphics.GraphicsProfile = GraphicsProfile.HiDef;
+            this.graphics.ApplyChanges();
+
+            this.screenWidth = 800;
+            this.screenHeight = 654;
+            this.inventoryOffset = 174;
+
             this.Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
-            gameObjectManager = new GameObjectManager();
-            dropManager = new DropManager();
-            debugManager = new DebugManager();
+            this.gameObjectManager = new GameObjectManager();
+            this.dropManager = new DropManager();
+            this.debugManager = new DebugManager();
         }
 
         protected override void Initialize()

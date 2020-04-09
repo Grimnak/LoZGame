@@ -91,7 +91,7 @@
                     break;
 
                 case "Left":
-                    if (this.lockout < LoZGame.Instance.GraphicsDevice.Viewport.Width)
+                    if (this.lockout < LoZGame.Instance.ScreenWidth)
                     {
                         this.sprite.Update(this.direction, this.transitionSpeed);
                     }
@@ -103,7 +103,7 @@
                     break;
 
                 case "Right":
-                    if (this.lockout < LoZGame.Instance.GraphicsDevice.Viewport.Width)
+                    if (this.lockout < LoZGame.Instance.ScreenWidth)
                     {
                         this.sprite.Update(this.direction, this.transitionSpeed);
                     }

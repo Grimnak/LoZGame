@@ -93,7 +93,7 @@
             if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
             {
                 // is right wall
-                if (sourceCollider.Physics.Bounds.Right > LoZGame.Instance.GraphicsDevice.Viewport.Width - BlockSpriteFactory.Instance.HorizontalOffset + 10)
+                if (sourceCollider.Physics.Bounds.Right > LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
                 }
@@ -102,14 +102,13 @@
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Left);
                 }
-
                 // is bottom wall
-                if (sourceCollider.Physics.Bounds.Bottom > LoZGame.Instance.GraphicsDevice.Viewport.Height - BlockSpriteFactory.Instance.VerticalOffset)
+                if (sourceCollider.Physics.Bounds.Bottom > BlockSpriteFactory.Instance.BottomOffset)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
                 }
                 // is top wall
-                else if (sourceCollider.Physics.Bounds.Top < BlockSpriteFactory.Instance.VerticalOffset)
+                else if (sourceCollider.Physics.Bounds.Top < BlockSpriteFactory.Instance.TopOffset)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
                 }
@@ -128,7 +127,7 @@
                         sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
                     }
                 }
-                else if (sourceCollider.Physics.Location.Y > LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight)
+                else if (sourceCollider.Physics.Location.Y > LoZGame.Instance.ScreenHeight - sourceHeight)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
                 }
@@ -136,7 +135,7 @@
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Left);
                 }
-                else if (sourceCollider.Physics.Location.X > LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth)
+                else if (sourceCollider.Physics.Location.X > LoZGame.Instance.ScreenWidth - sourceWidth)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
                 }

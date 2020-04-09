@@ -5,8 +5,6 @@
 
     public class PlayGameState : IGameState
     {
-        private int screenWidth = LoZGame.Instance.GraphicsDevice.Viewport.Width;
-        private int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Height;
 
         public PlayGameState()
         {
@@ -69,7 +67,6 @@
         /// <inheritdoc></inheritdoc>
         public void Draw()
         {
-
             this.DrawCorrectBackground();
 
             LoZGame.Instance.GameObjects.Draw();

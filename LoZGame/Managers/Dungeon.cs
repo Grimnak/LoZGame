@@ -120,7 +120,7 @@
                 {
                     this.player.Physics.Bounds = new Rectangle(
                         BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5),
-                        BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
+                        BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
                         this.player.Physics.Bounds.Width,
                         this.player.Physics.Bounds.Height);
                 }
@@ -128,7 +128,7 @@
                 {
                     this.player.Physics.Bounds = new Rectangle(
                         (int)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                        BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6),
+                        BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 6),
                         this.player.Physics.Bounds.Width,
                         this.player.Physics.Bounds.Height);
                 }
@@ -161,7 +161,7 @@
                 {
                     this.player.Physics.Bounds = new Rectangle(
                         (int)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                        BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 0) + 2,
+                        BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 0) + 2,
                         this.player.Physics.Bounds.Width,
                         this.player.Physics.Bounds.Height);
                 }
@@ -184,7 +184,7 @@
                 // Player moved to right side of new room (next to door).
                 this.player.Physics.Bounds = new Rectangle(
                     BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 11),
-                    BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
+                    BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
                     this.player.Physics.Bounds.Width,
                     this.player.Physics.Bounds.Height);
                 this.player.Physics.SetLocation();
@@ -206,7 +206,7 @@
                 // Player moved to left side of new room (next to door).
                 this.player.Physics.Bounds = new Rectangle(
                     BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 0) + 6,
-                    BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
+                    BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
                     this.player.Physics.Bounds.Width,
                     this.player.Physics.Bounds.Height);
                 this.player.Physics.SetLocation();

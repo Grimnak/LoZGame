@@ -25,7 +25,7 @@
         {
             this.player.Physics.Bounds = new Rectangle(
                     (int)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                    BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6),
+                    BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 6),
                     this.player.Physics.Bounds.Width,
                     this.player.Physics.Bounds.Height);
             this.player.Physics.SetLocation();
