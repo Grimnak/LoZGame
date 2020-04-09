@@ -96,7 +96,7 @@
         {
             if (collisionSide == CollisionDetection.CollisionSide.Right)
             {
-                this.item.Physics.Location = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, this.item.Physics.Location.Y);
+                this.item.Physics.Location = new Vector2(LoZGame.Instance.ScreenWidth - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, this.item.Physics.Location.Y);
             }
             else if (collisionSide == CollisionDetection.CollisionSide.Left)
             {
@@ -104,11 +104,11 @@
             }
             else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
             {
-                this.item.Physics.Location = new Vector2(this.item.Physics.Location.X, LoZGame.Instance.GraphicsDevice.Viewport.Height - sourceHeight - BlockSpriteFactory.Instance.VerticalOffset);
+                this.item.Physics.Location = new Vector2(this.item.Physics.Location.X, BlockSpriteFactory.Instance.BottomOffset - sourceHeight);
             }
             else if (collisionSide == CollisionDetection.CollisionSide.Top)
             {
-                this.item.Physics.Location = new Vector2(this.item.Physics.Location.X, BlockSpriteFactory.Instance.VerticalOffset);
+                this.item.Physics.Location = new Vector2(this.item.Physics.Location.X, BlockSpriteFactory.Instance.TopOffset);
             }
         }
     }

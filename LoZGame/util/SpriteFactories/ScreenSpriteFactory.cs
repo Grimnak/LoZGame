@@ -7,7 +7,7 @@
     public class ScreenSpriteFactory
     {
         private const int DRAWSCALE = 1;
-        private static readonly int screenWidth = LoZGame.Instance.GraphicsDevice.Viewport.Width;
+        private static readonly int screenWidth = screenWidth;
         private static readonly int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Height;
         private static readonly int enterWidth = 232;
         private static readonly int enterHeight = 44;

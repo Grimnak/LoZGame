@@ -85,7 +85,7 @@
             }
             else if (door.Physics.Location == door.UpScreenLoc)
             {
-                player.Physics.Bounds = new Rectangle(player.Physics.Bounds.X, (int)BlockSpriteFactory.Instance.VerticalOffset, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
+                player.Physics.Bounds = new Rectangle(player.Physics.Bounds.X, (int)BlockSpriteFactory.Instance.TopOffset, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
                 this.player.Physics.StopMotionY();
             }
             this.player.Physics.SetLocation();

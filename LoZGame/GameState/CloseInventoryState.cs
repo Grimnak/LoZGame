@@ -9,8 +9,6 @@
         private int transitionSpeed;
         private int lockout;
         private Vector2 position;
-        private int screenWidth = LoZGame.Instance.GraphicsDevice.Viewport.Width;
-        private int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Height;
 
         public CloseInventoryState()
         {
@@ -66,7 +64,7 @@
         public void Update()
         {
             this.lockout += this.transitionSpeed;
-            if (this.lockout < screenHeight)
+            if (this.lockout < LoZGame.Instance.ScreenHeight)
             {
                 this.position.Y -= transitionSpeed;
             }
@@ -83,11 +81,11 @@
             {
                 if (LoZGame.Instance.Dungeon.CurrentRoomX != 0 || LoZGame.Instance.Dungeon.CurrentRoomY != 2)
                 {
-                    LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, 0, screenWidth, screenHeight), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+                    LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, LoZGame.Instance.InventoryOffset, LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
                 }
                 else
                 {
-                    LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.BackgroundHole, new Rectangle(0, 0, screenWidth, screenHeight), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+                    LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.BackgroundHole, new Rectangle(0, LoZGame.Instance.InventoryOffset, LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
                 }
 
             }
