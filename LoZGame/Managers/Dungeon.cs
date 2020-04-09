@@ -42,7 +42,7 @@
                 this.maxX = 6;
                 this.maxY = 6;
             }
-            else if(this.dungeonNumber == 2)
+            else if (this.dungeonNumber == 2)
             {
                 this.currentX = 1;
                 this.currentY = 7; // player spawns at curX/curY
@@ -153,7 +153,7 @@
                 {
                     this.player.Physics.Bounds = new Rectangle(
                         BlockSpriteFactory.Instance.TileWidth * 4,
-                        (BlockSpriteFactory.Instance.TileHeight * 0) + 2,
+                        (BlockSpriteFactory.Instance.TileHeight * 0) + 2 + LoZGame.Instance.InventoryOffset,
                         this.player.Physics.Bounds.Width,
                         this.player.Physics.Bounds.Height);
                 }

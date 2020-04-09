@@ -118,7 +118,7 @@
 
         public void SetRoomBounds(Physics target, CollisionDetection.CollisionSide collisionSide)
         {
-            int topOffset = 0, bottomOffset = 0, horizontalOffset = 0;
+            int topOffset = LoZGame.Instance.InventoryOffset, bottomOffset = 0, horizontalOffset = 0;
             if (LoZGame.Instance.Dungeon.CurrentRoomX != 1 || LoZGame.Instance.Dungeon.CurrentRoomY != 1)
             {
                 topOffset = BlockSpriteFactory.Instance.TopOffset;

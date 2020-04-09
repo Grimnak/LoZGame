@@ -7,28 +7,12 @@
     public class ScreenSpriteFactory
     {
         private const int DRAWSCALE = 1;
-        private static readonly int screenWidth = screenWidth;
-        private static readonly int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Height;
         private static readonly int enterWidth = 232;
         private static readonly int enterHeight = 44;
-
-        public int TitleScreenWidth => screenWidth;
-
-        public int TitleScreenHeight => screenHeight;
 
         public int EnterWidth => enterWidth;
 
         public int EnterHeight => enterHeight;
-
-        public static int GetScreenWidth(IScreen screen)
-        {
-            return screenWidth;
-        }
-
-        public static int GetScreenHeight(IScreen screen)
-        {
-            return screenHeight;
-        }
 
         private Texture2D titleSpriteSheet;
         private SpriteData titleData;
@@ -45,7 +29,7 @@
         public void LoadAllTextures(ContentManager content)
         {
             this.titleSpriteSheet = content.Load<Texture2D>("LoZTitle");
-            this.titleData = new SpriteData(new Vector2(screenWidth, screenHeight), titleSpriteSheet, 1, 7);
+            this.titleData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), titleSpriteSheet, 1, 7);
             this.enterSpriteSheet = content.Load<Texture2D>("pressEnter");
             this.enterData = new SpriteData(new Vector2(enterWidth, enterHeight), enterSpriteSheet, 1, 1);
             this.levelOneMasterSpriteSheet = content.Load<Texture2D>("LevelOneMaster");

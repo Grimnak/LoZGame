@@ -126,7 +126,7 @@
         {
             return new Vector2(
                 (float)(BlockSpriteFactory.Instance.TileWidth * gridX),
-                (float)(BlockSpriteFactory.Instance.TileHeight * gridY));
+                (float)(LoZGame.Instance.InventoryOffset + (BlockSpriteFactory.Instance.TileHeight * gridY)));
         }
 
         /*

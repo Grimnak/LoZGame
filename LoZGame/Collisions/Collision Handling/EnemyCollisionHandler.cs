@@ -58,7 +58,6 @@
             {
                 this.SetRoomBounds(this.enemy.Physics, collisionSide);
             }
-            
         }
     }
 }
