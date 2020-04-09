@@ -36,13 +36,13 @@
 
         public void SetDepth()
         {
-            if (this.bounds.Bottom != 0)
+            if (this.Bounds.Bottom != 0)
             {
-                this.Depth = 1 - (1 / this.bounds.Bottom);
+                this.Depth = 1.0f - (1.0f / this.Bounds.Bottom);
             }
             else
             {
-                this.Depth = 0.0f;
+                this.Depth = 1.0f;
             }
         }
 

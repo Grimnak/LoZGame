@@ -32,7 +32,7 @@
         {
             if (otherCollider is IEnemy)
             {
-                //this.linkCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+                this.linkCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
             else if (otherCollider is IProjectile)
             {
