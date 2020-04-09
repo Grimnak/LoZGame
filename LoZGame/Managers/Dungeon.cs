@@ -35,10 +35,21 @@
             LoZGame.Instance.DungeonTint = Color.White;
             this.dungeonLayout = XMLHandler.Parse(this.currentDungeonFile);
 
-            this.currentX = 2;
-            this.currentY = 5; // player spawns at curX/curY
-            this.maxX = 6;
-            this.maxY = 6;
+            if (this.dungeonNumber == 1)
+            {
+                this.currentX = 2;
+                this.currentY = 5; // player spawns at curX/curY
+                this.maxX = 6;
+                this.maxY = 6;
+            }
+            else if(this.dungeonNumber == 2)
+            {
+                this.currentX = 1;
+                this.currentY = 7; // player spawns at curX/curY
+                this.maxX = 4;
+                this.maxY = 8;
+            }
+
             this.LoadNewRoom();
         }
 
@@ -67,10 +78,22 @@
         public void Reset()
         {
             this.dungeonLayout = XMLHandler.Parse(this.currentDungeonFile);
-            this.currentX = 2;
-            this.currentY = 5; // player spawns at curX/curY
-            this.maxX = 6;
-            this.maxY = 6;
+
+            if (this.dungeonNumber == 1)
+            {
+                this.currentX = 2;
+                this.currentY = 5; // player spawns at curX/curY
+                this.maxX = 6;
+                this.maxY = 6;
+            }
+            else if (this.dungeonNumber == 2)
+            {
+                this.currentX = 1;
+                this.currentY = 7; // player spawns at curX/curY
+                this.maxX = 4;
+                this.maxY = 8;
+            }
+
             this.LoadNewRoom();
         }
 
