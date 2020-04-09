@@ -11,6 +11,7 @@
         private int segmentID;
         private Vector2 passedVelocity;
         private int timeSinceLastPass;
+        private bool childAdded;
 
         public FireSnakeHead(Vector2 location)
         {
@@ -19,7 +20,7 @@
             this.Physics.Mass = GameData.Instance.EnemyMassData.FireSnakeMass;
             this.Physics.IsMoveable = false;
             this.CurrentState = new IdleFireSnakeState(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, ProjectileSpriteFactory.Instance.FireballWidth, ProjectileSpriteFactory.Instance.FireballHeight);
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
             this.Damage = GameData.Instance.EnemyDamageData.FireSnakeDamage;
@@ -27,7 +28,7 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedData.FireSnakeSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
             this.segmentID = GameData.Instance.EnemyMiscData.FireSnakeLength;
-            this.AddChild();
+            childAdded = false;
         }
 
         public override void Stun(int stunTime)
@@ -45,15 +46,20 @@
             }
         }
 
+        public override void UpdateChild()
+        {
+            if (this.CurrentState is DeadFireSnakeState)
+            {
+                this.child.Expired = true;
+            }
+            this.child.UpdateChild();
+            this.child.Physics.MovementVelocity = this.Physics.MovementVelocity;
+        }
+
         public override void AddChild()
         {
             this.child = new FireSnakeSegment(this, segmentID - 1);
             LoZGame.Instance.GameObjects.Enemies.Add(child);
-        }
-
-        public override void Update()
-        {
-            base.Update();
         }
     }
 }

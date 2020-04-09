@@ -19,6 +19,7 @@
             this.fireSnake = fireSnake;
             this.sprite = ProjectileSpriteFactory.Instance.Fireball();
             this.fireSnake.CurrentState = this;
+            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             randomStateGenerator = new RandomStateGenerator(this.fireSnake, 2, 10);
             this.fireSnake.Physics.MovementVelocity = new Vector2(this.fireSnake.MoveSpeed, -1 * this.fireSnake.MoveSpeed);
             this.fireSnake.Physics.MovementVelocity *= (float)Math.Sqrt(0.5);
@@ -83,12 +84,14 @@
 
         public void Update()
         {
+            this.lifeTime++;
             this.sprite.Update();
             if (this.lifeTime > this.directionChange)
             {
-                randomStateGenerator.Update();
+                this.fireSnake.UpdateChild();
                 directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
                 this.lifeTime = 0;
+                randomStateGenerator.Update();
             }
         }
 

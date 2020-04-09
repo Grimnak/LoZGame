@@ -112,7 +112,6 @@
             this.CheckRightBound();
             this.Physics.Move();
             this.State.Update();
-            Console.WriteLine("Player: " + this.Physics.Depth + "\tBottom Bounds: " + this.Physics.Bounds.Bottom);
         }
 
         public void Draw()

@@ -5,18 +5,13 @@
 
     public class FollowFireSnakeState : IEnemyState
     {
-        private static int TimeBetweenFollows = LoZGame.Instance.UpdateSpeed;
         private readonly IEnemy fireSnake;
-        private readonly IEnemy parent;
         private readonly ISprite sprite;
-        private int timeSinceLastFollow;
 
-        public FollowFireSnakeState(IEnemy fireSnake, IEnemy parent)
+        public FollowFireSnakeState(IEnemy fireSnake)
         {
             this.fireSnake = fireSnake;
-            this.parent = parent;
             this.sprite = ProjectileSpriteFactory.Instance.Fireball();
-            this.timeSinceLastFollow = 0;
         }
 
         public void MoveLeft()
@@ -61,7 +56,6 @@
 
         public void Die()
         {
-            this.fireSnake.CurrentState = new DeadFireSnakeState(this.fireSnake);
         }
 
         public void Stun(int stunTime)
@@ -71,12 +65,6 @@
 
         public void Update()
         {
-            timeSinceLastFollow++;
-            if (timeSinceLastFollow <= TimeBetweenFollows)
-            {
-                this.fireSnake.Physics.MovementVelocity = this.parent.Physics.MovementVelocity;
-                timeSinceLastFollow = 0;
-            }
             this.sprite.Update();
         }
 

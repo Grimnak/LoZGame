@@ -1024,6 +1024,7 @@
         <enemy X="6" Y="2">Stalfos</enemy>
         <enemy X="6" Y="4">Stalfos</enemy>
         <enemy X="3" Y="6">Stalfos</enemy>
+        <enemy X="6" Y="6">FireSnake</enemy>
       </enemies>
       <doors>
         <door loc="W">unlocked</door>

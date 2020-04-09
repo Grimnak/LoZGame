@@ -19,6 +19,7 @@
             LoZGame.Instance.Drops.AttemptDrop(this.fireSnake.Physics.Location);
             deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.fireSnake.Physics.MovementVelocity = Vector2.Zero;
+            this.fireSnake.UpdateChild();
         }
 
         public void MoveLeft()

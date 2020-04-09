@@ -49,6 +49,11 @@
             return new Vector2(newX, newY);
         }
 
+        public virtual void UpdateChild()
+        {
+            // most enemies do not have any children
+        }
+
         public virtual void AddChild()
         {
             // most enemies dont have any children
@@ -104,7 +109,6 @@
             this.Physics.Move();
             this.CurrentState.Update();
             this.Physics.SetDepth();
-            Console.WriteLine("Enemy: " + this.Physics.Depth + "\tBottom Bounds: " + this.Physics.Bounds.Bottom);
         }
 
         public virtual void Draw()
