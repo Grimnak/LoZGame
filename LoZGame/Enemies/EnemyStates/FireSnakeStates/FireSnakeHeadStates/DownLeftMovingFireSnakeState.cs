@@ -89,6 +89,7 @@
             this.sprite.Update();
             if (this.lifeTime > this.directionChange)
             {
+                this.fireSnake.UpdateChild();
                 randomStateGenerator.Update();
                 directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
                 this.lifeTime = 0;

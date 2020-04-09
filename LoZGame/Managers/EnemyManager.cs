@@ -28,6 +28,7 @@ namespace LoZClone
             {
                 enemyList.Add(enemyID, enemy);
                 enemyID++;
+                enemy.AddChild();
             }
         }
 

@@ -176,6 +176,9 @@
                 case "Zol":
                     this.enemies.Add(new Zol(location));
                     break;
+                case "FireSnake":
+                    this.enemies.Add(new FireSnakeHead(location));
+                    break;
                 default:
                     break;
             }

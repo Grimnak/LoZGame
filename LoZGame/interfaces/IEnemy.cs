@@ -20,6 +20,8 @@
 
         void AddChild();
 
+        void UpdateChild();
+
         void TakeDamage(int damageAmount);
 
         void Stun(int stunTime);
