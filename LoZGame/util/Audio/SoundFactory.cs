@@ -5,9 +5,9 @@
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Media;
 
-    class SoundFactory
+    public class SoundFactory
     {
-        bool musicEnabled = false;
+        private bool musicEnabled = false;
         private SoundPlayer titleSong = new SoundPlayer(Properties.Resources.title_song);
         private SoundPlayer dungeonSong = new SoundPlayer(Properties.Resources.dungeon_song);
         private SoundPlayer triforceTune = new SoundPlayer(Properties.Resources.triforce_tune);

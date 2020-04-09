@@ -24,40 +24,5 @@
         {
             this.CurrentState.Stun(stunTime);
         }
-
-        public override void FacePlayer()
-        {
-            Vector2 playerLoc = UnitVectorToPlayer(this.Physics.Bounds.Center.ToVector2());
-            if (Math.Abs(playerLoc.X) > Math.Abs(playerLoc.Y))
-            {
-                if (playerLoc.X < 0)
-                {
-                    this.CurrentState = new LeftMovingWallMasterState(this);
-                }
-                else
-                {
-                    this.CurrentState = new RightMovingWallMasterState(this);
-                }
-            }
-            else
-            {
-                if (playerLoc.Y < 0)
-                {
-                    this.CurrentState = new UpMovingWallMasterState(this);
-                }
-                else
-                {
-                    this.CurrentState = new DownMovingWallMasterState(this);
-                }
-            }
-        }
-
-        public override void Update()
-        {
-            this.HandleDamage();
-            this.Physics.Move();
-            this.CurrentState.Update();
-            this.Physics.SetDepth();
-        }
     }
 }
