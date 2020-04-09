@@ -67,7 +67,7 @@
             switch (this.direction)
             {
                 case "Up":
-                    if (this.lockout < LoZGame.Instance.GraphicsDevice.Viewport.Height)
+                    if (this.lockout < LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset)
                     {
                         this.sprite.Update(this.direction, this.transitionSpeed);
                     }
@@ -79,7 +79,7 @@
                     break;
 
                 case "Down":
-                    if (this.lockout < LoZGame.Instance.GraphicsDevice.Viewport.Height)
+                    if (this.lockout < LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset)
                     {
                         this.sprite.Update(this.direction, this.transitionSpeed);
                     }

@@ -77,7 +77,7 @@
                 player.Draw();
             }
 
-            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "Health: " + LoZGame.Instance.Link.Health.CurrentHealth.ToString() + "| Bombs: " + LoZGame.Instance.Link.Inventory.Bombs.ToString() + "| Rupees: " + LoZGame.Instance.Link.Inventory.Rupees.ToString(), new Vector2(0,0), Color.Black, 0, new Vector2(0,0), 1, SpriteEffects.None, 1.0f);
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "Health: " + LoZGame.Instance.Link.Health.CurrentHealth.ToString() + " | Bombs: " + LoZGame.Instance.Link.Inventory.Bombs.ToString() + " | Rupees: " + LoZGame.Instance.Link.Inventory.Rupees.ToString(), new Vector2(0,0), Color.White, 0, new Vector2(0, 0), 1, SpriteEffects.None, 1.0f);
         }
 
         private void DrawCorrectBackground()
