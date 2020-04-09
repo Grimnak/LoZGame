@@ -77,6 +77,7 @@
         /// <inheritdoc></inheritdoc>
         public void Draw()
         {
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             this.DrawCorrectBackground();
 
             foreach (IPlayer player in LoZGame.Instance.Players)
@@ -86,6 +87,7 @@
 
             LoZGame.Instance.GameObjects.Draw();
             this.sprite.Draw(position, LoZGame.Instance.DungeonTint, 1.0f);
+            LoZGame.Instance.SpriteBatch.End();
         }
 
         private void DrawCorrectBackground()

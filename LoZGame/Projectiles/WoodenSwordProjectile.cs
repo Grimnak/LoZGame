@@ -34,6 +34,7 @@
                 this.Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
                 totalLife = 15;
             }
+            this.Physics.Mass = GameData.Instance.ProjectileMassData.WoodSwordMass;
         }
 
         public override void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)

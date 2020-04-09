@@ -5,31 +5,31 @@ namespace LoZClone
 
     public struct EnemySpeedData
     {
-        private const int stalfosSpd = 1;
+        private const float stalfosSpd = 2;
         private const float minKeeseSpd = 1.5f;
         private const float maxKeeseSpd = 5.0f;
         private const float keeseAccel = .025f;
         private const float keeseAccelMax = 5.0f;
-        private const int ropeSpd = 1;
-        private const float gelSpd = 2.5f;
-        private const int zolSpd = 4;
-        private const int spikeCrossSpd = 3;
-        private const int wallMasterSpd = 1;
-        private const int wallMasterAttackSpd = -1;
-        private const int dragonSpd = 1;
-        private const int dodongoSpd = 1;
-        private const int goriyaSpd = 1;
-        private const int oldManSpd = 1;
-        private const int merchantSpd = 1;
+        private const float ropeSpd = 2.5f;
+        private const float gelSpd = 3f;
+        private const float zolSpd = 4;
+        private const float spikeCrossSpd = 3;
+        private const float wallMasterSpd = 2;
+        private const float wallMasterAttackSpd = -1;
+        private const float dragonSpd = 1.5f;
+        private const float dodongoSpd = 2;
+        private const float goriyaSpd = 1;
+        private const float oldManSpd = 0;
+        private const float merchantSpd = 0;
 
         private const int directionChange = 40;
         private const int deathTimerMax = 30;
         private const int keeseIdleMax = 5;
         private const int zolMaxWait = 12;
 
-        public int StalfosSpeed => stalfosSpd;
+        public float StalfosSpeed => stalfosSpd;
 
-        public int RopeSpeed => ropeSpd;
+        public float RopeSpeed => ropeSpd;
 
         public float MinKeeseSpeed => minKeeseSpd;
 
@@ -41,23 +41,23 @@ namespace LoZClone
 
         public float GelSpeed => gelSpd;
 
-        public int ZolSpeed => zolSpd;
+        public float ZolSpeed => zolSpd;
 
-        public int SpikeCrossSpeed => spikeCrossSpd;
+        public float SpikeCrossSpeed => spikeCrossSpd;
 
-        public int WallMasterSpeed => wallMasterSpd;
+        public float WallMasterSpeed => wallMasterSpd;
 
-        public int WallMasterAttackSpeed => wallMasterAttackSpd;
+        public float WallMasterAttackSpeed => wallMasterAttackSpd;
 
-        public int DragonSpeed => dragonSpd;
+        public float DragonSpeed => dragonSpd;
 
-        public int DodongoSpeed => dodongoSpd;
+        public float DodongoSpeed => dodongoSpd;
 
-        public int GoriyaSpeed => goriyaSpd;
+        public float GoriyaSpeed => goriyaSpd;
 
-        public int OldManSpeed => oldManSpd;
+        public float OldManSpeed => oldManSpd;
 
-        public int MerchantSpeed => merchantSpd;
+        public float MerchantSpeed => merchantSpd;
 
         public int DirectionChange => directionChange;
 

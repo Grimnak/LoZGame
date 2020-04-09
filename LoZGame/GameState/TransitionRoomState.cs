@@ -122,7 +122,9 @@
         /// <inheritdoc></inheritdoc>
         public void Draw()
         {
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             this.sprite.Draw(LoZGame.Instance.DungeonTint);
+            LoZGame.Instance.SpriteBatch.End();
         }
 
         private LevelOneMasterSprite CreateCorrectLevelSprite()

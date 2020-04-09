@@ -66,6 +66,7 @@
         /// <inheritdoc></inheritdoc>
         public void Draw()
         {
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             this.DrawCorrectBackground();
 
             LoZGame.Instance.GameObjects.Draw();
@@ -76,8 +77,11 @@
             {
                 player.Draw();
             }
+            LoZGame.Instance.SpriteBatch.End();
 
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "Health: " + LoZGame.Instance.Link.Health.CurrentHealth.ToString() + " | Bombs: " + LoZGame.Instance.Link.Inventory.Bombs.ToString() + " | Rupees: " + LoZGame.Instance.Link.Inventory.Rupees.ToString(), new Vector2(0,0), Color.White, 0, new Vector2(0, 0), 1, SpriteEffects.None, 1.0f);
+            LoZGame.Instance.SpriteBatch.End();
         }
 
         private void DrawCorrectBackground()

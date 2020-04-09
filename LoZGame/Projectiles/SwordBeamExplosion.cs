@@ -26,6 +26,7 @@
             this.Physics.BoundsOffset = new Vector2(Width, Heigth) / 4;
             this.Physics.SetLocation();
             this.Sprite = ProjectileSpriteFactory.Instance.SwordExplosion();
+            this.Physics.Mass = GameData.Instance.ProjectileMassData.SwordBeamMass;
 
             switch (this.Physics.CurrentDirection)
             {

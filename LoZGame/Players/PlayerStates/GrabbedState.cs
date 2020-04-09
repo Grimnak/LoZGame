@@ -21,6 +21,9 @@
             this.player = playerInstance;
             this.wallMaster = wallMaster;
             this.sprite = this.CreateCorrectSprite();
+            Point offset = ((wallMaster.Physics.Bounds.Size - player.Physics.Bounds.Size).ToVector2() / 2).ToPoint();
+            this.player.Physics.Bounds = new Rectangle(wallMaster.Physics.Bounds.Location + offset, player.Physics.Bounds.Size);
+            this.player.Physics.SetLocation();
         }
 
         /// <inheritdoc/>
@@ -76,9 +79,7 @@
         /// <inheritdoc/>
         public void Update()
         {
-            wallMaster.Physics.Location = player.Physics.Location;
             player.Physics.MovementVelocity = wallMaster.Physics.MovementVelocity;
-            this.player.Physics.Move();
             if (this.player.Physics.Location.X < 0)
             {
                 this.player.Physics.StopVelocity();

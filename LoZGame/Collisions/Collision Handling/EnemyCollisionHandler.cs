@@ -56,7 +56,10 @@
             }
             else
             {
-                this.SetRoomBounds(this.enemy.Physics, collisionSide);
+                if (!(this.enemy is WallMaster))
+                {
+                    this.SetRoomBounds(this.enemy.Physics, collisionSide);
+                }
             }
         }
     }

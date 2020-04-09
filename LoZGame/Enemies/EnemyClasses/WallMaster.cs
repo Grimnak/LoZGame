@@ -10,6 +10,7 @@
         {
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.WallMasterHealth);
             this.Physics = new Physics(location);
+            this.Physics.Mass = GameData.Instance.EnemyMassData.WallMasterMass;
             this.CurrentState = new LeftMovingWallMasterState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
@@ -23,6 +24,15 @@
         public override void Stun(int stunTime)
         {
             this.CurrentState.Stun(stunTime);
+        }
+
+        public override void Update()
+        {
+            base.Update();
+            if (this.CurrentState is AttackingWallMasterState)
+            {
+                this.Physics.Depth = 1.0f;
+            }
         }
     }
 }

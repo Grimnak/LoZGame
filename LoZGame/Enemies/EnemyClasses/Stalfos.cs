@@ -9,7 +9,7 @@
         {
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.StalfosHealth);
             this.Physics = new Physics(location);
-            this.Physics.Mass = 3;
+            this.Physics.Mass = GameData.Instance.EnemyMassData.StalfosMass;
             this.CurrentState = new LeftMovingStalfosState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);

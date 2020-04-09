@@ -21,6 +21,7 @@
                 this.CorrectProjectile();
             }
             this.Sprite = ProjectileSpriteFactory.Instance.SilverArrow();
+            this.Physics.Mass = GameData.Instance.ProjectileMassData.SilverArrowMass;
         }
     }
 }

@@ -10,7 +10,7 @@
         private static ProjectileDamageData projectileDmgData;
         private static ProjectileSpeedData projectileSpdData;
         private static ProjectileMassData projectileMassData;
-        private static EnemyDamageData enemyDamageData;
+        private static DefaultData enemyDamageData;
         private static EnemySpeedData enemySpdData;
         private static EnemyMassData enemyMassData;
         private static EnemyResistanceData enemyResData;
@@ -23,7 +23,7 @@
 
         public ProjectileMassData ProjectileMassData => projectileMassData;
 
-        public EnemyDamageData EnemyDamageData => enemyDamageData;
+        public DefaultData EnemyDamageData => enemyDamageData;
 
         public EnemySpeedData EnemySpeedData => enemySpdData;
 
@@ -41,7 +41,7 @@
             projectileDmgData = new ProjectileDamageData();
             projectileSpdData = new ProjectileSpeedData();
             projectileMassData = new ProjectileMassData();
-            enemyDamageData = new EnemyDamageData();
+            enemyDamageData = new DefaultData();
             enemySpdData = new EnemySpeedData();
             enemyMassData = new EnemyMassData();
             enemyResData = new EnemyResistanceData();

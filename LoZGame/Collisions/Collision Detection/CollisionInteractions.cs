@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System;
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
@@ -22,7 +23,7 @@
             }
             Vector2 knockbackVector = (target.Bounds.Center - source.Bounds.Center).ToVector2();
             knockbackVector.Normalize();
-            knockbackVector *= sourceMomentum;
+            knockbackVector *= sourceMomentum + (float)Math.Sqrt(target.GetMomentum());
             target.SetKnockback(knockbackVector);
         }
 
@@ -33,46 +34,22 @@
         /// <param name="target">The object receiving the force.</param>
         public void DetermineDirectPushback(Physics source, Physics target)
         {
-            Vector2 knockbackVector = Vector2.Zero;
-            float sourceMomentum = source.GetMomentum();
-            if (sourceMomentum < source.Mass)
+            if (source.MovementVelocity.Length() > 0)
             {
-                sourceMomentum = source.Mass;
+                Vector2 knockbackVector = Vector2.Zero;
+                float sourceMomentum = source.GetMomentum();
+                if (sourceMomentum < source.Mass)
+                {
+                    sourceMomentum = source.Mass;
+                }
+                knockbackVector = new Vector2(source.MovementVelocity.X, source.MovementVelocity.Y);
+                knockbackVector.Normalize();
+                knockbackVector *= sourceMomentum + (float)Math.Sqrt(target.GetMomentum());
+                target.SetKnockback(knockbackVector);
             }
-
-            switch (source.CurrentDirection)
-            {
-                case PhysicsEssentials.Direction.North:
-                    knockbackVector = new Vector2(0, -1);
-                    break;
-                case PhysicsEssentials.Direction.South:
-                    knockbackVector = new Vector2(0, 1);
-                    break;
-                case PhysicsEssentials.Direction.East:
-                    knockbackVector = new Vector2(1, 0);
-                    break;
-                case PhysicsEssentials.Direction.West:
-                    knockbackVector = new Vector2(-1, 0);
-                    break;
-                default:
-                    DeterminePushbackValues(source, target);
-                    break;
-            }
-            knockbackVector *= sourceMomentum;
-            target.SetKnockback(knockbackVector);
-        }
-
-        public void ReverseKnockback(Physics target, CollisionDetection.CollisionSide side)
-        {
-            if (side == CollisionDetection.CollisionSide.Top || side == CollisionDetection.CollisionSide.Bottom)
-            {
-                target.KnockbackVelocity = new Vector2(target.KnockbackVelocity.X, (target.KnockbackVelocity.Y * -1) / 2);
-                target.Friction = new Vector2(target.Friction.X, target.Friction.Y * -1);
-            } 
             else
             {
-                target.KnockbackVelocity = new Vector2((target.KnockbackVelocity.X * -1) / 2, target.KnockbackVelocity.Y);
-                target.Friction = new Vector2(target.Friction.X * -1, target.Friction.Y);
+                DeterminePushbackValues(source, target);
             }
         }
 
@@ -96,23 +73,26 @@
                 case CollisionDetection.CollisionSide.Top:
                     side = source.Bounds.Top - target.Bounds.Height;
                     target.Bounds = new Rectangle(target.Bounds.X, side, target.Bounds.Width, target.Bounds.Height);
+                    target.StopKnockbackY();
                     break;
                 case CollisionDetection.CollisionSide.Bottom:
+                    target.StopKnockbackY();
                     side = source.Bounds.Bottom;
                     target.Bounds = new Rectangle(target.Bounds.X, side, target.Bounds.Width, target.Bounds.Height);
                     break;
                 case CollisionDetection.CollisionSide.Left:
                     side = source.Bounds.Left - target.Bounds.Width;
                     target.Bounds = new Rectangle(side, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
+                    target.StopKnockbackX();
                     break;
                 case CollisionDetection.CollisionSide.Right:
                     side = source.Bounds.Right;
                     target.Bounds = new Rectangle(side, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
+                    target.StopKnockbackX();
                     break;
                 default:
                     break;
             }
-            this.ReverseKnockback(target, collisionSide);
             target.SetLocation();
         }
 
@@ -130,20 +110,23 @@
             {
                 case CollisionDetection.CollisionSide.Top:
                     target.Bounds = new Rectangle(target.Bounds.X, topOffset, target.Bounds.Width, target.Bounds.Height);
+                    target.StopKnockbackY();
                     break;
                 case CollisionDetection.CollisionSide.Bottom:
                     target.Bounds = new Rectangle(target.Bounds.X, bottomOffset - target.Bounds.Height, target.Bounds.Width, target.Bounds.Height);
+                    target.StopKnockbackY();
                     break;
                 case CollisionDetection.CollisionSide.Left:
                     target.Bounds = new Rectangle(horizontalOffset, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
+                    target.StopKnockbackX();
                     break;
                 case CollisionDetection.CollisionSide.Right:
                     target.Bounds = new Rectangle(LoZGame.Instance.ScreenWidth - horizontalOffset - target.Bounds.Width + 10, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
+                    target.StopKnockbackX();
                     break;
                 default:
                     break;
             }
-            this.ReverseKnockback(target, collisionSide);
             target.SetLocation();
         }
     }
