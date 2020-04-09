@@ -32,6 +32,7 @@ namespace LoZClone
             this.IsExpired = false;
             this.lifeTime = MaxLife;
             this.Damage = GameData.Instance.ProjectileDamageData.FireballDamage;
+            this.Physics.Mass = GameData.Instance.ProjectileMassData.FireballMass;
         }
 
         public override void Update()

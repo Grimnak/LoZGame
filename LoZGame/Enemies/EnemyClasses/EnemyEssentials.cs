@@ -89,10 +89,7 @@
                 {
                     this.CurrentTint = LoZGame.Instance.DungeonTint;
                 }
-                if (this.DamageTimer > (LoZGame.Instance.UpdateSpeed - (LoZGame.Instance.UpdateSpeed / (this.Physics.Mass * 2))))
-                {
-                    this.Physics.HandleKnockBack();
-                }
+                this.Physics.HandleKnockBack();
             }
         }
 

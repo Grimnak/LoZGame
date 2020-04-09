@@ -24,6 +24,7 @@
             }
             this.Sprite = ProjectileSpriteFactory.Instance.SwordBeam();
             this.lifeTime = 0;
+            this.Physics.Mass = GameData.Instance.ProjectileMassData.ArrowMass;
         }
 
         public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

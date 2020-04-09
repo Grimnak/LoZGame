@@ -16,6 +16,7 @@
         {
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.GoriyaHealth);
             this.Physics = new Physics(location);
+            this.Physics.Mass = GameData.Instance.EnemyMassData.GoriyaMass;
             this.CurrentState = new LeftMovingGoriyaState(this);
             this.EntityManager = LoZGame.Instance.GameObjects.Entities;
             this.Cooldown = 0;
@@ -40,22 +41,22 @@
             {
                 if (playerLoc.X < 0)
                 {
-                    this.Physics.CurrentDirection = PhysicsEssentials.Direction.West;
+                    this.Physics.CurrentDirection = Physics.Direction.West;
                 }
                 else
                 {
-                    this.Physics.CurrentDirection = PhysicsEssentials.Direction.East;
+                    this.Physics.CurrentDirection = Physics.Direction.East;
                 }
             }
             else
             {
                 if (playerLoc.Y < 0)
                 {
-                    this.Physics.CurrentDirection = PhysicsEssentials.Direction.North;
+                    this.Physics.CurrentDirection = Physics.Direction.North;
                 }
                 else
                 {
-                    this.Physics.CurrentDirection = PhysicsEssentials.Direction.South;
+                    this.Physics.CurrentDirection = Physics.Direction.South;
                 }
             }
         }

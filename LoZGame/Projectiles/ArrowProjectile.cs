@@ -26,6 +26,7 @@ namespace LoZClone
                 this.CorrectProjectile();
             }
             this.Sprite = ProjectileSpriteFactory.Instance.Arrow();
+            this.Physics.Mass = GameData.Instance.ProjectileMassData.ArrowMass;
         }
     }
 }

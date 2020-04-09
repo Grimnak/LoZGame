@@ -2,7 +2,7 @@
 {
     using Microsoft.Xna.Framework;
 
-    public partial class PhysicsHelper : PhysicsEssentials
+    public partial class Physics
     {
         public void StopVelocity()
         {
@@ -41,7 +41,7 @@
             this.MovementAcceleration = new Vector2(0, this.MovementAcceleration.Y);
         }
 
-        public void StopKnockbacakY()
+        public void StopKnockbackY()
         {
             this.KnockbackVelocity = new Vector2(this.KnockbackVelocity.X, 0);
             this.Friction = new Vector2(this.Friction.X, 0);

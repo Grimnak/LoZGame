@@ -27,6 +27,7 @@
             this.Sprite = ProjectileSpriteFactory.Instance.BlueCandle();
             this.lifeTime = LifeTimeMax;
             this.Sprite.FrameDelay = 10;
+            this.Physics.Mass = GameData.Instance.ProjectileMassData.FlameMass;
         }
 
         public override void Update()

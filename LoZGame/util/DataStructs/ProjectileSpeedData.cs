@@ -5,29 +5,29 @@ namespace LoZClone
 
     public struct ProjectileSpeedData
     {
-        private const int LinkArrowSpd = 5;
-        private const int LinkSilverArrowSpd = 10;
-        private const int LinkBoomerangSpd = 5;
-        private const int LinkMagicBoomerangSpd = 7;
-        private const int SwordBeamSpd = 5;
-        private const float SwordBeamExplosionSpd = 2.5f;
+        private const float LinkArrowSpd = 7;
+        private const float LinkSilverArrowSpd = 12;
+        private const float LinkBoomerangSpd = 6;
+        private const float LinkMagicBoomerangSpd = 8;
+        private const float SwordBeamSpd = 6.5f;
+        private const float SwordBeamExplosionSpd = 3.25f;
         private const int WoodSwordSpd = 5;
       //  private const int WhiteSwordSpd = 5;
       //  private const int MagicSwordSpd = 5;
-        private const int CandleSpd = 5;
-        private const int FireballSpd = 4;
-        private const int EnemyBoomerangSpd = 5;
-        private const int EnemyArrowSpd = 5;
+        private const float CandleSpd = 7;
+        private const float FireballSpd = 5;
+        private const float EnemyBoomerangSpd = 7;
+        private const float EnemyArrowSpd = 7;
 
-        public int LinkArrowSpeed => LinkArrowSpd;
+        public float LinkArrowSpeed => LinkArrowSpd;
 
-        public int LinkSilverArrowSpeed => LinkSilverArrowSpd;
+        public float LinkSilverArrowSpeed => LinkSilverArrowSpd;
 
-        public int LinkBoomerangSpeed => LinkBoomerangSpd;
+        public float LinkBoomerangSpeed => LinkBoomerangSpd;
 
-        public int LinkMagicBoomerangSpeed => LinkMagicBoomerangSpd;
+        public float LinkMagicBoomerangSpeed => LinkMagicBoomerangSpd;
 
-        public int SwordBeamSpeed => SwordBeamSpd;
+        public float SwordBeamSpeed => SwordBeamSpd;
 
         public float SwordBeamExplosionSpeed => SwordBeamExplosionSpd;
 
@@ -37,11 +37,11 @@ namespace LoZClone
 
     //    public int MagicSwordSpeed => MagicSwordSpd;
 
-        public int CandleSpeed => CandleSpd;
+        public float CandleSpeed => CandleSpd;
 
-        public int FireballSpeed => FireballSpd;
+        public float FireballSpeed => FireballSpd;
 
-        public int EnemyBoomerangSpeed => EnemyBoomerangSpd;
+        public float EnemyBoomerangSpeed => EnemyBoomerangSpd;
 
         public int EnemyMagicBoomerangSpeed => EnemyMagicBoomerangSpeed;
     }

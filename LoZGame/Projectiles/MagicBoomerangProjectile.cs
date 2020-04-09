@@ -20,6 +20,7 @@
             this.Source = source;
             this.InitializeDirection();
             this.Sprite = ProjectileSpriteFactory.Instance.MagicBoomerang();
+            this.Physics.Mass = GameData.Instance.ProjectileMassData.BoomerangMass;
         }
 
         private void ReturnHome()

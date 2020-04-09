@@ -2,8 +2,13 @@
 {
     using Microsoft.Xna.Framework;
 
-    public partial class PhysicsEssentials
+    public partial class Physics
     {
+        private Rectangle bounds;
+        private Vector2 boundsLocation;
+        private const int DefaultMass = 10;
+        private const float DefaultKnockbackTime = 0.5f;
+
         public enum Direction
         {
             None,

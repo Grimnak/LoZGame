@@ -9,6 +9,7 @@
         {
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.DodongoHealth);
             this.Physics = new Physics(location);
+            this.Physics.Mass = GameData.Instance.EnemyMassData.DodongoMass;
             this.Physics.Mass = 10;
             this.Physics.IsMoveable = false;
             this.CurrentState = new LeftMovingDodongoState(this);

@@ -12,6 +12,7 @@
         {
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.RopeHealth);
             this.Physics = new Physics(location);
+            this.Physics.Mass = GameData.Instance.EnemyMassData.RopeMass;
             this.CurrentState = new LeftMovingRopeState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);

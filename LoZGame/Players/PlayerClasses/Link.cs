@@ -14,6 +14,7 @@
         {
             startingHealth = GameData.Instance.PlayerData.StartingHealth;
             this.Physics = new Physics(location);
+            this.Physics.Mass = GameData.Instance.PlayerData.Mass;
             this.Health = new HealthManager(startingHealth);
             this.Inventory = new InventoryManager(this);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
@@ -31,7 +32,7 @@
         {
             if (otherCollider is IEnemy)
             {
-                this.linkCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+                //this.linkCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
             else if (otherCollider is IProjectile)
             {

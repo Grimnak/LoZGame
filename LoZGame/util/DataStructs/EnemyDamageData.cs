@@ -3,7 +3,7 @@ namespace LoZClone
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public struct EnemyDamageData
+    public struct DefaultData
     {
         // Damage Values
         private const int stalfosDmg = 2;

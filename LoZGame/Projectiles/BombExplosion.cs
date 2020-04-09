@@ -35,7 +35,7 @@
             this.Physics.BoundsOffset *= 2;
             this.Physics.SetLocation();
             this.Damage = GameData.Instance.ProjectileDamageData.BombDamage;
-            this.Physics.Mass = 5;
+            this.Physics.Mass = GameData.Instance.ProjectileMassData.ExplosionMass;
             Random numGen = new Random();
             int selectBomb = numGen.Next(0, 5);
             switch (selectBomb)

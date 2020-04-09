@@ -8,7 +8,7 @@
         private readonly WallMaster wallMaster;
         private readonly ISprite sprite;
 
-        private EnemyDamageData enemyDamageData;
+        private DefaultData enemyDamageData;
         private EnemySpeedData enemySpeedData;
 
         public AttackingWallMasterState(WallMaster wallMaster)
