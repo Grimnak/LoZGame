@@ -14,7 +14,7 @@
         {
             this.direction = direction;
             this.lockout = 0;
-            this.transitionSpeed = 5;
+            this.transitionSpeed = 8;
             this.sprite = CreateCorrectLevelSprite();
         }
 

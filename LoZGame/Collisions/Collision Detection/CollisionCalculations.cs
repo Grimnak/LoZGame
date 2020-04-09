@@ -116,7 +116,7 @@
             // Check borders for basement exception
             else
             {
-                if (sourceCollider.Physics.Location.Y < 0)
+                if (sourceCollider.Physics.Location.Y < LoZGame.Instance.InventoryOffset)
                 {
                     if (sourceCollider is IPlayer)
                     {
