@@ -7,9 +7,9 @@
     {
 
         private int currentDungeon;
-        private static int maxDungeon = 1;
+        private static int maxDungeon = 2;
         private int lockout;
-        private int lockoutMax = 200; // verify
+        private int lockoutMax = 440; // verify
         private int screenWidth = LoZGame.Instance.GraphicsDevice.Viewport.Width;
         private int screenHeight = LoZGame.Instance.GraphicsDevice.Viewport.Height;
 
