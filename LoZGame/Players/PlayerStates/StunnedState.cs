@@ -25,7 +25,7 @@
             this.oldVelocity = this.player.Physics.MovementVelocity;
             this.player.Physics.MovementVelocity = Vector2.Zero;
             this.stunDuration = stunTime;
-            this.player.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.player.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         /// <inheritdoc/>

@@ -17,7 +17,7 @@
             this.oldVelocity = this.goriya.Physics.MovementVelocity;
             this.goriya.Physics.MovementVelocity = Vector2.Zero;
             stunDuration = stunTime;
-            goriya.CurrentTint = LoZGame.Instance.DungeonTint;
+            goriya.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public void MoveLeft()

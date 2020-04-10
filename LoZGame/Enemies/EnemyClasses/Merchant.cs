@@ -17,7 +17,7 @@
             this.Damage = GameData.Instance.EnemyDamageData.MerchantDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedData.MerchantSpeed;
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public override void TakeDamage(int damageAmount)
@@ -32,7 +32,7 @@
 
         public override void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DefaultTint, this.Physics.Depth);
         }
 
         public ISprite CreateCorrectSprite()

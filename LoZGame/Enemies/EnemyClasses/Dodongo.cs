@@ -19,7 +19,7 @@
             this.Damage = GameData.Instance.EnemyDamageData.DodongoDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedData.DodongoSpeed;
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
     }
 }

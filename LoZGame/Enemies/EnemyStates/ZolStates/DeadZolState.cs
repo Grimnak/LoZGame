@@ -81,7 +81,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.zol.Physics.Location, LoZGame.Instance.DungeonTint, this.zol.Physics.Depth);
+            this.sprite.Draw(this.zol.Physics.Location, LoZGame.Instance.DefaultTint, this.zol.Physics.Depth);
         }
     }
 }

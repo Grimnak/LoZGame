@@ -19,7 +19,7 @@
             this.CurrentColor = "Green";
             this.Physics.CurrentDirection = Physics.Direction.North;
             this.CurrentWeapon = "Wood";
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.MoveSpeed = GameData.Instance.PlayerData.PlayerSpeed;
             this.DamageTimer = 0;
             this.State = new IdleState(this);

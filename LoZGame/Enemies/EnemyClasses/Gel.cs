@@ -17,7 +17,7 @@
             this.Damage = GameData.Instance.EnemyDamageData.GelDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedData.GelSpeed;
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.CurrentState = new IdleGelState(this);
 
 

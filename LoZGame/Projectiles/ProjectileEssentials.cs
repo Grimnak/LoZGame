@@ -133,7 +133,7 @@
 
         public virtual void Draw()
         {
-            this.Sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Data.Rotation, this.Data.SpriteEffect, this.Physics.Depth);
+            this.Sprite.Draw(this.Physics.Location, LoZGame.Instance.DefaultTint, this.Data.Rotation, this.Data.SpriteEffect, this.Physics.Depth);
         }
     }
 }

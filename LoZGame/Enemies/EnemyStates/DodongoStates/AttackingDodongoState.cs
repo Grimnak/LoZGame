@@ -114,7 +114,6 @@
                 {
                     this.dodongo.TakeDamage(GameData.Instance.ProjectileDamageData.BombDodongoDamage);
                     randomStateGenerator.Update();
-                    this.dodongo.Physics.MovementVelocity = oldVelocity;
                 }
             }
         }

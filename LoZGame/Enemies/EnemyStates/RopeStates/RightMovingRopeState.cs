@@ -104,16 +104,32 @@
             int linkX = (int)LoZGame.Instance.Link.Physics.Location.X;
             int linkY = (int)LoZGame.Instance.Link.Physics.Location.Y;
 
-            if (ropeX == linkX)
+            if (Math.Abs(ropeX - linkX) <= 5)
             {
-                this.rope.MoveSpeed = 3 * (linkY - ropeY) / Math.Abs(linkY - ropeY);
-                this.rope.Direction = "vertical";
+                if ((linkY - ropeY) > 0)
+                {
+                    this.rope.Physics.CurrentDirection = Physics.Direction.South;
+                    this.rope.MoveSpeed = GameData.Instance.EnemySpeedData.RopeAttackSpeed;
+                }
+                else
+                {
+                    this.rope.Physics.CurrentDirection = Physics.Direction.North;
+                    this.rope.MoveSpeed = GameData.Instance.EnemySpeedData.RopeAttackSpeed * -1;
+                }
                 this.rope.CurrentState.Attack();
             }
-            else if (ropeY == linkY)
+            else if (Math.Abs(ropeY - linkY) <= 5)
             {
-                this.rope.MoveSpeed = 3 * (linkX - ropeX) / Math.Abs(linkX - ropeX);
-                this.rope.Direction = "horizontal";
+                if ((linkX - ropeX) > 0)
+                {
+                    this.rope.Physics.CurrentDirection = Physics.Direction.East;
+                    this.rope.MoveSpeed = GameData.Instance.EnemySpeedData.RopeAttackSpeed;
+                }
+                else
+                {
+                    this.rope.Physics.CurrentDirection = Physics.Direction.West;
+                    this.rope.MoveSpeed = GameData.Instance.EnemySpeedData.RopeAttackSpeed * -1;
+                }
                 this.rope.CurrentState.Attack();
             }
         }

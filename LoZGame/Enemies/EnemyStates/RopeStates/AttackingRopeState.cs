@@ -14,16 +14,17 @@
         public AttackingRopeState(Rope rope)
         {
             this.rope = rope;
+            this.rope.Attacking = true;
             if (this.rope.MoveSpeed > 0)
             {
                 this.sprite = EnemySpriteFactory.Instance.CreateRightMovingRopeSprite();
-            }else
+            }
+            else
             {
                 this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingRopeSprite();
             }
             this.rope.CurrentState = this;
             randomStateGenerator = new RandomStateGenerator(this.rope, 2, 6);
-            this.rope.Attacking = true;
         }
 
         public void MoveLeft()
@@ -83,15 +84,17 @@
 
         public void Update()
         {
-            if (this.rope.Direction.Equals("horizontal"))
+            if (this.rope.Physics.CurrentDirection.Equals(Physics.Direction.East) || this.rope.Physics.CurrentDirection.Equals(Physics.Direction.West))
             {
-                this.rope.Physics.Location = new Vector2(this.rope.Physics.Location.X + this.rope.MoveSpeed, this.rope.Physics.Location.Y);
-
+                //this.rope.Physics.Location = new Vector2(this.rope.Physics.Location.X + this.rope.MoveSpeed, this.rope.Physics.Location.Y);
+                this.rope.Physics.MovementVelocity = new Vector2(this.rope.MoveSpeed, 0);
             }
             else
             {
-                this.rope.Physics.Location = new Vector2(this.rope.Physics.Location.X, this.rope.Physics.Location.Y + this.rope.MoveSpeed);
+                // this.rope.Physics.Location = new Vector2(this.rope.Physics.Location.X, this.rope.Physics.Location.Y + this.rope.MoveSpeed);
+                this.rope.Physics.MovementVelocity = new Vector2(0, this.rope.MoveSpeed);
             }
+
             if (this.rope.Attacking == false)
             {
                 this.randomStateGenerator.Update();

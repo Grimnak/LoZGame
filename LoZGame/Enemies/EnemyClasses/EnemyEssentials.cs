@@ -97,7 +97,7 @@
                 }
                 else
                 {
-                    this.CurrentTint = LoZGame.Instance.DungeonTint;
+                    this.CurrentTint = LoZGame.Instance.DefaultTint;
                 }
                 this.Physics.HandleKnockBack();
             }
@@ -106,8 +106,8 @@
         public virtual void Update()
         {
             this.HandleDamage();
-            this.Physics.Move();
             this.CurrentState.Update();
+            this.Physics.Move();
             this.Physics.SetDepth();
         }
 

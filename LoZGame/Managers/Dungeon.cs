@@ -32,11 +32,10 @@
         {
             this.dungeonNumber = dungeonNumber;
             this.currentDungeonFile = "../../../../../etc/levels/dungeon" + this.dungeonNumber + ".xml";
-            LoZGame.Instance.DungeonTint = Color.White;
-            this.dungeonLayout = XMLHandler.Parse(this.currentDungeonFile);
 
             if (this.dungeonNumber == 1)
             {
+                LoZGame.Instance.DungeonTint = Color.White;
                 this.currentX = 2;
                 this.currentY = 5; // player spawns at curX/curY
                 this.maxX = 6;
@@ -44,11 +43,14 @@
             }
             else if (this.dungeonNumber == 2)
             {
+                LoZGame.Instance.DungeonTint = Color.Blue;
                 this.currentX = 1;
                 this.currentY = 7; // player spawns at curX/curY
                 this.maxX = 4;
                 this.maxY = 8;
             }
+
+            this.dungeonLayout = XMLHandler.Parse(this.currentDungeonFile);
 
             this.LoadNewRoom();
         }

@@ -17,7 +17,7 @@
             this.oldVelocity = this.stalfos.Physics.MovementVelocity;
             this.stalfos.Physics.MovementVelocity = Vector2.Zero;
             stunDuration = stunTime;
-            stalfos.CurrentTint = LoZGame.Instance.DungeonTint;
+            stalfos.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public void MoveLeft()

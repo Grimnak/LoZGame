@@ -54,7 +54,7 @@
                 }
                 else
                 {
-                    this.CurrentTint = LoZGame.Instance.DungeonTint;
+                    this.CurrentTint = LoZGame.Instance.DefaultTint;
                 }
                 this.Physics.HandleKnockBack();
             }

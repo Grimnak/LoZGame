@@ -17,7 +17,7 @@
             this.oldVelocity = this.fireSnake.Physics.MovementVelocity;
             this.fireSnake.Physics.MovementVelocity = Vector2.Zero;
             stunDuration = stunTime;
-            fireSnake.CurrentTint = LoZGame.Instance.DungeonTint;
+            fireSnake.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public void MoveLeft()
