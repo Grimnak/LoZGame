@@ -25,16 +25,13 @@
             if (KnockbackVelocity.Length() > 0)
             {
                 this.Friction = new Vector2(KnockbackVelocity.X, KnockbackVelocity.Y) / (10 * KnockbackVelocity.Length());
-                this.Friction *= -2 * (this.Mass / DefaultMass);
-                Console.WriteLine("Friction: " + Friction + "\t Velocity: " + KnockbackVelocity);
+                this.Friction *= -4 * (this.Mass / DefaultMass);
                 if (KnockbackVelocity.Length() > Friction.Length())
                 {
-                    Console.WriteLine("Slowing Down");
                     this.KnockbackVelocity += this.Friction;
                 }
                 else
                 {
-                    Console.WriteLine("Stopping");
                     this.KnockbackVelocity = Vector2.Zero;
                 }
             }
