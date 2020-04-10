@@ -14,7 +14,7 @@
     public class MovableTile : IBlock
     {
         private ISprite sprite;
-        private Color spriteTint = LoZGame.Instance.DungeonTint;
+        private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Vector2 originalLocation;
         private string[] invalidDirections;
 

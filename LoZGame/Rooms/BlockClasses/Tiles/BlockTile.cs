@@ -14,7 +14,7 @@
     public class BlockTile : IBlock
     {
         private ISprite sprite;
-        private Color spriteTint = LoZGame.Instance.DungeonTint;
+        private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Rectangle bounds;
 
         public Rectangle Bounds
