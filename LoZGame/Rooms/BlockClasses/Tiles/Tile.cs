@@ -61,6 +61,12 @@
                     return BlockSpriteFactory.Instance.SpottedTile();
                 case "stairs":
                     return BlockSpriteFactory.Instance.Stairs();
+                case "spotted_tile2":
+                    return BlockSpriteFactory.Instance.SpottedTile2();
+                case "boss_tile2":
+                    return BlockSpriteFactory.Instance.BossTile2();
+                case "lava2":
+                    return BlockSpriteFactory.Instance.LavaTile2();
                 default:
                     return BlockSpriteFactory.Instance.FloorTile();
             }

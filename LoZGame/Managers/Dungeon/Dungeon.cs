@@ -44,7 +44,7 @@
                     this.maxY = 6;
                     break;
                 case 2:
-                    LoZGame.Instance.DungeonTint = Color.Yellow;
+                    LoZGame.Instance.DungeonTint = Color.Blue;
                     this.currentX = 1;
                     this.currentY = 7; // player spawns at curX/curY
                     this.maxX = 4;

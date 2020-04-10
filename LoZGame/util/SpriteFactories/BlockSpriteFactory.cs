@@ -104,6 +104,36 @@
         private Texture2D VerticalBricksTexture;
         private SpriteData verticalBricksData;
 
+        private Texture2D BlueStatueLeft2Texture;
+        private SpriteData blueStatueLeft2Data;
+        private Texture2D BlueStatueRight2Texture;
+        private SpriteData blueStatueRight2Data;
+        private Texture2D OrangeStatueRight2Texture;
+        private SpriteData orangeStatueRight2Data;
+        private Texture2D OrangeStatueLeft2Texture;
+        private SpriteData orangeStatueLeft2Data;
+
+        private Texture2D BombedOpeningDown2Texture;
+        private SpriteData bombedOpeningDown2Data;
+        private Texture2D BombedOpeningLeft2Texture;
+        private SpriteData bombedOpeningLeft2Data;
+        private Texture2D BombedOpeningRight2Texture;
+        private SpriteData bombedOpeningRight2Data;
+        private Texture2D BombedOpeningUp2Texture;
+        private SpriteData bombedOpeningUp2Data;
+
+        private Texture2D BossTile2Texture;
+        private SpriteData bossTile2Data;
+        private Texture2D FloorTile2Texture;
+        private SpriteData floorTile2Data;
+        private Texture2D Lava2Texture;
+        private SpriteData lava2Data;
+        private Texture2D MovableSquare2Texture;
+        private SpriteData movableSquare2Data;
+        private Texture2D SpottedTile2Texture;
+        private SpriteData spottedTile2Data;
+
+
         private static readonly BlockSpriteFactory instance = new BlockSpriteFactory();
 
         public static BlockSpriteFactory Instance
@@ -208,6 +238,20 @@
             this.LadderTileTexture = content.Load<Texture2D>("ladder_tile");
             this.HorizontalBricksTexture = content.Load<Texture2D>("horizontal_bricks");
             this.VerticalBricksTexture = content.Load<Texture2D>("vertical_bricks");
+
+            this.BlueStatueLeft2Texture = content.Load<Texture2D>("blue_statue_left2");
+            this.BlueStatueRight2Texture = content.Load<Texture2D>("blue_statue_right2");
+            this.OrangeStatueRight2Texture = content.Load<Texture2D>("orange_statue_right2");
+            this.OrangeStatueLeft2Texture = content.Load<Texture2D>("orange_statue_left2");
+            this.BombedOpeningDown2Texture = content.Load<Texture2D>("bombed_opening_down2");
+            this.BombedOpeningLeft2Texture = content.Load<Texture2D>("bombed_opening_left2");
+            this.BombedOpeningRight2Texture = content.Load<Texture2D>("bombed_opening_right2");
+            this.BombedOpeningUp2Texture = content.Load<Texture2D>("bombed_opening_up2");
+            this.BossTile2Texture = content.Load<Texture2D>("boss_tile2");
+            this.FloorTile2Texture = content.Load<Texture2D>("floor_tile2");
+            this.Lava2Texture = content.Load<Texture2D>("lava2");
+            this.MovableSquare2Texture = content.Load<Texture2D>("movable_square2");
+            this.SpottedTile2Texture = content.Load<Texture2D>("spotted_tile2");
         }
 
         private void LoadData()
@@ -244,6 +288,20 @@
             this.ladderTileData = new SpriteData(new Vector2(tileWidth, tileHeight), LadderTileTexture, 1, 1);
             this.horizontalBricksData = new SpriteData(new Vector2(HorizontalBlockWidth, HorizontalBlockHeight), HorizontalBricksTexture, 1, 1);
             this.verticalBricksData = new SpriteData(new Vector2(VerticalBlockWidth, VerticalBlockHeight), VerticalBricksTexture, 1, 1);
+
+            this.blueStatueLeft2Data = new SpriteData(new Vector2(tileWidth, tileHeight), BlueStatueLeft2Texture, 1, 1);
+            this.blueStatueRight2Data = new SpriteData(new Vector2(tileWidth, tileHeight), BlueStatueRight2Texture, 1, 1);
+            this.orangeStatueRight2Data = new SpriteData(new Vector2(tileWidth, tileHeight), OrangeStatueRight2Texture, 1, 1);
+            this.orangeStatueLeft2Data = new SpriteData(new Vector2(tileWidth, tileHeight), OrangeStatueLeft2Texture, 1, 1);
+            this.bombedOpeningDown2Data = new SpriteData(new Vector2(tileWidth, tileHeight), BombedOpeningDownTexture, 1, 1);
+            this.bombedOpeningLeft2Data = new SpriteData(new Vector2(tileWidth, tileHeight), BombedOpeningLeftTexture, 1, 1);
+            this.bombedOpeningRight2Data = new SpriteData(new Vector2(tileWidth, tileHeight), BombedOpeningRightTexture, 1, 1);
+            this.bombedOpeningUp2Data = new SpriteData(new Vector2(tileWidth, tileHeight), BombedOpeningUpTexture, 1, 1);
+            this.bossTile2Data = new SpriteData(new Vector2(tileWidth, tileHeight), BossTile2Texture, 1, 1);
+            this.floorTile2Data = new SpriteData(new Vector2(tileWidth, tileHeight), FloorTile2Texture, 1, 1);
+            this.lava2Data = new SpriteData(new Vector2(tileWidth, tileHeight), Lava2Texture, 1, 1);
+            this.movableSquare2Data = new SpriteData(new Vector2(tileWidth, tileHeight), MovableSquare2Texture, 1, 1);
+            this.spottedTile2Data = new SpriteData(new Vector2(tileWidth, tileHeight), SpottedTile2Texture, 1, 1);
         }
 
         public ISprite Stairs()
@@ -404,6 +462,71 @@
         public ISprite VerticalBricks()
         {
             return new ObjectSprite(this.VerticalBricksTexture, this.verticalBricksData);
+        }
+
+        public ISprite BlueStatueLeft2()
+        {
+            return new ObjectSprite(this.BlueStatueLeft2Texture, this.blueStatueLeft2Data);
+        }
+
+        public ISprite BlueStatueRight2()
+        {
+            return new ObjectSprite(this.BlueStatueRight2Texture, this.blueStatueRight2Data);
+        }
+
+        public ISprite OrangeStatueRight2()
+        {
+            return new ObjectSprite(this.OrangeStatueRight2Texture, this.orangeStatueRight2Data);
+        }
+
+        public ISprite OrangeStatueLeft2()
+        {
+            return new ObjectSprite(this.OrangeStatueLeft2Texture, this.orangeStatueLeft2Data);
+        }
+
+        public ISprite BombedOpeningDown2()
+        {
+            return new ObjectSprite(this.BombedOpeningDown2Texture, this.bombedOpeningDown2Data);
+        }
+
+        public ISprite BombedOpeningLeft2()
+        {
+            return new ObjectSprite(this.BombedOpeningLeft2Texture, this.bombedOpeningLeft2Data);
+        }
+
+        public ISprite BombedOpeningRight2()
+        {
+            return new ObjectSprite(this.BombedOpeningRight2Texture, this.bombedOpeningRight2Data);
+        }
+
+        public ISprite BombedOpeningUp2()
+        {
+            return new ObjectSprite(this.BombedOpeningUp2Texture, this.bombedOpeningUp2Data);
+        }
+
+        public ISprite BossTile2()
+        {
+            return new ObjectSprite(this.BossTile2Texture, this.bossTile2Data);
+        }
+
+        public ISprite FloorTile2()
+        {
+            return new ObjectSprite(this.FloorTile2Texture, this.floorTile2Data);
+        }
+
+        public ISprite LavaTile2()
+        {
+            return new ObjectSprite(this.Lava2Texture, this.lava2Data);
+        }
+
+        public ISprite MovableSquare2()
+        {
+            return new ObjectSprite(this.MovableSquare2Texture, this.movableSquare2Data);
+        }
+
+        public ISprite SpottedTile2()
+        {
+            return new ObjectSprite(this.SpottedTile2Texture, this.spottedTile2Data);
         }
     }
 }
