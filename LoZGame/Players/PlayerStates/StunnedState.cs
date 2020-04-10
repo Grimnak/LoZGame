@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System;
 
     /// <summary>
     /// Immobilized state for player when hit by a boomerang.
@@ -17,7 +18,7 @@
         /// </summary>
         /// <param name="playerInstance">Instance of the player.</param>
         /// <param name="oldState">The state the player was in prior to being stunned.</param>
-        /// <param name="stunTime">The amount of time the player is immobile.</param>
+        /// <param name="stunTime">The amount of time the player is stunned.</param>
         public StunnedState(IPlayer playerInstance, IPlayerState oldState, int stunTime)
         {
             this.player = playerInstance;
@@ -84,10 +85,14 @@
         public void Update()
         {
             stunDuration--;
+            Console.WriteLine("Player's current state during Stun: " + this.oldState);
+            Console.WriteLine("Player's current velocity during Stun: " + this.player.Physics.MovementVelocity);
             if (stunDuration <= 0)
             {
-                this.player.State = oldState;
                 this.player.Physics.MovementVelocity = oldVelocity;
+                this.player.State = oldState;
+                Console.WriteLine("Player's current state after Stun finished: " + this.oldState);
+                Console.WriteLine("Player's current velocity after Stun finished: " + this.player.Physics.MovementVelocity);
             }
         }
 

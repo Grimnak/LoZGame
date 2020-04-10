@@ -23,7 +23,7 @@
             }
             else
             {
-                if (!(this.player.State is PickupItemState))
+                if (!(this.player.State is PickupItemState || this.player.State is AttackState))
                 {
                     if (this.player.DamageTimer <= 0)
                     {

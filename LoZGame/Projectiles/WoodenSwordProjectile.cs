@@ -2,7 +2,7 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using System;
+
     internal class WoodenSwordProjectile : ProjectileEssentials, IProjectile
     {
         private int lifeTime;
@@ -64,7 +64,6 @@
             {
                 this.IsExpired = true;
             }
-            Console.WriteLine(this.Physics.GetMomentum());
             this.Physics.SetDepth();
         }
     }
