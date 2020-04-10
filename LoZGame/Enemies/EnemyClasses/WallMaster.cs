@@ -34,9 +34,16 @@
                 this.Physics.Depth = 1.0f;
             }
         }
-        public ISprite CreateCorrectSprite()
+
+        public override ISprite CreateCorrectSprite()
         {
-            return ItemSpriteFactory.Instance.Fairy();
+            if (this.Physics.CurrentDirection == Physics.Direction.North || this.Physics.CurrentDirection == Physics.Direction.East)
+            {
+                return EnemySpriteFactory.Instance.CreateRightMovingWallMasterSprite();
+            } else
+            {
+                return EnemySpriteFactory.Instance.CreateLeftMovingWallMasterSprite();
+            }
         }
     }
 }

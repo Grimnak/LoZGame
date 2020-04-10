@@ -31,27 +31,9 @@
             this.CurrentState.Stun(stunTime);
         }
 
-        public void UpdateMoveSpeed(int lifeTime, int directionChange)
+        public override ISprite CreateCorrectSprite()
         {
-            Vector2 normalVel = this.Physics.MovementVelocity / this.Physics.MovementVelocity.Length();
-            if (lifeTime < directionChange / 2)
-            {
-                if (this.Physics.MovementVelocity.Length() <= GameData.Instance.EnemySpeedData.MaxKeeseSpeed)
-                {
-                    this.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedData.KeeseAccel;
-                }
-            }
-            else
-            {
-                if (this.Physics.MovementVelocity.Length() >= GameData.Instance.EnemySpeedData.MinKeeseSpeed)
-                {
-                    this.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedData.KeeseAccel;
-                }
-            }
-        }
-        public ISprite CreateCorrectSprite()
-        {
-            return ItemSpriteFactory.Instance.Fairy();
+            return EnemySpriteFactory.Instance.CreateKeeseSprite();
         }
     }
 }

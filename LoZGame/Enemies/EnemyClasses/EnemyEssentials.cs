@@ -1,10 +1,13 @@
 ﻿namespace LoZClone
 {
     using System;
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
     public abstract class EnemyEssentials
     {
+        public Dictionary<RandomStateGenerator.StateType, int> States { get; set; }
+
         public EnemyCollisionHandler EnemyCollisionHandler { get; set; }
 
         public RandomStateGenerator RandomStateGenerator { get; set; }
@@ -33,20 +36,9 @@
         {
         }
 
-        public Vector2 UnitVectorToPlayer(Vector2 origin)
+        public virtual void UpdateState()
         {
-            Vector2 unitVector = LoZGame.Instance.Link.Physics.Bounds.Center.ToVector2() - origin;
-            unitVector.Normalize();
-            return unitVector;
-        }
-
-        public Vector2 RotateVector(Vector2 oldVector, float rot)
-        {
-            float cosRot = (float)Math.Cos(rot);
-            float sinRot = (float)Math.Sin(rot);
-            float newX = (cosRot * oldVector.X) - (sinRot * oldVector.Y);
-            float newY = (sinRot * oldVector.X) + (cosRot * oldVector.Y);
-            return new Vector2(newX, newY);
+            RandomStateGenerator.Update(this.States);
         }
 
         public virtual void UpdateChild()

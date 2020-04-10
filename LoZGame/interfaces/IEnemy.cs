@@ -38,6 +38,11 @@
         /// Assigns immunity cooldown and deals damage to health.
         /// </summary>
         /// <param name="damageAmount">Damage to be taken</param>
+
+        /// <summary>
+        /// Logic to randomly choose a new state.
+        /// </summary>
+        void UpdateState();
         void TakeDamage(int damageAmount);
 
         /// <summary>

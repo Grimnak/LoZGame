@@ -28,6 +28,13 @@
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
+        private Vector2 UnitVectorToPlayer(Vector2 origin)
+        {
+            Vector2 unitVector = LoZGame.Instance.Link.Physics.Bounds.Center.ToVector2() - origin;
+            unitVector.Normalize();
+            return unitVector;
+        }
+
         public void ShootFireballs()
         {
             Vector2 playerVectorOne = this.UnitVectorToPlayer(this.FlameOneLoc);
@@ -59,7 +66,7 @@
 
         public ISprite CreateCorrectSprite()
         {
-            return ItemSpriteFactory.Instance.Fairy();
+            return EnemySpriteFactory.Instance.CreateOldManSprite();
         }
     }
 }

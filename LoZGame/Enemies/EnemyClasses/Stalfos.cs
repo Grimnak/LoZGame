@@ -24,9 +24,10 @@
         {
             this.CurrentState.Stun(stunTime);
         }
-        public ISprite CreateCorrectSprite()
+
+        public override ISprite CreateCorrectSprite()
         {
-            return ItemSpriteFactory.Instance.Fairy();
+            return EnemySpriteFactory.Instance.CreateStalfosSprite();
         }
     }
 }

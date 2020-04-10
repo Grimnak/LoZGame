@@ -37,7 +37,7 @@
 
         public ISprite CreateCorrectSprite()
         {
-            return ItemSpriteFactory.Instance.Fairy();
+            return EnemySpriteFactory.Instance.CreateMerchantSprite();
         }
     }
 }

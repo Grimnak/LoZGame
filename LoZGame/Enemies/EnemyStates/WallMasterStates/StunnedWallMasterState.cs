@@ -3,84 +3,39 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class StunnedWallMasterState : IEnemyState
+    public class StunnedWallMasterState : WallMasterEssentials, IEnemyState
     {
-        private readonly WallMaster wallMaster;
+        private readonly IEnemy enemy;
         private readonly IEnemyState oldState;
         private Vector2 oldVelocity;
         private int stunDuration;
 
-        public StunnedWallMasterState(WallMaster wallMaster, IEnemyState oldState, int stunTime)
+        public StunnedWallMasterState(IEnemy enemy, IEnemyState oldState, int stunTime)
         {
             this.oldState = oldState;
-            this.wallMaster = wallMaster;
+            this.Enemy = enemy;
             stunDuration = stunTime;
-            wallMaster.CurrentTint = LoZGame.Instance.DungeonTint;
-            oldVelocity = this.wallMaster.Physics.MovementVelocity;
-            this.wallMaster.Physics.MovementVelocity = Vector2.Zero;
+            enemy.CurrentTint = LoZGame.Instance.DungeonTint;
+            oldVelocity = this.Enemy.Physics.MovementVelocity;
+            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
         }
 
-        public void MoveLeft()
-        {
-        }
-
-        public void MoveRight()
-        {
-        }
-
-        public void MoveUp()
-        {
-        }
-
-        public void MoveDown()
-        {
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Attack()
-        {
-        }
-
-        public void Stop()
-        {
-        }
-
-        public void Die()
-        {
-            this.wallMaster.CurrentState = new DeadWallMasterState(this.wallMaster);
-        }
-
-        public void Stun(int stunTime)
+        public override void Stun(int stunTime)
         {
             stunDuration = stunTime;
         }
 
-        public void Update()
+        public override void Update()
         {
             stunDuration--;
             if (stunDuration <= 0)
             {
-                this.wallMaster.CurrentState = oldState;
-                this.wallMaster.Physics.MovementVelocity = oldVelocity;
+                this.Enemy.CurrentState = oldState;
+                this.Enemy.Physics.MovementVelocity = oldVelocity;
             }
         }
 
-        public void Draw()
+        public override void Draw()
         {
             this.oldState.Draw();
         }

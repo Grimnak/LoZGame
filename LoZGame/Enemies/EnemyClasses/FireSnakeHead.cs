@@ -61,9 +61,9 @@
             LoZGame.Instance.GameObjects.Enemies.Add(child);
         }
 
-        public ISprite CreateCorrectSprite()
+        public override ISprite CreateCorrectSprite()
         {
-            return ItemSpriteFactory.Instance.Fairy();
+            return ProjectileSpriteFactory.Instance.Fireball();
         }
     }
 }
