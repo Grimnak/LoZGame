@@ -5,7 +5,8 @@
 
     public class OpenInventoryState : IGameState
     {
-        private ISprite sprite;
+        private ISprite inventorySprite;
+        private InventoryManager inventory;
         private int transitionSpeed;
         private int lockout;
         private Vector2 position;
@@ -14,8 +15,9 @@
         {
             this.lockout = -174;
             this.transitionSpeed = 5;
-            this.sprite = CreateCorrectLevelSprite();
-            this.position = new Vector2(0, -(LoZGame.Instance.ScreenHeight + LoZGame.Instance.InventoryOffset));
+            this.inventory = LoZGame.Instance.Link.Inventory;
+            this.inventorySprite = CreateInventorySprite();
+            this.position = new Vector2(0, -(LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
         }
 
         /// <inheritdoc></inheritdoc>
@@ -33,7 +35,7 @@
         /// <inheritdoc></inheritdoc>
         public void CloseInventory()
         {
-            if (lockout > LoZGame.Instance.ScreenHeight)
+            if (lockout > LoZGame.Instance.ScreenHeight - (2 * LoZGame.Instance.InventoryOffset))
             {
                 LoZGame.Instance.GameState = new CloseInventoryState();
             }
@@ -67,7 +69,7 @@
         public void Update()
         {
             this.lockout += this.transitionSpeed;
-            if (this.lockout <= LoZGame.Instance.ScreenHeight)
+            if (this.lockout <= LoZGame.Instance.ScreenHeight - (2 * LoZGame.Instance.InventoryOffset))
             {
                 this.position.Y += transitionSpeed;
             }
@@ -85,7 +87,7 @@
             }
 
             LoZGame.Instance.GameObjects.Draw();
-            this.sprite.Draw(position, LoZGame.Instance.DungeonTint, 1.0f);
+            this.inventorySprite.Draw(position, Color.White, 1.0f);
             LoZGame.Instance.SpriteBatch.End();
         }
 
@@ -122,7 +124,7 @@
             }
         }
 
-        private ISprite CreateCorrectLevelSprite()
+        private ISprite CreateInventorySprite()
         {
             return ScreenSpriteFactory.Instance.CreateInventory();
         }

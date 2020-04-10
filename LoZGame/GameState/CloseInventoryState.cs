@@ -5,7 +5,7 @@
 
     public class CloseInventoryState : IGameState
     {
-        private ISprite sprite;
+        private ISprite inventorySprite;
         private int transitionSpeed;
         private int lockout;
         private Vector2 position;
@@ -14,8 +14,8 @@
         {
             this.lockout = 0;
             this.transitionSpeed = 5;
-            this.sprite = CreateCorrectLevelSprite();
-            this.position = new Vector2(0, -LoZGame.Instance.InventoryOffset);
+            this.inventorySprite = CreateInventorySprite();
+            this.position = new Vector2(0, 0);
         }
 
         /// <inheritdoc></inheritdoc>
@@ -64,7 +64,7 @@
         public void Update()
         {
             this.lockout += this.transitionSpeed;
-            if (this.lockout < LoZGame.Instance.ScreenHeight)
+            if (this.lockout < LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset)
             {
                 this.position.Y -= transitionSpeed;
             }
@@ -86,7 +86,7 @@
             }
 
             LoZGame.Instance.GameObjects.Draw();
-            this.sprite.Draw(position, LoZGame.Instance.DungeonTint, 1.0f);
+            this.inventorySprite.Draw(position, Color.White, 1.0f);
             LoZGame.Instance.SpriteBatch.End();
         }
 
@@ -123,7 +123,7 @@
             }
         }
 
-        private ISprite CreateCorrectLevelSprite()
+        private ISprite CreateInventorySprite()
         {
             return ScreenSpriteFactory.Instance.CreateInventory();
         }
