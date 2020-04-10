@@ -1,7 +1,6 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
-    using System;
 
     /// <summary>
     /// Immobilized state for player when hit by a boomerang.
@@ -85,14 +84,11 @@
         public void Update()
         {
             stunDuration--;
-            Console.WriteLine("Player's current state during Stun: " + this.oldState);
-            Console.WriteLine("Player's current velocity during Stun: " + this.player.Physics.MovementVelocity);
             if (stunDuration <= 0)
             {
                 this.player.Physics.MovementVelocity = oldVelocity;
                 this.player.State = oldState;
-                Console.WriteLine("Player's current state after Stun finished: " + this.oldState);
-                Console.WriteLine("Player's current velocity after Stun finished: " + this.player.Physics.MovementVelocity);
+                //this.player.State = new IdleState(this.player);
             }
         }
 

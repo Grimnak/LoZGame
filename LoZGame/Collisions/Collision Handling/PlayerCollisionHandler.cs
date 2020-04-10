@@ -48,7 +48,7 @@
         {
             if (!(this.player.State is PickupItemState))
             {
-                if (this.player.DamageTimer <= 0)
+                if (!(projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile) && this.player.DamageTimer <= 0)
                 {
                     DetermineDirectPushback(projectile.Physics, this.player.Physics);
                 }
@@ -70,7 +70,7 @@
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            this.SetRoomBounds(this.player.Physics, collisionSide);
+            this.SetBounds(this.player.Physics, collisionSide);
         }
 
         private void PreventDoorEntry(IDoor door)

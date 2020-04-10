@@ -13,36 +13,44 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if ((this.door.State is UnlockedDoorState || this.door.State is BombedDoorState) && (!(player.State is GrabbedState)))
+            // Only collide with a door if the player wasn't knocked back into it.
+            if (player.Physics.KnockbackVelocity.Length() == 0)
             {
-                if (door.Physics.Location == door.LeftScreenLoc)
+                if ((this.door.State is UnlockedDoorState || this.door.State is BombedDoorState) && (!(player.State is GrabbedState)))
                 {
-                    LoZGame.Instance.GameState.TransitionRoom("Left");
+                    if (door.Physics.Location == door.LeftScreenLoc)
+                    {
+                        LoZGame.Instance.GameState.TransitionRoom("Left");
+                    }
+                    else if (door.Physics.Location == door.RightScreenLoc)
+                    {
+                        LoZGame.Instance.GameState.TransitionRoom("Right");
+                    }
+                    else if (door.Physics.Location == door.DownScreenLoc)
+                    {
+                        LoZGame.Instance.GameState.TransitionRoom("Down");
+                    }
+                    else if (door.Physics.Location == door.UpScreenLoc)
+                    {
+                        LoZGame.Instance.GameState.TransitionRoom("Up");
+                    }
                 }
-                else if (door.Physics.Location == door.RightScreenLoc)
+                else if (this.door.State is LockedDoorState && player.Inventory.HasKey())
                 {
-                    LoZGame.Instance.GameState.TransitionRoom("Right");
+                    player.Inventory.UseKey();
+                    IDoor cousin = FindCousinDoor();
+                    cousin.Open();
+                    this.door.Open();
+                    SoundFactory.Instance.PlayDoorUnlock();
                 }
-                else if (door.Physics.Location == door.DownScreenLoc)
+                else if (this.door.State is PuzzleDoorState && ((PuzzleDoorState)this.door.State).IsSolved)
                 {
-                    LoZGame.Instance.GameState.TransitionRoom("Down");
+                    this.door.Open();
                 }
-                else if (door.Physics.Location == door.UpScreenLoc)
-                {
-                    LoZGame.Instance.GameState.TransitionRoom("Up");
-                }
-            } 
-            else if (this.door.State is LockedDoorState && player.Inventory.HasKey())
-            {
-                player.Inventory.UseKey();
-                IDoor cousin = FindCousinDoor();
-                cousin.Open();
-                this.door.Open();
-                SoundFactory.Instance.PlayDoorUnlock();
             }
-            else if (this.door.State is PuzzleDoorState && ((PuzzleDoorState)this.door.State).IsSolved)
+            else
             {
-                this.door.Open();
+                SetBounds(this.door.Physics, player.Physics, collisionSide);
             }
         }
 
