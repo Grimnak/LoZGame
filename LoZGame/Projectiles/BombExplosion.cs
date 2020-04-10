@@ -67,7 +67,7 @@
 
             // initialize variables for flashing screen
             flashTexture = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            flashTexture.SetData<Color>(new Color[] { LoZGame.Instance.DungeonTint });
+            flashTexture.SetData<Color>(new Color[] { LoZGame.Instance.DefaultTint });
             flashDestination = new Rectangle(0, 0, LoZGame.Instance.ScreenWidth, LoZGame.Instance.GraphicsDevice.Viewport.Height);
         }
 
@@ -103,7 +103,7 @@
             base.Draw();
             if (this.lifeTime > (MaxLifeTime - FlashDurataion) && this.lifeTime % 2 == 0)
             {
-                LoZGame.Instance.SpriteBatch.Draw(flashTexture, flashDestination, new Rectangle(0, 0, 1, 1), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
+                LoZGame.Instance.SpriteBatch.Draw(flashTexture, flashDestination, new Rectangle(0, 0, 1, 1), LoZGame.Instance.DefaultTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
             }
         }
     }

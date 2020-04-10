@@ -18,7 +18,7 @@
             this.Damage = GameData.Instance.EnemyDamageData.WallMasterDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedData.WallMasterSpeed;
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public override void Stun(int stunTime)

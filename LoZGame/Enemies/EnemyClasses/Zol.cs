@@ -19,7 +19,7 @@
             this.Damage = GameData.Instance.EnemyDamageData.ZolDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedData.ZolSpeed;
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public ISprite CreateCorrectSprite()

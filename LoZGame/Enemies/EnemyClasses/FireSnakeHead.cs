@@ -26,7 +26,7 @@
             this.Damage = GameData.Instance.EnemyDamageData.FireSnakeDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedData.FireSnakeSpeed;
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.segmentID = GameData.Instance.EnemyMiscData.FireSnakeLength;
         }
 

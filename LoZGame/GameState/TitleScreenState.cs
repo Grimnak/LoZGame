@@ -7,7 +7,7 @@
     {
         private readonly ISprite sprite;
         private readonly ISprite enter;
-        private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
+        private readonly Color spriteTint = LoZGame.Instance.DefaultTint;
 
         public TitleScreenState()
         {

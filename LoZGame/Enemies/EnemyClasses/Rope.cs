@@ -20,7 +20,7 @@
             this.Damage = GameData.Instance.EnemyDamageData.RopeDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedData.RopeSpeed;
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.Attacking = false;
         }
 

@@ -25,7 +25,7 @@
             this.Damage = GameData.Instance.EnemyDamageData.OldManDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedData.OldManSpeed;
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public void ShootFireballs()
@@ -54,7 +54,7 @@
 
         public override void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DefaultTint, this.Physics.Depth);
         }
 
         public ISprite CreateCorrectSprite()

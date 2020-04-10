@@ -24,7 +24,7 @@
             this.Expired = false;
             this.Damage = GameData.Instance.EnemyDamageData.SpikeCrossDamage;
             this.DamageTimer = 0;
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public override void Update()

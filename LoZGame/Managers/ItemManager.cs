@@ -68,7 +68,7 @@
         {
             foreach (KeyValuePair<int, IItem> item in this.itemList)
             {
-                item.Value.Draw(LoZGame.Instance.DungeonTint);
+                item.Value.Draw(LoZGame.Instance.DefaultTint);
             }
         }
 

@@ -123,13 +123,17 @@
         public void Draw()
         {
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            this.sprite.Draw(LoZGame.Instance.DungeonTint);
+            this.sprite.Draw(LoZGame.Instance.DefaultTint);
             LoZGame.Instance.SpriteBatch.End();
         }
 
         private LevelOneMasterSprite CreateCorrectLevelSprite()
         {
-            return ScreenSpriteFactory.Instance.CreateLevelOneMaster();
+            switch (LoZGame.Instance.Dungeon.DungeonNumber)
+            {
+                default:
+                    return ScreenSpriteFactory.Instance.CreateLevelOneMaster();
+            }
         }
     }
 }

@@ -25,7 +25,7 @@
             this.Damage = GameData.Instance.EnemyDamageData.DragonDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedData.DragonSpeed;
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public void ShootFireballs()

@@ -15,7 +15,7 @@
             this.oldState = oldState;
             this.wallMaster = wallMaster;
             stunDuration = stunTime;
-            wallMaster.CurrentTint = LoZGame.Instance.DungeonTint;
+            wallMaster.CurrentTint = LoZGame.Instance.DefaultTint;
             oldVelocity = this.wallMaster.Physics.MovementVelocity;
             this.wallMaster.Physics.MovementVelocity = Vector2.Zero;
         }

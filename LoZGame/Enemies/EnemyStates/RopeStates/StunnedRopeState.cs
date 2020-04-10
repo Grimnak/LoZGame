@@ -16,7 +16,7 @@
             this.rope = rope;
             this.oldVelocity = this.rope.Physics.MovementVelocity;
             stunDuration = stunTime;
-            rope.CurrentTint = LoZGame.Instance.DungeonTint;
+            rope.CurrentTint = LoZGame.Instance.DefaultTint;
             this.rope.Physics.MovementVelocity = Vector2.Zero;
         }
 

@@ -88,7 +88,7 @@
             LoZGame.Instance.SpriteBatch.End();
 
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            this.inventorySprite.Draw(position, Color.White, 1.0f);
+            this.inventorySprite.Draw(position, LoZGame.Instance.DefaultTint, 1.0f);
             //LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "Health: " + LoZGame.Instance.Link.Health.CurrentHealth.ToString() + " | Bombs: " + LoZGame.Instance.Link.Inventory.Bombs.ToString() + " | Rupees: " + LoZGame.Instance.Link.Inventory.Rupees.ToString(), new Vector2(0,0), Color.White, 0, new Vector2(0, 0), 1, SpriteEffects.None, 1.0f);
             LoZGame.Instance.SpriteBatch.End();
         }
