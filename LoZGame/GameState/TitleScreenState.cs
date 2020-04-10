@@ -18,7 +18,7 @@
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
 
-            LoZGame.Instance.Dungeon = new Dungeon(1);
+            LoZGame.Instance.Dungeon = new Dungeon(LoZGame.StartDungeon);
             LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
 
             LoZGame.Instance.Link = new Link(new Vector2(
