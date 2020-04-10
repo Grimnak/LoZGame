@@ -69,10 +69,6 @@
 
         public void Update()
         {
-            if (this.wallMaster.Physics.Location.X <= 0)
-            {
-                this.wallMaster.CurrentState = new RightMovingWallMasterState(this.wallMaster);
-            }
             this.sprite.Update();
         }
 
