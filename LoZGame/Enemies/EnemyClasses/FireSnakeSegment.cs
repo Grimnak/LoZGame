@@ -29,7 +29,6 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedData.FireSnakeSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
-            this.childAdded = false;
         }
 
         public override void AddChild()
