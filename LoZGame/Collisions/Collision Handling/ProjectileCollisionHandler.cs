@@ -79,7 +79,7 @@
             }
             else if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile || this.projectile is BombProjectile)
             {
-                this.SetRoomBounds(this.projectile.Physics, collisionSide);
+                this.SetBounds(this.projectile.Physics, collisionSide);
                 this.projectile.Physics.SetLocation();
             }
             else if (this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)

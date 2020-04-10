@@ -47,7 +47,7 @@
                 {
                     this.SetBlockBounds(this.block.Physics, player.Physics, collisionSide);
                 }*/
-                this.SetBlockBounds(this.block.Physics, player.Physics, collisionSide);
+                this.SetBounds(this.block.Physics, player.Physics, collisionSide);
             }
             else if (this.block is Tile)
             {
@@ -58,7 +58,7 @@
             {
                 if (!(player.State is GrabbedState))
                 {
-                    this.SetBlockBounds(this.block.Physics, player.Physics, collisionSide);
+                    this.SetBounds(this.block.Physics, player.Physics, collisionSide);
                 }
             }
         }
@@ -67,7 +67,7 @@
         {
             if (!(enemy is Keese || enemy is WallMaster))
             {
-                this.SetBlockBounds(this.block.Physics, enemy.Physics, collisionSide);
+                this.SetBounds(this.block.Physics, enemy.Physics, collisionSide);
             }
         }
 
