@@ -526,6 +526,9 @@
       </rrow>
     </room>
     <room exists="True" idx="3">
+	  <items>
+		<item X="6" Y="3">MagicBoomerang</item>
+	  </items>
       <enemies>
         <enemy X="9" Y="1">Goriya2</enemy>
         <enemy X="3" Y="3">Goriya2</enemy>

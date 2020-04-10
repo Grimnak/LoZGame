@@ -9,7 +9,8 @@
     public class LoZGame : Game
     {
         public static readonly bool DebugMode = false;
-        public static readonly bool cheats = false; // infinite life and item uses
+        public static readonly int StartDungeon = 1;
+        public static readonly bool cheats = true; // infinite life and item uses
         private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;
         private readonly int screenWidth;
@@ -167,7 +168,6 @@
             this.GraphicsDevice.Clear(Color.Black);
 
             this.gameState.Draw();
-
 
             if (DebugMode)
             {

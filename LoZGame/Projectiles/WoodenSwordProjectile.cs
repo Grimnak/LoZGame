@@ -35,6 +35,7 @@
                 totalLife = 15;
             }
             this.Physics.Mass = GameData.Instance.ProjectileMassData.WoodSwordMass;
+            this.Physics.MovementVelocity = Vector2.Zero;
         }
 
         public override void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
@@ -63,7 +64,6 @@
             {
                 this.IsExpired = true;
             }
-            this.Physics.Move();
             this.Physics.SetDepth();
         }
     }

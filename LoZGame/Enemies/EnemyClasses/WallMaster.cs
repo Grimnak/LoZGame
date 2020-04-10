@@ -34,5 +34,9 @@
                 this.Physics.Depth = 1.0f;
             }
         }
+        public ISprite CreateCorrectSprite()
+        {
+            return ItemSpriteFactory.Instance.Fairy();
+        }
     }
 }

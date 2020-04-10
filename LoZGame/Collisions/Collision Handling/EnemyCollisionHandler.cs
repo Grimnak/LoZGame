@@ -32,6 +32,10 @@
             }
             if (!(projectile is BombProjectile))
             {
+                if (enemy.DamageTimer <= 0)
+                {
+                    DetermineDirectPushback(projectile.Physics, enemy.Physics);
+                }
                 this.enemy.TakeDamage(projectile.Damage);
             }
             else
@@ -64,7 +68,7 @@
             }
             else
             {
-                if (!(this.enemy is WallMaster))
+                if (!(this.enemy is WallMaster && this.enemy.CurrentState is AttackingWallMasterState))
                 {
                     this.SetRoomBounds(this.enemy.Physics, collisionSide);
                 }

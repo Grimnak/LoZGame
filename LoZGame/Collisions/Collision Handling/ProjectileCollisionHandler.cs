@@ -19,10 +19,6 @@
                 {
                     enemy.Stun(projectile.StunDuration);
                 }
-                else
-                {
-                    DetermineDirectPushback(projectile.Physics, enemy.Physics);
-                }
             }
             if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
             {
@@ -52,10 +48,6 @@
             {
                 this.projectile.Returning = true;
                 player.Stun(projectile.StunDuration);
-            }
-            else
-            {
-                DetermineDirectPushback(this.projectile.Physics, player.Physics);
             }
         }
 

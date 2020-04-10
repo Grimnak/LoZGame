@@ -56,5 +56,10 @@
         {
             this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
         }
+
+        public ISprite CreateCorrectSprite()
+        {
+            return ItemSpriteFactory.Instance.Fairy();
+        }
     }
 }

@@ -11,9 +11,9 @@ namespace LoZClone
         private const int fireballMass = 12;
         private const int explosionMass = 24;
         private const int swordBeamMass = 8;
-        private const int woodSwordMass = 16;
-        private const int magicSwordMass = 32;
-        private const int whiteSwordMass = 24;
+        private const int woodSwordMass = 64;
+        private const int magicSwordMass = 96;
+        private const int whiteSwordMass = 80;
         private const int silverArrowMass = 8;
 
         public int ArrowMass => arrowMass;
@@ -35,6 +35,5 @@ namespace LoZClone
         public int MagicSwordMass => magicSwordMass;
 
         public int BoomerangMass => boomerangMass;
-
     }
 }

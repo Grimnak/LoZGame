@@ -15,7 +15,7 @@
         {
             if (enemy is WallMaster && !(this.player.State is PickupItemState))
             {
-                //this.player.State = new GrabbedState(player, (WallMaster)enemy);
+                this.player.State = new GrabbedState(player, (WallMaster)enemy);
             }
             else if (enemy is OldMan || enemy is Merchant)
             {
@@ -23,9 +23,12 @@
             }
             else
             {
-                if (!(this.player.State is PickupItemState))
+                if (!(this.player.State is PickupItemState || this.player.State is AttackState))
                 {
-                    this.DeterminePushbackValues(enemy.Physics, this.player.Physics);
+                    if (this.player.DamageTimer <= 0)
+                    {
+                        this.DeterminePushbackValues(enemy.Physics, this.player.Physics);
+                    }
                     this.player.TakeDamage(enemy.Damage);
                 }
             }
@@ -45,6 +48,10 @@
         {
             if (!(this.player.State is PickupItemState))
             {
+                if (this.player.DamageTimer <= 0)
+                {
+                    DetermineDirectPushback(projectile.Physics, this.player.Physics);
+                }
                 this.player.TakeDamage(projectile.Damage);
             }
         }

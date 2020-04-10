@@ -13,29 +13,12 @@
         /// </summary>
         public void Move()
         {
-            if (KnockbackVelocity.Length() > 0)
-            {
-                DampenedMovement();
-            }
-            else
+            if (this.KnockbackVelocity.Length() == 0)
             {
                 this.boundsLocation += this.MovementVelocity;
                 this.bounds = new Rectangle(this.boundsLocation.ToPoint(), this.bounds.Size);
             }
             this.SetLocation();
-        }
-        /// <summary>
-        /// Lowers movement velocity in directions that knockback has been applied
-        /// </summary>
-        private void DampenedMovement()
-        {
-            float dampenedMovement = 0;
-            if (MovementVelocity.Length() > 0)
-            {
-                dampenedMovement = (MovementVelocity.Length() - KnockbackVelocity.Length()) / MovementVelocity.Length();
-            }
-            this.boundsLocation += this.MovementVelocity * dampenedMovement;
-            this.bounds = new Rectangle(this.boundsLocation.ToPoint(), this.bounds.Size);
         }
 
         /// <summary>

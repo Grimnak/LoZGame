@@ -48,7 +48,7 @@
             enemySpdData = new EnemySpeedData();
             enemyMassData = new EnemyMassData();
             enemyResData = new EnemyResistanceData();
-            enemyMiscData = default;
+            enemyMiscData = new EnemyMiscData();
         }
     }
 }

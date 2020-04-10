@@ -23,7 +23,7 @@
             }
             Vector2 knockbackVector = (target.Bounds.Center - source.Bounds.Center).ToVector2();
             knockbackVector.Normalize();
-            knockbackVector *= sourceMomentum + (float)Math.Sqrt(target.GetMomentum());
+            knockbackVector *= sourceMomentum + (float)Math.Sqrt(target.GetMomentum() / 2);
             target.SetKnockback(knockbackVector);
         }
 
@@ -44,7 +44,7 @@
                 }
                 knockbackVector = new Vector2(source.MovementVelocity.X, source.MovementVelocity.Y);
                 knockbackVector.Normalize();
-                knockbackVector *= sourceMomentum + (float)Math.Sqrt(target.GetMomentum());
+                knockbackVector *= sourceMomentum + (float)Math.Sqrt(target.GetMomentum() / 2);
                 target.SetKnockback(knockbackVector);
             }
             else

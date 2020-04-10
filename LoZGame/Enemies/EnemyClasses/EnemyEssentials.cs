@@ -49,6 +49,11 @@
             return new Vector2(newX, newY);
         }
 
+        public virtual void UpdateChild()
+        {
+            // most enemies do not have any children
+        }
+
         public virtual void AddChild()
         {
             // most enemies dont have any children
@@ -104,7 +109,6 @@
             this.Physics.Move();
             this.CurrentState.Update();
             this.Physics.SetDepth();
-            Console.WriteLine("Enemy: " + this.Physics.Depth + "\tBottom Bounds: " + this.Physics.Bounds.Bottom);
         }
 
         public virtual void Draw()
@@ -131,6 +135,11 @@
         public virtual void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
             this.EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+        }
+
+        public virtual ISprite CreateCorrectSprite()
+        {
+            return ItemSpriteFactory.Instance.Fairy();
         }
     }
 }
