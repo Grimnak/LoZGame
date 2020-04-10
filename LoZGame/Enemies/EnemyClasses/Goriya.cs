@@ -11,7 +11,6 @@
 
         public EntityManager EntityManager { get; set; }
 
-
         public Goriya(Vector2 location)
         {
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.GoriyaHealth);

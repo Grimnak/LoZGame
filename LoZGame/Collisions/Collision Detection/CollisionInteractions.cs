@@ -65,7 +65,13 @@
             }
         }
 
-        public void SetBlockBounds(Physics source, Physics target, CollisionDetection.CollisionSide collisionSide)
+        /// <summary>
+        /// Prevents two objects from moving through each other.
+        /// </summary>
+        /// <param name="source">The stationary object that doesn't move.</param>
+        /// <param name="target">The object that gets moved into the stationary object.</param>
+        /// <param name="collisionSide">The side of the stationary object that underwent a collision.</param>
+        public void SetBounds(Physics source, Physics target, CollisionDetection.CollisionSide collisionSide)
         {
             int side = 0;
             switch (collisionSide)
@@ -96,7 +102,12 @@
             target.SetLocation();
         }
 
-        public void SetRoomBounds(Physics target, CollisionDetection.CollisionSide collisionSide)
+        /// <summary>
+        /// Prevents an object from moving off the screen.
+        /// </summary>
+        /// <param name="target">The object that is moving into an area that it shouldn't.</param>
+        /// <param name="collisionSide">The side of the moving object that underwent a collision.</param>
+        public void SetBounds(Physics target, CollisionDetection.CollisionSide collisionSide)
         {
             int topOffset = LoZGame.Instance.InventoryOffset, bottomOffset = 0, horizontalOffset = 0;
             if (LoZGame.Instance.Dungeon.CurrentRoomX != 1 || LoZGame.Instance.Dungeon.CurrentRoomY != 1)
