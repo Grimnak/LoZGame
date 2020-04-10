@@ -32,5 +32,10 @@
             this.CurrentState.Update();
             this.Physics.Move();
         }
+
+        public ISprite CreateCorrectSprite()
+        {
+            return ItemSpriteFactory.Instance.Fairy();
+        }
     }
 }

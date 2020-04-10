@@ -3,9 +3,9 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class AttackingDragonState : EnemyStateEssentials, IEnemyState
+    public class AttackingEnemyState : EnemyStateEssentials, IEnemyState
     {
-        public AttackingDragonState(IEnemy enemy)
+        public AttackingEnemyState(IEnemy enemy)
         {
             this.Enemy = enemy;
             this.Enemy.CurrentState = this;

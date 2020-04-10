@@ -136,5 +136,10 @@
         {
             this.EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
+
+        public virtual ISprite CreateCorrectSprite()
+        {
+            return ItemSpriteFactory.Instance.Fairy();
+        }
     }
 }

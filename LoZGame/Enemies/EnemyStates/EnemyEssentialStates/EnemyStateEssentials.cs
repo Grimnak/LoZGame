@@ -80,7 +80,7 @@
             this.Lifetime++;
             if (this.Lifetime > this.DirectionChange)
             {
-                this.Enemy.RandomStateGenerator.Update();
+                //this.Enemy.RandomStateGenerator.Update();
                 this.Lifetime = 0;
             }
             this.Sprite.Update();
@@ -88,7 +88,7 @@
 
         public virtual void Draw()
         {
-            this.Sprite.Draw(this.dragon.Physics.Location, this.dragon.CurrentTint, this.dragon.Physics.Depth);
+            this.Sprite.Draw(this.Enemy.Physics.Location, this.Enemy.CurrentTint, this.Enemy.Physics.Depth);
         }
 
     }

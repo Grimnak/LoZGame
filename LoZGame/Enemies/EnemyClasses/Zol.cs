@@ -22,9 +22,9 @@
             this.CurrentTint = LoZGame.Instance.DungeonTint;
         }
 
-        public void CreateCorrectSprite()
+        public ISprite CreateCorrectSprite()
         {
-            return EnemySpriteFactory.
+            return ItemSpriteFactory.Instance.Fairy();
         }
 
         public override void Stun(int stunTime)
