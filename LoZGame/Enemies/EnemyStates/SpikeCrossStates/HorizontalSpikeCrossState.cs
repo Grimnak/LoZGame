@@ -83,7 +83,7 @@
             {
                 if ((int)spikeCross.MoveSpeed > 0)
                 {
-                    if (spikeCross.Physics.Location.X - ((BlockSpriteFactory.Instance.TileWidth * 6) + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) >= 0)
+                    if (spikeCross.Physics.Location.X - GameData.Instance.EnemyMiscData.SpikeCrossHorizontalBoundary >= 0)
                     {
                         spikeCross.Retreating = true;
                         spikeCross.Physics.MovementVelocity = new Vector2(-1, spikeCross.Physics.MovementVelocity.Y);
@@ -91,7 +91,7 @@
                 }
                 else
                 {
-                    if (spikeCross.Physics.Location.X - ((BlockSpriteFactory.Instance.TileWidth * 6) + (BlockSpriteFactory.Instance.HorizontalOffset / 2)) <= 0)
+                    if (spikeCross.Physics.Location.X - GameData.Instance.EnemyMiscData.SpikeCrossHorizontalBoundary <= 0)
                     {
                         spikeCross.Retreating = true;
                         spikeCross.Physics.MovementVelocity = new Vector2(1, spikeCross.Physics.MovementVelocity.Y);
