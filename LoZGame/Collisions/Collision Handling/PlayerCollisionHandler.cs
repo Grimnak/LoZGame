@@ -48,7 +48,7 @@
         {
             if (!(this.player.State is PickupItemState))
             {
-                if (this.player.DamageTimer <= 0)
+                if (!(projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile) && this.player.DamageTimer <= 0)
                 {
                     DetermineDirectPushback(projectile.Physics, this.player.Physics);
                 }
