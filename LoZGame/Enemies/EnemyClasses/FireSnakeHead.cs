@@ -28,7 +28,6 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedData.FireSnakeSpeed;
             this.CurrentTint = LoZGame.Instance.DungeonTint;
             this.segmentID = GameData.Instance.EnemyMiscData.FireSnakeLength;
-            childAdded = false;
         }
 
         public override void Stun(int stunTime)
