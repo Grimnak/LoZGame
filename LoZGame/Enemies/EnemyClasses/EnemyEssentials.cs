@@ -106,8 +106,8 @@
         public virtual void Update()
         {
             this.HandleDamage();
-            this.Physics.Move();
             this.CurrentState.Update();
+            this.Physics.Move();
             this.Physics.SetDepth();
         }
 
