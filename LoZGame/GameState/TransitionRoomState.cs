@@ -5,7 +5,7 @@
 
     public class TransitionRoomState : IGameState
     {
-        private LevelOneMasterSprite sprite;
+        private LevelMasterSprite sprite;
         private string direction;
         private int transitionSpeed;
         private int lockout;
@@ -127,10 +127,14 @@
             LoZGame.Instance.SpriteBatch.End();
         }
 
-        private LevelOneMasterSprite CreateCorrectLevelSprite()
+        private LevelMasterSprite CreateCorrectLevelSprite()
         {
             switch (LoZGame.Instance.Dungeon.DungeonNumber)
             {
+                case 1:
+                    return ScreenSpriteFactory.Instance.CreateLevelOneMaster();
+                case 2:
+                    return ScreenSpriteFactory.Instance.CreateLevelTwoMaster();
                 default:
                     return ScreenSpriteFactory.Instance.CreateLevelOneMaster();
             }

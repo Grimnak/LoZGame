@@ -13,5 +13,8 @@ namespace LoZClone
 
         public int RopeLinkPixelBuffer => ropeLinkPixelBuffer;
 
+        public double SpikeCrossVertBoundary => (BlockSpriteFactory.Instance.TileHeight * 3.5) + (BlockSpriteFactory.Instance.TopOffset / 2) + (LoZGame.Instance.InventoryOffset / 2);
+
+        public double SpikeCrossHorizontalBoundary => (BlockSpriteFactory.Instance.TileWidth * 6) + (BlockSpriteFactory.Instance.HorizontalOffset / 2);
     }
 }
