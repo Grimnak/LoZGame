@@ -34,6 +34,7 @@
         /// <param name="target">The object receiving the force.</param>
         public void DetermineDirectPushback(Physics source, Physics target)
         {
+            //Console.WriteLine("Value of fireball move velocity: " + source.MovementVelocity);
             if (source.MovementVelocity.Length() > 0)
             {
                 Vector2 knockbackVector = Vector2.Zero;

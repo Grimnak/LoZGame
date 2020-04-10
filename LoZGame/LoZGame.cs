@@ -169,7 +169,6 @@
 
             this.gameState.Draw();
 
-
             if (DebugMode)
             {
                 this.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);

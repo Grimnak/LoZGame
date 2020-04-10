@@ -36,14 +36,14 @@
                 {
                         this.sprite = BlockSpriteFactory.Instance.BombedOpeningLeft();
 
-                       /* if (this.isLevel1)
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.BombedOpeningLeft();
-                        } 
-                        else
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.BombedOpeningLeft2();
-                        }*/
+                        /* if (this.isLevel1)
+                         {
+                             this.sprite = BlockSpriteFactory.Instance.BombedOpeningLeft();
+                         } 
+                         else
+                         {
+                             this.sprite = BlockSpriteFactory.Instance.BombedOpeningLeft2();
+                         }*/
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X - 7, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                 }

@@ -32,6 +32,10 @@
             }
             if (!(projectile is BombProjectile))
             {
+                if (enemy.DamageTimer <= 0)
+                {
+                    DetermineDirectPushback(projectile.Physics, enemy.Physics);
+                }
                 this.enemy.TakeDamage(projectile.Damage);
             }
             else

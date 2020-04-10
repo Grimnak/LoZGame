@@ -25,7 +25,10 @@
             {
                 if (!(this.player.State is PickupItemState))
                 {
-                    this.DeterminePushbackValues(enemy.Physics, this.player.Physics);
+                    if (this.player.DamageTimer <= 0)
+                    {
+                        this.DeterminePushbackValues(enemy.Physics, this.player.Physics);
+                    }
                     this.player.TakeDamage(enemy.Damage);
                 }
             }
@@ -45,6 +48,10 @@
         {
             if (!(this.player.State is PickupItemState))
             {
+                if (this.player.DamageTimer <= 0)
+                {
+                    DetermineDirectPushback(projectile.Physics, this.player.Physics);
+                }
                 this.player.TakeDamage(projectile.Damage);
             }
         }
