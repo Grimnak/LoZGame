@@ -15,7 +15,7 @@
         {
             if (enemy is WallMaster && !(this.player.State is PickupItemState))
             {
-                //this.player.State = new GrabbedState(player, (WallMaster)enemy);
+                this.player.State = new GrabbedState(player, (WallMaster)enemy);
             }
             else if (enemy is OldMan || enemy is Merchant)
             {

@@ -64,7 +64,7 @@
             }
             else
             {
-                if (!(this.enemy is WallMaster))
+                if (!(this.enemy is WallMaster && this.enemy.CurrentState is AttackingWallMasterState))
                 {
                     this.SetRoomBounds(this.enemy.Physics, collisionSide);
                 }
