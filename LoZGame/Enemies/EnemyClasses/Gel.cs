@@ -19,8 +19,6 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedData.GelSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.CurrentState = new IdleGelState(this);
-
-
         }
 
         public override void Stun(int stunTime)
@@ -35,9 +33,9 @@
             this.Physics.SetDepth();
         }
 
-        public ISprite CreateCorrectSprite()
+        public override ISprite CreateCorrectSprite()
         {
-            return ItemSpriteFactory.Instance.Fairy();
+            return EnemySpriteFactory.Instance.CreateGelSprite();
         }
     }
 }

@@ -48,9 +48,16 @@
             base.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
-        public ISprite CreateCorrectSprite()
+        public override ISprite CreateCorrectSprite()
         {
-            return ItemSpriteFactory.Instance.Fairy();
+            if (this.Physics.CurrentDirection == Physics.Direction.North || this.Physics.CurrentDirection == Physics.Direction.East)
+            {
+                return EnemySpriteFactory.Instance.CreateRightMovingRopeSprite();
+            }
+            else
+            {
+                return EnemySpriteFactory.Instance.CreateLeftMovingRopeSprite();
+            }
         }
     }
 }

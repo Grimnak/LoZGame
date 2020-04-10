@@ -22,11 +22,6 @@
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
-        public ISprite CreateCorrectSprite()
-        {
-            return ItemSpriteFactory.Instance.Fairy();
-        }
-
         public override void Stun(int stunTime)
         {
             this.CurrentState.Stun(stunTime);
@@ -38,5 +33,11 @@
             this.CurrentState.Update();
             this.Physics.SetDepth();
         }
+
+        public override ISprite CreateCorrectSprite()
+        {
+            return EnemySpriteFactory.Instance.CreateZolSprite();
+        }
+
     }
 }

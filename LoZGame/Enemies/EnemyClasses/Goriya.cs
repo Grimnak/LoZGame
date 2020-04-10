@@ -33,36 +33,19 @@
             this.CurrentState.Stun(stunTime);
         }
 
-        public override void FacePlayer()
+        public override ISprite CreateCorrectSprite()
         {
-            Vector2 playerLoc = UnitVectorToPlayer(this.Physics.Bounds.Center.ToVector2());
-            if (Math.Abs(playerLoc.X) > Math.Abs(playerLoc.Y))
+            switch (this.Physics.CurrentDirection)
             {
-                if (playerLoc.X < 0)
-                {
-                    this.Physics.CurrentDirection = Physics.Direction.West;
-                }
-                else
-                {
-                    this.Physics.CurrentDirection = Physics.Direction.East;
-                }
+                case Physics.Direction.North:
+                    return EnemySpriteFactory.Instance.CreateUpMovingGoriyaSprite();
+                case Physics.Direction.West:
+                    return EnemySpriteFactory.Instance.CreateLeftMovingGoriyaSprite();
+                case Physics.Direction.South:
+                    return EnemySpriteFactory.Instance.CreateDownMovingGoriyaSprite();
+                default:
+                    return EnemySpriteFactory.Instance.CreateRightMovingGoriyaSprite();
             }
-            else
-            {
-                if (playerLoc.Y < 0)
-                {
-                    this.Physics.CurrentDirection = Physics.Direction.North;
-                }
-                else
-                {
-                    this.Physics.CurrentDirection = Physics.Direction.South;
-                }
-            }
-        }
-
-        public ISprite CreateCorrectSprite()
-        {
-            return ItemSpriteFactory.Instance.Fairy();
         }
     }
 }
