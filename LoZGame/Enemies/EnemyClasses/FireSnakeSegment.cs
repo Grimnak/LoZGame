@@ -75,5 +75,10 @@
             }
             this.CurrentState.Stun(stunTime);
         }
+
+        public ISprite CreateCorrectSprite()
+        {
+            return ItemSpriteFactory.Instance.Fairy();
+        }
     }
 }

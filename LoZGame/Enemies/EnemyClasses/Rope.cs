@@ -47,5 +47,10 @@
 
             base.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
+
+        public ISprite CreateCorrectSprite()
+        {
+            return ItemSpriteFactory.Instance.Fairy();
+        }
     }
 }

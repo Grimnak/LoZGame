@@ -60,5 +60,10 @@
                 }
             }
         }
+
+        public ISprite CreateCorrectSprite()
+        {
+            return ItemSpriteFactory.Instance.Fairy();
+        }
     }
 }

@@ -3,15 +3,15 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class AttackingEnemyState : IEnemyState
+    public class AttackingDragonState : IEnemyState
     {
-        private readonly IEnemy enemy;
+        private readonly Dragon dragon;
         private readonly ISprite sprite;
         private int lifeTime = 0;
         private readonly int directionChange;
         private RandomStateGenerator randomStateGenerator;
 
-        public AttackingEnemyState(IEnemy enemy)
+        public AttackingDragonState(Dragon dragon)
         {
             this.dragon = dragon;
             this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
@@ -23,7 +23,6 @@
 
         public void MoveUp()
         {
-            this.enemy.CurrentState = new UpMovingEnemyState(this)
         }
 
         public void MoveDown()

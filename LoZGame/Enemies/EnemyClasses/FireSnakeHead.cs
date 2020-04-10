@@ -60,5 +60,10 @@
             this.child = new FireSnakeSegment(this, segmentID - 1);
             LoZGame.Instance.GameObjects.Enemies.Add(child);
         }
+
+        public ISprite CreateCorrectSprite()
+        {
+            return ItemSpriteFactory.Instance.Fairy();
+        }
     }
 }
