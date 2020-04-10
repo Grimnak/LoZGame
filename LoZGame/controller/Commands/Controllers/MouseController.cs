@@ -33,11 +33,11 @@
                 // Vector logic
                 if (position.X > 400)
                 {
-                    if (position.Y > (3 * position.X) / 5)
+                    if (position.Y - 174 > (3 * position.X) / 5)
                     {
                         this.currentCommand = this.allCommands.GetCommandRoomDown;
                     }
-                    else if (position.Y < (480 - ((3 * position.X) / 5)))
+                    else if (position.Y - 174 < (480 - ((3 * position.X) / 5)))
                     {
                         this.currentCommand = this.allCommands.GetCommandRoomUp;
                     }
@@ -48,11 +48,11 @@
                 }
                 else
                 {
-                    if (position.Y > (480 - ((3 * position.X) / 5)))
+                    if (position.Y - 174 > (480 - ((3 * position.X) / 5)))
                     {
                         this.currentCommand = this.allCommands.GetCommandRoomDown;
                     }
-                    else if (position.Y < (3 * position.X) / 5)
+                    else if (position.Y - 174 < (3 * position.X) / 5)
                     {
                         this.currentCommand = this.allCommands.GetCommandRoomUp;
                     }
