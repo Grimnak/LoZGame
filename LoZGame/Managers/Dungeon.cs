@@ -143,25 +143,23 @@
         /// </summary>
         public void MoveDown()
         {
-            if (this.currentY + 1 < this.maxX && this.dungeonLayout[this.currentY + 1][this.currentX].Exists && (this.currentX != 1 || this.currentY + 1 != 2))
+            if (this.currentY + 1 < this.maxY && this.dungeonLayout[this.currentY + 1][this.currentX].Exists)
             {
                 this.currentY++;
                 this.LoadNewRoom();
 
+                this.player.Physics.Bounds = new Rectangle(
+                    (int)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                    BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 0) + 2,
+                    this.player.Physics.Bounds.Width,
+                    this.player.Physics.Bounds.Height);
+
                 // Player moved to top side of new room (next to door, top of the ladder in the basement case).
-                if (currentX == 1 && currentY == 1)
+                if (this.dungeonNumber == 1 && (currentX == 1 && currentY == 1))
                 {
                     this.player.Physics.Bounds = new Rectangle(
                         BlockSpriteFactory.Instance.TileWidth * 4,
                         (BlockSpriteFactory.Instance.TileHeight * 0) + 2 + LoZGame.Instance.InventoryOffset,
-                        this.player.Physics.Bounds.Width,
-                        this.player.Physics.Bounds.Height);
-                }
-                else
-                {
-                    this.player.Physics.Bounds = new Rectangle(
-                        (int)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                        BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 0) + 2,
                         this.player.Physics.Bounds.Width,
                         this.player.Physics.Bounds.Height);
                 }
