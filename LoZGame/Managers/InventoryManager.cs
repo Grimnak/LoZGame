@@ -19,7 +19,6 @@ namespace LoZClone
             BlueCandle
         }
 
-
         private static readonly int maxBombs = 8;
 
         private IPlayer player;
