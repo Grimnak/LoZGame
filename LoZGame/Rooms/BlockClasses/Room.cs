@@ -221,6 +221,11 @@
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
                     this.droppedBoomerang = new Boomerang(location);
                     break;
+                case "MagicBoomerang":
+                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
+                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
+                    this.items.Add(new MagicBoomerang(location));
+                    break;
                 case "TriForce":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 5);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 2);
