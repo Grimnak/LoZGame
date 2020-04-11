@@ -7,7 +7,7 @@
     public class MiniMap
     {
         private List<MiniMapRoom> dungeonLayout;
-        private Vector2 mapSize = new Vector2(400, 240);
+        private Vector2 mapSize;
         private Vector2 roomSize;
         private Point location;
 
@@ -17,13 +17,14 @@
         {
             North, 
             South, 
-            East, 
+            East,   
             West
         }
 
         public MiniMap()
         {
-            this.location = new Point(400, 0);
+            this.location = new Point(300, 200);
+            this.mapSize = new Vector2(400, 200);
             /*this.dungeonLayout = new List<List<MiniMapRoom>>();
             switch (LoZGame.Instance.Dungeon.DungeonNumber)
             {
@@ -42,6 +43,9 @@
         {
             for (int i = 0; i < dungeonLayout.Count; i++)
             {
+                Console.WriteLine("Tried drawing box");
+                Console.WriteLine(dungeonLayout[i]);
+                Console.WriteLine(this.location);
                 this.dungeonLayout[i].Draw(this.location, this.roomSize.ToPoint());
             }
         }
