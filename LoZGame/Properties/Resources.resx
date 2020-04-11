@@ -119,66 +119,66 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dungeon_song" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dungeon_song.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\dungeon_song.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Arrow_Boomerang" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Arrow_Boomerang.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Arrow_Boomerang.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Bomb_Blow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Bomb_Blow.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Bomb_Blow.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Bomb_Drop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Bomb_Drop.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Bomb_Drop.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Boss_Scream1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Boss_Scream1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Boss_Scream1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Candle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Candle.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Candle.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Door_Unlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Door_Unlock.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Door_Unlock.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Enemy_Die" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Enemy_Die.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Enemy_Die.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Enemy_Hit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Enemy_Hit.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Enemy_Hit.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Get_Heart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Get_Heart.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Get_Heart.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Get_Item" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Get_Item.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Get_Item.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Get_Rupee" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Get_Rupee.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Get_Rupee.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Key_Appear" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Key_Appear.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Key_Appear.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Link_Die" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Link_Die.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Link_Die.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Link_Hurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Link_Hurt.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Link_Hurt.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Secret" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Secret.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Secret.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Stairs" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Stairs.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Stairs.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Sword_Shoot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Sword_Shoot.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Sword_Shoot.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="LOZ_Sword_Slash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LOZ_Sword_Slash.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\LOZ_Sword_Slash.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="title_song" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\title_song.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\title_song.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="triforce_tune" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\triforce_tune.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\Util\Audio\Resources\triforce_tune.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

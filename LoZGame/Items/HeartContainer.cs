@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class HeartContainer : ItemEssentials, IItem
+    public class HeartContainer : ItemEssentials, IItem
     {
         public HeartContainer(Vector2 loc)
         {
