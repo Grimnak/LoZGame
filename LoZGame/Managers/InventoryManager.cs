@@ -25,8 +25,8 @@
 
         private List<List<ItemType>> selectionArray = new List<List<ItemType>>()
         {
-            new List<ItemType>{ ItemType.Bomb, ItemType.Boomerang, ItemType.Arrow, ItemType.RedCandle},
-            new List<ItemType>{ ItemType.Potion, ItemType.MagicBoomerang, ItemType.SilverArrow, ItemType.BlueCandle}
+            new List<ItemType>{ ItemType.Bomb, ItemType.Boomerang, ItemType.Arrow, ItemType.BlueCandle},
+            new List<ItemType>{ ItemType.Potion, ItemType.MagicBoomerang, ItemType.SilverArrow, ItemType.RedCandle}
         };
 
         private int selectionX;
