@@ -20,7 +20,10 @@ namespace LoZClone
         {
             if (this.numBombs > 0)
             {
-                this.numBombs--;
+                if (!LoZGame.cheats)
+                {
+                    this.numBombs--;
+                }
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Bomb, this.player);
             }
@@ -30,7 +33,10 @@ namespace LoZClone
         {
             if (this.numRupees > 0 && this.hasBow)
             {
-                this.numRupees--;
+                if (!LoZGame.cheats)
+                {
+                    this.numRupees--;
+                }
                 this.player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Arrow, this.player);
             }

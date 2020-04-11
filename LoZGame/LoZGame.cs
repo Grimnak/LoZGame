@@ -178,6 +178,13 @@
                 this.debugManager.Draw();
                 this.spriteBatch.End();
             }
+
+            if (cheats)
+            {
+                this.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+                this.spriteBatch.DrawString(font,"CHEATS ENABLED",new Vector2(0,LoZGame.Instance.InventoryOffset), Color.Black);
+                this.spriteBatch.End();
+            }
             base.Draw(gameTime);
         }
     }

@@ -27,7 +27,10 @@
         {
             if (this.DamageTimer <= 0)
             {
-                this.Health.DamageHealth(damageAmount);
+                if (!LoZGame.cheats)
+                {
+                    this.Health.DamageHealth(damageAmount);
+                }
                 if (damageAmount > 0)
                 {
                     SoundFactory.Instance.PlayLinkHurt();
