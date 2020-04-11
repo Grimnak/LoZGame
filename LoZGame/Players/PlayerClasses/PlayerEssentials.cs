@@ -27,7 +27,7 @@
         {
             if (this.DamageTimer <= 0)
             {
-                if (!LoZGame.cheats)
+                if (!LoZGame.Cheats)
                 {
                     this.Health.DamageHealth(damageAmount);
                 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
     public partial class InventoryManager
     {
@@ -20,7 +14,7 @@ namespace LoZClone
         {
             if (this.numBombs > 0)
             {
-                if (!LoZGame.cheats)
+                if (!LoZGame.Cheats)
                 {
                     this.numBombs--;
                 }
@@ -33,7 +27,7 @@ namespace LoZClone
         {
             if (this.numRupees > 0 && this.hasBow)
             {
-                if (!LoZGame.cheats)
+                if (!LoZGame.Cheats)
                 {
                     this.numRupees--;
                 }
