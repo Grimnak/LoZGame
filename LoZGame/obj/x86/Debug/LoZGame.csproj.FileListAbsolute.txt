@@ -1848,3 +1848,5 @@ D:\LoZRepo\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\orange_statue_right2.xn
 D:\LoZRepo\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\spotted_tile2.xnb
 D:\LoZRepo\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\HUDQuarterHeart.xnb
 D:\LoZRepo\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\HUDThreeQuarterHeart.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\HUDQuarterHeart.xnb
+C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\HUDThreeQuarterHeart.xnb
