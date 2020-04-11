@@ -1,8 +1,9 @@
 ﻿namespace LoZClone
 {
+    using System;
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using System;
 
     public class FireSnakeEssentials : EnemyStateEssentials, IEnemyState
     {
@@ -66,11 +67,27 @@
 
         public override void Update()
         {
-            if (this.Lifetime == (this.DirectionChange / 2) || this.Lifetime == this.DirectionChange)
+            if (this.Lifetime % (DirectionChange / 4) == 0 && this.Lifetime != 0)
             {
                 this.Enemy.UpdateChild();
             }
             base.Update();
+        }
+
+        public void FavorDirection(RandomStateGenerator.StateType favorite)
+        {
+            // TODO: Get this to work. Should favor the favorite passed state over other states
+            /*this.Enemy.States.Clear();
+            foreach (KeyValuePair<RandomStateGenerator.StateType, int> state in GameData.Instance.DefaultEnemyStates.FireSnakeStatelist)
+            {
+                if (state.Key == favorite)
+                {
+                    this.Enemy.States.Add(state.Key, 1);
+                } else
+                {
+                    this.Enemy.States.Add(state.Key, 1);
+                }
+            }*/
         }
     }
 }

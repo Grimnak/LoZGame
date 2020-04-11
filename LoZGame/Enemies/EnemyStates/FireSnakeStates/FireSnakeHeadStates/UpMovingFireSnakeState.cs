@@ -14,5 +14,14 @@
             this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             this.Enemy.Physics.MovementVelocity = new Vector2(0, -1 * this.Enemy.MoveSpeed);
         }
+
+        public override void Update()
+        {
+            if (this.Lifetime == this.DirectionChange)
+            {
+                FavorDirection(RandomStateGenerator.StateType.MoveNorthEast);
+            }
+            base.Update();
+        }
     }
 }

@@ -23,6 +23,10 @@
 
         private static Dictionary<StateType, int> firesnakeStateList = new Dictionary<StateType, int>()
         {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 },
             { StateType.MoveNorthEast, 1 },
             { StateType.MoveNorthWest, 1 },
             { StateType.MoveSouthEast, 1 },

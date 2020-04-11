@@ -16,13 +16,13 @@
         public FireSnakeHead(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = GameData.Instance.DefaultEnemyStates.FireSnakeStatelist;
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.FireSnakeStatelist);
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.FireSnakeHP);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.FireSnakeMass;
             this.Physics.IsMoveable = false;
             this.CurrentState = new IdleFireSnakeState(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, ProjectileSpriteFactory.Instance.FireballWidth, ProjectileSpriteFactory.Instance.FireballHeight);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
             this.Damage = GameData.Instance.EnemyDamageData.FireSnakeDamage;
@@ -65,7 +65,16 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            return ProjectileSpriteFactory.Instance.Fireball();
+            return EnemySpriteFactory.Instance.CreateFireSnakeSprite();
+        }
+
+        public override void Update()
+        {
+            base.Update();
+            foreach (KeyValuePair<RandomStateGenerator.StateType, int> state in this.States)
+            {
+                Console.WriteLine(state.Key + " || " + state.Value);
+            }
         }
     }
 }

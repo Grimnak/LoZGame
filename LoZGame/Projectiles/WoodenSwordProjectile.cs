@@ -14,7 +14,7 @@
             this.SetUp(this);
             this.Width = ProjectileSpriteFactory.Instance.SwordWidth;
             this.Heigth = ProjectileSpriteFactory.Instance.SwordHeight;
-            this.Offset = ((this.Heigth * 3) / 4) - 4;
+            this.Offset = ((this.Heigth * 3) / 4);
             this.Speed = GameData.Instance.ProjectileSpeedData.WoodSwordSpeed;
             this.Damage = GameData.Instance.ProjectileDamageData.WoodSwordDamage;
             this.Source = source.Physics;

@@ -75,6 +75,13 @@
             Rectangle destination = new Rectangle((int)location.X - (width / 2), (int)location.Y - (height / 2), width, height);
             LoZGame.Instance.SpriteBatch.Draw(Texture, destination, this.frame, tint, rotation, origin, effect, depth);
         }
+        public void Draw(Rectangle location, Color tint, float rotation, SpriteEffects effect, float depth)
+        {
+            int width = this.Data.DrawWidth * this.Scale;
+            int height = this.Data.DrawHeight * this.Scale;
+            Vector2 origin = new Vector2(this.frame.Width / 2, this.frame.Height / 2);
+            LoZGame.Instance.SpriteBatch.Draw(Texture, location, this.frame, tint, rotation, origin, effect, depth);
+        }
 
         public void NextFrame()
         {

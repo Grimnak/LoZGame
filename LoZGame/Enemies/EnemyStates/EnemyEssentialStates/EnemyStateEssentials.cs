@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using static RandomStateGenerator;
 
     public partial class EnemyStateEssentials
     {
@@ -36,6 +37,45 @@
             this.DirectionChange = LoZGame.Instance.Random.Next(GameData.Instance.EnemyMiscData.MinDirectionChange, GameData.Instance.EnemyMiscData.MaxDirectionChange);
         }
 
+        public void FavorPlayer(int weight)
+        {
+            this.Enemy.States.Clear();
+            Vector2 toPlayer = UnitVectorToPlayer(this.Enemy.Physics.Bounds.Center.ToVector2());
+            if (toPlayer.X > 1 - MathHelper.PiOver4)
+            {
+                this.Enemy.States.Add(StateType.MoveEast, weight);
+            }
+            else
+            {
+                this.Enemy.States.Add(StateType.MoveEast, 1);
+            }
+            if (toPlayer.X < -1 + MathHelper.PiOver4)
+            {
+                this.Enemy.States.Add(StateType.MoveWest, weight);
+            }
+            else
+            {
+                this.Enemy.States.Add(StateType.MoveWest, 1);
+            }
+            if (toPlayer.Y > 1 - MathHelper.PiOver4)
+            {
+                this.Enemy.States.Add(StateType.MoveSouth, weight);
+            }
+            else
+            {
+                this.Enemy.States.Add(StateType.MoveSouth, 1);
+            }
+
+            if (toPlayer.Y < -1 + MathHelper.PiOver4)
+            {
+                this.Enemy.States.Add(StateType.MoveNorth, weight);
+            }
+            else
+            {
+                this.Enemy.States.Add(StateType.MoveNorth, 1);
+            }
+        }
+
         public virtual void Update()
         {
             this.Lifetime++;
@@ -51,6 +91,5 @@
         {
             this.Sprite.Draw(this.Enemy.Physics.Location, this.Enemy.CurrentTint, this.Enemy.Physics.Depth);
         }
-
     }
 }

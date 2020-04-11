@@ -22,7 +22,7 @@
             this.Physics = new Physics(parent.Physics.Location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.FireSnakeMass;
             this.Physics.IsMoveable = false;
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, ProjectileSpriteFactory.Instance.FireballWidth, ProjectileSpriteFactory.Instance.FireballHeight);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.CurrentState = new FollowFireSnakeState(this);
             this.hasChild = false;
@@ -80,7 +80,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            return ProjectileSpriteFactory.Instance.Fireball();
+            return EnemySpriteFactory.Instance.CreateFireSnakeSprite();
         }
     }
 }
