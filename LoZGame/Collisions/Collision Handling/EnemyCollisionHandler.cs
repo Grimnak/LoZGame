@@ -35,15 +35,14 @@
                 if (projectile is BombProjectile)
                 {
                     projectile.IsExpired = true;
-                    this.enemy.CurrentState.Attack();
+                    this.enemy.CurrentState.Stun(0);
                 }
                 else
                 {
                     projectile.IsExpired = true;
                 }
             }
-
-            if (!(projectile is BombProjectile))
+            else if (!(projectile is BombProjectile))
             {
                 if (enemy.DamageTimer <= 0)
                 {

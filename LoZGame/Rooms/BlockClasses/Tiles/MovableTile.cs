@@ -47,9 +47,9 @@
             this.invalidDirections = !string.IsNullOrEmpty(direction) ? direction.Split(',') : null;
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location);
-            this.sprite = this.CreateCorrectSprite(name);
+            this.sprite = this.CreateCorrectSprite(name); 
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
-            this.Physics.Depth = 0.002f;
+            this.Physics.SetDepth();
         }
 
         /// <inheritdoc/>
