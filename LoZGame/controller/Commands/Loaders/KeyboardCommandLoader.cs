@@ -9,7 +9,8 @@ namespace LoZClone
     public class KeyboardCommandLoader
     {
         private readonly CommandIdle commandIdle;
-        private readonly Dictionary<Keys, ICommand> dictionary;
+        private readonly Dictionary<Keys, ICommand> playerDictionary;
+        private readonly Dictionary<Keys, ICommand> inventoryDictionary;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyboardCommandLoader"/> class.
@@ -17,34 +18,33 @@ namespace LoZClone
         /// <param name="player">Player to pass to a command.</param>
         public KeyboardCommandLoader(IPlayer player)
         {
-            this.dictionary = new Dictionary<Keys, ICommand>();
+            this.playerDictionary = new Dictionary<Keys, ICommand>();
+            this.inventoryDictionary = new Dictionary<Keys, ICommand>();
 
             this.commandIdle = new CommandIdle(player);
 
-            this.dictionary.Add(Keys.W, new CommandUp(player));
-            this.dictionary.Add(Keys.Up, new CommandUp(player));
-            this.dictionary.Add(Keys.A, new CommandLeft(player));
-            this.dictionary.Add(Keys.Left, new CommandLeft(player));
-            this.dictionary.Add(Keys.S, new CommandDown(player));
-            this.dictionary.Add(Keys.Down, new CommandDown(player));
-            this.dictionary.Add(Keys.D, new CommandRight(player));
-            this.dictionary.Add(Keys.Right, new CommandRight(player));
+            this.playerDictionary.Add(Keys.W, new CommandUp(player));
+            this.playerDictionary.Add(Keys.Up, new CommandUp(player));
+            this.playerDictionary.Add(Keys.A, new CommandLeft(player));
+            this.playerDictionary.Add(Keys.Left, new CommandLeft(player));
+            this.playerDictionary.Add(Keys.S, new CommandDown(player));
+            this.playerDictionary.Add(Keys.Down, new CommandDown(player));
+            this.playerDictionary.Add(Keys.D, new CommandRight(player));
+            this.playerDictionary.Add(Keys.Right, new CommandRight(player));
 
-            this.dictionary.Add(Keys.Z, new CommandAttackA(player));
-            this.dictionary.Add(Keys.N, new CommandAttackB(player));
-            this.dictionary.Add(Keys.I, new CommandInventory());
+            this.playerDictionary.Add(Keys.Z, new CommandAttackA(player));
+            this.playerDictionary.Add(Keys.N, new CommandAttackB(player));
+            this.playerDictionary.Add(Keys.I, new CommandInventory());
 
-            this.dictionary.Add(Keys.D1, new CommandBomb(player));
-            this.dictionary.Add(Keys.D2, new CommandArrow(player));
-            this.dictionary.Add(Keys.D3, new CommandBoomerang(player));
-            this.dictionary.Add(Keys.D4, new CommandBlueCandle(player));
-            this.dictionary.Add(Keys.D5, new CommandSilverArrow(player));
-            this.dictionary.Add(Keys.D6, new CommandMagicBoomerang(player));
-            this.dictionary.Add(Keys.D7, new CommandRedCandle(player));
+            this.playerDictionary.Add(Keys.Q, new CommandQuit());
 
-            this.dictionary.Add(Keys.Q, new CommandQuit());
+            this.playerDictionary.Add(Keys.R, new CommandReset(player));
 
-            this.dictionary.Add(Keys.R, new CommandReset(player));
+            this.inventoryDictionary.Add(Keys.Enter, new CommandItemSelect(player));
+            this.inventoryDictionary.Add(Keys.W, new CommandSelectionUp(player));
+            this.inventoryDictionary.Add(Keys.A, new CommandSelectionLeft(player));
+            this.inventoryDictionary.Add(Keys.S, new CommandSelectionDown(player));
+            this.inventoryDictionary.Add(Keys.D, new CommandSelectionRight(player));
         }
 
         /// <summary>
@@ -53,8 +53,13 @@ namespace LoZClone
         public ICommand GetIdle => this.commandIdle;
 
         /// <summary>
-        /// Gets the dictionary containing commands from the loader.
+        /// Gets the dictionary containing player commands from the loader.
         /// </summary>
-        public Dictionary<Keys, ICommand> GetDict => this.dictionary;
+        public Dictionary<Keys, ICommand> GetPlayerDict => this.playerDictionary;
+
+        /// <summary>
+        /// Gets the dictionary containing inventory commands from the loader.
+        /// </summary>
+        public Dictionary<Keys, ICommand> GetInventoryDict => this.inventoryDictionary;
     }
 }
