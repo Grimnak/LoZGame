@@ -33,7 +33,7 @@
         /// <param name="dungeonNumber">Number of the dungeon whose file is to be parsed.</param>
         public Dungeon(int dungeonNumber)
         {
-            this.dungeonNumber = dungeonNumber;
+            this.DungeonNumber = dungeonNumber;
             this.currentDungeonFile = "../../../../../etc/levels/dungeon" + this.dungeonNumber + ".xml";
 
 
@@ -60,7 +60,7 @@
 
             this.dungeonLayout = XMLHandler.Parse(this.currentDungeonFile);
 
-            this.miniMap = new MiniMap();
+            this.miniMap = new MiniMap(this);
             this.miniMap.LoadMap(this.dungeonLayout, this.maxX, this.maxY);
             this.LoadNewRoom();
         }
@@ -82,7 +82,7 @@
             get { return this.dungeonLayout[this.currentY][this.currentX]; }
         }
 
-        public int DungeonNumber { get { return dungeonNumber; } }
+        public int DungeonNumber { get { return dungeonNumber; } set { dungeonNumber = value; } }
 
         /*
          * Given a particular X and Y value, return that room

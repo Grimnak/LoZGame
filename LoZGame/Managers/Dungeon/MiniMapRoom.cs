@@ -25,10 +25,29 @@ namespace LoZClone
         private Texture2D MapSprite;
         private Rectangle MapSourceRectangle;
 
+        public Point Location => new Point((int)location.X, (int)location.Y);
+
         public MiniMapRoom(int x, int y, List<MiniMap.DoorLocation> doors)
         {
             this.doors = doors;
-            this.visited = true;
+            this.visited = false;
+            /*switch (LoZGame.Instance.Dungeon.DungeonNumber)
+            {
+                case 1:
+                    if (x == 2 && y == 5)
+                    {
+                        this.visited = true;
+                    }
+                    break;
+                case 2:
+                    if (x == 1 && y == 7)
+                    {
+                        this.visited = true;
+                    }
+                    break;
+                default:
+                    break;
+            }*/
             this.location = new Vector2(x, y); 
             this.MapSprite = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             this.MapSourceRectangle = new Rectangle(0, 0, 1, 1);

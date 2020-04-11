@@ -11,6 +11,7 @@
         private Vector2 mapSize;
         private Vector2 roomSize;
         private Vector2 location;
+        private Dungeon dungeon;
 
         public enum DoorLocation
         {
@@ -20,9 +21,10 @@
             West
         }
 
-        public MiniMap()
+        public MiniMap(Dungeon dungeon)
         {
             this.mapSize = new Vector2(365, 195);
+            this.dungeon = dungeon;
         }
 
         public void Draw(Vector2 location)
@@ -90,6 +92,17 @@
                 roomY++;
             }
             this.roomSize = this.mapSize / Math.Max(maxX, maxY);
+        }
+
+        public void Explore()
+        {
+            foreach (MiniMapRoom room in this.dungeonLayout)
+            {
+                if (this.dungeon.CurrentRoomX == room.Location.X && this.dungeon.CurrentRoomY == room.Location.Y)
+                {
+                    room.Explore();
+                }
+            }
         }
     }
 }

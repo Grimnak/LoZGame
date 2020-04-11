@@ -145,6 +145,7 @@
         /// </summary>
         public void LoadNewRoom()
         {
+            this.miniMap.Explore();
             LoZGame.Instance.GameObjects.Clear();
 
             foreach (IEnemy enemy in this.dungeonLayout[this.currentY][this.currentX].Enemies)
