@@ -124,7 +124,8 @@
     <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
     <Compile Include="Util\DataConstants\DefaultEnemyStates.cs" />
-    <Compile Include="Util\InventoryComponents.cs" />
+    <Compile Include="Util\Inventory\InventoryHelper.cs" />
+    <Compile Include="Util\Inventory\InventoryComponents.cs" />
     <Compile Include="GameState\DeathState.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyEssentials.cs" />
     <Compile Include="Enemies\EnemyClasses\Dodongo.cs" />

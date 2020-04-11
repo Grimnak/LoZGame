@@ -4,41 +4,18 @@
     using Microsoft.Xna.Framework.Graphics;
 
     /// <summary>
-    /// Contains all of the necessary components to construct the inventory during gameplay and draw it appropriately.
+    /// Contains all of the necessary methods for updating and drawing the inventory during gameplay.
     /// </summary>
-    public class InventoryComponents
+    public partial class InventoryComponents
     {
         private static readonly InventoryComponents InstanceValue = new InventoryComponents();
 
         public static InventoryComponents Instance => InstanceValue;
 
-        private ISprite inventoryBackgroundSprite;
-        private Vector2 inventoryBackgroundPosition;
-        private Vector2 firstHeartPosition;
-        private Vector2 firstRoomPosition;
-        private Vector2 rupeeCountPosition;
-        private Vector2 keyCountPosition;
-        private Vector2 bombCountPosition;
-
-        private Vector2 mapRoomOffset = new Vector2(320, 263);
-        private Vector2 heartOffset = new Vector2(550, 105 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-        private Vector2 rupeeCountOffset = new Vector2(305, 58 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-        private Vector2 keyCountOffset = new Vector2(305, 101 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-        private Vector2 bombCountOffset = new Vector2(305, 125 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-
-        public Vector2 InventoryBackgroundPosition { get { return inventoryBackgroundPosition; } set { inventoryBackgroundPosition = value; } }
-
-        public float InventoryBackgroundPositionY { get { return inventoryBackgroundPosition.Y; } set { inventoryBackgroundPosition.Y = value; } }
-
         private InventoryComponents()
         {
             inventoryBackgroundSprite = CreateInventorySprite();
             inventoryBackgroundPosition = new Vector2(0, -(LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-            firstHeartPosition = inventoryBackgroundPosition + heartOffset;
-            firstRoomPosition = inventoryBackgroundPosition + mapRoomOffset;
-            rupeeCountPosition = inventoryBackgroundPosition + rupeeCountOffset;
-            keyCountPosition = inventoryBackgroundPosition + keyCountOffset;
-            bombCountPosition = inventoryBackgroundPosition + bombCountOffset;
         }
 
         /// <summary>
@@ -48,7 +25,7 @@
         {
             this.inventoryBackgroundSprite.Draw(this.inventoryBackgroundPosition, LoZGame.Instance.DefaultTint, 0.99f);
             this.DrawHearts();
-            this.DrawItemCounts();
+            this.DrawTextIndicators();
             this.DrawMap();
         }
 
@@ -65,7 +42,7 @@
         /// </summary>
         public void DrawHearts()
         {
-            this.firstHeartPosition = InventoryBackgroundPosition + heartOffset;
+            Vector2 firstHeartPosition = this.inventoryBackgroundPosition + heartOffset;
             int heartCount = LoZGame.Instance.Link.Health.CurrentHealth / 4;
             int partialCount = LoZGame.Instance.Link.Health.CurrentHealth % 4;
             int rowCounter = 0;
@@ -118,11 +95,15 @@
         /// <summary>
         /// Draws the current rupee, key, and bomb count in the HUD.
         /// </summary>
-        private void DrawItemCounts()
+        private void DrawTextIndicators()
         {
+            // Item counts.
             LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "x" + LoZGame.Instance.Players[0].Inventory.Rupees.ToString(), inventoryBackgroundPosition + rupeeCountOffset, Color.White, 0.0f, new Vector2(0, 0), 0.90f, SpriteEffects.None, 1f);
             LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "x" + LoZGame.Instance.Players[0].Inventory.Keys.ToString(), inventoryBackgroundPosition + keyCountOffset, Color.White, 0.0f, new Vector2(0, 0), 0.90f, SpriteEffects.None, 1f);
             LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "x" + LoZGame.Instance.Players[0].Inventory.Bombs.ToString(), inventoryBackgroundPosition + bombCountOffset, Color.White, 0.0f, new Vector2(0, 0), 0.90f, SpriteEffects.None, 1f);
+
+            // Level indicator.
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "L E V E L - " + LoZGame.Instance.Dungeon.DungeonNumber.ToString(), inventoryBackgroundPosition + levelCountOffset, Color.White, 0.0f, new Vector2(0, 0), 1.00f, SpriteEffects.None, 1f);
         }
 
         /// <summary>
@@ -130,9 +111,10 @@
         /// </summary>
         private void DrawMap()
         {
+            Vector2 firstRoomPosition = inventoryBackgroundPosition + mapRoomOffset;
             if (!(LoZGame.Instance.Dungeon is null))
             {
-                this.firstRoomPosition = inventoryBackgroundPosition + mapRoomOffset;
+                firstRoomPosition = inventoryBackgroundPosition + mapRoomOffset;
                 LoZGame.Instance.Dungeon.MiniMap.Draw(firstRoomPosition);
             }
         }
@@ -194,41 +176,6 @@
                     break;
                 default:
                     break;
-            }
-        }
-
-        public ISprite CreateInventorySprite()
-        {
-            return InventorySpriteFactory.Instance.CreateInventoryBackground();
-        }
-
-        public ISprite CreateFullHeartSprite()
-        {
-            return InventorySpriteFactory.Instance.CreateFullHeart();
-        }
-
-        public ISprite CreateEmptyHeartSprite()
-        {
-            return InventorySpriteFactory.Instance.CreateEmptyHeart();
-        }
-
-        public ISprite CreatePartialHeartSprite(int partialCount)
-        {
-            if (partialCount == 3)
-            {
-                return InventorySpriteFactory.Instance.CreateThreeQuarterHeart();
-            }
-            else if (partialCount == 2)
-            {
-                return InventorySpriteFactory.Instance.CreateHalfHeart();
-            }
-            else if (partialCount == 1)
-            {
-                return InventorySpriteFactory.Instance.CreateQuarterHeart();
-            }
-            else
-            {
-                return InventorySpriteFactory.Instance.CreateEmptyHeart();
             }
         }
     }
