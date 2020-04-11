@@ -81,7 +81,9 @@
                 if (LoZGame.Instance.Dungeon.DungeonNumber < maxDungeon)
                 {
                     LoZGame.Instance.Dungeon = new Dungeon(LoZGame.Instance.Dungeon.DungeonNumber + 1);
-                    LoZGame.Instance.Dungeon.Player = LoZGame.Instance.Link;
+                    LoZGame.Instance.Dungeon.Player = LoZGame.Instance.Players[0];
+                    LoZGame.Instance.Players[0].Inventory.HasMap = false;
+                    LoZGame.Instance.Players[0].Inventory.HasCompass = false;
                     LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
                     LoZGame.Instance.GameState.PlayGame();
                 }

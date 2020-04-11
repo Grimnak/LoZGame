@@ -57,6 +57,14 @@ namespace LoZClone
             {
                 player.Inventory.HasBlueFlame = true;
             }
+            else if (item is Map)
+            {
+                player.Inventory.HasMap = true;
+            }
+            else if (item is Compass)
+            {
+                player.Inventory.HasCompass = true;
+            }
         }
 
         /// <inheritdoc/>

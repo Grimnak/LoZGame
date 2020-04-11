@@ -42,6 +42,9 @@
         private bool hasRedFlame;
         private bool hasBlueFlame;
 
+        private bool hasMap;
+        private bool hasCompass;
+
         public InventoryManager(IPlayer player)
         {
             this.player = player;
@@ -57,6 +60,9 @@
             this.hasSilverArrow = LoZGame.cheats;
             this.hasRedFlame = LoZGame.cheats;
             this.hasBlueFlame = LoZGame.cheats;
+
+            this.hasMap = LoZGame.cheats;
+            this.hasCompass = LoZGame.cheats;
 
             this.selectedItem = ItemType.Bomb;
         }
@@ -152,6 +158,10 @@
         public bool HasBlueFlame { get { return this.hasBlueFlame; } set { this.hasBlueFlame = value; } }
 
         public bool HasRedFlame { get { return this.hasRedFlame; } set { this.hasRedFlame = value; } }
+
+        public bool HasMap { get { return this.hasMap; } set { this.hasMap = value; } }
+
+        public bool HasCompass { get { return this.hasCompass; } set { this.hasCompass = value; } }
 
     }
 }
