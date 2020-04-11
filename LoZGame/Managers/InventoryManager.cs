@@ -61,8 +61,8 @@
             this.hasRedFlame = LoZGame.Cheats;
             this.hasBlueFlame = LoZGame.Cheats;
 
-            this.hasMap = LoZGame.cheats;
-            this.hasCompass = LoZGame.cheats;
+            this.hasMap = LoZGame.Cheats;
+            this.hasCompass = LoZGame.Cheats;
 
             this.selectedItem = ItemType.Bomb;
         }

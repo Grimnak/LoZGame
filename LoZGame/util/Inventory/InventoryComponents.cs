@@ -112,15 +112,15 @@
             ISprite mapSprite = CreateMapSprite();
             ISprite compassSprite = CreateCompassSprite();
 
-            //if (LoZGame.Instance.Players[0].Inventory.HasMap())
-            //{
+            if (LoZGame.Instance.Players[0].Inventory.HasMap)
+            {
                 mapSprite.Draw(inventoryBackgroundPosition + mapIndicatorOffset, LoZGame.Instance.DefaultTint, 1.0f);
-            //}
+            }
 
-            //if (LoZGame.Instance.Players[0].Inventory.HasCompass())
-            //{
+            if (LoZGame.Instance.Players[0].Inventory.HasCompass)
+            {
                 compassSprite.Draw(inventoryBackgroundPosition + compassIndicatorOffset, LoZGame.Instance.DefaultTint, 1.0f);
-            //}
+            }
         }
 
         /// <summary>
