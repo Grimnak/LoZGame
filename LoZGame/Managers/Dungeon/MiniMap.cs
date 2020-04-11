@@ -86,6 +86,7 @@
             int roomY = 0, roomX = 0;
             while (roomY < maxY)
             {
+                roomX = 0;
                 while (roomX < maxX)
                 {
                     if (dungeon[roomY][roomX].Exists)
@@ -93,6 +94,10 @@
                         List<MiniMap.DoorLocation> doors = FetchDoors(dungeon[roomY][roomX]);
                         this.dungeonLayout.Add(new MiniMapRoom(roomX, roomY, doors));
                         Console.WriteLine("Loaded Room: (" + roomX + ",  " + roomY + ")");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Room (" + roomX + ", " + roomY + ") Did not Exist");
                     }
                     roomX++;
                 }
