@@ -8,8 +8,14 @@
     {
         private readonly int DRAWSCALE = 1;
         private readonly Vector2 heartSize = new Vector2(24, 24);
+        private readonly Vector2 mapSize = new Vector2(30, 50);
+        private readonly Vector2 compassSize = new Vector2(60, 60);
 
         public Vector2 HeartSize { get { return heartSize; } }
+
+        public Vector2 MapSize { get { return mapSize; } }
+
+        public Vector2 CompassSize { get { return compassSize; } }
 
         private Texture2D inventoryBackgroundSpriteSheet;
         private SpriteData inventoryBackgroundData;
@@ -23,6 +29,10 @@
         private SpriteData quarterHeartData;
         private Texture2D emptyHeartSpriteSheet;
         private SpriteData emptyHeartData;
+        private Texture2D mapSpriteSheet;
+        private SpriteData mapData;
+        private Texture2D compassSpriteSheet;
+        private SpriteData compassData;
 
         private static readonly InventorySpriteFactory InstanceValue = new InventorySpriteFactory();
 
@@ -44,6 +54,10 @@
             this.quarterHeartData = new SpriteData(heartSize, quarterHeartSpriteSheet, 1, 1);
             this.emptyHeartSpriteSheet = content.Load<Texture2D>("HUDEmptyHeart");
             this.emptyHeartData = new SpriteData(heartSize, emptyHeartSpriteSheet, 1, 1);
+            this.mapSpriteSheet = content.Load<Texture2D>("Map");
+            this.mapData = new SpriteData(mapSize, mapSpriteSheet, 1, 1);
+            this.compassSpriteSheet = content.Load<Texture2D>("Compass");
+            this.compassData = new SpriteData(compassSize, compassSpriteSheet, 1, 1);
         }
 
         public ISprite CreateInventoryBackground()
@@ -74,6 +88,16 @@
         public ISprite CreateEmptyHeart()
         {
             return new ObjectSprite(this.emptyHeartSpriteSheet, this.emptyHeartData);
+        }
+
+        public ISprite CreateInventoryMap()
+        {
+            return new ObjectSprite(this.mapSpriteSheet, this.mapData);
+        }
+
+        public ISprite CreateInventoryCompass()
+        {
+            return new ObjectSprite(this.compassSpriteSheet, this.compassData);
         }
     }
 }

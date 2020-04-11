@@ -54,12 +54,12 @@
             this.numBombs = 4;
             this.numKeys = 0;
             this.numRupees = 5;
-            this.hasBoomerang = LoZGame.cheats;
-            this.hasMagicBoomerang = LoZGame.cheats;
-            this.hasBow = LoZGame.cheats;
-            this.hasSilverArrow = LoZGame.cheats;
-            this.hasRedFlame = LoZGame.cheats;
-            this.hasBlueFlame = LoZGame.cheats;
+            this.hasBoomerang = LoZGame.Cheats;
+            this.hasMagicBoomerang = LoZGame.Cheats;
+            this.hasBow = LoZGame.Cheats;
+            this.hasSilverArrow = LoZGame.Cheats;
+            this.hasRedFlame = LoZGame.Cheats;
+            this.hasBlueFlame = LoZGame.Cheats;
 
             this.hasMap = LoZGame.cheats;
             this.hasCompass = LoZGame.cheats;

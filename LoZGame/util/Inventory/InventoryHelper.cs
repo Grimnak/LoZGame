@@ -12,6 +12,8 @@
         private Vector2 inventoryBackgroundPosition;
 
         private Vector2 mapRoomOffset = new Vector2(320, 263);
+        private Vector2 mapIndicatorOffset = new Vector2(150, 313);
+        private Vector2 compassIndicatorOffset = new Vector2(130, 420);
         private Vector2 heartOffset = new Vector2(550, 105 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
         private Vector2 rupeeCountOffset = new Vector2(305, 58 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
         private Vector2 keyCountOffset = new Vector2(305, 101 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
@@ -55,6 +57,16 @@
             {
                 return InventorySpriteFactory.Instance.CreateEmptyHeart();
             }
+        }
+
+        public ISprite CreateMapSprite()
+        {
+            return InventorySpriteFactory.Instance.CreateInventoryMap();
+        }
+
+        public ISprite CreateCompassSprite()
+        {
+            return InventorySpriteFactory.Instance.CreateInventoryCompass();
         }
     }
 }

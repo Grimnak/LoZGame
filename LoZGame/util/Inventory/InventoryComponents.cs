@@ -27,6 +27,7 @@
             this.DrawHearts();
             this.DrawTextIndicators();
             this.DrawMap();
+            this.DrawMapCompassIndicators();
         }
 
         /// <summary>
@@ -104,6 +105,22 @@
 
             // Level indicator.
             LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "L E V E L - " + LoZGame.Instance.Dungeon.DungeonNumber.ToString(), inventoryBackgroundPosition + levelCountOffset, Color.White, 0.0f, new Vector2(0, 0), 1.00f, SpriteEffects.None, 1f);
+        }
+
+        private void DrawMapCompassIndicators()
+        {
+            ISprite mapSprite = CreateMapSprite();
+            ISprite compassSprite = CreateCompassSprite();
+
+            //if (LoZGame.Instance.Players[0].Inventory.HasMap())
+            //{
+                mapSprite.Draw(inventoryBackgroundPosition + mapIndicatorOffset, LoZGame.Instance.DefaultTint, 1.0f);
+            //}
+
+            //if (LoZGame.Instance.Players[0].Inventory.HasCompass())
+            //{
+                compassSprite.Draw(inventoryBackgroundPosition + compassIndicatorOffset, LoZGame.Instance.DefaultTint, 1.0f);
+            //}
         }
 
         /// <summary>
