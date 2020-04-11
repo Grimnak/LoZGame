@@ -10,6 +10,7 @@
         private List<MiniMapRoom> dungeonLayout;
         private Vector2 mapSize;
         private Vector2 roomSize;
+        private Vector2 roomDrawOffset;
         private Dungeon dungeon;
 
         public enum DoorLocation
@@ -30,7 +31,7 @@
         {
             for (int i = 0; i < dungeonLayout.Count; i++)
             {
-                this.dungeonLayout[i].Draw(location.ToPoint(), this.roomSize.ToPoint());
+                this.dungeonLayout[i].Draw(location.ToPoint() + roomDrawOffset.ToPoint(), this.roomSize.ToPoint());
             }
         }
 
@@ -82,6 +83,7 @@
                 roomY++;
             }
             this.roomSize = this.mapSize / Math.Max(maxX, maxY);
+            DetermineDrawOffset(maxX, maxY);
         }
 
         public void Explore()
@@ -93,6 +95,20 @@
                     room.Explore();
                 }
             }
+        }
+
+        private void DetermineDrawOffset(int x, int y)
+        {
+            Vector2 offset;
+            if (x > y)
+            {
+                offset = new Vector2(0, (x - y) / 2);
+            }
+            else
+            {
+                offset = new Vector2((y - x) / 2, 0);
+            }
+            this.roomDrawOffset = new Vector2(this.roomSize.X * offset.X, this.roomSize.Y * offset.Y);
         }
     }
 }
