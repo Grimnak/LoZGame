@@ -10,7 +10,6 @@
         private List<MiniMapRoom> dungeonLayout;
         private Vector2 mapSize;
         private Vector2 roomSize;
-        private Vector2 location;
         private Dungeon dungeon;
 
         public enum DoorLocation
@@ -31,9 +30,6 @@
         {
             for (int i = 0; i < dungeonLayout.Count; i++)
             {
-                Console.WriteLine("Tried drawing box");
-                Console.WriteLine(dungeonLayout[i]);
-                Console.WriteLine(this.location);
                 this.dungeonLayout[i].Draw(location.ToPoint(), this.roomSize.ToPoint());
             }
         }
@@ -69,7 +65,6 @@
 
         public void LoadMap(List<List<Room>> dungeon, int maxX, int maxY)
         {
-            Console.WriteLine("Started Loading Map with Room Count (" + maxX + ", " + maxY + ")");
             this.dungeonLayout = new List<MiniMapRoom>();
             int roomY = 0, roomX = 0;
             while (roomY < maxY)
@@ -81,11 +76,6 @@
                     {
                         List<MiniMap.DoorLocation> doors = FetchDoors(dungeon[roomY][roomX]);
                         this.dungeonLayout.Add(new MiniMapRoom(roomX, roomY, doors));
-                        Console.WriteLine("Loaded Room: (" + roomX + ",  " + roomY + ")");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Room (" + roomX + ", " + roomY + ") Did not Exist");
                     }
                     roomX++;
                 }

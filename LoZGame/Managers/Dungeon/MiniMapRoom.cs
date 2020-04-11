@@ -31,23 +31,6 @@ namespace LoZClone
         {
             this.doors = doors;
             this.visited = false;
-            /*switch (LoZGame.Instance.Dungeon.DungeonNumber)
-            {
-                case 1:
-                    if (x == 2 && y == 5)
-                    {
-                        this.visited = true;
-                    }
-                    break;
-                case 2:
-                    if (x == 1 && y == 7)
-                    {
-                        this.visited = true;
-                    }
-                    break;
-                default:
-                    break;
-            }*/
             this.location = new Vector2(x, y); 
             this.MapSprite = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             this.MapSourceRectangle = new Rectangle(0, 0, 1, 1);
@@ -62,14 +45,14 @@ namespace LoZClone
         {
             if (this.visited)
             {
-                // defines location to draw map;
+                // defines location to draw map
                 Rectangle drawLocation = new Rectangle(new Point(startLoc.X + ((int)this.location.X * roomSize.X), startLoc.Y + ((int)this.location.Y * roomSize.Y)), new Point(roomSize.X, roomSize.Y));
                 
-                // Draw Doors
+                // draw doors
                 this.MapSprite.SetData<Color>(new Color[] { MapColor});
                 DrawDoors(drawLocation);
 
-                // Draw Room TODO: add door processing
+                // door processing
                 drawLocation = new Rectangle(new Point(drawLocation.X + BorderOffset, drawLocation.Y + BorderOffset), new Point(roomSize.X - (BorderOffset), roomSize.Y - (BorderOffset)));
                 LoZGame.Instance.SpriteBatch.Draw(this.MapSprite, drawLocation, this.MapSourceRectangle, MapColor, 0.0f, Vector2.Zero, SpriteEffects.None, MapLayer);
 
