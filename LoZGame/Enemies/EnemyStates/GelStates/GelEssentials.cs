@@ -65,7 +65,7 @@
 
         public void Stun(int stunTime)
         {
-            this.Die();
+            this.Enemy.TakeDamage(GameData.Instance.EnemyDamageData.GelHealth);
         }
 
         public void RandomMovementTimes()

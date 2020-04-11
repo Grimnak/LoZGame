@@ -32,10 +32,6 @@
         {
         }
 
-        public virtual void FacePlayer()
-        {
-        }
-
         public virtual void UpdateState()
         {
             RandomStateGenerator.Update(this.States);

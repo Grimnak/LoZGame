@@ -61,15 +61,13 @@
 
         public void Stun(int stunTime)
         {
-            this.Die();
+            this.Enemy.TakeDamage(GameData.Instance.EnemyDamageData.KeeseHealth);
         }
 
         public override void Update()
         {
-            Console.WriteLine("KeeseEssentials: Attempted to  Update");
             base.Update();
             UpdateMoveSpeed();
-            Console.WriteLine("KeeseEssentials: Succsessfully  Updated");
         }
 
         private void UpdateMoveSpeed()

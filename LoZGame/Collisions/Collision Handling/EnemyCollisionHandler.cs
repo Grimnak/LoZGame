@@ -30,6 +30,19 @@
             {
                 ((OldMan)this.enemy).ShootFireballs();
             }
+            else if (this.enemy is Dodongo)
+            {
+                if (projectile is BombProjectile)
+                {
+                    projectile.IsExpired = true;
+                    this.enemy.CurrentState.Attack();
+                }
+                else
+                {
+                    projectile.IsExpired = true;
+                }
+            }
+
             if (!(projectile is BombProjectile))
             {
                 if (enemy.DamageTimer <= 0)
@@ -37,14 +50,6 @@
                     DetermineDirectPushback(projectile.Physics, enemy.Physics);
                 }
                 this.enemy.TakeDamage(projectile.Damage);
-            }
-            else
-            {
-                if (this.enemy is Dodongo)
-                {
-                    projectile.IsExpired = true;
-                    this.enemy.CurrentState.Attack();
-                }
             }
         }
 

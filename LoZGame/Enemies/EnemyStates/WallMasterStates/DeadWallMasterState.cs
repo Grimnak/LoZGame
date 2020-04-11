@@ -5,15 +5,13 @@
 
     public class DeadWallMasterState : WallMasterEssentials, IEnemyState
     {
-        private readonly IEnemy enemy;
-        private readonly ISprite sprite;
         private int deathTimer = 0;
         private int deathTimerMax;
 
         public DeadWallMasterState(IEnemy enemy)
         {
             this.Enemy = enemy;
-            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.Sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.Enemy.CurrentState = this;
             this.Enemy.Physics.Bounds = new Rectangle(this.Enemy.Physics.Bounds.Location, Point.Zero);
             deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
@@ -23,11 +21,11 @@
         public override void Update()
         {
             this.deathTimer++;
-            this.sprite.Update();
+            this.Sprite.Update();
             if (deathTimer >= deathTimerMax)
             {
-                this.Enemy.Expired = true;
                 LoZGame.Instance.Drops.AttemptDrop(this.Enemy.Physics.Location);
+                this.Enemy.Expired = true;
             }
         }
     }
