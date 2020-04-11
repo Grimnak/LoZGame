@@ -3,85 +3,32 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeadRopeState : IEnemyState
+    public class DeadRopeState : RopeEssentials, IEnemyState
     {
-        private readonly Rope rope;
+        private readonly IEnemy enemy;
         private readonly ISprite sprite;
         private int deathTimer = 0;
         private int deathTimerMax;
 
-        public DeadRopeState(Rope rope)
+        public DeadRopeState(IEnemy enemy)
         {
-            this.rope = rope;
-            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
-            this.rope.CurrentState = this;
-            this.rope.Physics.Bounds = new Rectangle(rope.Physics.Bounds.Location, Point.Zero);
-            LoZGame.Instance.Drops.AttemptDrop(this.rope.Physics.Location);
+            this.Enemy = enemy;
+            this.Sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.Enemy.CurrentState = this;
+            this.Enemy.Physics.Bounds = new Rectangle(this.Enemy.Physics.Bounds.Location, Point.Zero);
+            LoZGame.Instance.Drops.AttemptDrop(this.Enemy.Physics.Location);
             deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
-            this.rope.Physics.MovementVelocity = Vector2.Zero;
+            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
         }
 
-        public void MoveLeft()
-        {
-        }
-
-        public void MoveRight()
-        {
-        }
-
-        public void MoveUp()
-        {
-        }
-
-        public void MoveDown()
-        {
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Attack()
-        {
-        }
-
-        public void Stop()
-        {
-        }
-
-        public void Die()
-        {
-        }
-
-        public void Stun(int stunTime)
-        {
-        }
-
-        public void Update()
+        public override void Update()
         {
             this.deathTimer++;
-            this.sprite.Update();
+            this.Sprite.Update();
             if (deathTimer >= deathTimerMax)
             {
-                this.rope.Expired = true;
+                this.Enemy.Expired = true;
             }
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.rope.Physics.Location, this.rope.CurrentTint, this.rope.Physics.Depth);
         }
     }
 }

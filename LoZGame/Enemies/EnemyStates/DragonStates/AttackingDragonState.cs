@@ -12,7 +12,7 @@
         public AttackingDragonState(IEnemy enemy)
         {
             this.Enemy = enemy;
-            this.Sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
+            this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.CurrentState = this;
             this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             this.ShootFireballs();

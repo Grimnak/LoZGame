@@ -11,6 +11,7 @@
             this.Enemy = enemy;
             this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange * 2;
             FacePlayer();
+            this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
             LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Boomerang, this.Enemy.Physics);
         }

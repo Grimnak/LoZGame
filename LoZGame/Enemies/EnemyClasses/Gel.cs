@@ -8,6 +8,8 @@
 
         public Gel(Vector2 location)
         {
+            this.RandomStateGenerator = new RandomStateGenerator(this);
+            this.States = GameData.Instance.DefaultEnemyStates.GelStatelist;
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.GelHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.GelMass;

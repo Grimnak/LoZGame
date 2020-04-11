@@ -22,6 +22,7 @@
 
         public void MoveDown()
         {
+            this.Enemy.CurrentState = new DownMovingStalfosState(this.Enemy);
         }
 
         public void MoveUpLeft()

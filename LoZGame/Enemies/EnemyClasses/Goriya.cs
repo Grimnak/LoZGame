@@ -13,6 +13,8 @@
 
         public Goriya(Vector2 location)
         {
+            this.RandomStateGenerator = new RandomStateGenerator(this);
+            this.States = GameData.Instance.DefaultEnemyStates.GoriyaStatelist;
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.GoriyaHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.GoriyaMass;

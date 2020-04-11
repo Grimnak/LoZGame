@@ -26,9 +26,11 @@ namespace LoZClone
         {
             if (!enemy.Expired)
             {
+                Console.WriteLine("EnemyManager: Attempted to Add Enemy");
                 enemyList.Add(enemyID, enemy);
                 enemyID++;
                 enemy.AddChild();
+                Console.WriteLine("Enemy Manager: Successfully added enemy");
             }
         }
 
@@ -43,6 +45,7 @@ namespace LoZClone
             {
                 if (enemy.Value.Expired)
                 {
+                    Console.WriteLine("Enemy Manager: Enemy at" + enemy.Key + " Expired.");
                     this.deletable.Add(enemy.Key);
                 }
             }

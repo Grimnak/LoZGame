@@ -9,7 +9,7 @@
         {
             this.Enemy = enemy;
             this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange;
-            this.Sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
+            this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.CurrentState = this;
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
         }

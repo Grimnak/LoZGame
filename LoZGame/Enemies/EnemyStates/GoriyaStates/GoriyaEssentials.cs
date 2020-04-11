@@ -7,21 +7,25 @@
     {   
         public void MoveLeft()
         {
+            this.Enemy.Physics.CurrentDirection = Physics.Direction.West;
             this.Enemy.CurrentState = new LeftMovingGoriyaState(this.Enemy);
         }
 
         public void MoveRight()
         {
+            this.Enemy.Physics.CurrentDirection = Physics.Direction.East;
             this.Enemy.CurrentState = new RightMovingGoriyaState(this.Enemy);
         }
 
         public void MoveUp()
         {
+            this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
             this.Enemy.CurrentState = new UpMovingGoriyaState(this.Enemy);
         }
 
         public void MoveDown()
         {
+            this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
             this.Enemy.CurrentState = new DownMovingGoriyaState(this.Enemy);
         }
 

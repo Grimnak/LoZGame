@@ -96,7 +96,7 @@
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeSegment.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeHead.cs" />
-    <Compile Include="Enemies\EnemyStates\DefaultEnemyStates.cs" />
+    <Compile Include="Util\DataStructs\DefaultEnemyStates.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\DodongoEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\DragonStates\DragonEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateEssentials.cs" />
@@ -105,6 +105,7 @@
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\DeadFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\DownLeftMovingFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\DownMovingFireSnakeState.cs" />
+    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\FireSnakeEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\DownRightMovingFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\IdleFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\LeftMovingFireSnakeState.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Enemies\EnemyStates\GoriyaStates\GoriyaEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\KeeseStates\KeeseEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\KeeseStates\IdleKeeseState.cs" />
+    <Compile Include="Enemies\EnemyStates\RopeStates\RopeEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\StalfosEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\WallMasterEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\ZolEssentials.cs" />

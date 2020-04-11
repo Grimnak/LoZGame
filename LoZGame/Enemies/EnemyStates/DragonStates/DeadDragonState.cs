@@ -11,7 +11,7 @@
         public DeadDragonState(IEnemy enemy)
         {
             this.Enemy = enemy;
-            this.Sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.CurrentState = this;
             this.Enemy.Physics.Bounds = new Rectangle(this.Enemy.Physics.Bounds.Location, Point.Zero);
             deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;

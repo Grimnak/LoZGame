@@ -3,84 +3,39 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class StunnedRopeState : IEnemyState
+    public class StunnedRopeState : RopeEssentials, IEnemyState
     {
-        private readonly Rope rope;
+        private readonly IEnemy enemy;
         private readonly IEnemyState oldState;
         private Vector2 oldVelocity;
         private int stunDuration;
 
-        public StunnedRopeState(Rope rope, IEnemyState oldState, int stunTime)
+        public StunnedRopeState(IEnemy enemy, IEnemyState oldState, int stunTime)
         {
-            this.oldState = oldState;
-            this.rope = rope;
-            this.oldVelocity = this.rope.Physics.MovementVelocity;
-            stunDuration = stunTime;
-            rope.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.rope.Physics.MovementVelocity = Vector2.Zero;
+            this.Enemy = enemy;
+            this.Enemy.MoveSpeed = GameData.Instance.EnemySpeedData.RopeSpeed;
+            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange;
+            this.Sprite = this.Enemy.CreateCorrectSprite();
+            this.Enemy.CurrentState = this;
+            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
         }
 
-        public void MoveLeft()
-        {
-        }
-
-        public void MoveRight()
-        {
-        }
-
-        public void MoveUp()
-        {
-        }
-
-        public void MoveDown()
-        {
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Attack()
-        {
-        }
-
-        public void Stop()
-        {
-        }
-
-        public void Die()
-        {
-            this.rope.CurrentState = new DeadRopeState(this.rope);
-        }
-
-        public void Stun(int stunTime)
+        public override void Stun(int stunTime)
         {
             stunDuration = stunTime;
         }
 
-        public void Update()
+        public override void Update()
         {
             stunDuration--;
             if (stunDuration <= 0)
             {
-                this.rope.CurrentState = oldState;
-                this.rope.Physics.MovementVelocity = oldVelocity;
+                this.Enemy.CurrentState = oldState;
+                this.Enemy.Physics.MovementVelocity = oldVelocity;
             }
         }
 
-        public void Draw()
+        public override void Draw()
         {
             this.oldState.Draw();
         }

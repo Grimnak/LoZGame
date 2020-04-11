@@ -38,6 +38,7 @@
 
         public virtual void Update()
         {
+            Console.WriteLine("EnemyStateEssentials: Attempted to  Update");
             this.Lifetime++;
             if (this.Lifetime > this.DirectionChange)
             {
@@ -45,6 +46,7 @@
                 this.Lifetime = 0;
             }
             this.Sprite.Update();
+            Console.WriteLine("EnemyStateEssentials: Successfully Update");
         }
 
         public virtual void Draw()

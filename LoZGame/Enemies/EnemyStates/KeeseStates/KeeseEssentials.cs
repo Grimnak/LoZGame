@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    public partial class KeeseEssentials: EnemyStateEssentials, IEnemyState
+    public partial class KeeseEssentials : EnemyStateEssentials, IEnemyState
     {
         public void MoveLeft()
         {
@@ -66,8 +66,10 @@
 
         public override void Update()
         {
+            Console.WriteLine("KeeseEssentials: Attempted to  Update");
             base.Update();
             UpdateMoveSpeed();
+            Console.WriteLine("KeeseEssentials: Succsessfully  Updated");
         }
 
         private void UpdateMoveSpeed()

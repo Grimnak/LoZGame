@@ -7,6 +7,8 @@
     {
         public Dragon(Vector2 location)
         {
+            this.RandomStateGenerator = new RandomStateGenerator(this);
+            this.States = GameData.Instance.DefaultEnemyStates.DragonStatelist;
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.DragonHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.DragonMass;
@@ -42,7 +44,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            return EnemySpriteFactory.Instance.CreateDragonSprite();
+            return EnemySpriteFactory.Instance.CreateKeeseSprite();
         }
     }
 }

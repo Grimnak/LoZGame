@@ -5,14 +5,20 @@ namespace LoZClone
 
     public struct EnemyMiscData
     {
+        private const int minDirectionChange = 60;
+        private const int maxDirectionChange = 180;
+
         private const int fireSnakeLength = 5;
         private const int ropeLinkPixelBuffer = 5;
 
-
         public int FireSnakeLength => fireSnakeLength;
 
-        public int RopeLinkPixelBuffer => ropeLinkPixelBuffer;
+        public int MaxDirectionChange => maxDirectionChange;
 
+        public int MinDirectionChange => minDirectionChange;
+
+        public int RopeLinkPixelBuffer => ropeLinkPixelBuffer;
+        
         public double SpikeCrossVertBoundary => (BlockSpriteFactory.Instance.TileHeight * 3.5) + (BlockSpriteFactory.Instance.TopOffset / 2) + (LoZGame.Instance.InventoryOffset / 2);
 
         public double SpikeCrossHorizontalBoundary => (BlockSpriteFactory.Instance.TileWidth * 6) + (BlockSpriteFactory.Instance.HorizontalOffset / 2);
