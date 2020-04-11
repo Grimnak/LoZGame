@@ -8,6 +8,8 @@
 
         public Zol(Vector2 location)
         {
+            this.RandomStateGenerator = new RandomStateGenerator(this);
+            this.States = GameData.Instance.DefaultEnemyStates.ZolStatelist;
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.ZolHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.ZolMass;
@@ -22,11 +24,6 @@
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
-        public ISprite CreateCorrectSprite()
-        {
-            return ItemSpriteFactory.Instance.Fairy();
-        }
-
         public override void Stun(int stunTime)
         {
             this.CurrentState.Stun(stunTime);
@@ -38,5 +35,11 @@
             this.CurrentState.Update();
             this.Physics.SetDepth();
         }
+
+        public override ISprite CreateCorrectSprite()
+        {
+            return EnemySpriteFactory.Instance.CreateZolSprite();
+        }
+
     }
 }

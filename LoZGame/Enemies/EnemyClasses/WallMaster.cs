@@ -8,6 +8,8 @@
 
         public WallMaster(Vector2 location)
         {
+            this.RandomStateGenerator = new RandomStateGenerator(this);
+            this.States = GameData.Instance.DefaultEnemyStates.WallMasterStatelist;
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.WallMasterHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.WallMasterMass;
@@ -34,9 +36,16 @@
                 this.Physics.Depth = 1.0f;
             }
         }
-        public ISprite CreateCorrectSprite()
+
+        public override ISprite CreateCorrectSprite()
         {
-            return ItemSpriteFactory.Instance.Fairy();
+            if (this.Physics.CurrentDirection == Physics.Direction.North || this.Physics.CurrentDirection == Physics.Direction.East)
+            {
+                return EnemySpriteFactory.Instance.CreateRightMovingWallMasterSprite();
+            } else
+            {
+                return EnemySpriteFactory.Instance.CreateLeftMovingWallMasterSprite();
+            }
         }
     }
 }

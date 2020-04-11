@@ -25,6 +25,18 @@
 /processorParam:TextureFormat=Color
 /build:../../etc/art/Items/Ladder.png;Ladder.png
 
+#begin ../../etc/art/levels/level-2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../etc/art/levels/level-2.png;level-2.png
+
 #begin ../../etc/art/tiles/fire.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -205,6 +217,18 @@
 /processorParam:TextureFormat=Color
 /build:blue_statue_left.png
 
+#begin blue_statue_left2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:blue_statue_left2.png
+
 #begin blue_statue_right.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -216,6 +240,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:blue_statue_right.png
+
+#begin blue_statue_right2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:blue_statue_right2.png
 
 #begin Blue_Wood_Down.png
 /importer:TextureImporter
@@ -313,6 +349,18 @@
 /processorParam:TextureFormat=Color
 /build:bombed_opening_down.png
 
+#begin bombed_opening_down2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:bombed_opening_down2.png
+
 #begin bombed_opening_left.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -324,6 +372,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:bombed_opening_left.png
+
+#begin bombed_opening_left2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:bombed_opening_left2.png
 
 #begin bombed_opening_right.png
 /importer:TextureImporter
@@ -337,6 +397,18 @@
 /processorParam:TextureFormat=Color
 /build:bombed_opening_right.png
 
+#begin bombed_opening_right2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:bombed_opening_right2.png
+
 #begin bombed_opening_up.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -348,6 +420,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:bombed_opening_up.png
+
+#begin bombed_opening_up2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:bombed_opening_up2.png
 
 #begin BombExplosionFive.png
 /importer:TextureImporter
@@ -432,6 +516,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Boomerang.png
+
+#begin boss_tile2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:boss_tile2.png
 
 #begin Bow.png
 /importer:TextureImporter
@@ -727,6 +823,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:floor_tile_dungeon.png
+
+#begin floor_tile2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:floor_tile2.png
 
 #begin Flute.png
 /importer:TextureImporter
@@ -1292,30 +1400,6 @@
 /processorParam:TextureFormat=Color
 /build:HUDTriforceTemplate.png
 
-#begin inventory.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:inventory.png
-
-#begin Inventory.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Inventory.png
-
 #begin Inventory.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1388,6 +1472,18 @@
 /processorParam:TextureFormat=Color
 /build:ladder_tile.png
 
+#begin lava2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:lava2.png
+
 #begin Letter.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1399,6 +1495,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Letter.png
+
+#begin level-1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:level-1.png
 
 #begin LevelOneMaster.png
 /importer:TextureImporter
@@ -1580,6 +1688,18 @@
 /processorParam:TextureFormat=Color
 /build:movable_square.png
 
+#begin movable_square2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:movable_square2.png
+
 #begin oldMan.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1603,6 +1723,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:orange_movable_square.png
+
+#begin orange_statue_left2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:orange_statue_left2.png
+
+#begin orange_statue_right2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:orange_statue_right2.png
 
 #begin playerHUD.png
 /importer:TextureImporter
@@ -2059,6 +2203,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:spotted_tile.png
+
+#begin spotted_tile2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:spotted_tile2.png
 
 #begin stairs.png
 /importer:TextureImporter

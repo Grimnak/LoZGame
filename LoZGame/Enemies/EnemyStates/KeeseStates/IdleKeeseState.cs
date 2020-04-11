@@ -2,96 +2,25 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
 
-    public class IdleKeeseState : IEnemyState
+    public class IdleKeeseState : KeeseEssentials, IEnemyState
     {
-        private readonly Keese keese;
-        private readonly ISprite sprite;
-        private RandomStateGenerator randomStateGenerator;
-        private int idleTimer = 0;
-
-        public IdleKeeseState(Keese keese)
+        public IdleKeeseState(IEnemy enemy)
         {
-            this.keese = keese;
-            this.sprite = EnemySpriteFactory.Instance.CreateKeeseSprite();
-            randomStateGenerator = new RandomStateGenerator(this.keese, 2, 10);
-            this.keese.CurrentState = this;
-            this.keese.Physics.Bounds = Rectangle.Empty;
-            LoZGame.Instance.Drops.AttemptDrop(this.keese.Physics.Location);
-            this.keese.Physics.MovementVelocity = Vector2.Zero;
+            Console.WriteLine("KeeseStaate: Started Construction");
+            this.Enemy = enemy;
+            this.Sprite = this.Enemy.CreateCorrectSprite();
+            this.Enemy.CurrentState = this;
+            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
+            Console.WriteLine("KeeseStaate: Finished Construction");
         }
 
-        public void MoveLeft()
+        public override void Update()
         {
-            this.keese.CurrentState = new LeftMovingKeeseState(this.keese);
-        }
-
-        public void MoveRight()
-        {
-            this.keese.CurrentState = new RightMovingKeeseState(this.keese);
-        }
-
-        public void MoveUp()
-        {
-            this.keese.CurrentState = new UpMovingKeeseState(this.keese);
-        }
-
-        public void MoveDown()
-        {
-            this.keese.CurrentState = new DownMovingKeeseState(this.keese);
-        }
-
-        public void MoveUpLeft()
-        {
-            this.keese.CurrentState = new UpLeftMovingKeeseState(this.keese);
-        }
-
-        public void MoveUpRight()
-        {
-            this.keese.CurrentState = new UpRightMovingKeeseState(this.keese);
-        }
-
-        public void MoveDownLeft()
-        {
-            this.keese.CurrentState = new DownLeftMovingKeeseState(this.keese);
-        }
-
-        public void MoveDownRight()
-        {
-            this.keese.CurrentState = new DownRightMovingKeeseState(this.keese);
-        }
-
-        public void Attack()
-        {
-        }
-
-        public void Stop()
-        {
-        }
-
-        public void Die()
-        {
-            this.keese.CurrentState = new DeadKeeseState(this.keese);
-        }
-
-        public void Stun(int stunTime)
-        {
-            this.Die();
-        }
-
-        public void Update()
-        {
-            this.idleTimer++;
-            this.sprite.Update();
-            if (idleTimer >= GameData.Instance.EnemySpeedData.KeeseIdleMax)
-            {
-                this.randomStateGenerator.Update();
-            }
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.keese.Physics.Location, this.keese.CurrentTint, this.keese.Physics.Depth);
+            Console.WriteLine("KeeseState: Attempted to Update to New State");
+            this.Enemy.UpdateState();
+            Console.WriteLine("KeeseState: Updated State Successfully");
         }
     }
 }

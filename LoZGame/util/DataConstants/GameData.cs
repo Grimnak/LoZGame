@@ -15,6 +15,7 @@
         private static EnemyMassData enemyMassData;
         private static EnemyResistanceData enemyResData;
         private static EnemyMiscData enemyMiscData;
+        private static DefaultEnemyStates defaultEnemyStates;
 
         public PlayerData PlayerData => playerData;
 
@@ -34,6 +35,8 @@
 
         public EnemyMiscData EnemyMiscData => enemyMiscData;
 
+        public DefaultEnemyStates DefaultEnemyStates => defaultEnemyStates;
+
         private static readonly GameData InstanceValue = new GameData();
 
         public static GameData Instance => InstanceValue;
@@ -49,6 +52,7 @@
             enemyMassData = new EnemyMassData();
             enemyResData = new EnemyResistanceData();
             enemyMiscData = new EnemyMiscData();
+            defaultEnemyStates = new DefaultEnemyStates();
         }
     }
 }

@@ -14,7 +14,7 @@
     public class Tile : IBlock
     {
         private ISprite sprite;
-        private Color spriteTint = LoZGame.Instance.DungeonTint;
+        private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Rectangle bounds;
 
         public Rectangle Bounds
@@ -61,6 +61,12 @@
                     return BlockSpriteFactory.Instance.SpottedTile();
                 case "stairs":
                     return BlockSpriteFactory.Instance.Stairs();
+                case "spotted_tile2":
+                    return BlockSpriteFactory.Instance.SpottedTile2();
+                case "boss_tile2":
+                    return BlockSpriteFactory.Instance.BossTile2();
+                case "lava2":
+                    return BlockSpriteFactory.Instance.LavaTile2();
                 default:
                     return BlockSpriteFactory.Instance.FloorTile();
             }

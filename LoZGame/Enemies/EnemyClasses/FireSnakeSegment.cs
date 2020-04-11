@@ -9,12 +9,14 @@
     {
         private IEnemy parent;
         private IEnemy child;
-        public int segmentID;
+        private int segmentID;
         private bool hasChild;
         private bool childAdded;
 
         public FireSnakeSegment(IEnemy parent, int segmentID)
         {
+            this.RandomStateGenerator = new RandomStateGenerator(this);
+            this.States = GameData.Instance.DefaultEnemyStates.FireSnakeStatelist;
             this.parent = parent;
             this.segmentID = segmentID;
             this.Physics = new Physics(parent.Physics.Location);
@@ -76,9 +78,9 @@
             this.CurrentState.Stun(stunTime);
         }
 
-        public ISprite CreateCorrectSprite()
+        public override ISprite CreateCorrectSprite()
         {
-            return ItemSpriteFactory.Instance.Fairy();
+            return ProjectileSpriteFactory.Instance.Fireball();
         }
     }
 }

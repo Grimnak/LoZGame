@@ -14,7 +14,7 @@
     public class BlockTile : IBlock
     {
         private ISprite sprite;
-        private Color spriteTint = LoZGame.Instance.DungeonTint;
+        private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Rectangle bounds;
 
         public Rectangle Bounds
@@ -62,6 +62,16 @@
                     return BlockSpriteFactory.Instance.BlueStatueLeft();
                 case "blue_statue_right":
                     return BlockSpriteFactory.Instance.BlueStatueRight();
+                case "movable_square2":
+                    return BlockSpriteFactory.Instance.MovableSquare2();
+                case "blue_statue_right2":
+                    return BlockSpriteFactory.Instance.BlueStatueRight2();
+                case "blue_statue_left2":
+                    return BlockSpriteFactory.Instance.BlueStatueLeft2();
+                case "orange_statue_right2":
+                    return BlockSpriteFactory.Instance.OrangeStatueRight2();
+                case "orange_statue_left2":
+                    return BlockSpriteFactory.Instance.OrangeStatueLeft2();
                 default:
                     return BlockSpriteFactory.Instance.MovableSquare();
             }

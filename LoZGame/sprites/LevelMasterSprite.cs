@@ -3,12 +3,12 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class LevelOneMasterSprite
+    public class LevelMasterSprite
     {
         private Texture2D texture;
         private Rectangle position;
 
-        public LevelOneMasterSprite(Texture2D texture, Vector2 currentRoomLocation)
+        public LevelMasterSprite(Texture2D texture, Vector2 currentRoomLocation)
         {
             this.texture = texture;
             this.position = new Rectangle((int)currentRoomLocation.X * LoZGame.Instance.ScreenWidth, (int)currentRoomLocation.Y * (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset), LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset);
