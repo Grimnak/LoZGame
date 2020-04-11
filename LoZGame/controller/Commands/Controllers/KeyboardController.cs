@@ -92,6 +92,30 @@ namespace LoZClone
                     LoZGame.Instance.GameState.PlayGame();
                 }
             }
+            else if (LoZGame.Instance.GameState is OpenInventoryState)
+            {
+                if (pressed.Contains(Keys.W) && oldState.IsKeyUp(Keys.W))
+                {
+                    LoZGame.Instance.Players[0].Inventory.MoveSelectionUp();
+                }
+                else if (pressed.Contains(Keys.A) && oldState.IsKeyUp(Keys.A))
+                {
+                    LoZGame.Instance.Players[0].Inventory.MoveSelectionLeft();
+                }
+                else if (pressed.Contains(Keys.S) && oldState.IsKeyUp(Keys.S))
+                {
+                    LoZGame.Instance.Players[0].Inventory.MoveSelectionDown();
+                }
+                else if (pressed.Contains(Keys.D) && oldState.IsKeyUp(Keys.D))
+                {
+                    LoZGame.Instance.Players[0].Inventory.MoveSelectionRight();
+                }
+
+                if (pressed.Contains(Keys.Enter))
+                {
+                    LoZGame.Instance.Players[0].Inventory.SelectItem();
+                }
+            }
 
             if (pressed.Contains(Keys.I) && this.oldState.IsKeyUp(Keys.I))
             {
