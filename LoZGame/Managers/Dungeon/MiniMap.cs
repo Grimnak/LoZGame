@@ -3,15 +3,14 @@
     using System;
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
     public class MiniMap
     {
         private List<MiniMapRoom> dungeonLayout;
         private Vector2 mapSize;
         private Vector2 roomSize;
-        private Point location;
-
-        public Point Location { get; set; }
+        private Vector2 location;
 
         public enum DoorLocation
         {
@@ -23,18 +22,17 @@
 
         public MiniMap()
         {
-            this.location = new Point(300, 200);
-            this.mapSize = new Vector2(400, 200);
+            this.mapSize = new Vector2(365, 195);
         }
 
-        public void Draw()
+        public void Draw(Vector2 location)
         {
             for (int i = 0; i < dungeonLayout.Count; i++)
             {
                 Console.WriteLine("Tried drawing box");
                 Console.WriteLine(dungeonLayout[i]);
                 Console.WriteLine(this.location);
-                this.dungeonLayout[i].Draw(this.location, this.roomSize.ToPoint());
+                this.dungeonLayout[i].Draw(location.ToPoint(), this.roomSize.ToPoint());
             }
         }
 

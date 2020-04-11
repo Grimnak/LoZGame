@@ -1850,3 +1850,5 @@ D:\LoZRepo\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\HUDQuarterHeart.xnb
 D:\LoZRepo\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\HUDThreeQuarterHeart.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\HUDQuarterHeart.xnb
 C:\Users\wensi\Desktop\3902proj\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\HUDThreeQuarterHeart.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\HUDQuarterHeart.xnb
+C:\Users\16reh\Desktop\LoZGame\LoZGame\bin\Windows\x86\Debug\Content\HUDThreeQuarterHeart.xnb

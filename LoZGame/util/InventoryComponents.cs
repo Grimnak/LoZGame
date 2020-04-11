@@ -12,6 +12,10 @@
         private ISprite inventoryBackgroundSprite;
         private Vector2 inventoryBackgroundPosition;
         private Vector2 firstHeartPosition;
+        private Vector2 firstRoomPosition;
+
+        private Vector2 roomOffset = new Vector2(320, 263);
+        private Vector2 heartOffset = new Vector2(550, 105 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
 
         public ISprite InventoryBackgroundSprite { get { return inventoryBackgroundSprite; } set { inventoryBackgroundSprite = value; } }
 
@@ -29,17 +33,20 @@
         {
             inventoryBackgroundSprite = CreateInventorySprite();
             inventoryBackgroundPosition = new Vector2(0, -(LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-            firstHeartPosition = new Vector2(550, 105);
+            firstHeartPosition = inventoryBackgroundPosition + heartOffset;
+            firstRoomPosition = inventoryBackgroundPosition + roomOffset;
         }
 
         public void DrawInventoryElements()
         {
             this.inventoryBackgroundSprite.Draw(this.inventoryBackgroundPosition, LoZGame.Instance.DefaultTint, 0.99f);
             this.DrawHearts();
+            this.DrawMap();
         }
 
         public void DrawHearts()
         {
+            firstHeartPosition = InventoryBackgroundPosition + heartOffset;
             int heartCount = LoZGame.Instance.Link.Health.CurrentHealth / 4;
             int partialCount = LoZGame.Instance.Link.Health.CurrentHealth % 4;
             int rowCounter = 0;
@@ -86,6 +93,15 @@
                     columnCounter = 0;
                     rowCounter++;
                 }
+            }
+        }
+
+        private void DrawMap()
+        {
+            if (!(LoZGame.Instance.Dungeon is null))
+            {
+                firstRoomPosition = inventoryBackgroundPosition + roomOffset;
+                LoZGame.Instance.Dungeon.MiniMap.Draw(firstRoomPosition);
             }
         }
 
