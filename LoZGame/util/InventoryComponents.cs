@@ -3,6 +3,9 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
+    /// <summary>
+    /// Contains all of the necessary components to construct the inventory during gameplay and draw it appropriately.
+    /// </summary>
     public class InventoryComponents
     {
         private static readonly InventoryComponents InstanceValue = new InventoryComponents();
@@ -14,7 +17,7 @@
         private Vector2 firstHeartPosition;
         private Vector2 firstRoomPosition;
 
-        private Vector2 roomOffset = new Vector2(320, 263);
+        private Vector2 mapRoomOffset = new Vector2(320, 263);
         private Vector2 heartOffset = new Vector2(550, 105 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
 
         public ISprite InventoryBackgroundSprite { get { return inventoryBackgroundSprite; } set { inventoryBackgroundSprite = value; } }
@@ -34,9 +37,12 @@
             inventoryBackgroundSprite = CreateInventorySprite();
             inventoryBackgroundPosition = new Vector2(0, -(LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
             firstHeartPosition = inventoryBackgroundPosition + heartOffset;
-            firstRoomPosition = inventoryBackgroundPosition + roomOffset;
+            firstRoomPosition = inventoryBackgroundPosition + mapRoomOffset;
         }
 
+        /// <summary>
+        /// Draws all of the inventory components above the gameplay area, including the background, hearts, maps, and weapons.
+        /// </summary>
         public void DrawInventoryElements()
         {
             this.inventoryBackgroundSprite.Draw(this.inventoryBackgroundPosition, LoZGame.Instance.DefaultTint, 0.99f);
@@ -44,9 +50,20 @@
             this.DrawMap();
         }
 
+        /// <summary>
+        /// If the game is reset while the inventory is in use, this will reset the position back to its default position.
+        /// </summary>
+        public void Reset()
+        {
+            this.inventoryBackgroundPosition = new Vector2(0, -(LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
+        }
+
+        /// <summary>
+        /// Draws the hearts above the inventory background in rows of eight hearts each.
+        /// </summary>
         public void DrawHearts()
         {
-            firstHeartPosition = InventoryBackgroundPosition + heartOffset;
+            this.firstHeartPosition = InventoryBackgroundPosition + heartOffset;
             int heartCount = LoZGame.Instance.Link.Health.CurrentHealth / 4;
             int partialCount = LoZGame.Instance.Link.Health.CurrentHealth % 4;
             int rowCounter = 0;
@@ -96,15 +113,21 @@
             }
         }
 
+        /// <summary>
+        /// Draws the map above the inventory background.
+        /// </summary>
         private void DrawMap()
         {
             if (!(LoZGame.Instance.Dungeon is null))
             {
-                firstRoomPosition = inventoryBackgroundPosition + roomOffset;
+                firstRoomPosition = inventoryBackgroundPosition + mapRoomOffset;
                 LoZGame.Instance.Dungeon.MiniMap.Draw(firstRoomPosition);
             }
         }
 
+        /// <summary>
+        /// Draws the correct dungeon background with all objects while the inventory is transitioning in or out.
+        /// </summary>
         public void DrawCorrectBackground()
         {
             switch (LoZGame.Instance.Dungeon.DungeonNumber)
@@ -138,6 +161,9 @@
             }
         }
 
+        /// <summary>
+        /// Draws the correct dungeon background text while the inventory is transitioning in or out.
+        /// </summary>
         public void DrawText()
         {
             switch (LoZGame.Instance.Dungeon.DungeonNumber)
