@@ -16,21 +16,19 @@
         private Vector2 inventoryBackgroundPosition;
         private Vector2 firstHeartPosition;
         private Vector2 firstRoomPosition;
+        private Vector2 rupeeCountPosition;
+        private Vector2 keyCountPosition;
+        private Vector2 bombCountPosition;
 
         private Vector2 mapRoomOffset = new Vector2(320, 263);
         private Vector2 heartOffset = new Vector2(550, 105 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-
-        public ISprite InventoryBackgroundSprite { get { return inventoryBackgroundSprite; } set { inventoryBackgroundSprite = value; } }
+        private Vector2 rupeeCountOffset = new Vector2(305, 58 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
+        private Vector2 keyCountOffset = new Vector2(305, 101 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
+        private Vector2 bombCountOffset = new Vector2(305, 125 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
 
         public Vector2 InventoryBackgroundPosition { get { return inventoryBackgroundPosition; } set { inventoryBackgroundPosition = value; } }
 
-        public float InventoryBackgroundPositionX { get { return inventoryBackgroundPosition.X; } set { inventoryBackgroundPosition.X = value; } }
-
         public float InventoryBackgroundPositionY { get { return inventoryBackgroundPosition.Y; } set { inventoryBackgroundPosition.Y = value; } }
-
-        public Vector2 FirstHeartPosition { get { return FirstHeartPosition; } set { FirstHeartPosition = value; } }
-
-        public float FirstHeartPositionY { get { return firstHeartPosition.Y; } set { firstHeartPosition.Y = value; } }
 
         private InventoryComponents()
         {
@@ -38,6 +36,9 @@
             inventoryBackgroundPosition = new Vector2(0, -(LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
             firstHeartPosition = inventoryBackgroundPosition + heartOffset;
             firstRoomPosition = inventoryBackgroundPosition + mapRoomOffset;
+            rupeeCountPosition = inventoryBackgroundPosition + rupeeCountOffset;
+            keyCountPosition = inventoryBackgroundPosition + keyCountOffset;
+            bombCountPosition = inventoryBackgroundPosition + bombCountOffset;
         }
 
         /// <summary>
@@ -47,6 +48,7 @@
         {
             this.inventoryBackgroundSprite.Draw(this.inventoryBackgroundPosition, LoZGame.Instance.DefaultTint, 0.99f);
             this.DrawHearts();
+            this.DrawItemCounts();
             this.DrawMap();
         }
 
@@ -59,7 +61,7 @@
         }
 
         /// <summary>
-        /// Draws the hearts above the inventory background in rows of eight hearts each.
+        /// Draws the hearts in the HUD in rows of eight hearts each.
         /// </summary>
         public void DrawHearts()
         {
@@ -114,13 +116,23 @@
         }
 
         /// <summary>
+        /// Draws the current rupee, key, and bomb count in the HUD.
+        /// </summary>
+        private void DrawItemCounts()
+        {
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "x" + LoZGame.Instance.Players[0].Inventory.Rupees.ToString(), inventoryBackgroundPosition + rupeeCountOffset, Color.White, 0.0f, new Vector2(0, 0), 0.90f, SpriteEffects.None, 1f);
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "x" + LoZGame.Instance.Players[0].Inventory.Keys.ToString(), inventoryBackgroundPosition + keyCountOffset, Color.White, 0.0f, new Vector2(0, 0), 0.90f, SpriteEffects.None, 1f);
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "x" + LoZGame.Instance.Players[0].Inventory.Bombs.ToString(), inventoryBackgroundPosition + bombCountOffset, Color.White, 0.0f, new Vector2(0, 0), 0.90f, SpriteEffects.None, 1f);
+        }
+
+        /// <summary>
         /// Draws the map above the inventory background.
         /// </summary>
         private void DrawMap()
         {
             if (!(LoZGame.Instance.Dungeon is null))
             {
-                firstRoomPosition = inventoryBackgroundPosition + mapRoomOffset;
+                this.firstRoomPosition = inventoryBackgroundPosition + mapRoomOffset;
                 LoZGame.Instance.Dungeon.MiniMap.Draw(firstRoomPosition);
             }
         }

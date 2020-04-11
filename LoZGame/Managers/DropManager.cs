@@ -123,6 +123,14 @@
             }
         }
 
+        public void DropHeartContainer()
+        {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer != null && LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1)
+            {
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer);
+            }
+        }
+
         public void DropMagicKey(Vector2 loc) { LoZGame.Instance.GameObjects.Items.Add(new MagicKey(loc)); }
     }
 }

@@ -1,17 +1,17 @@
 ﻿namespace LoZClone
 {
     /// <summary>
-    /// Command that makes player shoot an arrow.
+    /// Command that moves item selection right.
     /// </summary>
-    public class CommandArrow : ICommand
+    public class CommandSelectionRight : ICommand
     {
         private readonly IPlayer player;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CommandArrow"/> class.
+        /// Initializes a new instance of the <see cref="CommandSelectionRight"/> class.
         /// </summary>
         /// <param name="player">The player to execute a command on.</param>
-        public CommandArrow(IPlayer player)
+        public CommandSelectionRight(IPlayer player)
         {
             this.player = player;
         }
@@ -19,7 +19,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.player.Inventory.SelectedItem = InventoryManager.ItemType.Arrow;
+            player.Inventory.MoveSelectionRight();
         }
     }
 }

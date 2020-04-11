@@ -15,6 +15,7 @@
         private bool exists = false;
         private Key droppedKey = null;
         private Boomerang droppedBoomerang = null;
+        private HeartContainer droppedHeartContainer = null;
         private string border = null;
         private string text = null;
         private List<IItem> items = null; // a list for any and all items in a room
@@ -102,6 +103,8 @@
         public Key DroppedKey => this.droppedKey;
 
         public Boomerang DroppedBoomerang => this.droppedBoomerang;
+
+        public HeartContainer DroppedHeartContainer => this.droppedHeartContainer;
 
         /// <summary>
         /// Converts grid position in the room to a screen vector.
@@ -204,7 +207,7 @@
                 case "HeartContainer":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 4);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.items.Add(new HeartContainer(location));
+                    this.droppedHeartContainer = new HeartContainer(location);
                     break;
                 case "Key":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);

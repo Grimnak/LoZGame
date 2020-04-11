@@ -63,6 +63,8 @@
                 if (this is Dragon)
                 {
                     SoundFactory.Instance.PlayDragonDie();
+                    LoZGame.Instance.Drops.DropHeartContainer();
+                    SoundFactory.Instance.PlayKeyAppears();
                 }
                 else
                 {

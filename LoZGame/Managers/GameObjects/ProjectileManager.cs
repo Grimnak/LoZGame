@@ -86,7 +86,6 @@
                 switch (item)
                 {
                     case ProjectileType.WoodenSword:
-                        SoundFactory.Instance.PlaySwordShoot();
                         this.projectileList.Add(this.projectileId, new WoodenSwordProjectile(player));
                         break;
                     default:
