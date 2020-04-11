@@ -7,10 +7,9 @@
     {
         public Keese(Vector2 location)
         {
-            Console.WriteLine("Keese: Started Construction");
             this.Physics = new Physics(location);
-            this.CurrentState = new IdleDragonState(this);
-            this.States = GameData.Instance.DefaultEnemyStates.DragonStatelist;
+            this.CurrentState = new IdleKeeseState(this);
+            this.States = GameData.Instance.DefaultEnemyStates.KeeseStatelist;
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.KeeseHealth);
             this.Physics.Mass = GameData.Instance.EnemyMassData.KeeseMass;
@@ -21,7 +20,6 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedData.MinKeeseSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            Console.WriteLine("Keese: Ended Construction");
         }
 
         public override void Stun(int stunTime)
@@ -31,7 +29,6 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            Console.WriteLine("Keese: Created Correct Sprite");
             return EnemySpriteFactory.Instance.CreateKeeseSprite();
         }
     }

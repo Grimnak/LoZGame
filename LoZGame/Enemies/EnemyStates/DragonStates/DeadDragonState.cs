@@ -11,14 +11,14 @@
         public DeadDragonState(IEnemy enemy)
         {
             this.Enemy = enemy;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
+            this.Sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.Enemy.CurrentState = this;
             this.Enemy.Physics.Bounds = new Rectangle(this.Enemy.Physics.Bounds.Location, Point.Zero);
             deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
         }
 
-        public void Update()
+        public override void Update()
         {
             this.deathTimer++;
             this.Sprite.Update();

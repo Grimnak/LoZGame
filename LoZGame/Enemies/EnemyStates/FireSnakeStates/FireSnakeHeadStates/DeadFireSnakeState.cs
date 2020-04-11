@@ -19,7 +19,7 @@
             this.Enemy.UpdateChild();
         }
 
-        public void Update()
+        public override void Update()
         {
             this.deathTimer++;
             this.Sprite.Update();

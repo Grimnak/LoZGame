@@ -44,7 +44,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            return EnemySpriteFactory.Instance.CreateKeeseSprite();
+            return EnemySpriteFactory.Instance.CreateDragonSprite();
         }
     }
 }
