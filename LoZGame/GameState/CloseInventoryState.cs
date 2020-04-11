@@ -63,7 +63,6 @@
             if (this.lockout <= LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset)
             {
                 InventoryComponents.Instance.InventoryBackgroundPositionY -= transitionSpeed;
-                InventoryComponents.Instance.FirstHeartPositionY -= transitionSpeed;
             }
             else
             {

@@ -22,33 +22,13 @@
 
         private Vector2 mapRoomOffset = new Vector2(320, 263);
         private Vector2 heartOffset = new Vector2(550, 105 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-        private Vector2 rupeeCountOffset = new Vector2(200, 95 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-        private Vector2 keyCountOffset = new Vector2(200, 105 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-        private Vector2 bombCountOffset = new Vector2(200, 115 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-
-        public ISprite InventoryBackgroundSprite { get { return inventoryBackgroundSprite; } set { inventoryBackgroundSprite = value; } }
+        private Vector2 rupeeCountOffset = new Vector2(305, 58 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
+        private Vector2 keyCountOffset = new Vector2(305, 101 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
+        private Vector2 bombCountOffset = new Vector2(305, 125 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
 
         public Vector2 InventoryBackgroundPosition { get { return inventoryBackgroundPosition; } set { inventoryBackgroundPosition = value; } }
 
-        public float InventoryBackgroundPositionX { get { return inventoryBackgroundPosition.X; } set { inventoryBackgroundPosition.X = value; } }
-
         public float InventoryBackgroundPositionY { get { return inventoryBackgroundPosition.Y; } set { inventoryBackgroundPosition.Y = value; } }
-
-        public Vector2 FirstHeartPosition { get { return firstHeartPosition; } set { firstHeartPosition = value; } }
-
-        public float FirstHeartPositionY { get { return firstHeartPosition.Y; } set { firstHeartPosition.Y = value; } }
-
-        public Vector2 RupeeCountPosition { get { return rupeeCountPosition; } set { rupeeCountPosition = value; } }
-
-        public float RupeeCountPositionY { get { return rupeeCountPosition.Y; } set { rupeeCountPosition.Y = value; } }
-
-        public Vector2 KeyCountPosition { get { return keyCountPosition; } set { keyCountPosition = value; } }
-
-        public float KeyCountPositionY { get { return keyCountPosition.Y; } set { keyCountPosition.Y = value; } }
-
-        public Vector2 BombCountPosition { get { return bombCountPosition; } set { bombCountPosition = value; } }
-
-        public float BombCountPositionY { get { return bombCountPosition.Y; } set { bombCountPosition.Y = value; } }
 
         private InventoryComponents()
         {
@@ -140,9 +120,9 @@
         /// </summary>
         private void DrawItemCounts()
         {
-            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "x" + LoZGame.Instance.Players[0].Inventory.Rupees.ToString(), rupeeCountPosition, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
-            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "x" + LoZGame.Instance.Players[0].Inventory.Keys.ToString(), keyCountPosition, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
-            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "x" + LoZGame.Instance.Players[0].Inventory.Bombs.ToString(), bombCountPosition, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "x" + LoZGame.Instance.Players[0].Inventory.Rupees.ToString(), inventoryBackgroundPosition + rupeeCountOffset, Color.White, 0.0f, new Vector2(0, 0), 0.90f, SpriteEffects.None, 1f);
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "x" + LoZGame.Instance.Players[0].Inventory.Keys.ToString(), inventoryBackgroundPosition + keyCountOffset, Color.White, 0.0f, new Vector2(0, 0), 0.90f, SpriteEffects.None, 1f);
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "x" + LoZGame.Instance.Players[0].Inventory.Bombs.ToString(), inventoryBackgroundPosition + bombCountOffset, Color.White, 0.0f, new Vector2(0, 0), 0.90f, SpriteEffects.None, 1f);
         }
 
         /// <summary>
