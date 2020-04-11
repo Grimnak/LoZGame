@@ -13,20 +13,14 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(projectile.IsExpired && (enemy is OldMan || enemy is Merchant || enemy is SpikeCross)))
+            if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
             {
-                if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
-                {
-                    enemy.Stun(projectile.StunDuration);
-                }
+                enemy.Stun(projectile.StunDuration);
+                this.projectile.Returning = true;
             }
-            if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
+            else if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
             {
                 this.projectile.Physics.StopMovement();
-            }
-            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
-            {
-                this.projectile.Returning = true;
             }
             else if (this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion || this.projectile is WoodenSwordProjectile)
             {

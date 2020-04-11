@@ -88,7 +88,6 @@
             {
                 this.player.Physics.MovementVelocity = oldVelocity;
                 this.player.State = oldState;
-                //this.player.State = new IdleState(this.player);
             }
         }
 

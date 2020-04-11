@@ -33,6 +33,14 @@
             this.Physics.Move();
         }
 
+        public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IPlayer)
+            {
+                this.EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+        }
+
         public override ISprite CreateCorrectSprite()
         {
             return EnemySpriteFactory.Instance.CreateSpikeCrossSprite();

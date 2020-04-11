@@ -9,7 +9,7 @@
         private int currentDungeon;
         private static int maxDungeon = 2;
         private int lockout;
-        private int lockoutMax = 440; // verify
+        private int lockoutMax = 440;
 
         public WinGameState()
         {
@@ -105,6 +105,11 @@
             }
 
             LoZGame.Instance.GameObjects.Draw();
+            LoZGame.Instance.SpriteBatch.End();
+
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+            InventoryComponents.Instance.DrawInventoryElements();
+            // LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "Health: " + LoZGame.Instance.Link.Health.CurrentHealth.ToString() + " | Bombs: " + LoZGame.Instance.Link.Inventory.Bombs.ToString() + " | Rupees: " + LoZGame.Instance.Link.Inventory.Rupees.ToString(), new Vector2(0,0), Color.White, 0, new Vector2(0, 0), 1, SpriteEffects.None, 1.0f);
             LoZGame.Instance.SpriteBatch.End();
         }
     }
