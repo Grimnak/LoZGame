@@ -4,12 +4,10 @@
 
     public class Rope : EnemyEssentials, IEnemy
     {
-        public bool Attacking { get; set; }
-
-        public string Direction { get; set; }
-
         public Rope(Vector2 location)
         {
+            this.RandomStateGenerator = new RandomStateGenerator(this);
+            this.States = GameData.Instance.DefaultEnemyStates.RopeStatelist;
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.RopeHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.RopeMass;
@@ -21,7 +19,6 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedData.RopeSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.Attacking = false;
         }
 
         public override void Stun(int stunTime)
@@ -31,26 +28,26 @@
 
         public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.Attacking == true)
-            {
-                this.Attacking = false;
-            }
+            this.UpdateState();
             base.OnCollisionResponse(otherCollider, collisionSide);
         }
 
         public override void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.Attacking == true)
-            {
-                this.Attacking = false;
-            }
-
+            this.UpdateState();
             base.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
-        public ISprite CreateCorrectSprite()
+        public override ISprite CreateCorrectSprite()
         {
-            return ItemSpriteFactory.Instance.Fairy();
+            if (this.Physics.CurrentDirection == Physics.Direction.North || this.Physics.CurrentDirection == Physics.Direction.East)
+            {
+                return EnemySpriteFactory.Instance.CreateRightMovingRopeSprite();
+            }
+            else
+            {
+                return EnemySpriteFactory.Instance.CreateLeftMovingRopeSprite();
+            }
         }
     }
 }

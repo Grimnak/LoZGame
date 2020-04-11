@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class StunnedFireSnakeState : IEnemyState
+    public class StunnedFireSnakeState : FireSnakeEssentials, IEnemyState
     {
         private readonly IEnemy fireSnake;
         private readonly IEnemyState oldState;
@@ -20,57 +20,12 @@
             fireSnake.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
-        public void MoveLeft()
-        {
-        }
-
-        public void MoveRight()
-        {
-        }
-
-        public void MoveUp()
-        {
-        }
-
-        public void MoveDown()
-        {
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Attack()
-        {
-        }
-
-        public void Stop()
-        {
-        }
-
-        public void Die()
-        {
-            this.fireSnake.CurrentState = new DeadFireSnakeState(this.fireSnake);
-        }
-
-        public void Stun(int stunTime)
+        public override void Stun(int stunTime)
         {
             stunDuration = stunTime;
         }
 
-        public void Update()
+        public override void Update()
         {
             stunDuration--;
             if (stunDuration <= 0)
@@ -80,7 +35,7 @@
             }
         }
 
-        public void Draw()
+        public override void Draw()
         {
             this.oldState.Draw();
         }

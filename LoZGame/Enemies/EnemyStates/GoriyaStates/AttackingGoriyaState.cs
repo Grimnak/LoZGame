@@ -2,115 +2,45 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
 
-    public class AttackingGoriyaState : IEnemyState
+    public class AttackingGoriyaState : GoriyaEssentials, IEnemyState
     {
-        private readonly Goriya goriya;
-        private readonly ISprite sprite;
-        private readonly IProjectile boomerangSprite;
-        private int lifeTime = 0;
-        private int directionChange;
-        private RandomStateGenerator randomStateGenerator;
-
-        public AttackingGoriyaState(Goriya goriya)
+        public AttackingGoriyaState(IEnemy enemy)
         {
-            this.goriya = goriya;
-            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange * 2;
-            this.goriya.FacePlayer();
-            switch (goriya.Physics.CurrentDirection)
+            this.Enemy = enemy;
+            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange * 2;
+            FacePlayer();
+            this.Sprite = this.Enemy.CreateCorrectSprite();
+            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
+            LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Boomerang, this.Enemy.Physics);
+        }
+
+        private void FacePlayer()
+        {
+            Point playerLoc = LoZGame.Instance.Players[0].Physics.Bounds.Center - this.Enemy.Physics.Bounds.Center;
+            if (Math.Abs(playerLoc.X) > Math.Abs(playerLoc.Y))
             {
-                case Physics.Direction.West:
-                    this.sprite = EnemySpriteFactory.Instance.CreateLeftMovingGoriyaSprite();
-                    break;
-
-                case Physics.Direction.East:
-                    this.sprite = EnemySpriteFactory.Instance.CreateRightMovingGoriyaSprite();
-                    break;
-
-                case Physics.Direction.North:
-                    this.sprite = EnemySpriteFactory.Instance.CreateUpMovingGoriyaSprite();
-                    break;
-
-                case Physics.Direction.South:
-                    this.sprite = EnemySpriteFactory.Instance.CreateDownMovingGoriyaSprite();
-                    break;
-
-                default:
-                    break;
+                if (playerLoc.X < 0)
+                {
+                    this.Enemy.Physics.CurrentDirection = Physics.Direction.West;
+                }
+                else
+                {
+                    this.Enemy.Physics.CurrentDirection = Physics.Direction.East;
+                }
             }
-            this.goriya.Physics.MovementVelocity = Vector2.Zero;
-            randomStateGenerator = new RandomStateGenerator(this.goriya, 1, 6);
-            this.goriya.EntityManager.EnemyProjectileManager.Add(LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Boomerang, this.goriya.Physics);
-        }
-
-        public void MoveLeft()
-        {
-            this.goriya.CurrentState = new LeftMovingGoriyaState(this.goriya);
-        }
-
-        public void MoveRight()
-        {
-            this.goriya.CurrentState = new RightMovingGoriyaState(this.goriya);
-        }
-
-        public void MoveUp()
-        {
-            this.goriya.CurrentState = new UpMovingGoriyaState(this.goriya);
-        }
-
-        public void MoveDown()
-        {
-            this.goriya.CurrentState = new DownMovingGoriyaState(this.goriya);
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Attack()
-        {
-        }
-
-        public void Stop()
-        {
-        }
-
-        public void Die()
-        {
-            this.goriya.CurrentState = new DeadGoriyaState(this.goriya);
-        }
-
-        public void Stun(int stunTime)
-        {
-            this.goriya.CurrentState = new StunnedGoriyaState(this.goriya, this, stunTime);
-        }
-
-        public void Update()
-        {
-            this.lifeTime++;
-            if (this.lifeTime > this.directionChange)
+            else
             {
-                randomStateGenerator.Update();
-                this.lifeTime = 0;
+                if (playerLoc.Y < 0)
+                {
+                    this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
+                }
+                else
+                {
+                    this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
+                }
             }
-            this.sprite.Update();
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.goriya.Physics.Location, this.goriya.CurrentTint, this.goriya.Physics.Depth);
         }
     }
 }

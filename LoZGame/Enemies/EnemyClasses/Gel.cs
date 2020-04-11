@@ -8,6 +8,8 @@
 
         public Gel(Vector2 location)
         {
+            this.RandomStateGenerator = new RandomStateGenerator(this);
+            this.States = GameData.Instance.DefaultEnemyStates.GelStatelist;
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.GelHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.GelMass;
@@ -19,8 +21,6 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedData.GelSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.CurrentState = new IdleGelState(this);
-
-
         }
 
         public override void Stun(int stunTime)
@@ -35,9 +35,9 @@
             this.Physics.SetDepth();
         }
 
-        public ISprite CreateCorrectSprite()
+        public override ISprite CreateCorrectSprite()
         {
-            return ItemSpriteFactory.Instance.Fairy();
+            return EnemySpriteFactory.Instance.CreateGelSprite();
         }
     }
 }

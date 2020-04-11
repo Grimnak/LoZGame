@@ -3,90 +3,36 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class AttackingDragonState : IEnemyState
+    public class AttackingDragonState : DragonEssentials, IEnemyState
     {
-        private readonly Dragon dragon;
-        private readonly ISprite sprite;
-        private int lifeTime = 0;
-        private readonly int directionChange;
-        private RandomStateGenerator randomStateGenerator;
+        private const float FireballSpeed = 3.5f;
+        private const float FireballSpread = MathHelper.PiOver4 / 2;
+        private const int NumberFireballs = 3;
 
-        public AttackingDragonState(Dragon dragon)
+        public AttackingDragonState(IEnemy enemy)
         {
-            this.dragon = dragon;
-            this.sprite = EnemySpriteFactory.Instance.CreateDragonSprite();
-            this.dragon.CurrentState = this;
-            this.directionChange = GameData.Instance.EnemySpeedData.DirectionChange;
-            randomStateGenerator = new RandomStateGenerator(this.dragon, 0, 4);
-            this.dragon.ShootFireballs();
+            this.Enemy = enemy;
+            this.Sprite = this.Enemy.CreateCorrectSprite();
+            this.Enemy.CurrentState = this;
+            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange;
+            this.ShootFireballs();
         }
 
-        public void MoveUp()
+        private void ShootFireballs()
         {
-        }
+            Vector2 velocityVector = this.UnitVectorToPlayer(this.Enemy.Physics.Bounds.Location.ToVector2());
 
-        public void MoveDown()
-        {
-        }
-
-        public void MoveLeft()
-        {
-            this.dragon.CurrentState = new LeftMovingDragonState(this.dragon);
-        }
-
-        public void MoveRight()
-        {
-            this.dragon.CurrentState = new RightMovingDragonState(this.dragon);
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Stop()
-        {
-            this.dragon.CurrentState = new IdleDragonState(this.dragon);
-        }
-
-        public void Attack()
-        {
-        }
-
-        public void Die()
-        {
-            this.dragon.CurrentState = new DeadDragonState(this.dragon);
-        }
-
-        public void Stun(int stunTime)
-        {
-        }
-
-        public void Update()
-        {
-            this.lifeTime++;
-            if (this.lifeTime > this.directionChange)
+            velocityVector *= FireballSpeed;
+            for (int i = 0; i < NumberFireballs; i++)
             {
-                randomStateGenerator.Update();
-                this.lifeTime = 0;
+                float rotation = ((-1 * (float)(NumberFireballs - 1) / 2.0f) * FireballSpread) + (i * FireballSpread);
+                Vector2 rotatedVelocity = this.RotateVector(velocityVector, rotation);
+                Physics fireballPhysics = new Physics(this.Enemy.Physics.Bounds.Location.ToVector2())
+                {
+                    MovementVelocity = new Vector2(rotatedVelocity.X, rotatedVelocity.Y)
+                };
+                LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Fireball, fireballPhysics);
             }
-            this.sprite.Update();
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.dragon.Physics.Location, this.dragon.CurrentTint, this.dragon.Physics.Depth);
         }
     }
 }
