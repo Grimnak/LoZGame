@@ -15,12 +15,12 @@
         private SpriteData inventoryBackgroundData;
         private Texture2D fullHeartSpriteSheet;
         private SpriteData fullHeartData;
-        // private Texture2D threeQuarterHeartSpriteSheet;
-        // private SpriteData threeQuarterHeartData;
+        private Texture2D threeQuarterHeartSpriteSheet;
+        private SpriteData threeQuarterHeartData;
         private Texture2D halfHeartSpriteSheet;
         private SpriteData halfHeartData;
-        // private Texture2D quarterHeartSpriteSheet;
-        // private SpriteData quarterHeartData;
+        private Texture2D quarterHeartSpriteSheet;
+        private SpriteData quarterHeartData;
         private Texture2D emptyHeartSpriteSheet;
         private SpriteData emptyHeartData;
 
@@ -36,12 +36,12 @@
             this.inventoryBackgroundData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), inventoryBackgroundSpriteSheet, 1, 1);
             this.fullHeartSpriteSheet = content.Load<Texture2D>("HUDFullHeart");
             this.fullHeartData = new SpriteData(heartSize, fullHeartSpriteSheet, 1, 1);
-            // this.threeQuarterHeartSpriteSheet = content.Load<Texture2D>("");
-            // this.threeQuarterHeartData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), threeQuarterHeartSpriteSheet, 1, 1);
+            this.threeQuarterHeartSpriteSheet = content.Load<Texture2D>("HUDThreeQuarterHeart");
+            this.threeQuarterHeartData = new SpriteData(heartSize, threeQuarterHeartSpriteSheet, 1, 1);
             this.halfHeartSpriteSheet = content.Load<Texture2D>("HUDHalfHeart");
             this.halfHeartData = new SpriteData(heartSize, halfHeartSpriteSheet, 1, 1);
-            // this.quarterHeartSpriteSheet = content.Load<Texture2D>("");
-            // this.quarterHeartData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), quarterHeartSpriteSheet, 1, 1);
+            this.quarterHeartSpriteSheet = content.Load<Texture2D>("HUDQuarterHeart");
+            this.quarterHeartData = new SpriteData(heartSize, quarterHeartSpriteSheet, 1, 1);
             this.emptyHeartSpriteSheet = content.Load<Texture2D>("HUDEmptyHeart");
             this.emptyHeartData = new SpriteData(heartSize, emptyHeartSpriteSheet, 1, 1);
         }
@@ -58,7 +58,7 @@
 
         public ISprite CreateThreeQuarterHeart()
         {
-            return new ObjectSprite(this.halfHeartSpriteSheet, this.halfHeartData);
+            return new ObjectSprite(this.threeQuarterHeartSpriteSheet, this.threeQuarterHeartData);
         }
 
         public ISprite CreateHalfHeart()
@@ -68,7 +68,7 @@
 
         public ISprite CreateQuarterHeart()
         {
-            return new ObjectSprite(this.halfHeartSpriteSheet, this.halfHeartData);
+            return new ObjectSprite(this.quarterHeartSpriteSheet, this.quarterHeartData);
         }
 
         public ISprite CreateEmptyHeart()
