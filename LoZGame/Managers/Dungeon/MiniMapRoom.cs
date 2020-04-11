@@ -10,23 +10,24 @@ namespace LoZClone
 {
     public class MiniMapRoom
     {
-        private static readonly Color BackgroundColor = Color.SandyBrown;
-        private static readonly Color RoomColor = Color.SaddleBrown;
-        private ISprite sprite;
+        private readonly Color BackgroundColor = Color.SandyBrown;
+        private readonly Color RoomColor = Color.SaddleBrown;
+        private Rectangle sourceRectangle = new Rectangle(Point.Zero, new Point(1));
+        private Texture2D sprite;
         private bool exists;
         private bool visited;
         private Vector2 location;
 
         public MiniMapRoom(int x, int y, List<MiniMap.DoorLocation> doors)
         {
-            this.visited = false;
+            this.visited = true;
             this.location = new Vector2(x,y);
             CreateSprite();
         }
 
         private void CreateSprite()
         {
-            Texture2D roomSprite = new Texture2D(LoZGame.Instance.GraphicsDevice, 5, 5, false, SurfaceFormat.Color);
+            this.sprite = new Texture2D(LoZGame.Instance.GraphicsDevice, 5, 5, false, SurfaceFormat.Color);
         }
 
         public void Explore()
@@ -38,7 +39,9 @@ namespace LoZClone
         {
             if (this.visited)
             {
-                this.sprite.Draw(this.location, LoZGame.Instance.DefaultTint, 1.0f);
+                //Rectangle drawLocation = new Rectangle(new Point(startLoc.X + ((int)this.location.X * roomSize.X), startLoc.Y + ((int)this.location.Y * roomSize.Y)), new Point(roomSize.X, roomSize.Y));
+                Rectangle drawLocation = new Rectangle(400, 200, 50, 50);
+                LoZGame.Instance.SpriteBatch.Draw(this.sprite, drawLocation, this.sourceRectangle, this.RoomColor, 0.0f, Vector2.Zero, SpriteEffects.None, 1.0f);
             }
         }
     }

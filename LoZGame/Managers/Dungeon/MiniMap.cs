@@ -6,7 +6,7 @@
 
     public class MiniMap
     {
-        private List<List<MiniMapRoom>> dungeonLayout;
+        private List<MiniMapRoom> dungeonLayout;
         private Vector2 mapSize = new Vector2(400, 240);
         private Vector2 roomSize;
         private Point location;
@@ -23,7 +23,8 @@
 
         public MiniMap()
         {
-            this.dungeonLayout = new List<List<MiniMapRoom>>();
+            this.location = new Point(400, 0);
+            /*this.dungeonLayout = new List<List<MiniMapRoom>>();
             switch (LoZGame.Instance.Dungeon.DungeonNumber)
             {
                 case 1:
@@ -34,17 +35,14 @@
                     break;
                 default:
                     break;
-            }
+            }*/
         }
 
         public void Draw()
         {
             for (int i = 0; i < dungeonLayout.Count; i++)
             {
-                for (int j = 0; j < dungeonLayout[i].Count; j++)
-                {
-                    this.dungeonLayout[i][j].Draw(this.location, this.roomSize.ToPoint());
-                }
+                this.dungeonLayout[i].Draw(this.location, this.roomSize.ToPoint());
             }
         }
 
@@ -79,20 +77,24 @@
 
         public void LoadMap(List<List<Room>> dungeon, int maxX, int maxY)
         {
-            this.dungeonLayout.Clear();
+            Console.WriteLine("Started Loading Map with Room Count (" + maxX + ", " + maxY + ")");
+            this.dungeonLayout = new List<MiniMapRoom>();
             int roomY = 0, roomX = 0;
             while (roomY < maxY)
             {
                 while (roomX < maxX)
                 {
-                    if (dungeon[roomX][roomY].Exists)
+                    if (dungeon[roomY][roomX].Exists)
                     {
-                        List<MiniMap.DoorLocation> doors = FetchDoors(dungeon[roomX][roomY]);
-                        this.dungeonLayout[roomX][roomY] = new MiniMapRoom(roomX, roomY, doors);
+                        List<MiniMap.DoorLocation> doors = FetchDoors(dungeon[roomY][roomX]);
+                        this.dungeonLayout.Add(new MiniMapRoom(roomX, roomY, doors));
+                        Console.WriteLine("Loaded Room: (" + roomX + ",  " + roomY + ")");
                     }
+                    roomX++;
                 }
+                roomY++;
             }
-            this.roomSize = this.mapSize / Math.Max(roomX, roomY);
+            this.roomSize = this.mapSize / Math.Max(maxX, maxY);
         }
 
         // Note to grader, we are aware this is some smelly code, but it wasn't apparent to us how to do it any cleaner.

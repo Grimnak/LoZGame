@@ -17,6 +17,9 @@
         private IPlayer player;
         private string currentDungeonFile;
         private int dungeonNumber;
+        private MiniMap miniMap;
+
+        public MiniMap MiniMap => miniMap;
 
         public IPlayer Player
         {
@@ -57,6 +60,8 @@
 
             this.dungeonLayout = XMLHandler.Parse(this.currentDungeonFile);
 
+            this.miniMap = new MiniMap();
+            this.miniMap.LoadMap(this.dungeonLayout, this.maxX, this.maxY);
             this.LoadNewRoom();
         }
 
