@@ -123,6 +123,7 @@
     <Compile Include="Enemies\EnemyStates\StalfosStates\StalfosEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\WallMasterEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\ZolEssentials.cs" />
+    <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
     <Compile Include="Util\DataConstants\DefaultEnemyStates.cs" />
     <Compile Include="Util\InventoryComponents.cs" />

@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
-    public class InventoryManager
+    using System.Collections.Generic;
+    public partial class InventoryManager
     {
         public enum ItemType
         {
@@ -10,14 +11,26 @@
             Boomerang,
             MagicBoomerang,
             RedCandle,
-            BlueCandle
+            BlueCandle,
+            Potion
         }
 
         private static readonly int maxBombs = 8;
+        private static readonly int maxSelectionX = 4;
+        private static readonly int maxSelectionY = 2;
 
         private IPlayer player;
 
         private ItemType selectedItem;
+
+        private List<List<ItemType>> selectionArray = new List<List<ItemType>>()
+        {
+            new List<ItemType>{ ItemType.Bomb, ItemType.Boomerang, ItemType.Arrow, ItemType.RedCandle},
+            new List<ItemType>{ ItemType.Potion, ItemType.MagicBoomerang, ItemType.SilverArrow, ItemType.BlueCandle}
+        };
+
+        private int selectionX;
+        private int selectionY;
 
         private int numBombs;
         private int numRupees;
@@ -32,16 +45,18 @@
         public InventoryManager(IPlayer player)
         {
             this.player = player;
+            this.selectionX = 0;
+            this.selectionY = 0;
 
             this.numBombs = 4;
             this.numKeys = 0;
             this.numRupees = 5;
-            this.hasBoomerang = false;
-            this.hasMagicBoomerang = false;
-            this.hasBow = false;
-            this.hasSilverArrow = false;
-            this.hasRedFlame = false;
-            this.hasBlueFlame = false;
+            this.hasBoomerang = LoZGame.cheats;
+            this.hasMagicBoomerang = LoZGame.cheats;
+            this.hasBow = LoZGame.cheats;
+            this.hasSilverArrow = LoZGame.cheats;
+            this.hasRedFlame = LoZGame.cheats;
+            this.hasBlueFlame = LoZGame.cheats;
 
             this.selectedItem = ItemType.Bomb;
         }
@@ -76,106 +91,46 @@
             }
         }
 
-        public void GainRupees(int amount)
-        {
-            this.numRupees += amount;
-        }
-
-        public void GainBombs()
-        {
-            int temp = this.numBombs + 2;
-            if (temp > maxBombs)
-            {
-                numBombs = maxBombs;
-            }
-            else
-            {
-                numBombs = temp;
-            }
-        }
-
-        public void GainKey()
-        {
-            this.numKeys++;
-        }
-
         public bool HasKey()
         {
             return this.numKeys > 0;
         }
 
-        public void UseKey()
+        public void MoveSelectionDown()
         {
-            if (this.numKeys > 0)
+            if (this.selectionY + 1 < maxSelectionY)
             {
-                this.numKeys--;
+                this.selectionY++;
             }
         }
 
-        public void UseBomb()
+        public void MoveSelectionUp()
         {
-            if (this.numBombs > 0)
+            if (this.selectionY > 0)
             {
-                this.numBombs--;
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Bomb, this.player);
+                this.selectionY--;
             }
         }
 
-        public void UseArrow()
+        public void MoveSelectionLeft()
         {
-            if (this.numRupees > 0 && this.hasBow)
+            if (this.selectionX > 0)
             {
-                this.numRupees--;
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Arrow, this.player);
+                this.selectionX--;
             }
         }
 
-        public void UseBoomerang()
+        public void MoveSelectionRight()
         {
-            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.BoomerangOut && this.hasBoomerang)
+            if (this.selectionX + 1 < maxSelectionX)
             {
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Boomerang, this.player);
+                this.selectionX++;
             }
         }
 
-        public void UseMagicBoomerang()
+        public void SelectItem()
         {
-            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.BoomerangOut && this.hasMagicBoomerang)
-            {
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.MagicBoomerang, this.player);
-            }
-        }
-
-        public void UseSilverArrow()
-        {
-            if (this.numRupees > 0 && this.hasBow && this.hasSilverArrow)
-            {
-                this.numRupees--;
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.SilverArrow, this.player);
-            }
-        }
-
-        public void UseRedCandle()
-        {
-            if (this.hasRedFlame)
-            {
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.RedCandle, this.player);
-            }
-        }
-
-        public void UseBlueCandle()
-        {
-            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.FlameInUse && this.HasBlueFlame)
-            {
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.BlueCandle, this.player);
-            }
+            this.selectedItem = selectionArray[this.selectionY][this.selectionX];
         }
 
         public ItemType SelectedItem { set { this.selectedItem = value; } }
