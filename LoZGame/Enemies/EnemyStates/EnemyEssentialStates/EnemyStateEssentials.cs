@@ -39,7 +39,10 @@
 
         public void FavorPlayer(int weight)
         {
-            this.Enemy.States.Clear();
+            this.Enemy.States.Remove(StateType.MoveEast);
+            this.Enemy.States.Remove(StateType.MoveNorth);
+            this.Enemy.States.Remove(StateType.MoveWest);
+            this.Enemy.States.Remove(StateType.MoveSouth);
             Vector2 toPlayer = UnitVectorToPlayer(this.Enemy.Physics.Bounds.Center.ToVector2());
             if (toPlayer.X > 1 - MathHelper.PiOver4)
             {

@@ -5,38 +5,39 @@
 
     public class AttackingDodongoState : DodongoEssentals, IEnemyState
     {
-        private readonly IEnemyState oldState;
-        private Vector2 oldVelocity;
-        private int attackDuration;
+        private readonly IEnemy enemy;
+        private readonly ISprite sprite;
+        private RandomStateGenerator randomStateGenerator;
 
-        public AttackingDodongoState(IEnemy enemy, IEnemyState oldState)
+        public AttackingDodongoState(IEnemy enemy)
         {
             this.Enemy = enemy;
-            this.oldState = oldState;
-            this.oldVelocity = this.Enemy.Physics.MovementVelocity;
+            this.Enemy.MoveSpeed = GameData.Instance.EnemySpeedData.DodongoAttackSpeed;
+            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange * 2;
             this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Sprite.SetFrame(GameData.Instance.EnemySpeedData.DodongoMaxFrame);
-            attackDuration = GameData.Instance.EnemySpeedData.DirectionChange;
             this.Enemy.CurrentState = this;
-            this.Enemy.Physics.MovementVelocity = new Vector2(0, this.Enemy.MoveSpeed);
-            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
+            GetMoveSpeed();
         }
 
-        public override void Update()
+        private void GetMoveSpeed()
         {
-            if (Sprite.CurrentFrame < GameData.Instance.EnemySpeedData.DodongoMaxFrame - 1)
+            switch (this.Enemy.Physics.CurrentDirection)
             {
-                Sprite.Update();
-            }
-            else
-            {
-                attackDuration--;
-                if (attackDuration <= 0)
-                {
-                    this.Enemy.Physics.MovementVelocity = this.oldVelocity;
-                    this.Enemy.CurrentState = this.oldState;
-                    this.Enemy.TakeDamage(GameData.Instance.ProjectileDamageData.BombDodongoDamage);
-                }
+                case Physics.Direction.North:
+                    this.Enemy.Physics.MovementVelocity = new Vector2(0, -this.Enemy.MoveSpeed);
+                    break;
+                case Physics.Direction.South:
+                    this.Enemy.Physics.MovementVelocity = new Vector2(0, this.Enemy.MoveSpeed);
+                    break;
+                case Physics.Direction.East:
+                    this.Enemy.Physics.MovementVelocity = new Vector2(this.Enemy.MoveSpeed, 0);
+                    break;
+                case Physics.Direction.West:
+                    this.Enemy.Physics.MovementVelocity = new Vector2(-this.Enemy.MoveSpeed, 0);
+                    break;
+                default:
+                    this.Enemy.UpdateState();
+                    break;
             }
         }
     }

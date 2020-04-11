@@ -94,6 +94,7 @@
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeSegment.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeHead.cs" />
+    <Compile Include="Enemies\EnemyStates\DodongoStates\StunnedDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\DodongoEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\DragonStates\DragonEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateEssentials.cs" />

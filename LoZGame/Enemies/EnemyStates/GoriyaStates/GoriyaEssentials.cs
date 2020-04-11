@@ -63,5 +63,14 @@
         {
             this.Enemy.CurrentState = new StunnedGoriyaState(this.Enemy, this, stunTime);
         }
+
+        public override void Update()
+        {
+            if (this.Lifetime == this.DirectionChange)
+            {
+                FavorPlayer(2);
+            }
+            base.Update();
+        }
     }
 }

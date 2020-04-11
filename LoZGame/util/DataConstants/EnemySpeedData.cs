@@ -11,7 +11,7 @@ namespace LoZClone
         private const float keeseAccel = .025f;
         private const float keeseAccelMax = 5.0f;
         private const float ropeSpd = 2.5f;
-        private const float ropeAttackSpd = 4.0f;
+        private const float ropeAttackSpd = 3.5f;
         private const float gelSpd = 3f;
         private const float zolSpd = 4;
         private const float spikeCrossSpd = 3;
@@ -19,6 +19,7 @@ namespace LoZClone
         private const float wallMasterAttackSpd = -1;
         private const float dragonSpd = 1.5f;
         private const float dodongoSpd = 2;
+        private const float dodongoAttackSpd = 4.5f;
         private const float goriyaSpd = 1;
         private const float oldManSpd = 0;
         private const float merchantSpd = 0;
@@ -66,6 +67,8 @@ namespace LoZClone
 
         public float FireSnakeSpeed => fireSnakeSspd;
 
+        public float DodongoAttackSpeed => dodongoAttackSpd;
+
         public int DirectionChange => directionChange;
 
         public int DeathTimerMax => deathTimerMax;
@@ -75,7 +78,5 @@ namespace LoZClone
         public int KeeseIdleMax => keeseIdleMax;
 
         public int ZolMaxWait => zolMaxWait;
-
-
     }
 }

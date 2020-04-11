@@ -92,6 +92,10 @@
 
         public override void Update()
         {
+            if (this.Lifetime == this.DirectionChange)
+            {
+                FavorPlayer(3);
+            }
             this.DecideToMove();
             if (this.moving)
             {

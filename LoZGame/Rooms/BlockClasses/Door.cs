@@ -150,6 +150,7 @@
 
         public void Update()
         {
+            this.Physics.SetDepth();
             this.state.Update();
         }
 

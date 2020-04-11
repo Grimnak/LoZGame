@@ -23,7 +23,9 @@
             this.MoveSpeed = GameData.Instance.PlayerData.PlayerSpeed;
             this.DamageTimer = 0;
             this.State = new IdleState(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y - 8, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight - 8);
+            this.Physics.BoundsOffset = new Vector2(0, -8);
+            this.Physics.SetLocation();
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
