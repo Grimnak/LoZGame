@@ -29,9 +29,6 @@
         {
             for (int i = 0; i < dungeonLayout.Count; i++)
             {
-                Console.WriteLine("Tried drawing box");
-                Console.WriteLine(dungeonLayout[i]);
-                Console.WriteLine(this.location);
                 this.dungeonLayout[i].Draw(location.ToPoint(), this.roomSize.ToPoint());
             }
         }

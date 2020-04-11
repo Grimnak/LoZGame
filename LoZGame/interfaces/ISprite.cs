@@ -47,5 +47,15 @@
         /// <param name="effect">SpriteEffects to apply to the sprite before drawing</param>
         /// <param name="depth">Depth to draw the sprite at</param>
         void Draw(Vector2 location, Color tint, float rotation, SpriteEffects effect, float depth);
+
+        /// <summary>
+        /// Draws the sprite inside a destination rectangle.
+        /// </summary>
+        /// <param name="location">Rectangle to draw the sprite.</param>
+        /// <param name="tint">Tint of the sprite.</param>
+        /// <param name="rotation">rotation of the sprite in radians</param>
+        /// <param name="effect">SpriteEffects to apply to the sprite before drawing</param>
+        /// <param name="depth">Depth to draw the sprite at</param>
+        void Draw(Rectangle location, Color tint, float rotation, SpriteEffects effect, float depth);
     }
 }

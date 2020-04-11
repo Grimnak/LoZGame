@@ -9,12 +9,12 @@
         public FollowFireSnakeState(IEnemy fireSnake)
         {
             this.Enemy = fireSnake;
-            this.Sprite = ProjectileSpriteFactory.Instance.Fireball();
+            this.Sprite = this.Enemy.CreateCorrectSprite();
+            this.Sprite.SetFrame(2);
         }
 
         public override void Update()
         {
-            this.Sprite.Update();
         }
     }
 }

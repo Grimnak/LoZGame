@@ -47,6 +47,9 @@
         private static readonly int zolWidth = 40;
         private static readonly int zolHeight = 50;
 
+        private static readonly int fireSnakeWidth = 28;
+        private static readonly int fireSnakeHeight = 35;
+
         public static int GetEnemyWidth(IEnemy enemy)
         {
             if (enemy is Dodongo)
@@ -97,6 +100,10 @@
             else if (enemy is Zol)
             {
                 return zolWidth;
+            }
+            else if (enemy is FireSnakeHead || enemy is FireSnakeSegment)
+            {
+                return fireSnakeWidth;
             }
             else
             {
@@ -153,6 +160,10 @@
             else if (enemy is Zol)
             {
                 return zolHeight;
+            }
+            else if (enemy is FireSnakeHead || enemy is FireSnakeSegment)
+            {
+                return fireSnakeHeight;
             }
             else
             {
@@ -214,6 +225,9 @@
         private SpriteData attackingLeftDodongoData;
         private SpriteData attackingRightDodongoData;
 
+        private Texture2D fireSnake;
+        private SpriteData fireSnakeData;
+
         private Texture2D oldMan;
         private SpriteData oldManData;
         private Texture2D merchant;
@@ -274,6 +288,8 @@
             this.leftDodongo = content.Load<Texture2D>("dodongoLeft");
             this.rightDodongo = content.Load<Texture2D>("dodongoRight");
 
+            this.fireSnake = content.Load<Texture2D>("fireball");
+
             this.oldMan = content.Load<Texture2D>("oldMan");
             this.merchant = content.Load<Texture2D>("merchant");
 
@@ -302,6 +318,7 @@
             this.upDodongoData = new SpriteData(new Vector2(dodongoWidthUp, dodongoHeight), upDodongo, 1, 3);
             this.leftDodongoData = new SpriteData(new Vector2(dodongoWidthLeftRight, dodongoHeight), leftDodongo, 1, 3);
             this.rightDodongoData = new SpriteData(new Vector2(dodongoWidthLeftRight, dodongoHeight), rightDodongo, 1, 3);
+            this.fireSnakeData = new SpriteData(new Vector2(fireSnakeWidth, fireSnakeHeight), fireSnake, 1, 4);
             this.oldManData = new SpriteData(new Vector2(oldManWidth, oldManHeight), oldMan, 1, 1);
             this.merchantData = new SpriteData(new Vector2(merchantWidth, merchantHeight), merchant, 1, 1);
             this.spawnEnemyData = new SpriteData(new Vector2(40, 40), spawnEnemy, 3, 1);
@@ -312,6 +329,12 @@
         public ISprite CreateStalfosSprite()
         {
             return new ObjectSprite(this.stalfos, this.stalfosData);
+        }
+        
+        // Firesnake sprites
+        public ISprite CreateFireSnakeSprite()
+        {
+            return new ObjectSprite(this.fireSnake, this.fireSnakeData);
         }
 
         // Goriya Sprites

@@ -104,7 +104,14 @@
         /// </summary>
         public void CorrectProjectile()
         {
-            this.Physics.BoundsOffset = new Vector2((this.Physics.BoundsOffset.X * 5) / 8, this.Physics.BoundsOffset.Y * 2);
+            if (this.parent is WoodenSwordProjectile)
+            {
+                this.Physics.BoundsOffset = new Vector2((this.Physics.BoundsOffset.X * 5) / 8, this.Physics.BoundsOffset.Y + 4);
+            }
+            else 
+            {
+                this.Physics.BoundsOffset = new Vector2((this.Physics.BoundsOffset.X * 5) / 8, this.Physics.BoundsOffset.Y * 2);
+            }
             this.Physics.SetLocation();
         }
 

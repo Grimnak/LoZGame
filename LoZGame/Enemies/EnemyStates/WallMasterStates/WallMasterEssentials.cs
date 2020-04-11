@@ -1,8 +1,9 @@
 ﻿namespace LoZClone
 {
+    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-
+    using static RandomStateGenerator;
     public partial class WallMasterEssentials : EnemyStateEssentials, IEnemyState
     {
         public void MoveLeft()
@@ -58,6 +59,15 @@
         public virtual void Stun(int stunTime)
         {
             this.Enemy.CurrentState = new StunnedWallMasterState(this.Enemy, this, stunTime);
+        }
+
+        public override void Update()
+        {
+            if (this.Lifetime == this.DirectionChange)
+            {
+                FavorPlayer(3);
+            }
+            base.Update();
         }
     }
 }

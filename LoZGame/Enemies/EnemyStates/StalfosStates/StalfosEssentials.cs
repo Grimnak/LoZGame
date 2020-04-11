@@ -58,5 +58,14 @@
         {
             this.Enemy.CurrentState = new StunnedStalfosState(this.Enemy, this, stunTime);
         }
+
+        public override void Update()
+        {
+            if (this.Lifetime == this.DirectionChange)
+            {
+                FavorPlayer(3);
+            }
+            base.Update();
+        }
     }
 }

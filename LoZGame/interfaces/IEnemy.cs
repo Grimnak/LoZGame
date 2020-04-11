@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
     public interface IEnemy : ICollider
@@ -15,6 +16,8 @@
         float MoveSpeed { get; set; }
 
         Color CurrentTint { get; set; }
+        
+        Dictionary<RandomStateGenerator.StateType, int> States { get; set; }
 
         IEnemyState CurrentState { get; set; }
 
