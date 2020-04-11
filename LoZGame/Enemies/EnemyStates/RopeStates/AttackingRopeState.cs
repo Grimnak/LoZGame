@@ -29,13 +29,13 @@
                     this.Enemy.Physics.MovementVelocity = new Vector2(0, -this.Enemy.MoveSpeed);
                     break;
                 case Physics.Direction.South:
-                    this.Enemy.Physics.MovementVelocity = new Vector2(0, -this.Enemy.MoveSpeed);
+                    this.Enemy.Physics.MovementVelocity = new Vector2(0, this.Enemy.MoveSpeed);
                     break;
                 case Physics.Direction.East:
-                    this.Enemy.Physics.MovementVelocity = new Vector2(0, -this.Enemy.MoveSpeed);
+                    this.Enemy.Physics.MovementVelocity = new Vector2(this.Enemy.MoveSpeed, 0);
                     break;
                 case Physics.Direction.West:
-                    this.Enemy.Physics.MovementVelocity = new Vector2(0, -this.Enemy.MoveSpeed);
+                    this.Enemy.Physics.MovementVelocity = new Vector2(-this.Enemy.MoveSpeed, 0);
                     break;
                 default:
                     this.Enemy.UpdateState();

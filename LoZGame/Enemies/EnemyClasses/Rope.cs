@@ -48,6 +48,7 @@
             {
                 return EnemySpriteFactory.Instance.CreateLeftMovingRopeSprite();
             }
+
         }
     }
 }
