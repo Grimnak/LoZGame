@@ -53,10 +53,5 @@
         {
             return new LevelOneMasterSprite(this.levelOneMasterSpriteSheet, new Vector2(LoZGame.Instance.Dungeon.CurrentRoomX, LoZGame.Instance.Dungeon.CurrentRoomY));
         }
-
-        public ISprite CreateInventory()
-        {
-            return new ObjectSprite(this.inventorySpriteSheet, this.inventoryData);
-        }
     }
 }

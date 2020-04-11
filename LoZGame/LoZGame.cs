@@ -131,6 +131,7 @@
             BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
             LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
             ScreenSpriteFactory.Instance.LoadAllTextures(this.Content);
+            InventorySpriteFactory.Instance.LoadAllTextures(this.Content);
             GameData.Instance.LoadAllData();
 
             font = Content.Load<SpriteFont>("Text");
