@@ -35,9 +35,8 @@
             this.player.DamageTimer = 0;
             this.player.CurrentTint = Color.White;
 
+            InventoryComponents.Instance.Reset();
             LoZGame.Instance.Dungeon.Reset();
-
-            // Temporary, will change to title screen state once completed.
             LoZGame.Instance.GameState.TitleScreen();
         }
     }
