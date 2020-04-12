@@ -39,6 +39,11 @@
             {
                 this.dungeonLayout[i].DrawInventory(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), this.inventoryRoomSize.ToPoint(), Color.Black);
                 this.dungeonLayout[i].DrawMiniMap(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), this.miniMapRoomSize.ToPoint(), dungeon.MapColor);
+                if (this.dungeonLayout[i].Location == new Point(this.dungeon.CurrentRoomX, this.dungeon.CurrentRoomY))
+                {
+                    this.dungeonLayout[i].DrawDot(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), this.inventoryRoomSize.ToPoint(), Color.Yellow);
+                    this.dungeonLayout[i].DrawDot(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), this.miniMapRoomSize.ToPoint(), Color.LightYellow);
+                }
             }
         }
 
