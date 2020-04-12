@@ -89,6 +89,7 @@ namespace LoZClone
                 drawLocation.X += (roomSize.X / 2) - (DotSize / 2) + 2;
                 drawLocation.Y += (roomSize.Y / 2) - (DotSize / 2) + 2;
                 LoZGame.Instance.SpriteBatch.Draw(this.MapSprite, drawLocation, this.MapSourceRectangle, color, 0.0f, Vector2.Zero, SpriteEffects.None, DotLayer);
+                // add compass functionality here
             }
             if (this.lifetime >= BlinkRate * 2)
             {
