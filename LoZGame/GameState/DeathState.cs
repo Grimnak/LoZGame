@@ -80,7 +80,6 @@
         {
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             InventoryComponents.Instance.DrawCorrectBackground();
-            InventoryComponents.Instance.DrawInventoryElements();
             LoZGame.Instance.GameObjects.Draw();
 
             if (this.deathTime < deathTimeMax)
