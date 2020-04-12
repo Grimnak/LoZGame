@@ -14,6 +14,7 @@
         private Vector2 InventoryMapOffset = new Vector2(320, 263);
         private Vector2 mapIndicatorOffset = new Vector2(150, 313);
         private Vector2 compassIndicatorOffset = new Vector2(130, 420);
+        private Vector2 selectionOffset = new Vector2(500, 80);
         private Vector2 MiniMapOffset = new Vector2(45, 46 + LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset);
         private Vector2 heartOffset = new Vector2(550, 105 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
         private Vector2 rupeeCountOffset = new Vector2(305, 58 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
@@ -68,6 +69,53 @@
         public ISprite CreateCompassSprite()
         {
             return InventorySpriteFactory.Instance.CreateInventoryCompass();
+        }
+
+        public ISprite CreateBombSprite()
+        {
+            return InventorySpriteFactory.Instance.CreateInventoryBomb();
+        }
+
+        public ISprite CreateBoomerangSprite()
+        {
+            return InventorySpriteFactory.Instance.CreateInventoryBoomerang();
+        }
+
+        public ISprite CreateArrowSprite()
+        {
+            return InventorySpriteFactory.Instance.CreateInventoryArrow();
+        }
+
+        public ISprite CreateBlueCandleSprite()
+        {
+            return InventorySpriteFactory.Instance.CreateInventoryBlueCandle();
+        }
+
+        public ISprite CreateHealthPotionSprite()
+        {
+            if (LoZGame.Instance.Players[0].Inventory.BluePotions > 0)
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryBlueHealthPotion();
+            }
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryRedHealthPotion();
+            }
+        }
+
+        public ISprite CreateMagicBoomerangSprite()
+        {
+            return InventorySpriteFactory.Instance.CreateInventoryMagicBoomerang();
+        }
+
+        public ISprite CreateSilverArrowSprite()
+        {
+            return InventorySpriteFactory.Instance.CreateInventorySilverArrow();
+        }
+
+        public ISprite CreateRedCandleSprite()
+        {
+            return InventorySpriteFactory.Instance.CreateInventoryRedCandle();
         }
     }
 }

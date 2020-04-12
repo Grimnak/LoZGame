@@ -128,9 +128,7 @@
 
             // Ensure inventory objects draw above the game objects while transitioning.
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-
             InventoryComponents.Instance.DrawInventoryElements();
-
             LoZGame.Instance.SpriteBatch.End();
         }
 
