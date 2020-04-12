@@ -6,16 +6,19 @@
 
     public class InventorySpriteFactory
     {
-        private readonly int DRAWSCALE = 1;
+        private readonly Vector2 selectionBoxSize = new Vector2(50, 50);
         private readonly Vector2 heartSize = new Vector2(24, 24);
         private readonly Vector2 mapSize = new Vector2(30, 50);
         private readonly Vector2 compassSize = new Vector2(60, 60);
+        private readonly Vector2 bombSize = new Vector2(40, 40);
+        private readonly Vector2 boomerangSize = new Vector2(40, 40);
+        private readonly Vector2 arrowSize = new Vector2(40, 40);
+        private readonly Vector2 candleSize = new Vector2(40, 40);
+        private readonly Vector2 healthPotionSize = new Vector2(40, 40);
+
+        public Vector2 SelectionBoxSize { get { return selectionBoxSize; } }
 
         public Vector2 HeartSize { get { return heartSize; } }
-
-        public Vector2 MapSize { get { return mapSize; } }
-
-        public Vector2 CompassSize { get { return compassSize; } }
 
         private Texture2D inventoryBackgroundSpriteSheet;
         private SpriteData inventoryBackgroundData;
@@ -33,12 +36,28 @@
         private SpriteData mapData;
         private Texture2D compassSpriteSheet;
         private SpriteData compassData;
+        private Texture2D bombSpriteSheet;
+        private SpriteData bombData;
+        private Texture2D boomerangSpriteSheet;
+        private SpriteData boomerangData;
+        private Texture2D arrowSpriteSheet;
+        private SpriteData arrowData;
+        private Texture2D blueCandleSpriteSheet;
+        private SpriteData blueCandleData;
+        private Texture2D redHealthPotionSpriteSheet;
+        private SpriteData redHealthPotionData;
+        private Texture2D blueHealthPotionSpriteSheet;
+        private SpriteData blueHealthPotionData;
+        private Texture2D magicBoomerangSpriteSheet;
+        private SpriteData magicBoomerangData;
+        private Texture2D silverArrowSpriteSheet;
+        private SpriteData silverArrowData;
+        private Texture2D redCandleSpriteSheet;
+        private SpriteData redCandleData;
 
         private static readonly InventorySpriteFactory InstanceValue = new InventorySpriteFactory();
 
         public static InventorySpriteFactory Instance => InstanceValue;
-
-        public int Scale => DRAWSCALE;
 
         public void LoadAllTextures(ContentManager content)
         {
@@ -58,6 +77,24 @@
             this.mapData = new SpriteData(mapSize, mapSpriteSheet, 1, 1);
             this.compassSpriteSheet = content.Load<Texture2D>("Compass");
             this.compassData = new SpriteData(compassSize, compassSpriteSheet, 1, 1);
+            this.bombSpriteSheet = content.Load<Texture2D>("Bomb");
+            this.bombData = new SpriteData(bombSize, bombSpriteSheet, 1, 1);
+            this.boomerangSpriteSheet = content.Load<Texture2D>("Boomerang");
+            this.boomerangData = new SpriteData(boomerangSize, boomerangSpriteSheet, 1, 1);
+            this.arrowSpriteSheet = content.Load<Texture2D>("WoodenArrow");
+            this.arrowData = new SpriteData(arrowSize, arrowSpriteSheet, 1, 1);
+            this.blueCandleSpriteSheet = content.Load<Texture2D>("BlueCandle");
+            this.blueCandleData = new SpriteData(candleSize, blueCandleSpriteSheet, 1, 1);
+            this.redHealthPotionSpriteSheet = content.Load<Texture2D>("LifePotion");
+            this.redHealthPotionData = new SpriteData(healthPotionSize, redHealthPotionSpriteSheet, 1, 1);
+            this.blueHealthPotionSpriteSheet = content.Load<Texture2D>("SecondPotion");
+            this.blueHealthPotionData = new SpriteData(healthPotionSize, blueHealthPotionSpriteSheet, 1, 1);
+            this.magicBoomerangSpriteSheet = content.Load<Texture2D>("MagicBoomerang");
+            this.magicBoomerangData = new SpriteData(boomerangSize, magicBoomerangSpriteSheet, 1, 1);
+            this.silverArrowSpriteSheet = content.Load<Texture2D>("SilverArrow");
+            this.silverArrowData = new SpriteData(arrowSize, silverArrowSpriteSheet, 1, 1);
+            this.redCandleSpriteSheet = content.Load<Texture2D>("RedCandle");
+            this.redCandleData = new SpriteData(candleSize, redCandleSpriteSheet, 1, 1);
         }
 
         public ISprite CreateInventoryBackground()
@@ -98,6 +135,51 @@
         public ISprite CreateInventoryCompass()
         {
             return new ObjectSprite(this.compassSpriteSheet, this.compassData);
+        }
+
+        public ISprite CreateInventoryBomb()
+        {
+            return new ObjectSprite(this.bombSpriteSheet, this.bombData);
+        }
+
+        public ISprite CreateInventoryBoomerang()
+        {
+            return new ObjectSprite(this.boomerangSpriteSheet, this.boomerangData);
+        }
+
+        public ISprite CreateInventoryArrow()
+        {
+            return new ObjectSprite(this.arrowSpriteSheet, this.arrowData);
+        }
+
+        public ISprite CreateInventoryBlueCandle()
+        {
+            return new ObjectSprite(this.blueCandleSpriteSheet, this.blueCandleData);
+        }
+
+        public ISprite CreateInventoryRedHealthPotion()
+        {
+            return new ObjectSprite(this.redHealthPotionSpriteSheet, this.redHealthPotionData);
+        }
+
+        public ISprite CreateInventoryBlueHealthPotion()
+        {
+            return new ObjectSprite(this.blueHealthPotionSpriteSheet, this.blueHealthPotionData);
+        }
+
+        public ISprite CreateInventoryMagicBoomerang()
+        {
+            return new ObjectSprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData);
+        }
+
+        public ISprite CreateInventorySilverArrow()
+        {
+            return new ObjectSprite(this.silverArrowSpriteSheet, this.silverArrowData);
+        }
+
+        public ISprite CreateInventoryRedCandle()
+        {
+            return new ObjectSprite(this.redCandleSpriteSheet, this.redCandleData);
         }
     }
 }
