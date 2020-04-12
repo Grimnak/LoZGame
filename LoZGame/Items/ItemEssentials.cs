@@ -13,6 +13,8 @@
         private bool expired = false;
         private ISprite sprite = ItemSpriteFactory.Instance.Arrow();
 
+        public ItemType ItemName { get; }
+
         public int LifeTime { get { return lifeTime; } set { this.lifeTime = value; } }
 
         public int PickUpItemTime { get { return pickUpItemTime; } set { this.pickUpItemTime = value; } }
