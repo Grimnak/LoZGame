@@ -26,7 +26,7 @@
             this.inventoryBackgroundSprite.Draw(this.inventoryBackgroundPosition, LoZGame.Instance.DefaultTint, 0.99f);
             this.DrawHearts();
             this.DrawTextIndicators();
-            this.DrawMap();
+            this.DrawMaps();
             this.DrawMapCompassIndicators();
         }
 
@@ -126,6 +126,9 @@
             }
         }
 
+        /// <summary>
+        /// Draws the selection items if collected by the player.
+        /// </summary>
         private void DrawSelectionItems()
         {
             Vector2 firstItemPosition = this.inventoryBackgroundPosition + selectionOffset;
@@ -234,14 +237,14 @@
         }
 
         /// <summary>
-        /// Draws the map above the inventory background.
+        /// Draws the maps above the inventory background.
         /// </summary>
-        private void DrawMap()
+        private void DrawMaps()
         {
             if (!(LoZGame.Instance.Dungeon is null))
             {
                 Vector2 inventoryFirstRoomPosition = inventoryBackgroundPosition + InventoryMapOffset;
-                Vector2 miniMapFirstRoomPosition = InventoryBackgroundPosition + MiniMapOffset;
+                Vector2 miniMapFirstRoomPosition = InventoryBackgroundPosition + miniMapOffset;
                 LoZGame.Instance.Dungeon.MiniMap.Draw(inventoryFirstRoomPosition, miniMapFirstRoomPosition);
             }
         }
