@@ -709,6 +709,18 @@
 /processorParam:TextureFormat=Color
 /build:door_left.png
 
+#begin door_left2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:door_left2.png
+
 #begin door_right.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -720,6 +732,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:door_right.png
+
+#begin door_right2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:door_right2.png
 
 #begin door_up.png
 /importer:TextureImporter
@@ -1664,6 +1688,18 @@
 /processorParam:TextureFormat=Color
 /build:locked_door_down.png
 
+#begin locked_door_down2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:locked_door_down2.png
+
 #begin locked_door_left.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1675,6 +1711,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:locked_door_left.png
+
+#begin locked_door_left2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:locked_door_left2.png
 
 #begin locked_door_right.png
 /importer:TextureImporter
@@ -1688,6 +1736,18 @@
 /processorParam:TextureFormat=Color
 /build:locked_door_right.png
 
+#begin locked_door_right2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:locked_door_right2.png
+
 #begin locked_door_up.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1699,6 +1759,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:locked_door_up.png
+
+#begin locked_door_up2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:locked_door_up2.png
 
 #begin LoZTitle.png
 /importer:TextureImporter
@@ -2252,6 +2324,18 @@
 /processorParam:TextureFormat=Color
 /build:special_door_down.png
 
+#begin special_door_down2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:special_door_down2.png
+
 #begin special_door_left.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2263,6 +2347,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:special_door_left.png
+
+#begin special_door_left2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:special_door_left2.png
 
 #begin special_door_right.png
 /importer:TextureImporter
@@ -2276,6 +2372,18 @@
 /processorParam:TextureFormat=Color
 /build:special_door_right.png
 
+#begin special_door_right2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:special_door_right2.png
+
 #begin special_door_up.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2287,6 +2395,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:special_door_up.png
+
+#begin special_door_up2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:special_door_up2.png
 
 #begin spike.png
 /importer:TextureImporter
@@ -2439,6 +2559,18 @@
 /processorParam:TextureFormat=Color
 /build:unlocked_door_down.png
 
+#begin unlocked_door_down2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:unlocked_door_down2.png
+
 #begin unlocked_door_left.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2450,6 +2582,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:unlocked_door_left.png
+
+#begin unlocked_door_left2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:unlocked_door_left2.png
 
 #begin unlocked_door_right.png
 /importer:TextureImporter
@@ -2463,6 +2607,18 @@
 /processorParam:TextureFormat=Color
 /build:unlocked_door_right.png
 
+#begin unlocked_door_right2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:unlocked_door_right2.png
+
 #begin unlocked_door_up.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2474,6 +2630,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:unlocked_door_up.png
+
+#begin unlocked_door_up2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:unlocked_door_up2.png
 
 #begin vertical_bricks.png
 /importer:TextureImporter
