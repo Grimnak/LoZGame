@@ -65,7 +65,7 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayer(2);
+                FavorPlayerCardinal(5);
             }
             if (!(this.Enemy.CurrentState is AttackingDodongoState))
             {

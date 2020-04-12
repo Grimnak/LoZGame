@@ -16,6 +16,7 @@ namespace LoZClone
         private const int dragonDmg = 4;
         private const int dodongoDmg = 4;
         private const int goriyaDmg = 4;
+        private const int blueGoriyaDmg = 8;
         private const int oldManDmg = 0;
         private const int merchantDmg = 0;
         private const int fireSnakeDmg = 6;
@@ -31,6 +32,7 @@ namespace LoZClone
         private const int dragonHP = 32;
         private const int dodongoHP = 32;
         private const int goriyaHP = 12;
+        private const int blueGoriyaHP = 16;
         private const int oldManHP = 1;
         private const int merchantHP = 1;
         private const int fireSnakeHP = 12;
@@ -55,6 +57,8 @@ namespace LoZClone
         public int DodongoDamage => dodongoDmg;
 
         public int GoriyaDamage => goriyaDmg;
+
+        public int BlueGoriyaDamage => blueGoriyaDmg;
 
         public int OldManDamage => oldManDmg;
 
@@ -82,6 +86,8 @@ namespace LoZClone
         public int DodongoHealth => dodongoHP;
 
         public int GoriyaHealth => goriyaHP;
+
+        public int BlueGoriyaHealth => blueGoriyaDmg;
 
         public int OldManHealth => oldManHP;
 

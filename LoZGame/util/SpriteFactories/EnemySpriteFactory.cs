@@ -64,7 +64,7 @@
             {
                 return gelWidth;
             }
-            else if (enemy is Goriya)
+            else if (enemy is Goriya || enemy is BlueGoriya)
             {
                 return goriyaWidth;
             }
@@ -124,7 +124,7 @@
             {
                 return gelHeight;
             }
-            else if (enemy is Goriya)
+            else if (enemy is Goriya || enemy is BlueGoriya)
             {
                 return goriyaHeight;
             }
@@ -174,12 +174,16 @@
         private SpriteData stalfosData;
 
         private Texture2D downGoriya;
+        private Texture2D downBlueGoriya;
         private SpriteData downGoriyaData;
         private Texture2D upGoriya;
+        private Texture2D upBlueGoriya;
         private SpriteData upGoriyaData;
         private Texture2D leftGoriya;
+        private Texture2D leftBlueGoriya;
         private SpriteData leftGoriyaData;
         private Texture2D rightGoriya;
+        private Texture2D rightBlueGoriya;
         private SpriteData rightGoriyaData;
 
         private Texture2D leftWallMaster;
@@ -228,6 +232,7 @@
         private SpriteData fireSnakeData;
 
         private Texture2D oldMan;
+        private Texture2D angryOldMan;
         private SpriteData oldManData;
         private Texture2D merchant;
         private SpriteData merchantData;
@@ -266,6 +271,11 @@
             this.leftGoriya = content.Load<Texture2D>("redGoriyaLeft");
             this.rightGoriya = content.Load<Texture2D>("redGoriyaRight");
 
+            this.downBlueGoriya = content.Load<Texture2D>("blueGoriyaDown");
+            this.upBlueGoriya = content.Load<Texture2D>("blueGoriyaUp");
+            this.leftBlueGoriya = content.Load<Texture2D>("blueGoriyaLeft");
+            this.rightBlueGoriya = content.Load<Texture2D>("blueGoriyaRight");
+
             this.leftWallMaster = content.Load<Texture2D>("wallMasterLeft");
             this.rightWallMaster = content.Load<Texture2D>("wallMasterRight");
 
@@ -290,6 +300,7 @@
             this.fireSnake = content.Load<Texture2D>("fireball");
 
             this.oldMan = content.Load<Texture2D>("oldMan");
+            this.angryOldMan = content.Load<Texture2D>("angryOldMan");
             this.merchant = content.Load<Texture2D>("merchant");
 
             this.spawnEnemy = content.Load<Texture2D>("enemySpawn");
@@ -337,24 +348,34 @@
         }
 
         // Goriya Sprites
-        public ISprite CreateDownMovingGoriyaSprite()
+        public ISprite CreateGoriyaSprite(Physics.Direction direction)
         {
-            return new ObjectSprite(this.downGoriya, this.downGoriyaData);
+            switch (direction)
+            {
+                case Physics.Direction.North:
+                    return new ObjectSprite(this.upGoriya, this.upGoriyaData);
+                case Physics.Direction.South:
+                    return new ObjectSprite(this.downGoriya, this.downGoriyaData);
+                case Physics.Direction.East:
+                    return new ObjectSprite(this.rightGoriya, this.rightGoriyaData);
+                default:
+                    return new ObjectSprite(this.leftGoriya, this.leftGoriyaData);
+            }
         }
 
-        public ISprite CreateUpMovingGoriyaSprite()
+        public ISprite CreateBlueGoriyaSprite(Physics.Direction direction)
         {
-            return new ObjectSprite(this.upGoriya, this.upGoriyaData);
-        }
-
-        public ISprite CreateLeftMovingGoriyaSprite()
-        {
-            return new ObjectSprite(this.leftGoriya, this.leftGoriyaData);
-        }
-
-        public ISprite CreateRightMovingGoriyaSprite()
-        {
-            return new ObjectSprite(this.rightGoriya, this.rightGoriyaData);
+            switch (direction)
+            {
+                case Physics.Direction.North:
+                    return new ObjectSprite(this.upBlueGoriya, this.upGoriyaData);
+                case Physics.Direction.South:
+                    return new ObjectSprite(this.downBlueGoriya, this.downGoriyaData);
+                case Physics.Direction.East:
+                    return new ObjectSprite(this.rightBlueGoriya, this.rightGoriyaData);
+                default:
+                    return new ObjectSprite(this.leftBlueGoriya, this.leftGoriyaData);
+            }
         }
 
         // Wallmaster Sprites
@@ -444,6 +465,10 @@
         public ISprite CreateOldManSprite()
         {
             return new ObjectSprite(this.oldMan, this.oldManData);
+        }
+        public ISprite CreateAngryOldManSprite()
+        {
+            return new ObjectSprite(this.angryOldMan, this.oldManData);
         }
 
         // Merchant Sprites

@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System.Collections.Generic;
 
     public class Zol : EnemyEssentials, IEnemy
     {
@@ -9,7 +10,7 @@
         public Zol(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = GameData.Instance.DefaultEnemyStates.ZolStatelist;
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.ZolStatelist);
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.ZolHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.ZolMass;

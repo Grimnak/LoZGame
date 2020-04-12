@@ -47,7 +47,14 @@
 
         public void Attack()
         {
-            this.Enemy.CurrentState = new AttackingGoriyaState(this.Enemy);
+            if (this.Enemy is Goriya)
+            {
+                this.Enemy.CurrentState = new AttackingGoriyaState(this.Enemy);
+            }
+            else
+            {
+                this.Enemy.CurrentState = new AttackingBlueGoriyaState(this.Enemy);
+            }
         }
 
         public void Stop()
@@ -68,7 +75,7 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayer(2);
+                FavorPlayerCardinal(2);
             }
             base.Update();
         }

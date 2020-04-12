@@ -2,6 +2,7 @@
 {
     using System;
     using Microsoft.Xna.Framework;
+    using System.Collections.Generic;
 
     public class Keese : EnemyEssentials, IEnemy
     {
@@ -9,7 +10,7 @@
         {
             this.Physics = new Physics(location);
             this.CurrentState = new IdleKeeseState(this);
-            this.States = GameData.Instance.DefaultEnemyStates.KeeseStatelist;
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.KeeseStatelist);
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.KeeseHealth);
             this.Physics.Mass = GameData.Instance.EnemyMassData.KeeseMass;

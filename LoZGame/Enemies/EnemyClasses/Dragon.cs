@@ -2,13 +2,14 @@
 {
     using System;
     using Microsoft.Xna.Framework;
+    using System.Collections.Generic;
 
     public class Dragon : EnemyEssentials, IEnemy
     {
         public Dragon(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = GameData.Instance.DefaultEnemyStates.DragonStatelist;
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.DragonStatelist);
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.DragonHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.DragonMass;

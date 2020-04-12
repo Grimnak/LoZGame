@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
     public class OldMan : EnemyEssentials, IEnemy
@@ -16,7 +17,9 @@
             this.Physics = new Physics(location);
             this.FlameOneLoc = new Vector2(location.X - 100, location.Y + 20);
             this.FlameTwoLoc = new Vector2(location.X + 160, location.Y + 20);
-            this.sprite = EnemySpriteFactory.Instance.CreateOldManSprite();
+            this.RandomStateGenerator = new RandomStateGenerator(this);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.OldManStateList);
+            this.CurrentState = new OldManIdleState(this);
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.EntityManager = LoZGame.Instance.GameObjects.Entities;
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
@@ -37,6 +40,7 @@
 
         public void ShootFireballs()
         {
+            this.CurrentState = new OldManAngryState(this);
             Vector2 playerVectorOne = this.UnitVectorToPlayer(this.FlameOneLoc);
             Vector2 playerVectorTwo = this.UnitVectorToPlayer(this.FlameTwoLoc);
             Vector2 velocityVectorOne = new Vector2(playerVectorOne.X * FireballSpeed, playerVectorOne.Y * FireballSpeed);
@@ -45,8 +49,8 @@
             fireballOnePhysics.MovementVelocity = velocityVectorOne;
             Physics fireballTwoPhysics = new Physics(new Vector2(FlameTwoLoc.X, FlameTwoLoc.Y));
             fireballTwoPhysics.MovementVelocity = velocityVectorTwo;
-            EntityManager.EnemyProjectileManager.Add(EntityManager.EnemyProjectileManager.Fireball, fireballOnePhysics);
-            EntityManager.EnemyProjectileManager.Add(EntityManager.EnemyProjectileManager.Fireball, fireballTwoPhysics);
+            EntityManager.EnemyProjectileManager.Add(new FireballProjectile(fireballOnePhysics));
+            EntityManager.EnemyProjectileManager.Add(new FireballProjectile(fireballTwoPhysics));
         }
 
         public override void TakeDamage(int damageAmount)
@@ -56,17 +60,16 @@
         public override void Update()
         {
             this.Physics.SetDepth();
-            this.sprite.Update();
+            this.CurrentState.Update();
         }
 
-        public override void Draw()
+        public override ISprite CreateCorrectSprite()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DefaultTint, this.Physics.Depth);
-        }
-
-        public ISprite CreateCorrectSprite()
-        {
-            return EnemySpriteFactory.Instance.CreateOldManSprite();
+            if (this.CurrentState is OldManIdleState)
+            {
+                return EnemySpriteFactory.Instance.CreateOldManSprite();
+            }
+            return EnemySpriteFactory.Instance.CreateAngryOldManSprite();
         }
     }
 }

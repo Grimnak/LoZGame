@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System.Collections.Generic;
 
     public class Stalfos : EnemyEssentials, IEnemy
     {
@@ -8,7 +9,7 @@
         public Stalfos(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = GameData.Instance.DefaultEnemyStates.StalfosStatelist;
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.StalfosStatelist);
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.StalfosHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.StalfosMass;

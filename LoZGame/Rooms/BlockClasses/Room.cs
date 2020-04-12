@@ -155,6 +155,9 @@
                 case "Goriya":
                     this.enemies.Add(new Goriya(location));
                     break;
+                case "BlueGoriya":
+                    this.enemies.Add(new BlueGoriya(location));
+                    break;
                 case "Keese":
                     this.enemies.Add(new Keese(location));
                     break;

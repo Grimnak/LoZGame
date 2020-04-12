@@ -94,7 +94,7 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayer(3);
+                FavorPlayerCardinal(3);
             }
             this.DecideToMove();
             if (this.moving)

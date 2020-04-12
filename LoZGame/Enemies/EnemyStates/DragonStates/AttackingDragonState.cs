@@ -31,7 +31,7 @@
                 {
                     MovementVelocity = new Vector2(rotatedVelocity.X, rotatedVelocity.Y)
                 };
-                LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Fireball, fireballPhysics);
+                LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(new FireballProjectile(fireballPhysics));
             }
         }
     }

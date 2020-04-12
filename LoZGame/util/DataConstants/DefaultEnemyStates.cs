@@ -4,6 +4,12 @@
     using static RandomStateGenerator;
     public struct DefaultEnemyStates
     {
+        private static Dictionary<StateType, int> oldManStateList = new Dictionary<StateType, int>()
+        {
+            {StateType.Attack, 1 },
+            {StateType.Idle, 99 }
+        };
+
         private static Dictionary<StateType, int> dragonStateList = new Dictionary<StateType, int>()
         {
             { StateType.Attack, 1 },
@@ -44,6 +50,15 @@
         private static Dictionary<StateType, int> goriyaStateList = new Dictionary<StateType, int>()
         {
             { StateType.Attack, 1 },
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 }
+        };
+
+        private static Dictionary<StateType, int> blueGoriyaStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.Attack, 2 },
             { StateType.MoveNorth, 1 },
             { StateType.MoveSouth, 1 },
             { StateType.MoveEast, 1 },
@@ -94,6 +109,8 @@
             { StateType.MoveWest, 1 }
         };
 
+        public Dictionary<StateType, int> OldManStateList => oldManStateList;
+
         public Dictionary<StateType, int> DragonStatelist => dragonStateList;
 
         public Dictionary<StateType, int> DodongoStatelist => dodongoStateList;
@@ -103,6 +120,8 @@
         public Dictionary<StateType, int> GelStatelist => gelStateList;
 
         public Dictionary<StateType, int> GoriyaStatelist => goriyaStateList;
+
+        public Dictionary<StateType, int> BlueGoriyaStatelist => blueGoriyaStateList;
 
         public Dictionary<StateType, int> KeeseStatelist => keeseStateList;
 
