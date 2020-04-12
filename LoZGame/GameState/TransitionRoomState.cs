@@ -125,6 +125,13 @@
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             this.sprite.Draw(LoZGame.Instance.DefaultTint);
             LoZGame.Instance.SpriteBatch.End();
+
+            // Ensure inventory objects draw above the game objects while transitioning.
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+
+            InventoryComponents.Instance.DrawInventoryElements();
+
+            LoZGame.Instance.SpriteBatch.End();
         }
 
         private LevelMasterSprite CreateCorrectLevelSprite()

@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using System.Collections.Generic;
+
     public partial class InventoryManager
     {
         public enum ItemType
