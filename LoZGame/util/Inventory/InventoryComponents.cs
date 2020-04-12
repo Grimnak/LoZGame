@@ -128,11 +128,11 @@
         /// </summary>
         private void DrawMap()
         {
-            Vector2 firstRoomPosition = inventoryBackgroundPosition + mapRoomOffset;
             if (!(LoZGame.Instance.Dungeon is null))
             {
-                firstRoomPosition = inventoryBackgroundPosition + mapRoomOffset;
-                LoZGame.Instance.Dungeon.MiniMap.Draw(firstRoomPosition);
+                Vector2 inventoryFirstRoomPosition = inventoryBackgroundPosition + InventoryMapOffset;
+                Vector2 miniMapFirstRoomPosition = InventoryBackgroundPosition + MiniMapOffset;
+                LoZGame.Instance.Dungeon.MiniMap.Draw(inventoryFirstRoomPosition, miniMapFirstRoomPosition);
             }
         }
 

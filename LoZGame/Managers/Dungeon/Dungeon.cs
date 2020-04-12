@@ -12,6 +12,7 @@
         private List<List<Room>> dungeonLayout;
         private int currentX;
         private int currentY;
+        private Color mapColor;
         private int maxX;
         private int maxY;
         private IPlayer player;
@@ -20,6 +21,8 @@
         private MiniMap miniMap;
 
         public MiniMap MiniMap => miniMap;
+
+        public Color MapColor => mapColor;
 
         public IPlayer Player
         {
@@ -45,6 +48,7 @@
                     this.currentY = 5; // player spawns at curX/curY
                     this.maxX = 6;
                     this.maxY = 6;
+                    this.mapColor = Color.CornflowerBlue;
                     break;
                 case 2:
                     LoZGame.Instance.DungeonTint = new Color(190, 130, 255);
@@ -52,6 +56,7 @@
                     this.currentY = 7; // player spawns at curX/curY
                     this.maxX = 4;
                     this.maxY = 8;
+                    this.mapColor = Color.Aqua;
                     break;
                 // more cases here for more dungeons
                 default:
