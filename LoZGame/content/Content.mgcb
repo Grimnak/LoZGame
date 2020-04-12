@@ -25,18 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:../../etc/art/Items/Ladder.png;Ladder.png
 
-#begin ../../etc/art/levels/level-2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../etc/art/levels/level-2.png;level-2.png
-
 #begin ../../etc/art/tiles/fire.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -756,6 +744,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:dungeon.png
+
+#begin dungeon2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:dungeon2.png
+
+#begin dungeon2hole.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:dungeon2hole.png
 
 #begin dungeonHole.png
 /importer:TextureImporter
@@ -1604,7 +1616,7 @@
 /processorParam:TextureFormat=Color
 /build:level-1.png
 
-#begin LevelOneMaster.png
+#begin level-2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1614,7 +1626,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:LevelOneMaster.png
+/build:level-2.png
 
 #begin LifePotion.png
 /importer:TextureImporter

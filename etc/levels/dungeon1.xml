@@ -980,8 +980,9 @@
         <door loc="N">locked</door>
         <door loc="E">unlocked</door>
         <door loc="W">unlocked</door>
-		<door loc="S">cosmetic</door>
+		    <door loc="S">cosmetic</door>
       </doors>
+
       <rrow idx="0">
       </rrow>
       <rrow idx="1">
@@ -1005,9 +1006,11 @@
       <rrow idx="5">
         <tile type="block" idx="1">blue_statue_right</tile>
         <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
         <tile type="block" idx="4">blue_statue_right</tile>
         <tile type="walkable" idx="5">spotted_tile</tile>
         <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
         <tile type="block" idx="7">blue_statue_left</tile>
         <tile type="walkable" idx="8">spotted_tile</tile>
         <tile type="block" idx="10">blue_statue_left</tile>
@@ -1022,8 +1025,11 @@
       </rrow>
     </room>
     <room exists="True" idx="3">
+      <items>
+          <item X="5.5" Y="3">Key</item>
+      </items>
       <enemies>
-        <enemy X="2" Y="0">Key Stalfos</enemy>
+        <enemy X="2" Y="0">Stalfos</enemy>
         <enemy X="10" Y="1">Stalfos</enemy>
         <enemy X="6" Y="2">Stalfos</enemy>
         <enemy X="6" Y="4">Stalfos</enemy>

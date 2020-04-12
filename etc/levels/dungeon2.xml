@@ -567,7 +567,7 @@
     <room exists="False" idx="1">
     </room>
     <room exists="True" idx="2">
-	  <enemies>
+	     <enemies>
         <enemy X="8" Y="0">Goriya</enemy>
         <enemy X="4" Y="4">Goriya</enemy>
         <enemy X="7" Y="4">Goriya</enemy>
@@ -603,7 +603,7 @@
       </rrow>
       <rrow idx="6">
       </rrow>
-	</room>
+	  </room>
     <room exists="True" idx="3">
       <items>
         <item X="6" Y="3">Map</item>
@@ -681,12 +681,12 @@
         <enemy X="4" Y="2">Rope</enemy>
         <enemy X="6" Y="3">Rope</enemy>
         <enemy X="2" Y="5">Rope</enemy>
-	  </enemies>
+	     </enemies>
       <doors>
         <door loc="E">unlocked2</door>
         <door loc="S">unlocked2</door>
         <door loc="W">special2</door>
-	  </doors>
+  	  </doors>
       <rrow idx="0">
         </rrow>
       <rrow idx="1">
@@ -707,7 +707,7 @@
         </rrow>
     </room>
     <room exists="True" idx="2">
-	  <enemies>
+	     <enemies>
         <enemy X="4" Y="0">Rope</enemy>
         <enemy X="5" Y="2">Rope</enemy>
         <enemy X="7" Y="6">Rope</enemy>
@@ -751,7 +751,7 @@
       <rrow idx="6">
 
       </rrow>
-	</room>
+	   </room>
     <room exists="True" idx="3">
       <items>
         <item X="11" Y="0">Compass</item>
@@ -822,10 +822,12 @@
       <rrow idx="5">
         <tile type="block" idx="1">orange_statue_right2</tile>
         <tile type="walkable" idx="3">spotted_tile2</tile>
+        <tile type="walkable" idx="4">spotted_tile2</tile>
         <tile type="block" idx="4">orange_statue_right2</tile>
         <tile type="walkable" idx="5">spotted_tile2</tile>
         <tile type="walkable" idx="6">spotted_tile2</tile>
-        <tile type="block" idx="7">orange_statue_right2</tile>
+        <tile type="walkable" idx="7">spotted_tile2</tile>
+        <tile type="block" idx="7">orange_statue_left2</tile>
         <tile type="walkable" idx="8">spotted_tile2</tile>
         <tile type="block" idx="10">orange_statue_left2</tile>
       </rrow>
