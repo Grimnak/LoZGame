@@ -60,6 +60,16 @@
                 SoundFactory.Instance.PlayGetItem();
                 SoundFactory.Instance.PlayTriforceTune();
             }
+            else if (this.item is DroppedPotion)
+            {
+                SoundFactory.Instance.PlayGetItem();
+                player.Inventory.GainRedPotion();
+            }
+            else if (this.item is DroppedSecondPotion)
+            {
+                SoundFactory.Instance.PlayGetItem();
+                player.Inventory.GainBluePotion();
+            }
             else
             {
                 SoundFactory.Instance.PlayGetItem();

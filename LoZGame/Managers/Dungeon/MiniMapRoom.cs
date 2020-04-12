@@ -10,12 +10,16 @@ namespace LoZClone
 {
     public class MiniMapRoom
     {
+        private const int BlinkRate = 30;
+        private const int DotSize = 8;
+        private int lifetime;
         private static readonly int BorderOffset = 4;
-        private static readonly int DoorSize = 12;
+        private int DoorSize;
 
-        private static readonly Color MapColor = Color.Brown;
+        private Color MapColor;
 
-        private static readonly float MapLayer = 1.0f;
+        private static readonly float DotLayer = 1.0f;
+        private static readonly float MapLayer = 0.9999f;
         private static readonly float BackgroundLayer = 0.9f;
 
         private bool visited;
@@ -41,21 +45,54 @@ namespace LoZClone
             this.visited = true;
         }
 
-        public void Draw(Point startLoc, Point roomSize)
+        private void Draw(Point startLoc, Point roomSize)
+        {
+            // defines location to draw map
+            Rectangle drawLocation = new Rectangle(new Point(startLoc.X + ((int)this.location.X * roomSize.X), startLoc.Y + ((int)this.location.Y * roomSize.Y)), new Point(roomSize.X, roomSize.Y));
+
+            // draw doors
+            this.MapSprite.SetData<Color>(new Color[] { MapColor });
+            DrawDoors(drawLocation);
+
+            // door processing
+            drawLocation = new Rectangle(new Point(drawLocation.X + BorderOffset, drawLocation.Y + BorderOffset), new Point(roomSize.X - (BorderOffset), roomSize.Y - (BorderOffset)));
+            LoZGame.Instance.SpriteBatch.Draw(this.MapSprite, drawLocation, this.MapSourceRectangle, MapColor, 0.0f, Vector2.Zero, SpriteEffects.None, MapLayer);
+        }
+
+        public void DrawInventory(Point startLoc, Point roomSize, Color color)
         {
             if (this.visited)
             {
-                // defines location to draw map
-                Rectangle drawLocation = new Rectangle(new Point(startLoc.X + ((int)this.location.X * roomSize.X), startLoc.Y + ((int)this.location.Y * roomSize.Y)), new Point(roomSize.X, roomSize.Y));
-                
-                // draw doors
-                this.MapSprite.SetData<Color>(new Color[] { MapColor});
-                DrawDoors(drawLocation);
+                this.DoorSize = 11;
+                this.MapColor = color;
+                this.Draw(startLoc, roomSize);
+            }
+        }
 
-                // door processing
-                drawLocation = new Rectangle(new Point(drawLocation.X + BorderOffset, drawLocation.Y + BorderOffset), new Point(roomSize.X - (BorderOffset), roomSize.Y - (BorderOffset)));
-                LoZGame.Instance.SpriteBatch.Draw(this.MapSprite, drawLocation, this.MapSourceRectangle, MapColor, 0.0f, Vector2.Zero, SpriteEffects.None, MapLayer);
+        public void DrawMiniMap(Point startLoc, Point roomSize, Color color)
+        {
+            if (LoZGame.Instance.Players[0].Inventory.HasMap)
+            {
+                this.DoorSize = 5;
+                this.MapColor = color;
+                this.Draw(startLoc, roomSize);
+            }
+        }
 
+        public void DrawDot(Point startLoc, Point roomSize, Color color)
+        {
+            this.lifetime++;
+            if (this.lifetime < BlinkRate)
+            {
+                this.MapSprite.SetData<Color>(new Color[] { color });
+                Rectangle drawLocation = new Rectangle(new Point(startLoc.X + ((int)this.location.X * roomSize.X), startLoc.Y + ((int)this.location.Y * roomSize.Y)), new Point(DotSize));
+                drawLocation.X += (roomSize.X / 2) - (DotSize / 2) + 2;
+                drawLocation.Y += (roomSize.Y / 2) - (DotSize / 2) + 2;
+                LoZGame.Instance.SpriteBatch.Draw(this.MapSprite, drawLocation, this.MapSourceRectangle, color, 0.0f, Vector2.Zero, SpriteEffects.None, DotLayer);
+            }
+            if (this.lifetime >= BlinkRate * 2)
+            {
+                this.lifetime = 0;
             }
         }
 
@@ -68,16 +105,16 @@ namespace LoZClone
                 switch (loc)
                 {
                     case MiniMap.DoorLocation.North:
-                        doorLocation = new Rectangle(roomCenter.X - (DoorSize / 2), drawLocation.Top, DoorSize, BorderOffset);
+                        doorLocation = new Rectangle(roomCenter.X - (DoorSize / 2) + 2, drawLocation.Top, DoorSize, BorderOffset);
                         break;
                     case MiniMap.DoorLocation.South:
-                        doorLocation = new Rectangle(roomCenter.X - (DoorSize / 2), drawLocation.Bottom, DoorSize, BorderOffset);
+                        doorLocation = new Rectangle(roomCenter.X - (DoorSize / 2) + 2, drawLocation.Bottom, DoorSize, BorderOffset);
                         break;
                     case MiniMap.DoorLocation.East:
-                        doorLocation = new Rectangle(drawLocation.Right, roomCenter.Y - (DoorSize / 2), BorderOffset, DoorSize);
+                        doorLocation = new Rectangle(drawLocation.Right, roomCenter.Y - (DoorSize / 2) + 2, BorderOffset, DoorSize);
                         break;
                     default:
-                        doorLocation = new Rectangle(drawLocation.Left, roomCenter.Y - (DoorSize / 2), BorderOffset, DoorSize);
+                        doorLocation = new Rectangle(drawLocation.Left, roomCenter.Y - (DoorSize / 2) + 2, BorderOffset, DoorSize);
                         break;
                 }
                 LoZGame.Instance.SpriteBatch.Draw(this.MapSprite, doorLocation, this.MapSourceRectangle, MapColor, 0.0f, Vector2.Zero, SpriteEffects.None, MapLayer);

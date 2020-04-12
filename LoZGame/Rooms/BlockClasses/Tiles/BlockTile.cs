@@ -40,8 +40,8 @@
             this.Physics = new Physics(location);
             this.sprite = this.CreateCorrectSprite(name);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
+            this.Physics.Depth = 0.2f;
             this.SetBounds(name);
-            this.Physics.SetDepth();
         }
 
         private void SetBounds(string name)
@@ -50,6 +50,7 @@
             {
                 this.Physics.Bounds = new Rectangle(this.Physics.Bounds.X, this.Physics.Bounds.Y + 8, this.Physics.Bounds.Width, this.Physics.Bounds.Height - 8);
                 this.Physics.BoundsOffset = new Vector2(0, 8);
+                this.Physics.SetDepth();
             }
         }
 

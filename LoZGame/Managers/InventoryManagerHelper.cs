@@ -82,6 +82,21 @@
             }
         }
 
+        public void UsePotion()
+        {
+            if (this.numBluePotions > 0)
+            {
+                numBluePotions--;
+                numRedPotions++;
+                LoZGame.Instance.Players[0].Health.GainHealth(6);
+            }
+            else if(this.numRedPotions > 0)
+            {
+                numRedPotions--;
+                LoZGame.Instance.Players[0].Health.GainHealth(6);
+            }
+        }
+
         public void GainRupees(int amount)
         {
             this.numRupees += amount;
@@ -98,6 +113,16 @@
             {
                 numBombs = temp;
             }
+        }
+
+        public void GainRedPotion()
+        {
+            numRedPotions++;
+        }
+
+        public void GainBluePotion()
+        {
+            numBluePotions++;
         }
 
         public void GainKey()

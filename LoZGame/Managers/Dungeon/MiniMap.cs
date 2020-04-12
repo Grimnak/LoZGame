@@ -8,10 +8,15 @@
     public class MiniMap
     {
         private List<MiniMapRoom> dungeonLayout;
-        private Vector2 mapSize;
-        private Vector2 roomSize;
-        private Vector2 roomDrawOffset;
         private Dungeon dungeon;
+
+        private Vector2 mapSize;
+        private Vector2 inventoryRoomSize;
+        private Vector2 roomDrawOffset;
+
+        private Vector2 miniMapSize;
+        private Vector2 miniMapRoomSize;
+        private Vector2 miniMapDrawOffset;
 
         public enum DoorLocation
         {
@@ -24,14 +29,21 @@
         public MiniMap(Dungeon dungeon)
         {
             this.mapSize = new Vector2(365, 195);
+            this.miniMapSize = new Vector2(208, 104);
             this.dungeon = dungeon;
         }
 
-        public void Draw(Vector2 location)
+        public void Draw(Vector2 InventoryMapLoc, Vector2 MiniMapLoc)
         {
             for (int i = 0; i < dungeonLayout.Count; i++)
             {
-                this.dungeonLayout[i].Draw(location.ToPoint() + roomDrawOffset.ToPoint(), this.roomSize.ToPoint());
+                this.dungeonLayout[i].DrawInventory(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), this.inventoryRoomSize.ToPoint(), Color.Black);
+                this.dungeonLayout[i].DrawMiniMap(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), this.miniMapRoomSize.ToPoint(), dungeon.MapColor);
+                if (this.dungeonLayout[i].Location == new Point(this.dungeon.CurrentRoomX, this.dungeon.CurrentRoomY))
+                {
+                    this.dungeonLayout[i].DrawDot(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), this.inventoryRoomSize.ToPoint(), Color.Yellow);
+                    this.dungeonLayout[i].DrawDot(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), this.miniMapRoomSize.ToPoint(), Color.LightYellow);
+                }
             }
         }
 
@@ -82,7 +94,8 @@
                 }
                 roomY++;
             }
-            this.roomSize = this.mapSize / Math.Max(maxX, maxY);
+            this.inventoryRoomSize = this.mapSize / Math.Max(maxX, maxY);
+            this.miniMapRoomSize = this.miniMapSize / Math.Max(maxX, maxY);
             DetermineDrawOffset(maxX, maxY);
         }
 
@@ -108,7 +121,8 @@
             {
                 offset = new Vector2((y - x) / 2, 0);
             }
-            this.roomDrawOffset = new Vector2(this.roomSize.X * offset.X, this.roomSize.Y * offset.Y);
+            this.roomDrawOffset = new Vector2(this.inventoryRoomSize.X * offset.X, this.inventoryRoomSize.Y * offset.Y);
+            this.miniMapDrawOffset = new Vector2(this.miniMapRoomSize.X * offset.X, this.miniMapRoomSize.Y * offset.Y);
         }
     }
 }
