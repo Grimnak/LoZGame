@@ -15,10 +15,6 @@
 
         public List<IProjectile> Projectiles { get { return this.projectiles; } }
 
-        public int Fireball => (int)ProjectileType.Fireball;
-
-        public int Boomerang => (int)ProjectileType.Boomerang;
-
         public EnemyProjectileManager()
         {
             this.projectileList = new Dictionary<int, IProjectile>();
@@ -28,22 +24,12 @@
             this.listSize = 0;
         }
 
-        public void Add(int projectileType,  Physics physics)
+        public void Add(IProjectile projectile)
         {
-            ProjectileType projectile = (ProjectileType)projectileType;
-            this.projectileId++;
-            this.listSize++;
-            switch (projectile)
-            {
-                case ProjectileType.Fireball:
-                    projectileList.Add(projectileId, new FireballProjectile(physics));
-                    break;
-                case ProjectileType.Boomerang:
-                    projectileList.Add(projectileId, new BoomerangProjectile(physics));
-                    break;
-
-            }
-        }
+            projectileId++;
+            listSize++;
+            projectileList.Add(projectileId, projectile);
+    }
 
         public void Remove(int instance)
         {

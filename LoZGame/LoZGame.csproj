@@ -94,9 +94,11 @@
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeSegment.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\BlueGoriya.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\StunnedDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\DodongoEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\DragonStates\DragonEssentials.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAIEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\DeadEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\IdleEnemyState.cs" />
@@ -115,9 +117,14 @@
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\StunnedFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\AttackingDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\GelStates\GelEssentials.cs" />
+    <Compile Include="Enemies\EnemyStates\GoriyaStates\AttackingBlueGoriyaState.cs" />
     <Compile Include="Enemies\EnemyStates\GoriyaStates\GoriyaEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\KeeseStates\IdleKeeseState.cs" />
     <Compile Include="Enemies\EnemyStates\KeeseStates\KeeseEssentials.cs" />
+    <Compile Include="Enemies\EnemyStates\OldManStates\OldManAngryState.cs" />
+    <Compile Include="Enemies\EnemyStates\OldManStates\OldManSecretState.cs" />
+    <Compile Include="Enemies\EnemyStates\OldManStates\OldManIdleState.cs" />
+    <Compile Include="Enemies\EnemyStates\OldManStates\OldManEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\RopeStates\RopeEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\StalfosEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\WallMasterEssentials.cs" />

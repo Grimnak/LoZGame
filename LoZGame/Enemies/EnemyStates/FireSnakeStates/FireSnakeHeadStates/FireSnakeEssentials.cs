@@ -71,23 +71,12 @@
             {
                 this.Enemy.UpdateChild();
             }
-            base.Update();
-        }
-
-        public void FavorDirection(RandomStateGenerator.StateType favorite)
-        {
-            // TODO: Get this to work. Should favor the favorite passed state over other states
-            /*this.Enemy.States.Clear();
-            foreach (KeyValuePair<RandomStateGenerator.StateType, int> state in GameData.Instance.DefaultEnemyStates.FireSnakeStatelist)
+            if (this.Lifetime == this.DirectionChange)
             {
-                if (state.Key == favorite)
-                {
-                    this.Enemy.States.Add(state.Key, 1);
-                } else
-                {
-                    this.Enemy.States.Add(state.Key, 1);
-                }
-            }*/
+                FavorPlayerCardinal(9);
+                FavorPlayerDiagonal(9);
+            }
+            base.Update();
         }
     }
 }

@@ -66,6 +66,11 @@
 
         public override void Update()
         {
+            if (this.Lifetime == this.DirectionChange)
+            {
+                FavorPlayerCardinal(2);
+                FavorPlayerDiagonal(2);
+            }
             base.Update();
             UpdateMoveSpeed();
         }

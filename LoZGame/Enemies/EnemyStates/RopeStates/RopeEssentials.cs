@@ -66,7 +66,7 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayer(2);
+                FavorPlayerCardinal(2);
             }
             base.Update();
             if (!(this.Enemy.CurrentState is AttackingRopeState))

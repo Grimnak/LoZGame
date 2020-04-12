@@ -2,14 +2,14 @@
 {
     using System;
     using Microsoft.Xna.Framework;
-
+    using System.Collections.Generic;
     public class WallMaster : EnemyEssentials, IEnemy
     {
 
         public WallMaster(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = GameData.Instance.DefaultEnemyStates.WallMasterStatelist;
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.WallMasterStatelist);
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.WallMasterHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.WallMasterMass;

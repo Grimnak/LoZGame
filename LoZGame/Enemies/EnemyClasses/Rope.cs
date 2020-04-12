@@ -1,13 +1,14 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System.Collections.Generic;
 
     public class Rope : EnemyEssentials, IEnemy
     {
         public Rope(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = GameData.Instance.DefaultEnemyStates.RopeStatelist;
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.RopeStatelist);
             this.Health = new HealthManager(GameData.Instance.EnemyDamageData.RopeHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.RopeMass;

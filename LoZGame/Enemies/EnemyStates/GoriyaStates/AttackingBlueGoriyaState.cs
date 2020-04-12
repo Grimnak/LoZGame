@@ -4,16 +4,16 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    public class AttackingGoriyaState : GoriyaEssentials, IEnemyState
+    public class AttackingBlueGoriyaState : GoriyaEssentials, IEnemyState
     {
-        public AttackingGoriyaState(IEnemy enemy)
+        public AttackingBlueGoriyaState(IEnemy enemy)
         {
             this.Enemy = enemy;
-            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange * 2;
+            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange;
             FacePlayer();
             this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
-            LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(new BoomerangProjectile(this.Enemy.Physics));
+            LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(new MagicBoomerangProjectile(this.Enemy.Physics));
         }
 
         private void FacePlayer()

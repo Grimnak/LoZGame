@@ -530,9 +530,9 @@
 		<item X="6" Y="3">MagicBoomerang</item>
 	  </items>
       <enemies>
-        <enemy X="9" Y="1">Goriya2</enemy>
-        <enemy X="3" Y="3">Goriya2</enemy>
-        <enemy X="10" Y="5">Goriya2</enemy>
+        <enemy X="9" Y="1">BlueGoriya</enemy>
+        <enemy X="3" Y="3">BlueGoriya</enemy>
+        <enemy X="10" Y="5">BlueGoriya</enemy>
       </enemies>
 	  <doors>
         <door loc="N">hidden2</door>

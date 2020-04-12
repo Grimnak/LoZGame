@@ -21,6 +21,7 @@ namespace LoZClone
         private const float dodongoSpd = 2;
         private const float dodongoAttackSpd = 4.5f;
         private const float goriyaSpd = 1;
+        private const float blueGoriyaSpd = 1.5f;
         private const float oldManSpd = 0;
         private const float merchantSpd = 0;
         private const float fireSnakeSspd = 2;
@@ -60,6 +61,8 @@ namespace LoZClone
         public float DodongoSpeed => dodongoSpd;
 
         public float GoriyaSpeed => goriyaSpd;
+
+        public float BlueGoriyaSpeed => blueGoriyaSpd;
 
         public float OldManSpeed => oldManSpd;
 

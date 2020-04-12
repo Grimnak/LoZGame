@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework;
     using System.Collections.Generic;
 
-    public class Goriya : EnemyEssentials, IEnemy
+    public class BlueGoriya : EnemyEssentials, IEnemy
     {
         public int Cooldown { get; set; }
 
@@ -12,11 +12,11 @@
 
         public EntityManager EntityManager { get; set; }
 
-        public Goriya(Vector2 location)
+        public BlueGoriya(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.GoriyaStatelist);
-            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.GoriyaHealth);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.BlueGoriyaStatelist);
+            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.BlueGoriyaHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassData.GoriyaMass;
             this.CurrentState = new LeftMovingGoriyaState(this);
@@ -25,9 +25,9 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageData.GoriyaDamage;
+            this.Damage = GameData.Instance.EnemyDamageData.BlueGoriyaDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedData.GoriyaSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedData.BlueGoriyaSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
@@ -38,7 +38,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            return EnemySpriteFactory.Instance.CreateGoriyaSprite(this.Physics.CurrentDirection);
+            return EnemySpriteFactory.Instance.CreateBlueGoriyaSprite(this.Physics.CurrentDirection);
         }
     }
 }
