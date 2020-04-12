@@ -26,8 +26,8 @@
 
         private List<List<ItemType>> selectionArray = new List<List<ItemType>>()
         {
-            new List<ItemType>{ ItemType.Bomb, ItemType.Boomerang, ItemType.Arrow, ItemType.BlueCandle},
-            new List<ItemType>{ ItemType.Potion, ItemType.MagicBoomerang, ItemType.SilverArrow, ItemType.RedCandle}
+            new List<ItemType> { ItemType.Bomb, ItemType.Boomerang, ItemType.Arrow, ItemType.BlueCandle },
+            new List<ItemType> { ItemType.Potion, ItemType.MagicBoomerang, ItemType.SilverArrow, ItemType.RedCandle }
         };
 
         private int selectionX;
@@ -159,7 +159,11 @@
 
         public int Keys { get { return this.numKeys; } }
 
-        public int Potions { get { return this.numKeys; } }
+        public int Potions { get { return this.numBluePotions + this.numRedPotions; } }
+
+        public int RedPotions { get { return this.numRedPotions; } }
+
+        public int BluePotions { get { return this.numBluePotions; } }
 
         public bool HasBow { get { return this.hasBow; } set { this.hasBow = value; } }
 
