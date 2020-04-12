@@ -142,7 +142,7 @@
             {
                 return standardWidth * DRAWSCALE;
             }
-            else if (projectile is WoodenSwordProjectile)
+            else if (projectile is SwordProjectile)
             {
                 return swordWidth;
             }
@@ -186,7 +186,7 @@
             {
                 return swordBeamExplosionHeight * DRAWSCALE;
             }
-            else if (projectile is WoodenSwordProjectile)
+            else if (projectile is SwordProjectile)
             {
                 return swordHeight;
             }

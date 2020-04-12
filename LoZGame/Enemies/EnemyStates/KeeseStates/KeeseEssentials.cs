@@ -68,8 +68,8 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(2);
-                FavorPlayerDiagonal(2);
+                FavorPlayerCardinal(3);
+                FavorPlayerDiagonal(3);
             }
             base.Update();
             UpdateMoveSpeed();

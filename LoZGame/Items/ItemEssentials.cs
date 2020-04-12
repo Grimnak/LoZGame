@@ -31,8 +31,8 @@
 
         public void StartBob()
         {
-            this.Physics.MovementVelocity = new Vector2(0, 0);
-            this.Physics.MovementAcceleration = new Vector2(0, 1 / (bobDelay * 2));
+            this.Physics.MovementVelocity = new Vector2(0, -1);
+            this.Physics.MovementAcceleration = new Vector2(0, 1.0f / (bobDelay / 2));
         }
 
         public void ReverseBob()
