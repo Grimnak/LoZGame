@@ -7,9 +7,9 @@
     public class EnemySpriteFactory
     {
 
-        private static readonly int dodongoWidthDown = 40;
-        private static readonly int dodongoWidthUp = 40;
-        private static readonly int dodongoWidthLeftRight = 64;
+        private static readonly int dodongoWidthDown = 60;
+        private static readonly int dodongoWidthUp = 60;
+        private static readonly int dodongoWidthLeftRight = 96;
 
         private static readonly int dodongoHeight = 32;
 
@@ -33,7 +33,6 @@
 
         private static readonly int ropeWidth = 40;
         private static readonly int ropeHeight = 40;
-
 
         private static readonly int spikeCrossWidth = 48;
         private static readonly int spikeCrossHeight = 48;

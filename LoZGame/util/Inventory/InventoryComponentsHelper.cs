@@ -11,10 +11,11 @@
         private ISprite inventoryBackgroundSprite;
         private Vector2 inventoryBackgroundPosition;
 
-        private Vector2 InventoryMapOffset = new Vector2(320, 263);
+        private Vector2 inventoryMapOffset = new Vector2(320, 263);
         private Vector2 mapIndicatorOffset = new Vector2(150, 313);
         private Vector2 compassIndicatorOffset = new Vector2(130, 420);
-        private Vector2 selectionOffset = new Vector2(500, 80);
+        private Vector2 itemSelectionOffset = new Vector2(415, 130);
+        private Vector2 selectedItemOffset = new Vector2(200, 140);
         private Vector2 miniMapOffset = new Vector2(45, 46 + LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset);
         private Vector2 heartOffset = new Vector2(550, 105 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
         private Vector2 rupeeCountOffset = new Vector2(305, 58 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
@@ -116,6 +117,11 @@
         public ISprite CreateRedCandleSprite()
         {
             return InventorySpriteFactory.Instance.CreateInventoryRedCandle();
+        }
+
+        public ISprite CreateItemSelector()
+        {
+            return InventorySpriteFactory.Instance.CreateInventoryItemSelector();
         }
     }
 }

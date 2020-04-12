@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -28,6 +29,8 @@
             this.DrawTextIndicators();
             this.DrawMaps();
             this.DrawMapCompassIndicators();
+            this.DrawSelectionItems();
+            this.DrawSelectedItem();
         }
 
         /// <summary>
@@ -126,12 +129,61 @@
             }
         }
 
+        private void DrawSelectedItem()
+        {
+            ISprite selectedItem;
+            Vector2 selectedPosition = this.inventoryBackgroundPosition + selectedItemOffset;
+
+            switch (LoZGame.Instance.Players[0].Inventory.SelectedItem)
+            {
+                case InventoryManager.ItemType.Bomb:
+                    selectedItem = CreateBombSprite();
+                    break;
+
+                case InventoryManager.ItemType.Boomerang:
+                    selectedItem = CreateBoomerangSprite();
+                    break;
+
+                case InventoryManager.ItemType.Arrow:
+                    selectedItem = CreateArrowSprite();
+                    break;
+
+                case InventoryManager.ItemType.BlueCandle:
+                    selectedItem = CreateBlueCandleSprite();
+                    break;
+
+                case InventoryManager.ItemType.Potion:
+                    selectedItem = CreateHealthPotionSprite();
+                    break;
+
+                case InventoryManager.ItemType.MagicBoomerang:
+                    selectedItem = CreateMagicBoomerangSprite();
+                    break;
+
+                case InventoryManager.ItemType.SilverArrow:
+                    selectedItem = CreateSilverArrowSprite();
+                    break;
+
+                case InventoryManager.ItemType.RedCandle:
+                    selectedItem = CreateRedCandleSprite();
+                    break;
+
+                default:
+                    selectedItem = CreateBombSprite();
+                    break;
+            }
+
+            selectedItem.Draw(selectedPosition, LoZGame.Instance.DefaultTint, 1.0f);
+        }
+
         /// <summary>
         /// Draws the selection items if collected by the player.
         /// </summary>
         private void DrawSelectionItems()
         {
-            Vector2 firstItemPosition = this.inventoryBackgroundPosition + selectionOffset;
+            ISprite itemSelector = CreateItemSelector();
+            Vector2 firstItemPosition = this.inventoryBackgroundPosition + itemSelectionOffset;
+
             int rowCounter = 0;
             int columnCounter = 0;
 
@@ -139,6 +191,12 @@
             {
                 ISprite selectionItem = CreateBombSprite();
                 Vector2 itemPosition = new Vector2(firstItemPosition.X + (InventorySpriteFactory.Instance.SelectionBoxSize.X * columnCounter), firstItemPosition.Y + (InventorySpriteFactory.Instance.SelectionBoxSize.Y * rowCounter));
+                Vector2 itemSelectorPosition = new Vector2((firstItemPosition.X - 5) + (InventorySpriteFactory.Instance.SelectionBoxSize.X * columnCounter), (firstItemPosition.Y - 5) + (InventorySpriteFactory.Instance.SelectionBoxSize.Y * rowCounter));
+
+                if (LoZGame.Instance.Players[0].Inventory.SelectionX == columnCounter && LoZGame.Instance.Players[0].Inventory.SelectionY == rowCounter)
+                {
+                    itemSelector.Draw(itemSelectorPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                }
 
                 this.DetermineItemToDraw(selectionItem, itemPosition, position);
 
@@ -161,7 +219,7 @@
         {
             switch (counter)
             {
-                case 1:
+                case 0:
                     {
                         selectionItem = CreateBombSprite();
                         if (LoZGame.Instance.Players[0].Inventory.Bombs > 0)
@@ -170,69 +228,69 @@
                         }
                         break;
                     }
+                case 1:
+                    selectionItem = CreateBoomerangSprite();
+                    if (LoZGame.Instance.Players[0].Inventory.HasBoomerang)
+                    {
+                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                    }
+                    break;
+
                 case 2:
+                    selectionItem = CreateArrowSprite();
+                    if (LoZGame.Instance.Players[0].Inventory.HasBow)
                     {
-                        selectionItem = CreateBoomerangSprite();
-                        if (LoZGame.Instance.Players[0].Inventory.HasBoomerang)
-                        {
-                            selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
-                        }
-                        break;
+                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     }
+                    break;
+
                 case 3:
+                    selectionItem = CreateBlueCandleSprite();
+                    if (LoZGame.Instance.Players[0].Inventory.HasBlueFlame)
                     {
-                        selectionItem = CreateArrowSprite();
-                        if (LoZGame.Instance.Players[0].Inventory.HasBow)
-                        {
-                            selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
-                        }
-                        break;
+                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     }
+                    break;
+
                 case 4:
+                    selectionItem = CreateHealthPotionSprite();
+                    if (LoZGame.Instance.Players[0].Inventory.Potions > 0)
                     {
-                        selectionItem = CreateBlueCandleSprite();
-                        if (LoZGame.Instance.Players[0].Inventory.HasBlueFlame)
-                        {
-                            selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
-                        }
-                        break;
+                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     }
+                    break;
+
                 case 5:
+                    selectionItem = CreateMagicBoomerangSprite();
+                    if (LoZGame.Instance.Players[0].Inventory.HasMagicBoomerang)
                     {
-                        selectionItem = CreateHealthPotionSprite();
-                        if (LoZGame.Instance.Players[0].Inventory.Potions > 0)
-                        {
-                            selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
-                        }
-                        break;
+                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     }
+                    break;
+
                 case 6:
+                    selectionItem = CreateSilverArrowSprite();
+                    if (LoZGame.Instance.Players[0].Inventory.HasBow && LoZGame.Instance.Players[0].Inventory.HasSilverArrow)
                     {
-                        selectionItem = CreateMagicBoomerangSprite();
-                        if (LoZGame.Instance.Players[0].Inventory.HasMagicBoomerang)
-                        {
-                            selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
-                        }
-                        break;
+                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     }
+                    break;
+
                 case 7:
+                    selectionItem = CreateRedCandleSprite();
+                    if (LoZGame.Instance.Players[0].Inventory.HasRedFlame)
                     {
-                        selectionItem = CreateSilverArrowSprite();
-                        if (LoZGame.Instance.Players[0].Inventory.HasBow && LoZGame.Instance.Players[0].Inventory.HasSilverArrow)
-                        {
-                            selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
-                        }
-                        break;
+                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     }
-                case 8:
+                    break;
+
+                default:
+                    selectionItem = CreateBombSprite();
+                    if (LoZGame.Instance.Players[0].Inventory.HasRedFlame)
                     {
-                        selectionItem = CreateRedCandleSprite();
-                        if (LoZGame.Instance.Players[0].Inventory.HasRedFlame)
-                        {
-                            selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
-                        }
-                        break;
+                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     }
+                    break;
             }
         }
 
@@ -243,7 +301,7 @@
         {
             if (!(LoZGame.Instance.Dungeon is null))
             {
-                Vector2 inventoryFirstRoomPosition = inventoryBackgroundPosition + InventoryMapOffset;
+                Vector2 inventoryFirstRoomPosition = inventoryBackgroundPosition + inventoryMapOffset;
                 Vector2 miniMapFirstRoomPosition = InventoryBackgroundPosition + miniMapOffset;
                 LoZGame.Instance.Dungeon.MiniMap.Draw(inventoryFirstRoomPosition, miniMapFirstRoomPosition);
             }

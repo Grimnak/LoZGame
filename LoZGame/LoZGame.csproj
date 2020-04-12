@@ -126,7 +126,6 @@
     <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
     <Compile Include="Util\DataConstants\DefaultEnemyStates.cs" />
-    <Compile Include="Util\Inventory\InventoryHelper.cs" />
     <Compile Include="Util\Inventory\InventoryComponents.cs" />
     <Compile Include="GameState\DeathState.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyEssentials.cs" />
@@ -346,6 +345,7 @@
     <Compile Include="Players\PlayerClasses\Link.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Inventory\InventoryComponentsHelper.cs" />
     <Compile Include="Util\Physics\KnockbackPhysics.cs" />
     <Compile Include="Util\Physics\PhysicsMain.cs" />
     <Compile Include="Util\Physics\MovementPhysics.cs" />

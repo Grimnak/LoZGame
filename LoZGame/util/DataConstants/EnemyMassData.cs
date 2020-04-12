@@ -12,7 +12,7 @@ namespace LoZClone
         private const int zolMass = 12;
         private const int gelMass = 8;
         private const int dragonMass = 24;
-        private const int dodongoMass = 24;
+        private const int dodongoMass = 12;
         private const int spikeCrossMass = 16;
         private const int wallMasterMass = 14;
         private const int fireSnakeMass = 20;
