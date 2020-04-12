@@ -36,6 +36,8 @@
         private int numBombs;
         private int numRupees;
         private int numKeys;
+        private int numRedPotions;
+        private int numBluePotions;
         private bool hasBoomerang;
         private bool hasMagicBoomerang;
         private bool hasBow;
@@ -54,6 +56,8 @@
 
             this.numBombs = 4;
             this.numKeys = 0;
+            this.numRedPotions = 0;
+            this.numBluePotions = 0;
             this.numRupees = 5;
             this.hasBoomerang = LoZGame.Cheats;
             this.hasMagicBoomerang = LoZGame.Cheats;
@@ -92,6 +96,9 @@
                     break;
                 case ItemType.BlueCandle:
                     this.UseBlueCandle();
+                    break;
+                case ItemType.Potion:
+                    this.UsePotion();
                     break;
                 default:
                     break;
@@ -151,6 +158,8 @@
         public int Bombs { get { return this.numBombs; } }
 
         public int Keys { get { return this.numKeys; } }
+
+        public int Potions { get { return this.numKeys; } }
 
         public bool HasBow { get { return this.hasBow; } set { this.hasBow = value; } }
 
