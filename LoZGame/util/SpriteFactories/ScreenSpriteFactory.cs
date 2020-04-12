@@ -22,6 +22,8 @@
         private Texture2D levelTwoMasterSpriteSheet;
         private Texture2D inventorySpriteSheet;
         private SpriteData inventoryData;
+        private Texture2D gameOverSpriteSheet;
+        private SpriteData gameOverData;
 
         private static readonly ScreenSpriteFactory InstanceValue = new ScreenSpriteFactory();
 
@@ -39,6 +41,8 @@
             this.levelTwoMasterSpriteSheet = content.Load<Texture2D>("level-2");
             this.inventorySpriteSheet = content.Load<Texture2D>("Inventory");
             this.inventoryData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), inventorySpriteSheet, 1, 1);
+            this.gameOverSpriteSheet = content.Load<Texture2D>("gameOver");
+            this.gameOverData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), gameOverSpriteSheet, 1, 1);
     }
 
         public ISprite TitleScreen()
@@ -60,6 +64,11 @@
         {
             return new LevelMasterSprite(this.levelTwoMasterSpriteSheet, new Vector2(LoZGame.Instance.Dungeon.CurrentRoomX, LoZGame.Instance.Dungeon.CurrentRoomY));
 
+        }
+
+        public ISprite GameOverScreen()
+        {
+            return new ObjectSprite(this.gameOverSpriteSheet, this.gameOverData);
         }
     }
 }
