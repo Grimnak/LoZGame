@@ -86,21 +86,27 @@
             {
                 if (Math.Abs(linkX - spikeX) < (this.spikeCross.Physics.Bounds.Width / 2))
                 {
-                    if (linkY - spikeY != 0)
+                    if (Math.Abs(linkY - spikeY) > (this.spikeCross.Physics.Bounds.Height / 2))
                     {
+                        //Handles case for when link gets to the spikes original position before the spike fully retreats
+
                         this.spikeCross.MoveSpeed = 2 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
+                        this.spikeCross.Attacking = true;
+                        this.spikeCross.CurrentState.MoveDown();
                     }
-                    this.spikeCross.Attacking = true;
-                    this.spikeCross.CurrentState.MoveDown();
+
                 }
                 else if (Math.Abs(linkY - spikeY) < (this.spikeCross.Physics.Bounds.Height / 2))
                 {
-                    if (linkX - spikeX != 0)
+                    if (Math.Abs(linkX - spikeX) > (this.spikeCross.Physics.Bounds.Width / 2))
                     {
+                        //Handles case for when link gets to the spikes original position before the spike fully retreats
+
                         this.spikeCross.MoveSpeed = 2 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
+                        this.spikeCross.Attacking = true;
+                        this.spikeCross.CurrentState.MoveRight();
                     }
-                    this.spikeCross.Attacking = true;
-                    this.spikeCross.CurrentState.MoveRight();
+
                 }
             }
         }
