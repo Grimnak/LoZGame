@@ -5,7 +5,7 @@
         /// <summary>
         /// Enumeration for Item Types to make handling Item Pickups more efficient. TODO: Add itemtypes to each item
         /// </summary>
-        enum ItemType
+        public enum ItemType
         {
             YellowRupee,
             BlueRupee,
