@@ -7,7 +7,7 @@
 
     public class SoundFactory
     {
-        private bool musicEnabled = true;
+        private bool musicEnabled = LoZGame.Music;
         private SoundPlayer titleSong = new SoundPlayer(Properties.Resources.title_song);
         private SoundPlayer dungeonSong = new SoundPlayer(Properties.Resources.dungeon_song);
         private SoundPlayer triforceTune = new SoundPlayer(Properties.Resources.triforce_tune);
