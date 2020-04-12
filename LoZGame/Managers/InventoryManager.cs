@@ -142,6 +142,10 @@
 
         public ItemType SelectedItem { set { this.selectedItem = value; } }
 
+        public int SelectionX { get { return this.selectionX; } }
+
+        public int SelectionY { get { return this.selectionY; } }
+
         public int Rupees { get { return this.numRupees; } }
 
         public int Bombs { get { return this.numBombs; } }
