@@ -56,7 +56,7 @@
                     this.currentY = 7; // player spawns at curX/curY
                     this.maxX = 4;
                     this.maxY = 8;
-                    this.mapColor = Color.Aqua;
+                    this.mapColor = Color.DarkCyan;
                     break;
                 // more cases here for more dungeons
                 default:
