@@ -39,7 +39,6 @@
             this.DungeonNumber = dungeonNumber;
             this.currentDungeonFile = "../../../../../etc/levels/dungeon" + this.dungeonNumber + ".xml";
 
-
             switch (this.dungeonNumber)
             {
                 case 1:
@@ -56,7 +55,7 @@
                     this.currentY = 7; // player spawns at curX/curY
                     this.maxX = 4;
                     this.maxY = 8;
-                    this.mapColor = Color.DarkCyan;
+                    this.mapColor = Color.DarkBlue;
                     break;
                 // more cases here for more dungeons
                 default:

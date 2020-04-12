@@ -147,7 +147,7 @@
             this.selectedItem = selectionArray[this.selectionY][this.selectionX];
         }
 
-        public ItemType SelectedItem { set { this.selectedItem = value; } }
+        public ItemType SelectedItem { get { return this.selectedItem; } set { this.selectedItem = value; } }
 
         public int SelectionX { get { return this.selectionX; } }
 

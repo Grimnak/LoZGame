@@ -71,10 +71,10 @@
         public override void Update()
         {
             base.Update();
-            foreach (KeyValuePair<RandomStateGenerator.StateType, int> state in this.States)
+            /*foreach (KeyValuePair<RandomStateGenerator.StateType, int> state in this.States)
             {
                 Console.WriteLine(state.Key + " || " + state.Value);
-            }
+            }*/
         }
     }
 }
