@@ -197,7 +197,7 @@
                 case 5:
                     {
                         selectionItem = CreateHealthPotionSprite();
-                        if (LoZGame.Instance.Players[0].Inventory.HealthPotions > 0)
+                        if (LoZGame.Instance.Players[0].Inventory.Potions > 0)
                         {
                             selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                         }
