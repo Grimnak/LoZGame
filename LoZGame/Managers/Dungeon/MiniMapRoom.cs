@@ -10,12 +10,16 @@ namespace LoZClone
 {
     public class MiniMapRoom
     {
+        private const int BlinkRate = 30;
+        private const int DotSize = 8;
+        private int lifetime;
         private static readonly int BorderOffset = 4;
         private int DoorSize;
 
         private Color MapColor;
 
-        private static readonly float MapLayer = 1.0f;
+        private static readonly float DotLayer = 1.0f;
+        private static readonly float MapLayer = 0.9999f;
         private static readonly float BackgroundLayer = 0.9f;
 
         private bool visited;
@@ -67,11 +71,28 @@ namespace LoZClone
 
         public void DrawMiniMap(Point startLoc, Point roomSize, Color color)
         {
-            if (LoZGame.Instance.Players[0].Inventory.HasMap && this.visited)
+            if (LoZGame.Instance.Players[0].Inventory.HasMap)
             {
                 this.DoorSize = 5;
                 this.MapColor = color;
                 this.Draw(startLoc, roomSize);
+            }
+        }
+
+        public void DrawDot(Point startLoc, Point roomSize, Color color)
+        {
+            this.lifetime++;
+            if (this.lifetime < BlinkRate)
+            {
+                this.MapSprite.SetData<Color>(new Color[] { color });
+                Rectangle drawLocation = new Rectangle(new Point(startLoc.X + ((int)this.location.X * roomSize.X), startLoc.Y + ((int)this.location.Y * roomSize.Y)), new Point(DotSize));
+                drawLocation.X += roomSize.X / 2;
+                drawLocation.Y += roomSize.Y / 2;
+                LoZGame.Instance.SpriteBatch.Draw(this.MapSprite, drawLocation, this.MapSourceRectangle, color, 0.0f, Vector2.Zero, SpriteEffects.None, DotLayer);
+            }
+            if (this.lifetime >= BlinkRate * 2)
+            {
+                this.lifetime = 0;
             }
         }
 
