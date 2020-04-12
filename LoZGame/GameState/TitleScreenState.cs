@@ -11,6 +11,7 @@
 
         public TitleScreenState()
         {
+            SoundFactory.Instance.StopDungeonSong();
             SoundFactory.Instance.PlayTitleSong();
             this.sprite = ScreenSpriteFactory.Instance.TitleScreen();
             this.enter = ScreenSpriteFactory.Instance.PressEnter();

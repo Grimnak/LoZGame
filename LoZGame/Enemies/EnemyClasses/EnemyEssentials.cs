@@ -60,7 +60,7 @@
             }
             if (this.Health.CurrentHealth <= 0)
             {
-                if (this is Dragon)
+                if (this is Dragon || this is Dodongo)
                 {
                     SoundFactory.Instance.PlayDragonDie();
                     LoZGame.Instance.Drops.DropHeartContainer();

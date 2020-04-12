@@ -5,7 +5,7 @@
     using Microsoft.Xna.Framework.Audio;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class Link : PlayerEssentials, IPlayer
+    public partial class Link : IPlayer
     {
         private PlayerCollisionHandler linkCollisionHandler;
 

@@ -3,38 +3,24 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class WoodenSwordProjectile : ProjectileEssentials, IProjectile
+    internal class SwordProjectile : ProjectileEssentials, IProjectile
     {
         private int lifeTime;
         private int totalLife;
         private Point sourceOffset;
 
-        public WoodenSwordProjectile(IPlayer source)
+        public SwordProjectile(IPlayer source)
         {
             this.SetUp(this);
             this.Width = ProjectileSpriteFactory.Instance.SwordWidth;
             this.Heigth = ProjectileSpriteFactory.Instance.SwordHeight;
             this.Offset = ((this.Heigth * 3) / 4);
             this.Speed = GameData.Instance.ProjectileSpeedData.WoodSwordSpeed;
-            this.Damage = GameData.Instance.ProjectileDamageData.WoodSwordDamage;
             this.Source = source.Physics;
             this.InitializeDirection();
             this.sourceOffset = this.Physics.Bounds.Location - this.Source.Bounds.Location;
             this.lifeTime = 0;
-            if (source.CurrentColor.Equals("Red"))
-            {
-                // this.Sprite = ProjectileSpriteFactory.Instance.RedWoodSword();
-            }
-            else if (source.CurrentColor.Equals("Blue"))
-            {
-                // this.Sprite = ProjectileSpriteFactory.Instance.BlueWoodSword();
-            }
-            else
-            {
-                this.Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
-                totalLife = 15;
-            }
-            this.Physics.Mass = GameData.Instance.ProjectileMassData.WoodSwordMass;
+            this.CreateCorrectSword(source.CurrentColor, source.CurrentWeapon);
             this.Physics.MovementVelocity = Vector2.Zero;
         }
 
@@ -65,6 +51,29 @@
                 this.IsExpired = true;
             }
             this.Physics.SetDepth();
+        }
+
+        private void CreateCorrectSword(string color, string sword)
+        {
+            /*if (color.Equals("Red"))
+            {
+                if (sword.Equals)
+                // this.Sprite = ProjectileSpriteFactory.Instance.RedWoodSword();
+            }
+            else if (color.Equals("Blue"))
+            {
+                // this.Sprite = ProjectileSpriteFactory.Instance.BlueWoodSword();
+            }
+            else
+            {
+                this.Damage = GameData.Instance.ProjectileDamageData.WoodSwordDamage;
+                this.Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
+                totalLife = 15;
+            }*/
+            this.Damage = GameData.Instance.ProjectileDamageData.WoodSwordDamage;
+            this.Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
+            this.Physics.Mass = GameData.Instance.ProjectileMassData.WoodSwordMass;
+            totalLife = 15;
         }
     }
 }

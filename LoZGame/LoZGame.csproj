@@ -131,6 +131,7 @@
     <Compile Include="Enemies\EnemyStates\ZolStates\ZolEssentials.cs" />
     <Compile Include="Items\ItemTypes.cs" />
     <Compile Include="Managers\InventoryManagerHelper.cs" />
+    <Compile Include="Players\PlayerClasses\LinkHelper.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
     <Compile Include="Util\DataConstants\DefaultEnemyStates.cs" />
     <Compile Include="Util\Inventory\InventoryComponents.cs" />
@@ -235,7 +236,7 @@
     <Compile Include="Projectiles\RedCandleProjectile.cs" />
     <Compile Include="Projectiles\SilverArrowProjectile.cs" />
     <Compile Include="Projectiles\SwordBeamExplosion.cs" />
-    <Compile Include="Projectiles\WoodenSwordProjectile.cs" />
+    <Compile Include="Projectiles\SwordProjectile.cs" />
     <Compile Include="Projectiles\SwordBeamProjectile.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

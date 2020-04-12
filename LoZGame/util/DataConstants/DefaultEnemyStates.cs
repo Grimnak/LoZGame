@@ -14,8 +14,8 @@
         {
             { StateType.Attack, 1 },
             { StateType.Idle, 1 },
-            { StateType.MoveEast, 1 },
-            { StateType.MoveWest, 1 }
+            { StateType.MoveEast, 2 },
+            { StateType.MoveWest, 2 }
         };
 
         private static Dictionary<StateType, int> dodongoStateList = new Dictionary<StateType, int>()

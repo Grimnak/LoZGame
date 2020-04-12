@@ -22,7 +22,7 @@
             {
                 this.projectile.Physics.StopMovement();
             }
-            else if (this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion || this.projectile is WoodenSwordProjectile)
+            else if (this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion || this.projectile is SwordProjectile)
             {
                 // do nothing
             }

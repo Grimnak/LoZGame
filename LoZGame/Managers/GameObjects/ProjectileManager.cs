@@ -86,7 +86,7 @@
                 switch (item)
                 {
                     case ProjectileType.WoodenSword:
-                        this.projectileList.Add(this.projectileId, new WoodenSwordProjectile(player));
+                        this.projectileList.Add(this.projectileId, new SwordProjectile(player));
                         break;
                     default:
                         break;

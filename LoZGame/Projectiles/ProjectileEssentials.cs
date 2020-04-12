@@ -104,7 +104,7 @@
         /// </summary>
         public void CorrectProjectile()
         {
-            if (this.parent is WoodenSwordProjectile)
+            if (this.parent is SwordProjectile)
             {
                 this.Physics.BoundsOffset = new Vector2((this.Physics.BoundsOffset.X * 5) / 8, this.Physics.BoundsOffset.Y + 4);
             }

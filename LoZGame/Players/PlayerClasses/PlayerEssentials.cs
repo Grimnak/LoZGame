@@ -3,13 +3,17 @@
     using System;
     using Microsoft.Xna.Framework;
 
-    public abstract class PlayerEssentials
+    public partial class Link
     {
         public IPlayerState State { get; set; }
 
         public string CurrentWeapon { get; set; }
 
         public string CurrentColor { get; set; }
+
+        public LinkColor CurrentColor2 { get; set; }
+
+        public LinkWeapon CurrentWeapon2 { get; set; }
 
         public Color CurrentTint { get; set; }
 
