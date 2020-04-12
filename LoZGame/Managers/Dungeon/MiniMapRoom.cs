@@ -30,7 +30,7 @@ namespace LoZClone
         public MiniMapRoom(int x, int y, List<MiniMap.DoorLocation> doors)
         {
             this.doors = doors;
-            this.visited = true;
+            this.visited = false;
             this.location = new Vector2(x, y); 
             this.MapSprite = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             this.MapSourceRectangle = new Rectangle(0, 0, 1, 1);
