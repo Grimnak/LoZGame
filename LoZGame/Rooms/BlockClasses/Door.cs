@@ -167,7 +167,7 @@
             }
             else if (otherCollider is IProjectile)
             {
-                this.doorCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+                this.doorCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
             }
         }
 
