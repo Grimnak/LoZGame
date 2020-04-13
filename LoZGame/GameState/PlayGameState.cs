@@ -40,7 +40,7 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TransitionRoom(string direction)
+        public void TransitionRoom(Physics.Direction direction)
         {
             LoZGame.Instance.GameState = new TransitionRoomState(direction);
         }

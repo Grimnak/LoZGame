@@ -14,21 +14,21 @@
             this.position = new Rectangle((int)currentRoomLocation.X * LoZGame.Instance.ScreenWidth, (int)currentRoomLocation.Y * (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset), LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset);
         }
 
-        public void Update(string direction, int transitionSpeed)
+        public void Update(Physics.Direction direction, int transitionSpeed)
         {
-            if (direction == "Up")
+            if (direction.Equals(Physics.Direction.North))
             {
                 this.position.Y -= transitionSpeed;
             }
-            else if (direction == "Down")
+            else if (direction.Equals(Physics.Direction.South))
             {
                 this.position.Y += transitionSpeed;
             }
-            else if (direction == "Left")
+            else if (direction.Equals(Physics.Direction.West))
             {
                 this.position.X -= transitionSpeed;
             }
-            else if (direction == "Right")
+            else if (direction.Equals(Physics.Direction.East))
             {
                 this.position.X += transitionSpeed;
             }

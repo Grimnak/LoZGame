@@ -6,11 +6,11 @@
     public class TransitionRoomState : IGameState
     {
         private LevelMasterSprite sprite;
-        private string direction;
+        private Physics.Direction direction;
         private int transitionSpeed;
         private int lockout;
 
-        public TransitionRoomState(string direction)
+        public TransitionRoomState(Physics.Direction direction)
         {
             this.direction = direction;
             this.lockout = 0;
@@ -49,7 +49,7 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TransitionRoom(string direction)
+        public void TransitionRoom(Physics.Direction direction)
         {
             // Can't go to a state you are already in.
         }
@@ -66,7 +66,7 @@
             this.lockout += this.transitionSpeed;
             switch (this.direction)
             {
-                case "Up":
+                case Physics.Direction.North:
                     if (this.lockout < LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset)
                     {
                         this.sprite.Update(this.direction, this.transitionSpeed);
@@ -78,7 +78,7 @@
                     }
                     break;
 
-                case "Down":
+                case Physics.Direction.South:
                     if (this.lockout < LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset)
                     {
                         this.sprite.Update(this.direction, this.transitionSpeed);
@@ -90,7 +90,7 @@
                     }
                     break;
 
-                case "Left":
+                case Physics.Direction.West:
                     if (this.lockout < LoZGame.Instance.ScreenWidth)
                     {
                         this.sprite.Update(this.direction, this.transitionSpeed);
@@ -102,7 +102,7 @@
                     }
                     break;
 
-                case "Right":
+                case Physics.Direction.East:
                     if (this.lockout < LoZGame.Instance.ScreenWidth)
                     {
                         this.sprite.Update(this.direction, this.transitionSpeed);

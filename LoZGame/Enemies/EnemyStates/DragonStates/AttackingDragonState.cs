@@ -22,7 +22,7 @@
         {
             Vector2 velocityVector = this.UnitVectorToPlayer(this.Enemy.Physics.Bounds.Location.ToVector2());
 
-            velocityVector *= FireballSpeed;
+            velocityVector *= GameData.Instance.ProjectileSpeedConstants.FireballSpeed;
             for (int i = 0; i < NumberFireballs; i++)
             {
                 float rotation = ((-1 * (float)(NumberFireballs - 1) / 2.0f) * FireballSpread) + (i * FireballSpread);
