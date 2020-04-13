@@ -63,4 +63,4 @@ MS Paint
 
 
 ## Suppressed Warnings:
-The only suppressed warnings involved linter recommendations to modify spacing or order of variables, as well as some naming conventions.
+There are no suppressed warnings.

@@ -96,8 +96,12 @@
         public virtual void Update()
         {
             this.HandleDamage();
-            this.CurrentState.Update();
-            this.Physics.Move();
+            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.isDeathState())
+            {
+                this.CurrentState.Update();
+                this.Physics.Move();
+            }
+
             this.Physics.SetDepth();
         }
 
@@ -128,5 +132,19 @@
         }
 
         public abstract ISprite CreateCorrectSprite();
+
+        private bool isDeathState()
+        {
+            return this.CurrentState is DeadDodongoState ||
+                this.CurrentState is DeadDragonState ||
+                this.CurrentState is DeadFireSnakeState ||
+                this.CurrentState is DeadGelState ||
+                this.CurrentState is DeadGoriyaState ||
+                this.CurrentState is DeadKeeseState ||
+                this.CurrentState is DeadRopeState ||
+                this.CurrentState is DeadStalfosState ||
+                this.CurrentState is DeadWallMasterState ||
+                this.CurrentState is DeadZolState;
+        }
     }
 }
