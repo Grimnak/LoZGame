@@ -8,7 +8,7 @@
 
     public class LoZGame : Game
     {
-        public static readonly bool DebugMode = false; // show collision bounding boxes
+        public static readonly bool DebugMode = true; // show collision bounding boxes
         public static readonly bool Cheats = false; // infinite life and item uses
         public static readonly bool Music = false; // Title screen and dungeon music (not SFX)
         public static readonly int StartDungeon = 1;
@@ -137,7 +137,6 @@
 
             this.font = Content.Load<SpriteFont>("Text");
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
-            this.GameObjects.Enemies.Add(new FireSnakeHead(new Vector2(200, 400)));
             this.StartGame();
         }
         
