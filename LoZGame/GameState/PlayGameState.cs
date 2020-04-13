@@ -54,6 +54,15 @@
         /// <inheritdoc></inheritdoc>
         public void Update()
         {
+            if (LoZGame.Instance.Players[0].Inventory.HasClock)
+            {
+                LoZGame.Instance.Players[0].Inventory.ClockLockout++;
+            }
+            if (LoZGame.Instance.Players[0].Inventory.ClockLockout >= InventoryManager.ClockLockoutMax)
+            {
+                LoZGame.Instance.Players[0].Inventory.HasClock = false;
+                LoZGame.Instance.Players[0].Inventory.ClockLockout = 0;
+            }
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Update();

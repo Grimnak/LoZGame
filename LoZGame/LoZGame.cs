@@ -9,7 +9,7 @@
     public class LoZGame : Game
     {
         public static readonly bool DebugMode = false; // show collision bounding boxes
-        public static readonly bool Cheats = true; // infinite life and item uses
+        public static readonly bool Cheats = false; // infinite life and item uses
         public static readonly bool Music = false; // Title screen and dungeon music (not SFX)
         public static readonly int StartDungeon = 1;
         private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
@@ -183,7 +183,8 @@
             if (Cheats)
             {
                 this.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-                this.spriteBatch.DrawString(font, "CHEATS ENABLED", new Vector2(0,LoZGame.Instance.InventoryOffset), Color.Black);
+                this.spriteBatch.DrawString(font, "CHEATS ON", new Vector2(0,LoZGame.Instance.InventoryOffset), Color.Black);
+                this.spriteBatch.DrawString(font, "CHEATS ON", new Vector2(3, LoZGame.Instance.InventoryOffset+3), Color.DarkRed);
                 this.spriteBatch.End();
             }
             base.Draw(gameTime);
