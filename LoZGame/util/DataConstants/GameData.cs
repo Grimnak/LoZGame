@@ -3,37 +3,27 @@
     public class GameData
     {
         private static readonly GameData InstanceValue = new GameData();
-        private static PlayerConstants playerConstants;
-        private static ProjectileDamageConstants projectileDmgConstants;
-        private static ProjectileSpeedConstants projectileSpdConstants;
-        private static ProjectileMassConstants projectileMassConstants;
-        private static EnemyDamageConstants enemyDamageConstants;
-        private static EnemyHealthConstants enemyHealthConstants;
-        private static EnemySpeedConstants enemySpdConstants;
-        private static EnemyMassConstants enemyMassConstants;
-        private static EnemyMiscConstants enemyMiscConstants;
-        private static EnemyStateWeights enemyStateWeights;
 
         public static GameData Instance => InstanceValue;
 
-        public PlayerConstants PlayerConstants => playerConstants;
+        public PlayerConstants PlayerConstants { get; }
 
-        public ProjectileDamageConstants ProjectileDamageConstants => projectileDmgConstants;
+        public ProjectileDamageConstants ProjectileDamageConstants { get; }
 
-        public ProjectileSpeedConstants ProjectileSpeedConstants => projectileSpdConstants;
+        public ProjectileSpeedConstants ProjectileSpeedConstants { get; }
 
-        public ProjectileMassConstants ProjectileMassConstants => projectileMassConstants;
+        public ProjectileMassConstants ProjectileMassConstants { get; }
 
-        public EnemyDamageConstants EnemyDamageConstants => enemyDamageConstants;
+        public EnemyDamageConstants EnemyDamageConstants { get; }
 
-        public EnemyHealthConstants EnemyHealthConstants => enemyHealthConstants;
+        public EnemyHealthConstants EnemyHealthConstants { get; }
 
-        public EnemySpeedConstants EnemySpeedConstants => enemySpdConstants;
+        public EnemySpeedConstants EnemySpeedConstants { get; }
 
-        public EnemyMassConstants EnemyMassConstants => enemyMassConstants;
+        public EnemyMassConstants EnemyMassConstants { get; }
 
-        public EnemyMiscConstants EnemyMiscConstants => enemyMiscConstants;
+        public EnemyMiscConstants EnemyMiscConstants { get; }
 
-        public EnemyStateWeights EnemyStateWeights => enemyStateWeights;
+        public EnemyStateWeights EnemyStateWeights { get; }
     }
 }
