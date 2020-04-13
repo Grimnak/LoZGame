@@ -78,8 +78,6 @@
 
         public void Draw(Rectangle location, Color tint, float rotation, SpriteEffects effect, float depth)
         {
-            int width = this.Data.DrawWidth * this.Scale;
-            int height = this.Data.DrawHeight * this.Scale;
             Vector2 origin = new Vector2(this.frame.Width / 2, this.frame.Height / 2);
             LoZGame.Instance.SpriteBatch.Draw(Texture, location, this.frame, tint, rotation, origin, effect, depth);
         }

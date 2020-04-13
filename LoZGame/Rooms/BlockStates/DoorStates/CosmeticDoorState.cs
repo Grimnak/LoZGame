@@ -7,12 +7,10 @@
         private readonly Door door;
         private readonly ISprite sprite;
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
-        private bool isLevel1;
 
         public CosmeticDoorState(Door door)
         {
             this.door = door;
-            this.isLevel1 = this.door.GetKind().Equals("cosmetic");
             switch (door.GetLoc())
             {
                 case "N":

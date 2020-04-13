@@ -20,8 +20,6 @@
         private SpriteData enterData;
         private Texture2D levelOneMasterSpriteSheet;
         private Texture2D levelTwoMasterSpriteSheet;
-        private Texture2D inventorySpriteSheet;
-        private SpriteData inventoryData;
         private Texture2D gameOverSpriteSheet;
         private SpriteData gameOverData;
 
@@ -39,8 +37,6 @@
             this.enterData = new SpriteData(new Vector2(enterWidth, enterHeight), enterSpriteSheet, 1, 1);
             this.levelOneMasterSpriteSheet = content.Load<Texture2D>("level-1");
             this.levelTwoMasterSpriteSheet = content.Load<Texture2D>("level-2");
-            this.inventorySpriteSheet = content.Load<Texture2D>("Inventory");
-            this.inventoryData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), inventorySpriteSheet, 1, 1);
             this.gameOverSpriteSheet = content.Load<Texture2D>("gameOver");
             this.gameOverData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), gameOverSpriteSheet, 1, 1);
     }

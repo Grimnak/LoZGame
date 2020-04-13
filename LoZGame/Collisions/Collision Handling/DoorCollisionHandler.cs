@@ -54,7 +54,7 @@
             }
         }
 
-        public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
+        public void OnCollisionResponse(IProjectile projectile)
         {
             if ((this.door.State is LockedDoorState || this.door.State is HiddenDoorState) && projectile is BombExplosion)
             {

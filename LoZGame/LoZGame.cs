@@ -95,10 +95,12 @@
 
         private LoZGame()
         {
-            this.graphics = new GraphicsDeviceManager(this);
-            this.graphics.PreferredBackBufferWidth = 800;
-            this.graphics.PreferredBackBufferHeight = 654;
-            this.graphics.GraphicsProfile = GraphicsProfile.HiDef;
+            this.graphics = new GraphicsDeviceManager(this)
+            {
+                PreferredBackBufferWidth = 800,
+                PreferredBackBufferHeight = 654,
+                GraphicsProfile = GraphicsProfile.HiDef
+            };
             this.graphics.ApplyChanges();
 
             this.screenWidth = 800;

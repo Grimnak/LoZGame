@@ -5,7 +5,6 @@
 
     public class WinGameState : IGameState
     {
-        private int currentDungeon;
         private static int maxDungeon = 2;
         private int lockout;
         private int lockoutMax = 440;
@@ -13,7 +12,6 @@
         public WinGameState()
         {
             lockout = 0;
-            currentDungeon = 1;
         }
 
         /// <inheritdoc></inheritdoc>
@@ -80,8 +78,10 @@
                 // Transition to new dungeon or title screen.
                 if (LoZGame.Instance.Dungeon.DungeonNumber < maxDungeon)
                 {
-                    LoZGame.Instance.Dungeon = new Dungeon(LoZGame.Instance.Dungeon.DungeonNumber + 1);
-                    LoZGame.Instance.Dungeon.Player = LoZGame.Instance.Players[0];
+                    LoZGame.Instance.Dungeon = new Dungeon(LoZGame.Instance.Dungeon.DungeonNumber + 1)
+                    {
+                        Player = LoZGame.Instance.Players[0]
+                    };
                     LoZGame.Instance.Players[0].Inventory.HasMap = false;
                     LoZGame.Instance.Players[0].Inventory.HasCompass = false;
                     LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
