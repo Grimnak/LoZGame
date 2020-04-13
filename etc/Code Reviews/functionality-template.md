@@ -2,17 +2,17 @@ _3902 Functionality Format. Please fill out according to all italicized text. Re
 
 # Code Functionality Review
 
-### Author: Auth Name
+### Author: Garrett Morse
 
-### Date: mm/dd/yyyy
+### Date: 04/13/20
 
-### Sprint No.: Sprint #
+### Sprint No.: Sprint 4
 
-### File Name: ./path/to/file/here.cs
+### File Name: ./LoZGame/Managers/Dungeon/DungeonMethods.cs
 
-### File Author Name: File Auth Name
+### File Author Name: Multiple Contributors
 
-### Time Taken to Review: ## minutes
+### Time Taken to Review: 10 minutes
 
 ### Comments on Quality:
 - item 1
