@@ -55,7 +55,7 @@ namespace LoZClone
             DrawDoors(drawLocation);
 
             // door processing
-            drawLocation = new Rectangle(new Point(drawLocation.X + BorderOffset, drawLocation.Y + BorderOffset), new Point(roomSize.X - (BorderOffset), roomSize.Y - (BorderOffset)));
+            drawLocation = new Rectangle(new Point(drawLocation.X + BorderOffset, drawLocation.Y + BorderOffset), new Point(roomSize.X - BorderOffset, roomSize.Y - BorderOffset));
             LoZGame.Instance.SpriteBatch.Draw(this.MapSprite, drawLocation, this.MapSourceRectangle, MapColor, 0.0f, Vector2.Zero, SpriteEffects.None, MapLayer);
         }
 
