@@ -95,19 +95,19 @@
         {
             if (this.player.Physics.CurrentDirection == Physics.Direction.North)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkIdleUp(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkUp(this.player.CurrentColor);
             }
             else if (this.player.Physics.CurrentDirection == Physics.Direction.South)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkIdleDown(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkDown(this.player.CurrentColor);
             }
             else if (this.player.Physics.CurrentDirection == Physics.Direction.West)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkIdleLeft(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkLeft(this.player.CurrentColor);
             }
             else
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkIdleRight(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkRight(this.player.CurrentColor);
             }
         }
     }

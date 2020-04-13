@@ -42,9 +42,13 @@ namespace LoZClone
 
             this.inventoryDictionary.Add(Keys.Enter, new CommandItemSelect(player));
             this.inventoryDictionary.Add(Keys.W, new CommandSelectionUp(player));
+            this.inventoryDictionary.Add(Keys.Up, new CommandSelectionUp(player));
             this.inventoryDictionary.Add(Keys.A, new CommandSelectionLeft(player));
+            this.inventoryDictionary.Add(Keys.Left, new CommandSelectionLeft(player));
             this.inventoryDictionary.Add(Keys.S, new CommandSelectionDown(player));
+            this.inventoryDictionary.Add(Keys.Down, new CommandSelectionDown(player));
             this.inventoryDictionary.Add(Keys.D, new CommandSelectionRight(player));
+            this.inventoryDictionary.Add(Keys.Right, new CommandSelectionRight(player));
         }
 
         /// <summary>

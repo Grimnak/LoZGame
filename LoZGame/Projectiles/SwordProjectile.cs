@@ -14,7 +14,7 @@
             this.SetUp(this);
             this.Width = ProjectileSpriteFactory.Instance.SwordWidth;
             this.Heigth = ProjectileSpriteFactory.Instance.SwordHeight;
-            this.Offset = ((this.Heigth * 3) / 4);
+            this.Offset = (this.Heigth * 3) / 4;
             this.Speed = GameData.Instance.ProjectileSpeedData.WoodSwordSpeed;
             this.Source = source.Physics;
             this.InitializeDirection();
@@ -53,7 +53,7 @@
             this.Physics.SetDepth();
         }
 
-        private void CreateCorrectSword(string color, string sword)
+        private void CreateCorrectSword(Link.LinkColor color, Link.LinkWeapon sword)
         {
             /*if (color.Equals("Red"))
             {

@@ -96,7 +96,7 @@
 
         private ISprite CreateCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.CreateSpriteLinkMoveDown(this.player.CurrentColor);
+            return LinkSpriteFactory.Instance.CreateSpriteLinkDown(this.player.CurrentColor);
         }
     }
 }

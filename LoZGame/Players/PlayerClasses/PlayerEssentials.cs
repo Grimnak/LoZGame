@@ -7,9 +7,9 @@
     {
         public IPlayerState State { get; set; }
 
-        public string CurrentWeapon { get; set; }
+        public LinkWeapon CurrentWeapon { get; set; }
 
-        public string CurrentColor { get; set; }
+        public LinkColor CurrentColor { get; set; }
 
         public LinkColor CurrentColor2 { get; set; }
 

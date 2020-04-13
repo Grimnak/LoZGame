@@ -96,10 +96,6 @@
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
         {
-            if (door.State is HiddenDoorState)
-            {
-                door.Bombed();
-            }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)

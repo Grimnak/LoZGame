@@ -104,7 +104,7 @@
 
         private ISprite CreateCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.CreateSpriteLinkIdleUp(this.player.CurrentColor);
+            return LinkSpriteFactory.Instance.CreateSpriteLinkUp(this.player.CurrentColor);
         }
     }
 }
