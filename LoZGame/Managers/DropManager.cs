@@ -10,7 +10,6 @@
         private const int RupeeWeight = 40;
         private const int YellowRupeeWeight = 20;
         private const int BombWeight = 20;
-        private const int FoodWeight = 20;
         private const int PotionWeight = 10;
         private const int SecondPotionWeight = 5;
         private const int HealthWeight = 25;
@@ -26,7 +25,6 @@
             itemWeights.Add("Rupee", RupeeWeight);
             itemWeights.Add("YellowRupee", YellowRupeeWeight);
             itemWeights.Add("Bomb", BombWeight);
-            itemWeights.Add("Food", FoodWeight);
             itemWeights.Add("Potion", PotionWeight);
             itemWeights.Add("SecondPotion", SecondPotionWeight);
             itemWeights.Add("Health", HealthWeight);
@@ -76,9 +74,6 @@
                     break;
                 case "Bomb":
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedBomb(loc));
-                    break;
-                case "Food":
-                    LoZGame.Instance.GameObjects.Items.Add(new DroppedFood(loc));
                     break;
                 case "Potion":
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedPotion(loc));

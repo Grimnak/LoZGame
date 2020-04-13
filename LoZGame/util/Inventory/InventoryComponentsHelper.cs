@@ -22,6 +22,8 @@
         private Vector2 keyCountOffset = new Vector2(305, 101 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
         private Vector2 bombCountOffset = new Vector2(305, 125 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
         private Vector2 levelCountOffset = new Vector2(58, 15 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
+        private Vector2 primaryEquippedOffset = new Vector2(470, 85 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
+        private Vector2 secondaryEquippedOffset = new Vector2(392, 85 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
 
         public Vector2 InventoryBackgroundPosition { get { return inventoryBackgroundPosition; } set { inventoryBackgroundPosition = value; } }
 
@@ -122,6 +124,22 @@
         public ISprite CreateItemSelector()
         {
             return InventorySpriteFactory.Instance.CreateInventoryItemSelector();
+        }
+
+        public ISprite CreatePrimaryWeaponSprite()
+        {
+            if (LoZGame.Instance.Players[0].CurrentWeapon.Equals(Link.LinkWeapon.White))
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryWhiteSword();
+            }
+            else if (LoZGame.Instance.Players[0].CurrentWeapon.Equals(Link.LinkWeapon.Magic))
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryMagicSword();
+            }
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryWoodenSword();
+            }
         }
     }
 }

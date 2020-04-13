@@ -124,13 +124,13 @@ namespace LoZClone
             this.redLinkPickupData = new SpriteData(DrawSize, redLinkPickupTexture, 2, 1);
         }
 
-        public ISprite CreateSpriteLinkIdleUp(string currentColor)
+        public ISprite CreateSpriteLinkUp(Link.LinkColor currentColor)
         {
-            if (currentColor.Equals("Red"))
+            if (currentColor.Equals(Link.LinkColor.Red))
             {
                 return new ObjectSprite(this.redLinkUpTexture, this.redLinkUpData);
             }
-            else if (currentColor.Equals("Blue"))
+            else if (currentColor.Equals(Link.LinkColor.Blue))
             {
                 return new ObjectSprite(this.blueLinkUpTexture, this.blueLinkUpData);
             }
@@ -140,13 +140,13 @@ namespace LoZClone
             }
         }
 
-        public ISprite CreateSpriteLinkIdleDown(string currentColor)
+        public ISprite CreateSpriteLinkDown(Link.LinkColor currentColor)
         {
-            if (currentColor.Equals("Red"))
+            if (currentColor.Equals(Link.LinkColor.Red))
             {
                 return new ObjectSprite(this.redLinkDownTexture, this.redLinkDownData);
             }
-            else if (currentColor.Equals("Blue"))
+            else if (currentColor.Equals(Link.LinkColor.Blue))
             {
                 return new ObjectSprite(this.blueLinkDownTexture, this.blueLinkDownData);
             }
@@ -156,13 +156,13 @@ namespace LoZClone
             }
         }
 
-        public ISprite CreateSpriteLinkIdleLeft(string currentColor)
+        public ISprite CreateSpriteLinkLeft(Link.LinkColor currentColor)
         {
-            if (currentColor.Equals("Red"))
+            if (currentColor.Equals(Link.LinkColor.Red))
             {
                 return new ObjectSprite(this.redLinkLeftTexture, this.redLinkLeftData);
             }
-            else if (currentColor.Equals("Blue"))
+            else if (currentColor.Equals(Link.LinkColor.Blue))
             {
                 return new ObjectSprite(this.blueLinkLeftTexture, this.blueLinkLeftData);
             }
@@ -172,13 +172,13 @@ namespace LoZClone
             }
         }
 
-        public ISprite CreateSpriteLinkIdleRight(string currentColor)
+        public ISprite CreateSpriteLinkRight(Link.LinkColor currentColor)
         {
-            if (currentColor.Equals("Red"))
+            if (currentColor.Equals(Link.LinkColor.Red))
             {
                 return new ObjectSprite(this.redLinkRightTexture, this.redLinkRightData);
             }
-            else if (currentColor.Equals("Blue"))
+            else if (currentColor.Equals(Link.LinkColor.Blue))
             {
                 return new ObjectSprite(this.blueLinkRightTexture, this.blueLinkRightData);
             }
@@ -188,281 +188,13 @@ namespace LoZClone
             }
         }
 
-        public ISprite CreateSpriteLinkMoveUp(string currentColor)
+        public ISprite CreateSpriteLinkPickupItem(Link.LinkColor currentColor)
         {
-            if (currentColor.Equals("Red"))
-            {
-                return new ObjectSprite(this.redLinkUpTexture, this.redLinkUpData);
-            }
-            else if (currentColor.Equals("Blue"))
-            {
-                return new ObjectSprite(this.blueLinkUpTexture, this.blueLinkUpData);
-            }
-            else
-            {
-                return new ObjectSprite(this.greenLinkUpTexture, this.greenLinkUpData);
-            }
-        }
-
-        public ISprite CreateSpriteLinkMoveDown(string currentColor)
-        {
-            if (currentColor.Equals("Red"))
-            {
-                return new ObjectSprite(this.redLinkDownTexture, this.redLinkDownData);
-            }
-            else if (currentColor.Equals("Blue"))
-            {
-                return new ObjectSprite(this.blueLinkDownTexture, this.blueLinkDownData);
-            }
-            else
-            {
-                return new ObjectSprite(this.greenLinkDownTexture, this.greenLinkDownData);
-            }
-        }
-
-        public ISprite CreateSpriteLinkMoveLeft(string currentColor)
-        {
-            if (currentColor.Equals("Red"))
-            {
-                return new ObjectSprite(this.redLinkLeftTexture, this.redLinkLeftData);
-            }
-            else if (currentColor.Equals("Blue"))
-            {
-                return new ObjectSprite(this.blueLinkLeftTexture, this.blueLinkLeftData);
-            }
-            else
-            {
-                return new ObjectSprite(this.greenLinkLeftTexture, this.greenLinkLeftData);
-            }
-        }
-
-        public ISprite CreateSpriteLinkMoveRight(string currentColor)
-        {
-            if (currentColor.Equals("Red"))
-            {
-                return new ObjectSprite(this.redLinkRightTexture, this.redLinkRightData);
-            }
-            else if (currentColor.Equals("Blue"))
-            {
-                return new ObjectSprite(this.blueLinkRightTexture, this.blueLinkRightData);
-            }
-            else
-            {
-                return new ObjectSprite(this.greenLinkRightTexture, this.greenLinkRightData);
-            }
-        }
-
-        public ISprite CreateSpriteLinkAttackUp(string currentColor, string currentWeapon)
-        {
-            if (currentColor.Equals("Red"))
-            {
-                if (currentWeapon.Equals("Wood"))
-                {
-                    return new ObjectSprite(this.redLinkUpTexture, this.redLinkUpData);
-                }
-                else if (currentWeapon.Equals("Magic"))
-                {
-                    return new ObjectSprite(this.redLinkUpTexture, this.redLinkUpData);
-                }
-                else // currentWeapon is "Wand"
-                {
-                    return new ObjectSprite(this.redLinkUpTexture, this.redLinkUpData);
-                }
-            }
-            else if (currentColor.Equals("Blue"))
-            {
-                if (currentWeapon.Equals("Wood"))
-                {
-                    return new ObjectSprite(this.blueLinkUpTexture, this.blueLinkUpData);
-                }
-                else if (currentWeapon.Equals("Magic"))
-                {
-                    return new ObjectSprite(this.blueLinkUpTexture, this.blueLinkUpData);
-                }
-                else // currentWeapon is "Wand"
-                {
-                    return new ObjectSprite(this.blueLinkUpTexture, this.blueLinkUpData);
-                }
-
-            }
-            else
-            {
-                if (currentWeapon.Equals("Wood"))
-                {
-                    return new ObjectSprite(this.greenLinkUpTexture, this.greenLinkUpData);
-                }
-                else if (currentWeapon.Equals("Magic"))
-                {
-                    return new ObjectSprite(this.greenLinkUpTexture, this.greenLinkUpData);
-                }
-                else // currentWeapon is "Wand"
-                {
-                    return new ObjectSprite(this.greenLinkUpTexture, this.greenLinkUpData);
-                }
-
-            }
-        }
-
-        public ISprite CreateSpriteLinkAttackDown(string currentColor, string currentWeapon)
-        {
-            if (currentColor.Equals("Red"))
-            {
-                if (currentWeapon.Equals("Wood"))
-                {
-                    return new ObjectSprite(this.redLinkDownTexture, this.redLinkDownData);
-                }
-                else if (currentWeapon.Equals("Magic"))
-                {
-                    return new ObjectSprite(this.redLinkDownTexture, this.redLinkDownData);
-                }
-                else // currentWeapon is "Wand"
-                {
-                    return new ObjectSprite(this.redLinkDownTexture, this.redLinkDownData);
-                }
-            }
-            else if (currentColor.Equals("Blue"))
-            {
-                if (currentWeapon.Equals("Wood"))
-                {
-                    return new ObjectSprite(this.blueLinkDownTexture, this.blueLinkDownData);
-                }
-                else if (currentWeapon.Equals("Magic"))
-                {
-                    return new ObjectSprite(this.blueLinkDownTexture, this.blueLinkDownData);
-                }
-                else // currentWeapon is "Wand"
-                {
-                    return new ObjectSprite(this.blueLinkDownTexture, this.blueLinkDownData);
-                }
-
-            }
-            else
-            {
-                if (currentWeapon.Equals("Wood"))
-                {
-                    return new ObjectSprite(this.greenLinkDownTexture, this.greenLinkDownData);
-                }
-                else if (currentWeapon.Equals("Magic"))
-                {
-                    return new ObjectSprite(this.greenLinkDownTexture, this.greenLinkDownData);
-                }
-                else // currentWeapon is "Wand"
-                {
-                    return new ObjectSprite(this.greenLinkDownTexture, this.greenLinkDownData);
-                }
-
-            }
-        }
-
-        public ISprite CreateSpriteLinkAttackLeft(string currentColor, string currentWeapon)
-        {
-            if (currentColor.Equals("Red"))
-            {
-                if (currentWeapon.Equals("Wood"))
-                {
-                    return new ObjectSprite(this.redLinkLeftTexture, this.redLinkLeftData);
-                }
-                else if (currentWeapon.Equals("Magic"))
-                {
-                    return new ObjectSprite(this.redLinkLeftTexture, this.redLinkLeftData);
-                }
-                else // currentWeapon is "Wand"
-                {
-                    return new ObjectSprite(this.redLinkLeftTexture, this.redLinkLeftData);
-                }
-            }
-            else if (currentColor.Equals("Blue"))
-            {
-                if (currentWeapon.Equals("Wood"))
-                {
-                    return new ObjectSprite(this.blueLinkLeftTexture, this.blueLinkLeftData);
-                }
-                else if (currentWeapon.Equals("Magic"))
-                {
-                    return new ObjectSprite(this.blueLinkLeftTexture, this.blueLinkLeftData);
-                }
-                else // currentWeapon is "Wand"
-                {
-                    return new ObjectSprite(this.blueLinkLeftTexture, this.blueLinkLeftData);
-                }
-
-            }
-            else
-            {
-                if (currentWeapon.Equals("Wood"))
-                {
-                    return new ObjectSprite(this.greenLinkLeftTexture, this.greenLinkLeftData);
-                }
-                else if (currentWeapon.Equals("Magic"))
-                {
-                    return new ObjectSprite(this.greenLinkLeftTexture, this.greenLinkLeftData);
-                }
-                else // currentWeapon is "Wand"
-                {
-                    return new ObjectSprite(this.greenLinkLeftTexture, this.greenLinkLeftData);
-                }
-
-            }
-        }
-
-        public ISprite CreateSpriteLinkAttackRight(string currentColor, string currentWeapon)
-        {
-            if (currentColor.Equals("Red"))
-            {
-                if (currentWeapon.Equals("Wood"))
-                {
-                    return new ObjectSprite(this.redLinkRightTexture, this.redLinkRightData);
-                }
-                else if (currentWeapon.Equals("Magic"))
-                {
-                    return new ObjectSprite(this.redLinkRightTexture, this.redLinkRightData);
-                }
-                else // currentWeapon is "Wand"
-                {
-                    return new ObjectSprite(this.redLinkRightTexture, this.redLinkRightData);
-                }
-            }
-            else if (currentColor.Equals("Blue"))
-            {
-                if (currentWeapon.Equals("Wood"))
-                {
-                    return new ObjectSprite(this.blueLinkRightTexture, this.blueLinkRightData);
-                }
-                else if (currentWeapon.Equals("Magic"))
-                {
-                    return new ObjectSprite(this.blueLinkRightTexture, this.blueLinkRightData);
-                }
-                else // currentWeapon is "Wand"
-                {
-                    return new ObjectSprite(this.blueLinkRightTexture, this.blueLinkRightData);
-                }
-
-            }
-            else
-            {
-                if (currentWeapon.Equals("Wood"))
-                {
-                    return new ObjectSprite(this.greenLinkRightTexture, this.greenLinkRightData);
-                }
-                else if (currentWeapon.Equals("Magic"))
-                {
-                    return new ObjectSprite(this.greenLinkRightTexture, this.greenLinkRightData);
-                }
-                else // currentWeapon is "Wand"
-                {
-                    return new ObjectSprite(this.greenLinkRightTexture, this.greenLinkRightData);
-                }
-
-            }
-        }
-
-        public ISprite CreateSpriteLinkPickupItem(string currentColor)
-        {
-            if (currentColor.Equals("Red"))
+            if (currentColor.Equals(Link.LinkColor.Red))
             {
                 return new ObjectSprite(this.redLinkPickupTexture, this.redLinkPickupData);
             }
-            else if (currentColor.Equals("Blue"))
+            else if (currentColor.Equals(Link.LinkColor.Blue))
             {
                 return new ObjectSprite(this.blueLinkPickupTexture, this.blueLinkPickupData);
             }
@@ -472,93 +204,13 @@ namespace LoZClone
             }
         }
 
-        public ISprite CreateSpriteLinkPickupTriforce(string currentColor)
+        public ISprite CreateSpriteLinkDie(Link.LinkColor currentColor)
         {
-            if (currentColor.Equals("Red"))
-            {
-                return new ObjectSprite(this.redLinkPickupTexture, this.redLinkPickupData);
-            }
-            else if (currentColor.Equals("Blue"))
-            {
-                return new ObjectSprite(this.blueLinkPickupTexture, this.blueLinkPickupData);
-            }
-            else
-            {
-                return new ObjectSprite(this.greenLinkPickupTexture, this.greenLinkPickupData);
-            }
-        }
-
-        public ISprite CreateSpriteLinkUseItemUp(string currentColor)
-        {
-            if (currentColor.Equals("Red"))
-            {
-                return new ObjectSprite(this.redLinkUpTexture, this.redLinkUpData);
-            }
-            else if (currentColor.Equals("Blue"))
-            {
-                return new ObjectSprite(this.blueLinkUpTexture, this.blueLinkUpData);
-            }
-            else
-            {
-                return new ObjectSprite(this.greenLinkUpTexture, this.greenLinkUpData);
-            }
-        }
-
-        public ISprite CreateSpriteLinkUseItemDown(string currentColor)
-        {
-            if (currentColor.Equals("Red"))
-            {
-                return new ObjectSprite(this.redLinkDownTexture, this.redLinkDownData);
-            }
-            else if (currentColor.Equals("Blue"))
-            {
-                return new ObjectSprite(this.blueLinkDownTexture, this.blueLinkDownData);
-            }
-            else
-            {
-                return new ObjectSprite(this.greenLinkDownTexture, this.greenLinkDownData);
-            }
-        }
-
-        public ISprite CreateSpriteLinkUseItemLeft(string currentColor)
-        {
-            if (currentColor.Equals("Red"))
-            {
-                return new ObjectSprite(this.redLinkLeftTexture, this.redLinkLeftData);
-            }
-            else if (currentColor.Equals("Blue"))
-            {
-                return new ObjectSprite(this.blueLinkLeftTexture, this.blueLinkLeftData);
-            }
-            else
-            {
-                return new ObjectSprite(this.greenLinkLeftTexture, this.greenLinkLeftData);
-            }
-        }
-
-        public ISprite CreateSpriteLinkUseItemRight(string currentColor)
-        {
-            if (currentColor.Equals("Red"))
-            {
-                return new ObjectSprite(this.redLinkRightTexture, this.redLinkRightData);
-            }
-            else if (currentColor.Equals("Blue"))
-            {
-                return new ObjectSprite(this.blueLinkRightTexture, this.blueLinkRightData);
-            }
-            else
-            {
-                return new ObjectSprite(this.greenLinkRightTexture, this.greenLinkRightData);
-            }
-        }
-
-        public ISprite CreateSpriteLinkDie(string currentColor)
-        {
-            if (currentColor.Equals("Red"))
+            if (currentColor.Equals(Link.LinkColor.Red))
             {
                 return new ObjectSprite(this.redLinkDieTexture, this.redLinkDieData);
             }
-            else if (currentColor.Equals("Blue"))
+            else if (currentColor.Equals(Link.LinkColor.Blue))
             {
                 return new ObjectSprite(this.blueLinkDieTexture, this.blueLinkDieData);
             }

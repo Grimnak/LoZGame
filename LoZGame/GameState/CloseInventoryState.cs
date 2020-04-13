@@ -82,6 +82,7 @@
             }
             LoZGame.Instance.GameObjects.Draw();
             InventoryComponents.Instance.DrawCorrectBackground();
+            InventoryComponents.Instance.DrawText();
 
             LoZGame.Instance.SpriteBatch.End();
 

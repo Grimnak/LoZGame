@@ -30,7 +30,8 @@
             this.DrawMaps();
             this.DrawMapCompassIndicators();
             this.DrawSelectionItems();
-            this.DrawSelectedItem();
+            this.DrawEquippedItems();
+            this.DrawEquippedItems();
         }
 
         /// <summary>
@@ -129,10 +130,13 @@
             }
         }
 
-        private void DrawSelectedItem()
+        /// <summary>
+        /// Draws the currently equipped weapon and item in the HUD.
+        /// </summary>
+        private void DrawEquippedItems()
         {
+            ISprite equippedWeaponSprite = CreatePrimaryWeaponSprite();
             ISprite selectedItem;
-            Vector2 selectedPosition = this.inventoryBackgroundPosition + selectedItemOffset;
 
             switch (LoZGame.Instance.Players[0].Inventory.SelectedItem)
             {
@@ -173,7 +177,14 @@
                     break;
             }
 
-            selectedItem.Draw(selectedPosition, LoZGame.Instance.DefaultTint, 1.0f);
+            selectedItem.Draw(this.inventoryBackgroundPosition + selectedItemOffset, LoZGame.Instance.DefaultTint, 1.0f);
+
+            // Only show the equipped item while playing the game (as per original game behavior).
+            if (LoZGame.Instance.GameState is PlayGameState)
+            {
+                selectedItem.Draw(this.inventoryBackgroundPosition + secondaryEquippedOffset, LoZGame.Instance.DefaultTint, 1.0f);
+                equippedWeaponSprite.Draw(inventoryBackgroundPosition + primaryEquippedOffset, LoZGame.Instance.DefaultTint, 1.0f);
+            }
         }
 
         /// <summary>
@@ -238,7 +249,7 @@
 
                 case 2:
                     selectionItem = CreateArrowSprite();
-                    if (LoZGame.Instance.Players[0].Inventory.HasBow)
+                    if (LoZGame.Instance.Players[0].Inventory.HasBow && LoZGame.Instance.Players[0].Inventory.Rupees > 0)
                     {
                         selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     }
@@ -270,7 +281,7 @@
 
                 case 6:
                     selectionItem = CreateSilverArrowSprite();
-                    if (LoZGame.Instance.Players[0].Inventory.HasBow && LoZGame.Instance.Players[0].Inventory.HasSilverArrow)
+                    if (LoZGame.Instance.Players[0].Inventory.HasBow && LoZGame.Instance.Players[0].Inventory.HasSilverArrow && LoZGame.Instance.Players[0].Inventory.Rupees > 0)
                     {
                         selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     }

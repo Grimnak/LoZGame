@@ -12,6 +12,7 @@
         private readonly Vector2 mapSize = new Vector2(30, 50);
         private readonly Vector2 compassSize = new Vector2(60, 60);
         private readonly Vector2 itemSize = new Vector2(40, 40);
+        private readonly Vector2 swordSize = new Vector2(40, 50);
 
         public Vector2 SelectionBoxSize { get { return selectionBoxSize; } }
 
@@ -53,6 +54,12 @@
         private SpriteData redCandleData;
         private Texture2D selectionReticuleSpriteSheet;
         private SpriteData selectionReticuleData;
+        private Texture2D woodenSwordSpriteSheet;
+        private SpriteData woodenSwordData;
+        private Texture2D whiteSwordSpriteSheet;
+        private SpriteData whiteSwordData;
+        private Texture2D magicSwordSpriteSheet;
+        private SpriteData magicSwordData;
 
         private static readonly InventorySpriteFactory InstanceValue = new InventorySpriteFactory();
 
@@ -96,6 +103,12 @@
             this.redCandleData = new SpriteData(itemSize, redCandleSpriteSheet, 1, 1);
             this.selectionReticuleSpriteSheet = content.Load<Texture2D>("HUDSelector");
             this.selectionReticuleData = new SpriteData(itemSelectorSize, selectionReticuleSpriteSheet, 1, 1);
+            this.woodenSwordSpriteSheet = content.Load<Texture2D>("WoodenSword");
+            this.woodenSwordData = new SpriteData(swordSize, woodenSwordSpriteSheet, 1, 1);
+            this.whiteSwordSpriteSheet = content.Load<Texture2D>("WhiteSword");
+            this.whiteSwordData = new SpriteData(swordSize, whiteSwordSpriteSheet, 1, 1);
+            this.magicSwordSpriteSheet = content.Load<Texture2D>("MagicSword");
+            this.magicSwordData = new SpriteData(swordSize, magicSwordSpriteSheet, 1, 1);
         }
 
         public ISprite CreateInventoryBackground()
@@ -188,5 +201,19 @@
             return new ObjectSprite(this.selectionReticuleSpriteSheet, this.selectionReticuleData);
         }
 
+        public ISprite CreateInventoryWoodenSword()
+        {
+            return new ObjectSprite(this.woodenSwordSpriteSheet, this.woodenSwordData);
+        }
+
+        public ISprite CreateInventoryWhiteSword()
+        {
+            return new ObjectSprite(this.whiteSwordSpriteSheet, this.whiteSwordData);
+        }
+
+        public ISprite CreateInventoryMagicSword()
+        {
+            return new ObjectSprite(this.magicSwordSpriteSheet, this.magicSwordData);
+        }
     }
 }

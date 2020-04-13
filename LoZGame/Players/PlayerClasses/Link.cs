@@ -16,9 +16,9 @@
             this.Health = new HealthManager(GameData.Instance.PlayerData.StartingHealth);
             this.Inventory = new InventoryManager(this);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
-            this.CurrentColor = "Green";
+            this.CurrentColor = LinkColor.Green;
             this.Physics.CurrentDirection = Physics.Direction.North;
-            this.CurrentWeapon = "Wood";
+            this.CurrentWeapon = LinkWeapon.Wood;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.MoveSpeed = GameData.Instance.PlayerData.PlayerSpeed;
             this.DamageTimer = 0;

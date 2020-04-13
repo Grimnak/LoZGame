@@ -130,19 +130,19 @@ namespace LoZClone
         {
             if (this.player.Physics.CurrentDirection == Physics.Direction.North)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkAttackUp(this.player.CurrentColor, this.player.CurrentWeapon);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkUp(this.player.CurrentColor);
             }
             else if (this.player.Physics.CurrentDirection == Physics.Direction.South)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkAttackDown(this.player.CurrentColor, this.player.CurrentWeapon);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkDown(this.player.CurrentColor);
             }
             else if (this.player.Physics.CurrentDirection == Physics.Direction.West)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkAttackLeft(this.player.CurrentColor, this.player.CurrentWeapon);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkLeft(this.player.CurrentColor);
             }
             else
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkAttackRight(this.player.CurrentColor, this.player.CurrentWeapon);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkRight(this.player.CurrentColor);
             }
         }
     }

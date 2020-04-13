@@ -10,7 +10,7 @@
     {
         public static readonly bool DebugMode = false; // show collision bounding boxes
         public static readonly bool Cheats = false; // infinite life and item uses
-        public static readonly bool Music = true; // Title screen and dungeon music (not SFX)
+        public static readonly bool Music = false; // Title screen and dungeon music (not SFX)
         public static readonly int StartDungeon = 1;
         private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;

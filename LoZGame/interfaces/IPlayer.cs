@@ -19,12 +19,12 @@
         /// <summary>
         /// Gets or sets the current weapon of the player.
         /// </summary>
-        string CurrentWeapon { get; set; }
+        Link.LinkWeapon CurrentWeapon { get; set; }
 
         /// <summary>
         /// Gets or sets the current color of the player.
         /// </summary>
-        string CurrentColor { get; set; }
+        Link.LinkColor CurrentColor { get; set; }
 
         /// <summary>
         /// Gets or sets the current tint of the player.
