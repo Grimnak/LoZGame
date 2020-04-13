@@ -144,7 +144,6 @@
             titleLoop.Volume = 0.5f;
             if (musicEnabled)
             {
-
                 titleLoop.Play();
             }
         }

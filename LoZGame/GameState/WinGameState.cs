@@ -5,7 +5,6 @@
 
     public class WinGameState : IGameState
     {
-
         private int currentDungeon;
         private static int maxDungeon = 2;
         private int lockout;

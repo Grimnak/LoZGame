@@ -183,8 +183,8 @@
             if (Cheats)
             {
                 this.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-                this.spriteBatch.DrawString(font, "CHEATS ON", new Vector2(0,LoZGame.Instance.InventoryOffset), Color.Black);
-                this.spriteBatch.DrawString(font, "CHEATS ON", new Vector2(3, LoZGame.Instance.InventoryOffset+3), Color.DarkRed);
+                this.spriteBatch.DrawString(font, "CHEATS ON", new Vector2(0, LoZGame.Instance.InventoryOffset), Color.Black);
+                this.spriteBatch.DrawString(font, "CHEATS ON", new Vector2(3, LoZGame.Instance.InventoryOffset + 3), Color.DarkRed);
                 this.spriteBatch.End();
             }
             base.Draw(gameTime);
