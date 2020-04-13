@@ -154,6 +154,13 @@ namespace LoZClone
         /// <inheritdoc/>
         public void Update()
         {
+            if (this.item is Triforce)
+            {
+                if (this.sprite.CurrentFrame == 0)
+                {
+                    this.sprite.NextFrame();
+                }
+            }
             if (this.lockoutTimer > 0)
             {
                 this.lockoutTimer--;
