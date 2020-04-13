@@ -2,6 +2,7 @@
 {
     public class GameData
     {
+        private static readonly GameData InstanceValue = new GameData();
         private static PlayerConstants playerConstants;
         private static ProjectileDamageConstants projectileDmgConstants;
         private static ProjectileSpeedConstants projectileSpdConstants;
@@ -12,6 +13,8 @@
         private static EnemyMassConstants enemyMassConstants;
         private static EnemyMiscConstants enemyMiscConstants;
         private static EnemyStateWeights enemyStateWeights;
+
+        public static GameData Instance => InstanceValue;
 
         public PlayerConstants PlayerConstants => playerConstants;
 
@@ -32,23 +35,5 @@
         public EnemyMiscConstants EnemyMiscConstants => enemyMiscConstants;
 
         public EnemyStateWeights EnemyStateWeights => enemyStateWeights;
-
-        private static readonly GameData InstanceValue = new GameData();
-
-        public static GameData Instance => InstanceValue;
-
-        public void LoadAllData()
-        {
-            playerConstants = PlayerConstants;
-            projectileDmgConstants = ProjectileDamageConstants;
-            projectileSpdConstants = ProjectileSpeedConstants;
-            projectileMassConstants = ProjectileMassConstants;
-            enemyDamageConstants = EnemyDamageConstants;
-            enemyHealthConstants = EnemyHealthConstants;
-            enemySpdConstants = EnemySpeedConstants;
-            enemyMassConstants = EnemyMassConstants;
-            enemyMiscConstants = EnemyMiscConstants;
-            enemyStateWeights = EnemyStateWeights;
-        }
     }
 }
