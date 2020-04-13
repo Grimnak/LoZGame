@@ -110,41 +110,48 @@
             return this.numKeys > 0;
         }
 
-        public void MoveSelectionDown()
-        {
-            if (this.selectionY + 1 < maxSelectionY)
-            {
-                this.selectionY++;
-            }
-        }
-
-        public void MoveSelectionUp()
-        {
-            if (this.selectionY > 0)
-            {
-                this.selectionY--;
-            }
-        }
-
-        public void MoveSelectionLeft()
-        {
-            if (this.selectionX > 0)
-            {
-                this.selectionX--;
-            }
-        }
-
-        public void MoveSelectionRight()
-        {
-            if (this.selectionX + 1 < maxSelectionX)
-            {
-                this.selectionX++;
-            }
-        }
-
         public void SelectItem()
         {
-            this.selectedItem = selectionArray[this.selectionY][this.selectionX];
+            if (this.ValidSelection())
+            {
+                this.selectedItem = selectionArray[this.selectionY][this.selectionX];
+            }
+        }
+
+        public bool ValidSelection()
+        {
+            if (this.selectionY == 0)
+            {
+                switch (this.selectionX)
+                {
+                    case 0:
+                        return this.numBombs > 0;
+                    case 1:
+                        return this.hasBoomerang;
+                    case 2:
+                        return this.hasBow && this.numRupees > 0;
+                    case 3:
+                        return this.hasBlueFlame;
+                    default:
+                        return false;
+                }
+            }
+            else
+            {
+                switch (this.selectionX)
+                {
+                    case 0:
+                        return this.numRedPotions > 0 || this.numBluePotions > 0;
+                    case 1:
+                        return this.hasMagicBoomerang;
+                    case 2:
+                        return this.hasBow && this.numRupees > 0;
+                    case 3:
+                        return this.hasRedFlame;
+                    default:
+                        return false;
+                }
+            }
         }
 
         public ItemType SelectedItem { get { return this.selectedItem; } set { this.selectedItem = value; } }

@@ -129,5 +129,37 @@
         {
             this.numKeys++;
         }
+
+        public void MoveSelectionDown()
+        {
+            if (this.selectionY + 1 < maxSelectionY)
+            {
+                this.selectionY++;
+            }
+        }
+
+        public void MoveSelectionUp()
+        {
+            if (this.selectionY > 0)
+            {
+                this.selectionY--;
+            }
+        }
+
+        public void MoveSelectionLeft()
+        {
+            if (this.selectionX > 0)
+            {
+                this.selectionX--;
+            }
+        }
+
+        public void MoveSelectionRight()
+        {
+            if (this.selectionX + 1 < maxSelectionX)
+            {
+                this.selectionX++;
+            }
+        }
     }
 }

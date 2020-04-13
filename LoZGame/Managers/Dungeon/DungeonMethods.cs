@@ -85,8 +85,8 @@
                 if (this.dungeonNumber == 1 && (currentX == 1 && currentY == 1))
                 {
                     this.player.Physics.Bounds = new Rectangle(
-                        BlockSpriteFactory.Instance.TileWidth * 4,
-                        (BlockSpriteFactory.Instance.TileHeight * 0) + 2 + LoZGame.Instance.InventoryOffset,
+                        BlockSpriteFactory.Instance.TileWidth * 3,
+                        (BlockSpriteFactory.Instance.TileHeight * 0) + 10 + LoZGame.Instance.InventoryOffset,
                         this.player.Physics.Bounds.Width,
                         this.player.Physics.Bounds.Height);
                 }
