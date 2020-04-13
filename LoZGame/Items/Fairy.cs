@@ -8,6 +8,7 @@
     {
         private const int DirectionChange = 100;
         private static readonly int DespawnTimer = 60 * LoZGame.Instance.UpdateSpeed;
+        private static readonly int SpawnTimer = LoZGame.Instance.UpdateSpeed * 1;
 
         private enum Direction
         {
@@ -44,35 +45,35 @@
             switch (this.currentDirection)
             {
                 case Direction.North:
-                    this.Physics.KnockbackVelocity = new Vector2(0, -1);
+                    this.Physics.MovementVelocity = new Vector2(0, -2);
                     break;
 
                 case Direction.South:
-                    this.Physics.KnockbackVelocity = new Vector2(0, 1);
+                    this.Physics.MovementVelocity = new Vector2(0, 2);
                     break;
 
                 case Direction.East:
-                    this.Physics.KnockbackVelocity = new Vector2(1, 0);
+                    this.Physics.MovementVelocity = new Vector2(2, 0);
                     break;
 
                 case Direction.West:
-                    this.Physics.KnockbackVelocity = new Vector2(-1, 0);
+                    this.Physics.MovementVelocity = new Vector2(-2, 0);
                     break;
 
                 case Direction.NorthEast:
-                    this.Physics.KnockbackVelocity = new Vector2(0.727f, -0.727f);
+                    this.Physics.MovementVelocity = new Vector2(1.454f, -1.454f);
                     break;
 
                 case Direction.NorthWest:
-                    this.Physics.KnockbackVelocity = new Vector2(-0.727f, -0.727f);
+                    this.Physics.MovementVelocity = new Vector2(-1.454f, -1.454f);
                     break;
 
                 case Direction.SouthEast:
-                    this.Physics.KnockbackVelocity = new Vector2(0.727f, 0.727f);
+                    this.Physics.MovementVelocity = new Vector2(1.454f, 1.454f);
                     break;
 
                 case Direction.SouthWest:
-                    this.Physics.KnockbackVelocity = new Vector2(-0.727f, 0.727f);
+                    this.Physics.MovementVelocity = new Vector2(-1.454f, 1.454f);
                     break;
 
                 default:
@@ -90,6 +91,14 @@
             if (this.LifeTime > DespawnTimer)
             {
                 this.Expired = true;
+            }
+        }
+
+        public override void Draw(Color spriteTint)
+        {
+            if ((this.LifeTime > SpawnTimer && this.LifeTime < (DespawnTimer - (4 * SpawnTimer))) || this.LifeTime % 4 < 2)
+            {
+                base.Draw(spriteTint);
             }
         }
     }

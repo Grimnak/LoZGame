@@ -100,21 +100,10 @@
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            if (collisionSide == CollisionDetection.CollisionSide.Right)
+            if (item is Fairy)
             {
-                this.item.Physics.Location = new Vector2(LoZGame.Instance.ScreenWidth - sourceWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10, this.item.Physics.Location.Y);
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Left)
-            {
-                this.item.Physics.Location = new Vector2(BlockSpriteFactory.Instance.HorizontalOffset, this.item.Physics.Location.Y);
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Bottom)
-            {
-                this.item.Physics.Location = new Vector2(this.item.Physics.Location.X, BlockSpriteFactory.Instance.BottomOffset - sourceHeight);
-            }
-            else if (collisionSide == CollisionDetection.CollisionSide.Top)
-            {
-                this.item.Physics.Location = new Vector2(this.item.Physics.Location.X, BlockSpriteFactory.Instance.TopOffset);
+                this.SetBounds(this.item.Physics, collisionSide);
+                this.item.Physics.SetLocation();
             }
         }
     }

@@ -6,6 +6,9 @@
 
     internal class Clock : ItemEssentials, IItem
     {
+        private static readonly int DespawnTimer = LoZGame.Instance.UpdateSpeed * 20;
+        private static readonly int SpawnTimer = LoZGame.Instance.UpdateSpeed * 1;
+
         public Clock(Vector2 loc)
         {
             this.Sprite = ItemSpriteFactory.Instance.Clock();
@@ -17,6 +20,23 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)size.X, (int)size.Y);
             this.Expired = false;
             this.StartBob();
+        }
+
+        public override void Update()
+        {
+            base.Update();
+            if (this.LifeTime >= DespawnTimer)
+            {
+                this.Expired = true;
+            }
+        }
+
+        public override void Draw(Color spriteTint)
+        {
+            if ((this.LifeTime > SpawnTimer && this.LifeTime < (DespawnTimer - (4 * SpawnTimer))) || this.LifeTime % 4 < 2)
+            {
+                base.Draw(spriteTint);
+            }
         }
     }
 }
