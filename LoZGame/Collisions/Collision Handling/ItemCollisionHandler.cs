@@ -70,6 +70,11 @@
                 SoundFactory.Instance.PlayGetItem();
                 player.Inventory.GainBluePotion();
             }
+            else if (this.item is Clock)
+            {
+                SoundFactory.Instance.PlayGetItem();
+                player.Inventory.HasClock = true;
+            }
             else
             {
                 SoundFactory.Instance.PlayGetItem();
