@@ -48,6 +48,10 @@
         private bool hasMap;
         private bool hasCompass;
 
+        private bool hasClock;
+        private int clockLockout;
+        public static readonly int ClockLockoutMax = 600;
+
         public InventoryManager(IPlayer player)
         {
             this.player = player;
@@ -68,6 +72,9 @@
 
             this.hasMap = LoZGame.Cheats;
             this.hasCompass = LoZGame.Cheats;
+
+            this.hasClock = false;
+            this.clockLockout = 0;
 
             this.selectedItem = ItemType.Bomb;
         }
@@ -153,6 +160,10 @@
                 }
             }
         }
+
+        public int ClockLockout { get { return this.clockLockout; } set { this.clockLockout = value; } }
+
+        public bool HasClock { get { return this.hasClock; } set { this.hasClock = value; } }
 
         public ItemType SelectedItem { get { return this.selectedItem; } set { this.selectedItem = value; } }
 
