@@ -10,16 +10,16 @@
         public Gel(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.GelStatelist);
-            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.GelHealth);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GelStatelist);
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.GelHealth);
             this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassData.GelMass;
+            this.Physics.Mass = GameData.Instance.EnemyMassConstants.GelMass;
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageData.GelDamage;
+            this.Damage = GameData.Instance.EnemyDamageConstants.GelDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedData.GelSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.GelSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.CurrentState = new IdleGelState(this);
         }

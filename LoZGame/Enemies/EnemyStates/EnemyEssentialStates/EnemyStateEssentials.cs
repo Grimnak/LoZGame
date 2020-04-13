@@ -34,7 +34,7 @@
 
         public virtual void RandomDirectionChange()
         {
-            this.DirectionChange = LoZGame.Instance.Random.Next(GameData.Instance.EnemyMiscData.MinDirectionChange, GameData.Instance.EnemyMiscData.MaxDirectionChange);
+            this.DirectionChange = LoZGame.Instance.Random.Next(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);
         }
 
         public virtual void Update()

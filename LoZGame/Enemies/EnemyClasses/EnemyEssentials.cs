@@ -44,7 +44,7 @@
 
         public virtual void AddChild()
         {
-            // most enemies dont have any children
+            // most enemies do not have any children
         }
 
         public virtual void TakeDamage(int damageAmount)
@@ -127,9 +127,6 @@
             this.EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
-        public virtual ISprite CreateCorrectSprite()
-        {
-            return ItemSpriteFactory.Instance.Fairy();
-        }
+        public abstract ISprite CreateCorrectSprite();
     }
 }

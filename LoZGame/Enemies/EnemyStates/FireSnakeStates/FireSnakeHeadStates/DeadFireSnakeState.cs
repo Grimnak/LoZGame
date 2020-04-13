@@ -14,7 +14,7 @@
             this.Sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.Enemy.CurrentState = this;
             this.Enemy.Physics.Bounds = new Rectangle(this.Enemy.Physics.Bounds.Location, Point.Zero);
-            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
+            deathTimerMax = GameData.Instance.EnemyMiscConstants.DeathTimerMaximum;
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
             this.Enemy.UpdateChild();
         }

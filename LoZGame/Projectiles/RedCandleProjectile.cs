@@ -18,8 +18,8 @@
             this.Heigth = ProjectileSpriteFactory.Instance.FlameHeight;
             this.Offset = (this.Heigth * 3) / 4;
             this.Acceleration = -0.25f;
-            this.Speed = GameData.Instance.ProjectileSpeedData.CandleSpeed;
-            this.Damage = GameData.Instance.ProjectileDamageData.CandleDamage;
+            this.Speed = GameData.Instance.ProjectileSpeedConstants.CandleSpeed;
+            this.Damage = GameData.Instance.ProjectileDamageConstants.CandleDamage;
             this.Source = source;
             this.InitializeDirection();
             this.Data.SpriteEffect = SpriteEffects.None;
@@ -27,7 +27,7 @@
             this.Sprite = ProjectileSpriteFactory.Instance.RedCandle();
             this.lifeTime = LifeTimeMax;
             this.Sprite.FrameDelay = 10;
-            this.Physics.Mass = GameData.Instance.ProjectileMassData.FlameMass;
+            this.Physics.Mass = GameData.Instance.ProjectileMassConstants.FlameMass;
         }
 
         public override void Update()

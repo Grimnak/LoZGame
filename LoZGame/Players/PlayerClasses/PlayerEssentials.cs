@@ -11,10 +11,6 @@
 
         public LinkColor CurrentColor { get; set; }
 
-        public LinkColor CurrentColor2 { get; set; }
-
-        public LinkWeapon CurrentWeapon2 { get; set; }
-
         public Color CurrentTint { get; set; }
 
         public float MoveSpeed { get; set; }
@@ -116,7 +112,6 @@
         {
             this.Physics.SetDepth();
             this.HandleDamage();
-            this.CheckRightBound();
             this.Physics.Move();
             this.State.Update();
         }
@@ -124,22 +119,6 @@
         public void Draw()
         {
             this.State.Draw();
-        }
-
-        /// <summary>
-        /// Prevents the player from moving beyond the boss area while the boss is alive in the appropriate room.
-        /// </summary>
-        private void CheckRightBound()
-        {
-            int rightBound = BlockSpriteFactory.Instance.HorizontalOffset + (9 * BlockSpriteFactory.Instance.TileWidth) - this.Physics.Bounds.Width;
-            if (LoZGame.Instance.Dungeon.CurrentRoomX == 4 && LoZGame.Instance.Dungeon.CurrentRoomY == 1)
-            {
-                if (LoZGame.Instance.GameObjects.Enemies.EnemyList.Count != 0 && this.Physics.Bounds.X > rightBound)
-                {
-                    this.Physics.Bounds = new Rectangle(new Point(rightBound, this.Physics.Bounds.Y), new Point(this.Physics.Bounds.Width, this.Physics.Bounds.Height));
-                    this.Physics.MovementVelocity = Vector2.Zero;
-                }
-            }
         }
     }
 }

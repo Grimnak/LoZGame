@@ -3,23 +3,24 @@
     using System;
     using Microsoft.Xna.Framework;
     using System.Collections.Generic;
+
     public class WallMaster : EnemyEssentials, IEnemy
     {
 
         public WallMaster(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.WallMasterStatelist);
-            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.WallMasterHealth);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.WallMasterStatelist);
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.WallMasterHealth);
             this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassData.WallMasterMass;
+            this.Physics.Mass = GameData.Instance.EnemyMassConstants.WallMasterMass;
             this.CurrentState = new LeftMovingWallMasterState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageData.WallMasterDamage;
+            this.Damage = GameData.Instance.EnemyDamageConstants.WallMasterDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedData.WallMasterSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.WallMasterSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 

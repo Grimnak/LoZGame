@@ -13,6 +13,7 @@
         private const int PotionWeight = 10;
         private const int SecondPotionWeight = 5;
         private const int HealthWeight = 25;
+        private const int ClockWeight = 10;
         private const int FairyWeight = 5;
 
         private Dictionary<string, int> itemWeights;
@@ -29,6 +30,7 @@
             itemWeights.Add("SecondPotion", SecondPotionWeight);
             itemWeights.Add("Health", HealthWeight);
             itemWeights.Add("Fairy", FairyWeight);
+            itemWeights.Add("Clock", ClockWeight);
             totalWeight = 0;
             foreach (KeyValuePair<string, int> weight in itemWeights)
             {
@@ -86,6 +88,9 @@
                     break;
                 case "Fairy":
                     LoZGame.Instance.GameObjects.Items.Add(new Fairy(loc));
+                    break;
+                case "Clock":
+                    LoZGame.Instance.GameObjects.Items.Add(new Clock(loc));
                     break;
                 default:
                     break;

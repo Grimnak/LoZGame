@@ -17,8 +17,8 @@ namespace LoZClone
             this.Heigth = ProjectileSpriteFactory.Instance.ArrowHeight;
             this.Offset = this.Heigth / 2;
             this.Physics.Mass = 10;
-            this.Speed = GameData.Instance.ProjectileSpeedData.LinkArrowSpeed;
-            this.Damage = GameData.Instance.ProjectileDamageData.LinkArrowDamage;
+            this.Speed = GameData.Instance.ProjectileSpeedConstants.LinkArrowSpeed;
+            this.Damage = GameData.Instance.ProjectileDamageConstants.LinkArrowDamage;
             this.Source = source;
             this.InitializeDirection();
             if (this.Physics.CurrentDirection == Physics.Direction.East || this.Physics.CurrentDirection == Physics.Direction.West)
@@ -26,7 +26,7 @@ namespace LoZClone
                 this.CorrectProjectile();
             }
             this.Sprite = ProjectileSpriteFactory.Instance.Arrow();
-            this.Physics.Mass = GameData.Instance.ProjectileMassData.ArrowMass;
+            this.Physics.Mass = GameData.Instance.ProjectileMassConstants.ArrowMass;
         }
     }
 }

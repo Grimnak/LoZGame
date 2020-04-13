@@ -2,7 +2,8 @@
 {
     using System.Collections.Generic;
     using static RandomStateGenerator;
-    public struct DefaultEnemyStates
+
+    public struct EnemyStateWeights
     {
         private static Dictionary<StateType, int> oldManStateList = new Dictionary<StateType, int>()
         {
@@ -132,6 +133,5 @@
         public Dictionary<StateType, int> ZolStatelist => zolStateList;
 
         public Dictionary<StateType, int> WallMasterStatelist => wallMasterStateList;
-
     }
 }

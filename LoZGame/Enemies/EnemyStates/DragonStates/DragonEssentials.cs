@@ -15,7 +15,7 @@
 
         public void MoveLeft()
         {
-            this.Enemy.CurrentState = new RightMovingDragonState(this.Enemy);
+            this.Enemy.CurrentState = new LeftMovingDragonState(this.Enemy);
         }
 
         public void MoveRight()

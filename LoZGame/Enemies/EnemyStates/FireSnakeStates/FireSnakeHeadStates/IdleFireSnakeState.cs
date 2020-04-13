@@ -15,7 +15,7 @@
             this.Enemy = enemy;
             this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.CurrentState = this;
-            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange;
+            this.DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange;
             LoZGame.Instance.Drops.AttemptDrop(this.Enemy.Physics.Location);
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
         }

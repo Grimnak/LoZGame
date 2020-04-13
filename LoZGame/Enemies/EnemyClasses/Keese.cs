@@ -10,16 +10,16 @@
         {
             this.Physics = new Physics(location);
             this.CurrentState = new IdleKeeseState(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.KeeseStatelist);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.KeeseStatelist);
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.KeeseHealth);
-            this.Physics.Mass = GameData.Instance.EnemyMassData.KeeseMass;
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.KeeseHealth);
+            this.Physics.Mass = GameData.Instance.EnemyMassConstants.KeeseMass;
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageData.KeeseDamage;
+            this.Damage = GameData.Instance.EnemyDamageConstants.KeeseDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedData.MinKeeseSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.MinKeeseSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 

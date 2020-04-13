@@ -1,41 +1,37 @@
 ﻿namespace LoZClone
 {
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Content;
-    using Microsoft.Xna.Framework.Graphics;
-
     public class GameData
     {
-        private static PlayerData playerData;
-        private static ProjectileDamageData projectileDmgData;
-        private static ProjectileSpeedData projectileSpdData;
-        private static ProjectileMassData projectileMassData;
-        private static EnemyDamageData enemyDamageData;
-        private static EnemySpeedData enemySpdData;
-        private static EnemyMassData enemyMassData;
-        private static EnemyResistanceData enemyResData;
-        private static EnemyMiscData enemyMiscData;
-        private static DefaultEnemyStates defaultEnemyStates;
+        private static PlayerConstants playerConstants;
+        private static ProjectileDamageConstants projectileDmgConstants;
+        private static ProjectileSpeedConstants projectileSpdConstants;
+        private static ProjectileMassConstants projectileMassConstants;
+        private static EnemyDamageConstants enemyDamageConstants;
+        private static EnemyHealthConstants enemyHealthConstants;
+        private static EnemySpeedConstants enemySpdConstants;
+        private static EnemyMassConstants enemyMassConstants;
+        private static EnemyMiscConstants enemyMiscConstants;
+        private static EnemyStateWeights enemyStateWeights;
 
-        public PlayerData PlayerData => playerData;
+        public PlayerConstants PlayerConstants => playerConstants;
 
-        public ProjectileDamageData ProjectileDamageData => projectileDmgData;
+        public ProjectileDamageConstants ProjectileDamageConstants => projectileDmgConstants;
 
-        public ProjectileSpeedData ProjectileSpeedData => projectileSpdData;
+        public ProjectileSpeedConstants ProjectileSpeedConstants => projectileSpdConstants;
 
-        public ProjectileMassData ProjectileMassData => projectileMassData;
+        public ProjectileMassConstants ProjectileMassConstants => projectileMassConstants;
 
-        public EnemyDamageData EnemyDamageData => enemyDamageData;
+        public EnemyDamageConstants EnemyDamageConstants => enemyDamageConstants;
 
-        public EnemySpeedData EnemySpeedData => enemySpdData;
+        public EnemyHealthConstants EnemyHealthConstants => enemyHealthConstants;
 
-        public EnemyMassData EnemyMassData => enemyMassData;
+        public EnemySpeedConstants EnemySpeedConstants => enemySpdConstants;
 
-        public EnemyResistanceData EnemyResistanceData => enemyResData;
+        public EnemyMassConstants EnemyMassConstants => enemyMassConstants;
 
-        public EnemyMiscData EnemyMiscData => enemyMiscData;
+        public EnemyMiscConstants EnemyMiscConstants => enemyMiscConstants;
 
-        public DefaultEnemyStates DefaultEnemyStates => defaultEnemyStates;
+        public EnemyStateWeights EnemyStateWeights => enemyStateWeights;
 
         private static readonly GameData InstanceValue = new GameData();
 
@@ -43,16 +39,16 @@
 
         public void LoadAllData()
         {
-            playerData = new PlayerData();
-            projectileDmgData = new ProjectileDamageData();
-            projectileSpdData = new ProjectileSpeedData();
-            projectileMassData = new ProjectileMassData();
-            enemyDamageData = new EnemyDamageData();
-            enemySpdData = new EnemySpeedData();
-            enemyMassData = new EnemyMassData();
-            enemyResData = new EnemyResistanceData();
-            enemyMiscData = new EnemyMiscData();
-            defaultEnemyStates = new DefaultEnemyStates();
+            playerConstants = PlayerConstants;
+            projectileDmgConstants = ProjectileDamageConstants;
+            projectileSpdConstants = ProjectileSpeedConstants;
+            projectileMassConstants = ProjectileMassConstants;
+            enemyDamageConstants = EnemyDamageConstants;
+            enemyHealthConstants = EnemyHealthConstants;
+            enemySpdConstants = EnemySpeedConstants;
+            enemyMassConstants = EnemyMassConstants;
+            enemyMiscConstants = EnemyMiscConstants;
+            enemyStateWeights = EnemyStateWeights;
         }
     }
 }

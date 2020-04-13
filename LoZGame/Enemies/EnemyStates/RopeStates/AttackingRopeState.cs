@@ -14,8 +14,8 @@
         public AttackingRopeState(IEnemy enemy)
         {
             this.Enemy = enemy;
-            this.Enemy.MoveSpeed = GameData.Instance.EnemySpeedData.RopeAttackSpeed;
-            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange * 2;
+            this.Enemy.MoveSpeed = GameData.Instance.EnemySpeedConstants.RopeAttackSpeed;
+            this.DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange * 2;
             this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.CurrentState = this;
             GetMoveSpeed();

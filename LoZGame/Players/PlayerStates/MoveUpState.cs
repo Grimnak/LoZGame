@@ -85,7 +85,7 @@
         public void Update()
         {
             this.sprite.Update();
-            if (this.sprite.CurrentFrame >= GameData.Instance.PlayerData.MaxFrames)
+            if (this.sprite.CurrentFrame >= GameData.Instance.PlayerConstants.MaximumFrames)
             {
                 this.sprite.SetFrame(0);
             }

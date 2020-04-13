@@ -9,18 +9,18 @@
         public Dragon(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.DragonStatelist);
-            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.DragonHealth);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.DragonStatelist);
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.DragonHealth);
             this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassData.DragonMass;
+            this.Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
             this.Physics.IsMoveable = false;
             this.CurrentState = new LeftMovingDragonState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageData.DragonDamage;
+            this.Damage = GameData.Instance.EnemyDamageConstants.DragonDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedData.DragonSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DragonSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 

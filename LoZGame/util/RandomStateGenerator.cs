@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+    using System.Collections.Generic;
+
     public class RandomStateGenerator
     {
         private Random randomSelect;
         private IEnemy enemy;
+
         public enum StateType
         {
             Idle,

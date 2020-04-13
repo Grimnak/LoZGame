@@ -8,18 +8,18 @@
         public Dodongo(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.DodongoStatelist);
-            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.DodongoHealth);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.DodongoStatelist);
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.DodongoHealth);
             this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassData.DodongoMass;
+            this.Physics.Mass = GameData.Instance.EnemyMassConstants.DodongoMass;
             this.Physics.IsMoveable = false;
             this.CurrentState = new LeftMovingDodongoState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageData.DodongoDamage;
+            this.Damage = GameData.Instance.EnemyDamageConstants.DodongoDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedData.DodongoSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DodongoSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 

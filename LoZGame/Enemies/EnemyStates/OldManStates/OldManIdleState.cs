@@ -12,7 +12,7 @@
             this.Enemy.CurrentState = this;
             this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
-            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange;
+            this.DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange;
         }
     }
 }

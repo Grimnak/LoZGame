@@ -20,16 +20,16 @@
             this.FlameOneLoc = new Vector2(location.X - 100, location.Y + 20);
             this.FlameTwoLoc = new Vector2(location.X + 160, location.Y + 20);
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.OldManStateList);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.OldManStateList);
             this.CurrentState = new OldManIdleState(this);
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.EntityManager = LoZGame.Instance.GameObjects.Entities;
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.Health = new HealthManager(1);
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.OldManHealth);
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageData.OldManDamage;
+            this.Damage = GameData.Instance.EnemyDamageConstants.OldManDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedData.OldManSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.OldManSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.timesShot = 0;
         }

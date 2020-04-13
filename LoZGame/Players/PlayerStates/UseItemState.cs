@@ -21,9 +21,9 @@ namespace LoZClone
             this.player = playerInstance;
             this.lockoutTimer = waitTime; // wait period
             this.sprite = this.CreateCorrectSprite();
-            this.sprite.CurrentFrame = GameData.Instance.PlayerData.MaxFrames;
+            this.sprite.CurrentFrame = GameData.Instance.PlayerConstants.MaximumFrames;
             this.player.Physics.MovementVelocity = Vector2.Zero;
-            this.sprite.SetFrame(GameData.Instance.PlayerData.MaxFrames);
+            this.sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
         }
 
         /// <inheritdoc/>

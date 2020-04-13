@@ -31,8 +31,8 @@ namespace LoZClone
             this.Sprite = ProjectileSpriteFactory.Instance.Fireball();
             this.IsExpired = false;
             this.lifeTime = MaxLife;
-            this.Damage = GameData.Instance.ProjectileDamageData.FireballDamage;
-            this.Physics.Mass = GameData.Instance.ProjectileMassData.FireballMass;
+            this.Damage = GameData.Instance.ProjectileDamageConstants.FireballDamage;
+            this.Physics.Mass = GameData.Instance.ProjectileMassConstants.FireballMass;
         }
 
         public override void Update()

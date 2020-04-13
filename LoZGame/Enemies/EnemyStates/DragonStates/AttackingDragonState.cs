@@ -14,7 +14,7 @@
             this.Enemy = enemy;
             this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.CurrentState = this;
-            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange;
+            this.DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange;
             this.ShootFireballs();
         }
 

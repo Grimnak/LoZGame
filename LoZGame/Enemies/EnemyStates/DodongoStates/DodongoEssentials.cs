@@ -80,14 +80,14 @@
 
         private void CheckForLink()
         {
-            int ropeX = (int)this.Enemy.Physics.Location.X;
-            int ropeY = (int)this.Enemy.Physics.Location.Y;
-            int linkX = (int)LoZGame.Instance.Link.Physics.Location.X;
-            int linkY = (int)LoZGame.Instance.Link.Physics.Location.Y;
+            int dodongoX = (int)this.Enemy.Physics.Location.X;
+            int dodongoY = (int)this.Enemy.Physics.Location.Y;
+            int linkX = (int)LoZGame.Instance.Players[0].Physics.Location.X;
+            int linkY = (int)LoZGame.Instance.Players[0].Physics.Location.Y;
 
-            if (Math.Abs(ropeX - linkX) <= GameData.Instance.EnemyMiscData.RopeLinkPixelBuffer)
+            if (Math.Abs(dodongoX - linkX) <= GameData.Instance.EnemyMiscConstants.LinkPixelBuffer)
             {
-                if ((linkY - ropeY) > 0)
+                if ((linkY - dodongoY) > 0)
                 {
                     this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
                 }
@@ -97,9 +97,9 @@
                 }
                 this.Enemy.CurrentState.Attack();
             }
-            else if (Math.Abs(ropeY - linkY) <= GameData.Instance.EnemyMiscData.RopeLinkPixelBuffer)
+            else if (Math.Abs(dodongoY - linkY) <= GameData.Instance.EnemyMiscConstants.LinkPixelBuffer)
             {
-                if ((linkX - ropeX) > 0)
+                if ((linkX - dodongoX) > 0)
                 {
                     this.Enemy.Physics.CurrentDirection = Physics.Direction.East;
                 }

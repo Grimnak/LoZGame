@@ -10,18 +10,18 @@
         public Zol(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.ZolStatelist);
-            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.ZolHealth);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.ZolStatelist);
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ZolHealth);
             this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassData.ZolMass;
+            this.Physics.Mass = GameData.Instance.EnemyMassConstants.ZolMass;
             this.CurrentState = new LeftMovingZolState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.ShouldMove = true;
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageData.ZolDamage;
+            this.Damage = GameData.Instance.EnemyDamageConstants.ZolDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedData.ZolSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.ZolSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 

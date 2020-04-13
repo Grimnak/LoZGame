@@ -16,20 +16,20 @@
         public FireSnakeHead(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.DefaultEnemyStates.FireSnakeStatelist);
-            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.FireSnakeHP);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.FireSnakeStatelist);
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.FireSnakeHealth);
             this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassData.FireSnakeMass;
+            this.Physics.Mass = GameData.Instance.EnemyMassConstants.FireSnakeMass;
             this.Physics.IsMoveable = false;
             this.CurrentState = new IdleFireSnakeState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageData.FireSnakeDamage;
+            this.Damage = GameData.Instance.EnemyDamageConstants.FireSnakeDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedData.FireSnakeSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.segmentID = GameData.Instance.EnemyMiscData.FireSnakeLength;
+            this.segmentID = GameData.Instance.EnemyMiscConstants.FireSnakeLength;
         }
 
         public override void Stun(int stunTime)
