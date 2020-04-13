@@ -16,6 +16,7 @@
         private Key droppedKey = null;
         private Boomerang droppedBoomerang = null;
         private HeartContainer droppedHeartContainer = null;
+        private MagicBoomerang droppedMagicBoomerang = null;
         private string border = null;
         private string text = null;
         private List<IItem> items = null; // a list for any and all items in a room
@@ -105,6 +106,8 @@
         public Boomerang DroppedBoomerang => this.droppedBoomerang;
 
         public HeartContainer DroppedHeartContainer => this.droppedHeartContainer;
+
+        public MagicBoomerang DroppedMagicBoomerang => this.droppedMagicBoomerang;
 
         /// <summary>
         /// Converts grid position in the room to a screen vector.
@@ -230,7 +233,7 @@
                 case "MagicBoomerang":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.items.Add(new MagicBoomerang(location));
+                    this.droppedMagicBoomerang = new MagicBoomerang(location);
                     break;
                 case "TriForce":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 5);

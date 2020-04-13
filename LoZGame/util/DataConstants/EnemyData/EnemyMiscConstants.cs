@@ -6,6 +6,7 @@ namespace LoZClone
         private const int MaxDirectionChng = 180;
         private const int DirectionChng = 40;
         private const int DeathTimerMax = 30;
+        private const int SpawnTimerMax = 15;
         private const int FireSnakeLgth = 5;
         private const int LinkPixelBuff = 5;
         private const int DodongoMaxFrame = 2;
@@ -26,6 +27,8 @@ namespace LoZClone
         public int DirectionChange => DirectionChng;
 
         public int DeathTimerMaximum => DeathTimerMax;
+
+        public int SpawnTimerMaximum => SpawnTimerMax;
 
         public int DodongoMaximumFrame => DodongoMaxFrame;
 

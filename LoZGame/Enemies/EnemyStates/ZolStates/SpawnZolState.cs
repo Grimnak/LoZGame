@@ -7,12 +7,12 @@ using Microsoft.Xna.Framework;
 
 namespace LoZClone
 {
-    class SpawnKeeseState : KeeseEssentials, IEnemyState
+    class SpawnZolState : ZolEssentials, IEnemyState
     {
         private int spawnTimer = 0;
         private int spawnTimerMax;
 
-        public SpawnKeeseState(IEnemy enemy)
+        public SpawnZolState(IEnemy enemy)
         {
             this.Enemy = enemy;
             this.Sprite = EnemySpriteFactory.Instance.CreateEnemySpawn();

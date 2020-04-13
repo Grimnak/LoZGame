@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    public partial class DodongoEssentals : EnemyStateEssentials, IEnemyState
+    public partial class DodongoEssentials : EnemyStateEssentials, IEnemyState
     {
         public void MoveLeft()
         {

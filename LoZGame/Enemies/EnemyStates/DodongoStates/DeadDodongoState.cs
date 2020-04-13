@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeadDodongoState : DodongoEssentals, IEnemyState
+    public class DeadDodongoState : DodongoEssentials, IEnemyState
     {
         private int deathTimer = 0;
         private int deathTimerMax;
