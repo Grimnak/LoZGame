@@ -221,7 +221,7 @@
       <doors>
         <door loc="W">hidden2</door>
         <door loc="S">unlocked2</door>
-	  </doors>
+	     </doors>
           <text>DON'T FEED THE ANIMALS.</text>
         <enemies>
           <enemy X="5.5" Y="2">OldMan</enemy>
@@ -309,7 +309,7 @@
         <enemy X="6" Y="5">TealGel</enemy>
       </enemies>
       <doors>
-        <door loc="N">unlocked2</door>
+        <door loc="N">special2</door>
         <door loc="S">hidden2</door>
         <door loc="W">locked2</door>
       </doors>
