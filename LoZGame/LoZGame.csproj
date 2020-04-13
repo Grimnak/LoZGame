@@ -121,6 +121,7 @@
     <Compile Include="Enemies\EnemyStates\GoriyaStates\GoriyaEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\KeeseStates\IdleKeeseState.cs" />
     <Compile Include="Enemies\EnemyStates\KeeseStates\KeeseEssentials.cs" />
+    <Compile Include="Enemies\EnemyStates\KeeseStates\SpawnKeeseState.cs" />
     <Compile Include="Enemies\EnemyStates\OldManStates\OldManAngryState.cs" />
     <Compile Include="Enemies\EnemyStates\OldManStates\OldManSecretState.cs" />
     <Compile Include="Enemies\EnemyStates\OldManStates\OldManIdleState.cs" />
