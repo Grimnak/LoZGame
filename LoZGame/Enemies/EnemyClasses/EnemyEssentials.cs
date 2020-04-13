@@ -71,7 +71,7 @@
                     SoundFactory.Instance.PlayEnemyDie();
                 }
                 this.CurrentState.Die();
-                LoZGame.Instance.Drops.DropItemsEmptyRoom();
+                // LoZGame.Instance.Drops.DropItemsEmptyRoom();
             }
         }
 

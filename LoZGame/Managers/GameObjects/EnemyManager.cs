@@ -61,6 +61,12 @@ namespace LoZClone
                 this.enemies.Add(enemy.Value);
                 enemy.Value.Update();
             }
+
+            Console.WriteLine("count: " + enemyList.Count);
+            if (enemyList.Count == 0)
+            {
+                LoZGame.Instance.Drops.DropItemsEmptyRoom();
+            }
         }
 
         public void Draw()

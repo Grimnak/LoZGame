@@ -13,7 +13,6 @@
     public class Room
     {
         private bool exists = false;
-        private Key droppedKey = null;
         private Boomerang droppedBoomerang = null;
         private HeartContainer droppedHeartContainer = null;
         private MagicBoomerang droppedMagicBoomerang = null;
@@ -101,7 +100,7 @@
             get { return this.text; }
         }
 
-        public Key DroppedKey => this.droppedKey;
+        public Tuple<Key, bool> DroppedKey { get; set; }
 
         public Boomerang DroppedBoomerang => this.droppedBoomerang;
 
@@ -218,7 +217,7 @@
                 case "Key":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.droppedKey = new Key(location);
+                    this.DroppedKey = Tuple.Create(new Key(location), false);
                     break; 
                 case "Compass":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 4);
