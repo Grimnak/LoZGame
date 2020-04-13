@@ -59,6 +59,11 @@
             this.Enemy.CurrentState = new StunnedStalfosState(this.Enemy, this, stunTime);
         }
 
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnStalfosState(this.Enemy);
+        }
+
         public override void Update()
         {
             if (this.Lifetime == this.DirectionChange)

@@ -61,6 +61,10 @@
             this.spikeCross.CurrentState = new IdleSpikeCrossState(this.spikeCross);
         }
 
+        public void Spawn()
+        {
+        }
+
         public void Stun(int stunTime)
         {
         }

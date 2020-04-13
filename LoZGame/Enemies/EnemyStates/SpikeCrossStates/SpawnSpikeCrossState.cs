@@ -25,67 +25,58 @@ namespace LoZClone
 
         public void Attack()
         {
-            throw new NotImplementedException();
         }
 
         public void Die()
         {
-            throw new NotImplementedException();
         }
 
         public void Draw()
         {
-            throw new NotImplementedException();
         }
 
         public void MoveDown()
         {
-            throw new NotImplementedException();
         }
 
         public void MoveDownLeft()
         {
-            throw new NotImplementedException();
         }
 
         public void MoveDownRight()
         {
-            throw new NotImplementedException();
         }
 
         public void MoveLeft()
         {
-            throw new NotImplementedException();
         }
 
         public void MoveRight()
         {
-            throw new NotImplementedException();
         }
 
         public void MoveUp()
         {
-            throw new NotImplementedException();
         }
 
         public void MoveUpLeft()
         {
-            throw new NotImplementedException();
         }
 
         public void MoveUpRight()
         {
-            throw new NotImplementedException();
         }
 
         public void Stop()
         {
-            throw new NotImplementedException();
         }
 
         public void Stun(int stunTime)
         {
-            throw new NotImplementedException();
+        }
+
+        public void Spawn()
+        {
         }
 
         public void Update()

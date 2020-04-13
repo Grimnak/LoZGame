@@ -51,6 +51,11 @@
         {
         }
 
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnDodongoState(this.Enemy);
+        }
+
         public void Die()
         {
             this.Enemy.CurrentState = new DeadDodongoState(this.Enemy);

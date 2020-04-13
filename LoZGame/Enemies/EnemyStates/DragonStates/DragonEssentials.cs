@@ -44,6 +44,11 @@
             this.Enemy.CurrentState = new IdleDragonState(this.Enemy);
         }
 
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnDragonState(this.Enemy);
+        }
+
         public void Attack()
         {
             this.Enemy.CurrentState = new AttackingDragonState(this.Enemy);

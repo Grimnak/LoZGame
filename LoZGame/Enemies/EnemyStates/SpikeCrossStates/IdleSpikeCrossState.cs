@@ -65,6 +65,10 @@
         {
         }
 
+        public void Spawn()
+        {
+        }
+
         public void Stun(int stunTime)
         {
         }
