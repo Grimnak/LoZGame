@@ -180,7 +180,7 @@
             selectedItem.Draw(this.inventoryBackgroundPosition + selectedItemOffset, LoZGame.Instance.DefaultTint, 1.0f);
 
             // Only show the equipped item while playing the game (as per original game behavior).
-            if (LoZGame.Instance.GameState is PlayGameState)
+            if (!(LoZGame.Instance.GameState is OpenInventoryState || LoZGame.Instance.GameState is CloseInventoryState))
             {
                 selectedItem.Draw(this.inventoryBackgroundPosition + secondaryEquippedOffset, LoZGame.Instance.DefaultTint, 1.0f);
                 equippedWeaponSprite.Draw(inventoryBackgroundPosition + primaryEquippedOffset, LoZGame.Instance.DefaultTint, 1.0f);
