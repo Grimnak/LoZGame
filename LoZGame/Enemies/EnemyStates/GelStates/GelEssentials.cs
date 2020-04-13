@@ -6,10 +6,6 @@
 
     public class GelEssentials : EnemyStateEssentials, IEnemyState
     {
-        private static readonly int minMovementTime = LoZGame.Instance.UpdateSpeed;
-        private static readonly int maxMovementTime = LoZGame.Instance.UpdateSpeed * 4;
-        private static readonly int minIdleTime = LoZGame.Instance.UpdateSpeed;
-        private static readonly int maxIdleTime = LoZGame.Instance.UpdateSpeed * 2;
         private int movementTime;
         private int idleTime;
         private bool moving;
@@ -70,8 +66,7 @@
 
         public void RandomMovementTimes()
         {
-            this.movementTime = LoZGame.Instance.Random.Next(minMovementTime, maxMovementTime);
-            this.idleTime = LoZGame.Instance.Random.Next(minIdleTime, maxIdleTime);
+            this.idleTime = LoZGame.Instance.Random.Next(GameData.Instance.EnemyMiscConstants.GelMinIdle, GameData.Instance.EnemyMiscConstants.GelMaxIdle);
             this.moving = true;
             this.Lifetime = 0;
         }
@@ -79,7 +74,7 @@
         private void DecideToMove()
         {
             this.Lifetime++;
-            if (this.moving && this.Lifetime >= this.movementTime)
+            if (this.moving && this.Lifetime >= GameData.Instance.EnemyMiscConstants.GelMovementTime)
             {
                 this.Lifetime = 0;
                 this.moving = false;

@@ -10,6 +10,9 @@ namespace LoZClone
         private const int LinkPixelBuff = 5;
         private const int DodongoMaxFrame = 2;
         private const int KeeseIdleMax = 5;
+        private const int GelIdleMin = 18;
+        private const int GelIdleMax = 30;
+        private const int GelMovementT = 17;
         private const int ZolMaxWait = 12;
 
         public int FireSnakeLength => FireSnakeLgth;
@@ -27,6 +30,12 @@ namespace LoZClone
         public int DodongoMaximumFrame => DodongoMaxFrame;
 
         public int KeeseIdleMaximum => KeeseIdleMax;
+
+        public int GelMinIdle => GelIdleMin;
+
+        public int GelMaxIdle => GelIdleMax;
+
+        public int GelMovementTime => GelMovementT;
 
         public int ZolMaximumWait => ZolMaxWait;
 
