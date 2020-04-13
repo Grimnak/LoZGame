@@ -5,7 +5,6 @@
 
     internal class SilverArrowProjectile : ProjectileEssentials, IProjectile
     {
-
         public SilverArrowProjectile(Physics source)
         {
             this.SetUp(this);

@@ -6,7 +6,6 @@
 
     public partial class Dungeon
     {
-
         /// <summary>
         /// Resets dungeon room to default.
         /// </summary>

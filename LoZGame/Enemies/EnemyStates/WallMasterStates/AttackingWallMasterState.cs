@@ -5,7 +5,6 @@
 
     public class AttackingWallMasterState : WallMasterEssentials, IEnemyState
     {
-
         public AttackingWallMasterState(IEnemy enemy)
         {
             this.Enemy = enemy;

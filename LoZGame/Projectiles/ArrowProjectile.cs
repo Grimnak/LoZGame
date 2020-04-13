@@ -9,7 +9,6 @@ namespace LoZClone
 {
     class ArrowProjectile : ProjectileEssentials, IProjectile
     {
-
         public ArrowProjectile(Physics source)
         {
             this.SetUp(this);

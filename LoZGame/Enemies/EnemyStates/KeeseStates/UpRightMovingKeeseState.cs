@@ -6,7 +6,6 @@
 
     public class UpRightMovingKeeseState : KeeseEssentials, IEnemyState
     {
-
         public UpRightMovingKeeseState(IEnemy enemy)
         {
             this.Enemy = enemy;

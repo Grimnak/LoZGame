@@ -90,7 +90,7 @@
                 numRedPotions++;
                 LoZGame.Instance.Players[0].Health.CurrentHealth = LoZGame.Instance.Players[0].Health.MaxHealth;
             }
-            else if(this.numRedPotions > 0)
+            else if (this.numRedPotions > 0)
             {
                 numRedPotions--;
                 LoZGame.Instance.Players[0].Health.CurrentHealth = LoZGame.Instance.Players[0].Health.MaxHealth;

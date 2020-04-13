@@ -9,7 +9,6 @@
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
         private bool isLevel1;
 
-
         public CosmeticDoorState(Door door)
         {
             this.door = door;

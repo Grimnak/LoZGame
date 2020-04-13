@@ -5,7 +5,6 @@
 
     public class RightMovingWallMasterState : WallMasterEssentials, IEnemyState
     {
-
         public RightMovingWallMasterState(IEnemy enemy)
         {
             this.Enemy = enemy;

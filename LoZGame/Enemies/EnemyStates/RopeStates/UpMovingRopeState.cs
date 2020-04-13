@@ -7,7 +7,6 @@
 
     public class UpMovingRopeState : RopeEssentials, IEnemyState
     {
-
         public UpMovingRopeState(IEnemy enemy)
         {
             this.Enemy = enemy;

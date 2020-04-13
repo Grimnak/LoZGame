@@ -5,7 +5,6 @@
 
     public class FollowFireSnakeState : FireSnakeEssentials, IEnemyState
     {
-
         public FollowFireSnakeState(IEnemy fireSnake)
         {
             this.Enemy = fireSnake;

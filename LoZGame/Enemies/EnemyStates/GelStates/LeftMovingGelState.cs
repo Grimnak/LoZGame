@@ -8,7 +8,6 @@
     {
         public LeftMovingGelState(IEnemy enemy)
         {
-
             this.Enemy = enemy;
             this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.CurrentState = this;

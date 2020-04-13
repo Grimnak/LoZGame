@@ -7,8 +7,8 @@
     {
         private static Dictionary<StateType, int> oldManStateList = new Dictionary<StateType, int>()
         {
-            {StateType.Attack, 1 },
-            {StateType.Idle, 99 }
+            { StateType.Attack, 1 },
+            { StateType.Idle, 99 }
         };
 
         private static Dictionary<StateType, int> dragonStateList = new Dictionary<StateType, int>()

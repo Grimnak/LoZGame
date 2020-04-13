@@ -6,7 +6,6 @@
 
     public class EnemySpriteFactory
     {
-
         private static readonly int dodongoWidthDown = 60;
         private static readonly int dodongoWidthUp = 60;
         private static readonly int dodongoWidthLeftRight = 96;
@@ -466,6 +465,7 @@
         {
             return new ObjectSprite(this.oldMan, this.oldManData);
         }
+
         public ISprite CreateAngryOldManSprite()
         {
             return new ObjectSprite(this.angryOldMan, this.oldManData);

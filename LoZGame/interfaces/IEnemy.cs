@@ -24,11 +24,11 @@
         /// <summary>
         /// Creates sprite based on direcion in Physics.
         /// </summary>
-        /// <returns>Sprite to return</returns>
+        /// <returns>Sprite to return.</returns>
         ISprite CreateCorrectSprite();
 
         /// <summary>
-        /// Adds a child associated with the parent enemy
+        /// Adds a child associated with the parent enemy.
         /// </summary>
         void AddChild();
 
@@ -40,18 +40,19 @@
         /// <summary>
         /// Assigns immunity cooldown and deals damage to health.
         /// </summary>
-        /// <param name="damageAmount">Damage to be taken</param>
+        /// <param name="damageAmount">Damage to be taken.</param>
 
         /// <summary>
         /// Logic to randomly choose a new state.
         /// </summary>
         void UpdateState();
+
         void TakeDamage(int damageAmount);
 
         /// <summary>
         /// Sets enemy to be stunned.
         /// </summary>
-        /// <param name="stunTime">Duration in ticks to be stunned for</param>
+        /// <param name="stunTime">Duration in ticks to be stunned for.</param>
         void Stun(int stunTime);
 
         void Update();

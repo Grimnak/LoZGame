@@ -6,7 +6,6 @@
 
     public class WallMaster : EnemyEssentials, IEnemy
     {
-
         public WallMaster(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
@@ -43,7 +42,8 @@
             if (this.Physics.CurrentDirection == Physics.Direction.North || this.Physics.CurrentDirection == Physics.Direction.East)
             {
                 return EnemySpriteFactory.Instance.CreateRightMovingWallMasterSprite();
-            } else
+            } 
+            else
             {
                 return EnemySpriteFactory.Instance.CreateLeftMovingWallMasterSprite();
             }

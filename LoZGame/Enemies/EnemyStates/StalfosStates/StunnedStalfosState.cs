@@ -20,7 +20,7 @@
             this.Enemy.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
-        public void Stun(int stunTime)
+        public new void Stun(int stunTime)
         {
             stunDuration = stunTime;
         }

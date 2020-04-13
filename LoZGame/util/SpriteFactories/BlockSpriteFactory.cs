@@ -133,7 +133,6 @@
         private Texture2D SpottedTile2Texture;
         private SpriteData spottedTile2Data;
 
-
         private static readonly BlockSpriteFactory instance = new BlockSpriteFactory();
 
         public static BlockSpriteFactory Instance

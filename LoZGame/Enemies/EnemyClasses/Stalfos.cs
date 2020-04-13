@@ -5,7 +5,6 @@
 
     public class Stalfos : EnemyEssentials, IEnemy
     {
-
         public Stalfos(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
