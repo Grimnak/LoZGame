@@ -12,12 +12,12 @@
 
         public StunnedRopeState(IEnemy enemy, IEnemyState oldState, int stunTime)
         {
+            this.oldState = oldState;
             this.Enemy = enemy;
-            this.Enemy.MoveSpeed = GameData.Instance.EnemySpeedData.RopeSpeed;
-            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Enemy.CurrentState = this;
+            this.oldVelocity = this.Enemy.Physics.MovementVelocity;
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
+            stunDuration = stunTime;
+            this.Enemy.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public override void Stun(int stunTime)
@@ -30,8 +30,8 @@
             stunDuration--;
             if (stunDuration <= 0)
             {
-                this.Enemy.CurrentState = oldState;
-                this.Enemy.Physics.MovementVelocity = oldVelocity;
+                this.Enemy.CurrentState = this.oldState;
+                this.Enemy.Physics.MovementVelocity = this.oldVelocity;
             }
         }
 

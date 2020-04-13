@@ -9,7 +9,7 @@
         public AttackingGoriyaState(IEnemy enemy)
         {
             this.Enemy = enemy;
-            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange * 2;
+            this.DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange * 2;
             FacePlayer();
             this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;

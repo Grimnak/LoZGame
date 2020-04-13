@@ -61,7 +61,7 @@
 
         public void Stun(int stunTime)
         {
-            this.Enemy.TakeDamage(GameData.Instance.EnemyDamageData.KeeseHealth);
+            this.Enemy.TakeDamage(GameData.Instance.EnemyHealthConstants.KeeseHealth);
         }
 
         public override void Update()
@@ -80,16 +80,16 @@
             Vector2 normalVel = this.Enemy.Physics.MovementVelocity / this.Enemy.Physics.MovementVelocity.Length();
             if (this.Lifetime < this.DirectionChange / 2)
             {
-                if (this.Enemy.Physics.MovementVelocity.Length() <= GameData.Instance.EnemySpeedData.MaxKeeseSpeed)
+                if (this.Enemy.Physics.MovementVelocity.Length() <= GameData.Instance.EnemySpeedConstants.MaxKeeseSpeed)
                 {
-                    this.Enemy.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedData.KeeseAccel;
+                    this.Enemy.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
                 }
             }
             else
             {
-                if (this.Enemy.Physics.MovementVelocity.Length() >= GameData.Instance.EnemySpeedData.MinKeeseSpeed)
+                if (this.Enemy.Physics.MovementVelocity.Length() >= GameData.Instance.EnemySpeedConstants.MinKeeseSpeed)
                 {
-                    this.Enemy.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedData.KeeseAccel;
+                    this.Enemy.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
                 }
             }
         }

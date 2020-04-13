@@ -15,7 +15,7 @@
             this.oldState = oldState;
             this.Enemy = enemy;
             stunDuration = stunTime;
-            enemy.CurrentTint = LoZGame.Instance.DungeonTint;
+            enemy.CurrentTint = LoZGame.Instance.DefaultTint;
             oldVelocity = this.Enemy.Physics.MovementVelocity;
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
         }

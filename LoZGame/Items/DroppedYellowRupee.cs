@@ -8,6 +8,7 @@
     {
         private static readonly int DespawnTimer = LoZGame.Instance.UpdateSpeed * 20;
         private static readonly int SpawnTimer = LoZGame.Instance.UpdateSpeed * 1;
+
         public DroppedYellowRupee(Vector2 loc)
         {
             this.Sprite = ItemSpriteFactory.Instance.YellowRupee();

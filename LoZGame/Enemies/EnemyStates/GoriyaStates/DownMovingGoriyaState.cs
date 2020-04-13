@@ -8,7 +8,7 @@
         public DownMovingGoriyaState(IEnemy enemy)
         {
             this.Enemy = enemy;
-            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange;
+            this.DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange;
             this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.Physics.MovementVelocity = new Vector2(0, this.Enemy.MoveSpeed);
         }

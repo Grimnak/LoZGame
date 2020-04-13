@@ -12,9 +12,9 @@
 
         public SpikeCross(Vector2 location)
         {
-            this.Health = new HealthManager(GameData.Instance.EnemyDamageData.SpikeCrossHealth);
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.SpikeCrossHealth);
             this.Physics = new Physics(new Vector2(location.X, location.Y));
-            this.Physics.Mass = GameData.Instance.EnemyMassData.SpikeCrossMass;
+            this.Physics.Mass = GameData.Instance.EnemyMassConstants.SpikeCrossMass;
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.CurrentState = new IdleSpikeCrossState(this);
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
@@ -22,7 +22,7 @@
             Retreating = false;
             InitialPos = this.Physics.Location;
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageData.SpikeCrossDamage;
+            this.Damage = GameData.Instance.EnemyDamageConstants.SpikeCrossDamage;
             this.DamageTimer = 0;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }

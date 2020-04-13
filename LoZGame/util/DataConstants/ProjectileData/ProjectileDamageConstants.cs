@@ -1,9 +1,6 @@
 namespace LoZClone
 {
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
-
-    public struct ProjectileDamageData
+    public struct ProjectileDamageConstants
     {
         private const int LinkArrowDmg = 2;
         private const int LinkSilverArrowDmg = 4;

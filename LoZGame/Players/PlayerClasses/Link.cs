@@ -12,15 +12,15 @@
         public Link(Vector2 location)
         {
             this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.PlayerData.Mass;
-            this.Health = new HealthManager(GameData.Instance.PlayerData.StartingHealth);
+            this.Physics.Mass = GameData.Instance.PlayerConstants.Mass;
+            this.Health = new HealthManager(GameData.Instance.PlayerConstants.StartingHealth);
             this.Inventory = new InventoryManager(this);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
             this.CurrentColor = LinkColor.Green;
             this.Physics.CurrentDirection = Physics.Direction.North;
             this.CurrentWeapon = LinkWeapon.Wood;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.MoveSpeed = GameData.Instance.PlayerData.PlayerSpeed;
+            this.MoveSpeed = GameData.Instance.PlayerConstants.PlayerSpeed;
             this.DamageTimer = 0;
             this.State = new IdleState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y - 8, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight - 8);

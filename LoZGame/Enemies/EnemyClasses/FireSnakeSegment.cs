@@ -16,20 +16,20 @@
         public FireSnakeSegment(IEnemy parent, int segmentID)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = GameData.Instance.DefaultEnemyStates.FireSnakeStatelist;
+            this.States = GameData.Instance.EnemyStateWeights.FireSnakeStatelist;
             this.parent = parent;
             this.segmentID = segmentID;
             this.Physics = new Physics(parent.Physics.Location);
-            this.Physics.Mass = GameData.Instance.EnemyMassData.FireSnakeMass;
+            this.Physics.Mass = GameData.Instance.EnemyMassConstants.FireSnakeMass;
             this.Physics.IsMoveable = false;
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.CurrentState = new FollowFireSnakeState(this);
             this.hasChild = false;
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageData.FireSnakeDamage;
+            this.Damage = GameData.Instance.EnemyDamageConstants.FireSnakeDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedData.FireSnakeSpeed;
+            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 

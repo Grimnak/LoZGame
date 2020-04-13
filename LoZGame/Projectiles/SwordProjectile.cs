@@ -15,7 +15,7 @@
             this.Width = ProjectileSpriteFactory.Instance.SwordWidth;
             this.Heigth = ProjectileSpriteFactory.Instance.SwordHeight;
             this.Offset = (this.Heigth * 3) / 4;
-            this.Speed = GameData.Instance.ProjectileSpeedData.WoodSwordSpeed;
+            this.Speed = GameData.Instance.ProjectileSpeedConstants.WoodSwordSpeed;
             this.Source = source.Physics;
             this.InitializeDirection();
             this.sourceOffset = this.Physics.Bounds.Location - this.Source.Bounds.Location;
@@ -70,9 +70,9 @@
                 this.Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
                 totalLife = 15;
             }*/
-            this.Damage = GameData.Instance.ProjectileDamageData.WoodSwordDamage;
+            this.Damage = GameData.Instance.ProjectileDamageConstants.WoodSwordDamage;
             this.Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
-            this.Physics.Mass = GameData.Instance.ProjectileMassData.WoodSwordMass;
+            this.Physics.Mass = GameData.Instance.ProjectileMassConstants.WoodSwordMass;
             totalLife = 15;
         }
     }

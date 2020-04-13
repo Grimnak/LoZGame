@@ -12,8 +12,8 @@
         public AttackingDodongoState(IEnemy enemy)
         {
             this.Enemy = enemy;
-            this.Enemy.MoveSpeed = GameData.Instance.EnemySpeedData.DodongoAttackSpeed;
-            this.DirectionChange = GameData.Instance.EnemySpeedData.DirectionChange * 2;
+            this.Enemy.MoveSpeed = GameData.Instance.EnemySpeedConstants.DodongoAttackSpeed;
+            this.DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange * 2;
             this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.CurrentState = this;
             GetMoveSpeed();

@@ -68,21 +68,21 @@
             {
                 FavorPlayerCardinal(2);
             }
-            base.Update();
             if (!(this.Enemy.CurrentState is AttackingRopeState))
             {
                 this.CheckForLink();
             }
+            base.Update();
         }
 
         private void CheckForLink()
         {
             int ropeX = (int)this.Enemy.Physics.Location.X;
             int ropeY = (int)this.Enemy.Physics.Location.Y;
-            int linkX = (int)LoZGame.Instance.Link.Physics.Location.X;
-            int linkY = (int)LoZGame.Instance.Link.Physics.Location.Y;
+            int linkX = (int)LoZGame.Instance.Players[0].Physics.Location.X;
+            int linkY = (int)LoZGame.Instance.Players[0].Physics.Location.Y;
 
-            if (Math.Abs(ropeX - linkX) <= GameData.Instance.EnemyMiscData.RopeLinkPixelBuffer)
+            if (Math.Abs(ropeX - linkX) <= GameData.Instance.EnemyMiscConstants.LinkPixelBuffer)
             {
                 if ((linkY - ropeY) > 0)
                 {
@@ -94,7 +94,7 @@
                 }
                 this.Enemy.CurrentState.Attack();
             }
-            else if (Math.Abs(ropeY - linkY) <= GameData.Instance.EnemyMiscData.RopeLinkPixelBuffer)
+            else if (Math.Abs(ropeY - linkY) <= GameData.Instance.EnemyMiscConstants.LinkPixelBuffer)
             {
                 if ((linkX - ropeX) > 0)
                 {

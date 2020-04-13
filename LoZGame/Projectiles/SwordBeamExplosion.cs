@@ -10,7 +10,7 @@
         private readonly string direction;
         private readonly float rotation;
         private int damage;
-        private ProjectileSpeedData projectileSpeedData;
+        private ProjectileSpeedConstants projectileSpeedData;
 
         private static readonly int MaxLifeTime = 20;
 
@@ -26,7 +26,7 @@
             this.Physics.BoundsOffset = new Vector2(Width, Heigth) / 4;
             this.Physics.SetLocation();
             this.Sprite = ProjectileSpriteFactory.Instance.SwordExplosion();
-            this.Physics.Mass = GameData.Instance.ProjectileMassData.SwordBeamMass;
+            this.Physics.Mass = GameData.Instance.ProjectileMassConstants.SwordBeamMass;
 
             switch (this.Physics.CurrentDirection)
             {

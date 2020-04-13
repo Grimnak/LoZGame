@@ -4,6 +4,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using static RandomStateGenerator;
+
     public partial class WallMasterEssentials : EnemyStateEssentials, IEnemyState
     {
         public void MoveLeft()

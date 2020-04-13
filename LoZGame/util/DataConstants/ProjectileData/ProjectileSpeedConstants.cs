@@ -1,9 +1,6 @@
 namespace LoZClone
 {
-    using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Graphics;
-
-    public struct ProjectileSpeedData
+    public struct ProjectileSpeedConstants
     {
         private const float LinkArrowSpd = 7;
         private const float LinkSilverArrowSpd = 12;
@@ -12,8 +9,8 @@ namespace LoZClone
         private const float SwordBeamSpd = 6.5f;
         private const float SwordBeamExplosionSpd = 3.25f;
         private const int WoodSwordSpd = 5;
-      //  private const int WhiteSwordSpd = 5;
-      //  private const int MagicSwordSpd = 5;
+        private const int WhiteSwordSpd = 5;
+        private const int MagicSwordSpd = 5;
         private const float CandleSpd = 7;
         private const float FireballSpd = 5;
         private const float EnemyBoomerangSpd = 7;
@@ -33,9 +30,9 @@ namespace LoZClone
 
         public int WoodSwordSpeed => WoodSwordSpd;
 
-    //    public int WhiteSwordSpeed => WhiteSwordSpd;
+        public int WhiteSwordSpeed => WhiteSwordSpd;
 
-    //    public int MagicSwordSpeed => MagicSwordSpd;
+        public int MagicSwordSpeed => MagicSwordSpd;
 
         public float CandleSpeed => CandleSpd;
 

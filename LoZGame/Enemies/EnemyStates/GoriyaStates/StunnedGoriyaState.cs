@@ -17,7 +17,7 @@
             this.oldVelocity = this.Enemy.Physics.MovementVelocity;
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
             stunDuration = stunTime;
-            enemy.CurrentTint = LoZGame.Instance.DungeonTint;
+            enemy.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public override void Stun(int stunTime)

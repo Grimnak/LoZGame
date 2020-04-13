@@ -17,7 +17,7 @@
             this.Enemy.CurrentState = this;
             this.Enemy.Physics.Bounds = new Rectangle(this.Enemy.Physics.Bounds.Location, Point.Zero);
             LoZGame.Instance.Drops.AttemptDrop(this.Enemy.Physics.Location);
-            deathTimerMax = GameData.Instance.EnemySpeedData.DeathTimerMax;
+            deathTimerMax = GameData.Instance.EnemyMiscConstants.DeathTimerMaximum;
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
         }
 
