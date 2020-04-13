@@ -74,6 +74,7 @@
         /// <inheritdoc></inheritdoc>
         public void PlayGame()
         {
+            SoundFactory.Instance.StopAll();
             SoundFactory.Instance.PlayDungeonSong();
             LoZGame.Instance.GameState = new PlayGameState();
         }

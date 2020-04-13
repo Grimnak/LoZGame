@@ -4,14 +4,17 @@
     using Microsoft.Xna.Framework.Audio;
     using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Media;
+    using SharpDX.Direct3D9;
 
     public class SoundFactory
     {
         private bool musicEnabled = LoZGame.Music;
-        private SoundPlayer titleSong = new SoundPlayer(Properties.Resources.title_song);
-        private SoundPlayer dungeonSong = new SoundPlayer(Properties.Resources.dungeon_song);
-        private SoundPlayer triforceTune = new SoundPlayer(Properties.Resources.triforce_tune);
-
+        private static SoundEffect titleSong = SoundEffect.FromStream(Properties.Resources.title_song);
+        SoundEffectInstance titleLoop = titleSong.CreateInstance();
+        private static SoundEffect dungeonSong = SoundEffect.FromStream(Properties.Resources.dungeon_song);
+        SoundEffectInstance dungeonLoop = dungeonSong.CreateInstance();
+        private static SoundEffect triforceTune = SoundEffect.FromStream(Properties.Resources.triforce_tune);
+        SoundEffectInstance triforceLoop = triforceTune.CreateInstance();
         private SoundEffect swordSlash = SoundEffect.FromStream(Properties.Resources.LOZ_Sword_Slash);
         private SoundEffect swordShoot = SoundEffect.FromStream(Properties.Resources.LOZ_Sword_Shoot);
         private SoundEffect enemyHit = SoundEffect.FromStream(Properties.Resources.LOZ_Enemy_Hit);
@@ -34,7 +37,7 @@
         private static readonly SoundFactory instance = new SoundFactory();
 
         public bool EnableMusic { get { return musicEnabled; } set { musicEnabled = value; } }
-
+        
         public static SoundFactory Instance
         {
             get
@@ -137,38 +140,45 @@
         // Music
         public void PlayTitleSong()
         {
+            titleLoop.IsLooped = true;
+            titleLoop.Volume = 0.5f;
             if (musicEnabled)
             {
-                titleSong.PlayLooping();
+
+                titleLoop.Play();
             }
         }
 
         public void PlayDungeonSong()
         {
+            dungeonLoop.IsLooped = true;
+            dungeonLoop.Volume = 0.5f;
             if (musicEnabled)
             {
-                dungeonSong.PlayLooping();
+                dungeonLoop.Play();
             }
         }
 
         public void PlayTriforceTune()
         {
+            triforceLoop.IsLooped = true;
+            triforceLoop.Volume = 0.5f;
             if (musicEnabled)
             {
-                triforceTune.PlayLooping();
+                triforceLoop.Play();
             }
         }
 
         public void StopDungeonSong()
         {
-            dungeonSong.Stop();
+            dungeonLoop.Stop();
         }
 
         public void StopAll()
         {
-            titleSong.Stop();
-            dungeonSong.Stop();
-            triforceTune.Stop();
+            titleLoop.Stop();
+            dungeonLoop.Stop();
+            triforceLoop.Stop();
         }
     }
 }

@@ -48,6 +48,7 @@
         /// <inheritdoc></inheritdoc>
         public void WinGame()
         {
+            SoundFactory.Instance.StopAll();
             LoZGame.Instance.GameState = new WinGameState();
         }
 
