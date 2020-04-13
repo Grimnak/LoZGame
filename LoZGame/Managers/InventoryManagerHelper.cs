@@ -27,7 +27,7 @@
         {
             if (this.numRupees > 0 && this.hasBow)
             {
-                if (!LoZGame.Cheats)
+                if (!LoZGame.Cheats && !(this.player.State is UseItemState))
                 {
                     this.numRupees--;
                 }
