@@ -41,7 +41,7 @@
         /// <summary>
         /// Game state for room transitions.
         /// </summary>
-        void TransitionRoom(string direction);
+        void TransitionRoom(Physics.Direction direction);
 
         /// <summary>
         /// Updates the current state.

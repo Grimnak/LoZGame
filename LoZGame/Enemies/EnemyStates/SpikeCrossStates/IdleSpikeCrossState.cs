@@ -90,7 +90,7 @@
                     {
                         //Handles case for when link gets to the spikes original position before the spike fully retreats
 
-                        this.spikeCross.MoveSpeed = 2 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
+                        this.spikeCross.MoveSpeed = GameData.Instance.EnemySpeedConstants.SpikeCrossSpeed * (linkY - spikeY) / Math.Abs(linkY - spikeY);
                         this.spikeCross.Attacking = true;
                         this.spikeCross.CurrentState.MoveDown();
                     }
@@ -102,7 +102,7 @@
                     {
                         //Handles case for when link gets to the spikes original position before the spike fully retreats
 
-                        this.spikeCross.MoveSpeed = 2 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
+                        this.spikeCross.MoveSpeed = GameData.Instance.EnemySpeedConstants.SpikeCrossSpeed * (linkX - spikeX) / Math.Abs(linkX - spikeX);
                         this.spikeCross.Attacking = true;
                         this.spikeCross.CurrentState.MoveRight();
                     }

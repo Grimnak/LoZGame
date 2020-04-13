@@ -12,7 +12,7 @@ namespace LoZClone
         private const int WhiteSwordSpd = 5;
         private const int MagicSwordSpd = 5;
         private const float CandleSpd = 7;
-        private const float FireballSpd = 5;
+        private const float FireballSpd = 3.5f;
         private const float EnemyBoomerangSpd = 7;
         private const float EnemyArrowSpd = 7;
 

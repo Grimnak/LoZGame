@@ -45,7 +45,7 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TransitionRoom(string direction)
+        public void TransitionRoom(Physics.Direction direction)
         {
             // Can't transition room while accessing inventory.
         }
