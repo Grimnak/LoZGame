@@ -24,7 +24,7 @@ namespace LoZClone
 
         public void Add(IEnemy enemy)
         {
-            if (!enemy.Expired)
+            if (!enemy.IsDead)
             {
                 enemy.CurrentState.Spawn();
                 enemyList.Add(enemyID, enemy);
@@ -63,7 +63,20 @@ namespace LoZClone
                 enemy.Value.Update();
             }
 
-            if (enemyList.Count == 0)
+            DropItemsEmptyRoom();
+        }
+
+        public void DropItemsEmptyRoom()
+        {
+            int enemyCount = enemyList.Count;
+            foreach (IEnemy enemy in enemyList.Values)
+            {
+                if (enemy is BlockEnemy)
+                {
+                    enemyCount--;
+                }
+            }
+            if (enemyCount == 0)
             {
                 LoZGame.Instance.Drops.DropItemsEmptyRoom();
             }

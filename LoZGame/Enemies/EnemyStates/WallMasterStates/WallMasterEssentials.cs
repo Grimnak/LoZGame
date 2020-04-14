@@ -57,7 +57,7 @@
             this.Enemy.CurrentState = new DeadWallMasterState(this.Enemy);
         }
 
-        public void Spawn()
+        public override void Spawn()
         {
             this.Enemy.CurrentState = new SpawnWallMasterState(this.Enemy);
         }

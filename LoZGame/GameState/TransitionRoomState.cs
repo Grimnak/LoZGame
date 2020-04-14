@@ -9,6 +9,8 @@
         private Physics.Direction direction;
         private int transitionSpeed;
         private int lockout;
+        private Room currentRoom;
+        private Room nextRoom;
 
         public TransitionRoomState(Physics.Direction direction)
         {

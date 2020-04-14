@@ -17,7 +17,7 @@
 
         private void ShootFireball()
         {
-            Vector2 velocityVector = FireballSpeed * this.UnitVectorToPlayer(this.Enemy.Physics.Bounds.Center.ToVector2());
+            Vector2 velocityVector = (FireballSpeed / 2) * this.UnitVectorToPlayer(this.Enemy.Physics.Bounds.Center.ToVector2());
             Physics fireballPhysics = new Physics(this.Enemy.Physics.Bounds.Center.ToVector2())
             {
                 MovementVelocity = new Vector2(velocityVector.X, velocityVector.Y)

@@ -54,12 +54,12 @@
             this.Enemy.CurrentState = new DeadStalfosState(this.Enemy);
         }
 
-        public void Stun(int stunTime)
+        public virtual void Stun(int stunTime)
         {
             this.Enemy.CurrentState = new StunnedStalfosState(this.Enemy, this, stunTime);
         }
 
-        public void Spawn()
+        public override void Spawn()
         {
             this.Enemy.CurrentState = new SpawnStalfosState(this.Enemy);
         }

@@ -30,5 +30,9 @@ namespace LoZClone
                 this.Enemy.UpdateState();
             }
         }
+
+        public override void Stun(int stunTime)
+        {
+        }
     }
 }

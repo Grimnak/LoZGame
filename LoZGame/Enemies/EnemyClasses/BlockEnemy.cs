@@ -21,11 +21,11 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileHeight, BlockSpriteFactory.Instance.TileWidth);
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
+            this.IsDead = false;
             this.DamageTimer = 0;
             this.CurrentState = new BlockEnemyIdleState(this);
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
-
 
         // This block does not interact with any sort of collision at all
         public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
