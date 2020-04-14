@@ -9,15 +9,13 @@
     {
         private IEnemy parent;
         private IEnemy child;
-        private int segmentID;
         private bool childAdded;
 
-        public FireSnakeSegment(IEnemy parent, int segmentID)
+        public FireSnakeSegment(IEnemy parent)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.States = GameData.Instance.EnemyStateWeights.FireSnakeStatelist;
             this.parent = parent;
-            this.segmentID = segmentID;
             this.Physics = new Physics(parent.Physics.Location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.FireSnakeMass;
             this.Physics.IsMoveable = false;
@@ -33,35 +31,11 @@
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
-        public override void AddChild()
-        {
-            if (this.segmentID > 0)
-            {
-                this.HasChild = true;
-                this.child = new FireSnakeSegment(this, this.segmentID - 1);
-                LoZGame.Instance.GameObjects.Enemies.Add(child);
-            }
-        }
-
         public override void TakeDamage(int damageAmount)
         {
-            if (this.HasChild)
+            if (this.parent.DamageTimer <= 0)
             {
-                this.child.TakeDamage(damageAmount);
-            }
-            else
-            {
-                this.parent.HasChild = false;
-                this.Expired = true;
-            }
-        }
-
-        public override void UpdateChild()
-        {
-            if (this.HasChild)
-            {
-                this.child.UpdateChild();
-                this.child.Physics.MovementVelocity = this.Physics.MovementVelocity;
+                this.parent.TakeDamage(damageAmount);
             }
         }
 
