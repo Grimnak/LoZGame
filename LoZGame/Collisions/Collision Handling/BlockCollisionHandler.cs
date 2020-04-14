@@ -9,7 +9,6 @@
         private IBlock block;
         private float xDirection;
         private float yDirection;
-        private const float Acceleration = -0.5f;
 
         public BlockCollisionHandler(IBlock block)
         {
@@ -43,10 +42,6 @@
                 {
                     DeterminePushVelocity(player, collisionSide);
                 }
-                /*else
-                {
-                    this.SetBlockBounds(this.block.Physics, player.Physics, collisionSide);
-                }*/
                 this.SetBounds(this.block.Physics, player.Physics, collisionSide);
             }
             else if (this.block is Tile)
@@ -75,7 +70,7 @@
         {
             DeterminePushDirection(collisionSide);
             this.block.Physics.MovementVelocity = new Vector2(xDirection * (int)player.MoveSpeed, yDirection * (int)player.MoveSpeed);
-            this.block.Physics.MovementAcceleration = new Vector2(xDirection * Acceleration, yDirection * Acceleration);
+            this.block.Physics.MovementAcceleration = new Vector2(xDirection * GameData.Instance.CollisionConstants.MovableBlockAcceleration, yDirection * GameData.Instance.CollisionConstants.MovableBlockAcceleration);
         }
 
         private void DeterminePushDirection(CollisionDetection.CollisionSide collisionSide)
