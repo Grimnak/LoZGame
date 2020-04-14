@@ -64,5 +64,9 @@ MS Paint
 	
     Plan(s) to fix: finish the dungeon
 
+### Stalfos AI: 
+	Bugs: Stalfos have the slight possibility of getting stuck on blocks and cancelling their hitbox. Bug occured once and was unable to be recreated
+
+	Plan(s) to fix: Try to recreate the bug through testing to learn more about the issue.
 ## Suppressed Warnings:
 There are no suppressed warnings.
