@@ -132,7 +132,7 @@
                     target.StopKnockbackX();
                     break;
                 case CollisionDetection.CollisionSide.Right:
-                    target.Bounds = new Rectangle(LoZGame.Instance.ScreenWidth - horizontalOffset - target.Bounds.Width + 10, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
+                    target.Bounds = new Rectangle(LoZGame.Instance.ScreenWidth - horizontalOffset - target.Bounds.Width + GameData.Instance.CollisionConstants.RightBoundCorrection, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
                     target.StopKnockbackX();
                     break;
                 default:

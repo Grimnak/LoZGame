@@ -17,22 +17,21 @@ Jeremy Wensink.27
 
 
 ## Controls:
-W, A, S, D, Arrow Keys - Controls the Player
+W, A, S, D, Arrow Keys - Controls the Player and Inventory Select
 
-Z, N - Attack buttons for Player
+Z - Attack buttons for Player
+
+N - Use item button
+
+I - Open Inventory
+
+Enter - Selects Item in Inventory
 
 Q - Exits the game
 
 R - Resets the game to its default state
 
-1 - Places a Bomb
-
-2, 5 - Fires an Arrow/Silver Arrow
-
-3, 6 - Throws a Boomerang/Magic Boomerang
-
-4, 7 - Uses the Blue Candle/Red Candle
-
+Mouse - Moves rooms in the direction you click.
 
 ## External Tools:
 Git
@@ -55,12 +54,11 @@ MS Paint
     Bug:  Bats can drop items in the basement walls that are unobtainable.
 
     Plan(s) to fix:  Add boomerang capabilities to grab items and potentially make items spawn in-bounds.
-    
-### Slingshotting Wall Masters:
-    Bug:  If player is currently getting knocked back and collides with a Wall Master, the player will fly off the screen in the direction of the knockback.
-    
-    Plan(s) to fix:  Disable ability for Wall Masters to pick the player up while the player is damaged.
 
+
+	Bugs: Dungeon 3 is unfinished but exists
+	
+	Plan(s) to fix: finish the dungeon
 
 ## Suppressed Warnings:
 There are no suppressed warnings.
