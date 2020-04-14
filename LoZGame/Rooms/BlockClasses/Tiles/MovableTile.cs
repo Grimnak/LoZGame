@@ -50,6 +50,7 @@
         public MovableTile(Vector2 location, string name, string direction)
         {
             this.originalLocation = location;
+            this.invalidDirections = new List<InvalidDirection>();
             string[] invalidDirectionStrings = !string.IsNullOrEmpty(direction) ? direction.Split(',') : null;
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location);
@@ -57,22 +58,25 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
             this.Physics.SetDepth();
             this.moved = false;
-            foreach (string invalid in invalidDirectionStrings)
+            if (!(invalidDirectionStrings is null))
             {
-                switch (invalid)
+                foreach (string invalid in invalidDirectionStrings)
                 {
-                    case "N":
-                        InvalidDirections.Add(InvalidDirection.North);
-                        break;
-                    case "S":
-                        InvalidDirections.Add(InvalidDirection.South);
-                        break;
-                    case "E":
-                        InvalidDirections.Add(InvalidDirection.East);
-                        break;
-                    case "W":
-                        InvalidDirections.Add(InvalidDirection.West);
-                        break;
+                    switch (invalid)
+                    {
+                        case "N":
+                            InvalidDirections.Add(InvalidDirection.North);
+                            break;
+                        case "S":
+                            InvalidDirections.Add(InvalidDirection.South);
+                            break;
+                        case "E":
+                            InvalidDirections.Add(InvalidDirection.East);
+                            break;
+                        case "W":
+                            InvalidDirections.Add(InvalidDirection.West);
+                            break;
+                    }
                 }
             }
         }
