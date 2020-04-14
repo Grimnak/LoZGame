@@ -33,6 +33,14 @@ R - Resets the game to its default state
 
 Mouse - Moves rooms in the direction you click.
 
+## Debugg Tools
+Access Debug options in the main LoZGame.cs File
+Debugg Mode: Line 11 - If true than bounding boxes are drawn around entities
+Cheat Mode: Line 12 - If true than infinite health and items are granted
+Music : Line 13 - Enables and Disables music
+Start Dungeon : Line 14 - sets the dungeon to start at, values from 1-3 work
+UpdateSpeed: Line 15 - sets the amount of updates to attempt per second, 60 is the default
+
 ## External Tools:
 Git
 
