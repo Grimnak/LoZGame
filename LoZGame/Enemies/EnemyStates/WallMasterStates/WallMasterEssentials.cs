@@ -66,7 +66,7 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(3);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.WallMasterFavorCardinalValue);
             }
             base.Update();
         }

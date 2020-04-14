@@ -73,8 +73,8 @@
             }
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(9);
-                FavorPlayerDiagonal(9);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.FireSnakeFavorCardinalValue);
+                FavorPlayerDiagonal(GameData.Instance.EnemyMiscConstants.FireSnakeFavorDiagonalValue);
             }
             base.Update();
         }
