@@ -57,7 +57,14 @@
                     this.maxY = 8;
                     this.mapColor = Color.DarkBlue;
                     break;
-                // more cases here for more dungeons
+                case 3:
+                    LoZGame.Instance.DungeonTint = Color.Yellow;
+                    this.currentX = 3;
+                    this.currentY = 5;
+                    this.maxX = 5;
+                    this.maxY = 6;
+                    this.mapColor = Color.Green;
+                    break;
                 default:
                     break;
             }

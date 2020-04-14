@@ -20,6 +20,7 @@
         private SpriteData enterData;
         private Texture2D levelOneMasterSpriteSheet;
         private Texture2D levelTwoMasterSpriteSheet;
+        private Texture2D levelThreeMasterSpriteSheet;
         private Texture2D gameOverSpriteSheet;
         private SpriteData gameOverData;
 
@@ -37,6 +38,7 @@
             this.enterData = new SpriteData(new Vector2(enterWidth, enterHeight), enterSpriteSheet, 1, 1);
             this.levelOneMasterSpriteSheet = content.Load<Texture2D>("level-1");
             this.levelTwoMasterSpriteSheet = content.Load<Texture2D>("level-2");
+            this.levelThreeMasterSpriteSheet = content.Load<Texture2D>("level-3");
             this.gameOverSpriteSheet = content.Load<Texture2D>("gameOver");
             this.gameOverData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), gameOverSpriteSheet, 1, 1);
     }
@@ -59,6 +61,12 @@
         public LevelMasterSprite CreateLevelTwoMaster()
         {
             return new LevelMasterSprite(this.levelTwoMasterSpriteSheet, new Vector2(LoZGame.Instance.Dungeon.CurrentRoomX, LoZGame.Instance.Dungeon.CurrentRoomY));
+
+        }
+
+        public LevelMasterSprite CreateLevelThreeMaster()
+        {
+            return new LevelMasterSprite(this.levelThreeMasterSpriteSheet, new Vector2(LoZGame.Instance.Dungeon.CurrentRoomX, LoZGame.Instance.Dungeon.CurrentRoomY));
 
         }
 
