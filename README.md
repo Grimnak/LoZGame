@@ -1,6 +1,6 @@
 # CSE 3902 - 9:10a Section - Team 3 - Readme
 
-Developer version of Legend of Zelda NES emulator.  This build features a polished version of the first two dungeons and an incomplete build of the third dungeon.
+Developer version of Legend of Zelda NES emulator.  This build features a polished version of the first two dungeons and an incomplete build of the third dungeon.  There is also an option to turn "cheat mode" on, which gives the player unlimited items and infinite health.  This can be activated in the main LoZGame.cs file on line 12 by setting the value to "true".
 
 ## Authors:
 Eric Henderson.939
