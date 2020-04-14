@@ -152,7 +152,6 @@
     <Compile Include="Util\DataConstants\EnemyData\EnemyDamageConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemySpeedConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyStateWeights.cs" />
-    <Compile Include="Util\DataConstants\PhysicsData\PhysicsConstants.cs" />
     <Compile Include="Util\Inventory\InventoryComponents.cs" />
     <Compile Include="GameState\DeathState.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyEssentials.cs" />
