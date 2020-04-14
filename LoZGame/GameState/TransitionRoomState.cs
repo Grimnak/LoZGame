@@ -5,19 +5,43 @@
 
     public class TransitionRoomState : IGameState
     {
-        private LevelMasterSprite sprite;
         private Physics.Direction direction;
         private int transitionSpeed;
         private int lockout;
         private Room currentRoom;
+        private Point currentRoomLocation;
         private Room nextRoom;
+        private Point nextRoomLocation;
+        private Dungeon dungeon;
+        Vector2 MasterMovement;
+        private GameObjectManager oldObjects;
+        private GameObjectManager newObjects;
 
-        public TransitionRoomState(Physics.Direction direction)
+        public TransitionRoomState(Dungeon dungeon, Physics.Direction direction)
         {
-            this.direction = direction;
             this.lockout = 0;
-            this.transitionSpeed = GameData.Instance.GameStateDataConstants.TransitionRoomStateTransitionSpeed;
-            this.sprite = CreateCorrectLevelSprite();
+            this.dungeon = dungeon;
+            this.currentRoom = this.dungeon.CurrentRoom;
+            this.currentRoomLocation = new Point(this.dungeon.CurrentRoomX, this.dungeon.CurrentRoomY);
+            switch (direction)
+            {
+                case Physics.Direction.North:
+                    lockout = LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset;
+                    this.nextRoomLocation = new Point(this.currentRoomLocation.X, this.currentRoomLocation.Y - 1);
+                    break;
+                case Physics.Direction.South:
+                    lockout = LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset;
+                    this.nextRoomLocation = new Point(this.currentRoomLocation.X, this.currentRoomLocation.Y + 1);
+                    break;
+                case Physics.Direction.East:
+                    lockout = LoZGame.Instance.ScreenWidth;
+                    this.nextRoomLocation = new Point(this.currentRoomLocation.X, this.currentRoomLocation.Y + 1);
+                    break;
+                case Physics.Direction.West:
+                    lockout = LoZGame.Instance.ScreenWidth;
+                    this.nextRoomLocation = new Point(this.currentRoomLocation.X, this.currentRoomLocation.Y - 1);
+                    break;
+            }
         }
 
         /// <inheritdoc></inheritdoc>

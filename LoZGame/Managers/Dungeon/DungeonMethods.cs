@@ -167,5 +167,30 @@
                 LoZGame.Instance.GameObjects.Doors.Add(door);
             }
         }
-    }
+
+        public void LoadNewRoom(GameObjectManager manager,  Point location)
+        {
+            this.miniMap.Explore();
+
+            foreach (IEnemy enemy in this.dungeonLayout[location.X][location.Y].Enemies)
+            {
+                manager.Enemies.Add(enemy);
+            }
+
+            foreach (IBlock block in this.dungeonLayout[location.X][location.Y].Tiles)
+            {
+                manager.Blocks.Add(block);
+            }
+
+            foreach (IItem item in this.dungeonLayout[location.X][location.Y].Items)
+            {
+                manager.Items.Add(item);
+            }
+
+            foreach (Door door in this.dungeonLayout[location.X][location.Y].Doors)
+            {
+                manager.Doors.Add(door);
+            }
+        }
+}
 }
