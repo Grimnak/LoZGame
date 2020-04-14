@@ -7,11 +7,9 @@
 
     class FireSnakeHead : EnemyEssentials,  IEnemy
     {
-        private IEnemy child;
-        private int segmentID;
+        private List<IEnemy> children;
         private Vector2 passedVelocity;
         private int timeSinceLastPass;
-        private bool childAdded;
 
         public FireSnakeHead(Vector2 location)
         {
@@ -30,15 +28,17 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.segmentID = GameData.Instance.EnemyMiscConstants.FireSnakeLength;
             this.HasChild = true;
+            this.children = new List<IEnemy>();
         }
 
         public override void TakeDamage(int damageAmount)
         {
-            if (this.HasChild)
+            if (this.children.Count > 0 && this.DamageTimer <= 0)
             {
-                this.child.TakeDamage(damageAmount);
+                this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                this.children[this.children.Count - 1].Expired = true;
+                this.children.RemoveAt(this.children.Count - 1);
             }
             else
             {
@@ -48,14 +48,24 @@
 
         public override void UpdateChild()
         {
-            this.child.UpdateChild();
-            this.child.Physics.MovementVelocity = this.Physics.MovementVelocity;
+            if (this.children.Count > 0)
+            {
+                for (int i = this.children.Count - 1; i > 0; i--)
+                {
+                    this.children[i].Physics.MovementVelocity = this.children[i - 1].Physics.MovementVelocity;
+                }
+                this.children[0].Physics.MovementVelocity = this.Physics.MovementVelocity;
+            }
         }
 
         public override void AddChild()
         {
-            this.child = new FireSnakeSegment(this, segmentID - 1);
-            LoZGame.Instance.GameObjects.Enemies.Add(child);
+            for (int i = 0; i < GameData.Instance.EnemyMiscConstants.FireSnakeLength; i++)
+            {
+                IEnemy child = new FireSnakeSegment(this);
+                this.children.Add(child);
+                LoZGame.Instance.GameObjects.Enemies.Add(child);
+            }
         }
 
         public override ISprite CreateCorrectSprite()
