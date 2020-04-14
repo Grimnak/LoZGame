@@ -4,6 +4,12 @@
 
     public class UnlockedDoorState : IDoorState
     {
+        private const string North = "N";
+        private const string South = "S";
+        private const string East = "E";
+        private const string West = "W";
+
+
         private readonly Door door;
         private readonly ISprite sprite;
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
@@ -13,10 +19,10 @@
         public UnlockedDoorState(Door door)
         {
             this.door = door;
-            this.isLevel1 = this.door.GetKind().Equals("unlocked");
+            this.isLevel1 = this.door.GetKind().Equals(GameData.Instance.RoomConstants.UnlockedStr);
             switch (door.GetLoc())
             {
-                case "N":
+                case North:
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
 
@@ -33,7 +39,7 @@
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
                         break;
                 }
-                case "E":
+                case East:
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
 
@@ -49,7 +55,7 @@
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X - 7, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                 }
-                case "S":
+                case South:
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
 
@@ -65,7 +71,7 @@
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
                         break;
                 }
-                case "W":
+                case West:
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
 /*
