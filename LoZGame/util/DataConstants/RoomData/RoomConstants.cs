@@ -9,6 +9,13 @@
         private const int UpDownDoorXLoc = 363;
         private const int LeftDoorXLoc = 19;
 
+        private const string Unlocked = "Unlocked";
+        private const string Hidden = "hidden";
+        private const string Cosmetic = "Cosmetic";
+        private const string Locked = "Locked";
+        private const string Puzzle = "Puzzle";
+        private const string Special = "Special";
+
 
         public float BlockTileDepth => BlockDepth;
 
@@ -26,5 +33,16 @@
 
         public int RightLeftDoorYLocation => LoZGame.Instance.InventoryOffset + 195;
 
+        public string UnlockedStr => Unlocked;
+
+        public string HiddenStr => Hidden;
+
+        public string CosmeticStr => Cosmetic;
+
+        public string LockedStr => Locked;
+
+        public string PuzzleStr => Puzzle;
+
+        public string SpecialStr => Special;
     }
 }

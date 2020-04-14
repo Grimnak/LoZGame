@@ -7,6 +7,11 @@
      */
     public class SpecialDoorState : IDoorState
     {
+        private const string North = "N";
+        private const string South = "S";
+        private const string East = "E";
+        private const string West = "W";
+
         private readonly Door door;
         private readonly ISprite sprite;
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
@@ -15,10 +20,10 @@
         public SpecialDoorState(Door door)
         {
             this.door = door;
-            this.isLevel1 = this.door.GetKind().Equals("special");
+            this.isLevel1 = this.door.GetKind().Equals(GameData.Instance.RoomConstants.SpecialStr);
             switch (door.GetLoc())
             {
-                case "N":
+                case North:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
 
@@ -32,7 +37,7 @@
                            }*/
                         break;
                     }
-                case "E":
+                case East:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
 
@@ -45,7 +50,7 @@
                            }*/
                         break;
                     }
-                case "S":
+                case South:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
 
@@ -59,7 +64,7 @@
                           }*/
                         break;
                     }
-                case "W":
+                case West:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight();
 

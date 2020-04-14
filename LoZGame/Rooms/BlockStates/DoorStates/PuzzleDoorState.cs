@@ -4,6 +4,11 @@
 
     public class PuzzleDoorState : IDoorState
     {
+        private const string North = "N";
+        private const string South = "S";
+        private const string East = "E";
+        private const string West = "W";
+
         private readonly Door door;
         private readonly ISprite sprite;
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
@@ -16,22 +21,22 @@
             this.door = door;
             switch (door.GetLoc())
             {
-                case "N":
+                case North:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
                         break;
                     }
-                case "E":
+                case East:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
                         break;
                     }
-                case "S":
+                case South:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
                         break;
                     }
-                case "W":
+                case West:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight();
                         break;

@@ -4,6 +4,11 @@
 
     public class CosmeticDoorState : IDoorState
     {
+        private const string North = "N";
+        private const string South = "S";
+        private const string East = "E";
+        private const string West = "W";
+
         private readonly Door door;
         private readonly ISprite sprite;
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
@@ -13,7 +18,7 @@
             this.door = door;
             switch (door.GetLoc())
             {
-                case "N":
+                case North:
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
 
@@ -27,7 +32,7 @@
                         }*/
                         break;
                 }
-                case "E":
+                case East:
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
 
@@ -41,7 +46,7 @@
                         }*/
                         break;
                 }
-                case "S":
+                case South:
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
 
@@ -55,7 +60,7 @@
                         }*/
                         break;
                 }
-                case "W":
+                case West:
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
 
