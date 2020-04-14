@@ -9,7 +9,7 @@
         public Keese(Vector2 location)
         {
             this.Physics = new Physics(location);
-            this.CurrentState = new IdleKeeseState(this);
+            this.CurrentState = new SpawnKeeseState(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.KeeseStatelist);
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.KeeseHealth);

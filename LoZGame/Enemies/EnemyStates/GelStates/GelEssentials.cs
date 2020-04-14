@@ -54,6 +54,11 @@
         {
         }
 
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnGelState(this.Enemy);
+        }
+
         public void Die()
         {
             this.Enemy.CurrentState = new DeadGelState(this.Enemy);

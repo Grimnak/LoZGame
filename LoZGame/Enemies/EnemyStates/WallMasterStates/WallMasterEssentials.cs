@@ -57,6 +57,11 @@
             this.Enemy.CurrentState = new DeadWallMasterState(this.Enemy);
         }
 
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnWallMasterState(this.Enemy);
+        }
+
         public virtual void Stun(int stunTime)
         {
             this.Enemy.CurrentState = new StunnedWallMasterState(this.Enemy, this, stunTime);

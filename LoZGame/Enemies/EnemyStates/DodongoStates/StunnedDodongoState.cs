@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class StunnedDodongoState : DodongoEssentals, IEnemyState
+    public class StunnedDodongoState : DodongoEssentials, IEnemyState
     {
         private int stunDuration;
 

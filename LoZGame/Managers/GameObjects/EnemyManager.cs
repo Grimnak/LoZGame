@@ -26,6 +26,7 @@ namespace LoZClone
         {
             if (!enemy.Expired)
             {
+                enemy.CurrentState.Spawn();
                 enemyList.Add(enemyID, enemy);
                 enemyID++;
                 enemy.AddChild();
@@ -60,6 +61,11 @@ namespace LoZClone
             {
                 this.enemies.Add(enemy.Value);
                 enemy.Value.Update();
+            }
+
+            if (enemyList.Count == 0)
+            {
+                LoZGame.Instance.Drops.DropItemsEmptyRoom();
             }
         }
 

@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class MagicBoomerang : ItemEssentials, IItem
+    public class MagicBoomerang : ItemEssentials, IItem
     {
         public MagicBoomerang(Vector2 loc)
         {

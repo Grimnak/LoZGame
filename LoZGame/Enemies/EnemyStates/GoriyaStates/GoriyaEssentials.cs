@@ -66,6 +66,11 @@
             this.Enemy.CurrentState = new DeadGoriyaState(this.Enemy);
         }
 
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnGoriyaState(this.Enemy);
+        }
+
         public virtual void Stun(int stunTime)
         {
             this.Enemy.CurrentState = new StunnedGoriyaState(this.Enemy, this, stunTime);

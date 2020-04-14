@@ -106,12 +106,23 @@
             }
         }
 
+        public void DropItemsEmptyRoom()
+        {
+            DropKey();
+            DropBoomerang();
+            DropMagicBoomerang();
+        }
+
         public void DropKey()
         {
-            if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey != null && LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1)
+            if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey != null /*&& LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1*/)
             {
-                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey);
-                SoundFactory.Instance.PlayKeyAppears();
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey.Item1);
+                if (!LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey.Item2)
+                {
+                    SoundFactory.Instance.PlayKeyAppears();
+                }
+                LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey = Tuple.Create(LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey.Item1, true);
             }
         }
 
@@ -128,6 +139,14 @@
             if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer != null && LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1)
             {
                 LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer);
+            }
+        }
+
+        public void DropMagicBoomerang()
+        {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang != null && LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1)
+            {
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang);
             }
         }
 

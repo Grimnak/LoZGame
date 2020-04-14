@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class LeftMovingDodongoState : DodongoEssentals, IEnemyState
+    public class LeftMovingDodongoState : DodongoEssentials, IEnemyState
     {
         public LeftMovingDodongoState(IEnemy enemy)
         {

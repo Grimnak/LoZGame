@@ -57,6 +57,11 @@
             this.Enemy.CurrentState = new DeadRopeState(this.Enemy);
         }
 
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnRopeState(this.Enemy);
+        }
+
         public virtual void Stun(int stunTime)
         {
             this.Enemy.CurrentState = new StunnedRopeState(this.Enemy, this, stunTime);

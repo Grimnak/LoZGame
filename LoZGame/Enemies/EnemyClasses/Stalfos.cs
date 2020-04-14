@@ -12,7 +12,7 @@
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.StalfosHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.StalfosMass;
-            this.CurrentState = new LeftMovingStalfosState(this);
+            this.CurrentState = new SpawnStalfosState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;

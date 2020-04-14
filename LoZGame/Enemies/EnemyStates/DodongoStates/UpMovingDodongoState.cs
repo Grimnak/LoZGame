@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class UpMovingDodongoState : DodongoEssentals, IEnemyState
+    public class UpMovingDodongoState : DodongoEssentials, IEnemyState
     {
         public UpMovingDodongoState(IEnemy enemy)
         {

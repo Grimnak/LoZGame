@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    public partial class DodongoEssentals : EnemyStateEssentials, IEnemyState
+    public partial class DodongoEssentials : EnemyStateEssentials, IEnemyState
     {
         public void MoveLeft()
         {
@@ -49,6 +49,11 @@
 
         public void Stop()
         {
+        }
+
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnDodongoState(this.Enemy);
         }
 
         public void Die()
