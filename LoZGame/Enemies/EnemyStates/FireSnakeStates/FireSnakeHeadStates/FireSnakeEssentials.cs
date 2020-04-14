@@ -55,11 +55,6 @@
         {
         }
 
-        public void Spawn()
-        {
-            this.Enemy.CurrentState = new SpawnFireSnakeState(this.Enemy);
-        }
-
         public void Die()
         {
             this.Enemy.CurrentState = new DeadFireSnakeState(this.Enemy);

@@ -21,7 +21,7 @@
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.FireSnakeMass;
             this.Physics.IsMoveable = false;
-            this.CurrentState = new SpawnFireSnakeState(this);
+            this.CurrentState = new IdleFireSnakeState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
@@ -30,6 +30,7 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.segmentID = GameData.Instance.EnemyMiscConstants.FireSnakeLength;
+            this.HasChild = true;
         }
 
         public override void Stun(int stunTime)
@@ -40,19 +41,18 @@
 
         public override void TakeDamage(int damageAmount)
         {
-            base.TakeDamage(damageAmount);
-            if (child.DamageTimer > 0)
+            if (this.HasChild)
             {
                 this.child.TakeDamage(damageAmount);
+            }
+            else
+            {
+                base.TakeDamage(damageAmount);
             }
         }
 
         public override void UpdateChild()
         {
-            if (this.CurrentState is DeadFireSnakeState)
-            {
-                this.child.Expired = true;
-            }
             this.child.UpdateChild();
             this.child.Physics.MovementVelocity = this.Physics.MovementVelocity;
         }
@@ -66,15 +66,6 @@
         public override ISprite CreateCorrectSprite()
         {
             return EnemySpriteFactory.Instance.CreateFireSnakeSprite();
-        }
-
-        public override void Update()
-        {
-            base.Update();
-            /*foreach (KeyValuePair<RandomStateGenerator.StateType, int> state in this.States)
-            {
-                Console.WriteLine(state.Key + " || " + state.Value);
-            }*/
         }
     }
 }
