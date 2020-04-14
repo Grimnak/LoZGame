@@ -68,5 +68,11 @@ MS Paint
 	Bugs: Stalfos have the slight possibility of getting stuck on blocks and cancelling their hitbox. Bug occured once and was unable to be recreated
 
 	Plan(s) to fix: Try to recreate the bug through testing to learn more about the issue.
+	
+### Player Sword Slowly Moving Down:
+    Bug: Over time, the player's sword will become lower in relation to the player.
+    
+    Plans(s) to fix: Investigate sword location in relation to the player's bounding box and how they are correlated.
+    
 ## Suppressed Warnings:
 There are no suppressed warnings.
