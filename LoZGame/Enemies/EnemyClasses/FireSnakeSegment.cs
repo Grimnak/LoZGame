@@ -10,7 +10,6 @@
         private IEnemy parent;
         private IEnemy child;
         private int segmentID;
-        private bool hasChild;
         private bool childAdded;
 
         public FireSnakeSegment(IEnemy parent, int segmentID)
@@ -25,7 +24,7 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.CurrentState = new FollowFireSnakeState(this);
-            this.hasChild = false;
+            this.HasChild = false;
             this.Expired = false;
             this.Damage = GameData.Instance.EnemyDamageConstants.FireSnakeDamage;
             this.DamageTimer = 0;
@@ -37,7 +36,7 @@
         {
             if (this.segmentID > 0)
             {
-                this.hasChild = true;
+                this.HasChild = true;
                 this.child = new FireSnakeSegment(this, this.segmentID - 1);
                 LoZGame.Instance.GameObjects.Enemies.Add(child);
             }
@@ -45,24 +44,21 @@
 
         public override void TakeDamage(int damageAmount)
         {
-            if (parent.DamageTimer > 0)
-            {
-                parent.TakeDamage(damageAmount);
-            }
-            if (this.hasChild)
+            if (this.HasChild)
             {
                 this.child.TakeDamage(damageAmount);
+            }
+            else
+            {
+                this.parent.HasChild = false;
+                this.Expired = true;
             }
         }
 
         public override void UpdateChild()
         {
-            if (this.hasChild)
+            if (this.HasChild)
             {
-                if (this.Expired)
-                {
-                    this.child.Expired = true;
-                }
                 this.child.UpdateChild();
                 this.child.Physics.MovementVelocity = this.Physics.MovementVelocity;
             }
@@ -71,7 +67,7 @@
         public override void Stun(int stunTime)
         {
             parent.Stun(stunTime);
-            if (this.hasChild)
+            if (this.HasChild)
             {
                 this.child.Stun(stunTime);
             }

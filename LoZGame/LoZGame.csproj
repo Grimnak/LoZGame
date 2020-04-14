@@ -103,7 +103,6 @@
     <Compile Include="Enemies\EnemyStates\DodongoStates\StunnedDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\DodongoEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\DragonStates\DragonEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\DragonStates\SpawnDragonState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAIEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\DeadEnemyState.cs" />
@@ -116,7 +115,6 @@
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\IdleFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\LeftMovingFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\RightMovingFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\SpawnFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\UpLeftMovingFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\UpMovingFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\UpRightMovingFireSnakeState.cs" />

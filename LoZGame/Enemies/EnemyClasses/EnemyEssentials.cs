@@ -14,6 +14,8 @@
 
         public IEnemyState CurrentState { get; set; }
 
+        public bool HasChild { get; set; }
+
         public bool Expired { get; set; }
 
         public Physics Physics { get; set; }
@@ -149,8 +151,6 @@
         private bool isSpawnState()
         {
             return this.CurrentState is SpawnDodongoState ||
-                this.CurrentState is SpawnDragonState ||
-                this.CurrentState is SpawnFireSnakeState ||
                 this.CurrentState is SpawnGelState ||
                 this.CurrentState is SpawnGoriyaState ||
                 this.CurrentState is SpawnKeeseState ||
