@@ -193,6 +193,5 @@
         public bool HasMap { get { return this.hasMap; } set { this.hasMap = value; } }
 
         public bool HasCompass { get { return this.hasCompass; } set { this.hasCompass = value; } }
-
     }
 }

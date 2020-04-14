@@ -13,6 +13,21 @@
     /// </summary>
     public class BlockTile : IBlock
     {
+
+        private const string WaterTile = "water_tile";
+        private const string BasementBrickTile = "basement_brick_tile";
+        private const string FireGapTile = "fire_gap_tile";
+        private const string TurquoiseStatueLeft = "turquoise_statue_left";
+        private const string TurquoiseStatueRight = "turquoise_statue_right";
+        private const string BlueStatueLeft = "blue_statue_left";
+        private const string BlueStatueRight = "blue_statue_right";
+        private const string MovableSquare2 = "movable_square2";
+        private const string BlueStatueLeft2 = "blue_statue_left2";
+        private const string BlueStatueRight2 = "blue_statue_right2";
+        private const string OrangeStatueRight2 = "orange_statue_right2";
+        private const string OrangeStatueLeft2 = "orange_statue_left2";
+        private const string statueCheck = "statue";
+
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Rectangle bounds;
@@ -40,16 +55,16 @@
             this.Physics = new Physics(location);
             this.sprite = this.CreateCorrectSprite(name);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
-            this.Physics.Depth = 0.2f;
+            this.Physics.Depth = GameData.Instance.RoomConstants.BlockTileDepth;
             this.SetBounds(name);
         }
 
         private void SetBounds(string name)
         {
-            if (name.Contains("statue"))
+            if (name.Contains(statueCheck))
             {
-                this.Physics.Bounds = new Rectangle(this.Physics.Bounds.X, this.Physics.Bounds.Y + 8, this.Physics.Bounds.Width, this.Physics.Bounds.Height - 8);
-                this.Physics.BoundsOffset = new Vector2(0, 8);
+                this.Physics.Bounds = new Rectangle(this.Physics.Bounds.X, this.Physics.Bounds.Y + GameData.Instance.RoomConstants.BlockTileHeightOffset, this.Physics.Bounds.Width, this.Physics.Bounds.Height - GameData.Instance.RoomConstants.BlockTileHeightOffset);
+                this.Physics.BoundsOffset = new Vector2(0, GameData.Instance.RoomConstants.BlockTileHeightOffset);
                 this.Physics.SetDepth();
             }
         }
@@ -59,29 +74,29 @@
         {
             switch (name)
             {
-                case "water_tile":
+                case WaterTile:
                     return BlockSpriteFactory.Instance.WaterTile();
-                case "basement_brick_tile":
+                case BasementBrickTile:
                     return BlockSpriteFactory.Instance.BasementBrickTile();
-                case "fire_gap_tile":
+                case FireGapTile:
                     return BlockSpriteFactory.Instance.Fire();
-                case "turqoise_statue_left":
+                case TurquoiseStatueLeft:
                     return BlockSpriteFactory.Instance.TurquoiseStatueLeft();
-                case "turqoise_statue_right":
+                case TurquoiseStatueRight:
                     return BlockSpriteFactory.Instance.TurquoiseStatueRight();
-                case "blue_statue_left":
+                case BlueStatueLeft:
                     return BlockSpriteFactory.Instance.BlueStatueLeft();
-                case "blue_statue_right":
+                case BlueStatueRight:
                     return BlockSpriteFactory.Instance.BlueStatueRight();
-                case "movable_square2":
+                case MovableSquare2:
                     return BlockSpriteFactory.Instance.MovableSquare2();
-                case "blue_statue_right2":
+                case BlueStatueRight2:
                     return BlockSpriteFactory.Instance.BlueStatueRight2();
-                case "blue_statue_left2":
+                case BlueStatueLeft2:
                     return BlockSpriteFactory.Instance.BlueStatueLeft2();
-                case "orange_statue_right2":
+                case OrangeStatueRight2:
                     return BlockSpriteFactory.Instance.OrangeStatueRight2();
-                case "orange_statue_left2":
+                case OrangeStatueLeft2:
                     return BlockSpriteFactory.Instance.OrangeStatueLeft2();
                 default:
                     return BlockSpriteFactory.Instance.MovableSquare();

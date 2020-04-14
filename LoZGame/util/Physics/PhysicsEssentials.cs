@@ -6,8 +6,8 @@
     {
         private Rectangle bounds;
         private Vector2 boundsLocation;
-        private const int DefaultMass = 10;
-        private const float DefaultKnockbackTime = 0.5f;
+        private int DefaultMass = GameData.Instance.PhysicsConstants.DefaultMass;
+        private float DefaultKnockbackTime = GameData.Instance.PhysicsConstants.DefaultKnockbackTime;
 
         public enum Direction
         {

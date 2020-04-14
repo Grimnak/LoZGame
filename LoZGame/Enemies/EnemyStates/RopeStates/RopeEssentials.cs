@@ -71,7 +71,7 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(2);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.RopeFavorCardinalValue);
             }
             if (!(this.Enemy.CurrentState is AttackingRopeState))
             {

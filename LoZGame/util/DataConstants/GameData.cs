@@ -29,5 +29,11 @@
         public EnemyMiscConstants EnemyMiscConstants { get; }
 
         public EnemyStateWeights EnemyStateWeights { get; }
+
+        public GameStateDataConstants GameStateDataConstants { get; }
+
+        public RoomConstants RoomConstants { get; }
+
+        public PhysicsConstants PhysicsConstants { get; }
     }
 }

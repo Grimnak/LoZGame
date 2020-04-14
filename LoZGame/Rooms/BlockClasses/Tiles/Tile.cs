@@ -13,6 +13,16 @@
     /// </summary>
     public class Tile : IBlock
     {
+        private const string GapTile = "gap_tile";
+        private const string BlackTile = "black_tile";
+        private const string LadderTile = "ladder_tile";
+        private const string SpottedTile = "spotted_tile";
+        private const string Stairs = "stairs";
+        private const string SpottedTile2 = "spotted_tile2";
+        private const string BossTile2 = "boss_tile2";
+        private const string Lava2 = "lava2";
+
+
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Rectangle bounds;
@@ -43,7 +53,7 @@
             this.Name = name;
             this.sprite = this.CreateCorrectSprite(name);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
-            this.Physics.Depth = 0.001f;
+            this.Physics.Depth = GameData.Instance.RoomConstants.TileDepth;
         }
 
         /// <inheritdoc/>
@@ -51,21 +61,21 @@
         {
             switch (name)
             {
-                case "gap_tile":
+                case GapTile:
                     return BlockSpriteFactory.Instance.GapTile();
-                case "black_tile":
+                case BlackTile:
                     return BlockSpriteFactory.Instance.GapTile();
-                case "ladder_tile":
+                case LadderTile:
                     return BlockSpriteFactory.Instance.LadderTile();
-                case "spotted_tile":
+                case SpottedTile:
                     return BlockSpriteFactory.Instance.SpottedTile();
-                case "stairs":
+                case Stairs:
                     return BlockSpriteFactory.Instance.Stairs();
-                case "spotted_tile2":
+                case SpottedTile2:
                     return BlockSpriteFactory.Instance.SpottedTile2();
-                case "boss_tile2":
+                case BossTile2:
                     return BlockSpriteFactory.Instance.BossTile2();
-                case "lava2":
+                case Lava2:
                     return BlockSpriteFactory.Instance.LavaTile2();
                 default:
                     return BlockSpriteFactory.Instance.FloorTile();

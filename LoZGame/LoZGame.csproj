@@ -92,14 +92,17 @@
     <Compile Include="Controller\Commands\Loaders\MouseCommandLoader.cs" />
     <Compile Include="Controller\Commands\Controllers\KeyboardController.cs" />
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
+    <Compile Include="Enemies\EnemyClasses\BlockEnemy.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeSegment.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeHead.cs" />
     <Compile Include="Enemies\EnemyClasses\BlueGoriya.cs" />
+    <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyEssentials.cs" />
+    <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyIdleState.cs" />
+    <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyAttackState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\SpawnDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\StunnedDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\DodongoEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\DragonStates\DragonEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\DragonStates\SpawnDragonState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAIEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\DeadEnemyState.cs" />
@@ -112,7 +115,6 @@
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\IdleFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\LeftMovingFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\RightMovingFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\SpawnFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\UpLeftMovingFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\UpMovingFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\UpRightMovingFireSnakeState.cs" />
@@ -145,10 +147,12 @@
     <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Players\PlayerClasses\LinkHelper.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
+    <Compile Include="Util\DataConstants\GameStateDataConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyHealthConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyDamageConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemySpeedConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyStateWeights.cs" />
+    <Compile Include="Util\DataConstants\PhysicsData\PhysicsConstants.cs" />
     <Compile Include="Util\Inventory\InventoryComponents.cs" />
     <Compile Include="GameState\DeathState.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyEssentials.cs" />
@@ -346,6 +350,7 @@
     <Compile Include="Util\DataConstants\PlayerData\PlayerConstants.cs" />
     <Compile Include="Util\DataConstants\ProjectileData\ProjectileSpeedConstants.cs" />
     <Compile Include="Util\DataConstants\ProjectileData\ProjectileDamageConstants.cs" />
+    <Compile Include="Util\DataConstants\RoomData\RoomConstants.cs" />
     <Compile Include="Util\DataConstants\GameData.cs" />
     <Compile Include="Util\EntityData.cs" />
     <Compile Include="LoZGame.cs" />

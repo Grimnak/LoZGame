@@ -19,9 +19,9 @@
         public Physics(Vector2 location)
         {
             this.Location = location;
-            this.Depth = 1.0f;
+            this.Depth = GameData.Instance.PhysicsConstants.DefaultDepth;
             this.Mass = DefaultMass;
-            this.Rotation = 0.0f;
+            this.Rotation = GameData.Instance.PhysicsConstants.DefaultRotation;
             this.MovementVelocity = Vector2.Zero;
             this.MovementAcceleration = Vector2.Zero;
             this.KnockbackVelocity = Vector2.Zero;
@@ -36,13 +36,13 @@
 
         public void SetDepth()
         {
-            if (this.Bounds.Bottom != 0)
+            if (this.Bounds.Bottom != GameData.Instance.PhysicsConstants.ZeroDepth)
             {
-                this.Depth = 1.0f - (1.0f / this.Bounds.Bottom);
+                this.Depth = GameData.Instance.PhysicsConstants.DefaultDepth - (GameData.Instance.PhysicsConstants.DefaultDepth / this.Bounds.Bottom);
             }
             else
             {
-                this.Depth = 1.0f;
+                this.Depth = GameData.Instance.PhysicsConstants.DefaultDepth;
             }
         }
 

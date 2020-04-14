@@ -17,6 +17,7 @@
         private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Vector2 originalLocation;
         private string[] invalidDirections;
+        private bool moved;
 
         private Rectangle bounds;
 
@@ -50,6 +51,7 @@
             this.sprite = this.CreateCorrectSprite(name); 
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
             this.Physics.SetDepth();
+            this.moved = false;
         }
 
         /// <inheritdoc/>
@@ -68,6 +70,11 @@
                     this.Physics.Move();
                     this.Physics.Accelerate();
                 }
+                else if (!moved)
+                {
+                    moved = true;
+                    SoundFactory.Instance.PlaySolved();
+                }
             }
             else if (this.Physics.MovementVelocity.Y != 0)
             {
@@ -76,6 +83,11 @@
                     this.Physics.StopMovementX();
                     this.Physics.Move();
                     this.Physics.Accelerate();
+                }
+                else if (!moved)
+                {
+                    moved = true;
+                    SoundFactory.Instance.PlaySolved();
                 }
             }
         }
@@ -99,6 +111,10 @@
         {
             HandlePush();
             SolveDoors();
+            if (!moved)
+            {
+                this.Physics.SetDepth();
+            }
         }
 
         /// <inheritdoc/>
