@@ -24,6 +24,8 @@ N - Use Equipped Item for Player
 
 I - Open & Close Player Inventory
 
+Enter - Begin the Game
+
 Q - Exits the Game
 
 R - Resets the Game to its Default State
