@@ -59,7 +59,7 @@ MS Paint
 
     Plan(s) to fix:  Add boomerang capabilities to grab items and potentially make items spawn in-bounds.
 
-### Dungeon 3 Incomplete
+### Dungeon Three:
     Bugs: Dungeon 3 is unfinished but exists.
 	
     Plan(s) to fix: finish the dungeon
