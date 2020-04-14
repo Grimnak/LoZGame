@@ -42,7 +42,7 @@
             }
             else
             {
-                this.Depth = GameData.Instance.PhysicsConstants.DefaultDepth;
+                this.Depth = GameData.Instance.PhysicsConstants.DefaultDepth / 2;
             }
         }
 

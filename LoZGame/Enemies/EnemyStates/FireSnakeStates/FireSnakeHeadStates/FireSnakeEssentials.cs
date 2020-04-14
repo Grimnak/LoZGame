@@ -60,9 +60,8 @@
             this.Enemy.CurrentState = new DeadFireSnakeState(this.Enemy);
         }
 
-        public virtual void Stun(int stunTime)
+        public void Stun(int stunTime)
         {
-            this.Enemy.CurrentState = new StunnedFireSnakeState(this.Enemy, this, stunTime);
         }
 
         public override void Update()

@@ -15,7 +15,7 @@
         private const int BlueGoriyaHP = 16;
         private const int OldManHP = 1;
         private const int MerchantHP = 1;
-        private const int FireSnakeHP = 12;
+        private const int FireSnakeHP = 4;
 
         public int StalfosHealth => StalfosHP;
 

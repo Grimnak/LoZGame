@@ -119,7 +119,6 @@
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\UpMovingFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\UpRightMovingFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FollowFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\StunnedFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\AttackingDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\GelStates\GelEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\GelStates\SpawnGelState.cs" />
@@ -136,7 +135,6 @@
     <Compile Include="Enemies\EnemyStates\OldManStates\SpawnOldManState.cs" />
     <Compile Include="Enemies\EnemyStates\RopeStates\RopeEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\RopeStates\SpawnRopeState.cs" />
-    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\SpawnSpikeCrossState.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\SpawnStalfosState.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\StalfosEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\SpawnWallMasterState.cs" />

@@ -19,6 +19,7 @@
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.ShouldMove = true;
             this.Expired = false;
+            this.IsDead = false;
             this.Damage = GameData.Instance.EnemyDamageConstants.ZolDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.ZolSpeed;

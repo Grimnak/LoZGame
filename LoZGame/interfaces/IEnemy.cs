@@ -7,7 +7,15 @@
     {
         HealthManager Health { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether an enemy has completed its death sequence.
+        /// </summary>
         bool Expired { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether an enemy has been killed but has not necessarily completed its death sequence.
+        /// </summary>
+        bool IsDead { get; set; }
 
         bool HasChild { get; set; }
 

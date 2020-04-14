@@ -59,14 +59,14 @@
             this.Enemy.CurrentState = new DeadKeeseState(this.Enemy);
         }
 
-        public void Spawn()
+        public override void Spawn()
         {
             this.Enemy.CurrentState = new SpawnKeeseState(this.Enemy);
         }
 
-        public void Stun(int stunTime)
+        public virtual void Stun(int stunTime)
         {
-            this.Enemy.TakeDamage(GameData.Instance.EnemyHealthConstants.KeeseHealth);
+            this.Enemy.TakeDamage(this.Enemy.Health.MaxHealth);
         }
 
         public override void Update()

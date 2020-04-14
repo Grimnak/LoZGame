@@ -18,24 +18,25 @@ Jeremy Wensink.27
 
 ## Controls:
 ### Player Controls:
-Z - Attack Button for Player
+Z - Attack with Equipped Sword
 
-N - Use Equipped Item for Player
+N - Use Equipped Item
 
-I - Open & Close Player Inventory
-
-Enter - Begin the Game
+I - Open & Close Inventory
 
 Q - Exits the Game
 
-R - Resets the Game to its Default State
+R - Resets the Game to the Title Screen State
 
 Mouse - Moves Rooms in the Direction you Click
 
 ### Inventory Controls:
 W, A, S, D, Arrow Keys - Controls Item Selection
 
-Enter - Equips Item in Inventory
+Enter - Equips Selected Item in Inventory
+
+### Menu Controls:
+Enter - Begin the Game
 
 ## External Tools:
 Git
@@ -60,15 +61,10 @@ MS Paint
     Plan(s) to fix:  Add boomerang capabilities to grab items and potentially make items spawn in-bounds.
 
 ### Dungeon Three:
-    Bugs: Dungeon 3 is unfinished but exists.
+    Bug: Dungeon 3 is unfinished but exists.
 	
-    Plan(s) to fix: finish the dungeon
-
-### Stalfos AI: 
-	Bugs: Stalfos have the slight possibility of getting stuck on blocks and cancelling their hitbox. Bug occured once and was unable to be recreated
-
-	Plan(s) to fix: Try to recreate the bug through testing to learn more about the issue.
-	
+    Plan(s) to fix: Finish the dungeon and add the new enemies.
+    
 ### Player Sword Slowly Moving Down:
     Bug: Over time, the player's sword will become lower in relation to the player.
     

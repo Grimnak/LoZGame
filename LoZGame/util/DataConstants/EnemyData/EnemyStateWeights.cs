@@ -59,7 +59,7 @@
 
         private static Dictionary<StateType, int> blueGoriyaStateList = new Dictionary<StateType, int>()
         {
-            { StateType.Attack, 2 },
+            { StateType.Attack, 1 },
             { StateType.MoveNorth, 1 },
             { StateType.MoveSouth, 1 },
             { StateType.MoveEast, 1 },

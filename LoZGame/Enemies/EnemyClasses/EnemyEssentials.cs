@@ -18,6 +18,8 @@
 
         public bool Expired { get; set; }
 
+        public bool IsDead { get; set; }
+
         public Physics Physics { get; set; }
 
         public HealthManager Health { get; set; }
@@ -73,7 +75,6 @@
                     SoundFactory.Instance.PlayEnemyDie();
                 }
                 this.CurrentState.Die();
-                // LoZGame.Instance.Drops.DropItemsEmptyRoom();
             }
         }
 

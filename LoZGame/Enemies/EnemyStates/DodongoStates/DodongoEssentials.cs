@@ -51,7 +51,7 @@
         {
         }
 
-        public void Spawn()
+        public override void Spawn()
         {
             this.Enemy.CurrentState = new SpawnDodongoState(this.Enemy);
         }
@@ -61,7 +61,7 @@
             this.Enemy.CurrentState = new DeadDodongoState(this.Enemy);
         }
 
-        public void Stun(int stunTime)
+        public virtual void Stun(int stunTime)
         {
             this.Enemy.CurrentState = new StunnedDodongoState(this.Enemy);
         }

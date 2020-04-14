@@ -1,9 +1,15 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System;
 
     public class Door : IDoor
     {
+        private const string North = "N";
+        private const string South = "S";
+        private const string East = "E";
+        private const string West = "W";
+
         private string location;
 
         private readonly Vector2 upScreenLoc = new Vector2(GameData.Instance.RoomConstants.UpDownDoorXLocation, GameData.Instance.RoomConstants.UpDoorYLocation);
@@ -91,29 +97,33 @@
 
         private void SetPhysics()
         {
-            switch (this.location)
+            switch (this.GetLoc())
             {
-                case "N":
+                case North:
                     {
                         this.Physics = new Physics(this.upScreenLoc);
                         break;
                     }
-                case "E":
+                case East:
                     {
                         this.Physics = new Physics(this.rightScreenLoc);
                         break;
                     }
-                case "S":
+                case South:
                     {
                         this.Physics = new Physics(this.downScreenLoc);
                         break;
                     }
-                case "W":
+                case West:
                     {
                         this.Physics = new Physics(this.leftScreenLoc);
                         break;
                     }
+                default:
+                    this.Physics = new Physics(this.upScreenLoc);
+                    break;
             }
+            this.Physics.SetDepth();
         }
 
         public void Close()
@@ -150,7 +160,6 @@
 
         public void Update()
         {
-            this.Physics.SetDepth();
             this.state.Update();
         }
 
