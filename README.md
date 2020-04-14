@@ -60,13 +60,19 @@ MS Paint
     Plan(s) to fix:  Add boomerang capabilities to grab items and potentially make items spawn in-bounds.
 
 ### Dungeon Three:
-    Bugs: Dungeon 3 is unfinished but exists.
+    Bug: Dungeon 3 is unfinished but exists.
 	
-    Plan(s) to fix: finish the dungeon
+    Plan(s) to fix: Finish the dungeon and add the new enemies.
 
 ### Stalfos AI: 
-	Bugs: Stalfos have the slight possibility of getting stuck on blocks and cancelling their hitbox. Bug occured once and was unable to be recreated
+    Bug: Stalfos have the slight possibility of getting stuck on blocks and cancelling their hitbox. Bug occured once and was unable to be recreate.
 
-	Plan(s) to fix: Try to recreate the bug through testing to learn more about the issue.
+    Plan(s) to fix: Try to recreate the bug through testing to learn more about the issue.
+    
+### Player Sword Slowly Moving Down:
+    Bug: Over time, the player's sword will become lower in relation to the player.
+    
+    Plans(s) to fix: Investigate sword location in relation to the player's bounding box and how they are correlated.
+    
 ## Suppressed Warnings:
 There are no suppressed warnings.
