@@ -9,6 +9,8 @@
 
         bool Expired { get; set; }
 
+        bool HasChild { get; set; }
+
         int Damage { get; }
 
         int DamageTimer { get; set; }

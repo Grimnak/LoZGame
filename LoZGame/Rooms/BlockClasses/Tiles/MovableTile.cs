@@ -111,6 +111,10 @@
         {
             HandlePush();
             SolveDoors();
+            if (!moved)
+            {
+                this.Physics.SetDepth();
+            }
         }
 
         /// <inheritdoc/>
