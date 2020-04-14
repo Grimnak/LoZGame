@@ -6,13 +6,13 @@
     {
         private string location;
 
-        private readonly Vector2 upScreenLoc = new Vector2(363, LoZGame.Instance.InventoryOffset + 12);
-        private readonly Vector2 downScreenLoc = new Vector2(363, LoZGame.Instance.ScreenHeight - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight);
+        private readonly Vector2 upScreenLoc = new Vector2(GameData.Instance.RoomConstants.UpDownDoorXLocation, GameData.Instance.RoomConstants.UpDoorYLocation);
+        private readonly Vector2 downScreenLoc = new Vector2(GameData.Instance.RoomConstants.UpDownDoorXLocation, LoZGame.Instance.ScreenHeight - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight);
 
         private readonly Vector2 rightScreenLoc = new Vector2(
-            LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight + 11, LoZGame.Instance.InventoryOffset + 195);
+            GameData.Instance.RoomConstants.RightDoorXLocation, GameData.Instance.RoomConstants.RightLeftDoorYLocation);
 
-        private readonly Vector2 leftScreenLoc = new Vector2(19, LoZGame.Instance.InventoryOffset + 195);
+        private readonly Vector2 leftScreenLoc = new Vector2(GameData.Instance.RoomConstants.LeftDoorXLocation, GameData.Instance.RoomConstants.RightLeftDoorYLocation);
 
         private IDoorState state;
 

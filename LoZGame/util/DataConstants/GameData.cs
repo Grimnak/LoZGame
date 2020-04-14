@@ -6,6 +6,10 @@
 
         public static GameData Instance => InstanceValue;
 
+        public CollisionConstants CollisionConstants { get; }
+
+        public InventoryConstants InventoryConstants { get; }
+
         public PlayerConstants PlayerConstants { get; }
 
         public ProjectileDamageConstants ProjectileDamageConstants { get; }
@@ -27,6 +31,8 @@
         public EnemyStateWeights EnemyStateWeights { get; }
 
         public GameStateDataConstants GameStateDataConstants { get; }
+
+        public RoomConstants RoomConstants { get; }
 
         public PhysicsConstants PhysicsConstants { get; }
     }

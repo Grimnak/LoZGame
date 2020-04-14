@@ -26,7 +26,7 @@
 
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private const int InversionTime = 5;
+        //private const int InversionTime = 5;
         private int gameLife;
 
         public SpriteBatch SpriteBatch => this.spriteBatch;

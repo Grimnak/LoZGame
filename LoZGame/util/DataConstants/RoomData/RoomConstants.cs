@@ -6,36 +6,25 @@
         private const int BlockHeightOffset = 8;
         private const float TileD = .001f;
 
+        private const int UpDownDoorXLoc = 363;
+        private const int LeftDoorXLoc = 19;
+
+
         public float BlockTileDepth => BlockDepth;
 
         public int BlockTileHeightOffset => BlockHeightOffset;
 
         public float TileDepth => TileD;
 
-/*
-        public string WaterTileStr => WaterTile;
+        public int UpDownDoorXLocation => UpDownDoorXLoc;
 
-        public string BasementBrickTileStr => BasementBrickTileStr;
+        public int LeftDoorXLocation => LeftDoorXLoc;
 
-        public string FireGapTileStr => FireGapTile;
+        public int UpDoorYLocation => LoZGame.Instance.InventoryOffset + 12;
 
-        public string TurqouiseStatueLeftStr => TurqouiseStatueLeftStr;
+        public int RightDoorXLocation => LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight + 11;
 
-        public string TurqouiseStatueRightStr => TurquoiseStatueRight;
+        public int RightLeftDoorYLocation => LoZGame.Instance.InventoryOffset + 195;
 
-        public string MovableSquare2Str => MovableSquare2;
-
-        public string BlueStatueLeftStr => BlueStatueLeft;
-
-        public string BlueStatueRightStr => BlueStatueRight;
-
-        public string BlueStatueLeftStr2 => BlueStatueLeft2;
-
-        public string BlueStatueRightStr2 => BlueStatueRight2;
-
-        public string OrangeStatueLeftStr2 => OrangeStatueLeft2;
-
-        public string OrangeStatueRightStr2 => OrangeStatueRight2;
-        */
     }
 }
