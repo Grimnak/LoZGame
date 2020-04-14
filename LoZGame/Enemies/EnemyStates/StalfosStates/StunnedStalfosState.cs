@@ -3,80 +3,39 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class StunnedStalfosState : IEnemyState
+    public class StunnedStalfosState : StalfosEssentials, IEnemyState
     {
-        private readonly Stalfos stalfos;
+        private readonly IEnemy enemy;
         private readonly IEnemyState oldState;
+        private Vector2 oldVelocity;
         private int stunDuration;
 
-        public StunnedStalfosState(Stalfos stalfos, IEnemyState oldState, int stunTime)
+        public StunnedStalfosState(IEnemy enemy, IEnemyState oldState, int stunTime)
         {
             this.oldState = oldState;
-            this.stalfos = stalfos;
+            this.Enemy = enemy;
+            this.oldVelocity = this.Enemy.Physics.MovementVelocity;
+            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
             stunDuration = stunTime;
-            stalfos.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.Enemy.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
-        public void MoveLeft()
-        {
-        }
-
-        public void MoveRight()
-        {
-        }
-
-        public void MoveUp()
-        {
-        }
-
-        public void MoveDown()
-        {
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Attack()
-        {
-        }
-
-        public void Stop()
-        {
-        }
-
-        public void Die()
-        {
-            this.stalfos.CurrentState = new DeadStalfosState(this.stalfos);
-        }
-
-        public void Stun(int stunTime)
+        public new void Stun(int stunTime)
         {
             stunDuration = stunTime;
         }
 
-        public void Update()
+        public override void Update()
         {
             stunDuration--;
             if (stunDuration <= 0)
             {
-                this.stalfos.CurrentState = oldState;
+                this.Enemy.CurrentState = oldState;
+                this.Enemy.Physics.MovementVelocity = oldVelocity;
             }
         }
 
-        public void Draw()
+        public override void Draw()
         {
             this.oldState.Draw();
         }

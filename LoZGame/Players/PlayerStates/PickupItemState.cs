@@ -23,13 +23,47 @@ namespace LoZClone
             this.item = item;
             this.lockoutTimer = item.PickUpItemTime;
             this.sprite = this.CreateCorrectSprite();
+            this.player.Physics.MovementVelocity = Vector2.Zero;
             if (item is Triforce)
             {
-                LoZGame.Instance.GameState = "Win";
+                this.sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
+                LoZGame.Instance.GameState.WinGame();
             }
-            if (item is Key)
+            else if (item is Key)
             {
-                player.HasKey = true;
+                player.Inventory.GainKey();
+            }
+            else if (item is Bow)
+            {
+                player.Inventory.HasBow = true;
+            }
+            else if (item is Boomerang)
+            {
+                player.Inventory.HasBoomerang = true;
+            }
+            else if (item is MagicBoomerang)
+            {
+                player.Inventory.HasMagicBoomerang = true;
+            }
+            else if (item is SilverArrow)
+            {
+                player.Inventory.HasSilverArrow = true;
+            }
+            else if (item is RedCandle)
+            {
+                player.Inventory.HasRedFlame = true;
+            }
+            else if (item is BlueCandle)
+            {
+                player.Inventory.HasBlueFlame = true;
+            }
+            else if (item is Map)
+            {
+                player.Inventory.HasMap = true;
+            }
+            else if (item is Compass)
+            {
+                player.Inventory.HasCompass = true;
             }
         }
 
@@ -38,7 +72,7 @@ namespace LoZClone
         {
             if (this.lockoutTimer <= 0)
             {
-                this.player.CurrentDirection = "Down";
+                this.player.Physics.CurrentDirection = Physics.Direction.South;
                 this.player.State = new IdleState(this.player);
             }
         }
@@ -109,39 +143,43 @@ namespace LoZClone
         }
 
         /// <inheritdoc/>
+        public void Stun(int stunTime)
+        {
+            if (this.lockoutTimer <= 0)
+            {
+                this.player.State = new StunnedState(this.player, this.player.State, stunTime);
+            }
+        }
+
+        /// <inheritdoc/>
         public void Update()
         {
+            if (this.item is Triforce)
+            {
+                if (this.sprite.CurrentFrame == 0)
+                {
+                    this.sprite.NextFrame();
+                }
+            }
             if (this.lockoutTimer > 0)
             {
                 this.lockoutTimer--;
                 if (this.lockoutTimer == 0)
                 {
                     item.Expired = true;
-                    if (this.item is Triforce)
-                    {
-                        LoZGame.Instance.Reset();
-                    }
                 }
             }
-            this.sprite.Update();
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint);
+            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint, this.player.Physics.Depth);
         }
 
         private ISprite CreateCorrectSprite()
         {
-            if (item is Triforce)
-            {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkPickupTriforce(this.player.CurrentColor);
-            }
-            else
-            {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkPickupItem(this.player.CurrentColor);
-            }
+            return LinkSpriteFactory.Instance.CreateSpriteLinkPickupItem(this.player.CurrentColor);
         }
     }
 }

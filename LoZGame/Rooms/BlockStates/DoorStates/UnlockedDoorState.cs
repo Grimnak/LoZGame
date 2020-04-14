@@ -1,55 +1,90 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     public class UnlockedDoorState : IDoorState
     {
+        private const string North = "N";
+        private const string South = "S";
+        private const string East = "E";
+        private const string West = "W";
+
+
         private readonly Door door;
         private readonly ISprite sprite;
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
-        private readonly Vector2 location;
+        private Vector2 location;
+        private bool isLevel1;
 
         public UnlockedDoorState(Door door)
         {
             this.door = door;
+            this.isLevel1 = this.door.GetKind().Equals(GameData.Instance.RoomConstants.UnlockedStr);
             switch (door.GetLoc())
             {
-                case "N":
+                case North:
                 {
-                    this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown(door.UpScreenLoc);
-                    location = door.UpScreenLoc;
-                    door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                    door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y - 12, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
-                    break;
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
+
+                     /*   if (this.isLevel1)
+                        {
+                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
+
+                        }
+                        else
+                        {
+                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown2();
+                        }*/
+                        location = door.UpScreenLoc;
+                        door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
+                        break;
                 }
-                case "E":
+                case East:
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft(door.RightScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
+
+                        /*  if (this.isLevel1)
+                          {
+                              this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
+                          }
+                          else
+                          {
+                              this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft2();
+                          }*/
                         location = door.RightScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X - 7, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
+                        door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X - 7, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                 }
-                case "S":
+                case South:
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp(door.DownScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
+
+                        /*if (this.isLevel1)
+                        {
+                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
+                        }
+                        else
+                        {
+                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp2();
+                        }*/
                         location = door.DownScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.VerticalOffset);
+                        door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
                         break;
                 }
-                case "W":
+                case West:
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight(door.LeftScreenLoc);
+                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
+/*
+                        if (this.isLevel1)
+                        {
+                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
+                        }
+                        else
+                        {
+                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight2();
+                        }*/
                         location = door.LeftScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-                        door.Bounds = new Rectangle((int)door.Physics.Location.X - 19, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.HorizontalOffset, BlockSpriteFactory.Instance.DoorWidth);
+                        door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
                         break;
                 }
             }
@@ -66,7 +101,7 @@ namespace LoZClone
 
         public void Draw()
         {
-            this.sprite.Draw(location, spriteTint);
+            this.sprite.Draw(location, spriteTint, this.door.Physics.Depth);
         }
 
         public void Open()

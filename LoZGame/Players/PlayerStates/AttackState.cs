@@ -1,5 +1,9 @@
+using Microsoft.Xna.Framework.Audio;
+
 namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     /// <summary>
     /// Attack state for player.
     /// </summary>
@@ -15,9 +19,12 @@ namespace LoZClone
         /// <param name="playerInstance">Instance of the player.</param>
         public AttackState(IPlayer playerInstance)
         {
+            SoundFactory.Instance.PlaySwordSlash();
             this.player = playerInstance;
-            this.lockoutTimer = 15; // wait period
+            this.lockoutTimer = GameData.Instance.PlayerConstants.LockoutWaitTime; // wait period
             this.sprite = this.CreateCorrectSprite();
+            this.sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
+            this.player.Physics.MovementVelocity = Vector2.Zero;
         }
 
         /// <inheritdoc/>
@@ -95,20 +102,24 @@ namespace LoZClone
         }
 
         /// <inheritdoc/>
+        public void Stun(int stunTime)
+        {
+            this.player.State = new StunnedState(this.player, this.player.State, stunTime);
+        }
+
+        /// <inheritdoc/>
         public void Update()
         {
             if (this.lockoutTimer > 0)
             {
                 this.lockoutTimer--;
             }
-
-            this.sprite.Update();
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint);
+            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint, this.player.Physics.Depth);
         }
 
         /// <summary>
@@ -117,21 +128,21 @@ namespace LoZClone
         /// <returns>The correct sprite to draw.</returns>
         private ISprite CreateCorrectSprite()
         {
-            if (this.player.CurrentDirection.Equals("Up"))
+            if (this.player.Physics.CurrentDirection == Physics.Direction.North)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkAttackUp(this.player.CurrentColor, this.player.CurrentWeapon);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkUp(this.player.CurrentColor);
             }
-            else if (this.player.CurrentDirection.Equals("Down"))
+            else if (this.player.Physics.CurrentDirection == Physics.Direction.South)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkAttackDown(this.player.CurrentColor, this.player.CurrentWeapon);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkDown(this.player.CurrentColor);
             }
-            else if (this.player.CurrentDirection.Equals("Left"))
+            else if (this.player.Physics.CurrentDirection == Physics.Direction.West)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkAttackLeft(this.player.CurrentColor, this.player.CurrentWeapon);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkLeft(this.player.CurrentColor);
             }
             else
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkAttackRight(this.player.CurrentColor, this.player.CurrentWeapon);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkRight(this.player.CurrentColor);
             }
         }
     }

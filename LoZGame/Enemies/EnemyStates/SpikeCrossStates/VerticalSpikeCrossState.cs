@@ -12,7 +12,7 @@
         public VerticalSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            this.spikeCross.Physics.Velocity = new Vector2(0, 1 * spikeCross.MoveSpeed);
+            this.spikeCross.Physics.MovementVelocity = new Vector2(0, 1 * spikeCross.MoveSpeed);
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
         }
 
@@ -61,6 +61,10 @@
             this.spikeCross.CurrentState = new IdleSpikeCrossState(this.spikeCross);
         }
 
+        public void Spawn()
+        {
+        }
+
         public void Stun(int stunTime)
         {
         }
@@ -74,7 +78,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(this.spikeCross.Physics.Location, this.spikeCross.CurrentTint);
+            this.sprite.Draw(this.spikeCross.Physics.Location, this.spikeCross.CurrentTint, this.spikeCross.Physics.Depth);
         }
 
         private void retreatCheck()
@@ -83,19 +87,19 @@
             {
                 if ((int)spikeCross.MoveSpeed > 0)
                 {
-                    if (spikeCross.Physics.Location.Y - ((BlockSpriteFactory.Instance.TileHeight * 3.5) + (BlockSpriteFactory.Instance.VerticalOffset / 2)) >= 0)
+                    if (spikeCross.Physics.Location.Y - GameData.Instance.EnemyMiscConstants.SpikeCrossVertBoundary >= 0)
                     {
                         spikeCross.Retreating = true;
-                        spikeCross.Physics.Velocity = new Vector2(spikeCross.Physics.Velocity.X, -1);
+                        spikeCross.Physics.MovementVelocity = new Vector2(spikeCross.Physics.MovementVelocity.X, -1);
 
                     }
                 }
                 else
                 {
-                    if (spikeCross.Physics.Location.Y - ((BlockSpriteFactory.Instance.TileHeight * 3.5) + (BlockSpriteFactory.Instance.VerticalOffset / 2)) <= 0)
+                    if (spikeCross.Physics.Location.Y - GameData.Instance.EnemyMiscConstants.SpikeCrossVertBoundary <= 0)
                     {
                         spikeCross.Retreating = true;
-                        spikeCross.Physics.Velocity = new Vector2(spikeCross.Physics.Velocity.X, 1);
+                        spikeCross.Physics.MovementVelocity = new Vector2(spikeCross.Physics.MovementVelocity.X, 1);
                     }
                 }
             }

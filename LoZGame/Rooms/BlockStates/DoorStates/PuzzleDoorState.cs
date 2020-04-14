@@ -1,18 +1,14 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
-    /*
-     * The Player must kill all enemies to open these doors.
-     */
+    using Microsoft.Xna.Framework;
+
     public class PuzzleDoorState : IDoorState
     {
+        private const string North = "N";
+        private const string South = "S";
+        private const string East = "E";
+        private const string West = "W";
+
         private readonly Door door;
         private readonly ISprite sprite;
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
@@ -25,32 +21,24 @@ namespace LoZClone
             this.door = door;
             switch (door.GetLoc())
             {
-                case "N":
+                case North:
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown(door.UpScreenLoc);
-                        location = door.UpScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
                         break;
                     }
-                case "E":
+                case East:
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft(door.RightScreenLoc);
-                        location = door.RightScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
                         break;
                     }
-                case "S":
+                case South:
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp(door.DownScreenLoc);
-                        location = door.DownScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
                         break;
                     }
-                case "W":
+                case West:
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight(door.LeftScreenLoc);
-                        location = door.LeftScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight();
                         break;
                     }
             }
@@ -63,12 +51,12 @@ namespace LoZClone
 
         public void Solve()
         {
+            SoundFactory.Instance.PlayDoorUnlock();
             this.solved = true;
         }
 
         public void Bombed()
         {
-            Console.WriteLine("Cannot Bomb Normal Door!");
         }
 
         public void Close()
@@ -83,7 +71,7 @@ namespace LoZClone
 
         public void Draw()
         {
-            this.sprite.Draw(location, spriteTint);
+            this.sprite.Draw(this.door.Physics.Location, spriteTint, this.door.Physics.Depth);
         }
 
         public void Update()

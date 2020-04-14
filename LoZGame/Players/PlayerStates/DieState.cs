@@ -1,5 +1,7 @@
 ﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     /// <summary>
     /// Death state for player.
     /// </summary>
@@ -16,6 +18,7 @@
         {
             this.player = playerInstance;
             this.sprite = this.CreateCorrectSprite();
+            this.player.Physics.MovementVelocity = Vector2.Zero;
         }
 
         /// <inheritdoc/>
@@ -64,15 +67,23 @@
         }
 
         /// <inheritdoc/>
+        public void Stun(int stunTime)
+        {
+        }
+
+        /// <inheritdoc/>
         public void Update()
         {
-            this.sprite.Update();
+            if (this.sprite.CurrentFrame < this.sprite.TotalFrames - 1)
+            {
+                this.sprite.Update();
+            }
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint);
+            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint, this.player.Physics.Depth);
         }
 
         private ISprite CreateCorrectSprite()

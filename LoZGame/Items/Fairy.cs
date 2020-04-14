@@ -4,27 +4,11 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class Fairy : IItem
+    internal class Fairy : ItemEssentials, IItem
     {
         private const int DirectionChange = 100;
         private static readonly int DespawnTimer = 60 * LoZGame.Instance.UpdateSpeed;
-        private ISprite sprite;
-        private ItemCollisionHandler itemCollisionHandler;
-        private readonly Texture2D Texture;      // the texture to pull frames from
-        private Vector2 Size;
-        private float layer;
-        private int lifeTime;
-        private Vector2 Border;
-        private bool expired;
-        private int pickUpItemTime = -1;
-
-        public int PickUpItemTime { get { return this.pickUpItemTime; } }
-
-        public bool Expired { get { return this.expired; } set { this.expired = value; } }
-
-        public Physics Physics { get; set; }
-
-        public Rectangle Bounds { get; set; }
+        private static readonly int SpawnTimer = LoZGame.Instance.UpdateSpeed * 1;
 
         private enum Direction
         {
@@ -42,14 +26,15 @@
 
         public Fairy(Vector2 loc)
         {
-            this.sprite = ItemSpriteFactory.Instance.Fairy(ItemSpriteFactory.Instance.Scale);
+            this.Sprite = ItemSpriteFactory.Instance.Fairy();
+            this.FrameDelay = 5;
             this.itemCollisionHandler = new ItemCollisionHandler(this);
-            this.Physics = new Physics(loc, Vector2.Zero, Vector2.Zero);
-            this.Size = new Vector2(ItemSpriteFactory.FairyWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.FairyHeight * ItemSpriteFactory.Instance.Scale);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.Border = new Vector2(LoZGame.Instance.GraphicsDevice.Viewport.Width, LoZGame.Instance.GraphicsDevice.Viewport.Height);
-            this.lifeTime = 0;
-            this.expired = false;
+            this.Physics = new Physics(loc);
+            this.PickUpItemTime = -1;
+            this.LifeTime = 0;
+            Vector2 size = new Vector2(ItemSpriteFactory.RupeeWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.RupeeHeight * ItemSpriteFactory.Instance.Scale);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)size.X, (int)size.Y);
+            this.Expired = false;
             this.GetNewDirection();
         }
 
@@ -60,35 +45,35 @@
             switch (this.currentDirection)
             {
                 case Direction.North:
-                    this.Physics.Velocity = new Vector2(0, -1);
+                    this.Physics.MovementVelocity = new Vector2(0, -2);
                     break;
 
                 case Direction.South:
-                    this.Physics.Velocity = new Vector2(0, 1);
+                    this.Physics.MovementVelocity = new Vector2(0, 2);
                     break;
 
                 case Direction.East:
-                    this.Physics.Velocity = new Vector2(1, 0);
+                    this.Physics.MovementVelocity = new Vector2(2, 0);
                     break;
 
                 case Direction.West:
-                    this.Physics.Velocity = new Vector2(-1, 0);
+                    this.Physics.MovementVelocity = new Vector2(-2, 0);
                     break;
 
                 case Direction.NorthEast:
-                    this.Physics.Velocity = new Vector2(0.727f, -0.727f);
+                    this.Physics.MovementVelocity = new Vector2(1.454f, -1.454f);
                     break;
 
                 case Direction.NorthWest:
-                    this.Physics.Velocity = new Vector2(-0.727f, -0.727f);
+                    this.Physics.MovementVelocity = new Vector2(-1.454f, -1.454f);
                     break;
 
                 case Direction.SouthEast:
-                    this.Physics.Velocity = new Vector2(0.727f, 0.727f);
+                    this.Physics.MovementVelocity = new Vector2(1.454f, 1.454f);
                     break;
 
                 case Direction.SouthWest:
-                    this.Physics.Velocity = new Vector2(-0.727f, 0.727f);
+                    this.Physics.MovementVelocity = new Vector2(-1.454f, 1.454f);
                     break;
 
                 default:
@@ -96,71 +81,25 @@
             }
         }
 
-        private void UpdateLoc()
+        public override void Update()
         {
-            this.Physics.Move();
-            this.CheckBorder();
-        }
-
-        private void CheckBorder()
-        {
-            if (this.Physics.Location.Y < this.Size.Y)
-            {
-                this.Physics.Location = new Vector2(this.Physics.Location.X, this.Size.Y);
-                this.lifeTime = DirectionChange + 1;
-            }
-
-            if (this.Physics.Location.Y > this.Border.Y - this.Size.Y)
-            {
-                this.Physics.Location = new Vector2(this.Physics.Location.X, this.Border.Y - this.Size.Y);
-                this.lifeTime = DirectionChange + 1;
-            }
-
-            if (this.Physics.Location.X < this.Size.X)
-            {
-                this.Physics.Location = new Vector2(this.Size.X, this.Physics.Location.Y);
-                this.lifeTime = DirectionChange + 1;
-            }
-
-            if (this.Physics.Location.X > this.Border.X - this.Size.X)
-            {
-                this.Physics.Location = new Vector2(this.Border.X - this.Size.X, this.Physics.Location.Y);
-                this.lifeTime = DirectionChange + 1;
-            }
-        }
-
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
-        {
-            if (otherCollider is IPlayer)
-            {
-                itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-            }
-        }
-
-        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
-        {
-            itemCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
-        }
-
-        public void Update()
-        {
-            this.lifeTime++;
-            if (this.lifeTime % DirectionChange == 0)
+            base.Update();
+            if (this.LifeTime % DirectionChange == 0)
             {
                 this.GetNewDirection();
             }
-            if (this.lifeTime > DespawnTimer)
+            if (this.LifeTime > DespawnTimer)
             {
-                this.expired = true;
+                this.Expired = true;
             }
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.UpdateLoc();
-            this.sprite.Update();
         }
 
-        public void Draw(Color spriteTint)
+        public override void Draw(Color spriteTint)
         {
-            this.sprite.Draw(this.Physics.Location, spriteTint);
+            if ((this.LifeTime > SpawnTimer && this.LifeTime < (DespawnTimer - (4 * SpawnTimer))) || this.LifeTime % 4 < 2)
+            {
+                base.Draw(spriteTint);
+            }
         }
     }
 }

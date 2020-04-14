@@ -21,6 +21,9 @@
             this.player = playerInstance;
             this.wallMaster = wallMaster;
             this.sprite = this.CreateCorrectSprite();
+            Point offset = ((wallMaster.Physics.Bounds.Size - player.Physics.Bounds.Size).ToVector2() / 2).ToPoint();
+            this.player.Physics.Bounds = new Rectangle(wallMaster.Physics.Bounds.Location + offset, player.Physics.Bounds.Size);
+            this.player.Physics.SetLocation();
         }
 
         /// <inheritdoc/>
@@ -69,35 +72,39 @@
         }
 
         /// <inheritdoc/>
+        public void Stun(int stunTime)
+        {
+        }
+
+        /// <inheritdoc/>
         public void Update()
         {
-            wallMaster.Physics.Location = player.Physics.Location;
-            player.Physics.Velocity = wallMaster.Physics.Velocity;
-            this.player.Physics.Move();
+            player.Physics.MovementVelocity = wallMaster.Physics.MovementVelocity;
             if (this.player.Physics.Location.X < 0)
             {
-                this.player.Physics.ResetVelocity();
+                this.wallMaster.CurrentState = new RightMovingWallMasterState((WallMaster)this.wallMaster);
+                this.wallMaster.Physics.Bounds = new Rectangle(new Point(this.wallMaster.Physics.Bounds.Location.X + (BlockSpriteFactory.Instance.TileWidth * 3), this.wallMaster.Physics.Bounds.Location.Y), this.wallMaster.Physics.Bounds.Size);
+                this.player.Physics.StopVelocity();
                 this.player.State = new IdleState(this.player);
                 this.player.Physics.Location = new Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                    (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
-                this.player.Bounds = new Rectangle((int)this.player.Physics.Location.X, (int)this.player.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
+                    (float)(BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
+                this.player.Physics.Bounds = new Rectangle((int)this.player.Physics.Location.X, (int)this.player.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
                 LoZGame.Instance.Dungeon.CurrentRoomX = 2;
                 LoZGame.Instance.Dungeon.CurrentRoomY = 5;
                 LoZGame.Instance.Dungeon.LoadNewRoom();
             }
-            this.sprite.Update();
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint);
+            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint, this.player.Physics.Depth);
         }
 
         private ISprite CreateCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.CreateSpriteLinkIdleUp(this.player.CurrentColor);
+            return LinkSpriteFactory.Instance.CreateSpriteLinkUp(this.player.CurrentColor);
         }
     }
 }

@@ -3,83 +3,30 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeadGoriyaState : IEnemyState
+    public class DeadGoriyaState : GoriyaEssentials, IEnemyState
     {
-        private readonly Goriya goriya;
-        private readonly DeadEnemySprite sprite;
         private int deathTimer = 0;
-        private int deathTimerMax = 30;
+        private int deathTimerMax;
 
-        public DeadGoriyaState(Goriya goriya)
+        public DeadGoriyaState(IEnemy enemy)
         {
-            this.goriya = goriya;
-            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
-            this.goriya.CurrentState = this;
-            this.goriya.Bounds = Rectangle.Empty;
-            LoZGame.Instance.Drops.AttemptDrop(this.goriya.Physics.Location);
+            this.Enemy = enemy;
+            this.Sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.Enemy.CurrentState = this;
+            this.Enemy.Physics.Bounds = new Rectangle(enemy.Physics.Bounds.Location, Point.Zero);
+            LoZGame.Instance.Drops.AttemptDrop(this.Enemy.Physics.Location);
+            deathTimerMax = GameData.Instance.EnemyMiscConstants.DeathTimerMaximum;
+            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
         }
 
-        public void MoveLeft()
-        {
-        }
-
-        public void MoveRight()
-        {
-        }
-
-        public void MoveUp()
-        {
-        }
-
-        public void Stop()
-        {
-        }
-
-        public void MoveDown()
-        {
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Die()
-        {
-        }
-
-        public void Attack()
-        {
-        }
-
-        public void Stun(int stunTime)
-        {
-        }
-
-        public void Update()
+        public override void Update()
         {
             this.deathTimer++;
-            this.sprite.Update();
+            this.Sprite.Update();
             if (deathTimer >= deathTimerMax)
             {
-                this.goriya.Expired = true;
+                this.Enemy.Expired = true;
             }
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.goriya.Physics.Location, this.goriya.CurrentTint);
         }
     }
 }

@@ -13,6 +13,9 @@
     public class Room
     {
         private bool exists = false;
+        private Boomerang droppedBoomerang = null;
+        private HeartContainer droppedHeartContainer = null;
+        private MagicBoomerang droppedMagicBoomerang = null;
         private string border = null;
         private string text = null;
         private List<IItem> items = null; // a list for any and all items in a room
@@ -97,6 +100,14 @@
             get { return this.text; }
         }
 
+        public Tuple<Key, bool> DroppedKey { get; set; }
+
+        public Boomerang DroppedBoomerang => this.droppedBoomerang;
+
+        public HeartContainer DroppedHeartContainer => this.droppedHeartContainer;
+
+        public MagicBoomerang DroppedMagicBoomerang => this.droppedMagicBoomerang;
+
         /// <summary>
         /// Converts grid position in the room to a screen vector.
         /// </summary>
@@ -107,7 +118,7 @@
         {
             return new Vector2(
                 (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * gridX)),
-                (float)(BlockSpriteFactory.Instance.VerticalOffset + (BlockSpriteFactory.Instance.TileHeight * gridY)));
+                (float)(BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * gridY)));
         }
 
         /// <summary>
@@ -120,7 +131,7 @@
         {
             return new Vector2(
                 (float)(BlockSpriteFactory.Instance.TileWidth * gridX),
-                (float)(BlockSpriteFactory.Instance.TileHeight * gridY));
+                (float)(LoZGame.Instance.InventoryOffset + (BlockSpriteFactory.Instance.TileHeight * gridY)));
         }
 
         /*
@@ -146,6 +157,9 @@
                 case "Goriya":
                     this.enemies.Add(new Goriya(location));
                     break;
+                case "BlueGoriya":
+                    this.enemies.Add(new BlueGoriya(location));
+                    break;
                 case "Keese":
                     this.enemies.Add(new Keese(location));
                     break;
@@ -165,10 +179,16 @@
                     this.enemies.Add(new Stalfos(location));
                     break;
                 case "WallMaster":
-                    this.enemies.Add(new WallMaster(new Vector2(400, 240)));
+                    this.enemies.Add(new WallMaster(location));
                     break;
                 case "Zol":
                     this.enemies.Add(new Zol(location));
+                    break;
+                case "FireSnake":
+                    this.enemies.Add(new FireSnakeHead(location));
+                    break;
+                case "FireBlockEnemy":
+                    this.enemies.Add(new BlockEnemy(location));
                     break;
                 default:
                     break;
@@ -195,13 +215,13 @@
                 case "HeartContainer":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 4);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.items.Add(new HeartContainer(location));
+                    this.droppedHeartContainer = new HeartContainer(location);
                     break;
                 case "Key":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.items.Add(new Key(location));
-                    break;
+                    this.DroppedKey = Tuple.Create(new Key(location), false);
+                    break; 
                 case "Compass":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 4);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
@@ -210,7 +230,12 @@
                 case "Boomerang":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.items.Add(new Boomerang(location));
+                    this.droppedBoomerang = new Boomerang(location);
+                    break;
+                case "MagicBoomerang":
+                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
+                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
+                    this.droppedMagicBoomerang = new MagicBoomerang(location);
                     break;
                 case "TriForce":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 5);
@@ -244,7 +269,7 @@
                     this.blocks.Add(new MovableTile(location, name, dirs));
                     break;
                 case "walkable":
-                    if (name.Equals("ladder_tile") || name.Equals("black_tile"))
+                    if (name.Equals("ladder_tile"))
                     {
                         location = this.GridToScreenSpecialVector(float.Parse(x), float.Parse(y));
                     }

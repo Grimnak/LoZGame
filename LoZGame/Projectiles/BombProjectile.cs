@@ -4,93 +4,38 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class BombProjectile : IProjectile
+    internal class BombProjectile : ProjectileEssentials, IProjectile
     {
-        private static readonly int LinkSize = LinkSpriteFactory.LinkHeight;
         private static readonly int MaxLife = 120;
         private int lifeTime;
-        private readonly int scale;
-        private bool expired;
-        private readonly string direction;
-        private int projectileWidth;
-        private int projectileHeight;
-        private ISprite sprite;
-        private ProjectileCollisionHandler collisionHandler;
-        private int damage;
 
-        public int StunDuration { get { return 0; } set {/*do nothing*/} }
-
-        public bool Returning { get { return false; } set {/*do nothing*/} }
-
-        public int Damage { get { return damage; } set { damage = value; } }
-
-        public Physics Physics { get; set; }
-
-        public Rectangle Bounds { get; set; }
-
-        public BombProjectile(Vector2 loc, string direction)
+        public BombProjectile(Physics source)
         {
-            this.scale = ProjectileSpriteFactory.Instance.Scale;
-            this.projectileWidth = ProjectileSpriteFactory.Instance.StandardWidth * scale;
-            this.projectileHeight = ProjectileSpriteFactory.Instance.StandardHeight * scale;
+            this.SetUp(this);
+            this.Width = ProjectileSpriteFactory.Instance.StandardWidth;
+            this.Heigth = ProjectileSpriteFactory.Instance.StandardHeight;
+            this.Offset = LinkSpriteFactory.LinkHeight;
+            this.Source = source;
             this.lifeTime = MaxLife;
-            this.direction = direction;
-            this.damage = 0;
-            if (this.direction == "Up")
-            {
-                this.Physics = new Physics(new Vector2(loc.X + ((LinkSize - this.projectileWidth) / 2), loc.Y - LinkSize), new Vector2(0, 0), new Vector2(0, 0));
-            }
-            else if (this.direction == "Left")
-            {
-                this.Physics = new Physics(new Vector2(loc.X - LinkSize + (LinkSize - projectileWidth), loc.Y - ((projectileHeight - LinkSize) / 2)), new Vector2(0, 0), new Vector2(0, 0));
-            }
-            else if (this.direction == "Right")
-            {
-                this.Physics = new Physics(new Vector2(loc.X + LinkSize, loc.Y - ((projectileHeight - LinkSize) / 2)), new Vector2(0, 0), new Vector2(0, 0));
-            }
-            else
-            {
-                this.Physics = new Physics(new Vector2(loc.X - ((projectileWidth - LinkSize) / 2), loc.Y + LinkSize), new Vector2(0, 0), new Vector2(0, 0));
-            }
-            this.collisionHandler = new ProjectileCollisionHandler(this);
-            this.expired = false;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
-            this.sprite = ProjectileSpriteFactory.Instance.Bomb();
+            this.InitializeDirection();
+            this.Data.Rotation = 0;
+            this.Data.SpriteEffect = SpriteEffects.None;
+            this.Physics.BoundsOffset = new Vector2(this.Width, this.Heigth);
+            this.Physics.Bounds = new Rectangle((this.Physics.Location - this.Physics.BoundsOffset).ToPoint(), new Point(this.Width, this.Heigth));
+            this.Physics.SetLocation();
+            this.Sprite = ProjectileSpriteFactory.Instance.Bomb();
         }
 
-        public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
-
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        public override void Update()
         {
-            Console.WriteLine("BombProjectile.cs: " + otherCollider.GetType());
-            if (otherCollider is IDoor)
-            {
-                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
-            }
-        }
-
-        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
-        {
-            collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
-        }
-
-        public void Update()
-        {
+            base.Update();
             lifeTime--;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
             if (this.lifeTime <= 0)
             {
-                this.expired = true;
+                this.IsExpired = true;
                 int explosiontype = (int)LoZGame.Instance.GameObjects.Entities.ExplosionManager.Explosion;
-                Vector2 bombCenter = new Vector2(this.Physics.Location.X + (this.projectileWidth / 2), this.Physics.Location.Y + (this.projectileHeight / 2));
-                this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, projectileWidth, projectileHeight);
-                LoZGame.Instance.GameObjects.Entities.ExplosionManager.AddExplosion(explosiontype, bombCenter);
+                LoZGame.Instance.GameObjects.Entities.ExplosionManager.AddExplosion(explosiontype, this.Physics.Bounds.Center.ToVector2());
             }
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
         }
     }
 }

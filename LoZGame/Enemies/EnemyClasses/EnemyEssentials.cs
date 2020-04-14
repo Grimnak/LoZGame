@@ -1,17 +1,20 @@
 ﻿namespace LoZClone
 {
     using System;
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
     public abstract class EnemyEssentials
     {
-        public Rectangle Bounds { get; set; }
+        public Dictionary<RandomStateGenerator.StateType, int> States { get; set; }
 
         public EnemyCollisionHandler EnemyCollisionHandler { get; set; }
 
         public RandomStateGenerator RandomStateGenerator { get; set; }
 
         public IEnemyState CurrentState { get; set; }
+
+        public bool HasChild { get; set; }
 
         public bool Expired { get; set; }
 
@@ -31,20 +34,19 @@
         {
         }
 
-        public Vector2 UnitVectorToPlayer(Vector2 origin)
+        public virtual void UpdateState()
         {
-            Vector2 difference = new Vector2(LoZGame.Instance.Link.Physics.Location.X - origin.X, LoZGame.Instance.Link.Physics.Location.Y - origin.Y);
-            float magnitude = (float)Math.Sqrt(Math.Pow(difference.X, 2) + Math.Pow(difference.Y, 2));
-            return new Vector2(difference.X / magnitude, difference.Y / magnitude);
+            RandomStateGenerator.Update(this.States);
         }
 
-        public Vector2 RotateVector(Vector2 oldVector, float rot)
+        public virtual void UpdateChild()
         {
-            float cosRot = (float)Math.Cos(rot);
-            float sinRot = (float)Math.Sin(rot);
-            float newX = (cosRot * oldVector.X) - (sinRot * oldVector.Y);
-            float newY = (sinRot * oldVector.X) + (cosRot * oldVector.Y);
-            return new Vector2(newX, newY);
+            // most enemies do not have any children
+        }
+
+        public virtual void AddChild()
+        {
+            // most enemies do not have any children
         }
 
         public virtual void TakeDamage(int damageAmount)
@@ -52,20 +54,26 @@
             if (this.DamageTimer <= 0)
             {
                 this.Health.DamageHealth(damageAmount);
-                this.DamageTimer = 50;
+                if (damageAmount > 0)
+                {
+                    SoundFactory.Instance.PlayEnemyHit();
+                    this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                }
             }
             if (this.Health.CurrentHealth <= 0)
             {
+                if (this is Dragon || this is Dodongo)
+                {
+                    SoundFactory.Instance.PlayDragonDie();
+                    LoZGame.Instance.Drops.DropHeartContainer();
+                    SoundFactory.Instance.PlayKeyAppears();
+                }
+                else
+                {
+                    SoundFactory.Instance.PlayEnemyDie();
+                }
                 this.CurrentState.Die();
-            }
-        }
-
-        private void DamagePushback()
-        {
-            if ((Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0) && this.Health.CurrentHealth > 0)
-            {
-                this.Physics.Move();
-                this.Physics.Accelerate();
+                // LoZGame.Instance.Drops.DropItemsEmptyRoom();
             }
         }
 
@@ -80,17 +88,22 @@
                 }
                 else
                 {
-                    this.CurrentTint = LoZGame.Instance.DungeonTint;
+                    this.CurrentTint = LoZGame.Instance.DefaultTint;
                 }
+                this.Physics.HandleKnockBack();
             }
         }
 
         public virtual void Update()
         {
             this.HandleDamage();
-            this.DamagePushback();
-            this.CurrentState.Update();
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, this.Bounds.Width, this.Bounds.Height);
+            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.isDeathState() || this.isSpawnState())
+            {
+                this.CurrentState.Update();
+                this.Physics.Move();
+            }
+
+            this.Physics.SetDepth();
         }
 
         public virtual void Draw()
@@ -114,9 +127,37 @@
             }
         }
 
-        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
+        public virtual void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            this.EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+        }
+
+        public abstract ISprite CreateCorrectSprite();
+
+        private bool isDeathState()
+        {
+            return this.CurrentState is DeadDodongoState ||
+                this.CurrentState is DeadDragonState ||
+                this.CurrentState is DeadFireSnakeState ||
+                this.CurrentState is DeadGelState ||
+                this.CurrentState is DeadGoriyaState ||
+                this.CurrentState is DeadKeeseState ||
+                this.CurrentState is DeadRopeState ||
+                this.CurrentState is DeadStalfosState ||
+                this.CurrentState is DeadWallMasterState ||
+                this.CurrentState is DeadZolState;
+        }
+
+        private bool isSpawnState()
+        {
+            return this.CurrentState is SpawnDodongoState ||
+                this.CurrentState is SpawnGelState ||
+                this.CurrentState is SpawnGoriyaState ||
+                this.CurrentState is SpawnKeeseState ||
+                this.CurrentState is SpawnRopeState ||
+                this.CurrentState is SpawnStalfosState ||
+                this.CurrentState is SpawnWallMasterState ||
+                this.CurrentState is SpawnZolState;
         }
     }
 }

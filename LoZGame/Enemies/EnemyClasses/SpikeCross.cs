@@ -12,24 +12,38 @@
 
         public SpikeCross(Vector2 location)
         {
-            this.Health = new HealthManager(1);
-            this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.SpikeCrossHealth);
+            this.Physics = new Physics(new Vector2(location.X, location.Y));
+            this.Physics.Mass = GameData.Instance.EnemyMassConstants.SpikeCrossMass;
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.CurrentState = new IdleSpikeCrossState(this);
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             Attacking = false;
             Retreating = false;
             InitialPos = this.Physics.Location;
             this.Expired = false;
-            this.Damage = 4;
+            this.Damage = GameData.Instance.EnemyDamageConstants.SpikeCrossDamage;
             this.DamageTimer = 0;
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public override void Update()
         {
             this.CurrentState.Update();
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, this.Bounds.Width, this.Bounds.Height);
+            this.Physics.Move();
+        }
+
+        public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IPlayer)
+            {
+                this.EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+        }
+
+        public override ISprite CreateCorrectSprite()
+        {
+            return EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
         }
     }
 }

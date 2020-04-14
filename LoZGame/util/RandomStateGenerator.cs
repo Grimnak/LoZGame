@@ -1,74 +1,101 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using System;
+    using System.Collections.Generic;
+
     public class RandomStateGenerator
     {
         private Random randomSelect;
         private IEnemy enemy;
-        private int min;
-        private int max;
 
-        public RandomStateGenerator(IEnemy enemy, int minStates,  int maxStates)
+        public enum StateType
+        {
+            Idle,
+            Attack,
+            MoveNorth,
+            MoveSouth,
+            MoveEast,
+            MoveWest,
+            MoveNorthEast,
+            MoveNorthWest,
+            MoveSouthEast,
+            MoveSouthWest,
+        }
+
+        public RandomStateGenerator(IEnemy enemy)
         {
             randomSelect = LoZGame.Instance.Random;
             this.enemy = enemy;
-            min = minStates;
-            max = maxStates;
         }
 
-        public void Update()
+        public void Update(Dictionary<StateType, int> StateSelect)
         {
-            switch (randomSelect.Next(min, max))
+            int totalWeight = 0;
+            
+            // determines total weight of passed possible tates
+            foreach (KeyValuePair<StateType, int> weight in StateSelect)
             {
-                case 0:
+                totalWeight += weight.Value;
+            }
+
+            // chooses a random value in the bounds of all weights
+            int randomWeight = randomSelect.Next(0, totalWeight);
+
+            // initializes values for randomly selectig a state
+            int checkedWeight = 0;
+            StateType selectedState = StateType.Idle;
+            foreach (KeyValuePair<StateType, int> weight in StateSelect)
+            {
+                if (randomWeight < checkedWeight + weight.Value)
+                {
+                    selectedState = weight.Key;
+                    break;
+                }
+                else
+                {
+                    checkedWeight += weight.Value;
+                }
+            }
+
+            // switches state based on previous state
+            switch (selectedState)
+            {
+                case StateType.Idle:
                     enemy.CurrentState.Stop();
                     break;
 
-                case 1:
+                case StateType.Attack:
                     enemy.CurrentState.Attack();
                     break;
 
-                case 2:
+                case StateType.MoveWest:
                     enemy.CurrentState.MoveLeft();
                     break;
-
-                case 3:
+                case StateType.MoveEast:
                     enemy.CurrentState.MoveRight();
                     break;
-
-                case 4:
+                case StateType.MoveNorth:
                     enemy.CurrentState.MoveUp();
                     break;
-
-                case 5:
+                case StateType.MoveSouth:
                     enemy.CurrentState.MoveDown();
                     break;
-
-                case 6:
+                case StateType.MoveNorthEast:
                     enemy.CurrentState.MoveUpLeft();
                     break;
-
-                case 7:
+                case StateType.MoveNorthWest:
                     enemy.CurrentState.MoveUpRight();
                     break;
-
-                case 8:
+                case StateType.MoveSouthEast:
                     enemy.CurrentState.MoveDownLeft();
                     break;
-
-                case 9:
+                case StateType.MoveSouthWest:
                     enemy.CurrentState.MoveDownRight();
                     break;
-
                 default:
+                    enemy.CurrentState.Stop();
                     break;
             }
         }
-
     }
 }

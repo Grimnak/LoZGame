@@ -24,6 +24,8 @@
 
         void Stop();
 
+        void Spawn();
+
         void Die();
 
         void Stun(int stunTime);

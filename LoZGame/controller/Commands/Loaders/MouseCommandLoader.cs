@@ -13,13 +13,12 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="MouseCommandLoader"/> class.
         /// </summary>
-        /// <param name="room">Dungeon to execute the command on.</param>
-        public MouseCommandLoader(Dungeon room)
+        public MouseCommandLoader()
         {
-            this.commandRoomUp = new CommandRoomUp(room);
-            this.commandRoomDown = new CommandRoomDown(room);
-            this.commandRoomLeft = new CommandRoomLeft(room);
-            this.commandRoomRight = new CommandRoomRight(room);
+            this.commandRoomUp = new CommandRoomUp();
+            this.commandRoomDown = new CommandRoomDown();
+            this.commandRoomLeft = new CommandRoomLeft();
+            this.commandRoomRight = new CommandRoomRight();
         }
 
         /// <summary>

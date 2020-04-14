@@ -6,15 +6,17 @@
     {
         private string location;
 
-        private readonly Vector2 upScreenLoc = new Vector2(363, 12);
-        private readonly Vector2 downScreenLoc = new Vector2(363, 480 - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight);
+        private readonly Vector2 upScreenLoc = new Vector2(GameData.Instance.RoomConstants.UpDownDoorXLocation, GameData.Instance.RoomConstants.UpDoorYLocation);
+        private readonly Vector2 downScreenLoc = new Vector2(GameData.Instance.RoomConstants.UpDownDoorXLocation, LoZGame.Instance.ScreenHeight - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight);
 
         private readonly Vector2 rightScreenLoc = new Vector2(
-            800 - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight + 11, 195);
-        
-        private readonly Vector2 leftScreenLoc = new Vector2(19, 195);
+            GameData.Instance.RoomConstants.RightDoorXLocation, GameData.Instance.RoomConstants.RightLeftDoorYLocation);
+
+        private readonly Vector2 leftScreenLoc = new Vector2(GameData.Instance.RoomConstants.LeftDoorXLocation, GameData.Instance.RoomConstants.RightLeftDoorYLocation);
 
         private IDoorState state;
+
+        private string kind;
 
         public IDoorState State
         {
@@ -23,13 +25,6 @@
         }
 
         private DoorCollisionHandler doorCollisionHandler;
-        private Rectangle bounds;
-
-        public Rectangle Bounds
-        {
-            get { return this.bounds; }
-            set { this.bounds = value; }
-        }
 
         public Physics Physics { get; set; }
 
@@ -57,18 +52,32 @@
         {
             this.location = loc;
             this.doorCollisionHandler = new DoorCollisionHandler(this);
+            this.SetPhysics();
+            this.kind = starting;
             switch (starting)
             {
                 case "locked":
                     this.state = new LockedDoorState(this);
                     break;
+                case "locked2":
+                    this.state = new LockedDoorState(this);
+                    break;
                 case "special":
+                    this.state = new SpecialDoorState(this);
+                    break;
+                case "special2":
                     this.state = new SpecialDoorState(this);
                     break;
                 case "hidden":
                     this.state = new HiddenDoorState(this);
                     break;
+                case "hidden2":
+                    this.state = new HiddenDoorState(this);
+                    break;
                 case "cosmetic":
+                    this.state = new CosmeticDoorState(this);
+                    break;
+                case "cosmetic2":
                     this.state = new CosmeticDoorState(this);
                     break;
                 case "puzzle":
@@ -77,6 +86,33 @@
                 default:
                     this.state = new UnlockedDoorState(this);
                     break;
+            }
+        }
+
+        private void SetPhysics()
+        {
+            switch (this.location)
+            {
+                case "N":
+                    {
+                        this.Physics = new Physics(this.upScreenLoc);
+                        break;
+                    }
+                case "E":
+                    {
+                        this.Physics = new Physics(this.rightScreenLoc);
+                        break;
+                    }
+                case "S":
+                    {
+                        this.Physics = new Physics(this.downScreenLoc);
+                        break;
+                    }
+                case "W":
+                    {
+                        this.Physics = new Physics(this.leftScreenLoc);
+                        break;
+                    }
             }
         }
 
@@ -107,8 +143,14 @@
             return this.location;
         }
 
+        public string GetKind()
+        {
+            return this.kind;
+        }
+
         public void Update()
         {
+            this.Physics.SetDepth();
             this.state.Update();
         }
 
@@ -125,7 +167,7 @@
             }
             else if (otherCollider is IProjectile)
             {
-                this.doorCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+                this.doorCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
             }
         }
 

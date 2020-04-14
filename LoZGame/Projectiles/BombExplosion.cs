@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    internal class BombExplosion : IProjectile
+    internal class BombExplosion : ProjectileEssentials, IProjectile
     {
         private const int FlashDurataion = 10;
 
@@ -13,115 +13,97 @@
         private static readonly int DissipateTwo = 5;
 
         private ISprite sprite;
-        private readonly int scale = ProjectileSpriteFactory.Instance.Scale;
         private int projectileWidth;
         private int projectileHeight;
         private int lifeTime;
-        private bool expired;
         private ProjectileCollisionHandler collisionHandler;
-        private int damage;
         private Texture2D flashTexture;
         private Rectangle flashDestination;
 
-        public int StunDuration { get { return 0; } set {/*do nothing*/} }
-
-        public bool Returning { get { return false; } set {/*do nothing*/} }
-
-        public int Damage { get { return damage; } set { damage = value; } }
-
-        public Physics Physics { get; set; }
-
-        public Rectangle Bounds { get; set; }
-
-        private readonly bool hostile;
-
-        public bool IsHostile => this.hostile;
-
         public BombExplosion(Vector2 location)
         {
-            this.projectileWidth = ProjectileSpriteFactory.Instance.ExplosionWidth * this.scale;
-            this.projectileHeight = ProjectileSpriteFactory.Instance.ExplosionHeight * this.scale;
+            this.SetUp(this);
+            SoundFactory.Instance.PlayBombExplosion();
+            this.Width = ProjectileSpriteFactory.Instance.ExplosionWidth;
+            this.Heigth = ProjectileSpriteFactory.Instance.ExplosionHeight;
+            this.Physics = new Physics(new Vector2(location.X, location.Y));
             this.collisionHandler = new ProjectileCollisionHandler(this);
-            this.Physics = new Physics(new Vector2(location.X, location.Y), new Vector2(0, 0), new Vector2(0, 0));
-            this.lifeTime = MaxLifeTime;
-            this.hostile = true;
-            this.expired = false;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X - (projectileWidth / 2), (int)this.Physics.Location.Y - (projectileHeight / 2), projectileWidth, projectileHeight);
-            this.damage = 8;
+            this.lifeTime = MaxLifeTime + 1;
+            this.IsExpired = false;
+            this.Physics.BoundsOffset = new Vector2(this.Width, this.Heigth) / 2;
+            this.Physics.Bounds = new Rectangle((this.Physics.Location - this.Physics.BoundsOffset).ToPoint(), new Point(this.Width, this.Heigth));
+            this.Physics.BoundsOffset *= 2;
+            this.Physics.SetLocation();
+            this.Damage = GameData.Instance.ProjectileDamageConstants.BombDamage;
+            this.Physics.Mass = GameData.Instance.ProjectileMassConstants.ExplosionMass;
             Random numGen = new Random();
             int selectBomb = numGen.Next(0, 5);
             switch (selectBomb)
             {
                 case 0:
-                    this.sprite = ProjectileSpriteFactory.Instance.BombExplosionOne();
+                    this.Sprite = ProjectileSpriteFactory.Instance.BombExplosionOne();
                     break;
 
                 case 1:
-                    this.sprite = ProjectileSpriteFactory.Instance.BombExplosionTwo();
+                    this.Sprite = ProjectileSpriteFactory.Instance.BombExplosionTwo();
                     break;
 
                 case 2:
-                    this.sprite = ProjectileSpriteFactory.Instance.BombExplosionThree();
+                    this.Sprite = ProjectileSpriteFactory.Instance.BombExplosionThree();
                     break;
 
                 case 3:
-                    this.sprite = ProjectileSpriteFactory.Instance.BombExplosionFour();
+                    this.Sprite = ProjectileSpriteFactory.Instance.BombExplosionFour();
                     break;
 
                 case 4:
-                    this.sprite = ProjectileSpriteFactory.Instance.BombExplosionFive();
+                    this.Sprite = ProjectileSpriteFactory.Instance.BombExplosionFive();
                     break;
 
                 default:
+                    this.Sprite = ProjectileSpriteFactory.Instance.BombExplosionFive();
                     break;
             }
+
             // initialize variables for flashing screen
             flashTexture = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            flashTexture.SetData<Color>(new Color[] { LoZGame.Instance.DungeonTint });
-            flashDestination = new Rectangle(0, 0, LoZGame.Instance.GraphicsDevice.Viewport.Width, LoZGame.Instance.GraphicsDevice.Viewport.Height);
+            flashTexture.SetData<Color>(new Color[] { LoZGame.Instance.DefaultTint });
+            flashDestination = new Rectangle(0, 0, LoZGame.Instance.ScreenWidth, LoZGame.Instance.GraphicsDevice.Viewport.Height);
         }
 
-        public bool IsExpired { get { return this.expired; } set { this.expired = value; } }
-
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            Console.WriteLine("BombExplosion.cs: " + otherCollider.GetType().ToString());
-            if (otherCollider is IEnemy)
+            base.OnCollisionResponse(otherCollider, collisionSide);
+            if (otherCollider is IDoor)
             {
-                this.collisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
-            } else if (otherCollider is IDoor)
-            {
-                Console.WriteLine("Door Bomba boi");
                 this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 
-        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
-        {
-            collisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
-        }
-
-        public void Update()
+        public override void Update()
         {
             this.lifeTime--;
+            if (this.lifeTime < MaxLifeTime)
+            {
+                this.Physics.Bounds = new Rectangle(this.Physics.Bounds.X, this.Physics.Bounds.Y, 0, 0);
+            }
             if (this.lifeTime == DissipateOne || this.lifeTime == DissipateTwo)
             {
-                this.sprite.Update();
-                this.Bounds = Rectangle.Empty;
+                this.Sprite.NextFrame();
             }
 
             if (this.lifeTime <= 0)
             {
-                this.expired = true;
+                this.IsExpired = true;
             }
         }
 
-        public void Draw()
+        public override void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint);
+            base.Draw();
             if (this.lifeTime > (MaxLifeTime - FlashDurataion) && this.lifeTime % 2 == 0)
             {
-                LoZGame.Instance.SpriteBatch.Draw(flashTexture, flashDestination, new Rectangle(0, 0, 1, 1), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
+                LoZGame.Instance.SpriteBatch.Draw(flashTexture, flashDestination, new Rectangle(0, 0, 1, 1), LoZGame.Instance.DefaultTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
             }
         }
     }

@@ -1,21 +1,26 @@
 ﻿namespace LoZClone
 {
+    using System;
     using Microsoft.Xna.Framework;
+    using System.Collections.Generic;
 
     public class WallMaster : EnemyEssentials, IEnemy
     {
         public WallMaster(Vector2 location)
         {
-            this.Health = new HealthManager(12);
-            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-            this.CurrentState = new LeftMovingWallMasterState(this);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            this.RandomStateGenerator = new RandomStateGenerator(this);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.WallMasterStatelist);
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.WallMasterHealth);
+            this.Physics = new Physics(location);
+            this.Physics.Mass = GameData.Instance.EnemyMassConstants.WallMasterMass;
+            this.CurrentState = new SpawnWallMasterState(this);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = 1;
+            this.Damage = GameData.Instance.EnemyDamageConstants.WallMasterDamage;
             this.DamageTimer = 0;
-            this.MoveSpeed = 1;
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
+            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.WallMasterSpeed;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public override void Stun(int stunTime)
@@ -23,15 +28,24 @@
             this.CurrentState.Stun(stunTime);
         }
 
-        public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        public override void Update()
         {
-            if (otherCollider is IPlayer)
+            base.Update();
+            if (this.CurrentState is AttackingWallMasterState)
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                this.Physics.Depth = 1.0f;
             }
-            else if (otherCollider is IProjectile)
+        }
+
+        public override ISprite CreateCorrectSprite()
+        {
+            if (this.Physics.CurrentDirection == Physics.Direction.North || this.Physics.CurrentDirection == Physics.Direction.East)
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+                return EnemySpriteFactory.Instance.CreateRightMovingWallMasterSprite();
+            } 
+            else
+            {
+                return EnemySpriteFactory.Instance.CreateLeftMovingWallMasterSprite();
             }
         }
     }

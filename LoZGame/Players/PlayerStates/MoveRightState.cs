@@ -17,8 +17,9 @@
         public MoveRightState(IPlayer playerInstance)
         {
             this.player = playerInstance;
-            this.player.CurrentDirection = "Right";
+            this.player.Physics.CurrentDirection = Physics.Direction.East;
             this.sprite = this.CreateCorrectSprite();
+            this.player.Physics.MovementVelocity = new Vector2(this.player.MoveSpeed, 0);
         }
 
         /// <inheritdoc/>
@@ -75,21 +76,30 @@
         }
 
         /// <inheritdoc/>
+        public void Stun(int stunTime)
+        {
+            this.player.State = new StunnedState(this.player, this.player.State, stunTime);
+        }
+
+        /// <inheritdoc/>
         public void Update()
         {
-            this.player.Physics.Location = new Vector2(this.player.Physics.Location.X + this.player.MoveSpeed, this.player.Physics.Location.Y);
             this.sprite.Update();
+            if (this.sprite.CurrentFrame >= GameData.Instance.PlayerConstants.MaximumFrames)
+            {
+                this.sprite.SetFrame(0);
+            }
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint);
+            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint, this.player.Physics.Depth);
         }
 
         private ISprite CreateCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.CreateSpriteLinkMoveRight(this.player.CurrentColor);
+            return LinkSpriteFactory.Instance.CreateSpriteLinkRight(this.player.CurrentColor);
         }
     }
 }

@@ -4,74 +4,39 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class Clock : IItem
+    internal class Clock : ItemEssentials, IItem
     {
-        private ISprite sprite;
-        private ItemCollisionHandler itemCollisionHandler;
-
-        private readonly Texture2D Texture;      // the texture to pull frames from
-        private Vector2 Size;
-        private float layer;
-        private int lifeTime;
-        private bool expired;
-        private int pickUpItemTime = 50;
-
-        public int PickUpItemTime { get { return this.pickUpItemTime; } }
-
-        public bool Expired { get { return this.expired; } set { this.expired = value; } }
-
-        public Physics Physics { get; set; }
-
-        public Rectangle Bounds { get; set; }
+        private static readonly int DespawnTimer = LoZGame.Instance.UpdateSpeed * 20;
+        private static readonly int SpawnTimer = LoZGame.Instance.UpdateSpeed * 1;
 
         public Clock(Vector2 loc)
         {
-            this.sprite = ItemSpriteFactory.Instance.Clock(ItemSpriteFactory.Instance.Scale);
+            this.Sprite = ItemSpriteFactory.Instance.Clock();
             this.itemCollisionHandler = new ItemCollisionHandler(this);
-            this.Physics = new Physics(loc, new Vector2(0, -1), new Vector2(0, 0.1f));
-            this.Size = new Vector2(ItemSpriteFactory.ClockWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.ClockHeight * ItemSpriteFactory.Instance.Scale);
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.lifeTime = 0;
-            this.expired = false;
+            this.Physics = new Physics(loc);
+            this.PickUpItemTime = -1;
+            this.LifeTime = 0;
+            Vector2 size = new Vector2(ItemSpriteFactory.RupeeWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.RupeeHeight * ItemSpriteFactory.Instance.Scale);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)size.X, (int)size.Y);
+            this.Expired = false;
+            this.StartBob();
         }
 
-        private void UpdateLoc()
+        public override void Update()
         {
-            if ((int)Math.Abs(this.Physics.Velocity.X) > 0 || (int)Math.Abs(this.Physics.Velocity.Y) > 0)
+            base.Update();
+            if (this.LifeTime >= DespawnTimer)
             {
-                this.Physics.Move();
-                this.Physics.Accelerate();
-            }
-            else
-            {
-                this.Physics.StopMovement();
+                this.Expired = true;
             }
         }
 
-        public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        public override void Draw(Color spriteTint)
         {
-            if (otherCollider is IPlayer)
+            if ((this.LifeTime > SpawnTimer && this.LifeTime < (DespawnTimer - (4 * SpawnTimer))) || this.LifeTime % 4 < 2)
             {
-                itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                base.Draw(spriteTint);
             }
-        }
-
-        public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
-        {
-            itemCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
-        }
-
-        public void Update()
-        {
-            this.lifeTime++;
-            this.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)this.Size.X, (int)this.Size.Y);
-            this.UpdateLoc();
-            this.sprite.Update();
-        }
-
-        public void Draw(Color spriteTint)
-        {
-            this.sprite.Draw(this.Physics.Location, spriteTint);
         }
     }
 }

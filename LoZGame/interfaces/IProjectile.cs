@@ -13,6 +13,8 @@
 
         bool Returning { get; set; }
 
+        EntityData Data { get; set; }
+
         void Update();
 
         void Draw();

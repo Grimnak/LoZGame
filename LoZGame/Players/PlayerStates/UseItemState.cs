@@ -1,5 +1,7 @@
 namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     /// <summary>
     /// Item using state for player.
     /// </summary>
@@ -19,6 +21,9 @@ namespace LoZClone
             this.player = playerInstance;
             this.lockoutTimer = waitTime; // wait period
             this.sprite = this.CreateCorrectSprite();
+            this.sprite.CurrentFrame = GameData.Instance.PlayerConstants.MaximumFrames;
+            this.player.Physics.MovementVelocity = Vector2.Zero;
+            this.sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
         }
 
         /// <inheritdoc/>
@@ -102,33 +107,37 @@ namespace LoZClone
             {
                 this.lockoutTimer--;
             }
+        }
 
-            this.sprite.Update();
+        /// <inheritdoc/>
+        public void Stun(int stunTime)
+        {
+            this.player.State = new StunnedState(this.player, this.player.State, stunTime);
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint);
+            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint, this.player.Physics.Depth);
         }
 
         private ISprite CreateCorrectSprite()
         {
-            if (this.player.CurrentDirection.Equals("Up"))
+            if (this.player.Physics.CurrentDirection == Physics.Direction.North)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkUseItemUp(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkUp(this.player.CurrentColor);
             }
-            else if (this.player.CurrentDirection.Equals("Down"))
+            else if (this.player.Physics.CurrentDirection == Physics.Direction.South)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkUseItemDown(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkDown(this.player.CurrentColor);
             }
-            else if (this.player.CurrentDirection.Equals("Left"))
+            else if (this.player.Physics.CurrentDirection == Physics.Direction.West)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkUseItemLeft(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkLeft(this.player.CurrentColor);
             }
             else
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkUseItemRight(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkRight(this.player.CurrentColor);
             }
         }
     }

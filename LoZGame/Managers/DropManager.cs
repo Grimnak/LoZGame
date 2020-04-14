@@ -1,5 +1,4 @@
-﻿
-namespace LoZClone
+﻿namespace LoZClone
 {
     using System;
     using System.Collections.Generic;
@@ -11,10 +10,10 @@ namespace LoZClone
         private const int RupeeWeight = 40;
         private const int YellowRupeeWeight = 20;
         private const int BombWeight = 20;
-        private const int FoodWeight = 20;
         private const int PotionWeight = 10;
         private const int SecondPotionWeight = 5;
         private const int HealthWeight = 25;
+        private const int ClockWeight = 10;
         private const int FairyWeight = 5;
 
         private Dictionary<string, int> itemWeights;
@@ -27,11 +26,11 @@ namespace LoZClone
             itemWeights.Add("Rupee", RupeeWeight);
             itemWeights.Add("YellowRupee", YellowRupeeWeight);
             itemWeights.Add("Bomb", BombWeight);
-            itemWeights.Add("Food", FoodWeight);
             itemWeights.Add("Potion", PotionWeight);
             itemWeights.Add("SecondPotion", SecondPotionWeight);
             itemWeights.Add("Health", HealthWeight);
             itemWeights.Add("Fairy", FairyWeight);
+            itemWeights.Add("Clock", ClockWeight);
             totalWeight = 0;
             foreach (KeyValuePair<string, int> weight in itemWeights)
             {
@@ -78,9 +77,6 @@ namespace LoZClone
                 case "Bomb":
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedBomb(loc));
                     break;
-                case "Food":
-                    LoZGame.Instance.GameObjects.Items.Add(new DroppedFood(loc));
-                    break;
                 case "Potion":
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedPotion(loc));
                     break;
@@ -92,6 +88,9 @@ namespace LoZClone
                     break;
                 case "Fairy":
                     LoZGame.Instance.GameObjects.Items.Add(new Fairy(loc));
+                    break;
+                case "Clock":
+                    LoZGame.Instance.GameObjects.Items.Add(new Clock(loc));
                     break;
                 default:
                     break;
@@ -107,7 +106,49 @@ namespace LoZClone
             }
         }
 
-        public void DropKey(Vector2 loc) { LoZGame.Instance.GameObjects.Items.Add(new Key(loc)); }
+        public void DropItemsEmptyRoom()
+        {
+            DropKey();
+            DropBoomerang();
+            DropMagicBoomerang();
+        }
+
+        public void DropKey()
+        {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey != null /*&& LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1*/)
+            {
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey.Item1);
+                if (!LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey.Item2)
+                {
+                    SoundFactory.Instance.PlayKeyAppears();
+                }
+                LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey = Tuple.Create(LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey.Item1, true);
+            }
+        }
+
+        public void DropBoomerang()
+        {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedBoomerang != null && LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1)
+            {
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedBoomerang);
+            }
+        }
+
+        public void DropHeartContainer()
+        {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer != null && LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1)
+            {
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer);
+            }
+        }
+
+        public void DropMagicBoomerang()
+        {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang != null && LoZGame.Instance.GameObjects.Enemies.EnemyList.Count <= 1)
+            {
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang);
+            }
+        }
 
         public void DropMagicKey(Vector2 loc) { LoZGame.Instance.GameObjects.Items.Add(new MagicKey(loc)); }
     }

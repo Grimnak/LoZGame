@@ -13,7 +13,7 @@
     /// </summary>
     public interface IBlock : ICollider
     {
-        string[] InvalidDirections { get; }
+        List<MovableTile.InvalidDirection> InvalidDirections { get; }
 
         /// <summary>
         /// Creates the correct sprite for the block.

@@ -1,6 +1,6 @@
 # CSE 3902 - 9:10a Section - Team 3 - Readme
 
-Developer version of Legend of Zelda NES emulator.  This is a functioning version of the first dungeon, featuring room transitions, combat, items, and collision detection and handling.
+Developer version of Legend of Zelda NES emulator.  This build features a polished version of the first two dungeons and an incomplete build of the third dungeon.  There is also an option to turn "cheat mode" on, which gives the player unlimited items and infinite health.  This can be activated in the main LoZGame.cs file on line 12 by setting the value to "true".
 
 ## Authors:
 Eric Henderson.939
@@ -17,22 +17,25 @@ Jeremy Wensink.27
 
 
 ## Controls:
-W, A, S, D, Arrow Keys - Controls the Player
+### Player Controls:
+Z - Attack Button for Player
 
-Z, N - Attack buttons for Player
+N - Use Equipped Item for Player
 
-Q - Exits the game
+I - Open & Close Player Inventory
 
-R - Resets the game to its default state
+Enter - Begin the Game
 
-1 - Places a Bomb
+Q - Exits the Game
 
-2, 5 - Fires an Arrow/Silver Arrow
+R - Resets the Game to its Default State
 
-3, 6 - Throws a Boomerang/Magic Boomerang
+Mouse - Moves Rooms in the Direction you Click
 
-4, 7 - Uses the Blue Candle/Red Candle
+### Inventory Controls:
+W, A, S, D, Arrow Keys - Controls Item Selection
 
+Enter - Equips Item in Inventory
 
 ## External Tools:
 Git
@@ -55,12 +58,15 @@ MS Paint
     Bug:  Bats can drop items in the basement walls that are unobtainable.
 
     Plan(s) to fix:  Add boomerang capabilities to grab items and potentially make items spawn in-bounds.
-    
-### Slingshotting Wall Masters:
-    Bug:  If player is currently getting knocked back and collides with a Wall Master, the player will fly off the screen in the direction of the knockback.
-    
-    Plan(s) to fix:  Disable ability for Wall Masters to pick the player up while the player is damaged.
 
+### Dungeon Three:
+    Bugs: Dungeon 3 is unfinished but exists.
+	
+    Plan(s) to fix: finish the dungeon
 
+### Stalfos AI: 
+	Bugs: Stalfos have the slight possibility of getting stuck on blocks and cancelling their hitbox. Bug occured once and was unable to be recreated
+
+	Plan(s) to fix: Try to recreate the bug through testing to learn more about the issue.
 ## Suppressed Warnings:
-The only suppressed warnings involved linter recommendations to modify spacing or order of variables, as well as some naming conventions.
+There are no suppressed warnings.

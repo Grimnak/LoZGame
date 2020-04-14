@@ -3,83 +3,30 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeadWallMasterState : IEnemyState
+    public class DeadWallMasterState : WallMasterEssentials, IEnemyState
     {
-        private readonly WallMaster wallMaster;
-        private readonly DeadEnemySprite sprite;
         private int deathTimer = 0;
-        private int deathTimerMax = 30;
+        private int deathTimerMax;
 
-        public DeadWallMasterState(WallMaster wallMaster)
+        public DeadWallMasterState(IEnemy enemy)
         {
-            this.wallMaster = wallMaster;
-            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
-            this.wallMaster.CurrentState = this;
-            this.wallMaster.Bounds = Rectangle.Empty;
-            LoZGame.Instance.Drops.AttemptDrop(this.wallMaster.Physics.Location);
+            this.Enemy = enemy;
+            this.Sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.Enemy.CurrentState = this;
+            this.Enemy.Physics.Bounds = new Rectangle(this.Enemy.Physics.Bounds.Location, Point.Zero);
+            deathTimerMax = GameData.Instance.EnemyMiscConstants.DeathTimerMaximum;
+            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
         }
 
-        public void MoveLeft()
-        {
-        }
-
-        public void MoveRight()
-        {
-        }
-
-        public void MoveUp()
-        {
-        }
-
-        public void MoveDown()
-        {
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Attack()
-        {
-        }
-
-        public void Stop()
-        {
-        }
-
-        public void Die()
-        {
-        }
-
-        public void Stun(int stunTime)
-        {
-        }
-
-        public void Update()
+        public override void Update()
         {
             this.deathTimer++;
-            this.sprite.Update();
+            this.Sprite.Update();
             if (deathTimer >= deathTimerMax)
             {
-                this.wallMaster.Expired = true;
+                LoZGame.Instance.Drops.AttemptDrop(this.Enemy.Physics.Location);
+                this.Enemy.Expired = true;
             }
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.wallMaster.Physics.Location, this.wallMaster.CurrentTint);
         }
     }
 }

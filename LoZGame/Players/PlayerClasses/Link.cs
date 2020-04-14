@@ -2,59 +2,30 @@
 {
     using System;
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Audio;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class Link : PlayerEssentials, IPlayer
+    public partial class Link : IPlayer
     {
         private PlayerCollisionHandler linkCollisionHandler;
-        private Rectangle bounds;
-        private int startingHealth = 12;
-
-        private bool hasKey;
-
-        public bool HasKey
-        {
-            get { return hasKey; }
-            set { this.hasKey = value; }
-        }
-
-        public Rectangle Bounds
-        {
-            get { return this.bounds; }
-            set { this.bounds = value; }
-        }
 
         public Link(Vector2 location)
         {
-            this.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
-            this.Health = new HealthManager(startingHealth);
+            this.Physics = new Physics(location);
+            this.Physics.Mass = GameData.Instance.PlayerConstants.Mass;
+            this.Health = new HealthManager(GameData.Instance.PlayerConstants.StartingHealth);
+            this.Inventory = new InventoryManager(this);
             this.linkCollisionHandler = new PlayerCollisionHandler(this);
-            this.CurrentColor = "Green";
-            this.CurrentDirection = "Up";
-            this.CurrentWeapon = "Wood";
-            this.CurrentTint = LoZGame.Instance.DungeonTint;
-            this.MoveSpeed = 2.5f;
+            this.CurrentColor = LinkColor.Green;
+            this.Physics.CurrentDirection = Physics.Direction.North;
+            this.CurrentWeapon = LinkWeapon.Wood;
+            this.CurrentTint = LoZGame.Instance.DefaultTint;
+            this.MoveSpeed = GameData.Instance.PlayerConstants.PlayerSpeed;
             this.DamageTimer = 0;
             this.State = new IdleState(this);
-            this.bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
-            this.HasKey = false;
-        }
-
-        public override void Update()
-        {
-            this.HandleDamage();
-            this.bounds.X = (int)this.Physics.Location.X;
-            this.bounds.Y = (int)this.Physics.Location.Y;
-            this.State.Update();
-            if (this.Health.CurrentHealth <= 0)
-            {
-                this.State.Die();
-            }
-        }
-
-        public override void Draw()
-        {
-            this.State.Draw();
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y - 8, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight - 8);
+            this.Physics.BoundsOffset = new Vector2(0, -8);
+            this.Physics.SetLocation();
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

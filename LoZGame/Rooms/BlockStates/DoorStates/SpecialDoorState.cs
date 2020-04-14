@@ -1,54 +1,81 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     /*
-     * The Player must kill all enemies to open these doors.
+     * The player must kill all enemies to open these doors.
      */
     public class SpecialDoorState : IDoorState
     {
+        private const string North = "N";
+        private const string South = "S";
+        private const string East = "E";
+        private const string West = "W";
+
         private readonly Door door;
         private readonly ISprite sprite;
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
-        private readonly Vector2 location;
+        private bool isLevel1;
 
         public SpecialDoorState(Door door)
         {
             this.door = door;
+            this.isLevel1 = this.door.GetKind().Equals(GameData.Instance.RoomConstants.SpecialStr);
             switch (door.GetLoc())
             {
-                case "N":
+                case North:
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown(door.UpScreenLoc);
-                        location = door.UpScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
+
+                        /*   if (this.isLevel1)
+                           {
+                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
+                           }
+                           else
+                           {
+                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown2();
+                           }*/
                         break;
                     }
-                case "E":
+                case East:
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft(door.RightScreenLoc);
-                        location = door.RightScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
+
+                        /*   if (this.isLevel1)
+                           {
+                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
+                           } else
+                           {
+                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft2();
+                           }*/
                         break;
                     }
-                case "S":
+                case South:
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp(door.DownScreenLoc);
-                        location = door.DownScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
+
+                        /*  if (this.isLevel1)
+                          {
+                              this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
+                          }
+                          else
+                          {
+                              this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp2();
+                          }*/
                         break;
                     }
-                case "W":
+                case West:
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight(door.LeftScreenLoc);
-                        location = door.LeftScreenLoc;
-                        door.Physics = new Physics(location, new Vector2(0, 0), new Vector2(0, 0));
+                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight();
+
+                      /*  if (this.isLevel1)
+                        {
+                            this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight();
+                        }
+                        else
+                        {
+                            this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight2();
+                        }*/
                         break;
                     }
             }
@@ -71,7 +98,7 @@ namespace LoZClone
 
         public void Draw()
         {
-            this.sprite.Draw(location, spriteTint);
+            this.sprite.Draw(this.door.Physics.Location, spriteTint, this.door.Physics.Depth);
         }
 
         public void Update()

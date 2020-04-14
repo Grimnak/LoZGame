@@ -1,8 +1,8 @@
 ﻿namespace LoZClone
 {
+    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using System;
 
     public class IdleSpikeCrossState : IEnemyState
     {
@@ -12,7 +12,7 @@
         public IdleSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
-            this.spikeCross.Physics.ResetVelocity();
+            this.spikeCross.Physics.StopVelocity();
             this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
             this.spikeCross.CurrentState = this;
         }
@@ -65,6 +65,10 @@
         {
         }
 
+        public void Spawn()
+        {
+        }
+
         public void Stun(int stunTime)
         {
         }
@@ -84,24 +88,34 @@
 
             if (!this.spikeCross.Attacking)
             {
-                if (spikeX == linkX)
+                if (Math.Abs(linkX - spikeX) < (this.spikeCross.Physics.Bounds.Width / 2))
                 {
-                    this.spikeCross.Attacking = true;
-                    this.spikeCross.MoveSpeed = 3 * (linkY - spikeY) / Math.Abs(linkY - spikeY);
-                    this.spikeCross.CurrentState.MoveDown();
+                    if (Math.Abs(linkY - spikeY) > (this.spikeCross.Physics.Bounds.Height / 2))
+                    {
+                        // Handles case for when link gets to the spikes original position before the spike fully retreats
+                        this.spikeCross.MoveSpeed = GameData.Instance.EnemySpeedConstants.SpikeCrossSpeed * (linkY - spikeY) / Math.Abs(linkY - spikeY);
+                        this.spikeCross.Attacking = true;
+                        this.spikeCross.CurrentState.MoveDown();
+                    }
+
                 }
-                else if (spikeY == linkY)
+                else if (Math.Abs(linkY - spikeY) < (this.spikeCross.Physics.Bounds.Height / 2))
                 {
-                    this.spikeCross.Attacking = true;
-                    this.spikeCross.MoveSpeed = 3 * (linkX - spikeX) / Math.Abs(linkX - spikeX);
-                    this.spikeCross.CurrentState.MoveRight();
+                    if (Math.Abs(linkX - spikeX) > (this.spikeCross.Physics.Bounds.Width / 2))
+                    {
+                        // Handles case for when link gets to the spikes original position before the spike fully retreats
+                        this.spikeCross.MoveSpeed = GameData.Instance.EnemySpeedConstants.SpikeCrossSpeed * (linkX - spikeX) / Math.Abs(linkX - spikeX);
+                        this.spikeCross.Attacking = true;
+                        this.spikeCross.CurrentState.MoveRight();
+                    }
+
                 }
             }
         }
 
         public void Draw()
         {
-            this.sprite.Draw(this.spikeCross.Physics.Location, this.spikeCross.CurrentTint);
+            this.sprite.Draw(this.spikeCross.Physics.Location, this.spikeCross.CurrentTint, this.spikeCross.Physics.Depth);
         }
     }
 }

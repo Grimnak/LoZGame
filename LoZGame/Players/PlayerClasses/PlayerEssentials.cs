@@ -3,15 +3,13 @@
     using System;
     using Microsoft.Xna.Framework;
 
-    public abstract class PlayerEssentials
+    public partial class Link
     {
         public IPlayerState State { get; set; }
 
-        public string CurrentWeapon { get; set; }
+        public LinkWeapon CurrentWeapon { get; set; }
 
-        public string CurrentColor { get; set; }
-
-        public string CurrentDirection { get; set; }
+        public LinkColor CurrentColor { get; set; }
 
         public Color CurrentTint { get; set; }
 
@@ -23,29 +21,28 @@
 
         public HealthManager Health { get; set; }
 
+        public InventoryManager Inventory { get; set; }
+
         public void TakeDamage(int damageAmount)
         {
             if (this.DamageTimer <= 0)
             {
-                this.Health.DamageHealth(damageAmount);
-                this.DamageTimer = 50;
+                if (!LoZGame.Cheats)
+                {
+                    this.Health.DamageHealth(damageAmount);
+                }
+                if (damageAmount > 0)
+                {
+                    SoundFactory.Instance.PlayLinkHurt();
+                    this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                }
             }
             if (this.Health.CurrentHealth <= 0)
             {
+                SoundFactory.Instance.StopDungeonSong();
+                SoundFactory.Instance.PlayLinkDie();
                 this.State.Die();
-            }
-        }
-
-        private void DamagePushback()
-        {
-            if (Math.Abs((int)this.Physics.Velocity.X) != 0 || Math.Abs((int)this.Physics.Velocity.Y) != 0)
-            {
-                this.Physics.Move();
-                this.Physics.Accelerate();
-            }
-            else
-            {
-                this.Physics.StopMovement();
+                LoZGame.Instance.GameState.Death();
             }
         }
 
@@ -60,13 +57,9 @@
                 }
                 else
                 {
-                    this.CurrentTint = LoZGame.Instance.DungeonTint;
+                    this.CurrentTint = LoZGame.Instance.DefaultTint;
                 }
-                this.DamagePushback();
-            }
-            else
-            {
-                this.Physics.StopMovement();
+                this.Physics.HandleKnockBack();
             }
         }
 
@@ -110,9 +103,22 @@
             this.State.UseItem(waitTime);
         }
 
-        public abstract void Update();
+        public void Stun(int stunTime)
+        {
+            this.State.Stun(stunTime);
+        }
 
-        public abstract void Draw();
+        public void Update()
+        {
+            this.Physics.SetDepth();
+            this.HandleDamage();
+            this.Physics.Move();
+            this.State.Update();
+        }
 
+        public void Draw()
+        {
+            this.State.Draw();
+        }
     }
 }
