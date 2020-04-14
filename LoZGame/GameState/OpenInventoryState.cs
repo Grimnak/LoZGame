@@ -10,8 +10,8 @@
 
         public OpenInventoryState()
         {
-            this.lockout = -174;
-            this.transitionSpeed = 5;
+            this.lockout = GameData.Instance.GameStateDataConstants.OpenInventoryLockout;
+            this.transitionSpeed = GameData.Instance.GameStateDataConstants.OpenInventoryTransitionSpeed;
         }
 
         /// <inheritdoc></inheritdoc>

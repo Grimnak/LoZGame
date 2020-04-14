@@ -145,6 +145,7 @@
     <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Players\PlayerClasses\LinkHelper.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
+    <Compile Include="Util\DataConstants\GameStateDataConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyHealthConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyDamageConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemySpeedConstants.cs" />

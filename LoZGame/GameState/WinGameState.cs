@@ -5,12 +5,14 @@
 
     public class WinGameState : IGameState
     {
-        private static int maxDungeon = 2;
+        private int maxDungeon;
         private int lockout;
-        private int lockoutMax = 440;
+        private int lockoutMax;
 
         public WinGameState()
         {
+            this.maxDungeon = GameData.Instance.GameStateDataConstants.WinStateMaxDungeons;
+            this.lockoutMax = GameData.Instance.GameStateDataConstants.WinStateMaxLockout;
             lockout = 0;
         }
 
@@ -99,7 +101,7 @@
         public void Draw()
         {
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, LoZGame.Instance.InventoryOffset, LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+            LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, LoZGame.Instance.InventoryOffset, LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset), new Rectangle(0, 0, GameData.Instance.GameStateDataConstants.WinStateSpriteWidth, GameData.Instance.GameStateDataConstants.WinStateSpriteHeight), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
 
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
