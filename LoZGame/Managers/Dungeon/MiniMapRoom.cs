@@ -10,9 +10,7 @@ namespace LoZClone
 {
     public class MiniMapRoom
     {
-        private const int BlinkRate = 30;
         private const int DotSize = 8;
-        private int lifetime;
         private static readonly int BorderOffset = 4;
         private int DoorSize;
 
@@ -81,20 +79,12 @@ namespace LoZClone
 
         public void DrawDot(Point startLoc, Point roomSize, Color color)
         {
-            this.lifetime++;
-            if (this.lifetime < BlinkRate)
-            {
-                this.MapSprite.SetData<Color>(new Color[] { color });
-                Rectangle drawLocation = new Rectangle(new Point(startLoc.X + ((int)this.location.X * roomSize.X), startLoc.Y + ((int)this.location.Y * roomSize.Y)), new Point(DotSize));
-                drawLocation.X += (roomSize.X / 2) - (DotSize / 2) + 2;
-                drawLocation.Y += (roomSize.Y / 2) - (DotSize / 2) + 2;
-                LoZGame.Instance.SpriteBatch.Draw(this.MapSprite, drawLocation, this.MapSourceRectangle, color, 0.0f, Vector2.Zero, SpriteEffects.None, DotLayer);
-                // add compass functionality here
-            }
-            if (this.lifetime >= BlinkRate * 2)
-            {
-                this.lifetime = 0;
-            }
+            this.MapSprite.SetData<Color>(new Color[] { color });
+            Rectangle drawLocation = new Rectangle(new Point(startLoc.X + ((int)this.location.X * roomSize.X), startLoc.Y + ((int)this.location.Y * roomSize.Y)), new Point(DotSize));
+            drawLocation.X += (roomSize.X / 2) - (DotSize / 2) + 2;
+            drawLocation.Y += (roomSize.Y / 2) - (DotSize / 2) + 2;
+            LoZGame.Instance.SpriteBatch.Draw(this.MapSprite, drawLocation, this.MapSourceRectangle, color, 0.0f, Vector2.Zero, SpriteEffects.None, DotLayer);
+            // add compass functionality here
         }
 
         private void DrawDoors(Rectangle drawLocation)
