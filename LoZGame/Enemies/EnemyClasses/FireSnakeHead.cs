@@ -25,18 +25,13 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
+            this.IsDead = false;
             this.Damage = GameData.Instance.EnemyDamageConstants.FireSnakeDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.segmentID = GameData.Instance.EnemyMiscConstants.FireSnakeLength;
             this.HasChild = true;
-        }
-
-        public override void Stun(int stunTime)
-        {
-            base.Stun(stunTime);
-            this.child.Stun(stunTime);
         }
 
         public override void TakeDamage(int damageAmount)

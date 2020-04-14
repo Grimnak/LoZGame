@@ -33,7 +33,7 @@
             if (ex)
             {
                 this.exists = ex;
-                this.border = ns; // ns = LEVEL-1 || LEVEL-2
+                this.border = ns; // ns = LEVEL-1 || LEVEL-2 || LEVEL-3
                 this.doors = new List<Door>();
                 this.blocks = new List<IBlock>();
                 this.enemies = new List<IEnemy>();

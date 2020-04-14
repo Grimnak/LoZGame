@@ -11,6 +11,7 @@
         public DeadKeeseState(IEnemy enemy)
         {
             this.Enemy = enemy;
+            this.Enemy.IsDead = true;
             this.Sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.Enemy.CurrentState = this;
             this.Enemy.Physics.Bounds = new Rectangle(Enemy.Physics.Bounds.Location, Point.Zero);

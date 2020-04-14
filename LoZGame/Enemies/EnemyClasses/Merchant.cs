@@ -14,6 +14,7 @@
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.Expired = false;
+            this.IsDead = false;
             this.Damage = GameData.Instance.EnemyDamageConstants.MerchantDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.MerchantSpeed;

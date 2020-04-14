@@ -24,7 +24,7 @@ namespace LoZClone
 
         public void Add(IEnemy enemy)
         {
-            if (!enemy.Expired)
+            if (!enemy.IsDead)
             {
                 enemy.CurrentState.Spawn();
                 enemyList.Add(enemyID, enemy);

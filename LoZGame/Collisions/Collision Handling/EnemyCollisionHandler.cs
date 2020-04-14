@@ -42,6 +42,13 @@
                     projectile.IsExpired = true;
                 }
             }
+            else if (this.enemy is FireSnakeHead || this.enemy is FireSnakeSegment)
+            {
+                if (!(projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BombProjectile))
+                {
+                    this.enemy.TakeDamage(projectile.Damage);
+                }
+            }
             else if (this.enemy.CurrentState is AttackingWallMasterState)
             {
                 // do nothing
