@@ -15,7 +15,7 @@
             SoundFactory.Instance.PlayTitleSong();
             this.sprite = ScreenSpriteFactory.Instance.TitleScreen();
             this.enter = ScreenSpriteFactory.Instance.PressEnter();
-            this.sprite.FrameDelay = 10;
+            this.sprite.FrameDelay = GameData.Instance.GameStateDataConstants.TitleScreenFrameDelay;
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
 
@@ -23,8 +23,8 @@
             LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
 
             LoZGame.Instance.Link = new Link(new Vector2(
-                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                    (float)(BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 6))));
+                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + GameData.Instance.GameStateDataConstants.HorizontalHalfDungeon),
+                    (float)(BlockSpriteFactory.Instance.TopOffset + GameData.Instance.GameStateDataConstants.VerticalHalfDungeon)));
 
             LoZGame.Instance.Players.Add(LoZGame.Instance.Link);
 
@@ -118,7 +118,7 @@
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             this.sprite.Draw(new Vector2(0, 0), this.spriteTint, 1.0f);
             if (this.sprite.CurrentFrame > 3)
-                this.enter.Draw(new Vector2(284, LoZGame.Instance.InventoryOffset + 300), this.spriteTint, 1.0f);
+                this.enter.Draw(new Vector2(GameData.Instance.GameStateDataConstants.TitleDrawX, GameData.Instance.GameStateDataConstants.TitleDrawY), this.spriteTint, 1.0f);
             // LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "TITLE SCREEN - PRESS ENTER " + this.sprite.CurrentFrame, new Vector2(100, 100), Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
             LoZGame.Instance.SpriteBatch.End();
         }

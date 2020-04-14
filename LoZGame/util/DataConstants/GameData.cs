@@ -26,6 +26,8 @@
 
         public EnemyStateWeights EnemyStateWeights { get; }
 
+        public GameStateDataConstants GameStateDataConstants { get; }
+
         public PhysicsConstants PhysicsConstants { get; }
     }
 }

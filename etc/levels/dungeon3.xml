@@ -78,7 +78,6 @@
     </room>
     <room exists="False" idx="4">
     </room>
-    </room>
   </drow>
   <drow idx="1">
     <room exists="False" idx="0">
@@ -942,34 +941,34 @@
       <rrow idx="0">
       </rrow>
       <rrow idx="1">
-        <tile type="block" idx="1">orange_statue_right3</tile>
-        <tile type="block" idx="4">orange_statue_right3</tile>
-        <tile type="block" idx="7">orange_statue_left3</tile>
-        <tile type="block" idx="10">orange_statue_left3</tile>
+        <tile type="block" idx="1">red_statue_right3</tile>
+        <tile type="block" idx="4">red_statue_right3</tile>
+        <tile type="block" idx="7">red_statue_left3</tile>
+        <tile type="block" idx="10">red_statue_left3</tile>
       </rrow>
       <rrow idx="2">
       </rrow>
       <rrow idx="3">
-        <tile type="block" idx="1">orange_statue_right3</tile>
-        <tile type="block" idx="4">orange_statue_right3</tile>
-        <tile type="block" idx="7">orange_statue_left3</tile>
-        <tile type="block" idx="10">orange_statue_left3</tile>
+        <tile type="block" idx="1">red_statue_right3</tile>
+        <tile type="block" idx="4">red_statue_right3</tile>
+        <tile type="block" idx="7">red_statue_left3</tile>
+        <tile type="block" idx="10">red_statue_left3</tile>
       </rrow>
       <rrow idx="4">
         <tile type="walkable" idx="5">spotted_tile3</tile>
         <tile type="walkable" idx="6">spotted_tile3</tile>
       </rrow>
       <rrow idx="5">
-        <tile type="block" idx="1">orange_statue_right3</tile>
+        <tile type="block" idx="1">red_statue_right3</tile>
         <tile type="walkable" idx="3">spotted_tile3</tile>
         <tile type="walkable" idx="4">spotted_tile3</tile>
-        <tile type="block" idx="4">orange_statue_right3</tile>
+        <tile type="block" idx="4">red_statue_right3</tile>
         <tile type="walkable" idx="5">spotted_tile3</tile>
         <tile type="walkable" idx="6">spotted_tile3</tile>
         <tile type="walkable" idx="7">spotted_tile3</tile>
-        <tile type="block" idx="7">orange_statue_left3</tile>
+        <tile type="block" idx="7">red_statue_left3</tile>
         <tile type="walkable" idx="8">spotted_tile3</tile>
-        <tile type="block" idx="10">orange_statue_left3</tile>
+        <tile type="block" idx="10">red_statue_left3</tile>
       </rrow>
       <rrow idx="6">
         <tile type="walkable" idx="3">spotted_tile3</tile>
@@ -981,7 +980,6 @@
       </rrow>
     </room>
     <room exists="False" idx="4">
-    </room>
     </room>
   </drow>
 </dungeon>

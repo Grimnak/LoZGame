@@ -11,7 +11,7 @@
         public CloseInventoryState()
         {
             this.lockout = 0;
-            this.transitionSpeed = 5;
+            this.transitionSpeed = GameData.Instance.GameStateDataConstants.CloseInventoryTransitionSpeed;
         }
 
         /// <inheritdoc></inheritdoc>

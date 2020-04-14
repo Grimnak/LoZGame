@@ -7,6 +7,9 @@
 
     public class MiniMap
     {
+        private const int BlinkRate = 30;
+        private int lifetime;
+
         private List<MiniMapRoom> dungeonLayout;
         private Dungeon dungeon;
 
@@ -31,19 +34,33 @@
             this.mapSize = new Vector2(365, 195);
             this.miniMapSize = new Vector2(208, 104);
             this.dungeon = dungeon;
+            this.lifetime = 0;
         }
 
         public void Draw(Vector2 InventoryMapLoc, Vector2 MiniMapLoc)
         {
+            this.lifetime++;
             for (int i = 0; i < dungeonLayout.Count; i++)
             {
                 this.dungeonLayout[i].DrawInventory(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), this.inventoryRoomSize.ToPoint(), Color.Black);
                 this.dungeonLayout[i].DrawMiniMap(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), this.miniMapRoomSize.ToPoint(), dungeon.MapColor);
-                if (this.dungeonLayout[i].Location == new Point(this.dungeon.CurrentRoomX, this.dungeon.CurrentRoomY))
+                if (this.lifetime > BlinkRate)
                 {
-                    this.dungeonLayout[i].DrawDot(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), this.inventoryRoomSize.ToPoint(), Color.Yellow);
-                    this.dungeonLayout[i].DrawDot(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), this.miniMapRoomSize.ToPoint(), Color.LightYellow);
+                    if (this.dungeonLayout[i].Location == this.dungeon.DungeonBossLocation && this.dungeon.Player.Inventory.HasCompass)
+                    {
+                        this.dungeonLayout[i].DrawDot(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), this.inventoryRoomSize.ToPoint(), Color.Red);
+                        this.dungeonLayout[i].DrawDot(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), this.miniMapRoomSize.ToPoint(), Color.Red);
+                    }
+                    if (this.dungeonLayout[i].Location == new Point(this.dungeon.CurrentRoomX, this.dungeon.CurrentRoomY))
+                    {
+                        this.dungeonLayout[i].DrawDot(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), this.inventoryRoomSize.ToPoint(), Color.Yellow);
+                        this.dungeonLayout[i].DrawDot(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), this.miniMapRoomSize.ToPoint(), Color.LightYellow);
+                    }
                 }
+            }
+            if (this.lifetime > BlinkRate * 2)
+            {
+                this.lifetime = 0;
             }
         }
 

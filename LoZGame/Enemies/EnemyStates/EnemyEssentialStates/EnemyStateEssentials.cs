@@ -32,6 +32,10 @@
             return new Vector2(newX, newY);
         }
 
+        public virtual void Spawn()
+        {
+        }
+
         public virtual void RandomDirectionChange()
         {
             this.DirectionChange = LoZGame.Instance.Random.Next(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);

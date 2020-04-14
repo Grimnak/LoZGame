@@ -19,6 +19,9 @@
         private string currentDungeonFile;
         private int dungeonNumber;
         private MiniMap miniMap;
+        private Point dungeonBossLoc;
+
+        public Point DungeonBossLocation => dungeonBossLoc;
 
         public MiniMap MiniMap => miniMap;
 
@@ -48,6 +51,7 @@
                     this.maxX = 6;
                     this.maxY = 6;
                     this.mapColor = Color.CornflowerBlue;
+                    this.dungeonBossLoc = new Point(4, 1);
                     break;
                 case 2:
                     LoZGame.Instance.DungeonTint = new Color(190, 130, 255);
@@ -56,8 +60,16 @@
                     this.maxX = 4;
                     this.maxY = 8;
                     this.mapColor = Color.DarkBlue;
+                    this.dungeonBossLoc = new Point(2, 0);
                     break;
-                // more cases here for more dungeons
+                case 3:
+                    LoZGame.Instance.DungeonTint = Color.Yellow;
+                    this.currentX = 3;
+                    this.currentY = 5;
+                    this.maxX = 5;
+                    this.maxY = 6;
+                    this.mapColor = Color.Green;
+                    break;
                 default:
                     break;
             }
