@@ -20,20 +20,20 @@
             bool movable = true;
             if (!(player.State is GrabbedState) && this.block is MovableTile)
             {
-                foreach (string direction in this.block.InvalidDirections ?? Enumerable.Empty<string>())
+                foreach (MovableTile.InvalidDirection invalid in this.block.InvalidDirections)
                 {
-                    switch (direction)
+                    switch (invalid)
                     {
-                        case "N":
+                        case MovableTile.InvalidDirection.North:
                             movable = !(collisionSide == CollisionDetection.CollisionSide.Bottom);
                             break;
-                        case "S":
+                        case MovableTile.InvalidDirection.South:
                             movable = !(collisionSide == CollisionDetection.CollisionSide.Top);
                             break;
-                        case "E":
+                        case MovableTile.InvalidDirection.East:
                             movable = !(collisionSide == CollisionDetection.CollisionSide.Right);
                             break;
-                        case "W":
+                        case MovableTile.InvalidDirection.West:
                             movable = !(collisionSide == CollisionDetection.CollisionSide.Left);
                             break;
                     }

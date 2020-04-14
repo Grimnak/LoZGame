@@ -16,7 +16,7 @@
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Vector2 originalLocation;
-        private string[] invalidDirections;
+        private List<InvalidDirection> invalidDirections;
         private bool moved;
 
         private Rectangle bounds;
@@ -27,14 +27,19 @@
             set { this.Physics.Bounds = value; }
         }
 
+        public enum InvalidDirection
+        {
+            North,
+            South,
+            East,
+            West
+        };
+
         private BlockCollisionHandler blockCollisionHandler;
 
         public Physics Physics { get; set; }
 
-        public string[] InvalidDirections
-        {
-            get { return this.invalidDirections; }
-        }
+        public List<InvalidDirection> InvalidDirections => invalidDirections;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MovableTile"/> class.
@@ -45,13 +50,31 @@
         public MovableTile(Vector2 location, string name, string direction)
         {
             this.originalLocation = location;
-            this.invalidDirections = !string.IsNullOrEmpty(direction) ? direction.Split(',') : null;
+            string[] invalidDirectionStrings = !string.IsNullOrEmpty(direction) ? direction.Split(',') : null;
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location);
             this.sprite = this.CreateCorrectSprite(name); 
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
             this.Physics.SetDepth();
             this.moved = false;
+            foreach (string invalid in invalidDirectionStrings)
+            {
+                switch (invalid)
+                {
+                    case "N":
+                        InvalidDirections.Add(InvalidDirection.North);
+                        break;
+                    case "S":
+                        InvalidDirections.Add(InvalidDirection.South);
+                        break;
+                    case "E":
+                        InvalidDirections.Add(InvalidDirection.East);
+                        break;
+                    case "W":
+                        InvalidDirections.Add(InvalidDirection.West);
+                        break;
+                }
+            }
         }
 
         /// <inheritdoc/>
