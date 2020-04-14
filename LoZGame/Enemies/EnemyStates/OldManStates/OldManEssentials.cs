@@ -48,6 +48,11 @@
             this.Enemy.CurrentState = new OldManIdleState(this.Enemy);
         }
 
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnOldManState(this.Enemy);
+        }
+
         public void Die()
         {
         }

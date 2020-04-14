@@ -57,6 +57,11 @@
             this.Enemy.CurrentState = new DeadRopeState(this.Enemy);
         }
 
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnRopeState(this.Enemy);
+        }
+
         public virtual void Stun(int stunTime)
         {
             this.Enemy.CurrentState = new StunnedRopeState(this.Enemy, this, stunTime);
@@ -66,7 +71,7 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(2);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.RopeFavorCardinalValue);
             }
             if (!(this.Enemy.CurrentState is AttackingRopeState))
             {

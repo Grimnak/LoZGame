@@ -1652,7 +1652,7 @@
 /processorParam:TextureFormat=Color
 /build:level-2.png
 
-#begin level-2.png
+#begin level-3.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1662,7 +1662,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:level-2.png
+/build:level-3.png
 
 #begin LifePotion.png
 /importer:TextureImporter

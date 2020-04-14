@@ -54,6 +54,11 @@
         {
         }
 
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnGelState(this.Enemy);
+        }
+
         public void Die()
         {
             this.Enemy.CurrentState = new DeadGelState(this.Enemy);
@@ -89,7 +94,7 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(3);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.GelFavorCardinalValue);
             }
             this.DecideToMove();
             if (this.moving)

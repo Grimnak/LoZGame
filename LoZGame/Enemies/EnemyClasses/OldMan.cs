@@ -21,7 +21,7 @@
             this.FlameTwoLoc = new Vector2(location.X + 160, location.Y + 20);
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.OldManStateList);
-            this.CurrentState = new OldManIdleState(this);
+            this.CurrentState = new SpawnOldManState(this);
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.EntityManager = LoZGame.Instance.GameObjects.Entities;
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));

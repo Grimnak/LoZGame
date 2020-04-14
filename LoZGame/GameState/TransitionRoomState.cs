@@ -14,7 +14,7 @@
         {
             this.direction = direction;
             this.lockout = 0;
-            this.transitionSpeed = 8;
+            this.transitionSpeed = GameData.Instance.GameStateDataConstants.TransitionRoomStateTransitionSpeed;
             this.sprite = CreateCorrectLevelSprite();
         }
 
@@ -140,6 +140,8 @@
                     return ScreenSpriteFactory.Instance.CreateLevelOneMaster();
                 case 2:
                     return ScreenSpriteFactory.Instance.CreateLevelTwoMaster();
+                case 3:
+                    return ScreenSpriteFactory.Instance.CreateLevelThreeMaster();
                 default:
                     return ScreenSpriteFactory.Instance.CreateLevelOneMaster();
             }

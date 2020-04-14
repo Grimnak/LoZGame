@@ -4,16 +4,14 @@
     using System.Collections.Generic;
     using System.Threading;
     using Microsoft.Xna.Framework;
-    using Microsoft.Xna.Framework.Audio;
     using Microsoft.Xna.Framework.Graphics;
 
     public class LoZGame : Game
     {
         public static readonly bool DebugMode = false; // show collision bounding boxes
         public static readonly bool Cheats = true; // infinite life and item uses
-        public static readonly bool Music = true; // Title screen and dungeon music (not SFX)
-        
-        public static readonly int StartDungeon = 2;
+        public static readonly bool Music = false; // Title screen and dungeon music (not SFX)
+        public static readonly int StartDungeon = 3;
         private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;
         private readonly int screenWidth;
@@ -95,12 +93,10 @@
 
         private LoZGame()
         {
-            this.graphics = new GraphicsDeviceManager(this)
-            {
-                PreferredBackBufferWidth = 800,
-                PreferredBackBufferHeight = 654,
-                GraphicsProfile = GraphicsProfile.HiDef
-            };
+            this.graphics = new GraphicsDeviceManager(this);
+            this.graphics.PreferredBackBufferWidth = 800;
+            this.graphics.PreferredBackBufferHeight = 654;
+            this.graphics.GraphicsProfile = GraphicsProfile.HiDef;
             this.graphics.ApplyChanges();
 
             this.screenWidth = 800;
@@ -140,9 +136,10 @@
 
             this.font = Content.Load<SpriteFont>("Text");
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+            this.GameObjects.Enemies.Add(new FireSnakeHead(new Vector2(200, 400)));
             this.StartGame();
         }
-        
+
         private void StartGame()
         {
             this.gameState = new TitleScreenState();
@@ -185,8 +182,8 @@
             if (Cheats)
             {
                 this.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-                this.spriteBatch.DrawString(font, "CHEATS ON", new Vector2(0, LoZGame.Instance.InventoryOffset), Color.Black);
-                this.spriteBatch.DrawString(font, "CHEATS ON", new Vector2(3, LoZGame.Instance.InventoryOffset + 3), Color.DarkRed);
+                this.spriteBatch.DrawString(font, "CHEATS ON", new Vector2(0,LoZGame.Instance.InventoryOffset), Color.Black);
+                this.spriteBatch.DrawString(font, "CHEATS ON", new Vector2(3, LoZGame.Instance.InventoryOffset+3), Color.DarkRed);
                 this.spriteBatch.End();
             }
             base.Draw(gameTime);

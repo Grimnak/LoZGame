@@ -21,7 +21,7 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.GelSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.CurrentState = new IdleGelState(this);
+            this.CurrentState = new SpawnGelState(this);
         }
 
         public override void Stun(int stunTime)

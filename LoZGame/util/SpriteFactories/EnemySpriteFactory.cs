@@ -478,7 +478,7 @@
         }
 
         // Enemy Spawn Sprites
-        public ISprite EnemySpawn()
+        public ISprite CreateEnemySpawn()
         {
             return new ObjectSprite(this.spawnEnemy, this.spawnEnemyData);
         }

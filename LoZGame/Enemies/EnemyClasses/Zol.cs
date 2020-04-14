@@ -14,7 +14,7 @@
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ZolHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.ZolMass;
-            this.CurrentState = new LeftMovingZolState(this);
+            this.CurrentState = new SpawnZolState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.ShouldMove = true;

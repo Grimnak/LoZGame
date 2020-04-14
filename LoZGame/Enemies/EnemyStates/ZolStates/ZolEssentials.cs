@@ -68,6 +68,11 @@
             this.Die();
         }
 
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnZolState(this.Enemy);
+        }
+
         public void RandomMovementTimes()
         {
             this.movementTime = LoZGame.Instance.Random.Next(minMovementTime, maxMovementTime);

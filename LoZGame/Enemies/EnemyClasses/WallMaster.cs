@@ -13,7 +13,7 @@
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.WallMasterHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.WallMasterMass;
-            this.CurrentState = new LeftMovingWallMasterState(this);
+            this.CurrentState = new SpawnWallMasterState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;

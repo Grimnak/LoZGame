@@ -59,6 +59,11 @@
             this.Enemy.CurrentState = new DeadKeeseState(this.Enemy);
         }
 
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnKeeseState(this.Enemy);
+        }
+
         public void Stun(int stunTime)
         {
             this.Enemy.TakeDamage(GameData.Instance.EnemyHealthConstants.KeeseHealth);
@@ -68,8 +73,8 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(3);
-                FavorPlayerDiagonal(3);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.KeeseFavorCardinalValue);
+                FavorPlayerDiagonal(GameData.Instance.EnemyMiscConstants.KeeseFavorDiagonalValue);
             }
             base.Update();
             UpdateMoveSpeed();

@@ -77,6 +77,10 @@
             this.sprite.Draw(this.spikeCross.Physics.Location, this.spikeCross.CurrentTint, this.spikeCross.Physics.Depth);
         }
 
+        public void Spawn()
+        {
+        }
+
         private void retreatCheck()
         {
             if (!spikeCross.Retreating)

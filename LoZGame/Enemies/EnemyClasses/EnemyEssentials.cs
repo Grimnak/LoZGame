@@ -71,8 +71,7 @@
                     SoundFactory.Instance.PlayEnemyDie();
                 }
                 this.CurrentState.Die();
-                LoZGame.Instance.Drops.DropKey();
-                LoZGame.Instance.Drops.DropBoomerang();
+                // LoZGame.Instance.Drops.DropItemsEmptyRoom();
             }
         }
 
@@ -96,7 +95,7 @@
         public virtual void Update()
         {
             this.HandleDamage();
-            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.isDeathState())
+            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.isDeathState() || this.isSpawnState())
             {
                 this.CurrentState.Update();
                 this.Physics.Move();
@@ -145,6 +144,20 @@
                 this.CurrentState is DeadStalfosState ||
                 this.CurrentState is DeadWallMasterState ||
                 this.CurrentState is DeadZolState;
+        }
+
+        private bool isSpawnState()
+        {
+            return this.CurrentState is SpawnDodongoState ||
+                this.CurrentState is SpawnDragonState ||
+                this.CurrentState is SpawnFireSnakeState ||
+                this.CurrentState is SpawnGelState ||
+                this.CurrentState is SpawnGoriyaState ||
+                this.CurrentState is SpawnKeeseState ||
+                this.CurrentState is SpawnRopeState ||
+                this.CurrentState is SpawnStalfosState ||
+                this.CurrentState is SpawnWallMasterState ||
+                this.CurrentState is SpawnZolState;
         }
     }
 }

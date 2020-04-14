@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    public partial class DodongoEssentals : EnemyStateEssentials, IEnemyState
+    public partial class DodongoEssentials : EnemyStateEssentials, IEnemyState
     {
         public void MoveLeft()
         {
@@ -51,6 +51,11 @@
         {
         }
 
+        public void Spawn()
+        {
+            this.Enemy.CurrentState = new SpawnDodongoState(this.Enemy);
+        }
+
         public void Die()
         {
             this.Enemy.CurrentState = new DeadDodongoState(this.Enemy);
@@ -65,7 +70,7 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(5);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.DodongoFavorCardinalValue);
             }
             if (!(this.Enemy.CurrentState is AttackingDodongoState))
             {

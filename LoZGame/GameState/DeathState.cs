@@ -6,13 +6,15 @@
     public class DeathState : IGameState
     {
         private int deathTime;
-        private static int deathTimeMax = 85;
-        private static int gameOverTime = 500;
+        private int deathTimeMax;
+        private int gameOverTime;
         private ISprite sprite;
 
         public DeathState()
         {
             this.deathTime = 0;
+            this.deathTimeMax = GameData.Instance.GameStateDataConstants.DeathTimeMax;
+            this.gameOverTime = GameData.Instance.GameStateDataConstants.GameOverTime;
             this.sprite = ScreenSpriteFactory.Instance.GameOverScreen();
         }
 
