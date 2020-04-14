@@ -135,7 +135,6 @@
     <Compile Include="Enemies\EnemyStates\OldManStates\SpawnOldManState.cs" />
     <Compile Include="Enemies\EnemyStates\RopeStates\RopeEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\RopeStates\SpawnRopeState.cs" />
-    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\SpawnSpikeCrossState.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\SpawnStalfosState.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\StalfosEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\SpawnWallMasterState.cs" />
