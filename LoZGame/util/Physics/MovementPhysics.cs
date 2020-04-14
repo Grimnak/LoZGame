@@ -13,7 +13,7 @@
         /// </summary>
         public void Move()
         {
-            if (this.KnockbackVelocity.Length() == 0)
+            if (this.KnockbackVelocity.Length() == GameData.Instance.PhysicsConstants.ZeroLength)
             {
                 this.boundsLocation += this.MovementVelocity;
                 this.bounds = new Rectangle(this.boundsLocation.ToPoint(), this.bounds.Size);
@@ -35,7 +35,7 @@
         /// <returns>momentum of the entity.</returns>
         public float GetMomentum()
         {
-            float momentum = 2 * MovementVelocity.Length() * Mass;
+            float momentum = GameData.Instance.PhysicsConstants.MomentumMultiplier * MovementVelocity.Length() * Mass;
             return momentum;
         }
     }

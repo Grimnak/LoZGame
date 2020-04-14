@@ -25,5 +25,7 @@
         public EnemyMiscConstants EnemyMiscConstants { get; }
 
         public EnemyStateWeights EnemyStateWeights { get; }
+
+        public PhysicsConstants PhysicsConstants { get; }
     }
 }
