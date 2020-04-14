@@ -50,7 +50,7 @@
 
         private bool hasClock;
         private int clockLockout;
-        public static readonly int ClockLockoutMax = 600;
+        public static readonly int ClockLockoutMax = LoZGame.Instance.UpdateSpeed * 10;
 
         public InventoryManager(IPlayer player)
         {
@@ -198,6 +198,5 @@
         public bool HasMap { get { return this.hasMap; } set { this.hasMap = value; } }
 
         public bool HasCompass { get { return this.hasCompass; } set { this.hasCompass = value; } }
-
     }
 }
