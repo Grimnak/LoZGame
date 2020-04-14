@@ -19,7 +19,6 @@
             this.SetLocation();
         }
 
-        //
         private void UpdateKnockback()
         {
             if (KnockbackVelocity.Length() > GameData.Instance.PhysicsConstants.ZeroVelocity)
