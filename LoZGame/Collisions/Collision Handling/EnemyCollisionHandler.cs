@@ -42,6 +42,10 @@
                     projectile.IsExpired = true;
                 }
             }
+            else if (this.enemy.CurrentState is AttackingWallMasterState)
+            {
+                // do nothing
+            }
             else if (!(projectile is BombProjectile))
             {
                 if (enemy.DamageTimer <= 0)

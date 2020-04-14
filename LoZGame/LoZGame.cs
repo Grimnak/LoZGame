@@ -139,7 +139,7 @@
             this.GameObjects.Enemies.Add(new FireSnakeHead(new Vector2(200, 400)));
             this.StartGame();
         }
-        
+
         private void StartGame()
         {
             this.gameState = new TitleScreenState();
