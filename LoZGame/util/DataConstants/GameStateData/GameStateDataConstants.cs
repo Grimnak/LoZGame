@@ -15,7 +15,7 @@
 
         private const int TransitionRoomStTranSpeed = 8;
 
-        private const int WinGameStMaxDungeons = 2;
+        private const int WinGameStMaxDungeons = 3;
         private const int WinGameStMaxLO = 440;
         private const int WinStSpriteWidth = 236;
         private const int WinStSpriteHeight = 160;
@@ -42,13 +42,12 @@
 
         public int TransitionRoomStateTransitionSpeed => TransitionRoomStTranSpeed;
 
-        public int WinStateMaxDungeons => WinStateMaxDungeons;
+        public int WinStateMaxDungeons => WinGameStMaxDungeons;
 
-        public int WinStateMaxLockout => WinStateMaxLockout;
+        public int WinStateMaxLockout => WinGameStMaxLO;
 
-        public int WinStateSpriteWidth => WinStateSpriteWidth;
+        public int WinStateSpriteWidth => WinStSpriteWidth;
 
-        public int WinStateSpriteHeight => WinStateSpriteHeight;
-
+        public int WinStateSpriteHeight => WinStSpriteHeight;
     }
 }
