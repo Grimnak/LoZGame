@@ -48,8 +48,8 @@
         public void DrawHearts()
         {
             Vector2 firstHeartPosition = this.inventoryBackgroundPosition + heartOffset;
-            int heartCount = LoZGame.Instance.Link.Health.CurrentHealth / 4;
-            int partialCount = LoZGame.Instance.Link.Health.CurrentHealth % 4;
+            int heartCount = LoZGame.Instance.Link.Health.CurrentHealth / GameData.Instance.InventoryConstants.HealthPerHeart;
+            int partialCount = LoZGame.Instance.Link.Health.CurrentHealth % GameData.Instance.InventoryConstants.HealthPerHeart;
             int rowCounter = 0;
             int columnCounter = 0;
 
@@ -60,7 +60,7 @@
 
                 heartSlot.Draw(heartPosition, LoZGame.Instance.DefaultTint, 1.0f);
                 columnCounter++;
-                if (columnCounter >= 8)
+                if (columnCounter >= GameData.Instance.InventoryConstants.HeartColumns)
                 {
                     columnCounter = 0;
                     rowCounter++;
@@ -74,14 +74,14 @@
 
                 heartSlot.Draw(heartPosition, LoZGame.Instance.DefaultTint, 1.0f);
                 columnCounter++;
-                if (columnCounter >= 8)
+                if (columnCounter >= GameData.Instance.InventoryConstants.HeartColumns)
                 {
                     columnCounter = 0;
                     rowCounter++;
                 }
             }
 
-            int missingCount = (LoZGame.Instance.Link.Health.MaxHealth - LoZGame.Instance.Link.Health.CurrentHealth) / 4;
+            int missingCount = (LoZGame.Instance.Link.Health.MaxHealth - LoZGame.Instance.Link.Health.CurrentHealth) / GameData.Instance.InventoryConstants.HealthPerHeart;
             for (int i = missingCount; i > 0; i--)
             {
                 ISprite heartSlot = CreateEmptyHeartSprite();
@@ -89,7 +89,7 @@
 
                 heartSlot.Draw(heartPosition, LoZGame.Instance.DefaultTint, 1.0f);
                 columnCounter++;
-                if (columnCounter >= 8)
+                if (columnCounter >= GameData.Instance.InventoryConstants.HeartColumns)
                 {
                     columnCounter = 0;
                     rowCounter++;
@@ -198,11 +198,11 @@
             int rowCounter = 0;
             int columnCounter = 0;
 
-            for (int position = 0; position < 8; position++)
+            for (int position = 0; position < GameData.Instance.InventoryConstants.InventorySelectionItems; position++)
             {
                 ISprite selectionItem = CreateBombSprite();
                 Vector2 itemPosition = new Vector2(firstItemPosition.X + (InventorySpriteFactory.Instance.SelectionBoxSize.X * columnCounter), firstItemPosition.Y + (InventorySpriteFactory.Instance.SelectionBoxSize.Y * rowCounter));
-                Vector2 itemSelectorPosition = new Vector2((firstItemPosition.X - 5) + (InventorySpriteFactory.Instance.SelectionBoxSize.X * columnCounter), (firstItemPosition.Y - 5) + (InventorySpriteFactory.Instance.SelectionBoxSize.Y * rowCounter));
+                Vector2 itemSelectorPosition = new Vector2((firstItemPosition.X - GameData.Instance.InventoryConstants.ItemSelectorOffset) + (InventorySpriteFactory.Instance.SelectionBoxSize.X * columnCounter), (firstItemPosition.Y - GameData.Instance.InventoryConstants.ItemSelectorOffset) + (InventorySpriteFactory.Instance.SelectionBoxSize.Y * rowCounter));
 
                 if (LoZGame.Instance.Players[0].Inventory.SelectionX == columnCounter && LoZGame.Instance.Players[0].Inventory.SelectionY == rowCounter)
                 {
@@ -212,7 +212,7 @@
                 this.DetermineItemToDraw(selectionItem, itemPosition, position);
 
                 columnCounter++;
-                if (columnCounter >= 4)
+                if (columnCounter >= GameData.Instance.InventoryConstants.InventoryColumns)
                 {
                     columnCounter = 0;
                     rowCounter++;
@@ -336,7 +336,6 @@
                         {
                             LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.BackgroundHole, new Rectangle(0, LoZGame.Instance.InventoryOffset, LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
                         }
-
                     }
                     break;
                 case 2:

@@ -16,10 +16,6 @@
             Potion
         }
 
-        private static readonly int maxBombs = 8;
-        private static readonly int maxSelectionX = 4;
-        private static readonly int maxSelectionY = 2;
-
         private IPlayer player;
 
         private ItemType selectedItem;
@@ -50,7 +46,6 @@
 
         private bool hasClock;
         private int clockLockout;
-        public static readonly int ClockLockoutMax = 600;
 
         public InventoryManager(IPlayer player)
         {
