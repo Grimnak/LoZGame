@@ -147,11 +147,14 @@
     <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Players\PlayerClasses\LinkHelper.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
+    <Compile Include="Util\DataConstants\CollisionData\CollisionConstants.cs" />
     <Compile Include="Util\DataConstants\GameStateDataConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyHealthConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyDamageConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemySpeedConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyStateWeights.cs" />
+    <Compile Include="Util\DataConstants\InventoryData\InventoryConstants.cs" />
+    <Compile Include="Util\DataConstants\PhysicsData\PhysicsConstants.cs" />
     <Compile Include="Util\Inventory\InventoryComponents.cs" />
     <Compile Include="GameState\DeathState.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyEssentials.cs" />

@@ -22,7 +22,6 @@
         private const string BossTile2 = "boss_tile2";
         private const string Lava2 = "lava2";
 
-
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Rectangle bounds;
@@ -37,7 +36,7 @@
 
         public string Name { get; }
 
-        public string[] InvalidDirections { get { return null; } }
+        public List<MovableTile.InvalidDirection> InvalidDirections { get { return null; } }
 
         private BlockCollisionHandler blockCollisionHandler;
 
