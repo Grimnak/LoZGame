@@ -17,7 +17,7 @@
             {
                 this.player.State = new GrabbedState(player, (WallMaster)enemy);
             }
-            else if (enemy is OldMan || enemy is Merchant)
+            else if (enemy is OldMan || enemy is Merchant || enemy is BlockEnemy)
             {
                 // do nothing
             }

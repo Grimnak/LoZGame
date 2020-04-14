@@ -187,6 +187,9 @@
                 case "FireSnake":
                     this.enemies.Add(new FireSnakeHead(location));
                     break;
+                case "FireBlockEnemy":
+                    this.enemies.Add(new BlockEnemy(location));
+                    break;
                 default:
                     break;
             }

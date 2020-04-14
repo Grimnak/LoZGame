@@ -533,6 +533,10 @@
         <enemy X="9" Y="1">BlueGoriya</enemy>
         <enemy X="3" Y="3">BlueGoriya</enemy>
         <enemy X="10" Y="5">BlueGoriya</enemy>
+        <enemy X="1" Y="0">FireBlockEnemy</enemy>
+        <enemy X="11" Y="0">FireBlockEnemy</enemy>
+        <enemy X="1" Y="6">FireBlockEnemy</enemy>
+        <enemy X="11" Y="6">FireBlockEnemy</enemy>
       </enemies>
 	  <doors>
         <door loc="N">hidden2</door>
