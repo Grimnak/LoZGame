@@ -94,7 +94,7 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(3);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.GelFavorCardinalValue);
             }
             this.DecideToMove();
             if (this.moving)

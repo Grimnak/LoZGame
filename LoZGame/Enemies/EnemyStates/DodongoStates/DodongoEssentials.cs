@@ -70,7 +70,7 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(5);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.DodongoFavorCardinalValue);
             }
             if (!(this.Enemy.CurrentState is AttackingDodongoState))
             {

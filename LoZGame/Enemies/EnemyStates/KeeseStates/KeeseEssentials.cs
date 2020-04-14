@@ -73,8 +73,8 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(3);
-                FavorPlayerDiagonal(3);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.KeeseFavorCardinalValue);
+                FavorPlayerDiagonal(GameData.Instance.EnemyMiscConstants.KeeseFavorDiagonalValue);
             }
             base.Update();
             UpdateMoveSpeed();
