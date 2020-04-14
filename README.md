@@ -1,6 +1,6 @@
 # CSE 3902 - 9:10a Section - Team 3 - Readme
 
-Developer version of Legend of Zelda NES emulator.  This is a functioning version of the first dungeon, featuring room transitions, combat, items, and collision detection and handling.
+Developer version of Legend of Zelda NES emulator.  This build features a polished version of the first two dungeons and an incomplete build of the third dungeon.
 
 ## Authors:
 Eric Henderson.939
@@ -17,29 +17,23 @@ Jeremy Wensink.27
 
 
 ## Controls:
-W, A, S, D, Arrow Keys - Controls the Player and Inventory Select
+### Player Controls:
+Z - Attack Button for Player
 
-Z - Attack buttons for Player
+N - Use Equipped Item for Player
 
-N - Use item button
+I - Open & Close Player Inventory
 
-I - Open Inventory
+Q - Exits the Game
 
-Enter - Selects Item in Inventory
+R - Resets the Game to its Default State
 
-Q - Exits the game
+Mouse - Moves Rooms in the Direction you Click
 
-R - Resets the game to its default state
+### Inventory Controls:
+W, A, S, D, Arrow Keys - Controls Item Selection
 
-Mouse - Moves rooms in the direction you click.
-
-## Debugg Tools
-Access Debug options in the main LoZGame.cs File
-Debugg Mode: Line 11 - If true than bounding boxes are drawn around entities
-Cheat Mode: Line 12 - If true than infinite health and items are granted
-Music : Line 13 - Enables and Disables music
-Start Dungeon : Line 14 - sets the dungeon to start at, values from 1-3 work
-UpdateSpeed: Line 15 - sets the amount of updates to attempt per second, 60 is the default
+Enter - Equips Item in Inventory
 
 ## External Tools:
 Git
@@ -63,10 +57,10 @@ MS Paint
 
     Plan(s) to fix:  Add boomerang capabilities to grab items and potentially make items spawn in-bounds.
 
-
-	Bugs: Dungeon 3 is unfinished but exists
+### Dungeon 3 Incomplete
+    Bugs: Dungeon 3 is unfinished but exists.
 	
-	Plan(s) to fix: finish the dungeon
+    Plan(s) to fix: finish the dungeon
 
 ## Suppressed Warnings:
 There are no suppressed warnings.
