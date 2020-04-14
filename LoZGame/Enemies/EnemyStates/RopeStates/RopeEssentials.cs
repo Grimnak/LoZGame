@@ -57,7 +57,7 @@
             this.Enemy.CurrentState = new DeadRopeState(this.Enemy);
         }
 
-        public void Spawn()
+        public override void Spawn()
         {
             this.Enemy.CurrentState = new SpawnRopeState(this.Enemy);
         }

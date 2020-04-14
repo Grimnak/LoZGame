@@ -54,7 +54,7 @@
         {
         }
 
-        public void Spawn()
+        public override void Spawn()
         {
             this.Enemy.CurrentState = new SpawnGelState(this.Enemy);
         }
@@ -64,9 +64,9 @@
             this.Enemy.CurrentState = new DeadGelState(this.Enemy);
         }
 
-        public void Stun(int stunTime)
+        public virtual void Stun(int stunTime)
         {
-            this.Enemy.TakeDamage(GameData.Instance.EnemyHealthConstants.GelHealth);
+            this.Enemy.TakeDamage(this.Enemy.Health.MaxHealth);
         }
 
         public void RandomMovementTimes()

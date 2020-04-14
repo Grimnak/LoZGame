@@ -66,7 +66,7 @@
             this.Enemy.CurrentState = new DeadGoriyaState(this.Enemy);
         }
 
-        public void Spawn()
+        public override void Spawn()
         {
             this.Enemy.CurrentState = new SpawnGoriyaState(this.Enemy);
         }

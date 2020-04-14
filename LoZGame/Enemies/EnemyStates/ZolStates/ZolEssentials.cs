@@ -65,10 +65,10 @@
 
         public virtual void Stun(int stunTime)
         {
-            this.Die();
+            this.Enemy.TakeDamage(this.Enemy.Health.MaxHealth);
         }
 
-        public void Spawn()
+        public override void Spawn()
         {
             this.Enemy.CurrentState = new SpawnZolState(this.Enemy);
         }
