@@ -21,57 +21,21 @@
                 case North:
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
-
-                      /*  if (this.isLevel1)
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
-                        }
-                        else
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown2();
-                        }*/
                         break;
                 }
                 case East:
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
-
-                       /* if (this.isLevel1)
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
-                        }
-                        else
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft2();
-                        }*/
                         break;
                 }
                 case South:
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
-
-                       /* if (this.isLevel1)
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
-                        }
-                        else
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp2();
-                        }*/
                         break;
                 }
                 case West:
                 {
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
-
-                      /*  if (this.isLevel1)
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
-                        }
-                        else
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight2();
-                        }*/
                         break;
                 }
             }

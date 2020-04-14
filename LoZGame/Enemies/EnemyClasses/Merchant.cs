@@ -27,7 +27,7 @@
 
         public override void Update()
         {
-            this.Physics.Depth = 1 - (1 / this.Physics.Bounds.Bottom);
+            this.Physics.SetDepth();
             this.sprite.Update();
         }
 

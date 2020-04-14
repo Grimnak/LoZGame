@@ -15,67 +15,30 @@
         private readonly Door door;
         private readonly ISprite sprite;
         private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
-        private bool isLevel1;
 
         public SpecialDoorState(Door door)
         {
             this.door = door;
-            this.isLevel1 = this.door.GetKind().Equals(GameData.Instance.RoomConstants.SpecialStr);
             switch (door.GetLoc())
             {
                 case North:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
-
-                        /*   if (this.isLevel1)
-                           {
-                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
-                           }
-                           else
-                           {
-                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown2();
-                           }*/
                         break;
                     }
                 case East:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
-
-                        /*   if (this.isLevel1)
-                           {
-                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
-                           } else
-                           {
-                               this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft2();
-                           }*/
                         break;
                     }
                 case South:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
-
-                        /*  if (this.isLevel1)
-                          {
-                              this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
-                          }
-                          else
-                          {
-                              this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp2();
-                          }*/
                         break;
                     }
                 case West:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight();
-
-                      /*  if (this.isLevel1)
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight();
-                        }
-                        else
-                        {
-                            this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight2();
-                        }*/
                         break;
                     }
             }

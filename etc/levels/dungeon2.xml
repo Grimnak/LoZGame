@@ -627,8 +627,8 @@
       <rrow idx="0">
       </rrow>
       <rrow idx="1">
-        <tile type="block" idx="2">movable_square</tile>
-        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="2">movable_square2</tile>
+        <tile type="block" idx="9">movable_square2</tile>
       </rrow>
       <rrow idx="2">
       </rrow>
@@ -637,8 +637,8 @@
       <rrow idx="4">
       </rrow>
       <rrow idx="5">
-        <tile type="block" idx="2">movable_square</tile>
-        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="2">movable_square2</tile>
+        <tile type="block" idx="9">movable_square2</tile>
       </rrow>
       <rrow idx="6">
       </rrow>

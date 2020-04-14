@@ -53,7 +53,7 @@
             {
                 // do nothing
             }
-            else if (!(projectile is BombProjectile))
+            else if (!(projectile is BombProjectile || projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile))
             {
                 if (enemy.DamageTimer <= 0)
                 {
