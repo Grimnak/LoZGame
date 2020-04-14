@@ -38,7 +38,7 @@
             set { this.Physics.Bounds = value; }
         }
 
-        public string[] InvalidDirections { get { return null; } }
+        public List<MovableTile.InvalidDirection> InvalidDirections { get { return null; } }
 
         private BlockCollisionHandler blockCollisionHandler;
 
