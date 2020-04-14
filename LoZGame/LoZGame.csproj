@@ -352,6 +352,7 @@
     <Compile Include="Util\DataConstants\PlayerData\PlayerConstants.cs" />
     <Compile Include="Util\DataConstants\ProjectileData\ProjectileSpeedConstants.cs" />
     <Compile Include="Util\DataConstants\ProjectileData\ProjectileDamageConstants.cs" />
+    <Compile Include="Util\DataConstants\RoomData\RoomConstants.cs" />
     <Compile Include="Util\DataConstants\GameData.cs" />
     <Compile Include="Util\EntityData.cs" />
     <Compile Include="LoZGame.cs" />
