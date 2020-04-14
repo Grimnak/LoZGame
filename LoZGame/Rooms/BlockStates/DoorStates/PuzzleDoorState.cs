@@ -46,7 +46,6 @@
 
         public void Solve()
         {
-            SoundFactory.Instance.PlaySolved();
             SoundFactory.Instance.PlayDoorUnlock();
             this.solved = true;
         }
