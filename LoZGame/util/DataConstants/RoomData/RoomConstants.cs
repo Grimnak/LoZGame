@@ -16,7 +16,6 @@
         private const string Puzzle = "Puzzle";
         private const string Special = "Special";
 
-
         public float BlockTileDepth => BlockDepth;
 
         public int BlockTileHeightOffset => BlockHeightOffset;

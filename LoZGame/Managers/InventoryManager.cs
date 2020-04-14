@@ -40,6 +40,10 @@
         private bool hasSilverArrow;
         private bool hasRedFlame;
         private bool hasBlueFlame;
+        private int maxBombs;
+        private int maxSelectionX;
+        private int maxSelectionY;
+        private static int clockLockoutMax = GameData.Instance.InventoryConstants.ClockLockoutMaximum;
 
         private bool hasMap;
         private bool hasCompass;
@@ -52,6 +56,9 @@
             this.player = player;
             this.selectionX = 0;
             this.selectionY = 0;
+            this.maxBombs = GameData.Instance.InventoryConstants.MaximumBombs;
+            this.maxSelectionX = GameData.Instance.InventoryConstants.MaximumSelectionX;
+            this.maxSelectionY = GameData.Instance.InventoryConstants.MaximumSelectionY;
 
             this.numBombs = 4;
             this.numKeys = 0;
@@ -193,5 +200,8 @@
         public bool HasMap { get { return this.hasMap; } set { this.hasMap = value; } }
 
         public bool HasCompass { get { return this.hasCompass; } set { this.hasCompass = value; } }
+
+        public static int ClockLockoutMax { get { return clockLockoutMax; } }
+
     }
 }
