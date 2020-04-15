@@ -70,10 +70,10 @@ MS Paint
     
     Plans(s) to fix: Investigate sword location in relation to the player's bounding box and how they are correlated.
     
-### Fire Snakes (Moldorms) Behave Improperly When Hit with Sword:
-    Bug: If the Fire Snake is hit with the actual player sword (not the beam), it will lose many or potentially all body segments at once.
-
-    Plan(s) to fix: Recode Fire Snakes so that each body segment relies only on its relative position to the head (as opposed to both its immediate parent and immediate child).
+### Fire Snake (Moldorm)'s Head can Become Desynced from Body:
+    Bug:  The Fire Snake's head can become desynced with the body when the player enters and leaves the room where they reside.
+    
+    Plan(s) to fix: Investigate how the head are body segments are updating, as the likely issue is one is getting extra time to update while the room is unloading.
     
 ## Suppressed Warnings:
 There are no suppressed warnings.

@@ -48,7 +48,7 @@
             this.Enemy.CurrentState = new OldManIdleState(this.Enemy);
         }
 
-        public void Spawn()
+        public override void Spawn()
         {
             this.Enemy.CurrentState = new SpawnOldManState(this.Enemy);
         }
@@ -57,7 +57,7 @@
         {
         }
 
-        public void Stun(int stunTime)
+        public virtual void Stun(int stunTime)
         {
         }
     }
