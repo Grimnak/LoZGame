@@ -14,7 +14,7 @@
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
             // Only collide with a door if the player wasn't knocked back into it.
-            if (player.Physics.KnockbackVelocity.Length() == 0)
+            if (player.Physics.KnockbackVelocity.Length() == 0 && FullIntersect(player, collisionSide))
             {
                 if ((this.door.State is UnlockedDoorState || this.door.State is BombedDoorState) && (!(player.State is GrabbedState)))
                 {
@@ -113,6 +113,23 @@
                     break;
             }
             return cousin;
+        }
+
+        private bool FullIntersect(IPlayer player, CollisionDetection.CollisionSide collisionSide)
+        {
+            switch (collisionSide)
+            {
+                case CollisionDetection.CollisionSide.Top:
+                    return player.Physics.Bounds.Left >= door.Physics.Bounds.Left && player.Physics.Bounds.Right <= door.Physics.Bounds.Right;
+                case CollisionDetection.CollisionSide.Bottom:
+                    return player.Physics.Bounds.Left >= door.Physics.Bounds.Left && player.Physics.Bounds.Right <= door.Physics.Bounds.Right;
+                case CollisionDetection.CollisionSide.Left:
+                    return player.Physics.Bounds.Top >= door.Physics.Bounds.Top && player.Physics.Bounds.Bottom <= door.Physics.Bounds.Bottom;
+                case CollisionDetection.CollisionSide.Right:
+                    return player.Physics.Bounds.Top >= door.Physics.Bounds.Top && player.Physics.Bounds.Bottom <= door.Physics.Bounds.Bottom;
+                default:
+                    return false;
+            }
         }
     }
 }

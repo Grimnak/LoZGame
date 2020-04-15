@@ -1,23 +1,97 @@
 ﻿namespace LoZClone
 {
+    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     public class TransitionRoomState : IGameState
     {
-        private LevelMasterSprite sprite;
+        private int YTransition = LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset;
+        private int XTransition = LoZGame.Instance.ScreenWidth;
+        private int transitionSpeed = (int)(2 * LoZGame.Instance.UpdateSpeed);
+        private int maxPlayerMovement = 200;
         private Physics.Direction direction;
-        private int transitionSpeed;
-        private int lockout;
-        private Room currentRoom;
-        private Room nextRoom;
+        private float transitionDistance;
+        private Point currentRoomLocation;
+        private Point nextRoomLocation;
+        private Point nextRoomOffset;
+        private Dungeon dungeon;
+        Vector2 MasterMovement;
+        private Room NextRoom;
+        private Vector2 nextRoomBorderOffset;
+        private Vector2 currentRoomBorderOffset;
+        private GameObjectManager oldObjects;
+        private GameObjectManager newObjects;
+        private bool done;
 
         public TransitionRoomState(Physics.Direction direction)
         {
-            this.direction = direction;
-            this.lockout = 0;
-            this.transitionSpeed = GameData.Instance.GameStateDataConstants.TransitionRoomStateTransitionSpeed;
-            this.sprite = CreateCorrectLevelSprite();
+            this.oldObjects = LoZGame.Instance.GameObjects;
+            this.newObjects = new GameObjectManager();
+            this.done = false;
+            this.transitionDistance = 0;
+            this.dungeon = LoZGame.Instance.Dungeon;
+            this.currentRoomLocation = new Point(this.dungeon.CurrentRoomX, this.dungeon.CurrentRoomY);
+            this.currentRoomBorderOffset = Vector2.Zero;
+            switch (direction)
+            {
+                case Physics.Direction.North:
+                    transitionDistance = YTransition;
+                    this.nextRoomLocation = new Point(this.currentRoomLocation.X, this.currentRoomLocation.Y - 1);
+                    this.nextRoomOffset = new Point(0, -YTransition);
+                    break;
+                case Physics.Direction.South:
+                    transitionDistance = YTransition;
+                    this.nextRoomLocation = new Point(this.currentRoomLocation.X, this.currentRoomLocation.Y + 1);
+                    this.nextRoomOffset = new Point(0, YTransition);
+                    break;
+                case Physics.Direction.East:
+                    transitionDistance = XTransition;
+                    this.nextRoomLocation = new Point(this.currentRoomLocation.X + 1, this.currentRoomLocation.Y);
+                    this.nextRoomOffset = new Point(XTransition, 0);
+                    break;
+                case Physics.Direction.West:
+                    transitionDistance = XTransition;
+                    this.nextRoomLocation = new Point(this.currentRoomLocation.X - 1, this.currentRoomLocation.Y);
+                    this.nextRoomOffset = new Point(-XTransition, 0);
+                    break;
+            }
+            this.NextRoom = this.dungeon.GetRoom(nextRoomLocation.Y, nextRoomLocation.X);
+            this.nextRoomBorderOffset = this.nextRoomOffset.ToVector2();
+            if (this.dungeon.GetRoom(this.nextRoomLocation.Y, this.nextRoomLocation.X).Exists)
+            {
+                this.MasterMovement = new Vector2((float)(-1 * nextRoomOffset.X) / transitionSpeed, (float)(-1 * nextRoomOffset.Y) / transitionSpeed);
+                this.oldObjects.Entities.Clear();
+                this.dungeon.LoadNewRoom(newObjects, this.nextRoomLocation, this.nextRoomOffset);
+                foreach (IPlayer player in LoZGame.Instance.Players)
+                {
+                    switch (direction)
+                    {
+                        case Physics.Direction.North:
+                            player.MoveUp();
+                            player.Physics.MovementVelocity = new Vector2(0, -(float)maxPlayerMovement / (transitionSpeed));
+                            break;
+                        case Physics.Direction.South:
+                            player.MoveDown();
+                            player.Physics.MovementVelocity = new Vector2(0, (float)maxPlayerMovement / (transitionSpeed));
+                            break;
+                        case Physics.Direction.East:
+                            player.MoveRight();
+                            player.Physics.MovementVelocity = new Vector2((float)maxPlayerMovement / (transitionSpeed), 0);
+                            break;
+                        case Physics.Direction.West:
+                            player.MoveLeft();
+                            player.Physics.MovementVelocity = new Vector2(-(float)maxPlayerMovement / (transitionSpeed), 0);
+                            break;
+                    }
+                    player.Physics.MovementVelocity += MasterMovement;
+                    this.oldObjects.SetObjectMovement(this.MasterMovement);
+                    this.newObjects.SetObjectMovement(this.MasterMovement);
+                }
+            } else
+            {
+                this.PlayGame();
+            }
         }
 
         /// <inheritdoc></inheritdoc>
@@ -65,87 +139,70 @@
         /// <inheritdoc></inheritdoc>
         public void Update()
         {
-            this.lockout += this.transitionSpeed;
-            switch (this.direction)
+            if (!this.done) 
             {
-                case Physics.Direction.North:
-                    if (this.lockout < LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset)
-                    {
-                        this.sprite.Update(this.direction, this.transitionSpeed);
-                    }
-                    else
-                    {
-                        LoZGame.Instance.Dungeon.MoveUp();
-                        LoZGame.Instance.GameState.PlayGame();
-                    }
-                    break;
-
-                case Physics.Direction.South:
-                    if (this.lockout < LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset)
-                    {
-                        this.sprite.Update(this.direction, this.transitionSpeed);
-                    }
-                    else
-                    {
-                        LoZGame.Instance.Dungeon.MoveDown();
-                        LoZGame.Instance.GameState.PlayGame();
-                    }
-                    break;
-
-                case Physics.Direction.West:
-                    if (this.lockout < LoZGame.Instance.ScreenWidth)
-                    {
-                        this.sprite.Update(this.direction, this.transitionSpeed);
-                    }
-                    else
-                    {
-                        LoZGame.Instance.Dungeon.MoveLeft();
-                        LoZGame.Instance.GameState.PlayGame();
-                    }
-                    break;
-
-                case Physics.Direction.East:
-                    if (this.lockout < LoZGame.Instance.ScreenWidth)
-                    {
-                        this.sprite.Update(this.direction, this.transitionSpeed);
-                    }
-                    else
-                    {
-                        LoZGame.Instance.Dungeon.MoveRight();
-                        LoZGame.Instance.GameState.PlayGame();
-                    }
-                    break;
-
-                default:
-                    break;
+                if (this.MasterMovement.Length() >= transitionDistance)
+                {
+                    this.MasterMovement.Normalize();
+                    this.MasterMovement *= transitionDistance;
+                    this.done = true;
+                } 
+                else
+                {
+                    this.transitionDistance -= Math.Abs(MasterMovement.X + MasterMovement.Y);
+                    Console.WriteLine(transitionDistance);
+                }
+                this.nextRoomBorderOffset += MasterMovement;
+                this.currentRoomBorderOffset += MasterMovement;
+                this.oldObjects.MoveObjects();
+                this.newObjects.MoveObjects();
+                foreach (IPlayer player in LoZGame.Instance.Players)
+                {
+                    player.Physics.Move();
+                }
+            }
+            else
+            {
+                this.dungeon.CurrentRoomX = nextRoomLocation.X;
+                this.dungeon.CurrentRoomY = nextRoomLocation.Y;
+                this.oldObjects.UpdateObjectLocations(nextRoomOffset);
+                this.oldObjects.Clear();
+                LoZGame.Instance.GameObjects.Copy(newObjects);
+                this.dungeon.SpawnEnemies();
+                this.dungeon.MiniMap.Explore();
+                this.PlayGame();
             }
         }
 
         /// <inheritdoc></inheritdoc>
         public void Draw()
         {
+            // Draw Room Backgrounds
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            this.sprite.Draw(LoZGame.Instance.DefaultTint);
+            this.NextRoom.Draw(nextRoomBorderOffset.ToPoint());
+            this.dungeon.CurrentRoom.Draw(currentRoomBorderOffset.ToPoint());
+            LoZGame.Instance.SpriteBatch.End();
+
+            // Draw Game Objects
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+            this.oldObjects.Draw();
+            this.newObjects.Draw();
+            foreach (IPlayer player in LoZGame.Instance.Players)
+            {
+                player.Draw();
+            }
             LoZGame.Instance.SpriteBatch.End();
 
             // Ensure inventory objects draw above the game objects while transitioning.
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             InventoryComponents.Instance.DrawInventoryElements();
             LoZGame.Instance.SpriteBatch.End();
-        }
 
-        private LevelMasterSprite CreateCorrectLevelSprite()
-        {
-            switch (LoZGame.Instance.Dungeon.DungeonNumber)
+            if (LoZGame.DebugMode)
             {
-                case 1:
-                    return ScreenSpriteFactory.Instance.CreateLevelOneMaster();
-                case 2:
-                    return ScreenSpriteFactory.Instance.CreateLevelTwoMaster();
-                case 3:
-                    return ScreenSpriteFactory.Instance.CreateLevelThreeMaster();
-                default:
-                    return ScreenSpriteFactory.Instance.CreateLevelOneMaster();
+                LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+                LoZGame.Instance.Debugger.Draw(newObjects);
+                LoZGame.Instance.SpriteBatch.End();
             }
         }
     }

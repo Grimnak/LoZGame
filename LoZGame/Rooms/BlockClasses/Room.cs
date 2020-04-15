@@ -1,9 +1,11 @@
 ﻿namespace LoZClone
 {
-    using Microsoft.Xna.Framework;
     using System;
+    using System.Runtime.InteropServices;
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
     /*
      * A Room object represents a single dungeon room in-game.
@@ -13,27 +15,33 @@
     public class Room
     {
         private bool exists = false;
+        private bool basement = false;
+        private bool oldman = false;
         private Boomerang droppedBoomerang = null;
         private HeartContainer droppedHeartContainer = null;
         private MagicBoomerang droppedMagicBoomerang = null;
-        private string border = null;
         private string text = null;
         private List<IItem> items = null; // a list for any and all items in a room
         private List<IEnemy> enemies = null; // a list for any and all enemies in a room
         private List<IBlock> blocks = null; // a list for any and all tiles in a room
         private List<Door> doors = null; // a list for any and all doors in a room
+        private ISprite border = null;
 
         /*
          * args:
          * ns => namespace of XML dungeon doc
          * ex => whether the room is null or not
+         * bm => whether the room is a basement or not
+         * om => whether the room is an oldman room or not
          */
-        public Room(string ns, bool ex)
+        public Room(string ns, bool ex, bool bm = false, bool om = false)
         {
             if (ex)
             {
                 this.exists = ex;
-                this.border = ns; // ns = LEVEL-1 || LEVEL-2 || LEVEL-3
+                this.basement = bm;
+                this.oldman = om;
+                //this.border = ns; // ns = LEVEL-1 || LEVEL-2 || LEVEL-3
                 this.doors = new List<Door>();
                 this.blocks = new List<IBlock>();
                 this.enemies = new List<IEnemy>();
@@ -281,11 +289,21 @@
                     {
                         location = this.GridToScreenSpecialVector(float.Parse(x), float.Parse(y));
                     }
-
                     this.blocks.Add(new BlockTile(location, name));
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void SetBounds(IBlock block, string name)
+        {
+            if (name.Contains("statue"))
+            {
+                block.Physics.Bounds = new Rectangle(block.Physics.Bounds.X, block.Physics.Bounds.Y + GameData.Instance.RoomConstants.BlockTileHeightOffset, block.Physics.Bounds.Width, block.Physics.Bounds.Height - GameData.Instance.RoomConstants.BlockTileHeightOffset);
+                block.Physics.BoundsOffset = new Vector2(0, GameData.Instance.RoomConstants.BlockTileHeightOffset);
+                block.Physics.SetDepth();
+                block.Physics.SetLocation();
             }
         }
 
@@ -298,6 +316,26 @@
         {
             Door newDoor = new Door(location, kind);
             this.doors.Add(newDoor); // appending a new Door (Door.cs) to a room object's list of doors
+        }
+
+        /// <summary>
+        /// Draws the correct border for a room
+        /// </summary>
+        /// <param name="locationOffset">the offset from the standard location to draw at. Leave as Vector2.Zero for normal border</param>
+        public void Draw(Point locationOffset)
+        {
+            if (this.basement)
+            {
+                // dont draw a border
+            }
+            else if (this.oldman)
+            {
+                LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.BackgroundHole, new Rectangle(0 + locationOffset.X, LoZGame.Instance.InventoryOffset + locationOffset.Y, LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+            }
+            else
+            {
+                LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0 + locationOffset.X, LoZGame.Instance.InventoryOffset + locationOffset.Y, LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+            }
         }
     }
 }

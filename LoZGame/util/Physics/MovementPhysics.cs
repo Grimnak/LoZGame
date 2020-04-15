@@ -22,6 +22,16 @@
         }
 
         /// <summary>
+        /// Updates the bounds of the entity based on Master movement velocity, then sets the draw location to the new bounds.
+        /// </summary>
+        public void MoveMaster()
+        {
+            this.boundsLocation += this.MasterMovement;
+            this.bounds = new Rectangle(this.boundsLocation.ToPoint(), this.bounds.Size);
+            this.SetLocation();
+        }
+
+        /// <summary>
         /// updates the movement velocity of an entity by the movement accleration of the entity.
         /// </summary>
         public void Accelerate()

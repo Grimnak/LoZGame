@@ -167,5 +167,40 @@
                 LoZGame.Instance.GameObjects.Doors.Add(door);
             }
         }
+
+        public void LoadNewRoom(GameObjectManager manager,  Point location, Point offset)
+        {
+            foreach (IBlock block in this.dungeonLayout[location.Y][location.X].Tiles)
+            {
+                block.Physics.Bounds = new Rectangle(block.Physics.Bounds.Location + offset, block.Physics.Bounds.Size);
+                block.Physics.SetLocation();
+                manager.Blocks.Add(block);
+            }
+
+            foreach (IItem item in this.dungeonLayout[location.Y][location.X].Items)
+            {
+                item.Physics.Bounds = new Rectangle(item.Physics.Bounds.Location + offset, item.Physics.Bounds.Size);
+                item.Physics.SetLocation();
+                manager.Items.Add(item);
+            }
+
+            foreach (Door door in this.dungeonLayout[location.Y][location.X].Doors)
+            {
+                door.Physics.Bounds = new Rectangle(door.Physics.Bounds.Location + offset, door.Physics.Bounds.Size);
+                door.Physics.SetLocation();
+                manager.Doors.Add(door);
+            }
+        }
+
+        public void SpawnEnemies()
+        {
+            foreach (IEnemy enemy in this.dungeonLayout[this.currentY][this.currentX].Enemies)
+            {
+                enemy.Physics.Bounds = new Rectangle(enemy.Physics.Bounds.Location, enemy.Physics.Bounds.Size);
+                enemy.Physics.SetLocation();
+                LoZGame.Instance.GameObjects.Enemies.Add(enemy);
+            }
+
+        }
     }
 }

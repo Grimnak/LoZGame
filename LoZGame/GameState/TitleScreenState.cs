@@ -119,7 +119,6 @@
             this.sprite.Draw(new Vector2(0, 0), this.spriteTint, 1.0f);
             if (this.sprite.CurrentFrame > 3)
                 this.enter.Draw(new Vector2(GameData.Instance.GameStateDataConstants.TitleDrawX, GameData.Instance.GameStateDataConstants.TitleDrawY), this.spriteTint, 1.0f);
-            // LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "TITLE SCREEN - PRESS ENTER " + this.sprite.CurrentFrame, new Vector2(100, 100), Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
             LoZGame.Instance.SpriteBatch.End();
         }
     }
