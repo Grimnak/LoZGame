@@ -13,26 +13,28 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
+            System.Console.WriteLine("Deteced player collide with door");
             // Only collide with a door if the player wasn't knocked back into it.
             if (player.Physics.KnockbackVelocity.Length() == 0 && FullIntersect(player, collisionSide))
             {
+                System.Console.WriteLine("Letting Player move through door");
                 if ((this.door.State is UnlockedDoorState || this.door.State is BombedDoorState) && (!(player.State is GrabbedState)))
                 {
-                    if (door.Physics.Location == door.LeftScreenLoc)
+                    switch (door.Physics.CurrentDirection) 
                     {
-                        LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.West);
-                    }
-                    else if (door.Physics.Location == door.RightScreenLoc)
-                    {
-                        LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.East);
-                    }
-                    else if (door.Physics.Location == door.DownScreenLoc)
-                    {
-                        LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.South);
-                    }
-                    else if (door.Physics.Location == door.UpScreenLoc)
-                    {
-                        LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.North);
+                        case Physics.Direction.North:
+                            LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.North);
+                            break;
+                        case Physics.Direction.South:
+                            LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.South);
+                            break;
+                        case Physics.Direction.East:
+                            LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.East);
+                            break;
+                        case Physics.Direction.West:
+                            LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.West);
+                            break;
+
                     }
                 }
                 else if (this.door.State is LockedDoorState && player.Inventory.HasKey())

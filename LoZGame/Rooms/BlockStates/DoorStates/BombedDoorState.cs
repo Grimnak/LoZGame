@@ -23,24 +23,28 @@
                 {
                         this.sprite = BlockSpriteFactory.Instance.BombedOpeningDown();
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
+                        this.door.Physics.CurrentDirection = Physics.Direction.North;
                         break;
                 }
                 case East:
                 {
                         this.sprite = BlockSpriteFactory.Instance.BombedOpeningLeft();
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X - 7, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
+                        this.door.Physics.CurrentDirection = Physics.Direction.East;
                         break;
                 }
                 case South:
                 {
                         this.sprite = BlockSpriteFactory.Instance.BombedOpeningUp();
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
+                        this.door.Physics.CurrentDirection = Physics.Direction.South;
                         break;
                 }
                 case West:
                 {
                         this.sprite = BlockSpriteFactory.Instance.BombedOpeningRight();
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
+                        this.door.Physics.CurrentDirection = Physics.Direction.West;
                         break;
                 }
             }

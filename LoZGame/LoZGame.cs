@@ -8,9 +8,9 @@
 
     public class LoZGame : Game
     {
-        public static readonly bool DebugMode = true; // show collision bounding boxes
-        public static readonly bool Cheats = true; // infinite life and item uses
-        public static readonly bool Music = true; // Title screen and dungeon music (not SFX)
+        public static bool DebugMode = false; // show collision bounding boxes
+        public static bool Cheats = true; // infinite life and item uses
+        public static bool Music = true; // Title screen and dungeon music (not SFX)
         public static readonly int StartDungeon = 1; // dungeon ID to load into [1 - 3];
         private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;
@@ -188,6 +188,42 @@
                 this.spriteBatch.End();
             }
             base.Draw(gameTime);
+        }
+
+        public void ToggleDebug()
+        {
+            if (DebugMode)
+            {
+                DebugMode = false;
+            }
+            else
+            {
+                DebugMode = true;
+            }
+        }
+
+        public void ToggleCheats()
+        {
+            if (DebugMode)
+            {
+                Cheats = false;
+            }
+            else
+            {
+                Cheats = true;
+            }
+        }
+
+        public void ToggleMusic()
+        {
+            if (DebugMode)
+            {
+                Music = false;
+            }
+            else
+            {
+                Music = true;
+            }
         }
     }
 }

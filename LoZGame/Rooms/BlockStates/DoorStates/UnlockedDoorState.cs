@@ -24,6 +24,7 @@
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
                         location = door.UpScreenLoc;
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
+                        this.door.Physics.CurrentDirection = Physics.Direction.North;
                         break;
                 }
                 case East:
@@ -31,6 +32,7 @@
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
                         location = door.RightScreenLoc;
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X - 7, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
+                        this.door.Physics.CurrentDirection = Physics.Direction.East;
                         break;
                 }
                 case South:
@@ -38,6 +40,7 @@
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
                         location = door.DownScreenLoc;
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
+                        this.door.Physics.CurrentDirection = Physics.Direction.South;
                         break;
                 }
                 case West:
@@ -45,6 +48,7 @@
                         this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
                         location = door.LeftScreenLoc;
                         door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
+                        this.door.Physics.CurrentDirection = Physics.Direction.West;
                         break;
                 }
             }

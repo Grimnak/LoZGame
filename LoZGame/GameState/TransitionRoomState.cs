@@ -8,6 +8,7 @@
     {
         private int YTransition = LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset;
         private int XTransition = LoZGame.Instance.ScreenWidth;
+        private int delay = 30;
         private int transitionSpeed = (int)(2 * LoZGame.Instance.UpdateSpeed);
         private int maxPlayerMovement = 200;
         private Physics.Direction direction;
@@ -23,9 +24,12 @@
         private GameObjectManager oldObjects;
         private GameObjectManager newObjects;
         private bool done;
+        private int counter;
 
         public TransitionRoomState(Physics.Direction direction)
         {
+            counter = 0;
+            Console.WriteLine("Attempted to enter transition State");
             this.oldObjects = LoZGame.Instance.GameObjects;
             this.newObjects = new GameObjectManager();
             this.done = false;
@@ -60,6 +64,7 @@
             this.nextRoomBorderOffset = this.nextRoomOffset.ToVector2();
             if (this.dungeon.GetRoom(this.nextRoomLocation.Y, this.nextRoomLocation.X).Exists)
             {
+                Console.WriteLine("Room exists, attempting to enter");
                 this.MasterMovement = new Vector2((float)(-1 * nextRoomOffset.X) / transitionSpeed, (float)(-1 * nextRoomOffset.Y) / transitionSpeed);
                 this.oldObjects.Entities.Clear();
                 this.dungeon.LoadNewRoom(newObjects, this.nextRoomLocation, this.nextRoomOffset);
@@ -90,6 +95,7 @@
                 }
             } else
             {
+                Console.WriteLine("Room did not exist, No entry, Return to game");
                 this.PlayGame();
             }
         }
@@ -139,14 +145,14 @@
         /// <inheritdoc></inheritdoc>
         public void Update()
         {
-            if (!this.done) 
+            if (!this.done)
             {
                 if (this.MasterMovement.Length() >= transitionDistance)
                 {
                     this.MasterMovement.Normalize();
                     this.MasterMovement *= transitionDistance;
                     this.done = true;
-                } 
+                }
                 else
                 {
                     this.transitionDistance -= Math.Abs(MasterMovement.X + MasterMovement.Y);
@@ -158,7 +164,7 @@
                 this.newObjects.MoveObjects();
                 foreach (IPlayer player in LoZGame.Instance.Players)
                 {
-                    player.Physics.Move();
+                    player.Update();
                 }
             }
             else
@@ -168,8 +174,13 @@
                 this.oldObjects.UpdateObjectLocations(nextRoomOffset);
                 this.oldObjects.Clear();
                 LoZGame.Instance.GameObjects.Copy(newObjects);
-                this.dungeon.SpawnEnemies();
                 this.dungeon.MiniMap.Explore();
+                foreach (IPlayer player in LoZGame.Instance.Players)
+                {
+                    player.Physics.MasterMovement = Vector2.Zero;
+                    player.Idle();
+                }
+                this.dungeon.SpawnEnemies();
                 this.PlayGame();
             }
         }

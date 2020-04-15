@@ -102,25 +102,30 @@
                 case North:
                     {
                         this.Physics = new Physics(this.upScreenLoc);
+                        this.Physics.CurrentDirection = Physics.Direction.North;
                         break;
                     }
                 case East:
                     {
                         this.Physics = new Physics(this.rightScreenLoc);
+                        this.Physics.CurrentDirection = Physics.Direction.East;
                         break;
                     }
                 case South:
                     {
                         this.Physics = new Physics(this.downScreenLoc);
+                        this.Physics.CurrentDirection = Physics.Direction.South;
                         break;
                     }
                 case West:
                     {
                         this.Physics = new Physics(this.leftScreenLoc);
+                        this.Physics.CurrentDirection = Physics.Direction.West;
                         break;
                     }
                 default:
                     this.Physics = new Physics(this.upScreenLoc);
+                    this.Physics.CurrentDirection = Physics.Direction.North;
                     break;
             }
             this.Physics.SetDepth();

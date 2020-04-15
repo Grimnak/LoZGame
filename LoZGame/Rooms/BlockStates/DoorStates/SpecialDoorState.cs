@@ -24,21 +24,25 @@
                 case North:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
+                        this.door.Physics.CurrentDirection = Physics.Direction.North;
                         break;
                     }
                 case East:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
+                        this.door.Physics.CurrentDirection = Physics.Direction.East;
                         break;
                     }
                 case South:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
+                        this.door.Physics.CurrentDirection = Physics.Direction.South;
                         break;
                     }
                 case West:
                     {
                         this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight();
+                        this.door.Physics.CurrentDirection = Physics.Direction.West;
                         break;
                     }
             }

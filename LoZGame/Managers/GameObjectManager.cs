@@ -40,6 +40,7 @@
 
         public void Copy(GameObjectManager manager)
         {
+            this.Clear();
             itemManager = manager.Items;
             blockManager = manager.Blocks;
             entityManager = manager.Entities;
