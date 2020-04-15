@@ -64,7 +64,7 @@
             if (name.Contains(statueCheck))
             {
                 this.Physics.Bounds = new Rectangle(this.Physics.Bounds.X, this.Physics.Bounds.Y + GameData.Instance.RoomConstants.BlockTileHeightOffset, this.Physics.Bounds.Width, this.Physics.Bounds.Height - GameData.Instance.RoomConstants.BlockTileHeightOffset);
-                this.Physics.BoundsOffset = new Vector2(0, GameData.Instance.RoomConstants.BlockTileHeightOffset);
+                this.Physics.BoundsOffset = new Vector2(0, -GameData.Instance.RoomConstants.BlockTileHeightOffset);
                 this.Physics.SetDepth();
                 this.Physics.SetLocation();
             }
