@@ -61,7 +61,7 @@
 
         public void Draw()
         {
-            this.sprite.Draw(location, spriteTint, this.door.Physics.Depth);
+            this.sprite.Draw(this.door.Physics.Location, spriteTint, this.door.Physics.Depth);
         }
 
         public void Open()

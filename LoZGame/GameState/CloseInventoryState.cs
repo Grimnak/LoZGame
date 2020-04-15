@@ -74,14 +74,13 @@
         public void Draw()
         {
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            InventoryComponents.Instance.DrawCorrectBackground();
+            LoZGame.Instance.Dungeon.CurrentRoom.Draw(Point.Zero);
 
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Draw();
             }
             LoZGame.Instance.GameObjects.Draw();
-            InventoryComponents.Instance.DrawCorrectBackground();
             InventoryComponents.Instance.DrawText();
 
             LoZGame.Instance.SpriteBatch.End();

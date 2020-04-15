@@ -8,10 +8,10 @@
 
     public class LoZGame : Game
     {
-        public static readonly bool DebugMode = false; // show collision bounding boxes
+        public static readonly bool DebugMode = true; // show collision bounding boxes
         public static readonly bool Cheats = true; // infinite life and item uses
         public static readonly bool Music = true; // Title screen and dungeon music (not SFX)
-        public static readonly int StartDungeon = 2; // dungeon ID to load into [1 - 3];
+        public static readonly int StartDungeon = 1; // dungeon ID to load into [1 - 3];
         private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;
         private readonly int screenWidth;
@@ -72,7 +72,9 @@
 
         public static LoZGame Instance { get { return instance; } }
 
-        public GameObjectManager GameObjects { get { return gameObjectManager; } }
+        public GameObjectManager GameObjects { get { return gameObjectManager; } set { gameObjectManager = value; } }
+
+        public DebugManager Debugger => debugManager;
 
         public DropManager Drops { get { return dropManager; } }
 

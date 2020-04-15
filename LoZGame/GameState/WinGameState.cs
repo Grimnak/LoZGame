@@ -5,9 +5,11 @@
 
     public class WinGameState : IGameState
     {
+        private const int flashRate = 40;
         private int maxDungeon;
         private int lockout;
         private int lockoutMax;
+        private BlendState bs;
 
         public WinGameState()
         {
@@ -100,7 +102,15 @@
         /// <inheritdoc></inheritdoc>
         public void Draw()
         {
-            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+            if (lockout > lockoutMax / 2 && lockout % flashRate <= (flashRate / 2))
+            {
+                bs = BlendState.NonPremultiplied;
+            }
+            else
+            {
+                bs = BlendState.NonPremultiplied;
+            }
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, bs, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, LoZGame.Instance.InventoryOffset, LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset), new Rectangle(0, 0, GameData.Instance.GameStateDataConstants.WinStateSpriteWidth, GameData.Instance.GameStateDataConstants.WinStateSpriteHeight), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
 
             foreach (IPlayer player in LoZGame.Instance.Players)
@@ -111,7 +121,7 @@
             LoZGame.Instance.GameObjects.Draw();
             LoZGame.Instance.SpriteBatch.End();
 
-            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, bs, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             InventoryComponents.Instance.DrawInventoryElements();
             LoZGame.Instance.SpriteBatch.End();
         }

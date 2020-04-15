@@ -77,7 +77,7 @@
         public void Draw()
         {
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            InventoryComponents.Instance.DrawCorrectBackground();
+            LoZGame.Instance.Dungeon.CurrentRoom.Draw(Point.Zero);
             LoZGame.Instance.SpriteBatch.End();
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             LoZGame.Instance.GameObjects.Draw();

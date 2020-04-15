@@ -4,7 +4,7 @@
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="False" idx="0">
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <enemies>
         <enemy X="0" Y="0">SpikeCross</enemy>
         <enemy X="11" Y="0">SpikeCross</enemy>
@@ -38,7 +38,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <items>
         <item X="6" Y="1">Key</item>
       </items>
@@ -100,7 +100,7 @@
   <drow idx="1">
     <room exists="False" idx="0">
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="True" idx="1">
       <border>black</border>
       <enemies>
         <enemy X="10" Y="3">Keese</enemy>
@@ -251,7 +251,7 @@
         <tile type="block" idx="15">basement_brick_tile</tile>
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
 		<items>
 		    <item X="8" Y="4">Key</item>
 		</items>
@@ -327,7 +327,7 @@
        </room>
     <room exists="False" idx="3">
     </room>
-    <room exists="True" idx="4">
+    <room exists="True" oldman="False" basement="False" idx="4">
       <items>
         <item X="11" Y="3">HeartContainer</item>
       </items>
@@ -373,7 +373,7 @@
         <tile type="block" idx="11">movable_square</tile>
       </rrow>
     </room>
-    <room exists="True" idx="5">
+    <room exists="True" oldman="False" basement="False" idx="5">
       <items>
         <item X="5.5" Y="3">TriForce</item>
       </items>
@@ -426,7 +426,7 @@
   </drow>
   <drow idx="2">
     <!-- 0 - 0 maps to top left corner  -->
-    <room exists="True" idx="0">
+    <room exists="True" oldman="True" basement="False" idx="0">
       <text>EASTMOST PENINSULA IS THE SECRET.</text>
       <enemies>
         <enemy X="5.5" Y="2">OldMan</enemy>
@@ -451,7 +451,7 @@
 	  <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <enemies>
         <enemy X="8" Y="0">TealGel</enemy>
         <enemy X="7" Y="2">TealGel</enemy>
@@ -478,7 +478,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <items>
         <item X="10" Y="3">Map</item>
       </items>
@@ -520,7 +520,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
       <items>
         <item X="6" Y="1">Boomerang</item>
       </items>
@@ -553,7 +553,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="4">
+    <room exists="True" oldman="False" basement="False" idx="4">
       <items>
         <item X="8" Y="6">Key</item>
       </items>
@@ -607,7 +607,7 @@
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="False" idx="0">
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <enemies>
         <enemy X="8" Y="0">Keese</enemy>
         <enemy X="1" Y="1">Keese</enemy>
@@ -641,7 +641,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <items>
         <item X="6" Y="1">Key</item>
       </items>
@@ -677,7 +677,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
       <items>
         <item X="10" Y="3">Compass</item>
       </items>
@@ -906,7 +906,7 @@
         <tile idx="11"></tile>
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <enemies>
         <enemy X="4" Y="2">Stalfos</enemy>
         <enemy X="7" Y="2">Stalfos</enemy>
@@ -948,7 +948,7 @@
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="False" idx="0">
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <items>
         <item X="8" Y="6">Key</item>
       </items>
@@ -975,7 +975,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <doors>
         <door loc="N">locked</door>
         <door loc="E">unlocked</door>
@@ -1024,7 +1024,7 @@
         <tile type="walkable" idx="8">spotted_tile</tile>
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
       <items>
           <item X="5.5" Y="3">Key</item>
       </items>

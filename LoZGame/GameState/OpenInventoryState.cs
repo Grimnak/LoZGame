@@ -79,7 +79,7 @@
                 player.Draw();
             }
             LoZGame.Instance.GameObjects.Draw();
-            InventoryComponents.Instance.DrawCorrectBackground();
+            LoZGame.Instance.Dungeon.CurrentRoom.Draw(Point.Zero);
             InventoryComponents.Instance.DrawText();
 
             LoZGame.Instance.SpriteBatch.End();

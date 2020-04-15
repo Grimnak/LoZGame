@@ -33,12 +33,24 @@
                 foreach (XElement room in rooms)
                 {
                     bool ex = bool.Parse(room.Attribute("exists").Value);
+                    bool oldman;
+                    bool basement;
+                    if (ex)
+                    {
+                        oldman = bool.Parse(room.Attribute("oldman").Value);
+                        basement = bool.Parse(room.Attribute("basement").Value);
+                    } else
+                    {
+
+                        oldman = false;
+                        basement = false;
+                    }
                     string border = string.Empty + ns;
                     if (room.Descendants(ns + "border").Elements().Count<XElement>() > 0)
                     {
                         border = string.Empty + room.Descendants(ns + "border").Elements().First<XElement>().Value;
                     }
-                    Room droom = new Room(string.Empty + border, ex);
+                    Room droom = new Room(string.Empty + border, ex, basement, oldman);
                     if (ex)
                     {
                         IEnumerable<XElement> doors = (from d in room.Descendants(ns + "doors") select d).Elements(); // all <door> tags in <room>

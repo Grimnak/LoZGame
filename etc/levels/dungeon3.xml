@@ -4,7 +4,7 @@
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="False" idx="0">
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <items>
         <item X="6" Y="3">Key</item>
       </items>
@@ -48,7 +48,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="True" basement="False" idx="2">
       <text>DID YOU GET THE SWORD FROM THE OLD MAN ON TOP OF THE WATERFALL?.</text>
       <enemies>
         <enemy X="5.5" Y="2">OldMan</enemy>
@@ -84,7 +84,7 @@
     </room>
     <room exists="False" idx="1">
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
        <enemies>
         <enemy X="0" Y="0">SpikeCross</enemy>
         <enemy X="11" Y="0">SpikeCross</enemy>
@@ -116,7 +116,7 @@
     </room>
     <room exists="False" idx="3">
     </room>
-    <room exists="True" idx="4">
+    <room exists="True" oldman="False" basement="False" idx="4">
       <items>
         <item X="5.5" Y="3">TriForce</item>
       </items>
@@ -169,7 +169,7 @@
   </drow>
   <drow idx="2">
     <!-- 0 - 0 maps to top left corner  -->
-    <room exists="True" idx="0">
+    <room exists="True" oldman="False" basement="False" idx="0">
       <items>
         <item X="6" Y="3">Key</item>
       </items>
@@ -202,7 +202,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <items>
         <item X="6" Y="3">Bomb</item>
       </items>
@@ -257,7 +257,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <items>
         <item X="6" Y="3">Key</item>
       </items>
@@ -310,7 +310,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
        <enemies>
         <enemy X="0" Y="0">SpikeCross</enemy>
         <enemy X="11" Y="0">SpikeCross</enemy>
@@ -342,7 +342,7 @@
        <rrow idx="6">
        </rrow>
     </room>
-    <room exists="True" idx="4">
+    <room exists="True" oldman="False" basement="False" idx="4">
        <enemies>
         <enemy X="2" Y="4">Manhandla</enemy>
        </enemies>
@@ -456,7 +456,7 @@
   </drow>
   <drow idx="3">
     <!-- 0 - 0 maps to top left corner  -->
-    <room exists="True" idx="0">
+    <room exists="True" oldman="False" basement="False" idx="0">
       <enemies>
         <enemy X="4" Y="1">Armos</enemy>
         <enemy X="7" Y="1">Armos</enemy>
@@ -496,7 +496,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <items>
         <item X="6" Y="3">Compass</item>
       </items>
@@ -530,7 +530,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <items>
         <item X="6" Y="3">Bomb</item>
       </items>
@@ -560,7 +560,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
        <enemies>
         <enemy X="6" Y="1">Armos</enemy>
         <enemy X="8" Y="1">Armos</enemy>
@@ -596,7 +596,7 @@
        <rrow idx="6">
        </rrow>
     </room>
-    <room exists="True" idx="4">
+    <room exists="True" oldman="False" basement="False" idx="4">
        <enemies>
         <enemy X="9" Y="1">Keese</enemy>
         <enemy X="7" Y="4">Keese</enemy>
@@ -638,7 +638,7 @@
   </drow>
   <drow idx="4">
     <!-- 0 - 0 maps to top left corner  -->
-    <room exists="True" idx="0">
+    <room exists="True" oldman="False" basement="False" idx="0">
       <enemies>
         <enemy X="2" Y="0">Armos</enemy>
         <enemy X="2" Y="2">Armos</enemy>
@@ -691,7 +691,7 @@
       </rrow>
     </room>
     <room exists="False" idx="1">
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <enemies>
           <enemy X="4" Y="0">Zol3</enemy>
           <enemy X="8" Y="1">Zol3</enemy>
@@ -745,7 +745,7 @@
   </drow>
   <drow idx="5">
     <!-- 0 - 0 maps to top left corner  -->
-    <room exists="True" idx="0">
+    <room exists="True" oldman="False" basement="False" idx="0">
       <border>black</border>
       <enemies>
         <enemy X="10" Y="3">Keese</enemy>
@@ -898,7 +898,7 @@
     </room>
     <room exists="False" idx="1">
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <doors>
         <door loc="N">unlocked</door>
         <door loc="E">unlocked</door>
@@ -933,7 +933,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
       <doors>
         <door loc="W">unlocked</door>
         <door loc="S">cosmetic</door>
