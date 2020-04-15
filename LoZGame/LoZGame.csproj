@@ -144,6 +144,8 @@
     <Compile Include="Items\ItemTypes.cs" />
     <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Players\PlayerClasses\LinkHelper.cs" />
+    <Compile Include="Rooms\BlockClasses\DoorHelper.cs" />
+    <Compile Include="Rooms\BlockStates\DoorStates\DoorEssentials.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
     <Compile Include="Util\DataConstants\CollisionData\CollisionConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyHealthConstants.cs" />

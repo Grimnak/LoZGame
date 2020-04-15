@@ -2,6 +2,7 @@
 {
     public interface IDoorState
     {
+
         void Close(); // for entering a special room
 
         void Open(); // for locked doors and special doors 
@@ -10,6 +11,8 @@
 
         void Update();
 
-        void Draw();
+        void DrawFrame();
+
+        void DrawFloor();
     }
 }

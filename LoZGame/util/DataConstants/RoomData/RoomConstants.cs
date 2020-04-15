@@ -28,7 +28,7 @@
 
         public int UpDoorYLocation => LoZGame.Instance.InventoryOffset + 12;
 
-        public int RightDoorXLocation => LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight + 11;
+        public int RightDoorXLocation => LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight;
 
         public int RightLeftDoorYLocation => LoZGame.Instance.InventoryOffset + 195;
 

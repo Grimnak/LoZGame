@@ -2,6 +2,8 @@
 {
     public struct GameStateDataConstants
     {
+        private const float doorFloorDepth = 0.02f;
+
         private const int CloseInventoryTranSpeed = 5;
 
         private const int DeathTimerMaximum = 85;
@@ -13,12 +15,12 @@
         private const int TitleFrameDelay = 10;
         private const int TitleDrawXValue = 284;
 
-        private const int TransitionRoomStTranSpeed = 8;
-
         private const int WinGameStMaxDungeons = 3;
         private const int WinGameStMaxLO = 440;
         private const int WinStSpriteWidth = 236;
         private const int WinStSpriteHeight = 160;
+
+        private const int playerTransitionMaxDistance = 200;
 
         public int CloseInventoryTransitionSpeed => CloseInventoryTranSpeed;
 
@@ -40,7 +42,7 @@
 
         public int TitleDrawY => LoZGame.Instance.InventoryOffset + 300;
 
-        public int TransitionRoomStateTransitionSpeed => TransitionRoomStTranSpeed;
+        public int TransitionRoomStateTransitionTime => 2 * LoZGame.Instance.UpdateSpeed;
 
         public int WinStateMaxDungeons => WinGameStMaxDungeons;
 
@@ -49,5 +51,9 @@
         public int WinStateSpriteWidth => WinStSpriteWidth;
 
         public int WinStateSpriteHeight => WinStSpriteHeight;
+
+        public float DoorFloorDepth => doorFloorDepth;
+
+        public int PlayerTransitionMaxDistance => playerTransitionMaxDistance;
     }
 }

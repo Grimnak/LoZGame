@@ -2,77 +2,51 @@
 {
     using Microsoft.Xna.Framework;
 
-    public class UnlockedDoorState : IDoorState
+    public class UnlockedDoorState : DoorEssentials, IDoorState
     {
-        private const string North = "N";
-        private const string South = "S";
-        private const string East = "E";
-        private const string West = "W";
-
-        private readonly Door door;
-        private readonly ISprite sprite;
-        private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
-        private Vector2 location;
-
-        public UnlockedDoorState(Door door)
+        public UnlockedDoorState(IDoor door)
         {
-            this.door = door;
-            switch (door.GetLoc())
+            this.Door = door;
+            switch (door.Physics.CurrentDirection)
             {
-                case North:
-                {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
-                        location = door.UpScreenLoc;
-                        door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
-                        this.door.Physics.CurrentDirection = Physics.Direction.North;
+                case Physics.Direction.North:
+                    {
+                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameDown();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorDown();
                         break;
-                }
-                case East:
-                {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
-                        location = door.RightScreenLoc;
-                        door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X - 7, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
-                        this.door.Physics.CurrentDirection = Physics.Direction.East;
+                    }
+                case Physics.Direction.East:
+                    {
+                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameLeft();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorLeft();
                         break;
-                }
-                case South:
-                {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
-                        location = door.DownScreenLoc;
-                        door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
-                        this.door.Physics.CurrentDirection = Physics.Direction.South;
+                    }
+                case Physics.Direction.South:
+                    {
+                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameUp();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorUp();
                         break;
-                }
-                case West:
-                {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
-                        location = door.LeftScreenLoc;
-                        door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
-                        this.door.Physics.CurrentDirection = Physics.Direction.West;
+                    }
+                case Physics.Direction.West:
+                    {
+                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameRight();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorRight();
                         break;
-                }
+                    }
+                default:
+                    {
+                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameDown();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorDown();
+                        break;
+                    }
             }
         }
 
-        public void Bombed()
+        public override void Bombed()
         {
         }
 
-        public void Close()
-        {
-            this.door.Close();
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.door.Physics.Location, spriteTint, this.door.Physics.Depth);
-        }
-
-        public void Open()
-        {
-        }
-
-        public void Update()
+        public override void Open()
         {
         }
     }

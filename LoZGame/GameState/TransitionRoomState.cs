@@ -8,9 +8,8 @@
     {
         private int YTransition = LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset;
         private int XTransition = LoZGame.Instance.ScreenWidth;
-        private int delay = 30;
-        private int transitionSpeed = (int)(2 * LoZGame.Instance.UpdateSpeed);
-        private int maxPlayerMovement = 200;
+        private int transitionSpeed = GameData.Instance.GameStateDataConstants.TransitionRoomStateTransitionTime;
+        private int maxPlayerMovement = GameData.Instance.GameStateDataConstants.PlayerTransitionMaxDistance;
         private Physics.Direction direction;
         private float transitionDistance;
         private Point currentRoomLocation;
@@ -24,11 +23,9 @@
         private GameObjectManager oldObjects;
         private GameObjectManager newObjects;
         private bool done;
-        private int counter;
 
         public TransitionRoomState(Physics.Direction direction)
         {
-            counter = 0;
             Console.WriteLine("Attempted to enter transition State");
             this.oldObjects = LoZGame.Instance.GameObjects;
             this.newObjects = new GameObjectManager();

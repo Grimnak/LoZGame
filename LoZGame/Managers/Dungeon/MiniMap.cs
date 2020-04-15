@@ -71,18 +71,18 @@
             {
                 if (!(door.State is HiddenDoorState))
                 {
-                    switch (door.GetLoc())
+                    switch (door.Physics.CurrentDirection)
                     {
-                        case "N":
+                        case Physics.Direction.North:
                             doors.Add(MiniMap.DoorLocation.North);
                             break;
-                        case "S":
+                        case Physics.Direction.South:
                             doors.Add(MiniMap.DoorLocation.South);
                             break;
-                        case "E":
+                        case Physics.Direction.East:
                             doors.Add(MiniMap.DoorLocation.East);
                             break;
-                        case "W":
+                        case Physics.Direction.West:
                             doors.Add(MiniMap.DoorLocation.West);
                             break;
                         default:

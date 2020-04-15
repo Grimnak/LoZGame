@@ -37,7 +37,7 @@
 
                     }
                 }
-                else if (this.door.State is LockedDoorState && player.Inventory.HasKey())
+                else if (this.door.DoorType == Door.DoorTypes.Locked && player.Inventory.HasKey())
                 {
                     player.Inventory.UseKey();
                     IDoor cousin = FindCousinDoor();
@@ -45,7 +45,7 @@
                     this.door.Open();
                     SoundFactory.Instance.PlayDoorUnlock();
                 }
-                else if (this.door.State is PuzzleDoorState && ((PuzzleDoorState)this.door.State).IsSolved)
+                else if (this.door.DoorType == Door.DoorTypes.Puzzle && this.door.IsSolved)
                 {
                     this.door.Open();
                 }
@@ -71,32 +71,32 @@
             IDoor cousin = new Door(string.Empty, string.Empty);
             int Y = LoZGame.Instance.Dungeon.CurrentRoomY;
             int X = LoZGame.Instance.Dungeon.CurrentRoomX;
-            switch (((Door)door).GetLoc())
+            switch (this.door.Physics.CurrentDirection)
             {
-                case "N":
+                case Physics.Direction.North:
                     foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y - 1, X).Doors)
                     {
-                        if (cDoor.GetLoc().Equals("S"))
+                        if (cDoor.Physics.CurrentDirection == Physics.Direction.South)
                         {
                             cousin = cDoor;
                             break;
                         }
                     }
                     break;
-                case "S":
+                case Physics.Direction.South:
                     foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y + 1, X).Doors)
                     {
-                        if (cDoor.GetLoc().Equals("N"))
+                        if (cDoor.Physics.CurrentDirection == Physics.Direction.North)
                         {
                             cousin = cDoor;
                             break;
                         }
                     }
                     break;
-                case "E":
+                case Physics.Direction.East:
                     foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y, X + 1).Doors)
                     {
-                        if (cDoor.GetLoc().Equals("W"))
+                        if (cDoor.Physics.CurrentDirection == Physics.Direction.West)
                         {
                             cousin = cDoor;
                             break;
@@ -106,7 +106,7 @@
                 default:
                     foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y, X - 1).Doors)
                     {
-                        if (cDoor.GetLoc().Equals("E"))
+                        if (cDoor.Physics.CurrentDirection == Physics.Direction.East)
                         {
                             cousin = cDoor;
                             break;
@@ -119,16 +119,18 @@
 
         private bool FullIntersect(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
+            Point DoorWidth = new Point(door.EntryWidth / 2);
+            Rectangle entry = new Rectangle(door.Physics.Bounds.Center - DoorWidth, new Point(door.EntryWidth));
             switch (collisionSide)
             {
                 case CollisionDetection.CollisionSide.Top:
-                    return player.Physics.Bounds.Left >= door.Physics.Bounds.Left && player.Physics.Bounds.Right <= door.Physics.Bounds.Right;
+                    return player.Physics.Bounds.Left >= entry.Left && player.Physics.Bounds.Right <= entry.Right;
                 case CollisionDetection.CollisionSide.Bottom:
-                    return player.Physics.Bounds.Left >= door.Physics.Bounds.Left && player.Physics.Bounds.Right <= door.Physics.Bounds.Right;
+                    return player.Physics.Bounds.Left >= entry.Left && player.Physics.Bounds.Right <= entry.Right;
                 case CollisionDetection.CollisionSide.Left:
-                    return player.Physics.Bounds.Top >= door.Physics.Bounds.Top && player.Physics.Bounds.Bottom <= door.Physics.Bounds.Bottom;
+                    return player.Physics.Bounds.Top >= entry.Top && player.Physics.Bounds.Bottom <= entry.Bottom;
                 case CollisionDetection.CollisionSide.Right:
-                    return player.Physics.Bounds.Top >= door.Physics.Bounds.Top && player.Physics.Bounds.Bottom <= door.Physics.Bounds.Bottom;
+                    return player.Physics.Bounds.Top >= entry.Top && player.Physics.Bounds.Bottom <= entry.Bottom;
                 default:
                     return false;
             }
