@@ -5,70 +5,47 @@
     /*
      * The player must kill all enemies to open these doors.
      */
-    public class SpecialDoorState : IDoorState
+    public class SpecialDoorState : DoorEssentials, IDoorState
     {
-        private const string North = "N";
-        private const string South = "S";
-        private const string East = "E";
-        private const string West = "W";
-
-        private readonly Door door;
-        private readonly ISprite sprite;
-        private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
-
-        public SpecialDoorState(Door door)
+        public SpecialDoorState(IDoor door)
         {
-            this.door = door;
-            switch (door.GetLoc())
+            this.Door = door;
+            switch (door.Physics.CurrentDirection)
             {
-                case North:
+                case Physics.Direction.North:
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorDown();
-                        this.door.Physics.CurrentDirection = Physics.Direction.North;
+                        this.FrameSprite = BlockSpriteFactory.Instance.SpecialDoorDown();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorDown();
                         break;
                     }
-                case East:
+                case Physics.Direction.East:
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
-                        this.door.Physics.CurrentDirection = Physics.Direction.East;
+                        this.FrameSprite = BlockSpriteFactory.Instance.SpecialDoorLeft();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorLeft();
                         break;
                     }
-                case South:
+                case Physics.Direction.South:
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorUp();
-                        this.door.Physics.CurrentDirection = Physics.Direction.South;
+                        this.FrameSprite = BlockSpriteFactory.Instance.SpecialDoorUp();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorUp();
                         break;
                     }
-                case West:
+                case Physics.Direction.West:
                     {
-                        this.sprite = BlockSpriteFactory.Instance.SpecialDoorRight();
-                        this.door.Physics.CurrentDirection = Physics.Direction.West;
+                        this.FrameSprite = BlockSpriteFactory.Instance.SpecialDoorRight();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorRight();
+                        break;
+                    }
+                default:
+                    {
+                        this.FrameSprite = BlockSpriteFactory.Instance.SpecialDoorDown();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorDown();
                         break;
                     }
             }
         }
 
-        public void Bombed()
-        {
-            this.door.Bombed();
-        }
-
-        public void Close()
-        {
-            this.door.Close();
-        }
-
-        public void Open()
-        {
-            this.door.Open();
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.door.Physics.Location, spriteTint, this.door.Physics.Depth);
-        }
-
-        public void Update()
+        public override void Update()
         {
             if (LoZGame.Instance.GameObjects.Enemies.EnemyList.Count == 0)
             {

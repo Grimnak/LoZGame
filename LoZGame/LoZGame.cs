@@ -110,6 +110,8 @@
             this.gameObjectManager = new GameObjectManager();
             this.dropManager = new DropManager();
             this.debugManager = new DebugManager();
+            this.Window.Title = "Badd Gaem";
+            this.Window.AllowUserResizing = true;
         }
 
         protected override void Initialize()

@@ -2,64 +2,49 @@
 {
     using Microsoft.Xna.Framework;
 
-    public class CosmeticDoorState : IDoorState
+    public class CosmeticDoorState : DoorEssentials, IDoorState
     {
-        private const string North = "N";
-        private const string South = "S";
-        private const string East = "E";
-        private const string West = "W";
-
-        private readonly Door door;
-        private readonly ISprite sprite;
-        private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
-
-        public CosmeticDoorState(Door door)
+        public CosmeticDoorState(IDoor door)
         {
-            this.door = door;
-            switch (door.GetLoc())
+            this.Door = door;
+            switch (door.Physics.CurrentDirection)
             {
-                case North:
+                case Physics.Direction.North:
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
+                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameDown();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorDown();
                         break;
                 }
-                case East:
+                case Physics.Direction.East:
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
+                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameLeft();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorLeft();
                         break;
                 }
-                case South:
+                case Physics.Direction.South:
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
+                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameUp();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorUp();
                         break;
                 }
-                case West:
+                case Physics.Direction.West:
                 {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
+                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameRight();
+                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorRight();
                         break;
                 }
             }
         }
 
-        public void Bombed()
+        public override void Bombed()
         {
         }
 
-        public void Close()
-        {
-            this.door.Close();
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.door.Physics.Location, spriteTint, this.door.Physics.Depth);
-        }
-
-        public void Open()
+        public override void Open()
         {
         }
 
-        public void Update()
+        public override void Close()
         {
         }
     }

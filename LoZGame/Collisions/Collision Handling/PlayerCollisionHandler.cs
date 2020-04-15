@@ -62,7 +62,7 @@
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
         {
-            if (door.State is LockedDoorState || door.State is HiddenDoorState)
+            if (door.DoorType == Door.DoorTypes.Locked || door.DoorType == Door.DoorTypes.Hidden)
             {
                 PreventDoorEntry(door);
             }
@@ -75,22 +75,22 @@
 
         private void PreventDoorEntry(IDoor door)
         {
-            if (door.Physics.Location == door.LeftScreenLoc)
+            if (door.Physics.CurrentDirection == Physics.Direction.West)
             {
                 player.Physics.Bounds = new Rectangle((int)BlockSpriteFactory.Instance.HorizontalOffset, player.Physics.Bounds.Y, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
                 this.player.Physics.StopMotionX();
             }
-            else if (door.Physics.Location == door.RightScreenLoc)
+            else if (door.Physics.CurrentDirection == Physics.Direction.East)
             {
-                player.Physics.Bounds = new Rectangle((int)door.RightScreenLoc.X - LinkSpriteFactory.LinkWidth - 7, player.Physics.Bounds.Y, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
+                player.Physics.Bounds = new Rectangle((int)door.Physics.Bounds.Left - player.Physics.Bounds.Width, player.Physics.Bounds.Y, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
                 this.player.Physics.StopMotionX();
             }
-            else if (door.Physics.Location == door.DownScreenLoc)
+            else if (door.Physics.CurrentDirection == Physics.Direction.South)
             {
-                player.Physics.Bounds = new Rectangle(player.Physics.Bounds.X, (int)door.DownScreenLoc.Y - LinkSpriteFactory.LinkHeight, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
+                player.Physics.Bounds = new Rectangle(player.Physics.Bounds.X, (int)door.Physics.Bounds.Top - player.Physics.Bounds.Height, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
                 this.player.Physics.StopMotionY();
             }
-            else if (door.Physics.Location == door.UpScreenLoc)
+            else if (door.Physics.CurrentDirection == Physics.Direction.North)
             {
                 player.Physics.Bounds = new Rectangle(player.Physics.Bounds.X, (int)BlockSpriteFactory.Instance.TopOffset, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
                 this.player.Physics.StopMotionY();
