@@ -15,7 +15,7 @@
         private const int TitleFrameDelay = 10;
         private const int TitleDrawXValue = 284;
 
-        private const int WinGameStMaxDungeons = 3;
+        private const int WinGameStMaxDungeons = 4;
         private const int WinGameStMaxLO = 440;
         private const int WinStSpriteWidth = 236;
         private const int WinStSpriteHeight = 160;
