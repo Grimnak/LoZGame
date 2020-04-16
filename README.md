@@ -18,6 +18,8 @@ Jeremy Wensink.27
 
 ## Controls:
 ### Player Controls:
+W, A, S, D, Arrow Keys - Controls Player Movement
+
 Z - Attack with Equipped Sword
 
 N - Use Equipped Item
@@ -73,7 +75,7 @@ MS Paint
 ### Fire Snake (Moldorm)'s Head can Become Desynced from Body:
     Bug:  The Fire Snake's head can become desynced with the body when the player enters and leaves the room where they reside.
     
-    Plan(s) to fix: Investigate how the head are body segments are updating, as the likely issue is one is getting extra time to update while the room is unloading.
+    Plan(s) to fix: Investigate how the head and body segments are updating, as the likely issue is one is getting extra time to update while the room is unloading.
     
 ## Suppressed Warnings:
 There are no suppressed warnings.
