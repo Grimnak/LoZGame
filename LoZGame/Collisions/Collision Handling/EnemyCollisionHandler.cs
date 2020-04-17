@@ -14,8 +14,6 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            this.enemy.CurrentState.Attack();
-            this.enemy.Physics.MovementVelocity = new Vector2(-2, 0);
         }
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)

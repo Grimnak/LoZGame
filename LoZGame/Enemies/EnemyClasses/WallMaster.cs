@@ -42,7 +42,8 @@
         {
             if (otherCollider is IPlayer && !(((Link)otherCollider).State is PickupItemState))
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                this.CurrentState.Attack();
+                this.Physics.MovementVelocity = new Vector2(-2, 0);
             }
             else if (otherCollider is IBlock && !(this.CurrentState is AttackingWallMasterState))
             {
