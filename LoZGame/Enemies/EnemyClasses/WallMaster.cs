@@ -38,6 +38,22 @@
             }
         }
 
+        public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IPlayer && !(((Link)otherCollider).State is PickupItemState))
+            {
+                this.EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IBlock && !(this.CurrentState is AttackingWallMasterState))
+            {
+                this.EnemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IProjectile && !(this.CurrentState is AttackingWallMasterState))
+            {
+                this.EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+            }
+        }
+
         public override ISprite CreateCorrectSprite()
         {
             if (this.Physics.CurrentDirection == Physics.Direction.North || this.Physics.CurrentDirection == Physics.Direction.East)

@@ -7,7 +7,7 @@
         private const int RopeDmg = 2;
         private const int GelDmg = 2;
         private const int ZolDmg = 4;
-        private const int SpikeCrossDmg = 4;
+        private const int SpikeCrossDmg = 2;
         private const int WallMasterDmg = 1;
         private const int DragonDmg = 4;
         private const int DodongoDmg = 4;
@@ -16,6 +16,7 @@
         private const int OldManDmg = 0;
         private const int MerchantDmg = 0;
         private const int FireSnakeDmg = 6;
+        private const int DarknutDmg = 2;
 
         public int StalfosDamage => StalfosDmg;
 
@@ -44,5 +45,7 @@
         public int MerchantDamage => MerchantDmg;
 
         public int FireSnakeDamage => FireSnakeDmg;
+
+        public int DarknutDamage => DarknutDmg;
     }
 }

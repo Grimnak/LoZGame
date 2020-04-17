@@ -30,11 +30,11 @@
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IEnemy)
+            if (otherCollider is IEnemy && !(this.State is PickupItemState))
             {
                 this.linkCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
-            else if (otherCollider is IProjectile)
+            else if (otherCollider is IProjectile && !(this.State is PickupItemState))
             {
                 this.linkCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
@@ -46,7 +46,7 @@
             {
                 this.linkCollisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
-            else if (otherCollider is IItem)
+            else if (otherCollider is IItem && !(this.State is PickupItemState))
             {
                 this.linkCollisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
             }

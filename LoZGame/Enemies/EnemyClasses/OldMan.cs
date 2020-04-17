@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System;
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
@@ -44,6 +45,7 @@
 
         public void ShootFireballs()
         {
+            Console.WriteLine("Called Old Man's ShootFireball().");
             this.timesShot++;
             if (timesShot > BreakingPoint)
             {
@@ -63,6 +65,7 @@
                 fireballTwoPhysics.MovementVelocity = velocityVectorTwo;
                 EntityManager.EnemyProjectileManager.Add(new FireballProjectile(fireballOnePhysics));
                 EntityManager.EnemyProjectileManager.Add(new FireballProjectile(fireballTwoPhysics));
+                Console.WriteLine("Spawned Old Man's fireballs.");
             }
         }
 

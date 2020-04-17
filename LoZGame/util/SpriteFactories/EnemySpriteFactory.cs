@@ -48,6 +48,9 @@
         private static readonly int fireSnakeWidth = 28;
         private static readonly int fireSnakeHeight = 35;
 
+        private static readonly int darknutWidth = 48;
+        private static readonly int darknutHeight = 54;
+
         public static int GetEnemyWidth(IEnemy enemy)
         {
             if (enemy is Dodongo)
@@ -102,6 +105,10 @@
             else if (enemy is FireSnakeHead || enemy is FireSnakeSegment)
             {
                 return fireSnakeWidth;
+            }
+            else if (enemy is Darknut)
+            {
+                return darknutWidth;
             }
             else
             {
@@ -162,6 +169,10 @@
             else if (enemy is FireSnakeHead || enemy is FireSnakeSegment)
             {
                 return fireSnakeHeight;
+            }
+            else if (enemy is Darknut)
+            {
+                return darknutHeight;
             }
             else
             {
@@ -229,6 +240,15 @@
 
         private Texture2D fireSnake;
         private SpriteData fireSnakeData;
+
+        private Texture2D upDarknut;
+        private SpriteData upDarknutData;
+        private Texture2D downDarknut;
+        private SpriteData downDarknutData;
+        private Texture2D leftDarknut;
+        private SpriteData leftDarknutData;
+        private Texture2D rightDarknut;
+        private SpriteData rightDarknutData;
 
         private Texture2D oldMan;
         private Texture2D angryOldMan;
@@ -298,6 +318,11 @@
 
             this.fireSnake = content.Load<Texture2D>("fireball");
 
+            this.upDarknut = content.Load<Texture2D>("red_darknut_up");
+            this.downDarknut = content.Load<Texture2D>("red_darknut_down");
+            this.leftDarknut = content.Load<Texture2D>("red_darknut_left");
+            this.rightDarknut = content.Load<Texture2D>("red_darknut_right");
+
             this.oldMan = content.Load<Texture2D>("oldMan");
             this.angryOldMan = content.Load<Texture2D>("angryOldMan");
             this.merchant = content.Load<Texture2D>("merchant");
@@ -327,6 +352,10 @@
             this.upDodongoData = new SpriteData(new Vector2(dodongoWidthUp, dodongoHeight), upDodongo, 1, 3);
             this.leftDodongoData = new SpriteData(new Vector2(dodongoWidthLeftRight, dodongoHeight), leftDodongo, 1, 3);
             this.rightDodongoData = new SpriteData(new Vector2(dodongoWidthLeftRight, dodongoHeight), rightDodongo, 1, 3);
+            this.upDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), upDarknut, 2, 1);
+            this.downDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), downDarknut, 2, 1);
+            this.leftDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), leftDarknut, 2, 1);
+            this.rightDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), rightDarknut, 2, 1);
             this.fireSnakeData = new SpriteData(new Vector2(fireSnakeWidth, fireSnakeHeight), fireSnake, 1, 4);
             this.oldManData = new SpriteData(new Vector2(oldManWidth, oldManHeight), oldMan, 1, 1);
             this.merchantData = new SpriteData(new Vector2(merchantWidth, merchantHeight), merchant, 1, 1);
@@ -344,6 +373,22 @@
         public ISprite CreateFireSnakeSprite()
         {
             return new ObjectSprite(this.fireSnake, this.fireSnakeData);
+        }
+
+        // Darknut Sprites
+        public ISprite CreateDarknutSprite(Physics.Direction direction)
+        {
+            switch (direction)
+            {
+                case Physics.Direction.North:
+                    return new ObjectSprite(this.upDarknut, this.upDarknutData);
+                case Physics.Direction.South:
+                    return new ObjectSprite(this.downDarknut, this.downDarknutData);
+                case Physics.Direction.East:
+                    return new ObjectSprite(this.rightDarknut, this.rightDarknutData);
+                default:
+                    return new ObjectSprite(this.leftDarknut, this.leftDarknutData);
+            }
         }
 
         // Goriya Sprites

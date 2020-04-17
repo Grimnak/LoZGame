@@ -66,7 +66,7 @@
             {
                 if (this is Dragon || this is Dodongo)
                 {
-                    SoundFactory.Instance.PlayDragonDie();
+                    SoundFactory.Instance.PlayBossDie();
                     LoZGame.Instance.Drops.DropHeartContainer();
                     SoundFactory.Instance.PlayKeyAppears();
                 }
@@ -138,6 +138,7 @@
         private bool isDeathState()
         {
             return this.CurrentState is DeadDodongoState ||
+                this.CurrentState is DeadDarknutState ||
                 this.CurrentState is DeadDragonState ||
                 this.CurrentState is DeadFireSnakeState ||
                 this.CurrentState is DeadGelState ||
@@ -152,6 +153,7 @@
         private bool isSpawnState()
         {
             return this.CurrentState is SpawnDodongoState ||
+                this.CurrentState is SpawnDarknutState ||
                 this.CurrentState is SpawnGelState ||
                 this.CurrentState is SpawnGoriyaState ||
                 this.CurrentState is SpawnKeeseState ||

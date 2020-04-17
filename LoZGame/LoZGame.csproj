@@ -96,9 +96,17 @@
     <Compile Include="Enemies\EnemyClasses\FireSnakeSegment.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeHead.cs" />
     <Compile Include="Enemies\EnemyClasses\BlueGoriya.cs" />
+    <Compile Include="Enemies\EnemyClasses\Darknut.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyIdleState.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyAttackState.cs" />
+    <Compile Include="Enemies\EnemyStates\DarknutStates\DeadDarknutState.cs" />
+    <Compile Include="Enemies\EnemyStates\DarknutStates\DownMovingDarknutState.cs" />
+    <Compile Include="Enemies\EnemyStates\DarknutStates\LeftMovingDarknutState.cs" />
+    <Compile Include="Enemies\EnemyStates\DarknutStates\RightMovingDarknutState.cs" />
+    <Compile Include="Enemies\EnemyStates\DarknutStates\SpawnDarknutState.cs" />
+    <Compile Include="Enemies\EnemyStates\DarknutStates\DarknutEssentials.cs" />
+    <Compile Include="Enemies\EnemyStates\DarknutStates\UpMovingDarknutState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\SpawnDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\StunnedDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\DodongoEssentials.cs" />

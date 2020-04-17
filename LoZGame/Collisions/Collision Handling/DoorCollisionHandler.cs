@@ -13,7 +13,7 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            System.Console.WriteLine("Deteced player collide with door");
+            System.Console.WriteLine("Detected player collide with door");
             // Only collide with a door if the player wasn't knocked back into it.
             if (player.Physics.KnockbackVelocity.Length() == 0 && FullIntersect(player, collisionSide))
             {

@@ -1,7 +1,6 @@
 ﻿namespace LoZClone
 {
     using System;
-    using System.Runtime.InteropServices;
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
     using Microsoft.Xna.Framework;
@@ -197,6 +196,9 @@
                     break;
                 case "FireBlockEnemy":
                     this.enemies.Add(new BlockEnemy(location));
+                    break;
+                case "Darknut":
+                    this.enemies.Add(new Darknut(location));
                     break;
                 default:
                     break;

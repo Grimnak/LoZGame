@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System;
 
     public class EnemyCollisionHandler : CollisionInteractions
     {
@@ -13,11 +14,8 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.enemy is WallMaster && !(player.State is PickupItemState))
-            {
-                this.enemy.CurrentState.Attack();
-                this.enemy.Physics.MovementVelocity = new Vector2(-2, 0);
-            }
+            this.enemy.CurrentState.Attack();
+            this.enemy.Physics.MovementVelocity = new Vector2(-2, 0);
         }
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
@@ -28,6 +26,7 @@
         {
             if (this.enemy is OldMan && (projectile is ArrowProjectile || projectile is SilverArrowProjectile || projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is SwordBeamProjectile))
             {
+                Console.WriteLine("Detected projectile collision with Old Man.");
                 ((OldMan)this.enemy).ShootFireballs();
             }
             else if (this.enemy is Dodongo)
@@ -48,10 +47,6 @@
                 {
                     this.enemy.TakeDamage(projectile.Damage);
                 }
-            }
-            else if (this.enemy.CurrentState is AttackingWallMasterState)
-            {
-                // do nothing
             }
             else if (!(projectile is BombProjectile || projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile))
             {

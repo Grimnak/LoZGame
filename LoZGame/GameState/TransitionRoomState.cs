@@ -16,7 +16,7 @@
         private Point nextRoomLocation;
         private Point nextRoomOffset;
         private Dungeon dungeon;
-        Vector2 MasterMovement;
+        private Vector2 MasterMovement;
         private Room NextRoom;
         private Vector2 nextRoomBorderOffset;
         private Vector2 currentRoomBorderOffset;
@@ -59,7 +59,7 @@
             }
             this.NextRoom = this.dungeon.GetRoom(nextRoomLocation.Y, nextRoomLocation.X);
             this.nextRoomBorderOffset = this.nextRoomOffset.ToVector2();
-            if (this.dungeon.GetRoom(this.nextRoomLocation.Y, this.nextRoomLocation.X).Exists)
+            if (this.NextRoom.Exists)
             {
                 Console.WriteLine("Room exists, attempting to enter");
                 this.MasterMovement = new Vector2((float)(-1 * nextRoomOffset.X) / transitionSpeed, (float)(-1 * nextRoomOffset.Y) / transitionSpeed);
@@ -71,26 +71,27 @@
                     {
                         case Physics.Direction.North:
                             player.MoveUp();
-                            player.Physics.MovementVelocity = new Vector2(0, -(float)maxPlayerMovement / (transitionSpeed));
+                            player.Physics.MovementVelocity = new Vector2(0, -(float)maxPlayerMovement / transitionSpeed);
                             break;
                         case Physics.Direction.South:
                             player.MoveDown();
-                            player.Physics.MovementVelocity = new Vector2(0, (float)maxPlayerMovement / (transitionSpeed));
+                            player.Physics.MovementVelocity = new Vector2(0, (float)maxPlayerMovement / transitionSpeed);
                             break;
                         case Physics.Direction.East:
                             player.MoveRight();
-                            player.Physics.MovementVelocity = new Vector2((float)maxPlayerMovement / (transitionSpeed), 0);
+                            player.Physics.MovementVelocity = new Vector2((float)maxPlayerMovement / transitionSpeed, 0);
                             break;
                         case Physics.Direction.West:
                             player.MoveLeft();
-                            player.Physics.MovementVelocity = new Vector2(-(float)maxPlayerMovement / (transitionSpeed), 0);
+                            player.Physics.MovementVelocity = new Vector2(-(float)maxPlayerMovement / transitionSpeed, 0);
                             break;
                     }
                     player.Physics.MovementVelocity += MasterMovement;
                     this.oldObjects.SetObjectMovement(this.MasterMovement);
                     this.newObjects.SetObjectMovement(this.MasterMovement);
                 }
-            } else
+            }
+            else
             {
                 Console.WriteLine("Room did not exist, No entry, Return to game");
                 this.PlayGame();

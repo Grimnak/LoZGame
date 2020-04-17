@@ -11,6 +11,14 @@
             { StateType.Idle, 99 }
         };
 
+        private static Dictionary<StateType, int> darknutStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 }
+        };
+
         private static Dictionary<StateType, int> dragonStateList = new Dictionary<StateType, int>()
         {
             { StateType.Attack, 1 },
@@ -111,6 +119,8 @@
         };
 
         public Dictionary<StateType, int> OldManStateList => oldManStateList;
+
+        public Dictionary<StateType, int> DarknutStatelist => darknutStateList;
 
         public Dictionary<StateType, int> DragonStatelist => dragonStateList;
 

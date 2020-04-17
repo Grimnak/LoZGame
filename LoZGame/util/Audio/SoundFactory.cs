@@ -27,7 +27,7 @@
         private SoundEffect linkDie = SoundEffect.FromStream(Properties.Resources.LOZ_Link_Die);
         private SoundEffect candleShoot = SoundEffect.FromStream(Properties.Resources.LOZ_Candle);
         private SoundEffect getItem = SoundEffect.FromStream(Properties.Resources.LOZ_Get_Item);
-        private SoundEffect dragonDie = SoundEffect.FromStream(Properties.Resources.LOZ_Boss_Scream1);
+        private SoundEffect bossDie = SoundEffect.FromStream(Properties.Resources.LOZ_Boss_Scream1);
         private SoundEffect climbStairs = SoundEffect.FromStream(Properties.Resources.LOZ_Stairs);
         private SoundEffect solved = SoundEffect.FromStream(Properties.Resources.LOZ_Secret);
         private SoundEffect arrowOrBoomShoot = SoundEffect.FromStream(Properties.Resources.LOZ_Arrow_Boomerang);
@@ -107,9 +107,9 @@
             getItem.Play();
         }
 
-        public void PlayDragonDie()
+        public void PlayBossDie()
         {
-            dragonDie.Play();
+            bossDie.Play();
         }
 
         public void PlayClimbStairs()

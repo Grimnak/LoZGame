@@ -13,7 +13,7 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (enemy is WallMaster && !(this.player.State is PickupItemState))
+            if (enemy is WallMaster)
             {
                 this.player.State = new GrabbedState(player, (WallMaster)enemy);
             }

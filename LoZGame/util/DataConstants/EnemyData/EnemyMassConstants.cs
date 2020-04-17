@@ -13,6 +13,7 @@ namespace LoZClone
         private const int SpikeCrossMss = 16;
         private const int WallMasterMss = 14;
         private const int FireSnakeMss = 20;
+        private const int DarknutMss = 18;
 
         public int StalfosMass { get { return StalfosMss; } }
         
@@ -35,5 +36,7 @@ namespace LoZClone
         public int WallMasterMass { get { return WallMasterMss; } }
 
         public int FireSnakeMass => FireSnakeMss;
+
+        public int DarknutMass => DarknutMss;
     }
 }

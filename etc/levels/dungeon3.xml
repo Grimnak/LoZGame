@@ -49,7 +49,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" idx="2">
-      <text>DID YOU GET THE SWORD FROM THE OLD MAN ON TOP OF THE WATERFALL?.</text>
+      <text>BEHOLD... THE WHITE SWORD.</text>
       <enemies>
         <enemy X="5.5" Y="2">OldMan</enemy>
       </enemies>
@@ -458,11 +458,11 @@
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="True" oldman="False" basement="False" idx="0">
       <enemies>
-        <enemy X="4" Y="1">Armos</enemy>
-        <enemy X="7" Y="1">Armos</enemy>
-        <enemy X="4" Y="3">Armos</enemy>
-        <enemy X="1" Y="4">Armos</enemy>
-        <enemy X="7" Y="5">Armos</enemy>
+        <enemy X="4" Y="1">Darknut</enemy>
+        <enemy X="7" Y="1">Darknut</enemy>
+        <enemy X="4" Y="3">Darknut</enemy>
+        <enemy X="1" Y="4">Darknut</enemy>
+        <enemy X="7" Y="5">Darknut</enemy>
       </enemies>
       <doors>
         <door loc="N">unlocked</door>
@@ -535,9 +535,9 @@
         <item X="6" Y="3">Bomb</item>
       </items>
       <enemies>
-        <enemy X="8" Y="0">Armos</enemy>
-        <enemy X="6" Y="1">Armos</enemy>
-        <enemy X="7" Y="3">Armos</enemy>
+        <enemy X="8" Y="0">Darknut</enemy>
+        <enemy X="6" Y="1">Darknut</enemy>
+        <enemy X="7" Y="3">Darknut</enemy>
       </enemies>
       <doors>
         <door loc="N">unlocked</door>
@@ -562,9 +562,9 @@
     </room>
     <room exists="True" oldman="False" basement="False" idx="3">
        <enemies>
-        <enemy X="6" Y="1">Armos</enemy>
-        <enemy X="8" Y="1">Armos</enemy>
-        <enemy X="5" Y="4">Armos</enemy>
+        <enemy X="6" Y="1">Darknut</enemy>
+        <enemy X="8" Y="1">Darknut</enemy>
+        <enemy X="5" Y="4">Darknut</enemy>
        </enemies>
        <doors>
         <door loc="E">special</door>
@@ -640,14 +640,14 @@
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="True" oldman="False" basement="False" idx="0">
       <enemies>
-        <enemy X="2" Y="0">Armos</enemy>
-        <enemy X="2" Y="2">Armos</enemy>
-        <enemy X="7" Y="2">Armos</enemy>
-        <enemy X="0" Y="4">Armos</enemy>
-        <enemy X="4" Y="4">Armos</enemy>
-        <enemy X="7" Y="4">Armos</enemy>
-        <enemy X="2" Y="6">Armos</enemy>
-        <enemy X="3" Y="6">Armos</enemy>
+        <enemy X="2" Y="0">Darknut</enemy>
+        <enemy X="2" Y="2">Darknut</enemy>
+        <enemy X="7" Y="2">Darknut</enemy>
+        <enemy X="0" Y="4">Darknut</enemy>
+        <enemy X="4" Y="4">Darknut</enemy>
+        <enemy X="7" Y="4">Darknut</enemy>
+        <enemy X="2" Y="6">Darknut</enemy>
+        <enemy X="3" Y="6">Darknut</enemy>
       </enemies>
       <doors>
         <door loc="N">unlocked</door>

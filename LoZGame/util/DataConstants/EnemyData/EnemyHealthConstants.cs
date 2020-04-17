@@ -16,6 +16,7 @@
         private const int OldManHP = 1;
         private const int MerchantHP = 1;
         private const int FireSnakeHP = 4;
+        private const int DarknutHP = 8;
 
         public int StalfosHealth => StalfosHP;
 
@@ -44,5 +45,7 @@
         public int MerchantHealth => MerchantHP;
 
         public int FireSnakeHealth => FireSnakeHP;
+
+        public int DarknutHealth => DarknutHP;
     }
 }
