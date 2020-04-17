@@ -54,6 +54,9 @@
         private static readonly int vireWidth = 42;
         private static readonly int vireHeight = 40;
 
+        private static readonly int likelikeWidth = 32;
+        private static readonly int likelikeHeight = 32;
+
         public static int GetEnemyWidth(IEnemy enemy)
         {
             if (enemy is Dodongo)
@@ -117,6 +120,11 @@
             {
                 return vireWidth;
             }
+            /*else if (enemy is Likelike)
+            {
+                return likelikeWidth;
+            }
+            */
             else
             {
                 return 0;
@@ -185,6 +193,11 @@
             {
                 return vireHeight;
             }
+            /*else if (enemy is Likelike)
+            {
+                return likelikeHeight;
+            }
+            */
             else
             {
                 return 0;
@@ -273,6 +286,9 @@
         private Texture2D merchant;
         private SpriteData merchantData;
 
+        private Texture2D likelike;
+        private SpriteData likelikeData;
+
         private Texture2D spawnEnemy;
         private SpriteData spawnEnemyData;
         private Texture2D deadEnemy;
@@ -343,6 +359,8 @@
             this.leftDarknut = content.Load<Texture2D>("red_darknut_left");
             this.rightDarknut = content.Load<Texture2D>("red_darknut_right");
 
+            this.likelike = content.Load<Texture2D>("likelike");
+
             this.oldMan = content.Load<Texture2D>("oldMan");
             this.angryOldMan = content.Load<Texture2D>("angryOldMan");
             this.merchant = content.Load<Texture2D>("merchant");
@@ -384,6 +402,7 @@
             this.downVireData = new SpriteData(new Vector2(vireWidth, vireHeight), downVire, 2, 1);
             this.upVireData = new SpriteData(new Vector2(vireWidth, vireHeight), upVire, 2, 1);
             this.vireKeeseData = new SpriteData(new Vector2(keeseWidth, keeseHeight), vireKeese, 2, 1);
+            this.likelikeData = new SpriteData(new Vector2(likelikeWidth, likelikeHeight), likelike, 3, 1);
         }
 
         // Stalfos Sprites
@@ -558,6 +577,11 @@
         public ISprite CreateVireKeeseSprite()
         {
             return new ObjectSprite(this.vireKeese, this.vireKeeseData);
+        }
+
+        public ISprite CreateLikelikeSprite()
+        {
+            return new ObjectSprite(this.likelike, this.likelikeData);
         }
 
         // Enemy Spawn Sprites
