@@ -118,6 +118,12 @@
             { StateType.MoveWest, 1 }
         };
 
+        private static Dictionary<StateType, int> vireStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 }
+        };
+
         public Dictionary<StateType, int> OldManStateList => oldManStateList;
 
         public Dictionary<StateType, int> DarknutStatelist => darknutStateList;
@@ -143,5 +149,7 @@
         public Dictionary<StateType, int> ZolStatelist => zolStateList;
 
         public Dictionary<StateType, int> WallMasterStatelist => wallMasterStateList;
+
+        public Dictionary<StateType, int> VireStateList => vireStateList;
     }
 }

@@ -48,10 +48,15 @@
         private static readonly int fireSnakeWidth = 28;
         private static readonly int fireSnakeHeight = 35;
 
+<<<<<<< HEAD
         private static readonly int darknutWidth = 48;
         private static readonly int darknutHeight = 54;
-
+=======
+        private static readonly int vireHeight = 35;
+        private static readonly int vireWidth = 46;
+        private static readonly int vireKeeseWidth = 48;
         private static readonly int vireKeeseHeight = 32;
+>>>>>>> vire/vire keese (can't jump yet)
 
         public static int GetEnemyWidth(IEnemy enemy)
         {
@@ -108,13 +113,19 @@
             {
                 return fireSnakeWidth;
             }
+<<<<<<< HEAD
             else if (enemy is Darknut)
             {
                 return darknutWidth;
+=======
+            else if (enemy is Vire)
+            {
+                return vireWidth;
             }
             else if (enemy is VireKeese)
             {
                 return vireKeeseWidth;
+>>>>>>> vire/vire keese (can't jump yet)
             }
             else
             {
@@ -176,13 +187,19 @@
             {
                 return fireSnakeHeight;
             }
+<<<<<<< HEAD
             else if (enemy is Darknut)
             {
                 return darknutHeight;
+=======
+            else if (enemy is Vire)
+            {
+                return vireHeight;
             }
             else if (enemy is VireKeese)
             {
                 return vireKeeseHeight;
+>>>>>>> vire/vire keese (can't jump yet)
             }
             else
             {

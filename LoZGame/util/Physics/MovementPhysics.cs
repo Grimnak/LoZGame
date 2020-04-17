@@ -48,5 +48,10 @@
             float momentum = GameData.Instance.PhysicsConstants.MomentumMultiplier * MovementVelocity.Length() * Mass;
             return momentum;
         }
+
+        public void Jump()
+        {
+            // get this to work for vires
+        }
     }
 }

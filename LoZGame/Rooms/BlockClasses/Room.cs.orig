@@ -197,11 +197,13 @@
                 case "FireBlockEnemy":
                     this.enemies.Add(new BlockEnemy(location));
                     break;
+<<<<<<< HEAD
                 case "Darknut":
                     this.enemies.Add(new Darknut(location));
-                    break;
+=======
                 case "Vire":
                     this.enemies.Add(new Vire(location));
+>>>>>>> vire/vire keese (can't jump yet)
                     break;
                 default:
                     break;
