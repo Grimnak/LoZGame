@@ -53,7 +53,6 @@
         public void Die()
         {
             this.Enemy.CurrentState = new DeadVireState(this.Enemy);
-            this.SpawnVireKeese(this.Enemy.Physics.Location);
         }
 
         public virtual void Stun(int stunTime)
@@ -72,11 +71,6 @@
                 FavorPlayerCardinal(3);
             }
             base.Update();
-        }
-
-        public void SpawnVireKeese(Vector2 location)
-        {
-            LoZGame.Instance.GameObjects.Enemies.EnemyList.Add(new VireKeese(location));
         }
     }
 }

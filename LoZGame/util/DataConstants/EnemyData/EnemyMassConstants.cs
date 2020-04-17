@@ -39,6 +39,7 @@ namespace LoZClone
         public int FireSnakeMass => FireSnakeMss;
 
         public int DarknutMass => DarknutMss;
+
         public int VireMass => VireMss;
     }
 }

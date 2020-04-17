@@ -147,7 +147,8 @@
                 this.CurrentState is DeadRopeState ||
                 this.CurrentState is DeadStalfosState ||
                 this.CurrentState is DeadWallMasterState ||
-                this.CurrentState is DeadZolState;
+                this.CurrentState is DeadZolState ||
+                this.CurrentState is DeadVireState;
         }
 
         private bool isSpawnState()
@@ -160,7 +161,8 @@
                 this.CurrentState is SpawnRopeState ||
                 this.CurrentState is SpawnStalfosState ||
                 this.CurrentState is SpawnWallMasterState ||
-                this.CurrentState is SpawnZolState;
+                this.CurrentState is SpawnZolState ||
+                this.CurrentState is SpawnVireState;
         }
     }
 }

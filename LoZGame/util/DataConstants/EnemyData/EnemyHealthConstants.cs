@@ -48,6 +48,7 @@
         public int FireSnakeHealth => FireSnakeHP;
 
         public int DarknutHealth => DarknutHP;
+
         public int VireHealth => VireHP;
     }
 }

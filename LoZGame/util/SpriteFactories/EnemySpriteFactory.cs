@@ -51,7 +51,8 @@
         private static readonly int darknutWidth = 48;
         private static readonly int darknutHeight = 54;
 
-        private static readonly int vireKeeseHeight = 32;
+        private static readonly int vireWidth = 42;
+        private static readonly int vireHeight = 40;
 
         public static int GetEnemyWidth(IEnemy enemy)
         {
@@ -72,7 +73,7 @@
             {
                 return goriyaWidth;
             }
-            else if (enemy is Keese)
+            else if (enemy is Keese || enemy is VireKeese)
             {
                 return keeseWidth;
             }
@@ -112,9 +113,9 @@
             {
                 return darknutWidth;
             }
-            else if (enemy is VireKeese)
+            else if (enemy is Vire)
             {
-                return vireKeeseWidth;
+                return vireWidth;
             }
             else
             {
@@ -140,7 +141,7 @@
             {
                 return goriyaHeight;
             }
-            else if (enemy is Keese)
+            else if (enemy is Keese || enemy is VireKeese)
             {
                 return keeseHeight;
             }
@@ -180,9 +181,9 @@
             {
                 return darknutHeight;
             }
-            else if (enemy is VireKeese)
+            else if (enemy is Vire)
             {
-                return vireKeeseHeight;
+                return vireHeight;
             }
             else
             {
@@ -382,7 +383,7 @@
             this.deadEnemyData = new SpriteData(new Vector2(40, 40), deadEnemy, 1, 6);
             this.downVireData = new SpriteData(new Vector2(vireWidth, vireHeight), downVire, 2, 1);
             this.upVireData = new SpriteData(new Vector2(vireWidth, vireHeight), upVire, 2, 1);
-            this.vireKeeseData = new SpriteData(new Vector2(vireKeeseWidth, vireKeeseHeight), vireKeese, 2, 1);
+            this.vireKeeseData = new SpriteData(new Vector2(keeseWidth, keeseHeight), vireKeese, 2, 1);
         }
 
         // Stalfos Sprites

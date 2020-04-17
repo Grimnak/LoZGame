@@ -8,7 +8,7 @@
         private const int GelDmg = 2;
         private const int ZolDmg = 4;
         private const int SpikeCrossDmg = 2;
-        private const int SpikeCrossDmg = 4;
+        private const int VireDmg = 4;
         private const int WallMasterDmg = 1;
         private const int DragonDmg = 4;
         private const int DodongoDmg = 4;
@@ -48,6 +48,7 @@
         public int FireSnakeDamage => FireSnakeDmg;
 
         public int DarknutDamage => DarknutDmg;
+
         public int VireDamage => VireDmg;
     }
 }
