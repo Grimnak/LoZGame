@@ -157,13 +157,6 @@
                 manager.Blocks.Add(block);
             }
 
-            foreach (IItem item in this.dungeonLayout[location.Y][location.X].Items)
-            {
-                item.Physics.Bounds = new Rectangle(item.Physics.Bounds.Location + offset, item.Physics.Bounds.Size);
-                item.Physics.SetLocation();
-                manager.Items.Add(item);
-            }
-
             foreach (Door door in this.dungeonLayout[location.Y][location.X].Doors)
             {
                 door.Physics.Bounds = new Rectangle(door.Physics.Bounds.Location + offset, door.Physics.Bounds.Size);
@@ -172,7 +165,7 @@
             }
         }
 
-        public void SpawnEnemies()
+        public void SpawnObjects()
         {
             foreach (IEnemy enemy in this.dungeonLayout[this.currentY][this.currentX].Enemies)
             {
@@ -180,7 +173,12 @@
                 enemy.Physics.SetLocation();
                 LoZGame.Instance.GameObjects.Enemies.Add(enemy);
             }
-
+            foreach (IItem item in this.dungeonLayout[this.currentY][this.currentX].Items)
+            {
+                item.Physics.Bounds = new Rectangle(item.Physics.Bounds.Location, item.Physics.Bounds.Size);
+                item.Physics.SetLocation();
+                LoZGame.Instance.GameObjects.Items.Add(item);
+            }
         }
     }
 }
