@@ -670,7 +670,7 @@
         <tile type="block" idx="11">movable_square3</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="walkable" idx="6">stairs3</tile>
+        <tile type="walkable" idx="11">stairs3</tile>
       </rrow>
       <rrow idx="4">
         <tile type="block" idx="9">movable_square3</tile>
@@ -754,7 +754,7 @@
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
       <items>
-        <item X="8" Y="3">Raft</item>
+        <item X="8" Y="3">WhiteSword</item>
       </items>
       <rrow idx="0">
         <tile type="block" idx="0">basement_brick_tile</tile>
