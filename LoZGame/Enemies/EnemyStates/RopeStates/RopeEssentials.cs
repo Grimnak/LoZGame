@@ -76,9 +76,9 @@
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.RopeFavorCardinalValue);
             }
-            if (!(this.Enemy.CurrentState is AttackingRopeState))
+            if (!(this.Enemy.CurrentState is AttackingRopeState || this.Enemy.IsSpawning))
             {
-                this.CheckForLink();
+                //this.CheckForLink();
             }
             base.Update();
         }
