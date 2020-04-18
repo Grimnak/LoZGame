@@ -49,7 +49,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" idx="2">
-      <text>BEHOLD... THE WHITE SWORD.</text>
+      <text>THE WHITE SWORD IS BELOW YOU.</text>
       <enemies>
         <enemy X="5.5" Y="2">OldMan</enemy>
       </enemies>
@@ -754,7 +754,7 @@
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
       <items>
-        <item X="8" Y="3">WhiteSword</item>
+        <item X="6" Y="1">WhiteSword</item>
       </items>
       <rrow idx="0">
         <tile type="block" idx="0">basement_brick_tile</tile>

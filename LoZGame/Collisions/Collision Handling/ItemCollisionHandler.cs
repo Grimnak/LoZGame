@@ -80,6 +80,11 @@
                 SoundFactory.Instance.PlayGetItem();
                 player.CurrentWeapon = Link.LinkWeapon.White;
             }
+            else if (this.item is MagicSword)
+            {
+                SoundFactory.Instance.PlayGetItem();
+                player.CurrentWeapon = Link.LinkWeapon.Magic;
+            }
             else
             {
                 SoundFactory.Instance.PlayGetItem();
