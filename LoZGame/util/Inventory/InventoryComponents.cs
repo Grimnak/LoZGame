@@ -297,7 +297,7 @@
 
                 default:
                     selectionItem = CreateBombSprite();
-                    if (LoZGame.Instance.Players[0].Inventory.HasRedFlame)
+                    if (LoZGame.Instance.Players[0].Inventory.Bombs > 0)
                     {
                         selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     }

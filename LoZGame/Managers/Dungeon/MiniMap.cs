@@ -86,7 +86,6 @@
                             doors.Add(MiniMap.DoorLocation.West);
                             break;
                         default:
-                            Console.WriteLine("Error in ./Dungeon/MiniMap FetchDoors()");
                             break;
                     }
                 }
