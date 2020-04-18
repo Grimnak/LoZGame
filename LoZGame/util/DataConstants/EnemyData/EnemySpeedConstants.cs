@@ -24,6 +24,7 @@ namespace LoZClone
         private const float FireSnakeSpd = 2;
         private const float DarknutSpd = 1.5f;
         private const float VireSpd = 2;
+        private const float LikelikeSpd = 2;
 
         public float StalfosSpeed => StalfosSpd;
 
@@ -68,5 +69,7 @@ namespace LoZClone
         public float DarknutSpeed => DarknutSpd;
 
         public float VireSpeed => VireSpd;
+
+        public float LikelikeSpeed => LikelikeSpd;
     }
 }

@@ -54,6 +54,11 @@
         {
         }
 
+        public void Hide()
+        {
+            this.Enemy.CurrentState = new HiddenVireState(this.Enemy);
+        }
+
         public override void Update()
         {
             base.Update();

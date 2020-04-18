@@ -120,11 +120,10 @@
             {
                 return vireWidth;
             }
-            /*else if (enemy is Likelike)
+            else if (enemy is Likelike)
             {
                 return likelikeWidth;
             }
-            */
             else
             {
                 return 0;
@@ -193,11 +192,10 @@
             {
                 return vireHeight;
             }
-            /*else if (enemy is Likelike)
+            else if (enemy is Likelike)
             {
                 return likelikeHeight;
             }
-            */
             else
             {
                 return 0;

@@ -209,6 +209,9 @@
                 case "Vire":
                     this.enemies.Add(new Vire(location));
                     break;
+                case "LikeLike":
+                    this.enemies.Add(new Likelike(location));
+                    break;
                 default:
                     break;
             }

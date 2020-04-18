@@ -15,6 +15,7 @@ namespace LoZClone
         private const int FireSnakeMss = 20;
         private const int DarknutMss = 18;
         private const int VireMss = 16;
+        private const int LikelikeMss = 16;
 
         public int StalfosMass { get { return StalfosMss; } }
         
@@ -41,5 +42,7 @@ namespace LoZClone
         public int DarknutMass => DarknutMss;
 
         public int VireMass => VireMss;
+
+        public int LikelikeMass => LikelikeMss;
     }
 }

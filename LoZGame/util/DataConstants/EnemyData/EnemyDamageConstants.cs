@@ -18,6 +18,7 @@
         private const int MerchantDmg = 0;
         private const int FireSnakeDmg = 6;
         private const int DarknutDmg = 2;
+        private const int LikelikeDmg = 4;
 
         public int StalfosDamage => StalfosDmg;
 
@@ -50,5 +51,7 @@
         public int DarknutDamage => DarknutDmg;
 
         public int VireDamage => VireDmg;
+
+        public int LikelikeDamage => LikelikeDmg;
     }
 }
