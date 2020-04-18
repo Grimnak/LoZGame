@@ -62,7 +62,7 @@
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
         {
-            if (door.DoorType == Door.DoorTypes.Locked || door.DoorType == Door.DoorTypes.Hidden)
+            if (door.DoorType != Door.DoorTypes.Unlocked)
             {
                 PreventDoorEntry(door);
             }
