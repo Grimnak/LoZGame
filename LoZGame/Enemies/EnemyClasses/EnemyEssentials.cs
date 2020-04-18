@@ -6,6 +6,10 @@
 
     public abstract class EnemyEssentials
     {
+        private bool isDead = false;
+
+        private bool isSpawning = false;
+
         public Dictionary<RandomStateGenerator.StateType, int> States { get; set; }
 
         public EnemyCollisionHandler EnemyCollisionHandler { get; set; }
@@ -16,11 +20,11 @@
 
         public bool HasChild { get; set; }
 
-        public bool IsSpawning { get; set; }
+        public bool IsSpawning { get { return isSpawning; } set { isSpawning = value; } }
 
         public bool Expired { get; set; }
 
-        public bool IsDead { get; set; }
+        public bool IsDead { get { return isDead; } set { isDead = value; } }
 
         public Physics Physics { get; set; }
 
@@ -66,6 +70,7 @@
             }
             if (this.Health.CurrentHealth <= 0)
             {
+                this.IsDead = true;
                 if (this is Dragon || this is Dodongo)
                 {
                     SoundFactory.Instance.PlayBossDie();
@@ -100,7 +105,7 @@
         public virtual void Update()
         {
             this.HandleDamage();
-            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.IsSpawning)
+            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.IsSpawning || this.IsDead)
             {
                 this.CurrentState.Update();
                 this.Physics.Move();
@@ -136,35 +141,5 @@
         }
 
         public abstract ISprite CreateCorrectSprite();
-
-        private bool isDeathState()
-        {
-            return this.CurrentState is DeadDodongoState ||
-                this.CurrentState is DeadDarknutState ||
-                this.CurrentState is DeadDragonState ||
-                this.CurrentState is DeadFireSnakeState ||
-                this.CurrentState is DeadGelState ||
-                this.CurrentState is DeadGoriyaState ||
-                this.CurrentState is DeadKeeseState ||
-                this.CurrentState is DeadRopeState ||
-                this.CurrentState is DeadStalfosState ||
-                this.CurrentState is DeadWallMasterState ||
-                this.CurrentState is DeadZolState ||
-                this.CurrentState is DeadVireState;
-        }
-
-        private bool isSpawnState()
-        {
-            return this.CurrentState is SpawnDodongoState ||
-                this.CurrentState is SpawnDarknutState ||
-                this.CurrentState is SpawnGelState ||
-                this.CurrentState is SpawnGoriyaState ||
-                this.CurrentState is SpawnKeeseState ||
-                this.CurrentState is SpawnRopeState ||
-                this.CurrentState is SpawnStalfosState ||
-                this.CurrentState is SpawnWallMasterState ||
-                this.CurrentState is SpawnZolState ||
-                this.CurrentState is SpawnVireState;
-        }
     }
 }

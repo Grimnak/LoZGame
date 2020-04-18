@@ -19,6 +19,7 @@
 
         public void MoveUp()
         {
+            this.Enemy.CurrentState = new UpMovingWallMasterState(this.Enemy);
         }
 
         public void MoveDown()
