@@ -26,6 +26,10 @@
         private const string BlueStatueRight2 = "blue_statue_right2";
         private const string OrangeStatueRight2 = "orange_statue_right2";
         private const string OrangeStatueLeft2 = "orange_statue_left2";
+        private const string RedStatueLeft3 = "red_statue_left3";
+        private const string RedStatueRight3 = "red_statue_right3";
+        private const string GreenStatueRight3 = "green_statue_right";
+        private const string GreenStatueLeft3 = "green_statue_left";
         private const string statueCheck = "statue";
 
         private ISprite sprite;
@@ -99,6 +103,16 @@
                     return BlockSpriteFactory.Instance.OrangeStatueRight2();
                 case OrangeStatueLeft2:
                     return BlockSpriteFactory.Instance.OrangeStatueLeft2();
+                case RedStatueRight3:
+                    return BlockSpriteFactory.Instance.RedStatueRight3();
+                case RedStatueLeft3:
+                    return BlockSpriteFactory.Instance.RedStatueLeft3();
+                case GreenStatueRight3:
+                    return BlockSpriteFactory.Instance.GreenStatueRight3();
+                case GreenStatueLeft3:
+                    return BlockSpriteFactory.Instance.GreenStatueLeft3();
+                case MovableSquare3:
+                    return BlockSpriteFactory.Instance.MovableSquare3();
                 default:
                     return BlockSpriteFactory.Instance.MovableSquare();
             }

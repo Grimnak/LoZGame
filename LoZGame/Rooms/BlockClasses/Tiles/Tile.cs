@@ -21,6 +21,8 @@
         private const string SpottedTile2 = "spotted_tile2";
         private const string BossTile2 = "boss_tile2";
         private const string Lava2 = "lava2";
+        private const string Stairs3 = "stairs3";
+        private const string SpottedTile3 = "spotted_tile3";
 
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
@@ -76,6 +78,10 @@
                     return BlockSpriteFactory.Instance.BossTile2();
                 case Lava2:
                     return BlockSpriteFactory.Instance.LavaTile2();
+                case Stairs3:
+                    return BlockSpriteFactory.Instance.Stairs3();
+                case SpottedTile3:
+                    return BlockSpriteFactory.Instance.SpottedTile3();
                 default:
                     return BlockSpriteFactory.Instance.FloorTile();
             }
