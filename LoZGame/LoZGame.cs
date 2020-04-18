@@ -136,6 +136,7 @@
             LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
             ScreenSpriteFactory.Instance.LoadAllTextures(this.Content);
             InventorySpriteFactory.Instance.LoadAllTextures(this.Content);
+            DungeonSpriteFactory.Instance.LoadAllTextures(this.Content);
 
             this.font = Content.Load<SpriteFont>("Text");
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
