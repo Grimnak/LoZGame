@@ -154,7 +154,7 @@
                     player.Physics.MasterMovement = Vector2.Zero;
                     player.Idle();
                 }
-                this.dungeon.SpawnEnemies();
+                this.dungeon.SpawnObjects();
                 this.PlayGame();
             }
         }
