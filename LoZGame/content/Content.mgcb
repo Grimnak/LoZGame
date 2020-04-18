@@ -2240,6 +2240,18 @@
 /processorParam:TextureFormat=Color
 /build:orange_statue_right2.png
 
+#begin PauseMenu.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:PauseMenu.png
+
 #begin playerHUD.png
 /importer:TextureImporter
 /processor:TextureProcessor

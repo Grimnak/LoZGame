@@ -155,6 +155,7 @@
 
         protected override void Update(GameTime gameTime)
         {
+            Console.WriteLine(LoZGame.Instance.screenHeight);
             for (int i = 0; i < controllers.Count; i++)
             {
                 controllers[i].Update();
