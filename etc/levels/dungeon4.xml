@@ -286,7 +286,7 @@
     </rrow>
     <rrow idx="3">
       <tile type="movable"  idx="4" dir="N,S">orange_movable_square</tile>
-      <tile type="block" idx="3">movable_square</tile>
+      <tile type="block" idx="7">movable_square</tile>
     </rrow>
     <rrow idx="4">
     </rrow>
@@ -303,6 +303,8 @@
       <enemy X="5" Y="1">Gleeok</enemy>
     </enemies>
     <doors>
+	  <door loc="N">special</door>
+	  <door loc="W">special</door>
     </doors>
     <rrow idx="0">
       <tile type="block" idx="0">movable_square</tile>
