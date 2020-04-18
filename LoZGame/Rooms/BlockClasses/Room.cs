@@ -49,38 +49,35 @@
         }
 
         /// <summary>
-        /// Gets the enemies list.
+        /// Gets or sets the enemies list.
         /// </summary>
         public List<IEnemy> Enemies
         {
-            get { return this.enemies; }
+            get { return this.enemies; } set { this.enemies = value; }
         }
 
         /// <summary>
-        /// Gets the items list.
+        /// Gets or sets the items list.
         /// </summary>
         public List<IItem> Items
         {
-            get { return this.items; }
+            get { return this.items; } set { this.items = value; }
         }
 
         /// <summary>
-        /// Gets the tiles list.
+        /// Gets or sets the blocks list.
         /// </summary>
         public List<IBlock> Tiles
         {
-            get { return this.blocks; }
+            get { return this.blocks; } set { this.blocks = value; }
         }
 
         /// <summary>
-        /// Gets the doors list.
+        /// Gets or sets the doors list.
         /// </summary>
         public List<Door> Doors
         {
-            get
-            {
-                return this.doors;
-            }
+            get { return this.doors; } set { this.doors = value; }
         }
 
         /// <summary>

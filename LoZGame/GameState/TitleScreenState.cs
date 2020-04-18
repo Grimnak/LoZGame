@@ -21,6 +21,7 @@
 
             LoZGame.Instance.Dungeon = new Dungeon(LoZGame.StartDungeon);
             LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
+            LoZGame.Instance.Dungeon.LoadNewRoom();
 
             LoZGame.Instance.Link = new Link(new Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + GameData.Instance.GameStateDataConstants.HorizontalHalfDungeon),

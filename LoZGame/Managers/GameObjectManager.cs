@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System;
 
     public class GameObjectManager : IManager
     {
@@ -9,6 +10,8 @@
         private EntityManager entityManager;
         private EnemyManager enemyManager;
         private DoorManager doorManager;
+        private int loadedRoomX;
+        private int loadedRoomY;
 
         public GameObjectManager()
         {
@@ -17,6 +20,8 @@
             this.entityManager = new EntityManager();
             this.enemyManager = new EnemyManager();
             this.doorManager = new DoorManager();
+            this.loadedRoomX = -1;
+            this.loadedRoomY = -1;
         }
 
         public ItemManager Items { get { return itemManager; } }
@@ -28,6 +33,10 @@
         public EnemyManager Enemies { get { return enemyManager; } }
 
         public DoorManager Doors { get { return doorManager; } }
+
+        public int LoadedRoomX { get { return loadedRoomX; } set { loadedRoomX = value; } }
+
+        public int LoadedRoomY { get { return loadedRoomY; } set { loadedRoomY = value; } }
 
         public void Clear()
         {
@@ -64,6 +73,59 @@
             entityManager.Update();
             enemyManager.Update();
             doorManager.Update();
+        }
+
+        /// <summary>
+        /// Saves the current state of every game object in the room.
+        /// </summary>
+        public void Save()
+        {
+            LoZGame.Instance.Dungeon.DungeonLayout[loadedRoomY][loadedRoomX].Enemies.Clear();
+            LoZGame.Instance.Dungeon.DungeonLayout[loadedRoomY][loadedRoomX].Items.Clear();
+            foreach (IEnemy enemy in this.enemyManager.EnemyList)
+            {
+                LoZGame.Instance.Dungeon.DungeonLayout[loadedRoomY][loadedRoomX].Enemies.Add(enemy);
+            }
+            foreach (IItem item in this.itemManager.ItemList)
+            {
+                LoZGame.Instance.Dungeon.DungeonLayout[loadedRoomY][loadedRoomX].Items.Add(item);
+            }
+        }
+
+        /// <summary>
+        /// Loads new room info into managers.
+        /// </summary>
+        public void LoadNewRoom()
+        {
+            // If X isn't equal to -1, we know Y also isn't equal to -1.
+            if (loadedRoomX != -1)
+            {
+                this.Save();
+            }
+            this.Clear();
+
+            foreach (IEnemy enemy in LoZGame.Instance.Dungeon.DungeonLayout[LoZGame.Instance.Dungeon.CurrentRoomY][LoZGame.Instance.Dungeon.CurrentRoomX].Enemies)
+            {
+                LoZGame.Instance.GameObjects.Enemies.Add(enemy);
+            }
+
+            foreach (IBlock block in LoZGame.Instance.Dungeon.DungeonLayout[LoZGame.Instance.Dungeon.CurrentRoomY][LoZGame.Instance.Dungeon.CurrentRoomX].Tiles)
+            {
+                LoZGame.Instance.GameObjects.Blocks.Add(block);
+            }
+
+            foreach (IItem item in LoZGame.Instance.Dungeon.DungeonLayout[LoZGame.Instance.Dungeon.CurrentRoomY][LoZGame.Instance.Dungeon.CurrentRoomX].Items)
+            {
+                LoZGame.Instance.GameObjects.Items.Add(item);
+            }
+
+            foreach (Door door in LoZGame.Instance.Dungeon.DungeonLayout[LoZGame.Instance.Dungeon.CurrentRoomY][LoZGame.Instance.Dungeon.CurrentRoomX].Doors)
+            {
+                LoZGame.Instance.GameObjects.Doors.Add(door);
+            }
+
+            this.loadedRoomX = LoZGame.Instance.Dungeon.CurrentRoomX;
+            this.loadedRoomY = LoZGame.Instance.Dungeon.CurrentRoomY;
         }
 
         /// <summary>
