@@ -619,16 +619,16 @@
        <rrow idx="1">
        </rrow>
        <rrow idx="2">
-         <tile type="walkable" idx="5">movable_square3</tile>
-         <tile type="walkable" idx="6">movable_square3</tile>
+         <tile type="block" idx="5">movable_square3</tile>
+         <tile type="block" idx="6">movable_square3</tile>
        </rrow>
        <rrow idx="3">
-         <tile type="walkable" idx="5">movable_square3</tile>
-         <tile type="walkable" idx="6">movable_square3</tile>
+         <tile type="block" idx="5">movable_square3</tile>
+         <tile type="block" idx="6">movable_square3</tile>
        </rrow>
        <rrow idx="4">
-         <tile type="walkable" idx="5">movable_square3</tile>
-         <tile type="walkable" idx="6">movable_square3</tile>
+         <tile type="block" idx="5">movable_square3</tile>
+         <tile type="block" idx="6">movable_square3</tile>
        </rrow>
        <rrow idx="5">
        </rrow>

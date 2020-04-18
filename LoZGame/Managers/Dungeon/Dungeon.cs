@@ -75,7 +75,7 @@
                     this.mapColor = Color.Green;
                     break;
                 case 4:
-                    LoZGame.Instance.DungeonTint = Color.Tan;
+                    LoZGame.Instance.DungeonTint = Color.Orange;
                     this.currentX = 1;
                     this.currentY = 7;
                     this.maxX = 4;
