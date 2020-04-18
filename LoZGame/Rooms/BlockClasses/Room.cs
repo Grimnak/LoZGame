@@ -112,6 +112,8 @@
 
         public MagicBoomerang DroppedMagicBoomerang => this.droppedMagicBoomerang;
 
+        public bool IsBasement => this.basement;
+
         /// <summary>
         /// Converts grid position in the room to a screen vector.
         /// </summary>

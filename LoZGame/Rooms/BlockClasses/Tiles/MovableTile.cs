@@ -100,7 +100,6 @@
                 else if (!moved)
                 {
                     moved = true;
-                    SoundFactory.Instance.PlaySolved();
                 }
             }
             else if (this.Physics.MovementVelocity.Y != 0)
@@ -114,7 +113,6 @@
                 else if (!moved)
                 {
                     moved = true;
-                    SoundFactory.Instance.PlaySolved();
                 }
             }
         }

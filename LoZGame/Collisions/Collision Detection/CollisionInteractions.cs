@@ -110,7 +110,9 @@
         public void SetBounds(Physics target, CollisionDetection.CollisionSide collisionSide)
         {
             int topOffset = LoZGame.Instance.InventoryOffset, bottomOffset = 0, horizontalOffset = 0;
-            if (LoZGame.Instance.Dungeon.CurrentRoomX != 1 || LoZGame.Instance.Dungeon.CurrentRoomY != 1)
+
+            // Some dungeons contains basements with different boundaries than standard rooms.  Account for that here.
+            if (!LoZGame.Instance.Dungeon.CurrentRoom.IsBasement)
             {
                 topOffset = BlockSpriteFactory.Instance.TopOffset;
                 bottomOffset = BlockSpriteFactory.Instance.BottomOffset;

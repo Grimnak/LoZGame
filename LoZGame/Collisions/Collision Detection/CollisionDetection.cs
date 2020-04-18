@@ -78,7 +78,7 @@
                     CheckCollisions<IEnemy>(block, enemies);
                     CheckBorders(block, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
                 }
-                else if (block is Tile && ((Tile)block).Name.Equals("stairs"))
+                else if (block is Tile && (((Tile)block).Name.Equals("stairs") || ((Tile)block).Name.Equals("stairs3")))
                 {
                     CheckCollisions<IPlayer>(block, players);
                 }
