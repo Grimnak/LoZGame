@@ -15,11 +15,13 @@
         public virtual void Close()
         {
             this.Door.State = new LockedDoorState(this.Door);
+            this.Door.DoorType = LoZClone.Door.DoorTypes.Locked;
         }
 
         public virtual void Open()
         {
             this.Door.State = new UnlockedDoorState(this.Door);
+            this.Door.DoorType = LoZClone.Door.DoorTypes.Unlocked;
         }
 
         public virtual void Bombed()
@@ -27,10 +29,12 @@
             if (this.Door.State is LockedDoorState)
             {
                 this.Door.State = new UnlockedDoorState(this.Door);
+                this.Door.DoorType = LoZClone.Door.DoorTypes.Unlocked;
             }
             else
             {
                 this.Door.State = new BombedDoorState(this.Door);
+                this.Door.DoorType = LoZClone.Door.DoorTypes.Unlocked;
             }
         }
 
