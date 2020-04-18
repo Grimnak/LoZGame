@@ -6,10 +6,6 @@
 
     public class ZolEssentials : EnemyStateEssentials, IEnemyState
     {
-        private static readonly int minMovementTime = LoZGame.Instance.UpdateSpeed;
-        private static readonly int maxMovementTime = LoZGame.Instance.UpdateSpeed * 4;
-        private static readonly int minIdleTime = LoZGame.Instance.UpdateSpeed / 2;
-        private static readonly int maxIdleTime = LoZGame.Instance.UpdateSpeed;
         private int movementTime;
         private int idleTime;
         private bool moving;
@@ -65,7 +61,6 @@
 
         public virtual void Stun(int stunTime)
         {
-            this.Enemy.TakeDamage(this.Enemy.Health.MaxHealth);
         }
 
         public override void Spawn()
@@ -75,8 +70,7 @@
 
         public void RandomMovementTimes()
         {
-            this.movementTime = LoZGame.Instance.Random.Next(minMovementTime, maxMovementTime);
-            this.idleTime = LoZGame.Instance.Random.Next(minIdleTime, maxIdleTime);
+            this.idleTime = LoZGame.Instance.Random.Next(GameData.Instance.EnemyMiscConstants.ZolMinIdle, GameData.Instance.EnemyMiscConstants.ZolMaxIdle);
             this.moving = true;
             this.Lifetime = 0;
         }
@@ -84,7 +78,7 @@
         private void DecideToMove()
         {
             this.Lifetime++;
-            if (this.moving && this.Lifetime >= this.movementTime)
+            if (this.moving && this.Lifetime >= GameData.Instance.EnemyMiscConstants.ZolMovementTime)
             {
                 this.Lifetime = 0;
                 this.moving = false;
@@ -97,6 +91,10 @@
 
         public override void Update()
         {
+            if (this.Lifetime == this.DirectionChange)
+            {
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.ZolFavorCardinalValue);
+            }
             this.DecideToMove();
             if (this.moving)
             {

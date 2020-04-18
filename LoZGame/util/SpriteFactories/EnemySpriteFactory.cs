@@ -43,7 +43,7 @@
         private static readonly int wallMasterHeight = 45;
 
         private static readonly int zolWidth = 40;
-        private static readonly int zolHeight = 50;
+        private static readonly int zolHeight = 40;
 
         private static readonly int fireSnakeWidth = 28;
         private static readonly int fireSnakeHeight = 35;
@@ -319,7 +319,7 @@
             this.rightRope = content.Load<Texture2D>("ropeRight");
 
             this.gel = content.Load<Texture2D>("tealGel");
-            this.zol = content.Load<Texture2D>("grayZol");
+            this.zol = content.Load<Texture2D>("greenZol");
 
             this.spikeCross = content.Load<Texture2D>("spike");
 
@@ -363,7 +363,7 @@
             this.leftRopeData = new SpriteData(new Vector2(ropeWidth, ropeHeight), leftRope, 2, 1);
             this.rightRopeData = new SpriteData(new Vector2(ropeWidth, ropeHeight), rightRope, 2, 1);
             this.gelData = new SpriteData(new Vector2(gelWidth, gelHeight), gel, 2, 1);
-            this.zolData = new SpriteData(new Vector2(gelWidth, gelHeight), zol, 2, 1);
+            this.zolData = new SpriteData(new Vector2(zolWidth, zolHeight), zol, 2, 1);
             this.spikeCrossData = new SpriteData(new Vector2(spikeCrossWidth, spikeCrossHeight), spikeCross, 1, 1);
             this.keeseData = new SpriteData(new Vector2(keeseWidth, keeseHeight), keese, 2, 1);
             this.dragonData = new SpriteData(new Vector2(dragonWidth, dragonHeight), dragon, 1, 4);

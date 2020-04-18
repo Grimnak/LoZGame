@@ -66,7 +66,10 @@
 
         public virtual void Stun(int stunTime)
         {
-            this.Enemy.TakeDamage(this.Enemy.Health.MaxHealth);
+            if (!this.Enemy.IsSpawning)
+            {
+                this.Enemy.TakeDamage(this.Enemy.Health.MaxHealth);
+            }
         }
 
         public override void Update()

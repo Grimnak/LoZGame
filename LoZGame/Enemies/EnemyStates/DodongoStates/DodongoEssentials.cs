@@ -63,7 +63,10 @@
 
         public virtual void Stun(int stunTime)
         {
-            this.Enemy.CurrentState = new StunnedDodongoState(this.Enemy);
+            if (!this.Enemy.IsSpawning)
+            {
+                this.Enemy.CurrentState = new StunnedDodongoState(this.Enemy);
+            }
         }
 
         public override void Update()

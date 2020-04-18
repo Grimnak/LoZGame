@@ -29,6 +29,7 @@
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.OldManHealth);
             this.Expired = false;
             this.IsDead = false;
+            this.IsSpawning = true;
             this.Damage = GameData.Instance.EnemyDamageConstants.OldManDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.OldManSpeed;

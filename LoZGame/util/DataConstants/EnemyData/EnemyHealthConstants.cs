@@ -6,7 +6,7 @@
         private const int KeeseHP = 2;
         private const int RopeHP = 2;
         private const int GelHP = 2;
-        private const int ZolHP = 8;
+        private const int ZolHP = 4;
         private const int SpikeCrossHP = 1;
         private const int WallMasterHP = 12;
         private const int DragonHP = 32;

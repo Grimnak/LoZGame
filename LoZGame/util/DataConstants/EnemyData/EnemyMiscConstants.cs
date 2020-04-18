@@ -14,7 +14,9 @@ namespace LoZClone
         private const int GelIdleMin = 18;
         private const int GelIdleMax = 30;
         private const int GelMovementT = 17;
-        private const int ZolMaxWait = 12;
+        private const int ZolIdleMin = 18;
+        private const int ZolIdleMax = 30;
+        private const int ZolMovementT = 17;
 
         private const int DodongoFavorCardinal = 5;
         private const int FireSnakeFavorCardinal = 9;
@@ -53,7 +55,11 @@ namespace LoZClone
 
         public int GelMovementTime => GelMovementT;
 
-        public int ZolMaximumWait => ZolMaxWait;
+        public int ZolMinIdle => ZolIdleMin;
+
+        public int ZolMaxIdle => ZolIdleMax;
+
+        public int ZolMovementTime => ZolMovementT;
 
         public int DodongoFavorCardinalValue => DodongoFavorCardinal;
 
