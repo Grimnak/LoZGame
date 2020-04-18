@@ -25,7 +25,7 @@
         {
             this.previousState.Draw();
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            this.PauseScreen.Draw(Vector2.Zero, LoZGame.Instance.DungeonTint, 1);
+            this.PauseScreen.Draw(Vector2.Zero, LoZGame.Instance.DefaultTint, 1);
             LoZGame.Instance.SpriteBatch.End();
         }
     }

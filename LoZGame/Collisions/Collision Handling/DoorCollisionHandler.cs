@@ -13,11 +13,9 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            System.Console.WriteLine("Detected player collide with door");
             // Only collide with a door if the player wasn't knocked back into it.
             if (player.Physics.KnockbackVelocity.Length() == 0 && FullIntersect(player, collisionSide))
             {
-                System.Console.WriteLine("Letting Player move through door");
                 if ((this.door.State is UnlockedDoorState || this.door.State is BombedDoorState) && (!(player.State is GrabbedState)))
                 {
                     switch (door.Physics.CurrentDirection) 

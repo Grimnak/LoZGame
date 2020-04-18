@@ -10,7 +10,7 @@
         private const int LeftDoorXLoc = 19;
 
         private const string Unlocked = "Unlocked";
-        private const string Hidden = "hidden";
+        private const string Hidden = "Hidden";
         private const string Cosmetic = "Cosmetic";
         private const string Locked = "Locked";
         private const string Puzzle = "Puzzle";
@@ -28,7 +28,7 @@
 
         public int UpDoorYLocation => LoZGame.Instance.InventoryOffset + 12;
 
-        public int RightDoorXLocation => LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight;
+        public int RightDoorXLocation => LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight + 5;
 
         public int RightLeftDoorYLocation => LoZGame.Instance.InventoryOffset + 195;
 

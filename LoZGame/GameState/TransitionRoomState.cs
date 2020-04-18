@@ -26,7 +26,6 @@
 
         public TransitionRoomState(Physics.Direction direction)
         {
-            Console.WriteLine("Attempted to enter transition State");
             this.oldObjects = LoZGame.Instance.GameObjects;
             this.newObjects = new GameObjectManager();
             this.done = false;
@@ -61,7 +60,6 @@
             this.nextRoomBorderOffset = this.nextRoomOffset.ToVector2();
             if (this.NextRoom.Exists)
             {
-                Console.WriteLine("Room exists, attempting to enter");
                 this.MasterMovement = new Vector2((float)(-1 * nextRoomOffset.X) / transitionSpeed, (float)(-1 * nextRoomOffset.Y) / transitionSpeed);
                 this.oldObjects.Entities.Clear();
                 this.dungeon.LoadNewRoom(newObjects, this.nextRoomLocation, this.nextRoomOffset);
@@ -93,7 +91,6 @@
             }
             else
             {
-                Console.WriteLine("Room did not exist, No entry, Return to game");
                 this.PlayGame();
             }
         }
@@ -128,7 +125,6 @@
                 else
                 {
                     this.transitionDistance -= Math.Abs(MasterMovement.X + MasterMovement.Y);
-                    Console.WriteLine(transitionDistance);
                 }
                 this.nextRoomBorderOffset += MasterMovement;
                 this.currentRoomBorderOffset += MasterMovement;

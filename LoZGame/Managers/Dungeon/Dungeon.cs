@@ -43,6 +43,8 @@
         {
             this.DungeonNumber = dungeonNumber;
             this.currentDungeonFile = "../../../../../etc/levels/dungeon" + this.dungeonNumber + ".xml";
+            LoZGame.Instance.GameObjects.LoadedRoomX = -1;
+            LoZGame.Instance.GameObjects.LoadedRoomY = -1;
 
             switch (this.dungeonNumber)
             {
