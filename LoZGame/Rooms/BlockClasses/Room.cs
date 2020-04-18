@@ -259,6 +259,11 @@
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
                     this.items.Add(new Map(location));
                     break;
+                case "WhiteSword":
+                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
+                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
+                    this.items.Add(new WhiteSword(location));
+                    break;
                 default:
                     break;
             }
