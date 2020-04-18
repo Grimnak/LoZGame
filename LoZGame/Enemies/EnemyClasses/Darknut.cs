@@ -17,6 +17,7 @@
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
             this.IsDead = false;
+            this.IsSpawning = true;
             this.Damage = GameData.Instance.EnemyDamageConstants.DarknutDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DarknutSpeed;

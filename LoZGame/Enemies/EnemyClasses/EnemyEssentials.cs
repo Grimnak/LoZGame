@@ -16,6 +16,8 @@
 
         public bool HasChild { get; set; }
 
+        public bool IsSpawning { get; set; }
+
         public bool Expired { get; set; }
 
         public bool IsDead { get; set; }
@@ -53,7 +55,7 @@
 
         public virtual void TakeDamage(int damageAmount)
         {
-            if (this.DamageTimer <= 0)
+            if (this.DamageTimer <= 0 && !this.IsSpawning)
             {
                 this.Health.DamageHealth(damageAmount);
                 if (damageAmount > 0)
@@ -98,7 +100,7 @@
         public virtual void Update()
         {
             this.HandleDamage();
-            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.isDeathState() || this.isSpawnState())
+            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.IsSpawning)
             {
                 this.CurrentState.Update();
                 this.Physics.Move();

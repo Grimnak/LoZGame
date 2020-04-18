@@ -27,6 +27,7 @@ namespace LoZClone
             this.Sprite.Update();
             if (spawnTimer >= spawnTimerMax)
             {
+                this.Enemy.IsSpawning = false;
                 this.Enemy.UpdateState();
             }
         }

@@ -191,7 +191,6 @@
     <Compile Include="Enemies\EnemyStates\RopeStates\StunnedRopeState.cs" />
     <Compile Include="Enemies\EnemyStates\StalfosStates\StunnedStalfosState.cs" />
     <Compile Include="Enemies\EnemyStates\WallMasterStates\StunnedWallMasterState.cs" />
-    <Compile Include="Enemies\EnemyStates\ZolStates\StunnedZolState.cs" />
     <Compile Include="GameState\CloseInventoryState.cs" />
     <Compile Include="Interfaces\IDrop.cs" />
     <Compile Include="Interfaces\IGameState.cs" />

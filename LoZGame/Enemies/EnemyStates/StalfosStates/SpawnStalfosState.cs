@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     class SpawnStalfosState : StalfosEssentials, IEnemyState
     {
         private int spawnTimer = 0;
@@ -27,12 +22,9 @@ namespace LoZClone
             this.Sprite.Update();
             if (spawnTimer >= spawnTimerMax)
             {
+                this.Enemy.IsSpawning = false;
                 this.Enemy.UpdateState();
             }
-        }
-
-        public override void Stun(int stunTime)
-        {
         }
     }
 }

@@ -73,7 +73,10 @@
 
         public virtual void Stun(int stunTime)
         {
-            this.Enemy.CurrentState = new StunnedGoriyaState(this.Enemy, this, stunTime);
+            if (!this.Enemy.IsSpawning)
+            {
+                this.Enemy.CurrentState = new StunnedGoriyaState(this.Enemy, this, stunTime);
+            }
         }
 
         public override void Update()

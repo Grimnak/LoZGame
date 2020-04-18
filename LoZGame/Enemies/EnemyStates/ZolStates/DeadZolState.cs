@@ -5,8 +5,6 @@
 
     public class DeadZolState : ZolEssentials, IEnemyState
     {
-        private readonly IEnemy enemy;
-        private readonly ISprite sprite;
         private int deathTimer = 0;
         private int deathTimerMax;
 
@@ -14,7 +12,7 @@
         {
             this.Enemy = enemy;
             this.Enemy.IsDead = true;
-            this.sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            this.Sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
             this.Enemy.CurrentState = this;
             this.Enemy.Physics.Bounds = new Rectangle(this.Enemy.Physics.Bounds.Location, Point.Zero);
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
@@ -24,7 +22,7 @@
         public override void Update()
         {
             this.deathTimer++;
-            this.sprite.Update();
+            this.Sprite.Update();
             if (deathTimer >= deathTimerMax)
             {
                 this.Enemy.Expired = true;
@@ -34,7 +32,7 @@
 
         public override void Draw()
         {
-            this.sprite.Draw(this.Enemy.Physics.Location, LoZGame.Instance.DungeonTint, this.Enemy.Physics.Depth);
+            this.Sprite.Draw(this.Enemy.Physics.Location, LoZGame.Instance.DungeonTint, this.Enemy.Physics.Depth);
         }
     }
 }

@@ -5,8 +5,6 @@
 
     public class Zol : EnemyEssentials, IEnemy
     {
-        public bool ShouldMove { get; set; }
-
         public Zol(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
@@ -17,18 +15,34 @@
             this.CurrentState = new SpawnZolState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.ShouldMove = true;
             this.Expired = false;
             this.IsDead = false;
+            this.IsSpawning = true;
             this.Damage = GameData.Instance.EnemyDamageConstants.ZolDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.ZolSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
-        public override void Stun(int stunTime)
+        private void SpawnGels()
         {
-            this.CurrentState.Stun(stunTime);
+            LoZGame.Instance.GameObjects.Enemies.Add(new Gel(this.Physics.Location));
+            LoZGame.Instance.GameObjects.Enemies.Add(new Gel(this.Physics.Location));
+        }
+
+        public override void TakeDamage(int damageAmount)
+        {
+            if (damageAmount <= 4)
+            {
+                SoundFactory.Instance.PlayEnemyHit();
+                this.SpawnGels();
+                this.Expired = true;
+            }
+            else
+            {
+                SoundFactory.Instance.PlayEnemyDie();
+                this.CurrentState.Die();
+            }
         }
 
         public override void Update()

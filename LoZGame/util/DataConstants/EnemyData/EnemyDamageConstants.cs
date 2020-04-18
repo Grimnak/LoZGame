@@ -6,7 +6,7 @@
         private const int KeeseDmg = 2;
         private const int RopeDmg = 2;
         private const int GelDmg = 2;
-        private const int ZolDmg = 4;
+        private const int ZolDmg = 2;
         private const int SpikeCrossDmg = 2;
         private const int VireDmg = 4;
         private const int WallMasterDmg = 1;

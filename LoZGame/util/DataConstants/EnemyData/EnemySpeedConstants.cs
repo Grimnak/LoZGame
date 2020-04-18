@@ -9,8 +9,8 @@ namespace LoZClone
         private const float KeeseAccelMax = 5.0f;
         private const float RopeSpd = 2.5f;
         private const float RopeAttackSpd = 3.5f;
-        private const float GelSpd = 3f;
-        private const float ZolSpd = 4;
+        private const float GelSpd = 3;
+        private const float ZolSpd = 2;
         private const float SpikeCrossSpd = 3;
         private const float WallMasterSpd = 2;
         private const float WallMasterAttackSpd = -1;

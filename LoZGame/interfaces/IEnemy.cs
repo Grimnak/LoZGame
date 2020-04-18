@@ -17,6 +17,8 @@
         /// </summary>
         bool IsDead { get; set; }
 
+        bool IsSpawning { get; set; }
+
         bool HasChild { get; set; }
 
         int Damage { get; }

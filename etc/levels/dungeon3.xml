@@ -90,8 +90,8 @@
         <enemy X="11" Y="0">SpikeCross</enemy>
         <enemy X="0" Y="6">SpikeCross</enemy>
         <enemy X="11" Y="6">SpikeCross</enemy>
-        <enemy X="4" Y="1">Zol3</enemy>
-        <enemy X="3" Y="4">Zol3</enemy>
+        <enemy X="4" Y="1">Zol</enemy>
+        <enemy X="3" Y="4">Zol</enemy>
        </enemies>
        <doors>
         <door loc="N">puzzle</door>
@@ -174,8 +174,8 @@
         <item X="6" Y="3">Key</item>
       </items>
       <enemies>
-        <enemy X="9" Y="0">Zol3</enemy>
-        <enemy X="7" Y="1">Zol3</enemy>
+        <enemy X="9" Y="0">Zol</enemy>
+        <enemy X="7" Y="1">Zol</enemy>
         <enemy X="2" Y="1">Keese</enemy>
         <enemy X="9" Y="2">Keese</enemy>
         <enemy X="7" Y="3">Keese</enemy>
@@ -262,9 +262,9 @@
         <item X="6" Y="3">Key</item>
       </items>
       <enemies>
-        <enemy X="7" Y="0">Zol3</enemy>
-        <enemy X="6" Y="2">Zol3</enemy>
-        <enemy X="8" Y="3">Zol3</enemy>
+        <enemy X="7" Y="0">Zol</enemy>
+        <enemy X="6" Y="2">Zol</enemy>
+        <enemy X="8" Y="3">Zol</enemy>
       </enemies>
       <doors>
         <door loc="N">locked</door>
@@ -316,8 +316,8 @@
         <enemy X="11" Y="0">SpikeCross</enemy>
         <enemy X="0" Y="6">SpikeCross</enemy>
         <enemy X="11" Y="6">SpikeCross</enemy>
-        <enemy X="7" Y="0">Zol3</enemy>
-        <enemy X="7" Y="4">Zol3</enemy>
+        <enemy X="7" Y="0">Zol</enemy>
+        <enemy X="7" Y="4">Zol</enemy>
        </enemies>
        <items>
          <item X="6" Y="3">Map</item>
@@ -604,8 +604,8 @@
         <enemy X="8" Y="3">Bubble</enemy>
         <enemy X="11" Y="4">Bubble</enemy>
         <enemy X="9" Y="5">Bubble</enemy>
-        <enemy X="7" Y="5">Zol3</enemy>
-        <enemy X="10" Y="5">Zol3</enemy>
+        <enemy X="7" Y="5">Zol</enemy>
+        <enemy X="10" Y="5">Zol</enemy>
        </enemies>
        <items>
          <item X="0" Y="0">Rupee</item>
@@ -693,11 +693,11 @@
     <room exists="False" idx="1">
     <room exists="True" oldman="False" basement="False" idx="2">
       <enemies>
-          <enemy X="4" Y="0">Zol3</enemy>
-          <enemy X="8" Y="1">Zol3</enemy>
-          <enemy X="6" Y="2">Zol3</enemy>
-          <enemy X="5" Y="3">Zol3</enemy>
-          <enemy X="3" Y="5">Zol3</enemy>
+          <enemy X="4" Y="0">Zol</enemy>
+          <enemy X="8" Y="1">Zol</enemy>
+          <enemy X="6" Y="2">Zol</enemy>
+          <enemy X="5" Y="3">Zol</enemy>
+          <enemy X="3" Y="5">Zol</enemy>
         </enemies>
       <items>
         <item X="6" Y="3">Key</item>
@@ -904,12 +904,12 @@
         <door loc="E">unlocked</door>
       </doors>
       <enemies>
-        <enemy X="0" Y="1">Zol3</enemy>
-        <enemy X="0" Y="2">Zol3</enemy>
-        <enemy X="4" Y="2">Zol3</enemy>
-        <enemy X="1" Y="4">Zol3</enemy>
-        <enemy X="4" Y="4">Zol3</enemy>
-        <enemy X="8" Y="5">Zol3</enemy>
+        <enemy X="0" Y="1">Zol</enemy>
+        <enemy X="0" Y="2">Zol</enemy>
+        <enemy X="4" Y="2">Zol</enemy>
+        <enemy X="1" Y="4">Zol</enemy>
+        <enemy X="4" Y="4">Zol</enemy>
+        <enemy X="8" Y="5">Zol</enemy>
       </enemies>
       <items>
         <item X="6" Y="3">Key</item>
