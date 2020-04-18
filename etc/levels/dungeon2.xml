@@ -255,7 +255,7 @@
         <enemy X="0" Y="5">Rope</enemy>
         <enemy X="1" Y="2">Rope</enemy>
         <enemy X="11" Y="3">Rope</enemy>
-        <enemy X="8" Y="4">Rope</enemy>
+        <enemy X="8" Y="6">Rope</enemy>
         <enemy X="6" Y="4">Rope</enemy>
         <enemy X="10" Y="6">Rope</enemy>
         <enemy X="7" Y="5">Rope</enemy>
@@ -684,7 +684,7 @@
         <enemy X="1" Y="1">Rope</enemy>
         <enemy X="4" Y="2">Rope</enemy>
         <enemy X="6" Y="3">Rope</enemy>
-        <enemy X="2" Y="5">Rope</enemy>
+        <enemy X="1" Y="6">Rope</enemy>
 	     </enemies>
       <doors>
         <door loc="E">unlocked2</door>
