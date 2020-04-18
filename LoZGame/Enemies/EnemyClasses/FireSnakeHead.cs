@@ -10,6 +10,7 @@
         private List<IEnemy> children;
         private Vector2 passedVelocity;
         private int timeSinceLastPass;
+        private bool spawnedChildren;
 
         public FireSnakeHead(Vector2 location)
         {
@@ -30,6 +31,7 @@
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.HasChild = true;
             this.children = new List<IEnemy>();
+            this.spawnedChildren = false;
         }
 
         public override void TakeDamage(int damageAmount)
@@ -60,11 +62,15 @@
 
         public override void AddChild()
         {
-            for (int i = 0; i < GameData.Instance.EnemyMiscConstants.FireSnakeLength; i++)
+            if (!this.spawnedChildren)
             {
-                IEnemy child = new FireSnakeSegment(this);
-                this.children.Add(child);
-                LoZGame.Instance.GameObjects.Enemies.Add(child);
+                for (int i = 0; i < GameData.Instance.EnemyMiscConstants.FireSnakeLength; i++)
+                {
+                    IEnemy child = new FireSnakeSegment(this);
+                    this.children.Add(child);
+                    LoZGame.Instance.GameObjects.Enemies.Add(child);
+                }
+                this.spawnedChildren = true;
             }
         }
 
