@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeathState : IGameState
+    public class DeathState : GameStateEssentials, IGameState
     {
         private int deathTime;
         private int deathTimeMax;
@@ -19,49 +19,19 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Death()
-        {
-            // Can't transition to a state you're already in.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void OpenInventory()
-        {
-            // Can't access inventory while dead.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void CloseInventory()
-        {
-            // Can't close inventory when it's not open.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void PlayGame()
+        public override void PlayGame()
         {
             LoZGame.Instance.GameState = new PlayGameState();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TitleScreen()
+        public override void TitleScreen()
         {
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TransitionRoom(Physics.Direction direction)
-        {
-            // Can't transition room while dead.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void WinGame()
-        {
-            // Can't win game while dead.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void Update()
+        public override void Update()
         {
             this.deathTime++;
             if (this.deathTime < deathTimeMax)
@@ -78,7 +48,7 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Draw()
+        public override void Draw()
         {
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             LoZGame.Instance.Dungeon.CurrentRoom.Draw(Point.Zero);

@@ -23,6 +23,7 @@
         private Texture2D levelThreeMasterSpriteSheet;
         private Texture2D gameOverSpriteSheet;
         private SpriteData gameOverData;
+        private Texture2D pauseScreenSprite;
 
         private static readonly ScreenSpriteFactory InstanceValue = new ScreenSpriteFactory();
 
@@ -40,6 +41,7 @@
             this.levelTwoMasterSpriteSheet = content.Load<Texture2D>("level-2");
             this.levelThreeMasterSpriteSheet = content.Load<Texture2D>("level-3");
             this.gameOverSpriteSheet = content.Load<Texture2D>("gameOver");
+            this.pauseScreenSprite = content.Load<Texture2D>("PauseMenu");
             this.gameOverData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), gameOverSpriteSheet, 1, 1);
     }
 
@@ -51,6 +53,11 @@
         public ISprite PressEnter()
         {
             return new ObjectSprite(this.enterSpriteSheet, this.enterData);
+        }
+
+        public ISprite PauseScreen()
+        {
+            return new ObjectSprite(this.pauseScreenSprite, this.gameOverData);
         }
 
         public LevelMasterSprite CreateLevelOneMaster()

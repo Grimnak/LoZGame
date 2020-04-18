@@ -35,6 +35,7 @@ namespace LoZClone
             this.playerDictionary.Add(Keys.Z, new CommandAttackA(player));
             this.playerDictionary.Add(Keys.N, new CommandAttackB(player));
             this.playerDictionary.Add(Keys.I, new CommandInventory());
+            this.playerDictionary.Add(Keys.P, new CommandPause());
 
             this.playerDictionary.Add(Keys.Q, new CommandQuit());
 

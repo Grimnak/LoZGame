@@ -69,6 +69,7 @@
     <Compile Include="Collisions\Collision Detection\CollisionDetection.cs" />
     <Compile Include="Collisions\Collision Handling\ItemCollisionHandler.cs" />
     <Compile Include="Collisions\Collision Handling\ProjectileCollisionHandler.cs" />
+    <Compile Include="Controller\Commands\InventoryCommands\CommandPause.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionDown.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionLeft.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionRight.cs" />
@@ -156,6 +157,9 @@
     <Compile Include="Enemies\EnemyStates\WallMasterStates\WallMasterEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\SpawnZolState.cs" />
     <Compile Include="Enemies\EnemyStates\ZolStates\ZolEssentials.cs" />
+    <Compile Include="GameState\GameStateEssentials.cs" />
+    <Compile Include="GameState\UnpauseState.cs" />
+    <Compile Include="GameState\PauseState.cs" />
     <Compile Include="Items\ItemTypes.cs" />
     <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Players\PlayerClasses\LinkHelper.cs" />

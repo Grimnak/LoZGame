@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class TransitionRoomState : IGameState
+    public class TransitionRoomState : GameStateEssentials, IGameState
     {
         private int YTransition = LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset;
         private int XTransition = LoZGame.Instance.ScreenWidth;
@@ -99,49 +99,23 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Death()
-        {
-            // Can't die in a transition.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void OpenInventory()
-        {
-            // Can't access inventory while transitioning rooms.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void CloseInventory()
-        {
-            // Can't close inventory when it's not open.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void PlayGame()
+        public override void PlayGame()
         {
             LoZGame.Instance.GameState = new PlayGameState();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TitleScreen()
+        public override void TitleScreen()
         {
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
-        /// <inheritdoc></inheritdoc>
-        public void TransitionRoom(Physics.Direction direction)
+        public override void Pause()
         {
-            // Can't go to a state you are already in.
+            LoZGame.Instance.GameState = new PauseState(this);
         }
 
-        /// <inheritdoc></inheritdoc>
-        public void WinGame()
-        {
-            // Can't win in a transition.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void Update()
+        public override void Update()
         {
             if (!this.done)
             {
@@ -184,7 +158,7 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Draw()
+        public override void Draw()
         {
             // Draw Room Backgrounds
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
