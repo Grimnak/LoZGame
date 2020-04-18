@@ -140,32 +140,12 @@
         }
 
         /// <summary>
-        /// Loads new room info into managers.
+        /// Loads new room info into managers and reveals corresponding minimap room.
         /// </summary>
         public void LoadNewRoom()
         {
             this.miniMap.Explore();
-            LoZGame.Instance.GameObjects.Clear();
-
-            foreach (IEnemy enemy in this.dungeonLayout[this.currentY][this.currentX].Enemies)
-            {
-                LoZGame.Instance.GameObjects.Enemies.Add(enemy);
-            }
-
-            foreach (IBlock block in this.dungeonLayout[this.currentY][this.currentX].Tiles)
-            {
-                LoZGame.Instance.GameObjects.Blocks.Add(block);
-            }
-
-            foreach (IItem item in this.dungeonLayout[this.currentY][this.currentX].Items)
-            {
-                LoZGame.Instance.GameObjects.Items.Add(item);
-            }
-
-            foreach (Door door in this.dungeonLayout[this.currentY][this.currentX].Doors)
-            {
-                LoZGame.Instance.GameObjects.Doors.Add(door);
-            }
+            LoZGame.Instance.GameObjects.LoadNewRoom();
         }
 
         public void LoadNewRoom(GameObjectManager manager,  Point location, Point offset)

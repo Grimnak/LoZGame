@@ -23,6 +23,8 @@
 
         public Point DungeonBossLocation => dungeonBossLoc;
 
+        public List<List<Room>> DungeonLayout { get { return dungeonLayout; } }
+
         public MiniMap MiniMap => miniMap;
 
         public Color MapColor => mapColor;
@@ -86,7 +88,6 @@
 
             this.miniMap = new MiniMap(this);
             this.miniMap.LoadMap(this.dungeonLayout, this.maxX, this.maxY);
-            this.LoadNewRoom();
         }
 
         public int CurrentRoomX

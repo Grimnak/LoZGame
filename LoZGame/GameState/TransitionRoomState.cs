@@ -167,11 +167,13 @@
             }
             else
             {
+                this.oldObjects.LoadedRoomX = this.dungeon.CurrentRoomX;
+                this.oldObjects.LoadedRoomY = this.dungeon.CurrentRoomY;
                 this.dungeon.CurrentRoomX = nextRoomLocation.X;
                 this.dungeon.CurrentRoomY = nextRoomLocation.Y;
                 this.oldObjects.UpdateObjectLocations(nextRoomOffset);
-                this.oldObjects.Clear();
-                LoZGame.Instance.GameObjects.Copy(newObjects);
+                this.oldObjects.Save();
+                LoZGame.Instance.GameObjects = newObjects;
                 this.dungeon.MiniMap.Explore();
                 foreach (IPlayer player in LoZGame.Instance.Players)
                 {
