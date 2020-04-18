@@ -24,7 +24,7 @@
 
         public virtual void Bombed()
         {
-            if (this.Door.State is LockedDoorState || this.Door.State is SpecialDoorState)
+            if (this.Door.State is LockedDoorState)
             {
                 this.Door.State = new UnlockedDoorState(this.Door);
             }

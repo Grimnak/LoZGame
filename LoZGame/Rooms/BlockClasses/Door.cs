@@ -17,15 +17,7 @@
                     this.state = new LockedDoorState(this);
                     this.DoorType = DoorTypes.Locked;
                     break;
-                case "locked2":
-                    this.state = new LockedDoorState(this);
-                    this.DoorType = DoorTypes.Locked;
-                    break;
                 case "special":
-                    this.state = new SpecialDoorState(this);
-                    this.DoorType = DoorTypes.Special;
-                    break;
-                case "special2":
                     this.state = new SpecialDoorState(this);
                     this.DoorType = DoorTypes.Special;
                     break;
@@ -33,15 +25,7 @@
                     this.state = new HiddenDoorState(this);
                     this.DoorType = DoorTypes.Hidden;
                     break;
-                case "hidden2":
-                    this.state = new HiddenDoorState(this);
-                    this.DoorType = DoorTypes.Hidden;
-                    break;
                 case "cosmetic":
-                    this.state = new CosmeticDoorState(this);
-                    this.DoorType = DoorTypes.Cosmetic;
-                    break;
-                case "cosmetic2":
                     this.state = new CosmeticDoorState(this);
                     this.DoorType = DoorTypes.Cosmetic;
                     break;
@@ -110,11 +94,6 @@
         public void Close()
         {
             this.state.Close();
-        }
-
-        public string GetKind()
-        {
-            return this.kind;
         }
 
         public void Update()

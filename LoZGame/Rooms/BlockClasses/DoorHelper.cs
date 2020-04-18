@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+
     public partial class Door
     {
         private string location;
@@ -37,8 +38,6 @@
         }
 
         private IDoorState state;
-
-        private string kind;
 
         public IDoorState State
         {

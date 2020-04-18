@@ -8,6 +8,7 @@
         {
             this.Door = door;
         }
+
         public override void Close()
         {
         }

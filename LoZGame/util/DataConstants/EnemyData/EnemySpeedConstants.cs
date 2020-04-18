@@ -66,6 +66,7 @@ namespace LoZClone
         public float DodongoAttackSpeed => DodongoAttackSpd;
 
         public float DarknutSpeed => DarknutSpd;
+
         public float VireSpeed => VireSpd;
     }
 }

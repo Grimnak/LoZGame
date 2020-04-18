@@ -2,7 +2,7 @@
 {
     public struct RoomConstants
     {
-        private const float BlockDepth= .2f;
+        private const float BlockDepth = .2f;
         private const int BlockHeightOffset = 8;
         private const float TileD = .001f;
 

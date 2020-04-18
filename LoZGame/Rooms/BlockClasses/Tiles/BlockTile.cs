@@ -13,7 +13,6 @@
     /// </summary>
     public class BlockTile : IBlock
     {
-
         private const string WaterTile = "water_tile";
         private const string BasementBrickTile = "basement_brick_tile";
         private const string FireGapTile = "fire_gap_tile";
@@ -22,6 +21,7 @@
         private const string BlueStatueLeft = "blue_statue_left";
         private const string BlueStatueRight = "blue_statue_right";
         private const string MovableSquare2 = "movable_square2";
+        private const string MovableSquare3 = "movable_square3";
         private const string BlueStatueLeft2 = "blue_statue_left2";
         private const string BlueStatueRight2 = "blue_statue_right2";
         private const string OrangeStatueRight2 = "orange_statue_right2";

@@ -4,7 +4,6 @@
 
     public class LockedDoorState : DoorEssentials, IDoorState
     {
-
         public LockedDoorState(IDoor door)
         {
             this.Door = door;

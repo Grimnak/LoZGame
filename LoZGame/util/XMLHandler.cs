@@ -39,9 +39,9 @@
                     {
                         oldman = bool.Parse(room.Attribute("oldman").Value);
                         basement = bool.Parse(room.Attribute("basement").Value);
-                    } else
+                    } 
+                    else
                     {
-
                         oldman = false;
                         basement = false;
                     }

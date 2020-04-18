@@ -40,7 +40,7 @@
                 this.exists = ex;
                 this.basement = bm;
                 this.oldman = om;
-                //this.border = ns; // ns = LEVEL-1 || LEVEL-2 || LEVEL-3
+                // this.border = ns; // ns = LEVEL-1 || LEVEL-2 || LEVEL-3
                 this.doors = new List<Door>();
                 this.blocks = new List<IBlock>();
                 this.enemies = new List<IEnemy>();
@@ -324,9 +324,9 @@
         }
 
         /// <summary>
-        /// Draws the correct border for a room
+        /// Draws the correct border for a room.
         /// </summary>
-        /// <param name="locationOffset">the offset from the standard location to draw at. Leave as Vector2.Zero for normal border</param>
+        /// <param name="locationOffset">the offset from the standard location to draw at. Leave as Vector2.Zero for normal border.</param>
         public void Draw(Point locationOffset)
         {
             if (this.basement)

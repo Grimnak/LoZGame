@@ -2,7 +2,6 @@
 {
     public interface IDoorState
     {
-
         void Close(); // for entering a special room
 
         void Open(); // for locked doors and special doors 
