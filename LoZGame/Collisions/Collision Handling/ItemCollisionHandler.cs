@@ -75,6 +75,11 @@
                 SoundFactory.Instance.PlayGetItem();
                 player.Inventory.HasClock = true;
             }
+            else if (this.item is WhiteSword)
+            {
+                SoundFactory.Instance.PlayGetItem();
+                player.CurrentWeapon = Link.LinkWeapon.White;
+            }
             else
             {
                 SoundFactory.Instance.PlayGetItem();
