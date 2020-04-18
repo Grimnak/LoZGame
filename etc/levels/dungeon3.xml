@@ -745,7 +745,7 @@
   </drow>
   <drow idx="5">
     <!-- 0 - 0 maps to top left corner  -->
-    <room exists="True" oldman="False" basement="False" idx="0">
+    <room exists="True" oldman="False" basement="True" idx="0">
       <border>black</border>
       <enemies>
         <enemy X="10" Y="3">Keese</enemy>
