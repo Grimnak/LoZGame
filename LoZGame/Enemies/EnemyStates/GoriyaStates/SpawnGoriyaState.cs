@@ -19,6 +19,7 @@ namespace LoZClone
             this.Enemy.CurrentState = this;
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
             this.spawnTimerMax = GameData.Instance.EnemyMiscConstants.SpawnTimerMaximum;
+            this.Enemy.IsSpawning = true;
         }
 
         public override void Update()
