@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class OpenInventoryState : IGameState
+    public class OpenInventoryState : GameStateEssentials, IGameState
     {
         private int transitionSpeed;
         private int lockout;
@@ -15,19 +15,7 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Death()
-        {
-            // Can't die while accessing inventory.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void OpenInventory()
-        {
-            // Can't transition to a state you're already in.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void CloseInventory()
+        public override void CloseInventory()
         {
             if (lockout > LoZGame.Instance.ScreenHeight - (2 * LoZGame.Instance.InventoryOffset))
             {
@@ -36,31 +24,18 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void PlayGame()
-        {
-            // Can't immediately play game with inventory opened; must close inventory first.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void TitleScreen()
+        public override void TitleScreen()
         {
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
-        /// <inheritdoc></inheritdoc>
-        public void TransitionRoom(Physics.Direction direction)
+        public override void Pause()
         {
-            // Can't transition room while accessing inventory.
+            LoZGame.Instance.GameState = new PauseState(this);
         }
 
         /// <inheritdoc></inheritdoc>
-        public void WinGame()
-        {
-            // Can't win game while accessing inventory.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void Update()
+        public override void Update()
         {
             this.lockout += this.transitionSpeed;
             if (this.lockout <= LoZGame.Instance.ScreenHeight - (2 * LoZGame.Instance.InventoryOffset))
@@ -70,7 +45,7 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Draw()
+        public override void Draw()
         {
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
 

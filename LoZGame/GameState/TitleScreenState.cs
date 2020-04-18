@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class TitleScreenState : IGameState
+    public class TitleScreenState : GameStateEssentials, IGameState
     {
         private readonly ISprite sprite;
         private readonly ISprite enter;
@@ -54,25 +54,7 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Death()
-        {
-            // Can't die on title screen.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void OpenInventory()
-        {
-            // Can't access inventory from title screen.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void CloseInventory()
-        {
-            // Can't close inventory when it's not open.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void PlayGame()
+        public override void PlayGame()
         {
             SoundFactory.Instance.StopAll();
             SoundFactory.Instance.PlayDungeonSong();
@@ -80,26 +62,14 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TitleScreen()
+        public override void TitleScreen()
         {
             // Can perform a hard reset while in this state already.
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TransitionRoom(Physics.Direction direction)
-        {
-            // Can't transition room from title screen.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void WinGame()
-        {
-            // Can't win game from the title screen.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void Update()
+        public override void Update()
         {
             this.sprite.Update();
             for (int i = 0; i < LoZGame.Instance.Controllers.Count; i++)
@@ -113,7 +83,7 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Draw()
+        public override void Draw()
         {
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             this.sprite.Draw(new Vector2(0, 0), this.spriteTint, 1.0f);

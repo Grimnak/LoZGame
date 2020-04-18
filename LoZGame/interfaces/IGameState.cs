@@ -44,6 +44,16 @@
         void TransitionRoom(Physics.Direction direction);
 
         /// <summary>
+        /// Game state goes to win state.
+        /// </summary>
+        void Pause();
+
+        /// <summary>
+        /// Game state goes to win state.
+        /// </summary>
+        void Unpause();
+
+        /// <summary>
         /// Updates the current state.
         /// </summary>
         void Update();

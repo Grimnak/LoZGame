@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class WinGameState : IGameState
+    public class WinGameState : GameStateEssentials, IGameState
     {
         private const int flashRate = 40;
         private int maxDungeon;
@@ -19,25 +19,7 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Death()
-        {
-            // Can't die while winning.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void OpenInventory()
-        {
-            // Can't access inventory while winning.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void CloseInventory()
-        {
-            // Can't close inventory when it's not open.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void PlayGame()
+        public override void PlayGame()
         {
             SoundFactory.Instance.StopAll();
             SoundFactory.Instance.PlayDungeonSong();
@@ -45,25 +27,13 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TitleScreen()
+        public override void TitleScreen()
         {
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TransitionRoom(Physics.Direction direction)
-        {
-            // Can't transition room while winning.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void WinGame()
-        {
-            // Can't transition to a state you're already in.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void Update()
+        public override void Update()
         {
             this.lockout++;
 
@@ -100,7 +70,7 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Draw()
+        public override void Draw()
         {
             if (lockout > lockoutMax / 2 && lockout % flashRate <= (flashRate / 2))
             {
