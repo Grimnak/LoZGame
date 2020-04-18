@@ -137,6 +137,23 @@
         private Texture2D SpottedTile2Texture;
         private SpriteData spottedTile2Data;
 
+
+        private Texture2D SpottedTile3Texture;
+        private SpriteData spottedTile3Data;
+        private Texture2D MovableSquare3Texture;
+        private SpriteData movableSquare3Data;
+        private Texture2D StairsTexture3;
+        private SpriteData stairsData3;
+
+        private Texture2D RedStatueLeft3Texture;
+        private SpriteData redStatueLeft3Data;
+        private Texture2D RedStatueRight3Texture;
+        private SpriteData redStatueRight3Data;
+        private Texture2D GreenStatueRight3Texture;
+        private SpriteData greenStatueRight3Data;
+        private Texture2D GreenStatueLeft3Texture;
+        private SpriteData greenStatueLeft3Data;
+
         private static readonly BlockSpriteFactory instance = new BlockSpriteFactory();
 
         public static BlockSpriteFactory Instance
@@ -259,6 +276,14 @@
             this.Lava2Texture = content.Load<Texture2D>("lava2");
             this.MovableSquare2Texture = content.Load<Texture2D>("movable_square2");
             this.SpottedTile2Texture = content.Load<Texture2D>("spotted_tile2");
+
+            this.RedStatueLeft3Texture = content.Load<Texture2D>("red_statue_left3");
+            this.RedStatueRight3Texture = content.Load<Texture2D>("red_statue_right3");
+            this.GreenStatueRight3Texture = content.Load<Texture2D>("green_statue_right");
+            this.GreenStatueLeft3Texture = content.Load<Texture2D>("green_statue_left3");
+            this.MovableSquare3Texture = content.Load<Texture2D>("movable_square3");
+            this.SpottedTile3Texture = content.Load<Texture2D>("spotted_tile3");
+            this.StairsTexture3 = content.Load<Texture2D>("stairs3");
         }
 
         private void LoadData()
@@ -309,6 +334,14 @@
             this.lava2Data = new SpriteData(new Vector2(tileWidth, tileHeight), Lava2Texture, 1, 1);
             this.movableSquare2Data = new SpriteData(new Vector2(tileWidth, tileHeight), MovableSquare2Texture, 1, 1);
             this.spottedTile2Data = new SpriteData(new Vector2(tileWidth, tileHeight), SpottedTile2Texture, 1, 1);
+
+            this.redStatueLeft3Data = new SpriteData(new Vector2(tileWidth, tileHeight), RedStatueLeft3Texture, 1, 1);
+            this.redStatueRight3Data = new SpriteData(new Vector2(tileWidth, tileHeight), RedStatueRight3Texture, 1, 1);
+            this.greenStatueRight3Data = new SpriteData(new Vector2(tileWidth, tileHeight), GreenStatueRight3Texture, 1, 1);
+            this.greenStatueLeft3Data = new SpriteData(new Vector2(tileWidth, tileHeight), GreenStatueLeft3Texture, 1, 1);
+            this.movableSquare3Data = new SpriteData(new Vector2(tileWidth, tileHeight), MovableSquare3Texture, 1, 1);
+            this.spottedTile3Data = new SpriteData(new Vector2(tileWidth, tileHeight), SpottedTile3Texture, 1, 1);
+            this.stairsData3 = new SpriteData(new Vector2(tileWidth, tileHeight), StairsTexture3, 1, 1);
         }
 
         public ISprite Stairs()
@@ -554,6 +587,41 @@
         public ISprite SpottedTile2()
         {
             return new ObjectSprite(this.SpottedTile2Texture, this.spottedTile2Data);
+        }
+
+        public ISprite MovableSquare3()
+        {
+            return new ObjectSprite(this.MovableSquare3Texture, this.movableSquare3Data);
+        }
+
+        public ISprite SpottedTile3()
+        {
+            return new ObjectSprite(this.SpottedTile3Texture, this.spottedTile3Data);
+        }
+
+        public ISprite RedStatueLeft3()
+        {
+            return new ObjectSprite(this.RedStatueLeft3Texture, this.redStatueLeft3Data);
+        }
+
+        public ISprite RedStatueRight3()
+        {
+            return new ObjectSprite(this.RedStatueRight3Texture, this.redStatueRight3Data);
+        }
+
+        public ISprite GreenStatueRight3()
+        {
+            return new ObjectSprite(this.GreenStatueRight3Texture, this.greenStatueRight3Data);
+        }
+
+        public ISprite GreenStatueLeft3()
+        {
+            return new ObjectSprite(this.GreenStatueLeft3Texture, this.greenStatueLeft3Data);
+        }
+
+        public ISprite Stairs3()
+        {
+            return new ObjectSprite(this.StairsTexture3, this.stairsData3);
         }
     }
 }

@@ -1280,6 +1280,30 @@
 /processorParam:TextureFormat=Color
 /build:Green_Magic_Up.png
 
+#begin green_statue_left3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:green_statue_left3.png
+
+#begin green_statue_right.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:green_statue_right.png
+
 #begin Green_Wood_Down.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2180,6 +2204,18 @@
 /processorParam:TextureFormat=Color
 /build:movable_square2.png
 
+#begin movable_square3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:movable_square3.png
+
 #begin movable_square4.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2479,6 +2515,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Red_Magic_Up.png
+
+#begin red_statue_left3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:red_statue_left3.png
+
+#begin red_statue_right3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:red_statue_right3.png
 
 #begin Red_Wood_Down.png
 /importer:TextureImporter
@@ -2876,6 +2936,18 @@
 /processorParam:TextureFormat=Color
 /build:spotted_tile2.png
 
+#begin spotted_tile3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:spotted_tile3.png
+
 #begin spotted_tile4.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2899,6 +2971,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:stairs.png
+
+#begin stairs3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:stairs3.png
 
 #begin stalfos.png
 /importer:TextureImporter
