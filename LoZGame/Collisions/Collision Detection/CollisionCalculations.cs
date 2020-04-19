@@ -93,7 +93,7 @@
             if (!LoZGame.Instance.Dungeon.CurrentRoom.IsBasement)
             {
                 // is right wall
-                if (sourceCollider.Physics.Bounds.Right > LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10)
+                if (sourceCollider.Physics.Bounds.Right > LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.HorizontalOffset)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
                 }

@@ -94,7 +94,7 @@
                 case BlueStatueRight:
                     return BlockSpriteFactory.Instance.BlueStatueRight();
                 case MovableSquare2:
-                    return BlockSpriteFactory.Instance.MovableSquare2();
+                    return DungeonSpriteFactory.Instance.MoveabeTile();
                 case BlueStatueRight2:
                     return BlockSpriteFactory.Instance.BlueStatueRight2();
                 case BlueStatueLeft2:
@@ -112,9 +112,9 @@
                 case GreenStatueLeft3:
                     return BlockSpriteFactory.Instance.GreenStatueLeft3();
                 case MovableSquare3:
-                    return BlockSpriteFactory.Instance.MovableSquare3();
+                    return DungeonSpriteFactory.Instance.MoveabeTile();
                 default:
-                    return BlockSpriteFactory.Instance.MovableSquare();
+                    return DungeonSpriteFactory.Instance.MoveabeTile();
             }
         }
 
@@ -127,7 +127,7 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

@@ -8,28 +8,15 @@
 
     public class DungeonSpriteFactory
     {
-        private static readonly int tileWidth = 48;
+        private static readonly int tileWidth = 54;
         private static readonly int tileHeight = 48;
-        private static readonly int movableTileWidth = 54;
-        private static readonly int movableTileHeight = 47;
-        private static readonly int topOffset = LoZGame.Instance.InventoryOffset + 72;
-        private static readonly int bottomOffset = LoZGame.Instance.ScreenHeight - 72;
-        private static readonly int horizontalOffset = 79;
-        private static readonly int doorOffset = 24;
         private static readonly int doorWidth = 90;
         private static readonly int doorHeight = 60;
-        private static readonly int fireHeight = 18;
-        private static readonly int fireWidth = 16;
 
         private static readonly int VerticalBlockWidth = 16;
         private static readonly int VerticalBlockHeight = 64;
         private static readonly int HorizontalBlockWidth = 64;
         private static readonly int HorizontalBlockHeight = 16;
-
-        private static readonly int VerticalBombedWidth = 0;
-        private static readonly int VerticalBombedHeight = 32;
-        private static readonly int HorizontalBombedWidth = 32;
-        private static readonly int HorizontalBombedHeight = 8;
 
         private Texture2D StairsTexture;
 
@@ -92,56 +79,6 @@
             {
                 return instance;
             }
-        }
-        
-        public int TileWidth
-        {
-            get { return tileWidth; }
-        }
-
-        public int TileHeight
-        {
-            get { return tileHeight; }
-        }
-
-        public int MovableTileWidth
-        {
-            get { return movableTileWidth; }
-        }
-
-        public int MovableTileHeight
-        {
-            get { return movableTileHeight; }
-        }
-
-        public int TopOffset
-        {
-            get { return topOffset; }
-        }
-
-        public int BottomOffset
-        {
-            get { return bottomOffset; }
-        }
-
-        public int HorizontalOffset
-        {
-            get { return horizontalOffset; }
-        }
-
-        public int DoorOffset
-        {
-            get { return doorOffset; }
-        }
-
-        public int DoorWidth
-        {
-            get { return doorWidth; }
-        }
-
-        public int DoorHeight
-        {
-            get { return doorHeight; }
         }
 
         private DungeonSpriteFactory()
@@ -209,7 +146,7 @@
             this.RightDoorData = new SpriteData(new Vector2(doorHeight, doorWidth), UnlockedDoorRightFloorTexture, 1, 1);
 
             this.VerticalOverhangData = new SpriteData(new Vector2(doorWidth, BlockSpriteFactory.Instance.VerticalOffset - doorHeight), DoorOverhangTexture, 1, 1);
-            this.HorizontalOverhangData = new SpriteData(new Vector2(BlockSpriteFactory.Instance.HorizontalOffset - doorHeight, DoorWidth), DoorOverhangTexture, 1, 1);
+            this.HorizontalOverhangData = new SpriteData(new Vector2(BlockSpriteFactory.Instance.HorizontalOffset - doorHeight, doorWidth), DoorOverhangTexture, 1, 1);
         }
 
         public ISprite Stairs()
