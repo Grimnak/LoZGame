@@ -73,6 +73,7 @@
             else if (this.item is Clock)
             {
                 SoundFactory.Instance.PlayGetItem();
+                LoZGame.Instance.Players[0].Inventory.ClockLockout = 0;
                 player.Inventory.HasClock = true;
             }
             else if (this.item is WhiteSword)

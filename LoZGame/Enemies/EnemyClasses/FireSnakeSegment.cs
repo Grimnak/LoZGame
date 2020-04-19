@@ -24,7 +24,6 @@
             this.CurrentState = new FollowFireSnakeState(this);
             this.HasChild = false;
             this.Expired = false;
-            this.IsDead = false;
             this.Damage = GameData.Instance.EnemyDamageConstants.FireSnakeDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;

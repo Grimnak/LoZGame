@@ -109,9 +109,8 @@
             {
                 this.CurrentState.Update();
                 this.Physics.Move();
+                this.Physics.SetDepth();
             }
-
-            this.Physics.SetDepth();
         }
 
         public virtual void Draw()
