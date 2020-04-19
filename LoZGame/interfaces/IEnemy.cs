@@ -31,7 +31,7 @@
 
         Point MinMaxWander { get; set; }
 
-        EnemyEssentials.EnemyNames EnemyName { get; set; }
+        EnemyEssentials.EnemyAI AI { get; set; }
         
         Dictionary<RandomStateGenerator.StateType, int> States { get; set; }
 

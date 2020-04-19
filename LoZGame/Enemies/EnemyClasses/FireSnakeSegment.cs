@@ -28,7 +28,7 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.EnemyName = EnemyNames.NoAI;
+            this.AI = EnemyAI.NoAI;
         }
 
         public override void TakeDamage(int damageAmount)

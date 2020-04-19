@@ -54,6 +54,12 @@
         private static readonly int vireWidth = 42;
         private static readonly int vireHeight = 40;
 
+        private static readonly int ManhandlaBodyHeight = 64;
+        private static readonly int ManhandlaBodyWidth = 64;
+
+        private static readonly int ManhandlaHeadHeight = 48;
+        private static readonly int ManhandlaHeadWidth = 48;
+
         public static int GetEnemyWidth(IEnemy enemy)
         {
             if (enemy is Dodongo)
@@ -116,6 +122,14 @@
             else if (enemy is Vire)
             {
                 return vireWidth;
+            }
+            else if (enemy is ManhandlaBody)
+            {
+                return ManhandlaBodyWidth;
+            }
+            else if (enemy is ManhandlaHead)
+            {
+                return ManhandlaHeadWidth;
             }
             else
             {
@@ -185,11 +199,31 @@
             {
                 return vireHeight;
             }
+            else if (enemy is ManhandlaBody)
+            {
+                return ManhandlaBodyHeight;
+            }
+            else if (enemy is ManhandlaHead)
+            {
+                return ManhandlaHeadHeight;
+            }
             else
             {
                 return 0;
             }
         }
+
+        private Texture2D manhandlaBodyTexture;
+        private SpriteData manhandlaBodyData;
+        private Texture2D manhandlaHeadCloseLeftTexture;
+        private Texture2D manhandlaHeadOpenLeftTexture;
+        private Texture2D manhandlaHeadCloseRightTexture;
+        private Texture2D manhandlaHeadOpenRightTexture;
+        private Texture2D manhandlaHeadCloseUpTexture;
+        private Texture2D manhandlaHeadOpenUpTexture;
+        private Texture2D manhandlaHeadCloseDownTexture;
+        private Texture2D manhandlaHeadOpenDownTexture;
+        private SpriteData manhandlaHeadData;
 
         private Texture2D stalfos;
         private SpriteData stalfosData;
@@ -300,6 +334,16 @@
 
         private void LoadTextures(ContentManager content)
         {
+            this.manhandlaBodyTexture = content.Load<Texture2D>("man_body");
+            this.manhandlaHeadOpenLeftTexture = content.Load<Texture2D>("man_head_left_open");
+            this.manhandlaHeadCloseLeftTexture = content.Load<Texture2D>("man_head_left_closed");
+            this.manhandlaHeadOpenRightTexture = content.Load<Texture2D>("man_head_right_open");
+            this.manhandlaHeadCloseRightTexture = content.Load<Texture2D>("man_head_right_closed");
+            this.manhandlaHeadOpenDownTexture = content.Load<Texture2D>("man_head_down_open");
+            this.manhandlaHeadCloseDownTexture = content.Load<Texture2D>("man_head_down_closed");
+            this.manhandlaHeadOpenUpTexture = content.Load<Texture2D>("man_head_up_open");
+            this.manhandlaHeadCloseUpTexture = content.Load<Texture2D>("man_head_up_closed");
+
             this.stalfos = content.Load<Texture2D>("stalfos");
 
             this.downGoriya = content.Load<Texture2D>("redGoriyaDown");
@@ -384,6 +428,9 @@
             this.downVireData = new SpriteData(new Vector2(vireWidth, vireHeight), downVire, 2, 1);
             this.upVireData = new SpriteData(new Vector2(vireWidth, vireHeight), upVire, 2, 1);
             this.vireKeeseData = new SpriteData(new Vector2(keeseWidth, keeseHeight), vireKeese, 2, 1);
+
+            this.manhandlaBodyData = new SpriteData(new Vector2(ManhandlaBodyWidth, ManhandlaBodyHeight), manhandlaBodyTexture, 1, 1);
+            this.manhandlaHeadData = new SpriteData(new Vector2(ManhandlaHeadWidth, ManhandlaHeadHeight), manhandlaHeadCloseDownTexture, 1, 1);
         }
 
         // Stalfos Sprites
@@ -442,6 +489,41 @@
                     return new ObjectSprite(this.rightBlueGoriya, this.rightGoriyaData);
                 default:
                     return new ObjectSprite(this.leftBlueGoriya, this.leftGoriyaData);
+            }
+        }
+
+        public ISprite CreateManhandlaBodySprite()
+        {
+            return new ObjectSprite(this.manhandlaBodyTexture, this.manhandlaBodyData);
+        }
+
+        public ISprite CreateManhandleHeadClosedSprite(Physics.Direction direction)
+        {
+            switch (direction)
+            {
+                case Physics.Direction.North:
+                    return new ObjectSprite(this.manhandlaHeadCloseUpTexture, this.manhandlaHeadData);
+                case Physics.Direction.South:
+                    return new ObjectSprite(this.manhandlaHeadCloseDownTexture, this.manhandlaHeadData);
+                case Physics.Direction.East:
+                    return new ObjectSprite(this.manhandlaHeadCloseRightTexture, this.manhandlaHeadData);
+                default:
+                    return new ObjectSprite(this.manhandlaHeadCloseLeftTexture, this.manhandlaHeadData);
+            }
+        }
+
+        public ISprite CreateManhandlaHeadOpenSprite(Physics.Direction direction)
+        {
+            switch (direction)
+            {
+                case Physics.Direction.North:
+                    return new ObjectSprite(this.manhandlaHeadOpenUpTexture, this.manhandlaHeadData);
+                case Physics.Direction.South:
+                    return new ObjectSprite(this.manhandlaHeadOpenDownTexture, this.manhandlaHeadData);
+                case Physics.Direction.East:
+                    return new ObjectSprite(this.manhandlaHeadOpenRightTexture, this.manhandlaHeadData);
+                default:
+                    return new ObjectSprite(this.manhandlaHeadOpenLeftTexture, this.manhandlaHeadData);
             }
         }
 

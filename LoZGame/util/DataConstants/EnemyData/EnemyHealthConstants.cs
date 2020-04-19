@@ -18,6 +18,8 @@
         private const int FireSnakeHP = 4;
         private const int DarknutHP = 8;
         private const int VireHP = 12;
+        private const int manHeadHP = 16;
+        private const int manBodyHP = 8;
 
         public int StalfosHealth => StalfosHP;
 
@@ -50,5 +52,9 @@
         public int DarknutHealth => DarknutHP;
 
         public int VireHealth => VireHP;
+
+        public int ManhandlaBodyHP => manBodyHP;
+
+        public int ManhandlaHeadHP => manHeadHP;
     }
 }

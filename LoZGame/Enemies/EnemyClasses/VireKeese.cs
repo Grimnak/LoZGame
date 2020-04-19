@@ -29,7 +29,7 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.MinKeeseSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.EnemyName = EnemyNames.Keese;
+            this.AI = EnemyAI.Keese;
             this.MinMaxWander = new Point(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);
         }
 

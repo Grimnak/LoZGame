@@ -94,6 +94,8 @@
     <Compile Include="Controller\Commands\Controllers\KeyboardController.cs" />
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
     <Compile Include="Enemies\EnemyClasses\BlockEnemy.cs" />
+    <Compile Include="Enemies\EnemyClasses\ManhandlaHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\ManhandlaBody.cs" />
     <Compile Include="Enemies\EnemyClasses\DifficultModdifiers.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyHelper.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeSegment.cs" />
@@ -109,6 +111,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAIEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingBlueGoriyaState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingDodongoState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingManhandlaHeadState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingDragonState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingGoriyaState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingRopeState.cs" />
@@ -122,6 +125,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateFireSnake.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGel.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGoriya.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateManhandla.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateKeese.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateRope.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateStalfos.cs" />

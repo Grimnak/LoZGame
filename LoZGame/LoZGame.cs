@@ -12,7 +12,7 @@
         public static bool Cheats = true; // infinite life and item uses
         public static bool Music = false; // Title screen and dungeon music (not SFX)
         public static readonly int StartDungeon = 3; // dungeon ID to load into [1 - 5];
-        public int Difficulty = 3; // 0 is normal, can scale infinitely up but youll get really dumb bugs and probably crash
+        public int Difficulty = 0; // 0 is normal, can scale infinitely up but youll get really dumb bugs and probably crash
         private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;
         private readonly int screenWidth;

@@ -20,7 +20,7 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.ZolSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.EnemyName = EnemyNames.Zol;
+            this.AI = EnemyAI.Zol;
             this.ApplyDamageMod();
             this.ApplySmallSpeedMod();
             this.ApplyLargeWeightModPos();
