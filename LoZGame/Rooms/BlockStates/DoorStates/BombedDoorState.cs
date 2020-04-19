@@ -21,21 +21,25 @@
                 case Physics.Direction.North:
                     {
                         this.FrameSprite = DungeonSpriteFactory.Instance.BombedDownDoor();
+                        this.OverhangSprite = DungeonSpriteFactory.Instance.VerticalOverhang();
                         break;
                     }
                 case Physics.Direction.East:
                     {
                         this.FrameSprite = DungeonSpriteFactory.Instance.BombedLeftDoor();
+                        this.OverhangSprite = DungeonSpriteFactory.Instance.HorizontalOverhang();
                         break;
                     }
                 case Physics.Direction.South:
                     {
-                        this.FrameSprite = DungeonSpriteFactory.Instance.BombedRightDoor();
+                        this.FrameSprite = DungeonSpriteFactory.Instance.BombedUpDoor();
+                        this.OverhangSprite = DungeonSpriteFactory.Instance.VerticalOverhang();
                         break;
                     }
                 case Physics.Direction.West:
                     {
-                        this.FrameSprite = DungeonSpriteFactory.Instance.BombedUpDoor();
+                        this.FrameSprite = DungeonSpriteFactory.Instance.BombedRightDoor();
+                        this.OverhangSprite = DungeonSpriteFactory.Instance.HorizontalOverhang();
                         break;
                     }
             }

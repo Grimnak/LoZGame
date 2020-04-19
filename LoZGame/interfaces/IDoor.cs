@@ -4,6 +4,8 @@
 
     public interface IDoor : ICollider
     {
+        Vector2 OverhangOffset { get; set; }
+
         bool IsSolved { get; set; }
 
         Door.DoorTypes DoorType { get; set; }

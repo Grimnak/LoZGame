@@ -68,6 +68,8 @@
         private Texture2D DungeonHoleTexture;
         private Texture2D DungeonTexture;
 
+        private Texture2D DoorOverhangTexture;
+
         private SpriteData DungeonData;
 
         private SpriteData TileData;
@@ -78,6 +80,9 @@
         private SpriteData DownDoorData;
         private SpriteData LeftDoorData;
         private SpriteData RightDoorData;
+
+        private SpriteData VerticalOverhangData;
+        private SpriteData HorizontalOverhangData;
 
         private static readonly DungeonSpriteFactory instance = new DungeonSpriteFactory();
 
@@ -186,6 +191,8 @@
             this.BricksTexture = content.Load<Texture2D>("GrayBricks");
             this.DungeonHoleTexture = content.Load<Texture2D>("GrayDungeonHole");
             this.DungeonTexture = content.Load<Texture2D>("GrayDungeon");
+
+            this.DoorOverhangTexture = content.Load<Texture2D>("SolidGray");
         }
 
         private void LoadData()
@@ -200,6 +207,9 @@
             this.DownDoorData = new SpriteData(new Vector2(doorWidth, doorHeight), UnlockedDoorDownFrameTexture, 1, 1);
             this.LeftDoorData = new SpriteData(new Vector2(doorHeight, doorWidth), UnlockedDoorLeftFrameTexture, 1, 1);
             this.RightDoorData = new SpriteData(new Vector2(doorHeight, doorWidth), UnlockedDoorRightFloorTexture, 1, 1);
+
+            this.VerticalOverhangData = new SpriteData(new Vector2(doorWidth, BlockSpriteFactory.Instance.VerticalOffset - doorHeight), DoorOverhangTexture, 1, 1);
+            this.HorizontalOverhangData = new SpriteData(new Vector2(BlockSpriteFactory.Instance.HorizontalOffset - doorHeight, DoorWidth), DoorOverhangTexture, 1, 1);
         }
 
         public ISprite Stairs()
@@ -345,6 +355,16 @@
         public ISprite BombedRightDoor()
         {
             return new ObjectSprite(this.BombedOpeningRightTexture, this.RightDoorData);
+        }
+
+        public ISprite VerticalOverhang()
+        {
+            return new ObjectSprite(this.DoorOverhangTexture, this.VerticalOverhangData);
+        }
+
+        public ISprite HorizontalOverhang()
+        {
+            return new ObjectSprite(this.DoorOverhangTexture, this.HorizontalOverhangData);
         }
     }
 }

@@ -15,6 +15,7 @@
         private static readonly int movableTileHeight = 47;
         private static readonly int topOffset = LoZGame.Instance.InventoryOffset + 72;
         private static readonly int bottomOffset = LoZGame.Instance.ScreenHeight - 72;
+        private static readonly int verticalOffset = 72;
         private static readonly int horizontalOffset = 79;
         private static readonly int doorOffset = 24;
         private static readonly int doorWidth = 90;
@@ -198,6 +199,11 @@
         public int HorizontalOffset
         {
             get { return horizontalOffset; }
+        }
+
+        public int VerticalOffset
+        {
+            get { return verticalOffset; }
         }
 
         public int DoorOffset

@@ -2,7 +2,7 @@
 {
     using Microsoft.Xna.Framework;
 
-    public class DoorCollisionHandler : CollisionInteractions
+    public partial class DoorCollisionHandler : CollisionInteractions
     {
         private IDoor door;
 
@@ -21,15 +21,19 @@
                     switch (door.Physics.CurrentDirection) 
                     {
                         case Physics.Direction.North:
+                            AlignVertical(door.Physics, player.Physics);
                             LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.North);
                             break;
                         case Physics.Direction.South:
+                            AlignVertical(door.Physics, player.Physics);
                             LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.South);
                             break;
                         case Physics.Direction.East:
+                            AlignHorizontal(door.Physics, player.Physics);
                             LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.East);
                             break;
                         case Physics.Direction.West:
+                            AlignHorizontal(door.Physics, player.Physics);
                             LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.West);
                             break;
 
@@ -132,6 +136,18 @@
                 default:
                     return false;
             }
+        }
+
+        private void AlignVertical(Physics source, Physics target)
+        {
+            int halfTarget = (target.Bounds.Width / 2) - 2;
+            target.Bounds = new Rectangle(new Point(source.Bounds.Center.X - halfTarget, target.Bounds.Y), target.Bounds.Size);
+        }
+
+        private void AlignHorizontal(Physics source, Physics target)
+        {
+            int halfTarget = (target.Bounds.Height / 2) - 2;
+            target.Bounds = new Rectangle(new Point(target.Bounds.X, source.Bounds.Center.Y - halfTarget), target.Bounds.Size);
         }
     }
 }

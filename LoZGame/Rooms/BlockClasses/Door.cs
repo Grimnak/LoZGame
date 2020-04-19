@@ -5,6 +5,11 @@
 
     public partial class Door : IDoor
     {
+        /// <summary>
+        /// Defines the location relative to the door to draw thee overhang of the hallway.
+        /// </summary>
+        private Vector2 overhangOffset;
+
         public Door(string loc, string starting)
         {
             this.doorCollisionHandler = new DoorCollisionHandler(this);
@@ -49,6 +54,7 @@
                         this.Physics = new Physics(this.upScreenLoc);
                         this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
                         this.Physics.CurrentDirection = Physics.Direction.North;
+                        this.overhangOffset = new Vector2(0, -(BlockSpriteFactory.Instance.VerticalOffset - this.Physics.Bounds.Height));
                         break;
                     }
                 case East:
@@ -56,6 +62,7 @@
                         this.Physics = new Physics(this.rightScreenLoc);
                         this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
                         this.Physics.CurrentDirection = Physics.Direction.East;
+                        this.overhangOffset = new Vector2(this.Physics.Bounds.Width, 0);
                         break;
                     }
                 case South:
@@ -63,6 +70,7 @@
                         this.Physics = new Physics(this.downScreenLoc);
                         this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
                         this.Physics.CurrentDirection = Physics.Direction.South;
+                        this.overhangOffset = new Vector2(0, this.Physics.Bounds.Height);
                         break;
                     }
                 case West:
@@ -70,15 +78,23 @@
                         this.Physics = new Physics(this.leftScreenLoc);
                         this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
                         this.Physics.CurrentDirection = Physics.Direction.West;
+                        this.overhangOffset = new Vector2(-(BlockSpriteFactory.Instance.HorizontalOffset - this.Physics.Bounds.Width), 0);
                         break;
                     }
                 default:
                     this.Physics = new Physics(this.upScreenLoc);
                     this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
                     this.Physics.CurrentDirection = Physics.Direction.North;
+                    this.overhangOffset = new Vector2(0, -(BlockSpriteFactory.Instance.VerticalOffset - this.Physics.Bounds.Height));
                     break;
             }
             this.Physics.SetDepth();
+        }
+
+        public Vector2 OverhangOffset
+        {
+            get { return overhangOffset; }
+            set { overhangOffset = value; }
         }
 
         public void Bombed()
