@@ -72,11 +72,11 @@
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
             LoZGame.Instance.Dungeon.CurrentRoom.Draw(Point.Zero);
             LoZGame.Instance.SpriteBatch.End();
+
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
             LoZGame.Instance.GameObjects.Draw();
 
             InventoryComponents.Instance.DrawText();
-
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Draw();

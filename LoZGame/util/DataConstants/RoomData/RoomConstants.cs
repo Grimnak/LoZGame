@@ -22,7 +22,7 @@
 
         public float TileDepth => TileD;
 
-        public int UpDownDoorXLocation => (LoZGame.Instance.ScreenWidth / 2) - (DungeonSpriteFactory.Instance.DoorWidth / 2);
+        public int UpDownDoorXLocation => (LoZGame.Instance.ScreenWidth / 2) - (BlockSpriteFactory.Instance.DoorWidth / 2);
 
         public int LeftDoorXLocation => LeftDoorXLoc;
 
@@ -30,7 +30,7 @@
 
         public int RightDoorXLocation => LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.HorizontalOffset;
 
-        public int RightLeftDoorYLocation => LoZGame.Instance.InventoryOffset + ((LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset) / 2) - (DungeonSpriteFactory.Instance.DoorWidth / 2);
+        public int RightLeftDoorYLocation => LoZGame.Instance.InventoryOffset + ((LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset) / 2) - (BlockSpriteFactory.Instance.DoorWidth / 2);
 
         public string UnlockedStr => Unlocked;
 

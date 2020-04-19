@@ -23,6 +23,7 @@
         private const string Lava2 = "lava2";
         private const string Stairs3 = "stairs3";
         private const string SpottedTile3 = "spotted_tile3";
+        private const string SpottedTile4 = "spotted_tile4";
 
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
@@ -69,11 +70,11 @@
                 case LadderTile:
                     return BlockSpriteFactory.Instance.LadderTile();
                 case SpottedTile:
-                    return BlockSpriteFactory.Instance.SpottedTile();
+                    return DungeonSpriteFactory.Instance.SpottedTile();
                 case Stairs:
                     return BlockSpriteFactory.Instance.Stairs();
                 case SpottedTile2:
-                    return BlockSpriteFactory.Instance.SpottedTile2();
+                    return DungeonSpriteFactory.Instance.SpottedTile();
                 case BossTile2:
                     return BlockSpriteFactory.Instance.BossTile2();
                 case Lava2:
@@ -81,9 +82,11 @@
                 case Stairs3:
                     return BlockSpriteFactory.Instance.Stairs3();
                 case SpottedTile3:
-                    return BlockSpriteFactory.Instance.SpottedTile3();
+                    return DungeonSpriteFactory.Instance.SpottedTile();
+                case SpottedTile4:
+                    return DungeonSpriteFactory.Instance.SpottedTile();
                 default:
-                    return BlockSpriteFactory.Instance.FloorTile();
+                    return DungeonSpriteFactory.Instance.FloorTile();
             }
         }
 
@@ -95,7 +98,7 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

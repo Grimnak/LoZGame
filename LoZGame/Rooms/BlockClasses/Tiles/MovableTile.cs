@@ -54,7 +54,7 @@
             string[] invalidDirectionStrings = !string.IsNullOrEmpty(direction) ? direction.Split(',') : null;
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location);
-            this.sprite = this.CreateCorrectSprite(name); 
+            this.sprite = DungeonSpriteFactory.Instance.MoveabeTile(); 
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
             this.Physics.SetDepth();
             this.moved = false;
@@ -151,7 +151,7 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
+            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

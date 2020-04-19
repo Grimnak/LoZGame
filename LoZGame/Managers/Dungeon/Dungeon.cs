@@ -75,12 +75,12 @@
                     this.mapColor = Color.Green;
                     break;
                 case 4:
-                    LoZGame.Instance.DungeonTint = Color.Gold;
+                    LoZGame.Instance.DungeonTint = new Color(178, 162, 0);
                     this.currentX = 1;
                     this.currentY = 7;
                     this.maxX = 4;
                     this.maxY = 8;
-                    this.mapColor = Color.Yellow;
+                    this.mapColor = Color.DarkGoldenrod;
                     break;
                 default:
                     break;
