@@ -22,7 +22,6 @@
             Retreating = false;
             InitialPos = this.Physics.Location;
             this.Expired = false;
-            this.IsDead = false;
             this.Damage = GameData.Instance.EnemyDamageConstants.SpikeCrossDamage;
             this.DamageTimer = 0;
             this.CurrentTint = LoZGame.Instance.DefaultTint;

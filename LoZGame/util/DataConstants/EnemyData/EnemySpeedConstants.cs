@@ -11,7 +11,7 @@ namespace LoZClone
         private const float RopeAttackSpd = 3.5f;
         private const float GelSpd = 3;
         private const float ZolSpd = 2;
-        private const float SpikeCrossSpd = 3;
+        private const float SpikeCrossSpd = 2;
         private const float WallMasterSpd = 2;
         private const float WallMasterAttackSpd = -1;
         private const float DragonSpd = 1.5f;

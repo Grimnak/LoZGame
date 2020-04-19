@@ -54,7 +54,7 @@
                     this.currentY = 5; // player spawns at curX/curY
                     this.maxX = 6;
                     this.maxY = 6;
-                    this.mapColor = Color.Cyan;
+                    this.mapColor = Color.DarkCyan;
                     this.dungeonBossLoc = new Point(4, 1);
                     break;
                 case 2:
