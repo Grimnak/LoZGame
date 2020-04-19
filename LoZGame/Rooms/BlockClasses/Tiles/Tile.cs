@@ -53,6 +53,7 @@
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location);
             this.Name = name;
+            this.spriteTint = Color.Gray;
             this.sprite = this.CreateCorrectSprite(name);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
             this.Physics.Depth = GameData.Instance.RoomConstants.TileDepth;
@@ -70,22 +71,29 @@
                 case LadderTile:
                     return BlockSpriteFactory.Instance.LadderTile();
                 case SpottedTile:
+                    this.spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.SpottedTile();
                 case Stairs:
+                    this.spriteTint = LoZGame.Instance.DungeonTint;
                     return BlockSpriteFactory.Instance.Stairs();
                 case SpottedTile2:
+                    this.spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.SpottedTile();
                 case BossTile2:
                     return BlockSpriteFactory.Instance.BossTile2();
                 case Lava2:
                     return BlockSpriteFactory.Instance.LavaTile2();
                 case Stairs3:
-                    return BlockSpriteFactory.Instance.Stairs3();
+                    this.spriteTint = LoZGame.Instance.DungeonTint;
+                    return DungeonSpriteFactory.Instance.Stairs();
                 case SpottedTile3:
+                    this.spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.SpottedTile();
                 case SpottedTile4:
+                    this.spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.SpottedTile();
                 default:
+                    this.spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.FloorTile();
             }
         }
@@ -98,7 +106,7 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
+            this.sprite.Draw(this.Physics.Location, this.spriteTint, this.Physics.Depth);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
