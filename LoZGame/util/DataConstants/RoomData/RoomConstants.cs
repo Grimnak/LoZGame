@@ -6,7 +6,7 @@
         private const int BlockHeightOffset = 8;
         private const float TileD = .001f;
 
-        private const int UpDownDoorXLoc = 363;
+        //private const int UpDownDoorXLoc = 363;
         private const int LeftDoorXLoc = 19;
 
         private const string Unlocked = "Unlocked";
@@ -22,15 +22,15 @@
 
         public float TileDepth => TileD;
 
-        public int UpDownDoorXLocation => UpDownDoorXLoc;
+        public int UpDownDoorXLocation => (LoZGame.Instance.ScreenWidth / 2) - (DungeonSpriteFactory.Instance.DoorWidth / 2);
 
         public int LeftDoorXLocation => LeftDoorXLoc;
 
         public int UpDoorYLocation => LoZGame.Instance.InventoryOffset + 12;
 
-        public int RightDoorXLocation => LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.DoorOffset - BlockSpriteFactory.Instance.TileHeight + 5;
+        public int RightDoorXLocation => LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.HorizontalOffset;
 
-        public int RightLeftDoorYLocation => LoZGame.Instance.InventoryOffset + 195;
+        public int RightLeftDoorYLocation => LoZGame.Instance.InventoryOffset + ((LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset) / 2) - (DungeonSpriteFactory.Instance.DoorWidth / 2);
 
         public string UnlockedStr => Unlocked;
 

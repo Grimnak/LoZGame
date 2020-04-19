@@ -58,7 +58,7 @@
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location);
             this.sprite = this.CreateCorrectSprite(name);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
             this.Physics.Depth = GameData.Instance.RoomConstants.BlockTileDepth;
             this.SetBounds(name);
         }

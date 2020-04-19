@@ -13,6 +13,7 @@
      */
     public class Room
     {
+        private ISprite Background;
         private bool exists = false;
         private bool basement = false;
         private bool oldman = false;
@@ -24,7 +25,6 @@
         private List<IEnemy> enemies = null; // a list for any and all enemies in a room
         private List<IBlock> blocks = null; // a list for any and all tiles in a room
         private List<Door> doors = null; // a list for any and all doors in a room
-        private ISprite border = null;
 
         /*
          * args:
@@ -45,6 +45,13 @@
                 this.blocks = new List<IBlock>();
                 this.enemies = new List<IEnemy>();
                 this.items = new List<IItem>();
+                if (this.oldman)
+                {
+                    this.Background = DungeonSpriteFactory.Instance.DungeonHole();
+                } else
+                {
+                    this.Background = DungeonSpriteFactory.Instance.Dungeon();
+                }
             }
         }
 
@@ -338,17 +345,9 @@
         /// <param name="locationOffset">the offset from the standard location to draw at. Leave as Vector2.Zero for normal border.</param>
         public void Draw(Point locationOffset)
         {
-            if (this.basement)
+            if (!this.basement)
             {
-                // dont draw a border
-            }
-            else if (this.oldman)
-            {
-                LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.BackgroundHole, new Rectangle(0 + locationOffset.X, LoZGame.Instance.InventoryOffset + locationOffset.Y, LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
-            }
-            else
-            {
-                LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0 + locationOffset.X, LoZGame.Instance.InventoryOffset + locationOffset.Y, LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset), new Rectangle(0, 0, 236, 160), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+                this.Background.Draw(new Vector2(0 + locationOffset.X, LoZGame.Instance.InventoryOffset + locationOffset.Y), LoZGame.Instance.DungeonTint, 0);    
             }
         }
     }

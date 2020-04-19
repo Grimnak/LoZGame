@@ -18,7 +18,7 @@
             this.Physics = new Physics(location);
             this.Physics.IsMoveable = false;
             this.Physics.Mass = 1;
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileHeight, BlockSpriteFactory.Instance.TileWidth);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileHeight, (int)BlockSpriteFactory.Instance.TileWidth);
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
             this.IsDead = false;

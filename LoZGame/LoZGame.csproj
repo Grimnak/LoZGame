@@ -398,6 +398,7 @@
     <Compile Include="Util\Physics\PhysicsHelper.cs" />
     <Compile Include="Util\RandomStateGenerator.cs" />
     <Compile Include="Sprites\SpriteData.cs" />
+    <Compile Include="Util\SpriteFactories\DungeonSpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\BlockSpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\EnemySpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\ItemSpriteFactory.cs" />

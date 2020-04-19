@@ -30,10 +30,10 @@
         /// </summary>
         private void CheckLeftBound()
         {
-            int leftBound = BlockSpriteFactory.Instance.HorizontalOffset + (7 * BlockSpriteFactory.Instance.TileWidth);
-            if (this.Physics.Bounds.X < leftBound)
+            float leftBound = BlockSpriteFactory.Instance.HorizontalOffset + (7 * BlockSpriteFactory.Instance.TileWidth);
+            if (this.Physics.Bounds.X < (int)leftBound)
             {
-                this.Physics.Bounds = new Rectangle(new Point(leftBound, this.Physics.Bounds.Y), new Point(this.Physics.Bounds.Width, this.Physics.Bounds.Height));
+                this.Physics.Bounds = new Rectangle(new Point((int)leftBound, this.Physics.Bounds.Y), new Point(this.Physics.Bounds.Width, this.Physics.Bounds.Height));
                 this.Physics.MovementVelocity = Vector2.Zero;
             }
         }

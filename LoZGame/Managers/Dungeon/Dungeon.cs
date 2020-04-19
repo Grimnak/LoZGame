@@ -49,7 +49,7 @@
             switch (this.dungeonNumber)
             {
                 case 1:
-                    LoZGame.Instance.DungeonTint = Color.White;
+                    LoZGame.Instance.DungeonTint = Color.LightBlue;
                     this.currentX = 2;
                     this.currentY = 5; // player spawns at curX/curY
                     this.maxX = 6;
