@@ -11,32 +11,32 @@
             {
                 case Physics.Direction.North:
                     {
-                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameDown();
-                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorDown();
+                        this.FrameSprite = DungeonSpriteFactory.Instance.UnlockedDownDoorFrame();
+                        this.FloorSprite = DungeonSpriteFactory.Instance.UnlockedDownDoorFloor();
                         break;
                     }
                 case Physics.Direction.East:
                     {
-                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameLeft();
-                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorLeft();
+                        this.FrameSprite = DungeonSpriteFactory.Instance.UnlockedLeftDoorFrame();
+                        this.FloorSprite = DungeonSpriteFactory.Instance.UnlockedLeftDoorFloor();
                         break;
                     }
                 case Physics.Direction.South:
                     {
-                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameUp();
-                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorUp();
+                        this.FrameSprite = DungeonSpriteFactory.Instance.UnlockedUpDoorFrame();
+                        this.FloorSprite = DungeonSpriteFactory.Instance.UnlockedUpDoorFloor();
                         break;
                     }
                 case Physics.Direction.West:
                     {
-                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameRight();
-                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorRight();
+                        this.FrameSprite = DungeonSpriteFactory.Instance.UnlockedRightDoorFrame();
+                        this.FloorSprite = DungeonSpriteFactory.Instance.UnlockedRightDoorFloor();
                         break;
                     }
                 default:
                     {
-                        this.FrameSprite = BlockSpriteFactory.Instance.UnlockedDoorFrameDown();
-                        this.FloorSprite = BlockSpriteFactory.Instance.UnlockedDoorFloorDown();
+                        this.FrameSprite = DungeonSpriteFactory.Instance.UnlockedDownDoorFrame();
+                        this.FloorSprite = DungeonSpriteFactory.Instance.UnlockedDownDoorFloor();
                         break;
                     }
             }

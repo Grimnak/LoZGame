@@ -45,7 +45,7 @@
                 if (this.currentX == 1 && this.currentY == 0)
                 {
                     this.player.Physics.Bounds = new Rectangle(
-                        BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5),
+                        BlockSpriteFactory.Instance.HorizontalOffset + ((int)BlockSpriteFactory.Instance.TileWidth * 5),
                         BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
                         this.player.Physics.Bounds.Width,
                         this.player.Physics.Bounds.Height);
@@ -84,7 +84,7 @@
                 if (this.dungeonNumber == 1 && (currentX == 1 && currentY == 1))
                 {
                     this.player.Physics.Bounds = new Rectangle(
-                        BlockSpriteFactory.Instance.TileWidth * 3,
+                        (int)BlockSpriteFactory.Instance.TileWidth * 3,
                         (BlockSpriteFactory.Instance.TileHeight * 0) + 10 + LoZGame.Instance.InventoryOffset,
                         this.player.Physics.Bounds.Width,
                         this.player.Physics.Bounds.Height);
@@ -107,7 +107,7 @@
 
                 // Player moved to right side of new room (next to door).
                 this.player.Physics.Bounds = new Rectangle(
-                    BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 11),
+                    BlockSpriteFactory.Instance.HorizontalOffset + ((int)BlockSpriteFactory.Instance.TileWidth * 11),
                     BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
                     this.player.Physics.Bounds.Width,
                     this.player.Physics.Bounds.Height);
@@ -129,7 +129,7 @@
 
                 // Player moved to left side of new room (next to door).
                 this.player.Physics.Bounds = new Rectangle(
-                    BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 0) + 6,
+                    BlockSpriteFactory.Instance.HorizontalOffset + ((int)BlockSpriteFactory.Instance.TileWidth * 0) + 6,
                     BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
                     this.player.Physics.Bounds.Width,
                     this.player.Physics.Bounds.Height);

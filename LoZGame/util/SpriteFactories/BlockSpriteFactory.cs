@@ -8,7 +8,8 @@
 
     public class BlockSpriteFactory
     {
-        private static readonly int tileWidth = 55;
+        private static readonly float tileOffset = 53.5f;
+        private static readonly float tileWidth = 54;
         private static readonly int tileHeight = 48;
         private static readonly int movableTileWidth = 54;
         private static readonly int movableTileHeight = 47;
@@ -164,9 +165,9 @@
             }
         }
         
-        public int TileWidth
+        public float TileWidth
         {
-            get { return tileWidth; }
+            get { return tileOffset; }
         }
 
         public int TileHeight
@@ -288,7 +289,7 @@
 
         private void LoadData()
         {
-            this.stairsData = new SpriteData(new Vector2(tileWidth, tileHeight), StairsTexture, 1, 1);
+            this.stairsData = new SpriteData(new Vector2(tileWidth + 1, tileHeight), StairsTexture, 1, 1);
             this.UnlockedDoorDownData = new SpriteData(new Vector2(doorWidth, doorHeight), UnlockedDoorDownFrameTexture, 1, 1);
             this.UnlockedDoorLeftData = new SpriteData(new Vector2(doorHeight, doorWidth), UnlockedDoorLeftFrameTexture, 1, 1);
             this.UnlockedDoorRightData = new SpriteData(new Vector2(doorHeight, doorWidth), UnlockedDoorRightFrameTexture, 1, 1);

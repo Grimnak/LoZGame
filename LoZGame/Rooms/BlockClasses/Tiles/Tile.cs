@@ -53,7 +53,7 @@
             this.Physics = new Physics(location);
             this.Name = name;
             this.sprite = this.CreateCorrectSprite(name);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
+            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
             this.Physics.Depth = GameData.Instance.RoomConstants.TileDepth;
         }
 

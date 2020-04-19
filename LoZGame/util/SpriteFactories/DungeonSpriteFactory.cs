@@ -8,7 +8,7 @@
 
     public class DungeonSpriteFactory
     {
-        private static readonly int tileWidth = 55;
+        private static readonly int tileWidth = 48;
         private static readonly int tileHeight = 48;
         private static readonly int movableTileWidth = 54;
         private static readonly int movableTileHeight = 47;

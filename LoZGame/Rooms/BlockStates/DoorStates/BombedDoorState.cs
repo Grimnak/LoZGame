@@ -20,22 +20,22 @@
             {
                 case Physics.Direction.North:
                     {
-                        this.FrameSprite = BlockSpriteFactory.Instance.BombedOpeningDown();
+                        this.FrameSprite = DungeonSpriteFactory.Instance.BombedDownDoor();
                         break;
                     }
                 case Physics.Direction.East:
                     {
-                        this.FrameSprite = BlockSpriteFactory.Instance.BombedOpeningLeft();
+                        this.FrameSprite = DungeonSpriteFactory.Instance.BombedLeftDoor();
                         break;
                     }
                 case Physics.Direction.South:
                     {
-                        this.FrameSprite = BlockSpriteFactory.Instance.BombedOpeningUp();
+                        this.FrameSprite = DungeonSpriteFactory.Instance.BombedRightDoor();
                         break;
                     }
                 case Physics.Direction.West:
                     {
-                        this.FrameSprite = BlockSpriteFactory.Instance.BombedOpeningRight();
+                        this.FrameSprite = DungeonSpriteFactory.Instance.BombedUpDoor();
                         break;
                     }
             }
