@@ -86,7 +86,7 @@
 
         public virtual void Die()
         {
-            if (!this.Enemy.IsDead)
+            if (this.Enemy.IsDead)
             {
                 this.Enemy.CurrentState = new DeadEnemyState(this.Enemy);
             }

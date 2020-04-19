@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace LoZClone
 {
-    class SpawnVireState : StalfosEssentials, IEnemyState
+    class SpawnVireState : EnemyStateEssentials, IEnemyState
     {
         private int spawnTimer = 0;
         private int spawnTimerMax;

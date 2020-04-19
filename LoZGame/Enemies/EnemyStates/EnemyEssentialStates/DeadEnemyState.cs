@@ -29,5 +29,13 @@
                 this.Enemy.Expired = true;
             }
         }
+
+        public override void Die()
+        {
+        }
+
+        public override void Stun(int stunTime)
+        {
+        }
     }
 }

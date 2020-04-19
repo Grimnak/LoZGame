@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace LoZClone
 {
-    class UpMovingVireState : StalfosEssentials, IEnemyState
+    class UpMovingVireState : EnemyStateEssentials, IEnemyState
     {
         public UpMovingVireState(IEnemy enemy)
         {

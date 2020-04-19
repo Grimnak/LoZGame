@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class OldManSecretState : OldManEssentials, IEnemyState
+    public class OldManSecretState : EnemyStateEssentials, IEnemyState
     {
         private const float FireballSpeed = 5f;
         private const float FireballSpread = MathHelper.PiOver4;

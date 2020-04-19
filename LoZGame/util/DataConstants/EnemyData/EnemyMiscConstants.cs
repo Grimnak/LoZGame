@@ -18,6 +18,8 @@ namespace LoZClone
         private const int ZolIdleMax = 30;
         private const int ZolMovementT = 17;
 
+        private const int snakeUpdateTime = 10;
+
         private const int DodongoFavorCardinal = 5;
         private const int FireSnakeFavorCardinal = 9;
         private const int FireSnakeFavorDiagonal = 9;
@@ -88,5 +90,7 @@ namespace LoZClone
         public double SpikeCrossVertBoundary => (BlockSpriteFactory.Instance.TileHeight * 3.5) + (BlockSpriteFactory.Instance.TopOffset / 2) + (LoZGame.Instance.InventoryOffset / 2);
 
         public double SpikeCrossHorizontalBoundary => (BlockSpriteFactory.Instance.TileWidth * 6) + (BlockSpriteFactory.Instance.HorizontalOffset / 2);
+
+        public int UpdateSegmentTime => snakeUpdateTime;
     }
 }

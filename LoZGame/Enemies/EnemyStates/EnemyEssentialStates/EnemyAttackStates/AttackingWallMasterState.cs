@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class AttackingWallMasterState : WallMasterEssentials, IEnemyState
+    public class AttackingWallMasterState : EnemyStateEssentials, IEnemyState
     {
         public AttackingWallMasterState(IEnemy enemy)
         {

@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class AttackingDragonState : DragonEssentials, IEnemyState
+    public class AttackingDragonState : EnemyStateEssentials, IEnemyState
     {
         private const float FireballSpeed = 3.5f;
         private const float FireballSpread = MathHelper.PiOver4 / 2;
