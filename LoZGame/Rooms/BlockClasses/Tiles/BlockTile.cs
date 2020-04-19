@@ -31,6 +31,11 @@
         private const string GreenStatueRight3 = "green_statue_right";
         private const string GreenStatueLeft3 = "green_statue_left";
         private const string statueCheck = "statue";
+        private const string BlueStatueLeft4 = "blue_statue_left4";
+        private const string BlueStatueRight4 = "blue_statue_right4";
+        private const string BrownStatueRight4 = "brown_statue_right4";
+        private const string BrownStatueLeft4 = "brown_statue_left4";
+        private const string MovableTile4 = "movable_tile4";
         private const string Lava5 = "lava5";
 
         private ISprite sprite;
@@ -119,6 +124,16 @@
                     return DungeonSpriteFactory.Instance.MoveabeTile();
                 case Lava5:
                     return BlockSpriteFactory.Instance.Lava5();
+                case BlueStatueRight4:
+                    return BlockSpriteFactory.Instance.BlueStatueRight4();
+                case BlueStatueLeft4:
+                    return BlockSpriteFactory.Instance.BlueStatueLeft4();
+                case BrownStatueRight4:
+                    return BlockSpriteFactory.Instance.BrownStatueRight4();
+                case BrownStatueLeft4:
+                    return BlockSpriteFactory.Instance.BrownStatueLeft4();
+                case MovableTile4:
+                    return BlockSpriteFactory.Instance.MovableTile4();
                 default:
                     this.spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.MoveabeTile();

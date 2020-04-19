@@ -1061,7 +1061,7 @@
     </rrow>
     <rrow idx="1">
       <tile type="block" idx="1">blue_statue_right4</tile>
-      <tile type="block" idx="4">blue_statue_left4</tile>
+      <tile type="block" idx="4">blue_statue_right4</tile>
       <tile type="block" idx="7">blue_statue_left4</tile>
       <tile type="block" idx="10">blue_statue_left4</tile>
     </rrow>
@@ -1069,7 +1069,7 @@
     </rrow>
     <rrow idx="3">
       <tile type="block" idx="1">blue_statue_right4</tile>
-      <tile type="block" idx="4">blue_statue_left4</tile>
+      <tile type="block" idx="4">blue_statue_right4</tile>
       <tile type="block" idx="7">blue_statue_left4</tile>
       <tile type="block" idx="10">blue_statue_left4</tile>
     </rrow>
@@ -1079,7 +1079,7 @@
     </rrow>
     <rrow idx="5">
       <tile type="block" idx="1">blue_statue_right4</tile>
-      <tile type="block" idx="4">blue_statue_left4</tile>
+      <tile type="block" idx="4">blue_statue_right4</tile>
       <tile type="block" idx="7">blue_statue_left4</tile>
       <tile type="block" idx="10">blue_statue_left4</tile>
       <tile type="walkable" idx="3">spotted_tile4</tile>

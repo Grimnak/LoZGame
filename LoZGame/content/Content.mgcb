@@ -37,6 +37,66 @@
 /processorParam:TextureFormat=Color
 /build:../../etc/art/tiles/fire.png;fire.png
 
+#begin ../../etc/art/tiles/level4/blue_statue_left4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../etc/art/tiles/level4/blue_statue_left4.png;blue_statue_left4.png
+
+#begin ../../etc/art/tiles/level4/blue_statue_right4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../etc/art/tiles/level4/blue_statue_right4.png;blue_statue_right4.png
+
+#begin ../../etc/art/tiles/level4/brown_statue_left4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../etc/art/tiles/level4/brown_statue_left4.png;brown_statue_left4.png
+
+#begin ../../etc/art/tiles/level4/brown_statue_right4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../etc/art/tiles/level4/brown_statue_right4.png;brown_statue_right4.png
+
+#begin ../../etc/art/tiles/level4/movable_tile4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../etc/art/tiles/level4/movable_tile4.png;movable_tile4.png
+
 #begin angryOldMan.png
 /importer:TextureImporter
 /processor:TextureProcessor
