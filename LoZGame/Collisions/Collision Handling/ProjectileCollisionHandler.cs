@@ -13,22 +13,25 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
+            if (enemy.AI != EnemyEssentials.EnemyAI.Manhandla)
             {
-                enemy.Stun(projectile.StunDuration);
-                this.projectile.Returning = true;
-            }
-            else if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
-            {
-                this.projectile.Physics.StopMovement();
-            }
-            else if (this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion || this.projectile is SwordProjectile)
-            {
-                // do nothing
-            }
-            else
-            {
-                this.projectile.IsExpired = true;
+                if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
+                {
+                    enemy.Stun(projectile.StunDuration);
+                    this.projectile.Returning = true;
+                }
+                else if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
+                {
+                    this.projectile.Physics.StopMovement();
+                }
+                else if (this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion || this.projectile is SwordProjectile)
+                {
+                    // do nothing
+                }
+                else
+                {
+                    this.projectile.IsExpired = true;
+                }
             }
         }
 

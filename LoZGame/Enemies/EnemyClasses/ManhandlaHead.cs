@@ -33,7 +33,6 @@
             this.AI = EnemyAI.NoSpawn;
             this.IsSpawning = false;
             this.ApplyDamageMod();
-            this.ApplySmallSpeedMod();
             this.ApplyLargeWeightModPos();
             this.ApplyLargeHealthMod();
         }
@@ -86,15 +85,12 @@
 
         public override void Update()
         {
-            this.SetToSource();
-            this.Physics.SetDepth();
+            this.HandleDamage();
             if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.IsSpawning || this.IsDead)
             {
+                this.SetToSource();
+                this.Physics.SetDepth();
                 this.CurrentState.Update();
-            }
-            if (this.parent.IsDead && !this.IsDead)
-            {
-                this.CurrentState.Die();
             }
         }
 
