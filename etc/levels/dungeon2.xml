@@ -62,7 +62,7 @@
         <enemy X="3" Y="3" >Dodongo</enemy>
       </enemies>
       <doors>
-        <door loc="W">special2</door>
+        <door loc="W">special</door>
         <door loc="S">locked2</door>
       </doors>
       <rrow idx="0">
