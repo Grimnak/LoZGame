@@ -47,7 +47,7 @@
         <tile type="block" idx="7">movable_square</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="movable"  idx="4" dir="N,S">orange_movable_square</tile>
+        <tile type="movable"  idx="4" dir="E,W">orange_movable_square</tile>
         <tile type="walkable" idx="6">stairs</tile>
         <tile type="block" idx="8">movable_square</tile>
       </rrow>
@@ -825,7 +825,7 @@
         <tile type="block" idx="7">movable_square</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="movable"  idx="4" dir="N,S">orange_movable_square</tile>
+        <tile type="movable"  idx="4" dir="E,W">orange_movable_square</tile>
         <tile type="walkable" idx="6">stairs</tile>
         <tile type="block" idx="8">movable_square</tile>
       </rrow>
