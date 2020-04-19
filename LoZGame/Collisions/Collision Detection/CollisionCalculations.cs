@@ -90,7 +90,7 @@
         private void CheckBorders(ICollider sourceCollider, int sourceWidth, int sourceHeight)
         {
             // Check borders for all rooms except basement
-            if (dungeon.CurrentRoomX != 1 || dungeon.CurrentRoomY != 1)
+            if (!LoZGame.Instance.Dungeon.CurrentRoom.IsBasement)
             {
                 // is right wall
                 if (sourceCollider.Physics.Bounds.Right > LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.HorizontalOffset + 10)

@@ -60,7 +60,7 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(enemy is Keese || enemy is WallMaster))
+            if (!(enemy is Keese || enemy is VireKeese || enemy is WallMaster))
             {
                 this.SetBounds(this.block.Physics, enemy.Physics, collisionSide);
             }

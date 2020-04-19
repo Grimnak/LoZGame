@@ -84,7 +84,13 @@
         /// <inheritdoc/>
         public ISprite CreateCorrectSprite(string name)
         {
-            return BlockSpriteFactory.Instance.MovableSquare();
+            switch (name)
+            {
+                case "orange_movable_square3":
+                    return BlockSpriteFactory.Instance.MovableSquare3();
+                default:
+                    return BlockSpriteFactory.Instance.MovableSquare();
+            }
         }
 
         private void HandlePush()
@@ -100,7 +106,6 @@
                 else if (!moved)
                 {
                     moved = true;
-                    SoundFactory.Instance.PlaySolved();
                 }
             }
             else if (this.Physics.MovementVelocity.Y != 0)
@@ -114,7 +119,6 @@
                 else if (!moved)
                 {
                     moved = true;
-                    SoundFactory.Instance.PlaySolved();
                 }
             }
         }

@@ -49,7 +49,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" idx="2">
-      <text>BEHOLD... THE WHITE SWORD.</text>
+      <text>THE WHITE SWORD IS BELOW YOU.</text>
       <enemies>
         <enemy X="5.5" Y="2">OldMan</enemy>
       </enemies>
@@ -619,16 +619,16 @@
        <rrow idx="1">
        </rrow>
        <rrow idx="2">
-         <tile type="walkable" idx="5">movable_square3</tile>
-         <tile type="walkable" idx="6">movable_square3</tile>
+         <tile type="block" idx="5">movable_square3</tile>
+         <tile type="block" idx="6">movable_square3</tile>
        </rrow>
        <rrow idx="3">
-         <tile type="walkable" idx="5">movable_square3</tile>
-         <tile type="walkable" idx="6">movable_square3</tile>
+         <tile type="block" idx="5">movable_square3</tile>
+         <tile type="block" idx="6">movable_square3</tile>
        </rrow>
        <rrow idx="4">
-         <tile type="walkable" idx="5">movable_square3</tile>
-         <tile type="walkable" idx="6">movable_square3</tile>
+         <tile type="block" idx="5">movable_square3</tile>
+         <tile type="block" idx="6">movable_square3</tile>
        </rrow>
        <rrow idx="5">
        </rrow>
@@ -670,7 +670,7 @@
         <tile type="block" idx="11">movable_square3</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="walkable" idx="6">stairs3</tile>
+        <tile type="walkable" idx="11">stairs3</tile>
       </rrow>
       <rrow idx="4">
         <tile type="block" idx="9">movable_square3</tile>
@@ -754,7 +754,7 @@
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
       <items>
-        <item X="8" Y="3">Raft</item>
+        <item X="6" Y="1">WhiteSword</item>
       </items>
       <rrow idx="0">
         <tile type="block" idx="0">basement_brick_tile</tile>

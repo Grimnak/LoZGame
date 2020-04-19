@@ -81,7 +81,7 @@
                     this.player.Physics.Bounds.Height);
 
                 // Player moved to top side of new room (next to door, top of the ladder in the basement case).
-                if (this.dungeonNumber == 1 && (currentX == 1 && currentY == 1))
+                if (LoZGame.Instance.Dungeon.CurrentRoom.IsBasement)
                 {
                     this.player.Physics.Bounds = new Rectangle(
                         (int)BlockSpriteFactory.Instance.TileWidth * 3,
