@@ -130,7 +130,6 @@
             { StateType.MoveSouth, 1 },
             { StateType.MoveEast, 1 },
             { StateType.MoveWest, 1 },
-            { StateType.Idle, 1 }
         };
 
         public Dictionary<StateType, int> OldManStateList => oldManStateList;

@@ -70,8 +70,7 @@
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.LikelikeFavorCardinalValue);
             }
-            this.Enemy.Physics.Move();
-            this.Sprite.Update();
+            base.Update();
         }
     }
 }
