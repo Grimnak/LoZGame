@@ -191,13 +191,13 @@
             LoZGame.Instance.SpriteBatch.End();
 
             // Ensure inventory objects draw above the game objects while transitioning.
-            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             InventoryComponents.Instance.DrawInventoryElements();
             LoZGame.Instance.SpriteBatch.End();
 
             if (LoZGame.DebugMode)
             {
-                LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
+                LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
                 LoZGame.Instance.Debugger.Draw(newObjects);
                 LoZGame.Instance.SpriteBatch.End();
             }
