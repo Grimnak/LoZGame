@@ -6,22 +6,6 @@
 
     public partial class OldManEssentials : EnemyStateEssentials, IEnemyState
     {
-        public override void Attack()
-        {
-            this.Enemy.CurrentState = new OldManSecretState(this.Enemy);
-        }
-
-        public override void Stop()
-        {
-            this.Enemy.CurrentState = new OldManIdleState(this.Enemy);
-        }
-
-        public override void Die()
-        {
-        }
-
-        public override void Stun(int stunTime)
-        {
-        }
+        
     }
 }

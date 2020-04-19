@@ -18,7 +18,7 @@
             this.flameOffset = new Point(130, 0);
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.OldManStateList);
-            this.CurrentState = new SpawnOldManState(this);
+            this.CurrentState = new IdleEnemyState(this);
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.OldManHealth);
@@ -39,6 +39,11 @@
 
         public override void Stun(int stunTime)
         {
+        }
+
+        public override void Attack()
+        {
+            this.CurrentState = new OldManSecretState(this);
         }
 
         public void ShootFireballs()
@@ -81,7 +86,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            if (this.CurrentState is OldManIdleState)
+            if (this.CurrentState is IdleEnemyState)
             {
                 return EnemySpriteFactory.Instance.CreateOldManSprite();
             }
