@@ -31,6 +31,7 @@
         private const string GreenStatueRight3 = "green_statue_right";
         private const string GreenStatueLeft3 = "green_statue_left";
         private const string statueCheck = "statue";
+        private const string Lava5 = "lava5";
 
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
@@ -113,6 +114,8 @@
                     return BlockSpriteFactory.Instance.GreenStatueLeft3();
                 case MovableSquare3:
                     return DungeonSpriteFactory.Instance.MoveabeTile();
+                case Lava5:
+                    return BlockSpriteFactory.Instance.Lava5();
                 default:
                     return DungeonSpriteFactory.Instance.MoveabeTile();
             }
