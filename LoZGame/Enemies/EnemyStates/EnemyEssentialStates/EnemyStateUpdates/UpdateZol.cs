@@ -12,7 +12,6 @@
             if (this.Lifetime == this.DirectionChange)
             {
                 this.Lifetime = 0;
-                this.Enemy.Physics.Move();
                 if (!this.isMoving)
                 {
                     FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.ZolFavorCardinalValue);
@@ -22,7 +21,7 @@
                 else
                 {
                     this.isMoving = false;
-                    this.Enemy.CurrentState = new IdleEnemyState(this.Enemy);
+                    this.Enemy.CurrentState.Stop();
                 }
             }
         }

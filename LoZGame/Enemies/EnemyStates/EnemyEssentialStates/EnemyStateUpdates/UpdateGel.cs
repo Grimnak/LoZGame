@@ -12,17 +12,14 @@
             if (this.Lifetime == this.DirectionChange)
             {
                 this.Lifetime = 0;
-                this.Enemy.Physics.Move();
-                if (!this.isMoving)
+                if (this.Enemy.Physics.MovementVelocity.Length() > 0)
                 {
-                    FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.GelFavorCardinalValue);
-                    this.isMoving = true;
-                    this.Enemy.UpdateState();
+                    this.Enemy.CurrentState.Stop();
                 }
                 else
                 {
-                    this.isMoving = false;
-                    this.Enemy.CurrentState = new IdleEnemyState(this.Enemy);
+                    FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.GelFavorCardinalValue);
+                    this.Enemy.UpdateState();
                 }
             }
         }

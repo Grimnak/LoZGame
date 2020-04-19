@@ -134,8 +134,8 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateKeese.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateRope.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateStalfos.cs" />
-    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\WallMasterEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\ZolEssentials.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateWallMaster.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateZol.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\DownLeftMovingEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\DownMovingEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\DownRightMovingEnemyState.cs" />

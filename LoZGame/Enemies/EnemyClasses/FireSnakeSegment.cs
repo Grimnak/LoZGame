@@ -28,7 +28,7 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.EnemyName = EnemyNames.None;
+            this.EnemyName = EnemyNames.NoAI;
         }
 
         public override void TakeDamage(int damageAmount)
@@ -37,6 +37,10 @@
             {
                 this.parent.TakeDamage(damageAmount);
             }
+        }
+
+        public override void UpdateState()
+        {
         }
 
         public override ISprite CreateCorrectSprite()

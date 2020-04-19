@@ -44,16 +44,6 @@
             }
         }
 
-        public override void Update()
-        {
-            this.HandleDamage();
-            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.IsSpawning || this.IsDead)
-            {
-                this.CurrentState.Update();
-                this.Physics.SetDepth();
-            }
-        }
-
         public override ISprite CreateCorrectSprite()
         {
             return EnemySpriteFactory.Instance.CreateZolSprite();

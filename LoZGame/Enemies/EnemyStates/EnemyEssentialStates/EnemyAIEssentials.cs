@@ -8,8 +8,6 @@
 
     public partial class EnemyStateEssentials
     {
-
-
         public Vector2 UnitVectorToPlayer(Vector2 origin)
         {
             Vector2 unitVector = LoZGame.Instance.Link.Physics.Bounds.Center.ToVector2() - origin;
@@ -28,7 +26,7 @@
 
         public virtual void RandomDirectionChange()
         {
-            this.DirectionChange = LoZGame.Instance.Random.Next(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);
+            this.DirectionChange = LoZGame.Instance.Random.Next(this.Enemy.MinMaxWander.X, this.Enemy.MinMaxWander.Y);
         }
 
         public void FavorPlayerCardinal(int weight)

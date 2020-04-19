@@ -19,6 +19,13 @@
 
         private bool isMoving = false;
 
+        private List<EnemyNames> spawnBlackList = new List<EnemyNames>()
+        {
+            EnemyNames.NoAI,
+            EnemyNames.Dragon,
+            EnemyNames.Firesnakehead,
+        };
+
         public virtual void MoveLeft()
         {
             this.Enemy.Physics.CurrentDirection = Physics.Direction.West;
@@ -87,7 +94,10 @@
 
         public virtual void Spawn()
         {
-            this.Enemy.CurrentState = new SpawnEnemyState(this.Enemy);
+            if (!this.spawnBlackList.Contains(this.Enemy.EnemyName))
+            {
+                this.Enemy.CurrentState = new SpawnEnemyState(this.Enemy);
+            }
         }
 
         public virtual void Stun(int stunTime)
@@ -142,6 +152,8 @@
                     break;
                 case EnemyNames.Zol:
                     UpdateZol();
+                    break;
+                case EnemyNames.NoAI:
                     break;
                 default:
                     DefaultUpdate();

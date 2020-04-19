@@ -29,6 +29,8 @@
 
         Color CurrentTint { get; set; }
 
+        Point MinMaxWander { get; set; }
+
         EnemyEssentials.EnemyNames EnemyName { get; set; }
         
         Dictionary<RandomStateGenerator.StateType, int> States { get; set; }

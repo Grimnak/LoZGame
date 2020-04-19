@@ -23,8 +23,11 @@
             VireKeese,
             WallMaster,
             Zol,
-            None
+            None,
+            NoAI
         }
+
+        private Point minMaxWander = new Point(LoZGame.Instance.UpdateSpeed);
 
         private bool isDead = false;
 
@@ -59,6 +62,13 @@
         public int Damage { get; set; }
 
         public int DamageTimer { get; set; }
+
+        public Point MinMaxWander
+        {
+            get { return minMaxWander; }
+
+            set { minMaxWander = value; }
+        }
 
         public EnemyNames EnemyName
         {
