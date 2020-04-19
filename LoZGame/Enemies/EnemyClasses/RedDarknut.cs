@@ -20,7 +20,11 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DarknutSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.EnemyName = EnemyNames.Darknut;
+            this.AI = EnemyAI.Darknut;
+            this.ApplyDamageMod();
+            this.ApplySmallSpeedMod();
+            this.ApplyLargeWeightModPos();
+            this.ApplySmallHealthMod();
         }
 
         public override void Stun(int stunTime)

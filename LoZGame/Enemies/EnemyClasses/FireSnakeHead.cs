@@ -31,7 +31,7 @@
             this.HasChild = true;
             this.children = new List<IEnemy>();
             this.spawnedChildren = false;
-            this.EnemyName = EnemyNames.Firesnakehead;
+            this.AI = EnemyAI.Firesnakehead;
             this.IsSpawning = false;
             this.ApplyDamageMod();
             this.ApplySmallSpeedMod();

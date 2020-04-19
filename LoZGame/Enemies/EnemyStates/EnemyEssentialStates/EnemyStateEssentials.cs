@@ -19,11 +19,14 @@
 
         private bool isMoving = false;
 
-        private List<EnemyNames> spawnBlackList = new List<EnemyNames>()
+        private List<EnemyAI> spawnBlackList = new List<EnemyAI>()
         {
-            EnemyNames.NoAI,
-            EnemyNames.Dragon,
-            EnemyNames.Firesnakehead,
+            EnemyAI.NoAI,
+            EnemyAI.Dragon,
+            EnemyAI.Firesnakehead,
+            EnemyAI.Manhandla,
+            EnemyAI.NoSpawn
+
         };
 
         public virtual void MoveLeft()
@@ -94,7 +97,7 @@
 
         public virtual void Spawn()
         {
-            if (!this.spawnBlackList.Contains(this.Enemy.EnemyName))
+            if (!this.spawnBlackList.Contains(this.Enemy.AI))
             {
                 this.Enemy.CurrentState = new SpawnEnemyState(this.Enemy);
             }
@@ -122,39 +125,42 @@
 
         public virtual void Update()
         {
-            switch (this.Enemy.EnemyName)
+            switch (this.Enemy.AI)
             {
-                case EnemyNames.Darknut:
+                case EnemyAI.Darknut:
                     UpdateDarknut();
                     break;
-                case EnemyNames.Dodongo:
+                case EnemyAI.Dodongo:
                     UpdateDodongo();
                     break;
-                case EnemyNames.Firesnakehead:
+                case EnemyAI.Firesnakehead:
                     UpdateFireSnake();
                     break;
-                case EnemyNames.Gel:
+                case EnemyAI.Gel:
                     UpdateGel();
                     break;
-                case EnemyNames.Goriya:
+                case EnemyAI.Goriya:
                     UpdateGoriya();
                     break;
-                case EnemyNames.Keese:
+                case EnemyAI.Keese:
                     UpdateKeese();
                     break;
-                case EnemyNames.Rope:
+                case EnemyAI.Rope:
                     UpdateRope();
                     break;
-                case EnemyNames.Stalfos:
+                case EnemyAI.Stalfos:
                     UpdateStalfos();
                     break;
-                case EnemyNames.WallMaster:
+                case EnemyAI.WallMaster:
                     UpdateWallMaster();
                     break;
-                case EnemyNames.Zol:
+                case EnemyAI.Zol:
                     UpdateZol();
                     break;
-                case EnemyNames.NoAI:
+                case EnemyAI.Manhandla:
+                    UpdateManhandla();
+                    break;
+                case EnemyAI.NoAI:
                     break;
                 default:
                     DefaultUpdate();
