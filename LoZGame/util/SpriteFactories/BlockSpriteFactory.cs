@@ -156,6 +156,9 @@
         private Texture2D GreenStatueLeft3Texture;
         private SpriteData greenStatueLeft3Data;
 
+        private Texture2D Lava5Texture;
+        private SpriteData lava5Data;
+
         private static readonly BlockSpriteFactory instance = new BlockSpriteFactory();
 
         public static BlockSpriteFactory Instance
@@ -291,6 +294,8 @@
             this.MovableSquare3Texture = content.Load<Texture2D>("movable_square3");
             this.SpottedTile3Texture = content.Load<Texture2D>("spotted_tile3");
             this.StairsTexture3 = content.Load<Texture2D>("stairs3");
+
+            this.Lava5Texture = content.Load<Texture2D>("lava5");
         }
 
         private void LoadData()
@@ -349,6 +354,8 @@
             this.movableSquare3Data = new SpriteData(new Vector2(tileWidth, tileHeight), MovableSquare3Texture, 1, 1);
             this.spottedTile3Data = new SpriteData(new Vector2(tileWidth, tileHeight), SpottedTile3Texture, 1, 1);
             this.stairsData3 = new SpriteData(new Vector2(tileWidth, tileHeight), StairsTexture3, 1, 1);
+
+            this.lava5Data = new SpriteData(new Vector2(tileWidth, tileHeight), Lava5Texture, 1, 1);
         }
 
         public ISprite Stairs()
@@ -629,6 +636,11 @@
         public ISprite Stairs3()
         {
             return new ObjectSprite(this.StairsTexture3, this.stairsData3);
+        }
+
+        public ISprite Lava5()
+        {
+            return new ObjectSprite(this.Lava5Texture, this.lava5Data);
         }
     }
 }
