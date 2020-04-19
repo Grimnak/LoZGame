@@ -54,7 +54,7 @@
                     this.currentY = 5; // player spawns at curX/curY
                     this.maxX = 6;
                     this.maxY = 6;
-                    this.mapColor = Color.CornflowerBlue;
+                    this.mapColor = Color.Cyan;
                     this.dungeonBossLoc = new Point(4, 1);
                     break;
                 case 2:
@@ -63,11 +63,11 @@
                     this.currentY = 7;
                     this.maxX = 4;
                     this.maxY = 8;
-                    this.mapColor = Color.DarkBlue;
+                    this.mapColor = Color.Blue;
                     this.dungeonBossLoc = new Point(2, 0);
                     break;
                 case 3:
-                    LoZGame.Instance.DungeonTint = Color.Green;
+                    LoZGame.Instance.DungeonTint = new Color(41, 175, 72);
                     this.currentX = 3;
                     this.currentY = 5;
                     this.maxX = 5;
