@@ -16,11 +16,15 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.DarknutDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DarknutSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.EnemyName = EnemyNames.Darknut;
+            this.ApplyDamageMod();
+            this.ApplySmallSpeedMod();
+            this.ApplyLargeWeightModPos();
+            this.ApplySmallHealthMod();
+            this.ApplyLargeHealthMod();
         }
 
         public override void Stun(int stunTime)

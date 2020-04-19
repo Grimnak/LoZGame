@@ -26,6 +26,9 @@
             this.DamageTimer = 0;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.EnemyName = EnemyNames.SpikeCross;
+            this.ApplyDamageMod();
+            this.ApplySmallSpeedMod();
+            this.ApplyLargeWeightModPos();
         }
 
         public override void Stun(int stunTime)

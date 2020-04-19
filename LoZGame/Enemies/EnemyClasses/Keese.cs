@@ -23,6 +23,10 @@
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.EnemyName = EnemyNames.Keese;
             this.MinMaxWander = new Point(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);
+            this.ApplyDamageMod();
+            this.ApplySmallSpeedMod();
+            this.ApplySmallWeightModPos();
+            this.ApplySmallHealthMod();
         }
 
         public override ISprite CreateCorrectSprite()

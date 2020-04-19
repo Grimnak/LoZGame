@@ -21,6 +21,10 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.RopeSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.EnemyName = EnemyNames.Rope;
+            this.ApplyDamageMod();
+            this.ApplySmallSpeedMod();
+            this.ApplySmallWeightModNeg();
+            this.ApplySmallHealthMod();
         }
 
         public override void Attack()

@@ -22,6 +22,10 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.WallMasterSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.EnemyName = EnemyNames.WallMaster;
+            this.ApplyDamageMod();
+            this.ApplySmallSpeedMod();
+            this.ApplyLargeWeightModPos();
+            this.ApplySmallHealthMod();
         }
 
         public override void Stun(int stunTime)

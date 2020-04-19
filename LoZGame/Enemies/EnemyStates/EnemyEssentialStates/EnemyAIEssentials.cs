@@ -28,9 +28,39 @@
         {
             this.DirectionChange = LoZGame.Instance.Random.Next(this.Enemy.MinMaxWander.X, this.Enemy.MinMaxWander.Y);
         }
+        public void FacePlayer()
+        {
+            Point playerLoc = LoZGame.Instance.Players[0].Physics.Bounds.Center - this.Enemy.Physics.Bounds.Center;
+            if (Math.Abs(playerLoc.X) > Math.Abs(playerLoc.Y))
+            {
+                if (playerLoc.X < 0)
+                {
+                    this.Enemy.Physics.CurrentDirection = Physics.Direction.West;
+                }
+                else
+                {
+                    this.Enemy.Physics.CurrentDirection = Physics.Direction.East;
+                }
+            }
+            else
+            {
+                if (playerLoc.Y < 0)
+                {
+                    this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
+                }
+                else
+                {
+                    this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
+                }
+            }
+        }
 
         public void FavorPlayerCardinal(int weight)
         {
+            if (weight < 1)
+            {
+                weight = 1;
+            }
             this.Enemy.States.Remove(StateType.MoveEast);
             this.Enemy.States.Remove(StateType.MoveNorth);
             this.Enemy.States.Remove(StateType.MoveWest);
@@ -73,6 +103,10 @@
 
         public void FavorPlayerDiagonal(int weight)
         {
+            if (weight < 1)
+            {
+                weight = 1;
+            }
             this.Enemy.States.Remove(StateType.MoveNorthEast);
             this.Enemy.States.Remove(StateType.MoveNorthWest);
             this.Enemy.States.Remove(StateType.MoveSouthEast);

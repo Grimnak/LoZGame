@@ -33,6 +33,10 @@
             this.spawnedChildren = false;
             this.EnemyName = EnemyNames.Firesnakehead;
             this.IsSpawning = false;
+            this.ApplyDamageMod();
+            this.ApplySmallSpeedMod();
+            this.ApplySmallWeightModPos();
+            this.ApplyLargeHealthMod();
         }
 
         public override void TakeDamage(int damageAmount)

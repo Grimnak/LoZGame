@@ -9,12 +9,34 @@
         public void UpdateKeese()
         {
             DefaultUpdate();
-            if (this.Lifetime == this.DirectionChange)
+            if (LoZGame.Instance.Difficulty <= 2)
             {
-                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.KeeseFavorCardinalValue);
-                FavorPlayerDiagonal(GameData.Instance.EnemyMiscConstants.KeeseFavorDiagonalValue);
+                StandardKeese();
+            }
+            else
+            {
+                HardKeese();
             }
             UpdateMoveSpeed();
+        }
+
+        private void StandardKeese()
+        {
+            if (this.Lifetime == this.DirectionChange)
+            {
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.KeeseFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallPreferenceMod));
+                FavorPlayerDiagonal(GameData.Instance.EnemyMiscConstants.KeeseFavorDiagonalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallPreferenceMod));
+            }
+        }
+
+        private void HardKeese()
+        {
+            if (this.Lifetime == this.DirectionChange)
+            {
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.KeeseFavorCardinalValue + (2 * (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
+                FavorPlayerDiagonal(GameData.Instance.EnemyMiscConstants.KeeseFavorDiagonalValue + (2 * (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
+                AttemptBomb();
+            }
         }
 
         private void UpdateMoveSpeed()
@@ -33,6 +55,16 @@
                 {
                     this.Enemy.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
                 }
+            }
+        }
+
+        private void AttemptBomb()
+        {
+            int attempt = LoZGame.Instance.Random.Next(0, 100);
+            if (2 * attempt <= GameData.Instance.EnemyMiscConstants.ProjectileSuccess)
+            {
+                IProjectile bomb = new BombProjectile(this.Enemy.Physics);
+                LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(bomb);
             }
         }
     }

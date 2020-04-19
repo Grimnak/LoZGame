@@ -94,6 +94,7 @@
     <Compile Include="Controller\Commands\Controllers\KeyboardController.cs" />
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
     <Compile Include="Enemies\EnemyClasses\BlockEnemy.cs" />
+    <Compile Include="Enemies\EnemyClasses\DifficultModdifiers.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyHelper.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeSegment.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeHead.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Util\DataConstants\EnemyData\EnemyDamageConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemySpeedConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyStateWeights.cs" />
+    <Compile Include="Util\DataConstants\GameStateData\DifficultyConstants.cs" />
     <Compile Include="Util\DataConstants\GameStateData\GameStateDataConstants.cs" />
     <Compile Include="Util\DataConstants\InventoryData\InventoryConstants.cs" />
     <Compile Include="Util\DataConstants\PhysicsData\PhysicsConstants.cs" />

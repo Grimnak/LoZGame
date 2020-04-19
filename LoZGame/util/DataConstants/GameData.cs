@@ -18,6 +18,8 @@
 
         public ProjectileMassConstants ProjectileMassConstants { get; }
 
+        public DifficultyConstants DifficultyConstants { get; }
+
         public EnemyDamageConstants EnemyDamageConstants { get; }
 
         public EnemyHealthConstants EnemyHealthConstants { get; }
