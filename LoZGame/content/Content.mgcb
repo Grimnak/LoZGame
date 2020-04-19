@@ -73,6 +73,12 @@
 /processorParam:TextureFormat=Color
 /build:basement_brick_tile.png
 
+#begin BetterTint.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:BetterTint.fx
+
 #begin blackGel.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -924,6 +930,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Fairy.png
+
+#begin File.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:File.fx
 
 #begin File.spritefont
 /importer:FontDescriptionImporter
