@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System.Collections.Generic;
 
-    public class AttackingRopeState : RopeEssentials, IEnemyState
+    public class AttackingRopeState : EnemyStateEssentials, IEnemyState
     {
         private readonly IEnemy enemy;
         private readonly ISprite sprite;

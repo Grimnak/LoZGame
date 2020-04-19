@@ -10,7 +10,7 @@
         public void UpdateFireSnake()
         {
             DefaultUpdate();
-            if (this.Lifetime % 10 == 0 && this.Lifetime != 0)
+            if (this.Lifetime % GameData.Instance.EnemyMiscConstants.UpdateSegmentTime == 0 && this.Lifetime != 0)
             {
                 this.Enemy.UpdateChild();
             }

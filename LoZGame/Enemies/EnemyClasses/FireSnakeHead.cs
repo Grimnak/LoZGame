@@ -20,7 +20,7 @@
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.FireSnakeMass;
             this.Physics.IsMoveable = false;
-            this.CurrentState = new IdleFireSnakeState(this);
+            this.CurrentState = new IdleEnemyState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
@@ -32,13 +32,14 @@
             this.children = new List<IEnemy>();
             this.spawnedChildren = false;
             this.EnemyName = EnemyNames.Firesnakehead;
+            this.IsSpawning = false;
         }
 
         public override void TakeDamage(int damageAmount)
         {
             if (this.children.Count > 0 && this.DamageTimer <= 0)
             {
-                this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                this.DamageTimer = LoZGame.Instance.UpdateSpeed / 2;
                 this.children[this.children.Count - 1].Expired = true;
                 this.children.RemoveAt(this.children.Count - 1);
             }
@@ -72,6 +73,10 @@
                 }
                 this.spawnedChildren = true;
             }
+        }
+
+        public override void Stun(int stunTime)
+        {
         }
 
         public override ISprite CreateCorrectSprite()

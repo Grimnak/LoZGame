@@ -43,6 +43,10 @@
         {
         }
 
+        public override void Stun(int stunTime)
+        {
+        }
+
         public override ISprite CreateCorrectSprite()
         {
             return EnemySpriteFactory.Instance.CreateFireSnakeSprite();

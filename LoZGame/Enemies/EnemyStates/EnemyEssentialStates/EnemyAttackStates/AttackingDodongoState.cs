@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class AttackingDodongoState : DodongoEssentials, IEnemyState
+    public class AttackingDodongoState : EnemyStateEssentials, IEnemyState
     {
         private readonly IEnemy enemy;
         private readonly ISprite sprite;

@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class FollowFireSnakeState : FireSnakeEssentials, IEnemyState
+    public class FollowFireSnakeState : EnemyStateEssentials, IEnemyState
     {
         public FollowFireSnakeState(IEnemy fireSnake)
         {

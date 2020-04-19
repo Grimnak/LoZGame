@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    public class OldManAngryState : OldManEssentials, IEnemyState
+    public class OldManAngryState : EnemyStateEssentials, IEnemyState
     {
         public OldManAngryState(IEnemy enemy)
         {

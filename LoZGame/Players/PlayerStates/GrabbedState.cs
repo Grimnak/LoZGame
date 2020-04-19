@@ -82,7 +82,7 @@
             player.Physics.MovementVelocity = wallMaster.Physics.MovementVelocity;
             if (this.player.Physics.Location.X < 0)
             {
-                this.wallMaster.CurrentState = new RightMovingWallMasterState((WallMaster)this.wallMaster);
+                this.wallMaster.CurrentState = new RightMovingEnemyState((WallMaster)this.wallMaster);
                 this.wallMaster.Physics.Bounds = new Rectangle(new Point(this.wallMaster.Physics.Bounds.Location.X + (int)(BlockSpriteFactory.Instance.TileWidth * 3), this.wallMaster.Physics.Bounds.Location.Y), this.wallMaster.Physics.Bounds.Size);
                 this.player.Physics.StopVelocity();
                 this.player.State = new IdleState(this.player);

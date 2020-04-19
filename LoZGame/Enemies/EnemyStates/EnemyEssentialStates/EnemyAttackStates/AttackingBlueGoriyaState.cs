@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    public class AttackingBlueGoriyaState : GoriyaEssentials, IEnemyState
+    public class AttackingBlueGoriyaState : EnemyStateEssentials, IEnemyState
     {
         public AttackingBlueGoriyaState(IEnemy enemy)
         {
