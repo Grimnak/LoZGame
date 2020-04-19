@@ -13,7 +13,7 @@
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.DodongoMass;
             this.Physics.IsMoveable = false;
-            this.CurrentState = new SpawnDodongoState(this);
+            this.CurrentState = new SpawnEnemyState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
@@ -21,6 +21,17 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DodongoSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
+            this.EnemyName = EnemyNames.Dodongo;
+        }
+
+        public override void Attack()
+        {
+            this.CurrentState = new AttackingDodongoState(this);
+        }
+
+        public override void Stun(int stunTime)
+        {
+            this.CurrentState = new StunnedDodongoState(this);
         }
 
         public override ISprite CreateCorrectSprite()

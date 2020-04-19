@@ -4,44 +4,8 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
-    public abstract class EnemyEssentials
+    public partial class EnemyEssentials
     {
-        private bool isDead = false;
-
-        private bool isSpawning = false;
-
-        public Dictionary<RandomStateGenerator.StateType, int> States { get; set; }
-
-        public EnemyCollisionHandler EnemyCollisionHandler { get; set; }
-
-        public RandomStateGenerator RandomStateGenerator { get; set; }
-
-        public IEnemyState CurrentState { get; set; }
-
-        public bool HasChild { get; set; }
-
-        public bool IsSpawning { get { return isSpawning; } set { isSpawning = value; } }
-
-        public bool Expired { get; set; }
-
-        public bool IsDead { get { return isDead; } set { isDead = value; } }
-
-        public Physics Physics { get; set; }
-
-        public HealthManager Health { get; set; }
-
-        public Color CurrentTint { get; set; }
-
-        public float MoveSpeed { get; set; }
-
-        public int Damage { get; set; }
-
-        public int DamageTimer { get; set; }
-
-        public virtual void Stun(int stunTime)
-        {
-        }
-
         public virtual void UpdateState()
         {
             RandomStateGenerator.Update(this.States);
@@ -55,6 +19,16 @@
         public virtual void AddChild()
         {
             // most enemies do not have any children
+        }
+
+        public virtual void Stun(int stunTime)
+        {
+            this.CurrentState.Stun(stunTime);
+        }
+
+        public virtual void Attack()
+        {
+            // most enemies don't have special attack logic
         }
 
         public virtual void TakeDamage(int damageAmount)
@@ -139,6 +113,9 @@
             this.EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
-        public abstract ISprite CreateCorrectSprite();
+        public virtual ISprite CreateCorrectSprite()
+        {
+            return EnemySpriteFactory.Instance.CreateOldManSprite();
+        }
     }
 }

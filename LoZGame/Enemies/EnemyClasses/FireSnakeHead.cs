@@ -31,6 +31,7 @@
             this.HasChild = true;
             this.children = new List<IEnemy>();
             this.spawnedChildren = false;
+            this.EnemyName = EnemyNames.Firesnakehead;
         }
 
         public override void TakeDamage(int damageAmount)

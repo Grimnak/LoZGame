@@ -9,7 +9,7 @@
         public Keese(Vector2 location)
         {
             this.Physics = new Physics(location);
-            this.CurrentState = new SpawnKeeseState(this);
+            this.CurrentState = new SpawnEnemyState(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.KeeseStatelist);
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.KeeseHealth);
@@ -21,11 +21,8 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.MinKeeseSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-        }
-
-        public override void Stun(int stunTime)
-        {
-            this.CurrentState.Stun(stunTime);
+            this.EnemyName = EnemyNames.Keese;
+            this.MinMaxWander = new Point(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);
         }
 
         public override ISprite CreateCorrectSprite()

@@ -5,47 +5,7 @@
 
     public class GoriyaEssentials : EnemyStateEssentials, IEnemyState
     {   
-        public void MoveLeft()
-        {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.West;
-            this.Enemy.CurrentState = new LeftMovingGoriyaState(this.Enemy);
-        }
-
-        public void MoveRight()
-        {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.East;
-            this.Enemy.CurrentState = new RightMovingGoriyaState(this.Enemy);
-        }
-
-        public void MoveUp()
-        {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
-            this.Enemy.CurrentState = new UpMovingGoriyaState(this.Enemy);
-        }
-
-        public void MoveDown()
-        {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
-            this.Enemy.CurrentState = new DownMovingGoriyaState(this.Enemy);
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Attack()
+        public override void Attack()
         {
             if (this.Enemy is Goriya)
             {
@@ -54,28 +14,6 @@
             else
             {
                 this.Enemy.CurrentState = new AttackingBlueGoriyaState(this.Enemy);
-            }
-        }
-
-        public void Stop()
-        {
-        }
-
-        public void Die()
-        {
-            this.Enemy.CurrentState = new DeadGoriyaState(this.Enemy);
-        }
-
-        public override void Spawn()
-        {
-            this.Enemy.CurrentState = new SpawnGoriyaState(this.Enemy);
-        }
-
-        public virtual void Stun(int stunTime)
-        {
-            if (!this.Enemy.IsSpawning)
-            {
-                this.Enemy.CurrentState = new StunnedGoriyaState(this.Enemy, this, stunTime);
             }
         }
 

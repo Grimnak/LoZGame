@@ -5,6 +5,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
     using static RandomStateGenerator;
+    using static EnemyEssentials;
 
     public partial class EnemyStateEssentials
     {
@@ -16,40 +17,148 @@
 
         public IEnemy Enemy { get; set; }
 
-        public Vector2 UnitVectorToPlayer(Vector2 origin)
+        private bool isMoving = false;
+
+        private List<EnemyNames> spawnBlackList = new List<EnemyNames>()
         {
-            Vector2 unitVector = LoZGame.Instance.Link.Physics.Bounds.Center.ToVector2() - origin;
-            unitVector.Normalize();
-            return unitVector;
+            EnemyNames.NoAI,
+            EnemyNames.Dragon,
+            EnemyNames.Firesnakehead,
+        };
+
+        public virtual void MoveLeft()
+        {
+            this.Enemy.Physics.CurrentDirection = Physics.Direction.West;
+            this.Enemy.CurrentState = new LeftMovingEnemyState(this.Enemy);
         }
 
-        public Vector2 RotateVector(Vector2 oldVector, float rot)
+        public virtual void MoveRight()
         {
-            float cosRot = (float)Math.Cos(rot);
-            float sinRot = (float)Math.Sin(rot);
-            float newX = (cosRot * oldVector.X) - (sinRot * oldVector.Y);
-            float newY = (sinRot * oldVector.X) + (cosRot * oldVector.Y);
-            return new Vector2(newX, newY);
+            this.Enemy.Physics.CurrentDirection = Physics.Direction.East;
+            this.Enemy.CurrentState = new RightMovingEnemyState(this.Enemy);
+        }
+
+        public virtual void MoveUp()
+        {
+            this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
+            this.Enemy.CurrentState = new UpMovingEnemyState(this.Enemy);
+        }
+
+        public virtual void MoveDown()
+        {
+            this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
+            this.Enemy.CurrentState = new DownMovingEnemyState(this.Enemy);
+        }
+
+        public virtual void MoveUpLeft()
+        {
+            this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
+            this.Enemy.CurrentState = new UpLeftMovingEnemyState(this.Enemy);
+        }
+
+        public virtual void MoveUpRight()
+        {
+            this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
+            this.Enemy.CurrentState = new UpRightMovingEnemyState(this.Enemy);
+        }
+
+        public virtual void MoveDownLeft()
+        {
+            this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
+            this.Enemy.CurrentState = new DownLeftMovingEnemyState(this.Enemy);
+        }
+
+        public virtual void MoveDownRight()
+        {
+            this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
+            this.Enemy.CurrentState = new DownRightMovingEnemyState(this.Enemy);
+        }
+
+        public virtual void Attack()
+        {
+            this.Enemy.Attack();
+        }
+
+        public virtual void Stop()
+        {
+            this.Enemy.CurrentState = new IdleEnemyState(this.Enemy);
+        }
+
+        public virtual void Die()
+        {
+            if (!this.Enemy.IsDead)
+            {
+                this.Enemy.CurrentState = new DeadEnemyState(this.Enemy);
+            }
         }
 
         public virtual void Spawn()
         {
+            if (!this.spawnBlackList.Contains(this.Enemy.EnemyName))
+            {
+                this.Enemy.CurrentState = new SpawnEnemyState(this.Enemy);
+            }
         }
 
-        public virtual void RandomDirectionChange()
+        public virtual void Stun(int stunTime)
         {
-            this.DirectionChange = LoZGame.Instance.Random.Next(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);
+            if (!(this.Enemy.IsSpawning || this.Enemy.IsDead))
+            {
+                this.Enemy.CurrentState = new StunnedEnemyState(this.Enemy, this.Enemy.CurrentState, stunTime);
+            }
         }
 
-        public virtual void Update()
+        public void DefaultUpdate()
         {
             this.Lifetime++;
+            this.Sprite.Update();
             if (this.Lifetime > this.DirectionChange)
             {
                 this.Enemy.UpdateState();
                 this.Lifetime = 0;
             }
-            this.Sprite.Update();
+        }
+
+        public virtual void Update()
+        {
+            switch (this.Enemy.EnemyName)
+            {
+                case EnemyNames.Darknut:
+                    UpdateDarknut();
+                    break;
+                case EnemyNames.Dodongo:
+                    UpdateDodongo();
+                    break;
+                case EnemyNames.Firesnakehead:
+                    UpdateFireSnake();
+                    break;
+                case EnemyNames.Gel:
+                    UpdateGel();
+                    break;
+                case EnemyNames.Goriya:
+                    UpdateGoriya();
+                    break;
+                case EnemyNames.Keese:
+                    UpdateKeese();
+                    break;
+                case EnemyNames.Rope:
+                    UpdateRope();
+                    break;
+                case EnemyNames.Stalfos:
+                    UpdateStalfos();
+                    break;
+                case EnemyNames.WallMaster:
+                    UpdateWallMaster();
+                    break;
+                case EnemyNames.Zol:
+                    UpdateZol();
+                    break;
+                case EnemyNames.NoAI:
+                    break;
+                default:
+                    DefaultUpdate();
+                    break;
+            }
         }
 
         public virtual void Draw()

@@ -19,22 +19,13 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.GelSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.CurrentState = new SpawnGelState(this);
+            this.CurrentState = new SpawnEnemyState(this);
+            this.EnemyName = EnemyNames.Gel;
         }
 
         public override void Stun(int stunTime)
         {
-            this.CurrentState.Stun(stunTime);
-        }
-
-        public override void Update()
-        {
-            this.HandleDamage();
-            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.IsSpawning || this.IsDead)
-            {
-                this.CurrentState.Update();
-                this.Physics.SetDepth();
-            }
+            this.TakeDamage(this.Health.MaxHealth);
         }
 
         public override ISprite CreateCorrectSprite()

@@ -7,7 +7,7 @@
     {
         private static Dictionary<StateType, int> oldManStateList = new Dictionary<StateType, int>()
         {
-            { StateType.Attack, 1 },
+            //{ StateType.Attack, 1 },
             { StateType.Idle, 99 }
         };
 

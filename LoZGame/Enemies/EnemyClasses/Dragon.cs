@@ -14,7 +14,7 @@
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
             this.Physics.IsMoveable = false;
-            this.CurrentState = new IdleDragonState(this);
+            this.CurrentState = new IdleEnemyState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
@@ -35,6 +35,15 @@
                 this.Physics.Bounds = new Rectangle(new Point((int)leftBound, this.Physics.Bounds.Y), new Point(this.Physics.Bounds.Width, this.Physics.Bounds.Height));
                 this.Physics.MovementVelocity = Vector2.Zero;
             }
+        }
+
+        public override void Stun(int stunTime)
+        {
+        }
+
+        public override void Attack()
+        {
+            this.CurrentState = new AttackingDragonState(this);
         }
 
         public override void Update()
