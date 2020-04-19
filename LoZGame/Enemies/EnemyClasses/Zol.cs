@@ -21,6 +21,7 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.ZolSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.EnemyName = EnemyNames.Zol;
+            this.MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed / 2, LoZGame.Instance.UpdateSpeed * 2);
             this.ApplyDamageMod();
             this.ApplySmallSpeedMod();
             this.ApplyLargeWeightModPos();

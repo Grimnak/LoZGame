@@ -2,6 +2,7 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
 
     public class IdleEnemyState : EnemyStateEssentials, IEnemyState
     {
@@ -10,7 +11,8 @@
             this.Enemy = enemy;
             this.Enemy.CurrentState = this;
             this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Enemy.Physics.StopMovement();
+            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
+            RandomDirectionChange();
         }
     }
 }

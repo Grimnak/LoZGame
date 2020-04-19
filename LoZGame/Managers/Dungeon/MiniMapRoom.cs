@@ -79,12 +79,12 @@ namespace LoZClone
 
         public void DrawDot(Point startLoc, Point roomSize, Color color)
         {
-            this.MapSprite.SetData<Color>(new Color[] { color });
+            this.MapColor = color;
+            this.MapSprite.SetData<Color>(new Color[] { this.MapColor });
             Rectangle drawLocation = new Rectangle(new Point(startLoc.X + ((int)this.location.X * roomSize.X), startLoc.Y + ((int)this.location.Y * roomSize.Y)), new Point(DotSize));
             drawLocation.X += (roomSize.X / 2) - (DotSize / 2) + 2;
             drawLocation.Y += (roomSize.Y / 2) - (DotSize / 2) + 2;
-            LoZGame.Instance.SpriteBatch.Draw(this.MapSprite, drawLocation, this.MapSourceRectangle, color, 0.0f, Vector2.Zero, SpriteEffects.None, DotLayer);
-            // add compass functionality here
+            LoZGame.Instance.SpriteBatch.Draw(this.MapSprite, drawLocation, this.MapSourceRectangle, this.MapColor, 0.0f, Vector2.Zero, SpriteEffects.None, DotLayer);
         }
 
         private void DrawDoors(Rectangle drawLocation)
