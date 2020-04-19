@@ -94,9 +94,9 @@
     <Compile Include="Controller\Commands\Controllers\KeyboardController.cs" />
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
     <Compile Include="Enemies\EnemyClasses\BlockEnemy.cs" />
+    <Compile Include="Enemies\EnemyClasses\DifficultModifiers.cs" />
     <Compile Include="Enemies\EnemyClasses\ManhandlaHead.cs" />
     <Compile Include="Enemies\EnemyClasses\ManhandlaBody.cs" />
-    <Compile Include="Enemies\EnemyClasses\DifficultModdifiers.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyHelper.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeSegment.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeHead.cs" />
