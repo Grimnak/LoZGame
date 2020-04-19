@@ -11,6 +11,7 @@
 
         public ISprite FrameSprite;
         public ISprite FloorSprite;
+        public ISprite OverhangSprite;
 
         public virtual void Close()
         {
@@ -45,6 +46,7 @@
         public virtual void DrawFrame()
         {
             this.FrameSprite.Draw(this.Door.Physics.Location, SpriteTint, this.Door.Physics.Depth);
+            this.OverhangSprite.Draw(this.Door.Physics.Location + this.Door.OverhangOffset, LoZGame.Instance.DungeonTint, this.Door.Physics.Depth);
         }
 
         public virtual void DrawFloor()

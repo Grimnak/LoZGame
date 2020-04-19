@@ -87,6 +87,14 @@
                     player.Physics.MovementVelocity += MasterMovement;
                     this.oldObjects.SetObjectMovement(this.MasterMovement);
                     this.newObjects.SetObjectMovement(this.MasterMovement);
+                    foreach (IDoor door in oldObjects.Doors.DoorList)
+                    {
+                        door.Physics.Depth = 1;
+                    }
+                    foreach (IDoor door in newObjects.Doors.DoorList)
+                    {
+                        door.Physics.Depth = 1;
+                    }
                 }
             }
             else
@@ -141,6 +149,14 @@
                 this.oldObjects.LoadedRoomY = this.dungeon.CurrentRoomY;
                 this.dungeon.CurrentRoomX = nextRoomLocation.X;
                 this.dungeon.CurrentRoomY = nextRoomLocation.Y;
+                foreach (IDoor door in oldObjects.Doors.DoorList)
+                {
+                    door.Physics.SetDepth();
+                }
+                foreach (IDoor door in newObjects.Doors.DoorList)
+                {
+                    door.Physics.SetDepth();
+                }
                 this.oldObjects.UpdateObjectLocations(nextRoomOffset);
                 this.oldObjects.Save();
                 LoZGame.Instance.GameObjects = newObjects;
@@ -159,13 +175,13 @@
         public override void Draw()
         {
             // Draw Room Backgrounds
-            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
             this.NextRoom.Draw(nextRoomBorderOffset.ToPoint());
             this.dungeon.CurrentRoom.Draw(currentRoomBorderOffset.ToPoint());
             LoZGame.Instance.SpriteBatch.End();
 
             // Draw Game Objects
-            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
             this.oldObjects.Draw();
             this.newObjects.Draw();
             foreach (IPlayer player in LoZGame.Instance.Players)
@@ -175,13 +191,13 @@
             LoZGame.Instance.SpriteBatch.End();
 
             // Ensure inventory objects draw above the game objects while transitioning.
-            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
             InventoryComponents.Instance.DrawInventoryElements();
             LoZGame.Instance.SpriteBatch.End();
 
             if (LoZGame.DebugMode)
             {
-                LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+                LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
                 LoZGame.Instance.Debugger.Draw(newObjects);
                 LoZGame.Instance.SpriteBatch.End();
             }
