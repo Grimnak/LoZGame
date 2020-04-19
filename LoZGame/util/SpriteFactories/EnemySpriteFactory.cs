@@ -54,8 +54,8 @@
         private static readonly int vireWidth = 42;
         private static readonly int vireHeight = 40;
 
-        private static readonly int likelikeWidth = 32;
-        private static readonly int likelikeHeight = 32;
+        private static readonly int likelikeWidth = 40;
+        private static readonly int likelikeHeight = 40;
 
         public static int GetEnemyWidth(IEnemy enemy)
         {

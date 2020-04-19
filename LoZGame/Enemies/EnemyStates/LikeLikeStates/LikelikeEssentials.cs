@@ -68,9 +68,10 @@
         {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.GoriyaFavorCardinalValue);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.LikelikeFavorCardinalValue);
             }
-            base.Update();
+            this.Enemy.Physics.Move();
+            this.Sprite.Update();
         }
     }
 }
