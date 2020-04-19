@@ -32,6 +32,7 @@ namespace LoZClone
         private const int WallMasterFavorCardinal = 3;
         private const int ZolFavorCardinal = 3;
         private const int DarknutFavorCardinal = 3;
+        private const int LikelikeFavorCardinal = 3;
 
         public int FireSnakeLength => FireSnakeLgth;
 
@@ -86,6 +87,8 @@ namespace LoZClone
         public int ZolFavorCardinalValue => ZolFavorCardinal;
 
         public int DarknutFavorCardinalValue => DarknutFavorCardinal;
+
+        public int LikelikeFavorCardinalValue => LikelikeFavorCardinal;
 
         public double SpikeCrossVertBoundary => (BlockSpriteFactory.Instance.TileHeight * 3.5) + (BlockSpriteFactory.Instance.TopOffset / 2) + (LoZGame.Instance.InventoryOffset / 2);
 
