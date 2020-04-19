@@ -73,6 +73,7 @@
                     this.maxX = 5;
                     this.maxY = 6;
                     this.mapColor = Color.Green;
+                    this.dungeonBossLoc = new Point(4, 2);
                     break;
                 case 4:
                     LoZGame.Instance.DungeonTint = new Color(178, 162, 0);
@@ -81,6 +82,7 @@
                     this.maxX = 4;
                     this.maxY = 8;
                     this.mapColor = Color.DarkGoldenrod;
+                    this.dungeonBossLoc = new Point(3, 1);
                     break;
                 case 5:
                     LoZGame.Instance.DungeonTint = new Color(41, 175, 72);
@@ -89,6 +91,7 @@
                     this.maxX = 4;
                     this.maxY = 8;
                     this.mapColor = Color.Green;
+                    this.dungeonBossLoc = new Point(0, 2);
                     break;
                 default:
                     break;

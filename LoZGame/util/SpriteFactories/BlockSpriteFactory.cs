@@ -159,6 +159,18 @@
         private Texture2D Lava5Texture;
         private SpriteData lava5Data;
 
+        private Texture2D BlueStatueLeft4Texture;
+        private SpriteData blueStatueLeft4Data;
+        private Texture2D BlueStatueRight4Texture;
+        private SpriteData blueStatueRight4Data;
+        private Texture2D BrownStatueRight4Texture;
+        private SpriteData brownStatueRight4Data;
+        private Texture2D BrownStatueLeft4Texture;
+        private SpriteData brownStatueLeft4Data;
+
+        private Texture2D MovableTile4Texture;
+        private SpriteData movableTile4Data;
+
         private static readonly BlockSpriteFactory instance = new BlockSpriteFactory();
 
         public static BlockSpriteFactory Instance
@@ -295,6 +307,12 @@
             this.SpottedTile3Texture = content.Load<Texture2D>("spotted_tile3");
             this.StairsTexture3 = content.Load<Texture2D>("stairs3");
 
+            this.BlueStatueLeft4Texture = content.Load<Texture2D>("blue_statue_left4");
+            this.BlueStatueRight4Texture = content.Load<Texture2D>("blue_statue_right4");
+            this.BrownStatueRight4Texture = content.Load<Texture2D>("brown_statue_right4");
+            this.BrownStatueLeft4Texture = content.Load<Texture2D>("brown_statue_left4");
+            this.MovableTile4Texture = content.Load<Texture2D>("movable_tile4");
+
             this.Lava5Texture = content.Load<Texture2D>("lava5");
         }
 
@@ -354,6 +372,12 @@
             this.movableSquare3Data = new SpriteData(new Vector2(tileWidth, tileHeight), MovableSquare3Texture, 1, 1);
             this.spottedTile3Data = new SpriteData(new Vector2(tileWidth, tileHeight), SpottedTile3Texture, 1, 1);
             this.stairsData3 = new SpriteData(new Vector2(tileWidth, tileHeight), StairsTexture3, 1, 1);
+
+            this.blueStatueLeft4Data = new SpriteData(new Vector2(tileWidth, tileHeight), BlueStatueLeft4Texture, 1, 1);
+            this.blueStatueRight4Data = new SpriteData(new Vector2(tileWidth, tileHeight), BlueStatueRight4Texture, 1, 1);
+            this.brownStatueRight4Data = new SpriteData(new Vector2(tileWidth, tileHeight), BrownStatueRight4Texture, 1, 1);
+            this.brownStatueLeft4Data = new SpriteData(new Vector2(tileWidth, tileHeight), BrownStatueLeft4Texture, 1, 1);
+            this.movableTile4Data = new SpriteData(new Vector2(tileWidth, tileHeight), MovableTile4Texture, 1, 1);
 
             this.lava5Data = new SpriteData(new Vector2(tileWidth, tileHeight), Lava5Texture, 1, 1);
         }
@@ -636,6 +660,31 @@
         public ISprite Stairs3()
         {
             return new ObjectSprite(this.StairsTexture3, this.stairsData3);
+        }
+
+        public ISprite BlueStatueLeft4()
+        {
+            return new ObjectSprite(this.BlueStatueLeft4Texture, this.blueStatueLeft4Data);
+        }
+
+        public ISprite BlueStatueRight4()
+        {
+            return new ObjectSprite(this.BlueStatueRight4Texture, this.blueStatueRight4Data);
+        }
+
+        public ISprite BrownStatueRight4()
+        {
+            return new ObjectSprite(this.BrownStatueRight4Texture, this.brownStatueRight4Data);
+        }
+
+        public ISprite BrownStatueLeft4()
+        {
+            return new ObjectSprite(this.BrownStatueLeft4Texture, this.brownStatueLeft4Data);
+        }
+
+        public ISprite MovableTile4()
+        {
+            return new ObjectSprite(this.MovableTile4Texture, this.movableTile4Data);
         }
 
         public ISprite Lava5()

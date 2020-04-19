@@ -75,7 +75,7 @@
                     return DungeonSpriteFactory.Instance.SpottedTile();
                 case Stairs:
                     this.spriteTint = LoZGame.Instance.DungeonTint;
-                    return BlockSpriteFactory.Instance.Stairs();
+                    return DungeonSpriteFactory.Instance.Stairs();
                 case SpottedTile2:
                     this.spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.SpottedTile();

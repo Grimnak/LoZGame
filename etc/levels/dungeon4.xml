@@ -596,8 +596,8 @@
   </room>
   <room exists="True" oldman="False" basement="False" idx="2">
     <enemies>
-      <enemy X="3" Y="1">Zol4</enemy>
-      <enemy X="1" Y="4">Zol4</enemy>
+      <enemy X="3" Y="1">Zol</enemy>
+      <enemy X="1" Y="4">Zol</enemy>
       <enemy X="8" Y="0">Bubble</enemy>
       <enemy X="11" Y="6">Bubble</enemy>
       <enemy X="7" Y="2">LikeLike</enemy>
@@ -633,11 +633,11 @@
       <item X="6" Y="2">Key</item>
     </items>
     <enemies>
-      <enemy X="6" Y="0">Zol4</enemy>
-      <enemy X="7" Y="1">Zol4</enemy>
-      <enemy X="4" Y="2">Zol4</enemy>
-      <enemy X="9" Y="2">Zol4</enemy>
-      <enemy X="6" Y="4">Zol4</enemy>
+      <enemy X="6" Y="0">Zol</enemy>
+      <enemy X="7" Y="1">Zol</enemy>
+      <enemy X="4" Y="2">Zol</enemy>
+      <enemy X="9" Y="2">Zol</enemy>
+      <enemy X="6" Y="4">Zol</enemy>
     </enemies>
     <doors>
       <door loc="N">unlocked</door>
@@ -1061,7 +1061,7 @@
     </rrow>
     <rrow idx="1">
       <tile type="block" idx="1">blue_statue_right4</tile>
-      <tile type="block" idx="4">blue_statue_left4</tile>
+      <tile type="block" idx="4">blue_statue_right4</tile>
       <tile type="block" idx="7">blue_statue_left4</tile>
       <tile type="block" idx="10">blue_statue_left4</tile>
     </rrow>
@@ -1069,7 +1069,7 @@
     </rrow>
     <rrow idx="3">
       <tile type="block" idx="1">blue_statue_right4</tile>
-      <tile type="block" idx="4">blue_statue_left4</tile>
+      <tile type="block" idx="4">blue_statue_right4</tile>
       <tile type="block" idx="7">blue_statue_left4</tile>
       <tile type="block" idx="10">blue_statue_left4</tile>
     </rrow>
@@ -1079,7 +1079,7 @@
     </rrow>
     <rrow idx="5">
       <tile type="block" idx="1">blue_statue_right4</tile>
-      <tile type="block" idx="4">blue_statue_left4</tile>
+      <tile type="block" idx="4">blue_statue_right4</tile>
       <tile type="block" idx="7">blue_statue_left4</tile>
       <tile type="block" idx="10">blue_statue_left4</tile>
       <tile type="walkable" idx="3">spotted_tile4</tile>
