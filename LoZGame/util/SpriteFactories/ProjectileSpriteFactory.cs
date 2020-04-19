@@ -228,6 +228,10 @@
         private SpriteData fireballData;
         private Texture2D greenWoodSwordSpriteSheet;
         private SpriteData greenWoodSwordData;
+        private Texture2D whiteSwordSpriteSheet;
+        private SpriteData whiteSwordData;
+        private Texture2D magicSwordSpriteSheet;
+        private SpriteData magicSwordData;
 
         private static readonly ProjectileSpriteFactory InstanceValue = new ProjectileSpriteFactory();
 
@@ -262,6 +266,8 @@
             this.explosionFiveSpriteSheet = content.Load<Texture2D>("BombExplosionFive");
             this.fireballSpriteSheet = content.Load<Texture2D>("fireball");
             this.greenWoodSwordSpriteSheet = content.Load<Texture2D>("Green_Wood_Up");
+            this.whiteSwordSpriteSheet = content.Load<Texture2D>("Green_White_Up");
+            this.magicSwordSpriteSheet = content.Load<Texture2D>("Green_Magic_Up");
         }
 
         private void LoadData()
@@ -281,11 +287,23 @@
             this.explosionFiveData = new SpriteData(new Vector2(explosionWidth, explosionHeight), explosionFiveSpriteSheet, 3, 1);
             this.fireballData = new SpriteData(new Vector2(fireballWidth, fireballHeight), fireballSpriteSheet, 1, 4);
             this.greenWoodSwordData = new SpriteData(new Vector2(swordWidth, swordHeight), greenWoodSwordSpriteSheet, 1, 2);
+            this.whiteSwordData = new SpriteData(new Vector2(swordWidth, swordHeight), whiteSwordSpriteSheet, 1, 2);
+            this.magicSwordData = new SpriteData(new Vector2(swordWidth, swordHeight), magicSwordSpriteSheet, 1, 2);
         }
 
         public ISprite GreenWoodSword()
         {
             return new ObjectSprite(this.greenWoodSwordSpriteSheet, this.greenWoodSwordData);
+        }
+
+        public ISprite GreenWhiteSword()
+        {
+            return new ObjectSprite(this.whiteSwordSpriteSheet, this.whiteSwordData);
+        }
+
+        public ISprite GreenMagicSword()
+        {
+            return new ObjectSprite(this.magicSwordSpriteSheet, this.magicSwordData);
         }
 
         public ISprite Fireball()
