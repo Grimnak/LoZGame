@@ -8,6 +8,7 @@
     public class ManhandlaBody : EnemyEssentials, IEnemy
     {
         private bool spawnedChildren;
+        List<IEnemy> heads;
 
         public ManhandlaBody(Vector2 location)
         {
@@ -29,26 +30,55 @@
             this.AI = EnemyAI.Manhandla;
             this.MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed * 3, LoZGame.Instance.UpdateSpeed * 6);
             this.IsSpawning = false;
-            this.ApplyDamageMod();
-            this.ApplySmallSpeedMod();
-            this.ApplySmallWeightModPos();
-            this.ApplyLargeHealthMod();
+        }
+
+        public override void TakeDamage(int damageAmount)
+        {
+        }
+
+        public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
         }
 
         public override void AddChild()
         {
             if (!this.spawnedChildren)
             {
+                this.heads = new List<IEnemy>();
                 IEnemy northHead = new ManhandlaHead(this, Physics.Direction.North);
                 IEnemy southHead = new ManhandlaHead(this, Physics.Direction.South);
                 IEnemy eastHead = new ManhandlaHead(this, Physics.Direction.East);
                 IEnemy westHead = new ManhandlaHead(this, Physics.Direction.West);
+                this.heads.Add(northHead);
+                this.heads.Add(southHead);
+                this.heads.Add(eastHead);
+                this.heads.Add(westHead);
                 LoZGame.Instance.GameObjects.Enemies.Add(northHead);
                 LoZGame.Instance.GameObjects.Enemies.Add(southHead);
                 LoZGame.Instance.GameObjects.Enemies.Add(eastHead);
                 LoZGame.Instance.GameObjects.Enemies.Add(westHead);
                 this.spawnedChildren = true;
             }
+        }
+
+        public override void Update()
+        {
+            base.Update();
+            int Health = 0;
+            foreach (IEnemy head in this.heads)
+            {
+                if (head.Health.CurrentHealth >= 0)
+                {
+                    Health += head.Health.CurrentHealth;
+                }
+            }
+            Console.WriteLine(Health);
+            if (Health <= 0)
+            {
+                this.IsDead = true;
+                this.CurrentState.Die();
+            }
+
         }
 
         public override void Stun(int stunTime)

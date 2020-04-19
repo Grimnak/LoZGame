@@ -117,7 +117,6 @@
             this.Sprite.Update();
             if (this.Lifetime > this.DirectionChange)
             {
-                Console.WriteLine("Called UpdateZol()");
                 this.Enemy.UpdateState();
                 this.Lifetime = 0;
             }
