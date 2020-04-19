@@ -101,7 +101,8 @@
     <Compile Include="Enemies\EnemyClasses\FireSnakeSegment.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeHead.cs" />
     <Compile Include="Enemies\EnemyClasses\BlueGoriya.cs" />
-    <Compile Include="Enemies\EnemyClasses\Darknut.cs" />
+    <Compile Include="Enemies\EnemyClasses\RedDarknut.cs" />
+    <Compile Include="Enemies\EnemyClasses\RedGoriya.cs" />
     <Compile Include="Enemies\EnemyClasses\Vire.cs" />
     <Compile Include="Enemies\EnemyClasses\VireKeese.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyEssentials.cs" />
@@ -172,7 +173,6 @@
     <Compile Include="Enemies\EnemyClasses\Dodongo.cs" />
     <Compile Include="Enemies\EnemyClasses\Dragon.cs" />
     <Compile Include="Enemies\EnemyClasses\Gel.cs" />
-    <Compile Include="Enemies\EnemyClasses\Goriya.cs" />
     <Compile Include="Enemies\EnemyClasses\Keese.cs" />
     <Compile Include="Enemies\EnemyClasses\Merchant.cs" />
     <Compile Include="Enemies\EnemyClasses\OldMan.cs" />

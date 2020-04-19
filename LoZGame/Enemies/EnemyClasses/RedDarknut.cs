@@ -3,9 +3,9 @@
     using Microsoft.Xna.Framework;
     using System.Collections.Generic;
 
-    public class Darknut : EnemyEssentials, IEnemy
+    public class RedDarknut : EnemyEssentials, IEnemy
     {
-        public Darknut(Vector2 location)
+        public RedDarknut(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.DarknutStatelist);
@@ -16,15 +16,11 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
+            this.Damage = GameData.Instance.EnemyDamageConstants.DarknutDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DarknutSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.AI = EnemyAI.Darknut;
-            this.ApplyDamageMod();
-            this.ApplySmallSpeedMod();
-            this.ApplyLargeWeightModPos();
-            this.ApplySmallHealthMod();
-            this.ApplyLargeHealthMod();
+            this.EnemyName = EnemyNames.Darknut;
         }
 
         public override void Stun(int stunTime)

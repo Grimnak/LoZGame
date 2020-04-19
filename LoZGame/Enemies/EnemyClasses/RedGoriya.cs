@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework;
     using System.Collections.Generic;
 
-    public class Goriya : EnemyEssentials, IEnemy
+    public class RedGoriya : EnemyEssentials, IEnemy
     {
         public int Cooldown { get; set; }
 
@@ -12,7 +12,7 @@
 
         public EntityManager EntityManager { get; set; }
 
-        public Goriya(Vector2 location)
+        public RedGoriya(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GoriyaStatelist);
@@ -29,11 +29,7 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.GoriyaSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.AI = EnemyAI.Goriya;
-            this.ApplyDamageMod();
-            this.ApplySmallSpeedMod();
-            this.ApplySmallWeightModPos();
-            this.ApplySmallHealthMod();
+            this.EnemyName = EnemyNames.Goriya;
         }
 
         public override void Attack()

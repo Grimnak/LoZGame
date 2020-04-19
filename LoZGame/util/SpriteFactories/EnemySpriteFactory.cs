@@ -75,7 +75,7 @@
             {
                 return gelWidth;
             }
-            else if (enemy is Goriya || enemy is BlueGoriya)
+            else if (enemy is RedGoriya || enemy is BlueGoriya)
             {
                 return goriyaWidth;
             }
@@ -115,7 +115,7 @@
             {
                 return fireSnakeWidth;
             }
-            else if (enemy is Darknut)
+            else if (enemy is RedDarknut)
             {
                 return darknutWidth;
             }
@@ -151,7 +151,7 @@
             {
                 return gelHeight;
             }
-            else if (enemy is Goriya || enemy is BlueGoriya)
+            else if (enemy is RedGoriya || enemy is BlueGoriya)
             {
                 return goriyaHeight;
             }
@@ -191,7 +191,7 @@
             {
                 return fireSnakeHeight;
             }
-            else if (enemy is Darknut)
+            else if (enemy is RedDarknut)
             {
                 return darknutHeight;
             }

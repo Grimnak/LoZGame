@@ -169,7 +169,7 @@
                     this.enemies.Add(new Gel(location));
                     break;
                 case "Goriya":
-                    this.enemies.Add(new Goriya(location));
+                    this.enemies.Add(new RedGoriya(location));
                     break;
                 case "BlueGoriya":
                     this.enemies.Add(new BlueGoriya(location));
@@ -205,7 +205,7 @@
                     this.enemies.Add(new BlockEnemy(location));
                     break;
                 case "Darknut":
-                    this.enemies.Add(new Darknut(location));
+                    this.enemies.Add(new RedDarknut(location));
                     break;
                 case "Vire":
                     this.enemies.Add(new Vire(location));

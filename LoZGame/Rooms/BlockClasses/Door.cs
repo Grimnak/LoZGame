@@ -137,7 +137,6 @@
         {
             if (otherCollider is IPlayer && !(this.state is CosmeticDoorState || this.state is HiddenDoorState))
             {
-                Console.WriteLine("Called OnCollisionResponse method in Door.cs.");
                 this.doorCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
             else if (otherCollider is IProjectile)
