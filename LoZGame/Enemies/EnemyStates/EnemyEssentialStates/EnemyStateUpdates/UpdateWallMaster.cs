@@ -12,7 +12,7 @@
             DefaultUpdate();
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.WallMasterFavorCardinalValue);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.WallMasterFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallPreferenceMod));
             }
         }
     }

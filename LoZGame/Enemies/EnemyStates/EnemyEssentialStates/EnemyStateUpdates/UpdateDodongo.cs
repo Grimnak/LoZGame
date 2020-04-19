@@ -9,17 +9,37 @@
         public void UpdateDodongo()
         {
             DefaultUpdate();
+            if (LoZGame.Instance.Difficulty <= 2)
+            {
+                StandardDodongo();
+            }
+            else
+            {
+                HardDodongo();
+            }
+        }
+
+        private void StandardDodongo()
+        {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.DodongoFavorCardinalValue);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.RopeFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
             }
-            if (!(this.Enemy.CurrentState is AttackingDodongoState))
+            if (!(this.Enemy.CurrentState is AttackingDodongoState || this.Enemy.IsSpawning))
             {
                 this.CheckForLink();
             }
-            if (this.Sprite.CurrentFrame >= 2)
+        }
+
+        private void HardDodongo()
+        {
+            if (this.Lifetime == this.DirectionChange)
             {
-                this.Sprite.SetFrame(0);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.RopeFavorCardinalValue + (2 * (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
+            }
+            if (!(this.Enemy.CurrentState is AttackingDodongoState || this.Enemy.IsSpawning))
+            {
+                this.CheckForLink();
             }
         }
     }

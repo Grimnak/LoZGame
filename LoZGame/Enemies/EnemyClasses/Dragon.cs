@@ -22,6 +22,11 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DragonSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
+            this.ApplyDamageMod();
+            this.ApplySmallSpeedMod();
+            this.ApplyLargeWeightModPos();
+            this.ApplyLargeHealthMod();
+            this.ApplyLargeHealthMod();
         }
 
         /// <summary>

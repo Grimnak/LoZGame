@@ -7,10 +7,33 @@
     {
         public void UpdateGoriya()
         {
+            ;
             DefaultUpdate();
+            if (LoZGame.Instance.Difficulty <= 2)
+            {
+                StandardGoriya();
+            }
+            else
+            {
+                HardGoriya();
+            }
+        }
+
+        private void StandardGoriya()
+        {
             if (this.Lifetime == this.DirectionChange)
             {
-                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.GoriyaFavorCardinalValue);
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.DarknutFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
+            }
+        }
+
+        private void HardGoriya()
+        {
+            if (this.Lifetime == this.DirectionChange)
+            {
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.DarknutFavorCardinalValue + (2 * (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
+                FavorPlayerDiagonal(GameData.Instance.EnemyMiscConstants.DarknutFavorCardinalValue + (3 * (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
+                FacePlayer();
             }
         }
     }

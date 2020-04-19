@@ -21,6 +21,10 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.ZolSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.EnemyName = EnemyNames.Zol;
+            this.ApplyDamageMod();
+            this.ApplySmallSpeedMod();
+            this.ApplyLargeWeightModPos();
+            this.ApplySmallHealthMod();
         }
 
         private void SpawnGels()

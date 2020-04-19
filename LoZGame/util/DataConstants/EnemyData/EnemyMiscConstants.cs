@@ -19,6 +19,7 @@ namespace LoZClone
         private const int ZolMovementT = 17;
 
         private const int snakeUpdateTime = 10;
+        private const int swordBeamSuccessRate = 20;
 
         private const int DodongoFavorCardinal = 5;
         private const int FireSnakeFavorCardinal = 9;
@@ -92,5 +93,7 @@ namespace LoZClone
         public double SpikeCrossHorizontalBoundary => (BlockSpriteFactory.Instance.TileWidth * 6) + (BlockSpriteFactory.Instance.HorizontalOffset / 2);
 
         public int UpdateSegmentTime => snakeUpdateTime;
+
+        public int ProjectileSuccess => swordBeamSuccessRate;
     }
 }

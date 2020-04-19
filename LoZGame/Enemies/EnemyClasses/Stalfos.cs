@@ -21,6 +21,10 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.StalfosSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.EnemyName = EnemyNames.Stalfos;
+            this.ApplyDamageMod();
+            this.ApplySmallSpeedMod();
+            this.ApplySmallWeightModPos();
+            this.ApplySmallHealthMod();
         }
 
         public override void Stun(int stunTime)

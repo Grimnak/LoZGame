@@ -30,6 +30,10 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.BlueGoriyaSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.EnemyName = EnemyNames.Goriya;
+            this.ApplyDamageMod();
+            this.ApplySmallSpeedMod();
+            this.ApplySmallWeightModPos();
+            this.ApplyLargeHealthMod();
         }
 
         public override void Attack()

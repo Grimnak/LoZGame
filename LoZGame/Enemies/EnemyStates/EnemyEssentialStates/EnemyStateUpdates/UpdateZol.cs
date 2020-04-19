@@ -9,20 +9,37 @@
         public void UpdateZol()
         {
             DefaultUpdate();
+            if (LoZGame.Instance.Difficulty <= 2)
+            {
+                StandardZol();
+            }
+            else
+            {
+                HardZol();
+            }
+        }
+
+        private void StandardZol()
+        {
             if (this.Lifetime == this.DirectionChange)
             {
-                this.Lifetime = 0;
-                if (!this.isMoving)
+                if (this.Enemy.Physics.MovementVelocity.Length() > 0)
                 {
-                    FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.ZolFavorCardinalValue);
-                    this.isMoving = true;
-                    this.Enemy.UpdateState();
+                    this.Enemy.CurrentState.Stop();
+                    this.Lifetime = 0;
                 }
                 else
                 {
-                    this.isMoving = false;
-                    this.Enemy.CurrentState.Stop();
+                    FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.GelFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
                 }
+            }
+        }
+
+        private void HardZol()
+        {
+            if (this.Lifetime == this.DirectionChange)
+            {
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.GelFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
             }
         }
     }

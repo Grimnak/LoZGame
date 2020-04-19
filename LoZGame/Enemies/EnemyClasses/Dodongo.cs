@@ -22,6 +22,10 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DodongoSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.EnemyName = EnemyNames.Dodongo;
+            this.ApplyDamageMod();
+            this.ApplySmallSpeedMod();
+            this.ApplyLargeWeightModPos();
+            this.ApplyLargeHealthMod();
         }
 
         public override void Attack()
