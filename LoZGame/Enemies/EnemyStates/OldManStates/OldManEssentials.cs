@@ -6,58 +6,21 @@
 
     public partial class OldManEssentials : EnemyStateEssentials, IEnemyState
     {
-        public void MoveLeft()
-        {
-        }
-
-        public void MoveRight()
-        {
-        }
-
-        public void MoveUp()
-        {
-        }
-
-        public void MoveDown()
-        {
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Attack()
+        public override void Attack()
         {
             this.Enemy.CurrentState = new OldManSecretState(this.Enemy);
         }
 
-        public void Stop()
+        public override void Stop()
         {
             this.Enemy.CurrentState = new OldManIdleState(this.Enemy);
         }
 
-        public override void Spawn()
-        {
-            this.Enemy.CurrentState = new SpawnOldManState(this.Enemy);
-        }
-
-        public void Die()
+        public override void Die()
         {
         }
 
-        public virtual void Stun(int stunTime)
+        public override void Stun(int stunTime)
         {
         }
     }

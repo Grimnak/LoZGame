@@ -28,6 +28,8 @@
         float MoveSpeed { get; set; }
 
         Color CurrentTint { get; set; }
+
+        EnemyEssentials.EnemyNames EnemyName { get; set; }
         
         Dictionary<RandomStateGenerator.StateType, int> States { get; set; }
 
@@ -66,6 +68,11 @@
         /// </summary>
         /// <param name="stunTime">Duration in ticks to be stunned for.</param>
         void Stun(int stunTime);
+
+        /// <summary>
+        /// Handles special logic for an enemy to attck
+        /// </summary>
+        void Attack();
 
         void Update();
 

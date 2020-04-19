@@ -8,6 +8,29 @@
 
     public partial class EnemyStateEssentials
     {
+
+
+        public Vector2 UnitVectorToPlayer(Vector2 origin)
+        {
+            Vector2 unitVector = LoZGame.Instance.Link.Physics.Bounds.Center.ToVector2() - origin;
+            unitVector.Normalize();
+            return unitVector;
+        }
+
+        public Vector2 RotateVector(Vector2 oldVector, float rot)
+        {
+            float cosRot = (float)Math.Cos(rot);
+            float sinRot = (float)Math.Sin(rot);
+            float newX = (cosRot * oldVector.X) - (sinRot * oldVector.Y);
+            float newY = (sinRot * oldVector.X) + (cosRot * oldVector.Y);
+            return new Vector2(newX, newY);
+        }
+
+        public virtual void RandomDirectionChange()
+        {
+            this.DirectionChange = LoZGame.Instance.Random.Next(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);
+        }
+
         public void FavorPlayerCardinal(int weight)
         {
             this.Enemy.States.Remove(StateType.MoveEast);
@@ -90,6 +113,39 @@
             else
             {
                 this.Enemy.States.Add(StateType.MoveSouthWest, 1);
+            }
+        }
+
+        public void CheckForLink()
+        {
+            int enemyX = (int)this.Enemy.Physics.Location.X;
+            int enemyY = (int)this.Enemy.Physics.Location.Y;
+            int linkX = (int)LoZGame.Instance.Players[0].Physics.Location.X;
+            int linkY = (int)LoZGame.Instance.Players[0].Physics.Location.Y;
+
+            if (Math.Abs(enemyX - linkX) <= GameData.Instance.EnemyMiscConstants.LinkPixelBuffer)
+            {
+                if ((linkY - enemyY) > 0)
+                {
+                    this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
+                }
+                else
+                {
+                    this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
+                }
+                this.Enemy.CurrentState.Attack();
+            }
+            else if (Math.Abs(enemyY - linkY) <= GameData.Instance.EnemyMiscConstants.LinkPixelBuffer)
+            {
+                if ((linkX - enemyX) > 0)
+                {
+                    this.Enemy.Physics.CurrentDirection = Physics.Direction.East;
+                }
+                else
+                {
+                    this.Enemy.Physics.CurrentDirection = Physics.Direction.West;
+                }
+                this.Enemy.CurrentState.Attack();
             }
         }
 

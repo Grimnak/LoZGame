@@ -6,53 +6,21 @@
 
     public partial class BlockEnemyEssentials : EnemyStateEssentials, IEnemyState
     {
-        public void MoveLeft()
-        {
-        }
-
-        public void MoveRight()
-        {
-        }
-
-        public void MoveUp()
-        {
-        }
-
-        public void MoveDown()
-        {
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Attack()
+        public override void Attack()
         {
             this.Enemy.CurrentState = new BlockEnemyAttackState(this.Enemy);
         }
 
-        public void Stop()
+        public override void Stop()
         {
             this.Enemy.CurrentState = new BlockEnemyIdleState(this.Enemy);
         }
 
-        public void Die()
+        public override void Die()
         {
         }
 
-        public void Stun(int stunTime)
+        public override void Stun(int stunTime)
         {
         }
 

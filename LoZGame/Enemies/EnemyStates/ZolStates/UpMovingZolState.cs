@@ -10,7 +10,7 @@
             this.Enemy = enemy;
             this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Enemy.CurrentState = this;
-            this.RandomMovementTimes();
+            //this.RandomMovementTimes();
             this.Enemy.Physics.MovementVelocity = new Vector2(0, -this.Enemy.MoveSpeed);
         }
     }

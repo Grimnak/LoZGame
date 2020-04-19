@@ -7,77 +7,19 @@
 
     public partial class WallMasterEssentials : EnemyStateEssentials, IEnemyState
     {
-        public void MoveLeft()
-        {
-            this.Enemy.CurrentState = new LeftMovingWallMasterState(this.Enemy);
-        }
-
-        public void MoveRight()
-        {
-            this.Enemy.CurrentState = new RightMovingWallMasterState(this.Enemy);
-        }
-
-        public void MoveUp()
-        {
-            this.Enemy.CurrentState = new UpMovingWallMasterState(this.Enemy);
-        }
-
-        public void MoveDown()
-        {
-            this.Enemy.CurrentState = new DownMovingWallMasterState(this.Enemy);
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Attack()
+        public override void Attack()
         {
             this.Enemy.CurrentState = new AttackingWallMasterState(this.Enemy);
 
         }
 
-        public void Stop()
-        {
-        }
-
-        public void Die()
-        {
-            this.Enemy.CurrentState = new DeadWallMasterState(this.Enemy);
-        }
-
-        public override void Spawn()
-        {
-            this.Enemy.CurrentState = new SpawnWallMasterState(this.Enemy);
-        }
-
-        public virtual void Stun(int stunTime)
-        {
-            if (!this.Enemy.IsSpawning)
-            {
-                this.Enemy.CurrentState = new StunnedWallMasterState(this.Enemy, this, stunTime);
-            }
-        }
-
         public override void Update()
         {
+            base.Update();
             if (this.Lifetime == this.DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.WallMasterFavorCardinalValue);
             }
-            base.Update();
         }
     }
 }

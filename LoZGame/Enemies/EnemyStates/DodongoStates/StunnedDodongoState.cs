@@ -12,7 +12,7 @@
             this.Enemy = enemy;
             this.Sprite = this.Enemy.CreateCorrectSprite();
             this.Sprite.SetFrame(GameData.Instance.EnemyMiscConstants.DodongoMaximumFrame);
-            stunDuration = GameData.Instance.EnemyMiscConstants.DirectionChange / 2;
+            stunDuration = GameData.Instance.EnemyMiscConstants.DirectionChange;
             this.Enemy.CurrentState = this;
             this.Enemy.Physics.MovementVelocity = Vector2.Zero;
         }

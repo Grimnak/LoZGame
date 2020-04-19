@@ -37,6 +37,10 @@
             return unitVector;
         }
 
+        public override void Stun(int stunTime)
+        {
+        }
+
         public void ShootFireballs()
         {
             Console.WriteLine("Called Old Man's ShootFireball().");

@@ -25,12 +25,20 @@
             this.Damage = GameData.Instance.EnemyDamageConstants.SpikeCrossDamage;
             this.DamageTimer = 0;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
+            this.EnemyName = EnemyNames.SpikeCross;
+        }
+
+        public override void Stun(int stunTime)
+        {
         }
 
         public override void Update()
         {
-            this.CurrentState.Update();
-            this.Physics.Move();
+            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.IsSpawning || this.IsDead)
+            {
+                this.CurrentState.Update();
+                this.Physics.Move();
+            }
         }
 
         public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

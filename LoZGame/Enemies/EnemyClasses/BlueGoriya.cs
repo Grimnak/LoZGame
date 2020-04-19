@@ -19,7 +19,7 @@
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.BlueGoriyaHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.GoriyaMass;
-            this.CurrentState = new SpawnGoriyaState(this);
+            this.CurrentState = new SpawnEnemyState(this);
             this.EntityManager = LoZGame.Instance.GameObjects.Entities;
             this.Cooldown = 0;
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
@@ -29,6 +29,12 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.BlueGoriyaSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
+            this.EnemyName = EnemyNames.Goriya;
+        }
+
+        public override void Attack()
+        {
+            this.CurrentState = new AttackingBlueGoriyaState(this);
         }
 
         public override void Stun(int stunTime)

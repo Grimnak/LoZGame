@@ -20,7 +20,7 @@
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.FireSnakeMass;
             this.Physics.IsMoveable = false;
-            this.CurrentState = new IdleFireSnakeState(this);
+            this.CurrentState = new SpawnEnemyState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
@@ -31,6 +31,7 @@
             this.HasChild = true;
             this.children = new List<IEnemy>();
             this.spawnedChildren = false;
+            this.EnemyName = EnemyNames.Firesnakehead;
         }
 
         public override void TakeDamage(int damageAmount)

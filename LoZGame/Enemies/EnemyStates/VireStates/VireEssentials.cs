@@ -6,71 +6,61 @@
 
     public class VireEssentials : EnemyStateEssentials, IEnemyState
     {
-        public void MoveLeft()
+        public override void MoveLeft()
         {
             // jump left
         }
 
-        public void MoveRight()
+        public override void MoveRight()
         {
             // jump right
         }
 
-        public void MoveUp()
+        public override void MoveUp()
         {
             this.Enemy.CurrentState = new UpMovingVireState(this.Enemy);
         }
 
-        public void MoveDown()
+        public override void MoveDown()
         {
             this.Enemy.CurrentState = new DownMovingVireState(this.Enemy);
         }
 
-        public void MoveUpLeft()
+        public override void MoveUpLeft()
         {
         }
 
-        public void MoveUpRight()
+        public override void MoveUpRight()
         {
         }
 
-        public void MoveDownLeft()
+        public override void MoveDownLeft()
         {
         }
 
-        public void MoveDownRight()
+        public override void MoveDownRight()
         {
         }
 
-        public void Attack()
+        public override void Attack()
         {
         }
 
-        public void Stop()
+        public override void Stop()
         {
         }
 
-        public void Die()
+        public override void Stun(int stunTime)
         {
-            this.Enemy.CurrentState = new DeadVireState(this.Enemy);
-        }
-
-        public virtual void Stun(int stunTime)
-        {
-        }
-
-        public override void Spawn()
-        {
-            this.Enemy.CurrentState = new SpawnVireState(this.Enemy);
         }
 
         public override void Update()
         {
+            base.Update();
             if (this.Lifetime == this.DirectionChange)
             {
                 FavorPlayerCardinal(3);
             }
-            base.Update();
         }
     }
 }
