@@ -58,6 +58,7 @@
         {
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location);
+            this.spriteTint = Color.Gray;
             this.sprite = this.CreateCorrectSprite(name);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
             this.Physics.Depth = GameData.Instance.RoomConstants.BlockTileDepth;
@@ -95,6 +96,7 @@
                 case BlueStatueRight:
                     return BlockSpriteFactory.Instance.BlueStatueRight();
                 case MovableSquare2:
+                    this.spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.MoveabeTile();
                 case BlueStatueRight2:
                     return BlockSpriteFactory.Instance.BlueStatueRight2();
@@ -113,10 +115,12 @@
                 case GreenStatueLeft3:
                     return BlockSpriteFactory.Instance.GreenStatueLeft3();
                 case MovableSquare3:
+                    this.spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.MoveabeTile();
                 case Lava5:
                     return BlockSpriteFactory.Instance.Lava5();
                 default:
+                    this.spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.MoveabeTile();
             }
         }
@@ -130,7 +134,7 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
+            this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
