@@ -25,8 +25,8 @@
             EnemyAI.Dragon,
             EnemyAI.Firesnakehead,
             EnemyAI.Manhandla,
+            EnemyAI.GleeockHead,
             EnemyAI.NoSpawn
-
         };
 
         public virtual void MoveLeft()
@@ -160,6 +160,9 @@
                     UpdateZol();
                     break;
                 case EnemyAI.Manhandla:
+                    UpdateManhandla();
+                    break;
+                case EnemyAI.GleeockHead:
                     UpdateManhandla();
                     break;
                 case EnemyAI.NoAI:

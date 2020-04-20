@@ -10,6 +10,15 @@
         private static readonly int dodongoWidthUp = 60;
         private static readonly int dodongoWidthLeftRight = 96;
 
+        private static readonly int GleeockBodyWidth = 48;
+        private static readonly int GleeockBodyHeight = 64;
+
+        private static readonly int GleeockHeadWidth = 12;
+        private static readonly int GleeockHeadHeight = 24;
+
+        private static readonly int GleeockNeckWidth = 16;
+        private static readonly int GleeockNeckHeight = 24;
+
         private static readonly int dodongoHeight = 32;
 
         private static readonly int dragonWidth = 68;
@@ -38,9 +47,6 @@
 
         private static readonly int stalfosWidth = 48;
         private static readonly int stalfosHeight = 54;
-
-        private static readonly int gibdoWidth = 48;
-        private static readonly int gibdoHeight = 54;
 
         private static readonly int wallMasterWidth = 35;
         private static readonly int wallMasterHeight = 45;
@@ -108,10 +114,6 @@
             {
                 return stalfosWidth;
             }
-            else if (enemy is Gibdo)
-            {
-                return gibdoWidth;
-            }
             else if (enemy is WallMaster)
             {
                 return wallMasterWidth;
@@ -124,7 +126,7 @@
             {
                 return fireSnakeWidth;
             }
-            else if (enemy is RedDarknut || enemy is BlueDarknut)
+            else if (enemy is RedDarknut)
             {
                 return darknutWidth;
             }
@@ -143,6 +145,18 @@
             else if (enemy is ManhandlaHead)
             {
                 return ManhandlaHeadWidth;
+            }
+            else if (enemy is GleeokBody)
+            {
+                return GleeockBodyWidth;
+            }
+            else if (enemy is GleeokHead)
+            {
+                return GleeockHeadWidth;
+            }
+            else if (enemy is GleeokNeck)
+            {
+                return GleeockNeckWidth;
             }
             else
             {
@@ -192,10 +206,6 @@
             {
                 return stalfosHeight;
             }
-            else if (enemy is Gibdo)
-            {
-                return gibdoHeight;
-            }
             else if (enemy is WallMaster)
             {
                 return wallMasterHeight;
@@ -208,7 +218,7 @@
             {
                 return fireSnakeHeight;
             }
-            else if (enemy is RedDarknut || enemy is BlueDarknut)
+            else if (enemy is RedDarknut)
             {
                 return darknutHeight;
             }
@@ -228,6 +238,18 @@
             {
                 return ManhandlaHeadHeight;
             }
+            else if (enemy is GleeokBody)
+            {
+                return GleeockBodyHeight;
+            }
+            else if (enemy is GleeokHead)
+            {
+                return GleeockHeadHeight;
+            }
+            else if (enemy is GleeokNeck)
+            {
+                return GleeockNeckHeight;
+            }
             else
             {
                 return 0;
@@ -236,16 +258,27 @@
 
         private Texture2D manhandlaBodyTexture;
         private SpriteData manhandlaBodyData;
-        private Texture2D manhandlaHeadLeftTexture;
-        private Texture2D manhandlaHeadRightTexture;
-        private Texture2D manhandlaHeadUpTexture;
-        private Texture2D manhandlaHeadDownTexture;
+        private Texture2D manhandlaHeadCloseLeftTexture;
+        private Texture2D manhandlaHeadOpenLeftTexture;
+        private Texture2D manhandlaHeadCloseRightTexture;
+        private Texture2D manhandlaHeadOpenRightTexture;
+        private Texture2D manhandlaHeadCloseUpTexture;
+        private Texture2D manhandlaHeadOpenUpTexture;
+        private Texture2D manhandlaHeadCloseDownTexture;
+        private Texture2D manhandlaHeadOpenDownTexture;
         private SpriteData manhandlaHeadData;
+
+        private Texture2D GleeockBodyTexture;
+        private SpriteData GleeockBodyData;
+        private Texture2D GleeockHeadTexture;
+        private SpriteData GleeockHeadData;
+        private Texture2D GleeockHeadOffTexture;
+        private SpriteData GleeockHeadOffData;
+        private Texture2D GleeockNeckTexture;
+        private SpriteData GleeockNeckData;
 
         private Texture2D stalfos;
         private SpriteData stalfosData;
-        private Texture2D gibdo;
-        private SpriteData gibdoData;
 
         private Texture2D downGoriya;
         private Texture2D downBlueGoriya;
@@ -314,23 +347,14 @@
         private Texture2D bubble;
         private SpriteData bubbleData;
 
-        private Texture2D upRedDarknut;
-        private SpriteData upRedDarknutData;
-        private Texture2D downRedDarknut;
-        private SpriteData downRedDarknutData;
-        private Texture2D leftRedDarknut;
-        private SpriteData leftRedDarknutData;
-        private Texture2D rightRedDarknut;
-        private SpriteData rightRedDarknutData;
-
-        private Texture2D upBlueDarknut;
-        private SpriteData upBlueDarknutData;
-        private Texture2D downBlueDarknut;
-        private SpriteData downBlueDarknutData;
-        private Texture2D leftBlueDarknut;
-        private SpriteData leftBlueDarknutData;
-        private Texture2D rightBlueDarknut;
-        private SpriteData rightBlueDarknutData;
+        private Texture2D upDarknut;
+        private SpriteData upDarknutData;
+        private Texture2D downDarknut;
+        private SpriteData downDarknutData;
+        private Texture2D leftDarknut;
+        private SpriteData leftDarknutData;
+        private Texture2D rightDarknut;
+        private SpriteData rightDarknutData;
 
         private Texture2D oldMan;
         private Texture2D angryOldMan;
@@ -366,13 +390,21 @@
         private void LoadTextures(ContentManager content)
         {
             this.manhandlaBodyTexture = content.Load<Texture2D>("man_body");
-            this.manhandlaHeadLeftTexture = content.Load<Texture2D>("man_head_left");
-            this.manhandlaHeadRightTexture = content.Load<Texture2D>("man_head_right");
-            this.manhandlaHeadDownTexture = content.Load<Texture2D>("man_head_down");
-            this.manhandlaHeadUpTexture = content.Load<Texture2D>("man_head_up");
+            this.manhandlaHeadOpenLeftTexture = content.Load<Texture2D>("man_head_left_open");
+            this.manhandlaHeadCloseLeftTexture = content.Load<Texture2D>("man_head_left_closed");
+            this.manhandlaHeadOpenRightTexture = content.Load<Texture2D>("man_head_right_open");
+            this.manhandlaHeadCloseRightTexture = content.Load<Texture2D>("man_head_right_closed");
+            this.manhandlaHeadOpenDownTexture = content.Load<Texture2D>("man_head_down_open");
+            this.manhandlaHeadCloseDownTexture = content.Load<Texture2D>("man_head_down_closed");
+            this.manhandlaHeadOpenUpTexture = content.Load<Texture2D>("man_head_up_open");
+            this.manhandlaHeadCloseUpTexture = content.Load<Texture2D>("man_head_up_closed");
+
+            this.GleeockBodyTexture = content.Load<Texture2D>("gleeok_body");
+            this.GleeockHeadOffTexture = content.Load<Texture2D>("gleeok_head_off");
+            this.GleeockHeadTexture = content.Load<Texture2D>("gleeok_head_on");
+            this.GleeockNeckTexture = content.Load<Texture2D>("gleeok_neck");
 
             this.stalfos = content.Load<Texture2D>("stalfos");
-            this.gibdo = content.Load<Texture2D>("gibdo");
 
             this.downGoriya = content.Load<Texture2D>("redGoriyaDown");
             this.upGoriya = content.Load<Texture2D>("redGoriyaUp");
@@ -412,15 +444,10 @@
 
             this.bubble = content.Load<Texture2D>("blue_bubble");
 
-            this.upRedDarknut = content.Load<Texture2D>("red_darknut_up");
-            this.downRedDarknut = content.Load<Texture2D>("red_darknut_down");
-            this.leftRedDarknut = content.Load<Texture2D>("red_darknut_left");
-            this.rightRedDarknut = content.Load<Texture2D>("red_darknut_right");
-
-            this.upBlueDarknut = content.Load<Texture2D>("blue_darknut_up");
-            this.downBlueDarknut = content.Load<Texture2D>("blue_darknut_down");
-            this.leftBlueDarknut = content.Load<Texture2D>("blue_darknut_left");
-            this.rightBlueDarknut = content.Load<Texture2D>("blue_darknut_right");
+            this.upDarknut = content.Load<Texture2D>("red_darknut_up");
+            this.downDarknut = content.Load<Texture2D>("red_darknut_down");
+            this.leftDarknut = content.Load<Texture2D>("red_darknut_left");
+            this.rightDarknut = content.Load<Texture2D>("red_darknut_right");
 
             this.oldMan = content.Load<Texture2D>("oldMan");
             this.angryOldMan = content.Load<Texture2D>("angryOldMan");
@@ -433,7 +460,6 @@
         private void LoadData()
         {
             this.stalfosData = new SpriteData(new Vector2(stalfosWidth, stalfosHeight), stalfos, 2, 1);
-            this.gibdoData = new SpriteData(new Vector2(gibdoWidth, gibdoHeight), gibdo, 2, 1);
             this.downGoriyaData = new SpriteData(new Vector2(goriyaWidth, goriyaHeight), downGoriya, 2, 1);
             this.upGoriyaData = new SpriteData(new Vector2(goriyaWidth, goriyaHeight), upGoriya, 2, 1);
             this.leftGoriyaData = new SpriteData(new Vector2(goriyaWidth, goriyaHeight), leftGoriya, 2, 1);
@@ -452,14 +478,10 @@
             this.upDodongoData = new SpriteData(new Vector2(dodongoWidthUp, dodongoHeight), upDodongo, 1, 3);
             this.leftDodongoData = new SpriteData(new Vector2(dodongoWidthLeftRight, dodongoHeight), leftDodongo, 1, 3);
             this.rightDodongoData = new SpriteData(new Vector2(dodongoWidthLeftRight, dodongoHeight), rightDodongo, 1, 3);
-            this.upRedDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), upRedDarknut, 2, 1);
-            this.downRedDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), downRedDarknut, 2, 1);
-            this.leftRedDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), leftRedDarknut, 2, 1);
-            this.rightRedDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), rightRedDarknut, 2, 1);
-            this.upBlueDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), upBlueDarknut, 2, 1);
-            this.downBlueDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), downBlueDarknut, 2, 1);
-            this.leftBlueDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), leftBlueDarknut, 2, 1);
-            this.rightBlueDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), rightBlueDarknut, 2, 1);
+            this.upDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), upDarknut, 2, 1);
+            this.downDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), downDarknut, 2, 1);
+            this.leftDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), leftDarknut, 2, 1);
+            this.rightDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), rightDarknut, 2, 1);
             this.fireSnakeData = new SpriteData(new Vector2(fireSnakeWidth, fireSnakeHeight), fireSnake, 1, 4);
             this.oldManData = new SpriteData(new Vector2(oldManWidth, oldManHeight), oldMan, 1, 1);
             this.merchantData = new SpriteData(new Vector2(merchantWidth, merchantHeight), merchant, 1, 1);
@@ -470,7 +492,11 @@
             this.vireKeeseData = new SpriteData(new Vector2(keeseWidth, keeseHeight), vireKeese, 2, 1);
             this.bubbleData = new SpriteData(new Vector2(bubbleWidth, bubbleHeight), bubble, 2, 1);
             this.manhandlaBodyData = new SpriteData(new Vector2(ManhandlaBodyWidth, ManhandlaBodyHeight), manhandlaBodyTexture, 1, 1);
-            this.manhandlaHeadData = new SpriteData(new Vector2(ManhandlaHeadWidth, ManhandlaHeadHeight), manhandlaHeadUpTexture, 2, 1);
+            this.manhandlaHeadData = new SpriteData(new Vector2(ManhandlaHeadWidth, ManhandlaHeadHeight), manhandlaHeadCloseDownTexture, 2, 1);
+            this.GleeockBodyData = new SpriteData(new Vector2(GleeockBodyWidth, GleeockBodyHeight), GleeockBodyTexture, 3, 1);
+            this.GleeockHeadOffData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeockHeadOffTexture, 2, 1);
+            this.GleeockHeadData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeockHeadTexture, 1, 1);
+            this.GleeockNeckData = new SpriteData(new Vector2(GleeockNeckWidth, GleeockNeckHeight), GleeockNeckTexture, 1, 1);
         }
 
         // Stalfos Sprites
@@ -491,40 +517,19 @@
         }
 
         // Darknut Sprites
-        public ISprite CreateRedDarknutSprite(Physics.Direction direction)
+        public ISprite CreateDarknutSprite(Physics.Direction direction)
         {
             switch (direction)
             {
                 case Physics.Direction.North:
-                    return new ObjectSprite(this.upRedDarknut, this.upRedDarknutData);
+                    return new ObjectSprite(this.upDarknut, this.upDarknutData);
                 case Physics.Direction.South:
-                    return new ObjectSprite(this.downRedDarknut, this.downRedDarknutData);
+                    return new ObjectSprite(this.downDarknut, this.downDarknutData);
                 case Physics.Direction.East:
-                    return new ObjectSprite(this.rightRedDarknut, this.rightRedDarknutData);
+                    return new ObjectSprite(this.rightDarknut, this.rightDarknutData);
                 default:
-                    return new ObjectSprite(this.leftRedDarknut, this.leftRedDarknutData);
+                    return new ObjectSprite(this.leftDarknut, this.leftDarknutData);
             }
-        }
-
-        public ISprite CreateBlueDarknutSprite(Physics.Direction direction)
-        {
-            switch (direction)
-            {
-                case Physics.Direction.North:
-                    return new ObjectSprite(this.upBlueDarknut, this.upBlueDarknutData);
-                case Physics.Direction.South:
-                    return new ObjectSprite(this.downBlueDarknut, this.downBlueDarknutData);
-                case Physics.Direction.East:
-                    return new ObjectSprite(this.rightBlueDarknut, this.rightBlueDarknutData);
-                default:
-                    return new ObjectSprite(this.leftBlueDarknut, this.leftBlueDarknutData);
-            }
-        }
-
-        // Gibdo Sprites
-        public ISprite CreateGibdoSprite()
-        {
-            return new ObjectSprite(this.gibdo, this.gibdoData);
         }
 
         // Goriya Sprites
@@ -568,14 +573,34 @@
             switch (direction)
             {
                 case Physics.Direction.North:
-                    return new ObjectSprite(this.manhandlaHeadUpTexture, this.manhandlaHeadData);
+                    return new ObjectSprite(this.manhandlaHeadOpenUpTexture, this.manhandlaHeadData);
                 case Physics.Direction.South:
-                    return new ObjectSprite(this.manhandlaHeadDownTexture, this.manhandlaHeadData);
+                    return new ObjectSprite(this.manhandlaHeadOpenDownTexture, this.manhandlaHeadData);
                 case Physics.Direction.East:
-                    return new ObjectSprite(this.manhandlaHeadRightTexture, this.manhandlaHeadData);
+                    return new ObjectSprite(this.manhandlaHeadOpenRightTexture, this.manhandlaHeadData);
                 default:
-                    return new ObjectSprite(this.manhandlaHeadLeftTexture, this.manhandlaHeadData);
+                    return new ObjectSprite(this.manhandlaHeadOpenLeftTexture, this.manhandlaHeadData);
             }
+        }
+
+        public ISprite CreateGleeockNeckSprite()
+        {
+            return new ObjectSprite(this.GleeockNeckTexture, this.GleeockNeckData);
+        }
+
+        public ISprite CreateGleeockBodySprite()
+        {
+            return new ObjectSprite(this.GleeockBodyTexture, this.GleeockBodyData);
+        }
+
+        public ISprite CreateGleeockHeadSprite()
+        {
+            return new ObjectSprite(this.GleeockHeadTexture, this.GleeockHeadData);
+        }
+
+        public ISprite CreateGleeockHeadOffSprite()
+        {
+            return new ObjectSprite(this.GleeockHeadOffTexture, this.GleeockHeadOffData);
         }
 
         // Wallmaster Sprites
