@@ -21,8 +21,8 @@
             this.parent = body;
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GleeockHeadStateList);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ManhandlaHeadHP);
-            this.Physics = new Physics((neckBase + new Point(LoZGame.Instance.Random.Next(10, 30))).ToVector2());
+            this.Health = new HealthManager(1);
+            this.Physics = new Physics(neckBase.ToVector2());
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
             this.Physics.IsMoveable = false;
             this.CurrentState = new IdleEnemyState(this);
@@ -30,8 +30,8 @@
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
             this.Damage = GameData.Instance.EnemyDamageConstants.DragonDamage;
+            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.GleeokHeadSpeed;
             this.DamageTimer = 0;
-            this.MoveSpeed = 0;
             this.MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed / 4, LoZGame.Instance.UpdateSpeed);
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.HasChild = true;
@@ -53,12 +53,18 @@
 
         public override void AddChild()
         {
+            this.necksegments = new List<IEnemy>();
+            this.maxY = 0;
+            this.maxX = 0;
             for (int i = 0; i < numNeckSegments; i++)
             {
                 IEnemy neckSegment = new GleeokNeck(this);
                 this.necksegments.Add(neckSegment);
                 LoZGame.Instance.GameObjects.Enemies.Add(neckSegment);
+                maxX += neckSegment.Physics.Bounds.Width / 3;
+                maxY += neckSegment.Physics.Bounds.Height / 3;
             }
+            this.Physics.Bounds = new Rectangle(this.Physics.Bounds.Location + new Point(LoZGame.Instance.Random.Next(-maxX / 2, maxX / 2), LoZGame.Instance.Random.Next(maxY / 2)), this.Physics.Bounds.Size);
             this.SetNeckLocations();
         }
 
@@ -66,22 +72,15 @@
         {
             if (Math.Abs(this.Physics.Bounds.Center.X - neckBase.X) > maxX)
             {
-                if (this.Physics.Bounds.Center.X - neckBase.X > 0)
-                {
-                    this.Physics.Bounds = new Rectangle(new Point(this.neckBase.X + maxX - (this.Physics.Bounds.Width / 2), this.Physics.Bounds.Y), this.Physics.Bounds.Size);
-                }
-                else
-                {
-                    this.Physics.Bounds = new Rectangle(new Point(this.neckBase.X - maxX + (this.Physics.Bounds.Width / 2), this.Physics.Bounds.Y), this.Physics.Bounds.Size);
-                }
+                this.Physics.MovementVelocity = new Vector2(-this.Physics.MovementVelocity.X, this.Physics.MovementVelocity.Y);
             }
-            if (this.Physics.Bounds.Center.Y - neckBase.Y > maxY)
+            if (Math.Abs(this.Physics.Bounds.Center.Y - neckBase.Y) > maxY)
             {
-                this.Physics.Bounds = new Rectangle(new Point(this.Physics.Bounds.Center.X, this.neckBase.Y + maxY + (this.Physics.Bounds.Height / 2)), this.Physics.Bounds.Size);
+                this.Physics.MovementVelocity = new Vector2(this.Physics.MovementVelocity.X, -this.Physics.MovementVelocity.Y);
             }
             else if (this.Physics.Bounds.Center.Y < neckBase.Y)
             {
-                this.Physics.Bounds = new Rectangle(new Point(this.Physics.Bounds.Center.X, neckBase.Y - (this.Physics.Bounds.Height / 2)), this.Physics.Bounds.Size);
+                this.Physics.MovementVelocity = new Vector2(this.Physics.MovementVelocity.X, -this.Physics.MovementVelocity.Y);
             }
         }
 
@@ -92,23 +91,20 @@
             Point offSet = new Point(necksegments[0].Physics.Bounds.Size.X / 2, necksegments[0].Physics.Bounds.Size.Y / 2);
             for (int i = 0; i < numNeckSegments; i++)
             {
-                int xLoc = (int)(i * toBase.X) - offSet.X + LoZGame.Instance.Random.Next(-2, 2);
-                int yLoc = (int)(i * toBase.Y) - offSet.Y + LoZGame.Instance.Random.Next(-2, 2); ;
+                int xLoc = neckBase.X + (int)(i * toBase.X) - offSet.X;
+                int yLoc = neckBase.Y + (int)(i * toBase.Y) - offSet.Y;
                 necksegments[i].Physics.Bounds = new Rectangle(new Point(xLoc, yLoc), necksegments[i].Physics.Bounds.Size);
-                necksegments[i].Physics.Depth = this.Physics.Depth;
+                necksegments[i].Physics.SetLocation();
+                necksegments[i].Physics.Depth = this.Physics.Depth - 0.00001f;
             }
         }
 
         public override void Update()
         {
-            this.HandleDamage();
-            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.IsSpawning || this.IsDead)
-            {
-                this.CheckNeckReach();
-                this.SetNeckLocations();
-                this.Physics.SetDepth();
-                this.CurrentState.Update();
-            }
+            base.Update();
+            Console.WriteLine(this.Physics.MovementVelocity);
+            this.CheckNeckReach();
+            this.SetNeckLocations();
         }
 
         public override ISprite CreateCorrectSprite()

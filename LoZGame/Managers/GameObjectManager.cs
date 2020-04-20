@@ -61,7 +61,6 @@
         {
             blockManager.Draw();
             itemManager.Draw();
-            entityManager.Draw();
             doorManager.Draw();
         }
 

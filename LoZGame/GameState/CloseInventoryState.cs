@@ -56,6 +56,8 @@
                 player.Draw();
             }
             LoZGame.Instance.GameObjects.Draw();
+            LoZGame.Instance.GameObjects.Entities.Draw();
+            LoZGame.Instance.GameObjects.Enemies.Draw();
             InventoryComponents.Instance.DrawText();
 
             LoZGame.Instance.SpriteBatch.End();

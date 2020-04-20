@@ -72,7 +72,6 @@
             {
                 blocked = true;
             }
-
             return blocked;
         }
     }

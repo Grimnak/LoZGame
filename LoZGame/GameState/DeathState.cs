@@ -53,6 +53,8 @@
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
             LoZGame.Instance.Dungeon.CurrentRoom.Draw(Point.Zero);
             LoZGame.Instance.GameObjects.Draw();
+            LoZGame.Instance.GameObjects.Entities.Draw();
+            LoZGame.Instance.GameObjects.Enemies.Draw();
 
             if (this.deathTime < deathTimeMax)
             {
