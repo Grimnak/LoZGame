@@ -219,6 +219,8 @@
                     this.enemies.Add(new Bubble(location));
                     break;
                 case "Manhandla":
+                    Console.WriteLine(x + " | " + y);
+                    Console.WriteLine(location);
                     this.enemies.Add(new ManhandlaBody(location));
                     break;
                 case "Gleeok":
