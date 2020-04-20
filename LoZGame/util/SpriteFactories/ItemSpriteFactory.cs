@@ -242,6 +242,7 @@
             woodenArrowSpriteSheet = content.Load<Texture2D>("WoodenArrow");
             triforceSpriteSheet = content.Load<Texture2D>("Triforce");
             fluteSpriteSheet = content.Load<Texture2D>("Flute");
+            ladderSpriteSheet = content.Load<Texture2D>("ladder");
         }
 
         private void LoadData()
@@ -279,11 +280,17 @@
             woodenArrowData = new SpriteData(new Vector2(ArrowWidth, ArrowHeight), woodenArrowSpriteSheet, 1, 1);
             triforceData = new SpriteData(new Vector2(TriforceWidth, TriforceHeight), triforceSpriteSheet, 2, 1);
             fluteData = new SpriteData(new Vector2(FluteWidth, FluteHeight), fairySpriteSheet, 1, 1);
+            ladderData = new SpriteData(new Vector2(LadderWidth, LadderHeight), ladderSpriteSheet, 1, 1);
         }
 
         public ISprite Fairy()
         {
             return new ObjectSprite(this.fairySpriteSheet, this.fairyData);
+        }
+
+        public ISprite Ladder()
+        {
+            return new ObjectSprite(this.ladderSpriteSheet, this.ladderData);
         }
 
         public ISprite Health()
