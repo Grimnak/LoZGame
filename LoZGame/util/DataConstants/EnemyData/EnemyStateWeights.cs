@@ -5,6 +5,18 @@
 
     public struct EnemyStateWeights
     {
+        private static Dictionary<StateType, int> gleeockHeadStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 },
+            { StateType.MoveNorthEast, 1 },
+            { StateType.MoveNorthWest, 1 },
+            { StateType.MoveSouthEast, 1 },
+            { StateType.MoveSouthWest, 1 }
+        };
+
         private static Dictionary<StateType, int> oldManStateList = new Dictionary<StateType, int>()
         {
             // { StateType.Attack, 1 },
@@ -179,5 +191,7 @@
         public Dictionary<StateType, int> ManhandlaBodyStateList => manhandlaBodyStateList;
 
         public Dictionary<StateType, int> ManhandlaHeadStateList => manhandlaHeadStateList;
+
+        public Dictionary<StateType, int> GleeockHeadStateList => gleeockHeadStateList;
     }
 }

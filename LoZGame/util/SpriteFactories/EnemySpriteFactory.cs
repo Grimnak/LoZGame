@@ -10,6 +10,15 @@
         private static readonly int dodongoWidthUp = 60;
         private static readonly int dodongoWidthLeftRight = 96;
 
+        private static readonly int GleeockBodyWidth = 48;
+        private static readonly int GleeockBodyHeight = 64;
+
+        private static readonly int GleeockHeadWidth = 12;
+        private static readonly int GleeockHeadHeight = 24;
+
+        private static readonly int GleeockNeckWidth = 16;
+        private static readonly int GleeockNeckHeight = 24;
+
         private static readonly int dodongoHeight = 32;
 
         private static readonly int dragonWidth = 68;
@@ -137,6 +146,18 @@
             {
                 return ManhandlaHeadWidth;
             }
+            else if (enemy is GleeokBody)
+            {
+                return GleeockBodyWidth;
+            }
+            else if (enemy is GleeokHead)
+            {
+                return GleeockHeadWidth;
+            }
+            else if (enemy is GleeokNeck)
+            {
+                return GleeockNeckWidth;
+            }
             else
             {
                 return 0;
@@ -217,6 +238,18 @@
             {
                 return ManhandlaHeadHeight;
             }
+            else if (enemy is GleeokBody)
+            {
+                return GleeockBodyHeight;
+            }
+            else if (enemy is GleeokHead)
+            {
+                return GleeockHeadHeight;
+            }
+            else if (enemy is GleeokNeck)
+            {
+                return GleeockNeckHeight;
+            }
             else
             {
                 return 0;
@@ -234,6 +267,15 @@
         private Texture2D manhandlaHeadCloseDownTexture;
         private Texture2D manhandlaHeadOpenDownTexture;
         private SpriteData manhandlaHeadData;
+
+        private Texture2D GleeockBodyTexture;
+        private SpriteData GleeockBodyData;
+        private Texture2D GleeockHeadTexture;
+        private SpriteData GleeockHeadData;
+        private Texture2D GleeockHeadOffTexture;
+        private SpriteData GleeockHeadOffData;
+        private Texture2D GleeockNeckTexture;
+        private SpriteData GleeockNeckData;
 
         private Texture2D stalfos;
         private SpriteData stalfosData;
@@ -357,6 +399,11 @@
             this.manhandlaHeadOpenUpTexture = content.Load<Texture2D>("man_head_up_open");
             this.manhandlaHeadCloseUpTexture = content.Load<Texture2D>("man_head_up_closed");
 
+            this.GleeockBodyTexture = content.Load<Texture2D>("gleeok_body");
+            this.GleeockHeadOffTexture = content.Load<Texture2D>("gleeok_head_off");
+            this.GleeockHeadTexture = content.Load<Texture2D>("gleeok_head_on");
+            this.GleeockNeckTexture = content.Load<Texture2D>("gleeok_neck");
+
             this.stalfos = content.Load<Texture2D>("stalfos");
 
             this.downGoriya = content.Load<Texture2D>("redGoriyaDown");
@@ -445,7 +492,11 @@
             this.vireKeeseData = new SpriteData(new Vector2(keeseWidth, keeseHeight), vireKeese, 2, 1);
             this.bubbleData = new SpriteData(new Vector2(bubbleWidth, bubbleHeight), bubble, 2, 1);
             this.manhandlaBodyData = new SpriteData(new Vector2(ManhandlaBodyWidth, ManhandlaBodyHeight), manhandlaBodyTexture, 1, 1);
-            this.manhandlaHeadData = new SpriteData(new Vector2(ManhandlaHeadWidth, ManhandlaHeadHeight), manhandlaHeadCloseDownTexture, 1, 1);
+            this.manhandlaHeadData = new SpriteData(new Vector2(ManhandlaHeadWidth, ManhandlaHeadHeight), manhandlaHeadCloseDownTexture, 2, 1);
+            this.GleeockBodyData = new SpriteData(new Vector2(GleeockBodyWidth, GleeockBodyHeight), GleeockBodyTexture, 3, 1);
+            this.GleeockHeadOffData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeockHeadOffTexture, 2, 1);
+            this.GleeockHeadData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeockHeadTexture, 1, 1);
+            this.GleeockNeckData = new SpriteData(new Vector2(GleeockNeckWidth, GleeockNeckHeight), GleeockNeckTexture, 1, 1);
         }
 
         // Stalfos Sprites
@@ -517,22 +568,7 @@
             return new ObjectSprite(this.manhandlaBodyTexture, this.manhandlaBodyData);
         }
 
-        public ISprite CreateManhandleHeadClosedSprite(Physics.Direction direction)
-        {
-            switch (direction)
-            {
-                case Physics.Direction.North:
-                    return new ObjectSprite(this.manhandlaHeadCloseUpTexture, this.manhandlaHeadData);
-                case Physics.Direction.South:
-                    return new ObjectSprite(this.manhandlaHeadCloseDownTexture, this.manhandlaHeadData);
-                case Physics.Direction.East:
-                    return new ObjectSprite(this.manhandlaHeadCloseRightTexture, this.manhandlaHeadData);
-                default:
-                    return new ObjectSprite(this.manhandlaHeadCloseLeftTexture, this.manhandlaHeadData);
-            }
-        }
-
-        public ISprite CreateManhandlaHeadOpenSprite(Physics.Direction direction)
+        public ISprite CreateManhandlaHeadSprite(Physics.Direction direction)
         {
             switch (direction)
             {
@@ -545,6 +581,26 @@
                 default:
                     return new ObjectSprite(this.manhandlaHeadOpenLeftTexture, this.manhandlaHeadData);
             }
+        }
+
+        public ISprite CreateGleeockNeckSprite()
+        {
+            return new ObjectSprite(this.GleeockNeckTexture, this.GleeockNeckData);
+        }
+
+        public ISprite CreateGleeockBodySprite()
+        {
+            return new ObjectSprite(this.GleeockBodyTexture, this.GleeockBodyData);
+        }
+
+        public ISprite CreateGleeockHeadSprite()
+        {
+            return new ObjectSprite(this.GleeockHeadTexture, this.GleeockHeadData);
+        }
+
+        public ISprite CreateGleeockHeadOffSprite()
+        {
+            return new ObjectSprite(this.GleeockHeadOffTexture, this.GleeockHeadOffData);
         }
 
         // Wallmaster Sprites

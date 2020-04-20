@@ -14,6 +14,7 @@
             Dragon,
             Firesnakehead,
             Gel,
+            GleeockHead,
             Goriya,
             Keese,
             Oldman,

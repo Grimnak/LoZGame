@@ -215,6 +215,9 @@
                 case "Manhandla":
                     this.enemies.Add(new ManhandlaBody(location));
                     break;
+                case "Gleeok":
+                    this.enemies.Add(new GleeokBody(location));
+                    break;
                 default:
                     break;
             }
