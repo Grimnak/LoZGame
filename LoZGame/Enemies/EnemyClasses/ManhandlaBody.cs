@@ -9,6 +9,7 @@
     {
         private bool spawnedChildren;
         List<IEnemy> heads;
+        Point StartLoc;
         bool test;
 
         public ManhandlaBody(Vector2 location)
@@ -22,6 +23,7 @@
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
             this.Physics.IsMoveable = false;
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            StartLoc = this.Physics.Bounds.Location;
             this.CurrentState = new IdleEnemyState(this);
             Console.WriteLine("Bounds: " + Physics.Bounds);
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
@@ -44,7 +46,12 @@
 
         public override void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            base.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            base.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide); 
+            if (!test)
+            {
+                this.Physics.Bounds = new Rectangle(StartLoc, this.Physics.Bounds.Size);
+                test = true;
+            }
             switch (collisionSide)
             {
                 case CollisionDetection.CollisionSide.Top:
@@ -82,10 +89,6 @@
 
         public override void Update()
         {
-            if (!test)
-            {
-                Console.WriteLine(this.Physics.Bounds);
-            }
             int Health = 0;
             foreach (IEnemy head in this.heads)
             {
