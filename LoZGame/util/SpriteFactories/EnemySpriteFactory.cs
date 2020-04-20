@@ -128,6 +128,7 @@
             else if (enemy is Bubble)
             {
                 return bubbleWidth;
+            }
             else if (enemy is ManhandlaBody)
             {
                 return ManhandlaBodyWidth;
@@ -207,6 +208,7 @@
             else if (enemy is Bubble)
             {
                 return bubbleHeight;
+            }
             else if (enemy is ManhandlaBody)
             {
                 return ManhandlaBodyHeight;
