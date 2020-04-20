@@ -194,6 +194,7 @@
         <enemy X="5.5" Y="2">OldMan</enemy>
       </enemies>
       <doors>
+        <door loc="W">hidden</door>
       </doors>
       <rrow idx="0">
       </rrow>
