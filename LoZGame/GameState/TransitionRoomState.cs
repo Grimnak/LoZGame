@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using System;
+    using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
@@ -22,6 +23,8 @@
         private Vector2 currentRoomBorderOffset;
         private GameObjectManager oldObjects;
         private GameObjectManager newObjects;
+        private List<IDoor> puzzleDoors;
+        private List<IDoor> specialDoors;
         private bool done;
 
         public TransitionRoomState(Physics.Direction direction)
@@ -33,6 +36,8 @@
             this.dungeon = LoZGame.Instance.Dungeon;
             this.currentRoomLocation = new Point(this.dungeon.CurrentRoomX, this.dungeon.CurrentRoomY);
             this.currentRoomBorderOffset = Vector2.Zero;
+            this.puzzleDoors = new List<IDoor>();
+            this.specialDoors = new List<IDoor>();
             switch (direction)
             {
                 case Physics.Direction.North:
@@ -94,6 +99,22 @@
                     foreach (IDoor door in newObjects.Doors.DoorList)
                     {
                         door.Physics.Depth = 1;
+                    }
+                    foreach (IDoor door in newObjects.Doors.DoorList)
+                    {
+                        if (door.DoorType == Door.DoorTypes.Special)
+                        {
+                            specialDoors.Add(door);
+                            door.Open();
+                        }
+                    }
+                    foreach (IDoor door in newObjects.Doors.DoorList)
+                    {
+                        if (door.DoorType == Door.DoorTypes.Puzzle)
+                        {
+                            puzzleDoors.Add(door);
+                            door.Open();
+                        }
                     }
                 }
             }
@@ -157,6 +178,18 @@
                 {
                     door.Physics.SetDepth();
                 }
+                foreach (IDoor door in puzzleDoors)
+                {
+                    door.State = new PuzzleDoorState(door);
+                    door.DoorType = Door.DoorTypes.Locked;
+                }
+                foreach (IDoor door in specialDoors)
+                {
+                    door.State = new SpecialDoorState(door);
+                    door.DoorType = Door.DoorTypes.Locked;
+                }
+                puzzleDoors.Clear();
+                specialDoors.Clear();
                 this.oldObjects.UpdateObjectLocations(nextRoomOffset);
                 this.oldObjects.Save();
                 LoZGame.Instance.GameObjects = newObjects;
