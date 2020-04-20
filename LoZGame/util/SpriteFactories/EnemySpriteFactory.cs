@@ -75,6 +75,9 @@
         private static readonly int ManhandlaHeadHeight = 48;
         private static readonly int ManhandlaHeadWidth = 48;
 
+        private static readonly int likelikeWidth = 40;
+        private static readonly int likelikeHeight = 40;
+
         public static int GetEnemyWidth(IEnemy enemy)
         {
             if (enemy is Dodongo)
@@ -164,6 +167,10 @@
             else if (enemy is GleeokNeck)
             {
                 return GleeockNeckWidth;
+            }
+            else if (enemy is Likelike)
+            {
+                return likelikeWidth;
             }
             else
             {
@@ -260,6 +267,10 @@
             else if (enemy is GleeokNeck)
             {
                 return GleeockNeckHeight;
+            }
+            else if (enemy is Likelike)
+            {
+                return likelikeHeight;
             }
             else
             {
@@ -368,6 +379,9 @@
         private Texture2D rightBlueDarknut;
         private SpriteData rightDarknutData;
 
+        private Texture2D likelike;
+        private SpriteData likelikeData;
+
         private Texture2D oldMan;
         private Texture2D angryOldMan;
         private SpriteData oldManData;
@@ -463,6 +477,8 @@
             this.leftBlueDarknut = content.Load<Texture2D>("blue_darknut_left");
             this.rightBlueDarknut = content.Load<Texture2D>("blue_darknut_right");
 
+            this.likelike = content.Load<Texture2D>("likelike");
+
             this.oldMan = content.Load<Texture2D>("oldMan");
             this.angryOldMan = content.Load<Texture2D>("angryOldMan");
             this.merchant = content.Load<Texture2D>("merchant");
@@ -511,6 +527,7 @@
             this.GleeokHeadOffData = new SpriteData(new Vector2(GleeockHeadOffWidth, GleeockHeadOffHeight), GleeokHeadOffTexture, 2, 1);
             this.GleeokHeadData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeokHeadTexture, 1, 1);
             this.GleeokNeckData = new SpriteData(new Vector2(GleeockNeckWidth, GleeockNeckHeight), GleeokNeckTexture, 1, 1);
+            this.likelikeData = new SpriteData(new Vector2(likelikeWidth, likelikeHeight), likelike, 3, 1);
         }
 
         // Stalfos Sprites
@@ -752,6 +769,11 @@
         public ISprite CreateVireKeeseSprite()
         {
             return new ObjectSprite(this.vireKeese, this.vireKeeseData);
+        }
+
+        public ISprite CreateLikelikeSprite()
+        {
+            return new ObjectSprite(this.likelike, this.likelikeData);
         }
 
         // Enemy Spawn Sprites

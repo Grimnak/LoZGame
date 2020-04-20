@@ -90,7 +90,7 @@
                     break;
                 case EnemyAI.NoAI:
                     break;
-                case EnemyNames.Likelike:
+                case EnemyAI.Likelike:
                     UpdateLikelike();
                     break;
                 default:

@@ -226,6 +226,9 @@
                 case "Gleeok":
                     this.enemies.Add(new GleeokBody(location));
                     break;
+                case "LikeLike":
+                    this.enemies.Add(new Likelike(location));
+                    break;
                 default:
                     break;
             }
