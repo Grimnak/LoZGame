@@ -33,7 +33,6 @@
 
         public virtual void TakeDamage(int damageAmount)
         {
-            System.Console.WriteLine(damageAmount + " Dealt");
             if (this.DamageTimer <= 0 && !this.IsSpawning)
             {
                 this.Health.DamageHealth(damageAmount);

@@ -30,7 +30,7 @@
         /// <summary>
         /// Gets or sets a value indicating whether or not an enemy interacts with projectiles.
         /// </summary>
-        // bool IsTransparent { get; set; }
+        bool IsTransparent { get; set; }
 
         bool HasChild { get; set; }
 

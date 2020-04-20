@@ -13,14 +13,14 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (enemy.AI != EnemyEssentials.EnemyAI.Manhandla)
+            if (!enemy.IsTransparent)
             {
-                if ((projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile) && enemy.AI != EnemyEssentials.EnemyAI.Bubble)
+                if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
                 {
                     enemy.Stun(projectile.StunDuration);
                     this.projectile.Returning = true;
                 }
-                else if ((this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile) && enemy.AI != EnemyEssentials.EnemyAI.Bubble)
+                else if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
                 {
                     this.projectile.Physics.StopMovement();
                 }

@@ -22,6 +22,7 @@
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
             this.IsKillable = false;
+            this.IsTransparent = true;
             this.DamageTimer = 0;
             this.CurrentState = new BlockEnemyIdleState(this);
             this.CurrentTint = LoZGame.Instance.DefaultTint;

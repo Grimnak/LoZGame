@@ -37,6 +37,8 @@
         private bool isSpawning = false;
 
         private bool isKillable = true;
+
+        private bool isTransparent = false;
       
         private EnemyAI Name = EnemyAI.None;
 
@@ -57,6 +59,8 @@
         public bool IsDead { get { return isDead; } set { isDead = value; } }
 
         public bool IsKillable { get { return isKillable; } set { isKillable = value; } }
+
+        public bool IsTransparent { get { return isTransparent; } set { isTransparent = value; } }
 
         public Physics Physics { get; set; }
 

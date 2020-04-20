@@ -17,6 +17,7 @@
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
             this.IsKillable = false;
+            this.IsTransparent = true;
             this.Damage = GameData.Instance.EnemyDamageConstants.BubbleDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.BubbleSpeed;
