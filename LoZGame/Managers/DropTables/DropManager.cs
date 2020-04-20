@@ -17,10 +17,10 @@
         }
 
         /// <summary>
-        /// Determines the drop based on the droptype in the droptable (item1) and the weight of that itemtype(item2)
+        /// Determines the drop based on the drop type in the droptable (item1) and the weight of that item type (item2).
         /// </summary>
-        /// <param name="dropTable">Thee drop table to sample and choose an item from</param>
-        /// <returns></returns>
+        /// <param name="dropTable">The drop table to sample and choose an item from.</param>
+        /// <returns>A tuple containing the item that dropped, its weight, the minimum amount of that item that can drop, and the maximum amount of that item that can drop.</returns>
         private Tuple<DropType, int, int, int> DetermineDrop(List<Tuple<DropType, int, int, int>> dropTable)
         {
             int totalWeight = 0;
