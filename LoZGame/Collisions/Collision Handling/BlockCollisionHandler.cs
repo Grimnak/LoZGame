@@ -66,6 +66,13 @@
                     this.SetBounds(this.block.Physics, player.Physics, collisionSide);
                 }
             }
+            else if (block is CrossableTile)
+            {
+                if (!(player.State is GrabbedState) && !player.Inventory.HasLadder)
+                {
+                    this.SetBounds(this.block.Physics, player.Physics, collisionSide);
+                }
+            }
         }
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)

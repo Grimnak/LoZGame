@@ -171,6 +171,11 @@
         private Texture2D MovableTile4Texture;
         private SpriteData movableTile4Data;
 
+        private Texture2D WaterTileLadderTexture;
+        private SpriteData waterTileLadderData;
+        private Texture2D LavaTileLadderTexture;
+        private SpriteData lavaTileLadderData;
+
         private static readonly BlockSpriteFactory instance = new BlockSpriteFactory();
 
         public static BlockSpriteFactory Instance
@@ -314,6 +319,9 @@
             this.MovableTile4Texture = content.Load<Texture2D>("movable_tile4");
 
             this.Lava5Texture = content.Load<Texture2D>("lava5");
+
+            this.WaterTileLadderTexture = content.Load<Texture2D>("ladder_on_water");
+            this.LavaTileLadderTexture = content.Load<Texture2D>("ladder_on_lava");
         }
 
         private void LoadData()
@@ -380,6 +388,9 @@
             this.movableTile4Data = new SpriteData(new Vector2(tileWidth, tileHeight), MovableTile4Texture, 1, 1);
 
             this.lava5Data = new SpriteData(new Vector2(tileWidth, tileHeight), Lava5Texture, 1, 1);
+
+            this.waterTileLadderData = new SpriteData(new Vector2(tileWidth, tileHeight), WaterTileLadderTexture, 1, 1);
+            this.lavaTileLadderData = new SpriteData(new Vector2(tileWidth, tileHeight), LavaTileLadderTexture, 1, 1);
         }
 
         public ISprite Stairs()
@@ -690,6 +701,16 @@
         public ISprite Lava5()
         {
             return new ObjectSprite(this.Lava5Texture, this.lava5Data);
+        }
+
+        public ISprite WaterTileLadder()
+        {
+            return new ObjectSprite(this.WaterTileLadderTexture, this.waterTileLadderData);
+        }
+
+        public ISprite LavaTileLadder()
+        {
+            return new ObjectSprite(this.LavaTileLadderTexture, this.lavaTileLadderData);
         }
     }
 }

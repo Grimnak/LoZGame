@@ -12,15 +12,11 @@ namespace LoZClone
         private const string WaterTile = "water_tile";
         private const string Lava5 = "lava5";
 
-        private enum LiquidType
-        {
-            Water,
-            Lava
-        }
-
-        private LiquidType type;
-
+        private const int maxLadderTime = 30;
+        private int ladderTime;
+        private bool playerCrossing;
         private ISprite sprite;
+        private ISprite crossingSprite;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Rectangle bounds;
         private BlockCollisionHandler blockCollisionHandler;
@@ -40,8 +36,11 @@ namespace LoZClone
             this.Physics = new Physics(location);
             this.spriteTint = Color.Gray;
             this.sprite = this.CreateCorrectSprite(name);
+            this.crossingSprite = this.CreateCorrectCrossingSprite(name);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
             this.Physics.Depth = GameData.Instance.RoomConstants.BlockTileDepth;
+            this.ladderTime = 30;
+            this.playerCrossing = false;
         }
 
         public ISprite CreateCorrectSprite(string name)
@@ -57,21 +56,40 @@ namespace LoZClone
             }
         }
 
+        public ISprite CreateCorrectCrossingSprite(string name)
+        {
+            switch (name)
+            {
+                case WaterTile:
+                    return BlockSpriteFactory.Instance.WaterTileLadder();
+                case Lava5:
+                    return BlockSpriteFactory.Instance.LavaTileLadder();
+                default:
+                    return BlockSpriteFactory.Instance.WaterTileLadder();
+            }
+        }
+
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
+            if (this.playerCrossing)
+            {
+                this.crossingSprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
+            }
+            else
+            {
+                this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
+            }
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-
-
-            // EDIT THIS
-
-
             if (otherCollider is IPlayer)
             {
                 this.blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                if (((IPlayer)otherCollider).Inventory.HasLadder)
+                {
+                    this.ladderTime = 0;
+                }
             }
             else if (otherCollider is IEnemy)
             {
@@ -85,6 +103,16 @@ namespace LoZClone
 
         public void Update()
         {
+            if (this.ladderTime < maxLadderTime)
+            {
+                this.ladderTime++;
+                this.playerCrossing = true;
+            }
+            else
+            {
+                this.playerCrossing = false;
+            }
+
             this.sprite.Update();
         }
     }
