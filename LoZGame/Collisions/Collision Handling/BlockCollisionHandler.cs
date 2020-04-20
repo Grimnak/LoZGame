@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using Microsoft.Xna.Framework;
 
@@ -9,6 +10,15 @@
         private IBlock block;
         private float xDirection;
         private float yDirection;
+
+        private List<EnemyEssentials.EnemyAI> collisionBlackList = new List<EnemyEssentials.EnemyAI>()
+        {
+            EnemyEssentials.EnemyAI.Keese,
+            EnemyEssentials.EnemyAI.Manhandla,
+            EnemyEssentials.EnemyAI.ManHandlaHead,
+            EnemyEssentials.EnemyAI.NoAI,
+            EnemyEssentials.EnemyAI.WallMaster
+        };
 
         public BlockCollisionHandler(IBlock block)
         {
@@ -60,7 +70,7 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(enemy is Keese || enemy is VireKeese || enemy is WallMaster))
+            if (!collisionBlackList.Contains(enemy.AI))
             {
                 this.SetBounds(this.block.Physics, enemy.Physics, collisionSide);
             }

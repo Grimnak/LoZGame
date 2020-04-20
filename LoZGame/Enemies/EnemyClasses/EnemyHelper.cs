@@ -15,6 +15,7 @@
             Firesnakehead,
             Gel,
             GleeockHead,
+            GleeockHeadOff,
             Gibdo,
             Goriya,
             Keese,
@@ -27,6 +28,7 @@
             WallMaster,
             Zol,
             Manhandla,
+            ManHandlaHead,
             NoSpawn,
             None,
             NoAI

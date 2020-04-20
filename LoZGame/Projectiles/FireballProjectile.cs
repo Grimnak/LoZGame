@@ -10,9 +10,6 @@ namespace LoZClone
 
     public class FireballProjectile : ProjectileEssentials, IProjectile
     {
-        private const int FrameChange = 15;
-        private const int MaxLife = 300;
-        private int lifeTime;
 
         public FireballProjectile(Physics physics)
         {
@@ -25,23 +22,22 @@ namespace LoZClone
             this.Width = ProjectileSpriteFactory.Instance.FireballWidth;
             this.Heigth = ProjectileSpriteFactory.Instance.FireballHeight;
             this.Physics.BoundsOffset = new Vector2(this.Width, this.Heigth) / 2;
-            this.Physics.Bounds = new Rectangle((this.Physics.Location - this.Physics.BoundsOffset).ToPoint(), new Point(Width, Heigth));
+            this.Physics.Bounds = new Rectangle((this.Physics.Location - this.Physics.BoundsOffset + new Vector2(4)).ToPoint(), new Point(Width, Heigth) - new Point(8));
             this.Physics.BoundsOffset *= 2;
+            this.Physics.BoundsOffset -= new Vector2(4);
             this.Physics.SetLocation();
             this.Sprite = ProjectileSpriteFactory.Instance.Fireball();
             this.IsExpired = false;
-            this.lifeTime = MaxLife;
             this.Damage = GameData.Instance.ProjectileDamageConstants.FireballDamage;
             this.Physics.Mass = GameData.Instance.ProjectileMassConstants.FireballMass;
         }
 
-        public override void Update()
+        public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            base.Update();
-            this.lifeTime--;
-            if (this.lifeTime <= 0)
+            base.OnCollisionResponse(otherCollider, collisionSide);
+            if (otherCollider is IBlock)
             {
-                this.IsExpired = true;
+                this.CollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
         }
     }

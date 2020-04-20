@@ -7,6 +7,7 @@ namespace LoZClone
     public class EnemyManager : IManager
     {
         private Dictionary<int, IEnemy> enemyList;
+        private List<IEnemy> newEnemies;
         private int enemyID;
         private readonly List<int> deletable;
 
@@ -17,9 +18,28 @@ namespace LoZClone
         public EnemyManager()
         {
             enemyList = new Dictionary<int, IEnemy>();
+            newEnemies = new List<IEnemy>();
             enemies = new List<IEnemy>();
             deletable = new List<int>();
             enemyID = 0;
+        }
+
+        private void AddNewEnemies()
+        {
+            foreach (IEnemy enemy in newEnemies)
+            {
+                this.Add(enemy);
+            }
+            newEnemies.Clear();
+        }
+
+        public void AddNew(IEnemy enemy)
+        {
+            // This check is necessary to ensure that enemies do not respawn if they were in the middle of their death sequence.
+            if (!enemy.IsDead)
+            {
+                newEnemies.Add(enemy);
+            }
         }
 
         public void Add(IEnemy enemy)
@@ -64,6 +84,7 @@ namespace LoZClone
                 enemy.Value.Update();
             }
 
+            AddNewEnemies();
             DropItemsEmptyRoom();
         }
 

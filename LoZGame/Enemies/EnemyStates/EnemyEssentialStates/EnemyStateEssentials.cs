@@ -26,6 +26,7 @@
             EnemyAI.Firesnakehead,
             EnemyAI.Manhandla,
             EnemyAI.GleeockHead,
+            EnemyAI.ManHandlaHead,
             EnemyAI.NoSpawn
         };
 
@@ -162,6 +163,7 @@
                 case EnemyAI.Manhandla:
                     UpdateManhandla();
                     break;
+                case EnemyAI.GleeockHeadOff:
                 case EnemyAI.GleeockHead:
                     UpdateGleeock();
                     break;

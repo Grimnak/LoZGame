@@ -21,7 +21,7 @@
             this.parent = body;
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GleeockHeadStateList);
-            this.Health = new HealthManager(1);
+            this.Health = new HealthManager(3 * GameData.Instance.EnemyDamageConstants.FullHeart);
             this.Physics = new Physics(neckBase.ToVector2());
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
             this.Physics.IsMoveable = false;
@@ -29,17 +29,17 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.DragonDamage;
+            this.Damage = GameData.Instance.EnemyDamageConstants.FullHeart + GameData.Instance.EnemyDamageConstants.HalfHeart;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.GleeokHeadSpeed;
             this.DamageTimer = 0;
             this.MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed / 4, LoZGame.Instance.UpdateSpeed);
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.HasChild = true;
+            this.HasChild = false;
             this.AI = EnemyAI.GleeockHead;
             this.IsSpawning = false;
             this.ApplyDamageMod();
             this.ApplyLargeWeightModPos();
-            this.ApplyLargeHealthMod();
+            this.ApplySmallHealthMod();
         }
 
         public override void Stun(int stunTime)
@@ -102,9 +102,14 @@
         public override void Update()
         {
             base.Update();
-            Console.WriteLine(this.Physics.MovementVelocity);
             this.CheckNeckReach();
             this.SetNeckLocations();
+            if (LoZGame.Instance.Difficulty > 2 && this.IsDead && !this.HasChild)
+            {
+                this.HasChild = true;
+                IEnemy headOff = new GleeokHeadOff(this.parent, this.Physics.Bounds.Location);
+                LoZGame.Instance.GameObjects.Enemies.AddNew(headOff);
+            }
         }
 
         public override ISprite CreateCorrectSprite()

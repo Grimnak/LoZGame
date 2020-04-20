@@ -2,6 +2,9 @@
 {
     public struct EnemyDamageConstants
     {
+        private const int quarterHeart = 1;
+        private const int halfHeart = 2;
+        private const int fullHeart = 4;
         private const int StalfosDmg = 2;
         private const int KeeseDmg = 2;
         private const int RopeDmg = 2;
@@ -59,5 +62,13 @@
         public int VireDamage => VireDmg;
 
         public int GibdoDamage => GibdoDmg;
+
+        public int QuarterHeart => quarterHeart;
+
+        public int HalfHeart => halfHeart;
+
+        public int ThreeQuarterHeart => halfHeart + quarterHeart;
+
+        public int FullHeart => fullHeart;
     }
 }
