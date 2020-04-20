@@ -9,14 +9,14 @@
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.DarknutStateList);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.DarknutHealth);
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.RedDarknutHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.DarknutMass;
             this.CurrentState = new SpawnEnemyState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.DarknutDamage;
+            this.Damage = GameData.Instance.EnemyDamageConstants.RedDarknutDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DarknutSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
@@ -49,7 +49,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            return EnemySpriteFactory.Instance.CreateDarknutSprite(this.Physics.CurrentDirection);
+            return EnemySpriteFactory.Instance.CreateRedDarknutSprite(this.Physics.CurrentDirection);
         }
 
         private bool Blocked(ICollider otherCollider)

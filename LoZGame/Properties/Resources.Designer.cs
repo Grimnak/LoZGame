@@ -63,6 +63,15 @@ namespace LoZClone.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        public static System.IO.UnmanagedMemoryStream CreditsTheme {
+            get {
+                return ResourceManager.GetStream("CreditsTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         public static System.IO.UnmanagedMemoryStream dungeon_song {
             get {
                 return ResourceManager.GetStream("dungeon_song", resourceCulture);
@@ -228,6 +237,15 @@ namespace LoZClone.Properties {
         public static System.IO.UnmanagedMemoryStream LOZ_Sword_Slash {
             get {
                 return ResourceManager.GetStream("LOZ_Sword_Slash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream SpartanLaser_mixdown {
+            get {
+                return ResourceManager.GetStream("SpartanLaser_mixdown", resourceCulture);
             }
         }
         

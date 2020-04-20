@@ -52,7 +52,20 @@
 
         public override void Update()
         {
-            if (LoZGame.Instance.GameObjects.Enemies.EnemyList.Count == 0)
+            int killableEnemies = 0;
+
+            foreach (IEnemy enemy in LoZGame.Instance.GameObjects.Enemies.EnemyList)
+            {
+                if (enemy.IsKillable)
+                {
+                    killableEnemies++;
+                }
+                if (enemy.IsDead)
+                {
+                    killableEnemies--;
+                }
+            }
+            if (killableEnemies <= 0)
             {
                 Open();
             }

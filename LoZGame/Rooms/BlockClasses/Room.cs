@@ -191,6 +191,9 @@
                 case "Stalfos":
                     this.enemies.Add(new Stalfos(location));
                     break;
+                case "Gibdo":
+                    this.enemies.Add(new Gibdo(location));
+                    break;
                 case "WallMaster":
                     this.enemies.Add(new WallMaster(location));
                     break;
@@ -205,6 +208,9 @@
                     break;
                 case "Darknut":
                     this.enemies.Add(new RedDarknut(location));
+                    break;
+                case "BlueDarknut":
+                    this.enemies.Add(new BlueDarknut(location));
                     break;
                 case "Vire":
                     this.enemies.Add(new Vire(location));

@@ -18,5 +18,10 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)size.X, (int)size.Y);
             this.Expired = false;
         }
+
+        public override void Update()
+        {
+            this.Sprite.Update();
+        }
     }
 }

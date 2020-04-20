@@ -32,6 +32,12 @@
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
+        public override void CreditsScreen()
+        {
+            SoundFactory.Instance.StopAll();
+            LoZGame.Instance.GameState = new CreditsScreenState();
+        }
+
         /// <inheritdoc></inheritdoc>
         public override void Update()
         {
@@ -65,7 +71,7 @@
                 }
                 else
                 {
-                    LoZGame.Instance.GameState.TitleScreen();
+                    LoZGame.Instance.GameState.CreditsScreen();
                 }
             }
 

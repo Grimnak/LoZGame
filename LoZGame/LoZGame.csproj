@@ -104,9 +104,11 @@
     <Compile Include="Enemies\EnemyClasses\FireSnakeSegment.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeHead.cs" />
     <Compile Include="Enemies\EnemyClasses\BlueGoriya.cs" />
+    <Compile Include="Enemies\EnemyClasses\BlueDarknut.cs" />
     <Compile Include="Enemies\EnemyClasses\RedDarknut.cs" />
     <Compile Include="Enemies\EnemyClasses\RedGoriya.cs" />
     <Compile Include="Enemies\EnemyClasses\Bubble.cs" />
+    <Compile Include="Enemies\EnemyClasses\Gibdo.cs" />
     <Compile Include="Enemies\EnemyClasses\Vire.cs" />
     <Compile Include="Enemies\EnemyClasses\VireKeese.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyEssentials.cs" />
@@ -155,6 +157,7 @@
     <Compile Include="Enemies\EnemyStates\VireStates\SpawnVireState.cs" />
     <Compile Include="Enemies\EnemyStates\VireStates\UpMovingVireState.cs" />
     <Compile Include="Enemies\EnemyStates\VireStates\VireEssentials.cs" />
+    <Compile Include="GameState\CreditsScreenState.cs" />
     <Compile Include="GameState\GameStateEssentials.cs" />
     <Compile Include="GameState\UnpauseState.cs" />
     <Compile Include="GameState\PauseState.cs" />
@@ -163,6 +166,11 @@
     <Compile Include="Managers\DropTables\DropManager.cs" />
     <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Players\PlayerClasses\LinkHelper.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Rooms\BlockClasses\DoorHelper.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\DoorEssentials.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
@@ -270,12 +278,6 @@
     <Compile Include="Projectiles\SwordBeamExplosion.cs" />
     <Compile Include="Projectiles\SwordProjectile.cs" />
     <Compile Include="Projectiles\SwordBeamProjectile.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="Rooms\BlockClasses\Door.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\BombedDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\CosmeticDoorState.cs" />
@@ -390,6 +392,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <Content Include="Util\Audio\Resources\CreditsTheme.wav" />
+    <Content Include="Util\Audio\Resources\SpartanLaser_mixdown.wav" />
     <None Include="Util\Audio\Resources\triforce_tune.wav" />
     <None Include="Util\Audio\Resources\dungeon_song.wav" />
     <None Include="Util\Audio\Resources\title_song.wav" />
@@ -481,9 +485,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
