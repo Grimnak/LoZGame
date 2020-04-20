@@ -130,6 +130,19 @@
             { StateType.MoveSouth, 1 },
             { StateType.MoveEast, 1 },
             { StateType.MoveWest, 1 }
+
+        private static Dictionary<StateType, int> manhandlaBodyStateList = new Dictionary<StateType, int>()
+        {
+            {StateType.MoveNorthEast, 1 },
+            {StateType.MoveNorthWest, 1 },
+            {StateType.MoveSouthEast, 1 },
+            {StateType.MoveSouthWest, 1 }
+        }; 
+        
+        private static Dictionary<StateType, int> manhandlaHeadStateList = new Dictionary<StateType, int>()
+        {
+            {StateType.Attack, 1 },
+            {StateType.Idle, 4 }
         };
 
         public Dictionary<StateType, int> OldManStateList => oldManStateList;
@@ -161,5 +174,9 @@
         public Dictionary<StateType, int> VireStatelist => vireStateList;
 
         public Dictionary<StateType, int> BubbleStatelist => bubbleStateList;
+
+        public Dictionary<StateType, int> ManhandlaBodyStateList => manhandlaBodyStateList;
+
+        public Dictionary<StateType, int> ManhandlaHeadStateList => manhandlaHeadStateList;
     }
 }

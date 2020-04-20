@@ -7,6 +7,9 @@ namespace LoZClone
         private const float MaxKeeseSpd = 5;
         private const float KeeseAccel = .025f;
         private const float KeeseAccelMax = 5;
+        private const float MinManSpd = 0.5f;
+        private const float MaxManSpd = 1.5f;
+        private const float ManAccel = .005f;
         private const float RopeSpd = 2.5f;
         private const float RopeAttackSpd = 3.5f;
         private const float GelSpd = 3;
@@ -71,5 +74,11 @@ namespace LoZClone
         public float VireSpeed => VireSpd;
 
         public float BubbleSpeed => BubbleSpd;
+      
+        public float ManhandlaMinSpeed => MinManSpd;
+
+        public float ManhandlaMaxSpeed => MaxManSpd;
+
+        public float ManhandlaAcceleration => ManAccel;
     }
 }

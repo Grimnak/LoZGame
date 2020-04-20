@@ -6,7 +6,7 @@
 
     public partial class EnemyEssentials
     {
-        public enum EnemyNames
+        public enum EnemyAI
         {
             Bubble,
             Darknut,
@@ -24,6 +24,8 @@
             VireKeese,
             WallMaster,
             Zol,
+            Manhandla,
+            NoSpawn,
             None,
             NoAI
         }
@@ -35,8 +37,8 @@
         private bool isSpawning = false;
 
         private bool isKillable = true;
-
-        private EnemyNames Name = EnemyNames.None;
+      
+        private EnemyAI Name = EnemyAI.None;
 
         public Dictionary<RandomStateGenerator.StateType, int> States { get; set; }
 
@@ -75,7 +77,7 @@
             set { minMaxWander = value; }
         }
 
-        public EnemyNames EnemyName
+        public EnemyAI AI
         {
             get { return Name; }
             set { Name = value; }

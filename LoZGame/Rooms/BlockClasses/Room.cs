@@ -47,7 +47,8 @@
                 if (this.oldman)
                 {
                     this.Background = DungeonSpriteFactory.Instance.DungeonHole();
-                } else
+                } 
+                else
                 {
                     this.Background = DungeonSpriteFactory.Instance.Dungeon();
                 }
@@ -210,6 +211,9 @@
                     break;
                 case "Bubble":
                     this.enemies.Add(new Bubble(location));
+                    break;
+                case "Manhandla":
+                    this.enemies.Add(new ManhandlaBody(location));
                     break;
                 default:
                     break;

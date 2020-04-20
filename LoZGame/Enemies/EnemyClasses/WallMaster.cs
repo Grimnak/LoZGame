@@ -21,7 +21,7 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.WallMasterSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.EnemyName = EnemyNames.WallMaster;
+            this.AI = EnemyAI.WallMaster;
             this.ApplyDamageMod();
             this.ApplySmallSpeedMod();
             this.ApplyLargeWeightModPos();

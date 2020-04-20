@@ -20,8 +20,7 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.GelSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.CurrentState = new SpawnEnemyState(this);
-            this.EnemyName = EnemyNames.Gel;
-            this.MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed / 2, LoZGame.Instance.UpdateSpeed * 2);
+            this.AI = EnemyAI.Gel;
             this.ApplyDamageMod();
             this.ApplySmallSpeedMod();
             this.ApplySmallWeightModPos();

@@ -396,14 +396,14 @@
       </rrow>
       <rrow idx="2">
         <tile type="block" idx="1">movable_square</tile>
-        <tile type="block" idx="4">turqoise_statue_right</tile>
-        <tile type="block" idx="7">turqoise_statue_left</tile>
+        <tile type="block" idx="4">turquoise_statue_right</tile>
+        <tile type="block" idx="7">turquoise_statue_left</tile>
         <tile type="block" idx="10">movable_square</tile>
       </rrow>
       <rrow idx="3">
         <tile type="block" idx="1">movable_square</tile>
-        <tile type="block" idx="3">turqoise_statue_right</tile>
-        <tile type="block" idx="8">turqoise_statue_left</tile>
+        <tile type="block" idx="3">turquoise_statue_right</tile>
+        <tile type="block" idx="8">turquoise_statue_left</tile>
         <tile type="block" idx="10">movable_square</tile>
       </rrow>
       <rrow idx="4">

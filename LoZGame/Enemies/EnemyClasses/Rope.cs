@@ -20,7 +20,7 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.RopeSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.EnemyName = EnemyNames.Rope;
+            this.AI = EnemyAI.Rope;
             this.ApplyDamageMod();
             this.ApplySmallSpeedMod();
             this.ApplySmallWeightModNeg();

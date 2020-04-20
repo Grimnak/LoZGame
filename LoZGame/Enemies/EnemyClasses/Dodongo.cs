@@ -21,7 +21,7 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DodongoSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.EnemyName = EnemyNames.Dodongo;
+            this.AI = EnemyAI.Dodongo;
             this.ApplyDamageMod();
             this.ApplySmallSpeedMod();
             this.ApplyLargeWeightModPos();

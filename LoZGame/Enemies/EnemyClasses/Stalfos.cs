@@ -20,7 +20,7 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.StalfosSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.EnemyName = EnemyNames.Stalfos;
+            this.AI = EnemyAI.Stalfos;
             this.ApplyDamageMod();
             this.ApplySmallSpeedMod();
             this.ApplySmallWeightModPos();

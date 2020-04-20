@@ -62,7 +62,6 @@
             blockManager.Draw();
             itemManager.Draw();
             entityManager.Draw();
-            enemyManager.Draw();
             doorManager.Draw();
         }
 

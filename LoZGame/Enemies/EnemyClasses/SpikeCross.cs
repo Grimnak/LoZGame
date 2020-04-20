@@ -26,7 +26,7 @@
             this.Damage = GameData.Instance.EnemyDamageConstants.SpikeCrossDamage;
             this.DamageTimer = 0;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.EnemyName = EnemyNames.SpikeCross;
+            this.AI = EnemyAI.SpikeCross;
             this.ApplyDamageMod();
             this.ApplySmallSpeedMod();
             this.ApplyLargeWeightModPos();

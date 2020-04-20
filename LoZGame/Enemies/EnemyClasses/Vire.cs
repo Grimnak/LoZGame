@@ -29,7 +29,7 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.VireSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.EnemyName = EnemyNames.Vire;
+            this.AI = EnemyAI.Vire;
             this.ApplyDamageMod();
             this.ApplySmallSpeedMod();
             this.ApplySmallWeightModPos();

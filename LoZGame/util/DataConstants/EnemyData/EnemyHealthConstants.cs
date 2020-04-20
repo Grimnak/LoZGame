@@ -19,6 +19,8 @@
         private const int DarknutHP = 8;
         private const int VireHP = 12;
         private const int BubbleHP = 1;
+        private const int manHeadHP = 8;
+        private const int manBodyHP = 1;
 
         public int StalfosHealth => StalfosHP;
 
@@ -53,5 +55,9 @@
         public int BubbleHealth => BubbleHP;
 
         public int VireHealth => VireHP;
+
+        public int ManhandlaBodyHP => manBodyHP;
+
+        public int ManhandlaHeadHP => manHeadHP;
     }
 }
