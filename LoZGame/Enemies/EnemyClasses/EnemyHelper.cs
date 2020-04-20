@@ -14,6 +14,7 @@
             Dragon,
             Firesnakehead,
             Gel,
+            Gibdo,
             Goriya,
             Keese,
             Oldman,

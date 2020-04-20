@@ -28,6 +28,7 @@ namespace LoZClone
         private const float DarknutSpd = 1.5f;
         private const float VireSpd = 2;
         private const float BubbleSpd = 3;
+        private const float GibdoSpd = 2;
 
         public float StalfosSpeed => StalfosSpd;
 
@@ -80,5 +81,7 @@ namespace LoZClone
         public float ManhandlaMaxSpeed => MaxManSpd;
 
         public float ManhandlaAcceleration => ManAccel;
+
+        public float GibdoSpeed => GibdoSpd;
     }
 }
