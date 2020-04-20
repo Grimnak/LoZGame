@@ -16,7 +16,7 @@
             this.parent = body;
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.ManhandlaHeadStateList);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ManhandlaHeadHP);
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ManhandlaHeadHealth);
             this.Physics = new Physics(body.Physics.Bounds.Center.ToVector2());
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
             this.Physics.IsMoveable = false;

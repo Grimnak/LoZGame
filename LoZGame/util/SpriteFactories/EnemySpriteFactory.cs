@@ -380,7 +380,7 @@
             this.manhandlaHeadCloseUpTexture = content.Load<Texture2D>("man_head_up_closed");
 
             this.stalfos = content.Load<Texture2D>("stalfos");
-            // this.gibdo = content.Load<Texture2D>("gibdo");
+            this.gibdo = content.Load<Texture2D>("gibdo");
 
             this.downGoriya = content.Load<Texture2D>("redGoriyaDown");
             this.upGoriya = content.Load<Texture2D>("redGoriyaUp");
@@ -425,10 +425,10 @@
             this.leftRedDarknut = content.Load<Texture2D>("red_darknut_left");
             this.rightRedDarknut = content.Load<Texture2D>("red_darknut_right");
 
-            //this.upBlueDarknut = content.Load<Texture2D>("blue_darknut_up");
-            //this.downBlueDarknut = content.Load<Texture2D>("blue_darknut_down");
-            //this.leftBlueDarknut = content.Load<Texture2D>("blue_darknut_left");
-            //this.rightBlueDarknut = content.Load<Texture2D>("blue_darknut_right");
+            this.upBlueDarknut = content.Load<Texture2D>("blue_darknut_up");
+            this.downBlueDarknut = content.Load<Texture2D>("blue_darknut_down");
+            this.leftBlueDarknut = content.Load<Texture2D>("blue_darknut_left");
+            this.rightBlueDarknut = content.Load<Texture2D>("blue_darknut_right");
 
             this.oldMan = content.Load<Texture2D>("oldMan");
             this.angryOldMan = content.Load<Texture2D>("angryOldMan");

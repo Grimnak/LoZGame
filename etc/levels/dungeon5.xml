@@ -5,12 +5,12 @@
     </room>
     <room exists="True" oldman="False" basement="False" idx="1">
       <enemies>
-        <enemy X="1" Y="1">Armos2</enemy>
-        <enemy X="3" Y="2">Armos2</enemy>
-        <enemy X="5" Y="2">Armos2</enemy>
-        <enemy X="1" Y="4">Armos2</enemy>
-        <enemy X="3" Y="4">Armos2</enemy>
-        <enemy X="5" Y="4">Armos2</enemy>
+        <enemy X="1" Y="1">BlueDarknut</enemy>
+        <enemy X="3" Y="2">BlueDarknut</enemy>
+        <enemy X="5" Y="2">BlueDarknut</enemy>
+        <enemy X="1" Y="4">BlueDarknut</enemy>
+        <enemy X="3" Y="4">BlueDarknut</enemy>
+        <enemy X="5" Y="4">BlueDarknut</enemy>
       </enemies>
       <doors>
         <door loc="E">locked</door>
@@ -807,11 +807,11 @@
   <drow idx="6">
     <room exists="True" oldman="False" basement="False" idx="0">
       <enemies>
-        <enemy X="7" Y="0">Armos2</enemy>
-        <enemy X="3" Y="1">Armos2</enemy>
-        <enemy X="1" Y="2">Armos2</enemy>
-        <enemy X="2" Y="4">Armos2</enemy>
-        <enemy X="0" Y="5">Armos2</enemy>
+        <enemy X="7" Y="0">BlueDarknut</enemy>
+        <enemy X="3" Y="1">BlueDarknut</enemy>
+        <enemy X="1" Y="2">BlueDarknut</enemy>
+        <enemy X="2" Y="4">BlueDarknut</enemy>
+        <enemy X="0" Y="5">BlueDarknut</enemy>
       </enemies>
       <doors>
         <door loc="E">hidden</door>
