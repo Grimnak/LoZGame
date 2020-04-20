@@ -164,18 +164,18 @@
       <rrow idx="1">
       </rrow>
       <rrow idx="2">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="5">lava5</tile>
-        <tile type="block" idx="6">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
       <rrow idx="3">
       </rrow>
@@ -322,40 +322,40 @@
       <rrow idx="0">
       </rrow>
       <rrow idx="1">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="5">lava5</tile>
-        <tile type="block" idx="6">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="2">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="4">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="5">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="5">lava5</tile>
-        <tile type="block" idx="6">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="6">
       </rrow>
@@ -379,38 +379,38 @@
       <rrow idx="0">
       </rrow>
       <rrow idx="1">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="2">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="5">lava5</tile>
-        <tile type="block" idx="6">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="4">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="5">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="6">
       </rrow>
@@ -468,64 +468,64 @@
         <door loc="S">unlocked</door>
       </doors>
       <rrow idx="0">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
       <rrow idx="1">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
       <rrow idx="2">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="6">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
       </rrow>
       <rrow idx="4">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="5">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
       <rrow idx="5">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
       <rrow idx="6">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
     </room>
   </drow>
@@ -545,60 +545,60 @@
       <rrow idx="0">
       </rrow>
       <rrow idx="1">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="5">lava5</tile>
-        <tile type="block" idx="6">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="2">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="5">lava5</tile>
-        <tile type="block" idx="6">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="4">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="5">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="6">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
     </room>
     <room exists="True" oldman="False" basement="False" idx="3">
@@ -620,38 +620,38 @@
       <rrow idx="0">
       </rrow>
       <rrow idx="1">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="2">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="5">lava5</tile>
-        <tile type="block" idx="6">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="4">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="5">
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
       </rrow>
       <rrow idx="6">
       </rrow>
@@ -676,25 +676,25 @@
         <door loc="S">unlocked</door>
       </doors>
       <rrow idx="0">
-        <tile type="block" idx="8">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
       </rrow>
       <rrow idx="1">
-        <tile type="block" idx="8">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
       </rrow>
       <rrow idx="2">
-        <tile type="block" idx="8">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="block" idx="8">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
       </rrow>
       <rrow idx="4">
-        <tile type="block" idx="8">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
       </rrow>
       <rrow idx="5">
-        <tile type="block" idx="8">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
       </rrow>
       <rrow idx="6">
-        <tile type="block" idx="8">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
       </rrow>
     </room>
     <room exists="True" oldman="False" basement="False" idx="2">
@@ -743,64 +743,64 @@
         <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
       <rrow idx="1">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
       <rrow idx="2">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="6">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
       </rrow>
       <rrow idx="4">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="5">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
       <rrow idx="5">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
       <rrow idx="6">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
     </room>
   </drow>
@@ -892,18 +892,18 @@
       <rrow idx="1">
       </rrow>
       <rrow idx="2">
-        <tile type="block" idx="0">lava5</tile>
-        <tile type="block" idx="1">lava5</tile>
-        <tile type="block" idx="2">lava5</tile>
-        <tile type="block" idx="3">lava5</tile>
-        <tile type="block" idx="4">lava5</tile>
-        <tile type="block" idx="5">lava5</tile>
-        <tile type="block" idx="6">lava5</tile>
-        <tile type="block" idx="7">lava5</tile>
-        <tile type="block" idx="8">lava5</tile>
-        <tile type="block" idx="9">lava5</tile>
-        <tile type="block" idx="10">lava5</tile>
-        <tile type="block" idx="11">lava5</tile>
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
       </rrow>
       <rrow idx="3">
       </rrow>

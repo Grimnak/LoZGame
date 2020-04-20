@@ -173,6 +173,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Rooms\BlockClasses\DoorHelper.cs" />
+    <Compile Include="Rooms\BlockClasses\Tiles\CrossableTile.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\DoorEssentials.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
     <Compile Include="Util\DataConstants\CollisionData\CollisionConstants.cs" />
