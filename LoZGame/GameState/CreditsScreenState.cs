@@ -12,11 +12,13 @@ namespace LoZClone
     {
         private readonly ISprite sprite;
         private readonly Color spriteTint = LoZGame.Instance.DefaultTint;
-        private int count = 0;
-        private int MAX = 1800;
+        private int count;
+        private int MAX = GameData.Instance.GameStateDataConstants.CreditsMAX;
 
         public CreditsScreenState()
         {
+            count = 0;
+            SoundFactory.Instance.PlayCreditsTune();
             this.sprite = ScreenSpriteFactory.Instance.CreditsScreen();
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
@@ -26,6 +28,7 @@ namespace LoZClone
         public override void TitleScreen()
         {
             // Can perform a hard reset while in this state already.
+            SoundFactory.Instance.StopAll();
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 

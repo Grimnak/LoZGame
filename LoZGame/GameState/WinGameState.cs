@@ -35,7 +35,6 @@
         public override void CreditsScreen()
         {
             SoundFactory.Instance.StopAll();
-            SoundFactory.Instance.PlayTitleSong();
             LoZGame.Instance.GameState = new CreditsScreenState();
         }
 

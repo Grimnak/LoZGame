@@ -5,7 +5,7 @@
         private const float doorFloorDepth = 0.02f;
 
         private const int CloseInventoryTranSpeed = 5;
-
+        private const int MaxCreditsTime = 3000;
         private const int DeathTimerMaximum = 85;
         private const int GameOverT = 500;
 
@@ -55,5 +55,7 @@
         public float DoorFloorDepth => doorFloorDepth;
 
         public int PlayerTransitionMaxDistance => playerTransitionMaxDistance;
+
+        public int CreditsMAX => MaxCreditsTime;
     }
 }

@@ -162,6 +162,11 @@
     <Compile Include="Managers\DropTables\DropManager.cs" />
     <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Players\PlayerClasses\LinkHelper.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Rooms\BlockClasses\DoorHelper.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\DoorEssentials.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
@@ -269,12 +274,6 @@
     <Compile Include="Projectiles\SwordBeamExplosion.cs" />
     <Compile Include="Projectiles\SwordProjectile.cs" />
     <Compile Include="Projectiles\SwordBeamProjectile.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="Rooms\BlockClasses\Door.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\BombedDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\CosmeticDoorState.cs" />
@@ -389,6 +388,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <Content Include="Util\Audio\Resources\CreditsTheme.wav" />
+    <Content Include="Util\Audio\Resources\SpartanLaser_mixdown.wav" />
     <None Include="Util\Audio\Resources\triforce_tune.wav" />
     <None Include="Util\Audio\Resources\dungeon_song.wav" />
     <None Include="Util\Audio\Resources\title_song.wav" />
@@ -480,9 +481,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
