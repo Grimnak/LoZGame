@@ -14,6 +14,11 @@
         void TitleScreen();
 
         /// <summary>
+        /// Game state goes to credits screen.
+        /// </summary>
+        void CreditsScreen();
+
+        /// <summary>
         /// Game state goes to game in progress.
         /// </summary>
         void PlayGame();

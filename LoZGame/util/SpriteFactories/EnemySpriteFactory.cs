@@ -380,7 +380,7 @@
             this.manhandlaHeadCloseUpTexture = content.Load<Texture2D>("man_head_up_closed");
 
             this.stalfos = content.Load<Texture2D>("stalfos");
-            //this.gibdo = content.Load<Texture2D>("gibdo");
+            // this.gibdo = content.Load<Texture2D>("gibdo");
 
             this.downGoriya = content.Load<Texture2D>("redGoriyaDown");
             this.upGoriya = content.Load<Texture2D>("redGoriyaUp");
