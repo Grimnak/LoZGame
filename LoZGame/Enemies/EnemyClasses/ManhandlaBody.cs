@@ -36,7 +36,6 @@
             this.spawnedChildren = false;
             this.AI = EnemyAI.Manhandla;
             this.MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed, LoZGame.Instance.UpdateSpeed * 2);
-            this.IsSpawning = false;
             test = false;
         }
 
