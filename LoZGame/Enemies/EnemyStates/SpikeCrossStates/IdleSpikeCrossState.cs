@@ -4,79 +4,39 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class IdleSpikeCrossState : IEnemyState
+    public class IdleSpikeCrossState : SpikeCrossEssentials, IEnemyState
     {
-        private readonly SpikeCross spikeCross;
-        private readonly ISprite sprite;
 
         public IdleSpikeCrossState(SpikeCross spikeCross)
         {
             this.spikeCross = spikeCross;
             this.spikeCross.Physics.StopVelocity();
-            this.sprite = EnemySpriteFactory.Instance.CreateSpikeCrossSprite();
             this.spikeCross.CurrentState = this;
         }
 
-        public void MoveLeft()
+        public override void MoveLeft()
         {
             this.spikeCross.CurrentState = new HorizontalSpikeCrossState(this.spikeCross);
         }
 
-        public void MoveRight()
+        public override void MoveRight()
         {
             this.spikeCross.CurrentState = new HorizontalSpikeCrossState(this.spikeCross);
         }
 
-        public void MoveUp()
+        public override void MoveUp()
         {
             this.spikeCross.CurrentState = new VerticalSpikeCrossState(this.spikeCross);
         }
 
-        public void MoveDown()
+        public override void MoveDown()
         {
             this.spikeCross.CurrentState = new VerticalSpikeCrossState(this.spikeCross);
-        }
-
-        public void MoveUpLeft()
-        {
-        }
-
-        public void MoveUpRight()
-        {
-        }
-
-        public void MoveDownLeft()
-        {
-        }
-
-        public void MoveDownRight()
-        {
-        }
-
-        public void Attack()
-        {
-        }
-
-        public void Die()
-        {
-        }
-
-        public void Stop()
-        {
-        }
-
-        public void Spawn()
-        {
-        }
-
-        public void Stun(int stunTime)
-        {
         }
 
         public void Update()
         {
             this.CheckForLink();
-            this.sprite.Update();
         }
 
         private void CheckForLink()
@@ -111,11 +71,6 @@
 
                 }
             }
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.spikeCross.Physics.Location, this.spikeCross.CurrentTint, this.spikeCross.Physics.Depth);
         }
     }
 }

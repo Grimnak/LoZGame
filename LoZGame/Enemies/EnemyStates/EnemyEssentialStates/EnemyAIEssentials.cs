@@ -24,6 +24,15 @@
             return new Vector2(newX, newY);
         }
 
+        public void HandleJump()
+        {
+            this.Enemy.Physics.HandleJump();
+            if (this.Enemy.Physics.IsJumping == false)
+            {
+                this.Enemy.Physics.MovementVelocity = Vector2.Zero;
+            }
+        }
+
         /// <summary>
         /// This provides the enemy with another state to enter within a certain time interval.
         /// </summary>
@@ -160,6 +169,107 @@
             else
             {
                 this.Enemy.States.Add(StateType.MoveSouthWest, 1);
+            }
+        }
+
+        /// <summary>
+        /// This makes an enemy prefer to jump in the cardinal direction (north, south, east, or west) that is closest to the player's current location.
+        /// </summary>
+        /// <param name="weight">The affects how often the enemy will move toward the player.</param>
+        public void FavorPlayerJumpCardinal(int weight)
+        {
+            if (weight < 1)
+            {
+                weight = 1;
+            }
+            this.Enemy.States.Remove(StateType.JumpEast);
+            this.Enemy.States.Remove(StateType.JumpNorth);
+            this.Enemy.States.Remove(StateType.JumpWest);
+            this.Enemy.States.Remove(StateType.JumpSouth);
+            Vector2 toPlayer = UnitVectorToPlayer(this.Enemy.Physics.Bounds.Center.ToVector2());
+            if (toPlayer.X > 1 - MathHelper.PiOver4)
+            {
+                this.Enemy.States.Add(StateType.JumpEast, weight);
+            }
+            else
+            {
+                this.Enemy.States.Add(StateType.JumpEast, 1);
+            }
+            if (toPlayer.X < -1 + MathHelper.PiOver4)
+            {
+                this.Enemy.States.Add(StateType.JumpWest, weight);
+            }
+            else
+            {
+                this.Enemy.States.Add(StateType.JumpWest, 1);
+            }
+            if (toPlayer.Y > 1 - MathHelper.PiOver4)
+            {
+                this.Enemy.States.Add(StateType.JumpSouth, weight);
+            }
+            else
+            {
+                this.Enemy.States.Add(StateType.JumpSouth, 1);
+            }
+
+            if (toPlayer.Y < -1 + MathHelper.PiOver4)
+            {
+                this.Enemy.States.Add(StateType.JumpNorth, weight);
+            }
+            else
+            {
+                this.Enemy.States.Add(StateType.JumpNorth, 1);
+            }
+        }
+
+        /// <summary>
+        /// This makes an enemy prefer to jump in the diagonal direction (north, south, east, or west) that is closest to the player's current location.
+        /// </summary>
+        /// <param name="weight">The affects how often the enemy will move toward the player.</param>
+        public void FavorPlayerJumpDiagonal(int weight)
+        {
+            if (weight < 1)
+            {
+                weight = 1;
+            }
+            this.Enemy.States.Remove(StateType.JumpNorthEast);
+            this.Enemy.States.Remove(StateType.JumpNorthWest);
+            this.Enemy.States.Remove(StateType.JumpSouthEast);
+            this.Enemy.States.Remove(StateType.JumpSouthWest);
+            Vector2 toPlayer = UnitVectorToPlayer(this.Enemy.Physics.Bounds.Center.ToVector2());
+            toPlayer.X *= -1;
+            if (toPlayer.X > 0 && toPlayer.Y < 0)
+            {
+                this.Enemy.States.Add(StateType.JumpNorthEast, weight);
+            }
+            else
+            {
+                this.Enemy.States.Add(StateType.JumpNorthEast, 1);
+            }
+            if (toPlayer.X < 0 && toPlayer.Y < 0)
+            {
+                this.Enemy.States.Add(StateType.JumpNorthWest, weight);
+            }
+            else
+            {
+                this.Enemy.States.Add(StateType.JumpNorthWest, 1);
+            }
+            if (toPlayer.X > 0 && toPlayer.Y > 0)
+            {
+                this.Enemy.States.Add(StateType.JumpSouthEast, weight);
+            }
+            else
+            {
+                this.Enemy.States.Add(StateType.JumpSouthEast, 1);
+            }
+
+            if (toPlayer.X < 0 && toPlayer.Y > 0)
+            {
+                this.Enemy.States.Add(StateType.JumpSouthWest, weight);
+            }
+            else
+            {
+                this.Enemy.States.Add(StateType.JumpSouthWest, 1);
             }
         }
 

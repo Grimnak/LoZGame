@@ -20,6 +20,22 @@
 
         void MoveDownRight();
 
+        void JumpLeft();
+
+        void JumpRight();
+
+        void JumpUp();
+
+        void JumpDown();
+
+        void JumpUpLeft();
+
+        void JumpDownLeft();
+
+        void JumpUpRight();
+
+        void JumpDownRight();
+
         void Attack();
 
         void Stop();
