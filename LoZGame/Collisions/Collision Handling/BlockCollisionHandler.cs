@@ -68,7 +68,7 @@
             }
             else if (block is CrossableTile)
             {
-                if (!(player.State is GrabbedState) && !player.Inventory.HasLadder)
+                if (!(player.State is GrabbedState) && !player.Inventory.HasLadder && player.LadderTimer > 0)
                 {
                     this.SetBounds(this.block.Physics, player.Physics, collisionSide);
                 }

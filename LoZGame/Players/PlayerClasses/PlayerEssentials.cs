@@ -13,6 +13,8 @@
 
         public Color CurrentTint { get; set; }
 
+        public int LadderTimer { get; set; }
+
         public float MoveSpeed { get; set; }
 
         public int DamageTimer { get; set; }
@@ -73,6 +75,14 @@
             }
         }
 
+        public void HandleLadder()
+        {
+            if (this.LadderTimer > 0)
+            {
+                this.LadderTimer--;
+            }
+        }
+
         public void Idle()
         {
             this.State.Idle();
@@ -123,6 +133,7 @@
             this.Physics.SetDepth();
             this.HandleDamage();
             this.HandleDisarm();
+            this.HandleLadder();
             this.Physics.Move();
             this.State.Update();
         }
