@@ -148,33 +148,33 @@
 
         public Dictionary<StateType, int> OldManStateList => oldManStateList;
 
-        public Dictionary<StateType, int> DarknutStatelist => darknutStateList;
+        public Dictionary<StateType, int> DarknutStateList => darknutStateList;
 
-        public Dictionary<StateType, int> DragonStatelist => dragonStateList;
+        public Dictionary<StateType, int> DragonStateList => dragonStateList;
 
-        public Dictionary<StateType, int> DodongoStatelist => dodongoStateList;
+        public Dictionary<StateType, int> DodongoStateList => dodongoStateList;
 
-        public Dictionary<StateType, int> FireSnakeStatelist => firesnakeStateList;
+        public Dictionary<StateType, int> FireSnakeStateList => firesnakeStateList;
 
-        public Dictionary<StateType, int> GelStatelist => gelStateList;
+        public Dictionary<StateType, int> GelStateList => gelStateList;
 
-        public Dictionary<StateType, int> GoriyaStatelist => goriyaStateList;
+        public Dictionary<StateType, int> GoriyaStateList => goriyaStateList;
 
-        public Dictionary<StateType, int> BlueGoriyaStatelist => blueGoriyaStateList;
+        public Dictionary<StateType, int> BlueGoriyaStateList => blueGoriyaStateList;
 
-        public Dictionary<StateType, int> KeeseStatelist => keeseStateList;
+        public Dictionary<StateType, int> KeeseStateList => keeseStateList;
 
-        public Dictionary<StateType, int> RopeStatelist => ropeStateList;
+        public Dictionary<StateType, int> RopeStateList => ropeStateList;
 
-        public Dictionary<StateType, int> StalfosStatelist => stalfosStateList;
+        public Dictionary<StateType, int> StalfosStateList => stalfosStateList;
 
-        public Dictionary<StateType, int> ZolStatelist => zolStateList;
+        public Dictionary<StateType, int> ZolStateList => zolStateList;
 
-        public Dictionary<StateType, int> WallMasterStatelist => wallMasterStateList;
+        public Dictionary<StateType, int> WallMasterStateList => wallMasterStateList;
 
-        public Dictionary<StateType, int> VireStatelist => vireStateList;
+        public Dictionary<StateType, int> VireStateList => vireStateList;
 
-        public Dictionary<StateType, int> BubbleStatelist => bubbleStateList;
+        public Dictionary<StateType, int> BubbleStateList => bubbleStateList;
 
         public Dictionary<StateType, int> ManhandlaBodyStateList => manhandlaBodyStateList;
 

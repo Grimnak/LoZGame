@@ -10,7 +10,7 @@
         {
             this.Physics = new Physics(location);
             this.CurrentState = new SpawnEnemyState(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.KeeseStatelist);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.KeeseStateList);
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.KeeseHealth);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.KeeseMass;
