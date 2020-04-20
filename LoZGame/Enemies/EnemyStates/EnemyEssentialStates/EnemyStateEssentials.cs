@@ -114,7 +114,6 @@
             this.Sprite.Update();
             if (this.Lifetime > this.DirectionChange)
             {
-                Console.WriteLine("Called UpdateZol()");
                 this.Enemy.UpdateState();
                 this.Lifetime = 0;
             }
@@ -124,6 +123,9 @@
         {
             switch (this.Enemy.EnemyName)
             {
+                case EnemyNames.Bubble:
+                    UpdateBubble();
+                    break;
                 case EnemyNames.Darknut:
                     UpdateDarknut();
                     break;

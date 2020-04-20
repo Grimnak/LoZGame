@@ -28,11 +28,6 @@
             this.ApplySmallHealthMod();
         }
 
-        public override void Stun(int stunTime)
-        {
-            this.CurrentState.Stun(stunTime);
-        }
-
         public override void Update()
         {
             base.Update();

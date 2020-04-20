@@ -54,11 +54,13 @@
         private static readonly int vireWidth = 42;
         private static readonly int vireHeight = 40;
 
+        private static readonly int bubbleWidth = 40;
+        private static readonly int bubbleHeight = 40;
+
         public static int GetEnemyWidth(IEnemy enemy)
         {
             if (enemy is Dodongo)
             {
-                // doesn't account for state yet
                 return dodongoWidthLeftRight;
             }
             else if (enemy is Dragon)
@@ -116,6 +118,10 @@
             else if (enemy is Vire)
             {
                 return vireWidth;
+            }
+            else if (enemy is Bubble)
+            {
+                return bubbleWidth;
             }
             else
             {
@@ -184,6 +190,10 @@
             else if (enemy is Vire)
             {
                 return vireHeight;
+            }
+            else if (enemy is Bubble)
+            {
+                return bubbleHeight;
             }
             else
             {
@@ -257,6 +267,9 @@
 
         private Texture2D fireSnake;
         private SpriteData fireSnakeData;
+
+        private Texture2D bubble;
+        private SpriteData bubbleData;
 
         private Texture2D upDarknut;
         private SpriteData upDarknutData;
@@ -338,6 +351,8 @@
 
             this.fireSnake = content.Load<Texture2D>("fireball");
 
+            this.bubble = content.Load<Texture2D>("blue_bubble");
+
             this.upDarknut = content.Load<Texture2D>("red_darknut_up");
             this.downDarknut = content.Load<Texture2D>("red_darknut_down");
             this.leftDarknut = content.Load<Texture2D>("red_darknut_left");
@@ -384,6 +399,7 @@
             this.downVireData = new SpriteData(new Vector2(vireWidth, vireHeight), downVire, 2, 1);
             this.upVireData = new SpriteData(new Vector2(vireWidth, vireHeight), upVire, 2, 1);
             this.vireKeeseData = new SpriteData(new Vector2(keeseWidth, keeseHeight), vireKeese, 2, 1);
+            this.bubbleData = new SpriteData(new Vector2(bubbleWidth, bubbleHeight), bubble, 2, 1);
         }
 
         // Stalfos Sprites
@@ -392,10 +408,15 @@
             return new ObjectSprite(this.stalfos, this.stalfosData);
         }
         
-        // Firesnake sprites
+        // Firesnake Sprites
         public ISprite CreateFireSnakeSprite()
         {
             return new ObjectSprite(this.fireSnake, this.fireSnakeData);
+        }
+
+        public ISprite CreateBubbleSprite()
+        {
+            return new ObjectSprite(this.bubble, this.bubbleData);
         }
 
         // Darknut Sprites
@@ -545,6 +566,7 @@
             return new ObjectSprite(this.merchant, this.merchantData);
         }
 
+        // Vire Sprites
         public ISprite CreateDownMovingVireSprite()
         {
             return new ObjectSprite(this.downVire, this.downVireData);

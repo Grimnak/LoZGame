@@ -29,6 +29,11 @@
             this.ApplySmallHealthMod();
         }
 
+        public override void Stun(int stunTime)
+        {
+            this.TakeDamage(this.Health.MaxHealth);
+        }
+
         public override ISprite CreateCorrectSprite()
         {
             return EnemySpriteFactory.Instance.CreateKeeseSprite();

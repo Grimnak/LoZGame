@@ -48,7 +48,6 @@
 
         public void ShootFireballs()
         {
-            Console.WriteLine("Called Old Man's ShootFireball().");
             this.timesShot++;
             if (timesShot > BreakingPoint)
             {
@@ -68,9 +67,6 @@
                 fireballTwoPhysics.MovementVelocity = velocityVectorTwo;
                 LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(new FireballProjectile(fireballOnePhysics));
                 LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(new FireballProjectile(fireballTwoPhysics));
-                Console.WriteLine("Spawned Old Man's fireballs.");
-                Console.WriteLine("Fireball 1 location " + fireballOnePhysics.Location);
-                Console.WriteLine("Fireball 2 location " + fireballTwoPhysics.Location);
             }
         }
 

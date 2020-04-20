@@ -16,8 +16,9 @@
         private const int BlueGoriyaDmg = 4;
         private const int OldManDmg = 0;
         private const int MerchantDmg = 0;
-        private const int FireSnakeDmg = 6;
+        private const int FireSnakeDmg = 4;
         private const int DarknutDmg = 2;
+        private const int BubbleDmg = 0;
 
         public int StalfosDamage => StalfosDmg;
 
@@ -48,6 +49,8 @@
         public int FireSnakeDamage => FireSnakeDmg;
 
         public int DarknutDamage => DarknutDmg;
+
+        public int BubbleDamage => BubbleDmg;
 
         public int VireDamage => VireDmg;
     }

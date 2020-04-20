@@ -7,7 +7,7 @@
     {
         private static Dictionary<StateType, int> oldManStateList = new Dictionary<StateType, int>()
         {
-            //{ StateType.Attack, 1 },
+            // { StateType.Attack, 1 },
             { StateType.Idle, 99 }
         };
 
@@ -124,6 +124,14 @@
             { StateType.MoveSouth, 1 }
         };
 
+        private static Dictionary<StateType, int> bubbleStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 }
+        };
+
         public Dictionary<StateType, int> OldManStateList => oldManStateList;
 
         public Dictionary<StateType, int> DarknutStatelist => darknutStateList;
@@ -150,6 +158,8 @@
 
         public Dictionary<StateType, int> WallMasterStatelist => wallMasterStateList;
 
-        public Dictionary<StateType, int> VireStateList => vireStateList;
+        public Dictionary<StateType, int> VireStatelist => vireStateList;
+
+        public Dictionary<StateType, int> BubbleStatelist => bubbleStateList;
     }
 }

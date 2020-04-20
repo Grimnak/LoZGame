@@ -8,12 +8,13 @@
     {
         public enum EnemyNames
         {
-            Goriya,
+            Bubble,
             Darknut,
             Dodongo,
             Dragon,
             Firesnakehead,
             Gel,
+            Goriya,
             Keese,
             Oldman,
             Rope,
@@ -33,6 +34,8 @@
 
         private bool isSpawning = false;
 
+        private bool isKillable = true;
+
         private EnemyNames Name = EnemyNames.None;
 
         public Dictionary<RandomStateGenerator.StateType, int> States { get; set; }
@@ -50,6 +53,8 @@
         public bool Expired { get; set; }
 
         public bool IsDead { get { return isDead; } set { isDead = value; } }
+
+        public bool IsKillable { get { return isKillable; } set { isKillable = value; } }
 
         public Physics Physics { get; set; }
 

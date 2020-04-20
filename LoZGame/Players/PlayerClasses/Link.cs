@@ -22,6 +22,7 @@
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.MoveSpeed = GameData.Instance.PlayerConstants.PlayerSpeed;
             this.DamageTimer = 0;
+            this.DisarmedTimer = 0;
             this.State = new IdleState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y - 8, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight - 8);
             this.Physics.BoundsOffset = new Vector2(0, -8);

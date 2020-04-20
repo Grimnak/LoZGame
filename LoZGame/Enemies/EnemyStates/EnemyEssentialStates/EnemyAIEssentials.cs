@@ -24,10 +24,17 @@
             return new Vector2(newX, newY);
         }
 
+        /// <summary>
+        /// This provides the enemy with another state to enter within a certain time interval.
+        /// </summary>
         public virtual void RandomDirectionChange()
         {
             this.DirectionChange = LoZGame.Instance.Random.Next(this.Enemy.MinMaxWander.X, this.Enemy.MinMaxWander.Y);
         }
+
+        /// <summary>
+        /// This allows an enemy to automatically face the player when it goes to attack, making the enemy a larger threat.
+        /// </summary>
         public void FacePlayer()
         {
             Point playerLoc = LoZGame.Instance.Players[0].Physics.Bounds.Center - this.Enemy.Physics.Bounds.Center;
@@ -55,6 +62,10 @@
             }
         }
 
+        /// <summary>
+        /// This makes an enemy prefer to move in the cardinal direction (north, south, east, or west) that is closest to the player's current location.
+        /// </summary>
+        /// <param name="weight">The affects how often the enemy will move toward the player.</param>
         public void FavorPlayerCardinal(int weight)
         {
             if (weight < 1)
@@ -101,6 +112,10 @@
             }
         }
 
+        /// <summary>
+        /// This makes an enemy prefer to move in the diagonal direction (north, south, east, or west) that is closest to the player's current location.
+        /// </summary>
+        /// <param name="weight">The affects how often the enemy will move toward the player.</param>
         public void FavorPlayerDiagonal(int weight)
         {
             if (weight < 1)
@@ -148,6 +163,9 @@
             }
         }
 
+        /// <summary>
+        /// This allows the enemy to be aware of when it share's an X or Y coordinate with the player and change its state accordingly.
+        /// </summary>
         public void CheckForLink()
         {
             int enemyX = (int)this.Enemy.Physics.Location.X;
@@ -179,22 +197,6 @@
                 }
                 this.Enemy.CurrentState.Attack();
             }
-        }
-
-        public void FavorDirection(RandomStateGenerator.StateType favorite)
-        {
-            // TODO: Get this to work. Should favor the favorite passed state over other states
-            /*this.Enemy.States.Clear();
-            foreach (KeyValuePair<RandomStateGenerator.StateType, int> state in GameData.Instance.DefaultEnemyStates.FireSnakeStatelist)
-            {
-                if (state.Key == favorite)
-                {
-                    this.Enemy.States.Add(state.Key, 1);
-                } else
-                {
-                    this.Enemy.States.Add(state.Key, 1);
-                }
-            }*/
         }
     }
 }
