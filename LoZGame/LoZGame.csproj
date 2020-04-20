@@ -153,6 +153,7 @@
     <Compile Include="Enemies\EnemyStates\VireStates\SpawnVireState.cs" />
     <Compile Include="Enemies\EnemyStates\VireStates\UpMovingVireState.cs" />
     <Compile Include="Enemies\EnemyStates\VireStates\VireEssentials.cs" />
+    <Compile Include="GameState\CreditsScreenState.cs" />
     <Compile Include="GameState\GameStateEssentials.cs" />
     <Compile Include="GameState\UnpauseState.cs" />
     <Compile Include="GameState\PauseState.cs" />
