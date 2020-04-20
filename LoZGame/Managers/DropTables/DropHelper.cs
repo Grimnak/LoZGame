@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
-    public class DropManager
+    public partial class DropManager
     {
         private const int DropChance = 100; // percent chance of drop (0 - 100)
         private const int RupeeWeight = 40;
@@ -16,93 +16,77 @@
         private const int ClockWeight = 1000;
         private const int FairyWeight = 5;
 
-        private Dictionary<string, int> itemWeights;
-
-        private int totalWeight;
-
-        public DropManager()
+        public enum DropType
         {
-            itemWeights = new Dictionary<string, int>();
-            itemWeights.Add("Rupee", RupeeWeight);
-            itemWeights.Add("YellowRupee", YellowRupeeWeight);
-            itemWeights.Add("Bomb", BombWeight);
-            itemWeights.Add("Potion", PotionWeight);
-            itemWeights.Add("SecondPotion", SecondPotionWeight);
-            itemWeights.Add("Health", HealthWeight);
-            itemWeights.Add("Fairy", FairyWeight);
-            itemWeights.Add("Clock", ClockWeight);
-            totalWeight = 0;
-            foreach (KeyValuePair<string, int> weight in itemWeights)
-            {
-                totalWeight += weight.Value;
-            }
+            Rupee,
+            YellowRupee,
+            Bomb,
+            Potion,
+            SecondPotion,
+            Health,
+            Clock,
+            Fairy,
+            None
         }
 
-        private bool CanDropItem()
+        private List<Tuple<DropType, int, int, int>> defaultTable = new List<Tuple<DropType, int, int, int>>()
         {
-            return LoZGame.Instance.Random.Next(0, 100) <= DropChance;
-        }
+            Tuple.Create(DropType.Rupee, RupeeWeight, 1, 1),
+            Tuple.Create(DropType.YellowRupee, YellowRupeeWeight, 1, 1),
+            Tuple.Create(DropType.Bomb, BombWeight, 1, 4),
+            Tuple.Create(DropType.Potion, PotionWeight, 1, 1),
+            Tuple.Create(DropType.SecondPotion, SecondPotionWeight, 1, 1),
+            Tuple.Create(DropType.Health, HealthWeight, 1, 1),
+            Tuple.Create(DropType.Clock, ClockWeight, 1, 1),
+            Tuple.Create(DropType.Fairy, FairyWeight, 1, 1)
+        };
 
-        private string DetermineDrop()
+        public void AttemptDrop(Vector2 loc, int dropChance=DropChance, List<Tuple<DropType, int, int, int>> dropTable = null)
         {
-            int randomWeight = LoZGame.Instance.Random.Next(0, totalWeight);
-            int checkedWeight = 0;
-            string item = "None";
-            foreach (KeyValuePair<string, int> weight in itemWeights)
+            if (LoZGame.Instance.Random.Next(100) <= dropChance)
             {
-                if (randomWeight < checkedWeight + weight.Value)
+                if (dropTable is null)
                 {
-                    item = weight.Key;
-                    break;
+                    dropTable = defaultTable;
                 }
-                else
+                if (this.CanDropItem())
                 {
-                    checkedWeight += weight.Value;
+                    Tuple<DropType, int, int, int> item = this.DetermineDrop(dropTable);
+                    this.DropItem(item.Item1, loc, LoZGame.Instance.Random.Next(item.Item3, item.Item4));
                 }
             }
-
-            return item;
         }
 
-        private void DropItem(string item, Vector2 loc)
+        private void DropItem(DropType item, Vector2 loc, int amount)
         {
             switch (item)
             {
-                case "Rupee":
+                case DropType.Rupee:
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedRupee(loc));
                     break;
-                case "YellowRupee":
+                case DropType.YellowRupee:
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedYellowRupee(loc));
                     break;
-                case "Bomb":
+                case DropType.Bomb:
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedBomb(loc));
                     break;
-                case "Potion":
+                case DropType.Potion:
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedPotion(loc));
                     break;
-                case "SecondPotion":
+                case DropType.SecondPotion:
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedSecondPotion(loc));
                     break;
-                case "Health":
+                case DropType.Health:
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedHealth(loc));
                     break;
-                case "Fairy":
+                case DropType.Fairy:
                     LoZGame.Instance.GameObjects.Items.Add(new Fairy(loc));
                     break;
-                case "Clock":
+                case DropType.Clock:
                     LoZGame.Instance.GameObjects.Items.Add(new Clock(loc));
                     break;
                 default:
                     break;
-            }
-        }
-
-        public void AttemptDrop(Vector2 loc)
-        {
-             if (this.CanDropItem())
-            {
-                string item = this.DetermineDrop();
-                this.DropItem(item, loc);
             }
         }
 

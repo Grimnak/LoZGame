@@ -153,6 +153,8 @@
     <Compile Include="GameState\UnpauseState.cs" />
     <Compile Include="GameState\PauseState.cs" />
     <Compile Include="Items\ItemTypes.cs" />
+    <Compile Include="Managers\DropTables\DropHelper.cs" />
+    <Compile Include="Managers\DropTables\DropManager.cs" />
     <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Players\PlayerClasses\LinkHelper.cs" />
     <Compile Include="Rooms\BlockClasses\DoorHelper.cs" />
@@ -234,7 +236,6 @@
     <Compile Include="Items\WoodenSword.cs" />
     <Compile Include="Items\DroppedYellowRupee.cs" />
     <Compile Include="Items\YellowRupee.cs" />
-    <Compile Include="Managers\DropManager.cs" />
     <Compile Include="Managers\Dungeon\DungeonMethods.cs" />
     <Compile Include="Managers\GameObjects\DoorManager.cs" />
     <Compile Include="Managers\Dungeon\Dungeon.cs" />
