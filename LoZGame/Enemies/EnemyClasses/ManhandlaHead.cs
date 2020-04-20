@@ -9,6 +9,7 @@
     {
         private IEnemy parent;
         private Point parentOffset;
+        private bool buffedParent;
 
         public ManhandlaHead(IEnemy body, Physics.Direction side)
         {
@@ -32,6 +33,7 @@
             this.HasChild = true;
             this.AI = EnemyAI.NoSpawn;
             this.IsSpawning = false;
+            this.buffedParent = false;
             this.ApplyDamageMod();
             this.ApplyLargeWeightModPos();
             this.ApplyLargeHealthMod();
@@ -46,7 +48,7 @@
                     this.Physics.Bounds = new Rectangle(new Point(this.parent.Physics.Bounds.Center.X - offset.X, this.parent.Physics.Bounds.Top - this.Physics.Bounds.Height), this.Physics.Bounds.Size);
                     break;
                 case Physics.Direction.South:
-                    this.Physics.Bounds = new Rectangle(new Point(this.parent.Physics.Bounds.Center.X - offset.X, this.parent.Physics.Bounds.Bottom), this.Physics.Bounds.Size);
+                    this.Physics.Bounds = new Rectangle(new Point(this.parent.Physics.Bounds.Center.X - offset.X, this.parent.Physics.Bounds.Bottom - 2), this.Physics.Bounds.Size);
                     break;
                 case Physics.Direction.East:
                     this.Physics.Bounds = new Rectangle(new Point(this.parent.Physics.Bounds.Right, this.parent.Physics.Bounds.Center.Y - offset.Y), this.Physics.Bounds.Size);
@@ -91,6 +93,23 @@
                 this.SetToSource();
                 this.Physics.SetDepth();
                 this.CurrentState.Update();
+            }
+            if (this.IsDead && !this.buffedParent)
+            {
+                this.parent.MoveSpeed += LoZGame.Instance.Difficulty + 1;
+                int minWander = this.parent.MinMaxWander.X - (LoZGame.Instance.UpdateSpeed * LoZGame.Instance.Difficulty / 8);
+                int maxWander = this.parent.MinMaxWander.Y - (LoZGame.Instance.UpdateSpeed * LoZGame.Instance.Difficulty / 4);
+                if (minWander < LoZGame.Instance.UpdateSpeed / 8)
+                {
+                    minWander = LoZGame.Instance.UpdateSpeed / 8;
+                }
+                if (maxWander < minWander)
+                {
+                    maxWander = minWander;
+                }
+                this.parent.MinMaxWander = new Point(minWander, maxWander);
+                this.parent.UpdateState();
+                this.buffedParent = true;
             }
         }
 

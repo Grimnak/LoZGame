@@ -39,19 +39,20 @@
 
         private void UpdateManMoveSpeed()
         {
+            float maxSpeedDiff = GameData.Instance.EnemySpeedConstants.ManhandlaMaxSpeed - GameData.Instance.EnemySpeedConstants.ManhandlaMinSpeed;
             Vector2 normalVel = this.Enemy.Physics.MovementVelocity / this.Enemy.Physics.MovementVelocity.Length();
             if (this.Lifetime < this.DirectionChange / 2)
             {
-                if (this.Enemy.Physics.MovementVelocity.Length() <= GameData.Instance.EnemySpeedConstants.ManhandlaMaxSpeed)
+                if (this.Enemy.Physics.MovementVelocity.Length() <= this.Enemy.MoveSpeed + maxSpeedDiff)
                 {
-                    this.Enemy.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedConstants.ManhandlaAcceleration;
+                    this.Enemy.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
                 }
             }
             else
             {
-                if (this.Enemy.Physics.MovementVelocity.Length() >= GameData.Instance.EnemySpeedConstants.ManhandlaMinSpeed)
+                if (this.Enemy.Physics.MovementVelocity.Length() >= this.Enemy.MoveSpeed)
                 {
-                    this.Enemy.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedConstants.ManhandlaAcceleration;
+                    this.Enemy.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
                 }
             }
         }
