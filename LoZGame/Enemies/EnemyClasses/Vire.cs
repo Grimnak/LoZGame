@@ -46,7 +46,6 @@
             if (damageAmount <= 4)
             {
                 this.SpawnVireKeese();
-                this.Expired = true;
             }
             base.TakeDamage(damageAmount);
         }

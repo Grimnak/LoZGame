@@ -31,6 +31,7 @@
             ManHandlaHead,
             NoSpawn,
             None,
+            Likelike,
             NoAI
         }
 
