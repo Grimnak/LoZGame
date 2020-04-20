@@ -15,7 +15,7 @@
         public RedGoriya(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GoriyaStatelist);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GoriyaStateList);
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.RedGoriyaHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.GoriyaMass;

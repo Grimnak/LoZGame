@@ -15,7 +15,7 @@
         public FireSnakeHead(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.FireSnakeStatelist);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.FireSnakeStateList);
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.FireSnakeHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.FireSnakeMass;

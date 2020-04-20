@@ -8,7 +8,7 @@
         public Zol(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.ZolStatelist);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.ZolStateList);
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ZolHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.ZolMass;

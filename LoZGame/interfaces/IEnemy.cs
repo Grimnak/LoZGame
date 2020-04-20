@@ -17,9 +17,20 @@
         /// </summary>
         bool IsDead { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether an enemy is still in its spawn sequence or not.
+        /// </summary>
         bool IsSpawning { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether or not an enemy can be killed.
+        /// </summary>
         bool IsKillable { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not an enemy interacts with projectiles.
+        /// </summary>
+        bool IsTransparent { get; set; }
 
         bool HasChild { get; set; }
 

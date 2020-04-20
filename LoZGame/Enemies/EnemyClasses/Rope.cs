@@ -8,7 +8,7 @@
         public Rope(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.RopeStatelist);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.RopeStateList);
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.RopeHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.RopeMass;

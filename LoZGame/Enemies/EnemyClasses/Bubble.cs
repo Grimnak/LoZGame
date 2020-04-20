@@ -8,7 +8,7 @@
         public Bubble(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.BubbleStatelist);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.BubbleStateList);
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.BubbleHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.BubbleMass;
@@ -21,7 +21,7 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.BubbleSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.EnemyName = EnemyNames.Bubble;
+            this.AI = EnemyAI.Bubble;
             this.ApplySmallSpeedMod();
             this.ApplySmallWeightModPos();
         }

@@ -14,7 +14,7 @@
         public FireSnakeSegment(IEnemy parent)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = GameData.Instance.EnemyStateWeights.FireSnakeStatelist;
+            this.States = GameData.Instance.EnemyStateWeights.FireSnakeStateList;
             this.parent = parent;
             this.Physics = new Physics(parent.Physics.Location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.FireSnakeMass;
