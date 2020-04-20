@@ -29,7 +29,7 @@
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.spawnedChildren = false;
             this.AI = EnemyAI.Manhandla;
-            this.MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed * 3, LoZGame.Instance.UpdateSpeed * 6);
+            this.MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed, LoZGame.Instance.UpdateSpeed * 2);
             this.IsSpawning = false;
         }
 
@@ -73,7 +73,6 @@
                     Health += head.Health.CurrentHealth;
                 }
             }
-            Console.WriteLine(Health);
             if (Health <= 0)
             {
                 this.IsDead = true;
