@@ -155,6 +155,9 @@
                     break;
                 case EnemyNames.NoAI:
                     break;
+                case EnemyNames.Likelike:
+                    UpdateLikelike();
+                    break;
                 default:
                     DefaultUpdate();
                     break;

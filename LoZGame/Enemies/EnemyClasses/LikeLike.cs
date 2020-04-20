@@ -10,14 +10,17 @@
 
         public EntityManager EntityManager { get; set; }
 
+        public int Timer { get; set; }
+
         public Likelike(Vector2 location)
         {
+            this.Timer = 0;
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.LikelikeStateList);
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.LikelikeHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.LikelikeMass;
-            this.CurrentState = new SpawnLikelikeState(this);
+            this.CurrentState = new SpawnEnemyState(this);
             this.EntityManager = LoZGame.Instance.GameObjects.Entities;
             this.Cooldown = 0;
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
@@ -28,6 +31,20 @@
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.LikelikeSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
+        }
+
+        public override void Update()
+        {
+            base.Update();
+            if (this.CurrentState is AttackingLikelikeState)
+            {
+                this.Physics.Depth = 1.0f;
+            }
+        }
+
+        public override void Attack()
+        {
+            this.CurrentState = new AttackingLikelikeState(this);
         }
 
         public override void Stun(int stunTime)

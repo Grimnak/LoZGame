@@ -9,9 +9,9 @@
     public class LoZGame : Game
     {
         public static bool DebugMode = false; // show collision bounding boxes
-        public static bool Cheats = true; // infinite life and item uses
+        public static bool Cheats = false; // infinite life and item uses
         public static bool Music = false; // Title screen and dungeon music (not SFX)
-        public static readonly int StartDungeon = 2; // dungeon ID to load into [1 - 5];
+        public static readonly int StartDungeon = 4; // dungeon ID to load into [1 - 5];
         private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;
         private readonly int screenWidth;

@@ -24,6 +24,7 @@
             WallMaster,
             Zol,
             None,
+            Likelike,
             NoAI
         }
 

@@ -99,6 +99,7 @@
     <Compile Include="Enemies\EnemyClasses\FireSnakeHead.cs" />
     <Compile Include="Enemies\EnemyClasses\BlueGoriya.cs" />
     <Compile Include="Enemies\EnemyClasses\Darknut.cs" />
+    <Compile Include="Enemies\EnemyClasses\LikeLike.cs" />
     <Compile Include="Enemies\EnemyClasses\Vire.cs" />
     <Compile Include="Enemies\EnemyClasses\VireKeese.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyEssentials.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingDragonState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingGoriyaState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingLikelikeState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingRopeState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingWallMasterState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\BlockEnemyAttackState.cs" />
@@ -122,6 +124,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGel.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGoriya.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateKeese.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateLikelike.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateRope.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateStalfos.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateWallMaster.cs" />
@@ -140,6 +143,7 @@
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FollowFireSnakeState.cs" />
     <Compile Include="Enemies\EnemyStates\VireStates\DeadVireState.cs" />
     <Compile Include="Enemies\EnemyStates\VireStates\DownMovingVireState.cs" />
+    <Compile Include="Enemies\EnemyStates\VireStates\HiddenVireState.cs" />
     <Compile Include="Enemies\EnemyStates\VireStates\SpawnVireState.cs" />
     <Compile Include="Enemies\EnemyStates\VireStates\UpMovingVireState.cs" />
     <Compile Include="Enemies\EnemyStates\VireStates\VireEssentials.cs" />
@@ -149,6 +153,7 @@
     <Compile Include="Items\ItemTypes.cs" />
     <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Players\PlayerClasses\LinkHelper.cs" />
+    <Compile Include="Players\PlayerStates\SwallowedState.cs" />
     <Compile Include="Rooms\BlockClasses\DoorHelper.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\DoorEssentials.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
