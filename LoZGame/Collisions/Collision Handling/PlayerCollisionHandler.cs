@@ -68,6 +68,10 @@
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
         {
+            if (block is CrossableTile)
+            {
+                this.player.LadderTimer = 5;
+            }
         }
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)

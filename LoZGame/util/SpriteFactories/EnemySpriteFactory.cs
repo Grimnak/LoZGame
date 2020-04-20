@@ -113,7 +113,7 @@
             {
                 return spikeCrossWidth;
             }
-            else if (enemy is Stalfos)
+            else if (enemy is Stalfos || enemy is Gibdo)
             {
                 return stalfosWidth;
             }

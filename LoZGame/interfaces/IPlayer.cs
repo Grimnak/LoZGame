@@ -47,6 +47,11 @@
         int DisarmedTimer { get; set; }
 
         /// <summary>
+        /// Sets the lockout timer before player can place a ladder.
+        /// </summary>
+        int LadderTimer { get; set; }
+
+        /// <summary>
         /// Makes player idle.
         /// </summary>
         void Idle();
