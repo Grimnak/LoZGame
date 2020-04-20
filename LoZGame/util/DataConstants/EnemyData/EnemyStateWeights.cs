@@ -153,7 +153,9 @@
         private static Dictionary<StateType, int> vireStateList = new Dictionary<StateType, int>()
         {
             { StateType.MoveNorth, 1 },
-            { StateType.MoveSouth, 1 }
+            { StateType.MoveSouth, 1 },
+            { StateType.JumpEast, 2 },
+            { StateType.JumpWest, 2 }
         };
 
         private static Dictionary<StateType, int> bubbleStateList = new Dictionary<StateType, int>()

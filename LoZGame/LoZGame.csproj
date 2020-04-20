@@ -132,6 +132,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateDarknut.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateDodongo.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateVire.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGleeock.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateFireSnake.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGel.cs" />
@@ -164,11 +165,6 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\SpawnEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\StunnedEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FollowFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\VireStates\DeadVireState.cs" />
-    <Compile Include="Enemies\EnemyStates\VireStates\DownMovingVireState.cs" />
-    <Compile Include="Enemies\EnemyStates\VireStates\SpawnVireState.cs" />
-    <Compile Include="Enemies\EnemyStates\VireStates\UpMovingVireState.cs" />
-    <Compile Include="Enemies\EnemyStates\VireStates\VireEssentials.cs" />
     <Compile Include="GameState\CreditsScreenState.cs" />
     <Compile Include="GameState\GameStateEssentials.cs" />
     <Compile Include="GameState\UnpauseState.cs" />

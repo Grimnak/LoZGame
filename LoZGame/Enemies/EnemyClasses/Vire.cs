@@ -63,15 +63,6 @@
             }
         }
 
-        public override void Update()
-        {
-            if (this.Physics.MovementVelocity.X != 0)
-            {
-                this.Physics.Jump();
-            }
-            base.Update();
-        }
-
         private void SpawnVireKeese()
         {
             LoZGame.Instance.GameObjects.Enemies.Add(new VireKeese(this.Physics.Location));

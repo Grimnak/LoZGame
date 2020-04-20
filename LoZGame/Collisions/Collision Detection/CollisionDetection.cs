@@ -62,7 +62,13 @@
                 // Do not check borders for the Old Man/Merchant since they are static NPCs.
                 if (!(enemy is OldMan || enemy is Merchant))
                 {
-                    CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
+                    if(!enemy.Physics.IsJumping)
+                    {
+                        CheckBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
+                    }else
+                    {
+                        CheckSideBorders(enemy, EnemySpriteFactory.GetEnemyWidth(enemy), EnemySpriteFactory.GetEnemyHeight(enemy));
+                    }
                 }
                 CheckCollisions<IProjectile>(enemy, playerProjectiles);
             }
