@@ -37,30 +37,6 @@
 /processorParam:TextureFormat=Color
 /build:../../etc/art/tiles/fire.png;fire.png
 
-#begin ../../etc/art/tiles/ladder_on_lava.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../etc/art/tiles/ladder_on_lava.png;ladder_on_lava.png
-
-#begin ../../etc/art/tiles/ladder_on_water.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../etc/art/tiles/ladder_on_water.png;ladder_on_water.png
-
 #begin ../../etc/art/tiles/level4/blue_statue_left4.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2395,6 +2371,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Key.png
+
+#begin ladder.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ladder.png
 
 #begin ladder.png
 /importer:TextureImporter

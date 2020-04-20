@@ -122,6 +122,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingManhandlaHeadState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingDragonState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingGoriyaState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingSpikeCrossState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingRopeState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingWallMasterState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\BlockEnemyAttackState.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGoriya.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateManhandla.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateKeese.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateSpikeCross.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateRope.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateBubble.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateStalfos.cs" />
@@ -162,7 +164,6 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\SpawnEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\StunnedEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FollowFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\SpikeCrossEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\VireStates\DeadVireState.cs" />
     <Compile Include="Enemies\EnemyStates\VireStates\DownMovingVireState.cs" />
     <Compile Include="Enemies\EnemyStates\VireStates\SpawnVireState.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="GameState\GameStateEssentials.cs" />
     <Compile Include="GameState\UnpauseState.cs" />
     <Compile Include="GameState\PauseState.cs" />
+    <Compile Include="Items\Ladder.cs" />
     <Compile Include="Items\ItemTypes.cs" />
     <Compile Include="Managers\DropTables\DropHelper.cs" />
     <Compile Include="Managers\DropTables\DropManager.cs" />
@@ -218,8 +220,6 @@
     <Compile Include="Interfaces\IScreen.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\IDoorState.cs" />
-    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\HorizontalSpikeCrossState.cs" />
-    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\VerticalSpikeCrossState.cs" />
     <Compile Include="GameState\OpenInventoryState.cs" />
     <Compile Include="Items\Arrow.cs" />
     <Compile Include="Items\BlueCandle.cs" />
@@ -299,7 +299,6 @@
     <Compile Include="Rooms\BlockStates\DoorStates\SpecialDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\UnlockedDoorState.cs" />
     <Compile Include="Sprites\ObjectSprite.cs" />
-    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\IdleSpikeCrossState.cs" />
     <Compile Include="Interfaces\ICollider.cs" />
     <Compile Include="Interfaces\IProjectile.cs" />
     <Compile Include="Interfaces\IBlock.cs" />

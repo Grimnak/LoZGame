@@ -4,8 +4,8 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using static RandomStateGenerator;
     using static EnemyEssentials;
+    using static RandomStateGenerator;
 
     public partial class EnemyStateEssentials
     {
@@ -84,6 +84,9 @@
                 case EnemyAI.GleeokHeadOff:
                 case EnemyAI.GleeokHead:
                     UpdateGleeock();
+                    break;
+                case EnemyAI.SpikeCross:
+                    UpdateSpikeCross();
                     break;
                 case EnemyAI.NoAI:
                     break;

@@ -51,6 +51,24 @@
             // ignore obstacles
         }
 
+        public override void TakeDamage(int damageAmount)
+        {
+            if (damageAmount >= this.Health.CurrentHealth && this.Damage <= 0)
+            {
+                this.SpawnHeads();
+            }
+            base.TakeDamage(damageAmount);
+        }
+
+        private void SpawnHeads()
+        {
+            LoZGame.Instance.GameObjects.Enemies.Add(new GleeokHeadOff(this.parent, this.Physics.Bounds.Location));
+            if (LoZGame.Instance.Difficulty > 2)
+            {
+                LoZGame.Instance.GameObjects.Enemies.Add(new GleeokHeadOff(this.parent, this.Physics.Bounds.Location));
+            }
+        }
+
         public override void AddChild()
         {
             this.necksegments = new List<IEnemy>();
@@ -104,12 +122,6 @@
             base.Update();
             this.CheckNeckReach();
             this.SetNeckLocations();
-            if (LoZGame.Instance.Difficulty > 2 && this.IsDead && !this.HasChild)
-            {
-                this.HasChild = true;
-                IEnemy headOff = new GleeokHeadOff(this.parent, this.Physics.Bounds.Location);
-                LoZGame.Instance.GameObjects.Enemies.AddNew(headOff);
-            }
         }
 
         public override ISprite CreateCorrectSprite()
