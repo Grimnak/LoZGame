@@ -370,14 +370,10 @@
         private void LoadTextures(ContentManager content)
         {
             this.manhandlaBodyTexture = content.Load<Texture2D>("man_body");
-            this.manhandlaHeadOpenLeftTexture = content.Load<Texture2D>("man_head_left_open");
-            this.manhandlaHeadCloseLeftTexture = content.Load<Texture2D>("man_head_left_closed");
-            this.manhandlaHeadOpenRightTexture = content.Load<Texture2D>("man_head_right_open");
-            this.manhandlaHeadCloseRightTexture = content.Load<Texture2D>("man_head_right_closed");
-            this.manhandlaHeadOpenDownTexture = content.Load<Texture2D>("man_head_down_open");
-            this.manhandlaHeadCloseDownTexture = content.Load<Texture2D>("man_head_down_closed");
-            this.manhandlaHeadOpenUpTexture = content.Load<Texture2D>("man_head_up_open");
-            this.manhandlaHeadCloseUpTexture = content.Load<Texture2D>("man_head_up_closed");
+            this.manhandlaHeadOpenLeftTexture = content.Load<Texture2D>("man_head_left");
+            this.manhandlaHeadOpenRightTexture = content.Load<Texture2D>("man_head_right");
+            this.manhandlaHeadOpenDownTexture = content.Load<Texture2D>("man_head_down");
+            this.manhandlaHeadOpenUpTexture = content.Load<Texture2D>("man_head_up");
 
             this.stalfos = content.Load<Texture2D>("stalfos");
             this.gibdo = content.Load<Texture2D>("gibdo");

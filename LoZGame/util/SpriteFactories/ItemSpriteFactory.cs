@@ -261,7 +261,7 @@
             clockData = new SpriteData(new Vector2(ClockWidth, ClockHeight), clockSpriteSheet, 1, 1);
             compassData = new SpriteData(new Vector2(CompassWidth, CompassHeight), compassSpriteSheet, 1, 1);
             foodData = new SpriteData(new Vector2(FoodWidth, FoodHeight), foodSpriteSheet, 1, 1);
-            heartContainerData = new SpriteData(new Vector2(HeartContainerWidth, HeartContainerHeight), heartContainerSpriteSheet, 1, 1);
+            heartContainerData = new SpriteData(new Vector2(HeartContainerWidth, HeartContainerHeight), heartContainerSpriteSheet, 4, 1);
             keyData = new SpriteData(new Vector2(KeyWidth, KeyHeight), keySpriteSheet, 1, 1);
             letterData = new SpriteData(new Vector2(LetterWidth, LetterHeight), letterSpriteSheet, 1, 1);
             lifePotionData = new SpriteData(new Vector2(PotionWidth, PotionHeight), lifePotionSpriteSheet, 1, 1);
