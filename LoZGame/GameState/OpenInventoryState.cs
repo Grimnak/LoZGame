@@ -54,6 +54,8 @@
                 player.Draw();
             }
             LoZGame.Instance.GameObjects.Draw();
+            LoZGame.Instance.GameObjects.Entities.Draw();
+            LoZGame.Instance.GameObjects.Enemies.Draw();
             LoZGame.Instance.Dungeon.CurrentRoom.Draw(Point.Zero);
             InventoryComponents.Instance.DrawText();
 

@@ -1988,18 +1988,6 @@
 /processorParam:TextureFormat=Color
 /build:HeartContainer.png
 
-#begin HeartContainer.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:HeartContainer.png
-
 #begin horizontal_bricks.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2672,18 +2660,6 @@
 /processorParam:TextureFormat=Color
 /build:MagicSword.png
 
-#begin MagicSword.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:MagicSword.png
-
 #begin man_body.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2899,18 +2875,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:playerMap.png
-
-#begin polsvoice.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:polsvoice.png
 
 #begin PowerBracelet.png
 /importer:TextureImporter

@@ -163,7 +163,7 @@
                     UpdateManhandla();
                     break;
                 case EnemyAI.GleeockHead:
-                    UpdateManhandla();
+                    UpdateGleeock();
                     break;
                 case EnemyAI.NoAI:
                     break;
