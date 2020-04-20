@@ -13,7 +13,6 @@
     /// </summary>
     public class BlockTile : IBlock
     {
-        private const string WaterTile = "water_tile";
         private const string BasementBrickTile = "basement_brick_tile";
         private const string FireGapTile = "fire_gap_tile";
         private const string TurquoiseStatueLeft = "turquoise_statue_left";
@@ -36,7 +35,6 @@
         private const string BrownStatueRight4 = "brown_statue_right4";
         private const string BrownStatueLeft4 = "brown_statue_left4";
         private const string MovableTile4 = "movable_tile4";
-        private const string Lava5 = "lava5";
 
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
@@ -86,8 +84,6 @@
         {
             switch (name)
             {
-                case WaterTile:
-                    return BlockSpriteFactory.Instance.WaterTile();
                 case BasementBrickTile:
                     return BlockSpriteFactory.Instance.BasementBrickTile();
                 case FireGapTile:
@@ -122,8 +118,6 @@
                 case MovableSquare3:
                     this.spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.MoveabeTile();
-                case Lava5:
-                    return BlockSpriteFactory.Instance.Lava5();
                 case BlueStatueRight4:
                     return BlockSpriteFactory.Instance.BlueStatueRight4();
                 case BlueStatueLeft4:

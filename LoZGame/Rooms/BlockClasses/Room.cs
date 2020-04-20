@@ -327,6 +327,9 @@
                     }
                     this.blocks.Add(new BlockTile(location, name));
                     break;
+                case "crossable":
+                    this.blocks.Add(new CrossableTile(location, name));
+                    break;
                 default:
                     break;
             }

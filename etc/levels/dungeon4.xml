@@ -49,68 +49,68 @@
       <door loc="E">unlocked</door>
     </doors>
     <rrow idx="0">
-      <tile type="block" idx="0">water_tile</tile>
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
-      <tile type="block" idx="11">water_tile</tile>
+      <tile type="crossable" idx="0">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
+      <tile type="crossable" idx="11">water_tile</tile>
     </rrow>
     <rrow idx="1">
-      <tile type="block" idx="0">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="5">water_tile</tile>
-      <tile type="block" idx="6">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="11">water_tile</tile>
+      <tile type="crossable" idx="0">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="5">water_tile</tile>
+      <tile type="crossable" idx="6">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="11">water_tile</tile>
     </rrow>
     <rrow idx="2">
-      <tile type="block" idx="0">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="11">water_tile</tile>
+      <tile type="crossable" idx="0">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="11">water_tile</tile>
     </rrow>
     <rrow idx="3">
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
     </rrow>
     <rrow idx="4">
-      <tile type="block" idx="0">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="11">water_tile</tile>
+      <tile type="crossable" idx="0">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="11">water_tile</tile>
     </rrow>
     <rrow idx="5">
-      <tile type="block" idx="0">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="5">water_tile</tile>
-      <tile type="block" idx="6">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="11">water_tile</tile>
+      <tile type="crossable" idx="0">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="5">water_tile</tile>
+      <tile type="crossable" idx="6">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="11">water_tile</tile>
     </rrow>
     <rrow idx="6">
-      <tile type="block" idx="0">water_tile</tile>
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
-      <tile type="block" idx="11">water_tile</tile>
+      <tile type="crossable" idx="0">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
+      <tile type="crossable" idx="11">water_tile</tile>
     </rrow>
   </room>
   <room exists="True" oldman="False" basement="False" idx="2">
@@ -363,38 +363,38 @@
     <rrow idx="0">
     </rrow>
     <rrow idx="1">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="2">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="3">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="5">water_tile</tile>
-      <tile type="block" idx="6">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="5">water_tile</tile>
+      <tile type="crossable" idx="6">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="4">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="5">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="6">
     </rrow>
@@ -418,60 +418,60 @@
     <rrow idx="0">
     </rrow>
     <rrow idx="1">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="5">water_tile</tile>
-      <tile type="block" idx="6">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="5">water_tile</tile>
+      <tile type="crossable" idx="6">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="2">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="5">water_tile</tile>
-      <tile type="block" idx="6">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="5">water_tile</tile>
+      <tile type="crossable" idx="6">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="3">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="4">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="5">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="6">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
   </room>
   <room exists="False" idx="2">
@@ -498,18 +498,18 @@
     <rrow idx="1">
     </rrow>
     <rrow idx="2">
-      <tile type="block" idx="0">water_tile</tile>
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="5">water_tile</tile>
-      <tile type="block" idx="6">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
-      <tile type="block" idx="11">water_tile</tile>
+      <tile type="crossable" idx="0">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="5">water_tile</tile>
+      <tile type="crossable" idx="6">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
+      <tile type="crossable" idx="11">water_tile</tile>
     </rrow>
     <rrow idx="3">
     </rrow>
@@ -534,64 +534,64 @@
       <door loc="W">locked</door>
     </doors>
     <rrow idx="0">
-      <tile type="block" idx="0">water_tile</tile>
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
-      <tile type="block" idx="11">water_tile</tile>
+      <tile type="crossable" idx="0">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
+      <tile type="crossable" idx="11">water_tile</tile>
     </rrow>
     <rrow idx="1">
-      <tile type="block" idx="0">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="11">water_tile</tile>
+      <tile type="crossable" idx="0">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="11">water_tile</tile>
     </rrow>
     <rrow idx="2">
-      <tile type="block" idx="0">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="6">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="11">water_tile</tile>
+      <tile type="crossable" idx="0">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="6">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="11">water_tile</tile>
     </rrow>
     <rrow idx="3">
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
     </rrow>
     <rrow idx="4">
-      <tile type="block" idx="0">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="5">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="11">water_tile</tile>
+      <tile type="crossable" idx="0">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="5">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="11">water_tile</tile>
     </rrow>
     <rrow idx="5">
-      <tile type="block" idx="0">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="11">water_tile</tile>
+      <tile type="crossable" idx="0">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="11">water_tile</tile>
     </rrow>
     <rrow idx="6">
-      <tile type="block" idx="0">water_tile</tile>
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
-      <tile type="block" idx="11">water_tile</tile>
+      <tile type="crossable" idx="0">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
+      <tile type="crossable" idx="11">water_tile</tile>
     </rrow>
   </room>
   <room exists="True" oldman="False" basement="False" idx="2">
@@ -646,38 +646,38 @@
     <rrow idx="0">
     </rrow>
     <rrow idx="1">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="2">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="3">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="4">water_tile</tile>
-      <tile type="block" idx="5">water_tile</tile>
-      <tile type="block" idx="6">water_tile</tile>
-      <tile type="block" idx="7">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="4">water_tile</tile>
+      <tile type="crossable" idx="5">water_tile</tile>
+      <tile type="crossable" idx="6">water_tile</tile>
+      <tile type="crossable" idx="7">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="4">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="5">
-      <tile type="block" idx="1">water_tile</tile>
-      <tile type="block" idx="2">water_tile</tile>
-      <tile type="block" idx="3">water_tile</tile>
-      <tile type="block" idx="8">water_tile</tile>
-      <tile type="block" idx="9">water_tile</tile>
-      <tile type="block" idx="10">water_tile</tile>
+      <tile type="crossable" idx="1">water_tile</tile>
+      <tile type="crossable" idx="2">water_tile</tile>
+      <tile type="crossable" idx="3">water_tile</tile>
+      <tile type="crossable" idx="8">water_tile</tile>
+      <tile type="crossable" idx="9">water_tile</tile>
+      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="6">
     </rrow>
