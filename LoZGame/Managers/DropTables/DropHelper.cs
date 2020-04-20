@@ -6,15 +6,15 @@
 
     public partial class DropManager
     {
-        private const int DropChance = 100; // percent chance of drop (0 - 100)
+        private const int DropChance = 35; // percent chance of drop (0 - 100)
         private const int RupeeWeight = 40;
         private const int YellowRupeeWeight = 20;
         private const int BombWeight = 20;
         private const int PotionWeight = 10;
         private const int SecondPotionWeight = 5;
         private const int HealthWeight = 25;
-        private const int ClockWeight = 1000;
-        private const int FairyWeight = 5;
+        private const int ClockWeight = 5;
+        private const int FairyWeight = 10;
 
         public enum DropType
         {
@@ -41,7 +41,7 @@
             Tuple.Create(DropType.Fairy, FairyWeight, 1, 1)
         };
 
-        public void AttemptDrop(Vector2 loc, int dropChance=DropChance, List<Tuple<DropType, int, int, int>> dropTable = null)
+        public void AttemptDrop(Vector2 loc, int dropChance = DropChance, List<Tuple<DropType, int, int, int>> dropTable = null)
         {
             if (LoZGame.Instance.Random.Next(100) <= dropChance)
             {

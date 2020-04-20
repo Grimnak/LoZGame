@@ -31,7 +31,7 @@
                 if (projectile is BombProjectile)
                 {
                     projectile.IsExpired = true;
-                    this.enemy.CurrentState.Stun(0);
+                    this.enemy.Stun(0);
                 }
                 else
                 {
@@ -69,7 +69,7 @@
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.enemy is Keese)
+            if (this.enemy is Keese || this.enemy is VireKeese)
             {
                 this.ReverseMovement(this.enemy.Physics, collisionSide);
             }
