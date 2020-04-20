@@ -33,10 +33,6 @@
             this.IsSpawning = false;
         }
 
-        public override void TakeDamage(int damageAmount)
-        {
-        }
-
         public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
         }
@@ -64,7 +60,6 @@
 
         public override void Update()
         {
-            base.Update();
             int Health = 0;
             foreach (IEnemy head in this.heads)
             {
@@ -73,12 +68,12 @@
                     Health += head.Health.CurrentHealth;
                 }
             }
-            if (Health <= 0)
+            if (Health <= 0 && !this.IsDead)
             {
-                this.IsDead = true;
-                this.CurrentState.Die();
+                this.TakeDamage(this.Health.MaxHealth);
+                this.Expired = true;
             }
-
+            base.Update();
         }
 
         public override void Stun(int stunTime)

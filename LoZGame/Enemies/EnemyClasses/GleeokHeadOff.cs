@@ -35,7 +35,7 @@
             this.MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed);
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.HasChild = false;
-            this.AI = EnemyAI.GleeockHeadOff;
+            this.AI = EnemyAI.GleeokHeadOff;
             this.IsSpawning = false;
             this.ApplyDamageMod();
             this.ApplyLargeSpeedMod();

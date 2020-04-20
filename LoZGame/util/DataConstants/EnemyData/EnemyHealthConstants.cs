@@ -23,6 +23,8 @@
         private const int manHeadHP = 8;
         private const int manBodyHP = 1;
         private const int gibdoHP = 16;
+        private const int GleeokNeckHP = 1;
+        private const int GleeokHeadHP = 12;
 
         public int StalfosHealth => StalfosHP;
 
@@ -65,5 +67,9 @@
         public int ManhandlaHeadHealth => manHeadHP;
 
         public int GibdoHealth => gibdoHP;
+
+        public int GleeokNeckHealth => GleeokNeckHP;
+
+        public int GleeokHeadHealth => GleeokHeadHP;
     }
 }

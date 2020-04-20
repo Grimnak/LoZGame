@@ -44,8 +44,7 @@
             }
             if (this.Health.CurrentHealth <= 0)
             {
-                this.IsDead = true;
-                if (this is Dragon || this is Dodongo)
+                if (this is Dragon || this is Dodongo || this is ManhandlaBody || this is GleeokBody)
                 {
                     SoundFactory.Instance.PlayBossDie();
                     LoZGame.Instance.Drops.DropHeartContainer();
@@ -55,6 +54,7 @@
                 {
                     SoundFactory.Instance.PlayEnemyDie();
                 }
+                this.IsDead = true;
                 this.CurrentState.Die();
             }
         }
