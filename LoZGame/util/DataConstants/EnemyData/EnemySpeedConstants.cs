@@ -2,6 +2,7 @@ namespace LoZClone
 {
     public struct EnemySpeedConstants
     {
+        private const float jumpStrength = 2.5f;
         private const float gleeokHeadSpd = 1.0f;
         private const float StalfosSpd = 2;
         private const float MinKeeseSpd = 1.5f;
@@ -86,5 +87,7 @@ namespace LoZClone
         public float GibdoSpeed => GibdoSpd;
 
         public float GleeokHeadSpeed => gleeokHeadSpd;
+
+        public float JumpStrength => jumpStrength;
     }
 }

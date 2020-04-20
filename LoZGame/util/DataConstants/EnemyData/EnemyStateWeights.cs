@@ -17,6 +17,18 @@
             { StateType.MoveSouthWest, 1 }
         };
 
+        private static Dictionary<StateType, int> jumpTest = new Dictionary<StateType, int>()
+        {
+            { StateType.JumpNorth, 1 },
+            { StateType.JumpSouth, 1 },
+            { StateType.JumpEast, 1 },
+            { StateType.JumpWest, 1 },
+            { StateType.JumpNorthEast, 1 },
+            { StateType.JumpNorthWest, 1 },
+            { StateType.JumpSouthEast, 1 },
+            { StateType.JumpSouthWest, 1 }
+        };
+
         private static Dictionary<StateType, int> oldManStateList = new Dictionary<StateType, int>()
         {
             // { StateType.Attack, 1 },
@@ -165,6 +177,8 @@
             { StateType.Attack, 1 },
             { StateType.Idle, 4 }
         };
+
+        public Dictionary<StateType, int> JumpTest => jumpTest;
 
         public Dictionary<StateType, int> OldManStateList => oldManStateList;
 
