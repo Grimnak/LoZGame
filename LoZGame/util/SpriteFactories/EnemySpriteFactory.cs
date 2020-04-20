@@ -264,14 +264,14 @@
         private Texture2D manhandlaHeadDownTexture;
         private SpriteData manhandlaHeadData;
 
-        private Texture2D GleeockBodyTexture;
-        private SpriteData GleeockBodyData;
-        private Texture2D GleeockHeadTexture;
-        private SpriteData GleeockHeadData;
-        private Texture2D GleeockHeadOffTexture;
-        private SpriteData GleeockHeadOffData;
-        private Texture2D GleeockNeckTexture;
-        private SpriteData GleeockNeckData;
+        private Texture2D GleeokBodyTexture;
+        private SpriteData GleeokBodyData;
+        private Texture2D GleeokHeadTexture;
+        private SpriteData GleeokHeadData;
+        private Texture2D GleeokHeadOffTexture;
+        private SpriteData GleeokHeadOffData;
+        private Texture2D GleeokNeckTexture;
+        private SpriteData GleeokNeckData;
 
         private Texture2D GibdoTexture;
         private Texture2D stalfos;
@@ -400,7 +400,7 @@
             this.GleeockHeadOffTexture = content.Load<Texture2D>("gleeok_head_off");
             this.GleeockHeadTexture = content.Load<Texture2D>("gleeok_head_on");
             this.GleeockNeckTexture = content.Load<Texture2D>("gleeok_neck");
-
+          
             this.stalfos = content.Load<Texture2D>("stalfos");
             this.GibdoTexture = content.Load<Texture2D>("gibdo");
 
@@ -609,7 +609,7 @@
 
         public ISprite CreateGleeockNeckSprite()
         {
-            return new ObjectSprite(this.GleeockNeckTexture, this.GleeockNeckData);
+            return new ObjectSprite(this.GleeokNeckTexture, this.GleeokNeckData);
         }
 
         public ISprite CreateGleeockBodySprite()
@@ -619,12 +619,12 @@
 
         public ISprite CreateGleeockHeadSprite()
         {
-            return new ObjectSprite(this.GleeockHeadTexture, this.GleeockHeadData);
+            return new ObjectSprite(this.GleeokHeadTexture, this.GleeokHeadData);
         }
 
         public ISprite CreateGleeockHeadOffSprite()
         {
-            return new ObjectSprite(this.GleeockHeadOffTexture, this.GleeockHeadOffData);
+            return new ObjectSprite(this.GleeokHeadOffTexture, this.GleeokHeadOffData);
         }
 
         // Wallmaster Sprites
