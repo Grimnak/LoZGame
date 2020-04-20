@@ -31,7 +31,7 @@
             this.MoveSpeed = 0;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.HasChild = true;
-            this.AI = EnemyAI.NoSpawn;
+            this.AI = EnemyAI.ManHandlaHead;
             this.IsSpawning = false;
             this.buffedParent = false;
             this.ApplyDamageMod();

@@ -27,7 +27,7 @@
 
         private void ShootFireballs()
         {
-            int numberFireballs = 1 + LoZGame.Instance.Random.Next(LoZGame.Instance.Difficulty, LoZGame.Instance.Difficulty + 1);
+            int numberFireballs = 1 + LoZGame.Instance.Random.Next(0, LoZGame.Instance.Difficulty + 1);
             if (numberFireballs < 1)
             {
                 numberFireballs = 1;

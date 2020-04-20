@@ -16,6 +16,9 @@
         private static readonly int GleeockHeadWidth = 24;
         private static readonly int GleeockHeadHeight = 48;
 
+        private static readonly int GleeockHeadOffWidth = 30;
+        private static readonly int GleeockHeadOffHeight = 52;
+
         private static readonly int GleeockNeckWidth = 24;
         private static readonly int GleeockNeckHeight = 32;
 
@@ -154,6 +157,10 @@
             {
                 return GleeockHeadWidth;
             }
+            else if (enemy is GleeokHeadOff)
+            {
+                return GleeockHeadOffWidth;
+            }
             else if (enemy is GleeokNeck)
             {
                 return GleeockNeckWidth;
@@ -245,6 +252,10 @@
             else if (enemy is GleeokHead)
             {
                 return GleeockHeadHeight;
+            }
+            else if (enemy is GleeokHeadOff)
+            {
+                return GleeockHeadOffHeight;
             }
             else if (enemy is GleeokNeck)
             {
@@ -396,10 +407,10 @@
             this.manhandlaHeadDownTexture = content.Load<Texture2D>("man_head_down");
             this.manhandlaHeadUpTexture = content.Load<Texture2D>("man_head_up");
 
-            this.GleeockBodyTexture = content.Load<Texture2D>("gleeok_body");
-            this.GleeockHeadOffTexture = content.Load<Texture2D>("gleeok_head_off");
-            this.GleeockHeadTexture = content.Load<Texture2D>("gleeok_head_on");
-            this.GleeockNeckTexture = content.Load<Texture2D>("gleeok_neck");
+            this.GleeokBodyTexture = content.Load<Texture2D>("gleeok_body");
+            this.GleeokHeadOffTexture = content.Load<Texture2D>("gleeok_head_off");
+            this.GleeokHeadTexture = content.Load<Texture2D>("gleeok_head_on");
+            this.GleeokNeckTexture = content.Load<Texture2D>("gleeok_neck");
           
             this.stalfos = content.Load<Texture2D>("stalfos");
             this.GibdoTexture = content.Load<Texture2D>("gibdo");
@@ -496,10 +507,10 @@
             this.bubbleData = new SpriteData(new Vector2(bubbleWidth, bubbleHeight), bubble, 2, 1);
             this.manhandlaBodyData = new SpriteData(new Vector2(ManhandlaBodyWidth, ManhandlaBodyHeight), manhandlaBodyTexture, 1, 1);
             this.manhandlaHeadData = new SpriteData(new Vector2(ManhandlaHeadWidth, ManhandlaHeadHeight), manhandlaHeadDownTexture, 2, 1);
-            this.GleeockBodyData = new SpriteData(new Vector2(GleeockBodyWidth, GleeockBodyHeight), GleeockBodyTexture, 3, 1);
-            this.GleeockHeadOffData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeockHeadOffTexture, 2, 1);
-            this.GleeockHeadData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeockHeadTexture, 1, 1);
-            this.GleeockNeckData = new SpriteData(new Vector2(GleeockNeckWidth, GleeockNeckHeight), GleeockNeckTexture, 1, 1);
+            this.GleeokBodyData = new SpriteData(new Vector2(GleeockBodyWidth, GleeockBodyHeight), GleeokBodyTexture, 3, 1);
+            this.GleeokHeadOffData = new SpriteData(new Vector2(GleeockHeadOffWidth, GleeockHeadOffHeight), GleeokHeadOffTexture, 2, 1);
+            this.GleeokHeadData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeokHeadTexture, 1, 1);
+            this.GleeokNeckData = new SpriteData(new Vector2(GleeockNeckWidth, GleeockNeckHeight), GleeokNeckTexture, 1, 1);
         }
 
         // Stalfos Sprites
@@ -614,7 +625,7 @@
 
         public ISprite CreateGleeockBodySprite()
         {
-            return new ObjectSprite(this.GleeockBodyTexture, this.GleeockBodyData) { FrameDelay = 20 };
+            return new ObjectSprite(this.GleeokBodyTexture, this.GleeokBodyData) { FrameDelay = 20 };
         }
 
         public ISprite CreateGleeockHeadSprite()

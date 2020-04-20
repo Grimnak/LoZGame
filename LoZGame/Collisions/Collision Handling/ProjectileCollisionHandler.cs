@@ -38,7 +38,17 @@
         public void OnCollisionResponse(IItem item, CollisionDetection.CollisionSide collisionSide)
         {
         }
-        
+
+        /// <summary>
+        /// used to optionally expire projectiles that collide with blocks.
+        /// </summary>
+        /// <param name="block">block that is collided with</param>
+        /// <param name="collisionSide">side that is collided with.</param>
+        public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
+        {
+            this.projectile.IsExpired = true;
+        }
+
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
             if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
