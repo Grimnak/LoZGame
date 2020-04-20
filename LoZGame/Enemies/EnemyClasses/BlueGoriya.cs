@@ -41,11 +41,6 @@
             this.CurrentState = new AttackingBlueGoriyaState(this);
         }
 
-        public override void Stun(int stunTime)
-        {
-            this.CurrentState.Stun(stunTime);
-        }
-
         public override ISprite CreateCorrectSprite()
         {
             return EnemySpriteFactory.Instance.CreateBlueGoriyaSprite(this.Physics.CurrentDirection);

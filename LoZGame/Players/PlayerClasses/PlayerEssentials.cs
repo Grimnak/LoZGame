@@ -17,6 +17,8 @@
 
         public int DamageTimer { get; set; }
 
+        public int DisarmedTimer { get; set; }
+
         public Physics Physics { get; set; }
 
         public HealthManager Health { get; set; }
@@ -60,6 +62,14 @@
                     this.CurrentTint = LoZGame.Instance.DefaultTint;
                 }
                 this.Physics.HandleKnockBack();
+            }
+        }
+
+        public void HandleDisarm()
+        {
+            if (this.DisarmedTimer > 0)
+            {
+                this.DisarmedTimer--;
             }
         }
 
@@ -112,6 +122,7 @@
         {
             this.Physics.SetDepth();
             this.HandleDamage();
+            this.HandleDisarm();
             this.Physics.Move();
             this.State.Update();
         }

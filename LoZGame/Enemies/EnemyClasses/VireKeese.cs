@@ -35,7 +35,7 @@
 
         public override void Stun(int stunTime)
         {
-            this.CurrentState.Stun(stunTime);
+            this.TakeDamage(this.Health.MaxHealth);
         }
 
         public override ISprite CreateCorrectSprite()

@@ -19,6 +19,8 @@
 
         bool IsSpawning { get; set; }
 
+        bool IsKillable { get; set; }
+
         bool HasChild { get; set; }
 
         int Damage { get; }

@@ -17,6 +17,16 @@
             {
                 this.player.State = new GrabbedState(player, (WallMaster)enemy);
             }
+            else if (enemy is Bubble)
+            {
+                if (this.player.DamageTimer <= 0)
+                {
+                    this.player.DamageTimer = LoZGame.Instance.UpdateSpeed / 2;
+                    this.player.DisarmedTimer = LoZGame.Instance.UpdateSpeed * 3;
+                    this.DeterminePushbackValues(enemy.Physics, this.player.Physics);
+                    SoundFactory.Instance.PlayLinkHurt();
+                }
+            }
             else if (enemy is OldMan || enemy is Merchant || enemy is BlockEnemy)
             {
                 // do nothing

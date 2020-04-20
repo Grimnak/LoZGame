@@ -21,6 +21,7 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileHeight, (int)BlockSpriteFactory.Instance.TileWidth);
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
+            this.IsKillable = false;
             this.DamageTimer = 0;
             this.CurrentState = new BlockEnemyIdleState(this);
             this.CurrentTint = LoZGame.Instance.DefaultTint;

@@ -15,7 +15,7 @@
         public Vire(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.VireStateList);
+            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.VireStatelist);
             this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.VireHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.VireMass;
@@ -30,6 +30,10 @@
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.VireSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.AI = EnemyAI.Vire;
+            this.ApplyDamageMod();
+            this.ApplySmallSpeedMod();
+            this.ApplySmallWeightModPos();
+            this.ApplySmallHealthMod();
         }
 
         public override void Stun(int stunTime)

@@ -42,6 +42,11 @@
         int DamageTimer { get; set; }
 
         /// <summary>
+        /// Gets or sets the disarm timer of the player.
+        /// </summary>
+        int DisarmedTimer { get; set; }
+
+        /// <summary>
         /// Makes player idle.
         /// </summary>
         void Idle();
@@ -69,7 +74,7 @@
         /// <summary>
         /// Makes player take damage.
         /// </summary>
-        /// /// <param name ="damageAmount">amount of damage incurred.</param>
+        /// /// <param name ="damageAmount">Amount of damage incurred.</param>
         void TakeDamage(int damageAmount);
 
         /// <summary>

@@ -40,7 +40,6 @@
                 this.exists = ex;
                 this.basement = bm;
                 this.oldman = om;
-                // this.border = ns; // ns = LEVEL-1 || LEVEL-2 || LEVEL-3
                 this.doors = new List<Door>();
                 this.blocks = new List<IBlock>();
                 this.enemies = new List<IEnemy>();
@@ -209,6 +208,9 @@
                     break;
                 case "Vire":
                     this.enemies.Add(new Vire(location));
+                    break;
+                case "Bubble":
+                    this.enemies.Add(new Bubble(location));
                     break;
                 case "Manhandla":
                     this.enemies.Add(new ManhandlaBody(location));

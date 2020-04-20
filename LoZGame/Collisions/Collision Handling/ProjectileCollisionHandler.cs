@@ -15,12 +15,12 @@
         {
             if (enemy.AI != EnemyEssentials.EnemyAI.Manhandla)
             {
-                if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
+                if ((projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile) && !(enemy is Bubble))
                 {
                     enemy.Stun(projectile.StunDuration);
                     this.projectile.Returning = true;
                 }
-                else if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
+                else if ((this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile) && !(enemy is Bubble))
                 {
                     this.projectile.Physics.StopMovement();
                 }

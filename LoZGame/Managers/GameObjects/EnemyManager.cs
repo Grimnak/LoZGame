@@ -24,6 +24,7 @@ namespace LoZClone
 
         public void Add(IEnemy enemy)
         {
+            // This check is necessary to ensure that enemies do not respawn if they were in the middle of their death sequence.
             if (!enemy.IsDead)
             {
                 enemy.CurrentState.Spawn();
@@ -71,7 +72,7 @@ namespace LoZClone
             int enemyCount = enemyList.Count;
             foreach (IEnemy enemy in enemyList.Values)
             {
-                if (enemy is BlockEnemy)
+                if (!enemy.IsKillable)
                 {
                     enemyCount--;
                 }

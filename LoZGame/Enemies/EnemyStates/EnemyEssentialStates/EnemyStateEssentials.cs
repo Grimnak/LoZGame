@@ -126,6 +126,9 @@
         {
             switch (this.Enemy.AI)
             {
+                case EnemyAI.Bubble:
+                    UpdateBubble();
+                    break;
                 case EnemyAI.Darknut:
                     UpdateDarknut();
                     break;

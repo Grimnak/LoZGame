@@ -27,11 +27,6 @@
             this.ApplySmallHealthMod();
         }
 
-        public override void Stun(int stunTime)
-        {
-            this.CurrentState.Stun(stunTime);
-        }
-
         public override ISprite CreateCorrectSprite()
         {
             return EnemySpriteFactory.Instance.CreateStalfosSprite();
