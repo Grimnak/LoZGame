@@ -46,7 +46,10 @@
         /// <param name="collisionSide">side that is collided with.</param>
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
         {
-            this.projectile.IsExpired = true;
+            if (!(block is Tile))
+            {
+                this.projectile.IsExpired = true;
+            }
         }
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)

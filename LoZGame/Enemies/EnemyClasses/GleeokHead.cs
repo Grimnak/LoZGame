@@ -21,7 +21,7 @@
             this.parent = body;
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GleeockHeadStateList);
-            this.Health = new HealthManager(3 * GameData.Instance.EnemyDamageConstants.FullHeart);
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.GleeokHeadHealth);
             this.Physics = new Physics(neckBase.ToVector2());
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
             this.Physics.IsMoveable = false;
@@ -35,7 +35,7 @@
             this.MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed / 4, LoZGame.Instance.UpdateSpeed);
             this.CurrentTint = LoZGame.Instance.DefaultTint;
             this.HasChild = false;
-            this.AI = EnemyAI.GleeockHead;
+            this.AI = EnemyAI.GleeokHead;
             this.IsSpawning = false;
             this.ApplyDamageMod();
             this.ApplyLargeWeightModPos();

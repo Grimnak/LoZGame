@@ -25,7 +25,7 @@
             EnemyAI.Dragon,
             EnemyAI.Firesnakehead,
             EnemyAI.Manhandla,
-            EnemyAI.GleeockHead,
+            EnemyAI.GleeokHead,
             EnemyAI.ManHandlaHead,
             EnemyAI.NoSpawn
         };
@@ -163,8 +163,8 @@
                 case EnemyAI.Manhandla:
                     UpdateManhandla();
                     break;
-                case EnemyAI.GleeockHeadOff:
-                case EnemyAI.GleeockHead:
+                case EnemyAI.GleeokHeadOff:
+                case EnemyAI.GleeokHead:
                     UpdateGleeock();
                     break;
                 case EnemyAI.NoAI:
