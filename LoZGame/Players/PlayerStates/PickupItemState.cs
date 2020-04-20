@@ -65,6 +65,10 @@ namespace LoZClone
             {
                 player.Inventory.HasCompass = true;
             }
+            else if (item is Ladder)
+            {
+                player.Inventory.HasLadder = true;
+            }
         }
 
         /// <inheritdoc/>

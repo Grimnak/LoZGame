@@ -293,6 +293,9 @@
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
                     this.items.Add(new MagicSword(location));
                     break;
+                case "Ladder":
+                    this.items.Add(new Ladder(location));
+                    break;
                 default:
                     break;
             }
