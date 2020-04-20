@@ -218,7 +218,7 @@
             {
                 return fireSnakeHeight;
             }
-            else if (enemy is RedDarknut)
+            else if (enemy is RedDarknut || enemy is BlueDarknut)
             {
                 return darknutHeight;
             }
@@ -258,24 +258,20 @@
 
         private Texture2D manhandlaBodyTexture;
         private SpriteData manhandlaBodyData;
-        private Texture2D manhandlaHeadCloseLeftTexture;
         private Texture2D manhandlaHeadOpenLeftTexture;
-        private Texture2D manhandlaHeadCloseRightTexture;
         private Texture2D manhandlaHeadOpenRightTexture;
-        private Texture2D manhandlaHeadCloseUpTexture;
         private Texture2D manhandlaHeadOpenUpTexture;
-        private Texture2D manhandlaHeadCloseDownTexture;
         private Texture2D manhandlaHeadOpenDownTexture;
         private SpriteData manhandlaHeadData;
 
-        private Texture2D GleeockBodyTexture;
-        private SpriteData GleeockBodyData;
-        private Texture2D GleeockHeadTexture;
-        private SpriteData GleeockHeadData;
-        private Texture2D GleeockHeadOffTexture;
-        private SpriteData GleeockHeadOffData;
-        private Texture2D GleeockNeckTexture;
-        private SpriteData GleeockNeckData;
+        private Texture2D GleeokBodyTexture;
+        private SpriteData GleeokBodyData;
+        private Texture2D GleeokHeadTexture;
+        private SpriteData GleeokHeadData;
+        private Texture2D GleeokHeadOffTexture;
+        private SpriteData GleeokHeadOffData;
+        private Texture2D GleeokNeckTexture;
+        private SpriteData GleeokNeckData;
 
         private Texture2D stalfos;
         private SpriteData stalfosData;
@@ -390,19 +386,15 @@
         private void LoadTextures(ContentManager content)
         {
             this.manhandlaBodyTexture = content.Load<Texture2D>("man_body");
-            this.manhandlaHeadOpenLeftTexture = content.Load<Texture2D>("man_head_left_open");
-            this.manhandlaHeadCloseLeftTexture = content.Load<Texture2D>("man_head_left_closed");
-            this.manhandlaHeadOpenRightTexture = content.Load<Texture2D>("man_head_right_open");
-            this.manhandlaHeadCloseRightTexture = content.Load<Texture2D>("man_head_right_closed");
-            this.manhandlaHeadOpenDownTexture = content.Load<Texture2D>("man_head_down_open");
-            this.manhandlaHeadCloseDownTexture = content.Load<Texture2D>("man_head_down_closed");
-            this.manhandlaHeadOpenUpTexture = content.Load<Texture2D>("man_head_up_open");
-            this.manhandlaHeadCloseUpTexture = content.Load<Texture2D>("man_head_up_closed");
+            this.manhandlaHeadOpenLeftTexture = content.Load<Texture2D>("man_head_left");
+            this.manhandlaHeadOpenRightTexture = content.Load<Texture2D>("man_head_right");
+            this.manhandlaHeadOpenDownTexture = content.Load<Texture2D>("man_head_down");
+            this.manhandlaHeadOpenUpTexture = content.Load<Texture2D>("man_head_up");
 
-            this.GleeockBodyTexture = content.Load<Texture2D>("gleeok_body");
-            this.GleeockHeadOffTexture = content.Load<Texture2D>("gleeok_head_off");
-            this.GleeockHeadTexture = content.Load<Texture2D>("gleeok_head_on");
-            this.GleeockNeckTexture = content.Load<Texture2D>("gleeok_neck");
+            this.GleeokBodyTexture = content.Load<Texture2D>("gleeok_body");
+            this.GleeokHeadOffTexture = content.Load<Texture2D>("gleeok_head_off");
+            this.GleeokHeadTexture = content.Load<Texture2D>("gleeok_head_on");
+            this.GleeokNeckTexture = content.Load<Texture2D>("gleeok_neck");
 
             this.stalfos = content.Load<Texture2D>("stalfos");
 
@@ -492,11 +484,11 @@
             this.vireKeeseData = new SpriteData(new Vector2(keeseWidth, keeseHeight), vireKeese, 2, 1);
             this.bubbleData = new SpriteData(new Vector2(bubbleWidth, bubbleHeight), bubble, 2, 1);
             this.manhandlaBodyData = new SpriteData(new Vector2(ManhandlaBodyWidth, ManhandlaBodyHeight), manhandlaBodyTexture, 1, 1);
-            this.manhandlaHeadData = new SpriteData(new Vector2(ManhandlaHeadWidth, ManhandlaHeadHeight), manhandlaHeadCloseDownTexture, 2, 1);
-            this.GleeockBodyData = new SpriteData(new Vector2(GleeockBodyWidth, GleeockBodyHeight), GleeockBodyTexture, 3, 1);
-            this.GleeockHeadOffData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeockHeadOffTexture, 2, 1);
-            this.GleeockHeadData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeockHeadTexture, 1, 1);
-            this.GleeockNeckData = new SpriteData(new Vector2(GleeockNeckWidth, GleeockNeckHeight), GleeockNeckTexture, 1, 1);
+            this.manhandlaHeadData = new SpriteData(new Vector2(ManhandlaHeadWidth, ManhandlaHeadHeight), manhandlaHeadOpenDownTexture, 2, 1);
+            this.GleeokBodyData = new SpriteData(new Vector2(GleeockBodyWidth, GleeockBodyHeight), GleeokBodyTexture, 3, 1);
+            this.GleeokHeadOffData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeokHeadOffTexture, 2, 1);
+            this.GleeokHeadData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeokHeadTexture, 1, 1);
+            this.GleeokNeckData = new SpriteData(new Vector2(GleeockNeckWidth, GleeockNeckHeight), GleeokNeckTexture, 1, 1);
         }
 
         // Stalfos Sprites
@@ -585,22 +577,22 @@
 
         public ISprite CreateGleeockNeckSprite()
         {
-            return new ObjectSprite(this.GleeockNeckTexture, this.GleeockNeckData);
+            return new ObjectSprite(this.GleeokNeckTexture, this.GleeokNeckData);
         }
 
         public ISprite CreateGleeockBodySprite()
         {
-            return new ObjectSprite(this.GleeockBodyTexture, this.GleeockBodyData);
+            return new ObjectSprite(this.GleeokBodyTexture, this.GleeokBodyData);
         }
 
         public ISprite CreateGleeockHeadSprite()
         {
-            return new ObjectSprite(this.GleeockHeadTexture, this.GleeockHeadData);
+            return new ObjectSprite(this.GleeokHeadTexture, this.GleeokHeadData);
         }
 
         public ISprite CreateGleeockHeadOffSprite()
         {
-            return new ObjectSprite(this.GleeockHeadOffTexture, this.GleeockHeadOffData);
+            return new ObjectSprite(this.GleeokHeadOffTexture, this.GleeokHeadOffData);
         }
 
         // Wallmaster Sprites
