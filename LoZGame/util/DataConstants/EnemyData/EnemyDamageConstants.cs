@@ -20,6 +20,7 @@
         private const int RedDarknutDmg = 2;
         private const int BlueDarknutDmg = 4;
         private const int BubbleDmg = 0;
+        private const int GibdoDmg = 8;
 
         public int StalfosDamage => StalfosDmg;
 
@@ -56,5 +57,7 @@
         public int BubbleDamage => BubbleDmg;
 
         public int VireDamage => VireDmg;
+
+        public int GibdoDamage => GibdoDmg;
     }
 }
