@@ -236,14 +236,10 @@
 
         private Texture2D manhandlaBodyTexture;
         private SpriteData manhandlaBodyData;
-        private Texture2D manhandlaHeadCloseLeftTexture;
-        private Texture2D manhandlaHeadOpenLeftTexture;
-        private Texture2D manhandlaHeadCloseRightTexture;
-        private Texture2D manhandlaHeadOpenRightTexture;
-        private Texture2D manhandlaHeadCloseUpTexture;
-        private Texture2D manhandlaHeadOpenUpTexture;
-        private Texture2D manhandlaHeadCloseDownTexture;
-        private Texture2D manhandlaHeadOpenDownTexture;
+        private Texture2D manhandlaHeadLeftTexture;
+        private Texture2D manhandlaHeadRightTexture;
+        private Texture2D manhandlaHeadUpTexture;
+        private Texture2D manhandlaHeadDownTexture;
         private SpriteData manhandlaHeadData;
 
         private Texture2D stalfos;
@@ -370,10 +366,10 @@
         private void LoadTextures(ContentManager content)
         {
             this.manhandlaBodyTexture = content.Load<Texture2D>("man_body");
-            this.manhandlaHeadOpenLeftTexture = content.Load<Texture2D>("man_head_left");
-            this.manhandlaHeadOpenRightTexture = content.Load<Texture2D>("man_head_right");
-            this.manhandlaHeadOpenDownTexture = content.Load<Texture2D>("man_head_down");
-            this.manhandlaHeadOpenUpTexture = content.Load<Texture2D>("man_head_up");
+            this.manhandlaHeadLeftTexture = content.Load<Texture2D>("man_head_left");
+            this.manhandlaHeadRightTexture = content.Load<Texture2D>("man_head_right");
+            this.manhandlaHeadDownTexture = content.Load<Texture2D>("man_head_down");
+            this.manhandlaHeadUpTexture = content.Load<Texture2D>("man_head_up");
 
             this.stalfos = content.Load<Texture2D>("stalfos");
             this.gibdo = content.Load<Texture2D>("gibdo");
@@ -474,7 +470,7 @@
             this.vireKeeseData = new SpriteData(new Vector2(keeseWidth, keeseHeight), vireKeese, 2, 1);
             this.bubbleData = new SpriteData(new Vector2(bubbleWidth, bubbleHeight), bubble, 2, 1);
             this.manhandlaBodyData = new SpriteData(new Vector2(ManhandlaBodyWidth, ManhandlaBodyHeight), manhandlaBodyTexture, 1, 1);
-            this.manhandlaHeadData = new SpriteData(new Vector2(ManhandlaHeadWidth, ManhandlaHeadHeight), manhandlaHeadCloseDownTexture, 1, 1);
+            this.manhandlaHeadData = new SpriteData(new Vector2(ManhandlaHeadWidth, ManhandlaHeadHeight), manhandlaHeadUpTexture, 2, 1);
         }
 
         // Stalfos Sprites
@@ -567,33 +563,18 @@
             return new ObjectSprite(this.manhandlaBodyTexture, this.manhandlaBodyData);
         }
 
-        public ISprite CreateManhandleHeadClosedSprite(Physics.Direction direction)
+        public ISprite CreateManhandlaHeadSprite(Physics.Direction direction)
         {
             switch (direction)
             {
                 case Physics.Direction.North:
-                    return new ObjectSprite(this.manhandlaHeadCloseUpTexture, this.manhandlaHeadData);
+                    return new ObjectSprite(this.manhandlaHeadUpTexture, this.manhandlaHeadData);
                 case Physics.Direction.South:
-                    return new ObjectSprite(this.manhandlaHeadCloseDownTexture, this.manhandlaHeadData);
+                    return new ObjectSprite(this.manhandlaHeadDownTexture, this.manhandlaHeadData);
                 case Physics.Direction.East:
-                    return new ObjectSprite(this.manhandlaHeadCloseRightTexture, this.manhandlaHeadData);
+                    return new ObjectSprite(this.manhandlaHeadRightTexture, this.manhandlaHeadData);
                 default:
-                    return new ObjectSprite(this.manhandlaHeadCloseLeftTexture, this.manhandlaHeadData);
-            }
-        }
-
-        public ISprite CreateManhandlaHeadOpenSprite(Physics.Direction direction)
-        {
-            switch (direction)
-            {
-                case Physics.Direction.North:
-                    return new ObjectSprite(this.manhandlaHeadOpenUpTexture, this.manhandlaHeadData);
-                case Physics.Direction.South:
-                    return new ObjectSprite(this.manhandlaHeadOpenDownTexture, this.manhandlaHeadData);
-                case Physics.Direction.East:
-                    return new ObjectSprite(this.manhandlaHeadOpenRightTexture, this.manhandlaHeadData);
-                default:
-                    return new ObjectSprite(this.manhandlaHeadOpenLeftTexture, this.manhandlaHeadData);
+                    return new ObjectSprite(this.manhandlaHeadLeftTexture, this.manhandlaHeadData);
             }
         }
 

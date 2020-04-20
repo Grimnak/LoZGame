@@ -115,11 +115,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            if (this.CurrentState is AttackingManhandlaHeadState)
-            {
-                return EnemySpriteFactory.Instance.CreateManhandlaHeadOpenSprite(this.Physics.CurrentDirection);
-            }
-            return EnemySpriteFactory.Instance.CreateManhandleHeadClosedSprite(this.Physics.CurrentDirection);
+                return EnemySpriteFactory.Instance.CreateManhandlaHeadSprite(this.Physics.CurrentDirection);
         }
     }
 }
