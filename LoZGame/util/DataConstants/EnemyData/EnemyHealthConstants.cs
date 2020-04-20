@@ -16,7 +16,8 @@
         private const int OldManHP = 1;
         private const int MerchantHP = 1;
         private const int FireSnakeHP = 4;
-        private const int DarknutHP = 8;
+        private const int RedDarknutHP = 8;
+        private const int BlueDarknutHP = 12;
         private const int VireHP = 12;
         private const int BubbleHP = 1;
         private const int manHeadHP = 8;
@@ -50,7 +51,9 @@
 
         public int FireSnakeHealth => FireSnakeHP;
 
-        public int DarknutHealth => DarknutHP;
+        public int RedDarknutHealth => RedDarknutHP;
+
+        public int BlueDarknutHealth => BlueDarknutHP;
 
         public int BubbleHealth => BubbleHP;
 

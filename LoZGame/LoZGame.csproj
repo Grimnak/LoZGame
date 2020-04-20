@@ -101,9 +101,11 @@
     <Compile Include="Enemies\EnemyClasses\FireSnakeSegment.cs" />
     <Compile Include="Enemies\EnemyClasses\FireSnakeHead.cs" />
     <Compile Include="Enemies\EnemyClasses\BlueGoriya.cs" />
+    <Compile Include="Enemies\EnemyClasses\BlueDarknut.cs" />
     <Compile Include="Enemies\EnemyClasses\RedDarknut.cs" />
     <Compile Include="Enemies\EnemyClasses\RedGoriya.cs" />
     <Compile Include="Enemies\EnemyClasses\Bubble.cs" />
+    <Compile Include="Enemies\EnemyClasses\Gibdo.cs" />
     <Compile Include="Enemies\EnemyClasses\Vire.cs" />
     <Compile Include="Enemies\EnemyClasses\VireKeese.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyEssentials.cs" />

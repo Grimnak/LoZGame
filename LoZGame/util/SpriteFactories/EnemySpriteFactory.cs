@@ -39,6 +39,9 @@
         private static readonly int stalfosWidth = 48;
         private static readonly int stalfosHeight = 54;
 
+        private static readonly int gibdoWidth = 48;
+        private static readonly int gibdoHeight = 54;
+
         private static readonly int wallMasterWidth = 35;
         private static readonly int wallMasterHeight = 45;
 
@@ -105,6 +108,10 @@
             {
                 return stalfosWidth;
             }
+            else if (enemy is Gibdo)
+            {
+                return gibdoWidth;
+            }
             else if (enemy is WallMaster)
             {
                 return wallMasterWidth;
@@ -117,7 +124,7 @@
             {
                 return fireSnakeWidth;
             }
-            else if (enemy is RedDarknut)
+            else if (enemy is RedDarknut || enemy is BlueDarknut)
             {
                 return darknutWidth;
             }
@@ -185,6 +192,10 @@
             {
                 return stalfosHeight;
             }
+            else if (enemy is Gibdo)
+            {
+                return gibdoHeight;
+            }
             else if (enemy is WallMaster)
             {
                 return wallMasterHeight;
@@ -197,7 +208,7 @@
             {
                 return fireSnakeHeight;
             }
-            else if (enemy is RedDarknut)
+            else if (enemy is RedDarknut || enemy is BlueDarknut)
             {
                 return darknutHeight;
             }
@@ -237,6 +248,8 @@
 
         private Texture2D stalfos;
         private SpriteData stalfosData;
+        private Texture2D gibdo;
+        private SpriteData gibdoData;
 
         private Texture2D downGoriya;
         private Texture2D downBlueGoriya;
@@ -305,14 +318,23 @@
         private Texture2D bubble;
         private SpriteData bubbleData;
 
-        private Texture2D upDarknut;
-        private SpriteData upDarknutData;
-        private Texture2D downDarknut;
-        private SpriteData downDarknutData;
-        private Texture2D leftDarknut;
-        private SpriteData leftDarknutData;
-        private Texture2D rightDarknut;
-        private SpriteData rightDarknutData;
+        private Texture2D upRedDarknut;
+        private SpriteData upRedDarknutData;
+        private Texture2D downRedDarknut;
+        private SpriteData downRedDarknutData;
+        private Texture2D leftRedDarknut;
+        private SpriteData leftRedDarknutData;
+        private Texture2D rightRedDarknut;
+        private SpriteData rightRedDarknutData;
+
+        private Texture2D upBlueDarknut;
+        private SpriteData upBlueDarknutData;
+        private Texture2D downBlueDarknut;
+        private SpriteData downBlueDarknutData;
+        private Texture2D leftBlueDarknut;
+        private SpriteData leftBlueDarknutData;
+        private Texture2D rightBlueDarknut;
+        private SpriteData rightBlueDarknutData;
 
         private Texture2D oldMan;
         private Texture2D angryOldMan;
@@ -358,6 +380,7 @@
             this.manhandlaHeadCloseUpTexture = content.Load<Texture2D>("man_head_up_closed");
 
             this.stalfos = content.Load<Texture2D>("stalfos");
+            //this.gibdo = content.Load<Texture2D>("gibdo");
 
             this.downGoriya = content.Load<Texture2D>("redGoriyaDown");
             this.upGoriya = content.Load<Texture2D>("redGoriyaUp");
@@ -397,10 +420,15 @@
 
             this.bubble = content.Load<Texture2D>("blue_bubble");
 
-            this.upDarknut = content.Load<Texture2D>("red_darknut_up");
-            this.downDarknut = content.Load<Texture2D>("red_darknut_down");
-            this.leftDarknut = content.Load<Texture2D>("red_darknut_left");
-            this.rightDarknut = content.Load<Texture2D>("red_darknut_right");
+            this.upRedDarknut = content.Load<Texture2D>("red_darknut_up");
+            this.downRedDarknut = content.Load<Texture2D>("red_darknut_down");
+            this.leftRedDarknut = content.Load<Texture2D>("red_darknut_left");
+            this.rightRedDarknut = content.Load<Texture2D>("red_darknut_right");
+
+            //this.upBlueDarknut = content.Load<Texture2D>("blue_darknut_up");
+            //this.downBlueDarknut = content.Load<Texture2D>("blue_darknut_down");
+            //this.leftBlueDarknut = content.Load<Texture2D>("blue_darknut_left");
+            //this.rightBlueDarknut = content.Load<Texture2D>("blue_darknut_right");
 
             this.oldMan = content.Load<Texture2D>("oldMan");
             this.angryOldMan = content.Load<Texture2D>("angryOldMan");
@@ -413,6 +441,7 @@
         private void LoadData()
         {
             this.stalfosData = new SpriteData(new Vector2(stalfosWidth, stalfosHeight), stalfos, 2, 1);
+            this.gibdoData = new SpriteData(new Vector2(gibdoWidth, gibdoHeight), gibdo, 2, 1);
             this.downGoriyaData = new SpriteData(new Vector2(goriyaWidth, goriyaHeight), downGoriya, 2, 1);
             this.upGoriyaData = new SpriteData(new Vector2(goriyaWidth, goriyaHeight), upGoriya, 2, 1);
             this.leftGoriyaData = new SpriteData(new Vector2(goriyaWidth, goriyaHeight), leftGoriya, 2, 1);
@@ -431,10 +460,14 @@
             this.upDodongoData = new SpriteData(new Vector2(dodongoWidthUp, dodongoHeight), upDodongo, 1, 3);
             this.leftDodongoData = new SpriteData(new Vector2(dodongoWidthLeftRight, dodongoHeight), leftDodongo, 1, 3);
             this.rightDodongoData = new SpriteData(new Vector2(dodongoWidthLeftRight, dodongoHeight), rightDodongo, 1, 3);
-            this.upDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), upDarknut, 2, 1);
-            this.downDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), downDarknut, 2, 1);
-            this.leftDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), leftDarknut, 2, 1);
-            this.rightDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), rightDarknut, 2, 1);
+            this.upRedDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), upRedDarknut, 2, 1);
+            this.downRedDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), downRedDarknut, 2, 1);
+            this.leftRedDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), leftRedDarknut, 2, 1);
+            this.rightRedDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), rightRedDarknut, 2, 1);
+            this.upBlueDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), upBlueDarknut, 2, 1);
+            this.downBlueDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), downBlueDarknut, 2, 1);
+            this.leftBlueDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), leftBlueDarknut, 2, 1);
+            this.rightBlueDarknutData = new SpriteData(new Vector2(darknutWidth, darknutHeight), rightBlueDarknut, 2, 1);
             this.fireSnakeData = new SpriteData(new Vector2(fireSnakeWidth, fireSnakeHeight), fireSnake, 1, 4);
             this.oldManData = new SpriteData(new Vector2(oldManWidth, oldManHeight), oldMan, 1, 1);
             this.merchantData = new SpriteData(new Vector2(merchantWidth, merchantHeight), merchant, 1, 1);
@@ -466,19 +499,40 @@
         }
 
         // Darknut Sprites
-        public ISprite CreateDarknutSprite(Physics.Direction direction)
+        public ISprite CreateRedDarknutSprite(Physics.Direction direction)
         {
             switch (direction)
             {
                 case Physics.Direction.North:
-                    return new ObjectSprite(this.upDarknut, this.upDarknutData);
+                    return new ObjectSprite(this.upRedDarknut, this.upRedDarknutData);
                 case Physics.Direction.South:
-                    return new ObjectSprite(this.downDarknut, this.downDarknutData);
+                    return new ObjectSprite(this.downRedDarknut, this.downRedDarknutData);
                 case Physics.Direction.East:
-                    return new ObjectSprite(this.rightDarknut, this.rightDarknutData);
+                    return new ObjectSprite(this.rightRedDarknut, this.rightRedDarknutData);
                 default:
-                    return new ObjectSprite(this.leftDarknut, this.leftDarknutData);
+                    return new ObjectSprite(this.leftRedDarknut, this.leftRedDarknutData);
             }
+        }
+
+        public ISprite CreateBlueDarknutSprite(Physics.Direction direction)
+        {
+            switch (direction)
+            {
+                case Physics.Direction.North:
+                    return new ObjectSprite(this.upBlueDarknut, this.upBlueDarknutData);
+                case Physics.Direction.South:
+                    return new ObjectSprite(this.downBlueDarknut, this.downBlueDarknutData);
+                case Physics.Direction.East:
+                    return new ObjectSprite(this.rightBlueDarknut, this.rightBlueDarknutData);
+                default:
+                    return new ObjectSprite(this.leftBlueDarknut, this.leftBlueDarknutData);
+            }
+        }
+
+        // Gibdo Sprites
+        public ISprite CreateGibdoSprite()
+        {
+            return new ObjectSprite(this.gibdo, this.gibdoData);
         }
 
         // Goriya Sprites

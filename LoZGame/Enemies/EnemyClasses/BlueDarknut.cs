@@ -3,20 +3,20 @@
     using Microsoft.Xna.Framework;
     using System.Collections.Generic;
 
-    public class RedDarknut : EnemyEssentials, IEnemy
+    public class BlueDarknut : EnemyEssentials, IEnemy
     {
-        public RedDarknut(Vector2 location)
+        public BlueDarknut(Vector2 location)
         {
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.DarknutStateList);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.RedDarknutHealth);
+            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.BlueDarknutHealth);
             this.Physics = new Physics(location);
             this.Physics.Mass = GameData.Instance.EnemyMassConstants.DarknutMass;
             this.CurrentState = new SpawnEnemyState(this);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
             this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.RedDarknutDamage;
+            this.Damage = GameData.Instance.EnemyDamageConstants.BlueDarknutDamage;
             this.DamageTimer = 0;
             this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DarknutSpeed;
             this.CurrentTint = LoZGame.Instance.DefaultTint;
@@ -49,7 +49,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            return EnemySpriteFactory.Instance.CreateRedDarknutSprite(this.Physics.CurrentDirection);
+            return EnemySpriteFactory.Instance.CreateBlueDarknutSprite(this.Physics.CurrentDirection);
         }
 
         private bool Blocked(ICollider otherCollider)
