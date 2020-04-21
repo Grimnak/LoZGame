@@ -31,10 +31,11 @@
             ManHandlaHead,
             NoSpawn,
             None,
+            Likelike,
             NoAI
         }
 
-        private Point minMaxWander = new Point(LoZGame.Instance.UpdateSpeed);
+        private Point minMaxWander = new Point(LoZGame.Instance.UpdateSpeed / 2, (LoZGame.Instance.UpdateSpeed * 3) / 2);
 
         private bool isDead = false;
 
@@ -45,6 +46,8 @@
         private bool isTransparent = false;
       
         private EnemyAI Name = EnemyAI.None;
+
+        public Point SpawnPoint => Point.Zero;
 
         public Dictionary<RandomStateGenerator.StateType, int> States { get; set; }
 

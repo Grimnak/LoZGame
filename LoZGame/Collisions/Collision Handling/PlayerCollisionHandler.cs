@@ -17,6 +17,10 @@
             {
                 this.player.State = new GrabbedState(player, (WallMaster)enemy);
             }
+            else if (enemy is Likelike)
+            {
+                this.player.State = new SwallowedState(player, (Likelike)enemy);
+            }
             else if (enemy is Bubble)
             {
                 if (this.player.DamageTimer <= 0)
@@ -68,6 +72,10 @@
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
         {
+            if (block is CrossableTile)
+            {
+                this.player.LadderTimer = 5;
+            }
         }
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)

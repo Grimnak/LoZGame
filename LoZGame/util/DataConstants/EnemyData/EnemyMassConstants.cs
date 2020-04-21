@@ -17,6 +17,7 @@ namespace LoZClone
         private const int VireMss = 16;
         private const int BubbleMss = 8;
         private const int GibdoMss = 14;
+        private const int LikelikeMss = 16;
 
         public int StalfosMass { get { return StalfosMss; } }
         
@@ -47,5 +48,7 @@ namespace LoZClone
         public int VireMass => VireMss;
 
         public int GibdoMass => GibdoMss;
+
+        public int LikelikeMass => LikelikeMss;
     }
 }

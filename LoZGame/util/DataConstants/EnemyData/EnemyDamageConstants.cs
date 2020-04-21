@@ -24,6 +24,7 @@
         private const int BlueDarknutDmg = 4;
         private const int BubbleDmg = 0;
         private const int GibdoDmg = 8;
+        private const int LikelikeDmg = 4;
 
         public int StalfosDamage => StalfosDmg;
 
@@ -70,5 +71,7 @@
         public int ThreeQuarterHeart => halfHeart + quarterHeart;
 
         public int FullHeart => fullHeart;
+
+        public int LikelikeDamage => LikelikeDmg;
     }
 }
