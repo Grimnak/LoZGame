@@ -68,9 +68,12 @@
             }
             else if (block is CrossableTile)
             {
-                if (!(player.State is GrabbedState) && !player.Inventory.HasLadder && player.LadderTimer > 0)
+                if (!(player.State is GrabbedState) && (!player.Inventory.HasLadder || player.Inventory.LadderInUse))
                 {
-                    this.SetBounds(this.block.Physics, player.Physics, collisionSide);
+                    if (!((CrossableTile)block).BeingCrossed)
+                    {
+                        this.SetBounds(this.block.Physics, player.Physics, collisionSide);
+                    }
                 }
             }
         }

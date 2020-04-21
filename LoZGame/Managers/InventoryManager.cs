@@ -41,6 +41,7 @@
         private bool hasRedFlame;
         private bool hasBlueFlame;
         private bool hasLadder;
+        private bool ladderInUse;
         private int maxBombs;
         private int maxSelectionX;
         private int maxSelectionY;
@@ -73,6 +74,7 @@
             this.hasRedFlame = LoZGame.Cheats;
             this.hasBlueFlame = LoZGame.Cheats;
             this.hasLadder = LoZGame.Cheats;
+            this.ladderInUse = false;
 
             this.hasMap = LoZGame.Cheats;
             this.hasCompass = LoZGame.Cheats;
@@ -204,6 +206,8 @@
         public bool HasCompass { get { return this.hasCompass; } set { this.hasCompass = value; } }
 
         public bool HasLadder { get { return this.hasLadder; } set { this.hasLadder = value; } }
+
+        public bool LadderInUse { get { return this.ladderInUse; } set { this.ladderInUse = value; } }
 
         public static int ClockLockoutMax { get { return clockLockoutMax; } }
 

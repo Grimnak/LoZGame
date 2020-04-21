@@ -12,7 +12,7 @@ namespace LoZClone
         private const string WaterTile = "water_tile";
         private const string Lava5 = "lava5";
 
-        private const int maxLadderTime = 30;
+        private const int maxLadderTime = 2;
         private int ladderTime;
         private bool playerCrossing;
         private ISprite sprite;
@@ -24,6 +24,8 @@ namespace LoZClone
         public List<MovableTile.InvalidDirection> InvalidDirections { get { return null; } }
 
         public Physics Physics { get; set; }
+
+        public bool BeingCrossed { get { return this.playerCrossing; } }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BlockTile"/> class.
@@ -86,7 +88,7 @@ namespace LoZClone
             if (otherCollider is IPlayer)
             {
                 this.blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-                if (((IPlayer)otherCollider).Inventory.HasLadder)
+                if (((IPlayer)otherCollider).Inventory.HasLadder && (!((IPlayer)otherCollider).Inventory.LadderInUse || this.playerCrossing))
                 {
                     this.ladderTime = 0;
                 }
@@ -107,9 +109,14 @@ namespace LoZClone
             {
                 this.ladderTime++;
                 this.playerCrossing = true;
+                LoZGame.Instance.Players[0].Inventory.LadderInUse = true;
             }
             else
             {
+                if (this.playerCrossing == true)
+                {
+                    LoZGame.Instance.Players[0].Inventory.LadderInUse = false;
+                }
                 this.playerCrossing = false;
             }
 
