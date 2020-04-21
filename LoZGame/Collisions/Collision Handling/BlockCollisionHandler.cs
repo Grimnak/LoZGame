@@ -82,7 +82,10 @@
         {
             if (!collisionBlackList.Contains(enemy.AI))
             {
-                this.SetBounds(this.block.Physics, enemy.Physics, collisionSide);
+                if (!(enemy is PolsVoice && enemy.Physics.IsJumping))
+                {
+                    this.SetBounds(this.block.Physics, enemy.Physics, collisionSide);
+                }
             }
         }
 
