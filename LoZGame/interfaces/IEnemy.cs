@@ -32,6 +32,11 @@
         /// </summary>
         bool IsTransparent { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value that the enemy spawned at.
+        /// </summary>
+        Point SpawnPoint { get; }
+
         bool HasChild { get; set; }
 
         int Damage { get; }

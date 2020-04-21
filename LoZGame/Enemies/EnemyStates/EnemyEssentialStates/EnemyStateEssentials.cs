@@ -34,7 +34,7 @@
         {
             this.Lifetime++;
             this.Sprite.Update();
-            if (this.Lifetime > this.DirectionChange)
+            if (this.Lifetime > this.DirectionChange && !this.Enemy.Physics.IsJumping)
             {
                 this.Enemy.UpdateState();
                 this.Lifetime = 0;
