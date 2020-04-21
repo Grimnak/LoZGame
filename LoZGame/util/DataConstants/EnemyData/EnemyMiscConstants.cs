@@ -40,7 +40,6 @@ namespace LoZClone
         private const int LikelikeFavorCardinal = 5;
         private const int PolsVoiceFavorCardinal = 5;
 
-
         public int FireSnakeLength => FireSnakeLgth;
 
         public int MaxDirectionChange => MaxDirectionChng;

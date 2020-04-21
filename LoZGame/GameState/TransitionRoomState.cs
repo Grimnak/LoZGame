@@ -181,12 +181,12 @@
                 foreach (IDoor door in puzzleDoors)
                 {
                     door.State = new PuzzleDoorState(door);
-                    door.DoorType = Door.DoorTypes.Locked;
+                    door.DoorType = Door.DoorTypes.Puzzle;
                 }
                 foreach (IDoor door in specialDoors)
                 {
                     door.State = new SpecialDoorState(door);
-                    door.DoorType = Door.DoorTypes.Locked;
+                    door.DoorType = Door.DoorTypes.Special;
                 }
                 puzzleDoors.Clear();
                 specialDoors.Clear();
