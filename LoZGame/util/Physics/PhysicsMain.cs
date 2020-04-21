@@ -32,7 +32,7 @@
             this.boundsLocation = Vector2.Zero;
             this.CurrentDirection = Direction.None;
             this.IsMoveable = true;
-            this.Gravity = 0.0f;
+            this.Gravity = GameData.Instance.PhysicsConstants.DefaultGravity;
         }
 
         public void SetDepth()

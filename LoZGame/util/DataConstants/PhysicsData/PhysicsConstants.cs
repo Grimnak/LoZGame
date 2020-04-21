@@ -19,6 +19,7 @@ namespace LoZClone
         private const int massMultiplier = -4;
         private const float defaultDepth = 1.0f;
         private const float defaultRotation = 0.0f;
+        private const float defaultGravity = 0.15f;
         private const int zeroDepth = 0;
         private const int doorWidth = 60;
 
@@ -43,6 +44,8 @@ namespace LoZClone
         public float DefaultDepth => defaultDepth;
 
         public float DefaultRotation => defaultRotation;
+
+        public float DefaultGravity => defaultGravity;
 
         public int ZeroDepth => zeroDepth;
 
