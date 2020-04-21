@@ -170,6 +170,10 @@
             foreach (IEnemy enemy in this.dungeonLayout[this.currentY][this.currentX].Enemies)
             {
                 enemy.Physics.Bounds = new Rectangle(enemy.Physics.Bounds.Location, enemy.Physics.Bounds.Size);
+                if (enemy.AI == EnemyEssentials.EnemyAI.SpikeCross)
+                {
+                    enemy.Physics.Bounds = new Rectangle(enemy.SpawnPoint, enemy.Physics.Bounds.Size);
+                }
                 enemy.Physics.SetLocation();
                 LoZGame.Instance.GameObjects.Enemies.Add(enemy);
             }

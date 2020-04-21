@@ -9,14 +9,12 @@
         private readonly IEnemy enemy;
         private readonly ISprite sprite;
         private float attackSpeed;
-        private Point startPoint;
         private Point stopPoint;
         private bool returning;
 
         public AttackingSpikeCrossState(IEnemy enemy)
         {
             this.Enemy = enemy;
-            this.startPoint = this.Enemy.Physics.Bounds.Location;
             this.stopPoint = new Point(LoZGame.Instance.ScreenWidth / 2, LoZGame.Instance.InventoryOffset + ((LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset) / 2));
             this.returning = false;
             this.Sprite = this.Enemy.CreateCorrectSprite();
@@ -87,15 +85,16 @@
                 }
                 if (returning)
                 {
-                    Vector2 toStart = (this.startPoint - this.Enemy.Physics.Bounds.Location).ToVector2();
+                    Vector2 toStart = (this.Enemy.SpawnPoint - this.Enemy.Physics.Bounds.Location).ToVector2();
                     toStart.Normalize();
                     this.Enemy.Physics.MovementVelocity = toStart * (this.Enemy.Physics.MovementVelocity.Length() / 2);
                 }
             }
             else
             {
-                if (this.Enemy.Physics.Bounds.Location == startPoint)
+                if ((this.Enemy.Physics.Bounds.Location - this.Enemy.SpawnPoint).ToVector2().Length() <= this.Enemy.Physics.MovementVelocity.Length())
                 {
+                    this.Enemy.Physics.Bounds = new Rectangle(this.Enemy.SpawnPoint, this.Enemy.Physics.Bounds.Size);
                     this.Enemy.CurrentState.Stop();
                 }
             }

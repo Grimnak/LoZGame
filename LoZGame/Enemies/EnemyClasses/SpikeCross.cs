@@ -27,6 +27,8 @@
             this.ApplyLargeWeightModPos();
         }
 
+        public new Point SpawnPoint => InitialPos;
+
         public override void UpdateState()
         {
             this.CurrentState = new IdleEnemyState(this);

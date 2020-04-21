@@ -33,8 +33,8 @@ namespace LoZClone
         private const int WallMasterFavorCardinal = 3;
         private const int ZolFavorCardinal = 3;
         private const int DarknutFavorCardinal = 3;
-        private const int VireFavorCardinal = 3;
-        private const int LikelikeFavorCardinal = 3;
+        private const int VireFavorCardinal = 5;
+        private const int LikelikeFavorCardinal = 5;
 
         public int FireSnakeLength => FireSnakeLgth;
 
