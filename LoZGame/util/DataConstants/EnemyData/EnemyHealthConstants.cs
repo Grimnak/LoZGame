@@ -26,6 +26,7 @@
         private const int GleeokNeckHP = 1;
         private const int GleeokHeadHP = 12;
         private const int LikelikeHP = 12;
+        private const int PolsVoiceHP = 20;
 
         public int StalfosHealth => StalfosHP;
 
@@ -74,5 +75,9 @@
         public int GleeokHeadHealth => GleeokHeadHP;
 
         public int LikelikeHealth => LikelikeHP;
+
+        public int PolsVoiceHealth => PolsVoiceHP;
+
+
     }
 }

@@ -8,7 +8,6 @@
     /// </summary>
     public partial class Physics
     {
-        private const float gravity = 0.2f;
         private float currentJump;
         private float maxJump;
 
@@ -28,9 +27,9 @@
 
         private void UpdateJump()
         {
-            if (currentJump < maxJump + gravity)
+            if (currentJump < maxJump + this.Gravity)
             {
-                currentJump += gravity;
+                currentJump += this.Gravity;
             }
             else
             {

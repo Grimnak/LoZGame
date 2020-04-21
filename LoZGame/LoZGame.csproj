@@ -111,6 +111,7 @@
     <Compile Include="Enemies\EnemyClasses\RedGoriya.cs" />
     <Compile Include="Enemies\EnemyClasses\Bubble.cs" />
     <Compile Include="Enemies\EnemyClasses\Gibdo.cs" />
+    <Compile Include="Enemies\EnemyClasses\PolsVoice.cs" />
     <Compile Include="Enemies\EnemyClasses\Vire.cs" />
     <Compile Include="Enemies\EnemyClasses\VireKeese.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyEssentials.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateDarknut.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateDodongo.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdatePolsVoice.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateLikelike.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateVire.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGleeock.cs" />

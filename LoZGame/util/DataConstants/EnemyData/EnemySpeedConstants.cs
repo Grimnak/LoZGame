@@ -32,6 +32,7 @@ namespace LoZClone
         private const float BubbleSpd = 3;
         private const float GibdoSpd = 2;
         private const float LikelikeSpd = 1.5f;
+        private const float PolsVoiceSpd = 2.5f;
 
         public float StalfosSpeed => StalfosSpd;
 
@@ -92,5 +93,7 @@ namespace LoZClone
         public float JumpStrength => jumpStrength;
 
         public float LikelikeSpeed => LikelikeSpd;
+
+        public float PolsVoiceSpeed => PolsVoiceSpd;
     }
 }

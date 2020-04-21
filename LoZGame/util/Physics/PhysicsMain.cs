@@ -32,6 +32,7 @@
             this.boundsLocation = Vector2.Zero;
             this.CurrentDirection = Direction.None;
             this.IsMoveable = true;
+            this.Gravity = 0.0f;
         }
 
         public void SetDepth()

@@ -32,6 +32,7 @@
             NoSpawn,
             None,
             Likelike,
+            PolsVoice,
             NoAI
         }
 

@@ -192,6 +192,17 @@
             { StateType.MoveWest, 1 },
         };
 
+        private static Dictionary<StateType, int> polsVoiceStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 },
+            { StateType.JumpEast, 2 },
+            { StateType.JumpWest, 2 },
+            { StateType.JumpNorth, 1 }
+        };
+
         public Dictionary<StateType, int> JumpTest => jumpTest;
 
         public Dictionary<StateType, int> OldManStateList => oldManStateList;
@@ -233,5 +244,7 @@
         public Dictionary<StateType, int> GibdoStateList => gibdoStateList;
 
         public Dictionary<StateType, int> LikelikeStateList => likelikeStateList;
+
+        public Dictionary<StateType, int> PolsVoiceStateList => polsVoiceStateList;
     }
 }

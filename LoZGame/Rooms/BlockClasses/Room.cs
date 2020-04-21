@@ -229,6 +229,9 @@
                 case "LikeLike":
                     this.enemies.Add(new Likelike(location));
                     break;
+                case "PolsVoice":
+                    this.enemies.Add(new PolsVoice(location));
+                    break;
                 default:
                     break;
             }

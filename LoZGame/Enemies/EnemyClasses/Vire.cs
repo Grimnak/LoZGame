@@ -34,6 +34,7 @@
             this.ApplySmallSpeedMod();
             this.ApplySmallWeightModPos();
             this.ApplySmallHealthMod();
+            this.Physics.Gravity = GameData.Instance.EnemyMiscConstants.VireGravity;
         }
 
         public override void Stun(int stunTime)

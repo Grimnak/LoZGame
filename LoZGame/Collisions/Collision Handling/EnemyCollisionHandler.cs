@@ -38,6 +38,13 @@
                     projectile.IsExpired = true;
                 }
             }
+            else if (this.enemy is PolsVoice)
+            {
+                if (projectile is ArrowProjectile || projectile is SilverArrowProjectile)
+                {
+                    this.enemy.TakeDamage(GameData.Instance.EnemyHealthConstants.PolsVoiceHealth);
+                }
+            }
             else if (this.enemy is FireSnakeHead || this.enemy is FireSnakeSegment)
             {
                 if (!(projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BombProjectile))

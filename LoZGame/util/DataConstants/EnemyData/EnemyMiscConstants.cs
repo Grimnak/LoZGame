@@ -18,6 +18,9 @@ namespace LoZClone
         private const int ZolIdleMax = 30;
         private const int ZolMovementT = 17;
 
+        private const float VireGrav = .2f;
+        private const float PolsVoiceGrav= .075f;
+
         private const int snakeUpdateTime = 10;
         private const int swordBeamSuccessRate = 20;
 
@@ -35,6 +38,8 @@ namespace LoZClone
         private const int DarknutFavorCardinal = 3;
         private const int VireFavorCardinal = 5;
         private const int LikelikeFavorCardinal = 5;
+        private const int PolsVoiceFavorCardinal = 5;
+
 
         public int FireSnakeLength => FireSnakeLgth;
 
@@ -65,6 +70,10 @@ namespace LoZClone
         public int ZolMaxIdle => ZolIdleMax;
 
         public int ZolMovementTime => ZolMovementT;
+
+        public float VireGravity => VireGrav;
+
+        public float PolsVoiceGravity => PolsVoiceGrav;
 
         public int DodongoFavorCardinalValue => DodongoFavorCardinal;
 
@@ -101,5 +110,8 @@ namespace LoZClone
         public int ProjectileSuccess => swordBeamSuccessRate;
 
         public int LikelikeFavorCardinalValue => LikelikeFavorCardinal;
+
+        public int PolsVoiceFavorCardinalValue => PolsVoiceFavorCardinal;
+
     }
 }

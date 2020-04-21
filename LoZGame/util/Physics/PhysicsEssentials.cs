@@ -31,6 +31,8 @@
 
         public float Rotation { get; set; }
 
+        public float Gravity { get; set; }
+
         public Vector2 Location { get; set; }
 
         public Vector2 MovementVelocity { get; set; }

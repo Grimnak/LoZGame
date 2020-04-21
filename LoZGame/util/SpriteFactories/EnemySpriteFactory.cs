@@ -78,6 +78,9 @@
         private static readonly int likelikeWidth = 40;
         private static readonly int likelikeHeight = 40;
 
+        private static readonly int PolsVoiceWidth = 40;
+        private static readonly int PolsVoiceHeight = 40;
+
         public static int GetEnemyWidth(IEnemy enemy)
         {
             if (enemy is Dodongo)
@@ -171,6 +174,10 @@
             else if (enemy is Likelike)
             {
                 return likelikeWidth;
+            }
+            else if (enemy is PolsVoice)
+            {
+                return PolsVoiceWidth;
             }
             else
             {
@@ -271,6 +278,10 @@
             else if (enemy is Likelike)
             {
                 return likelikeHeight;
+            }
+            else if (enemy is PolsVoice)
+            {
+                return PolsVoiceHeight;
             }
             else
             {
@@ -382,6 +393,9 @@
         private Texture2D likelike;
         private SpriteData likelikeData;
 
+        private Texture2D polsVoice;
+        private SpriteData polsVoiceData;
+
         private Texture2D oldMan;
         private Texture2D angryOldMan;
         private SpriteData oldManData;
@@ -479,6 +493,9 @@
 
             this.likelike = content.Load<Texture2D>("likelike");
 
+            this.polsVoice = content.Load<Texture2D>("polsvoice");
+
+
             this.oldMan = content.Load<Texture2D>("oldMan");
             this.angryOldMan = content.Load<Texture2D>("angryOldMan");
             this.merchant = content.Load<Texture2D>("merchant");
@@ -528,6 +545,7 @@
             this.GleeokHeadData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeokHeadTexture, 1, 1);
             this.GleeokNeckData = new SpriteData(new Vector2(GleeockNeckWidth, GleeockNeckHeight), GleeokNeckTexture, 1, 1);
             this.likelikeData = new SpriteData(new Vector2(likelikeWidth, likelikeHeight), likelike, 3, 1);
+            this.polsVoiceData = new SpriteData(new Vector2(PolsVoiceWidth, PolsVoiceHeight), polsVoice, 2, 1);
         }
 
         // Stalfos Sprites
@@ -774,6 +792,11 @@
         public ISprite CreateLikelikeSprite()
         {
             return new ObjectSprite(this.likelike, this.likelikeData);
+        }
+
+        public ISprite CreatePolsVoiceSprite()
+        {
+            return new ObjectSprite(this.polsVoice, this.polsVoiceData);
         }
 
         // Enemy Spawn Sprites
