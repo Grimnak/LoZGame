@@ -18,9 +18,6 @@
         private bool basement = false;
         private bool oldman = false;
         private string text = null;
-        private Tuple<Key, bool> droppedKey = null;
-        private Tuple<Boomerang, bool> droppedBoomerang = null;
-        private Tuple<MagicBoomerang, bool> droppedMagicBoomerang = null;
         private List<IItem> items = null; // a list for any and all items in a room
         private List<IEnemy> enemies = null; // a list for any and all enemies in a room
         private List<IBlock> blocks = null; // a list for any and all tiles in a room
