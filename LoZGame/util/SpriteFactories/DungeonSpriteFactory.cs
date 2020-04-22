@@ -159,7 +159,7 @@
             return new ObjectSprite(SpottedTileTexture, TileData);
         }
 
-        public ISprite MoveabeTile()
+        public ISprite MovableTile()
         {
             return new ObjectSprite(MoveableTileTexture, TileData);
         }

@@ -30,23 +30,20 @@
             bool movable = true;
             if (!(player.State is GrabbedState) && block is MovableTile)
             {
-                foreach (MovableTile.InvalidDirection invalid in block.InvalidDirections)
+                switch (collisionSide)
                 {
-                    switch (invalid)
-                    {
-                        case MovableTile.InvalidDirection.North:
-                            movable = !(collisionSide == CollisionDetection.CollisionSide.Bottom);
-                            break;
-                        case MovableTile.InvalidDirection.South:
-                            movable = !(collisionSide == CollisionDetection.CollisionSide.Top);
-                            break;
-                        case MovableTile.InvalidDirection.East:
-                            movable = !(collisionSide == CollisionDetection.CollisionSide.Right);
-                            break;
-                        case MovableTile.InvalidDirection.West:
-                            movable = !(collisionSide == CollisionDetection.CollisionSide.Left);
-                            break;
-                    }
+                    case CollisionDetection.CollisionSide.Top:
+                        movable = !block.InvalidDirections.Contains(MovableTile.InvalidDirection.North);
+                        break;
+                    case CollisionDetection.CollisionSide.Bottom:
+                        movable = !block.InvalidDirections.Contains(MovableTile.InvalidDirection.South);
+                        break;
+                    case CollisionDetection.CollisionSide.Right:
+                        movable = !block.InvalidDirections.Contains(MovableTile.InvalidDirection.East);
+                        break;
+                    case CollisionDetection.CollisionSide.Left:
+                        movable = !block.InvalidDirections.Contains(MovableTile.InvalidDirection.West);
+                        break;
                 }
                 if (movable)
                 {

@@ -58,7 +58,6 @@
 
         public void Solve()
         {
-            SoundFactory.Instance.PlaySolved();
             SoundFactory.Instance.PlayDoorUnlock();
             Door.IsSolved = true;
         }

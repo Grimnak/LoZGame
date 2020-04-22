@@ -98,7 +98,7 @@
                     return BlockSpriteFactory.Instance.BlueStatueRight();
                 case MovableSquare2:
                     spriteTint = LoZGame.Instance.DungeonTint;
-                    return DungeonSpriteFactory.Instance.MoveabeTile();
+                    return DungeonSpriteFactory.Instance.MovableTile();
                 case BlueStatueRight2:
                     return BlockSpriteFactory.Instance.BlueStatueRight2();
                 case BlueStatueLeft2:
@@ -117,7 +117,7 @@
                     return BlockSpriteFactory.Instance.GreenStatueLeft3();
                 case MovableSquare3:
                     spriteTint = LoZGame.Instance.DungeonTint;
-                    return DungeonSpriteFactory.Instance.MoveabeTile();
+                    return DungeonSpriteFactory.Instance.MovableTile();
                 case BlueStatueRight4:
                     return BlockSpriteFactory.Instance.BlueStatueRight4();
                 case BlueStatueLeft4:
@@ -130,7 +130,7 @@
                     return BlockSpriteFactory.Instance.MovableTile4();
                 default:
                     spriteTint = LoZGame.Instance.DungeonTint;
-                    return DungeonSpriteFactory.Instance.MoveabeTile();
+                    return DungeonSpriteFactory.Instance.MovableTile();
             }
         }
 

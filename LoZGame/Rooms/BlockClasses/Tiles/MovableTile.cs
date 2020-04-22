@@ -57,32 +57,12 @@
             string[] invalidDirectionStrings = !string.IsNullOrEmpty(direction) ? direction.Split(',') : null;
             blockCollisionHandler = new BlockCollisionHandler(this);
             Physics = new Physics(location);
-            sprite = DungeonSpriteFactory.Instance.MoveabeTile(); 
+            sprite = DungeonSpriteFactory.Instance.MovableTile();
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
             Physics.SetDepth();
             moved = false;
             isTransparent = false;
-            if (!(invalidDirectionStrings is null))
-            {
-                foreach (string invalid in invalidDirectionStrings)
-                {
-                    switch (invalid)
-                    {
-                        case "N":
-                            InvalidDirections.Add(InvalidDirection.North);
-                            break;
-                        case "S":
-                            InvalidDirections.Add(InvalidDirection.South);
-                            break;
-                        case "E":
-                            InvalidDirections.Add(InvalidDirection.East);
-                            break;
-                        case "W":
-                            InvalidDirections.Add(InvalidDirection.West);
-                            break;
-                    }
-                }
-            }
+            SetInvalidDirections(invalidDirectionStrings);
         }
 
         /// <inheritdoc/>
@@ -110,6 +90,7 @@
                 else if (!moved)
                 {
                     moved = true;
+                    SoundFactory.Instance.PlaySolved();
                 }
             }
             else if (Physics.MovementVelocity.Y != 0)
@@ -123,6 +104,7 @@
                 else if (!moved)
                 {
                     moved = true;
+                    SoundFactory.Instance.PlaySolved();
                 }
             }
         }
@@ -172,6 +154,31 @@
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
+        }
+
+        private void SetInvalidDirections(string[] invalidDirectionStrings)
+        {
+            if (!(invalidDirectionStrings is null))
+            {
+                foreach (string invalid in invalidDirectionStrings)
+                {
+                    switch (invalid)
+                    {
+                        case "N":
+                            InvalidDirections.Add(InvalidDirection.North);
+                            break;
+                        case "S":
+                            InvalidDirections.Add(InvalidDirection.South);
+                            break;
+                        case "E":
+                            InvalidDirections.Add(InvalidDirection.East);
+                            break;
+                        case "W":
+                            InvalidDirections.Add(InvalidDirection.West);
+                            break;
+                    }
+                }
+            }
         }
     }
 }
