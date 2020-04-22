@@ -23,17 +23,17 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.player.Physics.Bounds = new Rectangle(
+            player.Physics.Bounds = new Rectangle(
                     (int)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                     BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 6),
-                    this.player.Physics.Bounds.Width,
-                    this.player.Physics.Bounds.Height);
-            this.player.Physics.SetLocation();
-            this.player.Physics.CurrentDirection = Physics.Direction.North;
-            this.player.State = new IdleState(this.player);
-            this.player.Health.ResetHealth();
-            this.player.DamageTimer = 0;
-            this.player.CurrentTint = Color.White;
+                    player.Physics.Bounds.Width,
+                    player.Physics.Bounds.Height);
+            player.Physics.SetLocation();
+            player.Physics.CurrentDirection = Physics.Direction.North;
+            player.State = new IdleState(player);
+            player.Health.ResetHealth();
+            player.DamageTimer = 0;
+            player.CurrentTint = Color.White;
 
             InventoryComponents.Instance.Reset();
             LoZGame.Instance.Dungeon.Reset();

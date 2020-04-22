@@ -29,118 +29,118 @@
 
         public void TakeDamage(int damageAmount)
         {
-            if (this.DamageTimer <= 0)
+            if (DamageTimer <= 0)
             {
                 if (!LoZGame.Cheats)
                 {
-                    this.Health.DamageHealth(damageAmount);
+                    Health.DamageHealth(damageAmount);
                 }
                 if (damageAmount > 0)
                 {
                     SoundFactory.Instance.PlayLinkHurt();
-                    this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                    DamageTimer = LoZGame.Instance.UpdateSpeed;
                 }
             }
-            if (this.Health.CurrentHealth <= 0)
+            if (Health.CurrentHealth <= 0)
             {
                 SoundFactory.Instance.StopDungeonSong();
                 SoundFactory.Instance.PlayLinkDie();
-                this.State.Die();
+                State.Die();
                 LoZGame.Instance.GameState.Death();
             }
         }
 
         public void HandleDamage()
         {
-            if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
+            if (DamageTimer > 0 && Health.CurrentHealth > 0)
             {
-                this.DamageTimer--;
-                if (this.DamageTimer % 10 > 5)
+                DamageTimer--;
+                if (DamageTimer % 10 > 5)
                 {
-                    this.CurrentTint = Color.DarkSlateGray;
+                    CurrentTint = Color.DarkSlateGray;
                 }
                 else
                 {
-                    this.CurrentTint = LoZGame.Instance.DefaultTint;
+                    CurrentTint = LoZGame.Instance.DefaultTint;
                 }
-                this.Physics.HandleKnockBack();
+                Physics.HandleKnockBack();
             }
         }
 
         public void HandleDisarm()
         {
-            if (this.DisarmedTimer > 0)
+            if (DisarmedTimer > 0)
             {
-                this.DisarmedTimer--;
+                DisarmedTimer--;
             }
         }
 
         public void HandleLadder()
         {
-            if (this.LadderTimer > 0)
+            if (LadderTimer > 0)
             {
-                this.LadderTimer--;
+                LadderTimer--;
             }
         }
 
         public void Idle()
         {
-            this.State.Idle();
+            State.Idle();
         }
 
         public void MoveUp()
         {
-            this.State.MoveUp();
+            State.MoveUp();
         }
 
         public void MoveDown()
         {
-            this.State.MoveDown();
+            State.MoveDown();
         }
 
         public void MoveLeft()
         {
-            this.State.MoveLeft();
+            State.MoveLeft();
         }
 
         public void MoveRight()
         {
-            this.State.MoveRight();
+            State.MoveRight();
         }
 
         public void Attack()
         {
-            this.State.Attack();
+            State.Attack();
         }
 
         public void PickupItem(IItem item)
         {
-            this.State.PickupItem(item);
+            State.PickupItem(item);
         }
 
         public void UseItem(int waitTime)
         {
-            this.State.UseItem(waitTime);
+            State.UseItem(waitTime);
         }
 
         public void Stun(int stunTime)
         {
-            this.State.Stun(stunTime);
+            State.Stun(stunTime);
         }
 
         public void Update()
         {
-            this.Physics.SetDepth();
-            this.HandleDamage();
-            this.HandleDisarm();
-            this.HandleLadder();
-            this.Physics.Move();
-            this.State.Update();
+            Physics.SetDepth();
+            HandleDamage();
+            HandleDisarm();
+            HandleLadder();
+            Physics.Move();
+            State.Update();
         }
 
         public void Draw()
         {
-            this.State.Draw();
+            State.Draw();
         }
     }
 }

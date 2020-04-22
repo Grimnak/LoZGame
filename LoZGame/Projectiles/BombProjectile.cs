@@ -11,30 +11,30 @@
 
         public BombProjectile(Physics source)
         {
-            this.SetUp(this);
-            this.Width = ProjectileSpriteFactory.Instance.StandardWidth;
-            this.Heigth = ProjectileSpriteFactory.Instance.StandardHeight;
-            this.Offset = LinkSpriteFactory.LinkHeight;
-            this.Source = source;
-            this.lifeTime = MaxLife;
-            this.InitializeDirection();
-            this.Data.Rotation = 0;
-            this.Data.SpriteEffect = SpriteEffects.None;
-            this.Physics.BoundsOffset = new Vector2(this.Width, this.Heigth);
-            this.Physics.Bounds = new Rectangle((this.Physics.Location - this.Physics.BoundsOffset).ToPoint(), new Point(this.Width, this.Heigth));
-            this.Physics.SetLocation();
-            this.Sprite = ProjectileSpriteFactory.Instance.Bomb();
+            SetUp(this);
+            Width = ProjectileSpriteFactory.Instance.StandardWidth;
+            Heigth = ProjectileSpriteFactory.Instance.StandardHeight;
+            Offset = LinkSpriteFactory.LinkHeight;
+            Source = source;
+            lifeTime = MaxLife;
+            InitializeDirection();
+            Data.Rotation = 0;
+            Data.SpriteEffect = SpriteEffects.None;
+            Physics.BoundsOffset = new Vector2(Width, Heigth);
+            Physics.Bounds = new Rectangle((Physics.Location - Physics.BoundsOffset).ToPoint(), new Point(Width, Heigth));
+            Physics.SetLocation();
+            Sprite = ProjectileSpriteFactory.Instance.Bomb();
         }
 
         public override void Update()
         {
             base.Update();
             lifeTime--;
-            if (this.lifeTime <= 0)
+            if (lifeTime <= 0)
             {
-                this.IsExpired = true;
+                IsExpired = true;
                 int explosiontype = (int)LoZGame.Instance.GameObjects.Entities.ExplosionManager.Explosion;
-                LoZGame.Instance.GameObjects.Entities.ExplosionManager.AddExplosion(explosiontype, this.Physics.Bounds.Center.ToVector2());
+                LoZGame.Instance.GameObjects.Entities.ExplosionManager.AddExplosion(explosiontype, Physics.Bounds.Center.ToVector2());
             }
         }
     }

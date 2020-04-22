@@ -11,22 +11,22 @@
 
         public DoorManager()
         {
-            this.doors = new List<IDoor>();
+            doors = new List<IDoor>();
         }
 
         public void Add(Door door)
         {
-            this.doors.Add(door);
+            doors.Add(door);
         }
 
         public void Clear()
         {
-            this.doors.Clear();
+            doors.Clear();
         }
 
         public void Update()
         {
-            foreach (Door door in this.doors)
+            foreach (Door door in doors)
             {
                 door.Update();
             }
@@ -34,7 +34,7 @@
 
         public void Draw()
         {
-            foreach (Door door in this.doors)
+            foreach (Door door in doors)
             {
                 door.Draw();
             }

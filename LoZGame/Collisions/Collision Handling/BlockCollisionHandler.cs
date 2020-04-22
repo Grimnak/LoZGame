@@ -28,9 +28,9 @@
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
             bool movable = true;
-            if (!(player.State is GrabbedState) && this.block is MovableTile)
+            if (!(player.State is GrabbedState) && block is MovableTile)
             {
-                foreach (MovableTile.InvalidDirection invalid in this.block.InvalidDirections)
+                foreach (MovableTile.InvalidDirection invalid in block.InvalidDirections)
                 {
                     switch (invalid)
                     {
@@ -52,9 +52,9 @@
                 {
                     DeterminePushVelocity(player, collisionSide);
                 }
-                this.SetBounds(this.block.Physics, player.Physics, collisionSide);
+                SetBounds(block.Physics, player.Physics, collisionSide);
             }
-            else if (this.block is Tile)
+            else if (block is Tile)
             {
                 SoundFactory.Instance.PlayClimbStairs();
                 LoZGame.Instance.CollisionDetector.MoveToBasement = true;
@@ -63,7 +63,7 @@
             {
                 if (!(player.State is GrabbedState))
                 {
-                    this.SetBounds(this.block.Physics, player.Physics, collisionSide);
+                    SetBounds(block.Physics, player.Physics, collisionSide);
                 }
             }
             else if (block is CrossableTile)
@@ -72,7 +72,7 @@
                 {
                     if (!((CrossableTile)block).BeingCrossed)
                     {
-                        this.SetBounds(this.block.Physics, player.Physics, collisionSide);
+                        SetBounds(block.Physics, player.Physics, collisionSide);
                     }
                 }
             }
@@ -84,7 +84,7 @@
             {
                 if (!(enemy is PolsVoice && enemy.Physics.IsJumping))
                 {
-                    this.SetBounds(this.block.Physics, enemy.Physics, collisionSide);
+                    SetBounds(block.Physics, enemy.Physics, collisionSide);
                 }
             }
         }
@@ -92,8 +92,8 @@
         private void DeterminePushVelocity(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
             DeterminePushDirection(collisionSide);
-            this.block.Physics.MovementVelocity = new Vector2(xDirection * (int)player.MoveSpeed, yDirection * (int)player.MoveSpeed);
-            this.block.Physics.MovementAcceleration = new Vector2(xDirection * GameData.Instance.CollisionConstants.MovableBlockAcceleration, yDirection * GameData.Instance.CollisionConstants.MovableBlockAcceleration);
+            block.Physics.MovementVelocity = new Vector2(xDirection * (int)player.MoveSpeed, yDirection * (int)player.MoveSpeed);
+            block.Physics.MovementAcceleration = new Vector2(xDirection * GameData.Instance.CollisionConstants.MovableBlockAcceleration, yDirection * GameData.Instance.CollisionConstants.MovableBlockAcceleration);
         }
 
         private void DeterminePushDirection(CollisionDetection.CollisionSide collisionSide)

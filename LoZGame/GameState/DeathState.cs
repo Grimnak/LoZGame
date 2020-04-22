@@ -12,10 +12,10 @@
 
         public DeathState()
         {
-            this.deathTime = 0;
-            this.deathTimeMax = GameData.Instance.GameStateDataConstants.DeathTimeMax;
-            this.gameOverTime = GameData.Instance.GameStateDataConstants.GameOverTime;
-            this.sprite = ScreenSpriteFactory.Instance.GameOverScreen();
+            deathTime = 0;
+            deathTimeMax = GameData.Instance.GameStateDataConstants.DeathTimeMax;
+            gameOverTime = GameData.Instance.GameStateDataConstants.GameOverTime;
+            sprite = ScreenSpriteFactory.Instance.GameOverScreen();
         }
 
         /// <inheritdoc></inheritdoc>
@@ -33,15 +33,15 @@
         /// <inheritdoc></inheritdoc>
         public override void Update()
         {
-            this.deathTime++;
-            if (this.deathTime < deathTimeMax)
+            deathTime++;
+            if (deathTime < deathTimeMax)
             {
                 foreach (IPlayer player in LoZGame.Instance.Players)
                 {
                     player.Update();
                 }
             }
-            else if (this.deathTime > gameOverTime)
+            else if (deathTime > gameOverTime)
             {
                 LoZGame.Instance.GameState.TitleScreen();
             }
@@ -56,18 +56,18 @@
             LoZGame.Instance.GameObjects.Entities.Draw();
             LoZGame.Instance.GameObjects.Enemies.Draw();
 
-            if (this.deathTime < deathTimeMax)
+            if (deathTime < deathTimeMax)
             {
                 foreach (IPlayer player in LoZGame.Instance.Players)
                 {
                     player.Draw();
                 }
             }
-            else if (this.deathTime > deathTimeMax && this.deathTime < gameOverTime)
+            else if (deathTime > deathTimeMax && deathTime < gameOverTime)
             {
                 LoZGame.Instance.SpriteBatch.End();
                 LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
-                this.sprite.Draw(new Vector2(0, 0), Color.White, 0);
+                sprite.Draw(new Vector2(0, 0), Color.White, 0);
             }
             LoZGame.Instance.SpriteBatch.End();
         }

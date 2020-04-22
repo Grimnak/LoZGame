@@ -16,7 +16,7 @@
             // Only collide with a door if the player wasn't knocked back into it.
             if (player.Physics.KnockbackVelocity.Length() == 0 && FullIntersect(player, collisionSide))
             {
-                if ((this.door.State is UnlockedDoorState || this.door.State is BombedDoorState) && (!(player.State is GrabbedState)))
+                if ((door.State is UnlockedDoorState || door.State is BombedDoorState) && (!(player.State is GrabbedState)))
                 {
                     switch (door.Physics.CurrentDirection) 
                     {
@@ -39,32 +39,32 @@
 
                     }
                 }
-                else if (this.door.DoorType == Door.DoorTypes.Locked && player.Inventory.HasKey())
+                else if (door.DoorType == Door.DoorTypes.Locked && player.Inventory.HasKey())
                 {
                     player.Inventory.UseKey();
                     IDoor cousin = FindCousinDoor();
                     cousin.Open();
-                    this.door.Open();
+                    door.Open();
                     SoundFactory.Instance.PlayDoorUnlock();
                 }
-                else if (this.door.DoorType == Door.DoorTypes.Puzzle && this.door.IsSolved)
+                else if (door.DoorType == Door.DoorTypes.Puzzle && door.IsSolved)
                 {
-                    this.door.Open();
+                    door.Open();
                 }
             }
             else
             {
-                SetBounds(this.door.Physics, player.Physics, collisionSide);
+                SetBounds(door.Physics, player.Physics, collisionSide);
             }
         }
 
         public void OnCollisionResponse(IProjectile projectile)
         {
-            if ((this.door.State is LockedDoorState || this.door.State is HiddenDoorState) && projectile is BombExplosion)
+            if ((door.State is LockedDoorState || door.State is HiddenDoorState) && projectile is BombExplosion)
             {
                 IDoor cousin = FindCousinDoor();
                 cousin.Bombed();
-                this.door.Bombed();
+                door.Bombed();
             }
         }
 
@@ -73,7 +73,7 @@
             IDoor cousin = new Door(string.Empty, string.Empty);
             int Y = LoZGame.Instance.Dungeon.CurrentRoomY;
             int X = LoZGame.Instance.Dungeon.CurrentRoomX;
-            switch (this.door.Physics.CurrentDirection)
+            switch (door.Physics.CurrentDirection)
             {
                 case Physics.Direction.North:
                     foreach (Door cDoor in LoZGame.Instance.Dungeon.GetRoom(Y - 1, X).Doors)

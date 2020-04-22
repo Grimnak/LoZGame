@@ -11,17 +11,17 @@
 
         public SwordProjectile(IPlayer source)
         {
-            this.SetUp(this);
-            this.Width = ProjectileSpriteFactory.Instance.SwordWidth;
-            this.Heigth = ProjectileSpriteFactory.Instance.SwordHeight;
-            this.Offset = (this.Heigth * 3) / 4;
-            this.Speed = GameData.Instance.ProjectileSpeedConstants.WoodSwordSpeed;
-            this.Source = source.Physics;
-            this.InitializeDirection();
-            this.sourceOffset = this.Physics.Bounds.Location - this.Source.Bounds.Location;
-            this.lifeTime = 0;
-            this.CreateCorrectSword(source.CurrentWeapon);
-            this.Physics.MovementVelocity = Vector2.Zero;
+            SetUp(this);
+            Width = ProjectileSpriteFactory.Instance.SwordWidth;
+            Heigth = ProjectileSpriteFactory.Instance.SwordHeight;
+            Offset = (Heigth * 3) / 4;
+            Speed = GameData.Instance.ProjectileSpeedConstants.WoodSwordSpeed;
+            Source = source.Physics;
+            InitializeDirection();
+            sourceOffset = Physics.Bounds.Location - Source.Bounds.Location;
+            lifeTime = 0;
+            CreateCorrectSword(source.CurrentWeapon);
+            Physics.MovementVelocity = Vector2.Zero;
         }
 
         public override void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
@@ -30,48 +30,48 @@
 
         private void SetToSource()
         {
-            Point currentOffset = this.Physics.Bounds.Location - this.Source.Bounds.Location;
+            Point currentOffset = Physics.Bounds.Location - Source.Bounds.Location;
             if (currentOffset != sourceOffset)
             {
-                this.Physics.Bounds = new Rectangle(this.Source.Bounds.Location + sourceOffset, new Point(this.Physics.Bounds.Width, this.Physics.Bounds.Height));
-                this.Physics.SetLocation();
+                Physics.Bounds = new Rectangle(Source.Bounds.Location + sourceOffset, new Point(Physics.Bounds.Width, Physics.Bounds.Height));
+                Physics.SetLocation();
             }
         }
 
         public override void Update()
         {
             lifeTime++;
-            this.SetToSource();
-            if (this.lifeTime == totalLife / 3 || this.lifeTime == (totalLife * 2) / 3)
+            SetToSource();
+            if (lifeTime == totalLife / 3 || lifeTime == (totalLife * 2) / 3)
             {
-                this.Sprite.NextFrame();
+                Sprite.NextFrame();
             }
-            if (this.lifeTime >= totalLife)
+            if (lifeTime >= totalLife)
             {
-                this.IsExpired = true;
+                IsExpired = true;
             }
-            this.Physics.SetDepth();
+            Physics.SetDepth();
         }
 
         private void CreateCorrectSword(Link.LinkWeapon sword)
         {
             if (sword is Link.LinkWeapon.Wood)
             {
-                this.Damage = GameData.Instance.ProjectileDamageConstants.WoodSwordDamage;
-                this.Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
-                this.Physics.Mass = GameData.Instance.ProjectileMassConstants.WoodSwordMass;
+                Damage = GameData.Instance.ProjectileDamageConstants.WoodSwordDamage;
+                Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
+                Physics.Mass = GameData.Instance.ProjectileMassConstants.WoodSwordMass;
             }
             else if (sword is Link.LinkWeapon.White)
             {
-                this.Damage = GameData.Instance.ProjectileDamageConstants.WhiteSwordDamage;
-                this.Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
-                this.Physics.Mass = GameData.Instance.ProjectileMassConstants.WhiteSwordMass;
+                Damage = GameData.Instance.ProjectileDamageConstants.WhiteSwordDamage;
+                Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
+                Physics.Mass = GameData.Instance.ProjectileMassConstants.WhiteSwordMass;
             }
             else if (sword is Link.LinkWeapon.Magic)
             {
-                this.Damage = GameData.Instance.ProjectileDamageConstants.MagicSwordDamage;
-                this.Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
-                this.Physics.Mass = GameData.Instance.ProjectileMassConstants.MagicSwordMass;
+                Damage = GameData.Instance.ProjectileDamageConstants.MagicSwordDamage;
+                Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
+                Physics.Mass = GameData.Instance.ProjectileMassConstants.MagicSwordMass;
             }
             totalLife = 15;
         }

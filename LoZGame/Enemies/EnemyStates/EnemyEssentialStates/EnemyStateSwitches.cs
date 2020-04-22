@@ -11,131 +11,131 @@
     {
         public virtual void MoveLeft()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.West;
-            this.Enemy.CurrentState = new LeftMovingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.West;
+            Enemy.CurrentState = new LeftMovingEnemyState(Enemy);
         }
 
         public virtual void MoveRight()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.East;
-            this.Enemy.CurrentState = new RightMovingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.East;
+            Enemy.CurrentState = new RightMovingEnemyState(Enemy);
         }
 
         public virtual void MoveUp()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
-            this.Enemy.CurrentState = new UpMovingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.North;
+            Enemy.CurrentState = new UpMovingEnemyState(Enemy);
         }
 
         public virtual void MoveDown()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
-            this.Enemy.CurrentState = new DownMovingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.South;
+            Enemy.CurrentState = new DownMovingEnemyState(Enemy);
         }
 
         public virtual void MoveUpLeft()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
-            this.Enemy.CurrentState = new UpLeftMovingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.North;
+            Enemy.CurrentState = new UpLeftMovingEnemyState(Enemy);
         }
 
         public virtual void MoveUpRight()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
-            this.Enemy.CurrentState = new UpRightMovingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.North;
+            Enemy.CurrentState = new UpRightMovingEnemyState(Enemy);
         }
 
         public virtual void MoveDownLeft()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
-            this.Enemy.CurrentState = new DownLeftMovingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.South;
+            Enemy.CurrentState = new DownLeftMovingEnemyState(Enemy);
         }
 
         public virtual void MoveDownRight()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
-            this.Enemy.CurrentState = new DownRightMovingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.South;
+            Enemy.CurrentState = new DownRightMovingEnemyState(Enemy);
         }
 
         public virtual void JumpLeft()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.West;
-            this.Enemy.CurrentState = new LeftJumpingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.West;
+            Enemy.CurrentState = new LeftJumpingEnemyState(Enemy);
         }
 
         public virtual void JumpRight()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.East;
-            this.Enemy.CurrentState = new RightJumpingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.East;
+            Enemy.CurrentState = new RightJumpingEnemyState(Enemy);
         }
 
         public virtual void JumpUp()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
-            this.Enemy.CurrentState = new UpJumpingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.North;
+            Enemy.CurrentState = new UpJumpingEnemyState(Enemy);
         }
 
         public virtual void JumpDown()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
-            this.Enemy.CurrentState = new DownJumpingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.South;
+            Enemy.CurrentState = new DownJumpingEnemyState(Enemy);
         }
 
         public virtual void JumpUpLeft()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
-            this.Enemy.CurrentState = new UpLeftJumpingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.North;
+            Enemy.CurrentState = new UpLeftJumpingEnemyState(Enemy);
         }
 
         public virtual void JumpUpRight()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
-            this.Enemy.CurrentState = new UpRightJumpingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.North;
+            Enemy.CurrentState = new UpRightJumpingEnemyState(Enemy);
         }
 
         public virtual void JumpDownLeft()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
-            this.Enemy.CurrentState = new DownLeftJumpingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.South;
+            Enemy.CurrentState = new DownLeftJumpingEnemyState(Enemy);
         }
 
         public virtual void JumpDownRight()
         {
-            this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
-            this.Enemy.CurrentState = new DownRightJumpingEnemyState(this.Enemy);
+            Enemy.Physics.CurrentDirection = Physics.Direction.South;
+            Enemy.CurrentState = new DownRightJumpingEnemyState(Enemy);
         }
 
         public virtual void Attack()
         {
-            this.Enemy.Attack();
+            Enemy.Attack();
         }
 
         public virtual void Stop()
         {
-            this.Enemy.CurrentState = new IdleEnemyState(this.Enemy);
+            Enemy.CurrentState = new IdleEnemyState(Enemy);
         }
 
         public virtual void Die()
         {
-            if (this.Enemy.IsDead)
+            if (Enemy.IsDead)
             {
-                this.Enemy.CurrentState = new DeadEnemyState(this.Enemy);
+                Enemy.CurrentState = new DeadEnemyState(Enemy);
             }
         }
 
         public virtual void Spawn()
         {
-            if (!this.spawnBlackList.Contains(this.Enemy.AI))
+            if (!spawnBlackList.Contains(Enemy.AI))
             {
-                this.Enemy.CurrentState = new SpawnEnemyState(this.Enemy);
+                Enemy.CurrentState = new SpawnEnemyState(Enemy);
             }
         }
 
         public virtual void Stun(int stunTime)
         {
-            if (!(this.Enemy.IsSpawning || this.Enemy.IsDead))
+            if (!(Enemy.IsSpawning || Enemy.IsDead))
             {
-                this.Enemy.CurrentState = new StunnedEnemyState(this.Enemy, this.Enemy.CurrentState, stunTime);
+                Enemy.CurrentState = new StunnedEnemyState(Enemy, Enemy.CurrentState, stunTime);
             }
         }
     }

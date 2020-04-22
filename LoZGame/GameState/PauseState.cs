@@ -11,21 +11,21 @@
 
         public PauseState(IGameState gameState)
         {
-            this.previousState = gameState;
-            this.PauseScreen = ScreenSpriteFactory.Instance.PauseScreen();
+            previousState = gameState;
+            PauseScreen = ScreenSpriteFactory.Instance.PauseScreen();
         }
 
         public override void Unpause()
         {
-            LoZGame.Instance.GameState = new UnpauseState(this.previousState);
+            LoZGame.Instance.GameState = new UnpauseState(previousState);
         }
 
         /// <inheritdoc></inheritdoc>
         public override void Draw()
         {
-            this.previousState.Draw();
+            previousState.Draw();
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
-            this.PauseScreen.Draw(Vector2.Zero, LoZGame.Instance.DefaultTint, 1);
+            PauseScreen.Draw(Vector2.Zero, LoZGame.Instance.DefaultTint, 1);
             LoZGame.Instance.SpriteBatch.End();
         }
     }

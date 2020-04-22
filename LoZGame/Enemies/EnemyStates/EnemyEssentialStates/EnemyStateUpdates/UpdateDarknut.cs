@@ -20,7 +20,7 @@
 
         private void StandardDarknut()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.DarknutFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
             }
@@ -28,7 +28,7 @@
 
         private void HardDarknut()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.DarknutFavorCardinalValue + (2 * (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
                 FavorPlayerDiagonal(GameData.Instance.EnemyMiscConstants.DarknutFavorCardinalValue + (3 * (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
@@ -42,7 +42,7 @@
             int attempt = LoZGame.Instance.Random.Next(0, 100);
             if (attempt <= GameData.Instance.EnemyMiscConstants.ProjectileSuccess)
             {
-                IProjectile swordBeam = new SwordBeamProjectile(this.Enemy.Physics);
+                IProjectile swordBeam = new SwordBeamProjectile(Enemy.Physics);
                 LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(swordBeam);
             }
         }

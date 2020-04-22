@@ -14,28 +14,28 @@
 
         public VireKeese(Vector2 location)
         {
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.KeeseStateList);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.KeeseHealth);
-            this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.KeeseMass;
-            this.CurrentState = new SpawnEnemyState(this);
-            this.EntityManager = LoZGame.Instance.GameObjects.Entities;
-            this.Cooldown = 0;
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.KeeseDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.MinKeeseSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.AI = EnemyAI.Keese;
-            this.MinMaxWander = new Point(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.KeeseStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.KeeseHealth);
+            Physics = new Physics(location);
+            Physics.Mass = GameData.Instance.EnemyMassConstants.KeeseMass;
+            CurrentState = new SpawnEnemyState(this);
+            EntityManager = LoZGame.Instance.GameObjects.Entities;
+            Cooldown = 0;
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.KeeseDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.MinKeeseSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            AI = EnemyAI.Keese;
+            MinMaxWander = new Point(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);
         }
 
         public override void Stun(int stunTime)
         {
-            this.TakeDamage(this.Health.MaxHealth);
+            TakeDamage(Health.MaxHealth);
         }
 
         public override ISprite CreateCorrectSprite()

@@ -22,38 +22,38 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.enemy is OldMan && (projectile is ArrowProjectile || projectile is SilverArrowProjectile || projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is SwordBeamProjectile))
+            if (enemy is OldMan && (projectile is ArrowProjectile || projectile is SilverArrowProjectile || projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is SwordBeamProjectile))
             {
-                ((OldMan)this.enemy).ShootFireballs();
+                ((OldMan)enemy).ShootFireballs();
             }
-            else if (this.enemy is Dodongo)
+            else if (enemy is Dodongo)
             {
                 if (projectile is BombProjectile)
                 {
                     projectile.IsExpired = true;
-                    this.enemy.Stun(0);
+                    enemy.Stun(0);
                 }
                 else
                 {
                     projectile.IsExpired = true;
                 }
             }
-            else if (this.enemy is PolsVoice)
+            else if (enemy is PolsVoice)
             {
                 if (projectile is ArrowProjectile || projectile is SilverArrowProjectile)
                 {
-                    this.enemy.TakeDamage(GameData.Instance.EnemyHealthConstants.PolsVoiceHealth);
+                    enemy.TakeDamage(GameData.Instance.EnemyHealthConstants.PolsVoiceHealth);
                 }
                 else
                 {
-                    this.enemy.TakeDamage(projectile.Damage);
+                    enemy.TakeDamage(projectile.Damage);
                 }
             }
-            else if (this.enemy is FireSnakeHead || this.enemy is FireSnakeSegment)
+            else if (enemy is FireSnakeHead || enemy is FireSnakeSegment)
             {
                 if (!(projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BombProjectile))
                 {
-                    this.enemy.TakeDamage(projectile.Damage);
+                    enemy.TakeDamage(projectile.Damage);
                 }
             }
             else if (!(projectile is BombProjectile || projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile))
@@ -62,7 +62,7 @@
                 {
                     DetermineDirectPushback(projectile.Physics, enemy.Physics);
                 }
-                this.enemy.TakeDamage(projectile.Damage);
+                enemy.TakeDamage(projectile.Damage);
             }
         }
 
@@ -70,25 +70,25 @@
         {
             if (collisionSide == CollisionDetection.CollisionSide.Top || collisionSide == CollisionDetection.CollisionSide.Bottom)
             {
-                this.enemy.Physics.MovementVelocity = new Vector2(this.enemy.Physics.MovementVelocity.X, this.enemy.Physics.MovementVelocity.Y * -1);
+                enemy.Physics.MovementVelocity = new Vector2(enemy.Physics.MovementVelocity.X, enemy.Physics.MovementVelocity.Y * -1);
             } 
             else
             {
-                this.enemy.Physics.MovementVelocity = new Vector2(this.enemy.Physics.MovementVelocity.X * -1, this.enemy.Physics.MovementVelocity.Y);
+                enemy.Physics.MovementVelocity = new Vector2(enemy.Physics.MovementVelocity.X * -1, enemy.Physics.MovementVelocity.Y);
             }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.enemy is Keese || this.enemy is VireKeese)
+            if (enemy is Keese || enemy is VireKeese)
             {
-                this.ReverseMovement(this.enemy.Physics, collisionSide);
+                ReverseMovement(enemy.Physics, collisionSide);
             }
             else
             {
-                if (!(this.enemy is WallMaster && this.enemy.CurrentState is AttackingWallMasterState))
+                if (!(enemy is WallMaster && enemy.CurrentState is AttackingWallMasterState))
                 {
-                    this.SetBounds(this.enemy.Physics, collisionSide);
+                    SetBounds(enemy.Physics, collisionSide);
                 }
             }
         }

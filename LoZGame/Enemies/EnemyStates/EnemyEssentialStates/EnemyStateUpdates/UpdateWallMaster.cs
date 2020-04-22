@@ -10,7 +10,7 @@
         public void UpdateWallMaster()
         {
             DefaultUpdate();
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.WallMasterFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallPreferenceMod));
             }

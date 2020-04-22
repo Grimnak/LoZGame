@@ -203,8 +203,8 @@
 
         public void LoadAllTextures(ContentManager content)
         {
-            this.LoadTextures(content);
-            this.LoadData();
+            LoadTextures(content);
+            LoadData();
         }
 
         private void LoadTextures(ContentManager content)
@@ -285,172 +285,172 @@
 
         public ISprite Fairy()
         {
-            return new ObjectSprite(this.fairySpriteSheet, this.fairyData);
+            return new ObjectSprite(fairySpriteSheet, fairyData);
         }
 
         public ISprite Ladder()
         {
-            return new ObjectSprite(this.ladderSpriteSheet, this.ladderData);
+            return new ObjectSprite(ladderSpriteSheet, ladderData);
         }
 
         public ISprite Health()
         {
-            return new ObjectSprite(this.healthSpriteSheet, this.healthData);
+            return new ObjectSprite(healthSpriteSheet, healthData);
         }
 
         public ISprite Triforce()
         {
-            return new ObjectSprite(this.triforceSpriteSheet, this.triforceData);
+            return new ObjectSprite(triforceSpriteSheet, triforceData);
         }
 
         public ISprite YellowRupee()
         {
-            return new ObjectSprite(this.yellowRupeeSpriteSheet, this.yellowRupeeData);
+            return new ObjectSprite(yellowRupeeSpriteSheet, yellowRupeeData);
         }
 
         public ISprite HeartContainer()
         {
-            return new ObjectSprite(this.heartContainerSpriteSheet, this.heartContainerData);
+            return new ObjectSprite(heartContainerSpriteSheet, heartContainerData);
         }
 
         public ISprite Clock()
         {
-            return new ObjectSprite(this.clockSpriteSheet, this.clockData);
+            return new ObjectSprite(clockSpriteSheet, clockData);
         }
 
         public ISprite Rupee()
         {
-            return new ObjectSprite(this.rupeeSpriteSheet, this.rupeeData);
+            return new ObjectSprite(rupeeSpriteSheet, rupeeData);
         }
 
         public ISprite LifePotion()
         {
-            return new ObjectSprite(this.lifePotionSpriteSheet, this.lifePotionData);
+            return new ObjectSprite(lifePotionSpriteSheet, lifePotionData);
         }
 
         public ISprite SecondPotion()
         {
-            return new ObjectSprite(this.secondPotionSpriteSheet, this.secondPotionData);
+            return new ObjectSprite(secondPotionSpriteSheet, secondPotionData);
         }
 
         public ISprite Letter()
         {
-            return new ObjectSprite(this.letterSpriteSheet, this.letterData);
+            return new ObjectSprite(letterSpriteSheet, letterData);
         }
 
         public ISprite Map()
         {
-            return new ObjectSprite(this.mapSpriteSheet, this.mapData);
+            return new ObjectSprite(mapSpriteSheet, mapData);
         }
 
         public ISprite Food()
         {
-            return new ObjectSprite(this.foodSpriteSheet, this.foodData);
+            return new ObjectSprite(foodSpriteSheet, foodData);
         }
 
         public ISprite WoodenSword()
         {
-            return new ObjectSprite(this.woodenSwordSpriteSheet, this.woodenSwordData);
+            return new ObjectSprite(woodenSwordSpriteSheet, woodenSwordData);
         }
 
         public ISprite WhiteSword()
         {
-            return new ObjectSprite(this.whiteSwordSpriteSheet, this.whiteSwordData);
+            return new ObjectSprite(whiteSwordSpriteSheet, whiteSwordData);
         }
 
         public ISprite MagicSword()
         {
-            return new ObjectSprite(this.magicSwordSpriteSheet, this.magicSwordData);
+            return new ObjectSprite(magicSwordSpriteSheet, magicSwordData);
         }
 
         public ISprite MagicShield()
         {
-            return new ObjectSprite(this.shieldSpriteSheet, this.shieldData);
+            return new ObjectSprite(shieldSpriteSheet, shieldData);
         }
 
         public ISprite Boomerang()
         {
-            return new ObjectSprite(this.boomerangSpriteSheet, this.boomerangData);
+            return new ObjectSprite(boomerangSpriteSheet, boomerangData);
         }
 
         public ISprite MagicBoomerang()
         {
-            return new ObjectSprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData);
+            return new ObjectSprite(magicBoomerangSpriteSheet, magicBoomerangData);
         }
 
         public ISprite Bomb()
         {
-            return new ObjectSprite(this.bombSpriteSheet, this.bombData);
+            return new ObjectSprite(bombSpriteSheet, bombData);
         }
 
         public ISprite Bow()
         {
-            return new ObjectSprite(this.bowSpriteSheet, this.bowData);
+            return new ObjectSprite(bowSpriteSheet, bowData);
         }
 
         public ISprite Arrow()
         {
-            return new ObjectSprite(this.woodenArrowSpriteSheet, this.woodenArrowData);
+            return new ObjectSprite(woodenArrowSpriteSheet, woodenArrowData);
         }
 
         public ISprite SilverArrow()
         {
-            return new ObjectSprite(this.silverArrowSpriteSheet, this.silverArrowData);
+            return new ObjectSprite(silverArrowSpriteSheet, silverArrowData);
         }
 
         public ISprite RedCandle()
         {
-            return new ObjectSprite(this.redCandleSpriteSheet, this.redCandleData);
+            return new ObjectSprite(redCandleSpriteSheet, redCandleData);
         }
 
         public ISprite BlueCandle()
         {
-            return new ObjectSprite(this.blueCandleSpriteSheet, this.blueCandleData);
+            return new ObjectSprite(blueCandleSpriteSheet, blueCandleData);
         }
 
         public ISprite RedRing()
         {
-            return new ObjectSprite(this.redRingSpriteSheet, this.redRingData);
+            return new ObjectSprite(redRingSpriteSheet, redRingData);
         }
 
         public ISprite BlueRing()
         {
-            return new ObjectSprite(this.blueRingSpriteSheet, this.blueRingData);
+            return new ObjectSprite(blueRingSpriteSheet, blueRingData);
         }
 
         public ISprite PowerBracelet()
         {
-            return new ObjectSprite(this.powerBraceletSpriteSheet, this.powerBraceletData);
+            return new ObjectSprite(powerBraceletSpriteSheet, powerBraceletData);
         }
 
         public ISprite Flute()
         {
-            return new ObjectSprite(this.fluteSpriteSheet, this.fluteData);
+            return new ObjectSprite(fluteSpriteSheet, fluteData);
         }
 
         public ISprite MagicRod()
         {
-            return new ObjectSprite(this.magicRodSpriteSheet, this.magicRodData);
+            return new ObjectSprite(magicRodSpriteSheet, magicRodData);
         }
 
         public ISprite MagicBook()
         {
-            return new ObjectSprite(this.magicBookSpriteSheet, this.magicBookData);
+            return new ObjectSprite(magicBookSpriteSheet, magicBookData);
         }
 
         public ISprite Key()
         {
-            return new ObjectSprite(this.keySpriteSheet, this.keyData);
+            return new ObjectSprite(keySpriteSheet, keyData);
         }
 
         public ISprite MagicKey()
         {
-            return new ObjectSprite(this.magicKeySpriteSheet, this.magicKeyData);
+            return new ObjectSprite(magicKeySpriteSheet, magicKeyData);
         }
 
         public ISprite Compass()
         {
-            return new ObjectSprite(this.compassSpriteSheet, this.compassData);
+            return new ObjectSprite(compassSpriteSheet, compassData);
         }
     }
 }

@@ -32,18 +32,18 @@
 
         public void DefaultUpdate()
         {
-            this.Lifetime++;
-            this.Sprite.Update();
-            if (this.Lifetime > this.DirectionChange && !this.Enemy.Physics.IsJumping)
+            Lifetime++;
+            Sprite.Update();
+            if (Lifetime > DirectionChange && !Enemy.Physics.IsJumping)
             {
-                this.Enemy.UpdateState();
-                this.Lifetime = 0;
+                Enemy.UpdateState();
+                Lifetime = 0;
             }
         }
 
         public virtual void Update()
         {
-            switch (this.Enemy.AI)
+            switch (Enemy.AI)
             {
                 case EnemyAI.Bubble:
                     UpdateBubble();
@@ -101,7 +101,7 @@
 
         public virtual void Draw()
         {
-            this.Sprite.Draw(this.Enemy.Physics.Location, this.Enemy.CurrentTint, this.Enemy.Physics.Depth);
+            Sprite.Draw(Enemy.Physics.Location, Enemy.CurrentTint, Enemy.Physics.Depth);
         }
     }
 }

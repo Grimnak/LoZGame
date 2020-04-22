@@ -13,12 +13,12 @@
         /// </summary>
         public void Move()
         {
-            if (this.KnockbackVelocity.Length() == GameData.Instance.PhysicsConstants.ZeroLength)
+            if (KnockbackVelocity.Length() == GameData.Instance.PhysicsConstants.ZeroLength)
             {
-                this.boundsLocation += this.MovementVelocity;
-                this.bounds = new Rectangle(this.boundsLocation.ToPoint(), this.bounds.Size);
+                boundsLocation += MovementVelocity;
+                bounds = new Rectangle(boundsLocation.ToPoint(), bounds.Size);
             }
-            this.SetLocation();
+            SetLocation();
         }
 
         /// <summary>
@@ -26,9 +26,9 @@
         /// </summary>
         public void MoveMaster()
         {
-            this.boundsLocation += this.MasterMovement;
-            this.bounds = new Rectangle(this.boundsLocation.ToPoint(), this.bounds.Size);
-            this.SetLocation();
+            boundsLocation += MasterMovement;
+            bounds = new Rectangle(boundsLocation.ToPoint(), bounds.Size);
+            SetLocation();
         }
 
         /// <summary>
@@ -36,7 +36,7 @@
         /// </summary>
         public void Accelerate()
         {
-            this.MovementVelocity += this.MovementAcceleration;
+            MovementVelocity += MovementAcceleration;
         }
 
         /// <summary>

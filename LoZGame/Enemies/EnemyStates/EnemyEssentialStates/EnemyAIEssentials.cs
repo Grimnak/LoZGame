@@ -56,10 +56,10 @@
 
         public void HandleJump()
         {
-            this.Enemy.Physics.HandleJump();
-            if (this.Enemy.Physics.IsJumping == false)
+            Enemy.Physics.HandleJump();
+            if (Enemy.Physics.IsJumping == false)
             {
-                this.Enemy.Physics.MovementVelocity = Vector2.Zero;
+                Enemy.Physics.MovementVelocity = Vector2.Zero;
             }
         }
 
@@ -68,7 +68,7 @@
         /// </summary>
         public virtual void RandomDirectionChange()
         {
-            this.DirectionChange = LoZGame.Instance.Random.Next(this.Enemy.MinMaxWander.X, this.Enemy.MinMaxWander.Y);
+            DirectionChange = LoZGame.Instance.Random.Next(Enemy.MinMaxWander.X, Enemy.MinMaxWander.Y);
         }
 
         /// <summary>
@@ -76,27 +76,27 @@
         /// </summary>
         public void FacePlayer()
         {
-            Point playerLoc = LoZGame.Instance.Players[0].Physics.Bounds.Center - this.Enemy.Physics.Bounds.Center;
+            Point playerLoc = LoZGame.Instance.Players[0].Physics.Bounds.Center - Enemy.Physics.Bounds.Center;
             if (Math.Abs(playerLoc.X) > Math.Abs(playerLoc.Y))
             {
                 if (playerLoc.X < 0)
                 {
-                    this.Enemy.Physics.CurrentDirection = Physics.Direction.West;
+                    Enemy.Physics.CurrentDirection = Physics.Direction.West;
                 }
                 else
                 {
-                    this.Enemy.Physics.CurrentDirection = Physics.Direction.East;
+                    Enemy.Physics.CurrentDirection = Physics.Direction.East;
                 }
             }
             else
             {
                 if (playerLoc.Y < 0)
                 {
-                    this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
+                    Enemy.Physics.CurrentDirection = Physics.Direction.North;
                 }
                 else
                 {
-                    this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
+                    Enemy.Physics.CurrentDirection = Physics.Direction.South;
                 }
             }
         }
@@ -111,43 +111,43 @@
             {
                 weight = 1;
             }
-            this.Enemy.States.Remove(StateType.MoveEast);
-            this.Enemy.States.Remove(StateType.MoveNorth);
-            this.Enemy.States.Remove(StateType.MoveWest);
-            this.Enemy.States.Remove(StateType.MoveSouth);
-            Vector2 toPlayer = UnitVectorToPlayer(this.Enemy.Physics.Bounds.Center.ToVector2());
+            Enemy.States.Remove(StateType.MoveEast);
+            Enemy.States.Remove(StateType.MoveNorth);
+            Enemy.States.Remove(StateType.MoveWest);
+            Enemy.States.Remove(StateType.MoveSouth);
+            Vector2 toPlayer = UnitVectorToPlayer(Enemy.Physics.Bounds.Center.ToVector2());
             if (toPlayer.X > 1 - MathHelper.PiOver4)
             {
-                this.Enemy.States.Add(StateType.MoveEast, weight);
+                Enemy.States.Add(StateType.MoveEast, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.MoveEast, 1);
+                Enemy.States.Add(StateType.MoveEast, 1);
             }
             if (toPlayer.X < -1 + MathHelper.PiOver4)
             {
-                this.Enemy.States.Add(StateType.MoveWest, weight);
+                Enemy.States.Add(StateType.MoveWest, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.MoveWest, 1);
+                Enemy.States.Add(StateType.MoveWest, 1);
             }
             if (toPlayer.Y > 1 - MathHelper.PiOver4)
             {
-                this.Enemy.States.Add(StateType.MoveSouth, weight);
+                Enemy.States.Add(StateType.MoveSouth, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.MoveSouth, 1);
+                Enemy.States.Add(StateType.MoveSouth, 1);
             }
 
             if (toPlayer.Y < -1 + MathHelper.PiOver4)
             {
-                this.Enemy.States.Add(StateType.MoveNorth, weight);
+                Enemy.States.Add(StateType.MoveNorth, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.MoveNorth, 1);
+                Enemy.States.Add(StateType.MoveNorth, 1);
             }
         }
 
@@ -161,44 +161,44 @@
             {
                 weight = 1;
             }
-            this.Enemy.States.Remove(StateType.MoveNorthEast);
-            this.Enemy.States.Remove(StateType.MoveNorthWest);
-            this.Enemy.States.Remove(StateType.MoveSouthEast);
-            this.Enemy.States.Remove(StateType.MoveSouthWest);
-            Vector2 toPlayer = UnitVectorToPlayer(this.Enemy.Physics.Bounds.Center.ToVector2());
+            Enemy.States.Remove(StateType.MoveNorthEast);
+            Enemy.States.Remove(StateType.MoveNorthWest);
+            Enemy.States.Remove(StateType.MoveSouthEast);
+            Enemy.States.Remove(StateType.MoveSouthWest);
+            Vector2 toPlayer = UnitVectorToPlayer(Enemy.Physics.Bounds.Center.ToVector2());
             toPlayer.X *= -1;
             if (toPlayer.X > 0 && toPlayer.Y < 0)
             {
-                this.Enemy.States.Add(StateType.MoveNorthEast, weight);
+                Enemy.States.Add(StateType.MoveNorthEast, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.MoveNorthEast, 1);
+                Enemy.States.Add(StateType.MoveNorthEast, 1);
             }
             if (toPlayer.X < 0 && toPlayer.Y < 0)
             {
-                this.Enemy.States.Add(StateType.MoveNorthWest, weight);
+                Enemy.States.Add(StateType.MoveNorthWest, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.MoveNorthWest, 1);
+                Enemy.States.Add(StateType.MoveNorthWest, 1);
             }
             if (toPlayer.X > 0 && toPlayer.Y > 0)
             {
-                this.Enemy.States.Add(StateType.MoveSouthEast, weight);
+                Enemy.States.Add(StateType.MoveSouthEast, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.MoveSouthEast, 1);
+                Enemy.States.Add(StateType.MoveSouthEast, 1);
             }
 
             if (toPlayer.X < 0 && toPlayer.Y > 0)
             {
-                this.Enemy.States.Add(StateType.MoveSouthWest, weight);
+                Enemy.States.Add(StateType.MoveSouthWest, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.MoveSouthWest, 1);
+                Enemy.States.Add(StateType.MoveSouthWest, 1);
             }
         }
 
@@ -212,43 +212,43 @@
             {
                 weight = 1;
             }
-            this.Enemy.States.Remove(StateType.JumpEast);
-            this.Enemy.States.Remove(StateType.JumpNorth);
-            this.Enemy.States.Remove(StateType.JumpWest);
-            this.Enemy.States.Remove(StateType.JumpSouth);
-            Vector2 toPlayer = UnitVectorToPlayer(this.Enemy.Physics.Bounds.Center.ToVector2());
+            Enemy.States.Remove(StateType.JumpEast);
+            Enemy.States.Remove(StateType.JumpNorth);
+            Enemy.States.Remove(StateType.JumpWest);
+            Enemy.States.Remove(StateType.JumpSouth);
+            Vector2 toPlayer = UnitVectorToPlayer(Enemy.Physics.Bounds.Center.ToVector2());
             if (toPlayer.X > 1 - MathHelper.PiOver4)
             {
-                this.Enemy.States.Add(StateType.JumpEast, weight);
+                Enemy.States.Add(StateType.JumpEast, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.JumpEast, 1);
+                Enemy.States.Add(StateType.JumpEast, 1);
             }
             if (toPlayer.X < -1 + MathHelper.PiOver4)
             {
-                this.Enemy.States.Add(StateType.JumpWest, weight);
+                Enemy.States.Add(StateType.JumpWest, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.JumpWest, 1);
+                Enemy.States.Add(StateType.JumpWest, 1);
             }
             if (toPlayer.Y > 1 - MathHelper.PiOver4)
             {
-                this.Enemy.States.Add(StateType.JumpSouth, weight);
+                Enemy.States.Add(StateType.JumpSouth, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.JumpSouth, 1);
+                Enemy.States.Add(StateType.JumpSouth, 1);
             }
 
             if (toPlayer.Y < -1 + MathHelper.PiOver4)
             {
-                this.Enemy.States.Add(StateType.JumpNorth, weight);
+                Enemy.States.Add(StateType.JumpNorth, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.JumpNorth, 1);
+                Enemy.States.Add(StateType.JumpNorth, 1);
             }
         }
 
@@ -262,44 +262,44 @@
             {
                 weight = 1;
             }
-            this.Enemy.States.Remove(StateType.JumpNorthEast);
-            this.Enemy.States.Remove(StateType.JumpNorthWest);
-            this.Enemy.States.Remove(StateType.JumpSouthEast);
-            this.Enemy.States.Remove(StateType.JumpSouthWest);
-            Vector2 toPlayer = UnitVectorToPlayer(this.Enemy.Physics.Bounds.Center.ToVector2());
+            Enemy.States.Remove(StateType.JumpNorthEast);
+            Enemy.States.Remove(StateType.JumpNorthWest);
+            Enemy.States.Remove(StateType.JumpSouthEast);
+            Enemy.States.Remove(StateType.JumpSouthWest);
+            Vector2 toPlayer = UnitVectorToPlayer(Enemy.Physics.Bounds.Center.ToVector2());
             toPlayer.X *= -1;
             if (toPlayer.X > 0 && toPlayer.Y < 0)
             {
-                this.Enemy.States.Add(StateType.JumpNorthEast, weight);
+                Enemy.States.Add(StateType.JumpNorthEast, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.JumpNorthEast, 1);
+                Enemy.States.Add(StateType.JumpNorthEast, 1);
             }
             if (toPlayer.X < 0 && toPlayer.Y < 0)
             {
-                this.Enemy.States.Add(StateType.JumpNorthWest, weight);
+                Enemy.States.Add(StateType.JumpNorthWest, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.JumpNorthWest, 1);
+                Enemy.States.Add(StateType.JumpNorthWest, 1);
             }
             if (toPlayer.X > 0 && toPlayer.Y > 0)
             {
-                this.Enemy.States.Add(StateType.JumpSouthEast, weight);
+                Enemy.States.Add(StateType.JumpSouthEast, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.JumpSouthEast, 1);
+                Enemy.States.Add(StateType.JumpSouthEast, 1);
             }
 
             if (toPlayer.X < 0 && toPlayer.Y > 0)
             {
-                this.Enemy.States.Add(StateType.JumpSouthWest, weight);
+                Enemy.States.Add(StateType.JumpSouthWest, weight);
             }
             else
             {
-                this.Enemy.States.Add(StateType.JumpSouthWest, 1);
+                Enemy.States.Add(StateType.JumpSouthWest, 1);
             }
         }
 
@@ -308,8 +308,8 @@
         /// </summary>
         public void CheckForLink()
         {
-            int enemyX = (int)this.Enemy.Physics.Location.X;
-            int enemyY = (int)this.Enemy.Physics.Location.Y;
+            int enemyX = (int)Enemy.Physics.Location.X;
+            int enemyY = (int)Enemy.Physics.Location.Y;
             int linkX = (int)LoZGame.Instance.Players[0].Physics.Location.X;
             int linkY = (int)LoZGame.Instance.Players[0].Physics.Location.Y;
 
@@ -317,25 +317,25 @@
             {
                 if ((linkY - enemyY) > 0)
                 {
-                    this.Enemy.Physics.CurrentDirection = Physics.Direction.South;
+                    Enemy.Physics.CurrentDirection = Physics.Direction.South;
                 }
                 else
                 {
-                    this.Enemy.Physics.CurrentDirection = Physics.Direction.North;
+                    Enemy.Physics.CurrentDirection = Physics.Direction.North;
                 }
-                this.Enemy.CurrentState.Attack();
+                Enemy.CurrentState.Attack();
             }
             else if (Math.Abs(enemyY - linkY) <= GameData.Instance.EnemyMiscConstants.LinkPixelBuffer)
             {
                 if ((linkX - enemyX) > 0)
                 {
-                    this.Enemy.Physics.CurrentDirection = Physics.Direction.East;
+                    Enemy.Physics.CurrentDirection = Physics.Direction.East;
                 }
                 else
                 {
-                    this.Enemy.Physics.CurrentDirection = Physics.Direction.West;
+                    Enemy.Physics.CurrentDirection = Physics.Direction.West;
                 }
-                this.Enemy.CurrentState.Attack();
+                Enemy.CurrentState.Attack();
             }
         }
     }

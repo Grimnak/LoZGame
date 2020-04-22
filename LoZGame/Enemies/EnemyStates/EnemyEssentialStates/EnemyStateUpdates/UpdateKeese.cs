@@ -22,7 +22,7 @@
 
         private void StandardKeese()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.KeeseFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallPreferenceMod));
                 FavorPlayerDiagonal(GameData.Instance.EnemyMiscConstants.KeeseFavorDiagonalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallPreferenceMod));
@@ -31,7 +31,7 @@
 
         private void HardKeese()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.KeeseFavorCardinalValue + (2 * (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
                 FavorPlayerDiagonal(GameData.Instance.EnemyMiscConstants.KeeseFavorDiagonalValue + (2 * (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
@@ -41,19 +41,19 @@
 
         private void UpdateMoveSpeed()
         {
-            Vector2 normalVel = this.Enemy.Physics.MovementVelocity / this.Enemy.Physics.MovementVelocity.Length();
-            if (this.Lifetime < this.DirectionChange / 2)
+            Vector2 normalVel = Enemy.Physics.MovementVelocity / Enemy.Physics.MovementVelocity.Length();
+            if (Lifetime < DirectionChange / 2)
             {
-                if (this.Enemy.Physics.MovementVelocity.Length() <= GameData.Instance.EnemySpeedConstants.MaxKeeseSpeed)
+                if (Enemy.Physics.MovementVelocity.Length() <= GameData.Instance.EnemySpeedConstants.MaxKeeseSpeed)
                 {
-                    this.Enemy.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
+                    Enemy.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
                 }
             }
             else
             {
-                if (this.Enemy.Physics.MovementVelocity.Length() >= GameData.Instance.EnemySpeedConstants.MinKeeseSpeed)
+                if (Enemy.Physics.MovementVelocity.Length() >= GameData.Instance.EnemySpeedConstants.MinKeeseSpeed)
                 {
-                    this.Enemy.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
+                    Enemy.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
                 }
             }
         }
@@ -63,7 +63,7 @@
             int attempt = LoZGame.Instance.Random.Next(0, 100);
             if (2 * attempt <= GameData.Instance.EnemyMiscConstants.ProjectileSuccess)
             {
-                IProjectile bomb = new BombProjectile(this.Enemy.Physics);
+                IProjectile bomb = new BombProjectile(Enemy.Physics);
                 LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(bomb);
             }
         }

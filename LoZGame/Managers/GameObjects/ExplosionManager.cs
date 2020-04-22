@@ -19,7 +19,7 @@
         private int explosionId;
         private int explosionListSize;
 
-        public List<IProjectile> Explosions { get { return this.explosions; } }
+        public List<IProjectile> Explosions { get { return explosions; } }
 
         public int SwordExplosion => (int)ExplosionType.SwordExplode;
 
@@ -27,19 +27,19 @@
 
         public ExplosionManager()
         {
-            this.explosionList = new Dictionary<int, IProjectile>();
-            this.explosions = new List<IProjectile>();
-            this.explosionId = 0;
-            this.explosionListSize = 0;
-            this.deletable = new List<int>();
+            explosionList = new Dictionary<int, IProjectile>();
+            explosions = new List<IProjectile>();
+            explosionId = 0;
+            explosionListSize = 0;
+            deletable = new List<int>();
         }
 
         public void AddExplosion(int explosion, Vector2 loc)
         {
             ExplosionType type = (ExplosionType)explosion;
 
-            this.explosionId++;
-            this.explosionListSize++;
+            explosionId++;
+            explosionListSize++;
             switch (type)
             {
                 case ExplosionType.SwordExplode:
@@ -47,74 +47,74 @@
                     {
                         CurrentDirection = Physics.Direction.NorthEast
                     };
-                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(tempPhysics));
-                    this.explosionId++;
-                    this.explosionListSize++;
+                    explosionList.Add(explosionId, new SwordBeamExplosion(tempPhysics));
+                    explosionId++;
+                    explosionListSize++;
                     tempPhysics = new Physics(loc)
                     {
                         CurrentDirection = Physics.Direction.NorthWest
                     };
-                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(tempPhysics));
-                    this.explosionId++;
-                    this.explosionListSize++;
+                    explosionList.Add(explosionId, new SwordBeamExplosion(tempPhysics));
+                    explosionId++;
+                    explosionListSize++;
                     tempPhysics = new Physics(loc)
                     {
                         CurrentDirection = Physics.Direction.SouthEast
                     };
-                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(tempPhysics));
-                    this.explosionId++;
-                    this.explosionListSize++;
+                    explosionList.Add(explosionId, new SwordBeamExplosion(tempPhysics));
+                    explosionId++;
+                    explosionListSize++;
                     tempPhysics = new Physics(loc)
                     {
                         CurrentDirection = Physics.Direction.SouthWest
                     };
-                    this.explosionList.Add(this.explosionId, new SwordBeamExplosion(tempPhysics));
+                    explosionList.Add(explosionId, new SwordBeamExplosion(tempPhysics));
                     break;
 
                 case ExplosionType.BombExplode:
-                    this.explosionList.Add(this.explosionId, new BombExplosion(loc));
+                    explosionList.Add(explosionId, new BombExplosion(loc));
                     break;
             }
         }
 
         public void RemoveExplosion(int instance)
         {
-            this.explosionList.Remove(instance);
-            this.explosionListSize--;
-            if (this.explosionListSize == 0)
+            explosionList.Remove(instance);
+            explosionListSize--;
+            if (explosionListSize == 0)
             {
-                this.explosionId = 0;
+                explosionId = 0;
             }
         }
 
         public void Update()
         {
-            foreach (KeyValuePair<int, IProjectile> explosion in this.explosionList)
+            foreach (KeyValuePair<int, IProjectile> explosion in explosionList)
             {
                 if (explosion.Value.IsExpired)
                 {
-                    this.deletable.Add(explosion.Key);
+                    deletable.Add(explosion.Key);
                 }
             }
 
-            foreach (int index in this.deletable)
+            foreach (int index in deletable)
             {
-                this.RemoveExplosion(index);
+                RemoveExplosion(index);
             }
 
-            this.explosions.Clear();
-            this.deletable.Clear();
+            explosions.Clear();
+            deletable.Clear();
 
-            foreach (KeyValuePair<int, IProjectile> explosion in this.explosionList)
+            foreach (KeyValuePair<int, IProjectile> explosion in explosionList)
             {
-                this.explosions.Add(explosion.Value);
+                explosions.Add(explosion.Value);
                 explosion.Value.Update();
             }
         }
 
         public void Draw()
         {
-            foreach (KeyValuePair<int, IProjectile> explosion in this.explosionList)
+            foreach (KeyValuePair<int, IProjectile> explosion in explosionList)
             {
                 explosion.Value.Draw();
             }
@@ -122,7 +122,7 @@
 
         public void Clear()
         {
-            this.explosions.Clear();
+            explosions.Clear();
         }
     }
 }

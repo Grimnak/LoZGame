@@ -6,7 +6,7 @@
     {
         public HiddenDoorState(Door door)
         {
-            this.Door = door;
+            Door = door;
         }
 
         public override void Close()

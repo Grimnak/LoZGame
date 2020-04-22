@@ -7,24 +7,24 @@
     {
         public Bubble(Vector2 location)
         {
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.BubbleStateList);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.BubbleHealth);
-            this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.BubbleMass;
-            this.CurrentState = new SpawnEnemyState(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.IsKillable = false;
-            this.IsTransparent = true;
-            this.Damage = GameData.Instance.EnemyDamageConstants.BubbleDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.BubbleSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.AI = EnemyAI.Bubble;
-            this.ApplySmallSpeedMod();
-            this.ApplySmallWeightModPos();
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.BubbleStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.BubbleHealth);
+            Physics = new Physics(location);
+            Physics.Mass = GameData.Instance.EnemyMassConstants.BubbleMass;
+            CurrentState = new SpawnEnemyState(this);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            IsKillable = false;
+            IsTransparent = true;
+            Damage = GameData.Instance.EnemyDamageConstants.BubbleDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.BubbleSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            AI = EnemyAI.Bubble;
+            ApplySmallSpeedMod();
+            ApplySmallWeightModPos();
         }
 
         public override void Stun(int stunTime)
@@ -35,11 +35,11 @@
         {
             if (otherCollider is IPlayer)
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
             else if (otherCollider is IBlock)
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+                EnemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
         }
 

@@ -15,10 +15,10 @@
         /// </summary>
         public MouseCommandLoader()
         {
-            this.commandRoomUp = new CommandRoomUp();
-            this.commandRoomDown = new CommandRoomDown();
-            this.commandRoomLeft = new CommandRoomLeft();
-            this.commandRoomRight = new CommandRoomRight();
+            commandRoomUp = new CommandRoomUp();
+            commandRoomDown = new CommandRoomDown();
+            commandRoomLeft = new CommandRoomLeft();
+            commandRoomRight = new CommandRoomRight();
         }
 
         /// <summary>
@@ -26,7 +26,7 @@
         /// </summary>
         public CommandRoomUp GetCommandRoomUp
         {
-            get { return this.commandRoomUp; }
+            get { return commandRoomUp; }
         }
 
         /// <summary>
@@ -34,7 +34,7 @@
         /// </summary>
         public CommandRoomDown GetCommandRoomDown
         {
-            get { return this.commandRoomDown; }
+            get { return commandRoomDown; }
         }
 
         /// <summary>
@@ -42,7 +42,7 @@
         /// </summary>
         public CommandRoomLeft GetCommandRoomLeft
         {
-            get { return this.commandRoomLeft; }
+            get { return commandRoomLeft; }
         }
 
         /// <summary>
@@ -50,7 +50,7 @@
         /// </summary>
         public CommandRoomRight GetCommandRoomRight
         {
-            get { return this.commandRoomRight; }
+            get { return commandRoomRight; }
         }
     }
 }

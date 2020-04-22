@@ -14,20 +14,20 @@
 
         public OldMan(Vector2 location)
         {
-            this.Physics = new Physics(location);
-            this.flameOffset = new Point(130, 0);
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.OldManStateList);
-            this.CurrentState = new IdleEnemyState(this);
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.OldManHealth);
-            this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.OldManDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.OldManSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.timesShot = 0;
+            Physics = new Physics(location);
+            flameOffset = new Point(130, 0);
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.OldManStateList);
+            CurrentState = new IdleEnemyState(this);
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.OldManHealth);
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.OldManDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.OldManSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            timesShot = 0;
         }
 
         private Vector2 UnitVectorToPlayer(Vector2 origin)
@@ -43,27 +43,27 @@
 
         public override void Attack()
         {
-            this.CurrentState = new OldManSecretState(this);
+            CurrentState = new OldManSecretState(this);
         }
 
         public void ShootFireballs()
         {
-            this.timesShot++;
+            timesShot++;
             if (timesShot > BreakingPoint)
             {
-                this.CurrentState = new OldManSecretState(this);
-                this.timesShot = 0;
+                CurrentState = new OldManSecretState(this);
+                timesShot = 0;
             }
-            else if (!(this.CurrentState is OldManSecretState))
+            else if (!(CurrentState is OldManSecretState))
             {
-                this.CurrentState = new OldManAngryState(this);
-                Vector2 playerVectorOne = this.UnitVectorToPlayer((this.Physics.Bounds.Center - flameOffset).ToVector2());
-                Vector2 playerVectorTwo = this.UnitVectorToPlayer((this.Physics.Bounds.Center + flameOffset).ToVector2());
+                CurrentState = new OldManAngryState(this);
+                Vector2 playerVectorOne = UnitVectorToPlayer((Physics.Bounds.Center - flameOffset).ToVector2());
+                Vector2 playerVectorTwo = UnitVectorToPlayer((Physics.Bounds.Center + flameOffset).ToVector2());
                 Vector2 velocityVectorOne = new Vector2(playerVectorOne.X * FireballSpeed, playerVectorOne.Y * FireballSpeed);
                 Vector2 velocityVectorTwo = new Vector2(playerVectorTwo.X * FireballSpeed, playerVectorTwo.Y * FireballSpeed);
-                Physics fireballOnePhysics = new Physics((this.Physics.Bounds.Center - flameOffset).ToVector2());
+                Physics fireballOnePhysics = new Physics((Physics.Bounds.Center - flameOffset).ToVector2());
                 fireballOnePhysics.MovementVelocity = velocityVectorOne;
-                Physics fireballTwoPhysics = new Physics((this.Physics.Bounds.Center + flameOffset).ToVector2());
+                Physics fireballTwoPhysics = new Physics((Physics.Bounds.Center + flameOffset).ToVector2());
                 fireballTwoPhysics.MovementVelocity = velocityVectorTwo;
                 LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(new FireballProjectile(fireballOnePhysics));
                 LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(new FireballProjectile(fireballTwoPhysics));
@@ -76,13 +76,13 @@
 
         public override void Update()
         {
-            this.Physics.SetDepth();
-            this.CurrentState.Update();
+            Physics.SetDepth();
+            CurrentState.Update();
         }
 
         public override ISprite CreateCorrectSprite()
         {
-            if (this.CurrentState is IdleEnemyState)
+            if (CurrentState is IdleEnemyState)
             {
                 return EnemySpriteFactory.Instance.CreateOldManSprite();
             }

@@ -7,24 +7,24 @@
     {
         public RedDarknut(Vector2 location)
         {
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.DarknutStateList);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.RedDarknutHealth);
-            this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.DarknutMass;
-            this.CurrentState = new SpawnEnemyState(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.RedDarknutDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DarknutSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.AI = EnemyAI.Darknut;
-            this.ApplyDamageMod();
-            this.ApplySmallSpeedMod();
-            this.ApplyLargeWeightModPos();
-            this.ApplySmallHealthMod();
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.DarknutStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.RedDarknutHealth);
+            Physics = new Physics(location);
+            Physics.Mass = GameData.Instance.EnemyMassConstants.DarknutMass;
+            CurrentState = new SpawnEnemyState(this);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.RedDarknutDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.DarknutSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            AI = EnemyAI.Darknut;
+            ApplyDamageMod();
+            ApplySmallSpeedMod();
+            ApplyLargeWeightModPos();
+            ApplySmallHealthMod();
         }
 
         public override void Stun(int stunTime)
@@ -35,40 +35,40 @@
         {
             if (otherCollider is IPlayer)
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
             else if (otherCollider is IBlock)
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+                EnemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
             else if (otherCollider is IProjectile && !Blocked(otherCollider))
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+                EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
         }
 
         public override ISprite CreateCorrectSprite()
         {
-            return EnemySpriteFactory.Instance.CreateRedDarknutSprite(this.Physics.CurrentDirection);
+            return EnemySpriteFactory.Instance.CreateRedDarknutSprite(Physics.CurrentDirection);
         }
 
         private bool Blocked(ICollider otherCollider)
         {
             bool blocked = false;
 
-            if (this.Physics.CurrentDirection == Physics.Direction.North && otherCollider.Physics.CurrentDirection == Physics.Direction.South)
+            if (Physics.CurrentDirection == Physics.Direction.North && otherCollider.Physics.CurrentDirection == Physics.Direction.South)
             {
                 blocked = true;
             }
-            else if (this.Physics.CurrentDirection == Physics.Direction.South && otherCollider.Physics.CurrentDirection == Physics.Direction.North)
+            else if (Physics.CurrentDirection == Physics.Direction.South && otherCollider.Physics.CurrentDirection == Physics.Direction.North)
             {
                 blocked = true;
             }
-            else if (this.Physics.CurrentDirection == Physics.Direction.West && otherCollider.Physics.CurrentDirection == Physics.Direction.East)
+            else if (Physics.CurrentDirection == Physics.Direction.West && otherCollider.Physics.CurrentDirection == Physics.Direction.East)
             {
                 blocked = true;
             }
-            else if (this.Physics.CurrentDirection == Physics.Direction.East && otherCollider.Physics.CurrentDirection == Physics.Direction.West)
+            else if (Physics.CurrentDirection == Physics.Direction.East && otherCollider.Physics.CurrentDirection == Physics.Direction.West)
             {
                 blocked = true;
             }

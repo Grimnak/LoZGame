@@ -8,11 +8,11 @@
     {
         public LeftMovingEnemyState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Enemy.CurrentState = this;
+            Enemy = enemy;
+            Sprite = Enemy.CreateCorrectSprite();
+            Enemy.CurrentState = this;
             RandomDirectionChange();
-            this.Enemy.Physics.MovementVelocity = new Vector2(-1 * this.Enemy.MoveSpeed, 0);
+            Enemy.Physics.MovementVelocity = new Vector2(-1 * Enemy.MoveSpeed, 0);
         }
     }
 }

@@ -11,21 +11,21 @@ namespace LoZClone
     {
         public ArrowProjectile(Physics source)
         {
-            this.SetUp(this);
-            this.Width = ProjectileSpriteFactory.Instance.ArrowWidth;
-            this.Heigth = ProjectileSpriteFactory.Instance.ArrowHeight;
-            this.Offset = this.Heigth / 2;
-            this.Physics.Mass = 10;
-            this.Speed = GameData.Instance.ProjectileSpeedConstants.LinkArrowSpeed;
-            this.Damage = GameData.Instance.ProjectileDamageConstants.LinkArrowDamage;
-            this.Source = source;
-            this.InitializeDirection();
-            if (this.Physics.CurrentDirection == Physics.Direction.East || this.Physics.CurrentDirection == Physics.Direction.West)
+            SetUp(this);
+            Width = ProjectileSpriteFactory.Instance.ArrowWidth;
+            Heigth = ProjectileSpriteFactory.Instance.ArrowHeight;
+            Offset = Heigth / 2;
+            Physics.Mass = 10;
+            Speed = GameData.Instance.ProjectileSpeedConstants.LinkArrowSpeed;
+            Damage = GameData.Instance.ProjectileDamageConstants.LinkArrowDamage;
+            Source = source;
+            InitializeDirection();
+            if (Physics.CurrentDirection == Physics.Direction.East || Physics.CurrentDirection == Physics.Direction.West)
             {
-                this.CorrectProjectile();
+                CorrectProjectile();
             }
-            this.Sprite = ProjectileSpriteFactory.Instance.Arrow();
-            this.Physics.Mass = GameData.Instance.ProjectileMassConstants.ArrowMass;
+            Sprite = ProjectileSpriteFactory.Instance.Arrow();
+            Physics.Mass = GameData.Instance.ProjectileMassConstants.ArrowMass;
         }
     }
 }

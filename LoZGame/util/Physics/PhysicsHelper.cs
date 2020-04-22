@@ -6,67 +6,67 @@
     {
         public void StopVelocity()
         {
-            this.MovementVelocity = Vector2.Zero;
-            this.KnockbackVelocity = Vector2.Zero;
-            this.MasterMovement = Vector2.Zero;
+            MovementVelocity = Vector2.Zero;
+            KnockbackVelocity = Vector2.Zero;
+            MasterMovement = Vector2.Zero;
         }
 
         public void StopAcceleration()
         {
-            this.MovementAcceleration = Vector2.Zero;
-            this.Friction = Vector2.Zero;
+            MovementAcceleration = Vector2.Zero;
+            Friction = Vector2.Zero;
         }
 
         public void StopMovement()
         {
-            this.StopVelocity();
-            this.StopAcceleration();
+            StopVelocity();
+            StopAcceleration();
         }
 
         public void StopKnockback()
         {
-            this.KnockbackVelocity = Vector2.Zero;
-            this.Friction = Vector2.Zero;
+            KnockbackVelocity = Vector2.Zero;
+            Friction = Vector2.Zero;
         }
 
         public void StopMovementY()
         {
-            this.MovementVelocity = new Vector2(this.MovementVelocity.X, GameData.Instance.PhysicsConstants.ZeroVelocity);
-            this.MovementAcceleration = new Vector2(this.MovementAcceleration.X, GameData.Instance.PhysicsConstants.ZeroVelocity);
+            MovementVelocity = new Vector2(MovementVelocity.X, GameData.Instance.PhysicsConstants.ZeroVelocity);
+            MovementAcceleration = new Vector2(MovementAcceleration.X, GameData.Instance.PhysicsConstants.ZeroVelocity);
         }
 
         public void StopMovementX()
         {
-            this.MovementVelocity = new Vector2(0, this.MovementVelocity.Y);
-            this.MovementAcceleration = new Vector2(0, this.MovementAcceleration.Y);
+            MovementVelocity = new Vector2(0, MovementVelocity.Y);
+            MovementAcceleration = new Vector2(0, MovementAcceleration.Y);
         }
 
         public void StopKnockbackY()
         {
-            this.KnockbackVelocity = new Vector2(this.KnockbackVelocity.X, GameData.Instance.PhysicsConstants.ZeroVelocity);
-            this.Friction = new Vector2(this.Friction.X, GameData.Instance.PhysicsConstants.ZeroFriction);
+            KnockbackVelocity = new Vector2(KnockbackVelocity.X, GameData.Instance.PhysicsConstants.ZeroVelocity);
+            Friction = new Vector2(Friction.X, GameData.Instance.PhysicsConstants.ZeroFriction);
         }
 
         public void StopKnockbackX()
         {
-            this.KnockbackVelocity = new Vector2(GameData.Instance.PhysicsConstants.ZeroVelocity, this.KnockbackVelocity.Y);
-            this.Friction = new Vector2(GameData.Instance.PhysicsConstants.ZeroFriction, this.Friction.Y);
+            KnockbackVelocity = new Vector2(GameData.Instance.PhysicsConstants.ZeroVelocity, KnockbackVelocity.Y);
+            Friction = new Vector2(GameData.Instance.PhysicsConstants.ZeroFriction, Friction.Y);
         }
 
         public void StopMotionY()
         {
-            this.MovementVelocity = new Vector2(this.MovementVelocity.X, GameData.Instance.PhysicsConstants.ZeroVelocity);
-            this.MovementAcceleration = new Vector2(this.MovementAcceleration.X, GameData.Instance.PhysicsConstants.ZeroAcceleration);
-            this.KnockbackVelocity = new Vector2(this.KnockbackVelocity.X, GameData.Instance.PhysicsConstants.ZeroVelocity);
-            this.Friction = new Vector2(this.Friction.X, 0);
+            MovementVelocity = new Vector2(MovementVelocity.X, GameData.Instance.PhysicsConstants.ZeroVelocity);
+            MovementAcceleration = new Vector2(MovementAcceleration.X, GameData.Instance.PhysicsConstants.ZeroAcceleration);
+            KnockbackVelocity = new Vector2(KnockbackVelocity.X, GameData.Instance.PhysicsConstants.ZeroVelocity);
+            Friction = new Vector2(Friction.X, 0);
         }
 
         public void StopMotionX()
         {
-            this.MovementVelocity = new Vector2(GameData.Instance.PhysicsConstants.ZeroVelocity, this.MovementVelocity.Y);
-            this.MovementAcceleration = new Vector2(GameData.Instance.PhysicsConstants.ZeroAcceleration, this.MovementAcceleration.Y);
-            this.KnockbackVelocity = new Vector2(GameData.Instance.PhysicsConstants.ZeroVelocity, this.KnockbackVelocity.Y);
-            this.Friction = new Vector2(GameData.Instance.PhysicsConstants.ZeroFriction, this.Friction.Y);
+            MovementVelocity = new Vector2(GameData.Instance.PhysicsConstants.ZeroVelocity, MovementVelocity.Y);
+            MovementAcceleration = new Vector2(GameData.Instance.PhysicsConstants.ZeroAcceleration, MovementAcceleration.Y);
+            KnockbackVelocity = new Vector2(GameData.Instance.PhysicsConstants.ZeroVelocity, KnockbackVelocity.Y);
+            Friction = new Vector2(GameData.Instance.PhysicsConstants.ZeroFriction, Friction.Y);
         }
     }
 }

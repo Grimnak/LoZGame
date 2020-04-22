@@ -31,36 +31,36 @@
 
         public MiniMap(Dungeon dungeon)
         {
-            this.mapSize = new Vector2(365, 195);
-            this.miniMapSize = new Vector2(208, 104);
+            mapSize = new Vector2(365, 195);
+            miniMapSize = new Vector2(208, 104);
             this.dungeon = dungeon;
-            this.lifetime = 0;
+            lifetime = 0;
         }
 
         public void Draw(Vector2 InventoryMapLoc, Vector2 MiniMapLoc)
         {
-            this.lifetime++;
+            lifetime++;
             for (int i = 0; i < dungeonLayout.Count; i++)
             {
-                this.dungeonLayout[i].DrawInventory(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), this.inventoryRoomSize.ToPoint(), Color.Black);
-                this.dungeonLayout[i].DrawMiniMap(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), this.miniMapRoomSize.ToPoint(), dungeon.MapColor);
-                if (this.lifetime > BlinkRate)
+                dungeonLayout[i].DrawInventory(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), inventoryRoomSize.ToPoint(), Color.Black);
+                dungeonLayout[i].DrawMiniMap(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), miniMapRoomSize.ToPoint(), dungeon.MapColor);
+                if (lifetime > BlinkRate)
                 {
-                    if (this.dungeonLayout[i].Location == this.dungeon.DungeonBossLocation && this.dungeon.Player.Inventory.HasCompass)
+                    if (dungeonLayout[i].Location == dungeon.DungeonBossLocation && dungeon.Player.Inventory.HasCompass)
                     {
-                        this.dungeonLayout[i].DrawDot(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), this.inventoryRoomSize.ToPoint(), Color.Red);
-                        this.dungeonLayout[i].DrawDot(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), this.miniMapRoomSize.ToPoint(), Color.Red);
+                        dungeonLayout[i].DrawDot(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), inventoryRoomSize.ToPoint(), Color.Red);
+                        dungeonLayout[i].DrawDot(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), miniMapRoomSize.ToPoint(), Color.Red);
                     }
-                    if (this.dungeonLayout[i].Location == new Point(this.dungeon.CurrentRoomX, this.dungeon.CurrentRoomY))
+                    if (dungeonLayout[i].Location == new Point(dungeon.CurrentRoomX, dungeon.CurrentRoomY))
                     {
-                        this.dungeonLayout[i].DrawDot(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), this.inventoryRoomSize.ToPoint(), Color.Yellow);
-                        this.dungeonLayout[i].DrawDot(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), this.miniMapRoomSize.ToPoint(), Color.LightYellow);
+                        dungeonLayout[i].DrawDot(InventoryMapLoc.ToPoint() + roomDrawOffset.ToPoint(), inventoryRoomSize.ToPoint(), Color.Yellow);
+                        dungeonLayout[i].DrawDot(MiniMapLoc.ToPoint() + miniMapDrawOffset.ToPoint(), miniMapRoomSize.ToPoint(), Color.LightYellow);
                     }
                 }
             }
-            if (this.lifetime > BlinkRate * 2)
+            if (lifetime > BlinkRate * 2)
             {
-                this.lifetime = 0;
+                lifetime = 0;
             }
         }
 
@@ -95,7 +95,7 @@
 
         public void LoadMap(List<List<Room>> dungeon, int maxX, int maxY)
         {
-            this.dungeonLayout = new List<MiniMapRoom>();
+            dungeonLayout = new List<MiniMapRoom>();
             int roomY = 0, roomX = 0;
             while (roomY < maxY)
             {
@@ -105,22 +105,22 @@
                     if (dungeon[roomY][roomX].Exists)
                     {
                         List<MiniMap.DoorLocation> doors = FetchDoors(dungeon[roomY][roomX]);
-                        this.dungeonLayout.Add(new MiniMapRoom(roomX, roomY, doors));
+                        dungeonLayout.Add(new MiniMapRoom(roomX, roomY, doors));
                     }
                     roomX++;
                 }
                 roomY++;
             }
-            this.inventoryRoomSize = this.mapSize / Math.Max(maxX, maxY);
-            this.miniMapRoomSize = this.miniMapSize / Math.Max(maxX, maxY);
+            inventoryRoomSize = mapSize / Math.Max(maxX, maxY);
+            miniMapRoomSize = miniMapSize / Math.Max(maxX, maxY);
             DetermineDrawOffset(maxX, maxY);
         }
 
         public void Explore()
         {
-            foreach (MiniMapRoom room in this.dungeonLayout)
+            foreach (MiniMapRoom room in dungeonLayout)
             {
-                if (this.dungeon.CurrentRoomX == room.Location.X && this.dungeon.CurrentRoomY == room.Location.Y)
+                if (dungeon.CurrentRoomX == room.Location.X && dungeon.CurrentRoomY == room.Location.Y)
                 {
                     room.Explore();
                 }
@@ -138,8 +138,8 @@
             {
                 offset = new Vector2((y - x) / 2, 0);
             }
-            this.roomDrawOffset = new Vector2(this.inventoryRoomSize.X * offset.X, this.inventoryRoomSize.Y * offset.Y);
-            this.miniMapDrawOffset = new Vector2(this.miniMapRoomSize.X * offset.X, this.miniMapRoomSize.Y * offset.Y);
+            roomDrawOffset = new Vector2(inventoryRoomSize.X * offset.X, inventoryRoomSize.Y * offset.Y);
+            miniMapDrawOffset = new Vector2(miniMapRoomSize.X * offset.X, miniMapRoomSize.Y * offset.Y);
         }
     }
 }

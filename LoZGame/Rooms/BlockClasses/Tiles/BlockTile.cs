@@ -41,9 +41,9 @@
         private Rectangle bounds;
         private bool isTransparent;
 
-        public bool IsTransparent { get { return this.isTransparent; } set { this.isTransparent = value; } }
+        public bool IsTransparent { get { return isTransparent; } set { isTransparent = value; } }
 
-        public Rectangle Bounds { get { return this.Physics.Bounds; } set { this.Physics.Bounds = value; } }
+        public Rectangle Bounds { get { return Physics.Bounds; } set { Physics.Bounds = value; } }
 
         public List<MovableTile.InvalidDirection> InvalidDirections { get { return null; } }
 
@@ -58,24 +58,24 @@
         /// <param name="name">Name of the tiles sprite.</param>
         public BlockTile(Vector2 location, string name)
         {
-            this.blockCollisionHandler = new BlockCollisionHandler(this);
-            this.Physics = new Physics(location);
-            this.spriteTint = Color.Gray;
-            this.isTransparent = this.DetermineTransparency(name);
-            this.sprite = this.CreateCorrectSprite(name);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
-            this.Physics.Depth = GameData.Instance.RoomConstants.BlockTileDepth;
-            this.SetBounds(name);
+            blockCollisionHandler = new BlockCollisionHandler(this);
+            Physics = new Physics(location);
+            spriteTint = Color.Gray;
+            isTransparent = DetermineTransparency(name);
+            sprite = CreateCorrectSprite(name);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
+            Physics.Depth = GameData.Instance.RoomConstants.BlockTileDepth;
+            SetBounds(name);
         }
 
         private void SetBounds(string name)
         {
             if (name.Contains(statueCheck))
             {
-                this.Physics.Bounds = new Rectangle(this.Physics.Bounds.X, this.Physics.Bounds.Y + GameData.Instance.RoomConstants.BlockTileHeightOffset, this.Physics.Bounds.Width, this.Physics.Bounds.Height - GameData.Instance.RoomConstants.BlockTileHeightOffset);
-                this.Physics.BoundsOffset = new Vector2(0, -GameData.Instance.RoomConstants.BlockTileHeightOffset);
-                this.Physics.SetDepth();
-                this.Physics.SetLocation();
+                Physics.Bounds = new Rectangle(Physics.Bounds.X, Physics.Bounds.Y + GameData.Instance.RoomConstants.BlockTileHeightOffset, Physics.Bounds.Width, Physics.Bounds.Height - GameData.Instance.RoomConstants.BlockTileHeightOffset);
+                Physics.BoundsOffset = new Vector2(0, -GameData.Instance.RoomConstants.BlockTileHeightOffset);
+                Physics.SetDepth();
+                Physics.SetLocation();
             }
         }
 
@@ -97,7 +97,7 @@
                 case BlueStatueRight:
                     return BlockSpriteFactory.Instance.BlueStatueRight();
                 case MovableSquare2:
-                    this.spriteTint = LoZGame.Instance.DungeonTint;
+                    spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.MoveabeTile();
                 case BlueStatueRight2:
                     return BlockSpriteFactory.Instance.BlueStatueRight2();
@@ -116,7 +116,7 @@
                 case GreenStatueLeft3:
                     return BlockSpriteFactory.Instance.GreenStatueLeft3();
                 case MovableSquare3:
-                    this.spriteTint = LoZGame.Instance.DungeonTint;
+                    spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.MoveabeTile();
                 case BlueStatueRight4:
                     return BlockSpriteFactory.Instance.BlueStatueRight4();
@@ -129,7 +129,7 @@
                 case MovableTile4:
                     return BlockSpriteFactory.Instance.MovableTile4();
                 default:
-                    this.spriteTint = LoZGame.Instance.DungeonTint;
+                    spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.MoveabeTile();
             }
         }
@@ -137,24 +137,24 @@
         /// <inheritdoc/>
         public void Update()
         {
-            this.sprite.Update();
+            sprite.Update();
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
+            sprite.Draw(Physics.Location, spriteTint, Physics.Depth);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IPlayer)
             {
-                this.blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
             else if (otherCollider is IEnemy)
             {
-                this.blockCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+                blockCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
         }
 

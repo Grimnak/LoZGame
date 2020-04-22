@@ -19,17 +19,17 @@
         private readonly int screenHeight;
         private readonly int inventoryOffset;
 
-        public int ScreenWidth => this.screenWidth;
+        public int ScreenWidth => screenWidth;
 
-        public int ScreenHeight => this.screenHeight;
+        public int ScreenHeight => screenHeight;
 
-        public int InventoryOffset => this.inventoryOffset;
+        public int InventoryOffset => inventoryOffset;
 
         private readonly GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private int gameLife;
 
-        public SpriteBatch SpriteBatch => this.spriteBatch;
+        public SpriteBatch SpriteBatch => spriteBatch;
 
         private Random randomNumberGenerator;
 
@@ -64,11 +64,11 @@
 
         public IPlayer Link
         {
-            get { return this.link; }
-            set { this.link = value; }
+            get { return link; }
+            set { link = value; }
         }
 
-        public Dungeon Dungeon { get { return this.dungeon; } set { this.dungeon = value; } }
+        public Dungeon Dungeon { get { return dungeon; } set { dungeon = value; } }
 
         public List<IController> Controllers { get { return controllers; } }
 
@@ -98,61 +98,61 @@
 
         private LoZGame()
         {
-            this.graphics = new GraphicsDeviceManager(this);
-            this.graphics.PreferredBackBufferWidth = 800;
-            this.graphics.PreferredBackBufferHeight = 654;
-            this.graphics.GraphicsProfile = GraphicsProfile.HiDef;
-            this.graphics.ApplyChanges();
+            graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 654;
+            graphics.GraphicsProfile = GraphicsProfile.HiDef;
+            graphics.ApplyChanges();
 
-            this.screenWidth = 800;
-            this.screenHeight = 654;
-            this.inventoryOffset = 174;
+            screenWidth = 800;
+            screenHeight = 654;
+            inventoryOffset = 174;
 
-            this.Content.RootDirectory = "Content";
-            this.IsMouseVisible = true;
-            this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
-            this.gameObjectManager = new GameObjectManager();
-            this.dropManager = new DropManager();
-            this.debugManager = new DebugManager();
-            this.Window.Title = "The Legend of Zelda: Reimagined";
-            this.Window.AllowUserResizing = true;
+            Content.RootDirectory = "Content";
+            IsMouseVisible = true;
+            TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
+            gameObjectManager = new GameObjectManager();
+            dropManager = new DropManager();
+            debugManager = new DebugManager();
+            Window.Title = "The Legend of Zelda: Reimagined";
+            Window.AllowUserResizing = true;
         }
 
         protected override void Initialize()
         {
-            this.controllers = new List<IController>();
-            this.players = new List<IPlayer>();
-            this.randomNumberGenerator = new Random();
-            this.debugManager.Initialize();
+            controllers = new List<IController>();
+            players = new List<IPlayer>();
+            randomNumberGenerator = new Random();
+            debugManager.Initialize();
 
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            this.background = Content.Load<Texture2D>("dungeon");
-            this.backgroundHole = Content.Load<Texture2D>("dungeonHole");
+            background = Content.Load<Texture2D>("dungeon");
+            backgroundHole = Content.Load<Texture2D>("dungeonHole");
             Effect effect = Content.Load<Effect>("BetterTint");
             betterTinting = effect;
-            ItemSpriteFactory.Instance.LoadAllTextures(this.Content);
-            ProjectileSpriteFactory.Instance.LoadAllTextures(this.Content);
-            EnemySpriteFactory.Instance.LoadAllTextures(this.Content);
-            BlockSpriteFactory.Instance.LoadAllTextures(this.Content);
-            LinkSpriteFactory.Instance.LoadAllTextures(this.Content);
-            ScreenSpriteFactory.Instance.LoadAllTextures(this.Content);
-            InventorySpriteFactory.Instance.LoadAllTextures(this.Content);
-            DungeonSpriteFactory.Instance.LoadAllTextures(this.Content);
+            ItemSpriteFactory.Instance.LoadAllTextures(Content);
+            ProjectileSpriteFactory.Instance.LoadAllTextures(Content);
+            EnemySpriteFactory.Instance.LoadAllTextures(Content);
+            BlockSpriteFactory.Instance.LoadAllTextures(Content);
+            LinkSpriteFactory.Instance.LoadAllTextures(Content);
+            ScreenSpriteFactory.Instance.LoadAllTextures(Content);
+            InventorySpriteFactory.Instance.LoadAllTextures(Content);
+            DungeonSpriteFactory.Instance.LoadAllTextures(Content);
 
-            this.font = Content.Load<SpriteFont>("Text");
-            this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
-            this.GameObjects.Enemies.Add(new FireSnakeHead(new Vector2(200, 400)));
-            this.StartGame();
+            font = Content.Load<SpriteFont>("Text");
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            GameObjects.Enemies.Add(new FireSnakeHead(new Vector2(200, 400)));
+            StartGame();
         }
 
         private void StartGame()
         {
-            this.gameState = new TitleScreenState();
-            this.gameState.TitleScreen();
+            gameState = new TitleScreenState();
+            gameState.TitleScreen();
         }
 
         protected override void UnloadContent()
@@ -166,34 +166,34 @@
                 controllers[i].Update();
             }
 
-            this.gameState.Update();
+            gameState.Update();
 
             if (DebugMode)
             {
-                this.debugManager.Update();
+                debugManager.Update();
             }
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            this.GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.Black);
 
-            this.gameState.Draw();
+            gameState.Draw();
 
             if (DebugMode)
             {
-                this.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-                this.debugManager.Draw();
-                this.spriteBatch.End();
+                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+                debugManager.Draw();
+                spriteBatch.End();
             }
 
             if (Cheats)
             {
-                this.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-                this.spriteBatch.DrawString(font, "CHEATS ON", new Vector2(0, LoZGame.Instance.InventoryOffset), Color.Black);
-                this.spriteBatch.DrawString(font, "CHEATS ON", new Vector2(3, LoZGame.Instance.InventoryOffset + 3), Color.DarkRed);
-                this.spriteBatch.End();
+                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+                spriteBatch.DrawString(font, "CHEATS ON", new Vector2(0, LoZGame.Instance.InventoryOffset), Color.Black);
+                spriteBatch.DrawString(font, "CHEATS ON", new Vector2(3, LoZGame.Instance.InventoryOffset + 3), Color.DarkRed);
+                spriteBatch.End();
             }
             base.Draw(gameTime);
         }

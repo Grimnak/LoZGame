@@ -20,14 +20,14 @@
         private bool moved;
         private bool isTransparent;
 
-        public bool IsTransparent { get { return this.isTransparent; } set { this.isTransparent = value; } }
+        public bool IsTransparent { get { return isTransparent; } set { isTransparent = value; } }
 
         private Rectangle bounds;
 
         public Rectangle Bounds
         {
-            get { return this.Physics.Bounds; }
-            set { this.Physics.Bounds = value; }
+            get { return Physics.Bounds; }
+            set { Physics.Bounds = value; }
         }
 
         public enum InvalidDirection
@@ -52,16 +52,16 @@
         /// <param name="direction">Invalid Directions for this.</param>
         public MovableTile(Vector2 location, string name, string direction)
         {
-            this.originalLocation = location;
-            this.invalidDirections = new List<InvalidDirection>();
+            originalLocation = location;
+            invalidDirections = new List<InvalidDirection>();
             string[] invalidDirectionStrings = !string.IsNullOrEmpty(direction) ? direction.Split(',') : null;
-            this.blockCollisionHandler = new BlockCollisionHandler(this);
-            this.Physics = new Physics(location);
-            this.sprite = DungeonSpriteFactory.Instance.MoveabeTile(); 
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
-            this.Physics.SetDepth();
-            this.moved = false;
-            this.isTransparent = false;
+            blockCollisionHandler = new BlockCollisionHandler(this);
+            Physics = new Physics(location);
+            sprite = DungeonSpriteFactory.Instance.MoveabeTile(); 
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
+            Physics.SetDepth();
+            moved = false;
+            isTransparent = false;
             if (!(invalidDirectionStrings is null))
             {
                 foreach (string invalid in invalidDirectionStrings)
@@ -99,26 +99,26 @@
 
         private void HandlePush()
         {
-            if (this.Physics.MovementVelocity.X != 0)
+            if (Physics.MovementVelocity.X != 0)
             {
-                if (Math.Abs(this.Physics.Location.X - this.originalLocation.X) <= this.Physics.Bounds.Width && this.Physics.Location.Y == this.originalLocation.Y)
+                if (Math.Abs(Physics.Location.X - originalLocation.X) <= Physics.Bounds.Width && Physics.Location.Y == originalLocation.Y)
                 {
-                    this.Physics.StopMovementY();
-                    this.Physics.Move();
-                    this.Physics.Accelerate();
+                    Physics.StopMovementY();
+                    Physics.Move();
+                    Physics.Accelerate();
                 }
                 else if (!moved)
                 {
                     moved = true;
                 }
             }
-            else if (this.Physics.MovementVelocity.Y != 0)
+            else if (Physics.MovementVelocity.Y != 0)
             {
-                if (Math.Abs(this.Physics.Location.Y - this.originalLocation.Y) <= this.Physics.Bounds.Height && this.Physics.Location.X == this.originalLocation.X)
+                if (Math.Abs(Physics.Location.Y - originalLocation.Y) <= Physics.Bounds.Height && Physics.Location.X == originalLocation.X)
                 {
-                    this.Physics.StopMovementX();
-                    this.Physics.Move();
-                    this.Physics.Accelerate();
+                    Physics.StopMovementX();
+                    Physics.Move();
+                    Physics.Accelerate();
                 }
                 else if (!moved)
                 {
@@ -129,7 +129,7 @@
 
         private void SolveDoors()
         {
-            if (Math.Abs(this.Physics.Location.X - this.originalLocation.X) >= this.Physics.Bounds.Width || Math.Abs(this.Physics.Location.Y - this.originalLocation.Y) >= this.Physics.Bounds.Height)
+            if (Math.Abs(Physics.Location.X - originalLocation.X) >= Physics.Bounds.Width || Math.Abs(Physics.Location.Y - originalLocation.Y) >= Physics.Bounds.Height)
             {
                 foreach (Door door in LoZGame.Instance.GameObjects.Doors.DoorList)
                 {
@@ -148,25 +148,25 @@
             SolveDoors();
             if (!moved)
             {
-                this.Physics.SetDepth();
+                Physics.SetDepth();
             }
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
+            sprite.Draw(Physics.Location, LoZGame.Instance.DungeonTint, Physics.Depth);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IPlayer)
             {
-                this.blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
             else if (otherCollider is IEnemy)
             {
-                this.blockCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+                blockCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
         }
 

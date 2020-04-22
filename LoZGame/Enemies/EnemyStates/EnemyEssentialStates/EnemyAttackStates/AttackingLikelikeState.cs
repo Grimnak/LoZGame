@@ -11,10 +11,10 @@ namespace LoZClone
     {
         public AttackingLikelikeState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Sprite = enemy.CreateCorrectSprite();
-            this.Enemy.CurrentState = this;
-            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
+            Enemy = enemy;
+            Sprite = enemy.CreateCorrectSprite();
+            Enemy.CurrentState = this;
+            Enemy.Physics.MovementVelocity = Vector2.Zero;
         }
     }
 }

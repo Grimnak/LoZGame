@@ -49,10 +49,10 @@
                 {
                     dropTable = defaultTable;
                 }
-                if (this.CanDropItem())
+                if (CanDropItem())
                 {
-                    Tuple<DropType, int, int, int> item = this.DetermineDrop(dropTable);
-                    this.DropItem(item.Item1, loc, LoZGame.Instance.Random.Next(item.Item3, item.Item4));
+                    Tuple<DropType, int, int, int> item = DetermineDrop(dropTable);
+                    DropItem(item.Item1, loc, LoZGame.Instance.Random.Next(item.Item3, item.Item4));
                 }
             }
         }

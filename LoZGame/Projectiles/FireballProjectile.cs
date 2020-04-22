@@ -6,23 +6,23 @@
     {
         public FireballProjectile(Physics physics)
         {
-            this.Physics = new Physics(physics.Location)
+            Physics = new Physics(physics.Location)
             {
                 MovementVelocity = new Vector2(physics.MovementVelocity.X, physics.MovementVelocity.Y)
             };
-            this.CollisionHandler = new ProjectileCollisionHandler(this);
-            this.Data = new EntityData();
-            this.Width = ProjectileSpriteFactory.Instance.FireballWidth;
-            this.Heigth = ProjectileSpriteFactory.Instance.FireballHeight;
-            this.Physics.BoundsOffset = new Vector2(this.Width, this.Heigth) / 2;
-            this.Physics.Bounds = new Rectangle((this.Physics.Location - this.Physics.BoundsOffset + new Vector2(4)).ToPoint(), new Point(Width, Heigth) - new Point(8));
-            this.Physics.BoundsOffset *= 2;
-            this.Physics.BoundsOffset -= new Vector2(4);
-            this.Physics.SetLocation();
-            this.Sprite = ProjectileSpriteFactory.Instance.Fireball();
-            this.IsExpired = false;
-            this.Damage = GameData.Instance.ProjectileDamageConstants.FireballDamage;
-            this.Physics.Mass = GameData.Instance.ProjectileMassConstants.FireballMass;
+            CollisionHandler = new ProjectileCollisionHandler(this);
+            Data = new EntityData();
+            Width = ProjectileSpriteFactory.Instance.FireballWidth;
+            Heigth = ProjectileSpriteFactory.Instance.FireballHeight;
+            Physics.BoundsOffset = new Vector2(Width, Heigth) / 2;
+            Physics.Bounds = new Rectangle((Physics.Location - Physics.BoundsOffset + new Vector2(4)).ToPoint(), new Point(Width, Heigth) - new Point(8));
+            Physics.BoundsOffset *= 2;
+            Physics.BoundsOffset -= new Vector2(4);
+            Physics.SetLocation();
+            Sprite = ProjectileSpriteFactory.Instance.Fireball();
+            IsExpired = false;
+            Damage = GameData.Instance.ProjectileDamageConstants.FireballDamage;
+            Physics.Mass = GameData.Instance.ProjectileMassConstants.FireballMass;
         }
 
         public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
@@ -30,7 +30,7 @@
             base.OnCollisionResponse(otherCollider, collisionSide);
             if (otherCollider is IBlock)
             {
-                this.CollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+                CollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
         }
     }

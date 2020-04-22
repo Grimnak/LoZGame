@@ -10,22 +10,22 @@
 
         public SpawnEnemyState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Sprite = EnemySpriteFactory.Instance.CreateEnemySpawn();
-            this.Enemy.CurrentState = this;
-            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
-            this.spawnTimerMax = GameData.Instance.EnemyMiscConstants.SpawnTimerMaximum;
-            this.Enemy.IsSpawning = true;
+            Enemy = enemy;
+            Sprite = EnemySpriteFactory.Instance.CreateEnemySpawn();
+            Enemy.CurrentState = this;
+            Enemy.Physics.MovementVelocity = Vector2.Zero;
+            spawnTimerMax = GameData.Instance.EnemyMiscConstants.SpawnTimerMaximum;
+            Enemy.IsSpawning = true;
         }
 
         public override void Update()
         {
-            this.spawnTimer++;
-            this.Sprite.Update();
+            spawnTimer++;
+            Sprite.Update();
             if (spawnTimer >= spawnTimerMax)
             {
-                this.Enemy.IsSpawning = false;
-                this.Enemy.UpdateState();
+                Enemy.IsSpawning = false;
+                Enemy.UpdateState();
             }
         }
 

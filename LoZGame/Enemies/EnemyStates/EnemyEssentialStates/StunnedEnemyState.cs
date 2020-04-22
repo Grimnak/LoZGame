@@ -13,11 +13,11 @@
         public StunnedEnemyState(IEnemy enemy, IEnemyState oldState, int stunTime)
         {
             this.oldState = oldState;
-            this.Enemy = enemy;
-            this.oldVelocity = this.Enemy.Physics.MovementVelocity;
-            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
+            Enemy = enemy;
+            oldVelocity = Enemy.Physics.MovementVelocity;
+            Enemy.Physics.MovementVelocity = Vector2.Zero;
             stunDuration = stunTime;
-            this.Enemy.CurrentTint = LoZGame.Instance.DefaultTint;
+            Enemy.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public override void Stun(int stunTime)
@@ -30,14 +30,14 @@
             stunDuration--;
             if (stunDuration <= 0)
             {
-                this.Enemy.CurrentState = this.oldState;
-                this.Enemy.Physics.MovementVelocity = this.oldVelocity;
+                Enemy.CurrentState = oldState;
+                Enemy.Physics.MovementVelocity = oldVelocity;
             }
         }
 
         public override void Draw()
         {
-            this.oldState.Draw();
+            oldState.Draw();
         }
     }
 }

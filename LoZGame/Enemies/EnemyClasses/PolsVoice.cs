@@ -14,27 +14,27 @@
 
         public PolsVoice(Vector2 location)
         {
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.PolsVoiceStateList);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.PolsVoiceHealth);
-            this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.PolsVoiceMass;
-            this.CurrentState = new SpawnEnemyState(this);
-            this.EntityManager = LoZGame.Instance.GameObjects.Entities;
-            this.Cooldown = 0;
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.PolsVoiceDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.PolsVoiceSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.AI = EnemyAI.PolsVoice;
-            this.ApplyDamageMod();
-            this.ApplySmallSpeedMod();
-            this.ApplySmallWeightModPos();
-            this.ApplySmallHealthMod();
-            this.Physics.Gravity = GameData.Instance.EnemyMiscConstants.PolsVoiceGravity;
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.PolsVoiceStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.PolsVoiceHealth);
+            Physics = new Physics(location);
+            Physics.Mass = GameData.Instance.EnemyMassConstants.PolsVoiceMass;
+            CurrentState = new SpawnEnemyState(this);
+            EntityManager = LoZGame.Instance.GameObjects.Entities;
+            Cooldown = 0;
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.PolsVoiceDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.PolsVoiceSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            AI = EnemyAI.PolsVoice;
+            ApplyDamageMod();
+            ApplySmallSpeedMod();
+            ApplySmallWeightModPos();
+            ApplySmallHealthMod();
+            Physics.Gravity = GameData.Instance.EnemyMiscConstants.PolsVoiceGravity;
         }
 
         public override void Stun(int stunTime)

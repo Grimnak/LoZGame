@@ -12,35 +12,35 @@
 
         public Door(string loc, string starting)
         {
-            this.doorCollisionHandler = new DoorCollisionHandler(this);
-            this.SetPhysics(loc);
-            this.solved = false;
-            this.doorWidth = GameData.Instance.PhysicsConstants.DoorWidth;
+            doorCollisionHandler = new DoorCollisionHandler(this);
+            SetPhysics(loc);
+            solved = false;
+            doorWidth = GameData.Instance.PhysicsConstants.DoorWidth;
             switch (starting)
             {
                 case "locked":
-                    this.state = new LockedDoorState(this);
-                    this.DoorType = DoorTypes.Locked;
+                    state = new LockedDoorState(this);
+                    DoorType = DoorTypes.Locked;
                     break;
                 case "special":
-                    this.state = new SpecialDoorState(this);
-                    this.DoorType = DoorTypes.Special;
+                    state = new SpecialDoorState(this);
+                    DoorType = DoorTypes.Special;
                     break;
                 case "hidden":
-                    this.state = new HiddenDoorState(this);
-                    this.DoorType = DoorTypes.Hidden;
+                    state = new HiddenDoorState(this);
+                    DoorType = DoorTypes.Hidden;
                     break;
                 case "cosmetic":
-                    this.state = new CosmeticDoorState(this);
-                    this.DoorType = DoorTypes.Cosmetic;
+                    state = new CosmeticDoorState(this);
+                    DoorType = DoorTypes.Cosmetic;
                     break;
                 case "puzzle":
-                    this.state = new PuzzleDoorState(this);
-                    this.DoorType = DoorTypes.Puzzle;
+                    state = new PuzzleDoorState(this);
+                    DoorType = DoorTypes.Puzzle;
                     break;
                 default:
-                    this.state = new UnlockedDoorState(this);
-                    this.DoorType = DoorTypes.Unlocked;
+                    state = new UnlockedDoorState(this);
+                    DoorType = DoorTypes.Unlocked;
                     break;
             }
         }
@@ -51,44 +51,44 @@
             {
                 case North:
                     {
-                        this.Physics = new Physics(this.upScreenLoc);
-                        this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
-                        this.Physics.CurrentDirection = Physics.Direction.North;
-                        this.overhangOffset = new Vector2(0, -(BlockSpriteFactory.Instance.VerticalOffset - this.Physics.Bounds.Height));
+                        Physics = new Physics(upScreenLoc);
+                        Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
+                        Physics.CurrentDirection = Physics.Direction.North;
+                        overhangOffset = new Vector2(0, -(BlockSpriteFactory.Instance.VerticalOffset - Physics.Bounds.Height));
                         break;
                     }
                 case East:
                     {
-                        this.Physics = new Physics(this.rightScreenLoc);
-                        this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
-                        this.Physics.CurrentDirection = Physics.Direction.East;
-                        this.overhangOffset = new Vector2(this.Physics.Bounds.Width, 0);
+                        Physics = new Physics(rightScreenLoc);
+                        Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
+                        Physics.CurrentDirection = Physics.Direction.East;
+                        overhangOffset = new Vector2(Physics.Bounds.Width, 0);
                         break;
                     }
                 case South:
                     {
-                        this.Physics = new Physics(this.downScreenLoc);
-                        this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
-                        this.Physics.CurrentDirection = Physics.Direction.South;
-                        this.overhangOffset = new Vector2(0, this.Physics.Bounds.Height);
+                        Physics = new Physics(downScreenLoc);
+                        Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
+                        Physics.CurrentDirection = Physics.Direction.South;
+                        overhangOffset = new Vector2(0, Physics.Bounds.Height);
                         break;
                     }
                 case West:
                     {
-                        this.Physics = new Physics(this.leftScreenLoc);
-                        this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
-                        this.Physics.CurrentDirection = Physics.Direction.West;
-                        this.overhangOffset = new Vector2(-(BlockSpriteFactory.Instance.HorizontalOffset - this.Physics.Bounds.Width), 0);
+                        Physics = new Physics(leftScreenLoc);
+                        Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
+                        Physics.CurrentDirection = Physics.Direction.West;
+                        overhangOffset = new Vector2(-(BlockSpriteFactory.Instance.HorizontalOffset - Physics.Bounds.Width), 0);
                         break;
                     }
                 default:
-                    this.Physics = new Physics(this.upScreenLoc);
-                    this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
-                    this.Physics.CurrentDirection = Physics.Direction.North;
-                    this.overhangOffset = new Vector2(0, -(BlockSpriteFactory.Instance.VerticalOffset - this.Physics.Bounds.Height));
+                    Physics = new Physics(upScreenLoc);
+                    Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
+                    Physics.CurrentDirection = Physics.Direction.North;
+                    overhangOffset = new Vector2(0, -(BlockSpriteFactory.Instance.VerticalOffset - Physics.Bounds.Height));
                     break;
             }
-            this.Physics.SetDepth();
+            Physics.SetDepth();
         }
 
         public Vector2 OverhangOffset
@@ -99,49 +99,49 @@
 
         public void Bombed()
         {
-            this.state.Bombed();
+            state.Bombed();
         }
 
         public void Open()
         {
-            this.state.Open();
+            state.Open();
         }
 
         public void Close()
         {
-            this.state.Close();
+            state.Close();
         }
 
         public void Update()
         {
-            this.state.Update();
+            state.Update();
         }
 
         public void Draw()
         {
-            this.state.DrawFrame();
-            this.state.DrawFloor();
+            state.DrawFrame();
+            state.DrawFloor();
         }
 
         public void DrawFrame()
         {
-            this.state.DrawFrame();
+            state.DrawFrame();
         }
 
         public void DrawFloor()
         {
-            this.state.DrawFloor();
+            state.DrawFloor();
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IPlayer && !(this.state is CosmeticDoorState || this.state is HiddenDoorState))
+            if (otherCollider is IPlayer && !(state is CosmeticDoorState || state is HiddenDoorState))
             {
-                this.doorCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                doorCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
             else if (otherCollider is IProjectile)
             {
-                this.doorCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
+                doorCollisionHandler.OnCollisionResponse((IProjectile)otherCollider);
             }
         }
 

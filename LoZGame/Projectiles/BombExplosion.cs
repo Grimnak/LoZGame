@@ -22,46 +22,46 @@
 
         public BombExplosion(Vector2 location)
         {
-            this.SetUp(this);
+            SetUp(this);
             SoundFactory.Instance.PlayBombExplosion();
-            this.Width = ProjectileSpriteFactory.Instance.ExplosionWidth;
-            this.Heigth = ProjectileSpriteFactory.Instance.ExplosionHeight;
-            this.Physics = new Physics(new Vector2(location.X, location.Y));
-            this.collisionHandler = new ProjectileCollisionHandler(this);
-            this.lifeTime = MaxLifeTime + 1;
-            this.IsExpired = false;
-            this.Physics.BoundsOffset = new Vector2(this.Width, this.Heigth) / 2;
-            this.Physics.Bounds = new Rectangle((this.Physics.Location - this.Physics.BoundsOffset).ToPoint(), new Point(this.Width, this.Heigth));
-            this.Physics.BoundsOffset *= 2;
-            this.Physics.SetLocation();
-            this.Damage = GameData.Instance.ProjectileDamageConstants.BombDamage;
-            this.Physics.Mass = GameData.Instance.ProjectileMassConstants.ExplosionMass;
+            Width = ProjectileSpriteFactory.Instance.ExplosionWidth;
+            Heigth = ProjectileSpriteFactory.Instance.ExplosionHeight;
+            Physics = new Physics(new Vector2(location.X, location.Y));
+            collisionHandler = new ProjectileCollisionHandler(this);
+            lifeTime = MaxLifeTime + 1;
+            IsExpired = false;
+            Physics.BoundsOffset = new Vector2(Width, Heigth) / 2;
+            Physics.Bounds = new Rectangle((Physics.Location - Physics.BoundsOffset).ToPoint(), new Point(Width, Heigth));
+            Physics.BoundsOffset *= 2;
+            Physics.SetLocation();
+            Damage = GameData.Instance.ProjectileDamageConstants.BombDamage;
+            Physics.Mass = GameData.Instance.ProjectileMassConstants.ExplosionMass;
             Random numGen = new Random();
             int selectBomb = numGen.Next(0, 5);
             switch (selectBomb)
             {
                 case 0:
-                    this.Sprite = ProjectileSpriteFactory.Instance.BombExplosionOne();
+                    Sprite = ProjectileSpriteFactory.Instance.BombExplosionOne();
                     break;
 
                 case 1:
-                    this.Sprite = ProjectileSpriteFactory.Instance.BombExplosionTwo();
+                    Sprite = ProjectileSpriteFactory.Instance.BombExplosionTwo();
                     break;
 
                 case 2:
-                    this.Sprite = ProjectileSpriteFactory.Instance.BombExplosionThree();
+                    Sprite = ProjectileSpriteFactory.Instance.BombExplosionThree();
                     break;
 
                 case 3:
-                    this.Sprite = ProjectileSpriteFactory.Instance.BombExplosionFour();
+                    Sprite = ProjectileSpriteFactory.Instance.BombExplosionFour();
                     break;
 
                 case 4:
-                    this.Sprite = ProjectileSpriteFactory.Instance.BombExplosionFive();
+                    Sprite = ProjectileSpriteFactory.Instance.BombExplosionFive();
                     break;
 
                 default:
-                    this.Sprite = ProjectileSpriteFactory.Instance.BombExplosionFive();
+                    Sprite = ProjectileSpriteFactory.Instance.BombExplosionFive();
                     break;
             }
 
@@ -76,32 +76,32 @@
             base.OnCollisionResponse(otherCollider, collisionSide);
             if (otherCollider is IDoor)
             {
-                this.collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
+                collisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
         }
 
         public override void Update()
         {
-            this.lifeTime--;
-            if (this.lifeTime < MaxLifeTime)
+            lifeTime--;
+            if (lifeTime < MaxLifeTime)
             {
-                this.Physics.Bounds = new Rectangle(this.Physics.Bounds.X, this.Physics.Bounds.Y, 0, 0);
+                Physics.Bounds = new Rectangle(Physics.Bounds.X, Physics.Bounds.Y, 0, 0);
             }
-            if (this.lifeTime == DissipateOne || this.lifeTime == DissipateTwo)
+            if (lifeTime == DissipateOne || lifeTime == DissipateTwo)
             {
-                this.Sprite.NextFrame();
+                Sprite.NextFrame();
             }
 
-            if (this.lifeTime <= 0)
+            if (lifeTime <= 0)
             {
-                this.IsExpired = true;
+                IsExpired = true;
             }
         }
 
         public override void Draw()
         {
             base.Draw();
-            if (this.lifeTime > (MaxLifeTime - FlashDurataion) && this.lifeTime % 2 == 0)
+            if (lifeTime > (MaxLifeTime - FlashDurataion) && lifeTime % 2 == 0)
             {
                 LoZGame.Instance.SpriteBatch.Draw(flashTexture, flashDestination, new Rectangle(0, 0, 1, 1), LoZGame.Instance.DefaultTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 1.0f);
             }

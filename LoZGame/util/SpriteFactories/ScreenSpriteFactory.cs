@@ -31,39 +31,39 @@
 
         public void LoadAllTextures(ContentManager content)
         {
-            this.titleSpriteSheet = content.Load<Texture2D>("LoZTitle");
-            this.titleData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), titleSpriteSheet, 1, 7);
-            this.enterSpriteSheet = content.Load<Texture2D>("pressEnter");
-            this.enterData = new SpriteData(new Vector2(enterWidth, enterHeight), enterSpriteSheet, 1, 1);
-            this.gameOverSpriteSheet = content.Load<Texture2D>("gameOver");
-            this.pauseScreenSprite = content.Load<Texture2D>("PauseMenu");
-            this.creditsSpriteSheet = content.Load<Texture2D>("Credits");
-            this.gameOverData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), gameOverSpriteSheet, 1, 1);
+            titleSpriteSheet = content.Load<Texture2D>("LoZTitle");
+            titleData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), titleSpriteSheet, 1, 7);
+            enterSpriteSheet = content.Load<Texture2D>("pressEnter");
+            enterData = new SpriteData(new Vector2(enterWidth, enterHeight), enterSpriteSheet, 1, 1);
+            gameOverSpriteSheet = content.Load<Texture2D>("gameOver");
+            pauseScreenSprite = content.Load<Texture2D>("PauseMenu");
+            creditsSpriteSheet = content.Load<Texture2D>("Credits");
+            gameOverData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), gameOverSpriteSheet, 1, 1);
     }
 
         public ISprite TitleScreen()
         {
-            return new ObjectSprite(this.titleSpriteSheet, this.titleData);
+            return new ObjectSprite(titleSpriteSheet, titleData);
         }
 
         public ISprite PressEnter()
         {
-            return new ObjectSprite(this.enterSpriteSheet, this.enterData);
+            return new ObjectSprite(enterSpriteSheet, enterData);
         }
 
         public ISprite PauseScreen()
         {
-            return new ObjectSprite(this.pauseScreenSprite, this.gameOverData);
+            return new ObjectSprite(pauseScreenSprite, gameOverData);
         }
 
         public ISprite CreditsScreen()
         {
-            return new ObjectSprite(this.creditsSpriteSheet, this.gameOverData);
+            return new ObjectSprite(creditsSpriteSheet, gameOverData);
         }
 
         public ISprite GameOverScreen()
         {
-            return new ObjectSprite(this.gameOverSpriteSheet, this.gameOverData);
+            return new ObjectSprite(gameOverSpriteSheet, gameOverData);
         }
     }
 }

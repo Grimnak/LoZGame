@@ -13,37 +13,37 @@
 
         public BlueCandleProjectile(Physics source)
         {
-            this.SetUp(this);
-            this.Width = ProjectileSpriteFactory.Instance.FlameWidth;
-            this.Heigth = ProjectileSpriteFactory.Instance.FlameHeight;
-            this.Offset = (this.Heigth * 3) / 4;
-            this.Speed = GameData.Instance.ProjectileSpeedConstants.CandleSpeed;
-            this.Acceleration = -0.25f;
-            this.Damage = GameData.Instance.ProjectileDamageConstants.CandleDamage;
-            this.Source = source;
-            this.InitializeDirection();
-            this.Data.SpriteEffect = SpriteEffects.None;
-            this.Data.Rotation = 0;
-            this.Sprite = ProjectileSpriteFactory.Instance.BlueCandle();
-            this.lifeTime = LifeTimeMax;
-            this.Sprite.FrameDelay = 10;
-            this.Physics.Mass = GameData.Instance.ProjectileMassConstants.FlameMass;
+            SetUp(this);
+            Width = ProjectileSpriteFactory.Instance.FlameWidth;
+            Heigth = ProjectileSpriteFactory.Instance.FlameHeight;
+            Offset = (Heigth * 3) / 4;
+            Speed = GameData.Instance.ProjectileSpeedConstants.CandleSpeed;
+            Acceleration = -0.25f;
+            Damage = GameData.Instance.ProjectileDamageConstants.CandleDamage;
+            Source = source;
+            InitializeDirection();
+            Data.SpriteEffect = SpriteEffects.None;
+            Data.Rotation = 0;
+            Sprite = ProjectileSpriteFactory.Instance.BlueCandle();
+            lifeTime = LifeTimeMax;
+            Sprite.FrameDelay = 10;
+            Physics.Mass = GameData.Instance.ProjectileMassConstants.FlameMass;
         }
 
         public override void Update()
         {
-            this.lifeTime--;
-            this.Sprite.Update();
-            if (this.lifeTime >= LifeTimeMax - TravelTime)
+            lifeTime--;
+            Sprite.Update();
+            if (lifeTime >= LifeTimeMax - TravelTime)
             {
-                this.Physics.Move();
-                this.Physics.Accelerate();
-                this.Physics.SetDepth();
-                this.Physics.MovementAcceleration *= AccelDecay;
+                Physics.Move();
+                Physics.Accelerate();
+                Physics.SetDepth();
+                Physics.MovementAcceleration *= AccelDecay;
             }
-            else if (this.lifeTime <= 0)
+            else if (lifeTime <= 0)
             {
-                this.IsExpired = true;
+                IsExpired = true;
             }
         }
     }

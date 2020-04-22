@@ -8,7 +8,7 @@
         public void UpdateBubble()
         {
             DefaultUpdate();
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.StalfosFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallPreferenceMod));
             }

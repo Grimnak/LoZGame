@@ -71,72 +71,72 @@ namespace LoZClone
 
         public void LoadAllTextures(ContentManager content)
         {
-            this.LoadTextures(content);
-            this.LoadData();
+            LoadTextures(content);
+            LoadData();
         }
 
         public void LoadTextures(ContentManager content)
         {
-            this.greenLinkUpTexture = content.Load<Texture2D>("Green_Link_Up");
-            this.blueLinkUpTexture = content.Load<Texture2D>("Blue_Link_Up");
-            this.redLinkUpTexture = content.Load<Texture2D>("Red_Link_Up");
+            greenLinkUpTexture = content.Load<Texture2D>("Green_Link_Up");
+            blueLinkUpTexture = content.Load<Texture2D>("Blue_Link_Up");
+            redLinkUpTexture = content.Load<Texture2D>("Red_Link_Up");
 
-            this.greenLinkDownTexture = content.Load<Texture2D>("Green_Link_Down");
-            this.blueLinkDownTexture = content.Load<Texture2D>("Blue_Link_Down");
-            this.redLinkDownTexture = content.Load<Texture2D>("Red_Link_Down");
+            greenLinkDownTexture = content.Load<Texture2D>("Green_Link_Down");
+            blueLinkDownTexture = content.Load<Texture2D>("Blue_Link_Down");
+            redLinkDownTexture = content.Load<Texture2D>("Red_Link_Down");
 
-            this.greenLinkLeftTexture = content.Load<Texture2D>("Green_Link_Left");
-            this.blueLinkLeftTexture = content.Load<Texture2D>("Blue_Link_Left");
-            this.redLinkLeftTexture = content.Load<Texture2D>("Red_Link_Left");
+            greenLinkLeftTexture = content.Load<Texture2D>("Green_Link_Left");
+            blueLinkLeftTexture = content.Load<Texture2D>("Blue_Link_Left");
+            redLinkLeftTexture = content.Load<Texture2D>("Red_Link_Left");
 
-            this.greenLinkRightTexture = content.Load<Texture2D>("Green_Link_Right");
-            this.blueLinkRightTexture = content.Load<Texture2D>("Blue_Link_Right");
-            this.redLinkRightTexture = content.Load<Texture2D>("Red_Link_Right");
+            greenLinkRightTexture = content.Load<Texture2D>("Green_Link_Right");
+            blueLinkRightTexture = content.Load<Texture2D>("Blue_Link_Right");
+            redLinkRightTexture = content.Load<Texture2D>("Red_Link_Right");
 
-            this.greenLinkDieTexture = content.Load<Texture2D>("Green_Link_Die");
-            this.blueLinkDieTexture = content.Load<Texture2D>("Blue_Link_Die");
-            this.redLinkDieTexture = content.Load<Texture2D>("Red_Link_Die");
+            greenLinkDieTexture = content.Load<Texture2D>("Green_Link_Die");
+            blueLinkDieTexture = content.Load<Texture2D>("Blue_Link_Die");
+            redLinkDieTexture = content.Load<Texture2D>("Red_Link_Die");
 
-            this.greenLinkPickupTexture = content.Load<Texture2D>("Green_Link_Pickup");
-            this.blueLinkPickupTexture = content.Load<Texture2D>("Blue_Link_Pickup");
-            this.redLinkPickupTexture = content.Load<Texture2D>("Red_Link_Pickup");
+            greenLinkPickupTexture = content.Load<Texture2D>("Green_Link_Pickup");
+            blueLinkPickupTexture = content.Load<Texture2D>("Blue_Link_Pickup");
+            redLinkPickupTexture = content.Load<Texture2D>("Red_Link_Pickup");
         }
 
         public void LoadData()
         {
-            this.greenLinkUpData = new SpriteData(DrawSize, greenLinkUpTexture, 3, 1);
-            this.blueLinkUpData = new SpriteData(DrawSize, blueLinkUpTexture, 3, 1);
-            this.redLinkUpData = new SpriteData(DrawSize, redLinkUpTexture, 3, 1);
-            this.greenLinkDownData = new SpriteData(DrawSize, greenLinkDownTexture, 3, 1);
-            this.blueLinkDownData = new SpriteData(DrawSize, blueLinkDownTexture, 3, 1);
-            this.redLinkDownData = new SpriteData(DrawSize, redLinkDownTexture, 3, 1);
-            this.greenLinkLeftData = new SpriteData(DrawSize, greenLinkLeftTexture, 3, 1);
-            this.blueLinkLeftData = new SpriteData(DrawSize, blueLinkLeftTexture, 3, 1);
-            this.redLinkLeftData = new SpriteData(DrawSize, redLinkLeftTexture, 3, 1);
-            this.greenLinkRightData = new SpriteData(DrawSize, greenLinkLeftTexture, 3, 1);
-            this.blueLinkRightData = new SpriteData(DrawSize, blueLinkRightTexture, 3, 1);
-            this.redLinkRightData = new SpriteData(DrawSize, redLinkLeftTexture, 3, 1);
-            this.greenLinkDieData = new SpriteData(DrawSize, greenLinkDieTexture, 1, 17);
-            this.blueLinkDieData = new SpriteData(DrawSize, blueLinkDieTexture, 1, 17);
-            this.redLinkDieData = new SpriteData(DrawSize, redLinkDieTexture, 1, 17);
-            this.greenLinkPickupData = new SpriteData(DrawSize, greenLinkPickupTexture, 2, 1);
-            this.blueLinkPickupData = new SpriteData(DrawSize, blueLinkPickupTexture, 2, 1);
-            this.redLinkPickupData = new SpriteData(DrawSize, redLinkPickupTexture, 2, 1);
+            greenLinkUpData = new SpriteData(DrawSize, greenLinkUpTexture, 3, 1);
+            blueLinkUpData = new SpriteData(DrawSize, blueLinkUpTexture, 3, 1);
+            redLinkUpData = new SpriteData(DrawSize, redLinkUpTexture, 3, 1);
+            greenLinkDownData = new SpriteData(DrawSize, greenLinkDownTexture, 3, 1);
+            blueLinkDownData = new SpriteData(DrawSize, blueLinkDownTexture, 3, 1);
+            redLinkDownData = new SpriteData(DrawSize, redLinkDownTexture, 3, 1);
+            greenLinkLeftData = new SpriteData(DrawSize, greenLinkLeftTexture, 3, 1);
+            blueLinkLeftData = new SpriteData(DrawSize, blueLinkLeftTexture, 3, 1);
+            redLinkLeftData = new SpriteData(DrawSize, redLinkLeftTexture, 3, 1);
+            greenLinkRightData = new SpriteData(DrawSize, greenLinkLeftTexture, 3, 1);
+            blueLinkRightData = new SpriteData(DrawSize, blueLinkRightTexture, 3, 1);
+            redLinkRightData = new SpriteData(DrawSize, redLinkLeftTexture, 3, 1);
+            greenLinkDieData = new SpriteData(DrawSize, greenLinkDieTexture, 1, 17);
+            blueLinkDieData = new SpriteData(DrawSize, blueLinkDieTexture, 1, 17);
+            redLinkDieData = new SpriteData(DrawSize, redLinkDieTexture, 1, 17);
+            greenLinkPickupData = new SpriteData(DrawSize, greenLinkPickupTexture, 2, 1);
+            blueLinkPickupData = new SpriteData(DrawSize, blueLinkPickupTexture, 2, 1);
+            redLinkPickupData = new SpriteData(DrawSize, redLinkPickupTexture, 2, 1);
         }
 
         public ISprite CreateSpriteLinkUp(Link.LinkColor currentColor)
         {
             if (currentColor.Equals(Link.LinkColor.Red))
             {
-                return new ObjectSprite(this.redLinkUpTexture, this.redLinkUpData);
+                return new ObjectSprite(redLinkUpTexture, redLinkUpData);
             }
             else if (currentColor.Equals(Link.LinkColor.Blue))
             {
-                return new ObjectSprite(this.blueLinkUpTexture, this.blueLinkUpData);
+                return new ObjectSprite(blueLinkUpTexture, blueLinkUpData);
             }
             else
             {
-                return new ObjectSprite(this.greenLinkUpTexture, this.greenLinkUpData);
+                return new ObjectSprite(greenLinkUpTexture, greenLinkUpData);
             }
         }
 
@@ -144,15 +144,15 @@ namespace LoZClone
         {
             if (currentColor.Equals(Link.LinkColor.Red))
             {
-                return new ObjectSprite(this.redLinkDownTexture, this.redLinkDownData);
+                return new ObjectSprite(redLinkDownTexture, redLinkDownData);
             }
             else if (currentColor.Equals(Link.LinkColor.Blue))
             {
-                return new ObjectSprite(this.blueLinkDownTexture, this.blueLinkDownData);
+                return new ObjectSprite(blueLinkDownTexture, blueLinkDownData);
             }
             else
             {
-                return new ObjectSprite(this.greenLinkDownTexture, this.greenLinkDownData);
+                return new ObjectSprite(greenLinkDownTexture, greenLinkDownData);
             }
         }
 
@@ -160,15 +160,15 @@ namespace LoZClone
         {
             if (currentColor.Equals(Link.LinkColor.Red))
             {
-                return new ObjectSprite(this.redLinkLeftTexture, this.redLinkLeftData);
+                return new ObjectSprite(redLinkLeftTexture, redLinkLeftData);
             }
             else if (currentColor.Equals(Link.LinkColor.Blue))
             {
-                return new ObjectSprite(this.blueLinkLeftTexture, this.blueLinkLeftData);
+                return new ObjectSprite(blueLinkLeftTexture, blueLinkLeftData);
             }
             else
             {
-                return new ObjectSprite(this.greenLinkLeftTexture, this.greenLinkLeftData);
+                return new ObjectSprite(greenLinkLeftTexture, greenLinkLeftData);
             }
         }
 
@@ -176,15 +176,15 @@ namespace LoZClone
         {
             if (currentColor.Equals(Link.LinkColor.Red))
             {
-                return new ObjectSprite(this.redLinkRightTexture, this.redLinkRightData);
+                return new ObjectSprite(redLinkRightTexture, redLinkRightData);
             }
             else if (currentColor.Equals(Link.LinkColor.Blue))
             {
-                return new ObjectSprite(this.blueLinkRightTexture, this.blueLinkRightData);
+                return new ObjectSprite(blueLinkRightTexture, blueLinkRightData);
             }
             else
             {
-                return new ObjectSprite(this.greenLinkRightTexture, this.greenLinkRightData);
+                return new ObjectSprite(greenLinkRightTexture, greenLinkRightData);
             }
         }
 
@@ -192,15 +192,15 @@ namespace LoZClone
         {
             if (currentColor.Equals(Link.LinkColor.Red))
             {
-                return new ObjectSprite(this.redLinkPickupTexture, this.redLinkPickupData);
+                return new ObjectSprite(redLinkPickupTexture, redLinkPickupData);
             }
             else if (currentColor.Equals(Link.LinkColor.Blue))
             {
-                return new ObjectSprite(this.blueLinkPickupTexture, this.blueLinkPickupData);
+                return new ObjectSprite(blueLinkPickupTexture, blueLinkPickupData);
             }
             else
             {
-                return new ObjectSprite(this.greenLinkPickupTexture, this.greenLinkPickupData);
+                return new ObjectSprite(greenLinkPickupTexture, greenLinkPickupData);
             }
         }
 
@@ -208,15 +208,15 @@ namespace LoZClone
         {
             if (currentColor.Equals(Link.LinkColor.Red))
             {
-                return new ObjectSprite(this.redLinkDieTexture, this.redLinkDieData);
+                return new ObjectSprite(redLinkDieTexture, redLinkDieData);
             }
             else if (currentColor.Equals(Link.LinkColor.Blue))
             {
-                return new ObjectSprite(this.blueLinkDieTexture, this.blueLinkDieData);
+                return new ObjectSprite(blueLinkDieTexture, blueLinkDieData);
             }
             else
             {
-                return new ObjectSprite(this.greenLinkDieTexture, this.greenLinkDieData);
+                return new ObjectSprite(greenLinkDieTexture, greenLinkDieData);
             }
         }
     }

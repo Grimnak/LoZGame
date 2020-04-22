@@ -8,15 +8,15 @@
     {
         public AttackingBlueGoriyaState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange;
+            Enemy = enemy;
+            DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange;
             FacePlayer();
-            this.Sprite = this.Enemy.CreateCorrectSprite();
+            Sprite = Enemy.CreateCorrectSprite();
             if (LoZGame.Instance.Difficulty < 2)
             {
-                this.Enemy.Physics.MovementVelocity = Vector2.Zero;
+                Enemy.Physics.MovementVelocity = Vector2.Zero;
             }
-            LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(new MagicBoomerangProjectile(this.Enemy.Physics));
+            LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(new MagicBoomerangProjectile(Enemy.Physics));
         }
     }
 }

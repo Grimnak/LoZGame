@@ -11,7 +11,7 @@ namespace LoZClone
         public void UpdateLikelike()
         {
             DefaultUpdate();
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.LikelikeFavorCardinalValue);
             }

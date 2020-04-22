@@ -12,34 +12,34 @@
 
         public BombedDoorState(IDoor door)
         {
-            this.Door = door; 
-            this.ShadowSprite = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            this.ShadowSprite.SetData<Color>(new Color[] { ShadowColor });
-            this.ShadowSource = new Rectangle(0, 0, 1, 1);
+            Door = door; 
+            ShadowSprite = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            ShadowSprite.SetData<Color>(new Color[] { ShadowColor });
+            ShadowSource = new Rectangle(0, 0, 1, 1);
             switch (door.Physics.CurrentDirection)
             {
                 case Physics.Direction.North:
                     {
-                        this.FrameSprite = DungeonSpriteFactory.Instance.BombedDownDoor();
-                        this.OverhangSprite = DungeonSpriteFactory.Instance.VerticalOverhang();
+                        FrameSprite = DungeonSpriteFactory.Instance.BombedDownDoor();
+                        OverhangSprite = DungeonSpriteFactory.Instance.VerticalOverhang();
                         break;
                     }
                 case Physics.Direction.East:
                     {
-                        this.FrameSprite = DungeonSpriteFactory.Instance.BombedLeftDoor();
-                        this.OverhangSprite = DungeonSpriteFactory.Instance.HorizontalOverhang();
+                        FrameSprite = DungeonSpriteFactory.Instance.BombedLeftDoor();
+                        OverhangSprite = DungeonSpriteFactory.Instance.HorizontalOverhang();
                         break;
                     }
                 case Physics.Direction.South:
                     {
-                        this.FrameSprite = DungeonSpriteFactory.Instance.BombedUpDoor();
-                        this.OverhangSprite = DungeonSpriteFactory.Instance.VerticalOverhang();
+                        FrameSprite = DungeonSpriteFactory.Instance.BombedUpDoor();
+                        OverhangSprite = DungeonSpriteFactory.Instance.VerticalOverhang();
                         break;
                     }
                 case Physics.Direction.West:
                     {
-                        this.FrameSprite = DungeonSpriteFactory.Instance.BombedRightDoor();
-                        this.OverhangSprite = DungeonSpriteFactory.Instance.HorizontalOverhang();
+                        FrameSprite = DungeonSpriteFactory.Instance.BombedRightDoor();
+                        OverhangSprite = DungeonSpriteFactory.Instance.HorizontalOverhang();
                         break;
                     }
             }
@@ -59,7 +59,7 @@
 
         public override void DrawFloor()
         {
-            LoZGame.Instance.SpriteBatch.Draw(this.ShadowSprite, this.Door.Physics.Bounds, this.ShadowSource, ShadowColor, 0.0f, Vector2.Zero, SpriteEffects.None, ShadowLayer);
+            LoZGame.Instance.SpriteBatch.Draw(ShadowSprite, Door.Physics.Bounds, ShadowSource, ShadowColor, 0.0f, Vector2.Zero, SpriteEffects.None, ShadowLayer);
         }
     }
 }

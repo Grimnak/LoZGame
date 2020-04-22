@@ -8,11 +8,11 @@
     {
         public UpMovingEnemyState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Enemy.CurrentState = this;
+            Enemy = enemy;
+            Sprite = Enemy.CreateCorrectSprite();
+            Enemy.CurrentState = this;
             RandomDirectionChange();
-            this.Enemy.Physics.MovementVelocity = new Vector2(0, -1 * this.Enemy.MoveSpeed);
+            Enemy.Physics.MovementVelocity = new Vector2(0, -1 * Enemy.MoveSpeed);
         }
     }
 }

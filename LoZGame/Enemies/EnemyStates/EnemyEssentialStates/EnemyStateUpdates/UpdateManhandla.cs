@@ -22,7 +22,7 @@
 
         private void StandardManhandla()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerDiagonal(100);
             }
@@ -30,7 +30,7 @@
 
         private void HardManhandla()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(100);
                 FavorPlayerDiagonal(100);
@@ -40,19 +40,19 @@
         private void UpdateManMoveSpeed()
         {
             float maxSpeedDiff = GameData.Instance.EnemySpeedConstants.ManhandlaMaxSpeed - GameData.Instance.EnemySpeedConstants.ManhandlaMinSpeed;
-            Vector2 normalVel = this.Enemy.Physics.MovementVelocity / this.Enemy.Physics.MovementVelocity.Length();
-            if (this.Lifetime < this.DirectionChange / 2)
+            Vector2 normalVel = Enemy.Physics.MovementVelocity / Enemy.Physics.MovementVelocity.Length();
+            if (Lifetime < DirectionChange / 2)
             {
-                if (this.Enemy.Physics.MovementVelocity.Length() <= this.Enemy.MoveSpeed + maxSpeedDiff)
+                if (Enemy.Physics.MovementVelocity.Length() <= Enemy.MoveSpeed + maxSpeedDiff)
                 {
-                    this.Enemy.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
+                    Enemy.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
                 }
             }
             else
             {
-                if (this.Enemy.Physics.MovementVelocity.Length() >= this.Enemy.MoveSpeed)
+                if (Enemy.Physics.MovementVelocity.Length() >= Enemy.MoveSpeed)
                 {
-                    this.Enemy.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
+                    Enemy.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
                 }
             }
         }

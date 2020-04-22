@@ -16,24 +16,24 @@
         /// </summary>
         public void HandleJump()
         {
-            if (this.IsJumping)
+            if (IsJumping)
             {
-                this.boundsLocation += new Vector2(0, currentJump);
-                this.bounds = new Rectangle(this.boundsLocation.ToPoint(), this.bounds.Size);
-                this.UpdateJump();
-                this.SetLocation();
+                boundsLocation += new Vector2(0, currentJump);
+                bounds = new Rectangle(boundsLocation.ToPoint(), bounds.Size);
+                UpdateJump();
+                SetLocation();
             }
         }
 
         private void UpdateJump()
         {
-            if (currentJump < maxJump + this.Gravity)
+            if (currentJump < maxJump + Gravity)
             {
-                currentJump += this.Gravity;
+                currentJump += Gravity;
             }
             else
             {
-                this.IsJumping = false;
+                IsJumping = false;
                 currentJump = 0;
                 maxJump = 0;
             }
@@ -43,7 +43,7 @@
         {
             maxJump += Math.Abs(magnitude);
             currentJump -= Math.Abs(magnitude);
-            this.IsJumping = true;
+            IsJumping = true;
         }
     }
 }

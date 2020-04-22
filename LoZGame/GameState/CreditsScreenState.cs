@@ -19,7 +19,7 @@ namespace LoZClone
         {
             count = 0;
             SoundFactory.Instance.PlayCreditsTune();
-            this.sprite = ScreenSpriteFactory.Instance.CreditsScreen();
+            sprite = ScreenSpriteFactory.Instance.CreditsScreen();
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
         }
@@ -44,7 +44,7 @@ namespace LoZClone
         public override void Draw()
         {
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            this.sprite.Draw(new Vector2(0, 0), this.spriteTint, 1.0f);
+            sprite.Draw(new Vector2(0, 0), spriteTint, 1.0f);
             LoZGame.Instance.SpriteBatch.End();
         }
     }

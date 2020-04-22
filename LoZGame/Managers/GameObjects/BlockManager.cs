@@ -12,7 +12,7 @@
 
         public BlockManager()
         {
-            this.blocks = new List<IBlock>();
+            blocks = new List<IBlock>();
         }
 
         public void Add(IBlock block)

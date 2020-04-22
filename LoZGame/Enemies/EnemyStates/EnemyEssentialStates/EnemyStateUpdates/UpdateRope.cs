@@ -22,25 +22,25 @@
 
         private void StandardRope()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.RopeFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
             }
-            if (!(this.Enemy.CurrentState is AttackingRopeState || this.Enemy.IsSpawning))
+            if (!(Enemy.CurrentState is AttackingRopeState || Enemy.IsSpawning))
             {
-                this.CheckForLink();
+                CheckForLink();
             }
         }
 
         private void HardRope()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.RopeFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
             }
-            if (!this.Enemy.IsSpawning)
+            if (!Enemy.IsSpawning)
             {
-                this.CheckForLink();
+                CheckForLink();
             }
         }
     }

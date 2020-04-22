@@ -9,12 +9,12 @@
 
         public StunnedDodongoState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Sprite.SetFrame(GameData.Instance.EnemyMiscConstants.DodongoMaximumFrame);
+            Enemy = enemy;
+            Sprite = Enemy.CreateCorrectSprite();
+            Sprite.SetFrame(GameData.Instance.EnemyMiscConstants.DodongoMaximumFrame);
             stunDuration = GameData.Instance.EnemyMiscConstants.DirectionChange;
-            this.Enemy.CurrentState = this;
-            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
+            Enemy.CurrentState = this;
+            Enemy.Physics.MovementVelocity = Vector2.Zero;
         }
 
         public override void Update()
@@ -28,8 +28,8 @@
                 stunDuration--;
                 if (stunDuration <= 0)
                 {
-                    this.Enemy.UpdateState();
-                    this.Enemy.TakeDamage(GameData.Instance.ProjectileDamageConstants.BombDodongoDamage);
+                    Enemy.UpdateState();
+                    Enemy.TakeDamage(GameData.Instance.ProjectileDamageConstants.BombDodongoDamage);
                 }
             }
         }

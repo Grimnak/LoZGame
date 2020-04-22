@@ -13,8 +13,8 @@
 
         public WinGameState()
         {
-            this.maxDungeon = GameData.Instance.GameStateDataConstants.WinStateMaxDungeons;
-            this.lockoutMax = GameData.Instance.GameStateDataConstants.WinStateMaxLockout;
+            maxDungeon = GameData.Instance.GameStateDataConstants.WinStateMaxDungeons;
+            lockoutMax = GameData.Instance.GameStateDataConstants.WinStateMaxLockout;
             lockout = 0;
         }
 
@@ -41,7 +41,7 @@
         /// <inheritdoc></inheritdoc>
         public override void Update()
         {
-            this.lockout++;
+            lockout++;
 
             // Triforce animation playing time
             if (lockout < lockoutMax)

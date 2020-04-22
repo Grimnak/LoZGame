@@ -10,11 +10,11 @@
 
         public AttackingDragonState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Enemy.CurrentState = this;
-            this.DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange;
-            this.ShootFireballs();
+            Enemy = enemy;
+            Sprite = Enemy.CreateCorrectSprite();
+            Enemy.CurrentState = this;
+            DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange;
+            ShootFireballs();
         }
 
         private void ShootFireballs()
@@ -34,7 +34,7 @@
                 fireBallSpread = DefaultSpread;
             }
 
-            Vector2 velocityVector = this.UnitVectorToPlayer(this.Enemy.Physics.Bounds.Location.ToVector2());
+            Vector2 velocityVector = UnitVectorToPlayer(Enemy.Physics.Bounds.Location.ToVector2());
             float speedMod = LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallMoveMod;
             if (speedMod < -1.5f)
             {
@@ -44,8 +44,8 @@
             for (int i = 0; i < numberFireballs; i++)
             {
                 float rotation = ((-1 * (float)(numberFireballs - 1) / 2.0f) * fireBallSpread) + (i * fireBallSpread);
-                Vector2 rotatedVelocity = this.RotateVector(velocityVector, rotation);
-                Physics fireballPhysics = new Physics(this.Enemy.Physics.Bounds.Location.ToVector2())
+                Vector2 rotatedVelocity = RotateVector(velocityVector, rotation);
+                Physics fireballPhysics = new Physics(Enemy.Physics.Bounds.Location.ToVector2())
                 {
                     MovementVelocity = new Vector2(rotatedVelocity.X, rotatedVelocity.Y)
                 };

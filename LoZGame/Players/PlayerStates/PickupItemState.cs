@@ -19,14 +19,14 @@ namespace LoZClone
         /// <param name="item">Item that player picked up.</param>
         public PickupItemState(IPlayer playerInstance, IItem item)
         {
-            this.player = playerInstance;
+            player = playerInstance;
             this.item = item;
-            this.lockoutTimer = item.PickUpItemTime;
-            this.sprite = this.CreateCorrectSprite();
-            this.player.Physics.MovementVelocity = Vector2.Zero;
+            lockoutTimer = item.PickUpItemTime;
+            sprite = CreateCorrectSprite();
+            player.Physics.MovementVelocity = Vector2.Zero;
             if (item is Triforce)
             {
-                this.sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
+                sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
                 LoZGame.Instance.GameState.WinGame();
             }
             else if (item is Key)
@@ -74,62 +74,62 @@ namespace LoZClone
         /// <inheritdoc/>
         public void Idle()
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.Physics.CurrentDirection = Physics.Direction.South;
-                this.player.State = new IdleState(this.player);
+                player.Physics.CurrentDirection = Physics.Direction.South;
+                player.State = new IdleState(player);
             }
         }
 
         /// <inheritdoc/>
         public void MoveUp()
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new MoveUpState(this.player);
+                player.State = new MoveUpState(player);
             }
         }
 
         /// <inheritdoc/>
         public void MoveDown()
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new MoveDownState(this.player);
+                player.State = new MoveDownState(player);
             }
         }
 
         /// <inheritdoc/>
         public void MoveLeft()
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new MoveLeftState(this.player);
+                player.State = new MoveLeftState(player);
             }
         }
 
         /// <inheritdoc/>
         public void MoveRight()
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new MoveRightState(this.player);
+                player.State = new MoveRightState(player);
             }
         }
 
         /// <inheritdoc/>
         public void Attack()
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new AttackState(this.player);
+                player.State = new AttackState(player);
             }
         }
 
         /// <inheritdoc/>
         public void Die()
         {
-            this.player.State = new DieState(this.player);
+            player.State = new DieState(player);
         }
 
         /// <inheritdoc/>
@@ -140,35 +140,35 @@ namespace LoZClone
         /// <inheritdoc/>
         public void UseItem(int waitTime)
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new UseItemState(this.player, waitTime);
+                player.State = new UseItemState(player, waitTime);
             }
         }
 
         /// <inheritdoc/>
         public void Stun(int stunTime)
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new StunnedState(this.player, this.player.State, stunTime);
+                player.State = new StunnedState(player, player.State, stunTime);
             }
         }
 
         /// <inheritdoc/>
         public void Update()
         {
-            if (this.item is Triforce)
+            if (item is Triforce)
             {
-                if (this.sprite.CurrentFrame == 0)
+                if (sprite.CurrentFrame == 0)
                 {
-                    this.sprite.NextFrame();
+                    sprite.NextFrame();
                 }
             }
-            if (this.lockoutTimer > 0)
+            if (lockoutTimer > 0)
             {
-                this.lockoutTimer--;
-                if (this.lockoutTimer == 0)
+                lockoutTimer--;
+                if (lockoutTimer == 0)
                 {
                     item.Expired = true;
                 }
@@ -178,12 +178,12 @@ namespace LoZClone
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint, this.player.Physics.Depth);
+            sprite.Draw(player.Physics.Location, player.CurrentTint, player.Physics.Depth);
         }
 
         private ISprite CreateCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.CreateSpriteLinkPickupItem(this.player.CurrentColor);
+            return LinkSpriteFactory.Instance.CreateSpriteLinkPickupItem(player.CurrentColor);
         }
     }
 }

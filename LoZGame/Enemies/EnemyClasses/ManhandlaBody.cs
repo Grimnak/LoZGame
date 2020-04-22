@@ -15,27 +15,27 @@
         public ManhandlaBody(Vector2 location)
         {
             Console.WriteLine("Passed Loc: " + location);
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.ManhandlaBodyStateList);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ManhandlaBodyHealth);
-            this.Physics = new Physics(location);
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.ManhandlaBodyStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ManhandlaBodyHealth);
+            Physics = new Physics(location);
             Console.WriteLine("Physics Loc: " + Physics.Location);
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
-            this.Physics.IsMoveable = false;
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            StartLoc = this.Physics.Bounds.Location;
-            this.CurrentState = new IdleEnemyState(this);
+            Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
+            Physics.IsMoveable = false;
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            StartLoc = Physics.Bounds.Location;
+            CurrentState = new IdleEnemyState(this);
             Console.WriteLine("Bounds: " + Physics.Bounds);
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.IsTransparent = true;
-            this.Damage = GameData.Instance.EnemyDamageConstants.DragonDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.ManhandlaMinSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.spawnedChildren = false;
-            this.AI = EnemyAI.Manhandla;
-            this.MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed, LoZGame.Instance.UpdateSpeed * 2);
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            IsTransparent = true;
+            Damage = GameData.Instance.EnemyDamageConstants.DragonDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.ManhandlaMinSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            spawnedChildren = false;
+            AI = EnemyAI.Manhandla;
+            MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed, LoZGame.Instance.UpdateSpeed * 2);
             test = false;
         }
 
@@ -48,18 +48,18 @@
             base.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide); 
             if (!test)
             {
-                this.Physics.Bounds = new Rectangle(StartLoc, this.Physics.Bounds.Size);
+                Physics.Bounds = new Rectangle(StartLoc, Physics.Bounds.Size);
                 test = true;
             }
             switch (collisionSide)
             {
                 case CollisionDetection.CollisionSide.Top:
                 case CollisionDetection.CollisionSide.Bottom:
-                    this.Physics.MovementVelocity = new Vector2(this.Physics.MovementVelocity.X, -this.Physics.MovementVelocity.Y);
+                    Physics.MovementVelocity = new Vector2(Physics.MovementVelocity.X, -Physics.MovementVelocity.Y);
                     break;
                 case CollisionDetection.CollisionSide.Left:
                 case CollisionDetection.CollisionSide.Right:
-                    this.Physics.MovementVelocity = new Vector2(-this.Physics.MovementVelocity.X, this.Physics.MovementVelocity.Y);
+                    Physics.MovementVelocity = new Vector2(-Physics.MovementVelocity.X, Physics.MovementVelocity.Y);
                     break;
 
             }
@@ -67,39 +67,39 @@
 
         public override void AddChild()
         {
-            if (!this.spawnedChildren)
+            if (!spawnedChildren)
             {
-                this.heads = new List<IEnemy>();
+                heads = new List<IEnemy>();
                 IEnemy northHead = new ManhandlaHead(this, Physics.Direction.North);
                 IEnemy southHead = new ManhandlaHead(this, Physics.Direction.South);
                 IEnemy eastHead = new ManhandlaHead(this, Physics.Direction.East);
                 IEnemy westHead = new ManhandlaHead(this, Physics.Direction.West);
-                this.heads.Add(northHead);
-                this.heads.Add(southHead);
-                this.heads.Add(eastHead);
-                this.heads.Add(westHead);
+                heads.Add(northHead);
+                heads.Add(southHead);
+                heads.Add(eastHead);
+                heads.Add(westHead);
                 LoZGame.Instance.GameObjects.Enemies.Add(northHead);
                 LoZGame.Instance.GameObjects.Enemies.Add(southHead);
                 LoZGame.Instance.GameObjects.Enemies.Add(eastHead);
                 LoZGame.Instance.GameObjects.Enemies.Add(westHead);
-                this.spawnedChildren = true;
+                spawnedChildren = true;
             }
         }
 
         public override void Update()
         {
             int Health = 0;
-            foreach (IEnemy head in this.heads)
+            foreach (IEnemy head in heads)
             {
                 if (head.Health.CurrentHealth >= 0)
                 {
                     Health += head.Health.CurrentHealth;
                 }
             }
-            if (Health <= 0 && !this.IsDead)
+            if (Health <= 0 && !IsDead)
             {
-                this.TakeDamage(this.Health.MaxHealth);
-                this.Expired = true;
+                TakeDamage(this.Health.MaxHealth);
+                Expired = true;
             }
             base.Update();
         }

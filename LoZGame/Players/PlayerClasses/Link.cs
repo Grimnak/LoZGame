@@ -11,52 +11,52 @@
 
         public Link(Vector2 location)
         {
-            this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.PlayerConstants.Mass;
-            this.Health = new HealthManager(GameData.Instance.PlayerConstants.StartingHealth);
-            this.Inventory = new InventoryManager(this);
-            this.linkCollisionHandler = new PlayerCollisionHandler(this);
-            this.CurrentColor = LinkColor.Green;
-            this.Physics.CurrentDirection = Physics.Direction.North;
-            this.CurrentWeapon = LinkWeapon.Wood;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.MoveSpeed = GameData.Instance.PlayerConstants.PlayerSpeed;
-            this.DamageTimer = 0;
-            this.DisarmedTimer = 0;
-            this.State = new IdleState(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y - 8, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight - 8);
-            this.Physics.BoundsOffset = new Vector2(0, -8);
-            this.Physics.SetLocation();
+            Physics = new Physics(location);
+            Physics.Mass = GameData.Instance.PlayerConstants.Mass;
+            Health = new HealthManager(GameData.Instance.PlayerConstants.StartingHealth);
+            Inventory = new InventoryManager(this);
+            linkCollisionHandler = new PlayerCollisionHandler(this);
+            CurrentColor = LinkColor.Green;
+            Physics.CurrentDirection = Physics.Direction.North;
+            CurrentWeapon = LinkWeapon.Wood;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            MoveSpeed = GameData.Instance.PlayerConstants.PlayerSpeed;
+            DamageTimer = 0;
+            DisarmedTimer = 0;
+            State = new IdleState(this);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y - 8, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight - 8);
+            Physics.BoundsOffset = new Vector2(0, -8);
+            Physics.SetLocation();
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IEnemy && !(this.State is PickupItemState))
+            if (otherCollider is IEnemy && !(State is PickupItemState))
             {
-                this.linkCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+                linkCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
-            else if (otherCollider is IProjectile && !(this.State is PickupItemState))
+            else if (otherCollider is IProjectile && !(State is PickupItemState))
             {
-                this.linkCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+                linkCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
             else if (otherCollider is IBlock)
             {
-                this.linkCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+                linkCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
             else if (otherCollider is IDoor)
             {
-                this.linkCollisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
+                linkCollisionHandler.OnCollisionResponse((IDoor)otherCollider, collisionSide);
             }
-            else if (otherCollider is IItem && !(this.State is PickupItemState))
+            else if (otherCollider is IItem && !(State is PickupItemState))
             {
-                this.linkCollisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
+                linkCollisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
             }
 
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            this.linkCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            linkCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
     }
 }

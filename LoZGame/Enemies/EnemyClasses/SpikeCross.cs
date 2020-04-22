@@ -8,30 +8,30 @@
 
         public SpikeCross(Vector2 location)
         {
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.SpikeCrossHealth);
-            this.Physics = new Physics(new Vector2(location.X, location.Y));
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.SpikeCrossMass;
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.CurrentState = new IdleEnemyState(this);
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            InitialPos = this.Physics.Bounds.Location;
-            this.Expired = false;
-            this.IsKillable = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.SpikeCrossDamage;
-            this.DamageTimer = 0;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.AI = EnemyAI.SpikeCross;
-            this.IsTransparent = true;
-            this.ApplyDamageMod();
-            this.ApplySmallSpeedMod();
-            this.ApplyLargeWeightModPos();
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.SpikeCrossHealth);
+            Physics = new Physics(new Vector2(location.X, location.Y));
+            Physics.Mass = GameData.Instance.EnemyMassConstants.SpikeCrossMass;
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            CurrentState = new IdleEnemyState(this);
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            InitialPos = Physics.Bounds.Location;
+            Expired = false;
+            IsKillable = false;
+            Damage = GameData.Instance.EnemyDamageConstants.SpikeCrossDamage;
+            DamageTimer = 0;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            AI = EnemyAI.SpikeCross;
+            IsTransparent = true;
+            ApplyDamageMod();
+            ApplySmallSpeedMod();
+            ApplyLargeWeightModPos();
         }
 
         public new Point SpawnPoint => InitialPos;
 
         public override void UpdateState()
         {
-            this.CurrentState = new IdleEnemyState(this);
+            CurrentState = new IdleEnemyState(this);
         }
 
         public override void Stun(int stunTime)
@@ -40,15 +40,15 @@
 
         public override void Attack()
         {
-            this.CurrentState = new AttackingSpikeCrossState(this);
+            CurrentState = new AttackingSpikeCrossState(this);
         }
 
         public override void Update()
         {
-            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.IsSpawning || this.IsDead)
+            if (!LoZGame.Instance.Players[0].Inventory.HasClock || IsSpawning || IsDead)
             {
-                this.CurrentState.Update();
-                this.Physics.Move();
+                CurrentState.Update();
+                Physics.Move();
             }
         }
 
@@ -56,15 +56,15 @@
         {
             if (otherCollider is IPlayer)
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
         }
 
         public override void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            this.CurrentState = new IdleEnemyState(this);
-            this.Physics.Bounds = new Rectangle(InitialPos, this.Physics.Bounds.Size);
-            this.Physics.SetLocation();
+            CurrentState = new IdleEnemyState(this);
+            Physics.Bounds = new Rectangle(InitialPos, Physics.Bounds.Size);
+            Physics.SetLocation();
         }
 
         public override ISprite CreateCorrectSprite()

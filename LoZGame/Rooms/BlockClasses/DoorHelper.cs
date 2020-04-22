@@ -41,14 +41,14 @@
 
         public IDoorState State
         {
-            get { return this.state; }
-            set { this.state = value; }
+            get { return state; }
+            set { state = value; }
         }
 
         public int EntryWidth
         {
-            get { return this.doorWidth; }
-            set { this.doorWidth = value; }
+            get { return doorWidth; }
+            set { doorWidth = value; }
         }
 
         private DoorCollisionHandler doorCollisionHandler;

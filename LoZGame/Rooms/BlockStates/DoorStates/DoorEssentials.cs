@@ -15,27 +15,27 @@
 
         public virtual void Close()
         {
-            this.Door.State = new LockedDoorState(this.Door);
-            this.Door.DoorType = LoZClone.Door.DoorTypes.Locked;
+            Door.State = new LockedDoorState(Door);
+            Door.DoorType = LoZClone.Door.DoorTypes.Locked;
         }
 
         public virtual void Open()
         {
-            this.Door.State = new UnlockedDoorState(this.Door);
-            this.Door.DoorType = LoZClone.Door.DoorTypes.Unlocked;
+            Door.State = new UnlockedDoorState(Door);
+            Door.DoorType = LoZClone.Door.DoorTypes.Unlocked;
         }
 
         public virtual void Bombed()
         {
-            if (this.Door.State is LockedDoorState)
+            if (Door.State is LockedDoorState)
             {
-                this.Door.State = new UnlockedDoorState(this.Door);
-                this.Door.DoorType = LoZClone.Door.DoorTypes.Unlocked;
+                Door.State = new UnlockedDoorState(Door);
+                Door.DoorType = LoZClone.Door.DoorTypes.Unlocked;
             }
             else
             {
-                this.Door.State = new BombedDoorState(this.Door);
-                this.Door.DoorType = LoZClone.Door.DoorTypes.Unlocked;
+                Door.State = new BombedDoorState(Door);
+                Door.DoorType = LoZClone.Door.DoorTypes.Unlocked;
             }
         }
 
@@ -45,13 +45,13 @@
 
         public virtual void DrawFrame()
         {
-            this.FrameSprite.Draw(this.Door.Physics.Location, SpriteTint, this.Door.Physics.Depth);
-            this.OverhangSprite.Draw(this.Door.Physics.Location + this.Door.OverhangOffset, LoZGame.Instance.DungeonTint, this.Door.Physics.Depth);
+            FrameSprite.Draw(Door.Physics.Location, SpriteTint, Door.Physics.Depth);
+            OverhangSprite.Draw(Door.Physics.Location + Door.OverhangOffset, LoZGame.Instance.DungeonTint, Door.Physics.Depth);
         }
 
         public virtual void DrawFloor()
         {
-            this.FloorSprite.Draw(this.Door.Physics.Location, SpriteTint, 0);
+            FloorSprite.Draw(Door.Physics.Location, SpriteTint, 0);
         }
     }
 }

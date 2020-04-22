@@ -41,26 +41,26 @@ namespace LoZClone
 
         public void Update()
         {
-            foreach (KeyValuePair<int, IEnemy> enemy in this.enemyList)
+            foreach (KeyValuePair<int, IEnemy> enemy in enemyList)
             {
                 if (enemy.Value.Expired)
                 {
-                    this.deletable.Add(enemy.Key);
+                    deletable.Add(enemy.Key);
                 }
             }
 
-            foreach (int index in this.deletable)
+            foreach (int index in deletable)
             {
-                this.RemoveEnemy(index);
+                RemoveEnemy(index);
             }
 
-            this.deletable.Clear();
+            deletable.Clear();
 
-            this.enemies.Clear();
+            enemies.Clear();
 
-            foreach (KeyValuePair<int, IEnemy> enemy in this.enemyList)
+            foreach (KeyValuePair<int, IEnemy> enemy in enemyList)
             {
-                this.enemies.Add(enemy.Value);
+                enemies.Add(enemy.Value);
                 enemy.Value.Update();
             }
 
@@ -85,7 +85,7 @@ namespace LoZClone
 
         public void Draw()
         {
-            foreach (KeyValuePair<int, IEnemy> enemy in this.enemyList)
+            foreach (KeyValuePair<int, IEnemy> enemy in enemyList)
             {
                 enemy.Value.Draw();
             }

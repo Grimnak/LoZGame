@@ -21,17 +21,17 @@
 
         private void StandardSpikeCross()
         {
-            if (!(this.Enemy.CurrentState is AttackingSpikeCrossState))
+            if (!(Enemy.CurrentState is AttackingSpikeCrossState))
             {
-                this.CheckForLink();
+                CheckForLink();
             }
         }
 
         private void HardSpikeCross()
         {
-            if (!(this.Enemy.CurrentState is AttackingSpikeCrossState))
+            if (!(Enemy.CurrentState is AttackingSpikeCrossState))
             {
-                this.CheckForLink();
+                CheckForLink();
                 //this.CheckForLinkDiagonal();
             }
         }

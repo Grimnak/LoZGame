@@ -24,14 +24,14 @@
         /// </summary>
         public void DrawInventoryElements()
         {
-            this.inventoryBackgroundSprite.Draw(this.inventoryBackgroundPosition, LoZGame.Instance.DefaultTint, 0.99f);
-            this.DrawHearts();
-            this.DrawTextIndicators();
-            this.DrawMaps();
-            this.DrawMapCompassIndicators();
-            this.DrawSelectionItems();
-            this.DrawEquippedItems();
-            this.DrawEquippedItems();
+            inventoryBackgroundSprite.Draw(inventoryBackgroundPosition, LoZGame.Instance.DefaultTint, 0.99f);
+            DrawHearts();
+            DrawTextIndicators();
+            DrawMaps();
+            DrawMapCompassIndicators();
+            DrawSelectionItems();
+            DrawEquippedItems();
+            DrawEquippedItems();
         }
 
         /// <summary>
@@ -39,7 +39,7 @@
         /// </summary>
         public void Reset()
         {
-            this.inventoryBackgroundPosition = new Vector2(0, -(LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
+            inventoryBackgroundPosition = new Vector2(0, -(LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
         }
 
         /// <summary>
@@ -47,7 +47,7 @@
         /// </summary>
         public void DrawHearts()
         {
-            Vector2 firstHeartPosition = this.inventoryBackgroundPosition + heartOffset;
+            Vector2 firstHeartPosition = inventoryBackgroundPosition + heartOffset;
             int heartCount = LoZGame.Instance.Link.Health.CurrentHealth / GameData.Instance.InventoryConstants.HealthPerHeart;
             int partialCount = LoZGame.Instance.Link.Health.CurrentHealth % GameData.Instance.InventoryConstants.HealthPerHeart;
             int rowCounter = 0;
@@ -177,12 +177,12 @@
                     break;
             }
 
-            selectedItem.Draw(this.inventoryBackgroundPosition + selectedItemOffset, LoZGame.Instance.DefaultTint, 1.0f);
+            selectedItem.Draw(inventoryBackgroundPosition + selectedItemOffset, LoZGame.Instance.DefaultTint, 1.0f);
 
             // Only show the equipped items while playing the game (as per original game behavior).
             if (!(LoZGame.Instance.GameState is OpenInventoryState || LoZGame.Instance.GameState is CloseInventoryState))
             {
-                selectedItem.Draw(this.inventoryBackgroundPosition + secondaryEquippedOffset, LoZGame.Instance.DefaultTint, 1.0f);
+                selectedItem.Draw(inventoryBackgroundPosition + secondaryEquippedOffset, LoZGame.Instance.DefaultTint, 1.0f);
                 equippedWeaponSprite.Draw(inventoryBackgroundPosition + primaryEquippedOffset, LoZGame.Instance.DefaultTint, 1.0f);
             }
         }
@@ -193,7 +193,7 @@
         private void DrawSelectionItems()
         {
             ISprite itemSelector = CreateItemSelector();
-            Vector2 firstItemPosition = this.inventoryBackgroundPosition + itemSelectionOffset;
+            Vector2 firstItemPosition = inventoryBackgroundPosition + itemSelectionOffset;
 
             int rowCounter = 0;
             int columnCounter = 0;
@@ -209,7 +209,7 @@
                     itemSelector.Draw(itemSelectorPosition, LoZGame.Instance.DefaultTint, 1.0f);
                 }
 
-                this.DetermineItemToDraw(selectionItem, itemPosition, position);
+                DetermineItemToDraw(selectionItem, itemPosition, position);
 
                 columnCounter++;
                 if (columnCounter >= GameData.Instance.InventoryConstants.InventoryColumns)

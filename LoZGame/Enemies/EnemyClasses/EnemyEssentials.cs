@@ -8,7 +8,7 @@
     {
         public virtual void UpdateState()
         {
-            RandomStateGenerator.Update(this.States);
+            RandomStateGenerator.Update(States);
         }
 
         public virtual void UpdateChild()
@@ -23,7 +23,7 @@
 
         public virtual void Stun(int stunTime)
         {
-            this.CurrentState.Stun(stunTime);
+            CurrentState.Stun(stunTime);
         }
 
         public virtual void Attack()
@@ -33,16 +33,16 @@
 
         public virtual void TakeDamage(int damageAmount)
         {
-            if (this.DamageTimer <= 0 && !this.IsSpawning)
+            if (DamageTimer <= 0 && !IsSpawning)
             {
-                this.Health.DamageHealth(damageAmount);
+                Health.DamageHealth(damageAmount);
                 if (damageAmount > 0)
                 {
                     SoundFactory.Instance.PlayEnemyHit();
-                    this.DamageTimer = LoZGame.Instance.UpdateSpeed;
+                    DamageTimer = LoZGame.Instance.UpdateSpeed;
                 }
             }
-            if (this.Health.CurrentHealth <= 0)
+            if (Health.CurrentHealth <= 0)
             {
                 if (this is Dragon || this is Dodongo || this is ManhandlaBody || this is GleeokBody)
                 {
@@ -53,63 +53,63 @@
                 {
                     SoundFactory.Instance.PlayEnemyDie();
                 }
-                this.IsDead = true;
-                this.CurrentState.Die();
+                IsDead = true;
+                CurrentState.Die();
             }
         }
 
         public void HandleDamage()
         {
-            if (this.DamageTimer > 0 && this.Health.CurrentHealth > 0)
+            if (DamageTimer > 0 && Health.CurrentHealth > 0)
             {
-                this.DamageTimer--;
-                if (this.DamageTimer % 10 > 5)
+                DamageTimer--;
+                if (DamageTimer % 10 > 5)
                 {
-                    this.CurrentTint = Color.DarkSlateGray;
+                    CurrentTint = Color.DarkSlateGray;
                 }
                 else
                 {
-                    this.CurrentTint = LoZGame.Instance.DefaultTint;
+                    CurrentTint = LoZGame.Instance.DefaultTint;
                 }
-                this.Physics.HandleKnockBack();
+                Physics.HandleKnockBack();
             }
         }
 
         public virtual void Update()
         {
-            this.HandleDamage();
-            if (!LoZGame.Instance.Players[0].Inventory.HasClock || this.IsSpawning || this.IsDead)
+            HandleDamage();
+            if (!LoZGame.Instance.Players[0].Inventory.HasClock || IsSpawning || IsDead)
             {
-                this.CurrentState.Update();
-                this.Physics.Move();
-                this.Physics.SetDepth();
+                CurrentState.Update();
+                Physics.Move();
+                Physics.SetDepth();
             }
         }
 
         public virtual void Draw()
         {
-            this.CurrentState.Draw();
+            CurrentState.Draw();
         }
 
         public virtual void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IPlayer)
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
             else if (otherCollider is IBlock)
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+                EnemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
             else if (otherCollider is IProjectile)
             {
-                this.EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+                EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
         }
 
         public virtual void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            this.EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            EnemyCollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
         public virtual ISprite CreateCorrectSprite()

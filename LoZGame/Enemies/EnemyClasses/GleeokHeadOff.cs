@@ -16,29 +16,29 @@
 
         public GleeokHeadOff(IEnemy body, Point spawnPoint)
         {
-            this.parent = body;
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GleeockHeadStateList);
-            this.Health = new HealthManager(1);
-            this.Physics = new Physics(spawnPoint.ToVector2());
-            this.Physics.Mass = 1;
-            this.Physics.IsMoveable = false;
-            this.CurrentState = new IdleEnemyState(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.IsTransparent = true;
-            this.IsKillable = false;
-            this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.FullHeart;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
-            this.DamageTimer = 0;
-            this.MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed);
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.HasChild = false;
-            this.AI = EnemyAI.GleeokHeadOff;
-            this.IsSpawning = false;
-            this.ApplyDamageMod();
-            this.ApplyLargeSpeedMod();
+            parent = body;
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GleeockHeadStateList);
+            Health = new HealthManager(1);
+            Physics = new Physics(spawnPoint.ToVector2());
+            Physics.Mass = 1;
+            Physics.IsMoveable = false;
+            CurrentState = new IdleEnemyState(this);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            IsTransparent = true;
+            IsKillable = false;
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.FullHeart;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
+            DamageTimer = 0;
+            MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed);
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            HasChild = false;
+            AI = EnemyAI.GleeokHeadOff;
+            IsSpawning = false;
+            ApplyDamageMod();
+            ApplyLargeSpeedMod();
         }
 
         public override void Stun(int stunTime)
@@ -52,11 +52,11 @@
         public override void Update()
         {
             base.Update();
-            this.Physics.Depth = 1;
-            if (this.parent.IsDead)
+            Physics.Depth = 1;
+            if (parent.IsDead)
             {
-                this.IsDead = true;
-                this.CurrentState.Die();
+                IsDead = true;
+                CurrentState.Die();
             }
         }
 

@@ -14,88 +14,88 @@
 
         public AttackingSpikeCrossState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.stopPoint = new Point(LoZGame.Instance.ScreenWidth / 2, LoZGame.Instance.InventoryOffset + ((LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset) / 2));
-            this.returning = false;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Enemy.CurrentState = this;
+            Enemy = enemy;
+            stopPoint = new Point(LoZGame.Instance.ScreenWidth / 2, LoZGame.Instance.InventoryOffset + ((LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset) / 2));
+            returning = false;
+            Sprite = Enemy.CreateCorrectSprite();
+            Enemy.CurrentState = this;
             if (LoZGame.Instance.Difficulty > 0)
             {
-                this.attackSpeed = GameData.Instance.EnemySpeedConstants.DodongoAttackSpeed ;
+                attackSpeed = GameData.Instance.EnemySpeedConstants.DodongoAttackSpeed ;
             }
             else
             {
-                this.attackSpeed = GameData.Instance.EnemySpeedConstants.DodongoAttackSpeed;
+                attackSpeed = GameData.Instance.EnemySpeedConstants.DodongoAttackSpeed;
             }
             SetAttackVelocity();
         }
 
         private void SetAttackVelocity() 
         {
-            switch (this.Enemy.Physics.CurrentDirection)
+            switch (Enemy.Physics.CurrentDirection)
             {
                 case Physics.Direction.North:
-                    this.Enemy.Physics.MovementVelocity = new Vector2(0, -this.attackSpeed);
+                    Enemy.Physics.MovementVelocity = new Vector2(0, -attackSpeed);
                     break;
                 case Physics.Direction.South:
-                    this.Enemy.Physics.MovementVelocity = new Vector2(0, this.attackSpeed);
+                    Enemy.Physics.MovementVelocity = new Vector2(0, attackSpeed);
                     break;
                 case Physics.Direction.East:
-                    this.Enemy.Physics.MovementVelocity = new Vector2(this.attackSpeed, 0);
+                    Enemy.Physics.MovementVelocity = new Vector2(attackSpeed, 0);
                     break;
                 case Physics.Direction.West:
-                    this.Enemy.Physics.MovementVelocity = new Vector2(-this.attackSpeed, 0);
+                    Enemy.Physics.MovementVelocity = new Vector2(-attackSpeed, 0);
                     break;
                 default:
-                    this.Enemy.UpdateState();
+                    Enemy.UpdateState();
                     break;
             }
         }
 
         public override void Update()
         {
-            if (!this.returning)
+            if (!returning)
             {
-                switch (this.Enemy.Physics.CurrentDirection)
+                switch (Enemy.Physics.CurrentDirection)
                 {
                     case Physics.Direction.North:
-                        if (this.Enemy.Physics.Bounds.Top < stopPoint.Y)
+                        if (Enemy.Physics.Bounds.Top < stopPoint.Y)
                         {
-                            this.returning = true;
+                            returning = true;
                         }
                         break;
                     case Physics.Direction.South:
-                        if (this.Enemy.Physics.Bounds.Bottom > stopPoint.Y)
+                        if (Enemy.Physics.Bounds.Bottom > stopPoint.Y)
                         {
-                            this.returning = true;
+                            returning = true;
                         }
                         break;
                     case Physics.Direction.East:
-                        if (this.Enemy.Physics.Bounds.Right > stopPoint.X)
+                        if (Enemy.Physics.Bounds.Right > stopPoint.X)
                         {
-                            this.returning = true;
+                            returning = true;
                         }
                         break;
                     case Physics.Direction.West:
-                        if (this.Enemy.Physics.Bounds.Left < stopPoint.X)
+                        if (Enemy.Physics.Bounds.Left < stopPoint.X)
                         {
-                            this.returning = true;
+                            returning = true;
                         }
                         break;
                 }
                 if (returning)
                 {
-                    Vector2 toStart = (this.Enemy.SpawnPoint - this.Enemy.Physics.Bounds.Location).ToVector2();
+                    Vector2 toStart = (Enemy.SpawnPoint - Enemy.Physics.Bounds.Location).ToVector2();
                     toStart.Normalize();
-                    this.Enemy.Physics.MovementVelocity = toStart * (this.Enemy.Physics.MovementVelocity.Length() / 2);
+                    Enemy.Physics.MovementVelocity = toStart * (Enemy.Physics.MovementVelocity.Length() / 2);
                 }
             }
             else
             {
-                if ((this.Enemy.Physics.Bounds.Location - this.Enemy.SpawnPoint).ToVector2().Length() <= this.Enemy.Physics.MovementVelocity.Length())
+                if ((Enemy.Physics.Bounds.Location - Enemy.SpawnPoint).ToVector2().Length() <= Enemy.Physics.MovementVelocity.Length())
                 {
-                    this.Enemy.Physics.Bounds = new Rectangle(this.Enemy.SpawnPoint, this.Enemy.Physics.Bounds.Size);
-                    this.Enemy.CurrentState.Stop();
+                    Enemy.Physics.Bounds = new Rectangle(Enemy.SpawnPoint, Enemy.Physics.Bounds.Size);
+                    Enemy.CurrentState.Stop();
                 }
             }
         }

@@ -15,15 +15,15 @@
 
         public ItemType ItemName { get; }
 
-        public int LifeTime { get { return lifeTime; } set { this.lifeTime = value; } }
+        public int LifeTime { get { return lifeTime; } set { lifeTime = value; } }
 
-        public int PickUpItemTime { get { return pickUpItemTime; } set { this.pickUpItemTime = value; } }
+        public int PickUpItemTime { get { return pickUpItemTime; } set { pickUpItemTime = value; } }
 
-        public int FrameDelay { get { return frameDelay; } set { this.frameDelay = value; } }
+        public int FrameDelay { get { return frameDelay; } set { frameDelay = value; } }
 
-        public bool Expired { get { return expired; } set { this.expired = value; } }
+        public bool Expired { get { return expired; } set { expired = value; } }
 
-        public ISprite Sprite { get { return sprite; } set { this.sprite = value; } }
+        public ISprite Sprite { get { return sprite; } set { sprite = value; } }
 
         public Physics Physics { get; set; }
 
@@ -31,27 +31,27 @@
 
         public void StartBob()
         {
-            this.Physics.MovementVelocity = new Vector2(0, -1);
-            this.Physics.MovementAcceleration = new Vector2(0, 1.0f / (bobDelay / 2));
+            Physics.MovementVelocity = new Vector2(0, -1);
+            Physics.MovementAcceleration = new Vector2(0, 1.0f / (bobDelay / 2));
         }
 
         public void ReverseBob()
         {
-            this.Physics.MovementAcceleration *= -1;
+            Physics.MovementAcceleration *= -1;
         }
 
         public virtual void Update()
         {
             LifeTime++;
-            this.Physics.Move();
-            this.Physics.Accelerate();
-            if (this.lifeTime % bobDelay == 0)
+            Physics.Move();
+            Physics.Accelerate();
+            if (lifeTime % bobDelay == 0)
             {
-                this.ReverseBob();
+                ReverseBob();
             }
-            if (frameDelay != -1 && this.lifeTime % this.frameDelay == 0)
+            if (frameDelay != -1 && lifeTime % frameDelay == 0)
             {
-                this.Sprite.Update();
+                Sprite.Update();
             }
         }
 
@@ -70,7 +70,7 @@
 
         public virtual void Draw(Color spriteTint)
         {
-            this.Sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
+            Sprite.Draw(Physics.Location, spriteTint, Physics.Depth);
         }
 
     }

@@ -8,9 +8,9 @@
     {
         public BlockEnemyIdleState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Enemy.CurrentState = this;
-            this.DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange;
+            Enemy = enemy;
+            Enemy.CurrentState = this;
+            DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange;
         }
     }
 }

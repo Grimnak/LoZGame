@@ -7,30 +7,30 @@
     {
         public Zol(Vector2 location)
         {
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.ZolStateList);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ZolHealth);
-            this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.ZolMass;
-            this.CurrentState = new SpawnEnemyState(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.ZolDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.ZolSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.AI = EnemyAI.Zol;
-            this.ApplyDamageMod();
-            this.ApplySmallSpeedMod();
-            this.ApplyLargeWeightModPos();
-            this.ApplySmallHealthMod();
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.ZolStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ZolHealth);
+            Physics = new Physics(location);
+            Physics.Mass = GameData.Instance.EnemyMassConstants.ZolMass;
+            CurrentState = new SpawnEnemyState(this);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.ZolDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.ZolSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            AI = EnemyAI.Zol;
+            ApplyDamageMod();
+            ApplySmallSpeedMod();
+            ApplyLargeWeightModPos();
+            ApplySmallHealthMod();
         }
 
         private void SpawnGels()
         {
-            LoZGame.Instance.GameObjects.Enemies.Add(new Gel(this.Physics.Location));
-            LoZGame.Instance.GameObjects.Enemies.Add(new Gel(this.Physics.Location));
+            LoZGame.Instance.GameObjects.Enemies.Add(new Gel(Physics.Location));
+            LoZGame.Instance.GameObjects.Enemies.Add(new Gel(Physics.Location));
         }
 
         public override void TakeDamage(int damageAmount)
@@ -38,13 +38,13 @@
             if (damageAmount <= 4)
             {
                 SoundFactory.Instance.PlayEnemyHit();
-                this.SpawnGels();
-                this.Expired = true;
+                SpawnGels();
+                Expired = true;
             }
             else
             {
                 SoundFactory.Instance.PlayEnemyDie();
-                this.CurrentState.Die();
+                CurrentState.Die();
             }
         }
 

@@ -13,29 +13,29 @@
 
         public FireSnakeSegment(IEnemy parent)
         {
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = GameData.Instance.EnemyStateWeights.FireSnakeStateList;
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = GameData.Instance.EnemyStateWeights.FireSnakeStateList;
             this.parent = parent;
-            this.Physics = new Physics(parent.Physics.Location);
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.FireSnakeMass;
-            this.Physics.IsMoveable = false;
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.CurrentState = new FollowFireSnakeState(this);
-            this.HasChild = false;
-            this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.FireSnakeDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.AI = EnemyAI.NoAI;
+            Physics = new Physics(parent.Physics.Location);
+            Physics.Mass = GameData.Instance.EnemyMassConstants.FireSnakeMass;
+            Physics.IsMoveable = false;
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            CurrentState = new FollowFireSnakeState(this);
+            HasChild = false;
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.FireSnakeDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            AI = EnemyAI.NoAI;
         }
 
         public override void TakeDamage(int damageAmount)
         {
-            if (this.parent.DamageTimer <= 0)
+            if (parent.DamageTimer <= 0)
             {
-                this.parent.TakeDamage(damageAmount);
+                parent.TakeDamage(damageAmount);
             }
         }
 

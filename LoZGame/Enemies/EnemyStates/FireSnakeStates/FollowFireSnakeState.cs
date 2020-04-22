@@ -7,9 +7,9 @@
     {
         public FollowFireSnakeState(IEnemy fireSnake)
         {
-            this.Enemy = fireSnake;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Sprite.SetFrame(2);
+            Enemy = fireSnake;
+            Sprite = Enemy.CreateCorrectSprite();
+            Sprite.SetFrame(2);
         }
 
         public override void Update()

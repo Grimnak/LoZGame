@@ -7,12 +7,12 @@
     {
         public override void Attack()
         {
-            this.Enemy.CurrentState = new BlockEnemyAttackState(this.Enemy);
+            Enemy.CurrentState = new BlockEnemyAttackState(Enemy);
         }
 
         public override void Stop()
         {
-            this.Enemy.CurrentState = new BlockEnemyIdleState(this.Enemy);
+            Enemy.CurrentState = new BlockEnemyIdleState(Enemy);
         }
 
         public override void Die()
@@ -26,11 +26,11 @@
         public override void Update()
         {
             // override to no longer update the sprite since the sprite doesn't exist
-            this.Lifetime++;
-            if (this.Lifetime > this.DirectionChange)
+            Lifetime++;
+            if (Lifetime > DirectionChange)
             {
-                this.Enemy.UpdateState();
-                this.Lifetime = 0;
+                Enemy.UpdateState();
+                Lifetime = 0;
             } 
         }
 

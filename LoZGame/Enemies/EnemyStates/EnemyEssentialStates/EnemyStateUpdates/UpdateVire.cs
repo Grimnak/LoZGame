@@ -21,28 +21,28 @@
 
         private void StandardVire()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
-                if (this.Enemy.Physics.MovementVelocity.Length() > 0)
+                if (Enemy.Physics.MovementVelocity.Length() > 0)
                 {
-                    this.Enemy.CurrentState.Stop();
-                    this.Lifetime = 0;
+                    Enemy.CurrentState.Stop();
+                    Lifetime = 0;
                 }
                 else
                 {
                     FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.VireFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
                     FavorPlayerJumpCardinal(GameData.Instance.EnemyMiscConstants.VireFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
-                    this.Enemy.States.Remove(RandomStateGenerator.StateType.JumpNorth);
-                    this.Enemy.States.Remove(RandomStateGenerator.StateType.MoveEast);
-                    this.Enemy.States.Remove(RandomStateGenerator.StateType.MoveWest);
-                    this.Enemy.States.Remove(RandomStateGenerator.StateType.JumpSouth);
+                    Enemy.States.Remove(RandomStateGenerator.StateType.JumpNorth);
+                    Enemy.States.Remove(RandomStateGenerator.StateType.MoveEast);
+                    Enemy.States.Remove(RandomStateGenerator.StateType.MoveWest);
+                    Enemy.States.Remove(RandomStateGenerator.StateType.JumpSouth);
                 }
             }
         }
 
         private void HardVire()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerJumpCardinal(GameData.Instance.EnemyMiscConstants.VireFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
                 FavorPlayerJumpDiagonal(GameData.Instance.EnemyMiscConstants.VireFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));

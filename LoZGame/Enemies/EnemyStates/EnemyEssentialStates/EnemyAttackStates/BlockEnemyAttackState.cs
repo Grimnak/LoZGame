@@ -10,10 +10,10 @@
 
         public BlockEnemyAttackState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Enemy.CurrentState = this;
-            this.DirectionChange = 2 * LoZGame.Instance.UpdateSpeed;
-            this.ShootFireball();
+            Enemy = enemy;
+            Enemy.CurrentState = this;
+            DirectionChange = 2 * LoZGame.Instance.UpdateSpeed;
+            ShootFireball();
         }
 
         private void ShootFireball()
@@ -23,8 +23,8 @@
             {
                 speedMod = -1;
             }
-            Vector2 velocityVector = ((FireballSpeed / 2) + speedMod) * this.UnitVectorToPlayer(this.Enemy.Physics.Bounds.Center.ToVector2());
-            Physics fireballPhysics = new Physics(this.Enemy.Physics.Bounds.Center.ToVector2())
+            Vector2 velocityVector = ((FireballSpeed / 2) + speedMod) * UnitVectorToPlayer(Enemy.Physics.Bounds.Center.ToVector2());
+            Physics fireballPhysics = new Physics(Enemy.Physics.Bounds.Center.ToVector2())
             {
                 MovementVelocity = new Vector2(velocityVector.X, velocityVector.Y)
             };

@@ -30,12 +30,12 @@
         private Rectangle bounds;
         private bool isTransparent;
 
-        public bool IsTransparent { get { return this.isTransparent; } set { this.isTransparent = value; } }
+        public bool IsTransparent { get { return isTransparent; } set { isTransparent = value; } }
 
         public Rectangle Bounds
         {
-            get { return this.Physics.Bounds; }
-            set { this.Physics.Bounds = value; }
+            get { return Physics.Bounds; }
+            set { Physics.Bounds = value; }
         }
 
         public Physics Physics { get; set; }
@@ -53,14 +53,14 @@
         /// <param name="name">Name of the tiles sprite.</param>
         public Tile(Vector2 location, string name)
         {
-            this.blockCollisionHandler = new BlockCollisionHandler(this);
-            this.Physics = new Physics(location);
-            this.Name = name;
-            this.isTransparent = true;
-            this.spriteTint = Color.Gray;
-            this.sprite = this.CreateCorrectSprite(name);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
-            this.Physics.Depth = GameData.Instance.RoomConstants.TileDepth;
+            blockCollisionHandler = new BlockCollisionHandler(this);
+            Physics = new Physics(location);
+            Name = name;
+            isTransparent = true;
+            spriteTint = Color.Gray;
+            sprite = CreateCorrectSprite(name);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
+            Physics.Depth = GameData.Instance.RoomConstants.TileDepth;
         }
 
         /// <inheritdoc/>
@@ -75,29 +75,29 @@
                 case LadderTile:
                     return BlockSpriteFactory.Instance.LadderTile();
                 case SpottedTile:
-                    this.spriteTint = LoZGame.Instance.DungeonTint;
+                    spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.SpottedTile();
                 case Stairs:
-                    this.spriteTint = LoZGame.Instance.DungeonTint;
+                    spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.Stairs();
                 case SpottedTile2:
-                    this.spriteTint = LoZGame.Instance.DungeonTint;
+                    spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.SpottedTile();
                 case BossTile2:
                     return BlockSpriteFactory.Instance.BossTile2();
                 case Lava2:
                     return BlockSpriteFactory.Instance.LavaTile2();
                 case Stairs3:
-                    this.spriteTint = LoZGame.Instance.DungeonTint;
+                    spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.Stairs();
                 case SpottedTile3:
-                    this.spriteTint = LoZGame.Instance.DungeonTint;
+                    spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.SpottedTile();
                 case SpottedTile4:
-                    this.spriteTint = LoZGame.Instance.DungeonTint;
+                    spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.SpottedTile();
                 default:
-                    this.spriteTint = LoZGame.Instance.DungeonTint;
+                    spriteTint = LoZGame.Instance.DungeonTint;
                     return DungeonSpriteFactory.Instance.FloorTile();
             }
         }
@@ -110,14 +110,14 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, this.spriteTint, this.Physics.Depth);
+            sprite.Draw(Physics.Location, spriteTint, Physics.Depth);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IPlayer)
             {
-                this.blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
         }
 

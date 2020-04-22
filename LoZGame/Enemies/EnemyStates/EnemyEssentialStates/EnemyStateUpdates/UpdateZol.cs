@@ -21,12 +21,12 @@
 
         private void StandardZol()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
-                if (this.Enemy.Physics.MovementVelocity.Length() > 0)
+                if (Enemy.Physics.MovementVelocity.Length() > 0)
                 {
-                    this.Enemy.CurrentState.Stop();
-                    this.Lifetime = 0;
+                    Enemy.CurrentState.Stop();
+                    Lifetime = 0;
                 }
                 else
                 {
@@ -37,7 +37,7 @@
 
         private void HardZol()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.GelFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
             }

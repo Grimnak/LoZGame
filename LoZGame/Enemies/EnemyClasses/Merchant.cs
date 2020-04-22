@@ -8,16 +8,16 @@
 
         public Merchant(Vector2 location)
         {
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.MerchantHealth);
-            this.Physics = new Physics(location);
-            this.sprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.MerchantDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.MerchantSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.MerchantHealth);
+            Physics = new Physics(location);
+            sprite = EnemySpriteFactory.Instance.CreateMerchantSprite();
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.MerchantDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.MerchantSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         public override void TakeDamage(int damageAmount)
@@ -26,13 +26,13 @@
 
         public override void Update()
         {
-            this.Physics.SetDepth();
-            this.sprite.Update();
+            Physics.SetDepth();
+            sprite.Update();
         }
 
         public override void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DefaultTint, this.Physics.Depth);
+            sprite.Draw(Physics.Location, LoZGame.Instance.DefaultTint, Physics.Depth);
         }
 
         public override ISprite CreateCorrectSprite()

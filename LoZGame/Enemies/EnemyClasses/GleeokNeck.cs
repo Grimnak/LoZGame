@@ -11,27 +11,27 @@
 
         public GleeokNeck(IEnemy body)
         {
-            this.parent = body;
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.ManhandlaHeadStateList);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.GleeokNeckHealth);
-            this.Physics = new Physics(body.Physics.Bounds.Center.ToVector2());
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
-            this.Physics.IsMoveable = false;
-            this.CurrentState = new IdleEnemyState(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.Damage = 0;
-            this.DamageTimer = 0;
-            this.MoveSpeed = 0;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.HasChild = true;
-            this.AI = EnemyAI.NoAI;
-            this.IsTransparent = true;
-            this.ApplyDamageMod();
-            this.ApplyLargeWeightModPos();
-            this.ApplyLargeHealthMod();
+            parent = body;
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.ManhandlaHeadStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.GleeokNeckHealth);
+            Physics = new Physics(body.Physics.Bounds.Center.ToVector2());
+            Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
+            Physics.IsMoveable = false;
+            CurrentState = new IdleEnemyState(this);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            Damage = 0;
+            DamageTimer = 0;
+            MoveSpeed = 0;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            HasChild = true;
+            AI = EnemyAI.NoAI;
+            IsTransparent = true;
+            ApplyDamageMod();
+            ApplyLargeWeightModPos();
+            ApplyLargeHealthMod();
         }
 
         public override void Stun(int stunTime)
@@ -50,9 +50,9 @@
 
         public override void Update()
         {
-            if (this.parent.IsDead)
+            if (parent.IsDead)
             {
-                this.Expired = true;
+                Expired = true;
             }
         }
 

@@ -12,22 +12,22 @@
 
         public OldManSecretState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Enemy.CurrentState = this;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.DirectionChange = LoZGame.Instance.UpdateSpeed * 10;
+            Enemy = enemy;
+            Enemy.CurrentState = this;
+            Sprite = Enemy.CreateCorrectSprite();
+            DirectionChange = LoZGame.Instance.UpdateSpeed * 10;
         }
 
         private void ShootFireballs()
         {
-            Vector2 velocityVector = this.UnitVectorToPlayer(this.Enemy.Physics.Bounds.Center.ToVector2());
+            Vector2 velocityVector = UnitVectorToPlayer(Enemy.Physics.Bounds.Center.ToVector2());
 
             velocityVector *= FireballSpeed;
             for (int i = 0; i < NumberFireballs; i++)
             {
                 float rotation = ((-1 * (float)(NumberFireballs - 1) / 2.0f) * FireballSpread) + (i * FireballSpread);
-                Vector2 rotatedVelocity = this.RotateVector(velocityVector, rotation);
-                Physics fireballPhysics = new Physics(this.Enemy.Physics.Bounds.Center.ToVector2())
+                Vector2 rotatedVelocity = RotateVector(velocityVector, rotation);
+                Physics fireballPhysics = new Physics(Enemy.Physics.Bounds.Center.ToVector2())
                 {
                     MovementVelocity = new Vector2(rotatedVelocity.X, rotatedVelocity.Y)
                 };
@@ -37,9 +37,9 @@
 
         public override void Update()
         {   
-            if (this.Lifetime > DirectionChange / 2 && this.Lifetime % 4 == 0)
+            if (Lifetime > DirectionChange / 2 && Lifetime % 4 == 0)
             {
-                this.ShootFireballs();
+                ShootFireballs();
             }
             base.Update();
         }

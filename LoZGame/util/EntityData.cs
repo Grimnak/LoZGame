@@ -19,22 +19,22 @@
 
         public EntityData()
         {
-            this.Damage = 0;
-            this.Speed = 0;
-            this.Resistance = 1;
-            this.SpriteEffect = SpriteEffects.None;
-            this.Origin = Vector2.Zero;
-            this.Rotation = 0.0f;
+            Damage = 0;
+            Speed = 0;
+            Resistance = 1;
+            SpriteEffect = SpriteEffects.None;
+            Origin = Vector2.Zero;
+            Rotation = 0.0f;
         }
 
         public void ModifyDamage(float factor)
         {
-            this.Damage = (int)((float)Damage * factor);
+            Damage = (int)((float)Damage * factor);
         }
 
         public void ModifySpeed(float factor)
         {
-            this.Speed *= factor;
+            Speed *= factor;
         }
     }
 }

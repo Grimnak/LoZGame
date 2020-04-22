@@ -21,25 +21,25 @@
 
         private void StandardDodongo()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.RopeFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
             }
-            if (!(this.Enemy.CurrentState is AttackingDodongoState || this.Enemy.IsSpawning))
+            if (!(Enemy.CurrentState is AttackingDodongoState || Enemy.IsSpawning))
             {
-                this.CheckForLink();
+                CheckForLink();
             }
         }
 
         private void HardDodongo()
         {
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.RopeFavorCardinalValue + (2 * (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
             }
-            if (!(this.Enemy.CurrentState is AttackingDodongoState || this.Enemy.IsSpawning))
+            if (!(Enemy.CurrentState is AttackingDodongoState || Enemy.IsSpawning))
             {
-                this.CheckForLink();
+                CheckForLink();
             }
         }
     }

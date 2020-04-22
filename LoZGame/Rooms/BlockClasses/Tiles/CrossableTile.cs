@@ -22,13 +22,13 @@ namespace LoZClone
         private BlockCollisionHandler blockCollisionHandler;
         private bool isTransparent;
 
-        public bool IsTransparent { get { return this.isTransparent; } set { this.isTransparent = value; } }
+        public bool IsTransparent { get { return isTransparent; } set { isTransparent = value; } }
 
         public List<MovableTile.InvalidDirection> InvalidDirections { get { return null; } }
 
         public Physics Physics { get; set; }
 
-        public bool BeingCrossed { get { return this.playerCrossing; } }
+        public bool BeingCrossed { get { return playerCrossing; } }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BlockTile"/> class.
@@ -37,16 +37,16 @@ namespace LoZClone
         /// <param name="name">Name of the tiles sprite.</param>
         public CrossableTile(Vector2 location, string name)
         {
-            this.blockCollisionHandler = new BlockCollisionHandler(this);
-            this.Physics = new Physics(location);
-            this.spriteTint = Color.Gray;
-            this.isTransparent = true;
-            this.sprite = this.CreateCorrectSprite(name);
-            this.crossingSprite = this.CreateCorrectCrossingSprite(name);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
-            this.Physics.Depth = GameData.Instance.RoomConstants.BlockTileDepth;
-            this.ladderTime = 30;
-            this.playerCrossing = false;
+            blockCollisionHandler = new BlockCollisionHandler(this);
+            Physics = new Physics(location);
+            spriteTint = Color.Gray;
+            isTransparent = true;
+            sprite = CreateCorrectSprite(name);
+            crossingSprite = CreateCorrectCrossingSprite(name);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
+            Physics.Depth = GameData.Instance.RoomConstants.BlockTileDepth;
+            ladderTime = 30;
+            playerCrossing = false;
         }
 
         public ISprite CreateCorrectSprite(string name)
@@ -77,13 +77,13 @@ namespace LoZClone
 
         public void Draw()
         {
-            if (this.playerCrossing)
+            if (playerCrossing)
             {
-                this.crossingSprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
+                crossingSprite.Draw(Physics.Location, spriteTint, Physics.Depth);
             }
             else
             {
-                this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
+                sprite.Draw(Physics.Location, spriteTint, Physics.Depth);
             }
         }
 
@@ -91,15 +91,15 @@ namespace LoZClone
         {
             if (otherCollider is IPlayer)
             {
-                this.blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
-                if (((IPlayer)otherCollider).Inventory.HasLadder && (!((IPlayer)otherCollider).Inventory.LadderInUse || this.playerCrossing))
+                blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                if (((IPlayer)otherCollider).Inventory.HasLadder && (!((IPlayer)otherCollider).Inventory.LadderInUse || playerCrossing))
                 {
-                    this.ladderTime = 0;
+                    ladderTime = 0;
                 }
             }
             else if (otherCollider is IEnemy)
             {
-                this.blockCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+                blockCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
         }
 
@@ -109,22 +109,22 @@ namespace LoZClone
 
         public void Update()
         {
-            if (this.ladderTime < maxLadderTime)
+            if (ladderTime < maxLadderTime)
             {
-                this.ladderTime++;
-                this.playerCrossing = true;
+                ladderTime++;
+                playerCrossing = true;
                 LoZGame.Instance.Players[0].Inventory.LadderInUse = true;
             }
             else
             {
-                if (this.playerCrossing == true)
+                if (playerCrossing == true)
                 {
                     LoZGame.Instance.Players[0].Inventory.LadderInUse = false;
                 }
-                this.playerCrossing = false;
+                playerCrossing = false;
             }
 
-            this.sprite.Update();
+            sprite.Update();
         }
     }
 }

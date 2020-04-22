@@ -15,28 +15,28 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.item.PickUpItemTime == -1) 
+            if (item.PickUpItemTime == -1) 
             {
-                this.item.Expired = true;
+                item.Expired = true;
             }
 
-            if (this.item is Fairy)
+            if (item is Fairy)
             {
                 SoundFactory.Instance.PlayGetItem();
                 player.Health.CurrentHealth = player.Health.MaxHealth;
             }
-            else if (this.item is DroppedHealth)
+            else if (item is DroppedHealth)
             {
                 SoundFactory.Instance.PlayGetHeartOrKey();
                 player.Health.GainHealth(4);
             }
-            else if (this.item is HeartContainer)
+            else if (item is HeartContainer)
             {
                 SoundFactory.Instance.PlayGetItem();
                 player.Health.MaxHealth = player.Health.MaxHealth + 4;
                 player.Health.CurrentHealth = player.Health.MaxHealth;
             }
-            else if (this.item is DroppedRupee)
+            else if (item is DroppedRupee)
             {
                 SoundFactory.Instance.PlayGetRupee();
                 player.Inventory.GainRupees(1);
@@ -51,37 +51,37 @@
                 SoundFactory.Instance.PlayGetItem();
                 player.Inventory.GainBombs();
             }
-            else if (this.item is Key)
+            else if (item is Key)
             {
                 SoundFactory.Instance.PlayGetHeartOrKey();
             }
-            else if (this.item is Triforce)
+            else if (item is Triforce)
             {
                 SoundFactory.Instance.PlayGetItem();
                 SoundFactory.Instance.PlayTriforceTune();
             }
-            else if (this.item is DroppedPotion)
+            else if (item is DroppedPotion)
             {
                 SoundFactory.Instance.PlayGetItem();
                 player.Inventory.GainRedPotion();
             }
-            else if (this.item is DroppedSecondPotion)
+            else if (item is DroppedSecondPotion)
             {
                 SoundFactory.Instance.PlayGetItem();
                 player.Inventory.GainBluePotion();
             }
-            else if (this.item is Clock)
+            else if (item is Clock)
             {
                 SoundFactory.Instance.PlayGetItem();
                 LoZGame.Instance.Players[0].Inventory.ClockLockout = 0;
                 player.Inventory.HasClock = true;
             }
-            else if (this.item is WhiteSword)
+            else if (item is WhiteSword)
             {
                 SoundFactory.Instance.PlayGetItem();
                 player.CurrentWeapon = Link.LinkWeapon.White;
             }
-            else if (this.item is MagicSword)
+            else if (item is MagicSword)
             {
                 SoundFactory.Instance.PlayGetItem();
                 player.CurrentWeapon = Link.LinkWeapon.Magic;
@@ -118,8 +118,8 @@
         {
             if (item is Fairy)
             {
-                this.SetBounds(this.item.Physics, collisionSide);
-                this.item.Physics.SetLocation();
+                SetBounds(item.Physics, collisionSide);
+                item.Physics.SetLocation();
             }
         }
     }

@@ -16,16 +16,16 @@
         /// <param name="playerInstance">Instance of player.</param>
         public MoveUpState(IPlayer playerInstance)
         {
-            this.player = playerInstance;
-            this.player.Physics.CurrentDirection = Physics.Direction.North;
-            this.sprite = this.CreateCorrectSprite();
-            this.player.Physics.MovementVelocity = new Vector2(0, -1 * this.player.MoveSpeed);
+            player = playerInstance;
+            player.Physics.CurrentDirection = Physics.Direction.North;
+            sprite = CreateCorrectSprite();
+            player.Physics.MovementVelocity = new Vector2(0, -1 * player.MoveSpeed);
         }
 
         /// <inheritdoc/>
         public void Idle()
         {
-            this.player.State = new IdleState(this.player);
+            player.State = new IdleState(player);
         }
 
         /// <inheritdoc/>
@@ -36,70 +36,70 @@
         /// <inheritdoc/>
         public void MoveDown()
         {
-            this.player.State = new MoveDownState(this.player);
+            player.State = new MoveDownState(player);
         }
 
         /// <inheritdoc/>
         public void MoveLeft()
         {
-            this.player.State = new MoveLeftState(this.player);
+            player.State = new MoveLeftState(player);
         }
 
         /// <inheritdoc/>
         public void MoveRight()
         {
-            this.player.State = new MoveRightState(this.player);
+            player.State = new MoveRightState(player);
         }
 
         /// <inheritdoc/>
         public void Attack()
         {
-            this.player.State = new AttackState(this.player);
+            player.State = new AttackState(player);
         }
 
         /// <inheritdoc/>
         public void Die()
         {
-            this.player.State = new DieState(this.player);
+            player.State = new DieState(player);
         }
 
         /// <inheritdoc/>
         public void PickupItem(IItem item)
         {
-            this.player.State = new PickupItemState(this.player, item);
+            player.State = new PickupItemState(player, item);
         }
 
         /// <inheritdoc/>
         public void UseItem(int waitTime)
         {
-            this.player.State = new UseItemState(this.player, waitTime);
+            player.State = new UseItemState(player, waitTime);
         }
 
         /// <inheritdoc/>
         public void Stun(int stunTime)
         {
-            this.player.State = new StunnedState(this.player, this.player.State, stunTime);
+            player.State = new StunnedState(player, player.State, stunTime);
         }
 
         /// <inheritdoc/>
         public void Update()
         {
-            this.sprite.Update();
-            if (this.sprite.CurrentFrame >= GameData.Instance.PlayerConstants.MaximumFrames)
+            sprite.Update();
+            if (sprite.CurrentFrame >= GameData.Instance.PlayerConstants.MaximumFrames)
             {
-                this.sprite.SetFrame(0);
+                sprite.SetFrame(0);
             }
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint, this.player.Physics.Depth);
+            sprite.Draw(player.Physics.Location, player.CurrentTint, player.Physics.Depth);
         }
 
         private ISprite CreateCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.CreateSpriteLinkUp(this.player.CurrentColor);
+            return LinkSpriteFactory.Instance.CreateSpriteLinkUp(player.CurrentColor);
         }
     }
 }

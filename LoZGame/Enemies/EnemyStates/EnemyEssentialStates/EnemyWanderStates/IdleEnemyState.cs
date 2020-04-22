@@ -8,10 +8,10 @@
     {
         public IdleEnemyState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Enemy.CurrentState = this;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
+            Enemy = enemy;
+            Enemy.CurrentState = this;
+            Sprite = Enemy.CreateCorrectSprite();
+            Enemy.Physics.MovementVelocity = Vector2.Zero;
             RandomDirectionChange();
         }
     }

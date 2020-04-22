@@ -29,45 +29,45 @@
 
         public TransitionRoomState(Physics.Direction direction)
         {
-            this.oldObjects = LoZGame.Instance.GameObjects;
-            this.newObjects = new GameObjectManager();
-            this.done = false;
-            this.transitionDistance = 0;
-            this.dungeon = LoZGame.Instance.Dungeon;
-            this.currentRoomLocation = new Point(this.dungeon.CurrentRoomX, this.dungeon.CurrentRoomY);
-            this.currentRoomBorderOffset = Vector2.Zero;
-            this.puzzleDoors = new List<IDoor>();
-            this.specialDoors = new List<IDoor>();
+            oldObjects = LoZGame.Instance.GameObjects;
+            newObjects = new GameObjectManager();
+            done = false;
+            transitionDistance = 0;
+            dungeon = LoZGame.Instance.Dungeon;
+            currentRoomLocation = new Point(dungeon.CurrentRoomX, dungeon.CurrentRoomY);
+            currentRoomBorderOffset = Vector2.Zero;
+            puzzleDoors = new List<IDoor>();
+            specialDoors = new List<IDoor>();
             switch (direction)
             {
                 case Physics.Direction.North:
                     transitionDistance = YTransition;
-                    this.nextRoomLocation = new Point(this.currentRoomLocation.X, this.currentRoomLocation.Y - 1);
-                    this.nextRoomOffset = new Point(0, -YTransition);
+                    nextRoomLocation = new Point(currentRoomLocation.X, currentRoomLocation.Y - 1);
+                    nextRoomOffset = new Point(0, -YTransition);
                     break;
                 case Physics.Direction.South:
                     transitionDistance = YTransition;
-                    this.nextRoomLocation = new Point(this.currentRoomLocation.X, this.currentRoomLocation.Y + 1);
-                    this.nextRoomOffset = new Point(0, YTransition);
+                    nextRoomLocation = new Point(currentRoomLocation.X, currentRoomLocation.Y + 1);
+                    nextRoomOffset = new Point(0, YTransition);
                     break;
                 case Physics.Direction.East:
                     transitionDistance = XTransition;
-                    this.nextRoomLocation = new Point(this.currentRoomLocation.X + 1, this.currentRoomLocation.Y);
-                    this.nextRoomOffset = new Point(XTransition, 0);
+                    nextRoomLocation = new Point(currentRoomLocation.X + 1, currentRoomLocation.Y);
+                    nextRoomOffset = new Point(XTransition, 0);
                     break;
                 case Physics.Direction.West:
                     transitionDistance = XTransition;
-                    this.nextRoomLocation = new Point(this.currentRoomLocation.X - 1, this.currentRoomLocation.Y);
-                    this.nextRoomOffset = new Point(-XTransition, 0);
+                    nextRoomLocation = new Point(currentRoomLocation.X - 1, currentRoomLocation.Y);
+                    nextRoomOffset = new Point(-XTransition, 0);
                     break;
             }
-            this.NextRoom = this.dungeon.GetRoom(nextRoomLocation.Y, nextRoomLocation.X);
-            this.nextRoomBorderOffset = this.nextRoomOffset.ToVector2();
-            if (this.NextRoom.Exists)
+            NextRoom = dungeon.GetRoom(nextRoomLocation.Y, nextRoomLocation.X);
+            nextRoomBorderOffset = nextRoomOffset.ToVector2();
+            if (NextRoom.Exists)
             {
-                this.MasterMovement = new Vector2((float)(-1 * nextRoomOffset.X) / transitionSpeed, (float)(-1 * nextRoomOffset.Y) / transitionSpeed);
-                this.oldObjects.Entities.Clear();
-                this.dungeon.LoadNewRoom(newObjects, this.nextRoomLocation, this.nextRoomOffset);
+                MasterMovement = new Vector2((float)(-1 * nextRoomOffset.X) / transitionSpeed, (float)(-1 * nextRoomOffset.Y) / transitionSpeed);
+                oldObjects.Entities.Clear();
+                dungeon.LoadNewRoom(newObjects, nextRoomLocation, nextRoomOffset);
                 foreach (IPlayer player in LoZGame.Instance.Players)
                 {
                     switch (direction)
@@ -90,8 +90,8 @@
                             break;
                     }
                     player.Physics.MovementVelocity += MasterMovement;
-                    this.oldObjects.SetObjectMovement(this.MasterMovement);
-                    this.newObjects.SetObjectMovement(this.MasterMovement);
+                    oldObjects.SetObjectMovement(MasterMovement);
+                    newObjects.SetObjectMovement(MasterMovement);
                     foreach (IDoor door in oldObjects.Doors.DoorList)
                     {
                         door.Physics.Depth = 1;
@@ -120,7 +120,7 @@
             }
             else
             {
-                this.PlayGame();
+                PlayGame();
             }
         }
 
@@ -143,22 +143,22 @@
 
         public override void Update()
         {
-            if (!this.done)
+            if (!done)
             {
-                if (this.MasterMovement.Length() >= transitionDistance)
+                if (MasterMovement.Length() >= transitionDistance)
                 {
-                    this.MasterMovement.Normalize();
-                    this.MasterMovement *= transitionDistance;
-                    this.done = true;
+                    MasterMovement.Normalize();
+                    MasterMovement *= transitionDistance;
+                    done = true;
                 }
                 else
                 {
-                    this.transitionDistance -= Math.Abs(MasterMovement.X + MasterMovement.Y);
+                    transitionDistance -= Math.Abs(MasterMovement.X + MasterMovement.Y);
                 }
-                this.nextRoomBorderOffset += MasterMovement;
-                this.currentRoomBorderOffset += MasterMovement;
-                this.oldObjects.MoveObjects();
-                this.newObjects.MoveObjects();
+                nextRoomBorderOffset += MasterMovement;
+                currentRoomBorderOffset += MasterMovement;
+                oldObjects.MoveObjects();
+                newObjects.MoveObjects();
                 foreach (IPlayer player in LoZGame.Instance.Players)
                 {
                     player.Update();
@@ -166,10 +166,10 @@
             }
             else
             {
-                this.oldObjects.LoadedRoomX = this.dungeon.CurrentRoomX;
-                this.oldObjects.LoadedRoomY = this.dungeon.CurrentRoomY;
-                this.dungeon.CurrentRoomX = nextRoomLocation.X;
-                this.dungeon.CurrentRoomY = nextRoomLocation.Y;
+                oldObjects.LoadedRoomX = dungeon.CurrentRoomX;
+                oldObjects.LoadedRoomY = dungeon.CurrentRoomY;
+                dungeon.CurrentRoomX = nextRoomLocation.X;
+                dungeon.CurrentRoomY = nextRoomLocation.Y;
                 foreach (IDoor door in oldObjects.Doors.DoorList)
                 {
                     door.Physics.SetDepth();
@@ -190,17 +190,17 @@
                 }
                 puzzleDoors.Clear();
                 specialDoors.Clear();
-                this.oldObjects.UpdateObjectLocations(nextRoomOffset);
-                this.oldObjects.Save();
+                oldObjects.UpdateObjectLocations(nextRoomOffset);
+                oldObjects.Save();
                 LoZGame.Instance.GameObjects = newObjects;
-                this.dungeon.MiniMap.Explore();
+                dungeon.MiniMap.Explore();
                 foreach (IPlayer player in LoZGame.Instance.Players)
                 {
                     player.Physics.MasterMovement = Vector2.Zero;
                     player.Idle();
                 }
-                this.dungeon.SpawnObjects();
-                this.PlayGame();
+                dungeon.SpawnObjects();
+                PlayGame();
             }
         }
 
@@ -209,14 +209,14 @@
         {
             // Draw Room Backgrounds
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
-            this.NextRoom.Draw(nextRoomBorderOffset.ToPoint());
-            this.dungeon.CurrentRoom.Draw(currentRoomBorderOffset.ToPoint());
+            NextRoom.Draw(nextRoomBorderOffset.ToPoint());
+            dungeon.CurrentRoom.Draw(currentRoomBorderOffset.ToPoint());
             LoZGame.Instance.SpriteBatch.End();
 
             // Draw Game Objects
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
-            this.oldObjects.Draw();
-            this.newObjects.Draw();
+            oldObjects.Draw();
+            newObjects.Draw();
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Draw();

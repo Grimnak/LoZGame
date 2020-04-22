@@ -10,11 +10,11 @@
         public void UpdateFireSnake()
         {
             DefaultUpdate();
-            if (this.Lifetime % GameData.Instance.EnemyMiscConstants.UpdateSegmentTime == 0 && this.Lifetime != 0)
+            if (Lifetime % GameData.Instance.EnemyMiscConstants.UpdateSegmentTime == 0 && Lifetime != 0)
             {
-                this.Enemy.UpdateChild();
+                Enemy.UpdateChild();
             }
-            if (this.Lifetime == this.DirectionChange)
+            if (Lifetime == DirectionChange)
             {
                 FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.FireSnakeFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
                 FavorPlayerDiagonal(GameData.Instance.EnemyMiscConstants.FireSnakeFavorDiagonalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));

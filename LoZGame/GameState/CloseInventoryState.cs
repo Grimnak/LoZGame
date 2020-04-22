@@ -10,8 +10,8 @@
 
         public CloseInventoryState()
         {
-            this.lockout = 0;
-            this.transitionSpeed = GameData.Instance.GameStateDataConstants.CloseInventoryTransitionSpeed;
+            lockout = 0;
+            transitionSpeed = GameData.Instance.GameStateDataConstants.CloseInventoryTransitionSpeed;
         }
 
         /// <inheritdoc></inheritdoc>
@@ -34,8 +34,8 @@
         /// <inheritdoc></inheritdoc>
         public override void Update()
         {
-            this.lockout += this.transitionSpeed;
-            if (this.lockout <= LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset)
+            lockout += transitionSpeed;
+            if (lockout <= LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset)
             {
                 InventoryComponents.Instance.InventoryBackgroundPositionY -= transitionSpeed;
             }

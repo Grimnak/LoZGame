@@ -14,38 +14,38 @@
 
         public FireSnakeHead(Vector2 location)
         {
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.FireSnakeStateList);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.FireSnakeHealth);
-            this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.FireSnakeMass;
-            this.Physics.IsMoveable = false;
-            this.CurrentState = new IdleEnemyState(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.FireSnakeDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.HasChild = true;
-            this.children = new List<IEnemy>();
-            this.spawnedChildren = false;
-            this.AI = EnemyAI.Firesnakehead;
-            this.IsSpawning = false;
-            this.ApplyDamageMod();
-            this.ApplySmallSpeedMod();
-            this.ApplySmallWeightModPos();
-            this.ApplyLargeHealthMod();
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.FireSnakeStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.FireSnakeHealth);
+            Physics = new Physics(location);
+            Physics.Mass = GameData.Instance.EnemyMassConstants.FireSnakeMass;
+            Physics.IsMoveable = false;
+            CurrentState = new IdleEnemyState(this);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.FireSnakeDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            HasChild = true;
+            children = new List<IEnemy>();
+            spawnedChildren = false;
+            AI = EnemyAI.Firesnakehead;
+            IsSpawning = false;
+            ApplyDamageMod();
+            ApplySmallSpeedMod();
+            ApplySmallWeightModPos();
+            ApplyLargeHealthMod();
         }
 
         public override void TakeDamage(int damageAmount)
         {
-            if (this.children.Count > 0 && this.DamageTimer <= 0)
+            if (children.Count > 0 && DamageTimer <= 0)
             {
-                this.DamageTimer = LoZGame.Instance.UpdateSpeed / 2;
-                this.children[this.children.Count - 1].Expired = true;
-                this.children.RemoveAt(this.children.Count - 1);
+                DamageTimer = LoZGame.Instance.UpdateSpeed / 2;
+                children[children.Count - 1].Expired = true;
+                children.RemoveAt(children.Count - 1);
             }
             else
             {
@@ -55,27 +55,27 @@
 
         public override void UpdateChild()
         {
-            if (this.children.Count > 0)
+            if (children.Count > 0)
             {
-                for (int i = this.children.Count - 1; i > 0; i--)
+                for (int i = children.Count - 1; i > 0; i--)
                 {
-                    this.children[i].Physics.MovementVelocity = this.children[i - 1].Physics.MovementVelocity;
+                    children[i].Physics.MovementVelocity = children[i - 1].Physics.MovementVelocity;
                 }
-                this.children[0].Physics.MovementVelocity = this.Physics.MovementVelocity;
+                children[0].Physics.MovementVelocity = Physics.MovementVelocity;
             }
         }
 
         public override void AddChild()
         {
-            if (!this.spawnedChildren)
+            if (!spawnedChildren)
             {
                 for (int i = 0; i < GameData.Instance.EnemyMiscConstants.FireSnakeLength; i++)
                 {
                     IEnemy child = new FireSnakeSegment(this);
-                    this.children.Add(child);
+                    children.Add(child);
                     LoZGame.Instance.GameObjects.Enemies.Add(child);
                 }
-                this.spawnedChildren = true;
+                spawnedChildren = true;
             }
         }
 

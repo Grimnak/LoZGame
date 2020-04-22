@@ -8,11 +8,11 @@
     {
         public OldManAngryState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Enemy.CurrentState = this;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
-            this.DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange;
+            Enemy = enemy;
+            Enemy.CurrentState = this;
+            Sprite = Enemy.CreateCorrectSprite();
+            Enemy.Physics.MovementVelocity = Vector2.Zero;
+            DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange;
         }
     }
 }

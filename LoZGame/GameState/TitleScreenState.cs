@@ -13,9 +13,9 @@
         {
             SoundFactory.Instance.StopDungeonSong();
             SoundFactory.Instance.PlayTitleSong();
-            this.sprite = ScreenSpriteFactory.Instance.TitleScreen();
-            this.enter = ScreenSpriteFactory.Instance.PressEnter();
-            this.sprite.FrameDelay = GameData.Instance.GameStateDataConstants.TitleScreenFrameDelay;
+            sprite = ScreenSpriteFactory.Instance.TitleScreen();
+            enter = ScreenSpriteFactory.Instance.PressEnter();
+            sprite.FrameDelay = GameData.Instance.GameStateDataConstants.TitleScreenFrameDelay;
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
 
@@ -72,7 +72,7 @@
         /// <inheritdoc></inheritdoc>
         public override void Update()
         {
-            this.sprite.Update();
+            sprite.Update();
             for (int i = 0; i < LoZGame.Instance.Controllers.Count; i++)
             {
                 LoZGame.Instance.Controllers[i].Update();
@@ -87,9 +87,9 @@
         public override void Draw()
         {
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            this.sprite.Draw(new Vector2(0, 0), this.spriteTint, 1.0f);
-            if (this.sprite.CurrentFrame > 3)
-                this.enter.Draw(new Vector2(GameData.Instance.GameStateDataConstants.TitleDrawX, GameData.Instance.GameStateDataConstants.TitleDrawY), this.spriteTint, 1.0f);
+            sprite.Draw(new Vector2(0, 0), spriteTint, 1.0f);
+            if (sprite.CurrentFrame > 3)
+                enter.Draw(new Vector2(GameData.Instance.GameStateDataConstants.TitleDrawX, GameData.Instance.GameStateDataConstants.TitleDrawY), spriteTint, 1.0f);
             LoZGame.Instance.SpriteBatch.End();
         }
     }

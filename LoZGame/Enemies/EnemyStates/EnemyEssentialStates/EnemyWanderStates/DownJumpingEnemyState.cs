@@ -8,12 +8,12 @@
     {
         public DownJumpingEnemyState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Enemy.CurrentState = this;
+            Enemy = enemy;
+            Sprite = Enemy.CreateCorrectSprite();
+            Enemy.CurrentState = this;
             RandomDirectionChange();
-            this.Enemy.Physics.MovementVelocity = new Vector2(0, this.Enemy.MoveSpeed);
-            this.Enemy.Physics.Jump(GameData.Instance.EnemySpeedConstants.JumpStrength);
+            Enemy.Physics.MovementVelocity = new Vector2(0, Enemy.MoveSpeed);
+            Enemy.Physics.Jump(GameData.Instance.EnemySpeedConstants.JumpStrength);
         }
 
         public override void Update()

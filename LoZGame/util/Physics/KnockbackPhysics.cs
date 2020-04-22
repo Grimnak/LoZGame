@@ -13,25 +13,25 @@
         /// </summary>
         public void HandleKnockBack()
         {
-            this.boundsLocation += this.KnockbackVelocity;
-            this.bounds = new Rectangle(this.boundsLocation.ToPoint(), this.bounds.Size);
-            this.UpdateKnockback();
-            this.SetLocation();
+            boundsLocation += KnockbackVelocity;
+            bounds = new Rectangle(boundsLocation.ToPoint(), bounds.Size);
+            UpdateKnockback();
+            SetLocation();
         }
 
         private void UpdateKnockback()
         {
             if (KnockbackVelocity.Length() > GameData.Instance.PhysicsConstants.ZeroVelocity)
             {
-                this.Friction = new Vector2(KnockbackVelocity.X, KnockbackVelocity.Y) / (GameData.Instance.PhysicsConstants.KnockbackMultiplier * KnockbackVelocity.Length());
-                this.Friction *= GameData.Instance.PhysicsConstants.MassMultiplier * (this.Mass / DefaultMass);
+                Friction = new Vector2(KnockbackVelocity.X, KnockbackVelocity.Y) / (GameData.Instance.PhysicsConstants.KnockbackMultiplier * KnockbackVelocity.Length());
+                Friction *= GameData.Instance.PhysicsConstants.MassMultiplier * (Mass / DefaultMass);
                 if (KnockbackVelocity.Length() > Friction.Length())
                 {
-                    this.KnockbackVelocity += this.Friction;
+                    KnockbackVelocity += Friction;
                 }
                 else
                 {
-                    this.KnockbackVelocity = Vector2.Zero;
+                    KnockbackVelocity = Vector2.Zero;
                 }
             }
         }
@@ -40,7 +40,7 @@
         {
             if (IsMoveable)
             {
-                this.KnockbackVelocity = GameData.Instance.PhysicsConstants.MomentumMultiplier * momentum / Mass;
+                KnockbackVelocity = GameData.Instance.PhysicsConstants.MomentumMultiplier * momentum / Mass;
             }
         }
     }
