@@ -124,10 +124,12 @@
                 case CollisionDetection.CollisionSide.Top:
                     target.Bounds = new Rectangle(target.Bounds.X, topOffset, target.Bounds.Width, target.Bounds.Height);
                     target.StopKnockbackY();
+                    target.Bounce();
                     break;
                 case CollisionDetection.CollisionSide.Bottom:
                     target.Bounds = new Rectangle(target.Bounds.X, bottomOffset - target.Bounds.Height, target.Bounds.Width, target.Bounds.Height);
                     target.StopKnockbackY();
+                    target.EndJump();
                     break;
                 case CollisionDetection.CollisionSide.Left:
                     target.Bounds = new Rectangle(horizontalOffset, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);

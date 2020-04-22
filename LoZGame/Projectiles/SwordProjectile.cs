@@ -20,6 +20,7 @@
             InitializeDirection();
             sourceOffset = Physics.Bounds.Location - Source.Bounds.Location;
             lifeTime = 0;
+            Sprite = ProjectileSpriteFactory.Instance.Sword(source.CurrentColor, source.CurrentWeapon);
             CreateCorrectSword(source.CurrentWeapon);
             Physics.MovementVelocity = Vector2.Zero;
         }
@@ -58,19 +59,16 @@
             if (sword is Link.LinkWeapon.Wood)
             {
                 Damage = GameData.Instance.ProjectileDamageConstants.WoodSwordDamage;
-                Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
                 Physics.Mass = GameData.Instance.ProjectileMassConstants.WoodSwordMass;
             }
             else if (sword is Link.LinkWeapon.White)
             {
                 Damage = GameData.Instance.ProjectileDamageConstants.WhiteSwordDamage;
-                Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
                 Physics.Mass = GameData.Instance.ProjectileMassConstants.WhiteSwordMass;
             }
             else if (sword is Link.LinkWeapon.Magic)
             {
                 Damage = GameData.Instance.ProjectileDamageConstants.MagicSwordDamage;
-                Sprite = ProjectileSpriteFactory.Instance.GreenWoodSword();
                 Physics.Mass = GameData.Instance.ProjectileMassConstants.MagicSwordMass;
             }
             totalLife = 15;
