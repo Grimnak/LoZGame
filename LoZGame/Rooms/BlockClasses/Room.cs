@@ -17,9 +17,6 @@
         private bool exists = false;
         private bool basement = false;
         private bool oldman = false;
-        private Boomerang droppedBoomerang = null;
-        private HeartContainer droppedHeartContainer = null;
-        private MagicBoomerang droppedMagicBoomerang = null;
         private string text = null;
         private List<IItem> items = null; // a list for any and all items in a room
         private List<IEnemy> enemies = null; // a list for any and all enemies in a room
@@ -113,11 +110,11 @@
 
         public Tuple<Key, bool> DroppedKey { get; set; }
 
-        public Boomerang DroppedBoomerang => this.droppedBoomerang;
+        public Tuple<Boomerang, bool> DroppedBoomerang { get; set; }
 
-        public HeartContainer DroppedHeartContainer => this.droppedHeartContainer;
+        public Tuple<HeartContainer, bool> DroppedHeartContainer { get; set; }
 
-        public MagicBoomerang DroppedMagicBoomerang => this.droppedMagicBoomerang;
+        public Tuple<MagicBoomerang, bool> DroppedMagicBoomerang { get; set; }
 
         public bool IsBasement => this.basement;
 
@@ -257,7 +254,7 @@
                 case "HeartContainer":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 4);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.droppedHeartContainer = new HeartContainer(location);
+                    this.DroppedHeartContainer = Tuple.Create(new HeartContainer(location), false);
                     break;
                 case "Key":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
@@ -272,12 +269,12 @@
                 case "Boomerang":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.droppedBoomerang = new Boomerang(location);
+                    this.DroppedBoomerang = Tuple.Create(new Boomerang(location), false);
                     break;
                 case "MagicBoomerang":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.droppedMagicBoomerang = new MagicBoomerang(location);
+                    this.DroppedMagicBoomerang = Tuple.Create(new MagicBoomerang(location), false);
                     break;
                 case "TriForce":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 5);

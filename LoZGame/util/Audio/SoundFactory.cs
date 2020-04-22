@@ -35,7 +35,7 @@
         private SoundEffect solved = SoundEffect.FromStream(Properties.Resources.LOZ_Secret);
         private SoundEffect arrowOrBoomShoot = SoundEffect.FromStream(Properties.Resources.LOZ_Arrow_Boomerang);
         private SoundEffect doorUnlock = SoundEffect.FromStream(Properties.Resources.LOZ_Door_Unlock);
-        private SoundEffect keyAppears = SoundEffect.FromStream(Properties.Resources.LOZ_Key_Appear);
+        private SoundEffect specialItemAppears = SoundEffect.FromStream(Properties.Resources.LOZ_Key_Appear);
 
         private static readonly SoundFactory instance = new SoundFactory();
 
@@ -135,9 +135,9 @@
             doorUnlock.Play();
         }
 
-        public void PlayKeyAppears()
+        public void PlaySpecialItemAppears()
         {
-            keyAppears.Play();
+            specialItemAppears.Play();
         }
 
         // Music

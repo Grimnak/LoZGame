@@ -104,7 +104,7 @@
                 LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey.Item1);
                 if (!LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey.Item2)
                 {
-                    SoundFactory.Instance.PlayKeyAppears();
+                    SoundFactory.Instance.PlaySpecialItemAppears();
                 }
                 LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey = Tuple.Create(LoZGame.Instance.Dungeon.CurrentRoom.DroppedKey.Item1, true);
             }
@@ -114,7 +114,12 @@
         {
             if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedBoomerang != null)
             {
-                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedBoomerang);
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedBoomerang.Item1);
+                if (!LoZGame.Instance.Dungeon.CurrentRoom.DroppedBoomerang.Item2)
+                {
+                    SoundFactory.Instance.PlaySpecialItemAppears();
+                }
+                LoZGame.Instance.Dungeon.CurrentRoom.DroppedBoomerang = Tuple.Create(LoZGame.Instance.Dungeon.CurrentRoom.DroppedBoomerang.Item1, true);
             }
         }
 
@@ -122,7 +127,12 @@
         {
             if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer != null)
             {
-                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer);
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer.Item1);
+                if (!LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer.Item2)
+                {
+                    SoundFactory.Instance.PlaySpecialItemAppears();
+                }
+                LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer = Tuple.Create(LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer.Item1, true);
             }
         }
 
@@ -130,7 +140,12 @@
         {
             if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang != null)
             {
-                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang);
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang.Item1);
+                if (!LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang.Item2)
+                {
+                    SoundFactory.Instance.PlaySpecialItemAppears();
+                }
+                LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang = Tuple.Create(LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang.Item1, true);
             }
         }
 
