@@ -31,7 +31,6 @@
   </room>
   <room exists="True" oldman="False" basement="False" idx="1">
     <items>
-      <item X="6" Y="2">Key</item>
     </items>
     <enemies>
       <enemy X="1" Y="1">Keese</enemy>
@@ -413,7 +412,7 @@
     </enemies>
     <doors>
       <door loc="N">hidden</door>
-      <door loc="S">locked</door>
+      <door loc="S">unlocked</door>
       <door loc="W">unlocked</door>
     </doors>
     <rrow idx="0">
@@ -530,7 +529,7 @@
       <enemy X="10" Y="5">Vire</enemy>
     </enemies>
     <doors>
-      <door loc="N">locked</door>
+      <door loc="N">special</door>
       <door loc="E">special</door>
       <door loc="W">locked</door>
     </doors>
