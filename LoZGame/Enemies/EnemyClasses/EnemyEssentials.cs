@@ -48,7 +48,6 @@
                 {
                     SoundFactory.Instance.PlayBossDie();
                     LoZGame.Instance.Drops.DropHeartContainer();
-                    SoundFactory.Instance.PlayKeyAppears();
                 }
                 else
                 {
