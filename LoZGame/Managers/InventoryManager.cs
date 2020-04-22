@@ -158,7 +158,7 @@
                     case 1:
                         return this.hasMagicBoomerang;
                     case 2:
-                        return this.hasBow && this.numRupees > 0;
+                        return this.hasBow && this.hasSilverArrow && this.numRupees > 0;
                     case 3:
                         return this.hasRedFlame;
                     default:

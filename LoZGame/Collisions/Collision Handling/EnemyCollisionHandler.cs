@@ -44,6 +44,10 @@
                 {
                     this.enemy.TakeDamage(GameData.Instance.EnemyHealthConstants.PolsVoiceHealth);
                 }
+                else
+                {
+                    this.enemy.TakeDamage(projectile.Damage);
+                }
             }
             else if (this.enemy is FireSnakeHead || this.enemy is FireSnakeSegment)
             {

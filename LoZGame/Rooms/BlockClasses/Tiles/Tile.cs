@@ -28,6 +28,9 @@
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Rectangle bounds;
+        private bool isTransparent;
+
+        public bool IsTransparent { get { return this.isTransparent; } set { this.isTransparent = value; } }
 
         public Rectangle Bounds
         {
@@ -53,6 +56,7 @@
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location);
             this.Name = name;
+            this.isTransparent = true;
             this.spriteTint = Color.Gray;
             this.sprite = this.CreateCorrectSprite(name);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);

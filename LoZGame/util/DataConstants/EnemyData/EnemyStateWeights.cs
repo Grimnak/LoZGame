@@ -17,18 +17,6 @@
             { StateType.MoveSouthWest, 1 }
         };
 
-        private static Dictionary<StateType, int> jumpTest = new Dictionary<StateType, int>()
-        {
-            { StateType.JumpNorth, 1 },
-            { StateType.JumpSouth, 1 },
-            { StateType.JumpEast, 1 },
-            { StateType.JumpWest, 1 },
-            { StateType.JumpNorthEast, 1 },
-            { StateType.JumpNorthWest, 1 },
-            { StateType.JumpSouthEast, 1 },
-            { StateType.JumpSouthWest, 1 }
-        };
-
         private static Dictionary<StateType, int> oldManStateList = new Dictionary<StateType, int>()
         {
             // { StateType.Attack, 1 },
@@ -81,15 +69,6 @@
         };
 
         private static Dictionary<StateType, int> goriyaStateList = new Dictionary<StateType, int>()
-        {
-            { StateType.Attack, 1 },
-            { StateType.MoveNorth, 1 },
-            { StateType.MoveSouth, 1 },
-            { StateType.MoveEast, 1 },
-            { StateType.MoveWest, 1 }
-        };
-
-        private static Dictionary<StateType, int> blueGoriyaStateList = new Dictionary<StateType, int>()
         {
             { StateType.Attack, 1 },
             { StateType.MoveNorth, 1 },
@@ -203,8 +182,6 @@
             { StateType.JumpNorth, 1 }
         };
 
-        public Dictionary<StateType, int> JumpTest => jumpTest;
-
         public Dictionary<StateType, int> OldManStateList => oldManStateList;
 
         public Dictionary<StateType, int> DarknutStateList => darknutStateList;
@@ -218,8 +195,6 @@
         public Dictionary<StateType, int> GelStateList => gelStateList;
 
         public Dictionary<StateType, int> GoriyaStateList => goriyaStateList;
-
-        public Dictionary<StateType, int> BlueGoriyaStateList => blueGoriyaStateList;
 
         public Dictionary<StateType, int> KeeseStateList => keeseStateList;
 

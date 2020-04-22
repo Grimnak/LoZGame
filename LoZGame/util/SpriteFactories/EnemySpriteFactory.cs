@@ -51,6 +51,9 @@
         private static readonly int stalfosWidth = 48;
         private static readonly int stalfosHeight = 54;
 
+        private static readonly int gibdoWidth = 48;
+        private static readonly int gibdoHeight = 54;
+
         private static readonly int wallMasterWidth = 35;
         private static readonly int wallMasterHeight = 45;
 
@@ -119,9 +122,13 @@
             {
                 return spikeCrossWidth;
             }
-            else if (enemy is Stalfos || enemy is Gibdo)
+            else if (enemy is Stalfos)
             {
                 return stalfosWidth;
+            }
+            else if (enemy is Gibdo)
+            {
+                return gibdoWidth;
             }
             else if (enemy is WallMaster)
             {
@@ -135,7 +142,7 @@
             {
                 return fireSnakeWidth;
             }
-            else if (enemy is RedDarknut)
+            else if (enemy is RedDarknut || enemy is BlueDarknut)
             {
                 return darknutWidth;
             }
@@ -223,9 +230,13 @@
             {
                 return spikeCrossHeight;
             }
-            else if (enemy is Stalfos || enemy is Gibdo)
+            else if (enemy is Stalfos)
             {
                 return stalfosHeight;
+            }
+            else if (enemy is Gibdo)
+            {
+                return gibdoHeight;
             }
             else if (enemy is WallMaster)
             {
@@ -306,9 +317,10 @@
         private Texture2D GleeokNeckTexture;
         private SpriteData GleeokNeckData;
 
-        private Texture2D GibdoTexture;
         private Texture2D stalfos;
         private SpriteData stalfosData;
+        private Texture2D gibdo;
+        private SpriteData gibdoData;
 
         private Texture2D downGoriya;
         private Texture2D downBlueGoriya;
@@ -441,7 +453,7 @@
             this.GleeokNeckTexture = content.Load<Texture2D>("gleeok_neck");
           
             this.stalfos = content.Load<Texture2D>("stalfos");
-            this.GibdoTexture = content.Load<Texture2D>("gibdo");
+            this.gibdo = content.Load<Texture2D>("gibdo");
 
             this.downGoriya = content.Load<Texture2D>("redGoriyaDown");
             this.upGoriya = content.Load<Texture2D>("redGoriyaUp");
@@ -495,7 +507,6 @@
 
             this.polsVoice = content.Load<Texture2D>("polsvoice");
 
-
             this.oldMan = content.Load<Texture2D>("oldMan");
             this.angryOldMan = content.Load<Texture2D>("angryOldMan");
             this.merchant = content.Load<Texture2D>("merchant");
@@ -507,6 +518,7 @@
         private void LoadData()
         {
             this.stalfosData = new SpriteData(new Vector2(stalfosWidth, stalfosHeight), stalfos, 2, 1);
+            this.gibdoData = new SpriteData(new Vector2(gibdoWidth, gibdoHeight), gibdo, 2, 1);
             this.downGoriyaData = new SpriteData(new Vector2(goriyaWidth, goriyaHeight), downGoriya, 2, 1);
             this.upGoriyaData = new SpriteData(new Vector2(goriyaWidth, goriyaHeight), upGoriya, 2, 1);
             this.leftGoriyaData = new SpriteData(new Vector2(goriyaWidth, goriyaHeight), leftGoriya, 2, 1);
@@ -554,9 +566,10 @@
             return new ObjectSprite(this.stalfos, this.stalfosData);
         }
 
+        // Gibdo Sprites
         public ISprite CreateGibdoSprite()
         {
-            return new ObjectSprite(this.GibdoTexture, this.stalfosData);
+            return new ObjectSprite(this.gibdo, this.gibdoData);
         }
 
         // Firesnake Sprites
@@ -586,7 +599,6 @@
             }
         }
 
-        // Darknut Sprites
         public ISprite CreateRedDarknutSprite(Physics.Direction direction)
         {
             switch (direction)

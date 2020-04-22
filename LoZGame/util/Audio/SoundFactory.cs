@@ -174,7 +174,11 @@
         public void PlayCreditsTune()
         {
             creditsLoop.IsLooped = true;
-            creditsLoop.Play();
+            creditsLoop.Volume = 0.5f;
+            if (musicEnabled)
+            {
+                creditsTune.Play();
+            }
         }
 
         public void StopDungeonSong()

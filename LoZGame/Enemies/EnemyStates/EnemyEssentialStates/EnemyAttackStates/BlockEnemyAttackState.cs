@@ -1,11 +1,12 @@
 ﻿namespace LoZClone
 {
+    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     public class BlockEnemyAttackState : BlockEnemyEssentials, IEnemyState
     {
-        private const float FireballSpeed = 1.75f;
+        private const float FireballSpeed = 3f;
 
         public BlockEnemyAttackState(IEnemy enemy)
         {

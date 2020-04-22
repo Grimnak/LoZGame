@@ -39,12 +39,11 @@
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Rectangle bounds;
+        private bool isTransparent;
 
-        public Rectangle Bounds
-        {
-            get { return this.Physics.Bounds; }
-            set { this.Physics.Bounds = value; }
-        }
+        public bool IsTransparent { get { return this.isTransparent; } set { this.isTransparent = value; } }
+
+        public Rectangle Bounds { get { return this.Physics.Bounds; } set { this.Physics.Bounds = value; } }
 
         public List<MovableTile.InvalidDirection> InvalidDirections { get { return null; } }
 
@@ -62,6 +61,7 @@
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location);
             this.spriteTint = Color.Gray;
+            this.isTransparent = this.DetermineTransparency(name);
             this.sprite = this.CreateCorrectSprite(name);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
             this.Physics.Depth = GameData.Instance.RoomConstants.BlockTileDepth;
@@ -137,7 +137,7 @@
         /// <inheritdoc/>
         public void Update()
         {
-            this.sprite.Update(); 
+            this.sprite.Update();
         }
 
         /// <inheritdoc/>
@@ -160,6 +160,23 @@
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
+        }
+
+        /// <summary>
+        /// Determines if a block is transparent or not, which affects the ability of some projectile (e.g. fireballs) to travel over them.
+        /// </summary>
+        /// <param name="name">The name of the block tile.</param>
+        /// <returns></returns>
+        private bool DetermineTransparency(string name)
+        {
+            if (name.Equals(BasementBrickTile) || name.Equals(FireGapTile) || name.Equals(BlueStatueLeft2) || name.Equals(BlueStatueRight2))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

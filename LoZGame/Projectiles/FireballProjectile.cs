@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
 
     public class FireballProjectile : ProjectileEssentials, IProjectile
     {
-
         public FireballProjectile(Physics physics)
         {
             this.Physics = new Physics(physics.Location)

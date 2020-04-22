@@ -18,6 +18,9 @@
         private Vector2 originalLocation;
         private List<InvalidDirection> invalidDirections;
         private bool moved;
+        private bool isTransparent;
+
+        public bool IsTransparent { get { return this.isTransparent; } set { this.isTransparent = value; } }
 
         private Rectangle bounds;
 
@@ -58,6 +61,7 @@
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
             this.Physics.SetDepth();
             this.moved = false;
+            this.isTransparent = false;
             if (!(invalidDirectionStrings is null))
             {
                 foreach (string invalid in invalidDirectionStrings)

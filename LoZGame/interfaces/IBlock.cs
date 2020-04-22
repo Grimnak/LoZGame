@@ -13,6 +13,12 @@
     /// </summary>
     public interface IBlock : ICollider
     {
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not projectiles move over the block.
+        /// </summary>
+        bool IsTransparent { get; set; }
+
         List<MovableTile.InvalidDirection> InvalidDirections { get; }
 
         /// <summary>

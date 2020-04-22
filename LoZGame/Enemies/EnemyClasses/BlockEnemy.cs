@@ -1,6 +1,5 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
     using System.Collections.Generic;
 
@@ -11,8 +10,8 @@
             this.RandomStateGenerator = new RandomStateGenerator(this);
             this.States = new Dictionary<RandomStateGenerator.StateType, int>()
             {
-            { RandomStateGenerator.StateType.Attack, 1 },
-            { RandomStateGenerator.StateType.Idle, 5 }
+                { RandomStateGenerator.StateType.Attack, 1 },
+                { RandomStateGenerator.StateType.Idle, 5 }
             };
             this.Health = new HealthManager(1);
             this.Physics = new Physics(location);
@@ -24,6 +23,7 @@
             this.IsKillable = false;
             this.IsTransparent = true;
             this.DamageTimer = 0;
+            this.AI = EnemyAI.NoAI;
             this.CurrentState = new BlockEnemyIdleState(this);
             this.CurrentTint = LoZGame.Instance.DefaultTint;
         }

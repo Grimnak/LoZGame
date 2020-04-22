@@ -2,7 +2,6 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using System;
 
     public partial class BlockEnemyEssentials : EnemyStateEssentials, IEnemyState
     {
@@ -26,12 +25,12 @@
 
         public override void Update()
         {
-            // override to no longer update the sprite since the sprite doesnt exisst
+            // override to no longer update the sprite since the sprite doesn't exist
             this.Lifetime++;
             if (this.Lifetime > this.DirectionChange)
             {
-                this.Lifetime = 0;
                 this.Enemy.UpdateState();
+                this.Lifetime = 0;
             } 
         }
 

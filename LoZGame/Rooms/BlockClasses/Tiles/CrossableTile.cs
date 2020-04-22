@@ -20,6 +20,9 @@ namespace LoZClone
         private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Rectangle bounds;
         private BlockCollisionHandler blockCollisionHandler;
+        private bool isTransparent;
+
+        public bool IsTransparent { get { return this.isTransparent; } set { this.isTransparent = value; } }
 
         public List<MovableTile.InvalidDirection> InvalidDirections { get { return null; } }
 
@@ -37,6 +40,7 @@ namespace LoZClone
             this.blockCollisionHandler = new BlockCollisionHandler(this);
             this.Physics = new Physics(location);
             this.spriteTint = Color.Gray;
+            this.isTransparent = true;
             this.sprite = this.CreateCorrectSprite(name);
             this.crossingSprite = this.CreateCorrectCrossingSprite(name);
             this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);

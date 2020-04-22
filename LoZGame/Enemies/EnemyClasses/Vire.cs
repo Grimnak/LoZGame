@@ -39,7 +39,6 @@
 
         public override void Stun(int stunTime)
         {
-            this.CurrentState.Stun(stunTime);
         }
 
         public override void TakeDamage(int damageAmount)

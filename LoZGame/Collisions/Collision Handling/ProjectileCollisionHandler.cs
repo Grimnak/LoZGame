@@ -40,13 +40,13 @@
         }
 
         /// <summary>
-        /// used to optionally expire projectiles that collide with blocks.
+        /// Used to optionally expire projectiles that collide with blocks.
         /// </summary>
-        /// <param name="block">block that is collided with</param>
-        /// <param name="collisionSide">side that is collided with.</param>
+        /// <param name="block">This is the block that is collided with by the projectile.</param>
+        /// <param name="collisionSide">This is the side of the block that the projectile collides with..</param>
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(block is Tile))
+            if (!block.IsTransparent)
             {
                 this.projectile.IsExpired = true;
             }
