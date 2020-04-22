@@ -41,7 +41,6 @@ namespace LoZClone
 
             playerDictionary.Add(Keys.R, new CommandReset(player));
 
-            inventoryDictionary.Add(Keys.Enter, new CommandItemSelect(player));
             inventoryDictionary.Add(Keys.W, new CommandSelectionUp(player));
             inventoryDictionary.Add(Keys.Up, new CommandSelectionUp(player));
             inventoryDictionary.Add(Keys.A, new CommandSelectionLeft(player));

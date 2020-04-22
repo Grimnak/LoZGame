@@ -77,7 +77,6 @@
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackA.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackB.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandDown.cs" />
-    <Compile Include="Controller\Commands\InventoryCommands\CommandItemSelect.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandLeft.cs" />
     <Compile Include="Controller\Commands\CommandQuit.cs" />
     <Compile Include="Controller\Commands\CommandReset.cs" />

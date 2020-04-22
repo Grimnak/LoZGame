@@ -123,7 +123,7 @@
             return numKeys > 0;
         }
 
-        public void SelectItem()
+        private void SelectItem()
         {
             if (ValidSelection())
             {

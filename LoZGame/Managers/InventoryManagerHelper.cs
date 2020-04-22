@@ -135,6 +135,7 @@
             if (selectionY + 1 < maxSelectionY)
             {
                 selectionY++;
+                SelectItem();
             }
         }
 
@@ -143,6 +144,7 @@
             if (selectionY > 0)
             {
                 selectionY--;
+                SelectItem();
             }
         }
 
@@ -151,6 +153,7 @@
             if (selectionX > 0)
             {
                 selectionX--;
+                SelectItem();
             }
         }
 
@@ -159,6 +162,7 @@
             if (selectionX + 1 < maxSelectionX)
             {
                 selectionX++;
+                SelectItem();
             }
         }
     }
