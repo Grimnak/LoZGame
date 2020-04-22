@@ -201,6 +201,7 @@
 <drow idx="1">
   <room exists="True" oldman="False" basement="False" idx="0">
     <items>
+	  <item X="6" Y="3">Key</item>
     </items>
     <enemies>
       <enemy X="3" Y="2">Manhandla</enemy>
