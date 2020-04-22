@@ -39,6 +39,21 @@
             }
         }
 
+        public void Bounce()
+        {
+            if (this.currentJump < 0)
+            {
+                this.currentJump *= -1;
+            }
+        }
+
+        public void EndJump()
+        {
+            this.currentJump = 0;
+            this.maxJump = 0;
+            this.IsJumping = false;
+        }
+
         public void Jump(float magnitude)
         {
             maxJump += Math.Abs(magnitude);

@@ -226,12 +226,16 @@
         private SpriteData explosionFiveData;
         private Texture2D fireballSpriteSheet;
         private SpriteData fireballData;
+        private SpriteData swordData;
         private Texture2D greenWoodSwordSpriteSheet;
-        private SpriteData greenWoodSwordData;
-        private Texture2D whiteSwordSpriteSheet;
-        private SpriteData whiteSwordData;
-        private Texture2D magicSwordSpriteSheet;
-        private SpriteData magicSwordData;
+        private Texture2D greenWhiteSwordSpriteSheet;
+        private Texture2D greenMagicSwordSpriteSheet;
+        private Texture2D blueWoodSwordSpriteSheet;
+        private Texture2D blueWhiteSwordSpriteSheet;
+        private Texture2D blueMagicSwordSpriteSheet;
+        private Texture2D redWoodSwordSpriteSheet;
+        private Texture2D redWhiteSwordSpriteSheet;
+        private Texture2D redMagicSwordSpriteSheet;
 
         private static readonly ProjectileSpriteFactory InstanceValue = new ProjectileSpriteFactory();
 
@@ -266,8 +270,14 @@
             explosionFiveSpriteSheet = content.Load<Texture2D>("BombExplosionFive");
             fireballSpriteSheet = content.Load<Texture2D>("fireball");
             greenWoodSwordSpriteSheet = content.Load<Texture2D>("Green_Wood_Up");
-            whiteSwordSpriteSheet = content.Load<Texture2D>("Green_White_Up");
-            magicSwordSpriteSheet = content.Load<Texture2D>("Green_Magic_Up");
+            greenWhiteSwordSpriteSheet = content.Load<Texture2D>("Green_White_Up");
+            greenMagicSwordSpriteSheet = content.Load<Texture2D>("Green_Magic_Up");
+            blueWoodSwordSpriteSheet = content.Load<Texture2D>("Blue_Wood_Up");
+            blueWhiteSwordSpriteSheet = content.Load<Texture2D>("Blue_White_Up");
+            blueMagicSwordSpriteSheet = content.Load<Texture2D>("Blue_White_Up"); // never created
+            redWoodSwordSpriteSheet = content.Load<Texture2D>("Red_Wood_Up");
+            redWhiteSwordSpriteSheet = content.Load<Texture2D>("Red_White_Up");
+            redMagicSwordSpriteSheet = content.Load<Texture2D>("Red_White_Up"); // never created
         }
 
         private void LoadData()
@@ -286,24 +296,46 @@
             ExplosionFourData = new SpriteData(new Vector2(explosionWidth, explosionHeight), explosionFourSpriteSheet, 3, 1);
             explosionFiveData = new SpriteData(new Vector2(explosionWidth, explosionHeight), explosionFiveSpriteSheet, 3, 1);
             fireballData = new SpriteData(new Vector2(fireballWidth, fireballHeight), fireballSpriteSheet, 1, 4);
-            greenWoodSwordData = new SpriteData(new Vector2(swordWidth, swordHeight), greenWoodSwordSpriteSheet, 1, 2);
-            whiteSwordData = new SpriteData(new Vector2(swordWidth, swordHeight), whiteSwordSpriteSheet, 1, 2);
-            magicSwordData = new SpriteData(new Vector2(swordWidth, swordHeight), magicSwordSpriteSheet, 1, 2);
+            swordData = new SpriteData(new Vector2(swordWidth, swordHeight), greenWoodSwordSpriteSheet, 1, 2);
         }
 
-        public ISprite GreenWoodSword()
+        public ISprite Sword(Link.LinkColor color, Link.LinkWeapon type)
         {
-            return new ObjectSprite(greenWoodSwordSpriteSheet, greenWoodSwordData);
-        }
-
-        public ISprite GreenWhiteSword()
-        {
-            return new ObjectSprite(whiteSwordSpriteSheet, whiteSwordData);
-        }
-
-        public ISprite GreenMagicSword()
-        {
-            return new ObjectSprite(magicSwordSpriteSheet, magicSwordData);
+            switch (color)
+            {
+                case Link.LinkColor.Green:
+                    switch (type)
+                    {
+                        case Link.LinkWeapon.White:
+                            return new ObjectSprite(greenWhiteSwordSpriteSheet, swordData);
+                        case Link.LinkWeapon.Magic:
+                            return new ObjectSprite(greenMagicSwordSpriteSheet, swordData);
+                        default:
+                            return new ObjectSprite(greenWoodSwordSpriteSheet, swordData);
+                    }
+                case Link.LinkColor.Red:
+                    switch (type)
+                    {
+                        case Link.LinkWeapon.White:
+                            return new ObjectSprite(redWhiteSwordSpriteSheet, swordData);
+                        case Link.LinkWeapon.Magic:
+                            return new ObjectSprite(redMagicSwordSpriteSheet, swordData);
+                        default:
+                            return new ObjectSprite(redWoodSwordSpriteSheet, swordData);
+                    }
+                case Link.LinkColor.Blue:
+                    switch (type)
+                    {
+                        case Link.LinkWeapon.White:
+                            return new ObjectSprite(blueWhiteSwordSpriteSheet, swordData);
+                        case Link.LinkWeapon.Magic:
+                            return new ObjectSprite(blueMagicSwordSpriteSheet, swordData);
+                        default:
+                            return new ObjectSprite(blueWoodSwordSpriteSheet, swordData);
+                    }
+                default:
+                    return new ObjectSprite(greenWoodSwordSpriteSheet, swordData);
+            }
         }
 
         public ISprite Fireball()

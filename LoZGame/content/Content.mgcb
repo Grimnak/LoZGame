@@ -25,6 +25,18 @@
 /processorParam:TextureFormat=Color
 /build:../../etc/art/Items/Ladder.png;Ladder.png
 
+#begin ../../etc/art/link/Link_Items/Wood/Green_Wood_Up.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../etc/art/link/Link_Items/Wood/Green_Wood_Up.png;Green_Wood_Up.png
+
 #begin ../../etc/art/tiles/fire.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -331,18 +343,6 @@
 /processorParam:TextureFormat=Color
 /build:Blue_Magic_Right.png
 
-#begin Blue_Magic_Up.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Blue_Magic_Up.png
-
 #begin blue_statue_left.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -415,6 +415,18 @@
 /processorParam:TextureFormat=Color
 /build:blue_statue_right4.png
 
+#begin Blue_White_Up.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Blue_White_Up.png
+
 #begin Blue_Wood_Down.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -450,6 +462,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Blue_Wood_Right.png
+
+#begin Blue_Wood_Up.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Blue_Wood_Up.png
+
+#begin Blue_Wood_Up.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Blue_Wood_Up.png
 
 #begin Blue_Wood_Up.png
 /importer:TextureImporter
@@ -2384,18 +2420,6 @@
 /processorParam:TextureFormat=Color
 /build:ladder.png
 
-#begin ladder.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:ladder.png
-
 #begin ladder_on_lava.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3116,18 +3140,6 @@
 /processorParam:TextureFormat=Color
 /build:Red_Magic_Right.png
 
-#begin Red_Magic_Up.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Red_Magic_Up.png
-
 #begin red_statue_left3.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3151,6 +3163,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:red_statue_right3.png
+
+#begin Red_White_Up.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Red_White_Up.png
 
 #begin Red_Wood_Down.png
 /importer:TextureImporter
@@ -3187,6 +3211,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Red_Wood_Right.png
+
+#begin Red_Wood_Up.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Red_Wood_Up.png
 
 #begin Red_Wood_Up.png
 /importer:TextureImporter

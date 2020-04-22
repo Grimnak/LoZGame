@@ -53,7 +53,7 @@
 
         public override void TakeDamage(int damageAmount)
         {
-            if (damageAmount >= Health.CurrentHealth && Damage <= 0)
+            if (damageAmount >= Health.CurrentHealth && DamageTimer <= 0)
             {
                 SpawnHeads();
             }

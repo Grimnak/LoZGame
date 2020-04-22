@@ -79,7 +79,7 @@
         {
             if (!collisionBlackList.Contains(enemy.AI))
             {
-                if (!(enemy is PolsVoice && enemy.Physics.IsJumping))
+                if (enemy.AI != EnemyEssentials.EnemyAI.PolsVoice)
                 {
                     SetBounds(block.Physics, enemy.Physics, collisionSide);
                 }
