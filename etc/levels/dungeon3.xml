@@ -670,7 +670,7 @@
         <tile type="block" idx="11">movable_square3</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="stairs" idx="11" room="0,5" loc="3,0">stairs</tile>
+        <tile type="stairs" idx="11" room="0,5" loc="3,0" hidden="False">stairs</tile>
       </rrow>
       <rrow idx="4">
         <tile type="block" idx="9">movable_square3</tile>

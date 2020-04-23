@@ -16,7 +16,7 @@
         <door loc="E">locked</door>
       </doors>
       <rrow idx="0">
-        <tile type="stairs" idx="11" room="1,1" loc="3,0">stairs</tile>
+        <tile type="stairs" idx="11" room="1,1" loc="3,0" hidden="True">stairs</tile>
       </rrow>
       <rrow idx="1">
       </rrow>
@@ -609,9 +609,9 @@
         <item X="6" Y="4">Compass</item>
       </items>
       <enemies>
-        <enemy X="5" Y="1">Armos</enemy>
-        <enemy X="8" Y="1">Armos</enemy>
-        <enemy X="3" Y="4">Armos</enemy>
+        <enemy X="5" Y="1">Darknut</enemy>
+        <enemy X="8" Y="1">Darknut</enemy>
+        <enemy X="3" Y="4">Darknut</enemy>
       </enemies>
       <doors>
         <door loc="N">unlocked</door>

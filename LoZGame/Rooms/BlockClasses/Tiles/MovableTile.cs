@@ -123,11 +123,26 @@
             }
         }
 
+        private void SolveStairs()
+        {
+            if (Math.Abs(Physics.Location.X - originalLocation.X) >= Physics.Bounds.Width || Math.Abs(Physics.Location.Y - originalLocation.Y) >= Physics.Bounds.Height)
+            {
+                foreach (IBlock block in LoZGame.Instance.GameObjects.Blocks.BlockList)
+                {
+                    if (block is Stairs)
+                    {
+                        ((Stairs)block).Solve();
+                    }
+                }
+            }
+        }
+
         /// <inheritdoc/>
         public void Update()
         {
             HandlePush();
             SolveDoors();
+            SolveStairs();
             if (!moved)
             {
                 Physics.SetDepth();

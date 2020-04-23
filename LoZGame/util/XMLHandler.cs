@@ -97,9 +97,10 @@
                                 {
                                     string[] roomLoc = block.Attribute("room").Value.Split(',');
                                     string[] playerPos = block.Attribute("loc").Value.Split(',');
+                                    bool hidden = bool.Parse(block.Attribute("hidden").Value);
                                     Point roomLocation = new Point(int.Parse(roomLoc[0]), int.Parse(roomLoc[1]));
                                     Point playerPosition = new Point(int.Parse(playerPos[0]), int.Parse(playerPos[1]));
-                                    droom.AddStairs(x, y, roomLocation, playerPosition);
+                                    droom.AddStairs(x, y, roomLocation, playerPosition, hidden);
                                 }
                                 else
                                 {

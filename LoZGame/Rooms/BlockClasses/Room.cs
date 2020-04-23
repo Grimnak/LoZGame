@@ -360,10 +360,10 @@
             }
         }
 
-        public void AddStairs(string x, string y, Point room, Point spawn)
+        public void AddStairs(string x, string y, Point room, Point spawn, bool hidden)
         {
             Vector2 location = GridToScreenVector(float.Parse(x), float.Parse(y));
-            blocks.Add(new Stairs(location, room, spawn));
+            blocks.Add(new Stairs(location, room, spawn, hidden));
         }
 
         private void SetBounds(IBlock block, string name)

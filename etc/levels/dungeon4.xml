@@ -609,7 +609,7 @@
       <door loc="W">unlocked</door>
     </doors>
     <rrow idx="0">
-      <tile type="stairs" idx="11" room="2,4" loc="3,0">stairs</tile>
+      <tile type="stairs" idx="11" room="2,4" loc="3,0" hidden="True">stairs</tile>
     </rrow>
     <rrow idx="1">
     </rrow>
