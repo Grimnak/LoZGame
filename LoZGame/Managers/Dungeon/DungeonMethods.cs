@@ -21,7 +21,7 @@
         /// </summary>
         public void MoveUp()
         {
-            if (currentY - 1 >= 0 && dungeonLayout[currentY - 1][currentX].Exists && (currentX != 1 || currentY - 1 != 1))
+            if (currentY - 1 >= 0 && dungeonLayout[currentY - 1][currentX].Exists)
             {
                 currentY--;
                 LoadNewRoom();
@@ -85,7 +85,7 @@
         /// </summary>
         public void MoveLeft()
         {
-            if (currentX - 1 >= 0 && dungeonLayout[currentY][currentX - 1].Exists && (currentX - 1 != 1 || currentY != 1))
+            if (currentX - 1 >= 0 && dungeonLayout[currentY][currentX - 1].Exists)
             {
                 currentX--;
                 LoadNewRoom();
@@ -107,7 +107,7 @@
         /// </summary>
         public void MoveRight()
         {
-            if (currentX + 1 < maxX && dungeonLayout[currentY][currentX + 1].Exists && (currentX + 1 != 2 || currentY != 1))
+            if (currentX + 1 < maxX && dungeonLayout[currentY][currentX + 1].Exists)
             {
                 currentX++;
                 LoadNewRoom();
