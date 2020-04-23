@@ -165,7 +165,7 @@
         <door loc="S">locked</door>
       </doors>
       <rrow idx="0">
-        <tile type="stairs" idx="11" room="0,0" loc="3,0">stairs</tile>
+        <tile type="stairs" idx="11" room="0,0" loc="3,0" hidden="True">stairs</tile>
       </rrow>
       <rrow idx="1">
       </rrow>
@@ -524,7 +524,7 @@
         <tile type="block" idx="11">movable_square</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="stairs" idx="11" room="2,3" loc="10,0">stairs</tile>
+        <tile type="stairs" idx="11" room="2,3" loc="10,0" hidden="False">stairs</tile>
       </rrow>
       <rrow idx="4">
         <tile type="block" idx="9">movable_square</tile>
@@ -804,7 +804,7 @@
         <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">
-        <tile type="stairs" idx="11" room="5,1" loc="9,3">stairs</tile>
+        <tile type="stairs" idx="11" room="5,1" loc="9,3" hidden="True">stairs</tile>
       </rrow>
       <rrow idx="1">
       </rrow>

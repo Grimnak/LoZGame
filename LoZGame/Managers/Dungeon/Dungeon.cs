@@ -93,6 +93,15 @@
                     mapColor = Color.Green;
                     dungeonBossLoc = new Point(0, 2);
                     break;
+                case 6:
+                    LoZGame.Instance.DungeonTint = new Color(178, 162, 0);
+                    currentX = 1;
+                    currentY = 7;
+                    maxX = 6;
+                    maxY = 8;
+                    mapColor = Color.DarkGoldenrod;
+                    dungeonBossLoc = new Point(4, 1);
+                    break;
                 default:
                     break;
             }

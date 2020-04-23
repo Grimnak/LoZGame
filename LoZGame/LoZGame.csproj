@@ -185,7 +185,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Rooms\BlockClasses\Stairs.cs" />
     <Compile Include="Rooms\BlockClasses\DoorHelper.cs" />
     <Compile Include="Rooms\BlockClasses\Tiles\CrossableTile.cs" />
     <Compile Include="Rooms\BlockClasses\Tiles\Stairs.cs" />
