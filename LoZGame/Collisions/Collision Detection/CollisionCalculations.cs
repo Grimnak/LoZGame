@@ -120,7 +120,14 @@
                 {
                     if (sourceCollider is IPlayer && LoZGame.Instance.Players[0].DamageTimer <= 0)
                     {
-                        dungeon.MoveUp();
+                        if (LoZGame.Instance.Dungeon.CurrentRoomY - 1 < 0)
+                        {
+                            dungeon.MoveRight();
+                        }
+                        else
+                        {
+                            dungeon.MoveUp();
+                        }
                     }
                     else
                     {
