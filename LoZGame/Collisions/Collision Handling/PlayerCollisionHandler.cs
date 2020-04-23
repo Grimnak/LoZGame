@@ -76,9 +76,9 @@
             {
                 player.LadderTimer = 5;
             }
-            else if (block is Stair)
+            else if (block is Stairs)
             {
-                Stair stair = (Stair)block;
+                Stairs stair = (Stairs)block;
                 LoZGame.Instance.Dungeon.CurrentRoomX = stair.PointLinkedRoom.X;
                 LoZGame.Instance.Dungeon.CurrentRoomY = stair.PointLinkedRoom.Y;
                 Point newLoc = new Point((int)(stair.LinkSpawn.X * BlockSpriteFactory.Instance.TileWidth), stair.LinkSpawn.Y * BlockSpriteFactory.Instance.TileHeight);

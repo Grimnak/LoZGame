@@ -343,6 +343,12 @@
             }
         }
 
+        public void AddStairs(string x, string y, Point room, Point spawn)
+        {
+            Vector2 location = GridToScreenVector(float.Parse(x), float.Parse(y));
+            blocks.Add(new Stairs(location, room, spawn));
+        }
+
         private void SetBounds(IBlock block, string name)
         {
             if (name.Contains("statue"))
