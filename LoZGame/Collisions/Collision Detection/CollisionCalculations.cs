@@ -108,7 +108,7 @@
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
                 }
                 // is top wall
-                else if (sourceCollider.Physics.Bounds.Top < BlockSpriteFactory.Instance.TopOffset)
+                else
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
                 }
