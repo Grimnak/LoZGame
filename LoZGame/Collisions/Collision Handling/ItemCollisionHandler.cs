@@ -36,22 +36,22 @@
                 player.Health.MaxHealth = player.Health.MaxHealth + 4;
                 player.Health.CurrentHealth = player.Health.MaxHealth;
             }
-            else if (item is DroppedRupee)
+            else if (item is DroppedRupee || item is Rupee)
             {
                 SoundFactory.Instance.PlayGetRupee();
                 player.Inventory.GainRupees(1);
             }
-            else if (item is DroppedYellowRupee)
+            else if (item is DroppedYellowRupee || item is YellowRupee)
             {
                 SoundFactory.Instance.PlayGetRupee();
                 player.Inventory.GainRupees(5);
             }
-            else if (item is DroppedBomb)
+            else if (item is DroppedBomb || item is Bomb)
             {
                 SoundFactory.Instance.PlayGetItem();
                 player.Inventory.GainBombs();
             }
-            else if (item is Key)
+            else if (item is Key || item is MagicKey)
             {
                 SoundFactory.Instance.PlayGetHeartOrKey();
             }

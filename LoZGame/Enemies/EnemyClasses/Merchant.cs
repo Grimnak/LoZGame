@@ -19,6 +19,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.MerchantSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
+            IsKillable = false;
         }
 
         public override void TakeDamage(int damageAmount)

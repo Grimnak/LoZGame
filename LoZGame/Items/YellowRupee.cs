@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class YellowRupee : ItemEssentials, IItem
+    public class YellowRupee : ItemEssentials, IItem
     {
         public YellowRupee(Vector2 loc)
         {

@@ -204,6 +204,8 @@
     </items>
     <enemies>
       <enemy X="3" Y="2">Manhandla</enemy>
+      <enemy X="0" Y="6">FireBlockEnemy</enemy>
+      <enemy X="11" Y="6">FireBlockEnemy</enemy>
     </enemies>
     <doors>
       <door loc="S">special4</door>
@@ -693,7 +695,7 @@
       <enemy X="5" Y="6">Keese</enemy>
     </enemies>
     <items>
-      <item X="8" Y="3">Ladder</item>
+      <item X="7" Y="1.7">Ladder</item>
     </items>
     <rrow idx="0">
       <tile type="block" idx="0">basement_brick_tile</tile>

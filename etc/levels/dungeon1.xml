@@ -108,8 +108,9 @@
         <enemy X="9" Y="6">Keese</enemy>
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
-	  <items>
+	    <items>
         <item X="8" Y="3">Bow</item>
+        <item X="11" Y="1.7">Arrow</item>
       </items>
       <rrow idx="0">
         <tile type="block" idx="0">basement_brick_tile</tile>

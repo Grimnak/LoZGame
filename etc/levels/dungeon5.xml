@@ -124,7 +124,7 @@
        <enemy X="5" Y="6">Keese</enemy>
      </enemies>
      <items>
-       <item X="8" Y="3">WhiteSword</item>
+       <item X="7" Y="2">MagicSword</item>
      </items>
      <rrow idx="0">
        <tile type="block" idx="0">basement_brick_tile</tile>
@@ -313,6 +313,7 @@
     <room exists="True" oldman="True" basement="False" idx="3">
       <text>WOULD YOU LIKE MORE BOMBS?</text>
       <items>
+        <item X="6" Y="4">Bomb</item>
       </items>
       <enemies>
         <enemy X="5.5" Y="2">OldMan</enemy>
@@ -575,7 +576,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" idx="1">
-      <text>SECRET POWER IS SAID TO BE IN THE ARROW.</text>
+      <text>THE MAGIC SWORD IS BELOW YOU.</text>
       <items>
       </items>
       <enemies>
@@ -878,7 +879,7 @@
     </room>
     <room exists="True" oldman="False" basement="False" idx="3">
       <items>
-        <item X="6" Y="4">BlueRupee</item>
+        <item X="6" Y="4">YellowRupee</item>
       </items>
       <enemies>
         <enemy X="3" Y="2">Zol</enemy>
@@ -990,6 +991,9 @@
       </rrow>
     </room>
     <room exists="True" oldman="False" basement="False" idx="1">
+      <items>
+        <item X="6" Y="4">Bomb</item>
+      </items>
       <enemies>
         <enemy X="4" Y="1">Gibdo</enemy>
         <enemy X="6" Y="1">Gibdo</enemy>
@@ -1066,6 +1070,8 @@
     <room exists="True" oldman="True" basement="False" idx="3">
       <text>SECRET POWER LIES IN THE ARROWS.</text>
       <items>
+        <item X="5" Y="5.3">Bow</item>
+        <item X="8" Y="4">SilverArrow</item>
       </items>
       <enemies>
         <enemy X="5.5" Y="2">OldMan</enemy>

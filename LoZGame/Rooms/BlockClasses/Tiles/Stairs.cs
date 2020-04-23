@@ -6,13 +6,10 @@
 
     public class Stairs : IBlock
     {
-        /// <summary>
-        /// Defines the location relative to the door to draw thee overhang of the hallway.
-        /// </summary>
-
         private Point linkedRoom;
         private Point linkSpawn;
         private ISprite sprite;
+        private bool isTransparent;
 
         public Physics Physics { get; set; }
 
@@ -24,6 +21,7 @@
         {
             linkedRoom = room;
             linkSpawn = spawn;
+            isTransparent = true;
             Physics = new Physics(location);
             Physics.Bounds = new Rectangle(location.ToPoint(), new Point((int)BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight));
             Physics.SetDepth();

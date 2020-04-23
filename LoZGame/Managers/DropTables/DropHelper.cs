@@ -109,6 +109,8 @@
             DropKey();
             DropBoomerang();
             DropMagicBoomerang();
+            DropBomb();
+            DropYellowRupee();
         }
 
         public void DropKey()
@@ -160,6 +162,32 @@
                     SoundFactory.Instance.PlaySpecialItemAppears();
                 }
                 LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang = Tuple.Create(LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang.Item1, true);
+            }
+        }
+
+        public void DropBomb()
+        {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedBomb != null)
+            {
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedBomb.Item1);
+                if (!LoZGame.Instance.Dungeon.CurrentRoom.DroppedBomb.Item2)
+                {
+                    SoundFactory.Instance.PlaySpecialItemAppears();
+                }
+                LoZGame.Instance.Dungeon.CurrentRoom.DroppedBomb = Tuple.Create(LoZGame.Instance.Dungeon.CurrentRoom.DroppedBomb.Item1, true);
+            }
+        }
+
+        public void DropYellowRupee()
+        {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedYellowRupee != null)
+            {
+                LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedYellowRupee.Item1);
+                if (!LoZGame.Instance.Dungeon.CurrentRoom.DroppedYellowRupee.Item2)
+                {
+                    SoundFactory.Instance.PlaySpecialItemAppears();
+                }
+                LoZGame.Instance.Dungeon.CurrentRoom.DroppedYellowRupee = Tuple.Create(LoZGame.Instance.Dungeon.CurrentRoom.DroppedYellowRupee.Item1, true);
             }
         }
     }
