@@ -464,7 +464,7 @@
     </room>
     <room exists="True" oldman="False" basement="False" idx="4">
       <items>
-        <item X="6" Y="3">TriForce</item>
+        <item X="6" Y="3">HeartContainer</item>
       </items>
       <enemies>
         <enemy X="6" Y="1">Gohma</enemy>
@@ -1077,11 +1077,11 @@
   <drow idx ="7">
     <room exists="True" oldman="False" basement="False" idx="0">
       <enemies>
-        <enemy X="1" Y="3">Keese</enemy>
-        <enemy X="7" Y="3">Keese</enemy>
-        <enemy X="8" Y="3">Keese</enemy>
-        <enemy X="9" Y="3">Keese</enemy>
-        <enemy X="10" Y="3">Keese</enemy>
+        <enemy X="1" Y="3">RedWizzrobe</enemy>
+        <enemy X="7" Y="3">RedWizzrobe</enemy>
+        <enemy X="8" Y="3">RedWizzrobe</enemy>
+        <enemy X="9" Y="3">RedWizzrobe</enemy>
+        <enemy X="10" Y="3">RedWizzrobe</enemy>
       </enemies>
       <doors>
         <door loc="N">unlocked</door>
