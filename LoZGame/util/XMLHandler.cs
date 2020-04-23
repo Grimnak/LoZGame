@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Xml;
     using System.Xml.Linq;
+    using Microsoft.Xna.Framework;
 
     public static class XMLHandler
     {
@@ -92,15 +93,27 @@
                                 string x = block.Attribute("idx").Value, y = trow.Attribute("idx").Value;
                                 tcount++; // xml debug
                                 string[] types = block.Attribute("type").Value.Split(',');
-                                if (block.Attribute("dir") != null)
+                                if (block.Attribute("type").Value.Equals("stairs"))
                                 {
-                                    string direction = block.Attribute("dir").Value;
-                                    droom.AddBlock(x, y, types[0], block.Value, direction);
+                                    string[] roomLoc = block.Attribute("room").Value.Split(',');
+                                    string[] playerPos = block.Attribute("loc").Value.Split(',');
+                                    Point roomLocation = new Point(int.Parse(roomLoc[0]), int.Parse(roomLoc[1]));
+                                    Point playerPosition = new Point(int.Parse(playerPos[0]), int.Parse(playerPos[1]));
+                                    droom.AddStairs(x, y, roomLocation, playerPosition);
                                 }
                                 else
                                 {
-                                    droom.AddBlock(x, y, types[0], block.Value);
+                                    if (block.Attribute("dir") != null)
+                                    {
+                                        string direction = block.Attribute("dir").Value;
+                                        droom.AddBlock(x, y, types[0], block.Value, direction);
+                                    }
+                                    else
+                                    {
+                                        droom.AddBlock(x, y, types[0], block.Value);
+                                    }
                                 }
+
                             }
                             // Console.WriteLine("tcount: " + tcount + "\n");
                         }

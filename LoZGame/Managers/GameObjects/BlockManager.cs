@@ -37,7 +37,7 @@
         {
             foreach (IBlock block in blocks)
             {
-                if (block is Tile)
+                if (block is Tile || block is Stairs)
                 {
                     block.Draw();
                 }
