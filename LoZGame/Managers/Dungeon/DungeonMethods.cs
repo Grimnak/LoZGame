@@ -43,6 +43,17 @@
                         player.Physics.Bounds.Width,
                         player.Physics.Bounds.Height);
                 }
+                foreach (IEnemy enemy in dungeonLayout[currentY][currentX].Enemies)
+                {
+                    enemy.Physics.Bounds = new Rectangle(enemy.Physics.Bounds.Location, enemy.Physics.Bounds.Size);
+                    if (enemy.AI == EnemyEssentials.EnemyAI.SpikeCross)
+                    {
+                        enemy.Physics.MovementVelocity = Vector2.Zero;
+                        enemy.Physics.Bounds = new Rectangle(enemy.SpawnPoint, enemy.Physics.Bounds.Size);
+                    }
+                    enemy.Physics.SetLocation();
+                    //LoZGame.Instance.GameObjects.Enemies.Add(enemy);
+                }
                 player.Physics.SetLocation();
                 player.Physics.CurrentDirection = Physics.Direction.North;
                 player.State = new IdleState(player);

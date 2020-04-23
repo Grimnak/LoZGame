@@ -12,7 +12,7 @@
             Physics = new Physics(new Vector2(location.X, location.Y));
             Physics.Mass = GameData.Instance.EnemyMassConstants.SpikeCrossMass;
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            CurrentState = new IdleEnemyState(this);
+            CurrentState = new SpawnEnemyState(this);
             EnemyCollisionHandler = new EnemyCollisionHandler(this);
             InitialPos = Physics.Bounds.Location;
             Expired = false;
