@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System;
 
     public class PlayerCollisionHandler : CollisionInteractions
     {
@@ -75,16 +76,6 @@
             if (block is CrossableTile)
             {
                 player.LadderTimer = 5;
-            }
-            else if (block is Stairs)
-            {
-                Stairs stair = (Stairs)block;
-                LoZGame.Instance.Dungeon.CurrentRoomX = stair.PointLinkedRoom.X;
-                LoZGame.Instance.Dungeon.CurrentRoomY = stair.PointLinkedRoom.Y;
-                Point newLoc = new Point((int)(stair.LinkSpawn.X * BlockSpriteFactory.Instance.TileWidth), stair.LinkSpawn.Y * BlockSpriteFactory.Instance.TileHeight);
-                LoZGame.Instance.Dungeon.LoadNewRoom();
-                player.Physics.Bounds = new Rectangle(newLoc, player.Physics.Bounds.Size);
-                player.Physics.SetLocation();
             }
         }
 

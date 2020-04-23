@@ -70,15 +70,16 @@
 
         private void CheckBlocks(ReadOnlyCollection<IBlock> blocks, ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies)
         {
-            foreach (IBlock block in blocks)
+            for (int i = 0; i < blocks.Count; i++)
             {
+                IBlock block = blocks[i];
                 if (block is BlockTile || block is MovableTile || block is CrossableTile)
                 {
                     CheckCollisions<IPlayer>(block, players);
                     CheckCollisions<IEnemy>(block, enemies);
                     CheckBorders(block, block.Physics.Bounds.Width, block.Physics.Bounds.Height);
                 }
-                else if (block is Tile && (((Tile)block).Name.Equals("stairs") || ((Tile)block).Name.Equals("stairs3")))
+                else if (block is Stairs)
                 {
                     CheckCollisions<IPlayer>(block, players);
                 }

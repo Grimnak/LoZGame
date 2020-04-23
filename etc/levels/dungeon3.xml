@@ -670,7 +670,7 @@
         <tile type="block" idx="11">movable_square3</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="walkable" idx="11">stairs3</tile>
+        <tile type="stairs" idx="11" room="0,5" loc="3,0">stairs</tile>
       </rrow>
       <rrow idx="4">
         <tile type="block" idx="9">movable_square3</tile>
@@ -936,7 +936,7 @@
     <room exists="True" oldman="False" basement="False" idx="3">
       <doors>
         <door loc="W">unlocked</door>
-        <door loc="S">cosmetic</door>
+        <door loc="S"></door>
       </doors>
       <rrow idx="0">
       </rrow>

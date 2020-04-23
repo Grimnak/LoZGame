@@ -45,6 +45,25 @@
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
+            if (otherCollider is IPlayer)
+            {
+                SoundFactory.Instance.PlayClimbStairs();
+                LoZGame.Instance.Dungeon.CurrentRoomX = this.PointLinkedRoom.X;
+                LoZGame.Instance.Dungeon.CurrentRoomY = this.PointLinkedRoom.Y;
+                Point newLoc;
+                if (LoZGame.Instance.Dungeon.CurrentRoom.IsBasement)
+                {
+                    newLoc = new Point((int)((this.LinkSpawn.X * BlockSpriteFactory.Instance.TileWidth) + CollisionConstants.PlayerLocationXOffset), (this.LinkSpawn.Y * BlockSpriteFactory.Instance.TileHeight) + LoZGame.Instance.InventoryOffset + CollisionConstants.PlayerLocationYOffset);
+                }
+                else
+                {
+                    newLoc = new Point((int)((this.LinkSpawn.X * BlockSpriteFactory.Instance.TileWidth) + BlockSpriteFactory.Instance.HorizontalOffset), (this.LinkSpawn.Y * BlockSpriteFactory.Instance.TileHeight) + LoZGame.Instance.InventoryOffset + BlockSpriteFactory.Instance.VerticalOffset);
+                }
+
+                otherCollider.Physics.Bounds = new Rectangle(newLoc, otherCollider.Physics.Bounds.Size);
+                otherCollider.Physics.SetLocation();
+                LoZGame.Instance.Dungeon.LoadNewRoom();
+            }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
