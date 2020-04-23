@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dungeon xmlns="LEVEL-4">
+<dungeon xmlns="LEVEL-5">
   <drow idx="0">
     <room exists="True" oldman="False" basement="True" idx="0">
 	   <border>black</border>
@@ -10,7 +10,7 @@
       <enemy X="5" Y="6">Keese</enemy>
     </enemies>
     <items>
-      <item X="8" Y="3">WhiteSword</item>
+      <item X="8" Y="3">MagicSword</item>
     </items>
     <rrow idx="0">
       <tile type="block" idx="0">basement_brick_tile</tile>
@@ -265,7 +265,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" idx="1">
-      <text>SECRET POWER IS SAID TO BE IN THE ARROW.</text>
+      <text>THE MAGIC SWORD IS BELOW YOU.</text>
       <items>
       </items>
       <enemies>
@@ -336,7 +336,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" idx="3">
-      <text>I BET YOU'D LIKE TO HAVE MORE BOMBS.</text>
+      <text>WOULD YOU LIKE MORE BOMBS?</text>
       <items>
       </items>
       <enemies>
@@ -1064,7 +1064,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" idx="3">
-      <text>DIGDOGGER HATES A CERTAIN KIND OF SOUND.</text>
+      <text>SECRET POWER LIES IN THE ARROWS.</text>
       <items>
       </items>
       <enemies>
