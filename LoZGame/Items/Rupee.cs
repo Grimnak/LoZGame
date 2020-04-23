@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class Rupee : ItemEssentials, IItem
+    public class Rupee : ItemEssentials, IItem
     {
         public Rupee(Vector2 loc)
         {

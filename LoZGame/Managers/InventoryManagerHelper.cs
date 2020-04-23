@@ -25,7 +25,7 @@
 
         public void UseArrow()
         {
-            if (numRupees > 0 && hasBow)
+            if (numRupees > 0 && hasBow && hasArrow)
             {
                 if (!LoZGame.Cheats && !(player.State is UseItemState))
                 {
@@ -58,7 +58,10 @@
         {
             if (numRupees > 0 && hasBow && hasSilverArrow)
             {
-                numRupees--;
+                if (!LoZGame.Cheats && !(player.State is UseItemState))
+                {
+                    numRupees--;
+                }
                 player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.SilverArrow, player);
             }

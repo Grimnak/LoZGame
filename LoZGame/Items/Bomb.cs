@@ -4,7 +4,7 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class Bomb : ItemEssentials, IItem
+    public class Bomb : ItemEssentials, IItem
     {
         public Bomb(Vector2 loc)
         {

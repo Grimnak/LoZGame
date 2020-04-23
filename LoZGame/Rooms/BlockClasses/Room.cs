@@ -116,6 +116,10 @@
 
         public Tuple<MagicBoomerang, bool> DroppedMagicBoomerang { get; set; }
 
+        public Tuple<Bomb, bool> DroppedBomb { get; set; }
+
+        public Tuple<YellowRupee, bool> DroppedYellowRupee { get; set; }
+
         public bool IsBasement => basement;
 
         /// <summary>
@@ -292,15 +296,25 @@
                     items.Add(new WhiteSword(location));
                     break;
                 case "MagicSword":
-                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
-                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
                     items.Add(new MagicSword(location));
                     break;
                 case "Ladder":
                     items.Add(new Ladder(location));
                     break;
+                case "Bomb":
+                    DroppedBomb = Tuple.Create(new Bomb(location), false);
+                    break;
+                case "Arrow":
+                    items.Add(new Arrow(location));
+                    break;
+                case "SilverArrow":
+                    items.Add(new SilverArrow(location));
+                    break;
                 case "Rupee":
                     items.Add(new Rupee(location));
+                    break;
+                case "YellowRupee":
+                    DroppedYellowRupee = Tuple.Create(new YellowRupee(location), false);
                     break;
                 default:
                     break;

@@ -30,7 +30,10 @@
         /// <inheritdoc></inheritdoc>
         public override void TransitionRoom(Physics.Direction direction)
         {
-            LoZGame.Instance.GameState = new TransitionRoomState(direction);
+            if (!(LoZGame.Instance.Players[0].State is SwallowedState))
+            {
+                LoZGame.Instance.GameState = new TransitionRoomState(direction);
+            }
         }
 
         /// <inheritdoc></inheritdoc>

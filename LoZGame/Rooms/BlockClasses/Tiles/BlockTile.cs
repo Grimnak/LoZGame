@@ -166,10 +166,10 @@
         /// Determines if a block is transparent or not, which affects the ability of some projectile (e.g. fireballs) to travel over them.
         /// </summary>
         /// <param name="name">The name of the block tile.</param>
-        /// <returns></returns>
+        /// <returns>A boolean representing the block's transparency.</returns>
         private bool DetermineTransparency(string name)
         {
-            if (name.Equals(BasementBrickTile) || name.Equals(FireGapTile) || name.Equals(BlueStatueLeft2) || name.Equals(BlueStatueRight2))
+            if (name.Equals(BasementBrickTile) || name.Equals(FireGapTile) || name.Equals(BlueStatueLeft2) || name.Equals(BlueStatueRight2) || name.Equals(BrownStatueLeft4) || name.Equals(BrownStatueRight4))
             {
                 return true;
             }

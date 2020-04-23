@@ -37,6 +37,7 @@
         private bool hasBoomerang;
         private bool hasMagicBoomerang;
         private bool hasBow;
+        private bool hasArrow;
         private bool hasSilverArrow;
         private bool hasRedFlame;
         private bool hasBlueFlame;
@@ -142,7 +143,7 @@
                     case 1:
                         return hasBoomerang;
                     case 2:
-                        return hasBow && numRupees > 0;
+                        return hasBow && hasArrow && numRupees > 0;
                     case 3:
                         return hasBlueFlame;
                     default:
@@ -194,6 +195,8 @@
         public bool HasBoomerang { get { return hasBoomerang; } set { hasBoomerang = value; } }
 
         public bool HasMagicBoomerang { get { return hasMagicBoomerang; } set { hasMagicBoomerang = value; } }
+
+        public bool HasArrow { get { return hasArrow; } set { hasArrow = value; } }
 
         public bool HasSilverArrow { get { return hasSilverArrow; } set { hasSilverArrow = value; } }
 

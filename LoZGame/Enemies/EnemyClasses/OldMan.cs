@@ -29,6 +29,7 @@
             CurrentTint = LoZGame.Instance.DefaultTint;
             timesShot = 0;
             DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
+            IsKillable = false;
         }
 
         private Vector2 UnitVectorToPlayer(Vector2 origin)

@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System;
     using System.Collections.Generic;
 
     public class Zol : EnemyEssentials, IEnemy
@@ -36,6 +37,7 @@
 
         public override void TakeDamage(int damageAmount)
         {
+            Console.WriteLine("Called TakeDamage() on Zol.");
             if (damageAmount <= 4)
             {
                 SoundFactory.Instance.PlayEnemyHit();
@@ -45,6 +47,7 @@
             else
             {
                 SoundFactory.Instance.PlayEnemyDie();
+                IsDead = true;
                 CurrentState.Die();
             }
         }
