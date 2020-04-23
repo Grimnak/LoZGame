@@ -8,10 +8,10 @@
 
     public class LoZGame : Game
     {
-        public static bool DebugMode = true; // show collision bounding boxes
+        public static bool DebugMode = false; // show collision bounding boxes
         public static bool Cheats = true; // infinite life and item uses
         public static bool Music = false;  // Title screen and dungeon music (not SFX)
-        public static readonly int StartDungeon = 5; // dungeon ID to load into [1 - 6];\
+        public static readonly int StartDungeon = 6; // dungeon ID to load into [1 - 6];
         public int Difficulty = 0; // 0 is normal, can scale infinitely up but you'll get really dumb bugs and probably crash
         private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;
