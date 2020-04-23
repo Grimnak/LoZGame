@@ -29,15 +29,12 @@
             ApplySmallHealthMod();
         }
 
-        private void SpawnGels()
+        public override void Stun(int stunTime)
         {
-            LoZGame.Instance.GameObjects.Enemies.Add(new Gel(Physics.Location));
-            LoZGame.Instance.GameObjects.Enemies.Add(new Gel(Physics.Location));
         }
 
         public override void TakeDamage(int damageAmount)
         {
-            Console.WriteLine("Called TakeDamage() on Zol.");
             if (damageAmount <= 4)
             {
                 SoundFactory.Instance.PlayEnemyHit();
@@ -57,5 +54,10 @@
             return EnemySpriteFactory.Instance.CreateZolSprite();
         }
 
+        private void SpawnGels()
+        {
+            LoZGame.Instance.GameObjects.Enemies.Add(new Gel(Physics.Location));
+            LoZGame.Instance.GameObjects.Enemies.Add(new Gel(Physics.Location));
+        }
     }
 }

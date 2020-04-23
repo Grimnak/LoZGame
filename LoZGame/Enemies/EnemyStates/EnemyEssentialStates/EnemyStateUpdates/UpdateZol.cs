@@ -30,7 +30,7 @@
                 }
                 else
                 {
-                    FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.GelFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
+                    FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.ZolFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
                 }
             }
         }
@@ -39,7 +39,7 @@
         {
             if (Lifetime == DirectionChange)
             {
-                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.GelFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.ZolFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
             }
         }
     }

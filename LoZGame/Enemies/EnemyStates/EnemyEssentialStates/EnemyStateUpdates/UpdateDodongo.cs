@@ -23,7 +23,7 @@
         {
             if (Lifetime == DirectionChange)
             {
-                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.RopeFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.DodongoFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
             }
             if (!(Enemy.CurrentState is AttackingDodongoState || Enemy.IsSpawning))
             {
@@ -35,7 +35,7 @@
         {
             if (Lifetime == DirectionChange)
             {
-                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.RopeFavorCardinalValue + (2 * (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.DodongoFavorCardinalValue + (2 * (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
             }
             if (!(Enemy.CurrentState is AttackingDodongoState || Enemy.IsSpawning))
             {
