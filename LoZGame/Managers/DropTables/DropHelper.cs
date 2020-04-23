@@ -59,14 +59,10 @@
             Tuple.Create(DropType.Fairy, fairyWeight, 1, 1)
         };
 
-        public void AttemptDrop(Vector2 loc, int dropChance = dropChance, List<Tuple<DropType, int, int, int>> dropTable = null)
+        public void AttemptDrop(Vector2 loc, int dropChance, List<Tuple<DropType, int, int, int>> dropTable)
         {
             if (LoZGame.Instance.Random.Next(100) <= dropChance)
             {
-                if (dropTable is null)
-                {
-                    dropTable = defaultTable;
-                }
                 if (dropTable.Count > 0 && CanDropItem(dropChance))
                 {
                     Tuple<DropType, int, int, int> item = DetermineDrop(dropTable);

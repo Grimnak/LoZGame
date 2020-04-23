@@ -311,7 +311,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" idx="3">
-      <text>I BET YOU'D LIKE TO HAVE MORE BOMBS.</text>
+      <text>WOULD YOU LIKE MORE BOMBS?</text>
       <items>
       </items>
       <enemies>
@@ -1064,7 +1064,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" idx="3">
-      <text>DIGDOGGER HATES A CERTAIN KIND OF SOUND.</text>
+      <text>SECRET POWER LIES IN THE ARROWS.</text>
       <items>
       </items>
       <enemies>

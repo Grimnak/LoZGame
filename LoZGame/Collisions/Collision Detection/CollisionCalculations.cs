@@ -118,7 +118,7 @@
             {
                 if (sourceCollider.Physics.Location.Y < LoZGame.Instance.InventoryOffset)
                 {
-                    if (sourceCollider is IPlayer)
+                    if (sourceCollider is IPlayer && LoZGame.Instance.Players[0].DamageTimer <= 0)
                     {
                         dungeon.MoveUp();
                     }

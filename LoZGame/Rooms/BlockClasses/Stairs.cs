@@ -6,10 +6,6 @@
 
     public partial class Stair : IBlock
     {
-        /// <summary>
-        /// Defines the location relative to the door to draw thee overhang of the hallway.
-        /// </summary>
-
         private Point linkedRoom;
         private Point linkSpawn;
         private ISprite sprite;

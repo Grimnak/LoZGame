@@ -299,6 +299,9 @@
                 case "Ladder":
                     items.Add(new Ladder(location));
                     break;
+                case "Rupee":
+                    items.Add(new Rupee(location));
+                    break;
                 default:
                     break;
             }

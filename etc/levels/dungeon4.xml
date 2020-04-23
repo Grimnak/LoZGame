@@ -11,7 +11,7 @@
       <door loc="S">unlocked</door>
       <door loc="E">locked</door>
     </doors>
-    <text>WALK INTO THE WATERFALL.</text>
+    <text>BOMBS CAN MAKE YOU WEALTHY.</text>
     <rrow idx="0">
     </rrow>
     <rrow idx="1">
@@ -404,11 +404,11 @@
       <item X="11" Y="6">Map</item>
     </items>
     <enemies>
-      <enemy X="1" Y="0">Gel4</enemy>
-      <enemy X="10" Y="0">Gel4</enemy>
-      <enemy X="11" Y="0">Gel4</enemy>
-      <enemy X="7" Y="3">Gel4</enemy>
-      <enemy X="6" Y="4">Gel4</enemy>
+      <enemy X="1" Y="0">TealGel</enemy>
+      <enemy X="10" Y="0">TealGel</enemy>
+      <enemy X="11" Y="0">TealGel</enemy>
+      <enemy X="7" Y="3">TealGel</enemy>
+      <enemy X="6" Y="4">TealGel</enemy>
     </enemies>
     <doors>
       <door loc="N">hidden</door>
