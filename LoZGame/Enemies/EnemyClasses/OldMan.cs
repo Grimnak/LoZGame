@@ -28,6 +28,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.OldManSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             timesShot = 0;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
         }
 
         private Vector2 UnitVectorToPlayer(Vector2 origin)

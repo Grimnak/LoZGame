@@ -32,6 +32,7 @@
             AI = EnemyAI.ManHandlaHead;
             IsSpawning = false;
             buffedParent = false;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
             ApplyDamageMod();
             ApplyLargeWeightModPos();
             ApplyLargeHealthMod();

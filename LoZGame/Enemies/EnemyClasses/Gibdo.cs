@@ -21,6 +21,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.GibdoSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.Gibdo;
+            DropTable = GameData.Instance.EnemyDropTables.GibdoDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplySmallWeightModPos();

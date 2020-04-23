@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System;
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
@@ -48,6 +49,8 @@
         Color CurrentTint { get; set; }
 
         Point MinMaxWander { get; set; }
+
+        List<Tuple<DropManager.DropType, int, int, int>> DropTable { get; set; }
 
         EnemyEssentials.EnemyAI AI { get; set; }
         

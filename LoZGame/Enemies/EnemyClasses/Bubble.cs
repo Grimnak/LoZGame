@@ -23,6 +23,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.BubbleSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.Bubble;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
             ApplySmallSpeedMod();
             ApplySmallWeightModPos();
         }

@@ -21,6 +21,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.ZolSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.Zol;
+            DropTable = GameData.Instance.EnemyDropTables.ZolDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplyLargeWeightModPos();

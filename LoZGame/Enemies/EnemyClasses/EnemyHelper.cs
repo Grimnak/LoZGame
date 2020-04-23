@@ -12,7 +12,7 @@
             Darknut,
             Dodongo,
             Dragon,
-            Firesnakehead,
+            MoldormHead,
             Gel,
             GleeokHead,
             GleeokHeadOff,
@@ -48,6 +48,8 @@
       
         private EnemyAI Name = EnemyAI.None;
 
+        private List<Tuple<DropManager.DropType, int, int, int>> dropTable;
+
         public Point SpawnPoint => Point.Zero;
 
         public Dictionary<RandomStateGenerator.StateType, int> States { get; set; }
@@ -82,17 +84,10 @@
 
         public int DamageTimer { get; set; }
 
-        public Point MinMaxWander
-        {
-            get { return minMaxWander; }
+        public Point MinMaxWander { get { return minMaxWander; } set { minMaxWander = value; } }
 
-            set { minMaxWander = value; }
-        }
+        public EnemyAI AI { get { return Name; } set { Name = value; } }
 
-        public EnemyAI AI
-        {
-            get { return Name; }
-            set { Name = value; }
-        }
+        public List<Tuple<DropManager.DropType, int, int, int>> DropTable { get { return dropTable; } set { dropTable = value; } }
     }
 }

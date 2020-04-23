@@ -30,6 +30,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.MinKeeseSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.Keese;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
             MinMaxWander = new Point(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);
         }
 

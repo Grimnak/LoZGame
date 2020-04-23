@@ -104,7 +104,7 @@
 
         public void GainBombs()
         {
-            int temp = numBombs + 2;
+            int temp = numBombs + 4;
             if (temp > maxBombs)
             {
                 numBombs = maxBombs;

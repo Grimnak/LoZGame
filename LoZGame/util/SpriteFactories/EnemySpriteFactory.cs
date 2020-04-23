@@ -138,7 +138,7 @@
             {
                 return zolWidth;
             }
-            else if (enemy is FireSnakeHead || enemy is FireSnakeSegment)
+            else if (enemy is MoldormHead || enemy is MoldormSegment)
             {
                 return fireSnakeWidth;
             }
@@ -246,7 +246,7 @@
             {
                 return zolHeight;
             }
-            else if (enemy is FireSnakeHead || enemy is FireSnakeSegment)
+            else if (enemy is MoldormHead || enemy is MoldormSegment)
             {
                 return fireSnakeHeight;
             }

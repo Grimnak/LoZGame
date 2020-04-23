@@ -30,6 +30,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.PolsVoiceSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.PolsVoice;
+            DropTable = GameData.Instance.EnemyDropTables.PolsVoiceDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplySmallWeightModPos();

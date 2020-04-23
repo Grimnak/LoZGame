@@ -102,8 +102,8 @@
     <Compile Include="Enemies\EnemyClasses\ManhandlaHead.cs" />
     <Compile Include="Enemies\EnemyClasses\ManhandlaBody.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyHelper.cs" />
-    <Compile Include="Enemies\EnemyClasses\FireSnakeSegment.cs" />
-    <Compile Include="Enemies\EnemyClasses\FireSnakeHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\MoldormSegment.cs" />
+    <Compile Include="Enemies\EnemyClasses\MoldormHead.cs" />
     <Compile Include="Enemies\EnemyClasses\BlueGoriya.cs" />
     <Compile Include="Enemies\EnemyClasses\BlueDarknut.cs" />
     <Compile Include="Enemies\EnemyClasses\RedDarknut.cs" />
@@ -195,6 +195,7 @@
     <Compile Include="Util\DataConstants\EnemyData\EnemyHealthConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyDamageConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemySpeedConstants.cs" />
+    <Compile Include="Util\DataConstants\EnemyData\EnemyDropTables.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyStateWeights.cs" />
     <Compile Include="Util\DataConstants\GameStateData\DifficultyConstants.cs" />
     <Compile Include="Util\DataConstants\GameStateData\GameStateDataConstants.cs" />

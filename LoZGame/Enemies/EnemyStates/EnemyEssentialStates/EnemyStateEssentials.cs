@@ -23,7 +23,7 @@
         {
             EnemyAI.NoAI,
             EnemyAI.Dragon,
-            EnemyAI.Firesnakehead,
+            EnemyAI.MoldormHead,
             EnemyAI.Manhandla,
             EnemyAI.GleeokHead,
             EnemyAI.ManHandlaHead,
@@ -54,7 +54,7 @@
                 case EnemyAI.Dodongo:
                     UpdateDodongo();
                     break;
-                case EnemyAI.Firesnakehead:
+                case EnemyAI.MoldormHead:
                     UpdateFireSnake();
                     break;
                 case EnemyAI.Gel:

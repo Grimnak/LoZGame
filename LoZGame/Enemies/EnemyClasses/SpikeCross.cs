@@ -21,6 +21,7 @@
             DamageTimer = 0;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.SpikeCross;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
             IsTransparent = true;
             ApplyDamageMod();
             ApplySmallSpeedMod();

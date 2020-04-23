@@ -22,6 +22,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.WallMasterSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.WallMaster;
+            DropTable = GameData.Instance.EnemyDropTables.WallMasterDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplyLargeWeightModPos();

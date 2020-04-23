@@ -35,6 +35,7 @@
             CurrentTint = LoZGame.Instance.DefaultTint;
             spawnedChildren = false;
             AI = EnemyAI.Manhandla;
+            DropTable = GameData.Instance.EnemyDropTables.ManhandlaDropTable;
             MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed, LoZGame.Instance.UpdateSpeed * 2);
             test = false;
         }

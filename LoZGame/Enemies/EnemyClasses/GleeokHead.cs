@@ -37,6 +37,7 @@
             HasChild = false;
             AI = EnemyAI.GleeokHead;
             IsSpawning = false;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
             ApplyDamageMod();
             ApplyLargeWeightModPos();
             ApplySmallHealthMod();

@@ -145,7 +145,6 @@
 
             font = Content.Load<SpriteFont>("Text");
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            GameObjects.Enemies.Add(new FireSnakeHead(new Vector2(200, 400)));
             StartGame();
         }
 
