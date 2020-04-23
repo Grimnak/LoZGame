@@ -49,7 +49,7 @@
                     enemy.TakeDamage(projectile.Damage);
                 }
             }
-            else if (enemy is FireSnakeHead || enemy is FireSnakeSegment)
+            else if (enemy is MoldormHead || enemy is MoldormSegment)
             {
                 if (!(projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BombProjectile))
                 {

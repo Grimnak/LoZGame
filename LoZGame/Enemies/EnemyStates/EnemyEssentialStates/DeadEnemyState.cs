@@ -25,7 +25,7 @@
             Sprite.Update();
             if (deathTimer >= deathTimerMax)
             {
-                LoZGame.Instance.Drops.AttemptDrop(Enemy.Physics.Location);
+                LoZGame.Instance.Drops.AttemptDrop(Enemy.Physics.Location, LoZGame.Instance.Drops.DropChance, Enemy.DropTable);
                 Enemy.Expired = true;
             }
         }

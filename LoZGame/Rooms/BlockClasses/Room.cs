@@ -198,7 +198,7 @@
                     enemies.Add(new Zol(location));
                     break;
                 case "FireSnake":
-                    enemies.Add(new FireSnakeHead(location));
+                    enemies.Add(new MoldormHead(location));
                     break;
                 case "FireBlockEnemy":
                     enemies.Add(new BlockEnemy(location));

@@ -24,6 +24,7 @@
             IsTransparent = true;
             DamageTimer = 0;
             AI = EnemyAI.NoAI;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
             CurrentState = new BlockEnemyIdleState(this);
             CurrentTint = LoZGame.Instance.DefaultTint;
         }

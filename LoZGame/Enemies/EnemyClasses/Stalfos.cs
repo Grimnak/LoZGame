@@ -21,6 +21,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.StalfosSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.Stalfos;
+            DropTable = GameData.Instance.EnemyDropTables.StalfosDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplySmallWeightModPos();

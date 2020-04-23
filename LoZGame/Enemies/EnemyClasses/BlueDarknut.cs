@@ -21,6 +21,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.DarknutSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.Darknut;
+            DropTable = GameData.Instance.EnemyDropTables.BlueDarknutDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplyLargeWeightModPos();

@@ -32,6 +32,8 @@
 
         public EnemyStateWeights EnemyStateWeights { get; }
 
+        public EnemyDropTables EnemyDropTables { get; }
+
         public GameStateDataConstants GameStateDataConstants { get; }
 
         public RoomConstants RoomConstants { get; }

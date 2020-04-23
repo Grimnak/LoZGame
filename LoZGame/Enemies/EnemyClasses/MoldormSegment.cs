@@ -5,13 +5,13 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    class FireSnakeSegment : EnemyEssentials, IEnemy
+    class MoldormSegment : EnemyEssentials, IEnemy
     {
         private IEnemy parent;
         private IEnemy child;
         private bool childAdded;
 
-        public FireSnakeSegment(IEnemy parent)
+        public MoldormSegment(IEnemy parent)
         {
             RandomStateGenerator = new RandomStateGenerator(this);
             States = GameData.Instance.EnemyStateWeights.FireSnakeStateList;
@@ -29,6 +29,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.NoAI;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
         }
 
         public override void TakeDamage(int damageAmount)

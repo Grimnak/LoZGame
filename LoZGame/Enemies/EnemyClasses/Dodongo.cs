@@ -22,6 +22,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.DodongoSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.Dodongo;
+            DropTable = GameData.Instance.EnemyDropTables.DodongoDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplyLargeWeightModPos();

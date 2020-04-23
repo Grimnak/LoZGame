@@ -30,6 +30,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.VireSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.Vire;
+            DropTable = GameData.Instance.EnemyDropTables.VireDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplySmallWeightModPos();

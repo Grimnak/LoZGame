@@ -30,6 +30,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.BlueGoriyaSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.Goriya;
+            DropTable = GameData.Instance.EnemyDropTables.BlueGoriyaDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplySmallWeightModPos();

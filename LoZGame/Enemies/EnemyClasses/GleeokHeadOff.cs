@@ -36,6 +36,7 @@
             CurrentTint = LoZGame.Instance.DefaultTint;
             HasChild = false;
             AI = EnemyAI.GleeokHeadOff;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
             IsSpawning = false;
             ApplyDamageMod();
             ApplyLargeSpeedMod();

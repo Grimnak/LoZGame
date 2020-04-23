@@ -33,6 +33,7 @@
             CurrentTint = LoZGame.Instance.DefaultTint;
             spawnedChildren = false;
             AI = EnemyAI.NoSpawn;
+            DropTable = GameData.Instance.EnemyDropTables.GleeokDropTable;
             IsSpawning = false;
         }
 

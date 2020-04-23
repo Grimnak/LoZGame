@@ -21,6 +21,7 @@
             CurrentTint = LoZGame.Instance.DefaultTint;
             CurrentState = new SpawnEnemyState(this);
             AI = EnemyAI.Gel;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplySmallWeightModPos();

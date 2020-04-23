@@ -21,6 +21,7 @@
             MoveSpeed = GameData.Instance.EnemySpeedConstants.RopeSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.Rope;
+            DropTable = GameData.Instance.EnemyDropTables.RopeDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplySmallWeightModNeg();

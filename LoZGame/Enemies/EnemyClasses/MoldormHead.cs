@@ -5,14 +5,14 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    class FireSnakeHead : EnemyEssentials,  IEnemy
+    class MoldormHead : EnemyEssentials,  IEnemy
     {
         private List<IEnemy> children;
         private Vector2 passedVelocity;
         private int timeSinceLastPass;
         private bool spawnedChildren;
 
-        public FireSnakeHead(Vector2 location)
+        public MoldormHead(Vector2 location)
         {
             RandomStateGenerator = new RandomStateGenerator(this);
             States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.FireSnakeStateList);
@@ -31,8 +31,9 @@
             HasChild = true;
             children = new List<IEnemy>();
             spawnedChildren = false;
-            AI = EnemyAI.Firesnakehead;
+            AI = EnemyAI.MoldormHead;
             IsSpawning = false;
+            DropTable = GameData.Instance.EnemyDropTables.MoldormDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplySmallWeightModPos();
@@ -71,7 +72,7 @@
             {
                 for (int i = 0; i < GameData.Instance.EnemyMiscConstants.FireSnakeLength; i++)
                 {
-                    IEnemy child = new FireSnakeSegment(this);
+                    IEnemy child = new MoldormSegment(this);
                     children.Add(child);
                     LoZGame.Instance.GameObjects.Enemies.Add(child);
                 }

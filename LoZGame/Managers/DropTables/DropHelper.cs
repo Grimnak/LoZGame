@@ -6,23 +6,41 @@
 
     public partial class DropManager
     {
-        private const int DropChance = 35; // percent chance of drop (0 - 100)
-        private const int RupeeWeight = 40;
-        private const int YellowRupeeWeight = 20;
-        private const int BombWeight = 20;
-        private const int PotionWeight = 10;
-        private const int SecondPotionWeight = 5;
-        private const int HealthWeight = 25;
-        private const int ClockWeight = 5;
-        private const int FairyWeight = 10;
+        private const int dropChance = 50; // percent chance of drop (0 - 100)
+        private const int blueRupeeWeight = 40;
+        private const int yellowRupeeWeight = 20;
+        private const int bombWeight = 20;
+        private const int redPotionWeight = 10;
+        private const int bluePotionWeight = 5;
+        private const int healthWeight = 25;
+        private const int clockWeight = 5;
+        private const int fairyWeight = 10;
+
+        public int DropChance => dropChance;
+
+        public int BlueRupeeWeight => blueRupeeWeight;
+
+        public int YellowRupeeWeight => yellowRupeeWeight;
+
+        public int BombWeight => bombWeight;
+
+        public int RedPotionWeight => redPotionWeight;
+
+        public int BluePotionWeight => bluePotionWeight;
+
+        public int HealthWeight => healthWeight;
+
+        public int ClockWeight => clockWeight;
+
+        public int FairyWeight => fairyWeight;
 
         public enum DropType
         {
-            Rupee,
+            BlueRupee,
             YellowRupee,
             Bomb,
-            Potion,
-            SecondPotion,
+            RedPotion,
+            BluePotion,
             Health,
             Clock,
             Fairy,
@@ -31,17 +49,17 @@
 
         private List<Tuple<DropType, int, int, int>> defaultTable = new List<Tuple<DropType, int, int, int>>()
         {
-            Tuple.Create(DropType.Rupee, RupeeWeight, 1, 1),
-            Tuple.Create(DropType.YellowRupee, YellowRupeeWeight, 1, 1),
-            Tuple.Create(DropType.Bomb, BombWeight, 1, 4),
-            Tuple.Create(DropType.Potion, PotionWeight, 1, 1),
-            Tuple.Create(DropType.SecondPotion, SecondPotionWeight, 1, 1),
-            Tuple.Create(DropType.Health, HealthWeight, 1, 1),
-            Tuple.Create(DropType.Clock, ClockWeight, 1, 1),
-            Tuple.Create(DropType.Fairy, FairyWeight, 1, 1)
+            Tuple.Create(DropType.BlueRupee, blueRupeeWeight, 1, 1),
+            Tuple.Create(DropType.YellowRupee, yellowRupeeWeight, 1, 1),
+            Tuple.Create(DropType.Bomb, bombWeight, 1, 4),
+            Tuple.Create(DropType.RedPotion, redPotionWeight, 1, 1),
+            Tuple.Create(DropType.BluePotion, bluePotionWeight, 1, 1),
+            Tuple.Create(DropType.Health, healthWeight, 1, 1),
+            Tuple.Create(DropType.Clock, clockWeight, 1, 1),
+            Tuple.Create(DropType.Fairy, fairyWeight, 1, 1)
         };
 
-        public void AttemptDrop(Vector2 loc, int dropChance = DropChance, List<Tuple<DropType, int, int, int>> dropTable = null)
+        public void AttemptDrop(Vector2 loc, int dropChance = dropChance, List<Tuple<DropType, int, int, int>> dropTable = null)
         {
             if (LoZGame.Instance.Random.Next(100) <= dropChance)
             {
@@ -49,7 +67,7 @@
                 {
                     dropTable = defaultTable;
                 }
-                if (CanDropItem())
+                if (dropTable.Count > 0 && CanDropItem(dropChance))
                 {
                     Tuple<DropType, int, int, int> item = DetermineDrop(dropTable);
                     DropItem(item.Item1, loc, LoZGame.Instance.Random.Next(item.Item3, item.Item4));
@@ -61,7 +79,7 @@
         {
             switch (item)
             {
-                case DropType.Rupee:
+                case DropType.BlueRupee:
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedRupee(loc));
                     break;
                 case DropType.YellowRupee:
@@ -70,10 +88,10 @@
                 case DropType.Bomb:
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedBomb(loc));
                     break;
-                case DropType.Potion:
+                case DropType.RedPotion:
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedPotion(loc));
                     break;
-                case DropType.SecondPotion:
+                case DropType.BluePotion:
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedSecondPotion(loc));
                     break;
                 case DropType.Health:
@@ -148,7 +166,5 @@
                 LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang = Tuple.Create(LoZGame.Instance.Dungeon.CurrentRoom.DroppedMagicBoomerang.Item1, true);
             }
         }
-
-        public void DropMagicKey(Vector2 loc) { LoZGame.Instance.GameObjects.Items.Add(new MagicKey(loc)); }
     }
 }

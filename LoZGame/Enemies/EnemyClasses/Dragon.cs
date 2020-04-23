@@ -22,6 +22,7 @@
             DamageTimer = 0;
             MoveSpeed = GameData.Instance.EnemySpeedConstants.DragonSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
+            DropTable = GameData.Instance.EnemyDropTables.DragonDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplyLargeWeightModPos();

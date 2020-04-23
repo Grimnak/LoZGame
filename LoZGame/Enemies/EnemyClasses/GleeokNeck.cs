@@ -28,6 +28,7 @@
             CurrentTint = LoZGame.Instance.DefaultTint;
             HasChild = true;
             AI = EnemyAI.NoAI;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
             IsTransparent = true;
             ApplyDamageMod();
             ApplyLargeWeightModPos();

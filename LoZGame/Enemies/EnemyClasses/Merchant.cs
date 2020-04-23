@@ -18,6 +18,7 @@
             DamageTimer = 0;
             MoveSpeed = GameData.Instance.EnemySpeedConstants.MerchantSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
         }
 
         public override void TakeDamage(int damageAmount)

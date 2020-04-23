@@ -2,7 +2,7 @@
 {
     public struct EnemyHealthConstants
     {
-        private const int StalfosHP = 8;
+        private const int StalfosHP = 4;
         private const int KeeseHP = 2;
         private const int RopeHP = 2;
         private const int GelHP = 2;
@@ -10,7 +10,7 @@
         private const int SpikeCrossHP = 1;
         private const int WallMasterHP = 12;
         private const int DragonHP = 32;
-        private const int DodongoHP = 32;
+        private const int DodongoHP = 16;
         private const int RedGoriyaHP = 12;
         private const int BlueGoriyaHP = 16;
         private const int OldManHP = 1;
