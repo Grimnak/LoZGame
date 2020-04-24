@@ -345,7 +345,7 @@
         <item X="6" Y="1">HeartContainer</item>
       </items>
       <text>
-        BRB 5 Minutes. \n- DigDogger
+        BRB 5 Minutes. - DigDogger
       </text>
       <enemies>
         <enemy X="4" Y="2">DigDogger</enemy>
