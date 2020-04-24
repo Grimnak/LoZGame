@@ -19,12 +19,25 @@ namespace LoZClone
         /// <param name="playerInstance">Instance of the player.</param>
         public AttackState(IPlayer playerInstance)
         {
-            SoundFactory.Instance.PlaySwordSlash();
-            player = playerInstance;
-            lockoutTimer = GameData.Instance.PlayerConstants.LockoutWaitTime; // wait period
-            sprite = CreateCorrectSprite();
-            sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
-            player.Physics.MovementVelocity = Vector2.Zero;
+            if (LoZGame.Cheats) // laser blast
+            {
+                SoundFactory.Instance.PlayLaserBlast();
+                LoZGame.Instance.GameObjects.Enemies.Clear();
+                player = playerInstance;
+                lockoutTimer = GameData.Instance.PlayerConstants.LockoutWaitTime; // wait period
+                sprite = CreateCorrectSprite();
+                sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
+                player.Physics.MovementVelocity = Vector2.Zero;
+            }
+            else
+            {
+                SoundFactory.Instance.PlaySwordSlash();
+                player = playerInstance;
+                lockoutTimer = GameData.Instance.PlayerConstants.LockoutWaitTime; // wait period
+                sprite = CreateCorrectSprite();
+                sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
+                player.Physics.MovementVelocity = Vector2.Zero;
+            }
         }
 
         /// <inheritdoc/>

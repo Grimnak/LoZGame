@@ -67,6 +67,8 @@
         private SpriteData itemSelectorNormal;
         private SpriteData itemSelectorHard;
         private SpriteData itemSelectorNightmare;
+        private Texture2D spartanLaserSpriteSheet;
+        private SpriteData spartanLaserData;
 
         private static readonly InventorySpriteFactory InstanceValue = new InventorySpriteFactory();
 
@@ -117,13 +119,19 @@
             magicSwordSpriteSheet = content.Load<Texture2D>("MagicSword");
             magicSwordData = new SpriteData(swordSize, magicSwordSpriteSheet, 1, 1);
             itemSelector2 = content.Load<Texture2D>("SelectorSprite2");
-
+            spartanLaserSpriteSheet = content.Load<Texture2D>("SpartanLaserInventory");
+            spartanLaserData = new SpriteData(new Vector2(8, 20), spartanLaserSpriteSheet, 1, 1);
             itemSelectorFalse = new SpriteData(new Vector2(80, 37), itemSelector2, 1, 1);
             itemSelectorTrue = new SpriteData(new Vector2(70, 37), itemSelector2, 1, 1);
             itemSelectorEasy = new SpriteData(new Vector2(87, 37), itemSelector2, 1, 1);
             itemSelectorNormal = new SpriteData(new Vector2(140, 37), itemSelector2, 1, 1);
             itemSelectorHard = new SpriteData(new Vector2(90, 37), itemSelector2, 1, 1);
             itemSelectorNightmare = new SpriteData(new Vector2(192, 37), itemSelector2, 1, 1);
+        }
+
+        public ISprite CreateSpartanLaser()
+        {
+            return new ObjectSprite(spartanLaserSpriteSheet, spartanLaserData);
         }
 
         public ISprite CreateInventoryBackground()
