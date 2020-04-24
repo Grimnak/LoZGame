@@ -811,7 +811,7 @@
       <rrow idx="2">
       </rrow>
       <rrow idx="3">
-        <tile type="movable"  idx="5" dir="E,W">orange_movable_square</tile>
+        <tile type="movable" idx="5" dir="N,S">orange_movable_square</tile>
       </rrow>
       <rrow idx="4">
       </rrow>
