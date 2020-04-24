@@ -51,6 +51,10 @@
         {
         }
 
+        public virtual void Options()
+        {
+        }
+
         /// <inheritdoc></inheritdoc>
         public virtual void Update()
         {

@@ -30,7 +30,7 @@
         /// <inheritdoc></inheritdoc>
         public override void TransitionRoom(Physics.Direction direction)
         {
-            if (!(LoZGame.Instance.Players[0].State is SwallowedState))
+            if (!(LoZGame.Instance.Players[0].State is SwallowedState)) // -- potential bug --
             {
                 LoZGame.Instance.GameState = new TransitionRoomState(direction);
             }
@@ -46,6 +46,11 @@
         public override void Pause()
         {
             LoZGame.Instance.GameState = new PauseState(this);
+        }
+
+        public override void Options()
+        {
+            LoZGame.Instance.GameState = new OptionsState(this);
         }
 
         /// <inheritdoc></inheritdoc>

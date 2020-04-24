@@ -1,4 +1,6 @@
-﻿namespace LoZClone
+﻿using Microsoft.Xna.Framework;
+
+namespace LoZClone
 {
     public struct GameStateDataConstants
     {
@@ -19,6 +21,11 @@
         private const int WinGameStMaxLO = 440;
         private const int WinStSpriteWidth = 236;
         private const int WinStSpriteHeight = 160;
+
+        private const int optionsWindowHeight = 350;
+        private const int optionsWindowWidth = 430;
+        private const int optionsHeightOffset = 225;
+        private const int optionsWidthOffset = 185;
 
         private const int playerTransitionMaxDistance = 200;
 
@@ -51,6 +58,14 @@
         public int WinStateSpriteWidth => WinStSpriteWidth;
 
         public int WinStateSpriteHeight => WinStSpriteHeight;
+
+        public int OptionsWindowHeight => optionsWindowHeight;
+
+        public int OptionsWindowWidth => optionsWindowWidth;
+
+        public int OptionsHeightOffset => optionsHeightOffset;
+
+        public int OptionsWidthOffset => optionsWidthOffset;
 
         public float DoorFloorDepth => doorFloorDepth;
 

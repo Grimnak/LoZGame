@@ -102,6 +102,10 @@ namespace LoZClone
                     }
                 }
             }
+            if (pressed.Contains(Keys.O) && oldState.IsKeyUp(Keys.O))
+            {
+                playerDict[Keys.O].Execute();
+            }
 
             if (pressed.Contains(Keys.I) && oldState.IsKeyUp(Keys.I))
             {

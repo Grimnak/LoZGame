@@ -1,6 +1,7 @@
 namespace LoZClone
 {
     using System.Collections.Generic;
+    using LoZClone;
     using Microsoft.Xna.Framework.Input;
 
     /// <summary>
@@ -23,7 +24,7 @@ namespace LoZClone
 
             commandIdle = new CommandIdle(player);
 
-            playerDictionary.Add(Keys.W, new CommandUp(player));
+            playerDictionary.Add(Keys.W, new CommandUp(player)); 
             playerDictionary.Add(Keys.Up, new CommandUp(player));
             playerDictionary.Add(Keys.A, new CommandLeft(player));
             playerDictionary.Add(Keys.Left, new CommandLeft(player));
@@ -36,6 +37,7 @@ namespace LoZClone
             playerDictionary.Add(Keys.N, new CommandAttackB(player));
             playerDictionary.Add(Keys.I, new CommandInventory());
             playerDictionary.Add(Keys.P, new CommandPause());
+            playerDictionary.Add(Keys.O, new CommandOptions());
 
             playerDictionary.Add(Keys.Q, new CommandQuit());
 

@@ -69,6 +69,7 @@
     <Compile Include="Collisions\Collision Detection\CollisionDetection.cs" />
     <Compile Include="Collisions\Collision Handling\ItemCollisionHandler.cs" />
     <Compile Include="Collisions\Collision Handling\ProjectileCollisionHandler.cs" />
+    <Compile Include="Controller\Commands\InventoryCommands\CommandOptions.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandPause.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionDown.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionLeft.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FollowFireSnakeState.cs" />
     <Compile Include="GameState\CreditsScreenState.cs" />
     <Compile Include="GameState\GameStateEssentials.cs" />
+    <Compile Include="GameState\OptionsState.cs" />
     <Compile Include="GameState\UnpauseState.cs" />
     <Compile Include="GameState\PauseState.cs" />
     <Compile Include="Items\Ladder.cs" />

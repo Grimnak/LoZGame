@@ -29,6 +29,11 @@
         void Death();
 
         /// <summary>
+        /// Game state goes to player death.
+        /// </summary>
+        void Options();
+
+        /// <summary>
         /// Game state goes to access inventory.
         /// </summary>
         void OpenInventory();
