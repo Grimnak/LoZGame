@@ -287,7 +287,7 @@
     <rrow idx="2">
     </rrow>
     <rrow idx="3">
-      <tile type="movable"  idx="4" dir="N,S">orange_movable_square</tile>
+      <tile type="movable"  idx="4" dir="">orange_movable_square</tile>
       <tile type="block" idx="7">movable_square</tile>
     </rrow>
     <rrow idx="4">

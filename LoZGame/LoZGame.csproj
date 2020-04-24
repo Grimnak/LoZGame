@@ -196,6 +196,9 @@
     <Compile Include="Rooms\BlockClasses\Tiles\CrossableTile.cs" />
     <Compile Include="Rooms\BlockClasses\Tiles\Stairs.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\DoorEssentials.cs" />
+    <Compile Include="Rooms\BlockStates\MovableTileStates\IMovableBlockState.cs" />
+    <Compile Include="Rooms\BlockStates\MovableTileStates\SolvedState.cs" />
+    <Compile Include="Rooms\BlockStates\MovableTileStates\UnsolvedState.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
     <Compile Include="Util\DataConstants\CollisionData\CollisionConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyHealthConstants.cs" />
@@ -325,7 +328,7 @@
     <Compile Include="Players\PlayerStates\DieState.cs" />
     <Compile Include="Rooms\BlockClasses\Tiles\BlockTile.cs" />
     <Compile Include="Rooms\BlockClasses\Room.cs" />
-    <Compile Include="Rooms\BlockClasses\Tiles\MovableTile.cs" />
+    <Compile Include="Rooms\BlockClasses\Tiles\MovableBlock.cs" />
     <Compile Include="Rooms\BlockClasses\Tiles\Tile.cs" />
     <Compile Include="Managers\HealthManager.cs" />
     <Compile Include="Managers\DebugManager.cs" />

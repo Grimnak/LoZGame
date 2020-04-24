@@ -58,7 +58,7 @@
         public void PlayLaserBlast()
         {
             laserBlast.Play();
-            System.Threading.Thread.Sleep(2700); // laser blast
+            //System.Threading.Thread.Sleep(2700); // laser blast
         }
 
         public void PlaySwordShoot()

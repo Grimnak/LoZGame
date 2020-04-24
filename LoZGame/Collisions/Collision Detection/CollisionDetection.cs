@@ -73,7 +73,7 @@
             for (int i = 0; i < blocks.Count; i++)
             {
                 IBlock block = blocks[i];
-                if (block is BlockTile || block is MovableTile || block is CrossableTile)
+                if (block is BlockTile || block is MovableBlock || block is CrossableTile)
                 {
                     CheckCollisions<IPlayer>(block, players);
                     CheckCollisions<IEnemy>(block, enemies);

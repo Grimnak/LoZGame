@@ -36,6 +36,10 @@ namespace LoZClone
         private SpriteData greenLinkPickupData;
         private SpriteData blueLinkPickupData;
         private SpriteData redLinkPickupData;
+        private SpriteData greenLinkLaserUpData;
+        private SpriteData greenLinkLaserDownData;
+        private SpriteData greenLinkLaserLeftData;
+        private SpriteData greenLinkLaserRightData;
 
         private Texture2D greenLinkUpTexture;
         private Texture2D blueLinkUpTexture;
@@ -60,6 +64,11 @@ namespace LoZClone
         private Texture2D greenLinkPickupTexture;
         private Texture2D blueLinkPickupTexture;
         private Texture2D redLinkPickupTexture;
+
+        private Texture2D greenLinkLaserUpTexture;
+        private Texture2D greenLinkLaserDownTexture;
+        private Texture2D greenLinkLaserLeftTexture;
+        private Texture2D greenLinkLaserRightTexture;
 
         private static readonly LinkSpriteFactory InstanceValue = new LinkSpriteFactory();
 
@@ -100,7 +109,12 @@ namespace LoZClone
             greenLinkPickupTexture = content.Load<Texture2D>("Green_Link_Pickup");
             blueLinkPickupTexture = content.Load<Texture2D>("Blue_Link_Pickup");
             redLinkPickupTexture = content.Load<Texture2D>("Red_Link_Pickup");
-        }
+
+            greenLinkLaserUpTexture = content.Load<Texture2D>("Green_Link_Laser_Up");
+            greenLinkLaserDownTexture = content.Load<Texture2D>("Green_Link_Laser_Down");
+            greenLinkLaserLeftTexture = content.Load<Texture2D>("Green_Link_Laser_Left");
+            greenLinkLaserRightTexture = content.Load<Texture2D>("Green_Link_Laser_Right");
+    }
 
         public void LoadData()
         {
@@ -122,6 +136,30 @@ namespace LoZClone
             greenLinkPickupData = new SpriteData(DrawSize, greenLinkPickupTexture, 2, 1);
             blueLinkPickupData = new SpriteData(DrawSize, blueLinkPickupTexture, 2, 1);
             redLinkPickupData = new SpriteData(DrawSize, redLinkPickupTexture, 2, 1);
+            greenLinkLaserUpData = new SpriteData(DrawSize, greenLinkLaserUpTexture, 1, 1);
+            greenLinkLaserDownData = new SpriteData(DrawSize, greenLinkLaserDownTexture, 1, 1);
+            greenLinkLaserLeftData = new SpriteData(DrawSize, greenLinkLaserLeftTexture, 1, 1);
+            greenLinkLaserRightData = new SpriteData(DrawSize, greenLinkLaserRightTexture, 1, 1);
+        }
+
+        public ISprite CreateLinkLaserUp()
+        {
+            return new ObjectSprite(greenLinkLaserUpTexture, greenLinkLaserUpData);
+        }
+
+        public ISprite CreateLinkLaserDown()
+        {
+            return new ObjectSprite(greenLinkLaserDownTexture, greenLinkLaserDownData);
+        }
+
+        public ISprite CreateLinkLaserLeft()
+        {
+            return new ObjectSprite(greenLinkLaserLeftTexture, greenLinkLaserLeftData);
+        }
+
+        public ISprite CreateLinkLaserRight()
+        {
+            return new ObjectSprite(greenLinkLaserRightTexture, greenLinkLaserRightData);
         }
 
         public ISprite CreateSpriteLinkUp(Link.LinkColor currentColor)

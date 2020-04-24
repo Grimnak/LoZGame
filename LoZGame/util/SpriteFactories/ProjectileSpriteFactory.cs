@@ -28,6 +28,11 @@
         private static readonly int swordWidth = LinkSpriteFactory.LinkWidth;
         private static readonly int swordHeight = LinkSpriteFactory.LinkHeight;
 
+        private static readonly int spartanLaserHorizontalHeight = 8;
+        private static readonly int spartanLaserHorizontalWidth = 20;
+        private static readonly int spartanLaserVerticalWidth = 4;
+        private static readonly int spartanLaserVerticalHeight = 10;
+
         public int SwordWidth
         {
             get { return swordWidth; }
@@ -236,6 +241,12 @@
         private Texture2D redWoodSwordSpriteSheet;
         private Texture2D redWhiteSwordSpriteSheet;
         private Texture2D redMagicSwordSpriteSheet;
+        private Texture2D spartanLaserUpTexture;
+        private Texture2D spartanLaserDownTexture;
+        private Texture2D spartanLaserRightTexture;
+        private Texture2D spartanLaserLeftTexture;
+        private SpriteData spartanLaserDataVertical;
+        private SpriteData spartanLaserDataHorizontal;
 
         private static readonly ProjectileSpriteFactory InstanceValue = new ProjectileSpriteFactory();
 
@@ -278,7 +289,11 @@
             redWoodSwordSpriteSheet = content.Load<Texture2D>("Red_Wood_Up");
             redWhiteSwordSpriteSheet = content.Load<Texture2D>("Red_White_Up");
             redMagicSwordSpriteSheet = content.Load<Texture2D>("Red_White_Up"); // never created
-        }
+            spartanLaserUpTexture = content.Load<Texture2D>("SpartanLaser_up");
+            spartanLaserDownTexture = content.Load<Texture2D>("SpartanLaser_down");
+            spartanLaserRightTexture = content.Load<Texture2D>("SpartanLaser_right");
+            spartanLaserLeftTexture = content.Load<Texture2D>("SpartanLaser_left");
+    }
 
         private void LoadData()
         {
@@ -297,6 +312,8 @@
             explosionFiveData = new SpriteData(new Vector2(explosionWidth, explosionHeight), explosionFiveSpriteSheet, 3, 1);
             fireballData = new SpriteData(new Vector2(fireballWidth, fireballHeight), fireballSpriteSheet, 1, 4);
             swordData = new SpriteData(new Vector2(swordWidth, swordHeight), greenWoodSwordSpriteSheet, 1, 2);
+            spartanLaserDataVertical = new SpriteData(new Vector2(spartanLaserVerticalWidth, spartanLaserVerticalHeight), spartanLaserUpTexture, 1, 1);
+            spartanLaserDataHorizontal = new SpriteData(new Vector2(spartanLaserHorizontalHeight, spartanLaserHorizontalWidth), spartanLaserRightTexture, 1, 1);
         }
 
         public ISprite Sword(Link.LinkColor color, Link.LinkWeapon type)

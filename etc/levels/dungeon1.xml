@@ -470,7 +470,7 @@
       <rrow idx="2">
       </rrow>
       <rrow idx="3">
-        <tile type="movable,puzzle" dir="N,S" idx="5">orange_movable_square</tile>
+        <tile type="movable,puzzle" dir="" idx="5">orange_movable_square</tile>
       </rrow>
       <rrow idx="4">
       </rrow>
