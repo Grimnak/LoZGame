@@ -563,16 +563,6 @@
             return new ObjectSprite(LadderTileTexture, ladderTileData);
         }
 
-        public ISprite HorizontalBricks()
-        {
-            return new ObjectSprite(HorizontalBricksTexture, horizontalBricksData);
-        }
-
-        public ISprite VerticalBricks()
-        {
-            return new ObjectSprite(VerticalBricksTexture, verticalBricksData);
-        }
-
         public ISprite BlueStatueLeft2()
         {
             return new ObjectSprite(BlueStatueLeft2Texture, blueStatueLeft2Data);
@@ -593,59 +583,14 @@
             return new ObjectSprite(OrangeStatueLeft2Texture, orangeStatueLeft2Data);
         }
 
-        public ISprite BombedOpeningDown2()
-        {
-            return new ObjectSprite(BombedOpeningDown2Texture, bombedOpeningDown2Data);
-        }
-
-        public ISprite BombedOpeningLeft2()
-        {
-            return new ObjectSprite(BombedOpeningLeft2Texture, bombedOpeningLeft2Data);
-        }
-
-        public ISprite BombedOpeningRight2()
-        {
-            return new ObjectSprite(BombedOpeningRight2Texture, bombedOpeningRight2Data);
-        }
-
-        public ISprite BombedOpeningUp2()
-        {
-            return new ObjectSprite(BombedOpeningUp2Texture, bombedOpeningUp2Data);
-        }
-
         public ISprite BossTile2()
         {
             return new ObjectSprite(BossTile2Texture, bossTile2Data);
         }
 
-        public ISprite FloorTile2()
-        {
-            return new ObjectSprite(FloorTile2Texture, floorTile2Data);
-        }
-
         public ISprite LavaTile2()
         {
             return new ObjectSprite(Lava2Texture, lava2Data);
-        }
-
-        public ISprite MovableSquare2()
-        {
-            return new ObjectSprite(MovableSquare2Texture, movableSquare2Data);
-        }
-
-        public ISprite SpottedTile2()
-        {
-            return new ObjectSprite(SpottedTile2Texture, spottedTile2Data);
-        }
-
-        public ISprite MovableSquare3()
-        {
-            return new ObjectSprite(MovableSquare3Texture, movableSquare3Data);
-        }
-
-        public ISprite SpottedTile3()
-        {
-            return new ObjectSprite(SpottedTile3Texture, spottedTile3Data);
         }
 
         public ISprite RedStatueLeft3()
@@ -666,11 +611,6 @@
         public ISprite GreenStatueLeft3()
         {
             return new ObjectSprite(GreenStatueLeft3Texture, greenStatueLeft3Data);
-        }
-
-        public ISprite Stairs3()
-        {
-            return new ObjectSprite(StairsTexture3, stairsData3);
         }
 
         public ISprite BlueStatueLeft4()
