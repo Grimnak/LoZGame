@@ -70,11 +70,6 @@ MS Paint
 
 
 ## Known Bugs/Missing Features:
-### Basement Item Drops:
-    Bug:  Bats can drop items in the basement walls that are unobtainable.
-
-    Plan(s) to fix:  Add boomerang capabilities to grab items and potentially make items spawn in-bounds.
-
 ### Dungeon Five Boss:
     Bug:  Digdogger (Dungeon 5's boss) is missing.
 
