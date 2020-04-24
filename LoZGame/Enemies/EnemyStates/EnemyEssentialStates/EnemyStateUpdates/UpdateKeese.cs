@@ -49,8 +49,6 @@
                 if (Enemy.Physics.MovementVelocity.Length() <= GameData.Instance.EnemySpeedConstants.MaxKeeseSpeed)
                 {
                     Enemy.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
-                    Console.WriteLine("movement: " + Enemy.Physics.MovementVelocity);
-                    Console.WriteLine("knockback: " + Enemy.Physics.KnockbackVelocity);
                 }
             }
             else
@@ -58,8 +56,6 @@
                 if (Enemy.Physics.MovementVelocity.Length() >= GameData.Instance.EnemySpeedConstants.MinKeeseSpeed)
                 {
                     Enemy.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
-                    Console.WriteLine("movement: " + Enemy.Physics.MovementVelocity);
-                    Console.WriteLine("knockback: " + Enemy.Physics.KnockbackVelocity);
                 }
             }
         }
