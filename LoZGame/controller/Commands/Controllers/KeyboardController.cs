@@ -12,6 +12,7 @@ namespace LoZClone
         private readonly KeyboardCommandLoader allCommands;
         private readonly Dictionary<Keys, ICommand> playerDict;
         private readonly Dictionary<Keys, ICommand> inventoryDict;
+        private readonly Dictionary<Keys, ICommand> optionsDict;
         private ICommand currentCommand;
         private KeyboardState oldState;
         private List<Keys> playerKeys;
@@ -28,6 +29,7 @@ namespace LoZClone
             oldState = Keyboard.GetState();
             playerDict = allCommands.GetPlayerDict;
             inventoryDict = allCommands.GetInventoryDict;
+            optionsDict = allCommands.GetOptionsDict;
             playerCommands = new Stack<KeyValuePair<Keys, ICommand>>();
             playerKeys = new List<Keys>
             {
@@ -101,6 +103,20 @@ namespace LoZClone
                         inventoryDict[key].Execute();
                     }
                 }
+            }
+            else if (LoZGame.Instance.GameState is OptionsState)
+            {
+                foreach (Keys key in pressed)
+                {
+                    if (optionsDict.ContainsKey(key) && oldState.IsKeyUp(key))
+                    {
+                        optionsDict[key].Execute();
+                    }
+                }
+            }
+            if (pressed.Contains(Keys.O) && oldState.IsKeyUp(Keys.O))
+            {
+                playerDict[Keys.O].Execute();
             }
 
             if (pressed.Contains(Keys.I) && oldState.IsKeyUp(Keys.I))

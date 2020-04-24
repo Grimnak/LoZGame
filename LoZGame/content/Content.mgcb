@@ -475,30 +475,6 @@
 /processorParam:TextureFormat=Color
 /build:Blue_Wood_Up.png
 
-#begin Blue_Wood_Up.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Blue_Wood_Up.png
-
-#begin Blue_Wood_Up.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Blue_Wood_Up.png
-
 #begin BlueCandle.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2864,6 +2840,18 @@
 /processorParam:TextureFormat=Color
 /build:oldMan.png
 
+#begin Options.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Options.png
+
 #begin orange_movable_square.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3224,18 +3212,6 @@
 /processorParam:TextureFormat=Color
 /build:Red_Wood_Up.png
 
-#begin Red_Wood_Up.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Red_Wood_Up.png
-
 #begin RedCandle.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3367,6 +3343,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:SecondPotion.png
+
+#begin SelectorSprite2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:SelectorSprite2.png
 
 #begin Shield.png
 /importer:TextureImporter

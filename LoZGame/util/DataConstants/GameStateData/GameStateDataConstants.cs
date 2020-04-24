@@ -1,4 +1,6 @@
-﻿namespace LoZClone
+﻿using Microsoft.Xna.Framework;
+
+namespace LoZClone
 {
     public struct GameStateDataConstants
     {
@@ -19,6 +21,18 @@
         private const int WinGameStMaxLO = 440;
         private const int WinStSpriteWidth = 236;
         private const int WinStSpriteHeight = 160;
+
+        private const int optionsWindowHeight = 350;
+        private const int optionsWindowWidth = 430;
+        private const int optionsHeightOffset = 225;
+        private const int optionsWidthOffset = 185;
+        private const int optionsTextWidthOffset = 10;
+        private const int optionsTextX = 380;
+        private const int optionsDifficultyY = 327;
+        private const int optionsCheatsY = 385;
+        private const int optionsDebugY = 443;
+        private const int optionsTextLeading = 58; // What is Leading? https://techterms.com/definition/leading
+        private const int optionsSelectorY = 325;
 
         private const int playerTransitionMaxDistance = 200;
 
@@ -51,6 +65,26 @@
         public int WinStateSpriteWidth => WinStSpriteWidth;
 
         public int WinStateSpriteHeight => WinStSpriteHeight;
+
+        public int OptionsWindowHeight => optionsWindowHeight;
+
+        public int OptionsWindowWidth => optionsWindowWidth;
+
+        public int OptionsHeightOffset => optionsHeightOffset;
+
+        public int OptionsWidthOffset => optionsWidthOffset;
+
+        public int OptionsDifficultyY => optionsDifficultyY;
+
+        public int OptionsSelectorY => optionsSelectorY;
+
+        public int OptionsTextLeading => optionsTextLeading;
+
+        public int OptionsCheatsY => optionsCheatsY;
+
+        public int OptionsDebugY => optionsDebugY;
+
+        public int OptionsTextX => optionsTextX;
 
         public float DoorFloorDepth => doorFloorDepth;
 

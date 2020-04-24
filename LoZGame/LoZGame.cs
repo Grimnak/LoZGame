@@ -9,10 +9,10 @@
     public class LoZGame : Game
     {
         public static bool DebugMode = false; // show collision bounding boxes
-        public static bool Cheats = true; // infinite life and item uses
+        public static bool Cheats = false; // infinite life and item uses
         public static bool Music = false;  // Title screen and dungeon music (not SFX)
-        public static readonly int StartDungeon = 6; // dungeon ID to load into [1 - 6];
-        public int Difficulty = 0; // 0 is normal, can scale infinitely up but you'll get really dumb bugs and probably crash
+        public static readonly int StartDungeon = 1; // dungeon ID to load into [1 - 6];\
+        public int Difficulty = 0; // -1 => EASY 0 => NORMAL 1 => HARD 3 => NIGHTMARE
         private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;
         private readonly int screenWidth;
@@ -38,12 +38,11 @@
         private KeyboardCommandLoader keyboardCommandLoader;
         private MouseCommandLoader mouseCommandLoader;
         private Dungeon dungeon;
-        private Texture2D background;
-        private Texture2D backgroundHole;
         private SpriteFont font;
         private SoundFactory music;
         private GameObjectManager gameObjectManager;
         private Effect betterTinting;
+        private Options options;
 
         private DropManager dropManager;
         private CollisionDetection collisionDetector;
@@ -90,14 +89,13 @@
 
         public int UpdateSpeed { get { return DefaultUpdateSpeed; } }
 
-        public Texture2D Background { get { return background; } }
-
-        public Texture2D BackgroundHole { get { return backgroundHole; } }
-
         public SpriteFont Font { get { return font; } }
+
+        public Options Options { get { return options; } }
 
         private LoZGame()
         {
+            options = new Options();
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 654;
@@ -130,8 +128,6 @@
 
         protected override void LoadContent()
         {
-            background = Content.Load<Texture2D>("dungeon");
-            backgroundHole = Content.Load<Texture2D>("dungeonHole");
             Effect effect = Content.Load<Effect>("BetterTint");
             betterTinting = effect;
             ItemSpriteFactory.Instance.LoadAllTextures(Content);

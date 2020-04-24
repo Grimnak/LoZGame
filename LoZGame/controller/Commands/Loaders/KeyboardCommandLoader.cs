@@ -1,6 +1,7 @@
 namespace LoZClone
 {
     using System.Collections.Generic;
+    using LoZClone;
     using Microsoft.Xna.Framework.Input;
 
     /// <summary>
@@ -11,6 +12,7 @@ namespace LoZClone
         private readonly CommandIdle commandIdle;
         private readonly Dictionary<Keys, ICommand> playerDictionary;
         private readonly Dictionary<Keys, ICommand> inventoryDictionary;
+        private readonly Dictionary<Keys, ICommand> optionsDictionary;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyboardCommandLoader"/> class.
@@ -20,10 +22,11 @@ namespace LoZClone
         {
             playerDictionary = new Dictionary<Keys, ICommand>();
             inventoryDictionary = new Dictionary<Keys, ICommand>();
+            optionsDictionary = new Dictionary<Keys, ICommand>();
 
             commandIdle = new CommandIdle(player);
 
-            playerDictionary.Add(Keys.W, new CommandUp(player));
+            playerDictionary.Add(Keys.W, new CommandUp(player)); 
             playerDictionary.Add(Keys.Up, new CommandUp(player));
             playerDictionary.Add(Keys.A, new CommandLeft(player));
             playerDictionary.Add(Keys.Left, new CommandLeft(player));
@@ -36,6 +39,7 @@ namespace LoZClone
             playerDictionary.Add(Keys.N, new CommandAttackB(player));
             playerDictionary.Add(Keys.I, new CommandInventory());
             playerDictionary.Add(Keys.P, new CommandPause());
+            playerDictionary.Add(Keys.O, new CommandOptions());
 
             playerDictionary.Add(Keys.Q, new CommandQuit());
 
@@ -49,6 +53,13 @@ namespace LoZClone
             inventoryDictionary.Add(Keys.Down, new CommandSelectionDown(player));
             inventoryDictionary.Add(Keys.D, new CommandSelectionRight(player));
             inventoryDictionary.Add(Keys.Right, new CommandSelectionRight(player));
+
+            optionsDictionary.Add(Keys.W, new CommandMoveOptionUp());
+            optionsDictionary.Add(Keys.Up, new CommandMoveOptionUp());
+            optionsDictionary.Add(Keys.S, new CommandMoveOptionDown());
+            optionsDictionary.Add(Keys.Down, new CommandMoveOptionDown());
+            optionsDictionary.Add(Keys.Enter, new CommandToggleOption());
+
         }
 
         /// <summary>
@@ -65,5 +76,10 @@ namespace LoZClone
         /// Gets the dictionary containing inventory commands from the loader.
         /// </summary>
         public Dictionary<Keys, ICommand> GetInventoryDict => inventoryDictionary;
+
+        /// <summary>
+        /// Gets the dictionary containing options commands from the loader.
+        /// </summary>
+        public Dictionary<Keys, ICommand> GetOptionsDict => optionsDictionary;
     }
 }

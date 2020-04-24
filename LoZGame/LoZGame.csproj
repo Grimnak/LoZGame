@@ -69,11 +69,15 @@
     <Compile Include="Collisions\Collision Detection\CollisionDetection.cs" />
     <Compile Include="Collisions\Collision Handling\ItemCollisionHandler.cs" />
     <Compile Include="Collisions\Collision Handling\ProjectileCollisionHandler.cs" />
+    <Compile Include="Controller\Commands\InventoryCommands\CommandOptions.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandPause.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionDown.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionLeft.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionRight.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionUp.cs" />
+    <Compile Include="Controller\Commands\OptionCommands\CommandMoveOptionDown.cs" />
+    <Compile Include="Controller\Commands\OptionCommands\CommandMoveOptionUp.cs" />
+    <Compile Include="Controller\Commands\OptionCommands\CommandToggleOption.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackA.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackB.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandDown.cs" />
@@ -171,6 +175,7 @@
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FollowFireSnakeState.cs" />
     <Compile Include="GameState\CreditsScreenState.cs" />
     <Compile Include="GameState\GameStateEssentials.cs" />
+    <Compile Include="GameState\OptionsState.cs" />
     <Compile Include="GameState\UnpauseState.cs" />
     <Compile Include="GameState\PauseState.cs" />
     <Compile Include="Items\Ladder.cs" />
@@ -200,6 +205,8 @@
     <Compile Include="Util\DataConstants\GameStateData\GameStateDataConstants.cs" />
     <Compile Include="Util\DataConstants\InventoryData\InventoryConstants.cs" />
     <Compile Include="Util\DataConstants\PhysicsData\PhysicsConstants.cs" />
+    <Compile Include="Util\DifficultyMapper.cs" />
+    <Compile Include="Util\EnumClass.cs" />
     <Compile Include="Util\Inventory\InventoryComponents.cs" />
     <Compile Include="GameState\DeathState.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyEssentials.cs" />
@@ -349,6 +356,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Inventory\InventoryComponentsHelper.cs" />
+    <Compile Include="Util\Options.cs" />
     <Compile Include="Util\Physics\JumpPhysics.cs" />
     <Compile Include="Util\Physics\KnockbackPhysics.cs" />
     <Compile Include="Util\Physics\PhysicsMain.cs" />

@@ -122,3 +122,6 @@ dotnet_diagnostic.SA1602.severity = silent
 
 # CS0649: Field 'Door.kind' is never assigned to, and will always have its default value null
 dotnet_diagnostic.CS0649.severity = silent
+
+# SA1309: Field names should not begin with underscore
+dotnet_diagnostic.SA1309.severity = silent
