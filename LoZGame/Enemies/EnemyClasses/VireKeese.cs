@@ -8,8 +8,6 @@
     {
         public int Cooldown { get; set; }
 
-        public string Direction { get; set; }
-
         public EntityManager EntityManager { get; set; }
 
         public VireKeese(Vector2 location)

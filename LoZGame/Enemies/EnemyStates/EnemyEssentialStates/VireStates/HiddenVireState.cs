@@ -15,7 +15,7 @@ namespace LoZClone
             Sprite = null;
             Enemy.CurrentState = this;
             Enemy.IsTransparent = true;
-            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
+            Enemy.Physics.MovementVelocity = Vector2.Zero;
         }
 
         public override void Update()
