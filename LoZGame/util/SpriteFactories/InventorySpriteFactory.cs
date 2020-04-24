@@ -60,6 +60,8 @@
         private SpriteData whiteSwordData;
         private Texture2D magicSwordSpriteSheet;
         private SpriteData magicSwordData;
+        private Texture2D itemSelector2;
+        private SpriteData itemSelector2Data;
 
         private static readonly InventorySpriteFactory InstanceValue = new InventorySpriteFactory();
 
@@ -109,6 +111,8 @@
             whiteSwordData = new SpriteData(swordSize, whiteSwordSpriteSheet, 1, 1);
             magicSwordSpriteSheet = content.Load<Texture2D>("MagicSword");
             magicSwordData = new SpriteData(swordSize, magicSwordSpriteSheet, 1, 1);
+            itemSelector2 = content.Load<Texture2D>("SelectorSprite2");
+            itemSelector2Data = new SpriteData(new Vector2(83, 37), itemSelector2, 1, 1);
         }
 
         public ISprite CreateInventoryBackground()
@@ -199,6 +203,11 @@
         public ISprite CreateInventoryItemSelector()
         {
             return new ObjectSprite(selectionReticuleSpriteSheet, selectionReticuleData);
+        }
+
+        public ISprite CreateInventoryItemSelector2()
+        {
+            return new ObjectSprite(itemSelector2, itemSelector2Data);
         }
 
         public ISprite CreateInventoryWoodenSword()
