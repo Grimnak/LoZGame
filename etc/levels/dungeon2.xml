@@ -801,7 +801,7 @@
       <doors>
         <door loc="N">unlocked</door>
         <door loc="E">unlocked</door>
-		<door loc="S">cosmetic2</door>
+		<door loc="S">cosmetic</door>
       </doors>
       <rrow idx="0">
       </rrow>
