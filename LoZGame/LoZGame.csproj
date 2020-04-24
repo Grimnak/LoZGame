@@ -75,6 +75,9 @@
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionLeft.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionRight.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionUp.cs" />
+    <Compile Include="Controller\Commands\OptionCommands\CommandMoveOptionDown.cs" />
+    <Compile Include="Controller\Commands\OptionCommands\CommandMoveOptionUp.cs" />
+    <Compile Include="Controller\Commands\OptionCommands\CommandToggleOption.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackA.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackB.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandDown.cs" />
@@ -351,6 +354,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Inventory\InventoryComponentsHelper.cs" />
+    <Compile Include="Util\Options.cs" />
     <Compile Include="Util\Physics\JumpPhysics.cs" />
     <Compile Include="Util\Physics\KnockbackPhysics.cs" />
     <Compile Include="Util\Physics\PhysicsMain.cs" />
