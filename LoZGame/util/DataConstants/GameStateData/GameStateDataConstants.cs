@@ -26,6 +26,12 @@ namespace LoZClone
         private const int optionsWindowWidth = 430;
         private const int optionsHeightOffset = 225;
         private const int optionsWidthOffset = 185;
+        private const int optionsTextWidthOffset = 10;
+        private const int optionsTextX = 380;
+        private const int optionsDifficultyY = 327;
+        private const int optionsCheatsY = 385;
+        private const int optionsDebugY = 443;
+        private const int optionsTextLeading = 43; // What is Leading? https://techterms.com/definition/leading somewhere around 40 atm
 
         private const int playerTransitionMaxDistance = 200;
 
@@ -66,6 +72,14 @@ namespace LoZClone
         public int OptionsHeightOffset => optionsHeightOffset;
 
         public int OptionsWidthOffset => optionsWidthOffset;
+
+        public int OptionsDifficultyY => optionsDifficultyY;
+
+        public int OptionsCheatsY => optionsCheatsY;
+
+        public int OptionsDebugY => optionsDebugY;
+
+        public int OptionsTextX => optionsTextX;
 
         public float DoorFloorDepth => doorFloorDepth;
 

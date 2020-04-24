@@ -202,6 +202,8 @@
     <Compile Include="Util\DataConstants\GameStateData\GameStateDataConstants.cs" />
     <Compile Include="Util\DataConstants\InventoryData\InventoryConstants.cs" />
     <Compile Include="Util\DataConstants\PhysicsData\PhysicsConstants.cs" />
+    <Compile Include="Util\DifficultyMapper.cs" />
+    <Compile Include="Util\EnumClass.cs" />
     <Compile Include="Util\Inventory\InventoryComponents.cs" />
     <Compile Include="GameState\DeathState.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyEssentials.cs" />
