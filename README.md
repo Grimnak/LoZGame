@@ -2,6 +2,8 @@
 
 Developer version of Legend of Zelda NES emulator.  This build features a polished version of the first five dungeons and an incomplete build of the sixth dungeon.  There is also an option to turn "cheat mode" on, which gives the player unlimited items and infinite health.  This can be activated in the main LoZGame.cs file on line 12 by setting the value to "true" or by accessing the options menu ingame by pressing the letter key "O".
 
+Additional Sprint 5 features include 3 more polished dungeons, difficulty levels (levels largely untested except for normal), game-accurate unique enemy drop tables, the ability to continue a playthrough without restarting entirely, and a credits and options menu.
+
 ## Authors:
 Eric Henderson.939
 
