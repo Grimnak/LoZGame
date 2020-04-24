@@ -21,6 +21,7 @@
         /// <inheritdoc></inheritdoc>
         public override void PlayGame()
         {
+            SoundFactory.Instance.PlayDungeonSong();
             LoZGame.Instance.GameState = new PlayGameState();
         }
 
