@@ -71,6 +71,7 @@
             hasBoomerang = LoZGame.Cheats;
             hasMagicBoomerang = LoZGame.Cheats;
             hasBow = LoZGame.Cheats;
+            hasArrow = LoZGame.Cheats;
             hasSilverArrow = LoZGame.Cheats;
             hasRedFlame = LoZGame.Cheats;
             hasBlueFlame = LoZGame.Cheats;

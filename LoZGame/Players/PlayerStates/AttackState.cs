@@ -19,14 +19,13 @@ namespace LoZClone
         /// <param name="playerInstance">Instance of the player.</param>
         public AttackState(IPlayer playerInstance)
         {
-            if (LoZGame.Cheats) // laser blast
+            if (LoZGame.Laser) // laser blast
             {
+                player = playerInstance;
+                sprite = CreateCorrectLaserSprite();
                 SoundFactory.Instance.PlayLaserBlast();
                 LoZGame.Instance.GameObjects.Enemies.Clear();
-                player = playerInstance;
-                lockoutTimer = GameData.Instance.PlayerConstants.LockoutWaitTime; // wait period
-                sprite = CreateCorrectSprite();
-                sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
+                lockoutTimer = 170; // wait period
                 player.Physics.MovementVelocity = Vector2.Zero;
             }
             else
@@ -156,6 +155,26 @@ namespace LoZClone
             else
             {
                 return LinkSpriteFactory.Instance.CreateSpriteLinkRight(player.CurrentColor);
+            }
+        }
+
+        private ISprite CreateCorrectLaserSprite()
+        {
+            if (player.Physics.CurrentDirection == Physics.Direction.North)
+            {
+                return LinkSpriteFactory.Instance.CreateLinkLaserUp();
+            }
+            else if (player.Physics.CurrentDirection == Physics.Direction.South)
+            {
+                return LinkSpriteFactory.Instance.CreateLinkLaserDown();
+            }
+            else if (player.Physics.CurrentDirection == Physics.Direction.West)
+            {
+                return LinkSpriteFactory.Instance.CreateLinkLaserLeft();
+            }
+            else
+            {
+                return LinkSpriteFactory.Instance.CreateLinkLaserRight();
             }
         }
     }
