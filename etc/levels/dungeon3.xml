@@ -608,7 +608,7 @@
         <enemy X="10" Y="5">Zol</enemy>
        </enemies>
        <items>
-         <item X="0" Y="0">Rupee</item>
+         <item X="0" Y="0">YellowRupee</item>
        </items>
        <doors>
         <door loc="W">special</door>
