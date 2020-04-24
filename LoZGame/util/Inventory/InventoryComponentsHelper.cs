@@ -11,19 +11,19 @@
         private ISprite inventoryBackgroundSprite;
         private Vector2 inventoryBackgroundPosition;
 
-        private Vector2 inventoryMapOffset = new Vector2(320, 263);
-        private Vector2 mapIndicatorOffset = new Vector2(150, 313);
-        private Vector2 compassIndicatorOffset = new Vector2(130, 420);
-        private Vector2 itemSelectionOffset = new Vector2(415, 130);
-        private Vector2 selectedItemOffset = new Vector2(200, 140);
-        private Vector2 miniMapOffset = new Vector2(45, 46 + LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset);
-        private Vector2 heartOffset = new Vector2(550, 105 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-        private Vector2 rupeeCountOffset = new Vector2(305, 58 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-        private Vector2 keyCountOffset = new Vector2(305, 101 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-        private Vector2 bombCountOffset = new Vector2(305, 125 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-        private Vector2 levelCountOffset = new Vector2(58, 15 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-        private Vector2 primaryEquippedOffset = new Vector2(470, 85 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
-        private Vector2 secondaryEquippedOffset = new Vector2(392, 85 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset));
+        private Vector2 inventoryMapOffset = new Vector2(GameData.Instance.InventoryConstants.InventoryMapOffsetX, GameData.Instance.InventoryConstants.InventoryMapOffsetY);
+        private Vector2 mapIndicatorOffset = new Vector2(GameData.Instance.InventoryConstants.MapIndicatorOffsetX, GameData.Instance.InventoryConstants.MapIndicatorOffsetY);
+        private Vector2 compassIndicatorOffset = new Vector2(GameData.Instance.InventoryConstants.CompassIndicatorOffsetX, GameData.Instance.InventoryConstants.CompassIndicatorOffsetY);
+        private Vector2 itemSelectionOffset = new Vector2(GameData.Instance.InventoryConstants.ItemSelectorOffsetX, GameData.Instance.InventoryConstants.ItemSelectorOffsetY);
+        private Vector2 selectedItemOffset = new Vector2(GameData.Instance.InventoryConstants.SelectedItemOffsetX, GameData.Instance.InventoryConstants.SelectedItemOffsetY);
+        private Vector2 miniMapOffset = new Vector2(GameData.Instance.InventoryConstants.MiniMapOffsetX, GameData.Instance.InventoryConstants.MiniMapOffsetY);
+        private Vector2 heartOffset = new Vector2(GameData.Instance.InventoryConstants.HeartOffsetX, GameData.Instance.InventoryConstants.HeartOffsetY);
+        private Vector2 rupeeCountOffset = new Vector2(GameData.Instance.InventoryConstants.RupeeCtOffsetX, GameData.Instance.InventoryConstants.RupeeCtOffsetY);
+        private Vector2 keyCountOffset = new Vector2(GameData.Instance.InventoryConstants.KeyCtOffsetX, GameData.Instance.InventoryConstants.KeyCtOffsetY);
+        private Vector2 bombCountOffset = new Vector2(GameData.Instance.InventoryConstants.BombCtOffsetX, GameData.Instance.InventoryConstants.BombCtOffsetY);
+        private Vector2 levelCountOffset = new Vector2(GameData.Instance.InventoryConstants.LevelCtOffsetX, GameData.Instance.InventoryConstants.LevelCtOffsetY);
+        private Vector2 primaryEquippedOffset = new Vector2(GameData.Instance.InventoryConstants.PrimaryEquippedOffsetX, GameData.Instance.InventoryConstants.PrimaryEquippedOffsetY);
+        private Vector2 secondaryEquippedOffset = new Vector2(GameData.Instance.InventoryConstants.SecondaryEquippedOffsetX, GameData.Instance.InventoryConstants.SecondaryEquippedOffsetY);
 
         public Vector2 InventoryBackgroundPosition { get { return inventoryBackgroundPosition; } set { inventoryBackgroundPosition = value; } }
 
@@ -46,15 +46,15 @@
 
         public ISprite CreatePartialHeartSprite(int partialCount)
         {
-            if (partialCount == 3)
+            if (partialCount == GameData.Instance.InventoryConstants.ThreeQuarterHeart)
             {
                 return InventorySpriteFactory.Instance.CreateThreeQuarterHeart();
             }
-            else if (partialCount == 2)
+            else if (partialCount == GameData.Instance.InventoryConstants.HalfHeart)
             {
                 return InventorySpriteFactory.Instance.CreateHalfHeart();
             }
-            else if (partialCount == 1)
+            else if (partialCount == GameData.Instance.InventoryConstants.QuarterHeart)
             {
                 return InventorySpriteFactory.Instance.CreateQuarterHeart();
             }
