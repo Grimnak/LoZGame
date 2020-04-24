@@ -33,7 +33,21 @@ namespace LoZClone
             previousState.Draw();
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
             OptionsScreen.Draw(optionsOffset, LoZGame.Instance.DefaultTint, 0.9f);
-            SelectorSprite.Draw(new Vector2(380, 325), LoZGame.Instance.DefaultTint, 0.99f);
+            switch (LoZGame.Instance.Options.SelectedOption)
+            {
+                case LoZClone.Options.OptionType.Difficulty:
+                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY), LoZGame.Instance.DefaultTint, 0.99f);
+                    break;
+                case LoZClone.Options.OptionType.Cheats:
+                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY + GameData.Instance.GameStateDataConstants.OptionsTextLeading), LoZGame.Instance.DefaultTint, 0.99f);
+                    break;
+                case LoZClone.Options.OptionType.Debug:
+                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY + (2 * GameData.Instance.GameStateDataConstants.OptionsTextLeading)), LoZGame.Instance.DefaultTint, 0.99f);
+                    break;
+                default:
+                    LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "If you see this, call the police.", new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsCheatsY), Color.DarkRed);
+                    break;
+            }
             LoZGame.Instance.SpriteBatch.End();
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
             LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, DifficultyMapper.GetMyType(LoZGame.Instance.Difficulty).Name, new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsDifficultyY), Color.White);

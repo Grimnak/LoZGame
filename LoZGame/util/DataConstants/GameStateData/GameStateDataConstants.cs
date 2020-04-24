@@ -31,7 +31,8 @@ namespace LoZClone
         private const int optionsDifficultyY = 327;
         private const int optionsCheatsY = 385;
         private const int optionsDebugY = 443;
-        private const int optionsTextLeading = 43; // What is Leading? https://techterms.com/definition/leading somewhere around 40 atm
+        private const int optionsTextLeading = 58; // What is Leading? https://techterms.com/definition/leading
+        private const int optionsSelectorY = 325;
 
         private const int playerTransitionMaxDistance = 200;
 
@@ -74,6 +75,10 @@ namespace LoZClone
         public int OptionsWidthOffset => optionsWidthOffset;
 
         public int OptionsDifficultyY => optionsDifficultyY;
+
+        public int OptionsSelectorY => optionsSelectorY;
+
+        public int OptionsTextLeading => optionsTextLeading;
 
         public int OptionsCheatsY => optionsCheatsY;
 

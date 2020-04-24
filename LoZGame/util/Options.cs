@@ -17,8 +17,9 @@ namespace LoZClone
 
         private OptionType selectedOption;
 
-        List<DifficultyMapper> difficulties = DifficultyMapper.GetMyTypes();
+        public OptionType SelectedOption => selectedOption;
 
+        List<DifficultyMapper> difficulties = DifficultyMapper.GetMyTypes();
 
         public Options()
         {
