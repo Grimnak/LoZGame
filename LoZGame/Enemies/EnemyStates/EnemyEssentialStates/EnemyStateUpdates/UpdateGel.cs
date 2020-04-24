@@ -17,6 +17,7 @@
             {
                 HardGel();
             }
+            Enemy.Physics.KnockbackVelocity = Vector2.Zero;
         }
 
         private void StandardGel()

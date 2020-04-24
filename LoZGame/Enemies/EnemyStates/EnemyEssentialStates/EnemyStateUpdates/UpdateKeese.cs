@@ -18,6 +18,8 @@
                 HardKeese();
             }
             UpdateMoveSpeed();
+            // set knockback velocity to zero to prevent enemy from getting stuck
+            Enemy.Physics.KnockbackVelocity = Vector2.Zero;
         }
 
         private void StandardKeese()
@@ -47,6 +49,8 @@
                 if (Enemy.Physics.MovementVelocity.Length() <= GameData.Instance.EnemySpeedConstants.MaxKeeseSpeed)
                 {
                     Enemy.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
+                    Console.WriteLine("movement: " + Enemy.Physics.MovementVelocity);
+                    Console.WriteLine("knockback: " + Enemy.Physics.KnockbackVelocity);
                 }
             }
             else
@@ -54,6 +58,8 @@
                 if (Enemy.Physics.MovementVelocity.Length() >= GameData.Instance.EnemySpeedConstants.MinKeeseSpeed)
                 {
                     Enemy.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
+                    Console.WriteLine("movement: " + Enemy.Physics.MovementVelocity);
+                    Console.WriteLine("knockback: " + Enemy.Physics.KnockbackVelocity);
                 }
             }
         }
