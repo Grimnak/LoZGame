@@ -69,6 +69,7 @@
     <Compile Include="Collisions\Collision Detection\CollisionDetection.cs" />
     <Compile Include="Collisions\Collision Handling\ItemCollisionHandler.cs" />
     <Compile Include="Collisions\Collision Handling\ProjectileCollisionHandler.cs" />
+    <Compile Include="Controller\Commands\CommandContinue.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandOptions.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandPause.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionDown.cs" />

@@ -10,6 +10,7 @@ namespace LoZClone
     public class KeyboardCommandLoader
     {
         private readonly CommandIdle commandIdle;
+        private readonly CommandContinue commandContinue;
         private readonly Dictionary<Keys, ICommand> playerDictionary;
         private readonly Dictionary<Keys, ICommand> inventoryDictionary;
         private readonly Dictionary<Keys, ICommand> optionsDictionary;
@@ -25,6 +26,7 @@ namespace LoZClone
             optionsDictionary = new Dictionary<Keys, ICommand>();
 
             commandIdle = new CommandIdle(player);
+            commandContinue = new CommandContinue(player);
 
             playerDictionary.Add(Keys.W, new CommandUp(player)); 
             playerDictionary.Add(Keys.Up, new CommandUp(player));
@@ -66,6 +68,8 @@ namespace LoZClone
         /// Gets the idle command from the loader.
         /// </summary>
         public ICommand GetIdle => commandIdle;
+
+        public ICommand GetContine => commandContinue;
 
         /// <summary>
         /// Gets the dictionary containing player commands from the loader.

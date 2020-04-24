@@ -114,6 +114,14 @@ namespace LoZClone
                     }
                 }
             }
+            else if (LoZGame.Instance.GameState is DeathState)
+            {
+                if (pressed.Contains(Keys.Enter) && oldState.IsKeyUp(Keys.Enter))
+                {
+                    allCommands.GetContine.Execute();
+                }
+            }
+
             if (pressed.Contains(Keys.O) && oldState.IsKeyUp(Keys.O))
             {
                 playerDict[Keys.O].Execute();

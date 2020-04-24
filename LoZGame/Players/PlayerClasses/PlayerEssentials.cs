@@ -27,6 +27,8 @@
 
         public InventoryManager Inventory { get; set; }
 
+        public InventoryManager BackupInventory { get; set; }
+
         public void TakeDamage(int damageAmount)
         {
             if (DamageTimer <= 0)

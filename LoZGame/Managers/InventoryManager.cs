@@ -86,6 +86,34 @@
             selectedItem = ItemType.Bomb;
         }
 
+        public InventoryManager(InventoryManager copiedManager)
+        {
+            this.player = copiedManager.player;
+            this.selectionX = copiedManager.selectionX;
+            this.selectionY = copiedManager.selectionY;
+            this.maxBombs = copiedManager.maxBombs;
+            this.maxSelectionX = copiedManager.maxSelectionX;
+            this.maxSelectionY = copiedManager.maxSelectionY;
+            this.numBombs = copiedManager.numBombs;
+            this.numKeys = copiedManager.numKeys;
+            this.numRedPotions = copiedManager.numRedPotions;
+            this.numBluePotions = copiedManager.numBluePotions;
+            this.numRupees = copiedManager.numRupees;
+            this.hasBoomerang = copiedManager.hasBoomerang;
+            this.hasMagicBoomerang = copiedManager.hasMagicBoomerang;
+            this.hasBow = copiedManager.hasBow;
+            this.hasSilverArrow = copiedManager.hasSilverArrow;
+            this.hasRedFlame = copiedManager.hasRedFlame;
+            this.hasBlueFlame = copiedManager.hasBlueFlame;
+            this.hasLadder = copiedManager.hasLadder;
+            this.ladderInUse = copiedManager.ladderInUse;
+            this.hasMap = copiedManager.hasMap;
+            this.hasCompass = copiedManager.hasCompass;
+            this.hasClock = copiedManager.hasClock;
+            this.clockLockout = copiedManager.clockLockout;
+            this.selectedItem = copiedManager.selectedItem;
+        }
+
         public void UseItem()
         {
             switch (selectedItem)

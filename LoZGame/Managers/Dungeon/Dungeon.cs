@@ -10,6 +10,8 @@
     public partial class Dungeon
     {
         private List<List<Room>> dungeonLayout;
+        private int startX;
+        private int startY;
         private int currentX;
         private int currentY;
         private Color mapColor;
@@ -50,8 +52,8 @@
             {
                 case 1:
                     LoZGame.Instance.DungeonTint = Color.DarkCyan;
-                    currentX = 2;
-                    currentY = 5; // player spawns at curX/curY
+                    startX = 2;
+                    startY = 5; // player spawns at curX/curY
                     maxX = 6;
                     maxY = 6;
                     mapColor = Color.DarkCyan;
@@ -59,8 +61,8 @@
                     break;
                 case 2:
                     LoZGame.Instance.DungeonTint = Color.Blue;
-                    currentX = 1;
-                    currentY = 7;
+                    startX = 1;
+                    startY = 7;
                     maxX = 4;
                     maxY = 8;
                     mapColor = Color.Blue;
@@ -68,8 +70,8 @@
                     break;
                 case 3:
                     LoZGame.Instance.DungeonTint = new Color(41, 175, 72);
-                    currentX = 3;
-                    currentY = 5;
+                    startX = 3;
+                    startY = 5;
                     maxX = 5;
                     maxY = 6;
                     mapColor = Color.Green;
@@ -77,8 +79,8 @@
                     break;
                 case 4:
                     LoZGame.Instance.DungeonTint = new Color(178, 162, 0);
-                    currentX = 1;
-                    currentY = 7;
+                    startX = 1;
+                    startY = 7;
                     maxX = 4;
                     maxY = 8;
                     mapColor = Color.DarkGoldenrod;
@@ -86,8 +88,8 @@
                     break;
                 case 5:
                     LoZGame.Instance.DungeonTint = new Color(41, 175, 72);
-                    currentX = 2;
-                    currentY = 7;
+                    startX = 2;
+                    startY = 7;
                     maxX = 4;
                     maxY = 8;
                     mapColor = Color.Green;
@@ -95,8 +97,8 @@
                     break;
                 case 6:
                     LoZGame.Instance.DungeonTint = new Color(178, 162, 0);
-                    currentX = 1;
-                    currentY = 7;
+                    startX = 1;
+                    startY = 7;
                     maxX = 6;
                     maxY = 8;
                     mapColor = Color.DarkGoldenrod;
@@ -105,6 +107,8 @@
                 default:
                     break;
             }
+            currentX = startX;
+            currentY = startY;
 
             dungeonLayout = XMLHandler.Parse(currentDungeonFile);
 

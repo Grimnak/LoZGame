@@ -66,6 +66,7 @@
                     LoZGame.Instance.Dungeon.LoadNewRoom();
                     LoZGame.Instance.Players[0].Inventory.HasMap = false;
                     LoZGame.Instance.Players[0].Inventory.HasCompass = false;
+                    ((Link)LoZGame.Instance.Players[0]).BackupInventory = new InventoryManager(LoZGame.Instance.Players[0].Inventory);
                     LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
                     LoZGame.Instance.GameState.PlayGame();
                 }

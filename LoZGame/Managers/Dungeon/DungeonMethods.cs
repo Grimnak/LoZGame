@@ -13,6 +13,8 @@
         {
             dungeonLayout = XMLHandler.Parse(currentDungeonFile);
 
+            currentX = startX;
+            currentY = startY;
             LoadNewRoom();
         }
 

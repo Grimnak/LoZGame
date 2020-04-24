@@ -15,6 +15,7 @@
             Physics.Mass = GameData.Instance.PlayerConstants.Mass;
             Health = new HealthManager(GameData.Instance.PlayerConstants.StartingHealth);
             Inventory = new InventoryManager(this);
+            BackupInventory = new InventoryManager(Inventory);
             linkCollisionHandler = new PlayerCollisionHandler(this);
             CurrentColor = LinkColor.Green;
             Physics.CurrentDirection = Physics.Direction.North;
