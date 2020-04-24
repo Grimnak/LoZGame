@@ -19,7 +19,7 @@ namespace LoZClone
         /// <param name="playerInstance">Instance of the player.</param>
         public AttackState(IPlayer playerInstance)
         {
-            if (LoZGame.Cheats) // laser blast
+            if (LoZGame.Laser) // laser blast
             {
                 player = playerInstance;
                 sprite = CreateCorrectLaserSprite();
