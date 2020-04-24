@@ -1,5 +1,3 @@
-_3902 Functionality Format. Please fill out according to all italicized text. Remove all italicized text, unnecessary line breaks, and non-relevant sections before publishing Code Review_
-
 # Code Functionality Review
 
 ### Author: Sammy Lisa
