@@ -17,6 +17,8 @@ namespace LoZClone
 
         private OptionType selectedOption;
 
+        List<DifficultyMapper> difficulties = DifficultyMapper.GetMyTypes();
+
 
         public Options()
         {
@@ -86,26 +88,12 @@ namespace LoZClone
 
         private void ToggleDebug()
         {
-            if (LoZGame.DebugMode)
-            {
-                LoZGame.DebugMode = false;
-            }
-            else
-            {
-                LoZGame.DebugMode = true;
-            }
+            LoZGame.DebugMode = !LoZGame.DebugMode;
         }
 
         private void ToggleCheats()
         {
-            if (LoZGame.Cheats)
-            {
-                LoZGame.Cheats = false;
-            }
-            else
-            {
-                LoZGame.Cheats = true;
-            }
+            LoZGame.Cheats = !LoZGame.Cheats;
         }
 
         public void DetermineWhatToDo()

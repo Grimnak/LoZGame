@@ -1,21 +1,21 @@
 ﻿namespace LoZClone
 {
     /// <summary>
-    /// Command that changes the currently selected option.
+    /// Command that mutates various settings that entire game.
     /// </summary>
-    public class CommandToggleOptions : ICommand
+    public class CommandToggleOption : ICommand
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandToggleOptions"/> class.
         /// </summary>
-        public CommandToggleOptions()
+        public CommandToggleOption()
         {
         }
 
         /// <inheritdoc/>
         public void Execute()
         {
-            LoZGame.Instance.Exit();
+            LoZGame.Instance.Options.DetermineWhatToDo();
         }
     }
 }

@@ -31,15 +31,15 @@ namespace LoZClone
             }
         }
 
-        public static IEnumerable<DifficultyMapper> GetMyTypes()
+        public static List<DifficultyMapper> GetMyTypes()
         {
             return new List<DifficultyMapper>
-        {
+            {
             EASY,
             NORMAL,
             HARD,
             NIGHTMARE
-        };
+            };
         }
     }
 }
