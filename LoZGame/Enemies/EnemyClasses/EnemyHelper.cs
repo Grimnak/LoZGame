@@ -33,6 +33,8 @@
             None,
             Likelike,
             PolsVoice,
+            LargeDigDogger,
+            SmallDigDogger,
             NoAI
         }
 

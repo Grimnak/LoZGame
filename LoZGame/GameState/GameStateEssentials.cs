@@ -29,6 +29,11 @@
         }
 
         /// <inheritdoc></inheritdoc>
+        public virtual void PlayFlute()
+        {
+        }
+
+        /// <inheritdoc></inheritdoc>
         public virtual void TitleScreen()
         {
         }

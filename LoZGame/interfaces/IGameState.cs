@@ -24,7 +24,7 @@
         void PlayGame();
 
         /// <summary>
-        /// Game state goes to player death.
+        /// Game state goes to Play.
         /// </summary>
         void Death();
 
@@ -32,6 +32,11 @@
         /// Game state goes to player death.
         /// </summary>
         void Options();
+
+        /// <summary>
+        /// Game state goes to Play Flute.
+        /// </summary>
+        void PlayFlute();
 
         /// <summary>
         /// Game state goes to access inventory.

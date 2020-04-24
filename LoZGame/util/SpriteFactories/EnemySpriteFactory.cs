@@ -84,6 +84,9 @@
         private static readonly int PolsVoiceWidth = 40;
         private static readonly int PolsVoiceHeight = 40;
 
+        private static readonly int largeDigDoggerSize = 96;
+        private static readonly int smallDigDoggerSize = 48;
+
         public static int GetEnemyWidth(IEnemy enemy)
         {
             if (enemy is Dodongo)
@@ -93,6 +96,14 @@
             else if (enemy is Dragon)
             {
                 return dragonWidth;
+            }
+            else if (enemy is DigDoggerInvincible)
+            {
+                return largeDigDoggerSize;
+            }
+            else if (enemy is DigDogger)
+            {
+                return smallDigDoggerSize;
             }
             else if (enemy is Gel)
             {
@@ -201,6 +212,14 @@
             else if (enemy is Dragon)
             {
                 return dragonHeight;
+            }
+            else if (enemy is DigDoggerInvincible)
+            {
+                return largeDigDoggerSize;
+            }
+            else if (enemy is DigDogger)
+            {
+                return smallDigDoggerSize;
             }
             else if (enemy is Gel)
             {
@@ -321,6 +340,15 @@
         private SpriteData stalfosData;
         private Texture2D gibdo;
         private SpriteData gibdoData;
+
+        private Texture2D digDoggerLeft;
+        private Texture2D digDoggerRight;
+        private Texture2D digDoggerIdle;
+        private SpriteData movingDigDoggerData;
+        private SpriteData idleDigDoggerData;
+
+        private Texture2D smallDigDogger;
+        private SpriteData smallDigDoggerData;
 
         private Texture2D downGoriya;
         private Texture2D downBlueGoriya;
@@ -447,6 +475,11 @@
             manhandlaHeadDownTexture = content.Load<Texture2D>("man_head_down");
             manhandlaHeadUpTexture = content.Load<Texture2D>("man_head_up");
 
+            digDoggerLeft = content.Load<Texture2D>("digdogger_left");
+            digDoggerRight = content.Load<Texture2D>("digdogger_right");
+            digDoggerIdle = content.Load<Texture2D>("digdogger_idle");
+            smallDigDogger = content.Load<Texture2D>("digdogger_small");
+
             GleeokBodyTexture = content.Load<Texture2D>("gleeok_body");
             GleeokHeadOffTexture = content.Load<Texture2D>("gleeok_head_off");
             GleeokHeadTexture = content.Load<Texture2D>("gleeok_head_on");
@@ -558,6 +591,9 @@
             GleeokNeckData = new SpriteData(new Vector2(GleeockNeckWidth, GleeockNeckHeight), GleeokNeckTexture, 1, 1);
             likelikeData = new SpriteData(new Vector2(likelikeWidth, likelikeHeight), likelike, 3, 1);
             polsVoiceData = new SpriteData(new Vector2(PolsVoiceWidth, PolsVoiceHeight), polsVoice, 2, 1);
+            idleDigDoggerData = new SpriteData(new Vector2(largeDigDoggerSize), digDoggerIdle, 1, 1);
+            movingDigDoggerData = new SpriteData(new Vector2(largeDigDoggerSize), digDoggerLeft, 1, 2);
+            smallDigDoggerData = new SpriteData(new Vector2(smallDigDoggerSize), smallDigDogger, 1, 2);
         }
 
         // Stalfos Sprites
@@ -663,6 +699,31 @@
                 default:
                     return new ObjectSprite(manhandlaHeadLeftTexture, manhandlaHeadData);
             }
+        }
+
+        public ISprite CreateLargeDigDogger(Physics.Direction direction)
+        {
+            switch (direction)
+            {
+                case Physics.Direction.West:
+                case Physics.Direction.NorthWest:
+                case Physics.Direction.SouthWest:
+                case Physics.Direction.North:
+                    return new ObjectSprite(digDoggerLeft, movingDigDoggerData);
+                case Physics.Direction.East:
+                case Physics.Direction.NorthEast:
+                case Physics.Direction.SouthEast:
+                case Physics.Direction.South:
+                    return new ObjectSprite(digDoggerRight, movingDigDoggerData);
+                default:
+                    return new ObjectSprite(digDoggerIdle, idleDigDoggerData);
+
+            }
+        }
+
+        public ISprite CreateSmallDigDogger(Physics.Direction direction)
+        {
+            return new ObjectSprite(smallDigDogger, smallDigDoggerData);
         }
 
         public ISprite CreateGleeockNeckSprite()

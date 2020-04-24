@@ -36,6 +36,7 @@
         private SoundEffect arrowOrBoomShoot = SoundEffect.FromStream(Properties.Resources.LOZ_Arrow_Boomerang);
         private SoundEffect doorUnlock = SoundEffect.FromStream(Properties.Resources.LOZ_Door_Unlock);
         private SoundEffect specialItemAppears = SoundEffect.FromStream(Properties.Resources.LOZ_Key_Appear);
+        private SoundEffect flute = SoundEffect.FromStream(Properties.Resources.LOZ_Recorder);
 
         private static readonly SoundFactory instance = new SoundFactory();
 
@@ -59,6 +60,11 @@
         {
             laserBlast.Play();
             //System.Threading.Thread.Sleep(2700); // laser blast
+        }
+
+        public void PlayFlute()
+        {
+            flute.Play();
         }
 
         public void PlaySwordShoot()
