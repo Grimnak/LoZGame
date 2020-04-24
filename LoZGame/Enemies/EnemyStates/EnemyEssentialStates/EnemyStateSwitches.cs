@@ -4,8 +4,8 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using static RandomStateGenerator;
     using static EnemyEssentials;
+    using static RandomStateGenerator;
 
     public partial class EnemyStateEssentials
     {

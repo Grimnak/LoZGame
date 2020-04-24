@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
-    class AttackingLikelikeState : EnemyStateEssentials, IEnemyState
+    using Microsoft.Xna.Framework;
+
+    public class AttackingLikelikeState : EnemyStateEssentials, IEnemyState
     {
         public AttackingLikelikeState(IEnemy enemy)
         {
