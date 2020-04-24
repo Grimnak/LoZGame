@@ -193,6 +193,13 @@
                 oldObjects.UpdateObjectLocations(nextRoomOffset);
                 oldObjects.Save();
                 LoZGame.Instance.GameObjects = newObjects;
+                foreach (IBlock block in LoZGame.Instance.GameObjects.Blocks.BlockList)
+                {
+                    if (block is MovableBlock)
+                    {
+                        (block as MovableBlock).OriginalLocation = block.Physics.Location;
+                    }
+                }
                 dungeon.MiniMap.Explore();
                 foreach (IPlayer player in LoZGame.Instance.Players)
                 {

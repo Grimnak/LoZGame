@@ -30,7 +30,7 @@
 
         public bool IsTransparent { get { return false; } set { } }
 
-        public List<MovableTile.InvalidDirection> InvalidDirections { get { return null; } }
+        public List<MovableBlock.InvalidDirection> InvalidDirections { get { return null; } }
 
         public void Update()
         {

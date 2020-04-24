@@ -335,7 +335,7 @@
             switch (type)
             {
                 case "movable":
-                    blocks.Add(new MovableTile(location, name, dirs));
+                    blocks.Add(new MovableBlock(location, name, dirs));
                     break;
                 case "walkable":
                     if (name.Equals("ladder_tile"))

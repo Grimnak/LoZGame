@@ -45,7 +45,7 @@
 
             foreach (IBlock block in blocks)
             {
-                if (block is BlockTile || block is MovableTile || block is CrossableTile)
+                if (block is BlockTile || block is MovableBlock || block is CrossableTile)
                 {
                     block.Draw();
                 }

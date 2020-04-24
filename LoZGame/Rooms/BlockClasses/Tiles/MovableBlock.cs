@@ -11,14 +11,16 @@
     /// <summary>
     /// Class for a movable tile.
     /// </summary>
-    public class MovableTile : IBlock
+    public class MovableBlock : IBlock
     {
         private ISprite sprite;
+        private bool movable = false;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Vector2 originalLocation;
         private List<InvalidDirection> invalidDirections;
-        private bool moved;
         private bool isTransparent;
+        
+        public IMovableBlockState CurrentState { get; set; }
 
         public bool IsTransparent { get { return isTransparent; } set { isTransparent = value; } }
 
@@ -40,19 +42,22 @@
 
         private BlockCollisionHandler blockCollisionHandler;
 
+        public Vector2 OriginalLocation { get { return originalLocation; } set { originalLocation = value; } }
+
         public Physics Physics { get; set; }
 
         public List<InvalidDirection> InvalidDirections => invalidDirections;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MovableTile"/> class.
+        /// Initializes a new instance of the <see cref="MovableBlock"/> class.
         /// </summary>
         /// <param name="location">The location of the tile.</param>
         /// <param name="name">Name of the tiles sprite.</param>
         /// <param name="direction">Invalid Directions for this.</param>
-        public MovableTile(Vector2 location, string name, string direction)
+        public MovableBlock(Vector2 location, string name, string direction)
         {
             originalLocation = location;
+            CurrentState = new UnsolvedState(this);
             invalidDirections = new List<InvalidDirection>();
             string[] invalidDirectionStrings = !string.IsNullOrEmpty(direction) ? direction.Split(',') : null;
             blockCollisionHandler = new BlockCollisionHandler(this);
@@ -60,99 +65,25 @@
             sprite = DungeonSpriteFactory.Instance.MovableTile();
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
             Physics.SetDepth();
-            moved = false;
             isTransparent = false;
             SetInvalidDirections(invalidDirectionStrings);
         }
 
-        /// <inheritdoc/>
         public ISprite CreateCorrectSprite(string name)
         {
-            switch (name)
-            {
-                case "orange_movable_square3":
-                    return BlockSpriteFactory.Instance.MovableSquare3();
-                default:
-                    return BlockSpriteFactory.Instance.MovableSquare();
-            }
-        }
-
-        private void HandlePush()
-        {
-            if (Physics.MovementVelocity.X != 0)
-            {
-                if (Math.Abs(Physics.Location.X - originalLocation.X) <= Physics.Bounds.Width && Physics.Location.Y == originalLocation.Y)
-                {
-                    Physics.StopMovementY();
-                    Physics.Move();
-                    Physics.Accelerate();
-                }
-                else if (!moved)
-                {
-                    moved = true;
-                    SoundFactory.Instance.PlaySolved();
-                }
-            }
-            else if (Physics.MovementVelocity.Y != 0)
-            {
-                if (Math.Abs(Physics.Location.Y - originalLocation.Y) <= Physics.Bounds.Height && Physics.Location.X == originalLocation.X)
-                {
-                    Physics.StopMovementX();
-                    Physics.Move();
-                    Physics.Accelerate();
-                }
-                else if (!moved)
-                {
-                    moved = true;
-                    SoundFactory.Instance.PlaySolved();
-                }
-            }
-        }
-
-        private void SolveDoors()
-        {
-            if (Math.Abs(Physics.Location.X - originalLocation.X) >= Physics.Bounds.Width || Math.Abs(Physics.Location.Y - originalLocation.Y) >= Physics.Bounds.Height)
-            {
-                foreach (Door door in LoZGame.Instance.GameObjects.Doors.DoorList)
-                {
-                    if (door.State is PuzzleDoorState)
-                    {
-                        ((PuzzleDoorState)door.State).Solve();
-                    }
-                }
-            }
-        }
-
-        private void SolveStairs()
-        {
-            if (Math.Abs(Physics.Location.X - originalLocation.X) >= Physics.Bounds.Width || Math.Abs(Physics.Location.Y - originalLocation.Y) >= Physics.Bounds.Height)
-            {
-                foreach (IBlock block in LoZGame.Instance.GameObjects.Blocks.BlockList)
-                {
-                    if (block is Stairs)
-                    {
-                        ((Stairs)block).Solve();
-                    }
-                }
-            }
+            return DungeonSpriteFactory.Instance.MovableTile();
         }
 
         /// <inheritdoc/>
         public void Update()
         {
-            HandlePush();
-            SolveDoors();
-            SolveStairs();
-            if (!moved)
-            {
-                Physics.SetDepth();
-            }
+            CurrentState.Update();
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            sprite.Draw(Physics.Location, LoZGame.Instance.DungeonTint, Physics.Depth);
+            CurrentState.Draw();
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

@@ -42,7 +42,7 @@
 
         public string Name { get; }
 
-        public List<MovableTile.InvalidDirection> InvalidDirections { get { return null; } }
+        public List<MovableBlock.InvalidDirection> InvalidDirections { get { return null; } }
 
         private BlockCollisionHandler blockCollisionHandler;
 

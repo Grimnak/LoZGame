@@ -28,21 +28,21 @@
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
             bool movable = true;
-            if (!(player.State is GrabbedState) && block is MovableTile)
+            if (!(player.State is GrabbedState) && block is MovableBlock)
             {
                 switch (collisionSide)
                 {
                     case CollisionDetection.CollisionSide.Top:
-                        movable = !block.InvalidDirections.Contains(MovableTile.InvalidDirection.North);
+                        movable = !block.InvalidDirections.Contains(MovableBlock.InvalidDirection.North);
                         break;
                     case CollisionDetection.CollisionSide.Bottom:
-                        movable = !block.InvalidDirections.Contains(MovableTile.InvalidDirection.South);
+                        movable = !block.InvalidDirections.Contains(MovableBlock.InvalidDirection.South);
                         break;
                     case CollisionDetection.CollisionSide.Right:
-                        movable = !block.InvalidDirections.Contains(MovableTile.InvalidDirection.East);
+                        movable = !block.InvalidDirections.Contains(MovableBlock.InvalidDirection.East);
                         break;
                     case CollisionDetection.CollisionSide.Left:
-                        movable = !block.InvalidDirections.Contains(MovableTile.InvalidDirection.West);
+                        movable = !block.InvalidDirections.Contains(MovableBlock.InvalidDirection.West);
                         break;
                 }
                 if (movable)
