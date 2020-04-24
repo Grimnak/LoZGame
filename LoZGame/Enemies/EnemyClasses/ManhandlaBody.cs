@@ -9,35 +9,28 @@
     {
         private bool spawnedChildren;
         List<IEnemy> heads;
-        Point StartLoc;
-        bool test;
 
         public ManhandlaBody(Vector2 location)
         {
-            Console.WriteLine("Passed Loc: " + location);
             RandomStateGenerator = new RandomStateGenerator(this);
             States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.ManhandlaBodyStateList);
             Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ManhandlaBodyHealth);
             Physics = new Physics(location);
-            Console.WriteLine("Physics Loc: " + Physics.Location);
             Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
             Physics.IsMoveable = false;
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            StartLoc = Physics.Bounds.Location;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.ManhandlaMinSpeed;
             CurrentState = new IdleEnemyState(this);
-            Console.WriteLine("Bounds: " + Physics.Bounds);
             EnemyCollisionHandler = new EnemyCollisionHandler(this);
             Expired = false;
             IsTransparent = true;
             Damage = GameData.Instance.EnemyDamageConstants.DragonDamage;
             DamageTimer = 0;
-            MoveSpeed = GameData.Instance.EnemySpeedConstants.ManhandlaMinSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             spawnedChildren = false;
             AI = EnemyAI.Manhandla;
             DropTable = GameData.Instance.EnemyDropTables.ManhandlaDropTable;
             MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed, LoZGame.Instance.UpdateSpeed * 2);
-            test = false;
         }
 
         public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
@@ -46,12 +39,7 @@
 
         public override void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            base.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide); 
-            if (!test)
-            {
-                Physics.Bounds = new Rectangle(StartLoc, Physics.Bounds.Size);
-                test = true;
-            }
+            base.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
             switch (collisionSide)
             {
                 case CollisionDetection.CollisionSide.Top:

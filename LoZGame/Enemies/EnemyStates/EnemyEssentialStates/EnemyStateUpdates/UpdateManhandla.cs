@@ -17,14 +17,23 @@
             {
                 HardManhandla();
             }
-            UpdateManMoveSpeed();
+            if (this.Enemy.Physics.MovementVelocity.Length() > 0)
+            {
+                UpdateManMoveSpeed();
+            }
         }
 
         private void StandardManhandla()
         {
             if (Lifetime == DirectionChange)
             {
-                FavorPlayerDiagonal(100);
+                int favormod = GameData.Instance.EnemyMiscConstants.KeeseFavorCardinalValue;
+                if (LoZGame.Instance.Difficulty > 0)
+                {
+                    favormod += LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod;
+                }
+                FavorPlayerCardinal(favormod);
+                FavorPlayerDiagonal(2 * favormod);
             }
         }
 
@@ -40,7 +49,8 @@
         private void UpdateManMoveSpeed()
         {
             float maxSpeedDiff = GameData.Instance.EnemySpeedConstants.ManhandlaMaxSpeed - GameData.Instance.EnemySpeedConstants.ManhandlaMinSpeed;
-            Vector2 normalVel = Enemy.Physics.MovementVelocity / Enemy.Physics.MovementVelocity.Length();
+            Vector2 normalVel = new Vector2(Enemy.Physics.MovementVelocity.X, Enemy.Physics.MovementVelocity.Y);
+            normalVel.Normalize();
             if (Lifetime < DirectionChange / 2)
             {
                 if (Enemy.Physics.MovementVelocity.Length() <= Enemy.MoveSpeed + maxSpeedDiff)
