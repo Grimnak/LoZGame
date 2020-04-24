@@ -119,15 +119,6 @@
         private Texture2D OrangeStatueLeft2Texture;
         private SpriteData orangeStatueLeft2Data;
 
-        private Texture2D BombedOpeningDown2Texture;
-        private SpriteData bombedOpeningDown2Data;
-        private Texture2D BombedOpeningLeft2Texture;
-        private SpriteData bombedOpeningLeft2Data;
-        private Texture2D BombedOpeningRight2Texture;
-        private SpriteData bombedOpeningRight2Data;
-        private Texture2D BombedOpeningUp2Texture;
-        private SpriteData bombedOpeningUp2Data;
-
         private Texture2D BossTile2Texture;
         private SpriteData bossTile2Data;
         private Texture2D FloorTile2Texture;
@@ -138,7 +129,6 @@
         private SpriteData movableSquare2Data;
         private Texture2D SpottedTile2Texture;
         private SpriteData spottedTile2Data;
-
 
         private Texture2D SpottedTile3Texture;
         private SpriteData spottedTile3Data;
@@ -294,10 +284,6 @@
             BlueStatueRight2Texture = content.Load<Texture2D>("blue_statue_right2");
             OrangeStatueRight2Texture = content.Load<Texture2D>("orange_statue_right2");
             OrangeStatueLeft2Texture = content.Load<Texture2D>("orange_statue_left2");
-            BombedOpeningDown2Texture = content.Load<Texture2D>("bombed_opening_down2");
-            BombedOpeningLeft2Texture = content.Load<Texture2D>("bombed_opening_left2");
-            BombedOpeningRight2Texture = content.Load<Texture2D>("bombed_opening_right2");
-            BombedOpeningUp2Texture = content.Load<Texture2D>("bombed_opening_up2");
             BossTile2Texture = content.Load<Texture2D>("boss_tile2");
             FloorTile2Texture = content.Load<Texture2D>("floor_tile2");
             Lava2Texture = content.Load<Texture2D>("lava2");
@@ -363,10 +349,6 @@
             blueStatueRight2Data = new SpriteData(new Vector2(tileWidth, tileHeight), BlueStatueRight2Texture, 1, 1);
             orangeStatueRight2Data = new SpriteData(new Vector2(tileWidth, tileHeight), OrangeStatueRight2Texture, 1, 1);
             orangeStatueLeft2Data = new SpriteData(new Vector2(tileWidth, tileHeight), OrangeStatueLeft2Texture, 1, 1);
-            bombedOpeningDown2Data = new SpriteData(new Vector2(tileWidth, tileHeight), BombedOpeningDownTexture, 1, 1);
-            bombedOpeningLeft2Data = new SpriteData(new Vector2(tileWidth, tileHeight), BombedOpeningLeftTexture, 1, 1);
-            bombedOpeningRight2Data = new SpriteData(new Vector2(tileWidth, tileHeight), BombedOpeningRightTexture, 1, 1);
-            bombedOpeningUp2Data = new SpriteData(new Vector2(tileWidth, tileHeight), BombedOpeningUpTexture, 1, 1);
             bossTile2Data = new SpriteData(new Vector2(tileWidth, tileHeight), BossTile2Texture, 1, 1);
             floorTile2Data = new SpriteData(new Vector2(tileWidth, tileHeight), FloorTile2Texture, 1, 1);
             lava2Data = new SpriteData(new Vector2(tileWidth, tileHeight), Lava2Texture, 1, 1);
