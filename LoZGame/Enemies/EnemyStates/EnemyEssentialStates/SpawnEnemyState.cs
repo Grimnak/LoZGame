@@ -11,6 +11,7 @@
         public SpawnEnemyState(IEnemy enemy)
         {
             Enemy = enemy;
+            Enemy.IsTransparent = false;
             Sprite = EnemySpriteFactory.Instance.CreateEnemySpawn();
             Enemy.CurrentState = this;
             Enemy.Physics.MovementVelocity = Vector2.Zero;

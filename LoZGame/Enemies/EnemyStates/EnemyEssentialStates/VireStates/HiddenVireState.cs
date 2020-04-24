@@ -11,8 +11,11 @@ namespace LoZClone
     {
         public HiddenVireState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Enemy.CurrentState = this;
+            Enemy = enemy;
+            Sprite = null;
+            Enemy.CurrentState = this;
+            Enemy.IsTransparent = true;
+            this.Enemy.Physics.MovementVelocity = Vector2.Zero;
         }
 
         public override void Update()

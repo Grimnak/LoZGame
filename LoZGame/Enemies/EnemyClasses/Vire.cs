@@ -12,12 +12,15 @@
 
         public EntityManager EntityManager { get; set; }
 
+        public Physics InitialPhys { get; set; }
+
         public Vire(Vector2 location)
         {
             RandomStateGenerator = new RandomStateGenerator(this);
             States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.VireStateList);
             Health = new HealthManager(GameData.Instance.EnemyHealthConstants.VireHealth);
             Physics = new Physics(location);
+            InitialPhys = new Physics(location);
             Physics.Mass = GameData.Instance.EnemyMassConstants.VireMass;
             CurrentState = new SpawnEnemyState(this);
             EntityManager = LoZGame.Instance.GameObjects.Entities;
@@ -36,6 +39,7 @@
             ApplySmallWeightModPos();
             ApplySmallHealthMod();
             Physics.Gravity = GameData.Instance.EnemyMiscConstants.VireGravity;
+            InitialPhys.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
         }
 
         public override void Stun(int stunTime)
@@ -46,6 +50,7 @@
         {
             if (damageAmount <= 4)
             {
+                CurrentState = new HiddenVireState(this);
                 SpawnVireKeese();
             }
             base.TakeDamage(damageAmount);

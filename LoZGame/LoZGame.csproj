@@ -173,6 +173,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpRightMovingEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\SpawnEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\StunnedEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\VireStates\HiddenVireState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FollowFireSnakeState.cs" />
     <Compile Include="GameState\CreditsScreenState.cs" />
     <Compile Include="GameState\GameStateEssentials.cs" />

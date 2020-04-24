@@ -32,7 +32,7 @@
                     SoundFactory.Instance.PlayLinkHurt();
                 }
             }
-            else if (enemy is OldMan || enemy is Merchant || enemy is BlockEnemy)
+            else if (enemy is OldMan || enemy is Merchant || enemy is BlockEnemy || enemy.IsTransparent)
             {
                 // do nothing
             }

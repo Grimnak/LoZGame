@@ -26,6 +26,9 @@
             {
                 ((OldMan)enemy).ShootFireballs();
             }
+            if (enemy.IsTransparent)
+            {
+            }
             else if (enemy is Dodongo)
             {
                 if (projectile is BombProjectile)
