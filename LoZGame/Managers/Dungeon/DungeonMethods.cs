@@ -142,6 +142,10 @@
         /// </summary>
         public void LoadNewRoom()
         {
+            if (LoZGame.Instance.Players.Count > 0)
+            {
+                LoZGame.Instance.Players[0].Inventory.LadderInUse = false;
+            }
             miniMap.Explore();
             LoZGame.Instance.GameObjects.LoadNewRoom();
         }
@@ -160,6 +164,11 @@
                 door.Physics.Bounds = new Rectangle(door.Physics.Bounds.Location + offset, door.Physics.Bounds.Size);
                 door.Physics.SetLocation();
                 manager.Doors.Add(door);
+            }
+
+            if (LoZGame.Instance.Players.Count > 0)
+            {
+                LoZGame.Instance.Players[0].Inventory.LadderInUse = false;
             }
         }
 
