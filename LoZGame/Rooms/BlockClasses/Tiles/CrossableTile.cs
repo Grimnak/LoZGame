@@ -24,7 +24,7 @@ namespace LoZClone
 
         public bool IsTransparent { get { return isTransparent; } set { isTransparent = value; } }
 
-        public List<MovableTile.InvalidDirection> InvalidDirections { get { return null; } }
+        public List<MovableBlock.InvalidDirection> InvalidDirections { get { return null; } }
 
         public Physics Physics { get; set; }
 
