@@ -13,7 +13,6 @@
         public static bool Music = false;  // Title screen and dungeon music (not SFX)
         public static readonly int StartDungeon = 5; // dungeon ID to load into [1 - 6];\
         public int Difficulty = 0; // -1 => EASY 0 => NORMAL 1 => HARD 3 => NIGHTMARE
-        private static readonly float UpdatesPerSecond = DefaultUpdateSpeed;
         private const int DefaultUpdateSpeed = 60;
         private readonly int screenWidth;
         private readonly int screenHeight;
@@ -108,7 +107,7 @@
 
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            TargetElapsedTime = TimeSpan.FromSeconds(1.0f / UpdatesPerSecond);
+            TargetElapsedTime = TimeSpan.FromSeconds(1.0f / (float)DefaultUpdateSpeed);
             gameObjectManager = new GameObjectManager();
             dropManager = new DropManager();
             debugManager = new DebugManager();

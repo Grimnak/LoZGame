@@ -12,6 +12,7 @@ namespace LoZClone
         public static DifficultyMapper NORMAL = new DifficultyMapper(0, "NORMAL");
         public static DifficultyMapper HARD = new DifficultyMapper(1, "HARD");
         public static DifficultyMapper NIGHTMARE = new DifficultyMapper(3, "NIGHTMARE");
+        public static DifficultyMapper IMPOSSIBLE = new DifficultyMapper(-69, "IMPOSSIBLE");
 
         private DifficultyMapper(int id, string name)
         {
@@ -27,7 +28,7 @@ namespace LoZClone
                 case 0: return NORMAL;
                 case 1: return HARD;
                 case 3: return NIGHTMARE;
-                default: return null;
+                default: return IMPOSSIBLE;
             }
         }
 
