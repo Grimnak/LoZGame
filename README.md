@@ -46,6 +46,12 @@ W, S, Up Arrow Key, Down Arrow Key - Controls Options Menu Selection
 
 Enter - Begin the Game, Toggle an Option, or Continue Gameplay after Death
 
+### Options Menu:
+
+- Difficulty: The selection you make in the options menu will only apply to future dungeons in your current playthrough
+- Cheats: Will grant you the ability to travel via Mouse Controller, infinite health and infinite use of most items.
+- Debug: Draws bounding boxes of all relevant objects on screen
+
 ## External Tools:
 Git
 
