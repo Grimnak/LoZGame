@@ -1,6 +1,5 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
 
     /// <summary>
@@ -84,8 +83,16 @@
         {
             likelike.Physics.StopMovement();
             player.Physics.StopMovement();
-            (likelike as Likelike).Timer++;
-            if ((likelike as Likelike).Timer > timeout)
+            ((Likelike)likelike).Timer++;
+
+            // If the LikeLike dies while swallowing the player, release the player.
+            if (likelike.IsDead)
+            {
+                player.State = new IdleState(player);
+            }
+
+            // If the LikeLike finishes swallowing the player, deal the corresponding damage before releasing the player.
+            if (((Likelike)likelike).Timer > timeout)
             {
                 player.State = new IdleState(player);
                 if (likelike.Health.CurrentHealth >= 0)
@@ -96,7 +103,7 @@
                     new Point(likelike.Physics.Bounds.Location.X, likelike.Physics.Bounds.Location.Y), likelike.Physics.Bounds.Size);
                 player.Physics.Location = new Vector2(player.Physics.Location.X, player.Physics.Location.Y);
                 player.Physics.Bounds = new Rectangle((int)player.Physics.Location.X, (int)player.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
-                (likelike as Likelike).Timer = 0;
+                ((Likelike)likelike).Timer = 0;
                 player.TakeDamage(likelike.Damage);
             }
         }
