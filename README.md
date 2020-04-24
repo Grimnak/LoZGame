@@ -60,13 +60,11 @@ GitHub
 
 Adobe Photoshop
 
+Adobe Illustrator
+
 Gimp
 
 Discord
-
-Google Drive
-
-MS Paint
 
 
 ## Known Bugs/Missing Features:
