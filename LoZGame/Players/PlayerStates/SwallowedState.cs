@@ -95,7 +95,7 @@
             if (((Likelike)likelike).Timer > timeout)
             {
                 player.State = new IdleState(player);
-                if (likelike.Health.CurrentHealth >= 0)
+                if (likelike.Health.CurrentHealth > 0)
                 {
                     likelike.UpdateState();
                 }
