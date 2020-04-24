@@ -10,7 +10,7 @@ namespace LoZClone
         private const int GelMss = 8;
         private const int DragonMss = 24;
         private const int DodongoMss = 12;
-        private const int SpikeCrossMss = 16;
+        private const int SpikeCrossMss = 8;
         private const int WallMasterMss = 14;
         private const int FireSnakeMss = 20;
         private const int DarknutMss = 18;

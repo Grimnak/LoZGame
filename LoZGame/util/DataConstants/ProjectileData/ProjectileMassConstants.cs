@@ -11,7 +11,7 @@ namespace LoZClone
         private const int WoodSwordMss = 64;
         private const int MagicSwordMss = 96;
         private const int WhiteSwordMss = 80;
-        private const int SilverArrowMss = 8;
+        private const int SilverArrowMss = 4;
 
         public int ArrowMass => ArrowMss;
 
