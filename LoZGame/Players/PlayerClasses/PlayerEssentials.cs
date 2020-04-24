@@ -35,6 +35,10 @@
                 {
                     Health.DamageHealth(damageAmount);
                 }
+                else
+                {
+                    Health.CurrentHealth = Health.MaxHealth;
+                }
                 if (damageAmount > 0)
                 {
                     SoundFactory.Instance.PlayLinkHurt();
