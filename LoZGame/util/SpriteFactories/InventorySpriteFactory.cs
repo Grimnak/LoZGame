@@ -61,7 +61,12 @@
         private Texture2D magicSwordSpriteSheet;
         private SpriteData magicSwordData;
         private Texture2D itemSelector2;
-        private SpriteData itemSelector2Data;
+        private SpriteData itemSelectorFalse;
+        private SpriteData itemSelectorTrue;
+        private SpriteData itemSelectorEasy;
+        private SpriteData itemSelectorNormal;
+        private SpriteData itemSelectorHard;
+        private SpriteData itemSelectorNightmare;
 
         private static readonly InventorySpriteFactory InstanceValue = new InventorySpriteFactory();
 
@@ -112,7 +117,13 @@
             magicSwordSpriteSheet = content.Load<Texture2D>("MagicSword");
             magicSwordData = new SpriteData(swordSize, magicSwordSpriteSheet, 1, 1);
             itemSelector2 = content.Load<Texture2D>("SelectorSprite2");
-            itemSelector2Data = new SpriteData(new Vector2(83, 37), itemSelector2, 1, 1);
+
+            itemSelectorFalse = new SpriteData(new Vector2(80, 37), itemSelector2, 1, 1);
+            itemSelectorTrue = new SpriteData(new Vector2(70, 37), itemSelector2, 1, 1);
+            itemSelectorEasy = new SpriteData(new Vector2(87, 37), itemSelector2, 1, 1);
+            itemSelectorNormal = new SpriteData(new Vector2(140, 37), itemSelector2, 1, 1);
+            itemSelectorHard = new SpriteData(new Vector2(90, 37), itemSelector2, 1, 1);
+            itemSelectorNightmare = new SpriteData(new Vector2(192, 37), itemSelector2, 1, 1);
         }
 
         public ISprite CreateInventoryBackground()
@@ -205,9 +216,34 @@
             return new ObjectSprite(selectionReticuleSpriteSheet, selectionReticuleData);
         }
 
-        public ISprite CreateInventoryItemSelector2()
+        public ISprite CreateInventoryItemSelectorFalse()
         {
-            return new ObjectSprite(itemSelector2, itemSelector2Data);
+            return new ObjectSprite(itemSelector2, itemSelectorFalse);
+        }
+
+        public ISprite CreateInventoryItemSelectorTrue()
+        {
+            return new ObjectSprite(itemSelector2, itemSelectorTrue);
+        }
+
+        public ISprite CreateInventoryItemSelectorEasy()
+        {
+            return new ObjectSprite(itemSelector2, itemSelectorEasy);
+        }
+
+        public ISprite CreateInventoryItemSelectorNormal()
+        {
+            return new ObjectSprite(itemSelector2, itemSelectorNormal);
+        }
+
+        public ISprite CreateInventoryItemSelectorHard()
+        {
+            return new ObjectSprite(itemSelector2, itemSelectorHard);
+        }
+
+        public ISprite CreateInventoryItemSelectorNightmare()
+        {
+            return new ObjectSprite(itemSelector2, itemSelectorNightmare);
         }
 
         public ISprite CreateInventoryWoodenSword()

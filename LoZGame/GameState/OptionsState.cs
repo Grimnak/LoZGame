@@ -12,13 +12,18 @@ namespace LoZClone
     {
         IGameState previousState;
         ISprite OptionsScreen;
-        ISprite SelectorSprite;
+        ISprite SelectorSpriteFalse, SelectorSpriteTrue, SelectorSpriteEasy, SelectorSpriteNormal, SelectorSpriteHard, SelectorSpriteNightmare;
         private Vector2 optionsOffset = new Vector2(GameData.Instance.GameStateDataConstants.OptionsWidthOffset, GameData.Instance.GameStateDataConstants.OptionsHeightOffset);
 
         public OptionsState(IGameState gameState)
         {
             previousState = gameState;
-            SelectorSprite = InventorySpriteFactory.Instance.CreateInventoryItemSelector2();
+            SelectorSpriteFalse = InventorySpriteFactory.Instance.CreateInventoryItemSelectorFalse();
+            SelectorSpriteTrue = InventorySpriteFactory.Instance.CreateInventoryItemSelectorTrue();
+            SelectorSpriteEasy = InventorySpriteFactory.Instance.CreateInventoryItemSelectorEasy();
+            SelectorSpriteNormal = InventorySpriteFactory.Instance.CreateInventoryItemSelectorNormal();
+            SelectorSpriteHard = InventorySpriteFactory.Instance.CreateInventoryItemSelectorHard();
+            SelectorSpriteNightmare = InventorySpriteFactory.Instance.CreateInventoryItemSelectorNightmare();
             OptionsScreen = ScreenSpriteFactory.Instance.OptionsScreen();
         }
 
@@ -36,13 +41,43 @@ namespace LoZClone
             switch (LoZGame.Instance.Options.SelectedOption)
             {
                 case LoZClone.Options.OptionType.Difficulty:
-                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY), LoZGame.Instance.DefaultTint, 0.99f);
+                    switch (DifficultyMapper.GetMyType(LoZGame.Instance.Difficulty).ID)
+                    {
+                        case -1:
+                            SelectorSpriteEasy.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY), LoZGame.Instance.DefaultTint, 0.99f);
+                            break;
+                        case 0:
+                            SelectorSpriteNormal.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY), LoZGame.Instance.DefaultTint, 0.99f);
+                            break;
+                        case 1:
+                            SelectorSpriteHard.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY), LoZGame.Instance.DefaultTint, 0.99f);
+                            break;
+                        case 3:
+                            SelectorSpriteNightmare.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY), LoZGame.Instance.DefaultTint, 0.99f);
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case LoZClone.Options.OptionType.Cheats:
-                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY + GameData.Instance.GameStateDataConstants.OptionsTextLeading), LoZGame.Instance.DefaultTint, 0.99f);
+                    if (LoZGame.Cheats)
+                    {
+                        SelectorSpriteTrue.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY + GameData.Instance.GameStateDataConstants.OptionsTextLeading), LoZGame.Instance.DefaultTint, 0.99f);
+                    }
+                    else
+                    {
+                        SelectorSpriteFalse.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY + GameData.Instance.GameStateDataConstants.OptionsTextLeading), LoZGame.Instance.DefaultTint, 0.99f);
+                    }
                     break;
                 case LoZClone.Options.OptionType.Debug:
-                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY + (2 * GameData.Instance.GameStateDataConstants.OptionsTextLeading)), LoZGame.Instance.DefaultTint, 0.99f);
+                    if (LoZGame.DebugMode)
+                    {
+                        SelectorSpriteTrue.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY + (2 * GameData.Instance.GameStateDataConstants.OptionsTextLeading)), LoZGame.Instance.DefaultTint, 0.99f);
+                    }
+                    else
+                    {
+                        SelectorSpriteFalse.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY + (2 * GameData.Instance.GameStateDataConstants.OptionsTextLeading)), LoZGame.Instance.DefaultTint, 0.99f);
+                    }
                     break;
                 default:
                     LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "If you see this, call the police.", new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsCheatsY), Color.DarkRed);
