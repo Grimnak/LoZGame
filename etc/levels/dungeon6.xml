@@ -1048,7 +1048,7 @@
         <enemy X="5.5" Y="2">OldMan</enemy>
       </enemies>
       <doors>
-        <door loc="S">locked</door>
+        <door loc="S">unlocked</door>
       </doors>
       <rrow idx="0">
       </rrow>
@@ -1171,7 +1171,7 @@
         <enemy X="11" Y="4">Keese</enemy>
       </enemies>
       <doors>
-        <door loc="N">locked</door>
+        <door loc="N">unlocked</door>
         <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">

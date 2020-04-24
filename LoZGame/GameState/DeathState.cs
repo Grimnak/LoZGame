@@ -42,7 +42,7 @@
                     player.Update();
                 }
             }
-            else if (deathTime > gameOverTime)
+            else if (deathTime >= gameOverTime)
             {
                 LoZGame.Instance.GameState.TitleScreen();
             }
