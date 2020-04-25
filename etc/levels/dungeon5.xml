@@ -349,6 +349,10 @@
       </text>
       <enemies>
         <enemy X="4" Y="2">DigDogger</enemy>
+        <enemy X="1" Y="0">FireBlockEnemy</enemy>
+        <enemy X="11" Y="0">FireBlockEnemy</enemy>
+        <enemy X="1" Y="6">FireBlockEnemy</enemy>
+        <enemy X="11" Y="6">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="N">special</door>
@@ -579,8 +583,9 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" idx="1">
-      <text>THE MAGIC SWORD IS BELOW YOU.</text>
+      <text>DIGDOGGER HATES MUSIC.</text>
       <items>
+        <item X="6" Y="4">Flute</item>
       </items>
       <enemies>
         <enemy X="5.5" Y="2">OldMan</enemy>

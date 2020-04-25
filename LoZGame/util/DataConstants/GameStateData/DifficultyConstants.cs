@@ -12,6 +12,7 @@
         private const int largePrefMod = 4;
         private const int smallHealthMod = 2;
         private const int largeHealthMod = 4;
+        private const int healthChance = 5;
 
         public float SmallMoveMod => smallMoveMod;
 
@@ -32,5 +33,7 @@
         public int SmallHealthMod => smallHealthMod;
 
         public int LargeHealthMod => largeHealthMod;
+
+        public int HealthChance => healthChance;
     }
 }

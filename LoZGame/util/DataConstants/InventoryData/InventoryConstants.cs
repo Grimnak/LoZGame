@@ -14,6 +14,9 @@ namespace LoZClone
         private const int ItemSelectOffset = 5;
         private const int HPPerHeart = 4;
 
+        private const int minHealthChance = 5;
+        private const int maxHealthChance = 50;
+
         private const int threeQuarterHeart = 3;
         private const int halfHeart = 2;
         private const int quarterHeart = 1;
@@ -193,6 +196,10 @@ namespace LoZClone
         public string ItemCtStr => itemCtStr;
 
         public string LevelStr => levelStr;
+
+        public int MinHealthChance => minHealthChance;
+
+        public int MaxHealthChance => maxHealthChance;
 
     }
 }
