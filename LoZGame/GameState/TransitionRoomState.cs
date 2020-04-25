@@ -7,25 +7,25 @@
 
     public class TransitionRoomState : GameStateEssentials, IGameState
     {
-        private int YTransition = LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset;
-        private int XTransition = LoZGame.Instance.ScreenWidth;
-        private int transitionSpeed = GameData.Instance.GameStateDataConstants.TransitionRoomStateTransitionTime;
-        private int maxPlayerMovement = GameData.Instance.GameStateDataConstants.PlayerTransitionMaxDistance;
-        private Physics.Direction direction;
-        private float transitionDistance;
-        private Point currentRoomLocation;
-        private Point nextRoomLocation;
-        private Point nextRoomOffset;
-        private Dungeon dungeon;
-        private Vector2 MasterMovement;
-        private Room NextRoom;
-        private Vector2 nextRoomBorderOffset;
-        private Vector2 currentRoomBorderOffset;
-        private GameObjectManager oldObjects;
-        private GameObjectManager newObjects;
-        private List<IDoor> puzzleDoors;
-        private List<IDoor> specialDoors;
-        private bool done;
+        private int YTransition = LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset;                 // max distance to transition on the Y axis
+        private int XTransition = LoZGame.Instance.ScreenWidth;                                                     // max distance to transition on the X axis
+        private int transitionSpeed = GameData.Instance.GameStateDataConstants.TransitionRoomStateTransitionTime;   // speed to transition at
+        private int maxPlayerMovement = GameData.Instance.GameStateDataConstants.PlayerTransitionMaxDistance;       // secondary player speed to walk at
+        private Physics.Direction direction;                                                                        // direction we are transitioning
+        private float transitionDistance;           // current transition
+        private Point currentRoomLocation;          // room we are starting from
+        private Point nextRoomLocation;             // x, y coord of room we are going to
+        private Point nextRoomOffset;               // a, y coord offset of where to draw enemies when we start transitioning
+        private Dungeon dungeon;                    // current dungeon we are transitioning in
+        private Vector2 MasterMovement;             // movement velocity that every object follows for the transition
+        private Room NextRoom;                      // all the objects in the next room
+        private Vector2 nextRoomBorderOffset;       // offset to draw the dungeon border
+        private Vector2 currentRoomBorderOffset;    // offset to draw the original dungeon border
+        private GameObjectManager oldObjects;       // tracks all the gameobjects that were loadad before the transition started
+        private GameObjectManager newObjects;       // tracks all the gameobjects in the new room we are loaadaing
+        private List<IDoor> puzzleDoors;            // used to track puzzle doors that we open during transition
+        private List<IDoor> specialDoors;           // used to track special doors we open during transition
+        private bool done;                          // tracks when we are done transitioning to return to play state
 
         public TransitionRoomState(Physics.Direction direction)
         {
@@ -143,33 +143,42 @@
 
         public override void Update()
         {
+            // logic to execute during a transition
             if (!done)
             {
+                // if we are going to transition past the desire amount we instead snap to the new location
                 if (MasterMovement.Length() >= transitionDistance)
                 {
                     MasterMovement.Normalize();
                     MasterMovement *= transitionDistance;
                     done = true;
                 }
+                // else we track the distance normally
                 else
                 {
                     transitionDistance -= Math.Abs(MasterMovement.X + MasterMovement.Y);
                 }
+                // appliees a global movement to all objects new and old
                 nextRoomBorderOffset += MasterMovement;
                 currentRoomBorderOffset += MasterMovement;
                 oldObjects.MoveObjects();
                 newObjects.MoveObjects();
+
+                // updates player so he walks through the door
                 foreach (IPlayer player in LoZGame.Instance.Players)
                 {
                     player.Update();
                 }
             }
+            // logic to execute and return to play staate
             else
             {
                 oldObjects.LoadedRoomX = dungeon.CurrentRoomX;
                 oldObjects.LoadedRoomY = dungeon.CurrentRoomY;
                 dungeon.CurrentRoomX = nextRoomLocation.X;
                 dungeon.CurrentRoomY = nextRoomLocation.Y;
+
+                // sets depth for doors since they don't do it dynamically once in play state
                 foreach (IDoor door in oldObjects.Doors.DoorList)
                 {
                     door.Physics.SetDepth();
@@ -178,6 +187,8 @@
                 {
                     door.Physics.SetDepth();
                 }
+
+                // restores doors that we opened during transition
                 foreach (IDoor door in puzzleDoors)
                 {
                     door.State = new PuzzleDoorState(door);
@@ -190,8 +201,12 @@
                 }
                 puzzleDoors.Clear();
                 specialDoors.Clear();
+
+                // resets locations to be back on the screen (limitation of the game in many other areas, wasn't feasible to redo it in the time we had)
                 oldObjects.UpdateObjectLocations(nextRoomOffset);
                 oldObjects.Save();
+
+                // sets the main game to track the new objects in the new room
                 LoZGame.Instance.GameObjects = newObjects;
                 foreach (IBlock block in LoZGame.Instance.GameObjects.Blocks.BlockList)
                 {
@@ -200,12 +215,16 @@
                         (block as MovableBlock).OriginalLocation = block.Physics.Location;
                     }
                 }
+
+                // explores the minimap and resets players transition velocities
                 dungeon.MiniMap.Explore();
                 foreach (IPlayer player in LoZGame.Instance.Players)
                 {
                     player.Physics.MasterMovement = Vector2.Zero;
                     player.Idle();
                 }
+
+                // spawn enemies and into play state
                 dungeon.SpawnObjects();
                 PlayGame();
             }
