@@ -123,7 +123,6 @@ namespace LoZClone
                 }
                 playerCrossing = false;
             }
-
             sprite.Update();
         }
     }
