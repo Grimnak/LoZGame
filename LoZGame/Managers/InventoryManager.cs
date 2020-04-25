@@ -13,6 +13,7 @@
             MagicBoomerang,
             RedCandle,
             BlueCandle,
+            Flute,
             Potion
         }
 

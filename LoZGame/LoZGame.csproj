@@ -99,10 +99,12 @@
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
     <Compile Include="Enemies\EnemyClasses\BlockEnemy.cs" />
     <Compile Include="Enemies\EnemyClasses\DifficultyModifiers.cs" />
+    <Compile Include="Enemies\EnemyClasses\DigDogger.cs" />
     <Compile Include="Enemies\EnemyClasses\GleeokBody.cs" />
     <Compile Include="Enemies\EnemyClasses\GleeokHeadOff.cs" />
     <Compile Include="Enemies\EnemyClasses\GleeokNeck.cs" />
     <Compile Include="Enemies\EnemyClasses\GleeokHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\DigDoggerInvincible.cs" />
     <Compile Include="Enemies\EnemyClasses\LikeLike.cs" />
     <Compile Include="Enemies\EnemyClasses\ManhandlaHead.cs" />
     <Compile Include="Enemies\EnemyClasses\ManhandlaBody.cs" />
@@ -139,6 +141,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateDarknut.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateDodongo.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateDigDogger.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdatePolsVoice.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateLikelike.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateVire.cs" />
@@ -178,6 +181,7 @@
     <Compile Include="GameState\CreditsScreenState.cs" />
     <Compile Include="GameState\GameStateEssentials.cs" />
     <Compile Include="GameState\OptionsState.cs" />
+    <Compile Include="GameState\FluteGameState.cs" />
     <Compile Include="GameState\UnpauseState.cs" />
     <Compile Include="GameState\PauseState.cs" />
     <Compile Include="Items\Ladder.cs" />
@@ -420,6 +424,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Util\Audio\Resources\LOZ_Recorder.wav" />
     <Content Include="Util\Audio\Resources\CreditsTheme.wav" />
     <Content Include="Util\Audio\Resources\SpartanLaser_mixdown.wav" />
     <None Include="Util\Audio\Resources\triforce_tune.wav" />
@@ -507,7 +512,9 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

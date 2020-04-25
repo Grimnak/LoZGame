@@ -3,22 +3,21 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class PlayGameState : GameStateEssentials, IGameState
+    public class FluteGameState : GameStateEssentials, IGameState
     {
-        public PlayGameState()
+        private int lifeTime;
+        private readonly int flutePlayTime = 3 * LoZGame.Instance.UpdateSpeed; // should be duration of flute song
+
+        public FluteGameState()
         {
+            lifeTime = 0;
+            SoundFactory.Instance.PlayFlute();
         }
 
         /// <inheritdoc></inheritdoc>
         public override void Death()
         {
             LoZGame.Instance.GameState = new DeathState();
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public override void PlayFlute()
-        {
-            LoZGame.Instance.GameState = new FluteGameState();
         }
 
         /// <inheritdoc></inheritdoc>
@@ -42,13 +41,6 @@
             }
         }
 
-        /// <inheritdoc></inheritdoc>
-        public override void WinGame()
-        {
-            SoundFactory.Instance.StopAll();
-            LoZGame.Instance.GameState = new WinGameState();
-        }
-
         public override void Pause()
         {
             LoZGame.Instance.GameState = new PauseState(this);
@@ -59,25 +51,30 @@
             LoZGame.Instance.GameState = new OptionsState(this);
         }
 
+        public override void PlayGame()
+        {
+            LoZGame.Instance.GameState = new PlayGameState();
+        }
+
         /// <inheritdoc></inheritdoc>
         public override void Update()
         {
-            if (LoZGame.Instance.Players[0].Inventory.HasClock)
-            {
-                LoZGame.Instance.Players[0].Inventory.ClockLockout++;
-            }
-            if (LoZGame.Instance.Players[0].Inventory.ClockLockout >= InventoryManager.ClockLockoutMax)
-            {
-                LoZGame.Instance.Players[0].Inventory.HasClock = false;
-                LoZGame.Instance.Players[0].Inventory.ClockLockout = 0;
-            }
+            lifeTime++;
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Update();
             }
-            LoZGame.Instance.GameObjects.Update();
-            LoZGame.Instance.CollisionDetector.Update(LoZGame.Instance.Players.AsReadOnly(), LoZGame.Instance.GameObjects.Enemies.EnemyList.AsReadOnly(), LoZGame.Instance.GameObjects.Blocks.BlockList.AsReadOnly(), LoZGame.Instance.GameObjects.Doors.DoorList.AsReadOnly(), LoZGame.Instance.GameObjects.Items.ItemList.AsReadOnly(), LoZGame.Instance.GameObjects.Entities.PlayerProjectiles.AsReadOnly(), LoZGame.Instance.GameObjects.Entities.EnemyProjectiles.AsReadOnly());
-
+            if (lifeTime >= flutePlayTime)
+            {
+                foreach (IEnemy enemy in LoZGame.Instance.GameObjects.Enemies.EnemyList)
+                {
+                    if (enemy.AI == EnemyEssentials.EnemyAI.LargeDigDogger)
+                    {
+                        enemy.UpdateChild();
+                    }
+                }
+                PlayGame();
+            }
         }
 
         /// <inheritdoc></inheritdoc>

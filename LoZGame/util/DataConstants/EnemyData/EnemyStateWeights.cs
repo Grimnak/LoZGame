@@ -156,7 +156,19 @@
             { StateType.MoveSouthEast, 1 },
             { StateType.MoveSouthWest, 1 }
         };
-        
+
+        private static Dictionary<StateType, int> digDoggerStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 },
+            { StateType.MoveNorthEast, 1 },
+            { StateType.MoveNorthWest, 1 },
+            { StateType.MoveSouthEast, 1 },
+            { StateType.MoveSouthWest, 1 }
+        };
+
         private static Dictionary<StateType, int> manhandlaHeadStateList = new Dictionary<StateType, int>()
         {
             { StateType.Attack, 1 },
@@ -221,5 +233,7 @@
         public Dictionary<StateType, int> LikelikeStateList => likelikeStateList;
 
         public Dictionary<StateType, int> PolsVoiceStateList => polsVoiceStateList;
+
+        public Dictionary<StateType, int> DigDoggerStateList => digDoggerStateList;
     }
 }

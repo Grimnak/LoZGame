@@ -144,6 +144,10 @@
                     selectedItem = CreateBombSprite();
                     break;
 
+                case InventoryManager.ItemType.Flute:
+                    selectedItem = CreateFluteSprite();
+                    break;
+
                 case InventoryManager.ItemType.Boomerang:
                     selectedItem = CreateBoomerangSprite();
                     break;

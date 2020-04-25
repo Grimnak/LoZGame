@@ -166,6 +166,9 @@
   <data name="LOZ_Link_Hurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Util\Audio\Resources\LOZ_Link_Hurt.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="LOZ_Recorder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Util\Audio\Resources\LOZ_Recorder.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="LOZ_Secret" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Util\Audio\Resources\LOZ_Secret.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

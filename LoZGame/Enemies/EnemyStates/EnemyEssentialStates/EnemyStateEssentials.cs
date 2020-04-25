@@ -27,6 +27,8 @@
             EnemyAI.Manhandla,
             EnemyAI.GleeokHead,
             EnemyAI.ManHandlaHead,
+            EnemyAI.SmallDigDogger,
+            EnemyAI.LargeDigDogger,
             EnemyAI.NoSpawn
         };
 
@@ -87,6 +89,12 @@
                     break;
                 case EnemyAI.SpikeCross:
                     UpdateSpikeCross();
+                    break;
+                case EnemyAI.SmallDigDogger:
+                    UpdateSmallDigDogger();
+                    break;
+                case EnemyAI.LargeDigDogger:
+                    UpdateLargeDigDogger();
                     break;
                 case EnemyAI.NoAI:
                     break;
