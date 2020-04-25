@@ -298,6 +298,9 @@
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 2);
                     items.Add(new WhiteSword(location));
                     break;
+                case "Flute":
+                    items.Add(new Flute(location));
+                    break;
                 case "MagicSword":
                     items.Add(new MagicSword(location));
                     break;
