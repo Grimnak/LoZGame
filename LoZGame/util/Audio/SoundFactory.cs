@@ -15,8 +15,7 @@
         SoundEffectInstance dungeonLoop = dungeonSong.CreateInstance();
         private static SoundEffect triforceTune = SoundEffect.FromStream(Properties.Resources.triforce_tune);
         SoundEffectInstance triforceLoop = triforceTune.CreateInstance();
-        private static SoundEffect creditsTune = SoundEffect.FromStream(Properties.Resources.CreditsTheme);
-        SoundEffectInstance creditsLoop = creditsTune.CreateInstance();
+        private SoundPlayer credits = new SoundPlayer(Properties.Resources.CreditsTheme);
         private SoundEffect swordSlash = SoundEffect.FromStream(Properties.Resources.LOZ_Sword_Slash);
         private SoundEffect swordShoot = SoundEffect.FromStream(Properties.Resources.LOZ_Sword_Shoot);
         private SoundEffect laserBlast = SoundEffect.FromStream(Properties.Resources.SpartanLaser_mixdown);
@@ -191,11 +190,9 @@
 
         public void PlayCreditsTune()
         {
-            creditsLoop.IsLooped = false;
-            creditsLoop.Volume = 0.5f;
             if (musicEnabled)
             {
-                creditsTune.Play();
+                credits.Play();
             }
         }
 
@@ -206,7 +203,7 @@
 
         public void StopCreditsSong()
         {
-            creditsLoop.Stop();
+            credits.Stop();
         }
 
         public void StopAll()
@@ -214,7 +211,7 @@
             titleLoop.Stop();
             dungeonLoop.Stop();
             triforceLoop.Stop();
-            creditsLoop.Stop();
+            credits.Stop();
         }
     }
 }
