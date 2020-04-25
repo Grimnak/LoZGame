@@ -29,6 +29,7 @@ namespace LoZClone
         {
             // Can perform a hard reset while in this state already.
             SoundFactory.Instance.StopAll();
+            
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
@@ -37,7 +38,10 @@ namespace LoZClone
         {
             count++;
             if (count == MAX)
+            {
+                SoundFactory.Instance.StopCreditsSong();
                 LoZGame.Instance.GameState.TitleScreen();
+            }  
         }
 
         /// <inheritdoc></inheritdoc>

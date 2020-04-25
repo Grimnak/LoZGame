@@ -191,7 +191,7 @@
 
         public void PlayCreditsTune()
         {
-            creditsLoop.IsLooped = true;
+            creditsLoop.IsLooped = false;
             creditsLoop.Volume = 0.5f;
             if (musicEnabled)
             {
@@ -202,6 +202,11 @@
         public void StopDungeonSong()
         {
             dungeonLoop.Stop();
+        }
+
+        public void StopCreditsSong()
+        {
+            creditsLoop.Stop();
         }
 
         public void StopAll()
