@@ -29,6 +29,7 @@
 
         public TransitionRoomState(Physics.Direction direction)
         {
+            // initialize the variabls and directions we need to check for a transition
             oldObjects = LoZGame.Instance.GameObjects;
             newObjects = new GameObjectManager();
             done = false;
@@ -38,6 +39,8 @@
             currentRoomBorderOffset = Vector2.Zero;
             puzzleDoors = new List<IDoor>();
             specialDoors = new List<IDoor>();
+
+            // finds the room we are transitioning to, and sets the variabls needed to transition to it
             switch (direction)
             {
                 case Physics.Direction.North:
@@ -61,13 +64,19 @@
                     nextRoomOffset = new Point(-XTransition, 0);
                     break;
             }
+
+            // loads the nextroom
             NextRoom = dungeon.GetRoom(nextRoomLocation.Y, nextRoomLocation.X);
             nextRoomBorderOffset = nextRoomOffset.ToVector2();
+
+            // checks that the next room actually exists before transitioning
             if (NextRoom.Exists)
             {
                 MasterMovement = new Vector2((float)(-1 * nextRoomOffset.X) / transitionSpeed, (float)(-1 * nextRoomOffset.Y) / transitionSpeed);
                 oldObjects.Entities.Clear();
                 dungeon.LoadNewRoom(newObjects, nextRoomLocation, nextRoomOffset);
+
+                // assigns players movement velocity based on transition direction
                 foreach (IPlayer player in LoZGame.Instance.Players)
                 {
                     switch (direction)
@@ -90,34 +99,43 @@
                             break;
                     }
                     player.Physics.MovementVelocity += MasterMovement;
-                    oldObjects.SetObjectMovement(MasterMovement);
-                    newObjects.SetObjectMovement(MasterMovement);
-                    foreach (IDoor door in oldObjects.Doors.DoorList)
+                }
+
+                // sets moveement velocity for all other objects apart from player;
+                oldObjects.SetObjectMovement(MasterMovement);
+                newObjects.SetObjectMovement(MasterMovement);
+
+                // sets doors to draw on the top level
+                foreach (IDoor door in oldObjects.Doors.DoorList)
+                {
+                    door.Physics.Depth = 1;
+                }
+                foreach (IDoor door in newObjects.Doors.DoorList)
+                {
+                    door.Physics.Depth = 1;
+                }
+
+                // opens all special and puzzle doors in the room we are entering
+                foreach (IDoor door in newObjects.Doors.DoorList)
+                {
+                    if (door.DoorType == Door.DoorTypes.Special)
                     {
-                        door.Physics.Depth = 1;
-                    }
-                    foreach (IDoor door in newObjects.Doors.DoorList)
-                    {
-                        door.Physics.Depth = 1;
-                    }
-                    foreach (IDoor door in newObjects.Doors.DoorList)
-                    {
-                        if (door.DoorType == Door.DoorTypes.Special)
-                        {
-                            specialDoors.Add(door);
-                            door.Open();
-                        }
-                    }
-                    foreach (IDoor door in newObjects.Doors.DoorList)
-                    {
-                        if (door.DoorType == Door.DoorTypes.Puzzle)
-                        {
-                            puzzleDoors.Add(door);
-                            door.Open();
-                        }
+                        specialDoors.Add(door);
+                        door.Open();
                     }
                 }
+                foreach (IDoor door in newObjects.Doors.DoorList)
+                {
+                    if (door.DoorType == Door.DoorTypes.Puzzle)
+                    {
+                        puzzleDoors.Add(door);
+                        door.Open();
+                    }
+                }
+                
             }
+
+            // plays game if the room does not exist
             else
             {
                 PlayGame();
