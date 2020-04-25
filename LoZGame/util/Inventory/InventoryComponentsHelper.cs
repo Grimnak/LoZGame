@@ -81,17 +81,38 @@
 
         public ISprite CreateBoomerangSprite()
         {
-            return InventorySpriteFactory.Instance.CreateInventoryBoomerang();
+            if (LoZGame.Instance.Players[0].Inventory.HasMagicBoomerang)
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryMagicBoomerang();
+            }
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryBoomerang();
+            }
         }
 
         public ISprite CreateArrowSprite()
         {
-            return InventorySpriteFactory.Instance.CreateInventoryArrow();
+            if (LoZGame.Instance.Players[0].Inventory.HasSilverArrow)
+            {
+                return InventorySpriteFactory.Instance.CreateInventorySilverArrow();
+            } 
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryArrow();
+            }
         }
 
-        public ISprite CreateBlueCandleSprite()
+        public ISprite CreateCandleSprite()
         {
-            return InventorySpriteFactory.Instance.CreateInventoryBlueCandle();
+            if (LoZGame.Instance.Players[0].Inventory.HasRedFlame)
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryRedCandle();
+            }
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryBlueCandle();
+            }
         }
 
         public ISprite CreateHealthPotionSprite()
@@ -106,24 +127,14 @@
             }
         }
 
-        public ISprite CreateMagicBoomerangSprite()
-        {
-            return InventorySpriteFactory.Instance.CreateInventoryMagicBoomerang();
-        }
-
-        public ISprite CreateSilverArrowSprite()
-        {
-            return InventorySpriteFactory.Instance.CreateInventorySilverArrow();
-        }
-
-        public ISprite CreateRedCandleSprite()
-        {
-            return InventorySpriteFactory.Instance.CreateInventoryRedCandle();
-        }
-
         public ISprite CreateFluteSprite()
         {
             return InventorySpriteFactory.Instance.CreateInventoryFlute();
+        }
+
+        public ISprite CreateEmptySprite()
+        {
+            return InventorySpriteFactory.Instance.EmptySlot();
         }
 
         public ISprite CreateItemSelector()

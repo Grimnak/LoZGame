@@ -25,60 +25,48 @@
 
         public void UseArrow()
         {
-            if (numRupees > 0 && hasBow && hasArrow)
+            if (numRupees > 0 && hasBow)
             {
                 if (!LoZGame.Cheats && !(player.State is UseItemState))
                 {
                     numRupees--;
                 }
                 player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Arrow, player);
+                if (hasSilverArrow)
+                {
+                    LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.SilverArrow, player);
+                } 
+                else if (hasArrow)
+                {
+                    LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Arrow, player);
+                }
             }
         }
 
         public void UseBoomerang()
         {
-            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.BoomerangOut && hasBoomerang)
+            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.BoomerangOut)
             {
                 player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Boomerang, player);
-            }
-        }
-
-        public void UseMagicBoomerang()
-        {
-            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.BoomerangOut && hasMagicBoomerang)
-            {
-                player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.MagicBoomerang, player);
-            }
-        }
-
-        public void UseSilverArrow()
-        {
-            if (numRupees > 0 && hasBow && hasSilverArrow)
-            {
-                if (!LoZGame.Cheats && !(player.State is UseItemState))
+                if (hasMagicBoomerang)
                 {
-                    numRupees--;
+                    LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.MagicBoomerang, player);
                 }
-                player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.SilverArrow, player);
+                else if (hasBoomerang)
+                {
+                    LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Boomerang, player);
+                }
             }
         }
 
-        public void UseRedCandle()
+        public void UseCandle()
         {
             if (hasRedFlame)
             {
                 player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.RedCandle, player);
-            }
-        }
-
-        public void UseBlueCandle()
-        {
-            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.FlameInUse && HasBlueFlame)
+            } 
+            else if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.FlameInUse && HasBlueFlame)
             {
                 player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.BlueCandle, player);
@@ -97,6 +85,15 @@
             {
                 numRedPotions--;
                 LoZGame.Instance.Players[0].Health.CurrentHealth = LoZGame.Instance.Players[0].Health.MaxHealth;
+            }
+        }
+
+        public void UseFlute()
+        {
+            if (hasFlute && LoZGame.Instance.GameState is PlayGameState)
+            {
+                player.UseItem(1);
+                LoZGame.Instance.GameState = new FluteGameState();
             }
         }
 
