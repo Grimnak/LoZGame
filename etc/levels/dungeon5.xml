@@ -344,9 +344,6 @@
       <items>
         <item X="6" Y="1">HeartContainer</item>
       </items>
-      <text>
-        BRB 5 Minutes. - DigDogger
-      </text>
       <enemies>
         <enemy X="4" Y="2">DigDogger</enemy>
       </enemies>
@@ -979,7 +976,7 @@
         <tile type="block" idx="7">movable_square</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="movable"  idx="4" dir="E,W">orange_movable_square</tile>
+        <tile type="movable"  idx="4" dir="W">orange_movable_square</tile>
         <tile type="stairs" idx="6" room="2,0" loc="5,3" hidden="False">stairs</tile>
         <tile type="block" idx="8">movable_square</tile>
       </rrow>
