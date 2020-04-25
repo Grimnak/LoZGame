@@ -20,10 +20,16 @@
         public void UpdateSmallDigDogger()
         {
             DefaultUpdate();
-            if (Lifetime == DirectionChange)
+            Point playerDist = this.Enemy.Physics.Bounds.Center - LoZGame.Instance.Players[0].Physics.Bounds.Center;
+            if (Math.Abs(playerDist.X) + Math.Abs(playerDist.Y) <= 4 * BlockSpriteFactory.Instance.TileWidth)
             {
                 FavorPlayerCardinal(-(GameData.Instance.EnemyMiscConstants.FireSnakeFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
                 FavorPlayerDiagonal(-(GameData.Instance.EnemyMiscConstants.FireSnakeFavorDiagonalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
+                this.Enemy.UpdateState();
+                this.Lifetime = 0;
+                RandomDirectionChange(); 
+                FavorPlayerCardinal(1);
+                FavorPlayerDiagonal(1);
             }
         }
     }

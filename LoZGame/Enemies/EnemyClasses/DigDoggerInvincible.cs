@@ -23,7 +23,7 @@
             Damage = GameData.Instance.EnemyDamageConstants.DragonDamage;
             MoveSpeed = GameData.Instance.EnemySpeedConstants.DragonSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
-            AI = EnemyAI.Keese;
+            AI = EnemyAI.LargeDigDogger;
             DropTable = GameData.Instance.EnemyDropTables.DragonDropTable;
             MinMaxWander = new Point(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);
             this.currentSprite = EnemySpriteFactory.Instance.CreateLargeDigDogger(Physics.Direction.None);
@@ -44,7 +44,6 @@
 
         public override void TakeDamage(int damageAmount)
         {
-            UpdateChild();
         }
 
         public override void Stun(int stunTime)

@@ -223,6 +223,14 @@
             return new ObjectSprite(silverArrowSpriteSheet, silverArrowData);
         }
 
+        public ISprite EmptySlot()
+        {
+            Texture2D empty = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            empty.SetData<Color>(new Color[] { Color.Black });
+            SpriteData emptyData = new SpriteData(itemSize, empty, 1, 1);
+            return new ObjectSprite(empty, emptyData);
+        }
+
         public ISprite CreateInventoryRedCandle()
         {
             return new ObjectSprite(redCandleSpriteSheet, redCandleData);
