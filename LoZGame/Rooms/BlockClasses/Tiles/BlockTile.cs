@@ -27,8 +27,8 @@
         private const string OrangeStatueLeft2 = "orange_statue_left2";
         private const string RedStatueLeft3 = "red_statue_left3";
         private const string RedStatueRight3 = "red_statue_right3";
-        private const string GreenStatueRight3 = "green_statue_right";
-        private const string GreenStatueLeft3 = "green_statue_left";
+        private const string GreenStatueRight = "green_statue_right";
+        private const string GreenStatueLeft = "green_statue_left";
         private const string statueCheck = "statue";
         private const string BlueStatueLeft4 = "blue_statue_left4";
         private const string BlueStatueRight4 = "blue_statue_right4";
@@ -111,9 +111,9 @@
                     return BlockSpriteFactory.Instance.RedStatueRight3();
                 case RedStatueLeft3:
                     return BlockSpriteFactory.Instance.RedStatueLeft3();
-                case GreenStatueRight3:
+                case GreenStatueRight:
                     return BlockSpriteFactory.Instance.GreenStatueRight3();
-                case GreenStatueLeft3:
+                case GreenStatueLeft:
                     return BlockSpriteFactory.Instance.GreenStatueLeft3();
                 case MovableSquare3:
                     spriteTint = LoZGame.Instance.DungeonTint;
@@ -169,7 +169,7 @@
         /// <returns>A boolean representing the block's transparency.</returns>
         private bool DetermineTransparency(string name)
         {
-            if (name.Equals(BasementBrickTile) || name.Equals(FireGapTile) || name.Equals(BlueStatueLeft2) || name.Equals(BlueStatueRight2) || name.Equals(BrownStatueLeft4) || name.Equals(BrownStatueRight4))
+            if (name.Equals(BasementBrickTile) || name.Equals(FireGapTile) || name.Equals(BlueStatueLeft2) || name.Equals(BlueStatueRight2) || name.Equals(BrownStatueLeft4) || name.Equals(BrownStatueRight4) || name.Equals(GreenStatueLeft) || name.Equals(GreenStatueRight))
             {
                 return true;
             }
