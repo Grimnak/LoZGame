@@ -42,7 +42,7 @@
                 maxhealth += player.Health.MaxHealth;
             }
             // use of 100 is not a magic number as it represents a percentage.
-            int dropChance = 100 - ((100 * health) / maxhealth);
+            int dropChance = 100 - ((100 * health) / (maxhealth * (100 / GameData.Instance.InventoryConstants.MaxHealthChance)));
             if (dropChance < GameData.Instance.InventoryConstants.MinHealthChance)
             {
                 dropChance = GameData.Instance.InventoryConstants.MinHealthChance;
@@ -51,7 +51,7 @@
             {
                 dropChance = GameData.Instance.InventoryConstants.MaxHealthChance;
             }
-            if (LoZGame.Instance.Random.Next(100) < dropChance)
+            if (LoZGame.Instance.Random.Next(100) < (dropChance + (GameData.Instance.DifficultyConstants.HealthChance * LoZGame.Instance.Difficulty)))
             {
                 LoZGame.Instance.GameObjects.Items.Add(new DroppedHealth(Enemy.Physics.Bounds.Center.ToVector2()));
             }
