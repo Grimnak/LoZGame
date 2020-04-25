@@ -21,6 +21,8 @@ namespace LoZClone
         private const int DodongoFavorCardinal = 5;
         private const int FireSnakeFavorCardinal = 9;
         private const int FireSnakeFavorDiagonal = 9;
+        private const int DigDoggerFavorCardinal = 9;
+        private const int DigDoggerFavorDiagonal = 9;
         private const int GelFavorCardinal = 3;
         private const int GoriyaFavorCardinal = 2;
         private const int KeeseFavorCardinal = 3;
@@ -61,6 +63,10 @@ namespace LoZClone
         public int FireSnakeFavorCardinalValue => FireSnakeFavorCardinal;
 
         public int FireSnakeFavorDiagonalValue => FireSnakeFavorDiagonal;
+
+        public int DigDoggerFavorCardinalValue => DigDoggerFavorCardinal;
+
+        public int DigDoggerFavorDiagonalValue => DigDoggerFavorDiagonal;
 
         public int GelFavorCardinalValue => GelFavorCardinal;
 

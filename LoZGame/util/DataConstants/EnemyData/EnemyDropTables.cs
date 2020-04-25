@@ -25,6 +25,14 @@
             Tuple.Create(DropManager.DropType.Fairy, LoZGame.Instance.Drops.FairyWeight, 1, 1)
         };
 
+        private static List<Tuple<DropManager.DropType, int, int, int>> digdoggerDropTable = new List<Tuple<DropManager.DropType, int, int, int>>()
+        {
+            Tuple.Create(DropManager.DropType.BlueRupee, LoZGame.Instance.Drops.BlueRupeeWeight, 1, 1),
+            Tuple.Create(DropManager.DropType.RedPotion, LoZGame.Instance.Drops.RedPotionWeight, 1, 1),
+            Tuple.Create(DropManager.DropType.BluePotion, LoZGame.Instance.Drops.BluePotionWeight, 1, 1),
+            Tuple.Create(DropManager.DropType.Fairy, LoZGame.Instance.Drops.FairyWeight, 1, 1)
+        };
+
         private static List<Tuple<DropManager.DropType, int, int, int>> dodongoDropTable = new List<Tuple<DropManager.DropType, int, int, int>>()
         {
             Tuple.Create(DropManager.DropType.BlueRupee, LoZGame.Instance.Drops.BlueRupeeWeight, 1, 1),
@@ -151,6 +159,8 @@
         public List<Tuple<DropManager.DropType, int, int, int>> BlueDarknutDropTable => blueDarknutDropTable;
 
         public List<Tuple<DropManager.DropType, int, int, int>> BlueGoriyaDropTable => blueGoriyaDropTable;
+
+        public List<Tuple<DropManager.DropType, int, int, int>> DigDoggerDropTable => digdoggerDropTable;
 
         public List<Tuple<DropManager.DropType, int, int, int>> DodongoDropTable => dodongoDropTable;
 

@@ -19,6 +19,8 @@ namespace LoZClone
         private const int GibdoMss = 14;
         private const int LikelikeMss = 16;
         private const int PolsVoiceMss = 12;
+        private const int DigDoggerSmallMss = 12;
+        private const int DigDoggerLargeMss = 24;
 
         public int StalfosMass { get { return StalfosMss; } }
         
@@ -53,6 +55,10 @@ namespace LoZClone
         public int LikelikeMass => LikelikeMss;
 
         public int PolsVoiceMass => PolsVoiceMss;
+
+        public int DigDoggerSmallMass => DigDoggerSmallMss;
+
+        public int DigDoggerLargeMass => DigDoggerLargeMss;
 
     }
 }

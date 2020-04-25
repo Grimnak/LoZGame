@@ -26,6 +26,7 @@
         private const int GibdoDmg = 8;
         private const int LikelikeDmg = 4;
         private const int PolsVoiceDmg = 4;
+        private const int DigDoggerDmg = 4;
 
         public int StalfosDamage => StalfosDmg;
 
@@ -76,6 +77,8 @@
         public int LikelikeDamage => LikelikeDmg;
 
         public int PolsVoiceDamage => PolsVoiceDmg;
+
+        public int DigDoggerDamage => DigDoggerDmg;
 
     }
 }

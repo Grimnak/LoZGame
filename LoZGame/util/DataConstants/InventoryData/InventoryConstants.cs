@@ -53,8 +53,8 @@ namespace LoZClone
 
         private const int dungeon5BombTextRoomX = 3;
         private const int dungeon5BombTextRoomY = 1;
-        private const int dungeon5SwordTextRoomX = 1;
-        private const int dungeon5SwordTextRoomY = 3;
+        private const int dungeon5FluteTextRoomX = 1;
+        private const int dungeon5FluteTextRoomY = 3;
         private const int dungeon5ArrowTextRoomX = 3;
         private const int dungeon5ArrowTextRoomY = 6;
         private const int dungeon5DigDoggerTextRoomX = 0;
@@ -175,11 +175,11 @@ namespace LoZClone
 
         public Vector2 Dungeon5BombTxtDrawLoc => new Vector2(135, LoZGame.Instance.InventoryOffset + 100);
 
-        public int Dungeon5SwordTxtRoomX => dungeon5SwordTextRoomX;
+        public int Dungeon5FluteTxtRoomX => dungeon5FluteTextRoomX;
 
-        public int Dungeon5SwordTxtRoomY => dungeon5SwordTextRoomY;
+        public int Dungeon5FluteTxtRoomY => dungeon5FluteTextRoomY;
 
-        public Vector2 Dungeon5SwordTxtDrawLoc => new Vector2(125, LoZGame.Instance.InventoryOffset + 100);
+        public Vector2 Dungeon5FluteTxtDrawLoc => new Vector2(185, LoZGame.Instance.InventoryOffset + 100);
 
         public int Dungeon5ArrowTxtRoomX => dungeon5ArrowTextRoomX;
 
