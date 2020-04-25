@@ -331,9 +331,9 @@
                     }
                     break;
                 case 5:
-                    if (LoZGame.Instance.Dungeon.CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon5SwordTxtRoomX && LoZGame.Instance.Dungeon.CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon5SwordTxtRoomY)
+                    if (LoZGame.Instance.Dungeon.CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon5FluteTxtRoomX && LoZGame.Instance.Dungeon.CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon5FluteTxtRoomY)
                     {
-                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, LoZGame.Instance.Dungeon.CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon5SwordTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, LoZGame.Instance.Dungeon.CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon5FluteTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
                     }
                     else if (LoZGame.Instance.Dungeon.CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon5BombTxtRoomX && LoZGame.Instance.Dungeon.CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon5BombTxtRoomY)
                     {

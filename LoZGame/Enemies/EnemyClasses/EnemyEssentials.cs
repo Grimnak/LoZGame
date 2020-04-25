@@ -44,7 +44,7 @@
             }
             if (Health.CurrentHealth <= 0)
             {
-                if (this is Dragon || this is Dodongo || this is ManhandlaBody || this is GleeokBody)
+                if (this is Dragon || this is Dodongo || this is ManhandlaBody || this is GleeokBody || this is DigDogger)
                 {
                     SoundFactory.Instance.PlayBossDie();
                     LoZGame.Instance.Drops.DropHeartContainer();

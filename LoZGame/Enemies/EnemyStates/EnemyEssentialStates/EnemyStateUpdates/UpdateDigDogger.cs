@@ -12,8 +12,8 @@
             DefaultUpdate();
             if (Lifetime == DirectionChange)
             {
-                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.FireSnakeFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
-                FavorPlayerDiagonal(GameData.Instance.EnemyMiscConstants.FireSnakeFavorDiagonalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
+                FavorPlayerCardinal(GameData.Instance.EnemyMiscConstants.DigDoggerFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
+                FavorPlayerDiagonal(GameData.Instance.EnemyMiscConstants.DigDoggerFavorDiagonalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod));
             }
         }
 
@@ -23,8 +23,8 @@
             Point playerDist = this.Enemy.Physics.Bounds.Center - LoZGame.Instance.Players[0].Physics.Bounds.Center;
             if (Math.Abs(playerDist.X) + Math.Abs(playerDist.Y) <= 4 * BlockSpriteFactory.Instance.TileWidth)
             {
-                FavorPlayerCardinal(-(GameData.Instance.EnemyMiscConstants.FireSnakeFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
-                FavorPlayerDiagonal(-(GameData.Instance.EnemyMiscConstants.FireSnakeFavorDiagonalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
+                FavorPlayerCardinal(-(GameData.Instance.EnemyMiscConstants.DigDoggerFavorCardinalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
+                FavorPlayerDiagonal(-(GameData.Instance.EnemyMiscConstants.DigDoggerFavorDiagonalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
                 this.Enemy.UpdateState();
                 this.Lifetime = 0;
                 RandomDirectionChange(); 
