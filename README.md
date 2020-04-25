@@ -71,7 +71,7 @@ Discord
 ### Unfinished Dungeons:
     Bug: Dungeons 6, 7, and 8 are unfinished but exist.
 
-    Plan(s) to fix:  Finish the dungeons and add the new enemies.
+    Plan(s) to fix:  Finish the dungeons and add the new enemies by the class demonstration.
 
 ### Mouse Controller
     Bug:  Various game features, namely some door loading and movable block functionality may break when entering a room via a mouse click.
