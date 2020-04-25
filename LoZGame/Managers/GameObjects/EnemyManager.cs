@@ -24,6 +24,7 @@ namespace LoZClone
 
         public void Add(IEnemy enemy)
         {
+            // This check is necessary to ensure that enemies do not respawn if they were in the middle of their death sequence.
             if (!enemy.IsDead)
             {
                 enemy.CurrentState.Spawn();
@@ -40,26 +41,26 @@ namespace LoZClone
 
         public void Update()
         {
-            foreach (KeyValuePair<int, IEnemy> enemy in this.enemyList)
+            foreach (KeyValuePair<int, IEnemy> enemy in enemyList)
             {
                 if (enemy.Value.Expired)
                 {
-                    this.deletable.Add(enemy.Key);
+                    deletable.Add(enemy.Key);
                 }
             }
 
-            foreach (int index in this.deletable)
+            foreach (int index in deletable)
             {
-                this.RemoveEnemy(index);
+                RemoveEnemy(index);
             }
 
-            this.deletable.Clear();
+            deletable.Clear();
 
-            this.enemies.Clear();
+            enemies.Clear();
 
-            foreach (KeyValuePair<int, IEnemy> enemy in this.enemyList)
+            foreach (KeyValuePair<int, IEnemy> enemy in enemyList)
             {
-                this.enemies.Add(enemy.Value);
+                enemies.Add(enemy.Value);
                 enemy.Value.Update();
             }
 
@@ -71,7 +72,7 @@ namespace LoZClone
             int enemyCount = enemyList.Count;
             foreach (IEnemy enemy in enemyList.Values)
             {
-                if (enemy is BlockEnemy)
+                if (!enemy.IsKillable)
                 {
                     enemyCount--;
                 }
@@ -84,7 +85,7 @@ namespace LoZClone
 
         public void Draw()
         {
-            foreach (KeyValuePair<int, IEnemy> enemy in this.enemyList)
+            foreach (KeyValuePair<int, IEnemy> enemy in enemyList)
             {
                 enemy.Value.Draw();
             }

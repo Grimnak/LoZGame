@@ -1,16 +1,68 @@
 ﻿namespace LoZClone
 {
+    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeadEnemyState : EnemyStateEssentials
+    public class DeadEnemyState : EnemyStateEssentials, IEnemyState
     {
+        private int deathTimer = 0;
+        private int deathTimerMax;
+
         public DeadEnemyState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Enemy.IsDead = true;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Enemy.Physics.MovementVelocity = new Vector2(0, -1 * this.Enemy.MoveSpeed);
+            Enemy = enemy;
+            Enemy.IsDead = true;
+            Sprite = EnemySpriteFactory.Instance.CreateDeadEnemySprite();
+            Enemy.CurrentState = this;
+            Enemy.Physics.Bounds = new Rectangle(Enemy.Physics.Bounds.Location, Point.Zero);
+            deathTimerMax = GameData.Instance.EnemyMiscConstants.DeathTimerMaximum;
+            Enemy.Physics.MovementVelocity = Vector2.Zero;
+        }
+
+        public override void Update()
+        {
+            deathTimer++;
+            Sprite.Update();
+            if (deathTimer >= deathTimerMax)
+            {
+                LoZGame.Instance.Drops.AttemptDrop(Enemy.Physics.Location, LoZGame.Instance.Drops.DropChance, Enemy.DropTable);
+                AttemptHealthDrop();
+                Enemy.Expired = true;
+            }
+        }
+
+        private void AttemptHealthDrop()
+        {
+            int health = 0;
+            int maxhealth = 0;
+            foreach (IPlayer player in LoZGame.Instance.Players)
+            {
+                health += player.Health.CurrentHealth;
+                maxhealth += player.Health.MaxHealth;
+            }
+            // use of 100 is not a magic number as it represents a percentage.
+            int dropChance = 100 - ((100 * health) / (maxhealth * (100 / GameData.Instance.InventoryConstants.MaxHealthChance)));
+            if (dropChance < GameData.Instance.InventoryConstants.MinHealthChance)
+            {
+                dropChance = GameData.Instance.InventoryConstants.MinHealthChance;
+            }
+            else if (dropChance > GameData.Instance.InventoryConstants.MaxHealthChance)
+            {
+                dropChance = GameData.Instance.InventoryConstants.MaxHealthChance;
+            }
+            if (LoZGame.Instance.Random.Next(100) < (dropChance + (GameData.Instance.DifficultyConstants.HealthChance * LoZGame.Instance.Difficulty)))
+            {
+                LoZGame.Instance.GameObjects.Items.Add(new DroppedHealth(Enemy.Physics.Bounds.Center.ToVector2()));
+            }
+        }
+
+        public override void Die()
+        {
+        }
+
+        public override void Stun(int stunTime)
+        {
         }
     }
 }

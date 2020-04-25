@@ -14,32 +14,37 @@
 
         public BlueGoriya(Vector2 location)
         {
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.BlueGoriyaStatelist);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.BlueGoriyaHealth);
-            this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.GoriyaMass;
-            this.CurrentState = new SpawnGoriyaState(this);
-            this.EntityManager = LoZGame.Instance.GameObjects.Entities;
-            this.Cooldown = 0;
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.IsDead = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.BlueGoriyaDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.BlueGoriyaSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GoriyaStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.BlueGoriyaHealth);
+            Physics = new Physics(location);
+            Physics.Mass = GameData.Instance.EnemyMassConstants.GoriyaMass;
+            CurrentState = new SpawnEnemyState(this);
+            EntityManager = LoZGame.Instance.GameObjects.Entities;
+            Cooldown = 0;
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.BlueGoriyaDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.BlueGoriyaSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            AI = EnemyAI.Goriya;
+            DropTable = GameData.Instance.EnemyDropTables.BlueGoriyaDropTable;
+            ApplyDamageMod();
+            ApplySmallSpeedMod();
+            ApplySmallWeightModPos();
+            ApplyLargeHealthMod();
         }
 
-        public override void Stun(int stunTime)
+        public override void Attack()
         {
-            this.CurrentState.Stun(stunTime);
+            CurrentState = new AttackingBlueGoriyaState(this);
         }
 
         public override ISprite CreateCorrectSprite()
         {
-            return EnemySpriteFactory.Instance.CreateBlueGoriyaSprite(this.Physics.CurrentDirection);
+            return EnemySpriteFactory.Instance.CreateBlueGoriyaSprite(Physics.CurrentDirection);
         }
     }
 }

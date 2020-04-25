@@ -4,13 +4,13 @@
 
     public interface IDoor : ICollider
     {
-        Vector2 UpScreenLoc { get; }
+        Vector2 OverhangOffset { get; set; }
 
-        Vector2 DownScreenLoc { get; }
+        bool IsSolved { get; set; }
 
-        Vector2 LeftScreenLoc { get; }
+        Door.DoorTypes DoorType { get; set; }
 
-        Vector2 RightScreenLoc { get; }
+        int EntryWidth { get; set; }
 
         IDoorState State { get; set; }
 
@@ -23,5 +23,9 @@
         void Update();
 
         void Draw();
+
+        void DrawFrame();
+
+        void DrawFloor();
     }
 }

@@ -5,36 +5,32 @@
 
     public class Gel : EnemyEssentials, IEnemy
     {
-        public bool ShouldMove { get; set; }
-
         public Gel(Vector2 location)
         {
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GelStatelist);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.GelHealth);
-            this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.GelMass;
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.IsDead = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.GelDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.GelSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-            this.CurrentState = new SpawnGelState(this);
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GelStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.GelHealth);
+            Physics = new Physics(location);
+            Physics.Mass = GameData.Instance.EnemyMassConstants.GelMass;
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.GelDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.GelSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            CurrentState = new SpawnEnemyState(this);
+            AI = EnemyAI.Gel;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
+            ApplyDamageMod();
+            ApplySmallSpeedMod();
+            ApplySmallWeightModPos();
+            ApplySmallHealthMod();
         }
 
         public override void Stun(int stunTime)
         {
-            this.CurrentState.Stun(stunTime);
-        }
-
-        public override void Update()
-        {
-            this.HandleDamage();
-            this.CurrentState.Update();
-            this.Physics.SetDepth();
+            TakeDamage(Health.MaxHealth);
         }
 
         public override ISprite CreateCorrectSprite()

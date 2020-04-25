@@ -5,77 +5,33 @@
 
     public class SpawnEnemyState : EnemyStateEssentials, IEnemyState
     {
+        private int spawnTimer = 0;
+        private int spawnTimerMax;
+
         public SpawnEnemyState(IEnemy enemy)
         {
-            this.Enemy = enemy;
-            this.Enemy.CurrentState = this;
-            this.Sprite = this.Enemy.CreateCorrectSprite();
-            this.Enemy.Physics.MovementVelocity = new Vector2(0, -1 * this.Enemy.MoveSpeed);
+            Enemy = enemy;
+            Enemy.IsTransparent = false;
+            Sprite = EnemySpriteFactory.Instance.CreateEnemySpawn();
+            Enemy.CurrentState = this;
+            Enemy.Physics.MovementVelocity = Vector2.Zero;
+            spawnTimerMax = GameData.Instance.EnemyMiscConstants.SpawnTimerMaximum;
+            Enemy.IsSpawning = true;
         }
 
-        public void Attack()
+        public override void Update()
         {
-            this.Enemy.CurrentState = 
+            spawnTimer++;
+            Sprite.Update();
+            if (spawnTimer >= spawnTimerMax)
+            {
+                Enemy.IsSpawning = false;
+                Enemy.UpdateState();
+            }
         }
 
-        public void Die()
+        public override void Stun(int stunTime)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void MoveDown()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void MoveDownLeft()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void MoveDownRight()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void MoveLeft()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void MoveRight()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void MoveUp()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void MoveUpLeft()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void MoveUpRight()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Spawn()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Stop()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Stun(int stunTime)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

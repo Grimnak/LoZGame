@@ -19,7 +19,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            this.player.Idle();
+            player.Idle();
         }
     }
 }

@@ -13,15 +13,15 @@
         private int projectileId;
         private int listSize;
 
-        public List<IProjectile> Projectiles { get { return this.projectiles; } }
+        public List<IProjectile> Projectiles { get { return projectiles; } }
 
         public EnemyProjectileManager()
         {
-            this.projectileList = new Dictionary<int, IProjectile>();
-            this.projectiles = new List<IProjectile>();
-            this.deletable = new List<int>();
-            this.projectileId = 0;
-            this.listSize = 0;
+            projectileList = new Dictionary<int, IProjectile>();
+            projectiles = new List<IProjectile>();
+            deletable = new List<int>();
+            projectileId = 0;
+            listSize = 0;
         }
 
         public void Add(IProjectile projectile)
@@ -33,41 +33,41 @@
 
         public void Remove(int instance)
         {
-            this.projectileList.Remove(instance);
-            this.listSize--;
-            if (this.listSize == 0)
+            projectileList.Remove(instance);
+            listSize--;
+            if (listSize == 0)
             {
-                this.projectileId = 0;
+                projectileId = 0;
             }
         }
 
         public void Update()
         {
-            foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
+            foreach (KeyValuePair<int, IProjectile> item in projectileList)
             {
                 if (item.Value.IsExpired)
                 {
-                    this.deletable.Add(item.Key);
+                    deletable.Add(item.Key);
                 }
             }
-            foreach (int index in this.deletable)
+            foreach (int index in deletable)
             {
-                this.Remove(index);
+                Remove(index);
             }
 
-            this.projectiles.Clear();
-            this.deletable.Clear();
+            projectiles.Clear();
+            deletable.Clear();
 
-            foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
+            foreach (KeyValuePair<int, IProjectile> item in projectileList)
             {
-                this.projectiles.Add(item.Value);
+                projectiles.Add(item.Value);
                 item.Value.Update();
             }
         }
 
         public void Draw()
         {
-            foreach (KeyValuePair<int, IProjectile> projectile in this.projectileList)
+            foreach (KeyValuePair<int, IProjectile> projectile in projectileList)
             {
                 projectile.Value.Draw();
             }
@@ -76,7 +76,7 @@
 
         public void Clear()
         {
-            this.projectileList.Clear();
+            projectileList.Clear();
         }
     }
 }

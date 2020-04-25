@@ -11,30 +11,30 @@
         
         public DroppedHealth(Vector2 loc)
         {
-            this.Sprite = ItemSpriteFactory.Instance.Health();
-            this.itemCollisionHandler = new ItemCollisionHandler(this);
-            this.FrameDelay = 5;
-            this.Physics = new Physics(loc);
-            this.PickUpItemTime = -1;
-            this.LifeTime = 0;
+            Sprite = ItemSpriteFactory.Instance.Health();
+            itemCollisionHandler = new ItemCollisionHandler(this);
+            FrameDelay = 5;
+            Physics = new Physics(loc);
+            PickUpItemTime = -1;
+            LifeTime = 0;
             Vector2 size = new Vector2(ItemSpriteFactory.RupeeWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.RupeeHeight * ItemSpriteFactory.Instance.Scale);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, (int)size.X, (int)size.Y);
-            this.Expired = false;
-            this.StartBob();
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, (int)size.X, (int)size.Y);
+            Expired = false;
+            StartBob();
         }
 
         public override void Update()
         {
             base.Update();
-            if (this.LifeTime >= DespawnTimer)
+            if (LifeTime >= DespawnTimer)
             {
-                this.Expired = true;
+                Expired = true;
             }
         }
 
         public override void Draw(Color spriteTint)
         {
-            if ((this.LifeTime > SpawnTimer && this.LifeTime < (DespawnTimer - (4 * SpawnTimer))) || this.LifeTime % 4 < 2)
+            if ((LifeTime > SpawnTimer && LifeTime < (DespawnTimer - (4 * SpawnTimer))) || LifeTime % 4 < 2)
             {
                 base.Draw(spriteTint);
             }

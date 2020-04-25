@@ -1,9 +1,13 @@
-﻿namespace LoZClone
+﻿using Microsoft.Xna.Framework;
+
+namespace LoZClone
 {
     public struct GameStateDataConstants
     {
-        private const int CloseInventoryTranSpeed = 5;
+        private const float doorFloorDepth = 0.02f;
 
+        private const int CloseInventoryTranSpeed = 5;
+        private const int MaxCreditsTime = 3000;
         private const int DeathTimerMaximum = 85;
         private const int GameOverT = 500;
 
@@ -13,12 +17,24 @@
         private const int TitleFrameDelay = 10;
         private const int TitleDrawXValue = 284;
 
-        private const int TransitionRoomStTranSpeed = 8;
-
-        private const int WinGameStMaxDungeons = 3;
+        private const int WinGameStMaxDungeons = 8;
         private const int WinGameStMaxLO = 440;
         private const int WinStSpriteWidth = 236;
         private const int WinStSpriteHeight = 160;
+
+        private const int optionsWindowHeight = 350;
+        private const int optionsWindowWidth = 430;
+        private const int optionsHeightOffset = 225;
+        private const int optionsWidthOffset = 185;
+        private const int optionsTextWidthOffset = 10;
+        private const int optionsTextX = 380;
+        private const int optionsDifficultyY = 327;
+        private const int optionsCheatsY = 385;
+        private const int optionsDebugY = 443;
+        private const int optionsTextLeading = 58; // What is Leading? https://techterms.com/definition/leading
+        private const int optionsSelectorY = 325;
+
+        private const int playerTransitionMaxDistance = 200;
 
         public int CloseInventoryTransitionSpeed => CloseInventoryTranSpeed;
 
@@ -40,7 +56,7 @@
 
         public int TitleDrawY => LoZGame.Instance.InventoryOffset + 300;
 
-        public int TransitionRoomStateTransitionSpeed => TransitionRoomStTranSpeed;
+        public int TransitionRoomStateTransitionTime => 2 * LoZGame.Instance.UpdateSpeed;
 
         public int WinStateMaxDungeons => WinGameStMaxDungeons;
 
@@ -49,5 +65,31 @@
         public int WinStateSpriteWidth => WinStSpriteWidth;
 
         public int WinStateSpriteHeight => WinStSpriteHeight;
+
+        public int OptionsWindowHeight => optionsWindowHeight;
+
+        public int OptionsWindowWidth => optionsWindowWidth;
+
+        public int OptionsHeightOffset => optionsHeightOffset;
+
+        public int OptionsWidthOffset => optionsWidthOffset;
+
+        public int OptionsDifficultyY => optionsDifficultyY;
+
+        public int OptionsSelectorY => optionsSelectorY;
+
+        public int OptionsTextLeading => optionsTextLeading;
+
+        public int OptionsCheatsY => optionsCheatsY;
+
+        public int OptionsDebugY => optionsDebugY;
+
+        public int OptionsTextX => optionsTextX;
+
+        public float DoorFloorDepth => doorFloorDepth;
+
+        public int PlayerTransitionMaxDistance => playerTransitionMaxDistance;
+
+        public int CreditsMAX => MaxCreditsTime;
     }
 }

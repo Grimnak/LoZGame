@@ -13,63 +13,63 @@
 
         public EntityManager()
         {
-            this.explosion = new ExplosionManager();
-            this.projectile = new ProjectileManager();
-            this.enemyProjectile = new EnemyProjectileManager();
-            this.friendlyProjectiles = new List<IProjectile>();
-            this.hostileProjectiles = new List<IProjectile>();
+            explosion = new ExplosionManager();
+            projectile = new ProjectileManager();
+            enemyProjectile = new EnemyProjectileManager();
+            friendlyProjectiles = new List<IProjectile>();
+            hostileProjectiles = new List<IProjectile>();
         }
 
-        public List<IProjectile> EnemyProjectiles { get { return this.hostileProjectiles; } }
+        public List<IProjectile> EnemyProjectiles { get { return hostileProjectiles; } }
 
-        public List<IProjectile> PlayerProjectiles { get { return this.friendlyProjectiles; } }
+        public List<IProjectile> PlayerProjectiles { get { return friendlyProjectiles; } }
 
-        public ProjectileManager ProjectileManager => this.projectile;
+        public ProjectileManager ProjectileManager => projectile;
 
-        public EnemyProjectileManager EnemyProjectileManager => this.enemyProjectile;
+        public EnemyProjectileManager EnemyProjectileManager => enemyProjectile;
 
-        public ExplosionManager ExplosionManager => this.explosion;
+        public ExplosionManager ExplosionManager => explosion;
 
-        public bool BoomerangOut => this.projectile.BoomerangOut;
+        public bool BoomerangOut => projectile.BoomerangOut;
 
         public void Update()
         {
-            this.projectile.Update();
-            this.explosion.Update();
-            this.EnemyProjectileManager.Update();
-            this.friendlyProjectiles.Clear();
-            this.hostileProjectiles.Clear();
-            foreach (IProjectile projectile in this.projectile.Projectiles)
+            projectile.Update();
+            explosion.Update();
+            EnemyProjectileManager.Update();
+            friendlyProjectiles.Clear();
+            hostileProjectiles.Clear();
+            foreach (IProjectile projectile in projectile.Projectiles)
             {
-                this.friendlyProjectiles.Add(projectile);
+                friendlyProjectiles.Add(projectile);
             }
-            foreach (IProjectile explosion in this.explosion.Explosions)
+            foreach (IProjectile explosion in explosion.Explosions)
             {
-                this.friendlyProjectiles.Add(explosion);
+                friendlyProjectiles.Add(explosion);
             }
-            foreach (IProjectile projectile in this.enemyProjectile.Projectiles)
+            foreach (IProjectile projectile in enemyProjectile.Projectiles)
             {
-                this.hostileProjectiles.Add(projectile);
+                hostileProjectiles.Add(projectile);
             }
-            foreach (IProjectile explosion in this.explosion.Explosions)
+            foreach (IProjectile explosion in explosion.Explosions)
             {
-                this.hostileProjectiles.Add(explosion);
+                hostileProjectiles.Add(explosion);
             }
 
         }
 
         public void Draw()
         {
-            this.projectile.Draw();
-            this.explosion.Draw();
-            this.enemyProjectile.Draw();
+            projectile.Draw();
+            explosion.Draw();
+            enemyProjectile.Draw();
         }
 
         public void Clear()
         {
-            this.explosion = new ExplosionManager();
-            this.projectile = new ProjectileManager();
-            this.enemyProjectile = new EnemyProjectileManager();
+            explosion = new ExplosionManager();
+            projectile = new ProjectileManager();
+            enemyProjectile = new EnemyProjectileManager();
         }
     }
 }

@@ -12,7 +12,7 @@
 
         public BlockManager()
         {
-            this.blocks = new List<IBlock>();
+            blocks = new List<IBlock>();
         }
 
         public void Add(IBlock block)
@@ -37,7 +37,7 @@
         {
             foreach (IBlock block in blocks)
             {
-                if (block is Tile)
+                if (block is Tile || block is Stairs)
                 {
                     block.Draw();
                 }
@@ -45,7 +45,7 @@
 
             foreach (IBlock block in blocks)
             {
-                if (block is BlockTile || block is MovableTile)
+                if (block is BlockTile || block is MovableBlock || block is CrossableTile)
                 {
                     block.Draw();
                 }

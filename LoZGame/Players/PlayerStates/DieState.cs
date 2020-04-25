@@ -16,9 +16,9 @@
         /// <param name="playerInstance">Instance of the player.</param>
         public DieState(IPlayer playerInstance)
         {
-            this.player = playerInstance;
-            this.sprite = this.CreateCorrectSprite();
-            this.player.Physics.MovementVelocity = Vector2.Zero;
+            player = playerInstance;
+            sprite = CreateCorrectSprite();
+            player.Physics.MovementVelocity = Vector2.Zero;
         }
 
         /// <inheritdoc/>
@@ -74,21 +74,21 @@
         /// <inheritdoc/>
         public void Update()
         {
-            if (this.sprite.CurrentFrame < this.sprite.TotalFrames - 1)
+            if (sprite.CurrentFrame < sprite.TotalFrames - 1)
             {
-                this.sprite.Update();
+                sprite.Update();
             }
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint, this.player.Physics.Depth);
+            sprite.Draw(player.Physics.Location, player.CurrentTint, player.Physics.Depth);
         }
 
         private ISprite CreateCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.CreateSpriteLinkDie(this.player.CurrentColor);
+            return LinkSpriteFactory.Instance.CreateSpriteLinkDie(player.CurrentColor);
         }
     }
 }

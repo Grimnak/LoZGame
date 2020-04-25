@@ -4,12 +4,12 @@
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="False" idx="0">
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <items>
         <item X="5.5" Y="3">TriForce</item>
       </items>
       <doors>
-        <door loc="E">unlocked2</door>
+        <door loc="E">unlocked</door>
       </doors>
       <rrow idx="0">
       </rrow>
@@ -54,7 +54,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <items>
         <item X="5" Y="3">HeartContainer</item>
       </items>
@@ -62,8 +62,8 @@
         <enemy X="3" Y="3" >Dodongo</enemy>
       </enemies>
       <doors>
-        <door loc="W">special2</door>
-        <door loc="S">locked2</door>
+        <door loc="W">special</door>
+        <door loc="S">locked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">boss_tile2</tile>
@@ -172,7 +172,7 @@
     </room>
     <room exists="False" idx="1">
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <enemies>
         <enemy X="1" Y="0">Goriya</enemy>
         <enemy X="11" Y="1">Goriya</enemy>
@@ -180,9 +180,9 @@
         <enemy X="8" Y="4">Goriya</enemy>
       </enemies>
       <doors>
-        <door loc="N">special2</door>
-        <door loc="E">hidden2</door>
-        <door loc="S">special2</door>
+        <door loc="N">locked</door>
+        <door loc="E">hidden</door>
+        <door loc="S">special</door>
       </doors>
       <rrow idx="0">
       </rrow>
@@ -217,10 +217,10 @@
       <rrow idx="6">
       </rrow>
        </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="True" basement="False" idx="3">
       <doors>
-        <door loc="W">hidden2</door>
-        <door loc="S">unlocked2</door>
+        <door loc="W">hidden</door>
+        <door loc="S">unlocked</door>
 	     </doors>
           <text>DON'T FEED THE ANIMALS.</text>
         <enemies>
@@ -250,21 +250,21 @@
     </room>
     <room exists="False" idx="1">
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <enemies>
         <enemy X="0" Y="5">Rope</enemy>
         <enemy X="1" Y="2">Rope</enemy>
-        <enemy X="11" Y="3">Rope</enemy>
-        <enemy X="8" Y="4">Rope</enemy>
+        <enemy X="11" Y="1">Rope</enemy>
+        <enemy X="8" Y="6">Rope</enemy>
         <enemy X="6" Y="4">Rope</enemy>
         <enemy X="10" Y="6">Rope</enemy>
         <enemy X="7" Y="5">Rope</enemy>
         <enemy X="5" Y="4">Rope</enemy>
       </enemies>
       <doors>
-        <door loc="N">special2</door>
-        <door loc="E">locked2</door>
-        <door loc="S">unlocked2</door>
+        <door loc="N">special</door>
+        <door loc="E">locked</door>
+        <door loc="S">unlocked</door>
       </doors>
       <rrow idx="0">
       </rrow>
@@ -297,7 +297,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
       <items>
 
       </items>
@@ -309,9 +309,9 @@
         <enemy X="6" Y="5">TealGel</enemy>
       </enemies>
       <doors>
-        <door loc="N">special2</door>
-        <door loc="S">hidden2</door>
-        <door loc="W">locked2</door>
+        <door loc="N">special</door>
+        <door loc="S">hidden</door>
+        <door loc="W">locked</door>
       </doors>
       <rrow idx="0">
       </rrow>
@@ -335,7 +335,7 @@
     </room>
     <room exists="False" idx="1">
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <items>
         <item X="6" Y="3">Key</item>
       </items>
@@ -344,9 +344,9 @@
         <enemy X="3" Y="2">FireSnake</enemy>
       </enemies>
       <doors>
-        <door loc="N">unlocked2</door>
-        <door loc="E">unlocked2</door>
-        <door loc="S">unlocked2</door>
+        <door loc="N">unlocked</door>
+        <door loc="E">unlocked</door>
+        <door loc="S">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="walkable" idx="0">lava2</tile>
@@ -447,7 +447,7 @@
         <tile type="walkable" idx="11">lava2</tile>
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
       <items>
         <item X="6" Y="3">Bomb</item>
       </items>
@@ -463,9 +463,9 @@
 
       </enemies>
       <doors>
-        <door loc="N">hidden2</door>
-        <door loc="W">unlocked2</door>
-        <door loc="S">hidden2</door>
+        <door loc="N">hidden</door>
+        <door loc="W">unlocked</door>
+        <door loc="S">hidden</door>
       </doors>
       <rrow idx="0">
       </rrow>
@@ -490,7 +490,7 @@
     </room>
     <room exists="False" idx="1">
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <enemies>
         <enemy X="3" Y="0">Rope</enemy>
         <enemy X="1" Y="1">Rope</enemy>
@@ -502,9 +502,9 @@
         <item  X="5" Y="3">Key</item>
       </items>
       <doors>
-        <door loc="N">unlocked2</door>
-        <door loc="E">unlocked2</door>
-        <door loc="S">special2</door>
+        <door loc="N">unlocked</door>
+        <door loc="E">unlocked</door>
+        <door loc="S">special</door>
       </doors>
       <rrow idx="0">
       </rrow>
@@ -525,7 +525,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
 	  <items>
 		<item X="6" Y="3">MagicBoomerang</item>
 	  </items>
@@ -539,9 +539,9 @@
         <enemy X="11" Y="6">FireBlockEnemy</enemy>
       </enemies>
 	  <doors>
-        <door loc="N">hidden2</door>
-        <door loc="W">unlocked2</door>
-        <door loc="S">hidden2</door>
+        <door loc="N">hidden</door>
+        <door loc="W">unlocked</door>
+        <door loc="S">hidden</door>
       </doors>
       <rrow idx="0">
         <tile type="block" idx="0">blue_statue_right2</tile>
@@ -570,7 +570,7 @@
     </room>
     <room exists="False" idx="1">
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
 	     <enemies>
         <enemy X="8" Y="0">Goriya</enemy>
         <enemy X="4" Y="4">Goriya</enemy>
@@ -579,9 +579,9 @@
         <enemy X="8" Y="5">Goriya</enemy>
       </enemies>
       <doors>
-        <door loc="N">unlocked2</door>
-        <door loc="E">locked2</door>
-        <door loc="S">unlocked2</door>
+        <door loc="N">unlocked</door>
+        <door loc="E">locked</door>
+        <door loc="S">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="block" idx="1">movable_square2</tile>
@@ -608,7 +608,7 @@
       <rrow idx="6">
       </rrow>
 	  </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
       <items>
         <item X="6" Y="3">Map</item>
       </items>
@@ -620,9 +620,9 @@
         <enemy X="3" Y="6">TealGel</enemy>
       </enemies>
       <doors>
-        <door loc="N">hidden2</door>
-        <door loc="S">hidden2</door>
-        <door loc="W">locked2</door>
+        <door loc="N">hidden</door>
+        <door loc="S">hidden</door>
+        <door loc="W">locked</door>
       </doors>
       <rrow idx="0">
       </rrow>
@@ -645,9 +645,9 @@
     </room>
   </drow>
   <drow idx="6">
-    <room exists="True" idx="0">
+    <room exists="True" oldman="False" basement="False" idx="0">
       <doors>
-        <door loc="E">unlocked2</door>
+        <door loc="E">unlocked</door>
       </doors>
       <items>
         <item X="6" Y="3">Key</item>
@@ -678,18 +678,18 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <enemies>
         <enemy X="2" Y="0">Rope</enemy>
         <enemy X="1" Y="1">Rope</enemy>
         <enemy X="4" Y="2">Rope</enemy>
         <enemy X="6" Y="3">Rope</enemy>
-        <enemy X="2" Y="5">Rope</enemy>
+        <enemy X="1" Y="6">Rope</enemy>
 	     </enemies>
       <doors>
-        <door loc="E">unlocked2</door>
-        <door loc="S">unlocked2</door>
-        <door loc="W">special2</door>
+        <door loc="E">unlocked</door>
+        <door loc="S">unlocked</door>
+        <door loc="W">special</door>
   	  </doors>
       <rrow idx="0">
         </rrow>
@@ -710,17 +710,17 @@
       <rrow idx="6">
         </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
 	     <enemies>
         <enemy X="4" Y="0">Rope</enemy>
         <enemy X="5" Y="2">Rope</enemy>
         <enemy X="7" Y="6">Rope</enemy>
       </enemies>
       <doors>
-        <door loc="N">unlocked2</door>
-        <door loc="E">locked2</door>
-        <door loc="S">unlocked2</door>
-        <door loc="W">unlocked2</door>
+        <door loc="N">unlocked</door>
+        <door loc="E">locked</door>
+        <door loc="S">unlocked</door>
+        <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">
       </rrow>
@@ -756,7 +756,7 @@
 
       </rrow>
 	   </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
       <items>
         <item X="11" Y="0">Compass</item>
       </items>
@@ -769,8 +769,8 @@
         <enemy X="1" Y="6">TealGel</enemy>
       </enemies>
       <doors>
-        <door loc="N">hidden2</door>
-        <door loc="W">locked2</door>
+        <door loc="N">hidden</door>
+        <door loc="W">locked</door>
       </doors>
       <rrow idx="0">
       </rrow>
@@ -797,11 +797,11 @@
   <drow idx="7">
     <room exists="False" idx="0">
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <doors>
-        <door loc="N">unlocked2</door>
-        <door loc="E">unlocked2</door>
-		<door loc="S">cosmetic2</door>
+        <door loc="N">unlocked</door>
+        <door loc="E">unlocked</door>
+		<door loc="S">cosmetic</door>
       </doors>
       <rrow idx="0">
       </rrow>
@@ -844,10 +844,10 @@
         <tile type="walkable" idx="8">spotted_tile2</tile>
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <doors>
-        <door loc="N">unlocked2</door>
-        <door loc="W">unlocked2</door>
+        <door loc="N">unlocked</door>
+        <door loc="W">unlocked</door>
       </doors>
       <enemies>
         <enemy X="4" Y="0">Rope</enemy>

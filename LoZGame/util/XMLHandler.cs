@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Xml;
     using System.Xml.Linq;
+    using Microsoft.Xna.Framework;
 
     public static class XMLHandler
     {
@@ -33,12 +34,24 @@
                 foreach (XElement room in rooms)
                 {
                     bool ex = bool.Parse(room.Attribute("exists").Value);
+                    bool oldman;
+                    bool basement;
+                    if (ex)
+                    {
+                        oldman = bool.Parse(room.Attribute("oldman").Value);
+                        basement = bool.Parse(room.Attribute("basement").Value);
+                    } 
+                    else
+                    {
+                        oldman = false;
+                        basement = false;
+                    }
                     string border = string.Empty + ns;
                     if (room.Descendants(ns + "border").Elements().Count<XElement>() > 0)
                     {
                         border = string.Empty + room.Descendants(ns + "border").Elements().First<XElement>().Value;
                     }
-                    Room droom = new Room(string.Empty + border, ex);
+                    Room droom = new Room(string.Empty + border, ex, basement, oldman);
                     if (ex)
                     {
                         IEnumerable<XElement> doors = (from d in room.Descendants(ns + "doors") select d).Elements(); // all <door> tags in <room>
@@ -80,15 +93,28 @@
                                 string x = block.Attribute("idx").Value, y = trow.Attribute("idx").Value;
                                 tcount++; // xml debug
                                 string[] types = block.Attribute("type").Value.Split(',');
-                                if (block.Attribute("dir") != null)
+                                if (block.Attribute("type").Value.Equals("stairs"))
                                 {
-                                    string direction = block.Attribute("dir").Value;
-                                    droom.AddBlock(x, y, types[0], block.Value, direction);
+                                    string[] roomLoc = block.Attribute("room").Value.Split(',');
+                                    string[] playerPos = block.Attribute("loc").Value.Split(',');
+                                    bool hidden = bool.Parse(block.Attribute("hidden").Value);
+                                    Point roomLocation = new Point(int.Parse(roomLoc[0]), int.Parse(roomLoc[1]));
+                                    Point playerPosition = new Point(int.Parse(playerPos[0]), int.Parse(playerPos[1]));
+                                    droom.AddStairs(x, y, roomLocation, playerPosition, hidden);
                                 }
                                 else
                                 {
-                                    droom.AddBlock(x, y, types[0], block.Value);
+                                    if (block.Attribute("dir") != null)
+                                    {
+                                        string direction = block.Attribute("dir").Value;
+                                        droom.AddBlock(x, y, types[0], block.Value, direction);
+                                    }
+                                    else
+                                    {
+                                        droom.AddBlock(x, y, types[0], block.Value);
+                                    }
                                 }
+
                             }
                             // Console.WriteLine("tcount: " + tcount + "\n");
                         }

@@ -14,14 +14,29 @@
         void TitleScreen();
 
         /// <summary>
+        /// Game state goes to credits screen.
+        /// </summary>
+        void CreditsScreen();
+
+        /// <summary>
         /// Game state goes to game in progress.
         /// </summary>
         void PlayGame();
 
         /// <summary>
-        /// Game state goes to player death.
+        /// Game state goes to Play.
         /// </summary>
         void Death();
+
+        /// <summary>
+        /// Game state goes to player death.
+        /// </summary>
+        void Options();
+
+        /// <summary>
+        /// Game state goes to Play Flute.
+        /// </summary>
+        void PlayFlute();
 
         /// <summary>
         /// Game state goes to access inventory.
@@ -42,6 +57,16 @@
         /// Game state for room transitions.
         /// </summary>
         void TransitionRoom(Physics.Direction direction);
+
+        /// <summary>
+        /// Game state goes to win state.
+        /// </summary>
+        void Pause();
+
+        /// <summary>
+        /// Game state goes to win state.
+        /// </summary>
+        void Unpause();
 
         /// <summary>
         /// Updates the current state.

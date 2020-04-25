@@ -7,7 +7,7 @@ namespace LoZClone
         private const float PlayerGreenRes = 1;
         private const float PlayerRedRes = 2;
         private const float PlayerBlueRes = 4;
-        private const int StartingHP = 12;
+        private const int StartingHP = 20;
         private const int LockoutWait = 15;
         private const int MaxFrames = 2;
         private const int Mss = 16;

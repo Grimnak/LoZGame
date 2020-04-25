@@ -10,6 +10,8 @@
     public partial class Dungeon
     {
         private List<List<Room>> dungeonLayout;
+        private int startX;
+        private int startY;
         private int currentX;
         private int currentY;
         private Color mapColor;
@@ -23,6 +25,8 @@
 
         public Point DungeonBossLocation => dungeonBossLoc;
 
+        public List<List<Room>> DungeonLayout { get { return dungeonLayout; } }
+
         public MiniMap MiniMap => miniMap;
 
         public Color MapColor => mapColor;
@@ -30,7 +34,7 @@
         public IPlayer Player
         {
             get { return player; }
-            set { this.player = value; }
+            set { player = value; }
         }
 
         /// <summary>
@@ -39,46 +43,95 @@
         /// <param name="dungeonNumber">Number of the dungeon whose file is to be parsed.</param>
         public Dungeon(int dungeonNumber)
         {
-            this.DungeonNumber = dungeonNumber;
-            this.currentDungeonFile = "../../../../../etc/levels/dungeon" + this.dungeonNumber + ".xml";
+            DungeonNumber = dungeonNumber;
+            currentDungeonFile = "../../../../../etc/levels/dungeon" + this.dungeonNumber + ".xml";
+            LoZGame.Instance.GameObjects.LoadedRoomX = -1;
+            LoZGame.Instance.GameObjects.LoadedRoomY = -1;
 
             switch (this.dungeonNumber)
             {
                 case 1:
-                    LoZGame.Instance.DungeonTint = Color.White;
-                    this.currentX = 2;
-                    this.currentY = 5; // player spawns at curX/curY
-                    this.maxX = 6;
-                    this.maxY = 6;
-                    this.mapColor = Color.CornflowerBlue;
-                    this.dungeonBossLoc = new Point(4, 1);
+                    LoZGame.Instance.DungeonTint = Color.DarkCyan;
+                    startX = 2;
+                    startY = 5; // player spawns at curX/curY
+                    maxX = 6;
+                    maxY = 6;
+                    mapColor = Color.DarkCyan;
+                    dungeonBossLoc = new Point(4, 1);
                     break;
                 case 2:
-                    LoZGame.Instance.DungeonTint = new Color(190, 130, 255);
-                    this.currentX = 1;
-                    this.currentY = 7; // player spawns at curX/curY
-                    this.maxX = 4;
-                    this.maxY = 8;
-                    this.mapColor = Color.DarkBlue;
-                    this.dungeonBossLoc = new Point(2, 0);
+                    LoZGame.Instance.DungeonTint = Color.Blue;
+                    startX = 1;
+                    startY = 7;
+                    maxX = 4;
+                    maxY = 8;
+                    mapColor = Color.Blue;
+                    dungeonBossLoc = new Point(2, 0);
                     break;
                 case 3:
-                    LoZGame.Instance.DungeonTint = Color.Yellow;
-                    this.currentX = 3;
-                    this.currentY = 5;
-                    this.maxX = 5;
-                    this.maxY = 6;
-                    this.mapColor = Color.Green;
+                    LoZGame.Instance.DungeonTint = new Color(41, 175, 72);
+                    startX = 3;
+                    startY = 5;
+                    maxX = 5;
+                    maxY = 6;
+                    mapColor = Color.Green;
+                    dungeonBossLoc = new Point(4, 2);
+                    break;
+                case 4:
+                    LoZGame.Instance.DungeonTint = new Color(178, 162, 0);
+                    startX = 1;
+                    startY = 7;
+                    maxX = 4;
+                    maxY = 8;
+                    mapColor = Color.DarkGoldenrod;
+                    dungeonBossLoc = new Point(3, 1);
+                    break;
+                case 5:
+                    LoZGame.Instance.DungeonTint = new Color(41, 175, 72);
+                    startX = 2;
+                    startY = 7;
+                    maxX = 4;
+                    maxY = 8;
+                    mapColor = Color.Green;
+                    dungeonBossLoc = new Point(0, 2);
+                    break;
+                case 6:
+                    LoZGame.Instance.DungeonTint = new Color(178, 162, 0);
+                    startX = 1;
+                    startY = 7;
+                    maxX = 6;
+                    maxY = 8;
+                    mapColor = Color.DarkGoldenrod;
+                    dungeonBossLoc = new Point(4, 1);
+                    break;
+                case 7:
+                    LoZGame.Instance.DungeonTint = new Color(41, 175, 72);
+                    startX = 1;
+                    startY = 7;
+                    maxX = 6;
+                    maxY = 8;
+                    mapColor = Color.Green;
+                    dungeonBossLoc = new Point(2, 2);
+                    break;
+                case 8:
+                    LoZGame.Instance.DungeonTint = Color.LightGray;
+                    startX = 3;
+                    startY = 7;
+                    maxX = 5;
+                    maxY = 8;
+                    mapColor = Color.Gray;
+                    dungeonBossLoc = new Point(1, 3);
                     break;
                 default:
                     break;
             }
+            currentX = startX;
+            currentY = startY;
 
-            this.dungeonLayout = XMLHandler.Parse(this.currentDungeonFile);
+            dungeonLayout = XMLHandler.Parse(currentDungeonFile);
 
-            this.miniMap = new MiniMap(this);
-            this.miniMap.LoadMap(this.dungeonLayout, this.maxX, this.maxY);
-            this.LoadNewRoom();
+            miniMap = new MiniMap(this);
+            miniMap.LoadMap(dungeonLayout, maxX, maxY);
         }
 
         public int CurrentRoomX
@@ -95,7 +148,7 @@
 
         public Room CurrentRoom
         {
-            get { return this.dungeonLayout[this.currentY][this.currentX]; }
+            get { return dungeonLayout[currentY][currentX]; }
         }
 
         public int DungeonNumber { get { return dungeonNumber; } set { dungeonNumber = value; } }
@@ -105,7 +158,7 @@
          */
         public Room GetRoom(int Y, int X)
         {
-            return this.dungeonLayout[Y][X];
+            return dungeonLayout[Y][X];
         }
     }
 }

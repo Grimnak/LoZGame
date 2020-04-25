@@ -1,16 +1,14 @@
-_3902 Functionality Format. Please fill out according to all italicized text. Remove all italicized text, unnecessary line breaks, and non-relevant sections before publishing Code Review_
-
 # Code Functionality Review
 
 ### Author: Garrett Morse
 
-### Date: 04/13/20
+### Date: 04/24/20
 
-### Sprint No.: Sprint 4
+### Sprint No.: Sprint 5
 
-### File Name: ./LoZGame/Managers/Dungeon/DungeonMethods.cs
+### File Name: ./LoZGame/GameState/TransitionRoomState.cs
 
-### File Author Name: Multiple Contributors
+### File Author Name: Aaron Rehfeldt
 
 ### Time Taken to Review: 10 minutes
 

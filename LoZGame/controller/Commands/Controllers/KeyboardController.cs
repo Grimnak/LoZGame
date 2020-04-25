@@ -12,6 +12,7 @@ namespace LoZClone
         private readonly KeyboardCommandLoader allCommands;
         private readonly Dictionary<Keys, ICommand> playerDict;
         private readonly Dictionary<Keys, ICommand> inventoryDict;
+        private readonly Dictionary<Keys, ICommand> optionsDict;
         private ICommand currentCommand;
         private KeyboardState oldState;
         private List<Keys> playerKeys;
@@ -25,16 +26,17 @@ namespace LoZClone
         public KeyboardController(KeyboardCommandLoader allCommands)
         {
             this.allCommands = allCommands;
-            this.oldState = Keyboard.GetState();
-            this.playerDict = allCommands.GetPlayerDict;
-            this.inventoryDict = allCommands.GetInventoryDict;
-            this.playerCommands = new Stack<KeyValuePair<Keys, ICommand>>();
-            this.playerKeys = new List<Keys>
+            oldState = Keyboard.GetState();
+            playerDict = allCommands.GetPlayerDict;
+            inventoryDict = allCommands.GetInventoryDict;
+            optionsDict = allCommands.GetOptionsDict;
+            playerCommands = new Stack<KeyValuePair<Keys, ICommand>>();
+            playerKeys = new List<Keys>
             {
                 Keys.W, Keys.Up, Keys.A, Keys.Left, Keys.S, Keys.Down, Keys.D, Keys.Right,
                 Keys.Z, Keys.N,
             };
-            this.oneUseKeys = new List<Keys>
+            oneUseKeys = new List<Keys>
             {
                 Keys.Z, Keys.N,
             };
@@ -51,21 +53,21 @@ namespace LoZClone
             {
                 foreach (Keys key in pressed)
                 {
-                    if (this.playerDict.ContainsKey(key) && this.playerKeys.Contains(key) && this.oldState.IsKeyUp(key))
+                    if (playerDict.ContainsKey(key) && playerKeys.Contains(key) && oldState.IsKeyUp(key))
                     {
-                        this.playerCommands.Push(new KeyValuePair<Keys, ICommand>(key, this.playerDict[key]));
+                        playerCommands.Push(new KeyValuePair<Keys, ICommand>(key, playerDict[key]));
                     }
                 }
 
-                if (this.playerCommands.Count > 0)
+                if (playerCommands.Count > 0)
                 {
-                    this.currentCommand = this.playerCommands.Peek().Value;
-                    this.currentCommand.Execute();
+                    currentCommand = playerCommands.Peek().Value;
+                    currentCommand.Execute();
 
                     List<ICommand> removable = new List<ICommand>();
                     foreach (KeyValuePair<Keys, ICommand> command in playerCommands)
                     {
-                        if (state.IsKeyUp(command.Key) || this.oneUseKeys.Contains(command.Key))
+                        if (state.IsKeyUp(command.Key) || oneUseKeys.Contains(command.Key))
                         {
                             removable.Add(command.Value);
                         }
@@ -73,16 +75,16 @@ namespace LoZClone
 
                     for (int i = 0; i < removable.Count; i++)
                     {
-                        if (removable[i].Equals(this.playerCommands.Peek().Value))
+                        if (removable[i].Equals(playerCommands.Peek().Value))
                         {
-                            this.playerCommands.Pop();
+                            playerCommands.Pop();
                         }
                     }
                     removable.Clear();
                 }
                 else
                 {
-                    this.allCommands.GetIdle.Execute();
+                    allCommands.GetIdle.Execute();
                 }
             }
             else if (LoZGame.Instance.GameState is TitleScreenState)
@@ -96,29 +98,56 @@ namespace LoZClone
             {
                 foreach (Keys key in pressed)
                 {
-                    if (this.inventoryDict.ContainsKey(key) && this.oldState.IsKeyUp(key))
+                    if (inventoryDict.ContainsKey(key) && oldState.IsKeyUp(key))
                     {
                         inventoryDict[key].Execute();
                     }
                 }
             }
-
-            if (pressed.Contains(Keys.I) && this.oldState.IsKeyUp(Keys.I))
+            else if (LoZGame.Instance.GameState is OptionsState)
             {
-                this.playerDict[Keys.I].Execute();
+                foreach (Keys key in pressed)
+                {
+                    if (optionsDict.ContainsKey(key) && oldState.IsKeyUp(key))
+                    {
+                        optionsDict[key].Execute();
+                    }
+                }
+            }
+            else if (LoZGame.Instance.GameState is DeathState)
+            {
+                if (pressed.Contains(Keys.Enter) && oldState.IsKeyUp(Keys.Enter))
+                {
+                    allCommands.GetContine.Execute();
+                }
+            }
+
+            if (pressed.Contains(Keys.O) && oldState.IsKeyUp(Keys.O))
+            {
+                playerDict[Keys.O].Execute();
+            }
+
+            if (pressed.Contains(Keys.I) && oldState.IsKeyUp(Keys.I))
+            {
+                playerDict[Keys.I].Execute();
+            }
+
+            if (pressed.Contains(Keys.P) && oldState.IsKeyUp(Keys.P))
+            {
+                playerDict[Keys.P].Execute();
             }
 
             if (pressed.Contains(Keys.Q))
             {
-                this.playerDict[Keys.Q].Execute();
+                playerDict[Keys.Q].Execute();
             }
 
             if (pressed.Contains(Keys.R))
             {
-                this.playerDict[Keys.R].Execute();
+                playerDict[Keys.R].Execute();
             }
 
-            this.oldState = state;
+            oldState = state;
         }
     }
 }

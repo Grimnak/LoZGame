@@ -3,64 +3,39 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class CloseInventoryState : IGameState
+    public class CloseInventoryState : GameStateEssentials, IGameState
     {
         private int transitionSpeed;
         private int lockout;
 
         public CloseInventoryState()
         {
-            this.lockout = 0;
-            this.transitionSpeed = GameData.Instance.GameStateDataConstants.CloseInventoryTransitionSpeed;
+            lockout = 0;
+            transitionSpeed = GameData.Instance.GameStateDataConstants.CloseInventoryTransitionSpeed;
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Death()
-        {
-            // Can't die while accessing inventory.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void OpenInventory()
-        {
-            // Inventory already opened.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void CloseInventory()
-        {
-            // Can't transition to a state you're already in.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void PlayGame()
+        public override void PlayGame()
         {
             LoZGame.Instance.GameState = new PlayGameState();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TitleScreen()
+        public override void TitleScreen()
         {
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
-        /// <inheritdoc></inheritdoc>
-        public void TransitionRoom(Physics.Direction direction)
+        public override void Pause()
         {
-            // Can't transition room while accessing inventory.
+            LoZGame.Instance.GameState = new PauseState(this);
         }
 
         /// <inheritdoc></inheritdoc>
-        public void WinGame()
+        public override void Update()
         {
-            // Can't win game while accessing inventory.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void Update()
-        {
-            this.lockout += this.transitionSpeed;
-            if (this.lockout <= LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset)
+            lockout += transitionSpeed;
+            if (lockout <= LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset)
             {
                 InventoryComponents.Instance.InventoryBackgroundPositionY -= transitionSpeed;
             }
@@ -71,17 +46,18 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Draw()
+        public override void Draw()
         {
-            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            InventoryComponents.Instance.DrawCorrectBackground();
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
+            LoZGame.Instance.Dungeon.CurrentRoom.Draw(Point.Zero);
 
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Draw();
             }
             LoZGame.Instance.GameObjects.Draw();
-            InventoryComponents.Instance.DrawCorrectBackground();
+            LoZGame.Instance.GameObjects.Entities.Draw();
+            LoZGame.Instance.GameObjects.Enemies.Draw();
             InventoryComponents.Instance.DrawText();
 
             LoZGame.Instance.SpriteBatch.End();

@@ -2,64 +2,61 @@
 {
     using Microsoft.Xna.Framework;
 
-    public class CosmeticDoorState : IDoorState
+    public class CosmeticDoorState : DoorEssentials, IDoorState
     {
-        private const string North = "N";
-        private const string South = "S";
-        private const string East = "E";
-        private const string West = "W";
-
-        private readonly Door door;
-        private readonly ISprite sprite;
-        private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
-
-        public CosmeticDoorState(Door door)
+        public CosmeticDoorState(IDoor door)
         {
-            this.door = door;
-            switch (door.GetLoc())
+            Door = door;
+            switch (door.Physics.CurrentDirection)
             {
-                case North:
-                {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorDown();
+
+                case Physics.Direction.North:
+                    {
+                        FrameSprite = DungeonSpriteFactory.Instance.UnlockedDownDoorFrame();
+                        FloorSprite = DungeonSpriteFactory.Instance.UnlockedDownDoorFloor();
+                        OverhangSprite = DungeonSpriteFactory.Instance.VerticalOverhang();
                         break;
-                }
-                case East:
-                {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorLeft();
+                    }
+                case Physics.Direction.East:
+                    {
+                        FrameSprite = DungeonSpriteFactory.Instance.UnlockedLeftDoorFrame();
+                        FloorSprite = DungeonSpriteFactory.Instance.UnlockedLeftDoorFloor();
+                        OverhangSprite = DungeonSpriteFactory.Instance.HorizontalOverhang();
                         break;
-                }
-                case South:
-                {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorUp();
+                    }
+                case Physics.Direction.South:
+                    {
+                        FrameSprite = DungeonSpriteFactory.Instance.UnlockedUpDoorFrame();
+                        FloorSprite = DungeonSpriteFactory.Instance.UnlockedUpDoorFloor();
+                        OverhangSprite = DungeonSpriteFactory.Instance.VerticalOverhang();
                         break;
-                }
-                case West:
-                {
-                        this.sprite = BlockSpriteFactory.Instance.UnlockedDoorRight();
+                    }
+                case Physics.Direction.West:
+                    {
+                        FrameSprite = DungeonSpriteFactory.Instance.UnlockedRightDoorFrame();
+                        FloorSprite = DungeonSpriteFactory.Instance.UnlockedRightDoorFloor();
+                        OverhangSprite = DungeonSpriteFactory.Instance.HorizontalOverhang();
                         break;
-                }
+                    }
+                default:
+                    {
+                        FrameSprite = DungeonSpriteFactory.Instance.UnlockedDownDoorFrame();
+                        FloorSprite = DungeonSpriteFactory.Instance.UnlockedDownDoorFloor();
+                        OverhangSprite = DungeonSpriteFactory.Instance.VerticalOverhang();
+                        break;
+                    }
             }
         }
 
-        public void Bombed()
+        public override void Bombed()
         {
         }
 
-        public void Close()
-        {
-            this.door.Close();
-        }
-
-        public void Draw()
-        {
-            this.sprite.Draw(this.door.Physics.Location, spriteTint, this.door.Physics.Depth);
-        }
-
-        public void Open()
+        public override void Open()
         {
         }
 
-        public void Update()
+        public override void Close()
         {
         }
     }

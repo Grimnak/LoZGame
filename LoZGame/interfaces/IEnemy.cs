@@ -1,5 +1,6 @@
 ﻿namespace LoZClone
 {
+    using System;
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
 
@@ -17,6 +18,26 @@
         /// </summary>
         bool IsDead { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether an enemy is still in its spawn sequence or not.
+        /// </summary>
+        bool IsSpawning { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not an enemy can be killed.
+        /// </summary>
+        bool IsKillable { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not an enemy interacts with projectiles.
+        /// </summary>
+        bool IsTransparent { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value that the enemy spawned at.
+        /// </summary>
+        Point SpawnPoint { get; }
+
         bool HasChild { get; set; }
 
         int Damage { get; }
@@ -26,6 +47,12 @@
         float MoveSpeed { get; set; }
 
         Color CurrentTint { get; set; }
+
+        Point MinMaxWander { get; set; }
+
+        List<Tuple<DropManager.DropType, int, int, int>> DropTable { get; set; }
+
+        EnemyEssentials.EnemyAI AI { get; set; }
         
         Dictionary<RandomStateGenerator.StateType, int> States { get; set; }
 
@@ -64,6 +91,11 @@
         /// </summary>
         /// <param name="stunTime">Duration in ticks to be stunned for.</param>
         void Stun(int stunTime);
+
+        /// <summary>
+        /// Handles special logic for an enemy to attck
+        /// </summary>
+        void Attack();
 
         void Update();
 

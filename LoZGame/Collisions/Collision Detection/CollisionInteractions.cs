@@ -110,7 +110,9 @@
         public void SetBounds(Physics target, CollisionDetection.CollisionSide collisionSide)
         {
             int topOffset = LoZGame.Instance.InventoryOffset, bottomOffset = 0, horizontalOffset = 0;
-            if (LoZGame.Instance.Dungeon.CurrentRoomX != 1 || LoZGame.Instance.Dungeon.CurrentRoomY != 1)
+
+            // Some dungeons contains basements with different boundaries than standard rooms.  Account for that here.
+            if (!LoZGame.Instance.Dungeon.CurrentRoom.IsBasement)
             {
                 topOffset = BlockSpriteFactory.Instance.TopOffset;
                 bottomOffset = BlockSpriteFactory.Instance.BottomOffset;
@@ -122,17 +124,19 @@
                 case CollisionDetection.CollisionSide.Top:
                     target.Bounds = new Rectangle(target.Bounds.X, topOffset, target.Bounds.Width, target.Bounds.Height);
                     target.StopKnockbackY();
+                    target.Bounce();
                     break;
                 case CollisionDetection.CollisionSide.Bottom:
                     target.Bounds = new Rectangle(target.Bounds.X, bottomOffset - target.Bounds.Height, target.Bounds.Width, target.Bounds.Height);
                     target.StopKnockbackY();
+                    target.EndJump();
                     break;
                 case CollisionDetection.CollisionSide.Left:
                     target.Bounds = new Rectangle(horizontalOffset, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
                     target.StopKnockbackX();
                     break;
                 case CollisionDetection.CollisionSide.Right:
-                    target.Bounds = new Rectangle(LoZGame.Instance.ScreenWidth - horizontalOffset - target.Bounds.Width + GameData.Instance.CollisionConstants.RightBoundCorrection, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
+                    target.Bounds = new Rectangle(LoZGame.Instance.ScreenWidth - horizontalOffset - target.Bounds.Width, target.Bounds.Y, target.Bounds.Width, target.Bounds.Height);
                     target.StopKnockbackX();
                     break;
                 default:

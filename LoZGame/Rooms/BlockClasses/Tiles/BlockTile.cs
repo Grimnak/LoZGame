@@ -13,8 +13,6 @@
     /// </summary>
     public class BlockTile : IBlock
     {
-
-        private const string WaterTile = "water_tile";
         private const string BasementBrickTile = "basement_brick_tile";
         private const string FireGapTile = "fire_gap_tile";
         private const string TurquoiseStatueLeft = "turquoise_statue_left";
@@ -22,23 +20,32 @@
         private const string BlueStatueLeft = "blue_statue_left";
         private const string BlueStatueRight = "blue_statue_right";
         private const string MovableSquare2 = "movable_square2";
+        private const string MovableSquare3 = "movable_square3";
         private const string BlueStatueLeft2 = "blue_statue_left2";
         private const string BlueStatueRight2 = "blue_statue_right2";
         private const string OrangeStatueRight2 = "orange_statue_right2";
         private const string OrangeStatueLeft2 = "orange_statue_left2";
+        private const string RedStatueLeft3 = "red_statue_left3";
+        private const string RedStatueRight3 = "red_statue_right3";
+        private const string GreenStatueRight = "green_statue_right";
+        private const string GreenStatueLeft = "green_statue_left";
         private const string statueCheck = "statue";
+        private const string BlueStatueLeft4 = "blue_statue_left4";
+        private const string BlueStatueRight4 = "blue_statue_right4";
+        private const string BrownStatueRight4 = "brown_statue_right4";
+        private const string BrownStatueLeft4 = "brown_statue_left4";
+        private const string MovableTile4 = "movable_tile4";
 
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Rectangle bounds;
+        private bool isTransparent;
 
-        public Rectangle Bounds
-        {
-            get { return this.Physics.Bounds; }
-            set { this.Physics.Bounds = value; }
-        }
+        public bool IsTransparent { get { return isTransparent; } set { isTransparent = value; } }
 
-        public List<MovableTile.InvalidDirection> InvalidDirections { get { return null; } }
+        public Rectangle Bounds { get { return Physics.Bounds; } set { Physics.Bounds = value; } }
+
+        public List<MovableBlock.InvalidDirection> InvalidDirections { get { return null; } }
 
         private BlockCollisionHandler blockCollisionHandler;
 
@@ -51,21 +58,24 @@
         /// <param name="name">Name of the tiles sprite.</param>
         public BlockTile(Vector2 location, string name)
         {
-            this.blockCollisionHandler = new BlockCollisionHandler(this);
-            this.Physics = new Physics(location);
-            this.sprite = this.CreateCorrectSprite(name);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
-            this.Physics.Depth = GameData.Instance.RoomConstants.BlockTileDepth;
-            this.SetBounds(name);
+            blockCollisionHandler = new BlockCollisionHandler(this);
+            Physics = new Physics(location);
+            spriteTint = Color.Gray;
+            isTransparent = DetermineTransparency(name);
+            sprite = CreateCorrectSprite(name);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, (int)BlockSpriteFactory.Instance.TileHeight);
+            Physics.Depth = GameData.Instance.RoomConstants.BlockTileDepth;
+            SetBounds(name);
         }
 
         private void SetBounds(string name)
         {
             if (name.Contains(statueCheck))
             {
-                this.Physics.Bounds = new Rectangle(this.Physics.Bounds.X, this.Physics.Bounds.Y + GameData.Instance.RoomConstants.BlockTileHeightOffset, this.Physics.Bounds.Width, this.Physics.Bounds.Height - GameData.Instance.RoomConstants.BlockTileHeightOffset);
-                this.Physics.BoundsOffset = new Vector2(0, GameData.Instance.RoomConstants.BlockTileHeightOffset);
-                this.Physics.SetDepth();
+                Physics.Bounds = new Rectangle(Physics.Bounds.X, Physics.Bounds.Y + GameData.Instance.RoomConstants.BlockTileHeightOffset, Physics.Bounds.Width, Physics.Bounds.Height - GameData.Instance.RoomConstants.BlockTileHeightOffset);
+                Physics.BoundsOffset = new Vector2(0, -GameData.Instance.RoomConstants.BlockTileHeightOffset);
+                Physics.SetDepth();
+                Physics.SetLocation();
             }
         }
 
@@ -74,8 +84,6 @@
         {
             switch (name)
             {
-                case WaterTile:
-                    return BlockSpriteFactory.Instance.WaterTile();
                 case BasementBrickTile:
                     return BlockSpriteFactory.Instance.BasementBrickTile();
                 case FireGapTile:
@@ -89,7 +97,8 @@
                 case BlueStatueRight:
                     return BlockSpriteFactory.Instance.BlueStatueRight();
                 case MovableSquare2:
-                    return BlockSpriteFactory.Instance.MovableSquare2();
+                    spriteTint = LoZGame.Instance.DungeonTint;
+                    return DungeonSpriteFactory.Instance.MovableTile();
                 case BlueStatueRight2:
                     return BlockSpriteFactory.Instance.BlueStatueRight2();
                 case BlueStatueLeft2:
@@ -98,37 +107,76 @@
                     return BlockSpriteFactory.Instance.OrangeStatueRight2();
                 case OrangeStatueLeft2:
                     return BlockSpriteFactory.Instance.OrangeStatueLeft2();
+                case RedStatueRight3:
+                    return BlockSpriteFactory.Instance.RedStatueRight3();
+                case RedStatueLeft3:
+                    return BlockSpriteFactory.Instance.RedStatueLeft3();
+                case GreenStatueRight:
+                    return BlockSpriteFactory.Instance.GreenStatueRight3();
+                case GreenStatueLeft:
+                    return BlockSpriteFactory.Instance.GreenStatueLeft3();
+                case MovableSquare3:
+                    spriteTint = LoZGame.Instance.DungeonTint;
+                    return DungeonSpriteFactory.Instance.MovableTile();
+                case BlueStatueRight4:
+                    return BlockSpriteFactory.Instance.BlueStatueRight4();
+                case BlueStatueLeft4:
+                    return BlockSpriteFactory.Instance.BlueStatueLeft4();
+                case BrownStatueRight4:
+                    return BlockSpriteFactory.Instance.BrownStatueRight4();
+                case BrownStatueLeft4:
+                    return BlockSpriteFactory.Instance.BrownStatueLeft4();
+                case MovableTile4:
+                    return BlockSpriteFactory.Instance.MovableTile4();
                 default:
-                    return BlockSpriteFactory.Instance.MovableSquare();
+                    spriteTint = LoZGame.Instance.DungeonTint;
+                    return DungeonSpriteFactory.Instance.MovableTile();
             }
         }
 
         /// <inheritdoc/>
         public void Update()
         {
-            this.sprite.Update(); 
+            sprite.Update();
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
+            sprite.Draw(Physics.Location, spriteTint, Physics.Depth);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IPlayer)
             {
-                this.blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
             else if (otherCollider is IEnemy)
             {
-                this.blockCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+                blockCollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
+        }
+
+        /// <summary>
+        /// Determines if a block is transparent or not, which affects the ability of some projectile (e.g. fireballs) to travel over them.
+        /// </summary>
+        /// <param name="name">The name of the block tile.</param>
+        /// <returns>A boolean representing the block's transparency.</returns>
+        private bool DetermineTransparency(string name)
+        {
+            if (name.Equals(BasementBrickTile) || name.Equals(FireGapTile) || name.Equals(BlueStatueLeft2) || name.Equals(BlueStatueRight2) || name.Equals(BrownStatueLeft4) || name.Equals(BrownStatueRight4) || name.Equals(GreenStatueLeft) || name.Equals(GreenStatueRight))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

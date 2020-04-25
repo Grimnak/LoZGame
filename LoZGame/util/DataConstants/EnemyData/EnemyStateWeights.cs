@@ -5,10 +5,30 @@
 
     public struct EnemyStateWeights
     {
+        private static Dictionary<StateType, int> gleeockHeadStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 },
+            { StateType.MoveNorthEast, 1 },
+            { StateType.MoveNorthWest, 1 },
+            { StateType.MoveSouthEast, 1 },
+            { StateType.MoveSouthWest, 1 }
+        };
+
         private static Dictionary<StateType, int> oldManStateList = new Dictionary<StateType, int>()
         {
-            { StateType.Attack, 1 },
+            // { StateType.Attack, 1 },
             { StateType.Idle, 99 }
+        };
+
+        private static Dictionary<StateType, int> darknutStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 }
         };
 
         private static Dictionary<StateType, int> dragonStateList = new Dictionary<StateType, int>()
@@ -57,15 +77,6 @@
             { StateType.MoveWest, 1 }
         };
 
-        private static Dictionary<StateType, int> blueGoriyaStateList = new Dictionary<StateType, int>()
-        {
-            { StateType.Attack, 1 },
-            { StateType.MoveNorth, 1 },
-            { StateType.MoveSouth, 1 },
-            { StateType.MoveEast, 1 },
-            { StateType.MoveWest, 1 }
-        };
-
         private static Dictionary<StateType, int> keeseStateList = new Dictionary<StateType, int>()
         {
             { StateType.MoveNorth, 1 },
@@ -94,6 +105,14 @@
             { StateType.MoveWest, 1 }
         };
 
+        private static Dictionary<StateType, int> gibdoStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 }
+        };
+
         private static Dictionary<StateType, int> wallMasterStateList = new Dictionary<StateType, int>()
         {
             { StateType.MoveNorth, 1 },
@@ -110,28 +129,111 @@
             { StateType.MoveWest, 1 }
         };
 
+        private static Dictionary<StateType, int> vireStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.JumpEast, 2 },
+            { StateType.JumpWest, 2 }
+        };
+
+        private static Dictionary<StateType, int> bubbleStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 }
+        };
+
+        private static Dictionary<StateType, int> manhandlaBodyStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 },
+            { StateType.MoveNorthEast, 1 },
+            { StateType.MoveNorthWest, 1 },
+            { StateType.MoveSouthEast, 1 },
+            { StateType.MoveSouthWest, 1 }
+        };
+
+        private static Dictionary<StateType, int> digDoggerStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 },
+            { StateType.MoveNorthEast, 1 },
+            { StateType.MoveNorthWest, 1 },
+            { StateType.MoveSouthEast, 1 },
+            { StateType.MoveSouthWest, 1 }
+        };
+
+        private static Dictionary<StateType, int> manhandlaHeadStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.Attack, 1 },
+            { StateType.Idle, 4 }
+        };
+
+        private static Dictionary<StateType, int> likelikeStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 },
+        };
+
+        private static Dictionary<StateType, int> polsVoiceStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 },
+            { StateType.JumpEast, 2 },
+            { StateType.JumpWest, 2 },
+            { StateType.JumpNorth, 1 }
+        };
+
         public Dictionary<StateType, int> OldManStateList => oldManStateList;
 
-        public Dictionary<StateType, int> DragonStatelist => dragonStateList;
+        public Dictionary<StateType, int> DarknutStateList => darknutStateList;
 
-        public Dictionary<StateType, int> DodongoStatelist => dodongoStateList;
+        public Dictionary<StateType, int> DragonStateList => dragonStateList;
 
-        public Dictionary<StateType, int> FireSnakeStatelist => firesnakeStateList;
+        public Dictionary<StateType, int> DodongoStateList => dodongoStateList;
 
-        public Dictionary<StateType, int> GelStatelist => gelStateList;
+        public Dictionary<StateType, int> FireSnakeStateList => firesnakeStateList;
 
-        public Dictionary<StateType, int> GoriyaStatelist => goriyaStateList;
+        public Dictionary<StateType, int> GelStateList => gelStateList;
 
-        public Dictionary<StateType, int> BlueGoriyaStatelist => blueGoriyaStateList;
+        public Dictionary<StateType, int> GoriyaStateList => goriyaStateList;
 
-        public Dictionary<StateType, int> KeeseStatelist => keeseStateList;
+        public Dictionary<StateType, int> KeeseStateList => keeseStateList;
 
-        public Dictionary<StateType, int> RopeStatelist => ropeStateList;
+        public Dictionary<StateType, int> RopeStateList => ropeStateList;
 
-        public Dictionary<StateType, int> StalfosStatelist => stalfosStateList;
+        public Dictionary<StateType, int> StalfosStateList => stalfosStateList;
 
-        public Dictionary<StateType, int> ZolStatelist => zolStateList;
+        public Dictionary<StateType, int> ZolStateList => zolStateList;
 
-        public Dictionary<StateType, int> WallMasterStatelist => wallMasterStateList;
+        public Dictionary<StateType, int> WallMasterStateList => wallMasterStateList;
+
+        public Dictionary<StateType, int> VireStateList => vireStateList;
+
+        public Dictionary<StateType, int> BubbleStateList => bubbleStateList;
+
+        public Dictionary<StateType, int> ManhandlaBodyStateList => manhandlaBodyStateList;
+
+        public Dictionary<StateType, int> ManhandlaHeadStateList => manhandlaHeadStateList;
+
+        public Dictionary<StateType, int> GleeockHeadStateList => gleeockHeadStateList;
+
+        public Dictionary<StateType, int> GibdoStateList => gibdoStateList;
+
+        public Dictionary<StateType, int> LikelikeStateList => likelikeStateList;
+
+        public Dictionary<StateType, int> PolsVoiceStateList => polsVoiceStateList;
+
+        public Dictionary<StateType, int> DigDoggerStateList => digDoggerStateList;
     }
 }

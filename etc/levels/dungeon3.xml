@@ -4,7 +4,7 @@
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="False" idx="0">
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <items>
         <item X="6" Y="3">Key</item>
       </items>
@@ -48,8 +48,8 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
-      <text>DID YOU GET THE SWORD FROM THE OLD MAN ON TOP OF THE WATERFALL?.</text>
+    <room exists="True" oldman="True" basement="False" idx="2">
+      <text>THE WHITE SWORD IS BELOW YOU.</text>
       <enemies>
         <enemy X="5.5" Y="2">OldMan</enemy>
       </enemies>
@@ -84,14 +84,14 @@
     </room>
     <room exists="False" idx="1">
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
        <enemies>
         <enemy X="0" Y="0">SpikeCross</enemy>
         <enemy X="11" Y="0">SpikeCross</enemy>
         <enemy X="0" Y="6">SpikeCross</enemy>
         <enemy X="11" Y="6">SpikeCross</enemy>
-        <enemy X="4" Y="1">Zol3</enemy>
-        <enemy X="3" Y="4">Zol3</enemy>
+        <enemy X="4" Y="1">Zol</enemy>
+        <enemy X="3" Y="4">Zol</enemy>
        </enemies>
        <doors>
         <door loc="N">puzzle</door>
@@ -116,7 +116,7 @@
     </room>
     <room exists="False" idx="3">
     </room>
-    <room exists="True" idx="4">
+    <room exists="True" oldman="False" basement="False" idx="4">
       <items>
         <item X="5.5" Y="3">TriForce</item>
       </items>
@@ -169,13 +169,13 @@
   </drow>
   <drow idx="2">
     <!-- 0 - 0 maps to top left corner  -->
-    <room exists="True" idx="0">
+    <room exists="True" oldman="False" basement="False" idx="0">
       <items>
         <item X="6" Y="3">Key</item>
       </items>
       <enemies>
-        <enemy X="9" Y="0">Zol3</enemy>
-        <enemy X="7" Y="1">Zol3</enemy>
+        <enemy X="9" Y="0">Zol</enemy>
+        <enemy X="7" Y="1">Zol</enemy>
         <enemy X="2" Y="1">Keese</enemy>
         <enemy X="9" Y="2">Keese</enemy>
         <enemy X="7" Y="3">Keese</enemy>
@@ -202,7 +202,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <items>
         <item X="6" Y="3">Bomb</item>
       </items>
@@ -257,14 +257,14 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <items>
         <item X="6" Y="3">Key</item>
       </items>
       <enemies>
-        <enemy X="7" Y="0">Zol3</enemy>
-        <enemy X="6" Y="2">Zol3</enemy>
-        <enemy X="8" Y="3">Zol3</enemy>
+        <enemy X="7" Y="0">Zol</enemy>
+        <enemy X="6" Y="2">Zol</enemy>
+        <enemy X="8" Y="3">Zol</enemy>
       </enemies>
       <doors>
         <door loc="N">locked</door>
@@ -310,14 +310,14 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
        <enemies>
         <enemy X="0" Y="0">SpikeCross</enemy>
         <enemy X="11" Y="0">SpikeCross</enemy>
         <enemy X="0" Y="6">SpikeCross</enemy>
         <enemy X="11" Y="6">SpikeCross</enemy>
-        <enemy X="7" Y="0">Zol3</enemy>
-        <enemy X="7" Y="4">Zol3</enemy>
+        <enemy X="7" Y="0">Zol</enemy>
+        <enemy X="7" Y="4">Zol</enemy>
        </enemies>
        <items>
          <item X="6" Y="3">Map</item>
@@ -342,7 +342,7 @@
        <rrow idx="6">
        </rrow>
     </room>
-    <room exists="True" idx="4">
+    <room exists="True" oldman="False" basement="False" idx="4">
        <enemies>
         <enemy X="2" Y="4">Manhandla</enemy>
        </enemies>
@@ -456,13 +456,13 @@
   </drow>
   <drow idx="3">
     <!-- 0 - 0 maps to top left corner  -->
-    <room exists="True" idx="0">
+    <room exists="True" oldman="False" basement="False" idx="0">
       <enemies>
-        <enemy X="4" Y="1">Armos</enemy>
-        <enemy X="7" Y="1">Armos</enemy>
-        <enemy X="4" Y="3">Armos</enemy>
-        <enemy X="1" Y="4">Armos</enemy>
-        <enemy X="7" Y="5">Armos</enemy>
+        <enemy X="4" Y="1">Darknut</enemy>
+        <enemy X="7" Y="1">Darknut</enemy>
+        <enemy X="4" Y="3">Darknut</enemy>
+        <enemy X="1" Y="4">Darknut</enemy>
+        <enemy X="7" Y="5">Darknut</enemy>
       </enemies>
       <doors>
         <door loc="N">unlocked</door>
@@ -496,7 +496,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <items>
         <item X="6" Y="3">Compass</item>
       </items>
@@ -530,14 +530,14 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <items>
         <item X="6" Y="3">Bomb</item>
       </items>
       <enemies>
-        <enemy X="8" Y="0">Armos</enemy>
-        <enemy X="6" Y="1">Armos</enemy>
-        <enemy X="7" Y="3">Armos</enemy>
+        <enemy X="8" Y="0">Darknut</enemy>
+        <enemy X="6" Y="1">Darknut</enemy>
+        <enemy X="7" Y="3">Darknut</enemy>
       </enemies>
       <doors>
         <door loc="N">unlocked</door>
@@ -560,11 +560,11 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
        <enemies>
-        <enemy X="6" Y="1">Armos</enemy>
-        <enemy X="8" Y="1">Armos</enemy>
-        <enemy X="5" Y="4">Armos</enemy>
+        <enemy X="6" Y="1">Darknut</enemy>
+        <enemy X="8" Y="1">Darknut</enemy>
+        <enemy X="5" Y="4">Darknut</enemy>
        </enemies>
        <doors>
         <door loc="E">special</door>
@@ -596,7 +596,7 @@
        <rrow idx="6">
        </rrow>
     </room>
-    <room exists="True" idx="4">
+    <room exists="True" oldman="False" basement="False" idx="4">
        <enemies>
         <enemy X="9" Y="1">Keese</enemy>
         <enemy X="7" Y="4">Keese</enemy>
@@ -604,11 +604,11 @@
         <enemy X="8" Y="3">Bubble</enemy>
         <enemy X="11" Y="4">Bubble</enemy>
         <enemy X="9" Y="5">Bubble</enemy>
-        <enemy X="7" Y="5">Zol3</enemy>
-        <enemy X="10" Y="5">Zol3</enemy>
+        <enemy X="7" Y="5">Zol</enemy>
+        <enemy X="10" Y="5">Zol</enemy>
        </enemies>
        <items>
-         <item X="0" Y="0">Rupee</item>
+         <item X="0" Y="0">YellowRupee</item>
        </items>
        <doors>
         <door loc="W">special</door>
@@ -619,16 +619,16 @@
        <rrow idx="1">
        </rrow>
        <rrow idx="2">
-         <tile type="walkable" idx="5">movable_square3</tile>
-         <tile type="walkable" idx="6">movable_square3</tile>
+         <tile type="block" idx="5">movable_square3</tile>
+         <tile type="block" idx="6">movable_square3</tile>
        </rrow>
        <rrow idx="3">
-         <tile type="walkable" idx="5">movable_square3</tile>
-         <tile type="walkable" idx="6">movable_square3</tile>
+         <tile type="block" idx="5">movable_square3</tile>
+         <tile type="block" idx="6">movable_square3</tile>
        </rrow>
        <rrow idx="4">
-         <tile type="walkable" idx="5">movable_square3</tile>
-         <tile type="walkable" idx="6">movable_square3</tile>
+         <tile type="block" idx="5">movable_square3</tile>
+         <tile type="block" idx="6">movable_square3</tile>
        </rrow>
        <rrow idx="5">
        </rrow>
@@ -638,16 +638,16 @@
   </drow>
   <drow idx="4">
     <!-- 0 - 0 maps to top left corner  -->
-    <room exists="True" idx="0">
+    <room exists="True" oldman="False" basement="False" idx="0">
       <enemies>
-        <enemy X="2" Y="0">Armos</enemy>
-        <enemy X="2" Y="2">Armos</enemy>
-        <enemy X="7" Y="2">Armos</enemy>
-        <enemy X="0" Y="4">Armos</enemy>
-        <enemy X="4" Y="4">Armos</enemy>
-        <enemy X="7" Y="4">Armos</enemy>
-        <enemy X="2" Y="6">Armos</enemy>
-        <enemy X="3" Y="6">Armos</enemy>
+        <enemy X="2" Y="0">Darknut</enemy>
+        <enemy X="2" Y="2">Darknut</enemy>
+        <enemy X="7" Y="2">Darknut</enemy>
+        <enemy X="0" Y="4">Darknut</enemy>
+        <enemy X="4" Y="4">Darknut</enemy>
+        <enemy X="7" Y="4">Darknut</enemy>
+        <enemy X="2" Y="6">Darknut</enemy>
+        <enemy X="3" Y="6">Darknut</enemy>
       </enemies>
       <doors>
         <door loc="N">unlocked</door>
@@ -670,7 +670,7 @@
         <tile type="block" idx="11">movable_square3</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="walkable" idx="6">stairs3</tile>
+        <tile type="stairs" idx="11" room="0,5" loc="3,0" hidden="False">stairs</tile>
       </rrow>
       <rrow idx="4">
         <tile type="block" idx="9">movable_square3</tile>
@@ -691,13 +691,13 @@
       </rrow>
     </room>
     <room exists="False" idx="1">
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <enemies>
-          <enemy X="4" Y="0">Zol3</enemy>
-          <enemy X="8" Y="1">Zol3</enemy>
-          <enemy X="6" Y="2">Zol3</enemy>
-          <enemy X="5" Y="3">Zol3</enemy>
-          <enemy X="3" Y="5">Zol3</enemy>
+          <enemy X="4" Y="0">Zol</enemy>
+          <enemy X="8" Y="1">Zol</enemy>
+          <enemy X="6" Y="2">Zol</enemy>
+          <enemy X="5" Y="3">Zol</enemy>
+          <enemy X="3" Y="5">Zol</enemy>
         </enemies>
       <items>
         <item X="6" Y="3">Key</item>
@@ -745,7 +745,7 @@
   </drow>
   <drow idx="5">
     <!-- 0 - 0 maps to top left corner  -->
-    <room exists="True" idx="0">
+    <room exists="True" oldman="False" basement="True" idx="0">
       <border>black</border>
       <enemies>
         <enemy X="10" Y="3">Keese</enemy>
@@ -754,7 +754,7 @@
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
       <items>
-        <item X="8" Y="3">Raft</item>
+        <item X="6" Y="1">WhiteSword</item>
       </items>
       <rrow idx="0">
         <tile type="block" idx="0">basement_brick_tile</tile>
@@ -898,18 +898,18 @@
     </room>
     <room exists="False" idx="1">
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <doors>
         <door loc="N">unlocked</door>
         <door loc="E">unlocked</door>
       </doors>
       <enemies>
-        <enemy X="0" Y="1">Zol3</enemy>
-        <enemy X="0" Y="2">Zol3</enemy>
-        <enemy X="4" Y="2">Zol3</enemy>
-        <enemy X="1" Y="4">Zol3</enemy>
-        <enemy X="4" Y="4">Zol3</enemy>
-        <enemy X="8" Y="5">Zol3</enemy>
+        <enemy X="0" Y="1">Zol</enemy>
+        <enemy X="0" Y="2">Zol</enemy>
+        <enemy X="4" Y="2">Zol</enemy>
+        <enemy X="1" Y="4">Zol</enemy>
+        <enemy X="4" Y="4">Zol</enemy>
+        <enemy X="8" Y="5">Zol</enemy>
       </enemies>
       <items>
         <item X="6" Y="3">Key</item>
@@ -933,10 +933,10 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
       <doors>
         <door loc="W">unlocked</door>
-        <door loc="S">cosmetic</door>
+        <door loc="S"></door>
       </doors>
       <rrow idx="0">
       </rrow>

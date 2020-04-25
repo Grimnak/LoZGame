@@ -7,26 +7,41 @@
     {
         public Dodongo(Vector2 location)
         {
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.DodongoStatelist);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.DodongoHealth);
-            this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.DodongoMass;
-            this.Physics.IsMoveable = false;
-            this.CurrentState = new SpawnDodongoState(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.IsDead = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.DodongoDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DodongoSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.DodongoStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.DodongoHealth);
+            Physics = new Physics(location);
+            Physics.Mass = GameData.Instance.EnemyMassConstants.DodongoMass;
+            Physics.IsMoveable = false;
+            CurrentState = new SpawnEnemyState(this);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.DodongoDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.DodongoSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            AI = EnemyAI.Dodongo;
+            DropTable = GameData.Instance.EnemyDropTables.DodongoDropTable;
+            ApplyDamageMod();
+            ApplySmallSpeedMod();
+            ApplyLargeWeightModPos();
+            ApplyLargeHealthMod();
+        }
+
+        public override void Attack()
+        {
+            CurrentState = new AttackingDodongoState(this);
+        }
+
+        public override void Stun(int stunTime)
+        {
+            CurrentState = new StunnedDodongoState(this);
         }
 
         public override ISprite CreateCorrectSprite()
         {
-            switch (this.Physics.CurrentDirection)
+            switch (Physics.CurrentDirection)
             {
                 case Physics.Direction.North:
                     return EnemySpriteFactory.Instance.CreateUpMovingDodongoSprite();

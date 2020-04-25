@@ -40,33 +40,33 @@
 
         public void Update()
         {
-            foreach (KeyValuePair<int, IItem> item in this.itemList)
+            foreach (KeyValuePair<int, IItem> item in itemList)
             {
                 if (item.Value.Expired)
                 {
-                    this.deletable.Add(item.Key);
+                    deletable.Add(item.Key);
                 }
             }
 
-            foreach (int index in this.deletable)
+            foreach (int index in deletable)
             {
-                this.RemoveItem(index);
+                RemoveItem(index);
             }
 
-            this.deletable.Clear();
+            deletable.Clear();
 
-            this.items.Clear();
+            items.Clear();
 
-            foreach (KeyValuePair<int, IItem> item in this.itemList)
+            foreach (KeyValuePair<int, IItem> item in itemList)
             {
-                this.items.Add(item.Value);
+                items.Add(item.Value);
                 item.Value.Update();
             }
         }
 
         public void Draw()
         {
-            foreach (KeyValuePair<int, IItem> item in this.itemList)
+            foreach (KeyValuePair<int, IItem> item in itemList)
             {
                 item.Value.Draw(LoZGame.Instance.DefaultTint);
             }

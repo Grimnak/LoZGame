@@ -21,22 +21,28 @@
         private const string SpottedTile2 = "spotted_tile2";
         private const string BossTile2 = "boss_tile2";
         private const string Lava2 = "lava2";
+        private const string Stairs3 = "stairs3";
+        private const string SpottedTile3 = "spotted_tile3";
+        private const string SpottedTile4 = "spotted_tile4";
 
         private ISprite sprite;
         private Color spriteTint = LoZGame.Instance.DefaultTint;
         private Rectangle bounds;
+        private bool isTransparent;
+
+        public bool IsTransparent { get { return isTransparent; } set { isTransparent = value; } }
 
         public Rectangle Bounds
         {
-            get { return this.Physics.Bounds; }
-            set { this.Physics.Bounds = value; }
+            get { return Physics.Bounds; }
+            set { Physics.Bounds = value; }
         }
 
         public Physics Physics { get; set; }
 
         public string Name { get; }
 
-        public List<MovableTile.InvalidDirection> InvalidDirections { get { return null; } }
+        public List<MovableBlock.InvalidDirection> InvalidDirections { get { return null; } }
 
         private BlockCollisionHandler blockCollisionHandler;
 
@@ -47,12 +53,14 @@
         /// <param name="name">Name of the tiles sprite.</param>
         public Tile(Vector2 location, string name)
         {
-            this.blockCollisionHandler = new BlockCollisionHandler(this);
-            this.Physics = new Physics(location);
-            this.Name = name;
-            this.sprite = this.CreateCorrectSprite(name);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
-            this.Physics.Depth = GameData.Instance.RoomConstants.TileDepth;
+            blockCollisionHandler = new BlockCollisionHandler(this);
+            Physics = new Physics(location);
+            Name = name;
+            isTransparent = true;
+            spriteTint = Color.Gray;
+            sprite = CreateCorrectSprite(name);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, (int)BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
+            Physics.Depth = GameData.Instance.RoomConstants.TileDepth;
         }
 
         /// <inheritdoc/>
@@ -67,17 +75,30 @@
                 case LadderTile:
                     return BlockSpriteFactory.Instance.LadderTile();
                 case SpottedTile:
-                    return BlockSpriteFactory.Instance.SpottedTile();
+                    spriteTint = LoZGame.Instance.DungeonTint;
+                    return DungeonSpriteFactory.Instance.SpottedTile();
                 case Stairs:
-                    return BlockSpriteFactory.Instance.Stairs();
+                    spriteTint = LoZGame.Instance.DungeonTint;
+                    return DungeonSpriteFactory.Instance.Stairs();
                 case SpottedTile2:
-                    return BlockSpriteFactory.Instance.SpottedTile2();
+                    spriteTint = LoZGame.Instance.DungeonTint;
+                    return DungeonSpriteFactory.Instance.SpottedTile();
                 case BossTile2:
                     return BlockSpriteFactory.Instance.BossTile2();
                 case Lava2:
                     return BlockSpriteFactory.Instance.LavaTile2();
+                case Stairs3:
+                    spriteTint = LoZGame.Instance.DungeonTint;
+                    return DungeonSpriteFactory.Instance.Stairs();
+                case SpottedTile3:
+                    spriteTint = LoZGame.Instance.DungeonTint;
+                    return DungeonSpriteFactory.Instance.SpottedTile();
+                case SpottedTile4:
+                    spriteTint = LoZGame.Instance.DungeonTint;
+                    return DungeonSpriteFactory.Instance.SpottedTile();
                 default:
-                    return BlockSpriteFactory.Instance.FloorTile();
+                    spriteTint = LoZGame.Instance.DungeonTint;
+                    return DungeonSpriteFactory.Instance.FloorTile();
             }
         }
 
@@ -89,14 +110,14 @@
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
+            sprite.Draw(Physics.Location, spriteTint, Physics.Depth);
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IPlayer)
             {
-                this.blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                blockCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
         }
 

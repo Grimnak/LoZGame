@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using Microsoft.Xna.Framework;
 
@@ -10,6 +11,15 @@
         private float xDirection;
         private float yDirection;
 
+        private List<EnemyEssentials.EnemyAI> collisionBlackList = new List<EnemyEssentials.EnemyAI>()
+        {
+            EnemyEssentials.EnemyAI.Keese,
+            EnemyEssentials.EnemyAI.Manhandla,
+            EnemyEssentials.EnemyAI.ManHandlaHead,
+            EnemyEssentials.EnemyAI.NoAI,
+            EnemyEssentials.EnemyAI.WallMaster
+        };
+
         public BlockCollisionHandler(IBlock block)
         {
             this.block = block;
@@ -18,33 +28,30 @@
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
             bool movable = true;
-            if (!(player.State is GrabbedState) && this.block is MovableTile)
+            if (!(player.State is GrabbedState) && block is MovableBlock)
             {
-                foreach (MovableTile.InvalidDirection invalid in this.block.InvalidDirections)
+                switch (collisionSide)
                 {
-                    switch (invalid)
-                    {
-                        case MovableTile.InvalidDirection.North:
-                            movable = !(collisionSide == CollisionDetection.CollisionSide.Bottom);
-                            break;
-                        case MovableTile.InvalidDirection.South:
-                            movable = !(collisionSide == CollisionDetection.CollisionSide.Top);
-                            break;
-                        case MovableTile.InvalidDirection.East:
-                            movable = !(collisionSide == CollisionDetection.CollisionSide.Right);
-                            break;
-                        case MovableTile.InvalidDirection.West:
-                            movable = !(collisionSide == CollisionDetection.CollisionSide.Left);
-                            break;
-                    }
+                    case CollisionDetection.CollisionSide.Top:
+                        movable = !block.InvalidDirections.Contains(MovableBlock.InvalidDirection.North);
+                        break;
+                    case CollisionDetection.CollisionSide.Bottom:
+                        movable = !block.InvalidDirections.Contains(MovableBlock.InvalidDirection.South);
+                        break;
+                    case CollisionDetection.CollisionSide.Right:
+                        movable = !block.InvalidDirections.Contains(MovableBlock.InvalidDirection.East);
+                        break;
+                    case CollisionDetection.CollisionSide.Left:
+                        movable = !block.InvalidDirections.Contains(MovableBlock.InvalidDirection.West);
+                        break;
                 }
                 if (movable)
                 {
                     DeterminePushVelocity(player, collisionSide);
                 }
-                this.SetBounds(this.block.Physics, player.Physics, collisionSide);
+                SetBounds(block.Physics, player.Physics, collisionSide);
             }
-            else if (this.block is Tile)
+            else if (block is Tile)
             {
                 SoundFactory.Instance.PlayClimbStairs();
                 LoZGame.Instance.CollisionDetector.MoveToBasement = true;
@@ -53,24 +60,37 @@
             {
                 if (!(player.State is GrabbedState))
                 {
-                    this.SetBounds(this.block.Physics, player.Physics, collisionSide);
+                    SetBounds(block.Physics, player.Physics, collisionSide);
+                }
+            }
+            else if (block is CrossableTile)
+            {
+                if (!(player.State is GrabbedState) && (!player.Inventory.HasLadder || player.Inventory.LadderInUse))
+                {
+                    if (!((CrossableTile)block).BeingCrossed)
+                    {
+                        SetBounds(block.Physics, player.Physics, collisionSide);
+                    }
                 }
             }
         }
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(enemy is Keese || enemy is WallMaster))
+            if (!collisionBlackList.Contains(enemy.AI))
             {
-                this.SetBounds(this.block.Physics, enemy.Physics, collisionSide);
+                if (enemy.AI != EnemyEssentials.EnemyAI.PolsVoice)
+                {
+                    SetBounds(block.Physics, enemy.Physics, collisionSide);
+                }
             }
         }
 
         private void DeterminePushVelocity(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
             DeterminePushDirection(collisionSide);
-            this.block.Physics.MovementVelocity = new Vector2(xDirection * (int)player.MoveSpeed, yDirection * (int)player.MoveSpeed);
-            this.block.Physics.MovementAcceleration = new Vector2(xDirection * GameData.Instance.CollisionConstants.MovableBlockAcceleration, yDirection * GameData.Instance.CollisionConstants.MovableBlockAcceleration);
+            block.Physics.MovementVelocity = new Vector2(xDirection * (int)player.MoveSpeed, yDirection * (int)player.MoveSpeed);
+            block.Physics.MovementAcceleration = new Vector2(xDirection * GameData.Instance.CollisionConstants.MovableBlockAcceleration, yDirection * GameData.Instance.CollisionConstants.MovableBlockAcceleration);
         }
 
         private void DeterminePushDirection(CollisionDetection.CollisionSide collisionSide)

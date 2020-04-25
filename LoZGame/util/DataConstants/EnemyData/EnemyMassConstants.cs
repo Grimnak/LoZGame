@@ -10,9 +10,17 @@ namespace LoZClone
         private const int GelMss = 8;
         private const int DragonMss = 24;
         private const int DodongoMss = 12;
-        private const int SpikeCrossMss = 16;
+        private const int SpikeCrossMss = 8;
         private const int WallMasterMss = 14;
         private const int FireSnakeMss = 20;
+        private const int DarknutMss = 18;
+        private const int VireMss = 16;
+        private const int BubbleMss = 8;
+        private const int GibdoMss = 14;
+        private const int LikelikeMss = 16;
+        private const int PolsVoiceMss = 12;
+        private const int DigDoggerSmallMss = 12;
+        private const int DigDoggerLargeMss = 24;
 
         public int StalfosMass { get { return StalfosMss; } }
         
@@ -35,5 +43,22 @@ namespace LoZClone
         public int WallMasterMass { get { return WallMasterMss; } }
 
         public int FireSnakeMass => FireSnakeMss;
+
+        public int DarknutMass => DarknutMss;
+
+        public int BubbleMass => BubbleMss;
+
+        public int VireMass => VireMss;
+
+        public int GibdoMass => GibdoMss;
+
+        public int LikelikeMass => LikelikeMss;
+
+        public int PolsVoiceMass => PolsVoiceMss;
+
+        public int DigDoggerSmallMass => DigDoggerSmallMss;
+
+        public int DigDoggerLargeMass => DigDoggerLargeMss;
+
     }
 }

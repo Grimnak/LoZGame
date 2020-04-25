@@ -16,35 +16,35 @@
 
         public SwordBeamExplosion(Physics physics)
         {
-            this.SetUp(this);
-            this.Physics = physics;
-            this.lifeTime = MaxLifeTime;
-            this.Speed = projectileSpeedData.SwordBeamExplosionSpeed;
+            SetUp(this);
+            Physics = physics;
+            lifeTime = MaxLifeTime;
+            Speed = projectileSpeedData.SwordBeamExplosionSpeed;
             Width = ProjectileSpriteFactory.Instance.StandardWidth * scale;
             Heigth = ProjectileSpriteFactory.Instance.SwordBeamExplosionHeight * scale;
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, 0, 0);
-            this.Physics.BoundsOffset = new Vector2(Width, Heigth) / 4;
-            this.Physics.SetLocation();
-            this.Sprite = ProjectileSpriteFactory.Instance.SwordExplosion();
-            this.Physics.Mass = GameData.Instance.ProjectileMassConstants.SwordBeamMass;
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, 0, 0);
+            Physics.BoundsOffset = new Vector2(Width, Heigth) / 4;
+            Physics.SetLocation();
+            Sprite = ProjectileSpriteFactory.Instance.SwordExplosion();
+            Physics.Mass = GameData.Instance.ProjectileMassConstants.SwordBeamMass;
 
-            switch (this.Physics.CurrentDirection)
+            switch (Physics.CurrentDirection)
             {
                 case Physics.Direction.NorthWest:
-                    this.Physics.MovementVelocity = new Vector2(-1 * Speed, -1 * Speed);
-                    this.Data.SpriteEffect = SpriteEffects.None;
+                    Physics.MovementVelocity = new Vector2(-1 * Speed, -1 * Speed);
+                    Data.SpriteEffect = SpriteEffects.None;
                     break;
                 case Physics.Direction.SouthEast:
-                    this.Physics.MovementVelocity = new Vector2(Speed, Speed);
-                    this.Data.SpriteEffect = SpriteEffects.FlipHorizontally | SpriteEffects.FlipVertically;
+                    Physics.MovementVelocity = new Vector2(Speed, Speed);
+                    Data.SpriteEffect = SpriteEffects.FlipHorizontally | SpriteEffects.FlipVertically;
                     break;
                 case Physics.Direction.SouthWest:
-                    this.Physics.MovementVelocity = new Vector2(-1 * Speed, Speed);
-                    this.Data.SpriteEffect = SpriteEffects.FlipVertically;
+                    Physics.MovementVelocity = new Vector2(-1 * Speed, Speed);
+                    Data.SpriteEffect = SpriteEffects.FlipVertically;
                     break;
                 default:
-                    this.Physics.MovementVelocity = new Vector2(Speed, -1 * Speed);
-                    this.Data.SpriteEffect = SpriteEffects.FlipHorizontally;
+                    Physics.MovementVelocity = new Vector2(Speed, -1 * Speed);
+                    Data.SpriteEffect = SpriteEffects.FlipHorizontally;
                     break;
             }
         }
@@ -60,10 +60,10 @@
         public override void Update()
         {
             base.Update();
-            this.lifeTime--;
-            if (this.lifeTime <= 0)
+            lifeTime--;
+            if (lifeTime <= 0)
             {
-                this.IsExpired = true;
+                IsExpired = true;
             }
         }
     }

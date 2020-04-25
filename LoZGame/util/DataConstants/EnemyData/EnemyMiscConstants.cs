@@ -10,15 +10,19 @@ namespace LoZClone
         private const int FireSnakeLgth = 5;
         private const int LinkPixelBuff = 5;
         private const int DodongoMaxFrame = 2;
-        private const int KeeseIdleMax = 5;
-        private const int GelIdleMin = 18;
-        private const int GelIdleMax = 30;
-        private const int GelMovementT = 17;
-        private const int ZolMaxWait = 12;
 
+        private const float VireGrav = .2f;
+        private const float PolsVoiceGrav = .075f;
+
+        private const int snakeUpdateTime = 10;
+        private const int swordBeamSuccessRate = 20;
+
+        private const int BubbleFavorCardinal = 2;
         private const int DodongoFavorCardinal = 5;
         private const int FireSnakeFavorCardinal = 9;
         private const int FireSnakeFavorDiagonal = 9;
+        private const int DigDoggerFavorCardinal = 9;
+        private const int DigDoggerFavorDiagonal = 9;
         private const int GelFavorCardinal = 3;
         private const int GoriyaFavorCardinal = 2;
         private const int KeeseFavorCardinal = 3;
@@ -27,8 +31,10 @@ namespace LoZClone
         private const int StalfosFavorCardinal = 3;
         private const int WallMasterFavorCardinal = 3;
         private const int ZolFavorCardinal = 3;
-
-
+        private const int DarknutFavorCardinal = 3;
+        private const int VireFavorCardinal = 3;
+        private const int LikelikeFavorCardinal = 3;
+        private const int PolsVoiceFavorCardinal = 3;
 
         public int FireSnakeLength => FireSnakeLgth;
 
@@ -46,21 +52,21 @@ namespace LoZClone
 
         public int DodongoMaximumFrame => DodongoMaxFrame;
 
-        public int KeeseIdleMaximum => KeeseIdleMax;
+        public float VireGravity => VireGrav;
 
-        public int GelMinIdle => GelIdleMin;
+        public float PolsVoiceGravity => PolsVoiceGrav;
 
-        public int GelMaxIdle => GelIdleMax;
-
-        public int GelMovementTime => GelMovementT;
-
-        public int ZolMaximumWait => ZolMaxWait;
+        public int BubbleFavorCardinalValue => BubbleFavorCardinal;
 
         public int DodongoFavorCardinalValue => DodongoFavorCardinal;
 
         public int FireSnakeFavorCardinalValue => FireSnakeFavorCardinal;
 
         public int FireSnakeFavorDiagonalValue => FireSnakeFavorDiagonal;
+
+        public int DigDoggerFavorCardinalValue => DigDoggerFavorCardinal;
+
+        public int DigDoggerFavorDiagonalValue => DigDoggerFavorDiagonal;
 
         public int GelFavorCardinalValue => GelFavorCardinal;
 
@@ -78,8 +84,17 @@ namespace LoZClone
 
         public int ZolFavorCardinalValue => ZolFavorCardinal;
 
-        public double SpikeCrossVertBoundary => (BlockSpriteFactory.Instance.TileHeight * 3.5) + (BlockSpriteFactory.Instance.TopOffset / 2) + (LoZGame.Instance.InventoryOffset / 2);
+        public int DarknutFavorCardinalValue => DarknutFavorCardinal;
 
-        public double SpikeCrossHorizontalBoundary => (BlockSpriteFactory.Instance.TileWidth * 6) + (BlockSpriteFactory.Instance.HorizontalOffset / 2);
+        public int VireFavorCardinalValue => VireFavorCardinal;
+
+        public int UpdateSegmentTime => snakeUpdateTime;
+
+        public int ProjectileSuccess => swordBeamSuccessRate;
+
+        public int LikelikeFavorCardinalValue => LikelikeFavorCardinal;
+
+        public int PolsVoiceFavorCardinalValue => PolsVoiceFavorCardinal;
+
     }
 }

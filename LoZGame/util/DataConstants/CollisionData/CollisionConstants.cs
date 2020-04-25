@@ -2,11 +2,12 @@
 {
     public struct CollisionConstants
     {
-        private const int RightBndCorrection = 10;
         private const float MovableBlockAccel = -0.5f;
 
-        public int RightBoundCorrection => RightBndCorrection;
-
         public float MovableBlockAcceleration => MovableBlockAccel;
+
+        public const int PlayerLocationXOffset = 5;
+
+        public const int PlayerLocationYOffset = 16;
     }
 }

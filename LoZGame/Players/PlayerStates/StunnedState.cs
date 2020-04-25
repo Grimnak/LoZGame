@@ -20,12 +20,12 @@
         /// <param name="stunTime">The amount of time the player is stunned.</param>
         public StunnedState(IPlayer playerInstance, IPlayerState oldState, int stunTime)
         {
-            this.player = playerInstance;
+            player = playerInstance;
             this.oldState = oldState;
-            this.oldVelocity = this.player.Physics.MovementVelocity;
-            this.player.Physics.MovementVelocity = Vector2.Zero;
-            this.stunDuration = stunTime;
-            this.player.CurrentTint = LoZGame.Instance.DefaultTint;
+            oldVelocity = player.Physics.MovementVelocity;
+            player.Physics.MovementVelocity = Vector2.Zero;
+            stunDuration = stunTime;
+            player.CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         /// <inheritdoc/>
@@ -61,7 +61,7 @@
         /// <inheritdoc/>
         public void Die()
         {
-            this.player.State = new DieState(this.player);
+            player.State = new DieState(player);
         }
 
         /// <inheritdoc/>
@@ -86,15 +86,15 @@
             stunDuration--;
             if (stunDuration <= 0)
             {
-                this.player.Physics.MovementVelocity = oldVelocity;
-                this.player.State = oldState;
+                player.Physics.MovementVelocity = oldVelocity;
+                player.State = oldState;
             }
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.oldState.Draw();
+            oldState.Draw();
         }
     }
 }

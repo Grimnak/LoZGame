@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class TitleScreenState : IGameState
+    public class TitleScreenState : GameStateEssentials, IGameState
     {
         private readonly ISprite sprite;
         private readonly ISprite enter;
@@ -13,14 +13,15 @@
         {
             SoundFactory.Instance.StopDungeonSong();
             SoundFactory.Instance.PlayTitleSong();
-            this.sprite = ScreenSpriteFactory.Instance.TitleScreen();
-            this.enter = ScreenSpriteFactory.Instance.PressEnter();
-            this.sprite.FrameDelay = GameData.Instance.GameStateDataConstants.TitleScreenFrameDelay;
+            sprite = ScreenSpriteFactory.Instance.TitleScreen();
+            enter = ScreenSpriteFactory.Instance.PressEnter();
+            sprite.FrameDelay = GameData.Instance.GameStateDataConstants.TitleScreenFrameDelay;
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
 
             LoZGame.Instance.Dungeon = new Dungeon(LoZGame.StartDungeon);
             LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
+            LoZGame.Instance.Dungeon.LoadNewRoom();
 
             LoZGame.Instance.Link = new Link(new Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + GameData.Instance.GameStateDataConstants.HorizontalHalfDungeon),
@@ -54,25 +55,7 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Death()
-        {
-            // Can't die on title screen.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void OpenInventory()
-        {
-            // Can't access inventory from title screen.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void CloseInventory()
-        {
-            // Can't close inventory when it's not open.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void PlayGame()
+        public override void PlayGame()
         {
             SoundFactory.Instance.StopAll();
             SoundFactory.Instance.PlayDungeonSong();
@@ -80,28 +63,16 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TitleScreen()
+        public override void TitleScreen()
         {
             // Can perform a hard reset while in this state already.
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TransitionRoom(Physics.Direction direction)
+        public override void Update()
         {
-            // Can't transition room from title screen.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void WinGame()
-        {
-            // Can't win game from the title screen.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void Update()
-        {
-            this.sprite.Update();
+            sprite.Update();
             for (int i = 0; i < LoZGame.Instance.Controllers.Count; i++)
             {
                 LoZGame.Instance.Controllers[i].Update();
@@ -113,13 +84,12 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Draw()
+        public override void Draw()
         {
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            this.sprite.Draw(new Vector2(0, 0), this.spriteTint, 1.0f);
-            if (this.sprite.CurrentFrame > 3)
-                this.enter.Draw(new Vector2(GameData.Instance.GameStateDataConstants.TitleDrawX, GameData.Instance.GameStateDataConstants.TitleDrawY), this.spriteTint, 1.0f);
-            // LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "TITLE SCREEN - PRESS ENTER " + this.sprite.CurrentFrame, new Vector2(100, 100), Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+            sprite.Draw(new Vector2(0, 0), spriteTint, 1.0f);
+            if (sprite.CurrentFrame > 3)
+                enter.Draw(new Vector2(GameData.Instance.GameStateDataConstants.TitleDrawX, GameData.Instance.GameStateDataConstants.TitleDrawY), spriteTint, 1.0f);
             LoZGame.Instance.SpriteBatch.End();
         }
     }

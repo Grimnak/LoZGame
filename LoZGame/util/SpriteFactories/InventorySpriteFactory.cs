@@ -60,6 +60,17 @@
         private SpriteData whiteSwordData;
         private Texture2D magicSwordSpriteSheet;
         private SpriteData magicSwordData;
+        private Texture2D fluteSpriteSheet;
+        private SpriteData fluteData;
+        private Texture2D itemSelector2;
+        private SpriteData itemSelectorFalse;
+        private SpriteData itemSelectorTrue;
+        private SpriteData itemSelectorEasy;
+        private SpriteData itemSelectorNormal;
+        private SpriteData itemSelectorHard;
+        private SpriteData itemSelectorNightmare;
+        private Texture2D spartanLaserSpriteSheet;
+        private SpriteData spartanLaserData;
 
         private static readonly InventorySpriteFactory InstanceValue = new InventorySpriteFactory();
 
@@ -67,153 +78,212 @@
 
         public void LoadAllTextures(ContentManager content)
         {
-            this.inventoryBackgroundSpriteSheet = content.Load<Texture2D>("Inventory");
-            this.inventoryBackgroundData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), inventoryBackgroundSpriteSheet, 1, 1);
-            this.fullHeartSpriteSheet = content.Load<Texture2D>("HUDFullHeart");
-            this.fullHeartData = new SpriteData(heartSize, fullHeartSpriteSheet, 1, 1);
-            this.threeQuarterHeartSpriteSheet = content.Load<Texture2D>("HUDThreeQuarterHeart");
-            this.threeQuarterHeartData = new SpriteData(heartSize, threeQuarterHeartSpriteSheet, 1, 1);
-            this.halfHeartSpriteSheet = content.Load<Texture2D>("HUDHalfHeart");
-            this.halfHeartData = new SpriteData(heartSize, halfHeartSpriteSheet, 1, 1);
-            this.quarterHeartSpriteSheet = content.Load<Texture2D>("HUDQuarterHeart");
-            this.quarterHeartData = new SpriteData(heartSize, quarterHeartSpriteSheet, 1, 1);
-            this.emptyHeartSpriteSheet = content.Load<Texture2D>("HUDEmptyHeart");
-            this.emptyHeartData = new SpriteData(heartSize, emptyHeartSpriteSheet, 1, 1);
-            this.mapSpriteSheet = content.Load<Texture2D>("Map");
-            this.mapData = new SpriteData(mapSize, mapSpriteSheet, 1, 1);
-            this.compassSpriteSheet = content.Load<Texture2D>("Compass");
-            this.compassData = new SpriteData(compassSize, compassSpriteSheet, 1, 1);
-            this.bombSpriteSheet = content.Load<Texture2D>("Bomb");
-            this.bombData = new SpriteData(itemSize, bombSpriteSheet, 1, 1);
-            this.boomerangSpriteSheet = content.Load<Texture2D>("Boomerang");
-            this.boomerangData = new SpriteData(itemSize, boomerangSpriteSheet, 1, 1);
-            this.arrowSpriteSheet = content.Load<Texture2D>("WoodenArrow");
-            this.arrowData = new SpriteData(itemSize, arrowSpriteSheet, 1, 1);
-            this.blueCandleSpriteSheet = content.Load<Texture2D>("BlueCandle");
-            this.blueCandleData = new SpriteData(itemSize, blueCandleSpriteSheet, 1, 1);
-            this.redHealthPotionSpriteSheet = content.Load<Texture2D>("LifePotion");
-            this.redHealthPotionData = new SpriteData(itemSize, redHealthPotionSpriteSheet, 1, 1);
-            this.blueHealthPotionSpriteSheet = content.Load<Texture2D>("SecondPotion");
-            this.blueHealthPotionData = new SpriteData(itemSize, blueHealthPotionSpriteSheet, 1, 1);
-            this.magicBoomerangSpriteSheet = content.Load<Texture2D>("MagicBoomerang");
-            this.magicBoomerangData = new SpriteData(itemSize, magicBoomerangSpriteSheet, 1, 1);
-            this.silverArrowSpriteSheet = content.Load<Texture2D>("SilverArrow");
-            this.silverArrowData = new SpriteData(itemSize, silverArrowSpriteSheet, 1, 1);
-            this.redCandleSpriteSheet = content.Load<Texture2D>("RedCandle");
-            this.redCandleData = new SpriteData(itemSize, redCandleSpriteSheet, 1, 1);
-            this.selectionReticuleSpriteSheet = content.Load<Texture2D>("HUDSelector");
-            this.selectionReticuleData = new SpriteData(itemSelectorSize, selectionReticuleSpriteSheet, 1, 1);
-            this.woodenSwordSpriteSheet = content.Load<Texture2D>("WoodenSword");
-            this.woodenSwordData = new SpriteData(swordSize, woodenSwordSpriteSheet, 1, 1);
-            this.whiteSwordSpriteSheet = content.Load<Texture2D>("WhiteSword");
-            this.whiteSwordData = new SpriteData(swordSize, whiteSwordSpriteSheet, 1, 1);
-            this.magicSwordSpriteSheet = content.Load<Texture2D>("MagicSword");
-            this.magicSwordData = new SpriteData(swordSize, magicSwordSpriteSheet, 1, 1);
+            inventoryBackgroundSpriteSheet = content.Load<Texture2D>("Inventory");
+            inventoryBackgroundData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), inventoryBackgroundSpriteSheet, 1, 1);
+            fullHeartSpriteSheet = content.Load<Texture2D>("HUDFullHeart");
+            fullHeartData = new SpriteData(heartSize, fullHeartSpriteSheet, 1, 1);
+            threeQuarterHeartSpriteSheet = content.Load<Texture2D>("HUDThreeQuarterHeart");
+            threeQuarterHeartData = new SpriteData(heartSize, threeQuarterHeartSpriteSheet, 1, 1);
+            halfHeartSpriteSheet = content.Load<Texture2D>("HUDHalfHeart");
+            halfHeartData = new SpriteData(heartSize, halfHeartSpriteSheet, 1, 1);
+            quarterHeartSpriteSheet = content.Load<Texture2D>("HUDQuarterHeart");
+            quarterHeartData = new SpriteData(heartSize, quarterHeartSpriteSheet, 1, 1);
+            emptyHeartSpriteSheet = content.Load<Texture2D>("HUDEmptyHeart");
+            emptyHeartData = new SpriteData(heartSize, emptyHeartSpriteSheet, 1, 1);
+            mapSpriteSheet = content.Load<Texture2D>("Map");
+            mapData = new SpriteData(mapSize, mapSpriteSheet, 1, 1);
+            compassSpriteSheet = content.Load<Texture2D>("Compass");
+            compassData = new SpriteData(compassSize, compassSpriteSheet, 1, 1);
+            bombSpriteSheet = content.Load<Texture2D>("Bomb");
+            bombData = new SpriteData(itemSize, bombSpriteSheet, 1, 1);
+            boomerangSpriteSheet = content.Load<Texture2D>("Boomerang");
+            boomerangData = new SpriteData(itemSize, boomerangSpriteSheet, 1, 1);
+            arrowSpriteSheet = content.Load<Texture2D>("WoodenArrow");
+            arrowData = new SpriteData(itemSize, arrowSpriteSheet, 1, 1);
+            blueCandleSpriteSheet = content.Load<Texture2D>("BlueCandle");
+            blueCandleData = new SpriteData(itemSize, blueCandleSpriteSheet, 1, 1);
+            redHealthPotionSpriteSheet = content.Load<Texture2D>("LifePotion");
+            redHealthPotionData = new SpriteData(itemSize, redHealthPotionSpriteSheet, 1, 1);
+            blueHealthPotionSpriteSheet = content.Load<Texture2D>("SecondPotion");
+            blueHealthPotionData = new SpriteData(itemSize, blueHealthPotionSpriteSheet, 1, 1);
+            magicBoomerangSpriteSheet = content.Load<Texture2D>("MagicBoomerang");
+            magicBoomerangData = new SpriteData(itemSize, magicBoomerangSpriteSheet, 1, 1);
+            silverArrowSpriteSheet = content.Load<Texture2D>("SilverArrow");
+            silverArrowData = new SpriteData(itemSize, silverArrowSpriteSheet, 1, 1);
+            redCandleSpriteSheet = content.Load<Texture2D>("RedCandle");
+            redCandleData = new SpriteData(itemSize, redCandleSpriteSheet, 1, 1);
+            selectionReticuleSpriteSheet = content.Load<Texture2D>("HUDSelector");
+            selectionReticuleData = new SpriteData(itemSelectorSize, selectionReticuleSpriteSheet, 1, 1);
+            fluteSpriteSheet = content.Load<Texture2D>("Flute");
+            fluteData = new SpriteData(itemSize, silverArrowSpriteSheet, 1, 1);
+            woodenSwordSpriteSheet = content.Load<Texture2D>("WoodenSword");
+            woodenSwordData = new SpriteData(swordSize, woodenSwordSpriteSheet, 1, 1);
+            whiteSwordSpriteSheet = content.Load<Texture2D>("WhiteSword");
+            whiteSwordData = new SpriteData(swordSize, whiteSwordSpriteSheet, 1, 1);
+            magicSwordSpriteSheet = content.Load<Texture2D>("MagicSword");
+            magicSwordData = new SpriteData(swordSize, magicSwordSpriteSheet, 1, 1);
+            itemSelector2 = content.Load<Texture2D>("SelectorSprite2");
+            spartanLaserSpriteSheet = content.Load<Texture2D>("SpartanLaserInventory");
+            spartanLaserData = new SpriteData(new Vector2(8, 20), spartanLaserSpriteSheet, 1, 1);
+            itemSelectorFalse = new SpriteData(new Vector2(80, 37), itemSelector2, 1, 1);
+            itemSelectorTrue = new SpriteData(new Vector2(70, 37), itemSelector2, 1, 1);
+            itemSelectorEasy = new SpriteData(new Vector2(87, 37), itemSelector2, 1, 1);
+            itemSelectorNormal = new SpriteData(new Vector2(140, 37), itemSelector2, 1, 1);
+            itemSelectorHard = new SpriteData(new Vector2(90, 37), itemSelector2, 1, 1);
+            itemSelectorNightmare = new SpriteData(new Vector2(192, 37), itemSelector2, 1, 1);
+        }
+
+        public ISprite CreateSpartanLaser()
+        {
+            return new ObjectSprite(spartanLaserSpriteSheet, spartanLaserData);
         }
 
         public ISprite CreateInventoryBackground()
         {
-            return new ObjectSprite(this.inventoryBackgroundSpriteSheet, this.inventoryBackgroundData);
+            return new ObjectSprite(inventoryBackgroundSpriteSheet, inventoryBackgroundData);
+        }
+
+        public ISprite CreateInventoryFlute()
+        {
+            return new ObjectSprite(fluteSpriteSheet, fluteData);
         }
 
         public ISprite CreateFullHeart()
         {
-            return new ObjectSprite(this.fullHeartSpriteSheet, this.fullHeartData);
+            return new ObjectSprite(fullHeartSpriteSheet, fullHeartData);
         }
 
         public ISprite CreateThreeQuarterHeart()
         {
-            return new ObjectSprite(this.threeQuarterHeartSpriteSheet, this.threeQuarterHeartData);
+            return new ObjectSprite(threeQuarterHeartSpriteSheet, threeQuarterHeartData);
         }
 
         public ISprite CreateHalfHeart()
         {
-            return new ObjectSprite(this.halfHeartSpriteSheet, this.halfHeartData);
+            return new ObjectSprite(halfHeartSpriteSheet, halfHeartData);
         }
 
         public ISprite CreateQuarterHeart()
         {
-            return new ObjectSprite(this.quarterHeartSpriteSheet, this.quarterHeartData);
+            return new ObjectSprite(quarterHeartSpriteSheet, quarterHeartData);
         }
 
         public ISprite CreateEmptyHeart()
         {
-            return new ObjectSprite(this.emptyHeartSpriteSheet, this.emptyHeartData);
+            return new ObjectSprite(emptyHeartSpriteSheet, emptyHeartData);
         }
 
         public ISprite CreateInventoryMap()
         {
-            return new ObjectSprite(this.mapSpriteSheet, this.mapData);
+            return new ObjectSprite(mapSpriteSheet, mapData);
         }
 
         public ISprite CreateInventoryCompass()
         {
-            return new ObjectSprite(this.compassSpriteSheet, this.compassData);
+            return new ObjectSprite(compassSpriteSheet, compassData);
         }
 
         public ISprite CreateInventoryBomb()
         {
-            return new ObjectSprite(this.bombSpriteSheet, this.bombData);
+            return new ObjectSprite(bombSpriteSheet, bombData);
         }
 
         public ISprite CreateInventoryBoomerang()
         {
-            return new ObjectSprite(this.boomerangSpriteSheet, this.boomerangData);
+            return new ObjectSprite(boomerangSpriteSheet, boomerangData);
         }
 
         public ISprite CreateInventoryArrow()
         {
-            return new ObjectSprite(this.arrowSpriteSheet, this.arrowData);
+            return new ObjectSprite(arrowSpriteSheet, arrowData);
         }
 
         public ISprite CreateInventoryBlueCandle()
         {
-            return new ObjectSprite(this.blueCandleSpriteSheet, this.blueCandleData);
+            return new ObjectSprite(blueCandleSpriteSheet, blueCandleData);
         }
 
         public ISprite CreateInventoryRedHealthPotion()
         {
-            return new ObjectSprite(this.redHealthPotionSpriteSheet, this.redHealthPotionData);
+            return new ObjectSprite(redHealthPotionSpriteSheet, redHealthPotionData);
         }
 
         public ISprite CreateInventoryBlueHealthPotion()
         {
-            return new ObjectSprite(this.blueHealthPotionSpriteSheet, this.blueHealthPotionData);
+            return new ObjectSprite(blueHealthPotionSpriteSheet, blueHealthPotionData);
         }
 
         public ISprite CreateInventoryMagicBoomerang()
         {
-            return new ObjectSprite(this.magicBoomerangSpriteSheet, this.magicBoomerangData);
+            return new ObjectSprite(magicBoomerangSpriteSheet, magicBoomerangData);
         }
 
         public ISprite CreateInventorySilverArrow()
         {
-            return new ObjectSprite(this.silverArrowSpriteSheet, this.silverArrowData);
+            return new ObjectSprite(silverArrowSpriteSheet, silverArrowData);
+        }
+
+        public ISprite EmptySlot()
+        {
+            Texture2D empty = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            empty.SetData<Color>(new Color[] { Color.Black });
+            SpriteData emptyData = new SpriteData(itemSize, empty, 1, 1);
+            return new ObjectSprite(empty, emptyData);
         }
 
         public ISprite CreateInventoryRedCandle()
         {
-            return new ObjectSprite(this.redCandleSpriteSheet, this.redCandleData);
+            return new ObjectSprite(redCandleSpriteSheet, redCandleData);
         }
 
         public ISprite CreateInventoryItemSelector()
         {
-            return new ObjectSprite(this.selectionReticuleSpriteSheet, this.selectionReticuleData);
+            return new ObjectSprite(selectionReticuleSpriteSheet, selectionReticuleData);
+        }
+
+        public ISprite CreateInventoryItemSelectorFalse()
+        {
+            return new ObjectSprite(itemSelector2, itemSelectorFalse);
+        }
+
+        public ISprite CreateInventoryItemSelectorTrue()
+        {
+            return new ObjectSprite(itemSelector2, itemSelectorTrue);
+        }
+
+        public ISprite CreateInventoryItemSelectorEasy()
+        {
+            return new ObjectSprite(itemSelector2, itemSelectorEasy);
+        }
+
+        public ISprite CreateInventoryItemSelectorNormal()
+        {
+            return new ObjectSprite(itemSelector2, itemSelectorNormal);
+        }
+
+        public ISprite CreateInventoryItemSelectorHard()
+        {
+            return new ObjectSprite(itemSelector2, itemSelectorHard);
+        }
+
+        public ISprite CreateInventoryItemSelectorNightmare()
+        {
+            return new ObjectSprite(itemSelector2, itemSelectorNightmare);
         }
 
         public ISprite CreateInventoryWoodenSword()
         {
-            return new ObjectSprite(this.woodenSwordSpriteSheet, this.woodenSwordData);
+            return new ObjectSprite(woodenSwordSpriteSheet, woodenSwordData);
         }
 
         public ISprite CreateInventoryWhiteSword()
         {
-            return new ObjectSprite(this.whiteSwordSpriteSheet, this.whiteSwordData);
+            return new ObjectSprite(whiteSwordSpriteSheet, whiteSwordData);
         }
 
         public ISprite CreateInventoryMagicSword()
         {
-            return new ObjectSprite(this.magicSwordSpriteSheet, this.magicSwordData);
+            return new ObjectSprite(magicSwordSpriteSheet, magicSwordData);
         }
     }
 }

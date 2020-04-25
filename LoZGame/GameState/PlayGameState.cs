@@ -3,57 +3,64 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class PlayGameState : IGameState
+    public class PlayGameState : GameStateEssentials, IGameState
     {
         public PlayGameState()
         {
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Death()
+        public override void Death()
         {
             LoZGame.Instance.GameState = new DeathState();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void OpenInventory()
+        public override void PlayFlute()
+        {
+            LoZGame.Instance.GameState = new FluteGameState();
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public override void OpenInventory()
         {
             LoZGame.Instance.GameState = new OpenInventoryState();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void CloseInventory()
-        {
-            // Can't close inventory when it's not open.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void PlayGame()
-        {
-            // Can't transition into a state you are already in.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void TitleScreen()
+        public override void TitleScreen()
         {
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TransitionRoom(Physics.Direction direction)
+        public override void TransitionRoom(Physics.Direction direction)
         {
-            LoZGame.Instance.GameState = new TransitionRoomState(direction);
+            if (!(LoZGame.Instance.Players[0].State is SwallowedState)) // -- potential bug --
+            {
+                LoZGame.Instance.GameState = new TransitionRoomState(direction);
+            }
         }
 
         /// <inheritdoc></inheritdoc>
-        public void WinGame()
+        public override void WinGame()
         {
             SoundFactory.Instance.StopAll();
             LoZGame.Instance.GameState = new WinGameState();
         }
 
+        public override void Pause()
+        {
+            LoZGame.Instance.GameState = new PauseState(this);
+        }
+
+        public override void Options()
+        {
+            LoZGame.Instance.GameState = new OptionsState(this);
+        }
+
         /// <inheritdoc></inheritdoc>
-        public void Update()
+        public override void Update()
         {
             if (LoZGame.Instance.Players[0].Inventory.HasClock)
             {
@@ -74,16 +81,20 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Draw()
+        public override void Draw()
         {
-            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            InventoryComponents.Instance.DrawCorrectBackground();
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
+            LoZGame.Instance.Dungeon.CurrentRoom.Draw(Point.Zero);
             LoZGame.Instance.SpriteBatch.End();
-            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
             LoZGame.Instance.GameObjects.Draw();
+            LoZGame.Instance.SpriteBatch.End();
 
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+            LoZGame.Instance.GameObjects.Enemies.Draw();
+            LoZGame.Instance.GameObjects.Entities.Draw();
             InventoryComponents.Instance.DrawText();
-
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Draw();

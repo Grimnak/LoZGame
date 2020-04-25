@@ -21,6 +21,8 @@
             SouthWest
         }
 
+        public bool IsJumping { get; set; }
+
         public bool IsMoveable { get; set; }
 
         public float Depth { get; set; }
@@ -28,6 +30,8 @@
         public int Mass { get; set; }
 
         public float Rotation { get; set; }
+
+        public float Gravity { get; set; }
 
         public Vector2 Location { get; set; }
 

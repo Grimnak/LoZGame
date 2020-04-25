@@ -4,107 +4,107 @@
     {
         public void UseKey()
         {
-            if (this.numKeys > 0)
+            if (numKeys > 0)
             {
-                this.numKeys--;
+                numKeys--;
             }
         }
 
         public void UseBomb()
         {
-            if (this.numBombs > 0)
+            if (numBombs > 0)
             {
                 if (!LoZGame.Cheats)
                 {
-                    this.numBombs--;
+                    numBombs--;
                 }
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Bomb, this.player);
+                player.UseItem(ProjectileManager.MaxWaitTime);
+                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Bomb, player);
             }
         }
 
         public void UseArrow()
         {
-            if (this.numRupees > 0 && this.hasBow)
+            if (numRupees > 0 && hasBow)
             {
-                if (!LoZGame.Cheats && !(this.player.State is UseItemState))
+                if (!LoZGame.Cheats && !(player.State is UseItemState))
                 {
-                    this.numRupees--;
+                    numRupees--;
                 }
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Arrow, this.player);
+                player.UseItem(ProjectileManager.MaxWaitTime);
+                if (hasSilverArrow)
+                {
+                    LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.SilverArrow, player);
+                } 
+                else if (hasArrow)
+                {
+                    LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Arrow, player);
+                }
             }
         }
 
         public void UseBoomerang()
         {
-            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.BoomerangOut && this.hasBoomerang)
+            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.BoomerangOut)
             {
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Boomerang, this.player);
+                player.UseItem(ProjectileManager.MaxWaitTime);
+                if (hasMagicBoomerang)
+                {
+                    LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.MagicBoomerang, player);
+                }
+                else if (hasBoomerang)
+                {
+                    LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Boomerang, player);
+                }
             }
         }
 
-        public void UseMagicBoomerang()
+        public void UseCandle()
         {
-            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.BoomerangOut && this.hasMagicBoomerang)
+            if (hasRedFlame)
             {
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.MagicBoomerang, this.player);
-            }
-        }
-
-        public void UseSilverArrow()
-        {
-            if (this.numRupees > 0 && this.hasBow && this.hasSilverArrow)
+                player.UseItem(ProjectileManager.MaxWaitTime);
+                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.RedCandle, player);
+            } 
+            else if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.FlameInUse && HasBlueFlame)
             {
-                this.numRupees--;
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.SilverArrow, this.player);
-            }
-        }
-
-        public void UseRedCandle()
-        {
-            if (this.hasRedFlame)
-            {
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.RedCandle, this.player);
-            }
-        }
-
-        public void UseBlueCandle()
-        {
-            if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.FlameInUse && this.HasBlueFlame)
-            {
-                this.player.UseItem(ProjectileManager.MaxWaitTime);
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.BlueCandle, this.player);
+                player.UseItem(ProjectileManager.MaxWaitTime);
+                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.BlueCandle, player);
             }
         }
 
         public void UsePotion()
         {
-            if (this.numBluePotions > 0)
+            if (numBluePotions > 0)
             {
                 numBluePotions--;
                 numRedPotions++;
                 LoZGame.Instance.Players[0].Health.CurrentHealth = LoZGame.Instance.Players[0].Health.MaxHealth;
             }
-            else if (this.numRedPotions > 0)
+            else if (numRedPotions > 0)
             {
                 numRedPotions--;
                 LoZGame.Instance.Players[0].Health.CurrentHealth = LoZGame.Instance.Players[0].Health.MaxHealth;
             }
         }
 
+        public void UseFlute()
+        {
+            if (hasFlute && LoZGame.Instance.GameState is PlayGameState)
+            {
+                player.UseItem(1);
+                LoZGame.Instance.GameState = new FluteGameState();
+            }
+        }
+
         public void GainRupees(int amount)
         {
-            this.numRupees += amount;
+            numRupees += amount;
         }
 
         public void GainBombs()
         {
-            int temp = this.numBombs + 2;
+            int temp = numBombs + 4;
             if (temp > maxBombs)
             {
                 numBombs = maxBombs;
@@ -127,38 +127,42 @@
 
         public void GainKey()
         {
-            this.numKeys++;
+            numKeys++;
         }
 
         public void MoveSelectionDown()
         {
-            if (this.selectionY + 1 < maxSelectionY)
+            if (selectionY + 1 < maxSelectionY)
             {
-                this.selectionY++;
+                selectionY++;
+                SelectItem();
             }
         }
 
         public void MoveSelectionUp()
         {
-            if (this.selectionY > 0)
+            if (selectionY > 0)
             {
-                this.selectionY--;
+                selectionY--;
+                SelectItem();
             }
         }
 
         public void MoveSelectionLeft()
         {
-            if (this.selectionX > 0)
+            if (selectionX > 0)
             {
-                this.selectionX--;
+                selectionX--;
+                SelectItem();
             }
         }
 
         public void MoveSelectionRight()
         {
-            if (this.selectionX + 1 < maxSelectionX)
+            if (selectionX + 1 < maxSelectionX)
             {
-                this.selectionX++;
+                selectionX++;
+                SelectItem();
             }
         }
     }

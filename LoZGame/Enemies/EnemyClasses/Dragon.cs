@@ -8,21 +8,26 @@
     {
         public Dragon(Vector2 location)
         {
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.DragonStatelist);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.DragonHealth);
-            this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
-            this.Physics.IsMoveable = false;
-            this.CurrentState = new IdleDragonState(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.IsDead = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.DragonDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.DragonSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.DragonStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.DragonHealth);
+            Physics = new Physics(location);
+            Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
+            Physics.IsMoveable = false;
+            CurrentState = new IdleEnemyState(this);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.DragonDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.DragonSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            DropTable = GameData.Instance.EnemyDropTables.DragonDropTable;
+            ApplyDamageMod();
+            ApplySmallSpeedMod();
+            ApplyLargeWeightModPos();
+            ApplyLargeHealthMod();
+            ApplyLargeHealthMod();
         }
 
         /// <summary>
@@ -30,18 +35,27 @@
         /// </summary>
         private void CheckLeftBound()
         {
-            int leftBound = BlockSpriteFactory.Instance.HorizontalOffset + (7 * BlockSpriteFactory.Instance.TileWidth);
-            if (this.Physics.Bounds.X < leftBound)
+            float leftBound = BlockSpriteFactory.Instance.HorizontalOffset + (7 * BlockSpriteFactory.Instance.TileWidth);
+            if (Physics.Bounds.X < (int)leftBound)
             {
-                this.Physics.Bounds = new Rectangle(new Point(leftBound, this.Physics.Bounds.Y), new Point(this.Physics.Bounds.Width, this.Physics.Bounds.Height));
-                this.Physics.MovementVelocity = Vector2.Zero;
+                Physics.Bounds = new Rectangle(new Point((int)leftBound, Physics.Bounds.Y), new Point(Physics.Bounds.Width, Physics.Bounds.Height));
+                Physics.MovementVelocity = Vector2.Zero;
             }
+        }
+
+        public override void Stun(int stunTime)
+        {
+        }
+
+        public override void Attack()
+        {
+            CurrentState = new AttackingDragonState(this);
         }
 
         public override void Update()
         {
             base.Update();
-            this.CheckLeftBound();
+            CheckLeftBound();
         }
 
         public override ISprite CreateCorrectSprite()

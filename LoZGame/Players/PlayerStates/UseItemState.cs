@@ -18,80 +18,80 @@ namespace LoZClone
         /// <param name="waitTime">Time for player to wait.</param>
         public UseItemState(IPlayer playerInstance, int waitTime)
         {
-            this.player = playerInstance;
-            this.lockoutTimer = waitTime; // wait period
-            this.sprite = this.CreateCorrectSprite();
-            this.sprite.CurrentFrame = GameData.Instance.PlayerConstants.MaximumFrames;
-            this.player.Physics.MovementVelocity = Vector2.Zero;
-            this.sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
+            player = playerInstance;
+            lockoutTimer = waitTime; // wait period
+            sprite = CreateCorrectSprite();
+            sprite.CurrentFrame = GameData.Instance.PlayerConstants.MaximumFrames;
+            player.Physics.MovementVelocity = Vector2.Zero;
+            sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
         }
 
         /// <inheritdoc/>
         public void Idle()
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new IdleState(this.player);
+                player.State = new IdleState(player);
             }
         }
 
         /// <inheritdoc/>
         public void MoveUp()
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new MoveUpState(this.player);
+                player.State = new MoveUpState(player);
             }
         }
 
         /// <inheritdoc/>
         public void MoveDown()
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new MoveDownState(this.player);
+                player.State = new MoveDownState(player);
             }
         }
 
         /// <inheritdoc/>
         public void MoveLeft()
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new MoveLeftState(this.player);
+                player.State = new MoveLeftState(player);
             }
         }
 
         /// <inheritdoc/>
         public void MoveRight()
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new MoveRightState(this.player);
+                player.State = new MoveRightState(player);
             }
         }
 
         /// <inheritdoc/>
         public void Attack()
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new AttackState(this.player);
+                player.State = new AttackState(player);
             }
         }
 
         /// <inheritdoc/>
         public void Die()
         {
-            this.player.State = new DieState(this.player);
+            player.State = new DieState(player);
         }
 
         /// <inheritdoc/>
         public void PickupItem(IItem item)
         {
-            if (this.lockoutTimer <= 0)
+            if (lockoutTimer <= 0)
             {
-                this.player.State = new PickupItemState(this.player, item);
+                player.State = new PickupItemState(player, item);
             }
         }
 
@@ -103,41 +103,41 @@ namespace LoZClone
         /// <inheritdoc/>
         public void Update()
         {
-            if (this.lockoutTimer > 0)
+            if (lockoutTimer > 0)
             {
-                this.lockoutTimer--;
+                lockoutTimer--;
             }
         }
 
         /// <inheritdoc/>
         public void Stun(int stunTime)
         {
-            this.player.State = new StunnedState(this.player, this.player.State, stunTime);
+            player.State = new StunnedState(player, player.State, stunTime);
         }
 
         /// <inheritdoc/>
         public void Draw()
         {
-            this.sprite.Draw(this.player.Physics.Location, this.player.CurrentTint, this.player.Physics.Depth);
+            sprite.Draw(player.Physics.Location, player.CurrentTint, player.Physics.Depth);
         }
 
         private ISprite CreateCorrectSprite()
         {
-            if (this.player.Physics.CurrentDirection == Physics.Direction.North)
+            if (player.Physics.CurrentDirection == Physics.Direction.North)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkUp(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkUp(player.CurrentColor);
             }
-            else if (this.player.Physics.CurrentDirection == Physics.Direction.South)
+            else if (player.Physics.CurrentDirection == Physics.Direction.South)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkDown(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkDown(player.CurrentColor);
             }
-            else if (this.player.Physics.CurrentDirection == Physics.Direction.West)
+            else if (player.Physics.CurrentDirection == Physics.Direction.West)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkLeft(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkLeft(player.CurrentColor);
             }
             else
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkRight(this.player.CurrentColor);
+                return LinkSpriteFactory.Instance.CreateSpriteLinkRight(player.CurrentColor);
             }
         }
     }

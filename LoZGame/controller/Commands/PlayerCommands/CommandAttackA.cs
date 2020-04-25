@@ -19,13 +19,13 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            if (!(this.player.State is DieState || this.player.State is PickupItemState || this.player.State is GrabbedState || this.player.State is StunnedState) && !LoZGame.Instance.GameObjects.Entities.ProjectileManager.PrimaryAttackLock)
+            if (!(player.State is DieState || player.State is PickupItemState || player.State is GrabbedState || player.State is StunnedState) && !LoZGame.Instance.GameObjects.Entities.ProjectileManager.PrimaryAttackLock && player.DisarmedTimer <= 0)
             {
-                this.player.Attack();
-                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.WoodenSword, this.player);
-                if (this.player.Health.CurrentHealth == this.player.Health.MaxHealth)
+                player.Attack();
+                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.WoodenSword, player);
+                if (player.Health.CurrentHealth == player.Health.MaxHealth)
                 {
-                    LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Swordbeam, this.player);
+                    LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Swordbeam, player);
                 }
             }
         }

@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using static EnemyEssentials;
     using static RandomStateGenerator;
 
     public partial class EnemyStateEssentials
@@ -16,45 +17,99 @@
 
         public IEnemy Enemy { get; set; }
 
-        public Vector2 UnitVectorToPlayer(Vector2 origin)
-        {
-            Vector2 unitVector = LoZGame.Instance.Link.Physics.Bounds.Center.ToVector2() - origin;
-            unitVector.Normalize();
-            return unitVector;
-        }
+        private bool isMoving = false;
 
-        public Vector2 RotateVector(Vector2 oldVector, float rot)
+        private List<EnemyAI> spawnBlackList = new List<EnemyAI>()
         {
-            float cosRot = (float)Math.Cos(rot);
-            float sinRot = (float)Math.Sin(rot);
-            float newX = (cosRot * oldVector.X) - (sinRot * oldVector.Y);
-            float newY = (sinRot * oldVector.X) + (cosRot * oldVector.Y);
-            return new Vector2(newX, newY);
-        }
+            EnemyAI.NoAI,
+            EnemyAI.Dragon,
+            EnemyAI.MoldormHead,
+            EnemyAI.Manhandla,
+            EnemyAI.GleeokHead,
+            EnemyAI.ManHandlaHead,
+            EnemyAI.SmallDigDogger,
+            EnemyAI.LargeDigDogger,
+            EnemyAI.NoSpawn
+        };
 
-        public virtual void Spawn()
+        public void DefaultUpdate()
         {
-        }
-
-        public virtual void RandomDirectionChange()
-        {
-            this.DirectionChange = LoZGame.Instance.Random.Next(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);
+            Lifetime++;
+            Sprite.Update();
+            if (Lifetime > DirectionChange && !Enemy.Physics.IsJumping)
+            {
+                Enemy.UpdateState();
+                Lifetime = 0;
+            }
         }
 
         public virtual void Update()
         {
-            this.Lifetime++;
-            if (this.Lifetime > this.DirectionChange)
+            switch (Enemy.AI)
             {
-                this.Enemy.UpdateState();
-                this.Lifetime = 0;
+                case EnemyAI.Bubble:
+                    UpdateBubble();
+                    break;
+                case EnemyAI.Darknut:
+                    UpdateDarknut();
+                    break;
+                case EnemyAI.Dodongo:
+                    UpdateDodongo();
+                    break;
+                case EnemyAI.MoldormHead:
+                    UpdateFireSnake();
+                    break;
+                case EnemyAI.Gel:
+                    UpdateGel();
+                    break;
+                case EnemyAI.Goriya:
+                    UpdateGoriya();
+                    break;
+                case EnemyAI.Keese:
+                    UpdateKeese();
+                    break;
+                case EnemyAI.Rope:
+                    UpdateRope();
+                    break;
+                case EnemyAI.Stalfos:
+                    UpdateStalfos();
+                    break;
+                case EnemyAI.WallMaster:
+                    UpdateWallMaster();
+                    break;
+                case EnemyAI.Zol:
+                    UpdateZol();
+                    break;
+                case EnemyAI.Manhandla:
+                    UpdateManhandla();
+                    break;
+                case EnemyAI.GleeokHeadOff:
+                case EnemyAI.GleeokHead:
+                    UpdateGleeock();
+                    break;
+                case EnemyAI.SpikeCross:
+                    UpdateSpikeCross();
+                    break;
+                case EnemyAI.SmallDigDogger:
+                    UpdateSmallDigDogger();
+                    break;
+                case EnemyAI.LargeDigDogger:
+                    UpdateLargeDigDogger();
+                    break;
+                case EnemyAI.NoAI:
+                    break;
+                case EnemyAI.Likelike:
+                    UpdateLikelike();
+                    break;
+                default:
+                    DefaultUpdate();
+                    break;
             }
-            this.Sprite.Update();
         }
 
         public virtual void Draw()
         {
-            this.Sprite.Draw(this.Enemy.Physics.Location, this.Enemy.CurrentTint, this.Enemy.Physics.Depth);
+            Sprite.Draw(Enemy.Physics.Location, Enemy.CurrentTint, Enemy.Physics.Depth);
         }
     }
 }

@@ -2,16 +2,21 @@ namespace LoZClone
 {
     public struct EnemySpeedConstants
     {
+        private const float jumpStrength = 2.5f;
+        private const float gleeokHeadSpd = 1.0f;
         private const float StalfosSpd = 2;
         private const float MinKeeseSpd = 1.5f;
-        private const float MaxKeeseSpd = 5.0f;
+        private const float MaxKeeseSpd = 5;
         private const float KeeseAccel = .025f;
-        private const float KeeseAccelMax = 5.0f;
+        private const float KeeseAccelMax = 5;
+        private const float MinManSpd = 0.5f;
+        private const float MaxManSpd = 1.5f;
+        private const float ManAccel = .005f;
         private const float RopeSpd = 2.5f;
         private const float RopeAttackSpd = 3.5f;
-        private const float GelSpd = 3f;
-        private const float ZolSpd = 4;
-        private const float SpikeCrossSpd = 3;
+        private const float GelSpd = 3;
+        private const float ZolSpd = 2;
+        private const float SpikeCrossSpd = 2;
         private const float WallMasterSpd = 2;
         private const float WallMasterAttackSpd = -1;
         private const float DragonSpd = 1.5f;
@@ -22,6 +27,14 @@ namespace LoZClone
         private const float OldManSpd = 0;
         private const float MerchantSpd = 0;
         private const float FireSnakeSpd = 2;
+        private const float DarknutSpd = 1.5f;
+        private const float VireSpd = 2;
+        private const float BubbleSpd = 3;
+        private const float GibdoSpd = 2;
+        private const float LikelikeSpd = 1.5f;
+        private const float PolsVoiceSpd = 2.5f;
+        private const float DigDoggerSpd = 1.5f;
+        private const float DigDoggerFleeSpd = 4;
 
         public float StalfosSpeed => StalfosSpd;
 
@@ -62,5 +75,31 @@ namespace LoZClone
         public float FireSnakeSpeed => FireSnakeSpd;
 
         public float DodongoAttackSpeed => DodongoAttackSpd;
+
+        public float DarknutSpeed => DarknutSpd;
+
+        public float VireSpeed => VireSpd;
+
+        public float BubbleSpeed => BubbleSpd;
+      
+        public float ManhandlaMinSpeed => MinManSpd;
+
+        public float ManhandlaMaxSpeed => MaxManSpd;
+
+        public float ManhandlaAcceleration => ManAccel;
+
+        public float GibdoSpeed => GibdoSpd;
+
+        public float GleeokHeadSpeed => gleeokHeadSpd;
+
+        public float JumpStrength => jumpStrength;
+
+        public float LikelikeSpeed => LikelikeSpd;
+
+        public float PolsVoiceSpeed => PolsVoiceSpd;
+
+        public float DigDoggerFleeSpeed => DigDoggerFleeSpd;
+
+        public float DigDoggerSpeed => DigDoggerSpd;
     }
 }

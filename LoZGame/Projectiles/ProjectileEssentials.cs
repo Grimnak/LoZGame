@@ -39,63 +39,63 @@
         public void SetUp(IProjectile parent)
         {
             this.parent = parent;
-            this.Returning = false;
-            this.IsExpired = false;
-            this.StunDuration = 0;
-            this.Speed = 0;
-            this.Acceleration = 0;
-            this.Damage = 0;
-            this.Width = 0;
-            this.Heigth = 0;
-            this.Offset = 0;
-            this.Source = new Physics(Vector2.Zero);
-            this.Physics = new Physics(Vector2.Zero);
-            this.Data = new EntityData();
-            this.Sprite = ProjectileSpriteFactory.Instance.Bomb();
-            this.CollisionHandler = new ProjectileCollisionHandler(this.parent);
+            Returning = false;
+            IsExpired = false;
+            StunDuration = 0;
+            Speed = 0;
+            Acceleration = 0;
+            Damage = 0;
+            Width = 0;
+            Heigth = 0;
+            Offset = 0;
+            Source = new Physics(Vector2.Zero);
+            Physics = new Physics(Vector2.Zero);
+            Data = new EntityData();
+            Sprite = ProjectileSpriteFactory.Instance.Bomb();
+            CollisionHandler = new ProjectileCollisionHandler(this.parent);
         }
 
         public void InitializeDirection()
         {
-            this.Physics = new Physics(Source.Bounds.Center.ToVector2());
+            Physics = new Physics(Source.Bounds.Center.ToVector2());
             Vector2 unitDirection;
-            switch (this.Source.CurrentDirection)
+            switch (Source.CurrentDirection)
             {
                 case Physics.Direction.North:
                     unitDirection = new Vector2(0, -1);
-                    this.Physics.BoundsOffset = new Vector2(Width / 2, Heigth / 2);
-                    this.Physics.CurrentDirection = Physics.Direction.North;
+                    Physics.BoundsOffset = new Vector2(Width / 2, Heigth / 2);
+                    Physics.CurrentDirection = Physics.Direction.North;
                     break;
                 case Physics.Direction.South:
                     unitDirection = new Vector2(0, 1);
-                    this.Data.SpriteEffect = SpriteEffects.FlipVertically;
-                    this.Physics.BoundsOffset = new Vector2(Width / 2, Heigth / 2);
-                    this.Physics.CurrentDirection = Physics.Direction.South;
+                    Data.SpriteEffect = SpriteEffects.FlipVertically;
+                    Physics.BoundsOffset = new Vector2(Width / 2, Heigth / 2);
+                    Physics.CurrentDirection = Physics.Direction.South;
                     break;
                 case Physics.Direction.East:
                     unitDirection = new Vector2(1, 0);
-                    this.Data.Rotation = MathHelper.PiOver2;
-                    this.Data.SpriteEffect = SpriteEffects.None;
-                    this.Physics.BoundsOffset = new Vector2(Heigth / 2, Width / 2);
-                    this.Physics.CurrentDirection = Physics.Direction.East;
+                    Data.Rotation = MathHelper.PiOver2;
+                    Data.SpriteEffect = SpriteEffects.None;
+                    Physics.BoundsOffset = new Vector2(Heigth / 2, Width / 2);
+                    Physics.CurrentDirection = Physics.Direction.East;
                     break;
                 case Physics.Direction.West:
                     unitDirection = new Vector2(-1, 0);
-                    this.Data.Rotation = MathHelper.PiOver2;
-                    this.Data.SpriteEffect = SpriteEffects.FlipVertically;
-                    this.Physics.BoundsOffset = new Vector2(Heigth / 2, Width / 2);
-                    this.Physics.CurrentDirection = Physics.Direction.West;
+                    Data.Rotation = MathHelper.PiOver2;
+                    Data.SpriteEffect = SpriteEffects.FlipVertically;
+                    Physics.BoundsOffset = new Vector2(Heigth / 2, Width / 2);
+                    Physics.CurrentDirection = Physics.Direction.West;
                     break;
                 default:
                     unitDirection = Vector2.Zero;
                     break;
             }
-            this.Physics.Location += unitDirection * Offset;
-            this.Physics.MovementVelocity = unitDirection * Speed;
-            this.Physics.MovementAcceleration = unitDirection * Acceleration;
-            this.Physics.Bounds = new Rectangle((this.Physics.Location - this.Physics.BoundsOffset).ToPoint(), (this.Physics.BoundsOffset * 2).ToPoint());
-            this.Physics.BoundsOffset *= 2;
-            this.Physics.SetLocation();
+            Physics.Location += unitDirection * Offset;
+            Physics.MovementVelocity = unitDirection * Speed;
+            Physics.MovementAcceleration = unitDirection * Acceleration;
+            Physics.Bounds = new Rectangle((Physics.Location - Physics.BoundsOffset).ToPoint(), (Physics.BoundsOffset * 2).ToPoint());
+            Physics.BoundsOffset *= 2;
+            Physics.SetLocation();
         }
 
         /// <summary>
@@ -104,43 +104,43 @@
         /// </summary>
         public void CorrectProjectile()
         {
-            if (this.parent is SwordProjectile)
+            if (parent is SwordProjectile)
             {
-                this.Physics.BoundsOffset = new Vector2((this.Physics.BoundsOffset.X * 5) / 8, this.Physics.BoundsOffset.Y + 4);
+                Physics.BoundsOffset = new Vector2((Physics.BoundsOffset.X * 5) / 8, Physics.BoundsOffset.Y + 4);
             }
             else 
             {
-                this.Physics.BoundsOffset = new Vector2((this.Physics.BoundsOffset.X * 5) / 8, this.Physics.BoundsOffset.Y * 2);
+                Physics.BoundsOffset = new Vector2((Physics.BoundsOffset.X * 5) / 8, Physics.BoundsOffset.Y * 2);
             }
-            this.Physics.SetLocation();
+            Physics.SetLocation();
         }
 
         public virtual void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             if (otherCollider is IPlayer)
             {
-                this.CollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                CollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
             }
             else if (otherCollider is IEnemy)
             {
-                this.CollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
+                CollisionHandler.OnCollisionResponse((IEnemy)otherCollider, collisionSide);
             }
         }
 
         public virtual void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            this.CollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
+            CollisionHandler.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
         }
 
         public virtual void Update()
         {
-            this.Physics.Move();
-            this.Sprite.Update();
+            Physics.Move();
+            Sprite.Update();
         }
 
         public virtual void Draw()
         {
-            this.Sprite.Draw(this.Physics.Location, LoZGame.Instance.DefaultTint, this.Data.Rotation, this.Data.SpriteEffect, this.Physics.Depth);
+            Sprite.Draw(Physics.Location, LoZGame.Instance.DefaultTint, Data.Rotation, Data.SpriteEffect, Physics.Depth);
         }
     }
 }

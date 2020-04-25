@@ -20,6 +20,14 @@
             MoveNorthWest,
             MoveSouthEast,
             MoveSouthWest,
+            JumpNorth,
+            JumpSouth,
+            JumpEast,
+            JumpWest,
+            JumpNorthEast,
+            JumpNorthWest,
+            JumpSouthEast,
+            JumpSouthWest
         }
 
         public RandomStateGenerator(IEnemy enemy)
@@ -91,6 +99,31 @@
                     break;
                 case StateType.MoveSouthWest:
                     enemy.CurrentState.MoveDownRight();
+                    break;
+
+                case StateType.JumpWest:
+                    enemy.CurrentState.JumpLeft();
+                    break;
+                case StateType.JumpEast:
+                    enemy.CurrentState.JumpRight();
+                    break;
+                case StateType.JumpNorth:
+                    enemy.CurrentState.JumpUp();
+                    break;
+                case StateType.JumpSouth:
+                    enemy.CurrentState.JumpDown();
+                    break;
+                case StateType.JumpNorthEast:
+                    enemy.CurrentState.JumpUpLeft();
+                    break;
+                case StateType.JumpNorthWest:
+                    enemy.CurrentState.JumpUpRight();
+                    break;
+                case StateType.JumpSouthEast:
+                    enemy.CurrentState.JumpDownLeft();
+                    break;
+                case StateType.JumpSouthWest:
+                    enemy.CurrentState.JumpDownRight();
                     break;
                 default:
                     enemy.CurrentState.Stop();

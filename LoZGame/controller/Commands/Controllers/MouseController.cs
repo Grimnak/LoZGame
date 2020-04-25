@@ -19,7 +19,7 @@
         public MouseController(MouseCommandLoader allCommands)
         {
             this.allCommands = allCommands;
-            this.oldState = Mouse.GetState();
+            oldState = Mouse.GetState();
         }
 
         /// <inheritdoc/>
@@ -28,44 +28,44 @@
             MouseState state = Mouse.GetState();
             Vector2 position = new Vector2(state.X, state.Y);
 
-            if (state.LeftButton == ButtonState.Pressed && this.oldState.LeftButton == ButtonState.Released)
+            if (state.LeftButton == ButtonState.Pressed && oldState.LeftButton == ButtonState.Released)
             {
                 // Vector logic
                 if (position.X > 400)
                 {
                     if (position.Y - 174 > (3 * position.X) / 5)
                     {
-                        this.currentCommand = this.allCommands.GetCommandRoomDown;
+                        currentCommand = allCommands.GetCommandRoomDown;
                     }
                     else if (position.Y - 174 < (480 - ((3 * position.X) / 5)))
                     {
-                        this.currentCommand = this.allCommands.GetCommandRoomUp;
+                        currentCommand = allCommands.GetCommandRoomUp;
                     }
                     else
                     {
-                        this.currentCommand = this.allCommands.GetCommandRoomRight;
+                        currentCommand = allCommands.GetCommandRoomRight;
                     }
                 }
                 else
                 {
                     if (position.Y - 174 > (480 - ((3 * position.X) / 5)))
                     {
-                        this.currentCommand = this.allCommands.GetCommandRoomDown;
+                        currentCommand = allCommands.GetCommandRoomDown;
                     }
                     else if (position.Y - 174 < (3 * position.X) / 5)
                     {
-                        this.currentCommand = this.allCommands.GetCommandRoomUp;
+                        currentCommand = allCommands.GetCommandRoomUp;
                     }
                     else
                     {
-                        this.currentCommand = this.allCommands.GetCommandRoomLeft;
+                        currentCommand = allCommands.GetCommandRoomLeft;
                     }
                 }
 
-                this.currentCommand.Execute();
+                currentCommand.Execute();
             }
 
-            this.oldState = state;
+            oldState = state;
         }
     }
 }

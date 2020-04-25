@@ -3,39 +3,23 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class WinGameState : IGameState
+    public class WinGameState : GameStateEssentials, IGameState
     {
+        private const int flashRate = 40;
         private int maxDungeon;
         private int lockout;
         private int lockoutMax;
+        private BlendState bs;
 
         public WinGameState()
         {
-            this.maxDungeon = GameData.Instance.GameStateDataConstants.WinStateMaxDungeons;
-            this.lockoutMax = GameData.Instance.GameStateDataConstants.WinStateMaxLockout;
+            maxDungeon = GameData.Instance.GameStateDataConstants.WinStateMaxDungeons;
+            lockoutMax = GameData.Instance.GameStateDataConstants.WinStateMaxLockout;
             lockout = 0;
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Death()
-        {
-            // Can't die while winning.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void OpenInventory()
-        {
-            // Can't access inventory while winning.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void CloseInventory()
-        {
-            // Can't close inventory when it's not open.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void PlayGame()
+        public override void PlayGame()
         {
             SoundFactory.Instance.StopAll();
             SoundFactory.Instance.PlayDungeonSong();
@@ -43,27 +27,21 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TitleScreen()
+        public override void TitleScreen()
         {
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
-        /// <inheritdoc></inheritdoc>
-        public void TransitionRoom(Physics.Direction direction)
+        public override void CreditsScreen()
         {
-            // Can't transition room while winning.
+            SoundFactory.Instance.StopAll();
+            LoZGame.Instance.GameState = new CreditsScreenState();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void WinGame()
+        public override void Update()
         {
-            // Can't transition to a state you're already in.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void Update()
-        {
-            this.lockout++;
+            lockout++;
 
             // Triforce animation playing time
             if (lockout < lockoutMax)
@@ -84,24 +62,35 @@
                     {
                         Player = LoZGame.Instance.Players[0]
                     };
+
+                    LoZGame.Instance.Dungeon.LoadNewRoom();
                     LoZGame.Instance.Players[0].Inventory.HasMap = false;
                     LoZGame.Instance.Players[0].Inventory.HasCompass = false;
+                    ((Link)LoZGame.Instance.Players[0]).BackupInventory = new InventoryManager(LoZGame.Instance.Players[0].Inventory);
                     LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
                     LoZGame.Instance.GameState.PlayGame();
                 }
                 else
                 {
-                    LoZGame.Instance.GameState.TitleScreen();
+                    LoZGame.Instance.GameState.CreditsScreen();
                 }
             }
 
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Draw()
+        public override void Draw()
         {
-            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            LoZGame.Instance.SpriteBatch.Draw(LoZGame.Instance.Background, new Rectangle(0, LoZGame.Instance.InventoryOffset, LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset), new Rectangle(0, 0, GameData.Instance.GameStateDataConstants.WinStateSpriteWidth, GameData.Instance.GameStateDataConstants.WinStateSpriteHeight), LoZGame.Instance.DungeonTint, 0.0f, new Vector2(0, 0), SpriteEffects.None, 0f);
+            if (lockout > lockoutMax / 2 && lockout % flashRate <= (flashRate / 2))
+            {
+                bs = BlendState.NonPremultiplied;
+            }
+            else
+            {
+                bs = BlendState.NonPremultiplied;
+            }
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, bs, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
+            LoZGame.Instance.Dungeon.CurrentRoom.Draw(new Point(0, 0));
 
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
@@ -111,7 +100,7 @@
             LoZGame.Instance.GameObjects.Draw();
             LoZGame.Instance.SpriteBatch.End();
 
-            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, bs, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             InventoryComponents.Instance.DrawInventoryElements();
             LoZGame.Instance.SpriteBatch.End();
         }

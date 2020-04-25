@@ -3,68 +3,63 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class BombedDoorState : IDoorState
+    public class BombedDoorState : DoorEssentials, IDoorState
     {
-        private const string North = "N";
-        private const string South = "S";
-        private const string East = "E";
-        private const string West = "W";
+        private static readonly Color ShadowColor = Color.Black;
+        private static readonly float ShadowLayer = 0.994f;
+        private Texture2D ShadowSprite;
+        private Rectangle ShadowSource;
 
-        private readonly Door door;
-        private readonly ISprite sprite;
-        private readonly Color spriteTint = LoZGame.Instance.DungeonTint;
-
-        public BombedDoorState(Door door)
+        public BombedDoorState(IDoor door)
         {
-            this.door = door;
-            switch (door.GetLoc())
+            Door = door; 
+            ShadowSprite = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            ShadowSprite.SetData<Color>(new Color[] { ShadowColor });
+            ShadowSource = new Rectangle(0, 0, 1, 1);
+            switch (door.Physics.CurrentDirection)
             {
-                case North:
-                {
-                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningDown();
-                        door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
+                case Physics.Direction.North:
+                    {
+                        FrameSprite = DungeonSpriteFactory.Instance.BombedDownDoor();
+                        OverhangSprite = DungeonSpriteFactory.Instance.VerticalOverhang();
                         break;
-                }
-                case East:
-                {
-                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningLeft();
-                        door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X - 7, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
+                    }
+                case Physics.Direction.East:
+                    {
+                        FrameSprite = DungeonSpriteFactory.Instance.BombedLeftDoor();
+                        OverhangSprite = DungeonSpriteFactory.Instance.HorizontalOverhang();
                         break;
-                }
-                case South:
-                {
-                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningUp();
-                        door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorWidth, BlockSpriteFactory.Instance.DoorHeight);
+                    }
+                case Physics.Direction.South:
+                    {
+                        FrameSprite = DungeonSpriteFactory.Instance.BombedUpDoor();
+                        OverhangSprite = DungeonSpriteFactory.Instance.VerticalOverhang();
                         break;
-                }
-                case West:
-                {
-                        this.sprite = BlockSpriteFactory.Instance.BombedOpeningRight();
-                        door.Physics.Bounds = new Rectangle((int)door.Physics.Location.X, (int)door.Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
+                    }
+                case Physics.Direction.West:
+                    {
+                        FrameSprite = DungeonSpriteFactory.Instance.BombedRightDoor();
+                        OverhangSprite = DungeonSpriteFactory.Instance.HorizontalOverhang();
                         break;
-                }
+                    }
             }
         }
 
-        public void Bombed()
+        public override void Bombed()
         {
         }
 
-        public void Close()
+        public override void Close()
         {
         }
 
-        public void Draw()
-        {
-            this.sprite.Draw(this.door.Physics.Location, spriteTint, this.door.Physics.Depth);
-        }
-
-        public void Open()
+        public override void Open()
         {
         }
 
-        public void Update()
+        public override void DrawFloor()
         {
+            LoZGame.Instance.SpriteBatch.Draw(ShadowSprite, Door.Physics.Bounds, ShadowSource, ShadowColor, 0.0f, Vector2.Zero, SpriteEffects.None, ShadowLayer);
         }
     }
 }

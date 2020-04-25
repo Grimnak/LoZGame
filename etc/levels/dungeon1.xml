@@ -4,7 +4,7 @@
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="False" idx="0">
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <enemies>
         <enemy X="0" Y="0">SpikeCross</enemy>
         <enemy X="11" Y="0">SpikeCross</enemy>
@@ -25,7 +25,7 @@
       </rrow>
       <rrow idx="3">
         <tile type="movable"  idx="4" dir="E,W">orange_movable_square</tile>
-        <tile type="walkable" idx="6">stairs</tile>
+        <tile type="stairs" idx="6" room="1,1" loc="3,0" hidden="False">stairs</tile>
         <tile type="block" idx="8">movable_square</tile>
       </rrow>
       <rrow idx="4">
@@ -38,7 +38,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <items>
         <item X="6" Y="1">Key</item>
       </items>
@@ -54,38 +54,38 @@
       <rrow idx="0">
       </rrow>
       <rrow idx="1">
-        <tile type="block" idx="1">water_tile</tile>
-        <tile type="block" idx="2">water_tile</tile>
-        <tile type="block" idx="3">water_tile</tile>
-        <tile type="block" idx="8">water_tile</tile>
-        <tile type="block" idx="9">water_tile</tile>
-        <tile type="block" idx="10">water_tile</tile>
+        <tile type="crossable" idx="1">water_tile</tile>
+        <tile type="crossable" idx="2">water_tile</tile>
+        <tile type="crossable" idx="3">water_tile</tile>
+        <tile type="crossable" idx="8">water_tile</tile>
+        <tile type="crossable" idx="9">water_tile</tile>
+        <tile type="crossable" idx="10">water_tile</tile>
       </rrow>
       <rrow idx="2">
-        <tile type="block" idx="1">water_tile</tile>
-        <tile type="block" idx="10">water_tile</tile>
+        <tile type="crossable" idx="1">water_tile</tile>
+        <tile type="crossable" idx="10">water_tile</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="block" idx="1">water_tile</tile>
-        <tile type="block" idx="3">water_tile</tile>
-        <tile type="block" idx="4">water_tile</tile>
-        <tile type="block" idx="5">water_tile</tile>
-        <tile type="block" idx="6">water_tile</tile>
-        <tile type="block" idx="7">water_tile</tile>
-        <tile type="block" idx="8">water_tile</tile>
-        <tile type="block" idx="10">water_tile</tile>
+        <tile type="crossable" idx="1">water_tile</tile>
+        <tile type="crossable" idx="3">water_tile</tile>
+        <tile type="crossable" idx="4">water_tile</tile>
+        <tile type="crossable" idx="5">water_tile</tile>
+        <tile type="crossable" idx="6">water_tile</tile>
+        <tile type="crossable" idx="7">water_tile</tile>
+        <tile type="crossable" idx="8">water_tile</tile>
+        <tile type="crossable" idx="10">water_tile</tile>
       </rrow>
       <rrow idx="4">
-        <tile type="block" idx="1">water_tile</tile>
-        <tile type="block" idx="10">water_tile</tile>
+        <tile type="crossable" idx="1">water_tile</tile>
+        <tile type="crossable" idx="10">water_tile</tile>
       </rrow>
       <rrow idx="5">
-        <tile type="block" idx="1">water_tile</tile>
-        <tile type="block" idx="2">water_tile</tile>
-        <tile type="block" idx="3">water_tile</tile>
-        <tile type="block" idx="8">water_tile</tile>
-        <tile type="block" idx="9">water_tile</tile>
-        <tile type="block" idx="10">water_tile</tile>
+        <tile type="crossable" idx="1">water_tile</tile>
+        <tile type="crossable" idx="2">water_tile</tile>
+        <tile type="crossable" idx="3">water_tile</tile>
+        <tile type="crossable" idx="8">water_tile</tile>
+        <tile type="crossable" idx="9">water_tile</tile>
+        <tile type="crossable" idx="10">water_tile</tile>
       </rrow>
       <rrow idx="6">
       </rrow>
@@ -100,7 +100,7 @@
   <drow idx="1">
     <room exists="False" idx="0">
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="True" idx="1">
       <border>black</border>
       <enemies>
         <enemy X="10" Y="3">Keese</enemy>
@@ -108,8 +108,9 @@
         <enemy X="9" Y="6">Keese</enemy>
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
-	  <items>
+	    <items>
         <item X="8" Y="3">Bow</item>
+        <item X="11" Y="1.7">Arrow</item>
       </items>
       <rrow idx="0">
         <tile type="block" idx="0">basement_brick_tile</tile>
@@ -251,7 +252,7 @@
         <tile type="block" idx="15">basement_brick_tile</tile>
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
 		<items>
 		    <item X="8" Y="4">Key</item>
 		</items>
@@ -265,69 +266,69 @@
         <door loc="S">unlocked</door>
       </doors>
       <rrow idx="0">
-        <tile type="block" idx="0">water_tile</tile>
-        <tile type="block" idx="1">water_tile</tile>
-        <tile type="block" idx="2">water_tile</tile>
-        <tile type="block" idx="3">water_tile</tile>
-        <tile type="block" idx="4">water_tile</tile>
-        <tile type="block" idx="7">water_tile</tile>
-        <tile type="block" idx="8">water_tile</tile>
-        <tile type="block" idx="9">water_tile</tile>
-        <tile type="block" idx="10">water_tile</tile>
-        <tile type="block" idx="11">water_tile</tile>
+        <tile type="crossable" idx="0">water_tile</tile>
+        <tile type="crossable" idx="1">water_tile</tile>
+        <tile type="crossable" idx="2">water_tile</tile>
+        <tile type="crossable" idx="3">water_tile</tile>
+        <tile type="crossable" idx="4">water_tile</tile>
+        <tile type="crossable" idx="7">water_tile</tile>
+        <tile type="crossable" idx="8">water_tile</tile>
+        <tile type="crossable" idx="9">water_tile</tile>
+        <tile type="crossable" idx="10">water_tile</tile>
+        <tile type="crossable" idx="11">water_tile</tile>
       </rrow>
       <rrow idx="1">
-        <tile type="block" idx="0">water_tile</tile>
-        <tile type="block" idx="4">water_tile</tile>
-        <tile type="block" idx="9">water_tile</tile>
-        <tile type="block" idx="11">water_tile</tile>
+        <tile type="crossable" idx="0">water_tile</tile>
+        <tile type="crossable" idx="4">water_tile</tile>
+        <tile type="crossable" idx="9">water_tile</tile>
+        <tile type="crossable" idx="11">water_tile</tile>
       </rrow>
       <rrow idx="2">
-        <tile type="block" idx="0">water_tile</tile>
-        <tile type="block" idx="2">water_tile</tile>
-        <tile type="block" idx="4">water_tile</tile>
-        <tile type="block" idx="6">water_tile</tile>
-        <tile type="block" idx="7">water_tile</tile>
-        <tile type="block" idx="9">water_tile</tile>
-        <tile type="block" idx="11">water_tile</tile>
+        <tile type="crossable" idx="0">water_tile</tile>
+        <tile type="crossable" idx="2">water_tile</tile>
+        <tile type="crossable" idx="4">water_tile</tile>
+        <tile type="crossable" idx="6">water_tile</tile>
+        <tile type="crossable" idx="7">water_tile</tile>
+        <tile type="crossable" idx="9">water_tile</tile>
+        <tile type="crossable" idx="11">water_tile</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="block" idx="2">water_tile</tile>
-        <tile type="block" idx="4">water_tile</tile>
-        <tile type="block" idx="7">water_tile</tile>
-        <tile type="block" idx="9">water_tile</tile>
+        <tile type="crossable" idx="2">water_tile</tile>
+        <tile type="crossable" idx="4">water_tile</tile>
+        <tile type="crossable" idx="7">water_tile</tile>
+        <tile type="crossable" idx="9">water_tile</tile>
       </rrow>
       <rrow idx="4">
-        <tile type="block" idx="0">water_tile</tile>
-        <tile type="block" idx="2">water_tile</tile>
-        <tile type="block" idx="4">water_tile</tile>
-        <tile type="block" idx="5">water_tile</tile>
-        <tile type="block" idx="7">water_tile</tile>
-        <tile type="block" idx="9">water_tile</tile>
-        <tile type="block" idx="11">water_tile</tile>
+        <tile type="crossable" idx="0">water_tile</tile>
+        <tile type="crossable" idx="2">water_tile</tile>
+        <tile type="crossable" idx="4">water_tile</tile>
+        <tile type="crossable" idx="5">water_tile</tile>
+        <tile type="crossable" idx="7">water_tile</tile>
+        <tile type="crossable" idx="9">water_tile</tile>
+        <tile type="crossable" idx="11">water_tile</tile>
       </rrow>
       <rrow idx="5">
-        <tile type="block" idx="0">water_tile</tile>
-        <tile type="block" idx="2">water_tile</tile>
-        <tile type="block" idx="7">water_tile</tile>
-        <tile type="block" idx="11">water_tile</tile>
+        <tile type="crossable" idx="0">water_tile</tile>
+        <tile type="crossable" idx="2">water_tile</tile>
+        <tile type="crossable" idx="7">water_tile</tile>
+        <tile type="crossable" idx="11">water_tile</tile>
       </rrow>
       <rrow idx="6">
-        <tile type="block" idx="0">water_tile</tile>
-        <tile type="block" idx="1">water_tile</tile>
-        <tile type="block" idx="2">water_tile</tile>
-        <tile type="block" idx="3">water_tile</tile>
-        <tile type="block" idx="4">water_tile</tile>
-        <tile type="block" idx="7">water_tile</tile>
-        <tile type="block" idx="8">water_tile</tile>
-        <tile type="block" idx="9">water_tile</tile>
-        <tile type="block" idx="10">water_tile</tile>
-        <tile type="block" idx="11">water_tile</tile>
+        <tile type="crossable" idx="0">water_tile</tile>
+        <tile type="crossable" idx="1">water_tile</tile>
+        <tile type="crossable" idx="2">water_tile</tile>
+        <tile type="crossable" idx="3">water_tile</tile>
+        <tile type="crossable" idx="4">water_tile</tile>
+        <tile type="crossable" idx="7">water_tile</tile>
+        <tile type="crossable" idx="8">water_tile</tile>
+        <tile type="crossable" idx="9">water_tile</tile>
+        <tile type="crossable" idx="10">water_tile</tile>
+        <tile type="crossable" idx="11">water_tile</tile>
       </rrow>
        </room>
     <room exists="False" idx="3">
     </room>
-    <room exists="True" idx="4">
+    <room exists="True" oldman="False" basement="False" idx="4">
       <items>
         <item X="11" Y="3">HeartContainer</item>
       </items>
@@ -373,7 +374,7 @@
         <tile type="block" idx="11">movable_square</tile>
       </rrow>
     </room>
-    <room exists="True" idx="5">
+    <room exists="True" oldman="False" basement="False" idx="5">
       <items>
         <item X="5.5" Y="3">TriForce</item>
       </items>
@@ -396,14 +397,14 @@
       </rrow>
       <rrow idx="2">
         <tile type="block" idx="1">movable_square</tile>
-        <tile type="block" idx="4">turqoise_statue_right</tile>
-        <tile type="block" idx="7">turqoise_statue_left</tile>
+        <tile type="block" idx="4">turquoise_statue_right</tile>
+        <tile type="block" idx="7">turquoise_statue_left</tile>
         <tile type="block" idx="10">movable_square</tile>
       </rrow>
       <rrow idx="3">
         <tile type="block" idx="1">movable_square</tile>
-        <tile type="block" idx="3">turqoise_statue_right</tile>
-        <tile type="block" idx="8">turqoise_statue_left</tile>
+        <tile type="block" idx="3">turquoise_statue_right</tile>
+        <tile type="block" idx="8">turquoise_statue_left</tile>
         <tile type="block" idx="10">movable_square</tile>
       </rrow>
       <rrow idx="4">
@@ -426,7 +427,7 @@
   </drow>
   <drow idx="2">
     <!-- 0 - 0 maps to top left corner  -->
-    <room exists="True" idx="0">
+    <room exists="True" oldman="True" basement="False" idx="0">
       <text>EASTMOST PENINSULA IS THE SECRET.</text>
       <enemies>
         <enemy X="5.5" Y="2">OldMan</enemy>
@@ -451,7 +452,7 @@
 	  <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <enemies>
         <enemy X="8" Y="0">TealGel</enemy>
         <enemy X="7" Y="2">TealGel</enemy>
@@ -469,7 +470,7 @@
       <rrow idx="2">
       </rrow>
       <rrow idx="3">
-        <tile type="movable,puzzle"  idx="5">orange_movable_square</tile>
+        <tile type="movable,puzzle" dir="N,S" idx="5">orange_movable_square</tile>
       </rrow>
       <rrow idx="4">
       </rrow>
@@ -478,7 +479,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <items>
         <item X="10" Y="3">Map</item>
       </items>
@@ -520,7 +521,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
       <items>
         <item X="6" Y="1">Boomerang</item>
       </items>
@@ -553,7 +554,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="4">
+    <room exists="True" oldman="False" basement="False" idx="4">
       <items>
         <item X="8" Y="6">Key</item>
       </items>
@@ -607,7 +608,7 @@
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="False" idx="0">
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <enemies>
         <enemy X="8" Y="0">Keese</enemy>
         <enemy X="1" Y="1">Keese</enemy>
@@ -641,7 +642,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <items>
         <item X="6" Y="1">Key</item>
       </items>
@@ -677,7 +678,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
       <items>
         <item X="10" Y="3">Compass</item>
       </items>
@@ -906,7 +907,7 @@
         <tile idx="11"></tile>
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <enemies>
         <enemy X="4" Y="2">Stalfos</enemy>
         <enemy X="7" Y="2">Stalfos</enemy>
@@ -948,7 +949,7 @@
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="False" idx="0">
     </room>
-    <room exists="True" idx="1">
+    <room exists="True" oldman="False" basement="False" idx="1">
       <items>
         <item X="8" Y="6">Key</item>
       </items>
@@ -975,7 +976,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" idx="2">
+    <room exists="True" oldman="False" basement="False" idx="2">
       <doors>
         <door loc="N">locked</door>
         <door loc="E">unlocked</door>
@@ -1024,7 +1025,7 @@
         <tile type="walkable" idx="8">spotted_tile</tile>
       </rrow>
     </room>
-    <room exists="True" idx="3">
+    <room exists="True" oldman="False" basement="False" idx="3">
       <items>
           <item X="5.5" Y="3">Key</item>
       </items>

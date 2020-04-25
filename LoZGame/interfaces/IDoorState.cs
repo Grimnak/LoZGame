@@ -10,6 +10,8 @@
 
         void Update();
 
-        void Draw();
+        void DrawFrame();
+
+        void DrawFloor();
     }
 }

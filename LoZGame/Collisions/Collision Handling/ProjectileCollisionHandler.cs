@@ -13,76 +13,92 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
+            if (!enemy.IsTransparent)
             {
-                enemy.Stun(projectile.StunDuration);
-                this.projectile.Returning = true;
-            }
-            else if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile)
-            {
-                this.projectile.Physics.StopMovement();
-            }
-            else if (this.projectile is BombProjectile || this.projectile is BombExplosion || this.projectile is SwordBeamExplosion || this.projectile is SwordProjectile)
-            {
-                // do nothing
-            }
-            else
-            {
-                this.projectile.IsExpired = true;
+                if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
+                {
+                    enemy.Stun(projectile.StunDuration);
+                    projectile.Returning = true;
+                }
+                else if (projectile is BlueCandleProjectile || projectile is RedCandleProjectile)
+                {
+                    projectile.Physics.StopMovement();
+                }
+                else if (projectile is BombProjectile || projectile is BombExplosion || projectile is SwordBeamExplosion || projectile is SwordProjectile)
+                {
+                    // do nothing
+                }
+                else
+                {
+                    projectile.IsExpired = true;
+                }
             }
         }
 
         public void OnCollisionResponse(IItem item, CollisionDetection.CollisionSide collisionSide)
         {
         }
-        
+
+        /// <summary>
+        /// Used to optionally expire projectiles that collide with blocks.
+        /// </summary>
+        /// <param name="block">This is the block that is collided with by the projectile.</param>
+        /// <param name="collisionSide">This is the side of the block that the projectile collides with..</param>
+        public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (!block.IsTransparent)
+            {
+                projectile.IsExpired = true;
+            }
+        }
+
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
+            if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
             {
-                this.projectile.Returning = true;
+                projectile.Returning = true;
                 player.Stun(projectile.StunDuration);
             }
         }
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile || this.projectile is BombProjectile)
+            if (projectile is BlueCandleProjectile || projectile is RedCandleProjectile || projectile is BombProjectile)
             {
-                this.projectile.Physics.StopMovement();
+                projectile.Physics.StopMovement();
             }
-            else if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
+            else if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
             {
-                this.projectile.Returning = true;
+                projectile.Returning = true;
             }
-            else if (this.projectile is BombExplosion)
+            else if (projectile is BombExplosion)
             {
                 // do nothing
             }
             else
             {
-                this.projectile.IsExpired = true;
+                projectile.IsExpired = true;
             }
         }
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            if (this.projectile is BoomerangProjectile || this.projectile is MagicBoomerangProjectile)
+            if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
             {
-                this.projectile.Returning = true;
+                projectile.Returning = true;
             }
-            else if (this.projectile is BlueCandleProjectile || this.projectile is RedCandleProjectile || this.projectile is BombProjectile)
+            else if (projectile is BlueCandleProjectile || projectile is RedCandleProjectile || projectile is BombProjectile)
             {
-                this.SetBounds(this.projectile.Physics, collisionSide);
-                this.projectile.Physics.SetLocation();
+                SetBounds(projectile.Physics, collisionSide);
+                projectile.Physics.SetLocation();
             }
-            else if (this.projectile is BombExplosion || this.projectile is SwordBeamExplosion)
+            else if (projectile is BombExplosion || projectile is SwordBeamExplosion)
             {
                 // do nothing
             }
             else
             {
-                this.projectile.IsExpired = true;
+                projectile.IsExpired = true;
             }
         }
     }

@@ -1,6 +1,5 @@
 ﻿namespace LoZClone
 {
-    using System;
     using Microsoft.Xna.Framework;
     using System.Collections.Generic;
 
@@ -8,23 +7,26 @@
     {
         public BlockEnemy(Vector2 location)
         {
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>()
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>()
             {
-            { RandomStateGenerator.StateType.Attack, 1 },
-            { RandomStateGenerator.StateType.Idle, 5 }
+                { RandomStateGenerator.StateType.Attack, 1 },
+                { RandomStateGenerator.StateType.Idle, 5 }
             };
-            this.Health = new HealthManager(1);
-            this.Physics = new Physics(location);
-            this.Physics.IsMoveable = false;
-            this.Physics.Mass = 1;
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, BlockSpriteFactory.Instance.TileHeight, BlockSpriteFactory.Instance.TileWidth);
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.IsDead = false;
-            this.DamageTimer = 0;
-            this.CurrentState = new BlockEnemyIdleState(this);
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
+            Health = new HealthManager(1);
+            Physics = new Physics(location);
+            Physics.IsMoveable = false;
+            Physics.Mass = 1;
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, BlockSpriteFactory.Instance.TileHeight, (int)BlockSpriteFactory.Instance.TileWidth);
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            IsKillable = false;
+            IsTransparent = true;
+            DamageTimer = 0;
+            AI = EnemyAI.NoAI;
+            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
+            CurrentState = new BlockEnemyIdleState(this);
+            CurrentTint = LoZGame.Instance.DefaultTint;
         }
 
         // This block does not interact with any sort of collision at all
@@ -39,7 +41,7 @@
         public override void Update()
         {
             // only needs to update current state
-            this.CurrentState.Update();
+            CurrentState.Update();
         }
 
         public override void Draw()

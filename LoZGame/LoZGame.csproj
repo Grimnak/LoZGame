@@ -69,14 +69,19 @@
     <Compile Include="Collisions\Collision Detection\CollisionDetection.cs" />
     <Compile Include="Collisions\Collision Handling\ItemCollisionHandler.cs" />
     <Compile Include="Collisions\Collision Handling\ProjectileCollisionHandler.cs" />
+    <Compile Include="Controller\Commands\CommandContinue.cs" />
+    <Compile Include="Controller\Commands\InventoryCommands\CommandOptions.cs" />
+    <Compile Include="Controller\Commands\InventoryCommands\CommandPause.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionDown.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionLeft.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionRight.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionUp.cs" />
+    <Compile Include="Controller\Commands\OptionCommands\CommandMoveOptionDown.cs" />
+    <Compile Include="Controller\Commands\OptionCommands\CommandMoveOptionUp.cs" />
+    <Compile Include="Controller\Commands\OptionCommands\CommandToggleOption.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackA.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandAttackB.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandDown.cs" />
-    <Compile Include="Controller\Commands\InventoryCommands\CommandItemSelect.cs" />
     <Compile Include="Controller\Commands\PlayerCommands\CommandLeft.cs" />
     <Compile Include="Controller\Commands\CommandQuit.cs" />
     <Compile Include="Controller\Commands\CommandReset.cs" />
@@ -93,73 +98,130 @@
     <Compile Include="Controller\Commands\Controllers\KeyboardController.cs" />
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
     <Compile Include="Enemies\EnemyClasses\BlockEnemy.cs" />
-    <Compile Include="Enemies\EnemyClasses\FireSnakeSegment.cs" />
-    <Compile Include="Enemies\EnemyClasses\FireSnakeHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\DifficultyModifiers.cs" />
+    <Compile Include="Enemies\EnemyClasses\DigDogger.cs" />
+    <Compile Include="Enemies\EnemyClasses\GleeokBody.cs" />
+    <Compile Include="Enemies\EnemyClasses\GleeokHeadOff.cs" />
+    <Compile Include="Enemies\EnemyClasses\GleeokNeck.cs" />
+    <Compile Include="Enemies\EnemyClasses\GleeokHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\DigDoggerInvincible.cs" />
+    <Compile Include="Enemies\EnemyClasses\LikeLike.cs" />
+    <Compile Include="Enemies\EnemyClasses\ManhandlaHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\ManhandlaBody.cs" />
+    <Compile Include="Enemies\EnemyClasses\EnemyHelper.cs" />
+    <Compile Include="Enemies\EnemyClasses\MoldormSegment.cs" />
+    <Compile Include="Enemies\EnemyClasses\MoldormHead.cs" />
     <Compile Include="Enemies\EnemyClasses\BlueGoriya.cs" />
+    <Compile Include="Enemies\EnemyClasses\BlueDarknut.cs" />
+    <Compile Include="Enemies\EnemyClasses\RedDarknut.cs" />
+    <Compile Include="Enemies\EnemyClasses\RedGoriya.cs" />
+    <Compile Include="Enemies\EnemyClasses\Bubble.cs" />
+    <Compile Include="Enemies\EnemyClasses\Gibdo.cs" />
+    <Compile Include="Enemies\EnemyClasses\PolsVoice.cs" />
+    <Compile Include="Enemies\EnemyClasses\Vire.cs" />
+    <Compile Include="Enemies\EnemyClasses\VireKeese.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyIdleState.cs" />
-    <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyAttackState.cs" />
-    <Compile Include="Enemies\EnemyStates\DodongoStates\SpawnDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\StunnedDodongoState.cs" />
-    <Compile Include="Enemies\EnemyStates\DodongoStates\DodongoEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\DragonStates\DragonEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAIEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\DeadEnemyState.cs" />
-    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\IdleEnemyState.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\DeadFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\DownLeftMovingFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\DownMovingFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\DownRightMovingFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\FireSnakeEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\IdleFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\LeftMovingFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\RightMovingFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\UpLeftMovingFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\UpMovingFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\FireSnakeStates\FireSnakeHeadStates\UpRightMovingFireSnakeState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAIEssentials.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingBlueGoriyaState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingDodongoState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingLikelikeState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingManhandlaHeadState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingDragonState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingGoriyaState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingSpikeCrossState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingRopeState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingWallMasterState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\BlockEnemyAttackState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\OldManAngryState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\OldManSecretState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateSwitches.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateEssentials.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateDarknut.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateDodongo.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateDigDogger.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdatePolsVoice.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateLikelike.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateVire.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGleeock.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateFireSnake.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGel.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGoriya.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateManhandla.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateKeese.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateSpikeCross.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateRope.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateBubble.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateStalfos.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateWallMaster.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateZol.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\DownLeftJumpingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\DownLeftMovingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\DownJumpingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\DownMovingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\DownRightJumpingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\DownRightMovingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\IdleEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\LeftJumpingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\LeftMovingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\RightJumpingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\RightMovingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpLeftJumpingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpLeftMovingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpJumpingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpMovingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpRightJumpingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpRightMovingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\SpawnEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\StunnedEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\VireStates\HiddenVireState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FollowFireSnakeState.cs" />
-    <Compile Include="Enemies\EnemyStates\DodongoStates\AttackingDodongoState.cs" />
-    <Compile Include="Enemies\EnemyStates\GelStates\GelEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\GelStates\SpawnGelState.cs" />
-    <Compile Include="Enemies\EnemyStates\GoriyaStates\AttackingBlueGoriyaState.cs" />
-    <Compile Include="Enemies\EnemyStates\GoriyaStates\GoriyaEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\GoriyaStates\SpawnGoriyaState.cs" />
-    <Compile Include="Enemies\EnemyStates\KeeseStates\IdleKeeseState.cs" />
-    <Compile Include="Enemies\EnemyStates\KeeseStates\KeeseEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\KeeseStates\SpawnKeeseState.cs" />
-    <Compile Include="Enemies\EnemyStates\OldManStates\OldManAngryState.cs" />
-    <Compile Include="Enemies\EnemyStates\OldManStates\OldManSecretState.cs" />
-    <Compile Include="Enemies\EnemyStates\OldManStates\OldManIdleState.cs" />
-    <Compile Include="Enemies\EnemyStates\OldManStates\OldManEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\OldManStates\SpawnOldManState.cs" />
-    <Compile Include="Enemies\EnemyStates\RopeStates\RopeEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\RopeStates\SpawnRopeState.cs" />
-    <Compile Include="Enemies\EnemyStates\StalfosStates\SpawnStalfosState.cs" />
-    <Compile Include="Enemies\EnemyStates\StalfosStates\StalfosEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\WallMasterStates\SpawnWallMasterState.cs" />
-    <Compile Include="Enemies\EnemyStates\WallMasterStates\WallMasterEssentials.cs" />
-    <Compile Include="Enemies\EnemyStates\ZolStates\SpawnZolState.cs" />
-    <Compile Include="Enemies\EnemyStates\ZolStates\ZolEssentials.cs" />
+    <Compile Include="GameState\CreditsScreenState.cs" />
+    <Compile Include="GameState\GameStateEssentials.cs" />
+    <Compile Include="GameState\OptionsState.cs" />
+    <Compile Include="GameState\FluteGameState.cs" />
+    <Compile Include="GameState\UnpauseState.cs" />
+    <Compile Include="GameState\PauseState.cs" />
+    <Compile Include="Items\Ladder.cs" />
     <Compile Include="Items\ItemTypes.cs" />
+    <Compile Include="Managers\DropTables\DropHelper.cs" />
+    <Compile Include="Managers\DropTables\DropManager.cs" />
     <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Players\PlayerClasses\LinkHelper.cs" />
+    <Compile Include="Players\PlayerStates\SwallowedState.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Rooms\BlockClasses\DoorHelper.cs" />
+    <Compile Include="Rooms\BlockClasses\Tiles\CrossableTile.cs" />
+    <Compile Include="Rooms\BlockClasses\Tiles\Stairs.cs" />
+    <Compile Include="Rooms\BlockStates\DoorStates\DoorEssentials.cs" />
+    <Compile Include="Rooms\BlockStates\MovableTileStates\IMovableBlockState.cs" />
+    <Compile Include="Rooms\BlockStates\MovableTileStates\SolvedState.cs" />
+    <Compile Include="Rooms\BlockStates\MovableTileStates\UnsolvedState.cs" />
     <Compile Include="Sprites\LevelMasterSprite.cs" />
     <Compile Include="Util\DataConstants\CollisionData\CollisionConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyHealthConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyDamageConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemySpeedConstants.cs" />
+    <Compile Include="Util\DataConstants\EnemyData\EnemyDropTables.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyStateWeights.cs" />
+    <Compile Include="Util\DataConstants\GameStateData\DifficultyConstants.cs" />
     <Compile Include="Util\DataConstants\GameStateData\GameStateDataConstants.cs" />
     <Compile Include="Util\DataConstants\InventoryData\InventoryConstants.cs" />
     <Compile Include="Util\DataConstants\PhysicsData\PhysicsConstants.cs" />
+    <Compile Include="Util\DifficultyMapper.cs" />
+    <Compile Include="Util\EnumClass.cs" />
     <Compile Include="Util\Inventory\InventoryComponents.cs" />
     <Compile Include="GameState\DeathState.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyEssentials.cs" />
     <Compile Include="Enemies\EnemyClasses\Dodongo.cs" />
     <Compile Include="Enemies\EnemyClasses\Dragon.cs" />
     <Compile Include="Enemies\EnemyClasses\Gel.cs" />
-    <Compile Include="Enemies\EnemyClasses\Goriya.cs" />
     <Compile Include="Enemies\EnemyClasses\Keese.cs" />
     <Compile Include="Enemies\EnemyClasses\Merchant.cs" />
     <Compile Include="Enemies\EnemyClasses\OldMan.cs" />
@@ -168,13 +230,6 @@
     <Compile Include="Enemies\EnemyClasses\Stalfos.cs" />
     <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
-    <Compile Include="Enemies\EnemyStates\GelStates\IdleGelState.cs" />
-    <Compile Include="Enemies\EnemyStates\GoriyaStates\StunnedGoriyaState.cs" />
-    <Compile Include="Enemies\EnemyStates\RopeStates\AttackingRopeState.cs" />
-    <Compile Include="Enemies\EnemyStates\RopeStates\StunnedRopeState.cs" />
-    <Compile Include="Enemies\EnemyStates\StalfosStates\StunnedStalfosState.cs" />
-    <Compile Include="Enemies\EnemyStates\WallMasterStates\StunnedWallMasterState.cs" />
-    <Compile Include="Enemies\EnemyStates\ZolStates\StunnedZolState.cs" />
     <Compile Include="GameState\CloseInventoryState.cs" />
     <Compile Include="Interfaces\IDrop.cs" />
     <Compile Include="Interfaces\IGameState.cs" />
@@ -184,8 +239,6 @@
     <Compile Include="Interfaces\IScreen.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Interfaces\IDoorState.cs" />
-    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\HorizontalSpikeCrossState.cs" />
-    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\VerticalSpikeCrossState.cs" />
     <Compile Include="GameState\OpenInventoryState.cs" />
     <Compile Include="Items\Arrow.cs" />
     <Compile Include="Items\BlueCandle.cs" />
@@ -228,7 +281,6 @@
     <Compile Include="Items\WoodenSword.cs" />
     <Compile Include="Items\DroppedYellowRupee.cs" />
     <Compile Include="Items\YellowRupee.cs" />
-    <Compile Include="Managers\DropManager.cs" />
     <Compile Include="Managers\Dungeon\DungeonMethods.cs" />
     <Compile Include="Managers\GameObjects\DoorManager.cs" />
     <Compile Include="Managers\Dungeon\Dungeon.cs" />
@@ -257,12 +309,6 @@
     <Compile Include="Projectiles\SwordBeamExplosion.cs" />
     <Compile Include="Projectiles\SwordProjectile.cs" />
     <Compile Include="Projectiles\SwordBeamProjectile.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="Rooms\BlockClasses\Door.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\BombedDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\CosmeticDoorState.cs" />
@@ -272,58 +318,6 @@
     <Compile Include="Rooms\BlockStates\DoorStates\SpecialDoorState.cs" />
     <Compile Include="Rooms\BlockStates\DoorStates\UnlockedDoorState.cs" />
     <Compile Include="Sprites\ObjectSprite.cs" />
-    <Compile Include="Enemies\EnemyStates\DodongoStates\DeadDodongoState.cs" />
-    <Compile Include="Enemies\EnemyStates\DodongoStates\DownMovingDodongoState.cs" />
-    <Compile Include="Enemies\EnemyStates\DodongoStates\LeftMovingDodongoState.cs" />
-    <Compile Include="Enemies\EnemyStates\DodongoStates\RightMovingDodongoState.cs" />
-    <Compile Include="Enemies\EnemyStates\DodongoStates\UpMovingDodongoState.cs" />
-    <Compile Include="Enemies\EnemyStates\DragonStates\AttackingDragonState.cs" />
-    <Compile Include="Enemies\EnemyStates\DragonStates\DeadDragonState.cs" />
-    <Compile Include="Enemies\EnemyStates\DragonStates\IdleDragonState.cs" />
-    <Compile Include="Enemies\EnemyStates\DragonStates\LeftMovingDragonState.cs" />
-    <Compile Include="Enemies\EnemyStates\DragonStates\RightMovingDragonState.cs" />
-    <Compile Include="Enemies\EnemyStates\GelStates\DeadGelState.cs" />
-    <Compile Include="Enemies\EnemyStates\GelStates\DownMovingGelState.cs" />
-    <Compile Include="Enemies\EnemyStates\GelStates\LeftMovingGelState.cs" />
-    <Compile Include="Enemies\EnemyStates\GelStates\RightMovingGelState.cs" />
-    <Compile Include="Enemies\EnemyStates\GelStates\UpMovingGelState.cs" />
-    <Compile Include="Enemies\EnemyStates\GoriyaStates\AttackingGoriyaState.cs" />
-    <Compile Include="Enemies\EnemyStates\GoriyaStates\DeadGoriyaState.cs" />
-    <Compile Include="Enemies\EnemyStates\GoriyaStates\DownMovingGoriyaState.cs" />
-    <Compile Include="Enemies\EnemyStates\GoriyaStates\LeftMovingGoriyaState.cs" />
-    <Compile Include="Enemies\EnemyStates\GoriyaStates\RightMovingGoriyaState.cs" />
-    <Compile Include="Enemies\EnemyStates\GoriyaStates\UpMovingGoriyaState.cs" />
-    <Compile Include="Enemies\EnemyStates\KeeseStates\DeadKeeseState.cs" />
-    <Compile Include="Enemies\EnemyStates\KeeseStates\DownLeftMovingKeeseState.cs" />
-    <Compile Include="Enemies\EnemyStates\KeeseStates\DownMovingKeeseState.cs" />
-    <Compile Include="Enemies\EnemyStates\KeeseStates\DownRightMovingKeeseState.cs" />
-    <Compile Include="Enemies\EnemyStates\KeeseStates\LeftMovingKeeseState.cs" />
-    <Compile Include="Enemies\EnemyStates\KeeseStates\RightMovingKeeseState.cs" />
-    <Compile Include="Enemies\EnemyStates\KeeseStates\UpLeftMovingKeeseState.cs" />
-    <Compile Include="Enemies\EnemyStates\KeeseStates\UpMovingKeeseState.cs" />
-    <Compile Include="Enemies\EnemyStates\KeeseStates\UpRightMovingKeeseState.cs" />
-    <Compile Include="Enemies\EnemyStates\RopeStates\DeadRopeState.cs" />
-    <Compile Include="Enemies\EnemyStates\RopeStates\DownMovingRopeState.cs" />
-    <Compile Include="Enemies\EnemyStates\RopeStates\LeftMovingRopeState.cs" />
-    <Compile Include="Enemies\EnemyStates\RopeStates\RightMovingRopeState.cs" />
-    <Compile Include="Enemies\EnemyStates\RopeStates\UpMovingRopeState.cs" />
-    <Compile Include="Enemies\EnemyStates\SpikeCrossStates\IdleSpikeCrossState.cs" />
-    <Compile Include="Enemies\EnemyStates\StalfosStates\DeadStalfosState.cs" />
-    <Compile Include="Enemies\EnemyStates\StalfosStates\DownMovingStalfosState.cs" />
-    <Compile Include="Enemies\EnemyStates\StalfosStates\LeftMovingStalfosState.cs" />
-    <Compile Include="Enemies\EnemyStates\StalfosStates\RightMovingStalfosState.cs" />
-    <Compile Include="Enemies\EnemyStates\StalfosStates\UpMovingStalfosState.cs" />
-    <Compile Include="Enemies\EnemyStates\WallMasterStates\DeadWallMasterState.cs" />
-    <Compile Include="Enemies\EnemyStates\WallMasterStates\DownMovingWallMasterState.cs" />
-    <Compile Include="Enemies\EnemyStates\WallMasterStates\LeftMovingWallMasterState.cs" />
-    <Compile Include="Enemies\EnemyStates\WallMasterStates\RightMovingWallMasterState.cs" />
-    <Compile Include="Enemies\EnemyStates\WallMasterStates\UpMovingWallMasterState.cs" />
-    <Compile Include="Enemies\EnemyStates\WallMasterStates\AttackingWallMasterState.cs" />
-    <Compile Include="Enemies\EnemyStates\ZolStates\DeadZolState.cs" />
-    <Compile Include="Enemies\EnemyStates\ZolStates\DownMovingZolState.cs" />
-    <Compile Include="Enemies\EnemyStates\ZolStates\LeftMovingZolState.cs" />
-    <Compile Include="Enemies\EnemyStates\ZolStates\RightMovingZolState.cs" />
-    <Compile Include="Enemies\EnemyStates\ZolStates\UpMovingZolState.cs" />
     <Compile Include="Interfaces\ICollider.cs" />
     <Compile Include="Interfaces\IProjectile.cs" />
     <Compile Include="Interfaces\IBlock.cs" />
@@ -338,7 +332,7 @@
     <Compile Include="Players\PlayerStates\DieState.cs" />
     <Compile Include="Rooms\BlockClasses\Tiles\BlockTile.cs" />
     <Compile Include="Rooms\BlockClasses\Room.cs" />
-    <Compile Include="Rooms\BlockClasses\Tiles\MovableTile.cs" />
+    <Compile Include="Rooms\BlockClasses\Tiles\MovableBlock.cs" />
     <Compile Include="Rooms\BlockClasses\Tiles\Tile.cs" />
     <Compile Include="Managers\HealthManager.cs" />
     <Compile Include="Managers\DebugManager.cs" />
@@ -371,6 +365,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Inventory\InventoryComponentsHelper.cs" />
+    <Compile Include="Util\Options.cs" />
+    <Compile Include="Util\Physics\JumpPhysics.cs" />
     <Compile Include="Util\Physics\KnockbackPhysics.cs" />
     <Compile Include="Util\Physics\PhysicsMain.cs" />
     <Compile Include="Util\Physics\MovementPhysics.cs" />
@@ -378,6 +374,7 @@
     <Compile Include="Util\Physics\PhysicsHelper.cs" />
     <Compile Include="Util\RandomStateGenerator.cs" />
     <Compile Include="Sprites\SpriteData.cs" />
+    <Compile Include="Util\SpriteFactories\DungeonSpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\BlockSpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\EnemySpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\ItemSpriteFactory.cs" />
@@ -427,6 +424,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Util\Audio\Resources\LOZ_Recorder.wav" />
+    <None Include="Util\Audio\Resources\coolFlute.wav" />
+    <Content Include="Util\Audio\Resources\CreditsTheme.wav" />
+    <Content Include="Util\Audio\Resources\SpartanLaser_mixdown.wav" />
     <None Include="Util\Audio\Resources\triforce_tune.wav" />
     <None Include="Util\Audio\Resources\dungeon_song.wav" />
     <None Include="Util\Audio\Resources\title_song.wav" />
@@ -512,13 +513,15 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,9 +1,10 @@
 ﻿namespace LoZClone
 {
-    using Microsoft.Xna.Framework;
     using System;
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
     /*
      * A Room object represents a single dungeon room in-game.
@@ -12,11 +13,10 @@
      */
     public class Room
     {
+        private ISprite Background;
         private bool exists = false;
-        private Boomerang droppedBoomerang = null;
-        private HeartContainer droppedHeartContainer = null;
-        private MagicBoomerang droppedMagicBoomerang = null;
-        private string border = null;
+        private bool basement = false;
+        private bool oldman = false;
         private string text = null;
         private List<IItem> items = null; // a list for any and all items in a room
         private List<IEnemy> enemies = null; // a list for any and all enemies in a room
@@ -27,53 +27,61 @@
          * args:
          * ns => namespace of XML dungeon doc
          * ex => whether the room is null or not
+         * bm => whether the room is a basement or not
+         * om => whether the room is an oldman room or not
          */
-        public Room(string ns, bool ex)
+        public Room(string ns, bool ex, bool bm = false, bool om = false)
         {
             if (ex)
             {
-                this.exists = ex;
-                this.border = ns; // ns = LEVEL-1 || LEVEL-2 || LEVEL-3
-                this.doors = new List<Door>();
-                this.blocks = new List<IBlock>();
-                this.enemies = new List<IEnemy>();
-                this.items = new List<IItem>();
+                exists = ex;
+                basement = bm;
+                oldman = om;
+                doors = new List<Door>();
+                blocks = new List<IBlock>();
+                enemies = new List<IEnemy>();
+                items = new List<IItem>();
+                if (oldman)
+                {
+                    Background = DungeonSpriteFactory.Instance.DungeonHole();
+                } 
+                else
+                {
+                    Background = DungeonSpriteFactory.Instance.Dungeon();
+                }
             }
         }
 
         /// <summary>
-        /// Gets the enemies list.
+        /// Gets or sets the enemies list.
         /// </summary>
         public List<IEnemy> Enemies
         {
-            get { return this.enemies; }
+            get { return enemies; } set { enemies = value; }
         }
 
         /// <summary>
-        /// Gets the items list.
+        /// Gets or sets the items list.
         /// </summary>
         public List<IItem> Items
         {
-            get { return this.items; }
+            get { return items; } set { items = value; }
         }
 
         /// <summary>
-        /// Gets the tiles list.
+        /// Gets or sets the blocks list.
         /// </summary>
         public List<IBlock> Tiles
         {
-            get { return this.blocks; }
+            get { return blocks; } set { blocks = value; }
         }
 
         /// <summary>
-        /// Gets the doors list.
+        /// Gets or sets the doors list.
         /// </summary>
         public List<Door> Doors
         {
-            get
-            {
-                return this.doors;
-            }
+            get { return doors; } set { doors = value; }
         }
 
         /// <summary>
@@ -81,7 +89,7 @@
         /// </summary>
         public bool Exists
         {
-            get { return this.exists; }
+            get { return exists; }
         }
 
         /*
@@ -92,21 +100,27 @@
          */
         public void SetText(string txt)
         {
-            this.text = txt;
+            text = txt;
         }
 
         public string RoomText
         {
-            get { return this.text; }
+            get { return text; }
         }
 
         public Tuple<Key, bool> DroppedKey { get; set; }
 
-        public Boomerang DroppedBoomerang => this.droppedBoomerang;
+        public Tuple<Boomerang, bool> DroppedBoomerang { get; set; }
 
-        public HeartContainer DroppedHeartContainer => this.droppedHeartContainer;
+        public Tuple<HeartContainer, bool> DroppedHeartContainer { get; set; }
 
-        public MagicBoomerang DroppedMagicBoomerang => this.droppedMagicBoomerang;
+        public Tuple<MagicBoomerang, bool> DroppedMagicBoomerang { get; set; }
+
+        public Tuple<Bomb, bool> DroppedBomb { get; set; }
+
+        public Tuple<YellowRupee, bool> DroppedYellowRupee { get; set; }
+
+        public bool IsBasement => basement;
 
         /// <summary>
         /// Converts grid position in the room to a screen vector.
@@ -142,53 +156,85 @@
          */
         public void AddEnemy(float x, float y, string type)
         {
-            Vector2 location = this.GridToScreenVector(x, y);
+            Vector2 location = GridToScreenVector(x, y);
             switch (type)
             {
                 case "Dodongo":
-                    this.enemies.Add(new Dodongo(location));
+                    enemies.Add(new Dodongo(location));
                     break;
                 case "Dragon":
-                    this.enemies.Add(new Dragon(location));
+                    enemies.Add(new Dragon(location));
                     break;
                 case "TealGel":
-                    this.enemies.Add(new Gel(location));
+                    enemies.Add(new Gel(location));
                     break;
                 case "Goriya":
-                    this.enemies.Add(new Goriya(location));
+                    enemies.Add(new RedGoriya(location));
                     break;
                 case "BlueGoriya":
-                    this.enemies.Add(new BlueGoriya(location));
+                    enemies.Add(new BlueGoriya(location));
                     break;
                 case "Keese":
-                    this.enemies.Add(new Keese(location));
+                    enemies.Add(new Keese(location));
                     break;
                 case "Merchant":
-                    this.enemies.Add(new Merchant(location));
+                    enemies.Add(new Merchant(location));
                     break;
                 case "OldMan":
-                    this.enemies.Add(new OldMan(location));
+                    enemies.Add(new OldMan(location));
                     break;
                 case "Rope":
-                    this.enemies.Add(new Rope(location));
+                    enemies.Add(new Rope(location));
                     break;
                 case "SpikeCross":
-                    this.enemies.Add(new SpikeCross(location));
+                    enemies.Add(new SpikeCross(location));
                     break;
                 case "Stalfos":
-                    this.enemies.Add(new Stalfos(location));
+                    enemies.Add(new Stalfos(location));
+                    break;
+                case "Gibdo":
+                    enemies.Add(new Gibdo(location));
                     break;
                 case "WallMaster":
-                    this.enemies.Add(new WallMaster(location));
+                    enemies.Add(new WallMaster(location));
                     break;
                 case "Zol":
-                    this.enemies.Add(new Zol(location));
+                    enemies.Add(new Zol(location));
                     break;
                 case "FireSnake":
-                    this.enemies.Add(new FireSnakeHead(location));
+                    enemies.Add(new MoldormHead(location));
                     break;
                 case "FireBlockEnemy":
-                    this.enemies.Add(new BlockEnemy(location));
+                    enemies.Add(new BlockEnemy(location));
+                    break;
+                case "Darknut":
+                    enemies.Add(new RedDarknut(location));
+                    break;
+                case "BlueDarknut":
+                    enemies.Add(new BlueDarknut(location));
+                    break;
+                case "Vire":
+                    enemies.Add(new Vire(location));
+                    break;
+                case "Bubble":
+                    enemies.Add(new Bubble(location));
+                    break;
+                case "Manhandla":
+                    Console.WriteLine(x + " | " + y);
+                    Console.WriteLine(location);
+                    enemies.Add(new ManhandlaBody(location));
+                    break;
+                case "Gleeok":
+                    enemies.Add(new GleeokBody(location));
+                    break;
+                case "LikeLike":
+                    enemies.Add(new Likelike(location));
+                    break;
+                case "PolsVoice":
+                    enemies.Add(new PolsVoice(location));
+                    break;
+                case "DigDogger":
+                    enemies.Add(new DigDoggerInvincible(location));
                     break;
                 default:
                     break;
@@ -203,49 +249,78 @@
          */
         public void AddItem(float x, float y, string name)
         {
-            Vector2 location = this.GridToScreenVector(x, y);
+            Vector2 location = GridToScreenVector(x, y);
             switch (name)
             {
                 case "Bow":
-                    location = this.GridToScreenSpecialVector(x, y);
+                    location = GridToScreenSpecialVector(x, y);
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.items.Add(new Bow(location));
+                    items.Add(new Bow(location));
                     break;
                 case "HeartContainer":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 4);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.droppedHeartContainer = new HeartContainer(location);
+                    DroppedHeartContainer = Tuple.Create(new HeartContainer(location), false);
                     break;
                 case "Key":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.DroppedKey = Tuple.Create(new Key(location), false);
+                    DroppedKey = Tuple.Create(new Key(location), false);
                     break; 
                 case "Compass":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 4);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.items.Add(new Compass(location));
+                    items.Add(new Compass(location));
                     break;
                 case "Boomerang":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.droppedBoomerang = new Boomerang(location);
+                    DroppedBoomerang = Tuple.Create(new Boomerang(location), false);
                     break;
                 case "MagicBoomerang":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.droppedMagicBoomerang = new MagicBoomerang(location);
+                    DroppedMagicBoomerang = Tuple.Create(new MagicBoomerang(location), false);
                     break;
                 case "TriForce":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 5);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 2);
-                    this.items.Add(new Triforce(location));
+                    items.Add(new Triforce(location));
                     break;
                 case "Map":
                     location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
                     location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    this.items.Add(new Map(location));
+                    items.Add(new Map(location));
+                    break;
+                case "WhiteSword":
+                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 5);
+                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 2);
+                    items.Add(new WhiteSword(location));
+                    break;
+                case "Flute":
+                    items.Add(new Flute(location));
+                    break;
+                case "MagicSword":
+                    items.Add(new MagicSword(location));
+                    break;
+                case "Ladder":
+                    items.Add(new Ladder(location));
+                    break;
+                case "Bomb":
+                    DroppedBomb = Tuple.Create(new Bomb(location), false);
+                    break;
+                case "Arrow":
+                    items.Add(new Arrow(location));
+                    break;
+                case "SilverArrow":
+                    items.Add(new SilverArrow(location));
+                    break;
+                case "Rupee":
+                    items.Add(new Rupee(location));
+                    break;
+                case "YellowRupee":
+                    DroppedYellowRupee = Tuple.Create(new YellowRupee(location), false);
                     break;
                 default:
                     break;
@@ -262,30 +337,49 @@
          */
         public void AddBlock(string x, string y, string type, string name, [Optional] string dirs)
         {
-            Vector2 location = this.GridToScreenVector(float.Parse(x), float.Parse(y));
+            Vector2 location = GridToScreenVector(float.Parse(x), float.Parse(y));
             switch (type)
             {
                 case "movable":
-                    this.blocks.Add(new MovableTile(location, name, dirs));
+                    blocks.Add(new MovableBlock(location, name, dirs));
                     break;
                 case "walkable":
                     if (name.Equals("ladder_tile"))
                     {
-                        location = this.GridToScreenSpecialVector(float.Parse(x), float.Parse(y));
+                        location = GridToScreenSpecialVector(float.Parse(x), float.Parse(y));
                     }
 
-                    this.blocks.Add(new Tile(location, name));
+                    blocks.Add(new Tile(location, name));
                     break;
                 case "block":
                     if (name.Equals("basement_brick_tile"))
                     {
-                        location = this.GridToScreenSpecialVector(float.Parse(x), float.Parse(y));
+                        location = GridToScreenSpecialVector(float.Parse(x), float.Parse(y));
                     }
-
-                    this.blocks.Add(new BlockTile(location, name));
+                    blocks.Add(new BlockTile(location, name));
+                    break;
+                case "crossable":
+                    blocks.Add(new CrossableTile(location, name));
                     break;
                 default:
                     break;
+            }
+        }
+
+        public void AddStairs(string x, string y, Point room, Point spawn, bool hidden)
+        {
+            Vector2 location = GridToScreenVector(float.Parse(x), float.Parse(y));
+            blocks.Add(new Stairs(location, room, spawn, hidden));
+        }
+
+        private void SetBounds(IBlock block, string name)
+        {
+            if (name.Contains("statue"))
+            {
+                block.Physics.Bounds = new Rectangle(block.Physics.Bounds.X, block.Physics.Bounds.Y + GameData.Instance.RoomConstants.BlockTileHeightOffset, block.Physics.Bounds.Width, block.Physics.Bounds.Height - GameData.Instance.RoomConstants.BlockTileHeightOffset);
+                block.Physics.BoundsOffset = new Vector2(0, GameData.Instance.RoomConstants.BlockTileHeightOffset);
+                block.Physics.SetDepth();
+                block.Physics.SetLocation();
             }
         }
 
@@ -297,7 +391,19 @@
         public void AddDoor(string location, string kind)
         {
             Door newDoor = new Door(location, kind);
-            this.doors.Add(newDoor); // appending a new Door (Door.cs) to a room object's list of doors
+            doors.Add(newDoor); // appending a new Door (Door.cs) to a room object's list of doors
+        }
+
+        /// <summary>
+        /// Draws the correct border for a room.
+        /// </summary>
+        /// <param name="locationOffset">the offset from the standard location to draw at. Leave as Vector2.Zero for normal border.</param>
+        public void Draw(Point locationOffset)
+        {
+            if (!basement)
+            {
+                Background.Draw(new Vector2(0 + locationOffset.X, LoZGame.Instance.InventoryOffset + locationOffset.Y), LoZGame.Instance.DungeonTint, 0);    
+            }
         }
     }
 }

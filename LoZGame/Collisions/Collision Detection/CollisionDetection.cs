@@ -24,7 +24,7 @@
             CheckEnemies(enemies, playerProjectiles);
             CheckBlocks(blocks, players, enemies);
             CheckItems(items, playerProjectiles);
-            CheckProjectiles(playerProjectiles, enemyProjectiles, doors);
+            CheckProjectiles(playerProjectiles, enemyProjectiles, doors, blocks);
 
             // Unable to change rooms mid-foreach loop, so set a flag and change directly after.
             if (moveToBasement)
@@ -70,15 +70,16 @@
 
         private void CheckBlocks(ReadOnlyCollection<IBlock> blocks, ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies)
         {
-            foreach (IBlock block in blocks)
+            for (int i = 0; i < blocks.Count; i++)
             {
-                if (block is BlockTile || block is MovableTile)
+                IBlock block = blocks[i];
+                if (block is BlockTile || block is MovableBlock || block is CrossableTile)
                 {
                     CheckCollisions<IPlayer>(block, players);
                     CheckCollisions<IEnemy>(block, enemies);
-                    CheckBorders(block, BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight);
+                    CheckBorders(block, block.Physics.Bounds.Width, block.Physics.Bounds.Height);
                 }
-                else if (block is Tile && ((Tile)block).Name.Equals("stairs"))
+                else if (block is Stairs)
                 {
                     CheckCollisions<IPlayer>(block, players);
                 }
@@ -100,17 +101,19 @@
             }
         }
 
-        private void CheckProjectiles(ReadOnlyCollection<IProjectile> playerProjectiles, ReadOnlyCollection<IProjectile> enemyProjectiles, ReadOnlyCollection<IDoor> doorsList)
+        private void CheckProjectiles(ReadOnlyCollection<IProjectile> playerProjectiles, ReadOnlyCollection<IProjectile> enemyProjectiles, ReadOnlyCollection<IDoor> doorsList, ReadOnlyCollection<IBlock> blockList)
         {
             foreach (IProjectile playerProjectile in playerProjectiles)
             {
                 CheckBorders(playerProjectile, ProjectileSpriteFactory.GetProjectileWidth(playerProjectile), ProjectileSpriteFactory.GetProjectileHeight(playerProjectile));
                 CheckCollisions(playerProjectile, doorsList);
+                CheckCollisions(playerProjectile, blockList);
             }
 
             foreach (IProjectile enemyProjectile in enemyProjectiles)
             {
                 CheckBorders(enemyProjectile, ProjectileSpriteFactory.GetProjectileWidth(enemyProjectile), ProjectileSpriteFactory.GetProjectileHeight(enemyProjectile));
+                CheckCollisions(enemyProjectile, blockList);
             }
         }
     }

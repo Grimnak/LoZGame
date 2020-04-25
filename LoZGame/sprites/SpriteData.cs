@@ -10,20 +10,20 @@ namespace LoZClone
         private readonly int rows;
         private readonly int columns;
 
-        public int DrawWidth => this.width;
+        public int DrawWidth => width;
 
-        public int DrawHeight => this.height;
+        public int DrawHeight => height;
 
-        public int Rows => this.rows;
+        public int Rows => rows;
 
-        public int Columns => this.columns;
+        public int Columns => columns;
 
         public SpriteData(Vector2 drawSize, Texture2D spriteSheet, int spriteSheetRows, int spriteSheetColumns)
         {
-            this.width = (int)drawSize.X;
-            this.height = (int)drawSize.Y;
-            this.rows = spriteSheetRows;
-            this.columns = spriteSheetColumns;
+            width = (int)drawSize.X;
+            height = (int)drawSize.Y;
+            rows = spriteSheetRows;
+            columns = spriteSheetColumns;
         }
     }
 }

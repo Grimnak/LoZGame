@@ -10,57 +10,57 @@
 
         public SwordBeamProjectile(Physics source)
         {
-            this.SetUp(this);
-            this.Width = ProjectileSpriteFactory.Instance.SwordBeamWidth;
-            this.Heigth = ProjectileSpriteFactory.Instance.SwordBeamHeight;
-            this.Offset = this.Heigth / 2;
-            this.Speed = GameData.Instance.ProjectileSpeedConstants.SwordBeamSpeed;
-            this.Damage = GameData.Instance.ProjectileDamageConstants.SwordBeamDamage;
-            this.Source = source;
-            this.InitializeDirection();
-            if (this.Physics.CurrentDirection == Physics.Direction.East || this.Physics.CurrentDirection == Physics.Direction.West)
+            SetUp(this);
+            Width = ProjectileSpriteFactory.Instance.SwordBeamWidth;
+            Heigth = ProjectileSpriteFactory.Instance.SwordBeamHeight;
+            Offset = Heigth / 2;
+            Speed = GameData.Instance.ProjectileSpeedConstants.SwordBeamSpeed;
+            Damage = GameData.Instance.ProjectileDamageConstants.SwordBeamDamage;
+            Source = source;
+            InitializeDirection();
+            if (Physics.CurrentDirection == Physics.Direction.East || Physics.CurrentDirection == Physics.Direction.West)
             {
-                this.CorrectProjectile();
+                CorrectProjectile();
             }
-            this.Sprite = ProjectileSpriteFactory.Instance.SwordBeam();
-            this.lifeTime = 0;
-            this.Physics.Mass = GameData.Instance.ProjectileMassConstants.ArrowMass;
+            Sprite = ProjectileSpriteFactory.Instance.SwordBeam();
+            lifeTime = 0;
+            Physics.Mass = GameData.Instance.ProjectileMassConstants.ArrowMass;
         }
 
         public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
             base.OnCollisionResponse(otherCollider, collisionSide);
-            if (this.IsExpired)
+            if (IsExpired)
             {
-                this.CreateExplosion();
+                CreateExplosion();
             }
         }
 
         public override void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
             base.OnCollisionResponse(sourceWidth, sourceHeight, collisionSide);
-            this.CreateExplosion();
+            CreateExplosion();
         }
 
         private void CreateExplosion()
         {
             int explosionType = LoZGame.Instance.GameObjects.Entities.ExplosionManager.SwordExplosion;
             Vector2 explosionLoc = Vector2.Zero;
-            if (this.Physics.CurrentDirection == Physics.Direction.North) 
+            if (Physics.CurrentDirection == Physics.Direction.North) 
             { 
-                explosionLoc = new Vector2(this.Physics.Bounds.Left + (this.Width / 2), this.Physics.Bounds.Top); 
+                explosionLoc = new Vector2(Physics.Bounds.Left + (Width / 2), Physics.Bounds.Top); 
             }
-            else if (this.Physics.CurrentDirection == Physics.Direction.South) 
+            else if (Physics.CurrentDirection == Physics.Direction.South) 
             { 
-                explosionLoc = new Vector2(this.Physics.Bounds.Left + (this.Width / 2), this.Physics.Bounds.Bottom); 
+                explosionLoc = new Vector2(Physics.Bounds.Left + (Width / 2), Physics.Bounds.Bottom); 
             }
-            else if (this.Physics.CurrentDirection == Physics.Direction.West) 
+            else if (Physics.CurrentDirection == Physics.Direction.West) 
             { 
-                explosionLoc = new Vector2(this.Physics.Bounds.Left, this.Physics.Bounds.Top + (this.Heigth / 2)); 
+                explosionLoc = new Vector2(Physics.Bounds.Left, Physics.Bounds.Top + (Heigth / 2)); 
             }
-            else if (this.Physics.CurrentDirection == Physics.Direction.East) 
+            else if (Physics.CurrentDirection == Physics.Direction.East) 
             {
-                explosionLoc = new Vector2(this.Physics.Bounds.Right, this.Physics.Bounds.Top + (this.Heigth / 2)); 
+                explosionLoc = new Vector2(Physics.Bounds.Right, Physics.Bounds.Top + (Heigth / 2)); 
             }
             LoZGame.Instance.GameObjects.Entities.ExplosionManager.AddExplosion(explosionType, explosionLoc);
         }

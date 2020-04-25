@@ -15,8 +15,11 @@
         SoundEffectInstance dungeonLoop = dungeonSong.CreateInstance();
         private static SoundEffect triforceTune = SoundEffect.FromStream(Properties.Resources.triforce_tune);
         SoundEffectInstance triforceLoop = triforceTune.CreateInstance();
+        private static SoundEffect creditsTune = SoundEffect.FromStream(Properties.Resources.CreditsTheme);
+        SoundEffectInstance creditsLoop = creditsTune.CreateInstance();
         private SoundEffect swordSlash = SoundEffect.FromStream(Properties.Resources.LOZ_Sword_Slash);
         private SoundEffect swordShoot = SoundEffect.FromStream(Properties.Resources.LOZ_Sword_Shoot);
+        private SoundEffect laserBlast = SoundEffect.FromStream(Properties.Resources.SpartanLaser_mixdown);
         private SoundEffect enemyHit = SoundEffect.FromStream(Properties.Resources.LOZ_Enemy_Hit);
         private SoundEffect enemyDie = SoundEffect.FromStream(Properties.Resources.LOZ_Enemy_Die);
         private SoundEffect bombDrop = SoundEffect.FromStream(Properties.Resources.LOZ_Enemy_Die);
@@ -27,12 +30,14 @@
         private SoundEffect linkDie = SoundEffect.FromStream(Properties.Resources.LOZ_Link_Die);
         private SoundEffect candleShoot = SoundEffect.FromStream(Properties.Resources.LOZ_Candle);
         private SoundEffect getItem = SoundEffect.FromStream(Properties.Resources.LOZ_Get_Item);
-        private SoundEffect dragonDie = SoundEffect.FromStream(Properties.Resources.LOZ_Boss_Scream1);
+        private SoundEffect bossDie = SoundEffect.FromStream(Properties.Resources.LOZ_Boss_Scream1);
         private SoundEffect climbStairs = SoundEffect.FromStream(Properties.Resources.LOZ_Stairs);
         private SoundEffect solved = SoundEffect.FromStream(Properties.Resources.LOZ_Secret);
         private SoundEffect arrowOrBoomShoot = SoundEffect.FromStream(Properties.Resources.LOZ_Arrow_Boomerang);
         private SoundEffect doorUnlock = SoundEffect.FromStream(Properties.Resources.LOZ_Door_Unlock);
-        private SoundEffect keyAppears = SoundEffect.FromStream(Properties.Resources.LOZ_Key_Appear);
+        private SoundEffect specialItemAppears = SoundEffect.FromStream(Properties.Resources.LOZ_Key_Appear);
+        private SoundEffect flute = SoundEffect.FromStream(Properties.Resources.LOZ_Recorder);
+        private SoundEffect coolFlute = SoundEffect.FromStream(Properties.Resources.coolFlute);
 
         private static readonly SoundFactory instance = new SoundFactory();
 
@@ -50,6 +55,22 @@
         public void PlaySwordSlash()
         {
             swordSlash.Play();
+        }
+
+        public void PlayCoolFlute()
+        {
+            coolFlute.Play();
+        }
+
+        public void PlayLaserBlast()
+        {
+            laserBlast.Play();
+            //System.Threading.Thread.Sleep(2700); // laser blast
+        }
+
+        public void PlayFlute()
+        {
+            flute.Play();
         }
 
         public void PlaySwordShoot()
@@ -107,9 +128,9 @@
             getItem.Play();
         }
 
-        public void PlayDragonDie()
+        public void PlayBossDie()
         {
-            dragonDie.Play();
+            bossDie.Play();
         }
 
         public void PlayClimbStairs()
@@ -132,9 +153,9 @@
             doorUnlock.Play();
         }
 
-        public void PlayKeyAppears()
+        public void PlaySpecialItemAppears()
         {
-            keyAppears.Play();
+            specialItemAppears.Play();
         }
 
         // Music
@@ -168,6 +189,16 @@
             }
         }
 
+        public void PlayCreditsTune()
+        {
+            creditsLoop.IsLooped = true;
+            creditsLoop.Volume = 0.5f;
+            if (musicEnabled)
+            {
+                creditsTune.Play();
+            }
+        }
+
         public void StopDungeonSong()
         {
             dungeonLoop.Stop();
@@ -178,6 +209,7 @@
             titleLoop.Stop();
             dungeonLoop.Stop();
             triforceLoop.Stop();
+            creditsLoop.Stop();
         }
     }
 }

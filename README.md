@@ -1,6 +1,8 @@
 # CSE 3902 - 9:10a Section - Team 3 - Readme
 
-Developer version of Legend of Zelda NES emulator.  This build features a polished version of the first two dungeons and an incomplete build of the third dungeon.  There is also an option to turn "cheat mode" on, which gives the player unlimited items and infinite health.  This can be activated in the main LoZGame.cs file on line 12 by setting the value to "true".
+Developer version of Legend of Zelda NES emulator.  This build features the first five dungeons and an incomplete build of the sixth dungeon.  There is also an option to turn "cheat mode" on, which gives the player unlimited items and infinite health.  This can be activated in the main LoZGame.cs file on line 12 by setting the value to "true" or by accessing the options menu in-game by pressing the letter key "O".
+
+Additional Sprint 5 features include 3 more dungeons, difficulty selection, game-accurate unique enemy drop tables, the ability to continue a playthrough without restarting entirely, a credits menu and an options menu.
 
 ## Authors:
 Eric Henderson.939
@@ -18,25 +20,38 @@ Jeremy Wensink.27
 
 ## Controls:
 ### Player Controls:
+W, A, S, D, Arrow Keys - Controls Player Movement
+
 Z - Attack with Equipped Sword
 
 N - Use Equipped Item
 
 I - Open & Close Inventory
 
+O - Open and Close Options Menu
+
+P - Pause and Unpause the Game
+
 Q - Exits the Game
 
 R - Resets the Game to the Title Screen State
 
-Mouse - Moves Rooms in the Direction you Click
+Mouse - Moves Rooms in the Direction you Click (only present if Cheat Mode is enabled)
 
 ### Inventory Controls:
 W, A, S, D, Arrow Keys - Controls Item Selection
 
-Enter - Equips Selected Item in Inventory
-
 ### Menu Controls:
-Enter - Begin the Game
+W, S, Up Arrow Key, Down Arrow Key - Controls Options Menu Selection
+
+Enter - Begin the Game, Toggle an Option, or Continue Gameplay after Death
+
+### Options Menu:
+
+- Difficulty: The selection you make in the options menu will only apply to future dungeons in your current playthrough
+    - Note: Difficulty modifies how much damage the enemies deal, how much damage the player may take, how quickly the enemies move, AI behavior, as well as new functionality for a small number of enemies dependent on difficulty
+- Cheats: Will grant you the ability to travel via Mouse Controller, infinite health and infinite use of most items.
+- Debug: Draws bounding boxes of all relevant objects on screen
 
 ## External Tools:
 Git
@@ -45,35 +60,25 @@ GitHub
 
 Adobe Photoshop
 
+Adobe Illustrator
+
 Gimp
 
 Discord
 
-Google Drive
 
-MS Paint
+## Known Bugs/Missing Features:
+### Unfinished Dungeons:
+    Bug: Dungeons 6, 7, and 8 are unfinished but exist.
 
+    Plan(s) to fix:  Finish the dungeons and add the new enemies by the class demonstration.
 
-## Known Bugs:
-### Basement Item Drops:
-    Bug:  Bats can drop items in the basement walls that are unobtainable.
+### Mouse Controller
+    Bug:  Various game features, namely some door loading and movable block functionality may break when entering a room via a mouse click.
 
-    Plan(s) to fix:  Add boomerang capabilities to grab items and potentially make items spawn in-bounds.
+    Plan(s) to fix:  Compare the code that handles room transitions with how rooms are loaded in via mouse controller and ensure they behave the same (or make them in fact use the same code entirely).
 
-### Dungeon Three:
-    Bug: Dungeon 3 is unfinished but exists.
-	
-    Plan(s) to fix: Finish the dungeon and add the new enemies.
-    
-### Player Sword Slowly Moving Down:
-    Bug: Over time, the player's sword will become lower in relation to the player.
-    
-    Plans(s) to fix: Investigate sword location in relation to the player's bounding box and how they are correlated.
-    
-### Fire Snake (Moldorm)'s Head can Become Desynced from Body:
-    Bug:  The Fire Snake's head can become desynced with the body when the player enters and leaves the room where they reside.
-    
-    Plan(s) to fix: Investigate how the head are body segments are updating, as the likely issue is one is getting extra time to update while the room is unloading.
-    
-## Suppressed Warnings:
-There are no suppressed warnings.
+### Fire Snake (Moldorm)'s Segments can Become Displaced from Head:
+    Bug:  The Fire Snake's final segments can become displaced with respect to the head when the player enters and leaves the room where they reside.
+
+    Plan(s) to fix: Investigate how the head and body segments are updating; the likely issue is one is getting extra time to update while the room is unloading.

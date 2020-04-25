@@ -25,33 +25,33 @@
 
         public static int MaxWaitTime => 15;
 
-        public List<IProjectile> Projectiles { get { return this.projectiles; } }
+        public List<IProjectile> Projectiles { get { return projectiles; } }
 
-        public bool BoomerangOut => this.boomerangLock;
+        public bool BoomerangOut => boomerangLock;
 
-        public bool FlameInUse => this.candleLock;
+        public bool FlameInUse => candleLock;
 
         public bool PrimaryAttackLock => primaryAttackLock;
 
         public ProjectileManager()
         {
-            this.projectileList = new Dictionary<int, IProjectile>();
-            this.projectiles = new List<IProjectile>();
-            this.projectileId = 0;
-            this.projectileListSize = 0;
-            this.deletable = new List<int>();
-            this.swordLock = false;
-            this.boomerangLock = false;
-            this.spamLock = false;
-            this.triforceLock = false;
-            this.candleLock = false;
-            this.primaryAttackLock = false;
-            this.swordInstance = 0;
-            this.boomerangInstance = 0;
-            this.spamCounter = 0;
-            this.triforceInstance = 0;
-            this.candleInstance = 0;
-            this.primaryAttackCoolDown = 0;
+            projectileList = new Dictionary<int, IProjectile>();
+            projectiles = new List<IProjectile>();
+            projectileId = 0;
+            projectileListSize = 0;
+            deletable = new List<int>();
+            swordLock = false;
+            boomerangLock = false;
+            spamLock = false;
+            triforceLock = false;
+            candleLock = false;
+            primaryAttackLock = false;
+            swordInstance = 0;
+            boomerangInstance = 0;
+            spamCounter = 0;
+            triforceInstance = 0;
+            candleInstance = 0;
+            primaryAttackCoolDown = 0;
         }
 
         public int Arrow => (int)ProjectileType.Arrow;
@@ -76,87 +76,87 @@
 
         public void AddItem(int itemType, IPlayer player)
         {
-            this.projectileId++;
-            this.projectileListSize++;
+            projectileId++;
+            projectileListSize++;
             ProjectileType item = (ProjectileType)itemType;
             if (item == ProjectileType.WoodenSword /*|| item == ProjectileType.WhiteSword || item == ProjectileType.MagicSword*/)
             {
-                this.primaryAttackCoolDown = 20;
-                this.primaryAttackLock = true;
+                primaryAttackCoolDown = 20;
+                primaryAttackLock = true;
                 switch (item)
                 {
                     case ProjectileType.WoodenSword:
-                        this.projectileList.Add(this.projectileId, new SwordProjectile(player));
+                        projectileList.Add(projectileId, new SwordProjectile(player));
                         break;
                     default:
                         break;
                 }
             }
-            else if (!this.spamLock && !this.triforceLock)
+            else if (!spamLock && !triforceLock)
             {
-                this.spamCounter = MaxWaitTime;
-                this.spamLock = true;
+                spamCounter = MaxWaitTime;
+                spamLock = true;
                 switch (item)
                 {
                     case ProjectileType.Bomb:
                         SoundFactory.Instance.PlayBombDrop();
-                        this.projectileList.Add(this.projectileId, new BombProjectile(player.Physics));
+                        projectileList.Add(projectileId, new BombProjectile(player.Physics));
                         break;
 
                     case ProjectileType.Arrow:
                         SoundFactory.Instance.PlayArrowOrBoomShoot();
-                        this.projectileList.Add(this.projectileId, new ArrowProjectile(player.Physics));
+                        projectileList.Add(projectileId, new ArrowProjectile(player.Physics));
                         break;
 
                     case ProjectileType.SilverArrow:
                         SoundFactory.Instance.PlayArrowOrBoomShoot();
-                        this.projectileList.Add(this.projectileId, new SilverArrowProjectile(player.Physics));
+                        projectileList.Add(projectileId, new SilverArrowProjectile(player.Physics));
                         break;
 
                     case ProjectileType.RedCandle:
                         SoundFactory.Instance.PlayCandleShoot();
-                        this.projectileList.Add(this.projectileId, new RedCandleProjectile(player.Physics));
+                        projectileList.Add(projectileId, new RedCandleProjectile(player.Physics));
                         break;
 
                     case ProjectileType.BlueCandle:
-                        if (!this.candleLock)
+                        if (!candleLock)
                         {
                             SoundFactory.Instance.PlayCandleShoot();
-                            this.projectileList.Add(this.projectileId, new BlueCandleProjectile(player.Physics));
-                            this.candleLock = true;
-                            this.candleInstance = this.projectileId;
+                            projectileList.Add(projectileId, new BlueCandleProjectile(player.Physics));
+                            candleLock = true;
+                            candleInstance = projectileId;
                         }
                         break;
 
                     case ProjectileType.Boomerang:
-                        if (!this.boomerangLock)
+                        if (!boomerangLock)
                         {
-                            this.projectileList.Add(this.projectileId, new BoomerangProjectile(player.Physics));
+                            projectileList.Add(projectileId, new BoomerangProjectile(player.Physics));
                             SoundFactory.Instance.PlayArrowOrBoomShoot();
-                            this.boomerangLock = true;
-                            this.boomerangInstance = this.projectileId;
+                            boomerangLock = true;
+                            boomerangInstance = projectileId;
                         }
 
                         break;
 
                     case ProjectileType.MagicBoomerang:
-                        if (!this.boomerangLock)
+                        if (!boomerangLock)
                         {
-                            this.projectileList.Add(this.projectileId, new MagicBoomerangProjectile(player.Physics));
+                            projectileList.Add(projectileId, new MagicBoomerangProjectile(player.Physics));
                             SoundFactory.Instance.PlayArrowOrBoomShoot();
-                            this.boomerangLock = true;
-                            this.boomerangInstance = this.projectileId;
+                            boomerangLock = true;
+                            boomerangInstance = projectileId;
                         }
 
                         break;
 
                     case ProjectileType.SwordBeam:
-                        if (!this.swordLock)
+                        if (!swordLock)
                         {
                             SoundFactory.Instance.PlaySwordShoot();
-                            this.projectileList.Add(this.projectileId, new SwordBeamProjectile(player.Physics));
-                            this.swordLock = true;
-                            this.swordInstance = this.projectileId;
+                            projectileList.Add(projectileId, new SwordBeamProjectile(player.Physics));
+                            swordLock = true;
+                            swordInstance = projectileId;
                         }
                         break;
                     default:
@@ -167,79 +167,79 @@
 
         public void RemoveItem(int instance)
         {
-            this.projectileList.Remove(instance);
-            this.projectileListSize--;
-            if (this.projectileListSize == 0)
+            projectileList.Remove(instance);
+            projectileListSize--;
+            if (projectileListSize == 0)
             {
-                this.projectileId = 0;
+                projectileId = 0;
             }
         }
 
         public void Update()
         {
-            if (this.spamCounter <= 0)
+            if (spamCounter <= 0)
             {
-                this.spamLock = false;
+                spamLock = false;
             }
             else
             {
-                this.spamCounter--;
+                spamCounter--;
             }
-            if (this.primaryAttackCoolDown <= 0)
+            if (primaryAttackCoolDown <= 0)
             {
-                this.primaryAttackLock = false;
+                primaryAttackLock = false;
             }
             else
             {
-                this.primaryAttackCoolDown--;
+                primaryAttackCoolDown--;
             }
 
-            foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
+            foreach (KeyValuePair<int, IProjectile> item in projectileList)
             {
                 if (item.Value.IsExpired)
                 {
-                    if (item.Key == this.swordInstance)
+                    if (item.Key == swordInstance)
                     {
-                        this.swordLock = false;
+                        swordLock = false;
                     }
 
-                    if (item.Key == this.boomerangInstance)
+                    if (item.Key == boomerangInstance)
                     {
-                        this.boomerangLock = false;
+                        boomerangLock = false;
                     }
 
-                    if (item.Key == this.triforceInstance)
+                    if (item.Key == triforceInstance)
                     {
-                        this.triforceLock = false;
+                        triforceLock = false;
                     }
 
-                    if (item.Key == this.candleInstance)
+                    if (item.Key == candleInstance)
                     {
-                        this.candleLock = false;
+                        candleLock = false;
                     }
 
-                    this.deletable.Add(item.Key);
+                    deletable.Add(item.Key);
                 }
             }
 
-            foreach (int index in this.deletable)
+            foreach (int index in deletable)
             {
-                this.RemoveItem(index);
+                RemoveItem(index);
             }
 
-            this.projectiles.Clear();
-            this.deletable.Clear();
+            projectiles.Clear();
+            deletable.Clear();
 
-            foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
+            foreach (KeyValuePair<int, IProjectile> item in projectileList)
             {
-                this.projectiles.Add(item.Value);
+                projectiles.Add(item.Value);
                 item.Value.Update();
             }
         }
 
         public void Draw()
         {
-            foreach (KeyValuePair<int, IProjectile> item in this.projectileList)
+            foreach (KeyValuePair<int, IProjectile> item in projectileList)
             {
                 item.Value.Draw();
             }
@@ -247,7 +247,7 @@
 
         public void Clear()
         {
-            this.projectileList.Clear();
+            projectileList.Clear();
         }
     }
 }

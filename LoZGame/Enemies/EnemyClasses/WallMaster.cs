@@ -8,39 +8,61 @@
     {
         public WallMaster(Vector2 location)
         {
-            this.RandomStateGenerator = new RandomStateGenerator(this);
-            this.States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.WallMasterStatelist);
-            this.Health = new HealthManager(GameData.Instance.EnemyHealthConstants.WallMasterHealth);
-            this.Physics = new Physics(location);
-            this.Physics.Mass = GameData.Instance.EnemyMassConstants.WallMasterMass;
-            this.CurrentState = new SpawnWallMasterState(this);
-            this.Physics.Bounds = new Rectangle((int)this.Physics.Location.X, (int)this.Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
-            this.EnemyCollisionHandler = new EnemyCollisionHandler(this);
-            this.Expired = false;
-            this.IsDead = false;
-            this.Damage = GameData.Instance.EnemyDamageConstants.WallMasterDamage;
-            this.DamageTimer = 0;
-            this.MoveSpeed = GameData.Instance.EnemySpeedConstants.WallMasterSpeed;
-            this.CurrentTint = LoZGame.Instance.DefaultTint;
-        }
-
-        public override void Stun(int stunTime)
-        {
-            this.CurrentState.Stun(stunTime);
+            RandomStateGenerator = new RandomStateGenerator(this);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.WallMasterStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.WallMasterHealth);
+            Physics = new Physics(location);
+            Physics.Mass = GameData.Instance.EnemyMassConstants.WallMasterMass;
+            CurrentState = new SpawnEnemyState(this);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
+            EnemyCollisionHandler = new EnemyCollisionHandler(this);
+            Expired = false;
+            Damage = GameData.Instance.EnemyDamageConstants.WallMasterDamage;
+            DamageTimer = 0;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.WallMasterSpeed;
+            CurrentTint = LoZGame.Instance.DefaultTint;
+            AI = EnemyAI.WallMaster;
+            DropTable = GameData.Instance.EnemyDropTables.WallMasterDropTable;
+            ApplyDamageMod();
+            ApplySmallSpeedMod();
+            ApplyLargeWeightModPos();
+            ApplySmallHealthMod();
         }
 
         public override void Update()
         {
             base.Update();
-            if (this.CurrentState is AttackingWallMasterState)
+            if (CurrentState is AttackingWallMasterState)
             {
-                this.Physics.Depth = 1.0f;
+                Physics.Depth = 1.0f;
+            }
+        }
+
+        public override void Attack()
+        {
+            CurrentState = new AttackingWallMasterState(this);
+        }
+
+        public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IPlayer && !(((Link)otherCollider).State is PickupItemState))
+            {
+                CurrentState.Attack();
+                Physics.MovementVelocity = new Vector2(-2, 0);
+            }
+            else if (otherCollider is IBlock && !(CurrentState is AttackingWallMasterState))
+            {
+                EnemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IProjectile && !(CurrentState is AttackingWallMasterState))
+            {
+                EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
         }
 
         public override ISprite CreateCorrectSprite()
         {
-            if (this.Physics.CurrentDirection == Physics.Direction.North || this.Physics.CurrentDirection == Physics.Direction.East)
+            if (Physics.CurrentDirection == Physics.Direction.North || Physics.CurrentDirection == Physics.Direction.East)
             {
                 return EnemySpriteFactory.Instance.CreateRightMovingWallMasterSprite();
             } 

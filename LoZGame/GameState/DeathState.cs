@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class DeathState : IGameState
+    public class DeathState : GameStateEssentials, IGameState
     {
         private int deathTime;
         private int deathTimeMax;
@@ -12,90 +12,63 @@
 
         public DeathState()
         {
-            this.deathTime = 0;
-            this.deathTimeMax = GameData.Instance.GameStateDataConstants.DeathTimeMax;
-            this.gameOverTime = GameData.Instance.GameStateDataConstants.GameOverTime;
-            this.sprite = ScreenSpriteFactory.Instance.GameOverScreen();
+            deathTime = 0;
+            deathTimeMax = GameData.Instance.GameStateDataConstants.DeathTimeMax;
+            gameOverTime = GameData.Instance.GameStateDataConstants.GameOverTime;
+            sprite = ScreenSpriteFactory.Instance.GameOverScreen();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Death()
+        public override void PlayGame()
         {
-            // Can't transition to a state you're already in.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void OpenInventory()
-        {
-            // Can't access inventory while dead.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void CloseInventory()
-        {
-            // Can't close inventory when it's not open.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void PlayGame()
-        {
+            SoundFactory.Instance.PlayDungeonSong();
             LoZGame.Instance.GameState = new PlayGameState();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TitleScreen()
+        public override void TitleScreen()
         {
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
         /// <inheritdoc></inheritdoc>
-        public void TransitionRoom(Physics.Direction direction)
+        public override void Update()
         {
-            // Can't transition room while dead.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void WinGame()
-        {
-            // Can't win game while dead.
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public void Update()
-        {
-            this.deathTime++;
-            if (this.deathTime < deathTimeMax)
+            deathTime++;
+            if (deathTime < deathTimeMax)
             {
                 foreach (IPlayer player in LoZGame.Instance.Players)
                 {
                     player.Update();
                 }
             }
-            else if (this.deathTime > gameOverTime)
+            else if (deathTime >= gameOverTime)
             {
                 LoZGame.Instance.GameState.TitleScreen();
             }
         }
 
         /// <inheritdoc></inheritdoc>
-        public void Draw()
+        public override void Draw()
         {
-            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-            InventoryComponents.Instance.DrawCorrectBackground();
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
+            LoZGame.Instance.Dungeon.CurrentRoom.Draw(Point.Zero);
             LoZGame.Instance.GameObjects.Draw();
+            LoZGame.Instance.GameObjects.Entities.Draw();
+            LoZGame.Instance.GameObjects.Enemies.Draw();
 
-            if (this.deathTime < deathTimeMax)
+            if (deathTime < deathTimeMax)
             {
                 foreach (IPlayer player in LoZGame.Instance.Players)
                 {
                     player.Draw();
                 }
             }
-            else if (this.deathTime > deathTimeMax && this.deathTime < gameOverTime)
+            else if (deathTime > deathTimeMax && deathTime < gameOverTime)
             {
                 LoZGame.Instance.SpriteBatch.End();
-                LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-                this.sprite.Draw(new Vector2(0, 0), Color.White, 0);
+                LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
+                sprite.Draw(new Vector2(0, 0), Color.White, 0);
             }
             LoZGame.Instance.SpriteBatch.End();
         }

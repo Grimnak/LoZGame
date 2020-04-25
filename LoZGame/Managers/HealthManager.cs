@@ -25,27 +25,27 @@ namespace LoZClone
 
         public HealthManager(int health)
         {
-            this.maxHealth = health;
-            this.currentHealth = health;
+            maxHealth = health;
+            currentHealth = health;
         }
 
         public void DamageHealth(int amountLost)
         {
-            this.currentHealth -= amountLost;
+            currentHealth -= amountLost;
         }
 
         public void GainHealth(int amountGained)
         {
-            this.CurrentHealth += amountGained;
-            if (this.currentHealth > maxHealth)
+            CurrentHealth += amountGained;
+            if (currentHealth > maxHealth)
             {
-                this.currentHealth = maxHealth;
+                currentHealth = maxHealth;
             }
         }
 
         public void ResetHealth()
         {
-            this.currentHealth = maxHealth;
+            currentHealth = maxHealth;
         }
     }
 }

@@ -19,9 +19,9 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            if (!(this.player.State is DieState || this.player.State is PickupItemState || this.player.State is GrabbedState || this.player.State is StunnedState))
+            if (!(player.State is DieState || player.State is PickupItemState || player.State is GrabbedState || player.State is StunnedState))
             {
-                this.player.Inventory.UseItem();
+                player.Inventory.UseItem();
             }
         }
     }

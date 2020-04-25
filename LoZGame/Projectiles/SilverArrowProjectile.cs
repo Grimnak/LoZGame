@@ -7,20 +7,20 @@
     {
         public SilverArrowProjectile(Physics source)
         {
-            this.SetUp(this);
-            this.Width = ProjectileSpriteFactory.Instance.ArrowWidth;
-            this.Heigth = ProjectileSpriteFactory.Instance.ArrowHeight;
-            this.Offset = this.Heigth / 2;
-            this.Speed = GameData.Instance.ProjectileSpeedConstants.LinkSilverArrowSpeed;
-            this.Damage = GameData.Instance.ProjectileDamageConstants.LinkSilverArrowDamage;
-            this.Source = source;
-            this.InitializeDirection();
-            if (this.Physics.CurrentDirection == Physics.Direction.East || this.Physics.CurrentDirection == Physics.Direction.West)
+            SetUp(this);
+            Width = ProjectileSpriteFactory.Instance.ArrowWidth;
+            Heigth = ProjectileSpriteFactory.Instance.ArrowHeight;
+            Offset = Heigth / 2;
+            Speed = GameData.Instance.ProjectileSpeedConstants.LinkSilverArrowSpeed;
+            Damage = GameData.Instance.ProjectileDamageConstants.LinkSilverArrowDamage;
+            Source = source;
+            InitializeDirection();
+            if (Physics.CurrentDirection == Physics.Direction.East || Physics.CurrentDirection == Physics.Direction.West)
             {
-                this.CorrectProjectile();
+                CorrectProjectile();
             }
-            this.Sprite = ProjectileSpriteFactory.Instance.SilverArrow();
-            this.Physics.Mass = GameData.Instance.ProjectileMassConstants.SilverArrowMass;
+            Sprite = ProjectileSpriteFactory.Instance.SilverArrow();
+            Physics.Mass = GameData.Instance.ProjectileMassConstants.SilverArrowMass;
         }
     }
 }

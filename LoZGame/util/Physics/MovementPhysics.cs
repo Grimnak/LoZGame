@@ -13,12 +13,22 @@
         /// </summary>
         public void Move()
         {
-            if (this.KnockbackVelocity.Length() == GameData.Instance.PhysicsConstants.ZeroLength)
+            if (KnockbackVelocity.Length() == GameData.Instance.PhysicsConstants.ZeroLength)
             {
-                this.boundsLocation += this.MovementVelocity;
-                this.bounds = new Rectangle(this.boundsLocation.ToPoint(), this.bounds.Size);
+                boundsLocation += MovementVelocity;
+                bounds = new Rectangle(boundsLocation.ToPoint(), bounds.Size);
             }
-            this.SetLocation();
+            SetLocation();
+        }
+
+        /// <summary>
+        /// Updates the bounds of the entity based on Master movement velocity, then sets the draw location to the new bounds.
+        /// </summary>
+        public void MoveMaster()
+        {
+            boundsLocation += MasterMovement;
+            bounds = new Rectangle(boundsLocation.ToPoint(), bounds.Size);
+            SetLocation();
         }
 
         /// <summary>
@@ -26,7 +36,7 @@
         /// </summary>
         public void Accelerate()
         {
-            this.MovementVelocity += this.MovementAcceleration;
+            MovementVelocity += MovementAcceleration;
         }
 
         /// <summary>
@@ -37,6 +47,11 @@
         {
             float momentum = GameData.Instance.PhysicsConstants.MomentumMultiplier * MovementVelocity.Length() * Mass;
             return momentum;
+        }
+
+        public void Jump()
+        {
+            // get this to work for vires
         }
     }
 }

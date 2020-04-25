@@ -18,11 +18,12 @@
         private SpriteData titleData;
         private Texture2D enterSpriteSheet;
         private SpriteData enterData;
-        private Texture2D levelOneMasterSpriteSheet;
-        private Texture2D levelTwoMasterSpriteSheet;
-        private Texture2D levelThreeMasterSpriteSheet;
         private Texture2D gameOverSpriteSheet;
         private SpriteData gameOverData;
+        private Texture2D pauseScreenSprite;
+        private Texture2D creditsSpriteSheet;
+        private Texture2D optionsSpriteSheet;
+        private SpriteData optionsData;
 
         private static readonly ScreenSpriteFactory InstanceValue = new ScreenSpriteFactory();
 
@@ -32,47 +33,46 @@
 
         public void LoadAllTextures(ContentManager content)
         {
-            this.titleSpriteSheet = content.Load<Texture2D>("LoZTitle");
-            this.titleData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), titleSpriteSheet, 1, 7);
-            this.enterSpriteSheet = content.Load<Texture2D>("pressEnter");
-            this.enterData = new SpriteData(new Vector2(enterWidth, enterHeight), enterSpriteSheet, 1, 1);
-            this.levelOneMasterSpriteSheet = content.Load<Texture2D>("level-1");
-            this.levelTwoMasterSpriteSheet = content.Load<Texture2D>("level-2");
-            this.levelThreeMasterSpriteSheet = content.Load<Texture2D>("level-3");
-            this.gameOverSpriteSheet = content.Load<Texture2D>("gameOver");
-            this.gameOverData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), gameOverSpriteSheet, 1, 1);
+            titleSpriteSheet = content.Load<Texture2D>("LoZTitle");
+            titleData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), titleSpriteSheet, 1, 7);
+            enterSpriteSheet = content.Load<Texture2D>("pressEnter");
+            enterData = new SpriteData(new Vector2(enterWidth, enterHeight), enterSpriteSheet, 1, 1);
+            gameOverSpriteSheet = content.Load<Texture2D>("gameOver");
+            pauseScreenSprite = content.Load<Texture2D>("PauseMenu");
+            creditsSpriteSheet = content.Load<Texture2D>("Credits");
+            optionsSpriteSheet = content.Load<Texture2D>("Options");
+            optionsData = new SpriteData(new Vector2(GameData.Instance.GameStateDataConstants.OptionsWindowWidth, GameData.Instance.GameStateDataConstants.OptionsWindowHeight), optionsSpriteSheet, 1, 1);
+            gameOverData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), gameOverSpriteSheet, 1, 1);
     }
 
         public ISprite TitleScreen()
         {
-            return new ObjectSprite(this.titleSpriteSheet, this.titleData);
+            return new ObjectSprite(titleSpriteSheet, titleData);
         }
 
         public ISprite PressEnter()
         {
-            return new ObjectSprite(this.enterSpriteSheet, this.enterData);
+            return new ObjectSprite(enterSpriteSheet, enterData);
         }
 
-        public LevelMasterSprite CreateLevelOneMaster()
+        public ISprite PauseScreen()
         {
-            return new LevelMasterSprite(this.levelOneMasterSpriteSheet, new Vector2(LoZGame.Instance.Dungeon.CurrentRoomX, LoZGame.Instance.Dungeon.CurrentRoomY));
+            return new ObjectSprite(pauseScreenSprite, gameOverData);
         }
 
-        public LevelMasterSprite CreateLevelTwoMaster()
+        public ISprite CreditsScreen()
         {
-            return new LevelMasterSprite(this.levelTwoMasterSpriteSheet, new Vector2(LoZGame.Instance.Dungeon.CurrentRoomX, LoZGame.Instance.Dungeon.CurrentRoomY));
-
+            return new ObjectSprite(creditsSpriteSheet, gameOverData);
         }
 
-        public LevelMasterSprite CreateLevelThreeMaster()
+        public ISprite OptionsScreen()
         {
-            return new LevelMasterSprite(this.levelThreeMasterSpriteSheet, new Vector2(LoZGame.Instance.Dungeon.CurrentRoomX, LoZGame.Instance.Dungeon.CurrentRoomY));
-
+            return new ObjectSprite(optionsSpriteSheet, optionsData);
         }
 
         public ISprite GameOverScreen()
         {
-            return new ObjectSprite(this.gameOverSpriteSheet, this.gameOverData);
+            return new ObjectSprite(gameOverSpriteSheet, gameOverData);
         }
     }
 }

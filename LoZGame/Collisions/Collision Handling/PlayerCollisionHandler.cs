@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System;
 
     public class PlayerCollisionHandler : CollisionInteractions
     {
@@ -13,23 +14,37 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (enemy is WallMaster && !(this.player.State is PickupItemState))
+            if (enemy is WallMaster)
             {
-                this.player.State = new GrabbedState(player, (WallMaster)enemy);
+                player.State = new GrabbedState(player, (WallMaster)enemy);
             }
-            else if (enemy is OldMan || enemy is Merchant || enemy is BlockEnemy)
+            else if (enemy is Likelike)
+            {
+                player.State = new SwallowedState(player, (Likelike)enemy);
+            }
+            else if (enemy is Bubble)
+            {
+                if (player.DamageTimer <= 0)
+                {
+                    player.DamageTimer = LoZGame.Instance.UpdateSpeed / 2;
+                    player.DisarmedTimer = LoZGame.Instance.UpdateSpeed * 3;
+                    DeterminePushbackValues(enemy.Physics, player.Physics);
+                    SoundFactory.Instance.PlayLinkHurt();
+                }
+            }
+            else if (enemy is OldMan || enemy is Merchant || enemy is BlockEnemy || enemy.IsTransparent)
             {
                 // do nothing
             }
             else
             {
-                if (!(this.player.State is PickupItemState || this.player.State is AttackState))
+                if (!(player.State is PickupItemState || player.State is AttackState))
                 {
-                    if (this.player.DamageTimer <= 0)
+                    if (player.DamageTimer <= 0)
                     {
-                        this.DeterminePushbackValues(enemy.Physics, this.player.Physics);
+                        DeterminePushbackValues(enemy.Physics, player.Physics);
                     }
-                    this.player.TakeDamage(enemy.Damage);
+                    player.TakeDamage(enemy.Damage);
                 }
             }
         }
@@ -40,29 +55,33 @@
             {
                 item.Physics.Location = new Vector2(player.Physics.Location.X + 5, player.Physics.Location.Y - 45);
                 item.Physics.Bounds = new Rectangle(new Point((int)item.Physics.Location.X, (int)item.Physics.Location.Y), new Point(0, 0));
-                this.player.State = new PickupItemState(player, item);
+                player.State = new PickupItemState(player, item);
             }
         }
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(this.player.State is PickupItemState))
+            if (!(player.State is PickupItemState))
             {
-                if (!(projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile) && this.player.DamageTimer <= 0)
+                if (!(projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile) && player.DamageTimer <= 0)
                 {
-                    DetermineDirectPushback(projectile.Physics, this.player.Physics);
+                    DetermineDirectPushback(projectile.Physics, player.Physics);
                 }
-                this.player.TakeDamage(projectile.Damage);
+                player.TakeDamage(projectile.Damage);
             }
         }
 
         public void OnCollisionResponse(IBlock block, CollisionDetection.CollisionSide collisionSide)
         {
+            if (block is CrossableTile)
+            {
+                player.LadderTimer = 5;
+            }
         }
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)
         {
-            if (door.State is LockedDoorState || door.State is HiddenDoorState)
+            if (door.DoorType != Door.DoorTypes.Unlocked)
             {
                 PreventDoorEntry(door);
             }
@@ -70,32 +89,32 @@
 
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
-            this.SetBounds(this.player.Physics, collisionSide);
+            SetBounds(player.Physics, collisionSide);
         }
 
         private void PreventDoorEntry(IDoor door)
         {
-            if (door.Physics.Location == door.LeftScreenLoc)
+            if (door.Physics.CurrentDirection == Physics.Direction.West)
             {
-                player.Physics.Bounds = new Rectangle((int)BlockSpriteFactory.Instance.HorizontalOffset, player.Physics.Bounds.Y, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
-                this.player.Physics.StopMotionX();
+                player.Physics.Bounds = new Rectangle((int)BlockSpriteFactory.Instance.HorizontalOffset, player.Physics.Bounds.Y, player.Physics.Bounds.Width, player.Physics.Bounds.Height);
+                player.Physics.StopMotionX();
             }
-            else if (door.Physics.Location == door.RightScreenLoc)
+            else if (door.Physics.CurrentDirection == Physics.Direction.East)
             {
-                player.Physics.Bounds = new Rectangle((int)door.RightScreenLoc.X - LinkSpriteFactory.LinkWidth - 7, player.Physics.Bounds.Y, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
-                this.player.Physics.StopMotionX();
+                player.Physics.Bounds = new Rectangle((int)door.Physics.Bounds.Left - player.Physics.Bounds.Width, player.Physics.Bounds.Y, player.Physics.Bounds.Width, player.Physics.Bounds.Height);
+                player.Physics.StopMotionX();
             }
-            else if (door.Physics.Location == door.DownScreenLoc)
+            else if (door.Physics.CurrentDirection == Physics.Direction.South)
             {
-                player.Physics.Bounds = new Rectangle(player.Physics.Bounds.X, (int)door.DownScreenLoc.Y - LinkSpriteFactory.LinkHeight, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
-                this.player.Physics.StopMotionY();
+                player.Physics.Bounds = new Rectangle(player.Physics.Bounds.X, (int)door.Physics.Bounds.Top - player.Physics.Bounds.Height, player.Physics.Bounds.Width, player.Physics.Bounds.Height);
+                player.Physics.StopMotionY();
             }
-            else if (door.Physics.Location == door.UpScreenLoc)
+            else if (door.Physics.CurrentDirection == Physics.Direction.North)
             {
-                player.Physics.Bounds = new Rectangle(player.Physics.Bounds.X, (int)BlockSpriteFactory.Instance.TopOffset, this.player.Physics.Bounds.Width, this.player.Physics.Bounds.Height);
-                this.player.Physics.StopMotionY();
+                player.Physics.Bounds = new Rectangle(player.Physics.Bounds.X, (int)BlockSpriteFactory.Instance.TopOffset, player.Physics.Bounds.Width, player.Physics.Bounds.Height);
+                player.Physics.StopMotionY();
             }
-            this.player.Physics.SetLocation();
+            player.Physics.SetLocation();
         }
     }
 }
