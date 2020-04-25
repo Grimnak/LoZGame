@@ -68,8 +68,8 @@ Discord
 
 
 ## Known Bugs/Missing Features:
-### Dungeon Six:
-    Bug: Dungeon 6 is unfinished but exists.
+### Unfinished Dungeon :
+    Bug: Dungeons 6 and up are unfinished but exist.
 
     Plan(s) to fix:  Finish the dungeon and add the new enemies.
 
