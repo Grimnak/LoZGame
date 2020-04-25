@@ -21,6 +21,7 @@
         /// <inheritdoc></inheritdoc>
         public override void PlayGame()
         {
+            SoundFactory.Instance.PlayDungeonSong();
             LoZGame.Instance.GameState = new PlayGameState();
         }
 
@@ -41,7 +42,7 @@
                     player.Update();
                 }
             }
-            else if (deathTime > gameOverTime)
+            else if (deathTime >= gameOverTime)
             {
                 LoZGame.Instance.GameState.TitleScreen();
             }

@@ -1,8 +1,8 @@
 # CSE 3902 - 9:10a Section - Team 3 - Readme
 
-Developer version of Legend of Zelda NES emulator.  This build features a polished version of the first five dungeons and an incomplete build of the sixth dungeon.  There is also an option to turn "cheat mode" on, which gives the player unlimited items and infinite health.  This can be activated in the main LoZGame.cs file on line 12 by setting the value to "true" or by accessing the options menu in-game by pressing the letter key "O".
+Developer version of Legend of Zelda NES emulator.  This build features the first five dungeons and an incomplete build of the sixth dungeon.  There is also an option to turn "cheat mode" on, which gives the player unlimited items and infinite health.  This can be activated in the main LoZGame.cs file on line 12 by setting the value to "true" or by accessing the options menu in-game by pressing the letter key "O".
 
-Additional Sprint 5 features include 3 more polished dungeons, difficulty selection, game-accurate unique enemy drop tables, the ability to continue a playthrough without restarting entirely, a credits menu and an options menu.
+Additional Sprint 5 features include 3 more dungeons, difficulty selection, game-accurate unique enemy drop tables, the ability to continue a playthrough without restarting entirely, a credits menu and an options menu.
 
 ## Authors:
 Eric Henderson.939
@@ -60,21 +60,14 @@ GitHub
 
 Adobe Photoshop
 
+Adobe Illustrator
+
 Gimp
 
 Discord
 
-Google Drive
-
-MS Paint
-
 
 ## Known Bugs/Missing Features:
-### Basement Item Drops:
-    Bug:  Bats can drop items in the basement walls that are unobtainable.
-
-    Plan(s) to fix:  Add boomerang capabilities to grab items and potentially make items spawn in-bounds.
-
 ### Dungeon Five Boss:
     Bug:  Digdogger (Dungeon 5's boss) is missing.
 

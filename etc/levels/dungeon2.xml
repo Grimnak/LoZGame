@@ -254,7 +254,7 @@
       <enemies>
         <enemy X="0" Y="5">Rope</enemy>
         <enemy X="1" Y="2">Rope</enemy>
-        <enemy X="11" Y="3">Rope</enemy>
+        <enemy X="11" Y="1">Rope</enemy>
         <enemy X="8" Y="6">Rope</enemy>
         <enemy X="6" Y="4">Rope</enemy>
         <enemy X="10" Y="6">Rope</enemy>
@@ -801,7 +801,7 @@
       <doors>
         <door loc="N">unlocked</door>
         <door loc="E">unlocked</door>
-		<door loc="S">cosmetic2</door>
+		<door loc="S">cosmetic</door>
       </doors>
       <rrow idx="0">
       </rrow>
