@@ -63,6 +63,15 @@ namespace LoZClone.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        public static System.IO.UnmanagedMemoryStream coolFlute {
+            get {
+                return ResourceManager.GetStream("coolFlute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         public static System.IO.UnmanagedMemoryStream CreditsTheme {
             get {
                 return ResourceManager.GetStream("CreditsTheme", resourceCulture);

@@ -11,7 +11,10 @@
         public FluteGameState()
         {
             lifeTime = 0;
-            SoundFactory.Instance.PlayFlute();
+            if (LoZGame.Cheats)
+                SoundFactory.Instance.PlayCoolFlute();
+            else
+                SoundFactory.Instance.PlayFlute();
         }
 
         /// <inheritdoc></inheritdoc>

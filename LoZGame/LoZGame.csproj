@@ -425,6 +425,7 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <None Include="Util\Audio\Resources\LOZ_Recorder.wav" />
+    <None Include="Util\Audio\Resources\coolFlute.wav" />
     <Content Include="Util\Audio\Resources\CreditsTheme.wav" />
     <Content Include="Util\Audio\Resources\SpartanLaser_mixdown.wav" />
     <None Include="Util\Audio\Resources\triforce_tune.wav" />
