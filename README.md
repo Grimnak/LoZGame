@@ -68,11 +68,6 @@ Discord
 
 
 ## Known Bugs/Missing Features:
-### Dungeon Five Boss:
-    Bug:  Digdogger (Dungeon 5 boss) is not polished.
-
-    Plan(s) to fix:  Work out the potential bugs and edge cases of this boss.
-
 ### Dungeon Six:
     Bug: Dungeon 6 is unfinished but exists.
 
