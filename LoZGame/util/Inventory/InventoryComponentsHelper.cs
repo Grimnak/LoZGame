@@ -121,6 +121,11 @@
             return InventorySpriteFactory.Instance.CreateInventoryRedCandle();
         }
 
+        public ISprite CreateFluteSprite()
+        {
+            return InventorySpriteFactory.Instance.CreateInventoryFlute();
+        }
+
         public ISprite CreateItemSelector()
         {
             return InventorySpriteFactory.Instance.CreateInventoryItemSelector();
