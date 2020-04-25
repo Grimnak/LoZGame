@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-
-namespace LoZClone
+﻿namespace LoZClone
 {
+    using Microsoft.Xna.Framework;
+
     class HiddenVireState : EnemyStateEssentials, IEnemyState
     {
         public HiddenVireState(IEnemy enemy)
@@ -15,6 +10,7 @@ namespace LoZClone
             Sprite = null;
             Enemy.CurrentState = this;
             Enemy.IsTransparent = true;
+            Enemy.IsKillable = false;
             Enemy.Physics.MovementVelocity = Vector2.Zero;
         }
 

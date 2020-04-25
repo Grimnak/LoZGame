@@ -144,6 +144,10 @@
                     selectedItem = CreateBombSprite();
                     break;
 
+                case InventoryManager.ItemType.Flute:
+                    selectedItem = CreateFluteSprite();
+                    break;
+
                 case InventoryManager.ItemType.Boomerang:
                     selectedItem = CreateBoomerangSprite();
                     break;
@@ -152,24 +156,12 @@
                     selectedItem = CreateArrowSprite();
                     break;
 
-                case InventoryManager.ItemType.BlueCandle:
-                    selectedItem = CreateBlueCandleSprite();
+                case InventoryManager.ItemType.Candle:
+                    selectedItem = CreateCandleSprite();
                     break;
 
                 case InventoryManager.ItemType.Potion:
                     selectedItem = CreateHealthPotionSprite();
-                    break;
-
-                case InventoryManager.ItemType.MagicBoomerang:
-                    selectedItem = CreateMagicBoomerangSprite();
-                    break;
-
-                case InventoryManager.ItemType.SilverArrow:
-                    selectedItem = CreateSilverArrowSprite();
-                    break;
-
-                case InventoryManager.ItemType.RedCandle:
-                    selectedItem = CreateRedCandleSprite();
                     break;
 
                 default:
@@ -256,7 +248,7 @@
                     break;
 
                 case 3:
-                    selectionItem = CreateBlueCandleSprite();
+                    selectionItem = CreateCandleSprite();
                     if (LoZGame.Instance.Players[0].Inventory.HasBlueFlame)
                     {
                         selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
@@ -272,35 +264,24 @@
                     break;
 
                 case 5:
-                    selectionItem = CreateMagicBoomerangSprite();
-                    if (LoZGame.Instance.Players[0].Inventory.HasMagicBoomerang)
-                    {
-                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
-                    }
+                    selectionItem = CreateEmptySprite();
                     break;
 
                 case 6:
-                    selectionItem = CreateSilverArrowSprite();
-                    if (LoZGame.Instance.Players[0].Inventory.HasBow && LoZGame.Instance.Players[0].Inventory.HasSilverArrow && LoZGame.Instance.Players[0].Inventory.Rupees > 0)
-                    {
-                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
-                    }
+                    selectionItem = CreateEmptySprite();
                     break;
 
                 case 7:
-                    selectionItem = CreateRedCandleSprite();
-                    if (LoZGame.Instance.Players[0].Inventory.HasRedFlame)
+                    selectionItem = CreateFluteSprite();
+                    if (LoZGame.Instance.Players[0].Inventory.HasFlute)
                     {
                         selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     }
                     break;
 
                 default:
-                    selectionItem = CreateBombSprite();
-                    if (LoZGame.Instance.Players[0].Inventory.Bombs > 0)
-                    {
-                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
-                    }
+                    selectionItem = CreateEmptySprite();
+                    selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     break;
             }
         }

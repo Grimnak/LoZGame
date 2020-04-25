@@ -107,7 +107,7 @@
         /// <param name="weight">The affects how often the enemy will move toward the player.</param>
         public void FavorPlayerCardinal(int weight)
         {
-            if (weight < 1)
+            if (Math.Abs(weight) < 1)
             {
                 weight = 1;
             }
@@ -116,6 +116,11 @@
             Enemy.States.Remove(StateType.MoveWest);
             Enemy.States.Remove(StateType.MoveSouth);
             Vector2 toPlayer = UnitVectorToPlayer(Enemy.Physics.Bounds.Center.ToVector2());
+            if (weight < 0)
+            {
+                toPlayer *= -1;
+                weight *= -1;
+            }
             if (toPlayer.X > 1 - MathHelper.PiOver4)
             {
                 Enemy.States.Add(StateType.MoveEast, weight);
@@ -157,7 +162,7 @@
         /// <param name="weight">The affects how often the enemy will move toward the player.</param>
         public void FavorPlayerDiagonal(int weight)
         {
-            if (weight < 1)
+            if (Math.Abs(weight) < 1)
             {
                 weight = 1;
             }
@@ -166,6 +171,11 @@
             Enemy.States.Remove(StateType.MoveSouthEast);
             Enemy.States.Remove(StateType.MoveSouthWest);
             Vector2 toPlayer = UnitVectorToPlayer(Enemy.Physics.Bounds.Center.ToVector2());
+            if (weight < 0)
+            {
+                toPlayer *= -1;
+                weight *= -1;
+            }
             toPlayer.X *= -1;
             if (toPlayer.X > 0 && toPlayer.Y < 0)
             {

@@ -60,6 +60,8 @@
         private SpriteData whiteSwordData;
         private Texture2D magicSwordSpriteSheet;
         private SpriteData magicSwordData;
+        private Texture2D fluteSpriteSheet;
+        private SpriteData fluteData;
         private Texture2D itemSelector2;
         private SpriteData itemSelectorFalse;
         private SpriteData itemSelectorTrue;
@@ -112,6 +114,8 @@
             redCandleData = new SpriteData(itemSize, redCandleSpriteSheet, 1, 1);
             selectionReticuleSpriteSheet = content.Load<Texture2D>("HUDSelector");
             selectionReticuleData = new SpriteData(itemSelectorSize, selectionReticuleSpriteSheet, 1, 1);
+            fluteSpriteSheet = content.Load<Texture2D>("Flute");
+            fluteData = new SpriteData(itemSize, silverArrowSpriteSheet, 1, 1);
             woodenSwordSpriteSheet = content.Load<Texture2D>("WoodenSword");
             woodenSwordData = new SpriteData(swordSize, woodenSwordSpriteSheet, 1, 1);
             whiteSwordSpriteSheet = content.Load<Texture2D>("WhiteSword");
@@ -137,6 +141,11 @@
         public ISprite CreateInventoryBackground()
         {
             return new ObjectSprite(inventoryBackgroundSpriteSheet, inventoryBackgroundData);
+        }
+
+        public ISprite CreateInventoryFlute()
+        {
+            return new ObjectSprite(fluteSpriteSheet, fluteData);
         }
 
         public ISprite CreateFullHeart()
@@ -212,6 +221,14 @@
         public ISprite CreateInventorySilverArrow()
         {
             return new ObjectSprite(silverArrowSpriteSheet, silverArrowData);
+        }
+
+        public ISprite EmptySlot()
+        {
+            Texture2D empty = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            empty.SetData<Color>(new Color[] { Color.Black });
+            SpriteData emptyData = new SpriteData(itemSize, empty, 1, 1);
+            return new ObjectSprite(empty, emptyData);
         }
 
         public ISprite CreateInventoryRedCandle()

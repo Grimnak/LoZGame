@@ -233,6 +233,9 @@
                 case "PolsVoice":
                     enemies.Add(new PolsVoice(location));
                     break;
+                case "DigDogger":
+                    enemies.Add(new DigDoggerInvincible(location));
+                    break;
                 default:
                     break;
             }

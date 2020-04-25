@@ -8,12 +8,11 @@
         {
             Bomb,
             Arrow,
-            SilverArrow,
             Boomerang,
-            MagicBoomerang,
-            RedCandle,
-            BlueCandle,
-            Potion
+            Candle,
+            Flute,
+            Potion,
+            None
         }
 
         private IPlayer player;
@@ -22,8 +21,8 @@
 
         private List<List<ItemType>> selectionArray = new List<List<ItemType>>()
         {
-            new List<ItemType> { ItemType.Bomb, ItemType.Boomerang, ItemType.Arrow, ItemType.BlueCandle },
-            new List<ItemType> { ItemType.Potion, ItemType.MagicBoomerang, ItemType.SilverArrow, ItemType.RedCandle }
+            new List<ItemType> { ItemType.Bomb, ItemType.Boomerang, ItemType.Arrow, ItemType.Candle },
+            new List<ItemType> { ItemType.Potion, ItemType.None, ItemType.None, ItemType.Flute }
         };
 
         private int selectionX;
@@ -54,6 +53,9 @@
         private bool hasClock;
         private int clockLockout;
 
+        private bool hasFlute;
+        private int fluteLockout;
+
         public InventoryManager(IPlayer player)
         {
             this.player = player;
@@ -76,6 +78,7 @@
             hasRedFlame = LoZGame.Cheats;
             hasBlueFlame = LoZGame.Cheats;
             hasLadder = LoZGame.Cheats;
+            hasFlute = LoZGame.Cheats;
             ladderInUse = false;
 
             hasMap = LoZGame.Cheats;
@@ -125,23 +128,17 @@
                 case ItemType.Arrow:
                     UseArrow();
                     break;
-                case ItemType.SilverArrow:
-                    UseSilverArrow();
-                    break;
                 case ItemType.Boomerang:
                     UseBoomerang();
                     break;
-                case ItemType.MagicBoomerang:
-                    UseMagicBoomerang();
-                    break;
-                case ItemType.RedCandle:
-                    UseRedCandle();
-                    break;
-                case ItemType.BlueCandle:
-                    UseBlueCandle();
+                case ItemType.Candle:
+                    UseCandle();
                     break;
                 case ItemType.Potion:
                     UsePotion();
+                    break;
+                case ItemType.Flute:
+                    UseFlute();
                     break;
                 default:
                     break;
@@ -170,11 +167,11 @@
                     case 0:
                         return numBombs > 0;
                     case 1:
-                        return hasBoomerang;
+                        return hasBoomerang || hasMagicBoomerang;
                     case 2:
-                        return hasBow && hasArrow && numRupees > 0;
+                        return hasBow && (hasArrow || hasSilverArrow) && numRupees > 0;
                     case 3:
-                        return hasBlueFlame;
+                        return hasBlueFlame || hasRedFlame;
                     default:
                         return false;
                 }
@@ -186,11 +183,11 @@
                     case 0:
                         return numRedPotions > 0 || numBluePotions > 0;
                     case 1:
-                        return hasMagicBoomerang;
+                        return false;
                     case 2:
-                        return hasBow && hasSilverArrow && numRupees > 0;
+                        return false;
                     case 3:
-                        return hasRedFlame;
+                        return HasFlute;
                     default:
                         return false;
                 }
@@ -224,6 +221,8 @@
         public bool HasBoomerang { get { return hasBoomerang; } set { hasBoomerang = value; } }
 
         public bool HasMagicBoomerang { get { return hasMagicBoomerang; } set { hasMagicBoomerang = value; } }
+
+        public bool HasFlute { get { return hasFlute; } set { hasFlute = value; } }
 
         public bool HasArrow { get { return hasArrow; } set { hasArrow = value; } }
 

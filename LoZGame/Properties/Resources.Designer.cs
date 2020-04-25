@@ -207,6 +207,15 @@ namespace LoZClone.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        public static System.IO.UnmanagedMemoryStream LOZ_Recorder {
+            get {
+                return ResourceManager.GetStream("LOZ_Recorder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         public static System.IO.UnmanagedMemoryStream LOZ_Secret {
             get {
                 return ResourceManager.GetStream("LOZ_Secret", resourceCulture);
