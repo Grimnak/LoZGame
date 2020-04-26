@@ -36,6 +36,12 @@
 
         void JumpDownRight();
 
+        void Teleport();
+
+        void OpenEye();
+
+        void CloseEye();
+
         void Attack();
 
         void Stop();

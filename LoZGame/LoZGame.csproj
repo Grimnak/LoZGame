@@ -114,19 +114,26 @@
     <Compile Include="Enemies\EnemyClasses\BlueGoriya.cs" />
     <Compile Include="Enemies\EnemyClasses\BlueDarknut.cs" />
     <Compile Include="Enemies\EnemyClasses\RedDarknut.cs" />
+    <Compile Include="Enemies\EnemyClasses\BlueGohma.cs" />
     <Compile Include="Enemies\EnemyClasses\RedGoriya.cs" />
     <Compile Include="Enemies\EnemyClasses\Bubble.cs" />
     <Compile Include="Enemies\EnemyClasses\Gibdo.cs" />
     <Compile Include="Enemies\EnemyClasses\PolsVoice.cs" />
+    <Compile Include="Enemies\EnemyClasses\RedWizzrobe.cs" />
+    <Compile Include="Enemies\EnemyClasses\RedGohma.cs" />
     <Compile Include="Enemies\EnemyClasses\Vire.cs" />
     <Compile Include="Enemies\EnemyClasses\VireKeese.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyIdleState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingGohmaState.cs" />
+    <Compile Include="Enemies\EnemyStates\GohmaStates\CloseEyeState.cs" />
+    <Compile Include="Enemies\EnemyStates\GohmaStates\OpenEyeState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\StunnedDodongoState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\DeadEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAIEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingBlueGoriyaState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingDodongoState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingWizzrobeState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingLikelikeState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingManhandlaHeadState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingDragonState.cs" />
@@ -144,6 +151,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateDigDogger.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdatePolsVoice.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateLikelike.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateBlueWizzrobe.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateVire.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGleeock.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateFireSnake.cs" />
@@ -171,6 +179,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpLeftJumpingEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpLeftMovingEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpJumpingEnemyState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\TeleportEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpMovingEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpRightJumpingEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpRightMovingEnemyState.cs" />
@@ -191,6 +200,7 @@
     <Compile Include="Managers\InventoryManagerHelper.cs" />
     <Compile Include="Players\PlayerClasses\LinkHelper.cs" />
     <Compile Include="Players\PlayerStates\SwallowedState.cs" />
+    <Compile Include="Projectiles\SonicBeamProjectile.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

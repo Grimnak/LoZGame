@@ -169,7 +169,7 @@
         /// <returns>A boolean representing the block's transparency.</returns>
         private bool DetermineTransparency(string name)
         {
-            if (name.Equals(BasementBrickTile) || name.Equals(FireGapTile) || name.Equals(BlueStatueLeft2) || name.Equals(BlueStatueRight2) || name.Equals(BrownStatueLeft4) || name.Equals(BrownStatueRight4) || name.Equals(GreenStatueLeft) || name.Equals(GreenStatueRight))
+            if (name.Equals(BasementBrickTile) || name.Equals(FireGapTile) || name.Equals(BlueStatueLeft2) || name.Equals(BlueStatueRight2) || name.Equals(BrownStatueLeft4) || name.Equals(BrownStatueRight4) || name.Equals(GreenStatueLeft) || name.Equals(GreenStatueRight) || name.Equals(RedStatueLeft3) || name.Equals(RedStatueRight3))
             {
                 return true;
             }

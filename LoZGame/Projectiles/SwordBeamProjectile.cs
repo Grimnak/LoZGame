@@ -12,8 +12,8 @@
         {
             SetUp(this);
             Width = ProjectileSpriteFactory.Instance.SwordBeamWidth;
-            Heigth = ProjectileSpriteFactory.Instance.SwordBeamHeight;
-            Offset = Heigth / 2;
+            Height = ProjectileSpriteFactory.Instance.SwordBeamHeight;
+            Offset = Height / 2;
             Speed = GameData.Instance.ProjectileSpeedConstants.SwordBeamSpeed;
             Damage = GameData.Instance.ProjectileDamageConstants.SwordBeamDamage;
             Source = source;
@@ -56,11 +56,11 @@
             }
             else if (Physics.CurrentDirection == Physics.Direction.West) 
             { 
-                explosionLoc = new Vector2(Physics.Bounds.Left, Physics.Bounds.Top + (Heigth / 2)); 
+                explosionLoc = new Vector2(Physics.Bounds.Left, Physics.Bounds.Top + (Height / 2)); 
             }
             else if (Physics.CurrentDirection == Physics.Direction.East) 
             {
-                explosionLoc = new Vector2(Physics.Bounds.Right, Physics.Bounds.Top + (Heigth / 2)); 
+                explosionLoc = new Vector2(Physics.Bounds.Right, Physics.Bounds.Top + (Height / 2)); 
             }
             LoZGame.Instance.GameObjects.Entities.ExplosionManager.AddExplosion(explosionType, explosionLoc);
         }

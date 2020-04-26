@@ -25,13 +25,13 @@
             SetUp(this);
             SoundFactory.Instance.PlayBombExplosion();
             Width = ProjectileSpriteFactory.Instance.ExplosionWidth;
-            Heigth = ProjectileSpriteFactory.Instance.ExplosionHeight;
+            Height = ProjectileSpriteFactory.Instance.ExplosionHeight;
             Physics = new Physics(new Vector2(location.X, location.Y));
             collisionHandler = new ProjectileCollisionHandler(this);
             lifeTime = MaxLifeTime + 1;
             IsExpired = false;
-            Physics.BoundsOffset = new Vector2(Width, Heigth) / 2;
-            Physics.Bounds = new Rectangle((Physics.Location - Physics.BoundsOffset).ToPoint(), new Point(Width, Heigth));
+            Physics.BoundsOffset = new Vector2(Width, Height) / 2;
+            Physics.Bounds = new Rectangle((Physics.Location - Physics.BoundsOffset).ToPoint(), new Point(Width, Height));
             Physics.BoundsOffset *= 2;
             Physics.SetLocation();
             Damage = GameData.Instance.ProjectileDamageConstants.BombDamage;

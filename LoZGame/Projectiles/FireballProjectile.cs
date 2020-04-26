@@ -13,9 +13,9 @@
             CollisionHandler = new ProjectileCollisionHandler(this);
             Data = new EntityData();
             Width = ProjectileSpriteFactory.Instance.FireballWidth;
-            Heigth = ProjectileSpriteFactory.Instance.FireballHeight;
-            Physics.BoundsOffset = new Vector2(Width, Heigth) / 2;
-            Physics.Bounds = new Rectangle((Physics.Location - Physics.BoundsOffset + new Vector2(4)).ToPoint(), new Point(Width, Heigth) - new Point(8));
+            Height = ProjectileSpriteFactory.Instance.FireballHeight;
+            Physics.BoundsOffset = new Vector2(Width, Height) / 2;
+            Physics.Bounds = new Rectangle((Physics.Location - Physics.BoundsOffset + new Vector2(4)).ToPoint(), new Point(Width, Height) - new Point(8));
             Physics.BoundsOffset *= 2;
             Physics.BoundsOffset -= new Vector2(4);
             Physics.SetLocation();

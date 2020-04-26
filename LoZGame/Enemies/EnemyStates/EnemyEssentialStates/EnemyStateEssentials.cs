@@ -29,6 +29,7 @@
             EnemyAI.ManHandlaHead,
             EnemyAI.SmallDigDogger,
             EnemyAI.LargeDigDogger,
+            EnemyAI.Gohma,
             EnemyAI.NoSpawn
         };
 
@@ -96,10 +97,13 @@
                 case EnemyAI.LargeDigDogger:
                     UpdateLargeDigDogger();
                     break;
-                case EnemyAI.NoAI:
-                    break;
                 case EnemyAI.Likelike:
                     UpdateLikelike();
+                    break;
+                case EnemyAI.BlueWizzrobe:
+                    UpdateBlueWizzrobe();
+                    break;
+                case EnemyAI.NoAI:
                     break;
                 default:
                     DefaultUpdate();

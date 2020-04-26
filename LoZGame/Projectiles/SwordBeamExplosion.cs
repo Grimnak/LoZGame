@@ -21,9 +21,9 @@
             lifeTime = MaxLifeTime;
             Speed = projectileSpeedData.SwordBeamExplosionSpeed;
             Width = ProjectileSpriteFactory.Instance.StandardWidth * scale;
-            Heigth = ProjectileSpriteFactory.Instance.SwordBeamExplosionHeight * scale;
+            Height = ProjectileSpriteFactory.Instance.SwordBeamExplosionHeight * scale;
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, 0, 0);
-            Physics.BoundsOffset = new Vector2(Width, Heigth) / 4;
+            Physics.BoundsOffset = new Vector2(Width, Height) / 4;
             Physics.SetLocation();
             Sprite = ProjectileSpriteFactory.Instance.SwordExplosion();
             Physics.Mass = GameData.Instance.ProjectileMassConstants.SwordBeamMass;

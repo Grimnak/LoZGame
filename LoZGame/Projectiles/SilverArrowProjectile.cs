@@ -9,8 +9,8 @@
         {
             SetUp(this);
             Width = ProjectileSpriteFactory.Instance.ArrowWidth;
-            Heigth = ProjectileSpriteFactory.Instance.ArrowHeight;
-            Offset = Heigth / 2;
+            Height = ProjectileSpriteFactory.Instance.ArrowHeight;
+            Offset = Height / 2;
             Speed = GameData.Instance.ProjectileSpeedConstants.LinkSilverArrowSpeed;
             Damage = GameData.Instance.ProjectileDamageConstants.LinkSilverArrowDamage;
             Source = source;
