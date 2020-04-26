@@ -5,7 +5,8 @@
         private enum ProjectileType
         {
             Fireball,
-            Boomerang
+            Boomerang,
+            SonicBeam
         }
     }
 }

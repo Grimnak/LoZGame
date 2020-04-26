@@ -50,7 +50,6 @@ namespace LoZClone
         private const int dungeon3TextRoomY = 0;
         private const int dungeon4TextRoomX = 0;
         private const int dungeon4TextRoomY = 0;
-
         private const int dungeon5BombTextRoomX = 3;
         private const int dungeon5BombTextRoomY = 1;
         private const int dungeon5FluteTextRoomX = 1;
@@ -59,6 +58,10 @@ namespace LoZClone
         private const int dungeon5ArrowTextRoomY = 6;
         private const int dungeon5DigDoggerTextRoomX = 0;
         private const int dungeon5DigDoggerTextRoomY = 2;
+        private const int dungeon6BossHintTextRoomX = 3;
+        private const int dungeon6BossHintTextRoomY = 0;
+        private const int dungeon6MagicRodTextRoomX = 2;
+        private const int dungeon6MagicRodTextRoomY = 6;
 
         private const string itemCtStr = "x";
         private const string levelStr = "L E V E L - ";
@@ -192,6 +195,18 @@ namespace LoZClone
         public int Dungeon5DigDoggerTxtRoomY => dungeon5DigDoggerTextRoomY;
 
         public Vector2 Dungeon5DigDoggerTxtDrawLoc => new Vector2(100, LoZGame.Instance.InventoryOffset + 100);
+
+        public int Dungeon6BossHintTxtRoomX => dungeon6BossHintTextRoomX;
+
+        public int Dungeon6BossHintTxtRoomY => dungeon6BossHintTextRoomY;
+
+        public int Dungeon6MagicRodTxtRoomX => dungeon6MagicRodTextRoomX;
+
+        public int Dungeon6MagicRodTxtRoomY => dungeon6MagicRodTextRoomY;
+
+        public Vector2 Dungeon6BossHintTxtDrawLoc => new Vector2(175, LoZGame.Instance.InventoryOffset + 100);
+
+        public Vector2 Dungeon6MagicRodTxtDrawLoc => new Vector2(135, LoZGame.Instance.InventoryOffset + 100);
 
         public string ItemCtStr => itemCtStr;
 

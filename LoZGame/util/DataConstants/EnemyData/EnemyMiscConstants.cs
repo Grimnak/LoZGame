@@ -19,8 +19,8 @@ namespace LoZClone
 
         private const int BubbleFavorCardinal = 2;
         private const int DodongoFavorCardinal = 5;
-        private const int FireSnakeFavorCardinal = 9;
-        private const int FireSnakeFavorDiagonal = 9;
+        private const int FireSnakeFavorCardinal = 3;
+        private const int FireSnakeFavorDiagonal = 3;
         private const int DigDoggerFavorCardinal = 9;
         private const int DigDoggerFavorDiagonal = 9;
         private const int GelFavorCardinal = 3;
@@ -30,6 +30,7 @@ namespace LoZClone
         private const int RopeFavorCardinal = 2;
         private const int StalfosFavorCardinal = 3;
         private const int WallMasterFavorCardinal = 3;
+        private const int WizzrobeFavorCardinal = 2;
         private const int ZolFavorCardinal = 3;
         private const int DarknutFavorCardinal = 3;
         private const int VireFavorCardinal = 3;
@@ -81,6 +82,8 @@ namespace LoZClone
         public int StalfosFavorCardinalValue => StalfosFavorCardinal;
 
         public int WallMasterFavorCardinalValue => WallMasterFavorCardinal;
+
+        public int WizzrobeFavorCardinalValue => WizzrobeFavorCardinal;
 
         public int ZolFavorCardinalValue => ZolFavorCardinal;
 

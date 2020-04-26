@@ -220,8 +220,6 @@
                     enemies.Add(new Bubble(location));
                     break;
                 case "Manhandla":
-                    Console.WriteLine(x + " | " + y);
-                    Console.WriteLine(location);
                     enemies.Add(new ManhandlaBody(location));
                     break;
                 case "Gleeok":
@@ -235,6 +233,15 @@
                     break;
                 case "DigDogger":
                     enemies.Add(new DigDoggerInvincible(location));
+                    break;
+                case "RedWizzrobe":
+                    enemies.Add(new RedWizzrobe(location));
+                    break;
+                case "Gohma":
+                    enemies.Add(new RedGohma(location));
+                    break;
+                case "BlueGohma":
+                    enemies.Add(new BlueGohma(location));
                     break;
                 default:
                     break;

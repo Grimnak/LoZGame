@@ -27,7 +27,10 @@
             JumpNorthEast,
             JumpNorthWest,
             JumpSouthEast,
-            JumpSouthWest
+            JumpSouthWest,
+            Teleport,
+            OpenEye,
+            CloseEye
         }
 
         public RandomStateGenerator(IEnemy enemy)
@@ -100,7 +103,6 @@
                 case StateType.MoveSouthWest:
                     enemy.CurrentState.MoveDownRight();
                     break;
-
                 case StateType.JumpWest:
                     enemy.CurrentState.JumpLeft();
                     break;
@@ -124,6 +126,15 @@
                     break;
                 case StateType.JumpSouthWest:
                     enemy.CurrentState.JumpDownRight();
+                    break;
+                case StateType.Teleport:
+                    enemy.CurrentState.Teleport();
+                    break;
+                case StateType.OpenEye:
+                    enemy.CurrentState.OpenEye();
+                    break;
+                case StateType.CloseEye:
+                    enemy.CurrentState.CloseEye();
                     break;
                 default:
                     enemy.CurrentState.Stop();

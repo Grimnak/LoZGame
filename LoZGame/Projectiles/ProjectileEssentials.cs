@@ -14,7 +14,7 @@
 
         public int Width { get; set; }
 
-        public int Heigth { get; set; }
+        public int Height { get; set; }
 
         public int Offset { get; set; }
 
@@ -46,7 +46,7 @@
             Acceleration = 0;
             Damage = 0;
             Width = 0;
-            Heigth = 0;
+            Height = 0;
             Offset = 0;
             Source = new Physics(Vector2.Zero);
             Physics = new Physics(Vector2.Zero);
@@ -55,6 +55,9 @@
             CollisionHandler = new ProjectileCollisionHandler(this.parent);
         }
 
+        /// <summary>
+        /// Determines the direction the projectile moves from the user based on the user's current facing direction.
+        /// </summary>
         public void InitializeDirection()
         {
             Physics = new Physics(Source.Bounds.Center.ToVector2());
@@ -63,27 +66,27 @@
             {
                 case Physics.Direction.North:
                     unitDirection = new Vector2(0, -1);
-                    Physics.BoundsOffset = new Vector2(Width / 2, Heigth / 2);
+                    Physics.BoundsOffset = new Vector2(Width / 2, Height / 2);
                     Physics.CurrentDirection = Physics.Direction.North;
                     break;
                 case Physics.Direction.South:
                     unitDirection = new Vector2(0, 1);
                     Data.SpriteEffect = SpriteEffects.FlipVertically;
-                    Physics.BoundsOffset = new Vector2(Width / 2, Heigth / 2);
+                    Physics.BoundsOffset = new Vector2(Width / 2, Height / 2);
                     Physics.CurrentDirection = Physics.Direction.South;
                     break;
                 case Physics.Direction.East:
                     unitDirection = new Vector2(1, 0);
                     Data.Rotation = MathHelper.PiOver2;
                     Data.SpriteEffect = SpriteEffects.None;
-                    Physics.BoundsOffset = new Vector2(Heigth / 2, Width / 2);
+                    Physics.BoundsOffset = new Vector2(Height / 2, Width / 2);
                     Physics.CurrentDirection = Physics.Direction.East;
                     break;
                 case Physics.Direction.West:
                     unitDirection = new Vector2(-1, 0);
                     Data.Rotation = MathHelper.PiOver2;
                     Data.SpriteEffect = SpriteEffects.FlipVertically;
-                    Physics.BoundsOffset = new Vector2(Heigth / 2, Width / 2);
+                    Physics.BoundsOffset = new Vector2(Height / 2, Width / 2);
                     Physics.CurrentDirection = Physics.Direction.West;
                     break;
                 default:

@@ -11,7 +11,6 @@ namespace LoZClone
         private const float KeeseAccelMax = 5;
         private const float MinManSpd = 0.5f;
         private const float MaxManSpd = 1.5f;
-        private const float ManAccel = .005f;
         private const float RopeSpd = 2.5f;
         private const float RopeAttackSpd = 3.5f;
         private const float GelSpd = 3;
@@ -19,6 +18,8 @@ namespace LoZClone
         private const float SpikeCrossSpd = 2;
         private const float WallMasterSpd = 2;
         private const float WallMasterAttackSpd = -1;
+        private const float RedWizzrobeSpd = 0;
+        private const float BlueWizzrobeSpd = 1;
         private const float DragonSpd = 1.5f;
         private const float DodongoSpd = 2;
         private const float DodongoAttackSpd = 4.5f;
@@ -35,6 +36,8 @@ namespace LoZClone
         private const float PolsVoiceSpd = 2.5f;
         private const float DigDoggerSpd = 1.5f;
         private const float DigDoggerFleeSpd = 4;
+        private const float GleeokHeadOffSpd = 4;
+        private const float GohmaSpd = 1.5f;
 
         public float StalfosSpeed => StalfosSpd;
 
@@ -59,6 +62,10 @@ namespace LoZClone
         public float WallMasterSpeed => WallMasterSpd;
 
         public float WallMasterAttackSpeed => WallMasterAttackSpd;
+
+        public float RedWizzrobeSpeed => RedWizzrobeSpd;
+
+        public float BlueWizzrobeSpeed => BlueWizzrobeSpd;
 
         public float DragonSpeed => DragonSpd;
 
@@ -86,8 +93,6 @@ namespace LoZClone
 
         public float ManhandlaMaxSpeed => MaxManSpd;
 
-        public float ManhandlaAcceleration => ManAccel;
-
         public float GibdoSpeed => GibdoSpd;
 
         public float GleeokHeadSpeed => gleeokHeadSpd;
@@ -101,5 +106,9 @@ namespace LoZClone
         public float DigDoggerFleeSpeed => DigDoggerFleeSpd;
 
         public float DigDoggerSpeed => DigDoggerSpd;
+
+        public float GleeokHeadOffSpeed => GleeokHeadOffSpd;
+
+        public float GohmaSpeed => GohmaSpd;
     }
 }

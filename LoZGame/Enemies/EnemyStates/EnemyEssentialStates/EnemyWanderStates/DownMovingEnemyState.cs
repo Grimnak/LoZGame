@@ -11,7 +11,7 @@
             Enemy = enemy;
             Sprite = Enemy.CreateCorrectSprite();
             Enemy.CurrentState = this;
-            RandomDirectionChange();
+            RandomStateChange();
             Enemy.Physics.MovementVelocity = new Vector2(0, Enemy.MoveSpeed);
         }
     }

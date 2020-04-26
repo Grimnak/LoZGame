@@ -68,6 +68,15 @@
             { StateType.MoveSouth, 1 }
         };
 
+        private static Dictionary<StateType, int> gohmaStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.Attack, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 },
+            { StateType.OpenEye, 1 },
+            { StateType.CloseEye, 1 }
+        };
+
         private static Dictionary<StateType, int> goriyaStateList = new Dictionary<StateType, int>()
         {
             { StateType.Attack, 1 },
@@ -119,6 +128,23 @@
             { StateType.MoveSouth, 1 },
             { StateType.MoveEast, 1 },
             { StateType.MoveWest, 1 }
+        };
+
+        private static Dictionary<StateType, int> redWizzrobeStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.Attack, 1 },
+            { StateType.Teleport, 1 },
+            { StateType.Idle, 4 }
+        };
+
+        private static Dictionary<StateType, int> blueWizzrobeStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.Attack, 2 },
+            { StateType.Teleport, 1 },
+            { StateType.MoveNorth, 2 },
+            { StateType.MoveSouth, 2 },
+            { StateType.MoveEast, 2 },
+            { StateType.MoveWest, 2 },
         };
 
         private static Dictionary<StateType, int> zolStateList = new Dictionary<StateType, int>()
@@ -208,6 +234,8 @@
 
         public Dictionary<StateType, int> GoriyaStateList => goriyaStateList;
 
+        public Dictionary<StateType, int> GohmaStateList => gohmaStateList;
+
         public Dictionary<StateType, int> KeeseStateList => keeseStateList;
 
         public Dictionary<StateType, int> RopeStateList => ropeStateList;
@@ -217,6 +245,10 @@
         public Dictionary<StateType, int> ZolStateList => zolStateList;
 
         public Dictionary<StateType, int> WallMasterStateList => wallMasterStateList;
+
+        public Dictionary<StateType, int> RedWizzrobeStateList => redWizzrobeStateList;
+
+        public Dictionary<StateType, int> BlueWizzrobeStateList => blueWizzrobeStateList;
 
         public Dictionary<StateType, int> VireStateList => vireStateList;
 

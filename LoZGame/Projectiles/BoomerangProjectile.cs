@@ -13,8 +13,8 @@
         {
             SetUp(this);
             Width = ProjectileSpriteFactory.Instance.StandardWidth;
-            Heigth = ProjectileSpriteFactory.Instance.BoomerangHeight;
-            Offset = (Heigth * 3) / 4;
+            Height = ProjectileSpriteFactory.Instance.BoomerangHeight;
+            Offset = (Height * 3) / 4;
             StunDuration = LoZGame.Instance.UpdateSpeed;
             Speed = GameData.Instance.ProjectileSpeedConstants.LinkBoomerangSpeed;
             Source = source;

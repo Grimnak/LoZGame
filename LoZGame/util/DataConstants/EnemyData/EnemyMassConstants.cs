@@ -12,6 +12,7 @@ namespace LoZClone
         private const int DodongoMss = 12;
         private const int SpikeCrossMss = 8;
         private const int WallMasterMss = 14;
+        private const int WizzrobeMss = 16;
         private const int FireSnakeMss = 20;
         private const int DarknutMss = 18;
         private const int VireMss = 16;
@@ -21,26 +22,29 @@ namespace LoZClone
         private const int PolsVoiceMss = 12;
         private const int DigDoggerSmallMss = 12;
         private const int DigDoggerLargeMss = 24;
+        private const int GohmaMss = 24;
 
-        public int StalfosMass { get { return StalfosMss; } }
-        
-        public int GoriyaMass { get { return GoriyaMss; } }
-        
-        public int KeeseMass { get { return KeeseMss; } }
-        
-        public int RopeMass { get { return RopeMss; } }
-        
-        public int GelMass { get { return GelMss; } }
-        
-        public int ZolMass { get { return ZolMss; } }
-        
-        public int DragonMass { get { return DragonMss; } }
-        
-        public int DodongoMass { get { return DodongoMss; } }
-        
-        public int SpikeCrossMass { get { return SpikeCrossMss; } }
+        public int StalfosMass => StalfosMss;
 
-        public int WallMasterMass { get { return WallMasterMss; } }
+        public int GoriyaMass => GoriyaMss;
+
+        public int KeeseMass => KeeseMss;
+
+        public int RopeMass => RopeMss;
+
+        public int GelMass => GelMss;
+
+        public int ZolMass => ZolMss;
+
+        public int DragonMass => DragonMss;
+
+        public int DodongoMass => DodongoMss;
+
+        public int SpikeCrossMass => SpikeCrossMss;
+
+        public int WallMasterMass => WallMasterMss;
+
+        public int WizzrobeMass => WizzrobeMss;
 
         public int FireSnakeMass => FireSnakeMss;
 
@@ -59,6 +63,8 @@ namespace LoZClone
         public int DigDoggerSmallMass => DigDoggerSmallMss;
 
         public int DigDoggerLargeMass => DigDoggerLargeMss;
+
+        public int GohmaMass => GohmaMss;
 
     }
 }

@@ -9,6 +9,8 @@
         private const int ZolHP = 4;
         private const int SpikeCrossHP = 1;
         private const int WallMasterHP = 12;
+        private const int RedWizzrobeHP = 12;
+        private const int BlueWizzrobeHP = 16;
         private const int DragonHP = 32;
         private const int DodongoHP = 16;
         private const int RedGoriyaHP = 12;
@@ -18,6 +20,8 @@
         private const int FireSnakeHP = 4;
         private const int RedDarknutHP = 12;
         private const int BlueDarknutHP = 16;
+        private const int RedGohmaHP = 4;
+        private const int BlueGohmaHP = 12;
         private const int VireHP = 12;
         private const int BubbleHP = 1;
         private const int manHeadHP = 8;
@@ -42,6 +46,10 @@
         public int SpikeCrossHealth => SpikeCrossHP;
 
         public int WallMasterHealth => WallMasterHP;
+
+        public int RedWizzrobeHealth => RedWizzrobeHP;
+
+        public int BlueWizzrobeHealth => BlueWizzrobeHP;
 
         public int DragonHealth => DragonHP;
 
@@ -70,6 +78,10 @@
         public int ManhandlaHeadHealth => manHeadHP;
 
         public int GibdoHealth => gibdoHP;
+
+        public int RedGohmaHealth => RedGohmaHP;
+
+        public int BlueGohmaHealth => BlueGohmaHP;
 
         public int GleeokNeckHealth => GleeokNeckHP;
 

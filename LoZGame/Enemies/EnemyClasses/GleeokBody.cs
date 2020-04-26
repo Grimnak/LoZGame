@@ -80,7 +80,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            return EnemySpriteFactory.Instance.CreateGleeockBodySprite();
+            return EnemySpriteFactory.Instance.CreateGleeokBodySprite();
         }
     }
 }

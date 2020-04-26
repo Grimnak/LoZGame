@@ -12,7 +12,9 @@
         private const int ZolDmg = 2;
         private const int SpikeCrossDmg = 2;
         private const int VireDmg = 4;
-        private const int WallMasterDmg = 1;
+        private const int WallMasterDmg = 0;
+        private const int RedWizzrobeDmg = 2;
+        private const int BlueWizzrobeDmg = 4;
         private const int DragonDmg = 4;
         private const int DodongoDmg = 4;
         private const int RedGoriyaDmg = 4;
@@ -27,12 +29,15 @@
         private const int LikelikeDmg = 4;
         private const int PolsVoiceDmg = 4;
         private const int DigDoggerDmg = 4;
+        private const int GohmaDmg = 4;
 
         public int StalfosDamage => StalfosDmg;
 
         public int RopeDamage => RopeDmg;
 
         public int KeeseDamage => KeeseDmg;
+
+        public int GohmaDamage => GohmaDmg;
 
         public int GelDamage => GelDmg;
 
@@ -80,5 +85,8 @@
 
         public int DigDoggerDamage => DigDoggerDmg;
 
+        public int RedWizzrobeDamage => RedWizzrobeDmg;
+
+        public int BlueWizzrobeDamage => BlueWizzrobeDmg;
     }
 }

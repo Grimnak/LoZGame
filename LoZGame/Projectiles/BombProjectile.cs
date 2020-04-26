@@ -13,15 +13,15 @@
         {
             SetUp(this);
             Width = ProjectileSpriteFactory.Instance.StandardWidth;
-            Heigth = ProjectileSpriteFactory.Instance.StandardHeight;
+            Height = ProjectileSpriteFactory.Instance.StandardHeight;
             Offset = LinkSpriteFactory.LinkHeight;
             Source = source;
             lifeTime = MaxLife;
             InitializeDirection();
             Data.Rotation = 0;
             Data.SpriteEffect = SpriteEffects.None;
-            Physics.BoundsOffset = new Vector2(Width, Heigth);
-            Physics.Bounds = new Rectangle((Physics.Location - Physics.BoundsOffset).ToPoint(), new Point(Width, Heigth));
+            Physics.BoundsOffset = new Vector2(Width, Height);
+            Physics.Bounds = new Rectangle((Physics.Location - Physics.BoundsOffset).ToPoint(), new Point(Width, Height));
             Physics.SetLocation();
             Sprite = ProjectileSpriteFactory.Instance.Bomb();
         }

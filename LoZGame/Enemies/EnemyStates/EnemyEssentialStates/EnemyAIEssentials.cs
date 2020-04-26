@@ -57,7 +57,7 @@
         public void HandleJump()
         {
             Enemy.Physics.HandleJump();
-            if (Enemy.Physics.IsJumping == false)
+            if (!Enemy.Physics.IsJumping)
             {
                 Enemy.Physics.MovementVelocity = Vector2.Zero;
             }
@@ -66,7 +66,7 @@
         /// <summary>
         /// This provides the enemy with another state to enter within a certain time interval.
         /// </summary>
-        public virtual void RandomDirectionChange()
+        public virtual void RandomStateChange()
         {
             DirectionChange = LoZGame.Instance.Random.Next(Enemy.MinMaxWander.X, Enemy.MinMaxWander.Y);
         }
@@ -314,7 +314,7 @@
         }
 
         /// <summary>
-        /// This allows the enemy to be aware of when it share's an X or Y coordinate with the player and change its state accordingly.
+        /// This allows the enemy to be aware of when it shares an X or Y coordinate with the player and change its state accordingly.
         /// </summary>
         public void CheckForLink()
         {
