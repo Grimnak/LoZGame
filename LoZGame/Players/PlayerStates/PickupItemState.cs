@@ -73,6 +73,10 @@ namespace LoZClone
             {
                 player.Inventory.HasLadder = true;
             }
+            else if (item is Flute)
+            {
+                player.Inventory.HasFlute = true;
+            }
         }
 
         /// <inheritdoc/>

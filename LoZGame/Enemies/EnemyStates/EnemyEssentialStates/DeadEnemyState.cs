@@ -23,7 +23,8 @@
         public override void Update()
         {
             deathTimer++;
-            Sprite.Update();
+            if (this.Sprite.CurrentFrame != this.Sprite.TotalFrames - 1)
+                Sprite.Update();
             if (deathTimer >= deathTimerMax)
             {
                 LoZGame.Instance.Drops.AttemptDrop(Enemy.Physics.Location, LoZGame.Instance.Drops.DropChance, Enemy.DropTable);
