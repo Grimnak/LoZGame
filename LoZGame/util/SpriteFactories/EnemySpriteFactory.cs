@@ -458,6 +458,15 @@
         private Texture2D polsVoice;
         private SpriteData polsVoiceData;
 
+        private Texture2D redGohmaOpenTexture;
+        private SpriteData redGohmaOpenData;
+        private Texture2D redGohmaClosedTexture;
+        private SpriteData redGohmaClosedData;
+        private Texture2D blueGohmaOpenTexture;
+        private SpriteData blueGohmaOpenData;
+        private Texture2D blueGohmaClosedTexture;
+        private SpriteData blueGohmaClosedData;
+
         private Texture2D oldMan;
         private Texture2D angryOldMan;
         private SpriteData oldManData;
@@ -562,6 +571,11 @@
 
             polsVoice = content.Load<Texture2D>("polsvoice");
 
+            redGohmaOpenTexture = content.Load<Texture2D>("red_gohma_open");
+            redGohmaClosedTexture = content.Load<Texture2D>("red_gohma_closed");
+            blueGohmaOpenTexture = content.Load<Texture2D>("blue_gohma_open");
+            blueGohmaClosedTexture = content.Load<Texture2D>("blue_gohma_closed");
+
             oldMan = content.Load<Texture2D>("oldMan");
             angryOldMan = content.Load<Texture2D>("angryOldMan");
             merchant = content.Load<Texture2D>("merchant");
@@ -616,6 +630,10 @@
             idleDigDoggerData = new SpriteData(new Vector2(largeDigDoggerSize), digDoggerIdle, 1, 1);
             movingDigDoggerData = new SpriteData(new Vector2(largeDigDoggerSize), digDoggerLeft, 1, 2);
             smallDigDoggerData = new SpriteData(new Vector2(smallDigDoggerSize), smallDigDogger, 1, 2);
+            redGohmaOpenData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), redGohmaOpenTexture, 2, 1);
+            redGohmaClosedData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), redGohmaClosedTexture, 2, 1);
+            blueGohmaOpenData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), blueGohmaOpenTexture, 2, 1);
+            blueGohmaClosedData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), blueGohmaClosedTexture, 2, 1);
         }
 
         // Stalfos Sprites
@@ -723,6 +741,28 @@
             }
         }
 
+        // Gohma Sprites
+        public ISprite CreateRedGohmaOpenEye()
+        {
+            return new ObjectSprite(redGohmaOpenTexture, redGohmaOpenData);
+        }
+
+        public ISprite CreateRedGohmaClosedEye()
+        {
+            return new ObjectSprite(redGohmaClosedTexture, redGohmaClosedData);
+        }
+
+        public ISprite CreateBlueGohmaOpenEye()
+        {
+            return new ObjectSprite(blueGohmaOpenTexture, blueGohmaOpenData);
+        }
+
+        public ISprite CreateBlueGohmaClosedEye()
+        {
+            return new ObjectSprite(blueGohmaClosedTexture, blueGohmaClosedData);
+        }
+
+        // DigDogger Sprites
         public ISprite CreateLargeDigDogger(Physics.Direction direction)
         {
             switch (direction)
@@ -739,7 +779,6 @@
                     return new ObjectSprite(digDoggerRight, movingDigDoggerData);
                 default:
                     return new ObjectSprite(digDoggerIdle, idleDigDoggerData);
-
             }
         }
 
@@ -748,7 +787,8 @@
             return new ObjectSprite(smallDigDogger, smallDigDoggerData);
         }
 
-        public ISprite CreateGleeockNeckSprite()
+        // Gleeok Sprites
+        public ISprite CreateGleeokNeckSprite()
         {
             return new ObjectSprite(GleeokNeckTexture, GleeokNeckData);
         }

@@ -213,7 +213,6 @@
     <Compile Include="Rooms\BlockStates\MovableTileStates\IMovableBlockState.cs" />
     <Compile Include="Rooms\BlockStates\MovableTileStates\SolvedState.cs" />
     <Compile Include="Rooms\BlockStates\MovableTileStates\UnsolvedState.cs" />
-    <Compile Include="Sprites\LevelMasterSprite.cs" />
     <Compile Include="Util\DataConstants\CollisionData\CollisionConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyHealthConstants.cs" />
     <Compile Include="Util\DataConstants\EnemyData\EnemyDamageConstants.cs" />

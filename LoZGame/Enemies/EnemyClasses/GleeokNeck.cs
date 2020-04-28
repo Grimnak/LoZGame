@@ -59,7 +59,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            return EnemySpriteFactory.Instance.CreateGleeockNeckSprite();
+            return EnemySpriteFactory.Instance.CreateGleeokNeckSprite();
         }
     }
 }

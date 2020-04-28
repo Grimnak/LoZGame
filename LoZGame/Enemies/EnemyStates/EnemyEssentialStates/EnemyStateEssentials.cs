@@ -42,6 +42,10 @@
                 Enemy.UpdateState();
                 Lifetime = 0;
             }
+            if (Enemy is RedGohma)
+            {
+                Console.WriteLine("Gohma current state is " + Enemy.CurrentState);
+            }
         }
 
         public virtual void Update()

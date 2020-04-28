@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using Microsoft.Xna.Framework;
+    using System;
     using System.Collections.Generic;
 
     public class RedGohma : EnemyEssentials, IEnemy
@@ -58,11 +59,13 @@
         {
             if (CurrentState is OpenEyeState)
             {
-                return EnemySpriteFactory.Instance.CreateStalfosSprite();
+                Console.WriteLine("Drawing OpenEye Sprite now.");
+                return EnemySpriteFactory.Instance.CreateRedGohmaOpenEye();
             }
             else
             {
-                return EnemySpriteFactory.Instance.CreateStalfosSprite();
+                Console.WriteLine("Drawing ClosedEye Sprite now.");
+                return EnemySpriteFactory.Instance.CreateRedGohmaClosedEye();
             }
         }
     }
