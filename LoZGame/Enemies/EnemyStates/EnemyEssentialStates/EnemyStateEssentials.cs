@@ -42,9 +42,9 @@
                 Enemy.UpdateState();
                 Lifetime = 0;
             }
-            if (Enemy is RedGohma)
+            if (Enemy is RedWizzrobe)
             {
-                Console.WriteLine("Gohma current state is " + Enemy.CurrentState);
+                Console.WriteLine("Wizzrobe current direction is " + Enemy.Physics.CurrentDirection);
             }
         }
 
