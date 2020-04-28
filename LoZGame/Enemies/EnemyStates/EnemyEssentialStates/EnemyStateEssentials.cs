@@ -100,6 +100,9 @@
                 case EnemyAI.Likelike:
                     UpdateLikelike();
                     break;
+                case EnemyAI.RedWizzrobe:
+                    UpdateRedWizzrobe();
+                    break;
                 case EnemyAI.BlueWizzrobe:
                     UpdateBlueWizzrobe();
                     break;

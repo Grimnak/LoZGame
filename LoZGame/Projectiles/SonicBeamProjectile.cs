@@ -13,7 +13,7 @@
             Speed = GameData.Instance.ProjectileSpeedConstants.LinkBoomerangSpeed / 2;
             Source = physics;
             InitializeDirection();
-            Sprite = ProjectileSpriteFactory.Instance.Boomerang();
+            Sprite = ProjectileSpriteFactory.Instance.SonicBeam(Source.CurrentDirection);
             Physics.Mass = GameData.Instance.ProjectileMassConstants.BoomerangMass;
         }
     }

@@ -51,7 +51,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            return EnemySpriteFactory.Instance.CreateStalfosSprite();
+            return EnemySpriteFactory.Instance.CreateRedWizzrobeSprite(this.Physics.CurrentDirection);
         }
     }
 }

@@ -8,8 +8,8 @@
         public OpenEyeState(IEnemy enemy)
         {
             Enemy = enemy;
-            Sprite = Enemy.CreateCorrectSprite();
             Enemy.CurrentState = this;
+            Sprite = Enemy.CreateCorrectSprite();
             RandomStateChange();
         }
     }

@@ -58,11 +58,11 @@
         {
             if (CurrentState is OpenEyeState)
             {
-                return EnemySpriteFactory.Instance.CreateStalfosSprite();
+                return EnemySpriteFactory.Instance.CreateRedGohmaOpenEye();
             }
             else
             {
-                return EnemySpriteFactory.Instance.CreateStalfosSprite();
+                return EnemySpriteFactory.Instance.CreateRedGohmaClosedEye();
             }
         }
     }

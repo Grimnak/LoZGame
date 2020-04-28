@@ -458,6 +458,23 @@
         private Texture2D polsVoice;
         private SpriteData polsVoiceData;
 
+        private Texture2D redGohmaOpenTexture;
+        private SpriteData redGohmaOpenData;
+        private Texture2D redGohmaClosedTexture;
+        private SpriteData redGohmaClosedData;
+        private Texture2D blueGohmaOpenTexture;
+        private SpriteData blueGohmaOpenData;
+        private Texture2D blueGohmaClosedTexture;
+        private SpriteData blueGohmaClosedData;
+
+        private Texture2D redWizzrobeRightTexture;
+        private Texture2D redWizzrobeLeftTexture;
+        private Texture2D redWizzrobeUpTexture;
+        private Texture2D blueWizzrobeRightTexture;
+        private Texture2D blueWizzrobeLeftTexture;
+        private Texture2D blueWizzrobeUpTexture;
+        private SpriteData wizzrobeData;
+
         private Texture2D oldMan;
         private Texture2D angryOldMan;
         private SpriteData oldManData;
@@ -562,6 +579,18 @@
 
             polsVoice = content.Load<Texture2D>("polsvoice");
 
+            redGohmaOpenTexture = content.Load<Texture2D>("red_gohma_open");
+            redGohmaClosedTexture = content.Load<Texture2D>("red_gohma_closed");
+            blueGohmaOpenTexture = content.Load<Texture2D>("blue_gohma_open");
+            blueGohmaClosedTexture = content.Load<Texture2D>("blue_gohma_closed");
+
+            redWizzrobeLeftTexture = content.Load<Texture2D>("red_wizzrobe_left");
+            redWizzrobeRightTexture = content.Load<Texture2D>("red_wizzrobe_right");
+            redWizzrobeUpTexture = content.Load<Texture2D>("red_wizzrobe_up");
+            blueWizzrobeLeftTexture = content.Load<Texture2D>("blue_wizzrobe_left");
+            blueWizzrobeRightTexture = content.Load<Texture2D>("blue_wizzrobe_right");
+            blueWizzrobeUpTexture = content.Load<Texture2D>("blue_wizzrobe_up");
+
             oldMan = content.Load<Texture2D>("oldMan");
             angryOldMan = content.Load<Texture2D>("angryOldMan");
             merchant = content.Load<Texture2D>("merchant");
@@ -616,6 +645,38 @@
             idleDigDoggerData = new SpriteData(new Vector2(largeDigDoggerSize), digDoggerIdle, 1, 1);
             movingDigDoggerData = new SpriteData(new Vector2(largeDigDoggerSize), digDoggerLeft, 1, 2);
             smallDigDoggerData = new SpriteData(new Vector2(smallDigDoggerSize), smallDigDogger, 1, 2);
+            redGohmaOpenData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), redGohmaOpenTexture, 2, 1);
+            redGohmaClosedData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), redGohmaClosedTexture, 2, 1);
+            blueGohmaOpenData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), blueGohmaOpenTexture, 2, 1);
+            blueGohmaClosedData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), blueGohmaClosedTexture, 2, 1);
+            wizzrobeData = new SpriteData(new Vector2(wizzrobeWidth, wizzrobeHeight), redWizzrobeLeftTexture, 2, 1);
+        }
+
+        // Wizzrobe Sprites
+        public ISprite CreateRedWizzrobeSprite(Physics.Direction direction)
+        {
+            switch (direction)
+            {
+                case Physics.Direction.North:
+                    return new ObjectSprite(redWizzrobeUpTexture, wizzrobeData);
+                case Physics.Direction.East:
+                    return new ObjectSprite(redWizzrobeRightTexture, wizzrobeData);
+                default:
+                    return new ObjectSprite(redWizzrobeLeftTexture, wizzrobeData);
+            }
+        }
+
+        public ISprite CreateBlueWizzrobeSprite(Physics.Direction direction)
+        {
+            switch (direction)
+            {
+                case Physics.Direction.North:
+                    return new ObjectSprite(blueWizzrobeUpTexture, wizzrobeData);
+                case Physics.Direction.East:
+                    return new ObjectSprite(blueWizzrobeRightTexture, wizzrobeData);
+                default:
+                    return new ObjectSprite(blueWizzrobeLeftTexture, wizzrobeData);
+            }
         }
 
         // Stalfos Sprites
@@ -723,6 +784,28 @@
             }
         }
 
+        // Gohma Sprites
+        public ISprite CreateRedGohmaOpenEye()
+        {
+            return new ObjectSprite(redGohmaOpenTexture, redGohmaOpenData);
+        }
+
+        public ISprite CreateRedGohmaClosedEye()
+        {
+            return new ObjectSprite(redGohmaClosedTexture, redGohmaClosedData);
+        }
+
+        public ISprite CreateBlueGohmaOpenEye()
+        {
+            return new ObjectSprite(blueGohmaOpenTexture, blueGohmaOpenData);
+        }
+
+        public ISprite CreateBlueGohmaClosedEye()
+        {
+            return new ObjectSprite(blueGohmaClosedTexture, blueGohmaClosedData);
+        }
+
+        // DigDogger Sprites
         public ISprite CreateLargeDigDogger(Physics.Direction direction)
         {
             switch (direction)
@@ -739,7 +822,6 @@
                     return new ObjectSprite(digDoggerRight, movingDigDoggerData);
                 default:
                     return new ObjectSprite(digDoggerIdle, idleDigDoggerData);
-
             }
         }
 
@@ -748,7 +830,8 @@
             return new ObjectSprite(smallDigDogger, smallDigDoggerData);
         }
 
-        public ISprite CreateGleeockNeckSprite()
+        // Gleeok Sprites
+        public ISprite CreateGleeokNeckSprite()
         {
             return new ObjectSprite(GleeokNeckTexture, GleeokNeckData);
         }
