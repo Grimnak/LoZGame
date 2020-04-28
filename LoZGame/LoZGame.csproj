@@ -126,6 +126,7 @@
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyIdleState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingGohmaState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateRedWizzrobe.cs" />
     <Compile Include="Enemies\EnemyStates\GohmaStates\CloseEyeState.cs" />
     <Compile Include="Enemies\EnemyStates\GohmaStates\OpenEyeState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\StunnedDodongoState.cs" />

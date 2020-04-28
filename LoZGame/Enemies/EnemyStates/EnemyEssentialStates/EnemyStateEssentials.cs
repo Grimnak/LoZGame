@@ -42,10 +42,6 @@
                 Enemy.UpdateState();
                 Lifetime = 0;
             }
-            if (Enemy is RedWizzrobe)
-            {
-                Console.WriteLine("Wizzrobe current direction is " + Enemy.Physics.CurrentDirection);
-            }
         }
 
         public virtual void Update()
@@ -103,6 +99,9 @@
                     break;
                 case EnemyAI.Likelike:
                     UpdateLikelike();
+                    break;
+                case EnemyAI.RedWizzrobe:
+                    UpdateRedWizzrobe();
                     break;
                 case EnemyAI.BlueWizzrobe:
                     UpdateBlueWizzrobe();

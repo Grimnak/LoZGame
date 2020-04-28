@@ -343,7 +343,7 @@
             swordData = new SpriteData(new Vector2(swordWidth, swordHeight), greenWoodSwordSpriteSheet, 1, 2);
             spartanLaserDataVertical = new SpriteData(new Vector2(spartanLaserVerticalWidth, spartanLaserVerticalHeight), spartanLaserUpTexture, 1, 1);
             spartanLaserDataHorizontal = new SpriteData(new Vector2(spartanLaserHorizontalHeight, spartanLaserHorizontalWidth), spartanLaserRightTexture, 1, 1);
-            sonicBeamData = new SpriteData(new Vector2(sonicBeamWidth, sonicBeamHeight), sonicBeamLeftTexture, 1, 1);
+            sonicBeamData = new SpriteData(new Vector2(sonicBeamWidth, sonicBeamHeight), sonicBeamLeftTexture, 2, 1);
         }
 
         public ISprite Sword(Link.LinkColor color, Link.LinkWeapon type)
