@@ -97,6 +97,15 @@
             }
         }
 
+        public void UseRod()
+        {
+            if (hasRod)
+            {
+                player.UseItem(ProjectileManager.MaxWaitTime);
+                LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.SonicBeam, player);
+            }
+        }
+
         public void GainRupees(int amount)
         {
             numRupees += amount;

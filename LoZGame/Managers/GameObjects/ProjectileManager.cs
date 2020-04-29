@@ -74,6 +74,8 @@
 
         public int WoodenSword => (int)ProjectileType.WoodenSword;
 
+        public int SonicBeam => (int)ProjectileType.SonicBeam;
+
         public void AddItem(int itemType, IPlayer player)
         {
             projectileId++;
@@ -111,6 +113,11 @@
                     case ProjectileType.SilverArrow:
                         SoundFactory.Instance.PlayArrowOrBoomShoot();
                         projectileList.Add(projectileId, new SilverArrowProjectile(player.Physics));
+                        break;
+
+                    case ProjectileType.SonicBeam:
+                        SoundFactory.Instance.PlaySwordShoot();
+                        projectileList.Add(projectileId, new SonicBeamProjectile(player.Physics));
                         break;
 
                     case ProjectileType.RedCandle:

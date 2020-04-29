@@ -164,6 +164,10 @@
                     selectedItem = CreateHealthPotionSprite();
                     break;
 
+                case InventoryManager.ItemType.Rod:
+                    selectedItem = CreateRodSprite();
+                    break;
+
                 default:
                     selectedItem = CreateBombSprite();
                     break;
@@ -264,7 +268,11 @@
                     break;
 
                 case 5:
-                    selectionItem = CreateEmptySprite();
+                    selectionItem = CreateRodSprite();
+                    if (LoZGame.Instance.Players[0].Inventory.HasFlute)
+                    {
+                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                    }
                     break;
 
                 case 6:
