@@ -28,7 +28,7 @@
             DamageTimer = 0;
             MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
-            AI = EnemyAI.NoAI;
+            AI = EnemyAI.Segment;
             DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
         }
 

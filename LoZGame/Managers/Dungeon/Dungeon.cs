@@ -146,6 +146,19 @@
             set { currentY = value; }
         }
 
+
+        public int StartRoomX
+        {
+            get { return startX; }
+            set { currentX = value; }
+        }
+
+        public int StartRoomY
+        {
+            get { return startY; }
+            set { currentY = value; }
+        }
+
         public Room CurrentRoom
         {
             get { return dungeonLayout[currentY][currentX]; }
