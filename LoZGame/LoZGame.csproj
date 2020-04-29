@@ -119,6 +119,7 @@
     <Compile Include="Enemies\EnemyClasses\Bubble.cs" />
     <Compile Include="Enemies\EnemyClasses\Gibdo.cs" />
     <Compile Include="Enemies\EnemyClasses\PolsVoice.cs" />
+    <Compile Include="Enemies\EnemyClasses\BlueWizzrobe.cs" />
     <Compile Include="Enemies\EnemyClasses\RedWizzrobe.cs" />
     <Compile Include="Enemies\EnemyClasses\RedGohma.cs" />
     <Compile Include="Enemies\EnemyClasses\Vire.cs" />

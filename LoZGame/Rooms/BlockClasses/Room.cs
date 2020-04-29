@@ -237,6 +237,9 @@
                 case "RedWizzrobe":
                     enemies.Add(new RedWizzrobe(location));
                     break;
+                case "BlueWizzrobe":
+                    enemies.Add(new BlueWizzrobe(location));
+                    break;
                 case "Gohma":
                     enemies.Add(new RedGohma(location));
                     break;
