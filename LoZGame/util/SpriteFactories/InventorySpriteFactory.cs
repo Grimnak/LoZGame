@@ -73,6 +73,8 @@
         private SpriteData spartanLaserData;
         private Texture2D rodSpriteSheet;
         private SpriteData rodData;
+        private Texture2D empty;
+        private SpriteData emptyData;
 
         private static readonly InventorySpriteFactory InstanceValue = new InventorySpriteFactory();
 
@@ -135,6 +137,9 @@
             itemSelectorNormal = new SpriteData(new Vector2(140, 37), itemSelector2, 1, 1);
             itemSelectorHard = new SpriteData(new Vector2(90, 37), itemSelector2, 1, 1);
             itemSelectorNightmare = new SpriteData(new Vector2(192, 37), itemSelector2, 1, 1);
+            empty = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            empty.SetData<Color>(new Color[] { Color.Black });
+            emptyData = new SpriteData(itemSize, empty, 1, 1);
         }
 
         public ISprite CreateSpartanLaser()
@@ -234,9 +239,6 @@
 
         public ISprite CreateEmptySlot()
         {
-            Texture2D empty = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            empty.SetData<Color>(new Color[] { Color.Black });
-            SpriteData emptyData = new SpriteData(itemSize, empty, 1, 1);
             return new ObjectSprite(empty, emptyData);
         }
 
