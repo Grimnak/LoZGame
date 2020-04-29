@@ -13,7 +13,7 @@
             Physics = new Physics(loc);
             PickUpItemTime = LoZGame.Instance.UpdateSpeed;
             LifeTime = 0;
-            Vector2 size = new Vector2(ItemSpriteFactory.LadderWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.LadderHeight * ItemSpriteFactory.Instance.Scale);
+            Vector2 size = new Vector2(ItemSpriteFactory.LadderWidth, ItemSpriteFactory.LadderHeight);
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, (int)size.X, (int)size.Y);
             Expired = false;
         }

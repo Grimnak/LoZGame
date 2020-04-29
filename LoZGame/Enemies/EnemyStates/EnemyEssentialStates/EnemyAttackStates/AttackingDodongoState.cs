@@ -16,18 +16,8 @@
             DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange * 2;
             Sprite = Enemy.CreateCorrectSprite();
             Enemy.CurrentState = this;
-            if (LoZGame.Instance.Difficulty > 0)
-            {
-                attackSpeed = GameData.Instance.EnemySpeedConstants.DodongoAttackSpeed + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargeMoveMod);
-            } 
-            else
-            {
-                attackSpeed = GameData.Instance.EnemySpeedConstants.DodongoAttackSpeed + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallMoveMod);
-            }
-            if (attackSpeed < 1)
-            {
-                attackSpeed = 1;
-            }
+            attackSpeed = GameData.Instance.EnemySpeedConstants.DodongoAttackSpeed;
+            attackSpeed += LoZGame.Instance.Difficulty > 0 ? LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargeMoveMod : 0;
             GetMoveSpeed();
         }
 

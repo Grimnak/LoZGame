@@ -14,7 +14,7 @@
             Physics = new Physics(loc);
             PickUpItemTime = 440;
             LifeTime = 0;
-            Vector2 size = new Vector2(ItemSpriteFactory.RupeeWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.RupeeHeight * ItemSpriteFactory.Instance.Scale);
+            Vector2 size = new Vector2(ItemSpriteFactory.TriforceWidth, ItemSpriteFactory.TriforceHeight);
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, (int)size.X, (int)size.Y);
             Expired = false;
         }

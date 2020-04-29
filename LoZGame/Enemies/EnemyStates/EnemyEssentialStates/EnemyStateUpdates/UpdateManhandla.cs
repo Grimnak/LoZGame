@@ -41,26 +41,31 @@
         {
             if (Lifetime == DirectionChange)
             {
-                FavorPlayerCardinal(100);
-                FavorPlayerDiagonal(100);
+                float moveSpeed = Enemy.MoveSpeed;
+                moveSpeed += LoZGame.Instance.Difficulty > 0 ? LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallMoveMod : 0;
+                Enemy.Physics.MovementVelocity = UnitVectorToPlayer(Enemy.Physics.Bounds.Center.ToVector2()) * moveSpeed;
+                Lifetime = 0;
+                RandomStateChange();
             }
         }
 
         private void UpdateManMoveSpeed()
         {
             float maxSpeedDiff = GameData.Instance.EnemySpeedConstants.ManhandlaMaxSpeed - GameData.Instance.EnemySpeedConstants.ManhandlaMinSpeed;
+            float moveSpeed = Enemy.MoveSpeed;
+            moveSpeed += LoZGame.Instance.Difficulty > 0 ? LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallMoveMod : 0;
             Vector2 normalVel = new Vector2(Enemy.Physics.MovementVelocity.X, Enemy.Physics.MovementVelocity.Y);
             normalVel.Normalize();
             if (Lifetime < DirectionChange / 2)
             {
-                if (Enemy.Physics.MovementVelocity.Length() <= Enemy.MoveSpeed + maxSpeedDiff)
+                if (Enemy.Physics.MovementVelocity.Length() <= moveSpeed + maxSpeedDiff)
                 {
                     Enemy.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
                 }
             }
             else
             {
-                if (Enemy.Physics.MovementVelocity.Length() >= Enemy.MoveSpeed)
+                if (Enemy.Physics.MovementVelocity.Length() >= moveSpeed)
                 {
                     Enemy.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
                 }
