@@ -12,7 +12,8 @@ namespace LoZClone
         {
             Difficulty,
             Cheats,
-            Debug
+            Debug,
+            Music
         };
 
         private OptionType selectedOption;
@@ -37,6 +38,9 @@ namespace LoZClone
                     selectedOption = OptionType.Debug;
                     break;
                 case OptionType.Debug:
+                    selectedOption = OptionType.Music;
+                    break;
+                case OptionType.Music:
                     selectedOption = OptionType.Difficulty;
                     break;
                 default:
@@ -50,13 +54,16 @@ namespace LoZClone
             switch (selectedOption)
             {
                 case OptionType.Difficulty:
-                    selectedOption = OptionType.Debug;
+                    selectedOption = OptionType.Music;
                     break;
                 case OptionType.Cheats:
                     selectedOption = OptionType.Difficulty;
                     break;
                 case OptionType.Debug:
                     selectedOption = OptionType.Cheats;
+                    break;
+                case OptionType.Music:
+                    selectedOption = OptionType.Debug;
                     break;
                 default:
                     selectedOption = OptionType.Difficulty;
@@ -97,6 +104,15 @@ namespace LoZClone
             LoZGame.Cheats = !LoZGame.Cheats;
         }
 
+        private void ToggleMusic()
+        {
+            LoZGame.Music = !LoZGame.Music;
+            if (!LoZGame.Music)
+                SoundFactory.Instance.StopAll();
+            else
+                SoundFactory.Instance.PlayDungeonSong();
+        }
+
         public void DetermineWhatToDo()
         {
             switch (selectedOption)
@@ -109,6 +125,9 @@ namespace LoZClone
                     break;
                 case OptionType.Debug:
                     ToggleDebug();
+                    break;
+                case OptionType.Music:
+                    ToggleMusic();
                     break;
                 default:
                     break;

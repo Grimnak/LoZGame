@@ -108,17 +108,17 @@
             get { return text; }
         }
 
-        public Tuple<Key, bool> DroppedKey { get; set; }
+        public Tuple<IItem, bool> DroppedKey { get; set; }
 
-        public Tuple<Boomerang, bool> DroppedBoomerang { get; set; }
+        public Tuple<IItem, bool> DroppedBoomerang { get; set; }
 
-        public Tuple<HeartContainer, bool> DroppedHeartContainer { get; set; }
+        public Tuple<IItem, bool> DroppedHeartContainer { get; set; }
 
-        public Tuple<MagicBoomerang, bool> DroppedMagicBoomerang { get; set; }
+        public Tuple<IItem, bool> DroppedMagicBoomerang { get; set; }
 
-        public Tuple<Bomb, bool> DroppedBomb { get; set; }
+        public Tuple<IItem, bool> DroppedBomb { get; set; }
 
-        public Tuple<YellowRupee, bool> DroppedYellowRupee { get; set; }
+        public Tuple<IItem, bool> DroppedYellowRupee { get; set; }
 
         public bool IsBasement => basement;
 
@@ -220,8 +220,6 @@
                     enemies.Add(new Bubble(location));
                     break;
                 case "Manhandla":
-                    Console.WriteLine(x + " | " + y);
-                    Console.WriteLine(location);
                     enemies.Add(new ManhandlaBody(location));
                     break;
                 case "Gleeok":
@@ -235,6 +233,18 @@
                     break;
                 case "DigDogger":
                     enemies.Add(new DigDoggerInvincible(location));
+                    break;
+                case "RedWizzrobe":
+                    enemies.Add(new RedWizzrobe(location));
+                    break;
+                case "BlueWizzrobe":
+                    enemies.Add(new BlueWizzrobe(location));
+                    break;
+                case "Gohma":
+                    enemies.Add(new RedGohma(location));
+                    break;
+                case "BlueGohma":
+                    enemies.Add(new BlueGohma(location));
                     break;
                 default:
                     break;
@@ -250,81 +260,110 @@
         public void AddItem(float x, float y, string name)
         {
             Vector2 location = GridToScreenVector(x, y);
+            IItem newItem = null;
             switch (name)
             {
                 case "Bow":
-                    location = GridToScreenSpecialVector(x, y);
-                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
-                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    items.Add(new Bow(location));
+                    newItem = new Bow(location);
+                    items.Add(newItem);
                     break;
                 case "HeartContainer":
-                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 4);
-                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    DroppedHeartContainer = Tuple.Create(new HeartContainer(location), false);
+                    newItem = new HeartContainer(location);
+                    DroppedHeartContainer = Tuple.Create(newItem, false);
                     break;
                 case "Key":
-                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
-                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    DroppedKey = Tuple.Create(new Key(location), false);
-                    break; 
+                    newItem = new Key(location);
+                    DroppedKey = Tuple.Create(newItem, false);
+                    break;
                 case "Compass":
-                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 4);
-                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    items.Add(new Compass(location));
+                    newItem = new Compass(location);
+                    items.Add(newItem);
                     break;
                 case "Boomerang":
-                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
-                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    DroppedBoomerang = Tuple.Create(new Boomerang(location), false);
+                    newItem = new Boomerang(location);
+                    DroppedBoomerang = Tuple.Create(newItem, false);
                     break;
                 case "MagicBoomerang":
-                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
-                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    DroppedMagicBoomerang = Tuple.Create(new MagicBoomerang(location), false);
+                    newItem = new MagicBoomerang(location);
+                    DroppedMagicBoomerang = Tuple.Create(newItem, false);
                     break;
                 case "TriForce":
-                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 5);
-                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 2);
-                    items.Add(new Triforce(location));
+                    newItem = new Triforce(location);
+                    items.Add(newItem);
                     break;
                 case "Map":
-                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 3);
-                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 6);
-                    items.Add(new Map(location));
+                    newItem = new Map(location);
+                    items.Add(newItem);
                     break;
                 case "WhiteSword":
-                    location.X = location.X + (BlockSpriteFactory.Instance.TileWidth / 5);
-                    location.Y = location.Y + (BlockSpriteFactory.Instance.TileHeight / 2);
-                    items.Add(new WhiteSword(location));
+                    IItem item = new WhiteSword(location);
+                    items.Add(item);
                     break;
                 case "Flute":
-                    items.Add(new Flute(location));
+                    newItem = new Flute(location);
+                    items.Add(newItem);
                     break;
                 case "MagicSword":
-                    items.Add(new MagicSword(location));
+                    newItem = new MagicSword(location);
+                    items.Add(newItem);
                     break;
                 case "Ladder":
-                    items.Add(new Ladder(location));
+                    newItem = new Ladder(location);
+                    items.Add(newItem);
                     break;
                 case "Bomb":
-                    DroppedBomb = Tuple.Create(new Bomb(location), false);
+                    newItem = new Bomb(location);
+                    DroppedBomb = Tuple.Create(newItem, false);
                     break;
                 case "Arrow":
-                    items.Add(new Arrow(location));
+                    newItem = new Arrow(location);
+                    items.Add(newItem);
                     break;
                 case "SilverArrow":
-                    items.Add(new SilverArrow(location));
+                    newItem = new SilverArrow(location);
+                    items.Add(newItem);
                     break;
                 case "Rupee":
-                    items.Add(new Rupee(location));
+                    newItem = new Rupee(location);
+                    items.Add(newItem);
                     break;
                 case "YellowRupee":
-                    DroppedYellowRupee = Tuple.Create(new YellowRupee(location), false);
+                    newItem = new YellowRupee(location);
+                    DroppedYellowRupee = Tuple.Create(newItem, false);
+                    break;
+                case "BlueCandle":
+                    newItem = new BlueCandle(location);
+                    items.Add(newItem);
+                    break;
+                case "RedCandle":
+                    newItem = new RedCandle(location);
+                    items.Add(newItem);
+                    break;
+                case "BlueRing":
+                    newItem = new BlueRing(location);
+                    items.Add(newItem);
+                    break;
+                case "RedRing":
+                    newItem = new RedRing(location);
+                    items.Add(newItem);
+                    break;
+                case "MagicRod":
+                    newItem = new MagicRod(location);
+                    items.Add(newItem);
                     break;
                 default:
                     break;
             }
+            if (!(newItem is null))
+                CenterItem(newItem.Physics);
+        }
+
+        private void CenterItem(Physics physics)
+        {
+            Point offset = new Point((int)BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight) - physics.Bounds.Size;
+            offset = new Point(offset.X / 2, offset.Y / 2);
+            physics.Bounds = new Rectangle(physics.Bounds.Location + offset, physics.Bounds.Size);
+            physics.SetLocation();
         }
 
         /*

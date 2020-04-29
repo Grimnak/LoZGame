@@ -13,8 +13,8 @@ namespace LoZClone
         {
             SetUp(this);
             Width = ProjectileSpriteFactory.Instance.ArrowWidth;
-            Heigth = ProjectileSpriteFactory.Instance.ArrowHeight;
-            Offset = Heigth / 2;
+            Height = ProjectileSpriteFactory.Instance.ArrowHeight;
+            Offset = Height / 2;
             Physics.Mass = 10;
             Speed = GameData.Instance.ProjectileSpeedConstants.LinkArrowSpeed;
             Damage = GameData.Instance.ProjectileDamageConstants.LinkArrowDamage;

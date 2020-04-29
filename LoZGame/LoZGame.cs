@@ -169,7 +169,8 @@
             }
 
             gameState.Update();
-
+            if (!LoZGame.Music)
+                SoundFactory.Instance.StopAll();
             if (DebugMode)
             {
                 debugManager.Update();

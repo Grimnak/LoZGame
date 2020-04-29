@@ -27,7 +27,7 @@
                 FavorPlayerDiagonal(-(GameData.Instance.EnemyMiscConstants.DigDoggerFavorDiagonalValue + (LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargePreferenceMod)));
                 this.Enemy.UpdateState();
                 this.Lifetime = 0;
-                RandomDirectionChange(); 
+                RandomStateChange(); 
                 FavorPlayerCardinal(1);
                 FavorPlayerDiagonal(1);
             }

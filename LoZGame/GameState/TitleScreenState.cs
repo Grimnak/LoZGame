@@ -11,6 +11,7 @@
 
         public TitleScreenState()
         {
+            SoundFactory.Instance.StopCreditsSong();
             SoundFactory.Instance.StopDungeonSong();
             SoundFactory.Instance.PlayTitleSong();
             sprite = ScreenSpriteFactory.Instance.TitleScreen();

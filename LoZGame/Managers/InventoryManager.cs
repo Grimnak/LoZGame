@@ -12,6 +12,7 @@
             Candle,
             Flute,
             Potion,
+            Rod,
             None
         }
 
@@ -22,7 +23,7 @@
         private List<List<ItemType>> selectionArray = new List<List<ItemType>>()
         {
             new List<ItemType> { ItemType.Bomb, ItemType.Boomerang, ItemType.Arrow, ItemType.Candle },
-            new List<ItemType> { ItemType.Potion, ItemType.None, ItemType.None, ItemType.Flute }
+            new List<ItemType> { ItemType.Potion, ItemType.Rod, ItemType.None, ItemType.Flute }
         };
 
         private int selectionX;
@@ -37,6 +38,7 @@
         private bool hasMagicBoomerang;
         private bool hasBow;
         private bool hasArrow;
+        private bool hasRod;
         private bool hasSilverArrow;
         private bool hasRedFlame;
         private bool hasBlueFlame;
@@ -70,20 +72,7 @@
             numRedPotions = 0;
             numBluePotions = 0;
             numRupees = 5;
-            hasBoomerang = LoZGame.Cheats;
-            hasMagicBoomerang = LoZGame.Cheats;
-            hasBow = LoZGame.Cheats;
-            hasArrow = LoZGame.Cheats;
-            hasSilverArrow = LoZGame.Cheats;
-            hasRedFlame = LoZGame.Cheats;
-            hasBlueFlame = LoZGame.Cheats;
-            hasLadder = LoZGame.Cheats;
-            hasFlute = LoZGame.Cheats;
-            ladderInUse = false;
-
-            hasMap = LoZGame.Cheats;
-            hasCompass = LoZGame.Cheats;
-
+           
             hasClock = false;
             clockLockout = 0;
 
@@ -104,6 +93,7 @@
             this.numBluePotions = copiedManager.numBluePotions;
             this.numRupees = copiedManager.numRupees;
             this.hasBoomerang = copiedManager.hasBoomerang;
+            this.hasRod = copiedManager.hasRod;
             this.hasMagicBoomerang = copiedManager.hasMagicBoomerang;
             this.hasBow = copiedManager.hasBow;
             this.hasSilverArrow = copiedManager.hasSilverArrow;
@@ -140,6 +130,9 @@
                 case ItemType.Flute:
                     UseFlute();
                     break;
+                case ItemType.Rod:
+                    UseRod();
+                    break;
                 default:
                     break;
             }
@@ -165,13 +158,13 @@
                 switch (selectionX)
                 {
                     case 0:
-                        return numBombs > 0;
+                        return numBombs > 0 || LoZGame.Cheats;
                     case 1:
-                        return hasBoomerang || hasMagicBoomerang;
+                        return hasBoomerang || hasMagicBoomerang || LoZGame.Cheats;
                     case 2:
-                        return hasBow && (hasArrow || hasSilverArrow) && numRupees > 0;
+                        return (hasBow && (hasArrow || hasSilverArrow) && numRupees > 0) || LoZGame.Cheats;
                     case 3:
-                        return hasBlueFlame || hasRedFlame;
+                        return hasBlueFlame || hasRedFlame || LoZGame.Cheats;
                     default:
                         return false;
                 }
@@ -181,13 +174,13 @@
                 switch (selectionX)
                 {
                     case 0:
-                        return numRedPotions > 0 || numBluePotions > 0;
+                        return numRedPotions > 0 || numBluePotions > 0 || LoZGame.Cheats;
                     case 1:
-                        return false;
+                        return HasRod || LoZGame.Cheats;
                     case 2:
                         return false;
                     case 3:
-                        return HasFlute;
+                        return HasFlute || LoZGame.Cheats;
                     default:
                         return false;
                 }
@@ -204,39 +197,41 @@
 
         public int SelectionY { get { return selectionY; } }
 
-        public int Rupees { get { return numRupees; } }
+        public int Rupees { get { return LoZGame.Cheats ? 99 : numRupees; } }
 
-        public int Bombs { get { return numBombs; } }
+        public int Bombs { get { return LoZGame.Cheats ? 8 : numBombs; } }
 
         public int Keys { get { return numKeys; } }
 
-        public int Potions { get { return numBluePotions + numRedPotions; } }
+        public int Potions { get { return LoZGame.Cheats ? 16 : numBluePotions + numRedPotions; } }
 
-        public int RedPotions { get { return numRedPotions; } }
+        public int RedPotions { get { return LoZGame.Cheats ? 8 : numRedPotions; } }
 
-        public int BluePotions { get { return numBluePotions; } }
+        public int BluePotions { get { return LoZGame.Cheats ? 8 : numBluePotions; } }
 
-        public bool HasBow { get { return hasBow; } set { hasBow = value; } }
+        public bool HasBow { get { return hasBow || LoZGame.Cheats; } set { hasBow = value; } }
 
-        public bool HasBoomerang { get { return hasBoomerang; } set { hasBoomerang = value; } }
+        public bool HasBoomerang { get { return hasBoomerang || LoZGame.Cheats; } set { hasBoomerang = value; } }
 
-        public bool HasMagicBoomerang { get { return hasMagicBoomerang; } set { hasMagicBoomerang = value; } }
+        public bool HasMagicBoomerang { get { return hasMagicBoomerang || LoZGame.Cheats; } set { hasMagicBoomerang = value; } }
 
-        public bool HasFlute { get { return hasFlute; } set { hasFlute = value; } }
+        public bool HasFlute { get { return hasFlute || LoZGame.Cheats; } set { hasFlute = value; } }
 
-        public bool HasArrow { get { return hasArrow; } set { hasArrow = value; } }
+        public bool HasRod { get { return hasRod || LoZGame.Cheats; } set { hasRod = value; } }
 
-        public bool HasSilverArrow { get { return hasSilverArrow; } set { hasSilverArrow = value; } }
+        public bool HasArrow { get { return hasArrow || LoZGame.Cheats; } set { hasArrow = value; } }
 
-        public bool HasBlueFlame { get { return hasBlueFlame; } set { hasBlueFlame = value; } }
+        public bool HasSilverArrow { get { return hasSilverArrow || LoZGame.Cheats; } set { hasSilverArrow = value; } }
 
-        public bool HasRedFlame { get { return hasRedFlame; } set { hasRedFlame = value; } }
+        public bool HasBlueFlame { get { return hasBlueFlame || LoZGame.Cheats; } set { hasBlueFlame = value; } }
 
-        public bool HasMap { get { return hasMap; } set { hasMap = value; } }
+        public bool HasRedFlame { get { return hasRedFlame || LoZGame.Cheats; } set { hasRedFlame = value; } }
 
-        public bool HasCompass { get { return hasCompass; } set { hasCompass = value; } }
+        public bool HasMap { get { return hasMap || LoZGame.Cheats; } set { hasMap = value; } }
 
-        public bool HasLadder { get { return hasLadder; } set { hasLadder = value; } }
+        public bool HasCompass { get { return hasCompass || LoZGame.Cheats; } set { hasCompass = value; } }
+
+        public bool HasLadder { get { return hasLadder || LoZGame.Cheats; } set { hasLadder = value; } }
 
         public bool LadderInUse { get { return ladderInUse; } set { ladderInUse = value; } }
 

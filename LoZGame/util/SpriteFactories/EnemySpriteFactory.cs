@@ -10,17 +10,17 @@
         private static readonly int dodongoWidthUp = 60;
         private static readonly int dodongoWidthLeftRight = 96;
 
-        private static readonly int GleeockBodyWidth = 96;
-        private static readonly int GleeockBodyHeight = 128;
+        private static readonly int GleeokBodyWidth = 96;
+        private static readonly int GleeokBodyHeight = 128;
 
-        private static readonly int GleeockHeadWidth = 24;
-        private static readonly int GleeockHeadHeight = 48;
+        private static readonly int GleeokHeadWidth = 24;
+        private static readonly int GleeokHeadHeight = 48;
 
-        private static readonly int GleeockHeadOffWidth = 30;
-        private static readonly int GleeockHeadOffHeight = 52;
+        private static readonly int GleeokHeadOffWidth = 30;
+        private static readonly int GleeokHeadOffHeight = 52;
 
-        private static readonly int GleeockNeckWidth = 24;
-        private static readonly int GleeockNeckHeight = 32;
+        private static readonly int GleeokNeckWidth = 24;
+        private static readonly int GleeokNeckHeight = 32;
 
         private static readonly int dodongoHeight = 32;
 
@@ -48,14 +48,17 @@
         private static readonly int spikeCrossWidth = 48;
         private static readonly int spikeCrossHeight = 48;
 
-        private static readonly int stalfosWidth = 48;
-        private static readonly int stalfosHeight = 54;
+        private static readonly int stalfosWidth = 54;
+        private static readonly int stalfosHeight = 48;
 
-        private static readonly int gibdoWidth = 48;
-        private static readonly int gibdoHeight = 54;
+        private static readonly int gibdoWidth = 54;
+        private static readonly int gibdoHeight = 48;
 
         private static readonly int wallMasterWidth = 35;
         private static readonly int wallMasterHeight = 45;
+
+        private static readonly int wizzrobeWidth = 54;
+        private static readonly int wizzrobeHeight = 48;
 
         private static readonly int zolWidth = 40;
         private static readonly int zolHeight = 40;
@@ -63,8 +66,8 @@
         private static readonly int fireSnakeWidth = 28;
         private static readonly int fireSnakeHeight = 35;
 
-        private static readonly int darknutWidth = 48;
-        private static readonly int darknutHeight = 54;
+        private static readonly int darknutWidth = 54;
+        private static readonly int darknutHeight = 48;
 
         private static readonly int vireWidth = 42;
         private static readonly int vireHeight = 40;
@@ -86,6 +89,9 @@
 
         private static readonly int largeDigDoggerSize = 96;
         private static readonly int smallDigDoggerSize = 48;
+
+        private static readonly int gohmaWidth = 162;
+        private static readonly int gohmaHeight = 48;
 
         public static int GetEnemyWidth(IEnemy enemy)
         {
@@ -112,6 +118,10 @@
             else if (enemy is RedGoriya || enemy is BlueGoriya)
             {
                 return goriyaWidth;
+            }
+            else if (enemy is RedGohma || enemy is BlueGohma)
+            {
+                return gohmaWidth;
             }
             else if (enemy is Keese || enemy is VireKeese)
             {
@@ -145,6 +155,10 @@
             {
                 return wallMasterWidth;
             }
+            else if (enemy is RedWizzrobe || enemy is BlueWizzrobe)
+            {
+                return wizzrobeWidth;
+            }
             else if (enemy is Zol)
             {
                 return zolWidth;
@@ -175,19 +189,19 @@
             }
             else if (enemy is GleeokBody)
             {
-                return GleeockBodyWidth;
+                return GleeokBodyWidth;
             }
             else if (enemy is GleeokHead)
             {
-                return GleeockHeadWidth;
+                return GleeokHeadWidth;
             }
             else if (enemy is GleeokHeadOff)
             {
-                return GleeockHeadOffWidth;
+                return GleeokHeadOffWidth;
             }
             else if (enemy is GleeokNeck)
             {
-                return GleeockNeckWidth;
+                return GleeokNeckWidth;
             }
             else if (enemy is Likelike)
             {
@@ -229,6 +243,10 @@
             {
                 return goriyaHeight;
             }
+            else if (enemy is RedGohma || enemy is BlueGohma)
+            {
+                return gohmaHeight;
+            }
             else if (enemy is Keese || enemy is VireKeese)
             {
                 return keeseHeight;
@@ -261,6 +279,10 @@
             {
                 return wallMasterHeight;
             }
+            else if (enemy is RedWizzrobe || enemy is BlueWizzrobe)
+            {
+                return wizzrobeHeight;
+            }
             else if (enemy is Zol)
             {
                 return zolHeight;
@@ -291,19 +313,19 @@
             }
             else if (enemy is GleeokBody)
             {
-                return GleeockBodyHeight;
+                return GleeokBodyHeight;
             }
             else if (enemy is GleeokHead)
             {
-                return GleeockHeadHeight;
+                return GleeokHeadHeight;
             }
             else if (enemy is GleeokHeadOff)
             {
-                return GleeockHeadOffHeight;
+                return GleeokHeadOffHeight;
             }
             else if (enemy is GleeokNeck)
             {
-                return GleeockNeckHeight;
+                return GleeokNeckHeight;
             }
             else if (enemy is Likelike)
             {
@@ -436,6 +458,23 @@
         private Texture2D polsVoice;
         private SpriteData polsVoiceData;
 
+        private Texture2D redGohmaOpenTexture;
+        private SpriteData redGohmaOpenData;
+        private Texture2D redGohmaClosedTexture;
+        private SpriteData redGohmaClosedData;
+        private Texture2D blueGohmaOpenTexture;
+        private SpriteData blueGohmaOpenData;
+        private Texture2D blueGohmaClosedTexture;
+        private SpriteData blueGohmaClosedData;
+
+        private Texture2D redWizzrobeRightTexture;
+        private Texture2D redWizzrobeLeftTexture;
+        private Texture2D redWizzrobeUpTexture;
+        private Texture2D blueWizzrobeRightTexture;
+        private Texture2D blueWizzrobeLeftTexture;
+        private Texture2D blueWizzrobeUpTexture;
+        private SpriteData wizzrobeData;
+
         private Texture2D oldMan;
         private Texture2D angryOldMan;
         private SpriteData oldManData;
@@ -540,6 +579,18 @@
 
             polsVoice = content.Load<Texture2D>("polsvoice");
 
+            redGohmaOpenTexture = content.Load<Texture2D>("red_gohma_open");
+            redGohmaClosedTexture = content.Load<Texture2D>("red_gohma_closed");
+            blueGohmaOpenTexture = content.Load<Texture2D>("blue_gohma_open");
+            blueGohmaClosedTexture = content.Load<Texture2D>("blue_gohma_closed");
+
+            redWizzrobeLeftTexture = content.Load<Texture2D>("red_wizzrobe_left");
+            redWizzrobeRightTexture = content.Load<Texture2D>("red_wizzrobe_right");
+            redWizzrobeUpTexture = content.Load<Texture2D>("red_wizzrobe_up");
+            blueWizzrobeLeftTexture = content.Load<Texture2D>("blue_wizzrobe_left");
+            blueWizzrobeRightTexture = content.Load<Texture2D>("blue_wizzrobe_right");
+            blueWizzrobeUpTexture = content.Load<Texture2D>("blue_wizzrobe_up");
+
             oldMan = content.Load<Texture2D>("oldMan");
             angryOldMan = content.Load<Texture2D>("angryOldMan");
             merchant = content.Load<Texture2D>("merchant");
@@ -585,15 +636,47 @@
             bubbleData = new SpriteData(new Vector2(bubbleWidth, bubbleHeight), bubble, 2, 1);
             manhandlaBodyData = new SpriteData(new Vector2(ManhandlaBodyWidth, ManhandlaBodyHeight), manhandlaBodyTexture, 1, 1);
             manhandlaHeadData = new SpriteData(new Vector2(ManhandlaHeadWidth, ManhandlaHeadHeight), manhandlaHeadDownTexture, 2, 1);
-            GleeokBodyData = new SpriteData(new Vector2(GleeockBodyWidth, GleeockBodyHeight), GleeokBodyTexture, 3, 1);
-            GleeokHeadOffData = new SpriteData(new Vector2(GleeockHeadOffWidth, GleeockHeadOffHeight), GleeokHeadOffTexture, 2, 1);
-            GleeokHeadData = new SpriteData(new Vector2(GleeockHeadWidth, GleeockHeadHeight), GleeokHeadTexture, 1, 1);
-            GleeokNeckData = new SpriteData(new Vector2(GleeockNeckWidth, GleeockNeckHeight), GleeokNeckTexture, 1, 1);
+            GleeokBodyData = new SpriteData(new Vector2(GleeokBodyWidth, GleeokBodyHeight), GleeokBodyTexture, 3, 1);
+            GleeokHeadOffData = new SpriteData(new Vector2(GleeokHeadOffWidth, GleeokHeadOffHeight), GleeokHeadOffTexture, 2, 1);
+            GleeokHeadData = new SpriteData(new Vector2(GleeokHeadWidth, GleeokHeadHeight), GleeokHeadTexture, 1, 1);
+            GleeokNeckData = new SpriteData(new Vector2(GleeokNeckWidth, GleeokNeckHeight), GleeokNeckTexture, 1, 1);
             likelikeData = new SpriteData(new Vector2(likelikeWidth, likelikeHeight), likelike, 3, 1);
             polsVoiceData = new SpriteData(new Vector2(PolsVoiceWidth, PolsVoiceHeight), polsVoice, 2, 1);
             idleDigDoggerData = new SpriteData(new Vector2(largeDigDoggerSize), digDoggerIdle, 1, 1);
             movingDigDoggerData = new SpriteData(new Vector2(largeDigDoggerSize), digDoggerLeft, 1, 2);
             smallDigDoggerData = new SpriteData(new Vector2(smallDigDoggerSize), smallDigDogger, 1, 2);
+            redGohmaOpenData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), redGohmaOpenTexture, 2, 1);
+            redGohmaClosedData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), redGohmaClosedTexture, 2, 1);
+            blueGohmaOpenData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), blueGohmaOpenTexture, 2, 1);
+            blueGohmaClosedData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), blueGohmaClosedTexture, 2, 1);
+            wizzrobeData = new SpriteData(new Vector2(wizzrobeWidth, wizzrobeHeight), redWizzrobeLeftTexture, 2, 1);
+        }
+
+        // Wizzrobe Sprites
+        public ISprite CreateRedWizzrobeSprite(Physics.Direction direction)
+        {
+            switch (direction)
+            {
+                case Physics.Direction.North:
+                    return new ObjectSprite(redWizzrobeUpTexture, wizzrobeData);
+                case Physics.Direction.East:
+                    return new ObjectSprite(redWizzrobeRightTexture, wizzrobeData);
+                default:
+                    return new ObjectSprite(redWizzrobeLeftTexture, wizzrobeData);
+            }
+        }
+
+        public ISprite CreateBlueWizzrobeSprite(Physics.Direction direction)
+        {
+            switch (direction)
+            {
+                case Physics.Direction.North:
+                    return new ObjectSprite(blueWizzrobeUpTexture, wizzrobeData);
+                case Physics.Direction.East:
+                    return new ObjectSprite(blueWizzrobeRightTexture, wizzrobeData);
+                default:
+                    return new ObjectSprite(blueWizzrobeLeftTexture, wizzrobeData);
+            }
         }
 
         // Stalfos Sprites
@@ -701,6 +784,28 @@
             }
         }
 
+        // Gohma Sprites
+        public ISprite CreateRedGohmaOpenEye()
+        {
+            return new ObjectSprite(redGohmaOpenTexture, redGohmaOpenData);
+        }
+
+        public ISprite CreateRedGohmaClosedEye()
+        {
+            return new ObjectSprite(redGohmaClosedTexture, redGohmaClosedData);
+        }
+
+        public ISprite CreateBlueGohmaOpenEye()
+        {
+            return new ObjectSprite(blueGohmaOpenTexture, blueGohmaOpenData);
+        }
+
+        public ISprite CreateBlueGohmaClosedEye()
+        {
+            return new ObjectSprite(blueGohmaClosedTexture, blueGohmaClosedData);
+        }
+
+        // DigDogger Sprites
         public ISprite CreateLargeDigDogger(Physics.Direction direction)
         {
             switch (direction)
@@ -717,7 +822,6 @@
                     return new ObjectSprite(digDoggerRight, movingDigDoggerData);
                 default:
                     return new ObjectSprite(digDoggerIdle, idleDigDoggerData);
-
             }
         }
 
@@ -726,22 +830,23 @@
             return new ObjectSprite(smallDigDogger, smallDigDoggerData);
         }
 
-        public ISprite CreateGleeockNeckSprite()
+        // Gleeok Sprites
+        public ISprite CreateGleeokNeckSprite()
         {
             return new ObjectSprite(GleeokNeckTexture, GleeokNeckData);
         }
 
-        public ISprite CreateGleeockBodySprite()
+        public ISprite CreateGleeokBodySprite()
         {
             return new ObjectSprite(GleeokBodyTexture, GleeokBodyData) { FrameDelay = 20 };
         }
 
-        public ISprite CreateGleeockHeadSprite()
+        public ISprite CreateGleeokHeadSprite()
         {
             return new ObjectSprite(GleeokHeadTexture, GleeokHeadData);
         }
 
-        public ISprite CreateGleeockHeadOffSprite()
+        public ISprite CreateGleeokHeadOffSprite()
         {
             return new ObjectSprite(GleeokHeadOffTexture, GleeokHeadOffData);
         }

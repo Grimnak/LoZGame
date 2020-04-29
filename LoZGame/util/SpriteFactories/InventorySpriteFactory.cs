@@ -71,6 +71,8 @@
         private SpriteData itemSelectorNightmare;
         private Texture2D spartanLaserSpriteSheet;
         private SpriteData spartanLaserData;
+        private Texture2D rodSpriteSheet;
+        private SpriteData rodData;
 
         private static readonly InventorySpriteFactory InstanceValue = new InventorySpriteFactory();
 
@@ -124,9 +126,11 @@
             magicSwordData = new SpriteData(swordSize, magicSwordSpriteSheet, 1, 1);
             itemSelector2 = content.Load<Texture2D>("SelectorSprite2");
             spartanLaserSpriteSheet = content.Load<Texture2D>("SpartanLaserInventory");
+            rodSpriteSheet = content.Load<Texture2D>("MagicRod");
+            rodData = new SpriteData(itemSize, rodSpriteSheet, 1, 1);
             spartanLaserData = new SpriteData(new Vector2(8, 20), spartanLaserSpriteSheet, 1, 1);
-            itemSelectorFalse = new SpriteData(new Vector2(80, 37), itemSelector2, 1, 1);
-            itemSelectorTrue = new SpriteData(new Vector2(70, 37), itemSelector2, 1, 1);
+            itemSelectorFalse = new SpriteData(new Vector2(65, 37), itemSelector2, 1, 1);
+            itemSelectorTrue = new SpriteData(new Vector2(50, 37), itemSelector2, 1, 1);
             itemSelectorEasy = new SpriteData(new Vector2(87, 37), itemSelector2, 1, 1);
             itemSelectorNormal = new SpriteData(new Vector2(140, 37), itemSelector2, 1, 1);
             itemSelectorHard = new SpriteData(new Vector2(90, 37), itemSelector2, 1, 1);
@@ -213,6 +217,11 @@
             return new ObjectSprite(blueHealthPotionSpriteSheet, blueHealthPotionData);
         }
 
+        public ISprite CreateInventoryRod()
+        {
+            return new ObjectSprite(rodSpriteSheet, rodData);
+        }
+
         public ISprite CreateInventoryMagicBoomerang()
         {
             return new ObjectSprite(magicBoomerangSpriteSheet, magicBoomerangData);
@@ -223,7 +232,7 @@
             return new ObjectSprite(silverArrowSpriteSheet, silverArrowData);
         }
 
-        public ISprite EmptySlot()
+        public ISprite CreateEmptySlot()
         {
             Texture2D empty = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             empty.SetData<Color>(new Color[] { Color.Black });

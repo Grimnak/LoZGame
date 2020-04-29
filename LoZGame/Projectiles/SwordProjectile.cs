@@ -13,8 +13,8 @@
         {
             SetUp(this);
             Width = ProjectileSpriteFactory.Instance.SwordWidth;
-            Heigth = ProjectileSpriteFactory.Instance.SwordHeight;
-            Offset = (Heigth * 3) / 4;
+            Height = ProjectileSpriteFactory.Instance.SwordHeight;
+            Offset = (Height * 3) / 4;
             Speed = GameData.Instance.ProjectileSpeedConstants.WoodSwordSpeed;
             Source = source.Physics;
             InitializeDirection();

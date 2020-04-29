@@ -7,7 +7,7 @@ namespace LoZClone
         private const float doorFloorDepth = 0.02f;
 
         private const int CloseInventoryTranSpeed = 5;
-        private const int MaxCreditsTime = 3000;
+        private const int MaxCreditsTime = 10980;
         private const int DeathTimerMaximum = 85;
         private const int GameOverT = 500;
 
@@ -31,6 +31,7 @@ namespace LoZClone
         private const int optionsDifficultyY = 327;
         private const int optionsCheatsY = 385;
         private const int optionsDebugY = 443;
+        private const int optionsMusicY = 501;
         private const int optionsTextLeading = 58; // What is Leading? https://techterms.com/definition/leading
         private const int optionsSelectorY = 325;
 
@@ -83,6 +84,8 @@ namespace LoZClone
         public int OptionsCheatsY => optionsCheatsY;
 
         public int OptionsDebugY => optionsDebugY;
+
+        public int OptionsMusicY => optionsMusicY;
 
         public int OptionsTextX => optionsTextX;
 

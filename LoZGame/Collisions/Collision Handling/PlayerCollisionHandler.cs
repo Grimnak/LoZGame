@@ -44,7 +44,10 @@
                     {
                         DeterminePushbackValues(enemy.Physics, player.Physics);
                     }
-                    player.TakeDamage(enemy.Damage);
+                    int damage = enemy.Damage;
+                    damage += LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.DamageMod;
+                    damage = damage <= 0 ? 1 : damage;
+                    player.TakeDamage(damage);
                 }
             }
         }

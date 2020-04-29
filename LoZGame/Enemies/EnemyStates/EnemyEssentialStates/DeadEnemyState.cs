@@ -23,7 +23,8 @@
         public override void Update()
         {
             deathTimer++;
-            Sprite.Update();
+            if (this.Sprite.CurrentFrame != this.Sprite.TotalFrames - 1)
+                Sprite.Update();
             if (deathTimer >= deathTimerMax)
             {
                 LoZGame.Instance.Drops.AttemptDrop(Enemy.Physics.Location, LoZGame.Instance.Drops.DropChance, Enemy.DropTable);
@@ -34,15 +35,17 @@
 
         private void AttemptHealthDrop()
         {
-            int health = 0;
-            int maxhealth = 0;
+            float health = 0;
+            float maxhealth = 0;
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 health += player.Health.CurrentHealth;
                 maxhealth += player.Health.MaxHealth;
             }
+
             // use of 100 is not a magic number as it represents a percentage.
-            int dropChance = 100 - ((100 * health) / (maxhealth * (100 / GameData.Instance.InventoryConstants.MaxHealthChance)));
+            float dropChance = 50 - (50 * health / maxhealth);
+            Console.WriteLine(dropChance);
             if (dropChance < GameData.Instance.InventoryConstants.MinHealthChance)
             {
                 dropChance = GameData.Instance.InventoryConstants.MinHealthChance;
@@ -51,7 +54,7 @@
             {
                 dropChance = GameData.Instance.InventoryConstants.MaxHealthChance;
             }
-            if (LoZGame.Instance.Random.Next(100) < (dropChance + (GameData.Instance.DifficultyConstants.HealthChance * LoZGame.Instance.Difficulty)))
+            if (LoZGame.Instance.Random.Next(100) < dropChance)
             {
                 LoZGame.Instance.GameObjects.Items.Add(new DroppedHealth(Enemy.Physics.Bounds.Center.ToVector2()));
             }

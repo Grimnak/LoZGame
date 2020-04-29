@@ -30,7 +30,7 @@
             IsKillable = false;
             Expired = false;
             Damage = GameData.Instance.EnemyDamageConstants.FullHeart;
-            MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.GleeokHeadOffSpeed;
             DamageTimer = 0;
             MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed);
             CurrentTint = LoZGame.Instance.DefaultTint;
@@ -63,7 +63,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            return EnemySpriteFactory.Instance.CreateGleeockHeadOffSprite();
+            return EnemySpriteFactory.Instance.CreateGleeokHeadOffSprite();
         }
     }
 }

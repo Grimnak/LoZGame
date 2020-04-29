@@ -27,6 +27,8 @@
         private static readonly int fireballHeight = 25;
         private static readonly int swordWidth = LinkSpriteFactory.LinkWidth;
         private static readonly int swordHeight = LinkSpriteFactory.LinkHeight;
+        private static readonly int sonicBeamWidth = 32;
+        private static readonly int sonicBeamHeight = 32;
 
         private static readonly int spartanLaserHorizontalHeight = 8;
         private static readonly int spartanLaserHorizontalWidth = 20;
@@ -113,6 +115,16 @@
             get { return fireballWidth; }
         }
 
+        public int SonicBeamWidth
+        {
+            get { return sonicBeamWidth; }
+        }
+
+        public int SonicBeamHeight
+        {
+            get { return sonicBeamHeight; }
+        }
+
         public static int GetProjectileWidth(IProjectile projectile)
         {
             if (projectile is ArrowProjectile || projectile is SilverArrowProjectile)
@@ -150,6 +162,10 @@
             else if (projectile is SwordProjectile)
             {
                 return swordWidth;
+            }
+            else if (projectile is SonicBeamProjectile)
+            {
+                return sonicBeamWidth;
             }
             else
             {
@@ -194,6 +210,10 @@
             else if (projectile is SwordProjectile)
             {
                 return swordHeight;
+            }
+            else if (projectile is SonicBeamProjectile)
+            {
+                return sonicBeamHeight;
             }
             else
             {
@@ -245,6 +265,8 @@
         private Texture2D spartanLaserDownTexture;
         private Texture2D spartanLaserRightTexture;
         private Texture2D spartanLaserLeftTexture;
+        private Texture2D sonicBeamUpTexture;
+        private SpriteData sonicBeamData;
         private SpriteData spartanLaserDataVertical;
         private SpriteData spartanLaserDataHorizontal;
 
@@ -293,7 +315,8 @@
             spartanLaserDownTexture = content.Load<Texture2D>("SpartanLaser_down");
             spartanLaserRightTexture = content.Load<Texture2D>("SpartanLaser_right");
             spartanLaserLeftTexture = content.Load<Texture2D>("SpartanLaser_left");
-    }
+            sonicBeamUpTexture = content.Load<Texture2D>("sonicBeam_Up");
+        }
 
         private void LoadData()
         {
@@ -314,6 +337,7 @@
             swordData = new SpriteData(new Vector2(swordWidth, swordHeight), greenWoodSwordSpriteSheet, 1, 2);
             spartanLaserDataVertical = new SpriteData(new Vector2(spartanLaserVerticalWidth, spartanLaserVerticalHeight), spartanLaserUpTexture, 1, 1);
             spartanLaserDataHorizontal = new SpriteData(new Vector2(spartanLaserHorizontalHeight, spartanLaserHorizontalWidth), spartanLaserRightTexture, 1, 1);
+            sonicBeamData = new SpriteData(new Vector2(sonicBeamWidth, sonicBeamHeight), sonicBeamUpTexture, 2, 1);
         }
 
         public ISprite Sword(Link.LinkColor color, Link.LinkWeapon type)
@@ -428,6 +452,11 @@
         public ISprite BombExplosionFive()
         {
             return new ObjectSprite(explosionFiveSpriteSheet, explosionFiveData);
+        }
+
+        public ISprite SonicBeam()
+        {
+            return new ObjectSprite(sonicBeamUpTexture, sonicBeamData);
         }
     }
 }

@@ -10,7 +10,7 @@
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
       <items>
-        <item X="8" Y="3"></item>
+        <item X="6.25" Y="2">MagicRod</item>
       </items>
       <rrow idx="0">
         <tile type="block" idx="0">basement_brick_tile</tile>
@@ -214,7 +214,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" idx="3">
-      <text>THERE ARE SECRETS WHERE FAIRIES DON'T LIVE.</text>
+      <text>AIM AT THE EYES OF GOHMA.</text>
       <items>
       </items>
       <enemies>
@@ -468,6 +468,8 @@
       </items>
       <enemies>
         <enemy X="6" Y="1">Gohma</enemy>
+        <enemy X="0" Y="6">FireBlockEnemy</enemy>
+        <enemy X="11" Y="6">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="S">unlocked</door>
@@ -959,7 +961,11 @@
         <enemy X="9" Y="3">Keese</enemy>
         <enemy X="7" Y="3">Keese</enemy>
         <enemy X="8" Y="4">Keese</enemy>
-        <enemy X="5" Y="6">Keese</enemy>
+        <enemy X="5" Y="2">Keese</enemy>
+        <enemy X="0" Y="0">FireBlockEnemy</enemy>
+        <enemy X="0" Y="6">FireBlockEnemy</enemy>
+        <enemy X="11" Y="0">FireBlockEnemy</enemy>
+        <enemy X="11" Y="6">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="N">special</door>
@@ -1041,7 +1047,7 @@
     <room exists="False" oldman="False" basement="False" idx="1">
     </room>
     <room exists="True" oldman="True" basement="False" idx="2">
-      <text>AIM AT THE EYES OF GOHMA.</text>
+      <text>THE MAGIC WAND IS BELOW YOU.</text>
       <items>
       </items>
       <enemies>
@@ -1081,7 +1087,7 @@
         <enemy X="7" Y="3">RedWizzrobe</enemy>
         <enemy X="8" Y="3">RedWizzrobe</enemy>
         <enemy X="9" Y="3">RedWizzrobe</enemy>
-        <enemy X="10" Y="3">RedWizzrobe</enemy>
+        <enemy X="10" Y="1">RedWizzrobe</enemy>
       </enemies>
       <doors>
         <door loc="N">unlocked</door>

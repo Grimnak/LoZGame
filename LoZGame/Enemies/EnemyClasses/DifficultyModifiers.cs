@@ -8,7 +8,7 @@
     {
         public void ApplySmallSpeedMod()
         {
-            MoveSpeed += LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallMoveMod;
+            //MoveSpeed += LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallMoveMod;
             if (MoveSpeed < 1)
             {
                 MoveSpeed = 1;
@@ -17,7 +17,7 @@
 
         public void ApplyLargeSpeedMod()
         {
-            MoveSpeed += LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargeMoveMod;
+            //MoveSpeed += LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargeMoveMod;
             if (MoveSpeed < 1)
             {
                 MoveSpeed = 1;
@@ -62,7 +62,7 @@
 
         public void ApplyDamageMod()
         {
-            Damage += LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.DamageMod;
+            //Damage += LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.DamageMod;
             if (Damage < 1)
             {
                 Damage = 1;

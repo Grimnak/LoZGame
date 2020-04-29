@@ -35,6 +35,10 @@
             PolsVoice,
             LargeDigDogger,
             SmallDigDogger,
+            RedWizzrobe,
+            BlueWizzrobe,
+            Gohma,
+            Segment,
             NoAI
         }
 

@@ -15,8 +15,8 @@
         {
             SetUp(this);
             Width = ProjectileSpriteFactory.Instance.FlameWidth;
-            Heigth = ProjectileSpriteFactory.Instance.FlameHeight;
-            Offset = (Heigth * 3) / 4;
+            Height = ProjectileSpriteFactory.Instance.FlameHeight;
+            Offset = (Height * 3) / 4;
             Speed = GameData.Instance.ProjectileSpeedConstants.CandleSpeed;
             Acceleration = -0.25f;
             Damage = GameData.Instance.ProjectileDamageConstants.CandleDamage;

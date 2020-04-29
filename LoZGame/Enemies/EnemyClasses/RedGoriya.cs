@@ -6,12 +6,6 @@
 
     public class RedGoriya : EnemyEssentials, IEnemy
     {
-        public int Cooldown { get; set; }
-
-        public string Direction { get; set; }
-
-        public EntityManager EntityManager { get; set; }
-
         public RedGoriya(Vector2 location)
         {
             RandomStateGenerator = new RandomStateGenerator(this);
@@ -20,8 +14,6 @@
             Physics = new Physics(location);
             Physics.Mass = GameData.Instance.EnemyMassConstants.GoriyaMass;
             CurrentState = new SpawnEnemyState(this);
-            EntityManager = LoZGame.Instance.GameObjects.Entities;
-            Cooldown = 0;
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             EnemyCollisionHandler = new EnemyCollisionHandler(this);
             Expired = false;

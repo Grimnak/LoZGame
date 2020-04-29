@@ -105,6 +105,21 @@
             Enemy.CurrentState = new DownRightJumpingEnemyState(Enemy);
         }
 
+        public virtual void Teleport()
+        {
+            Enemy.CurrentState = new TeleportEnemyState(Enemy);
+        }
+
+        public virtual void OpenEye()
+        {
+            Enemy.CurrentState = new OpenEyeState(Enemy);
+        }
+
+        public virtual void CloseEye()
+        {
+            Enemy.CurrentState = new CloseEyeState(Enemy);
+        }
+
         public virtual void Attack()
         {
             Enemy.Attack();

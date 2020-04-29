@@ -127,7 +127,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            return EnemySpriteFactory.Instance.CreateGleeockHeadSprite();
+            return EnemySpriteFactory.Instance.CreateGleeokHeadSprite();
         }
     }
 }
