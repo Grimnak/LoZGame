@@ -7,13 +7,14 @@
         public SonicBeamProjectile(Physics physics)
         {
             SetUp(this);
-            Width = ProjectileSpriteFactory.Instance.StandardWidth;
-            Height = ProjectileSpriteFactory.Instance.BoomerangHeight;
+            Width = ProjectileSpriteFactory.Instance.SonicBeamWidth;
+            Height = ProjectileSpriteFactory.Instance.SonicBeamHeight;
             Offset = (Height * 3) / 4;
             Speed = GameData.Instance.ProjectileSpeedConstants.LinkBoomerangSpeed / 2;
             Source = physics;
+            Sprite = ProjectileSpriteFactory.Instance.SonicBeam();
+            Damage = GameData.Instance.EnemyDamageConstants.FullHeart;
             InitializeDirection();
-            Sprite = ProjectileSpriteFactory.Instance.SonicBeam(Source.CurrentDirection);
             Physics.Mass = GameData.Instance.ProjectileMassConstants.BoomerangMass;
         }
     }

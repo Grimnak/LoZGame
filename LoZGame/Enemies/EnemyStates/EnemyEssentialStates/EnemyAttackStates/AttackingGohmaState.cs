@@ -8,6 +8,7 @@
     {
         private const float DefaultSpread = MathHelper.PiOver4 / 4;
         private const int DefaultFireballs = 1;
+        private Vector2 fireballOffset;
 
         public AttackingGohmaState(IEnemy enemy)
         {
@@ -16,6 +17,7 @@
             Sprite = Enemy.CreateCorrectSprite();
             Enemy.Physics.MovementVelocity = Vector2.Zero;
             DirectionChange = GameData.Instance.EnemyMiscConstants.DirectionChange;
+            fireballOffset = (Enemy.Physics.Bounds.Location + new Point(Enemy.Physics.Bounds.Width / 2, Enemy.Physics.Bounds.Height)).ToVector2(); ;
             ShootFireballs();
         }
 
@@ -47,11 +49,13 @@
             {
                 float rotation = ((-1 * (float)(numFireballs - 1) / 2.0f) * fireBallSpread) + (i * fireBallSpread);
                 Vector2 rotatedVelocity = RotateVector(velocityVector, rotation);
-                Physics fireballPhysics = new Physics(Enemy.Physics.Bounds.Location.ToVector2())
+                Physics fireballPhysics = new Physics(fireballOffset)
                 {
                     MovementVelocity = new Vector2(rotatedVelocity.X, rotatedVelocity.Y)
                 };
-                LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(new FireballProjectile(fireballPhysics));
+                IProjectile fireball = new FireballProjectile(fireballPhysics);
+                fireball.Physics.Bounds = new Rectangle(fireball.Physics.Bounds.Location - new Point(fireball.Physics.Bounds.Width / 2, fireball.Physics.Bounds.Height / 2), fireball.Physics.Bounds.Size);
+                LoZGame.Instance.GameObjects.Entities.EnemyProjectileManager.Add(fireball);
             }
         }
     }

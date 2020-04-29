@@ -15,7 +15,7 @@ namespace LoZClone
         private const int HPPerHeart = 4;
 
         private const int minHealthChance = 5;
-        private const int maxHealthChance = 50;
+        private const int maxHealthChance = 33;
 
         private const int threeQuarterHeart = 3;
         private const int halfHeart = 2;
