@@ -232,7 +232,7 @@
             return new ObjectSprite(silverArrowSpriteSheet, silverArrowData);
         }
 
-        public ISprite EmptySlot()
+        public ISprite CreateEmptySlot()
         {
             Texture2D empty = new Texture2D(LoZGame.Instance.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             empty.SetData<Color>(new Color[] { Color.Black });

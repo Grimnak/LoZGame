@@ -66,17 +66,38 @@
 
         public ISprite CreateMapSprite()
         {
-            return InventorySpriteFactory.Instance.CreateInventoryMap();
+            if (LoZGame.Instance.Players[0].Inventory.HasMap)
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryMap();
+            }
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateEmptySlot();
+            }
         }
 
         public ISprite CreateCompassSprite()
         {
-            return InventorySpriteFactory.Instance.CreateInventoryCompass();
+            if (LoZGame.Instance.Players[0].Inventory.HasCompass)
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryCompass();
+            }
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateEmptySlot();
+            }
         }
 
         public ISprite CreateBombSprite()
         {
-            return InventorySpriteFactory.Instance.CreateInventoryBomb();
+            if (LoZGame.Instance.Players[0].Inventory.Bombs > 0)
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryBomb();
+            }
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateEmptySlot();
+            }
         }
 
         public ISprite CreateBoomerangSprite()
@@ -85,9 +106,13 @@
             {
                 return InventorySpriteFactory.Instance.CreateInventoryMagicBoomerang();
             }
-            else
+            else if (LoZGame.Instance.Players[0].Inventory.HasBoomerang)
             {
                 return InventorySpriteFactory.Instance.CreateInventoryBoomerang();
+            }
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateEmptySlot();
             }
         }
 
@@ -97,9 +122,13 @@
             {
                 return InventorySpriteFactory.Instance.CreateInventorySilverArrow();
             } 
-            else
+            else if (LoZGame.Instance.Players[0].Inventory.HasArrow)
             {
                 return InventorySpriteFactory.Instance.CreateInventoryArrow();
+            }
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateEmptySlot();
             }
         }
 
@@ -109,9 +138,13 @@
             {
                 return InventorySpriteFactory.Instance.CreateInventoryRedCandle();
             }
-            else
+            else if (LoZGame.Instance.Players[0].Inventory.HasBlueFlame)
             {
                 return InventorySpriteFactory.Instance.CreateInventoryBlueCandle();
+            }
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateEmptySlot();
             }
         }
 
@@ -121,25 +154,43 @@
             {
                 return InventorySpriteFactory.Instance.CreateInventoryBlueHealthPotion();
             }
-            else
+            else if (LoZGame.Instance.Players[0].Inventory.RedPotions > 0)
             {
                 return InventorySpriteFactory.Instance.CreateInventoryRedHealthPotion();
+            }
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateEmptySlot();
             }
         }
 
         public ISprite CreateRodSprite()
         {
-            return InventorySpriteFactory.Instance.CreateInventoryRod();
+            if (LoZGame.Instance.Players[0].Inventory.HasRod)
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryRod();
+            }
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateEmptySlot();
+            }
         }
 
         public ISprite CreateFluteSprite()
         {
-            return InventorySpriteFactory.Instance.CreateInventoryFlute();
+            if (LoZGame.Instance.Players[0].Inventory.HasFlute)
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryFlute();
+            }
+            else
+            {
+                return InventorySpriteFactory.Instance.CreateEmptySlot();
+            }
         }
 
         public ISprite CreateEmptySprite()
         {
-            return InventorySpriteFactory.Instance.EmptySlot();
+            return InventorySpriteFactory.Instance.CreateEmptySlot();
         }
 
         public ISprite CreateItemSelector()

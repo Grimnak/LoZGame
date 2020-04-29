@@ -31,13 +31,14 @@
                 {
                     numRupees--;
                 }
-                player.UseItem(ProjectileManager.MaxWaitTime);
                 if (hasSilverArrow || LoZGame.Cheats)
                 {
+                    player.UseItem(ProjectileManager.MaxWaitTime);
                     LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.SilverArrow, player);
                 } 
                 else if (hasArrow || LoZGame.Cheats)
                 {
+                    player.UseItem(ProjectileManager.MaxWaitTime);
                     LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Arrow, player);
                 }
             }
@@ -47,13 +48,14 @@
         {
             if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.BoomerangOut)
             {
-                player.UseItem(ProjectileManager.MaxWaitTime);
                 if (hasMagicBoomerang || LoZGame.Cheats)
                 {
+                    player.UseItem(ProjectileManager.MaxWaitTime);
                     LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.MagicBoomerang, player);
                 }
                 else if (hasBoomerang || LoZGame.Cheats)
                 {
+                    player.UseItem(ProjectileManager.MaxWaitTime);
                     LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Boomerang, player);
                 }
             }
@@ -98,7 +100,7 @@
         {
             if ((hasFlute || LoZGame.Cheats) && LoZGame.Instance.GameState is PlayGameState)
             {
-                player.UseItem(1);
+                player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameState = new FluteGameState();
             }
         }
