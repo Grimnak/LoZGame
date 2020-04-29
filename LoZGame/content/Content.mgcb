@@ -3044,6 +3044,18 @@
 /processorParam:TextureFormat=Color
 /build:Options.png
 
+#begin Options.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Options.png
+
 #begin orange_movable_square.png
 /importer:TextureImporter
 /processor:TextureProcessor
