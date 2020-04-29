@@ -107,6 +107,10 @@ namespace LoZClone
         private void ToggleMusic()
         {
             LoZGame.Music = !LoZGame.Music;
+            if (!LoZGame.Music)
+                SoundFactory.Instance.StopAll();
+            else
+                SoundFactory.Instance.PlayDungeonSong();
         }
 
         public void DetermineWhatToDo()

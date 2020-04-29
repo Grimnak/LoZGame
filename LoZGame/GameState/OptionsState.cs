@@ -14,6 +14,9 @@ namespace LoZClone
         ISprite OptionsScreen;
         ISprite SelectorSpriteFalse, SelectorSpriteTrue, SelectorSpriteEasy, SelectorSpriteNormal, SelectorSpriteHard, SelectorSpriteNightmare;
         private Vector2 optionsOffset = new Vector2(GameData.Instance.GameStateDataConstants.OptionsWidthOffset, GameData.Instance.GameStateDataConstants.OptionsHeightOffset);
+        string cheatStr;
+        string debugStr;
+        string musicStr;
 
         public OptionsState(IGameState gameState)
         {
@@ -79,15 +82,29 @@ namespace LoZClone
                         SelectorSpriteFalse.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY + (2 * GameData.Instance.GameStateDataConstants.OptionsTextLeading)), LoZGame.Instance.DefaultTint, 0.99f);
                     }
                     break;
+                case LoZClone.Options.OptionType.Music:
+                    if (LoZGame.Music)
+                    {
+                        SelectorSpriteTrue.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY + (3 * GameData.Instance.GameStateDataConstants.OptionsTextLeading)), LoZGame.Instance.DefaultTint, 0.99f);
+                    }
+                    else
+                    {
+                        SelectorSpriteFalse.Draw(new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsSelectorY + (3 * GameData.Instance.GameStateDataConstants.OptionsTextLeading)), LoZGame.Instance.DefaultTint, 0.99f);
+                    }
+                    break;
                 default:
                     LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, "If you see this, call the police.", new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsCheatsY), Color.DarkRed);
                     break;
             }
             LoZGame.Instance.SpriteBatch.End();
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
+            cheatStr = LoZGame.Cheats ? "ON" : "OFF";
+            debugStr = LoZGame.DebugMode ? "ON" : "OFF";
+            musicStr = LoZGame.Music ? "ON" : "OFF";
             LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, DifficultyMapper.GetMyType(LoZGame.Instance.Difficulty).Name, new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsDifficultyY), Color.White);
-            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, string.Concat(LoZGame.Cheats), new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsCheatsY), Color.White);
-            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, string.Concat(LoZGame.DebugMode), new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsDebugY), Color.White);
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, cheatStr, new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsCheatsY), Color.White);
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, debugStr, new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsDebugY), Color.White);
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, musicStr, new Vector2(GameData.Instance.GameStateDataConstants.OptionsTextX, GameData.Instance.GameStateDataConstants.OptionsMusicY), Color.White);
             LoZGame.Instance.SpriteBatch.End();
         }
     }
