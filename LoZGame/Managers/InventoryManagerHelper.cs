@@ -12,7 +12,7 @@
 
         public void UseBomb()
         {
-            if (numBombs > 0)
+            if ((numBombs > 0) || LoZGame.Cheats)
             {
                 if (!LoZGame.Cheats)
                 {
@@ -25,18 +25,18 @@
 
         public void UseArrow()
         {
-            if (numRupees > 0 && hasBow)
+            if ((numRupees > 0 && hasBow) || LoZGame.Cheats)
             {
                 if (!LoZGame.Cheats && !(player.State is UseItemState))
                 {
                     numRupees--;
                 }
                 player.UseItem(ProjectileManager.MaxWaitTime);
-                if (hasSilverArrow)
+                if (hasSilverArrow || LoZGame.Cheats)
                 {
                     LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.SilverArrow, player);
                 } 
-                else if (hasArrow)
+                else if (hasArrow || LoZGame.Cheats)
                 {
                     LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Arrow, player);
                 }
@@ -48,11 +48,11 @@
             if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.BoomerangOut)
             {
                 player.UseItem(ProjectileManager.MaxWaitTime);
-                if (hasMagicBoomerang)
+                if (hasMagicBoomerang || LoZGame.Cheats)
                 {
                     LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.MagicBoomerang, player);
                 }
-                else if (hasBoomerang)
+                else if (hasBoomerang || LoZGame.Cheats)
                 {
                     LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.Boomerang, player);
                 }
@@ -61,12 +61,12 @@
 
         public void UseCandle()
         {
-            if (hasRedFlame)
+            if (hasRedFlame || LoZGame.Cheats)
             {
                 player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.RedCandle, player);
             } 
-            else if (!LoZGame.Instance.GameObjects.Entities.ProjectileManager.FlameInUse && HasBlueFlame)
+            else if ((!LoZGame.Instance.GameObjects.Entities.ProjectileManager.FlameInUse && HasBlueFlame) || LoZGame.Cheats)
             {
                 player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.BlueCandle, player);
@@ -75,22 +75,28 @@
 
         public void UsePotion()
         {
-            if (numBluePotions > 0)
+            if (numBluePotions > 0 || LoZGame.Cheats)
             {
-                numBluePotions--;
-                numRedPotions++;
+                if (!LoZGame.Cheats)
+                {
+                    numBluePotions--;
+                    numRedPotions++;
+                }
                 LoZGame.Instance.Players[0].Health.CurrentHealth = LoZGame.Instance.Players[0].Health.MaxHealth;
             }
-            else if (numRedPotions > 0)
+            else if (numRedPotions > 0 || LoZGame.Cheats)
             {
-                numRedPotions--;
+                if (!LoZGame.Cheats)
+                {
+                    numRedPotions--;
+                }
                 LoZGame.Instance.Players[0].Health.CurrentHealth = LoZGame.Instance.Players[0].Health.MaxHealth;
             }
         }
 
         public void UseFlute()
         {
-            if (hasFlute && LoZGame.Instance.GameState is PlayGameState)
+            if ((hasFlute || LoZGame.Cheats) && LoZGame.Instance.GameState is PlayGameState)
             {
                 player.UseItem(1);
                 LoZGame.Instance.GameState = new FluteGameState();
@@ -99,7 +105,7 @@
 
         public void UseRod()
         {
-            if (hasRod)
+            if (hasRod || LoZGame.Cheats)
             {
                 player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.SonicBeam, player);

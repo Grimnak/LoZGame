@@ -10,7 +10,7 @@
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
       <items>
-        <item X="8" Y="3"></item>
+        <item X="6.25" Y="2">MagicRod</item>
       </items>
       <rrow idx="0">
         <tile type="block" idx="0">basement_brick_tile</tile>

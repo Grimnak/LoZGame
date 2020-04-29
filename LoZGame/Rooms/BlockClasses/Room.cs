@@ -347,6 +347,10 @@
                     newItem = new RedRing(location);
                     items.Add(newItem);
                     break;
+                case "MagicRod":
+                    newItem = new MagicRod(location);
+                    items.Add(newItem);
+                    break;
                 default:
                     break;
             }

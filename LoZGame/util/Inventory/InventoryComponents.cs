@@ -269,7 +269,7 @@
 
                 case 5:
                     selectionItem = CreateRodSprite();
-                    if (LoZGame.Instance.Players[0].Inventory.HasFlute)
+                    if (LoZGame.Instance.Players[0].Inventory.HasRod)
                     {
                         selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     }
