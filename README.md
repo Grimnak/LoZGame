@@ -1,8 +1,6 @@
 # CSE 3902 - 9:10a Section - Team 3 - Readme
 
-Developer version of Legend of Zelda NES emulator.  This build features the first five dungeons and an incomplete build of the sixth dungeon.  There is also an option to turn "cheat mode" on, which gives the player unlimited items and infinite health.  This can be activated in the main LoZGame.cs file on line 12 by setting the value to "true" or by accessing the options menu in-game by pressing the letter key "O".
-
-Additional Sprint 5 features include 3 more dungeons, difficulty selection, game-accurate unique enemy drop tables, the ability to continue a playthrough without restarting entirely, a credits menu and an options menu.
+Developer version of Legend of Zelda NES emulator.  This build features the first six dungeons and incomplete builds of the seventh and eighth dungeons.  There is also an option to turn "cheat mode" on, which gives the player unlimited items and infinite health.  This can be activated by accessing the options menu in-game.
 
 ## Authors:
 Eric Henderson.939
@@ -52,6 +50,7 @@ Enter - Begin the Game, Toggle an Option, or Continue Gameplay after Death
     - Note: Difficulty modifies how much damage the enemies deal, how much damage the player may take, how quickly the enemies move, AI behavior, as well as new functionality for a small number of enemies dependent on difficulty
 - Cheats: Will grant you the ability to travel via Mouse Controller, infinite health and infinite use of most items.
 - Debug: Draws bounding boxes of all relevant objects on screen
+- Music: Toggles the game's built-in background music.
 
 ## External Tools:
 Git
@@ -67,18 +66,8 @@ Gimp
 Discord
 
 
-## Known Bugs/Missing Features:
-### Unfinished Dungeons:
-    Bug: Dungeons 6, 7, and 8 are unfinished but exist.
-
-    Plan(s) to fix:  Finish the dungeons and add the new enemies by the class demonstration.
-
+## Known Bugs:
 ### Mouse Controller
     Bug:  Various game features, namely some door loading and movable block functionality may break when entering a room via a mouse click.
 
     Plan(s) to fix:  Compare the code that handles room transitions with how rooms are loaded in via mouse controller and ensure they behave the same (or make them in fact use the same code entirely).
-
-### Fire Snake (Moldorm)'s Segments can Become Displaced from Head:
-    Bug:  The Fire Snake's final segments can become displaced with respect to the head when the player enters and leaves the room where they reside.
-
-    Plan(s) to fix: Investigate how the head and body segments are updating; the likely issue is one is getting extra time to update while the room is unloading.
