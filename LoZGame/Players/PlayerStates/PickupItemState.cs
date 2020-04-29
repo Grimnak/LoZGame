@@ -45,6 +45,10 @@ namespace LoZClone
             {
                 player.Inventory.HasSilverArrow = true;
             }
+            else if (item is MagicRod)
+            {
+                player.Inventory.HasRod = true;
+            }
             else if (item is Boomerang)
             {
                 player.Inventory.HasBoomerang = true;

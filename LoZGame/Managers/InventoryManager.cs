@@ -12,6 +12,7 @@
             Candle,
             Flute,
             Potion,
+            Rod,
             None
         }
 
@@ -22,7 +23,7 @@
         private List<List<ItemType>> selectionArray = new List<List<ItemType>>()
         {
             new List<ItemType> { ItemType.Bomb, ItemType.Boomerang, ItemType.Arrow, ItemType.Candle },
-            new List<ItemType> { ItemType.Potion, ItemType.None, ItemType.None, ItemType.Flute }
+            new List<ItemType> { ItemType.Potion, ItemType.Rod, ItemType.None, ItemType.Flute }
         };
 
         private int selectionX;
@@ -37,6 +38,7 @@
         private bool hasMagicBoomerang;
         private bool hasBow;
         private bool hasArrow;
+        private bool hasRod;
         private bool hasSilverArrow;
         private bool hasRedFlame;
         private bool hasBlueFlame;
@@ -79,6 +81,7 @@
             hasBlueFlame = LoZGame.Cheats;
             hasLadder = LoZGame.Cheats;
             hasFlute = LoZGame.Cheats;
+            hasRod = LoZGame.Cheats;
             ladderInUse = false;
 
             hasMap = LoZGame.Cheats;
@@ -104,6 +107,7 @@
             this.numBluePotions = copiedManager.numBluePotions;
             this.numRupees = copiedManager.numRupees;
             this.hasBoomerang = copiedManager.hasBoomerang;
+            this.hasRod = copiedManager.hasRod;
             this.hasMagicBoomerang = copiedManager.hasMagicBoomerang;
             this.hasBow = copiedManager.hasBow;
             this.hasSilverArrow = copiedManager.hasSilverArrow;
@@ -139,6 +143,9 @@
                     break;
                 case ItemType.Flute:
                     UseFlute();
+                    break;
+                case ItemType.Rod:
+                    UseRod();
                     break;
                 default:
                     break;
@@ -183,7 +190,7 @@
                     case 0:
                         return numRedPotions > 0 || numBluePotions > 0;
                     case 1:
-                        return false;
+                        return HasRod;
                     case 2:
                         return false;
                     case 3:
@@ -223,6 +230,8 @@
         public bool HasMagicBoomerang { get { return hasMagicBoomerang; } set { hasMagicBoomerang = value; } }
 
         public bool HasFlute { get { return hasFlute; } set { hasFlute = value; } }
+
+        public bool HasRod { get { return hasRod; } set { hasRod = value; } }
 
         public bool HasArrow { get { return hasArrow; } set { hasArrow = value; } }
 

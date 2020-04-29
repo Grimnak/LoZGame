@@ -127,6 +127,11 @@
             }
         }
 
+        public ISprite CreateRodSprite()
+        {
+            return InventorySpriteFactory.Instance.CreateInventoryRod();
+        }
+
         public ISprite CreateFluteSprite()
         {
             return InventorySpriteFactory.Instance.CreateInventoryFlute();
