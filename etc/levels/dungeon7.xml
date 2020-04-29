@@ -102,7 +102,7 @@
     </room>
     <room exists="True" oldman="False" basement="False" idx="3">
       <items>
-         <item X="6" Y="3">Bomb</item>
+         <item X="6" Y="3">Key</item>
       </items>
       <enemies>
          <enemy X="2" Y="1">FireSnake</enemy>
@@ -569,7 +569,7 @@
         <tile type="block" idx="7">movable_square</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="movable"  idx="4" dir="E,W">orange_movable_square</tile>
+        <tile type="movable"  idx="4" dir="W">orange_movable_square</tile>
         <tile type="stairs" idx="6" room="5,0" loc="10,0" hidden="False">stairs</tile>
         <tile type="block" idx="8">movable_square</tile>
       </rrow>
