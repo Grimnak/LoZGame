@@ -43,17 +43,21 @@
 
         private void UpdateMoveSpeed()
         {
-            Vector2 normalVel = Enemy.Physics.MovementVelocity / Enemy.Physics.MovementVelocity.Length();
+            float maxSpeedDiff = GameData.Instance.EnemySpeedConstants.ManhandlaMaxSpeed - GameData.Instance.EnemySpeedConstants.ManhandlaMinSpeed;
+            float moveSpeed = Enemy.MoveSpeed;
+            moveSpeed += LoZGame.Instance.Difficulty > 0 ? LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.SmallMoveMod : 0;
+            Vector2 normalVel = new Vector2(Enemy.Physics.MovementVelocity.X, Enemy.Physics.MovementVelocity.Y);
+            normalVel.Normalize();
             if (Lifetime < DirectionChange / 2)
             {
-                if (Enemy.Physics.MovementVelocity.Length() <= GameData.Instance.EnemySpeedConstants.MaxKeeseSpeed)
+                if (Enemy.Physics.MovementVelocity.Length() <= moveSpeed + maxSpeedDiff)
                 {
                     Enemy.Physics.MovementVelocity += normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
                 }
             }
             else
             {
-                if (Enemy.Physics.MovementVelocity.Length() >= GameData.Instance.EnemySpeedConstants.MinKeeseSpeed)
+                if (Enemy.Physics.MovementVelocity.Length() >= moveSpeed)
                 {
                     Enemy.Physics.MovementVelocity -= normalVel * GameData.Instance.EnemySpeedConstants.KeeseAcceleration;
                 }

@@ -19,14 +19,8 @@
             returning = false;
             Sprite = Enemy.CreateCorrectSprite();
             Enemy.CurrentState = this;
-            if (LoZGame.Instance.Difficulty > 0)
-            {
-                attackSpeed = GameData.Instance.EnemySpeedConstants.DodongoAttackSpeed ;
-            }
-            else
-            {
-                attackSpeed = GameData.Instance.EnemySpeedConstants.DodongoAttackSpeed;
-            }
+            attackSpeed = GameData.Instance.EnemySpeedConstants.RopeAttackSpeed;
+            attackSpeed += LoZGame.Instance.Difficulty > 0 ? LoZGame.Instance.Difficulty * GameData.Instance.DifficultyConstants.LargeMoveMod : 0;
             SetAttackVelocity();
         }
 
