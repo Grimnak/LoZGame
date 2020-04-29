@@ -67,18 +67,8 @@ Gimp
 Discord
 
 
-## Known Bugs/Missing Features:
-### Unfinished Dungeons:
-    Bug: Dungeons 6, 7, and 8 are unfinished but exist.
-
-    Plan(s) to fix:  Finish the dungeons and add the new enemies by the class demonstration.
-
+## Known Bugs:
 ### Mouse Controller
     Bug:  Various game features, namely some door loading and movable block functionality may break when entering a room via a mouse click.
 
     Plan(s) to fix:  Compare the code that handles room transitions with how rooms are loaded in via mouse controller and ensure they behave the same (or make them in fact use the same code entirely).
-
-### Fire Snake (Moldorm)'s Segments can Become Displaced from Head:
-    Bug:  The Fire Snake's final segments can become displaced with respect to the head when the player enters and leaves the room where they reside.
-
-    Plan(s) to fix: Investigate how the head and body segments are updating; the likely issue is one is getting extra time to update while the room is unloading.
