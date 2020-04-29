@@ -44,7 +44,7 @@
         public Dungeon(int dungeonNumber)
         {
             DungeonNumber = dungeonNumber;
-            currentDungeonFile = "../../../../../etc/levels/dungeon" + this.dungeonNumber + ".xml";
+            currentDungeonFile = "../../../../etc/levels/dungeon" + this.dungeonNumber + ".xml";
             LoZGame.Instance.GameObjects.LoadedRoomX = -1;
             LoZGame.Instance.GameObjects.LoadedRoomY = -1;
 

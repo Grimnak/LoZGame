@@ -1111,6 +1111,12 @@
 /processorParam:TextureFormat=Color
 /build:dungeon.png
 
+#begin Dungeon_mixdown.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Dungeon_mixdown.mp3
+
 #begin dungeon2.png
 /importer:TextureImporter
 /processor:TextureProcessor

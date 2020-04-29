@@ -11,7 +11,7 @@
         private bool musicEnabled = LoZGame.Music;
         private static SoundEffect titleSong = SoundEffect.FromStream(Properties.Resources.title_song);
         SoundEffectInstance titleLoop = titleSong.CreateInstance();
-        private static SoundEffect dungeonSong = SoundEffect.FromStream(Properties.Resources.dungeon_song);
+        private static SoundEffect dungeonSong = SoundEffect.FromStream(Properties.Resources.Dungeon_mixdown);
         SoundEffectInstance dungeonLoop = dungeonSong.CreateInstance();
         private static SoundEffect triforceTune = SoundEffect.FromStream(Properties.Resources.triforce_tune);
         SoundEffectInstance triforceLoop = triforceTune.CreateInstance();

@@ -81,6 +81,15 @@ namespace LoZClone.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        public static System.IO.UnmanagedMemoryStream Dungeon_mixdown {
+            get {
+                return ResourceManager.GetStream("Dungeon_mixdown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         public static System.IO.UnmanagedMemoryStream dungeon_song {
             get {
                 return ResourceManager.GetStream("dungeon_song", resourceCulture);
