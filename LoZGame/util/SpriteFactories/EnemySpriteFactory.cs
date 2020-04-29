@@ -155,7 +155,7 @@
             {
                 return wallMasterWidth;
             }
-            else if (enemy is RedWizzrobe)
+            else if (enemy is RedWizzrobe || enemy is BlueWizzrobe)
             {
                 return wizzrobeWidth;
             }
@@ -279,7 +279,7 @@
             {
                 return wallMasterHeight;
             }
-            else if (enemy is RedWizzrobe)
+            else if (enemy is RedWizzrobe || enemy is BlueWizzrobe)
             {
                 return wizzrobeHeight;
             }

@@ -139,12 +139,12 @@
 
         private static Dictionary<StateType, int> blueWizzrobeStateList = new Dictionary<StateType, int>()
         {
-            { StateType.Attack, 2 },
+            { StateType.Attack, 1 },
             { StateType.Teleport, 1 },
-            { StateType.MoveNorth, 2 },
-            { StateType.MoveSouth, 2 },
-            { StateType.MoveEast, 2 },
-            { StateType.MoveWest, 2 },
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 },
         };
 
         private static Dictionary<StateType, int> zolStateList = new Dictionary<StateType, int>()
