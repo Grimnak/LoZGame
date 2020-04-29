@@ -15,6 +15,10 @@
                 SoundFactory.Instance.PlayCoolFlute();
             else
                 SoundFactory.Instance.PlayFlute();
+            foreach (IPlayer player in LoZGame.Instance.Players)
+            {
+                player.Physics.KnockbackVelocity = Vector2.Zero;
+            }
         }
 
         /// <inheritdoc></inheritdoc>
