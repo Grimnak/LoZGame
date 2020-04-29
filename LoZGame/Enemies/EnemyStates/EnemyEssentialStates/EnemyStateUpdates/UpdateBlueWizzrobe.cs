@@ -7,6 +7,7 @@
     {
         public void UpdateBlueWizzrobe()
         {
+            FacePlayer();
             DefaultUpdate();
             if (Lifetime == DirectionChange)
             {
