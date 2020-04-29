@@ -30,6 +30,7 @@
             EnemyAI.SmallDigDogger,
             EnemyAI.LargeDigDogger,
             EnemyAI.Gohma,
+            EnemyAI.Segment,
             EnemyAI.NoSpawn
         };
 
@@ -107,6 +108,7 @@
                     UpdateBlueWizzrobe();
                     break;
                 case EnemyAI.NoAI:
+                case EnemyAI.Segment:
                     break;
                 default:
                     DefaultUpdate();

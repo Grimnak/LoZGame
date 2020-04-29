@@ -38,6 +38,7 @@
             ApplySmallSpeedMod();
             ApplySmallWeightModPos();
             ApplyLargeHealthMod();
+            MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed);
         }
 
         public override void TakeDamage(int damageAmount)

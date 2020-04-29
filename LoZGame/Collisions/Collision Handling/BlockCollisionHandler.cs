@@ -17,6 +17,8 @@
             EnemyEssentials.EnemyAI.Manhandla,
             EnemyEssentials.EnemyAI.ManHandlaHead,
             EnemyEssentials.EnemyAI.NoAI,
+            EnemyEssentials.EnemyAI.MoldormHead,
+            EnemyEssentials.EnemyAI.Segment,
             EnemyEssentials.EnemyAI.WallMaster
         };
 

@@ -38,6 +38,7 @@
             RedWizzrobe,
             BlueWizzrobe,
             Gohma,
+            Segment,
             NoAI
         }
 
