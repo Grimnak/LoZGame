@@ -90,8 +90,8 @@
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
                     (float)(BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
                 player.Physics.Bounds = new Rectangle((int)player.Physics.Location.X, (int)player.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
-                LoZGame.Instance.Dungeon.CurrentRoomX = 2;
-                LoZGame.Instance.Dungeon.CurrentRoomY = 5;
+                LoZGame.Instance.Dungeon.CurrentRoomX = LoZGame.Instance.Dungeon.StartRoomX;
+                LoZGame.Instance.Dungeon.CurrentRoomY = LoZGame.Instance.Dungeon.StartRoomY;
                 LoZGame.Instance.Dungeon.LoadNewRoom();
             }
         }
