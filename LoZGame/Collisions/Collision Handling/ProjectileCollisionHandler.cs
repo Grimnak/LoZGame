@@ -13,7 +13,7 @@
 
         public void OnCollisionResponse(IEnemy enemy, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!enemy.IsTransparent)
+            if (!(enemy is Bubble || (enemy.CurrentState is HiddenVireState) || enemy is SpikeCross))
             {
                 if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
                 {

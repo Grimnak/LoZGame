@@ -7,7 +7,7 @@
 
     public partial class EnemyStateEssentials
     {
-        public void UpdateGleeock()
+        public void UpdateGleeok()
         {
             DefaultUpdate();
             if (Lifetime == DirectionChange)

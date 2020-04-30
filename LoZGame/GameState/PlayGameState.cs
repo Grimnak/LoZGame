@@ -46,7 +46,7 @@
         public override void WinGame()
         {
             SoundFactory.Instance.StopAll();
-            LoZGame.Instance.GameState = new WinGameState();
+            LoZGame.Instance.GameState = new TriforceState();
         }
 
         public override void Pause()

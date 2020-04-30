@@ -11,11 +11,11 @@
         {
             if (LoZGame.Instance.Difficulty <= 2)
             {
-                StandardRope();
+                StandardSpikeCross();
             }
             else
             {
-                HardRope();
+                HardSpikeCross();
             }
         }
 

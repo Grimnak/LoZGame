@@ -417,7 +417,7 @@
     <Compile Include="Util\SpriteFactories\ScreenSpriteFactory.cs" />
     <Compile Include="Util\Audio\SoundFactory.cs" />
     <Compile Include="Util\XMLHandler.cs" />
-    <Compile Include="GameState\WinGameState.cs" />
+    <Compile Include="GameState\TriforceState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">

@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class WinGameState : GameStateEssentials, IGameState
+    public class TriforceState : GameStateEssentials, IGameState
     {
         private const int flashRate = 40;
         private int maxDungeon;
@@ -11,7 +11,7 @@
         private int lockoutMax;
         private BlendState bs;
 
-        public WinGameState()
+        public TriforceState()
         {
             maxDungeon = GameData.Instance.GameStateDataConstants.WinStateMaxDungeons;
             lockoutMax = GameData.Instance.GameStateDataConstants.WinStateMaxLockout;

@@ -87,7 +87,7 @@
                     break;
                 case EnemyAI.GleeokHeadOff:
                 case EnemyAI.GleeokHead:
-                    UpdateGleeock();
+                    UpdateGleeok();
                     break;
                 case EnemyAI.SpikeCross:
                     UpdateSpikeCross();
