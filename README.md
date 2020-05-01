@@ -1,19 +1,19 @@
-# CSE 3902 - 9:10a Section - Team 3 - Readme
+# The Legend of Zelda in Monogame
 
-Developer version of Legend of Zelda NES emulator.  This build features the first six dungeons and incomplete builds of the seventh and eighth dungeons.  There is also an option to turn "cheat mode" on, which gives the player unlimited items and infinite health.  This can be activated by accessing the options menu in-game.
+This build features the first six dungeons and incomplete versions of the seventh and eighth dungeons.  There is also an option to turn "cheat mode" on, which gives the player unlimited items and infinite health.  This can be activated by accessing the options menu in-game.
 
 ## Authors:
-Eric Henderson.939
+Eric Henderson (henderson.939@osu.edu)
 
-Sammy Lisa.5
+Sammy Lisa (lisa.5@osu.edu)
 
-Garrett Morse.172
+Garrett Morse (morse.172@osu.edu)
 
-Aaron Rehfeldt.2
+Aaron Rehfeldt (rehfeldt.2@osu.edu)
 
-Ryan Scott.2081
+Ryan Scott (scott.2081@osu.edu)
 
-Jeremy Wensink.27
+Jeremy Wensink (wensink.27@osu.edu)
 
 
 ## Controls:
@@ -51,19 +51,11 @@ Enter - Begin the Game, Toggle an Option, or Continue Gameplay after Death
 - Cheats: Will grant you the ability to travel via Mouse Controller, infinite health and infinite use of most items.
 - Debug: Draws bounding boxes of all relevant objects on screen
 
-## External Tools:
-Git
+## Required Tools:
 
-GitHub
+Visual Studio
 
-Adobe Photoshop
-
-Adobe Illustrator
-
-Gimp
-
-Discord
-
+Monogame
 
 ## Known Bugs:
 ### Mouse Controller
