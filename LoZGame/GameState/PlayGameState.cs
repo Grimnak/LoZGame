@@ -36,7 +36,7 @@
         /// <inheritdoc></inheritdoc>
         public override void TransitionRoom(Physics.Direction direction)
         {
-            if (!(LoZGame.Instance.Players[0].State is SwallowedState)) // -- potential bug --
+            if (!(LoZGame.Instance.Players[0].State is SwallowedState))
             {
                 LoZGame.Instance.GameState = new TransitionRoomState(direction);
             }
@@ -62,6 +62,7 @@
         /// <inheritdoc></inheritdoc>
         public override void Update()
         {
+            // Handle the clock freezing mechanics.
             if (LoZGame.Instance.Players[0].Inventory.HasClock)
             {
                 LoZGame.Instance.Players[0].Inventory.ClockLockout++;
@@ -71,10 +72,26 @@
                 LoZGame.Instance.Players[0].Inventory.HasClock = false;
                 LoZGame.Instance.Players[0].Inventory.ClockLockout = 0;
             }
+
+            // Update players as they're inputting commands.
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Update();
             }
+
+            // Play the correct song based on where the players are located within the game.
+            if (LoZGame.Instance.Dungeon.CurrentRoomX == LoZGame.Instance.Dungeon.DungeonBossLocation.X && LoZGame.Instance.Dungeon.CurrentRoomY == LoZGame.Instance.Dungeon.DungeonBossLocation.Y)
+            {
+                SoundFactory.Instance.StopDungeonSong();
+                SoundFactory.Instance.PlayBossSong();
+            }
+            else
+            {
+                SoundFactory.Instance.StopBossSong();
+                SoundFactory.Instance.PlayDungeonSong();
+            }
+
+            // Update all game objects and the collisions associated with them.
             LoZGame.Instance.GameObjects.Update();
             LoZGame.Instance.CollisionDetector.Update(LoZGame.Instance.Players.AsReadOnly(), LoZGame.Instance.GameObjects.Enemies.EnemyList.AsReadOnly(), LoZGame.Instance.GameObjects.Blocks.BlockList.AsReadOnly(), LoZGame.Instance.GameObjects.Doors.DoorList.AsReadOnly(), LoZGame.Instance.GameObjects.Items.ItemList.AsReadOnly(), LoZGame.Instance.GameObjects.Entities.PlayerProjectiles.AsReadOnly(), LoZGame.Instance.GameObjects.Entities.EnemyProjectiles.AsReadOnly());
 

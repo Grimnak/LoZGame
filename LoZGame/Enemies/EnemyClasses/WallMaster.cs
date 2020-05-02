@@ -45,7 +45,7 @@
 
         public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IPlayer && !(((Link)otherCollider).State is PickupItemState))
+            if (otherCollider is IPlayer && !(((Link)otherCollider).State is PickupItemState || CurrentState is StunnedEnemyState))
             {
                 CurrentState.Attack();
                 Physics.MovementVelocity = new Vector2(-2, 0);

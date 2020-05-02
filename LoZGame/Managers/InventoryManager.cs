@@ -99,6 +99,7 @@
             this.hasSilverArrow = copiedManager.hasSilverArrow;
             this.hasRedFlame = copiedManager.hasRedFlame;
             this.hasBlueFlame = copiedManager.hasBlueFlame;
+            this.hasFlute = copiedManager.hasFlute;
             this.hasLadder = copiedManager.hasLadder;
             this.ladderInUse = copiedManager.ladderInUse;
             this.hasMap = copiedManager.hasMap;

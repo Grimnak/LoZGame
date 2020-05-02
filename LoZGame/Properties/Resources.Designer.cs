@@ -279,6 +279,15 @@ namespace LoZClone.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        public static System.IO.UnmanagedMemoryStream The_Legend_of_Zelda__Spirit_Tracks_Soundtrack___66_Stagnox__Armored_Colossus {
+            get {
+                return ResourceManager.GetStream("The_Legend_of_Zelda__Spirit_Tracks_Soundtrack___66_Stagnox__Armored_Colossus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         public static System.IO.UnmanagedMemoryStream title_song {
             get {
                 return ResourceManager.GetStream("title_song", resourceCulture);

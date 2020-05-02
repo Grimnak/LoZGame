@@ -26,9 +26,9 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public override void TitleScreen()
+        public override void CreditsScreen()
         {
-            LoZGame.Instance.GameState = new TitleScreenState();
+            LoZGame.Instance.GameState = new CreditsScreenState();
         }
 
         /// <inheritdoc></inheritdoc>
@@ -44,7 +44,7 @@
             }
             else if (deathTime >= gameOverTime)
             {
-                LoZGame.Instance.GameState.TitleScreen();
+                LoZGame.Instance.GameState.CreditsScreen();
             }
         }
 

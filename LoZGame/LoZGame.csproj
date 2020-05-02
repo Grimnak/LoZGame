@@ -177,7 +177,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateLikelike.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateBlueWizzrobe.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateVire.cs" />
-    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGleeock.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGleeok.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateFireSnake.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGel.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGoriya.cs" />
@@ -457,6 +457,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <Content Include="Util\Audio\Resources\The Legend of Zelda_ Spirit Tracks Soundtrack - 66 Stagnox, Armored Colossus.wav" />
     <None Include="Util\Audio\Resources\LOZ_Recorder.wav" />
     <None Include="Util\Audio\Resources\coolFlute.wav" />
     <Content Include="Util\Audio\Resources\CreditsTheme.wav" />

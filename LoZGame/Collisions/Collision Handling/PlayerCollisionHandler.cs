@@ -16,7 +16,10 @@
         {
             if (enemy is WallMaster)
             {
-                player.State = new GrabbedState(player, (WallMaster)enemy);
+                if (!(enemy.CurrentState is StunnedEnemyState))
+                {
+                    player.State = new GrabbedState(player, (WallMaster)enemy);
+                }
             }
             else if (enemy is Likelike)
             {
