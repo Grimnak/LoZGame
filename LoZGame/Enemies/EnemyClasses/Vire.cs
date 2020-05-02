@@ -54,14 +54,7 @@
 
         public override ISprite CreateCorrectSprite()
         {
-            if (Physics.CurrentDirection == Physics.Direction.South)
-            {
-                return EnemySpriteFactory.Instance.CreateDownMovingVireSprite();
-            }
-            else
-            {
-                return EnemySpriteFactory.Instance.CreateDownMovingVireSprite();
-            }
+            return EnemySpriteFactory.Instance.CreateDownMovingVireSprite();
         }
 
         private void SpawnVireKeese()

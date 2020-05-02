@@ -48,14 +48,17 @@
         {
         }
 
+        /// <inheritdoc></inheritdoc>
         public virtual void Pause()
         {
         }
 
+        /// <inheritdoc></inheritdoc>
         public virtual void Unpause()
         {
         }
 
+        /// <inheritdoc></inheritdoc>
         public virtual void Options()
         {
         }
@@ -70,6 +73,7 @@
         {
         }
 
+        /// <inheritdoc></inheritdoc>
         public virtual void CreditsScreen()
         {
         }

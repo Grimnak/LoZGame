@@ -6,7 +6,7 @@
     public class CommandToggleOption : ICommand
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CommandToggleOptions"/> class.
+        /// Initializes a new instance of the <see cref="CommandToggleOption"/> class.
         /// </summary>
         public CommandToggleOption()
         {

@@ -79,7 +79,7 @@
         {
             if (numBluePotions > 0 || LoZGame.Cheats)
             {
-                if (!LoZGame.Cheats)
+                if (!LoZGame.Cheats && (LoZGame.Instance.Players[0].Health.CurrentHealth != LoZGame.Instance.Players[0].Health.MaxHealth))
                 {
                     numBluePotions--;
                     numRedPotions++;
@@ -88,7 +88,7 @@
             }
             else if (numRedPotions > 0 || LoZGame.Cheats)
             {
-                if (!LoZGame.Cheats)
+                if (!LoZGame.Cheats && (LoZGame.Instance.Players[0].Health.CurrentHealth != LoZGame.Instance.Players[0].Health.MaxHealth))
                 {
                     numRedPotions--;
                 }

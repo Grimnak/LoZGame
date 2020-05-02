@@ -245,7 +245,7 @@
 
                 case 2:
                     selectionItem = CreateArrowSprite();
-                    if (LoZGame.Instance.Players[0].Inventory.HasBow && LoZGame.Instance.Players[0].Inventory.HasArrow && LoZGame.Instance.Players[0].Inventory.Rupees > 0)
+                    if (LoZGame.Instance.Players[0].Inventory.HasBow && (LoZGame.Instance.Players[0].Inventory.HasArrow || LoZGame.Instance.Players[0].Inventory.HasSilverArrow) && LoZGame.Instance.Players[0].Inventory.Rupees > 0)
                     {
                         selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
                     }

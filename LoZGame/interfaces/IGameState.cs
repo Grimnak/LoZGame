@@ -24,17 +24,17 @@
         void PlayGame();
 
         /// <summary>
-        /// Game state goes to Play.
+        /// Game state goes to the death state.
         /// </summary>
         void Death();
 
         /// <summary>
-        /// Game state goes to player death.
+        /// Game state goes to the options menu.
         /// </summary>
         void Options();
 
         /// <summary>
-        /// Game state goes to Play Flute.
+        /// Game state goes to playing the flute.
         /// </summary>
         void PlayFlute();
 
@@ -56,15 +56,16 @@
         /// <summary>
         /// Game state for room transitions.
         /// </summary>
+        /// <param name="direction">Indicates the direction that the player is trying to move relative to the current room.</param>
         void TransitionRoom(Physics.Direction direction);
 
         /// <summary>
-        /// Game state goes to win state.
+        /// Game state goes to paused.
         /// </summary>
         void Pause();
 
         /// <summary>
-        /// Game state goes to win state.
+        /// Game state goes to unpaused.
         /// </summary>
         void Unpause();
 
