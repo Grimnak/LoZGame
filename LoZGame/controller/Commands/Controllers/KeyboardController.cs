@@ -118,7 +118,7 @@ namespace LoZClone
             {
                 if (pressed.Contains(Keys.Enter) && oldState.IsKeyUp(Keys.Enter))
                 {
-                    allCommands.GetContine.Execute();
+                    allCommands.GetContinue.Execute();
                 }
             }
 

@@ -1,7 +1,7 @@
 ﻿namespace LoZClone
 {
     /// <summary>
-    /// Command that mutates various settings that entire game.
+    /// Command that mutates various settings that affect the entire game.
     /// </summary>
     public class CommandToggleOption : ICommand
     {

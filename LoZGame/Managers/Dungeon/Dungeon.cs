@@ -22,6 +22,7 @@
         private int dungeonNumber;
         private MiniMap miniMap;
         private Point dungeonBossLoc;
+        private bool defeatedBoss;
 
         public Point DungeonBossLocation => dungeonBossLoc;
 
@@ -30,6 +31,8 @@
         public MiniMap MiniMap => miniMap;
 
         public Color MapColor => mapColor;
+
+        public bool DefeatedBoss { get { return defeatedBoss; } set { defeatedBoss = value; } }
 
         public IPlayer Player
         {
@@ -127,6 +130,7 @@
             }
             currentX = startX;
             currentY = startY;
+            defeatedBoss = false;
 
             dungeonLayout = XMLHandler.Parse(currentDungeonFile);
 
@@ -145,7 +149,6 @@
             get { return currentY; }
             set { currentY = value; }
         }
-
 
         public int StartRoomX
         {
