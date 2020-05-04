@@ -79,16 +79,23 @@
                 player.Update();
             }
 
-            // Play the correct song based on where the players are located within the game.
-            if (LoZGame.Instance.Dungeon.CurrentRoomX == LoZGame.Instance.Dungeon.DungeonBossLocation.X && LoZGame.Instance.Dungeon.CurrentRoomY == LoZGame.Instance.Dungeon.DungeonBossLocation.Y)
+            // Play the correct song based on where the players are located within the game, when appropriate.
+            if (!LoZGame.Instance.Dungeon.DefeatedBoss)
             {
-                SoundFactory.Instance.StopDungeonSong();
-                SoundFactory.Instance.PlayBossSong();
+                if (LoZGame.Instance.Dungeon.CurrentRoomX == LoZGame.Instance.Dungeon.DungeonBossLocation.X && LoZGame.Instance.Dungeon.CurrentRoomY == LoZGame.Instance.Dungeon.DungeonBossLocation.Y)
+                {
+                    SoundFactory.Instance.StopDungeonSong();
+                    SoundFactory.Instance.PlayBossSong();
+                }
+                else
+                {
+                    SoundFactory.Instance.StopBossSong();
+                    SoundFactory.Instance.PlayDungeonSong();
+                }
             }
             else
             {
-                SoundFactory.Instance.StopBossSong();
-                SoundFactory.Instance.PlayDungeonSong();
+                SoundFactory.Instance.StopAll();
             }
 
             // Update all game objects and the collisions associated with them.

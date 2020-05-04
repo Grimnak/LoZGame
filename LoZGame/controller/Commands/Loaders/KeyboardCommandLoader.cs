@@ -69,7 +69,10 @@ namespace LoZClone
         /// </summary>
         public ICommand GetIdle => commandIdle;
 
-        public ICommand GetContine => commandContinue;
+        /// <summary>
+        /// Gets the continue command from the loader.
+        /// </summary>
+        public ICommand GetContinue => commandContinue;
 
         /// <summary>
         /// Gets the dictionary containing player commands from the loader.

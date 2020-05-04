@@ -47,6 +47,7 @@
                 if (this is Dragon || this is Dodongo || this is ManhandlaBody || this is GleeokBody || this is DigDogger || this is RedGohma)
                 {
                     SoundFactory.Instance.PlayBossDie();
+                    LoZGame.Instance.Dungeon.DefeatedBoss = true;
                     LoZGame.Instance.Drops.DropHeartContainer();
                 }
                 else
