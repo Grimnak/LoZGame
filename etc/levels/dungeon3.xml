@@ -754,7 +754,7 @@
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
       <items>
-        <item X="6" Y="1">WhiteSword</item>
+        <item X="6.75" Y="1.75">WhiteSword</item>
       </items>
       <rrow idx="0">
         <tile type="block" idx="0">basement_brick_tile</tile>
