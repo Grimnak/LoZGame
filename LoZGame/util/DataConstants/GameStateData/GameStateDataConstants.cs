@@ -18,7 +18,7 @@ namespace LoZClone
         private const int TitleDrawXValue = 284;
 
         private const int WinGameStMaxDungeons = 8;
-        private const int WinGameStMaxLO = 440;
+        private const int WinGameStMaxLO = 435;
         private const int WinStSpriteWidth = 236;
         private const int WinStSpriteHeight = 160;
 

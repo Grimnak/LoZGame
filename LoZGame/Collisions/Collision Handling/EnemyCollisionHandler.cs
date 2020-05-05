@@ -76,18 +76,6 @@
             }
         }
 
-        public void ReverseVelocity(CollisionDetection.CollisionSide collisionSide)
-        {
-            if (collisionSide == CollisionDetection.CollisionSide.Top || collisionSide == CollisionDetection.CollisionSide.Bottom)
-            {
-                enemy.Physics.MovementVelocity = new Vector2(enemy.Physics.MovementVelocity.X, enemy.Physics.MovementVelocity.Y * -1);
-            } 
-            else
-            {
-                enemy.Physics.MovementVelocity = new Vector2(enemy.Physics.MovementVelocity.X * -1, enemy.Physics.MovementVelocity.Y);
-            }
-        }
-
         public void OnCollisionResponse(int sourceWidth, int sourceHeight, CollisionDetection.CollisionSide collisionSide)
         {
             if (enemy is Keese || enemy is VireKeese)

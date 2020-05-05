@@ -23,7 +23,10 @@
             }
             else if (enemy is Likelike)
             {
-                player.State = new SwallowedState(player, (Likelike)enemy);
+                if (!(enemy.CurrentState is StunnedEnemyState))
+                {
+                    player.State = new SwallowedState(player, (Likelike)enemy);
+                }
             }
             else if (enemy is Bubble)
             {
