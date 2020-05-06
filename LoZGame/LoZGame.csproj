@@ -212,6 +212,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\VireStates\HiddenVireState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FollowFireSnakeState.cs" />
     <Compile Include="GameState\CreditsScreenState.cs" />
+    <Compile Include="GameState\HealthRestoreGameState.cs" />
     <Compile Include="GameState\GameStateEssentials.cs" />
     <Compile Include="GameState\OptionsState.cs" />
     <Compile Include="GameState\FluteGameState.cs" />

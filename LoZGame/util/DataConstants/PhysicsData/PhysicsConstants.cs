@@ -21,7 +21,7 @@ namespace LoZClone
         private const float defaultRotation = 0.0f;
         private const float defaultGravity = 0.15f;
         private const int zeroDepth = 0;
-        private const int doorWidth = 60;
+        private const int doorWidth = 80;
 
         public int ZeroVelocity => zeroVelocity;
 

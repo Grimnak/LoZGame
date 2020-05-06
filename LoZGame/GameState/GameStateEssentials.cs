@@ -34,6 +34,11 @@
         }
 
         /// <inheritdoc></inheritdoc>
+        public virtual void RestoreHealth()
+        {
+        }
+
+        /// <inheritdoc></inheritdoc>
         public virtual void TitleScreen()
         {
         }

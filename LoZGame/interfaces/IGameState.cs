@@ -39,6 +39,11 @@
         void PlayFlute();
 
         /// <summary>
+        /// Game state goes to restoring player health.
+        /// </summary>
+        void RestoreHealth();
+
+        /// <summary>
         /// Game state goes to access inventory.
         /// </summary>
         void OpenInventory();

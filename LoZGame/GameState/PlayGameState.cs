@@ -22,6 +22,12 @@
         }
 
         /// <inheritdoc></inheritdoc>
+        public override void RestoreHealth()
+        {
+            LoZGame.Instance.GameState = new HealthRestoreGameState();
+        }
+
+        /// <inheritdoc></inheritdoc>
         public override void OpenInventory()
         {
             LoZGame.Instance.GameState = new OpenInventoryState();
