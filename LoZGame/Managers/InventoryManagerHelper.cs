@@ -84,7 +84,7 @@
                     numBluePotions--;
                     numRedPotions++;
                 }
-                LoZGame.Instance.Players[0].Health.CurrentHealth = LoZGame.Instance.Players[0].Health.MaxHealth;
+                LoZGame.Instance.GameState = new HealthRestoreGameState();
             }
             else if (numRedPotions > 0 || LoZGame.Cheats)
             {
@@ -92,7 +92,7 @@
                 {
                     numRedPotions--;
                 }
-                LoZGame.Instance.Players[0].Health.CurrentHealth = LoZGame.Instance.Players[0].Health.MaxHealth;
+                LoZGame.Instance.GameState = new HealthRestoreGameState();
             }
         }
 

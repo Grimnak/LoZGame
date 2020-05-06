@@ -3,15 +3,21 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class FluteGameState : GameStateEssentials, IGameState
+    public class HealthRestoreGameState : GameStateEssentials, IGameState
     {
         private int lifeTime;
-        private readonly int flutePlayTime = 3 * LoZGame.Instance.UpdateSpeed; // should be duration of flute song
+        private readonly int healthRestoreTime = ((LoZGame.Instance.Players[0].Health.MaxHealth - LoZGame.Instance.Players[0].Health.CurrentHealth) / 4) * (LoZGame.Instance.UpdateSpeed / 2); // should be dependent on missing player health
 
-        public FluteGameState()
+        public HealthRestoreGameState()
         {
             lifeTime = 0;
-            SoundFactory.Instance.PlayFlute();
+
+            // Account for the fact that health doesn't have to be lost in whole-heart intervals.
+            if ((LoZGame.Instance.Players[0].Health.MaxHealth - LoZGame.Instance.Players[0].Health.CurrentHealth) % 4 != 0)
+            {
+                healthRestoreTime += LoZGame.Instance.UpdateSpeed / 2;
+            }
+
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Physics.KnockbackVelocity = Vector2.Zero;
@@ -28,20 +34,25 @@
         public override void Update()
         {
             lifeTime++;
-            foreach (IPlayer player in LoZGame.Instance.Players)
+            if (lifeTime > healthRestoreTime)
             {
-                player.Update();
-            }
-            if (lifeTime >= flutePlayTime)
-            {
-                foreach (IEnemy enemy in LoZGame.Instance.GameObjects.Enemies.EnemyList)
-                {
-                    if (enemy.AI == EnemyEssentials.EnemyAI.LargeDigDogger)
-                    {
-                        enemy.UpdateChild();
-                    }
-                }
                 PlayGame();
+            }
+            else
+            {
+                if (lifeTime % (LoZGame.Instance.UpdateSpeed / 2) == 0)
+                {
+                    // Restore one full heart per tick unless there is less than one heart still missing, in which case just top the player off.
+                    if (LoZGame.Instance.Players[0].Health.MaxHealth - LoZGame.Instance.Players[0].Health.CurrentHealth < 4)
+                    {
+                        LoZGame.Instance.Players[0].Health.CurrentHealth = LoZGame.Instance.Players[0].Health.MaxHealth;
+                    }
+                    else
+                    {
+                        LoZGame.Instance.Players[0].Health.CurrentHealth += 4;
+                    }
+                    SoundFactory.Instance.PlayGetHeartOrKey();
+                }
             }
         }
 
