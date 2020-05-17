@@ -7,7 +7,6 @@
     {
         public Bubble(Vector2 location)
         {
-            IsTransparent = true;
             RandomStateGenerator = new RandomStateGenerator(this);
             States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.BubbleStateList);
             Health = new HealthManager(GameData.Instance.EnemyHealthConstants.BubbleHealth);
@@ -18,6 +17,7 @@
             EnemyCollisionHandler = new EnemyCollisionHandler(this);
             Expired = false;
             IsKillable = false;
+            IsTransparent = true;
             Damage = GameData.Instance.EnemyDamageConstants.BubbleDamage;
             DamageTimer = 0;
             MoveSpeed = GameData.Instance.EnemySpeedConstants.BubbleSpeed;

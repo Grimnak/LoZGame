@@ -143,6 +143,7 @@
         {
             if (LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer != null)
             {
+                LoZGame.Instance.Dungeon.DefeatedBoss = true;
                 LoZGame.Instance.GameObjects.Items.Add(LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer.Item1);
                 if (!LoZGame.Instance.Dungeon.CurrentRoom.DroppedHeartContainer.Item2)
                 {

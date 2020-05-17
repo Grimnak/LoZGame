@@ -35,7 +35,7 @@
     </room>
     <room exists="True" oldman="False" basement="False" idx="1">
       <items>
-        <item X="6" Y="3">Rupee</item>
+        <item X="6" Y="3">YellowRupee</item>
       </items>
       <enemies>
         <enemy X="6" Y="2">RedGoriya</enemy>
@@ -77,6 +77,11 @@
         <enemy X="4" Y="3">BlueGoriya</enemy>
         <enemy X="5" Y="3">BlueGoriya</enemy>
         <enemy X="3" Y="4">BlueGoriya</enemy>
+        <enemy X="0" Y="0">FireBlockEnemy</enemy>
+        
+        <enemy X="11" Y="0">FireBlockEnemy</enemy>
+        <enemy X="0" Y="6">FireBlockEnemy</enemy>
+        <enemy X="11" Y="6">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="W">special</door>
@@ -218,6 +223,8 @@
         <enemy X="5" Y="0">Dodongo</enemy>
         <enemy X="4" Y="2">Dodongo</enemy>
         <enemy X="5" Y="4">Dodongo</enemy>
+        <enemy X="4" Y="3">FireBlockEnemy</enemy>
+        <enemy X="7" Y="3">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="E">hidden</door>
@@ -252,6 +259,7 @@
         <enemy X="0" Y="6">Bubble</enemy>
       </enemies>
       <doors>
+        <door loc="W">hidden</door>
       </doors>
       <rrow idx="0">
         <tile type="stairs" idx="11" room="1,2" loc="5,3" hidden="True">stairs</tile>
@@ -443,7 +451,8 @@
         <tile type="block" idx="7">movable_square</tile>
       </rrow>
       <rrow idx="3">
-        <tile type="movable"  idx="4" dir="E,W">orange_movable_square</tile>
+        <tile type="movable"  idx="4" dir="W">orange_movable_square</tile>
+        <tile type="stairs" idx="6" room="2,4" loc="3,0" hidden="False">stairs</tile>
         <tile type="block" idx="8">movable_square</tile>
       </rrow>
       <rrow idx="4">
@@ -491,6 +500,10 @@
     <room exists="True" oldman="False" basement="False" idx="4">
       <enemies>
         <enemy X="8" Y="2">DigDogger</enemy>
+        <enemy X="0" Y="0">FireBlockEnemy</enemy>
+        <enemy X="11" Y="0">FireBlockEnemy</enemy>
+        <enemy X="0" Y="6">FireBlockEnemy</enemy>
+        <enemy X="11" Y="6">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="N">special</door>
@@ -687,7 +700,7 @@
   <drow idx="3">
     <room exists="True" oldman="False" basement="False" idx="0">
       <items>
-        <item X="11" Y="0">Rupee</item>
+        <item X="11" Y="0">YellowRupee</item>
       </items>
       <enemies>
         <enemy X="2" Y="2">BlueGoriya</enemy>
@@ -737,6 +750,10 @@
     <room exists="True" oldman="False" basement="False" idx="1">
       <enemies>
         <enemy X="8" Y="2">DigDogger</enemy>
+        <enemy X="0" Y="0">FireBlockEnemy</enemy>
+        <enemy X="11" Y="0">FireBlockEnemy</enemy>
+        <enemy X="0" Y="6">FireBlockEnemy</enemy>
+        <enemy X="11" Y="6">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="E">hidden</door>
@@ -949,7 +966,158 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="False" oldman="False" basement="False" idx="2">
+    <room exists="True" oldman="False" basement="True" idx="2">
+      <border>black</border>
+      <enemies>
+        <enemy X="10" Y="3">Keese</enemy>
+        <enemy X="11" Y="3">Keese</enemy>
+        <enemy X="9" Y="6">Keese</enemy>
+        <enemy X="5" Y="6">Keese</enemy>
+      </enemies>
+      <items>
+      </items>
+      <rrow idx="-2.5">
+        <tile type="stairs" idx="2" room="2,1" loc="5,3" hidden="False">stairs</tile>
+      </rrow>
+      <rrow idx="0">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="walkable" idx="11">ladder_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="walkable" idx="11">ladder_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="7">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="walkable" idx="11">ladder_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="8">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="block" idx="3">basement_brick_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="9">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="block" idx="3">basement_brick_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
     </room>
     <room exists="False" oldman="False" basement="False" idx="3">
     </room>
@@ -961,7 +1129,7 @@
   <drow idx="5">
     <room exists="True" oldman="False" basement="False" idx="0">
       <items>
-        <item X="6" Y="3">Rupee</item>
+        <item X="6" Y="3">YellowRupee</item>
       </items>
       <enemies>
         <enemy X="7" Y="0">Dodongo</enemy>
@@ -1156,6 +1324,8 @@
         <enemy X="4" Y="1">BlueGoriya</enemy>
         <enemy X="7" Y="2">BlueGoriya</enemy>
         <enemy X="3" Y="4">BlueGoriya</enemy>
+        <enemy X="4" Y="3">FireBlockEnemy</enemy>
+        <enemy X="7" Y="3">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="N">hidden</door>
@@ -1275,6 +1445,10 @@
       </items>
       <enemies>
         <enemy X="8" Y="2">DigDogger</enemy>
+        <enemy X="0" Y="0">FireBlockEnemy</enemy>
+        <enemy X="11" Y="0">FireBlockEnemy</enemy>
+        <enemy X="0" Y="6">FireBlockEnemy</enemy>
+        <enemy X="11" Y="6">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="E">unlocked</door>
@@ -1345,6 +1519,8 @@
         <item X="6" Y="3">Key</item>
       </items>
       <enemies>
+        <enemy X="4" Y="3">FireBlockEnemy</enemy>
+        <enemy X="7" Y="3">FireBlockEnemy</enemy>
         <enemy X="0" Y="2">Rope</enemy>
         <enemy X="1" Y="4">Rope</enemy>
         <enemy X="4" Y="4">Rope</enemy>

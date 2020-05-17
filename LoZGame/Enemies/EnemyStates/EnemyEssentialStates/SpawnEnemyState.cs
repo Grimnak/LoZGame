@@ -11,12 +11,17 @@
         public SpawnEnemyState(IEnemy enemy)
         {
             Enemy = enemy;
-            Enemy.IsTransparent = false;
             Sprite = EnemySpriteFactory.Instance.CreateEnemySpawn();
             Enemy.CurrentState = this;
             Enemy.Physics.MovementVelocity = Vector2.Zero;
             spawnTimerMax = GameData.Instance.EnemyMiscConstants.SpawnTimerMaximum;
             Enemy.IsSpawning = true;
+
+            // In order to make Vires hittable again after they hid from the player, allow them to be hittable by projectiles every time they spawn.
+            if (enemy is Vire)
+            {
+                Enemy.IsTransparent = false;
+            }
         }
 
         public override void Update()

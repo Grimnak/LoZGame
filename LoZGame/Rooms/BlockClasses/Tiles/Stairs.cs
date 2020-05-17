@@ -81,6 +81,6 @@
             isHidden = false;
         }
 
-        public bool IsHidden { get { return isHidden; }  set { isHidden = value; } }
+        public bool IsHidden { get { return isHidden; } set { isHidden = value; } }
     }
 }

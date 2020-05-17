@@ -28,23 +28,12 @@
                 currentY--;
                 LoadNewRoom();
 
-                // Player moved to bottom side of new room (next to door, next to staircase in basement case).
-                if (currentX == 1 && currentY == 0)
-                {
-                    player.Physics.Bounds = new Rectangle(
-                        BlockSpriteFactory.Instance.HorizontalOffset + ((int)BlockSpriteFactory.Instance.TileWidth * 5),
-                        BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 3),
-                        player.Physics.Bounds.Width,
-                        player.Physics.Bounds.Height);
-                }
-                else
-                {
-                    player.Physics.Bounds = new Rectangle(
-                        (int)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                        BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 6),
-                        player.Physics.Bounds.Width,
-                        player.Physics.Bounds.Height);
-                }
+                // Player moved to bottom side of new room.
+                player.Physics.Bounds = new Rectangle(
+                    (int)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                    BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 6),
+                    player.Physics.Bounds.Width,
+                    player.Physics.Bounds.Height);
                 foreach (IEnemy enemy in dungeonLayout[currentY][currentX].Enemies)
                 {
                     enemy.Physics.Bounds = new Rectangle(enemy.Physics.Bounds.Location, enemy.Physics.Bounds.Size);
@@ -54,7 +43,6 @@
                         enemy.Physics.Bounds = new Rectangle(enemy.SpawnPoint, enemy.Physics.Bounds.Size);
                     }
                     enemy.Physics.SetLocation();
-                    //LoZGame.Instance.GameObjects.Enemies.Add(enemy);
                 }
                 player.Physics.SetLocation();
                 player.Physics.CurrentDirection = Physics.Direction.North;
@@ -150,7 +138,7 @@
             LoZGame.Instance.GameObjects.LoadNewRoom();
         }
 
-        public void LoadNewRoom(GameObjectManager manager,  Point location, Point offset)
+        public void LoadNewRoom(GameObjectManager manager, Point location, Point offset)
         {
             foreach (IBlock block in dungeonLayout[location.Y][location.X].Tiles)
             {

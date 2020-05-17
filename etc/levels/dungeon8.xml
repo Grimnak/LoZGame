@@ -280,6 +280,9 @@
       </enemies>
       <items>
       </items>
+      <rrow idx="-2.5">
+        <tile type="stairs" idx="2" room="4,1" loc="5,3" hidden="False">stairs</tile>
+      </rrow>
       <rrow idx="0">
         <tile type="block" idx="0">basement_brick_tile</tile>
         <tile type="block" idx="1">basement_brick_tile</tile>
@@ -683,7 +686,7 @@
       </rrow>
       <rrow idx="2">
         <tile type="block" idx="1">movable_square</tile>
-		<tile type="stairs" idx="7" room="4,3" loc="10,3" hidden="False">stairs</tile>
+		    <tile type="stairs" idx="7" room="4,3" loc="10,3" hidden="False">stairs</tile>
         <tile type="block" idx="8">movable_square</tile>
         <tile type="block" idx="10">movable_square</tile>
       </rrow>
@@ -1153,6 +1156,9 @@
       </enemies>
       <items>
       </items>
+      <rrow idx="-2.5">
+        <tile type="stairs" idx="2" room="1,7" loc="5,3" hidden="False">stairs</tile>
+      </rrow>
       <rrow idx="0">
         <tile type="block" idx="0">basement_brick_tile</tile>
         <tile type="block" idx="1">basement_brick_tile</tile>

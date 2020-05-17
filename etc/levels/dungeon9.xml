@@ -1,0 +1,3050 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dungeon xmlns="LEVEL-9">
+  <drow idx="0">
+    <room exists="True" oldman="False" basement="True" idx="0">
+      <border>black</border>
+      <enemies>
+        <enemy X="10" Y="3">Keese</enemy>
+        <enemy X="11" Y="3">Keese</enemy>
+        <enemy X="9" Y="6">Keese</enemy>
+        <enemy X="5" Y="6">Keese</enemy>
+      </enemies>
+      <items>
+      </items>
+      <rrow idx="-2.5">
+        <tile type="stairs" idx="2" room="0,1" loc="11,1" hidden="False">stairs</tile>
+      </rrow>
+      <rrow idx="0">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="walkable" idx="11">ladder_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="walkable" idx="11">ladder_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="7">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="walkable" idx="11">ladder_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="8">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="block" idx="3">basement_brick_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="9">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="block" idx="3">basement_brick_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="1">
+      <items>
+      </items>
+      <enemies>
+        <enemy X="3" Y="0">Bubble</enemy>
+        <enemy X="0" Y="4">Bubble</enemy>
+        <enemy X="7" Y="4">Bubble</enemy>
+        <enemy X="1" Y="1">Keese</enemy>
+        <enemy X="3" Y="2">Keese</enemy>
+        <enemy X="6" Y="4">Keese</enemy>
+        <enemy X="6" Y="1">Zol</enemy>
+        <enemy X="7" Y="2">Zol</enemy>
+      </enemies>
+      <doors>
+        <door loc="E">locked</door>
+        <door loc="S">special</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="crossable" idx="8">lava5</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="crossable" idx="8">lava5</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="crossable" idx="8">lava5</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="crossable" idx="8">lava5</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="crossable" idx="8">lava5</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="crossable" idx="8">lava5</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="crossable" idx="8">lava5</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="True" basement="False" idx="2">
+      <text>EYES OF SKULL HAS A SECRET.</text>
+      <items>
+      </items>
+      <enemies>
+        <enemy X="5.5" Y="2">OldMan</enemy>
+      </enemies>
+      <doors>
+        <door loc="W">locked</door>
+        <door loc="S">unlocked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="3">fire_gap_tile</tile>
+        <tile type="block" idx="8">fire_gap_tile</tile>
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="3">
+      <enemies>
+        <enemy X="1" Y="4">Bubble</enemy>
+        <enemy X="2" Y="1">Bubble</enemy>
+        <enemy X="3" Y="1">Zol</enemy>
+        <enemy X="1.5" Y="5">Zol</enemy>
+        <enemy X="3" Y="3">LikeLike</enemy>
+        <enemy X="8" Y="0.5">LikeLike</enemy>
+      </enemies>
+      <doors>
+        <door loc="E">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="movable"  idx="4" dir="W">orange_movable_square</tile>
+        <tile type="stairs" idx="6" room="2,5" loc="10,3" hidden="False">stairs</tile>
+        <tile type="block" idx="8">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="4">
+      <enemies>
+        <enemy X="0" Y="0">SpikeCross</enemy>
+        <enemy X="11" Y="0">SpikeCross</enemy>
+        <enemy X="0" Y="6">SpikeCross</enemy>
+        <enemy X="11" Y="6">SpikeCross</enemy>
+        <enemy X="7" Y="3">BlueWizzrobe</enemy>
+        <enemy X="5" Y="6">BlueWizzrobe</enemy>
+        <enemy X="10" Y="5">RedWizzrobe</enemy>
+        <enemy X="10" Y="6">RedWizzrobe</enemy>
+      </enemies>
+      <doors>
+        <door loc="W">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="movable"  idx="4" dir="W">orange_movable_square</tile>
+        <tile type="stairs" idx="6" room="0,3" loc="6,1" hidden="False">stairs</tile>
+        <tile type="block" idx="8">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="5">
+      <enemies>
+        <enemy X="6" Y="0">BlueWizzrobe</enemy>
+        <enemy X="7" Y="0">BlueWizzrobe</enemy>
+        <enemy X="9" Y="3">BlueWizzrobe</enemy>
+        <enemy X="2" Y="5">RedWizzrobe</enemy>
+        <enemy X="6" Y="2">RedWizzrobe</enemy>
+      </enemies>
+      <doors>
+        <door loc="E">hidden</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="stairs" idx="11" room="3,6" loc="10,3" hidden="True">stairs</tile>
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+        <tile type="movable" idx="4" dir="E,W">orange_movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="True" basement="False" idx="6">
+      <text>GO TO THE NEXT ROOM.</text>
+      <items>
+      </items>
+      <enemies>
+        <enemy X="5.5" Y="2">OldMan</enemy>
+      </enemies>
+      <doors>
+        <door loc="W">hidden</door>
+        <door loc="S">locked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="3">fire_gap_tile</tile>
+        <tile type="block" idx="8">fire_gap_tile</tile>
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="7">
+      <enemies>
+        <enemy X="4" Y="0">BlueWizzrobe</enemy>
+        <enemy X="4" Y="1.5">BlueWizzrobe</enemy>
+        <enemy X="3" Y="3">BlueWizzrobe</enemy>
+        <enemy X="0" Y="0">RedWizzrobe</enemy>
+        <enemy X="4" Y="4">RedWizzrobe</enemy>
+        <enemy X="11" Y="4">Bubble</enemy>
+        <enemy X="11" Y="5">Bubble</enemy>
+        <enemy X="3" Y="0">Bubble</enemy>
+      </enemies>
+      <doors>
+        <door loc="S">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="movable"  idx="4" dir="W">orange_movable_square</tile>
+        <tile type="stairs" idx="6" room="7,6" loc="3,0" hidden="False">stairs</tile>
+        <tile type="block" idx="8">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+  </drow>
+  <drow idx="1">
+    <room exists="True" oldman="False" basement="False" idx="0">
+      <enemies>
+        <enemy X="6" Y="0">BlueWizzrobe</enemy>
+        <enemy X="6" Y="2">BlueWizzrobe</enemy>
+        <enemy X="4" Y="3">BlueWizzrobe</enemy>
+        <enemy X="5" Y="2">RedWizzrobe</enemy>
+        <enemy X="0" Y="5">RedWizzrobe</enemy>
+        <enemy X="2" Y="0">Bubble</enemy>
+        <enemy X="1" Y="4">Bubble</enemy>
+        <enemy X="5" Y="4">Bubble</enemy>
+      </enemies>
+      <doors>
+        <door loc="S">hidden</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="stairs" idx="11" room="0,0" loc="3,0" hidden="True">stairs</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="4">movable_square</tile>
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="6">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="movable,puzzle" dir="N,S" idx="10">orange_movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="4">movable_square</tile>
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="6">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="1">
+      <enemies>
+        <enemy X="3" Y="3">BlueSnake</enemy>
+        <enemy X="9" Y="5">BlueSnake</enemy>
+      </enemies>
+      <items>
+        <item X="6" Y="3">Bomb</item>
+      </items>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="S">special</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="True" basement="False" idx="2">
+      <items>
+        <item X="6" Y="3">YellowRupee</item>
+      </items>
+      <enemies>
+        <enemy X="3" Y="3">FireSnake</enemy>
+        <enemy X="9" Y="5">FireSnake</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">special</door>
+        <door loc="E">locked</door>
+        <door loc="S">locked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="3">
+      <enemies>
+        <enemy X="8" Y="0">Bubble</enemy>
+        <enemy X="11" Y="1.5">Bubble</enemy>
+        <enemy X="5" Y="0">LikeLike</enemy>
+        <enemy X="5" Y="3">LikeLike</enemy>
+        <enemy X="4" Y="0">Zol</enemy>
+        <enemy X="2" Y="1">Zol</enemy>
+      </enemies>
+      <doors>
+        <door loc="W">locked</door>
+        <door loc="S">locked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="4">
+      <enemies>
+        <enemy X="5" Y="4">LikeLike</enemy>
+        <enemy X="8" Y="4">LikeLike</enemy>
+        <enemy X="1" Y="6">LikeLike</enemy>
+        <enemy X="11" Y="6">LikeLike</enemy>
+      </enemies>
+      <doors>
+        <door loc="E">locked</door>
+        <door loc="S">unlocked</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="4">movable_square</tile>
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="6">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="1">movable_square</tile>
+		    <tile type="stairs" idx="7" room="5,5" loc="5,3" hidden="False">stairs</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="6">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="4">movable_square</tile>
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="6">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="5">
+      <items>
+        <item X="6" Y="3">YellowRupee</item>
+      </items>
+      <enemies>
+        <enemy X="0" Y="0">BlueWizzrobe</enemy>
+        <enemy X="9" Y="0">BlueWizzrobe</enemy>
+        <enemy X="0" Y="6">BlueWizzrobe</enemy>
+      </enemies>
+      <doors>
+        <door loc="E">unlocked</door>
+        <door loc="W">locked</door>
+        <door loc="S">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="6">
+      <items>
+        <item X="6" Y="3">Bomb</item>
+      </items>
+      <enemies>
+        <enemy X="3" Y="1">Patra</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">locked</door>
+        <door loc="W">unlocked</door>
+        <door loc="S">unlocked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="4">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="7">
+      <enemies>
+        <enemy X="4" Y="0">BlueWizzrobe</enemy>
+        <enemy X="7" Y="4">BlueWizzrobe</enemy>
+        <enemy X="5" Y="1">RedWizzrobe</enemy>
+        <enemy X="5" Y="4">RedWizzrobe</enemy>
+        <enemy X="8" Y="0">LikeLike</enemy>
+        <enemy X="7" Y="2">LikeLike</enemy>
+        <enemy X="3" Y="4">LikeLike</enemy>
+        <enemy X="8" Y="2">Bubble</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">hidden</door>
+        <door loc="S">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+  </drow>
+  <drow idx="2">
+    <room exists="True" oldman="False" basement="False" idx="0">
+      <enemies>
+        <enemy X="0" Y="1">BlueWizzrobe</enemy>
+        <enemy X="0" Y="3">BlueWizzrobe</enemy>
+        <enemy X="4" Y="2">BlueWizzrobe</enemy>
+        <enemy X="10" Y="0">RedWizzrobe</enemy>
+        <enemy X="2" Y="2">RedWizzrobe</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="movable"  idx="4" dir="W">orange_movable_square</tile>
+        <tile type="stairs" idx="6" room="1,6" loc="5,3" hidden="False">stairs</tile>
+        <tile type="block" idx="8">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="1">
+      <enemies>
+        <enemy X="7" Y="3">Patra</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="E">hidden</door>
+        <door loc="S">special</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="2">
+      <enemies>
+        <enemy X="0" Y="1">Zol</enemy>
+        <enemy X="1" Y="5">Zol</enemy>
+        <enemy X="0" Y="4">LikeLike</enemy>
+        <enemy X="4" Y="2">LikeLike</enemy>
+        <enemy X="7" Y="1">Bubble</enemy>
+        <enemy X="6" Y="5">Bubble</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">locked</door>
+        <door loc="W">hidden</door>
+        <door loc="E">locked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="3">
+      <items>
+        <item X="11" Y="0">Bomb</item>
+      </items>
+      <enemies>
+        <enemy X="0" Y="0">TealGel</enemy>
+        <enemy X="8" Y="0">TealGel</enemy>
+        <enemy X="0" Y="6">TealGel</enemy>
+        <enemy X="6" Y="3">TealGel</enemy>
+        <enemy X="6" Y="4">TealGel</enemy>
+        <enemy X="4" Y="4">TealGel</enemy>
+        <enemy X="7" Y="4">TealGel</enemy>
+        <enemy X="11" Y="5">TealGel</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">locked</door>
+        <door loc="E">hidden</door>
+        <door loc="S">locked</door>
+        <door loc="W">locked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="4">
+      <enemies>
+        <enemy X="1" Y="1">Vire</enemy>
+        <enemy X="1" Y="4">Vire</enemy>
+        <enemy X="5" Y="1">Vire</enemy>
+        <enemy X="8" Y="1">Vire</enemy>
+        <enemy X="10" Y="3">Vire</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="S">unlocked</door>
+        <door loc="W">hidden</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="5">
+      <items>
+        <item X="6" Y="3">Bomb</item>
+      </items>
+      <enemies>
+        <enemy X="8" Y="5">Zol</enemy>
+        <enemy X="10" Y="4">Zol</enemy>
+        <enemy X="3" Y="1">LikeLike</enemy>
+        <enemy X="3" Y="4">LikeLike</enemy>
+        <enemy X="5" Y="3">Bubble</enemy>
+        <enemy X="11" Y="1">Bubble</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">hidden</door>
+        <door loc="E">locked</door>
+        <door loc="S">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="6">
+      <items>
+        <item X="6" Y="3">YellowRupee</item>
+      </items>
+      <enemies>
+        <enemy X="1" Y="6">TealGel</enemy>
+        <enemy X="3" Y="3">TealGel</enemy>
+        <enemy X="3" Y="5">TealGel</enemy>
+        <enemy X="4" Y="3">TealGel</enemy>
+        <enemy X="5" Y="4">TealGel</enemy>
+        <enemy X="7" Y="2">TealGel</enemy>
+        <enemy X="8" Y="4">TealGel</enemy>
+        <enemy X="9" Y="6">TealGel</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="E">hidden</door>
+        <door loc="S">locked</door>
+        <door loc="W">locked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="7">
+      <items>
+        <item X="6" Y="3">Map</item>
+      </items>
+      <enemies>
+        <enemy X="5" Y="3">Patra</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">hidden</door>
+        <door loc="S">hidden</door>
+        <door loc="W">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="4">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+  </drow>
+  <drow idx="3">
+    <room exists="True" oldman="False" basement="False" idx="0">
+      <enemies>
+        <enemy X="0" Y="0">SpikeCross</enemy>
+        <enemy X="11" Y="0">SpikeCross</enemy>
+        <enemy X="0" Y="6">SpikeCross</enemy>
+        <enemy X="11" Y="6">SpikeCross</enemy>
+        <enemy X="4" Y="1">BlueWizzrobe</enemy>
+        <enemy X="5" Y="2">BlueWizzrobe</enemy>
+        <enemy X="4" Y="4">RedWizzrobe</enemy>
+        <enemy X="6" Y="4">RedWizzrobe</enemy>
+      </enemies>
+      <doors>
+        <door loc="E">hidden</door>
+        <door loc="S">locked</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="stairs" idx="6" room="4,0" loc="5,3" hidden="True">stairs</tile>
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+        <tile type="movable" idx="4" dir="E,W">orange_movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="1">
+      <enemies>
+        <enemy X="3" Y="6">Bubble</enemy>
+        <enemy X="9" Y="1">BlueWizzrobe</enemy>
+        <enemy X="7" Y="4">BlueWizzrobe</enemy>
+        <enemy X="5" Y="2">RedWizzrobe</enemy>
+        <enemy X="7" Y="5">RedWizzrobe</enemy>
+        <enemy X="1" Y="1">LikeLike</enemy>
+        <enemy X="0" Y="8">LikeLike</enemy>
+        <enemy X="2" Y="4.5">LikeLike</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="W">hidden</door>
+        <door loc="S">special</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="2">
+      <items>
+        <item X="5.5" Y="2">TriForce</item>
+      </items>
+      <doors>
+        <door loc="S">special</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">movable_square</tile>
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="4">movable_square</tile>
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="6">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>    
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">movable_square</tile>
+        <tile type="block" idx="4">movable_square</tile>
+        <tile type="walkable" idx="5">gap_tile</tile>
+        <tile type="walkable" idx="6">gap_tile</tile>
+        <tile type="block" idx="7">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="0">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="walkable" idx="4">gap_tile</tile>
+        <tile type="walkable" idx="5">gap_tile</tile>
+        <tile type="walkable" idx="6">gap_tile</tile>
+        <tile type="walkable" idx="7">gap_tile</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="0">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="walkable" idx="4">gap_tile</tile>
+        <tile type="walkable" idx="5">gap_tile</tile>
+        <tile type="walkable" idx="6">gap_tile</tile>
+        <tile type="walkable" idx="7">gap_tile</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="0">movable_square</tile>
+        <tile type="block" idx="4">red_statue_right3</tile>
+        <tile type="block" idx="7">red_statue_left3</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="0">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="5.5">
+        <tile type="block" idx="4">fire_gap_tile</tile>
+        <tile type="block" idx="7">fire_gap_tile</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="block" idx="0">movable_square</tile>
+        <tile type="block" idx="2">red_statue_right3</tile>
+        <tile type="block" idx="9">red_statue_left3</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="3">
+      <enemies>
+        <enemy X="10" Y="0">TealGel</enemy>
+        <enemy X="5" Y="2">TealGel</enemy>
+        <enemy X="5" Y="4">TealGel</enemy>
+        <enemy X="6" Y="4">TealGel</enemy>
+        <enemy X="1" Y="4">TealGel</enemy>
+        <enemy X="1" Y="3">TealGel</enemy>
+        <enemy X="0" Y="3">TealGel</enemy>
+        <enemy X="0" Y="6">TealGel</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">locked</door>
+        <door loc="E">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="4">
+      <items>
+        <item X="6" Y="3">YellowRupee</item>
+      </items>
+      <enemies>
+        <enemy X="3" Y="2">Keese</enemy>
+        <enemy X="3" Y="6">Keese</enemy>
+        <enemy X="4" Y="4">Keese</enemy>
+        <enemy X="5" Y="3">Keese</enemy>
+        <enemy X="8" Y="2">Keese</enemy>
+        <enemy X="8" Y="6">Keese</enemy>
+        <enemy X="10" Y="1">Keese</enemy>
+        <enemy X="10" Y="3">Keese</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="W">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="True" basement="False" idx="5">
+      <items>
+        <item X="6" Y="3">Compass</item>
+      </items>
+      <enemies>
+        <enemy X="8" Y="1">BlueWizzrobe</enemy>
+        <enemy X="10" Y="2.5">BlueWizzrobe</enemy>
+        <enemy X="11" Y="2.5">BlueWizzrobe</enemy>
+        <enemy X="2" Y="0">RedWizzrobe</enemy>
+        <enemy X="7" Y="3">RedWizzrobe</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="6">
+      <enemies>
+        <enemy X="2" Y="0">Bubble</enemy>
+        <enemy X="3" Y="2">Bubble</enemy>
+        <enemy X="0" Y="6">Bubble</enemy>
+        <enemy X="9" Y="0">Keese</enemy>
+        <enemy X="5" Y="3">Keese</enemy>
+        <enemy X="4" Y="4">Keese</enemy>
+        <enemy X="4" Y="2">Zol</enemy>
+        <enemy X="2" Y="3">Zol</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">locked</door>
+        <door loc="E">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="7">
+      <items>
+        <item X="6" Y="3">Bomb</item>
+      </items>
+      <enemies>
+        <enemy X="4" Y="3">FireBlockEnemy</enemy>
+        <enemy X="7" Y="3">FireBlockEnemy</enemy>
+        <enemy X="3" Y="4">Vire</enemy>
+        <enemy X="5" Y="2">Vire</enemy>
+        <enemy X="6.5" Y="5">Vire</enemy>
+        <enemy X="8" Y="1.5">Vire</enemy>
+        <enemy X="10.5" Y="0">Vire</enemy>
+        <enemy X="11" Y="4.5">Vire</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">hidden</door>
+        <door loc="S">unlocked</door>
+        <door loc="W">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="4">red_statue_right3</tile>
+        <tile type="block" idx="7">red_statue_left3</tile>
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+  </drow>
+  <drow idx="4">
+    <room exists="True" oldman="False" basement="False" idx="0">
+      <items>
+        <item X="6" Y="3">YellowRupee</item>
+      </items>
+      <enemies>
+        <enemy X="2" Y="3.5">BlueWizzrobe</enemy>
+        <enemy X="9" Y="3.5">BlueWizzrobe</enemy>
+        <enemy X="5" Y="2">RedWizzrobe</enemy>
+        <enemy X="5" Y="6">RedWizzrobe</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">locked</door>
+        <door loc="S">locked</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="1">
+      <enemies>
+        <enemy X="0" Y="0">SpikeCross</enemy>
+        <enemy X="11" Y="0">SpikeCross</enemy>
+        <enemy X="0" Y="6">SpikeCross</enemy>
+        <enemy X="11" Y="6">SpikeCross</enemy>
+        <enemy X="3" Y="1">LikeLike</enemy>
+        <enemy X="5" Y="4">LikeLike</enemy>
+        <enemy X="8" Y="1">LikeLike</enemy>
+        <enemy X="9" Y="1">LikeLike</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="S">special</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="2">
+      <enemies>
+        <enemy X="0" Y="0">FireBlockEnemy</enemy>
+        <enemy X="11" Y="0">FireBlockEnemy</enemy>
+        <enemy X="0" Y="6">FireBlockEnemy</enemy>
+        <enemy X="11" Y="6">FireBlockEnemy</enemy>
+        <enemy X="5" Y="0">Ganon</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">special</door>
+        <door loc="S">special</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="0">red_statue_right3</tile>
+        <tile type="walkable" idx="1">gap_tile</tile>
+        <tile type="walkable" idx="2">gap_tile</tile>
+        <tile type="walkable" idx="9">gap_tile</tile>
+        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="block" idx="11">red_statue_left3</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="walkable" idx="0">gap_tile</tile>
+        <tile type="walkable" idx="1">gap_tile</tile>
+        <tile type="walkable" idx="4">gap_tile</tile>
+        <tile type="walkable" idx="7">gap_tile</tile>
+        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="walkable" idx="11">gap_tile</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="walkable" idx="0">gap_tile</tile>
+        <tile type="walkable" idx="1">gap_tile</tile>
+        <tile type="walkable" idx="3">gap_tile</tile>
+        <tile type="walkable" idx="4">gap_tile</tile>
+        <tile type="walkable" idx="7">gap_tile</tile>
+        <tile type="walkable" idx="8">gap_tile</tile>
+        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="walkable" idx="11">gap_tile</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="walkable" idx="0">gap_tile</tile>
+        <tile type="walkable" idx="1">gap_tile</tile>
+        <tile type="walkable" idx="3">gap_tile</tile>
+        <tile type="walkable" idx="4">gap_tile</tile>
+        <tile type="walkable" idx="7">gap_tile</tile>
+        <tile type="walkable" idx="8">gap_tile</tile>
+        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="walkable" idx="11">gap_tile</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="walkable" idx="0">gap_tile</tile>
+        <tile type="walkable" idx="1">gap_tile</tile>
+        <tile type="walkable" idx="5">gap_tile</tile>
+        <tile type="walkable" idx="6">gap_tile</tile>
+        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="walkable" idx="11">gap_tile</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="walkable" idx="0">gap_tile</tile>
+        <tile type="walkable" idx="1">gap_tile</tile>
+        <tile type="walkable" idx="2">gap_tile</tile>
+        <tile type="walkable" idx="3">gap_tile</tile>
+        <tile type="walkable" idx="8">gap_tile</tile>
+        <tile type="walkable" idx="9">gap_tile</tile>
+        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="walkable" idx="11">gap_tile</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="block" idx="0">red_statue_right3</tile>
+        <tile type="walkable" idx="1">gap_tile</tile>
+        <tile type="walkable" idx="2">gap_tile</tile>
+        <tile type="walkable" idx="3">gap_tile</tile>
+        <tile type="walkable" idx="8">gap_tile</tile>
+        <tile type="walkable" idx="9">gap_tile</tile>
+        <tile type="walkable" idx="10">gap_tile</tile>
+        <tile type="block" idx="11">red_statue_left3</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="True" basement="False" idx="3">
+      <text>PATRA HAS THE MAP.</text>
+      <items>
+      </items>
+      <enemies>
+        <enemy X="5.5" Y="2">OldMan</enemy>
+      </enemies>
+      <doors>
+        <door loc="S">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="3">fire_gap_tile</tile>
+        <tile type="block" idx="8">fire_gap_tile</tile>
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="4">
+      <items>
+        <item X="6" Y="3">YellowRupee</item>
+      </items>
+      <enemies>
+        <enemy X="1" Y="4">RedWizzrobe</enemy>
+        <enemy X="3" Y="4">RedWizzrobe</enemy>
+        <enemy X="8" Y="5">RedWizzrobe</enemy>
+        <enemy X="8" Y="6">RedWizzrobe</enemy>
+        <enemy X="11" Y="0">RedWizzrobe</enemy>
+        <enemy X="11" Y="1">RedWizzrobe</enemy>
+      </enemies>
+      <doors>
+        <door loc="E">unlocked</door>
+        <door loc="S">unlocked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="5">
+      <enemies>
+        <enemy X="4.5" Y="0">Bubble</enemy>
+        <enemy X="6" Y="1">BlueWizzrobe</enemy>
+        <enemy X="9" Y="0.5">BlueWizzrobe</enemy>
+        <enemy X="7" Y="4">RedWizzrobe</enemy>
+        <enemy X="8" Y="4">RedWizzrobe</enemy>
+        <enemy X="6.5" Y="3">LikeLike</enemy>
+        <enemy X="8" Y="2.5">LikeLike</enemy>
+        <enemy X="10" Y="5">LikeLike</enemy>
+      </enemies>
+      <doors>
+        <door loc="E">unlocked</door>
+        <door loc="W">unlocked</door>
+        <door loc="S">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="6">
+      <enemies>
+        <enemy X="3" Y="4">BlueWizzrobe</enemy>
+        <enemy X="9" Y="1">BlueWizzrobe</enemy>
+        <enemy X="7" Y="4">BlueWizzrobe</enemy>
+        <enemy X="5" Y="2">BlueWizzrobe</enemy>
+        <enemy X="7" Y="5">BlueWizzrobe</enemy>
+        <enemy X="1" Y="1">BlueWizzrobe</enemy>
+      </enemies>
+      <doors>
+        <door loc="W">unlocked</door>
+        <door loc="S">unlocked</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="walkable" idx="0">spotted_tile</tile>
+        <tile type="walkable" idx="1">spotted_tile</tile>
+        <tile type="walkable" idx="2">spotted_tile</tile>
+        <tile type="walkable" idx="3">spotted_tile</tile>
+        <tile type="walkable" idx="4">spotted_tile</tile>
+        <tile type="walkable" idx="5">spotted_tile</tile>
+        <tile type="walkable" idx="6">spotted_tile</tile>
+        <tile type="walkable" idx="7">spotted_tile</tile>
+        <tile type="walkable" idx="8">spotted_tile</tile>
+        <tile type="walkable" idx="9">spotted_tile</tile>
+        <tile type="walkable" idx="10">spotted_tile</tile>
+        <tile type="walkable" idx="11">spotted_tile</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="7">
+      <items>
+        <item X="11" Y="0">Key</item>
+      </items>
+      <enemies>
+        <enemy X="2" Y="0">Bubble</enemy>
+        <enemy X="10" Y="0">Bubble</enemy>
+        <enemy X="1.5" Y="3">Bubble</enemy>
+        <enemy X="3" Y="1">BlueWizzrobe</enemy>
+        <enemy X="11" Y="5.5">BlueWizzrobe</enemy>
+        <enemy X="3" Y="2">RedWizzrobe</enemy>
+        <enemy X="11" Y="2">RedWizzrobe</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="S">unlocked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+  </drow>
+  <drow idx="5">
+    <room exists="True" oldman="False" basement="False" idx="0">
+      <enemies>
+        <enemy X="8.5" Y="0">Zol</enemy>
+        <enemy X="0" Y="3.5">Zol</enemy>
+        <enemy X="2" Y="3">Zol</enemy>
+        <enemy X="6" Y="3">Zol</enemy>
+        <enemy X="5.5" Y="6">Zol</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">locked</door>
+        <door loc="E">special</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="1">
+      <enemies>
+        <enemy X="3" Y="0">LikeLike</enemy>
+        <enemy X="8" Y="0">LikeLike</enemy>
+        <enemy X="7" Y="2">LikeLike</enemy>
+        <enemy X="6" Y="3">LikeLike</enemy>
+        <enemy X="8" Y="4">LikeLike</enemy>
+        <enemy X="3" Y="4">LikeLike</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="S">unlocked</door>
+        <door loc="W">special</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="4">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="6">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="block" idx="0">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="2">
+      <enemies>
+        <enemy X="6" Y="3">Patra</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">special</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="stairs" idx="11" room="3,0" loc="5,3" hidden="False">stairs</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="3">
+      <enemies>
+        <enemy X="4" Y="3">FireBlockEnemy</enemy>
+        <enemy X="7" Y="3">FireBlockEnemy</enemy>
+        <enemy X="3" Y="0">Bubble</enemy>
+        <enemy X="2" Y="1">BlueWizzrobe</enemy>
+        <enemy X="4" Y="5">BlueWizzrobe</enemy>
+        <enemy X="0" Y="1">RedWizzrobe</enemy>
+        <enemy X="0" Y="5">RedWizzrobe</enemy>
+        <enemy X="4" Y="4">LikeLike</enemy>
+        <enemy X="5" Y="1.5">LikeLike</enemy>
+        <enemy X="11" Y="1.5">LikeLike</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">hidden</door>
+        <door loc="S">unlocked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="4">red_statue_right3</tile>
+        <tile type="block" idx="7">red_statue_left3</tile>
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="4">
+      <enemies>
+        <enemy X="3" Y="4">BlueWizzrobe</enemy>
+        <enemy X="8" Y="0">BlueWizzrobe</enemy>
+        <enemy X="10" Y="4.5">BlueWizzrobe</enemy>
+        <enemy X="4" Y="4">RedWizzrobe</enemy>
+        <enemy X="8" Y="4">RedWizzrobe</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="E">hidden</door>
+        <door loc="S">unlocked</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="4">movable_square</tile>
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="3">movable_square</tile>
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="5">
+      <enemies>
+        <enemy X="3" Y="2">FireSnake</enemy>
+        <enemy X="3" Y="4">FireSnake</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">hidden</door>
+        <door loc="E">hidden</door>
+        <door loc="S">hidden</door>
+        <door loc="W">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="movable"  idx="4" dir="W">orange_movable_square</tile>
+        <tile type="stairs" idx="6" room="4,1" loc="6,2" hidden="False">stairs</tile>
+        <tile type="block" idx="8">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="6">
+      <items>
+        <item X="6" Y="3">Key</item>
+      </items>
+      <enemies>
+        <enemy X="4" Y="3">Bubble</enemy>
+        <enemy X="4" Y="6">Bubble</enemy>
+        <enemy X="5" Y="2.5">Zol</enemy>
+        <enemy X="6.5" Y="4">Zol</enemy>
+        <enemy X="8" Y="2">LikeLike</enemy>
+        <enemy X="8.5" Y="6">LikeLike</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="S">unlocked</door>
+        <door loc="W">hidden</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="7">
+      <items>
+        <item X="6" Y="3">Key</item>
+      </items>
+      <enemies>
+        <enemy X="1" Y="0">BlueWizzrobe</enemy>
+        <enemy X="10" Y="0">BlueWizzrobe</enemy>
+        <enemy X="3" Y="4">BlueWizzrobe</enemy>
+        <enemy X="2" Y="3">RedWizzrobe</enemy>
+        <enemy X="3" Y="6">RedWizzrobe</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+  </drow>
+  <drow idx="6">
+    <room exists="False" oldman="False" basement="False" idx="0">
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="1">
+      <items>
+        <item X="11" Y="0">Key</item>
+      </items>
+      <enemies>
+        <enemy X="7" Y="3">Patra</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="E">unlocked</door>
+        <door loc="S">unlocked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="movable"  idx="4" dir="W">orange_movable_square</tile>
+        <tile type="stairs" idx="6" room="0,2" loc="5,3" hidden="False">stairs</tile>
+        <tile type="block" idx="8">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="True" basement="False" idx="2">
+      <items>
+        <item X="6" Y="3">YellowRupee</item>
+      </items>
+      <enemies>
+        <enemy X="3" Y="0">Keese</enemy>
+        <enemy X="3" Y="6">Keese</enemy>
+        <enemy X="6" Y="2">Keese</enemy>
+        <enemy X="6" Y="4">Keese</enemy>
+        <enemy X="8" Y="2">Keese</enemy>
+        <enemy X="8" Y="4">Keese</enemy>
+        <enemy X="10" Y="1">Keese</enemy>
+        <enemy X="10" Y="5">Keese</enemy>
+      </enemies>
+      <doors>
+        <door loc="E">locked</door>
+        <door loc="W">unlocked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="3">
+      <enemies>
+        <enemy X="1" Y="5">Zol</enemy>
+        <enemy X="3" Y="2">Zol</enemy>
+        <enemy X="3" Y="6">Zol</enemy>
+        <enemy X="4" Y="4">Zol</enemy>
+        <enemy X="5" Y="3">Zol</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">locked</door>
+        <door loc="W">locked</door>
+        <door loc="S">locked</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="stairs" idx="11" room="5,0" loc="11,1" hidden="False">stairs</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="4">
+      <enemies>
+        <enemy X="5" Y="4">BlueWizzrobe</enemy>
+        <enemy X="7" Y="2">BlueWizzrobe</enemy>
+        <enemy X="7" Y="3">RedWizzrobe</enemy>
+        <enemy X="10" Y="4">RedWizzrobe</enemy>
+        <enemy X="4" Y="2">LikeLike</enemy>
+        <enemy X="6.5" Y="4">LikeLike</enemy>
+        <enemy X="8" Y="5.5">LikeLike</enemy>
+        <enemy X="2.5" Y="2">Bubble</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="E">unlocked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="5">
+      <enemies>
+        <enemy X="7" Y="1">BlueWizzrobe</enemy>
+        <enemy X="9" Y="2">BlueWizzrobe</enemy>
+        <enemy X="9" Y="4">BlueWizzrobe</enemy>
+        <enemy X="11" Y="0">RedWizzrobe</enemy>
+        <enemy X="7" Y="4">RedWizzrobe</enemy>
+        <enemy X="1" Y="0">Bubble</enemy>
+        <enemy X="6" Y="6">Bubble</enemy>
+        <enemy X="11" Y="6">Bubble</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">hidden</door>
+        <door loc="E">unlocked</door>
+        <door loc="W">unlocked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+        <tile type="crossable" idx="0">lava5</tile>
+        <tile type="crossable" idx="1">lava5</tile>
+        <tile type="crossable" idx="2">lava5</tile>
+        <tile type="crossable" idx="3">lava5</tile>
+        <tile type="crossable" idx="4">lava5</tile>
+        <tile type="crossable" idx="5">lava5</tile>
+        <tile type="crossable" idx="6">lava5</tile>
+        <tile type="crossable" idx="7">lava5</tile>
+        <tile type="crossable" idx="8">lava5</tile>
+        <tile type="crossable" idx="9">lava5</tile>
+        <tile type="crossable" idx="10">lava5</tile>
+        <tile type="crossable" idx="11">lava5</tile>
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="True" basement="False" idx="6">
+      <text>PATRA HAS THE MAP.</text>
+      <items>
+      </items>
+      <enemies>
+        <enemy X="5.5" Y="2">OldMan</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="W">unlocked</door>
+        <door loc="S">unlocked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="3">fire_gap_tile</tile>
+        <tile type="block" idx="8">fire_gap_tile</tile>
+      </rrow>
+      <rrow idx="3">
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="True" idx="7">
+      <border>black</border>
+      <enemies>
+        <enemy X="10" Y="3">Keese</enemy>
+        <enemy X="11" Y="3">Keese</enemy>
+        <enemy X="9" Y="6">Keese</enemy>
+        <enemy X="5" Y="6">Keese</enemy>
+      </enemies>
+      <items>
+      </items>
+      <rrow idx="-2.5">
+        <tile type="stairs" idx="2" room="7,0" loc="5,3" hidden="False">stairs</tile>
+      </rrow>
+      <rrow idx="0">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="walkable" idx="11">ladder_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="walkable" idx="11">ladder_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="7">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="walkable" idx="3">ladder_tile</tile>
+        <tile type="walkable" idx="11">ladder_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="8">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="block" idx="3">basement_brick_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+      <rrow idx="9">
+        <tile type="block" idx="0">basement_brick_tile</tile>
+        <tile type="block" idx="1">basement_brick_tile</tile>
+        <tile type="block" idx="2">basement_brick_tile</tile>
+        <tile type="block" idx="3">basement_brick_tile</tile>
+        <tile type="block" idx="4">basement_brick_tile</tile>
+        <tile type="block" idx="5">basement_brick_tile</tile>
+        <tile type="block" idx="6">basement_brick_tile</tile>
+        <tile type="block" idx="7">basement_brick_tile</tile>
+        <tile type="block" idx="8">basement_brick_tile</tile>
+        <tile type="block" idx="9">basement_brick_tile</tile>
+        <tile type="block" idx="10">basement_brick_tile</tile>
+        <tile type="block" idx="11">basement_brick_tile</tile>
+        <tile type="block" idx="12">basement_brick_tile</tile>
+        <tile type="block" idx="13">basement_brick_tile</tile>
+        <tile type="block" idx="14">basement_brick_tile</tile>
+        <tile type="block" idx="15">basement_brick_tile</tile>
+      </rrow>
+    </room>
+  </drow>
+  <drow idx="7">
+    <room exists="False" oldman="False" basement="False" idx="0">
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="1">
+      <doors>
+        <door loc="N">unlocked</door>
+      </doors>
+      <rrow idx="0">
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="stairs" idx="11" room="4,7" loc="5,3" hidden="False">stairs</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="block" idx="8">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+        <tile type="block" idx="11">movable_square</tile>
+      </rrow>
+    </room>
+    <room exists="False" oldman="False" basement="False" idx="2">
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="3">
+      <enemies>
+        <enemy X="8" Y="0">BlueWizzrobe</enemy>
+        <enemy X="9" Y="0">BlueWizzrobe</enemy>
+        <enemy X="2" Y="6">BlueWizzrobe</enemy>
+        <enemy X="7" Y="3">RedWizzrobe</enemy>
+        <enemy X="8" Y="3">RedWizzrobe</enemy>
+        <enemy X="10" Y="0">Bubble</enemy>
+        <enemy X="0" Y="6">Bubble</enemy>
+        <enemy X="5" Y="6">Bubble</enemy>
+      </enemies>
+      <doors>
+        <door loc="N">locked</door>
+        <door loc="E">locked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="1">movable_square</tile>
+        <tile type="block" idx="2">movable_square</tile>
+        <tile type="block" idx="9">movable_square</tile>
+        <tile type="block" idx="10">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="4">
+      <enemies>
+        <enemy X="5" Y="0">BlueSnake</enemy>
+        <enemy X="4" Y="5">BlueSnake</enemy>
+      </enemies>
+      <doors>
+        <door loc="W">locked</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="2">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="3">
+        <tile type="movable"  idx="4" dir="W">orange_movable_square</tile>
+        <tile type="stairs" idx="6" room="1,7" loc="10,3" hidden="False">stairs</tile>
+        <tile type="block" idx="8">movable_square</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="block" idx="5">movable_square</tile>
+        <tile type="block" idx="7">movable_square</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="6">movable_square</tile>
+      </rrow>
+      <rrow idx="6">
+      </rrow>
+    </room>
+    <room exists="False" oldman="False" basement="False" idx="5">
+    </room>
+    <room exists="True" oldman="False" basement="False" idx="6">
+      <doors>
+        <door loc="N">unlocked</door>
+        <door loc="S">cosmetic</door>
+      </doors>
+      <rrow idx="0">
+      </rrow>
+      <rrow idx="1">
+        <tile type="block" idx="1">red_statue_right3</tile>
+        <tile type="block" idx="4">red_statue_right3</tile>
+        <tile type="block" idx="7">red_statue_left3</tile>
+        <tile type="block" idx="10">red_statue_left3</tile>
+      </rrow>
+      <rrow idx="2">
+      </rrow>
+      <rrow idx="3">
+        <tile type="block" idx="1">red_statue_right3</tile>
+        <tile type="block" idx="4">red_statue_right3</tile>
+        <tile type="block" idx="7">red_statue_left3</tile>
+        <tile type="block" idx="10">red_statue_left3</tile>
+      </rrow>
+      <rrow idx="4">
+        <tile type="walkable" idx="5">spotted_tile3</tile>
+        <tile type="walkable" idx="6">spotted_tile3</tile>
+      </rrow>
+      <rrow idx="5">
+        <tile type="block" idx="1">red_statue_right3</tile>
+        <tile type="walkable" idx="3">spotted_tile3</tile>
+        <tile type="walkable" idx="4">spotted_tile3</tile>
+        <tile type="block" idx="4">red_statue_right3</tile>
+        <tile type="walkable" idx="5">spotted_tile3</tile>
+        <tile type="walkable" idx="6">spotted_tile3</tile>
+        <tile type="walkable" idx="7">spotted_tile3</tile>
+        <tile type="block" idx="7">red_statue_left3</tile>
+        <tile type="walkable" idx="8">spotted_tile3</tile>
+        <tile type="block" idx="10">red_statue_left3</tile>
+      </rrow>
+      <rrow idx="6">
+        <tile type="walkable" idx="3">spotted_tile3</tile>
+        <tile type="walkable" idx="4">spotted_tile3</tile>
+        <tile type="walkable" idx="5">spotted_tile3</tile>
+        <tile type="walkable" idx="6">spotted_tile3</tile>
+        <tile type="walkable" idx="7">spotted_tile3</tile>
+        <tile type="walkable" idx="8">spotted_tile3</tile>
+      </rrow>
+    </room>
+    <room exists="False" oldman="False" basement="False" idx="7">
+    </room>
+  </drow>
+</dungeon>

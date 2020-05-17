@@ -12,6 +12,9 @@
       <items>
         <item X="6.75" Y="1.75">MagicRod</item>
       </items>
+      <rrow idx="-2.5">
+        <tile type="stairs" idx="2" room="1,0" loc="10,0" hidden="False">stairs</tile>
+      </rrow>
       <rrow idx="0">
         <tile type="block" idx="0">basement_brick_tile</tile>
         <tile type="block" idx="1">basement_brick_tile</tile>
@@ -172,7 +175,7 @@
       <rrow idx="2">
       </rrow>
       <rrow idx="3">
-        <tile type="movable"  idx="4" dir="E,W">orange_movable_square</tile>
+        <tile type="movable" idx="4" dir="E,W">orange_movable_square</tile>
         <tile type="block" idx="7">movable_square</tile>
       </rrow>
       <rrow idx="4">
@@ -806,7 +809,7 @@
         <door loc="W">unlocked</door>
       </doors>
       <rrow idx="0">
-        <tile type="stairs" idx="11" room="5,1" loc="9,3" hidden="True">stairs</tile>
+        <tile type="stairs" idx="11" room="5,1" loc="10,3" hidden="True">stairs</tile>
       </rrow>
       <rrow idx="1">
       </rrow>

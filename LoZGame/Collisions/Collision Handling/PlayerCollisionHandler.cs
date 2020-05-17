@@ -38,7 +38,7 @@
                     SoundFactory.Instance.PlayLinkHurt();
                 }
             }
-            else if (enemy is OldMan || enemy is Merchant || enemy is BlockEnemy || enemy.IsTransparent)
+            else if (enemy is OldMan || enemy is Merchant || enemy is BlockEnemy || (enemy is Vire && enemy.CurrentState is HiddenVireState))
             {
                 // do nothing
             }

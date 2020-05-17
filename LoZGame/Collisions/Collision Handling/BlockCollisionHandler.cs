@@ -56,7 +56,6 @@
             else if (block is Tile)
             {
                 SoundFactory.Instance.PlayClimbStairs();
-                LoZGame.Instance.CollisionDetector.MoveToBasement = true;
             }
             else if (block is BlockTile)
             {
