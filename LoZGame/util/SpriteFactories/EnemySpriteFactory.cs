@@ -163,7 +163,7 @@
             {
                 return zolWidth;
             }
-            else if (enemy is MoldormHead || enemy is MoldormSegment)
+            else if (enemy is RedMoldormHead || enemy is RedMoldormSegment || enemy is BlueMoldormHead || enemy is BlueMoldormSegment)
             {
                 return fireSnakeWidth;
             }
@@ -287,7 +287,7 @@
             {
                 return zolHeight;
             }
-            else if (enemy is MoldormHead || enemy is MoldormSegment)
+            else if (enemy is RedMoldormHead || enemy is RedMoldormSegment || enemy is BlueMoldormHead || enemy is BlueMoldormSegment)
             {
                 return fireSnakeHeight;
             }

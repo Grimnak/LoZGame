@@ -24,7 +24,7 @@
             Health = new HealthManager(GameData.Instance.EnemyHealthConstants.GleeokHeadHealth);
             Physics = new Physics(neckBase.ToVector2());
             Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
-            Physics.IsMoveable = false;
+            Physics.IsMovable = false;
             CurrentState = new IdleEnemyState(this);
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             EnemyCollisionHandler = new EnemyCollisionHandler(this);

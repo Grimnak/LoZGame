@@ -26,7 +26,7 @@
             AI = EnemyAI.LargeDigDogger;
             DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
             MinMaxWander = new Point(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);
-            Physics.IsMoveable = false;
+            Physics.IsMovable = false;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplyLargeWeightModPos();

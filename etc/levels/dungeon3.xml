@@ -939,7 +939,7 @@
     <room exists="True" oldman="False" basement="False" idx="3">
       <doors>
         <door loc="W">unlocked</door>
-        <door loc="S"></door>
+        <door loc="S">cosmetic</door>
       </doors>
       <rrow idx="0">
       </rrow>

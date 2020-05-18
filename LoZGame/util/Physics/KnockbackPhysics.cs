@@ -38,7 +38,7 @@
 
         public void SetKnockback(Vector2 momentum)
         {
-            if (IsMoveable)
+            if (IsMovable)
             {
                 KnockbackVelocity = GameData.Instance.PhysicsConstants.MomentumMultiplier * momentum / Mass;
             }

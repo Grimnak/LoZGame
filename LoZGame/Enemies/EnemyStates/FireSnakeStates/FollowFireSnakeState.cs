@@ -9,7 +9,14 @@
         {
             Enemy = fireSnake;
             Sprite = Enemy.CreateCorrectSprite();
-            Sprite.SetFrame(2);
+            if (fireSnake is RedMoldormSegment)
+            {
+                Sprite.SetFrame(2);
+            }
+            else if (fireSnake is BlueMoldormSegment)
+            {
+                Sprite.SetFrame(3);
+            }
         }
 
         public override void Update()

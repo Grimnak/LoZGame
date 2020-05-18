@@ -157,6 +157,7 @@
         public void AddEnemy(float x, float y, string type)
         {
             Vector2 location = GridToScreenVector(x, y);
+            IEnemy newEnemy = null;
             switch (type)
             {
                 case "Dodongo":
@@ -202,10 +203,15 @@
                     enemies.Add(new Zol(location));
                     break;
                 case "FireSnake":
-                    enemies.Add(new MoldormHead(location));
+                    enemies.Add(new RedMoldormHead(location));
+                    break;
+                case "BlueSnake":
+                    enemies.Add(new BlueMoldormHead(location));
                     break;
                 case "FireBlockEnemy":
-                    enemies.Add(new BlockEnemy(location));
+                    newEnemy = new BlockEnemy(location);
+                    CenterItem(newEnemy.Physics);
+                    enemies.Add(newEnemy);
                     break;
                 case "Darknut":
                     enemies.Add(new RedDarknut(location));

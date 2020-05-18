@@ -91,12 +91,21 @@
             Tuple.Create(DropManager.DropType.Fairy, LoZGame.Instance.Drops.FairyWeight, 1, 1)
         };
 
-        private static List<Tuple<DropManager.DropType, int, int, int>> moldormDropTable = new List<Tuple<DropManager.DropType, int, int, int>>()
+        private static List<Tuple<DropManager.DropType, int, int, int>> redMoldormDropTable = new List<Tuple<DropManager.DropType, int, int, int>>()
         {
             Tuple.Create(DropManager.DropType.BlueRupee, LoZGame.Instance.Drops.BlueRupeeWeight, 1, 1),
             Tuple.Create(DropManager.DropType.RedPotion, LoZGame.Instance.Drops.RedPotionWeight, 1, 1),
             Tuple.Create(DropManager.DropType.BluePotion, LoZGame.Instance.Drops.BluePotionWeight, 1, 1),
             Tuple.Create(DropManager.DropType.Fairy, LoZGame.Instance.Drops.FairyWeight, 1, 1)
+        };
+
+        private static List<Tuple<DropManager.DropType, int, int, int>> blueMoldormDropTable = new List<Tuple<DropManager.DropType, int, int, int>>()
+        {
+            Tuple.Create(DropManager.DropType.BlueRupee, LoZGame.Instance.Drops.BlueRupeeWeight, 1, 1),
+            Tuple.Create(DropManager.DropType.RedPotion, LoZGame.Instance.Drops.RedPotionWeight, 1, 1),
+            Tuple.Create(DropManager.DropType.BluePotion, LoZGame.Instance.Drops.BluePotionWeight, 1, 1),
+            Tuple.Create(DropManager.DropType.Fairy, LoZGame.Instance.Drops.FairyWeight, 1, 1),
+            Tuple.Create(DropManager.DropType.Clock, LoZGame.Instance.Drops.ClockWeight, 1, 1)
         };
 
         private static List<Tuple<DropManager.DropType, int, int, int>> polsVoiceDropTable = new List<Tuple<DropManager.DropType, int, int, int>>()
@@ -202,7 +211,9 @@
 
         public List<Tuple<DropManager.DropType, int, int, int>> ManhandlaDropTable => manhandlaDropTable;
 
-        public List<Tuple<DropManager.DropType, int, int, int>> MoldormDropTable => moldormDropTable;
+        public List<Tuple<DropManager.DropType, int, int, int>> RedMoldormDropTable => redMoldormDropTable;
+
+        public List<Tuple<DropManager.DropType, int, int, int>> BlueMoldormDropTable => blueMoldormDropTable;
 
         public List<Tuple<DropManager.DropType, int, int, int>> PolsVoiceDropTable => polsVoiceDropTable;
 

@@ -59,7 +59,7 @@
                     enemy.TakeDamage(projectile.Damage);
                 }
             }
-            else if (enemy is MoldormHead || enemy is MoldormSegment)
+            else if (enemy is RedMoldormHead || enemy is RedMoldormSegment || enemy is BlueMoldormHead || enemy is BlueMoldormSegment)
             {
                 if (!(projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BombProjectile))
                 {

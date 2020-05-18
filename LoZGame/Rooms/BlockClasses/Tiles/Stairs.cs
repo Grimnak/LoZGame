@@ -10,6 +10,7 @@
         private Point linkSpawn;
         private ISprite sprite;
         private bool isHidden;
+        private static int lockoutTimer;
 
         public Physics Physics { get; set; }
 
@@ -26,6 +27,7 @@
             Physics.Bounds = new Rectangle(location.ToPoint(), new Point((int)BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight));
             Physics.SetDepth();
             sprite = DungeonSpriteFactory.Instance.Stairs();
+            lockoutTimer = 0;
         }
 
         public bool IsTransparent { get { return false; } set { } }
@@ -34,6 +36,10 @@
 
         public void Update()
         {
+            if (lockoutTimer > 0)
+            {
+                lockoutTimer--;
+            }
         }
 
         public void Draw()
@@ -46,8 +52,9 @@
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IPlayer && !isHidden)
+            if (otherCollider is IPlayer && !isHidden && lockoutTimer <= 0)
             {
+                lockoutTimer = LoZGame.Instance.UpdateSpeed * 2;
                 SoundFactory.Instance.PlayClimbStairs();
                 LoZGame.Instance.Dungeon.CurrentRoomX = this.PointLinkedRoom.X;
                 LoZGame.Instance.Dungeon.CurrentRoomY = this.PointLinkedRoom.Y;

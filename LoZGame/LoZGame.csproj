@@ -131,8 +131,10 @@
     <Compile Include="Enemies\EnemyClasses\Manhandla\ManhandlaHead.cs" />
     <Compile Include="Enemies\EnemyClasses\Manhandla\ManhandlaBody.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyHelper.cs" />
-    <Compile Include="Enemies\EnemyClasses\Moldorm\MoldormSegment.cs" />
-    <Compile Include="Enemies\EnemyClasses\Moldorm\MoldormHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\Moldorm\BlueMoldorm\BlueMoldormHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\Moldorm\BlueMoldorm\BlueMoldormSegment.cs" />
+    <Compile Include="Enemies\EnemyClasses\Moldorm\RedMoldorm\RedMoldormSegment.cs" />
+    <Compile Include="Enemies\EnemyClasses\Moldorm\RedMoldorm\RedMoldormHead.cs" />
     <Compile Include="Enemies\EnemyClasses\Goriya\BlueGoriya.cs" />
     <Compile Include="Enemies\EnemyClasses\Darknut\BlueDarknut.cs" />
     <Compile Include="Enemies\EnemyClasses\Darknut\RedDarknut.cs" />

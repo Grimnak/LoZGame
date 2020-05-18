@@ -17,7 +17,7 @@
             Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ManhandlaBodyHealth);
             Physics = new Physics(location);
             Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
-            Physics.IsMoveable = false;
+            Physics.IsMovable = false;
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             MoveSpeed = GameData.Instance.EnemySpeedConstants.ManhandlaMinSpeed;
             CurrentState = new IdleEnemyState(this);

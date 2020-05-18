@@ -22,7 +22,7 @@
             Health = new HealthManager(1);
             Physics = new Physics(spawnPoint.ToVector2());
             Physics.Mass = 1;
-            Physics.IsMoveable = false;
+            Physics.IsMovable = false;
             CurrentState = new IdleEnemyState(this);
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             EnemyCollisionHandler = new EnemyCollisionHandler(this);

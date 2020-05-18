@@ -15,9 +15,9 @@
             };
             Health = new HealthManager(1);
             Physics = new Physics(location);
-            Physics.IsMoveable = false;
+            Physics.IsMovable = false;
             Physics.Mass = 1;
-            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, BlockSpriteFactory.Instance.TileHeight, (int)BlockSpriteFactory.Instance.TileWidth);
+            Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, 1, 1);
             EnemyCollisionHandler = new EnemyCollisionHandler(this);
             Expired = false;
             IsKillable = false;

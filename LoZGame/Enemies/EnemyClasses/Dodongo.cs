@@ -12,7 +12,7 @@
             Health = new HealthManager(GameData.Instance.EnemyHealthConstants.DodongoHealth);
             Physics = new Physics(location);
             Physics.Mass = GameData.Instance.EnemyMassConstants.DodongoMass;
-            Physics.IsMoveable = false;
+            Physics.IsMovable = false;
             CurrentState = new SpawnEnemyState(this);
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             EnemyCollisionHandler = new EnemyCollisionHandler(this);

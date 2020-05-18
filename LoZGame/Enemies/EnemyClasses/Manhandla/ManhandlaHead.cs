@@ -19,7 +19,7 @@
             Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ManhandlaHeadHealth);
             Physics = new Physics(body.Physics.Bounds.Center.ToVector2());
             Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
-            Physics.IsMoveable = false;
+            Physics.IsMovable = false;
             Physics.CurrentDirection = side;
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             Setup();

@@ -5,35 +5,35 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    class MoldormHead : EnemyEssentials,  IEnemy
+    class RedMoldormHead : EnemyEssentials,  IEnemy
     {
         private List<IEnemy> children;
         private Vector2 passedVelocity;
         private int timeSinceLastPass;
         private bool spawnedChildren;
 
-        public MoldormHead(Vector2 location)
+        public RedMoldormHead(Vector2 location)
         {
             RandomStateGenerator = new RandomStateGenerator(this);
             States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.FireSnakeStateList);
             Health = new HealthManager(GameData.Instance.EnemyHealthConstants.FireSnakeHealth);
             Physics = new Physics(location);
             Physics.Mass = GameData.Instance.EnemyMassConstants.FireSnakeMass;
-            Physics.IsMoveable = false;
+            Physics.IsMovable = false;
             CurrentState = new IdleEnemyState(this);
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             EnemyCollisionHandler = new EnemyCollisionHandler(this);
             Expired = false;
             Damage = GameData.Instance.EnemyDamageConstants.FireSnakeDamage;
             DamageTimer = 0;
-            MoveSpeed = GameData.Instance.EnemySpeedConstants.FireSnakeSpeed;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.RedFireSnakeSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             HasChild = true;
             children = new List<IEnemy>();
             spawnedChildren = false;
             AI = EnemyAI.MoldormHead;
             IsSpawning = false;
-            DropTable = GameData.Instance.EnemyDropTables.MoldormDropTable;
+            DropTable = GameData.Instance.EnemyDropTables.RedMoldormDropTable;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplySmallWeightModPos();
@@ -73,7 +73,7 @@
             {
                 for (int i = 0; i < GameData.Instance.EnemyMiscConstants.FireSnakeLength; i++)
                 {
-                    IEnemy child = new MoldormSegment(this);
+                    IEnemy child = new RedMoldormSegment(this);
                     children.Add(child);
                     LoZGame.Instance.GameObjects.Enemies.Add(child);
                 }
