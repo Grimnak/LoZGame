@@ -29,6 +29,18 @@
             else if (enemy.IsTransparent)
             {
             }
+            else if (enemy is Ganon)
+            {
+                if (enemy.Health.CurrentHealth > 4 && projectile is SwordProjectile)
+                {
+                    ((Ganon)enemy).VisibilityTimer = LoZGame.Instance.UpdateSpeed;
+                    enemy.TakeDamage(projectile.Damage);
+                }
+                if (enemy.Health.CurrentHealth <= 4 && projectile is SilverArrowProjectile)
+                {
+                    enemy.TakeDamage(GameData.Instance.EnemyHealthConstants.GanonHealth);
+                }
+            }
             else if (enemy is Dodongo)
             {
                 if (projectile is BombProjectile)

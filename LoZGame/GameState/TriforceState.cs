@@ -75,7 +75,6 @@
                     LoZGame.Instance.GameState.CreditsScreen();
                 }
             }
-
         }
 
         /// <inheritdoc></inheritdoc>

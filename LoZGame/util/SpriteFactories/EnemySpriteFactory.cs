@@ -93,6 +93,9 @@
         private static readonly int gohmaWidth = 162;
         private static readonly int gohmaHeight = 48;
 
+        private static readonly int ganonWidth = 108;
+        private static readonly int ganonHeight = 96;
+
         public static int GetEnemyWidth(IEnemy enemy)
         {
             if (enemy is Dodongo)
@@ -102,6 +105,10 @@
             else if (enemy is Dragon)
             {
                 return dragonWidth;
+            }
+            else if (enemy is Ganon)
+            {
+                return ganonWidth;
             }
             else if (enemy is DigDoggerInvincible)
             {
@@ -226,6 +233,10 @@
             else if (enemy is Dragon)
             {
                 return dragonHeight;
+            }
+            else if (enemy is Ganon)
+            {
+                return ganonHeight;
             }
             else if (enemy is DigDoggerInvincible)
             {
@@ -458,6 +469,13 @@
         private Texture2D polsVoice;
         private SpriteData polsVoiceData;
 
+        private Texture2D ganonVisible;
+        private SpriteData ganonVisibleData;
+        private Texture2D ganonInvisible;
+        private SpriteData ganonInvisibleData;
+        private Texture2D ganonParalyzed;
+        private SpriteData ganonParalyzedData;
+
         private Texture2D redGohmaOpenTexture;
         private SpriteData redGohmaOpenData;
         private Texture2D redGohmaClosedTexture;
@@ -579,6 +597,10 @@
 
             polsVoice = content.Load<Texture2D>("polsvoice");
 
+            ganonVisible = content.Load<Texture2D>("Gannon_BothArmsUp");
+            ganonInvisible = content.Load<Texture2D>("Invisible_Square");
+            ganonParalyzed = content.Load<Texture2D>("Gannon_Paralyzed_Sitting");
+
             redGohmaOpenTexture = content.Load<Texture2D>("red_gohma_open");
             redGohmaClosedTexture = content.Load<Texture2D>("red_gohma_closed");
             blueGohmaOpenTexture = content.Load<Texture2D>("blue_gohma_open");
@@ -650,6 +672,25 @@
             blueGohmaOpenData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), blueGohmaOpenTexture, 2, 1);
             blueGohmaClosedData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), blueGohmaClosedTexture, 2, 1);
             wizzrobeData = new SpriteData(new Vector2(wizzrobeWidth, wizzrobeHeight), redWizzrobeLeftTexture, 2, 1);
+            ganonVisibleData = new SpriteData(new Vector2(ganonWidth, ganonHeight), ganonVisible, 1, 1);
+            ganonInvisibleData = new SpriteData(new Vector2(ganonWidth, ganonHeight), ganonInvisible, 1, 1);
+            ganonParalyzedData = new SpriteData(new Vector2(ganonWidth, ganonHeight), ganonParalyzed, 1, 1);
+        }
+
+        // Ganon Sprites
+        public ISprite CreateGanonVisibleSprite()
+        {
+            return new ObjectSprite(ganonVisible, ganonVisibleData);
+        }
+
+        public ISprite CreateGanonInvisibleSprite()
+        {
+            return new ObjectSprite(ganonInvisible, ganonInvisibleData);
+        }
+
+        public ISprite CreateGanonParalyzedSprite()
+        {
+            return new ObjectSprite(ganonParalyzed, ganonParalyzedData);
         }
 
         // Wizzrobe Sprites

@@ -27,7 +27,6 @@
             ApplySmallSpeedMod();
             ApplyLargeWeightModPos();
             ApplyLargeHealthMod();
-            ApplyLargeHealthMod();
         }
 
         /// <summary>

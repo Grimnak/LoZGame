@@ -20,7 +20,7 @@
             neckBase = new Point(body.Physics.Bounds.Center.X, body.Physics.Bounds.Bottom);
             parent = body;
             RandomStateGenerator = new RandomStateGenerator(this);
-            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GleeockHeadStateList);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GleeokHeadStateList);
             Health = new HealthManager(GameData.Instance.EnemyHealthConstants.GleeokHeadHealth);
             Physics = new Physics(neckBase.ToVector2());
             Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;

@@ -157,7 +157,7 @@
         }
 
         /// <summary>
-        /// This makes an enemy prefer to move in the diagonal direction (north, south, east, or west) that is closest to the player's current location.
+        /// This makes an enemy prefer to move in the diagonal direction that is closest to the player's current location.
         /// </summary>
         /// <param name="weight">The affects how often the enemy will move toward the player.</param>
         public void FavorPlayerDiagonal(int weight)
@@ -263,7 +263,7 @@
         }
 
         /// <summary>
-        /// This makes an enemy prefer to jump in the diagonal direction (north, south, east, or west) that is closest to the player's current location.
+        /// This makes an enemy prefer to jump in the diagonal direction that is closest to the player's current location.
         /// </summary>
         /// <param name="weight">The affects how often the enemy will move toward the player.</param>
         public void FavorPlayerJumpDiagonal(int weight)

@@ -39,6 +39,7 @@ namespace LoZClone
         private const float DigDoggerFleeSpd = 4;
         private const float GleeokHeadOffSpd = 4;
         private const float GohmaSpd = 1.5f;
+        private const float GanonSpd = 0;
 
         public float StalfosSpeed => StalfosSpd;
 
@@ -113,5 +114,7 @@ namespace LoZClone
         public float GleeokHeadOffSpeed => GleeokHeadOffSpd;
 
         public float GohmaSpeed => GohmaSpd;
+
+        public float GanonSpeed => GanonSpd;
     }
 }

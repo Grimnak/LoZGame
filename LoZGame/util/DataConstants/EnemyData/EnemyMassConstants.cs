@@ -23,6 +23,7 @@ namespace LoZClone
         private const int DigDoggerSmallMss = 12;
         private const int DigDoggerLargeMss = 24;
         private const int GohmaMss = 24;
+        private const int GanonMss = 24;
 
         public int StalfosMass => StalfosMss;
 
@@ -66,5 +67,6 @@ namespace LoZClone
 
         public int GohmaMass => GohmaMss;
 
+        public int GanonMass => GanonMss;
     }
 }

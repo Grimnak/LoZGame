@@ -30,6 +30,7 @@
         private const int PolsVoiceDmg = 4;
         private const int DigDoggerDmg = 4;
         private const int GohmaDmg = 4;
+        private const int GanonDmg = 4;
 
         public int StalfosDamage => StalfosDmg;
 
@@ -88,5 +89,7 @@
         public int RedWizzrobeDamage => RedWizzrobeDmg;
 
         public int BlueWizzrobeDamage => BlueWizzrobeDmg;
+
+        public int GanonDamage => GanonDmg;
     }
 }

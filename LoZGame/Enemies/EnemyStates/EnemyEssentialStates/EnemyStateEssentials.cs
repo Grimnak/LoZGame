@@ -107,6 +107,9 @@
                 case EnemyAI.BlueWizzrobe:
                     UpdateBlueWizzrobe();
                     break;
+                case EnemyAI.Ganon:
+                    UpdateGanon();
+                    break;
                 case EnemyAI.NoAI:
                 case EnemyAI.Segment:
                     break;

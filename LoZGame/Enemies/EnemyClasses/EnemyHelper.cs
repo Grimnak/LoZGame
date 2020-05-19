@@ -37,6 +37,7 @@
             SmallDigDogger,
             RedWizzrobe,
             BlueWizzrobe,
+            Ganon,
             Gohma,
             Segment,
             NoAI

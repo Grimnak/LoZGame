@@ -32,6 +32,7 @@
         private const int LikelikeHP = 12;
         private const int PolsVoiceHP = 16;
         private const int digDoggerHP = 24;
+        private const int GanonHP = 28;
 
         public int StalfosHealth => StalfosHP;
 
@@ -92,5 +93,7 @@
         public int PolsVoiceHealth => PolsVoiceHP;
 
         public int DigDoggerHealth => digDoggerHP;
+
+        public int GanonHealth => GanonHP;
     }
 }

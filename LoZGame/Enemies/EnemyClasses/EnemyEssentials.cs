@@ -58,7 +58,7 @@
             }
         }
 
-        public void HandleDamage()
+        public virtual void HandleDamage()
         {
             if (DamageTimer > 0 && Health.CurrentHealth > 0)
             {

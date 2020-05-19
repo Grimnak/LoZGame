@@ -119,9 +119,10 @@
     <Compile Include="Controller\Commands\Loaders\MouseCommandLoader.cs" />
     <Compile Include="Controller\Commands\Controllers\KeyboardController.cs" />
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
-    <Compile Include="Enemies\EnemyClasses\BlockEnemy.cs" />
+    <Compile Include="Enemies\EnemyClasses\BlockEnemies\BlockEnemy.cs" />
     <Compile Include="Enemies\EnemyClasses\DifficultyModifiers.cs" />
     <Compile Include="Enemies\EnemyClasses\Digdogger\DigDogger.cs" />
+    <Compile Include="Enemies\EnemyClasses\Ganon.cs" />
     <Compile Include="Enemies\EnemyClasses\Gleeok\GleeokBody.cs" />
     <Compile Include="Enemies\EnemyClasses\Gleeok\GleeokHeadOff.cs" />
     <Compile Include="Enemies\EnemyClasses\Gleeok\GleeokNeck.cs" />
@@ -150,7 +151,9 @@
     <Compile Include="Enemies\EnemyClasses\Vire\VireKeese.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyIdleState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingGanonState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingGohmaState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGanon.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateRedWizzrobe.cs" />
     <Compile Include="Enemies\EnemyStates\GohmaStates\CloseEyeState.cs" />
     <Compile Include="Enemies\EnemyStates\GohmaStates\OpenEyeState.cs" />
@@ -211,7 +214,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpRightMovingEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\SpawnEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\StunnedEnemyState.cs" />
-    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\VireStates\HiddenVireState.cs" />
+    <Compile Include="Enemies\EnemyStates\VireStates\HiddenVireState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FollowFireSnakeState.cs" />
     <Compile Include="GameState\CreditsScreenState.cs" />
     <Compile Include="GameState\HealthRestoreGameState.cs" />
@@ -262,7 +265,7 @@
     <Compile Include="Enemies\EnemyClasses\NPC\Merchant.cs" />
     <Compile Include="Enemies\EnemyClasses\NPC\OldMan.cs" />
     <Compile Include="Enemies\EnemyClasses\Rope.cs" />
-    <Compile Include="Enemies\EnemyClasses\SpikeCross.cs" />
+    <Compile Include="Enemies\EnemyClasses\BlockEnemies\SpikeCross.cs" />
     <Compile Include="Enemies\EnemyClasses\Stalfos.cs" />
     <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
