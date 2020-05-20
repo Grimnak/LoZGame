@@ -88,7 +88,10 @@
 
         public virtual void Draw()
         {
-            CurrentState.Draw();
+            if (!isInvisible)
+            {
+                CurrentState.Draw();
+            }
         }
 
         public virtual void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

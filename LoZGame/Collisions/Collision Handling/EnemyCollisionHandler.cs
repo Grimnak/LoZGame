@@ -33,8 +33,8 @@
             {
                 if (enemy.Health.CurrentHealth > 4 && projectile is SwordProjectile)
                 {
-                    ((Ganon)enemy).VisibilityTimer = LoZGame.Instance.UpdateSpeed;
                     enemy.TakeDamage(projectile.Damage);
+                    enemy.CurrentState = new IdleEnemyState(enemy);
                 }
                 if (enemy.Health.CurrentHealth <= 4 && projectile is SilverArrowProjectile)
                 {
