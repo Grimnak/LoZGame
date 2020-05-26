@@ -2,12 +2,15 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
+    using System.IO;
 
     public class TitleScreenState : GameStateEssentials, IGameState
     {
         private readonly ISprite sprite;
         private readonly ISprite enter;
         private readonly Color spriteTint = LoZGame.Instance.DefaultTint;
+        private string[] lines = File.ReadAllLines("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + ".txt");
 
         public TitleScreenState()
         {
@@ -21,7 +24,7 @@
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
 
-            LoZGame.Instance.Dungeon = new Dungeon(LoZGame.StartDungeon);
+            LoZGame.Instance.Dungeon = new Dungeon(int.Parse(lines[0]));
             LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
             LoZGame.Instance.Dungeon.LoadNewRoom();
 

@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using System.Collections.Generic;
+    using System.IO;
 
     public partial class InventoryManager
     {
@@ -25,6 +26,8 @@
             new List<ItemType> { ItemType.Bomb, ItemType.Boomerang, ItemType.Arrow, ItemType.Candle },
             new List<ItemType> { ItemType.Potion, ItemType.Rod, ItemType.None, ItemType.Flute }
         };
+
+        private Profiles profile;
 
         private int selectionX;
         private int selectionY;
@@ -58,27 +61,6 @@
         private bool hasFlute;
         private int fluteLockout;
 
-        public InventoryManager(IPlayer player)
-        {
-            this.player = player;
-            selectionX = 0;
-            selectionY = 0;
-            maxBombs = GameData.Instance.InventoryConstants.MaximumBombs;
-            maxSelectionX = GameData.Instance.InventoryConstants.MaximumSelectionX;
-            maxSelectionY = GameData.Instance.InventoryConstants.MaximumSelectionY;
-
-            numBombs = 4;
-            numKeys = 0;
-            numRedPotions = 0;
-            numBluePotions = 0;
-            numRupees = 5;
-           
-            hasClock = false;
-            clockLockout = 0;
-
-            selectedItem = ItemType.Bomb;
-        }
-
         public InventoryManager(InventoryManager copiedManager)
         {
             this.player = copiedManager.player;
@@ -96,6 +78,7 @@
             this.hasRod = copiedManager.hasRod;
             this.hasMagicBoomerang = copiedManager.hasMagicBoomerang;
             this.hasBow = copiedManager.hasBow;
+            this.hasArrow = copiedManager.hasArrow;
             this.hasSilverArrow = copiedManager.hasSilverArrow;
             this.hasRedFlame = copiedManager.hasRedFlame;
             this.hasBlueFlame = copiedManager.hasBlueFlame;
@@ -107,6 +90,43 @@
             this.hasClock = copiedManager.hasClock;
             this.clockLockout = copiedManager.clockLockout;
             this.selectedItem = copiedManager.selectedItem;
+        }
+
+        public InventoryManager(IPlayer player)
+        {
+            string[] inventorySave = File.ReadAllLines("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + ".txt");
+            profile = new Profiles();
+
+            this.player = player;
+            this.player.Health.CurrentHealth = int.Parse(inventorySave[1]);
+            this.player.Health.MaxHealth = int.Parse(inventorySave[2]);
+            this.player.CurrentWeapon = profile.ParseWeapon(player, inventorySave[3]);
+            this.maxBombs = int.Parse(inventorySave[4]);
+            this.maxSelectionX = int.Parse(inventorySave[5]);
+            this.maxSelectionY = int.Parse(inventorySave[6]);
+            this.selectionX = int.Parse(inventorySave[7]);
+            this.selectionY = int.Parse(inventorySave[8]);
+            this.numBombs = int.Parse(inventorySave[9]);
+            this.numKeys = int.Parse(inventorySave[10]);
+            this.numRedPotions = int.Parse(inventorySave[11]);
+            this.numBluePotions = int.Parse(inventorySave[12]);
+            this.numRupees = int.Parse(inventorySave[13]);
+            this.hasBoomerang = bool.Parse(inventorySave[14]);
+            this.hasRod = bool.Parse(inventorySave[15]);
+            this.hasMagicBoomerang = bool.Parse(inventorySave[16]);
+            this.hasBow = bool.Parse(inventorySave[17]);
+            this.hasArrow = bool.Parse(inventorySave[18]);
+            this.hasSilverArrow = bool.Parse(inventorySave[19]);
+            this.hasRedFlame = bool.Parse(inventorySave[20]);
+            this.hasBlueFlame = bool.Parse(inventorySave[21]);
+            this.hasFlute = bool.Parse(inventorySave[22]);
+            this.hasLadder = bool.Parse(inventorySave[23]);
+            this.ladderInUse = bool.Parse(inventorySave[24]);
+            this.hasMap = bool.Parse(inventorySave[25]);
+            this.hasCompass = bool.Parse(inventorySave[26]);
+            this.hasClock = bool.Parse(inventorySave[27]);
+            this.clockLockout = int.Parse(inventorySave[28]);
+            this.selectedItem = profile.ParseSelectedItem(inventorySave[29]);
         }
 
         public void UseItem()

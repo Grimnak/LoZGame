@@ -30,7 +30,7 @@
             player.Physics.CurrentDirection = Physics.Direction.North;
             player.Physics.KnockbackVelocity = Vector2.Zero;
             player.State = new IdleState(player);
-            player.Health.CurrentHealth = 12;
+            player.Health.CurrentHealth = player.Health.MaxHealth / 2;
             player.DamageTimer = 0;
             player.CurrentTint = Color.White;
 

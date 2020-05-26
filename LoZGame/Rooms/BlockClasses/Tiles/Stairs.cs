@@ -36,6 +36,11 @@
 
         public void Update()
         {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.IsBasement)
+            {
+                lockoutTimer = 0;
+            }
+
             if (lockoutTimer > 0)
             {
                 lockoutTimer--;

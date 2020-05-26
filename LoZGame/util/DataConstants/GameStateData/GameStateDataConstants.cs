@@ -17,10 +17,10 @@ namespace LoZClone
         private const int TitleFrameDelay = 10;
         private const int TitleDrawXValue = 284;
 
-        private const int WinGameStMaxDungeons = 8;
-        private const int WinGameStMaxLO = 430;
-        private const int WinStSpriteWidth = 236;
-        private const int WinStSpriteHeight = 160;
+        private const int TriforceGameStMaxDungeons = 9;
+        private const int TriforceGameStMaxLO = 430;
+        private const int TriforceStSpriteWidth = 236;
+        private const int TriforceStSpriteHeight = 160;
 
         private const int optionsWindowHeight = 350;
         private const int optionsWindowWidth = 430;
@@ -59,13 +59,13 @@ namespace LoZClone
 
         public int TransitionRoomStateTransitionTime => 2 * LoZGame.Instance.UpdateSpeed;
 
-        public int WinStateMaxDungeons => WinGameStMaxDungeons;
+        public int TriforceStateMaxDungeons => TriforceGameStMaxDungeons;
 
-        public int WinStateMaxLockout => WinGameStMaxLO;
+        public int TriforceStateMaxLockout => TriforceGameStMaxLO;
 
-        public int WinStateSpriteWidth => WinStSpriteWidth;
+        public int TriforceStateSpriteWidth => TriforceStSpriteWidth;
 
-        public int WinStateSpriteHeight => WinStSpriteHeight;
+        public int TriforceStateSpriteHeight => TriforceStSpriteHeight;
 
         public int OptionsWindowHeight => optionsWindowHeight;
 
