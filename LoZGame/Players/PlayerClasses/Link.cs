@@ -19,7 +19,6 @@
             linkCollisionHandler = new PlayerCollisionHandler(this);
             CurrentColor = LinkColor.Green;
             Physics.CurrentDirection = Physics.Direction.North;
-            CurrentWeapon = LinkWeapon.Wood;
             CurrentTint = LoZGame.Instance.DefaultTint;
             MoveSpeed = GameData.Instance.PlayerConstants.PlayerSpeed;
             DamageTimer = 0;

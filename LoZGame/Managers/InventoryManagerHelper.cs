@@ -77,20 +77,20 @@
 
         public void UsePotion()
         {
-            if (numBluePotions > 0 || LoZGame.Cheats)
-            {
-                if (!LoZGame.Cheats && (LoZGame.Instance.Players[0].Health.CurrentHealth != LoZGame.Instance.Players[0].Health.MaxHealth))
-                {
-                    numBluePotions--;
-                    numRedPotions++;
-                }
-                LoZGame.Instance.GameState = new HealthRestoreGameState();
-            }
-            else if (numRedPotions > 0 || LoZGame.Cheats)
+            if (numRedPotions > 0 || LoZGame.Cheats)
             {
                 if (!LoZGame.Cheats && (LoZGame.Instance.Players[0].Health.CurrentHealth != LoZGame.Instance.Players[0].Health.MaxHealth))
                 {
                     numRedPotions--;
+                    numBluePotions++;
+                }
+                LoZGame.Instance.GameState = new HealthRestoreGameState();
+            }
+            else if (numBluePotions > 0 || LoZGame.Cheats)
+            {
+                if (!LoZGame.Cheats && (LoZGame.Instance.Players[0].Health.CurrentHealth != LoZGame.Instance.Players[0].Health.MaxHealth))
+                {
+                    numBluePotions--;
                 }
                 LoZGame.Instance.GameState = new HealthRestoreGameState();
             }

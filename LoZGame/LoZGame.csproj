@@ -403,6 +403,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Inventory\InventoryComponentsHelper.cs" />
+    <Compile Include="Util\Profiles.cs" />
     <Compile Include="Util\Options.cs" />
     <Compile Include="Util\Physics\JumpPhysics.cs" />
     <Compile Include="Util\Physics\KnockbackPhysics.cs" />

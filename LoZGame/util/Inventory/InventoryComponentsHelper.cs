@@ -150,13 +150,13 @@
 
         public ISprite CreateHealthPotionSprite()
         {
-            if (LoZGame.Instance.Players[0].Inventory.BluePotions > 0)
-            {
-                return InventorySpriteFactory.Instance.CreateInventoryBlueHealthPotion();
-            }
-            else if (LoZGame.Instance.Players[0].Inventory.RedPotions > 0)
+            if (LoZGame.Instance.Players[0].Inventory.RedPotions > 0)
             {
                 return InventorySpriteFactory.Instance.CreateInventoryRedHealthPotion();
+            }
+            else if (LoZGame.Instance.Players[0].Inventory.BluePotions > 0)
+            {
+                return InventorySpriteFactory.Instance.CreateInventoryBlueHealthPotion();
             }
             else
             {

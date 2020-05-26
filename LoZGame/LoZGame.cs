@@ -12,10 +12,10 @@
     public class LoZGame : Game
     {
         public static bool DebugMode = false; // show collision bounding boxes
-        public static bool Cheats = true; // infinite life and item use
+        public static bool Cheats = false; // infinite life and item use
         public static bool Music = false;  // title screen and dungeon music (not SFX)
         public static bool Laser = false; // changes attacks to laser attack
-        public static readonly int StartDungeon = 9; // dungeon ID to load into [1 - 9];
+        public int Profile = 1; // profile to load
         public int Difficulty = 0; // -1 => EASY 0 => NORMAL 1 => HARD 3 => NIGHTMARE
         private const int DefaultUpdateSpeed = 60;
         private readonly int screenWidth;
@@ -65,6 +65,8 @@
         public Color DefaultTint { get { return Color.White; } }
 
         public IPlayer Link { get { return link; } set { link = value; } }
+
+        public int SelectedProfile { get { return Profile; } set { Profile = value; } }
 
         public Dungeon Dungeon { get { return dungeon; } set { dungeon = value; } }
 
@@ -198,42 +200,6 @@
                 spriteBatch.End();
             }
             base.Draw(gameTime);
-        }
-
-        public void ToggleDebug()
-        {
-            if (DebugMode)
-            {
-                DebugMode = false;
-            }
-            else
-            {
-                DebugMode = true;
-            }
-        }
-
-        public void ToggleCheats()
-        {
-            if (DebugMode)
-            {
-                Cheats = false;
-            }
-            else
-            {
-                Cheats = true;
-            }
-        }
-
-        public void ToggleMusic()
-        {
-            if (DebugMode)
-            {
-                Music = false;
-            }
-            else
-            {
-                Music = true;
-            }
         }
     }
 }
