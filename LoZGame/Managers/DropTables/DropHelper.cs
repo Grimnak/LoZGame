@@ -10,8 +10,8 @@
         private const int blueRupeeWeight = 40;
         private const int yellowRupeeWeight = 20;
         private const int bombWeight = 20;
-        private const int redPotionWeight = 10;
-        private const int bluePotionWeight = 5;
+        private const int redPotionWeight = 5;
+        private const int bluePotionWeight = 10;
         private const int healthWeight = 25;
         private const int clockWeight = 5;
         private const int fairyWeight = 10;
