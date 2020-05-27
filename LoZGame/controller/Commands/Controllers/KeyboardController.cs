@@ -13,6 +13,7 @@ namespace LoZClone
         private readonly Dictionary<Keys, ICommand> playerDict;
         private readonly Dictionary<Keys, ICommand> inventoryDict;
         private readonly Dictionary<Keys, ICommand> optionsDict;
+        private readonly Dictionary<Keys, ICommand> profilesDict;
         private ICommand currentCommand;
         private KeyboardState oldState;
         private List<Keys> playerKeys;
@@ -30,6 +31,7 @@ namespace LoZClone
             playerDict = allCommands.GetPlayerDict;
             inventoryDict = allCommands.GetInventoryDict;
             optionsDict = allCommands.GetOptionsDict;
+            profilesDict = allCommands.GetProfilesDict;
             playerCommands = new Stack<KeyValuePair<Keys, ICommand>>();
             playerKeys = new List<Keys>
             {
@@ -91,7 +93,7 @@ namespace LoZClone
             {
                 if (pressed.Contains(Keys.Enter))
                 {
-                    LoZGame.Instance.GameState.PlayGame();
+                    LoZGame.Instance.GameState.ProfilesScreen();
                 }
             }
             else if (LoZGame.Instance.GameState is OpenInventoryState)
@@ -111,6 +113,16 @@ namespace LoZClone
                     if (optionsDict.ContainsKey(key) && oldState.IsKeyUp(key))
                     {
                         optionsDict[key].Execute();
+                    }
+                }
+            }
+            else if (LoZGame.Instance.GameState is ProfilesState)
+            {
+                foreach (Keys key in pressed)
+                {
+                    if (profilesDict.ContainsKey(key) && oldState.IsKeyUp(key))
+                    {
+                        profilesDict[key].Execute();
                     }
                 }
             }

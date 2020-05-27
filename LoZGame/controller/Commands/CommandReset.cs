@@ -8,7 +8,6 @@
     public class CommandReset : ICommand
     {
         private readonly IPlayer player;
-        private Profiles profile;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandReset"/> class.
@@ -18,7 +17,6 @@
         public CommandReset(IPlayer player)
         {
             this.player = player;
-            profile = new Profiles();
         }
 
         /// <inheritdoc/>
@@ -35,7 +33,7 @@
             player.DamageTimer = 0;
             player.CurrentTint = Color.White;
 
-            profile.ResetSaveFile();
+            LoZGame.Instance.Profiles.ResetSaveFile();
 
             InventoryComponents.Instance.Reset();
             LoZGame.Instance.GameState.TitleScreen();

@@ -2,15 +2,12 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
-    using System;
-    using System.IO;
 
     public class TitleScreenState : GameStateEssentials, IGameState
     {
         private readonly ISprite sprite;
         private readonly ISprite enter;
         private readonly Color spriteTint = LoZGame.Instance.DefaultTint;
-        private string[] lines = File.ReadAllLines("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + ".txt");
 
         public TitleScreenState()
         {
@@ -24,17 +21,11 @@
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
 
-            LoZGame.Instance.Dungeon = new Dungeon(int.Parse(lines[0]));
-            LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
-            LoZGame.Instance.Dungeon.LoadNewRoom();
-
             LoZGame.Instance.Link = new Link(new Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + GameData.Instance.GameStateDataConstants.HorizontalHalfDungeon),
                     (float)(BlockSpriteFactory.Instance.TopOffset + GameData.Instance.GameStateDataConstants.VerticalHalfDungeon)));
 
             LoZGame.Instance.Players.Add(LoZGame.Instance.Link);
-
-            LoZGame.Instance.Dungeon.Player = LoZGame.Instance.Link;
 
             KeyboardCommandLoader keyboardLoader = new KeyboardCommandLoader(LoZGame.Instance.Players[0]);
             MouseCommandLoader mouseLoader = new MouseCommandLoader();
@@ -60,11 +51,10 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public override void PlayGame()
+        public override void ProfilesScreen()
         {
             SoundFactory.Instance.StopAll();
-            SoundFactory.Instance.PlayDungeonSong();
-            LoZGame.Instance.GameState = new PlayGameState();
+            LoZGame.Instance.GameState = new ProfilesState();
         }
 
         /// <inheritdoc></inheritdoc>

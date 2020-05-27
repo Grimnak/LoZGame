@@ -98,6 +98,9 @@
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionLeft.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionRight.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionUp.cs" />
+    <Compile Include="Controller\Commands\ProfileCommands\CommandMoveProfileDown.cs" />
+    <Compile Include="Controller\Commands\ProfileCommands\CommandMoveProfileUp.cs" />
+    <Compile Include="Controller\Commands\ProfileCommands\CommandSelectProfile.cs" />
     <Compile Include="Controller\Commands\OptionCommands\CommandMoveOptionDown.cs" />
     <Compile Include="Controller\Commands\OptionCommands\CommandMoveOptionUp.cs" />
     <Compile Include="Controller\Commands\OptionCommands\CommandToggleOption.cs" />
@@ -218,6 +221,7 @@
     <Compile Include="GameState\CreditsScreenState.cs" />
     <Compile Include="GameState\HealthRestoreGameState.cs" />
     <Compile Include="GameState\GameStateEssentials.cs" />
+    <Compile Include="GameState\ProfilesState.cs" />
     <Compile Include="GameState\OptionsState.cs" />
     <Compile Include="GameState\FluteGameState.cs" />
     <Compile Include="GameState\UnpauseState.cs" />

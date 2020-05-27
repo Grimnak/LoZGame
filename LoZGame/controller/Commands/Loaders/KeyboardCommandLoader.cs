@@ -14,6 +14,7 @@ namespace LoZClone
         private readonly Dictionary<Keys, ICommand> playerDictionary;
         private readonly Dictionary<Keys, ICommand> inventoryDictionary;
         private readonly Dictionary<Keys, ICommand> optionsDictionary;
+        private readonly Dictionary<Keys, ICommand> profilesDictionary;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyboardCommandLoader"/> class.
@@ -24,6 +25,7 @@ namespace LoZClone
             playerDictionary = new Dictionary<Keys, ICommand>();
             inventoryDictionary = new Dictionary<Keys, ICommand>();
             optionsDictionary = new Dictionary<Keys, ICommand>();
+            profilesDictionary = new Dictionary<Keys, ICommand>();
 
             commandIdle = new CommandIdle(player);
             commandContinue = new CommandContinue(player);
@@ -62,6 +64,11 @@ namespace LoZClone
             optionsDictionary.Add(Keys.Down, new CommandMoveOptionDown());
             optionsDictionary.Add(Keys.Enter, new CommandToggleOption());
 
+            profilesDictionary.Add(Keys.W, new CommandMoveProfileUp());
+            profilesDictionary.Add(Keys.Up, new CommandMoveProfileUp());
+            profilesDictionary.Add(Keys.S, new CommandMoveProfileDown());
+            profilesDictionary.Add(Keys.Down, new CommandMoveProfileDown());
+            profilesDictionary.Add(Keys.Enter, new CommandSelectProfile());
         }
 
         /// <summary>
@@ -88,5 +95,10 @@ namespace LoZClone
         /// Gets the dictionary containing options commands from the loader.
         /// </summary>
         public Dictionary<Keys, ICommand> GetOptionsDict => optionsDictionary;
+
+        /// <summary>
+        /// Gets the dictionary containing profiles commands from the loader.
+        /// </summary>
+        public Dictionary<Keys, ICommand> GetProfilesDict => profilesDictionary;
     }
 }

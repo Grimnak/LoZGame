@@ -44,12 +44,17 @@
         }
 
         /// <inheritdoc></inheritdoc>
+        public virtual void ProfilesScreen()
+        {
+        }
+
+        /// <inheritdoc></inheritdoc>
         public virtual void TransitionRoom(Physics.Direction direction)
         {
         }
 
         /// <inheritdoc></inheritdoc>
-        public virtual void WinGame()
+        public virtual void TriforceState()
         {
         }
 

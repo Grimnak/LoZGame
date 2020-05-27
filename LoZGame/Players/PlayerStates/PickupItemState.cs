@@ -27,7 +27,7 @@ namespace LoZClone
             if (item is Triforce)
             {
                 sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
-                LoZGame.Instance.GameState.WinGame();
+                LoZGame.Instance.GameState.TriforceState();
             }
             else if (item is Key)
             {

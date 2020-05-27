@@ -17,7 +17,7 @@
         SoundEffectInstance triforceLoop = triforceTune.CreateInstance();
         private static SoundEffect bossTune = SoundEffect.FromStream(Properties.Resources.The_Legend_of_Zelda__Spirit_Tracks_Soundtrack___66_Stagnox__Armored_Colossus);
         SoundEffectInstance bossLoop = bossTune.CreateInstance();
-        private SoundPlayer credits = new SoundPlayer(Properties.Resources.CreditsTheme);
+        private SoundPlayer lobby = new SoundPlayer(Properties.Resources.CreditsTheme);
         private SoundEffect swordSlash = SoundEffect.FromStream(Properties.Resources.LOZ_Sword_Slash);
         private SoundEffect swordShoot = SoundEffect.FromStream(Properties.Resources.LOZ_Sword_Shoot);
         private SoundEffect laserBlast = SoundEffect.FromStream(Properties.Resources.SpartanLaser_mixdown);
@@ -200,11 +200,11 @@
             }
         }
 
-        public void PlayCreditsTune()
+        public void PlayLobbyTune()
         {
             if (musicEnabled)
             {
-                credits.Play();
+                lobby.Play();
             }
         }
 
@@ -215,7 +215,7 @@
 
         public void StopCreditsSong()
         {
-            credits.Stop();
+            lobby.Stop();
         }
 
         public void StopBossSong()
@@ -229,7 +229,7 @@
             dungeonLoop.Stop();
             triforceLoop.Stop();
             bossLoop.Stop();
-            credits.Stop();
+            lobby.Stop();
         }
     }
 }

@@ -14,6 +14,11 @@
         void TitleScreen();
 
         /// <summary>
+        /// Game states goes to profile selection.
+        /// </summary>
+        void ProfilesScreen();
+
+        /// <summary>
         /// Game state goes to credits screen.
         /// </summary>
         void CreditsScreen();
@@ -54,9 +59,9 @@
         void CloseInventory();
 
         /// <summary>
-        /// Game state goes to win state.
+        /// Game state goes to triforce state.
         /// </summary>
-        void WinGame();
+        void TriforceState();
 
         /// <summary>
         /// Game state for room transitions.

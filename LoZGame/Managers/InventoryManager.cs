@@ -27,8 +27,6 @@
             new List<ItemType> { ItemType.Potion, ItemType.Rod, ItemType.None, ItemType.Flute }
         };
 
-        private Profiles profile;
-
         private int selectionX;
         private int selectionY;
 
@@ -95,12 +93,11 @@
         public InventoryManager(IPlayer player)
         {
             string[] inventorySave = File.ReadAllLines("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + ".txt");
-            profile = new Profiles();
 
             this.player = player;
             this.player.Health.CurrentHealth = int.Parse(inventorySave[1]);
             this.player.Health.MaxHealth = int.Parse(inventorySave[2]);
-            this.player.CurrentWeapon = profile.ParseWeapon(player, inventorySave[3]);
+            this.player.CurrentWeapon = LoZGame.Instance.Profiles.ParseWeapon(player, inventorySave[3]);
             this.maxBombs = int.Parse(inventorySave[4]);
             this.maxSelectionX = int.Parse(inventorySave[5]);
             this.maxSelectionY = int.Parse(inventorySave[6]);
@@ -126,7 +123,7 @@
             this.hasCompass = bool.Parse(inventorySave[26]);
             this.hasClock = bool.Parse(inventorySave[27]);
             this.clockLockout = int.Parse(inventorySave[28]);
-            this.selectedItem = profile.ParseSelectedItem(inventorySave[29]);
+            this.selectedItem = LoZGame.Instance.Profiles.ParseSelectedItem(inventorySave[29]);
         }
 
         public void UseItem()

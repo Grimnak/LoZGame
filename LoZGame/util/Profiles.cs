@@ -149,5 +149,43 @@
                 return InventoryManager.ItemType.None;
             }
         }
+
+        public void MoveSelectionDown()
+        {
+            switch (LoZGame.Instance.SelectedProfile)
+            {
+                case 1:
+                    LoZGame.Instance.SelectedProfile = 2;
+                    break;
+                case 2:
+                    LoZGame.Instance.SelectedProfile = 3;
+                    break;
+                case 3:
+                    LoZGame.Instance.SelectedProfile = 1;
+                    break;
+                default:
+                    LoZGame.Instance.SelectedProfile = 1;
+                    break;
+            }
+        }
+
+        public void MoveSelectionUp()
+        {
+            switch (LoZGame.Instance.SelectedProfile)
+            {
+                case 1:
+                    LoZGame.Instance.SelectedProfile = 3;
+                    break;
+                case 2:
+                    LoZGame.Instance.SelectedProfile = 1;
+                    break;
+                case 3:
+                    LoZGame.Instance.SelectedProfile = 2;
+                    break;
+                default:
+                    LoZGame.Instance.SelectedProfile = 1;
+                    break;
+            }
+        }
     }
 }

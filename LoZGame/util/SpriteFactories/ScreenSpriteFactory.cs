@@ -24,6 +24,8 @@
         private Texture2D creditsSpriteSheet;
         private Texture2D optionsSpriteSheet;
         private SpriteData optionsData;
+        private Texture2D profilesSpriteSheet;
+        private SpriteData profilesData;
 
         private static readonly ScreenSpriteFactory InstanceValue = new ScreenSpriteFactory();
 
@@ -41,7 +43,9 @@
             pauseScreenSprite = content.Load<Texture2D>("PauseMenu");
             creditsSpriteSheet = content.Load<Texture2D>("Credits");
             optionsSpriteSheet = content.Load<Texture2D>("Options");
+            profilesSpriteSheet = content.Load<Texture2D>("profileSelection");
             optionsData = new SpriteData(new Vector2(GameData.Instance.GameStateDataConstants.OptionsWindowWidth, GameData.Instance.GameStateDataConstants.OptionsWindowHeight), optionsSpriteSheet, 1, 1);
+            profilesData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), profilesSpriteSheet, 1, 1);
             gameOverData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), gameOverSpriteSheet, 1, 1);
     }
 
@@ -68,6 +72,11 @@
         public ISprite OptionsScreen()
         {
             return new ObjectSprite(optionsSpriteSheet, optionsData);
+        }
+
+        public ISprite ProfilesScreen()
+        {
+            return new ObjectSprite(profilesSpriteSheet, profilesData);
         }
 
         public ISprite GameOverScreen()

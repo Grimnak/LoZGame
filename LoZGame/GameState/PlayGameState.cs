@@ -49,7 +49,7 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public override void WinGame()
+        public override void TriforceState()
         {
             SoundFactory.Instance.StopAll();
             LoZGame.Instance.GameState = new TriforceState();

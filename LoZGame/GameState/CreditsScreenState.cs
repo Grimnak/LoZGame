@@ -18,7 +18,7 @@ namespace LoZClone
         public CreditsScreenState()
         {
             count = 0;
-            SoundFactory.Instance.PlayCreditsTune();
+            SoundFactory.Instance.PlayLobbyTune();
             sprite = ScreenSpriteFactory.Instance.CreditsScreen();
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();

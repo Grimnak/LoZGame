@@ -11,14 +11,12 @@
         private int lockout;
         private int lockoutMax;
         private BlendState bs;
-        private Profiles profile;
 
         public TriforceState()
         {
             maxDungeon = GameData.Instance.GameStateDataConstants.TriforceStateMaxDungeons;
             lockoutMax = GameData.Instance.GameStateDataConstants.TriforceStateMaxLockout;
             lockout = 0;
-            profile = new Profiles();
         }
 
         /// <inheritdoc></inheritdoc>
@@ -73,7 +71,7 @@
                     LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
 
                     // Add the current inventory and new dungeon as strings to a save file.
-                    profile.WriteToSaveFile();
+                    LoZGame.Instance.Profiles.WriteToSaveFile();
 
                     LoZGame.Instance.GameState.PlayGame();
                 }

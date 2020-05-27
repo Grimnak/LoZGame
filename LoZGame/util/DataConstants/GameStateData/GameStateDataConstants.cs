@@ -34,6 +34,14 @@ namespace LoZClone
         private const int optionsMusicY = 501;
         private const int optionsTextLeading = 58; // What is Leading? https://techterms.com/definition/leading
         private const int optionsSelectorY = 325;
+        private const int profilesSelectorX = 225;
+        private const int profiles1SelectorY = 235;
+        private const int profiles2SelectorY = 370;
+        private const int profiles3SelectorY = 510;
+        private const int profilesDungeonTextX = 550;
+        private const int profiles1DungeonTextY = 235;
+        private const int profiles2DungeonTextY = 370;
+        private const int profiles3DungeonTextY = 510;
 
         private const int playerTransitionMaxDistance = 200;
 
@@ -94,5 +102,21 @@ namespace LoZClone
         public int PlayerTransitionMaxDistance => playerTransitionMaxDistance;
 
         public int CreditsMAX => MaxCreditsTime;
+
+        public int ProfilesSelectorX => profilesSelectorX;
+
+        public int Profiles1SelectorY => profiles1SelectorY;
+
+        public int Profiles2SelectorY => profiles2SelectorY;
+
+        public int Profiles3SelectorY => profiles3SelectorY;
+
+        public int ProfilesDungeonTextX => profilesDungeonTextX;
+
+        public int Profiles1DungeonTextY => profiles1DungeonTextY;
+
+        public int Profiles2DungeonTextY => profiles2DungeonTextY;
+
+        public int Profiles3DungeonTextY => profiles3DungeonTextY;
     }
 }

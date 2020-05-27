@@ -13,10 +13,10 @@
     {
         public static bool DebugMode = false; // show collision bounding boxes
         public static bool Cheats = false; // infinite life and item use
-        public static bool Music = false;  // title screen and dungeon music (not SFX)
+        public static bool Music = true;  // title screen and dungeon music (not SFX)
         public static bool Laser = false; // changes attacks to laser attack
-        public int Profile = 1; // profile to load
         public int Difficulty = 0; // -1 => EASY 0 => NORMAL 1 => HARD 3 => NIGHTMARE
+        public int Profile = 1;
         private const int DefaultUpdateSpeed = 60;
         private readonly int screenWidth;
         private readonly int screenHeight;
@@ -46,6 +46,7 @@
         private GameObjectManager gameObjectManager;
         private Effect betterTinting;
         private Options options;
+        private Profiles profiles;
 
         private DropManager dropManager;
         private CollisionDetection collisionDetector;
@@ -94,9 +95,12 @@
 
         public Options Options { get { return options; } }
 
+        public Profiles Profiles { get { return profiles; } }
+
         private LoZGame()
         {
             options = new Options();
+            profiles = new Profiles();
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 654;
