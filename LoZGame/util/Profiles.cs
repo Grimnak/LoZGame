@@ -88,7 +88,7 @@
             fileSave.Add(0.ToString());
             fileSave.Add(InventoryManager.ItemType.Bomb.ToString());
 
-            TextWriter saveFile = new StreamWriter("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + ".txt");
+            TextWriter saveFile = new StreamWriter("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + ".txt", false);
 
             foreach (string element in fileSave)
             {
