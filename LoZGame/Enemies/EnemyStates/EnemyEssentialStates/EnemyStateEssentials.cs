@@ -31,6 +31,7 @@
             EnemyAI.LargeDigDogger,
             EnemyAI.Gohma,
             EnemyAI.Segment,
+            EnemyAI.MiniPatra,
             EnemyAI.NoSpawn
         };
 

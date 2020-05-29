@@ -88,7 +88,6 @@
 
         public override void Update()
         {
-            Console.WriteLine(visibilityTimer);
             HandleDamage();
             if (!LoZGame.Instance.Players[0].Inventory.HasClock || IsSpawning || IsDead)
             {

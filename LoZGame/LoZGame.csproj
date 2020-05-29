@@ -123,10 +123,12 @@
     <Compile Include="Enemies\EnemyClasses\DifficultyModifiers.cs" />
     <Compile Include="Enemies\EnemyClasses\Digdogger\DigDogger.cs" />
     <Compile Include="Enemies\EnemyClasses\Ganon.cs" />
+    <Compile Include="Enemies\EnemyClasses\Gleeok\GleeokHead.cs" />
     <Compile Include="Enemies\EnemyClasses\Gleeok\GleeokBody.cs" />
+    <Compile Include="Enemies\EnemyClasses\Patra\Patra.cs" />
     <Compile Include="Enemies\EnemyClasses\Gleeok\GleeokHeadOff.cs" />
     <Compile Include="Enemies\EnemyClasses\Gleeok\GleeokNeck.cs" />
-    <Compile Include="Enemies\EnemyClasses\Gleeok\GleeokHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\Patra\MiniPatra.cs" />
     <Compile Include="Enemies\EnemyClasses\Digdogger\DigDoggerInvincible.cs" />
     <Compile Include="Enemies\EnemyClasses\LikeLike.cs" />
     <Compile Include="Enemies\EnemyClasses\Manhandla\ManhandlaHead.cs" />

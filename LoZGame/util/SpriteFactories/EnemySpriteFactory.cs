@@ -10,6 +10,12 @@
         private static readonly int dodongoWidthUp = 60;
         private static readonly int dodongoWidthLeftRight = 96;
 
+        private static readonly int patraWidth = 40;
+        private static readonly int patraHeight = 27;
+
+        private static readonly int miniPatraWidth = 20;
+        private static readonly int miniPatraHeight = 20;
+
         private static readonly int GleeokBodyWidth = 96;
         private static readonly int GleeokBodyHeight = 128;
 
@@ -218,6 +224,14 @@
             {
                 return PolsVoiceWidth;
             }
+            else if (enemy is Patra)
+            {
+                return patraWidth;
+            }
+            else if (enemy is MiniPatra)
+            {
+                return miniPatraWidth;
+            }
             else
             {
                 return 0;
@@ -346,11 +360,25 @@
             {
                 return PolsVoiceHeight;
             }
+            else if (enemy is Patra)
+            {
+                return patraWidth;
+            }
+            else if (enemy is MiniPatra)
+            {
+                return miniPatraWidth;
+            }
             else
             {
                 return 0;
             }
         }
+
+        private Texture2D patraTexure;
+        private SpriteData patraData;
+
+        private Texture2D miniPatraTexure;
+        private SpriteData miniPatraData;
 
         private Texture2D manhandlaBodyTexture;
         private SpriteData manhandlaBodyData;
@@ -532,6 +560,9 @@
             manhandlaHeadDownTexture = content.Load<Texture2D>("man_head_down");
             manhandlaHeadUpTexture = content.Load<Texture2D>("man_head_up");
 
+            patraTexure = content.Load<Texture2D>("patra_boss");
+            miniPatraTexure = content.Load<Texture2D>("patra_mini");
+
             digDoggerLeft = content.Load<Texture2D>("digdogger_left");
             digDoggerRight = content.Load<Texture2D>("digdogger_right");
             digDoggerIdle = content.Load<Texture2D>("digdogger_idle");
@@ -675,6 +706,8 @@
             ganonVisibleData = new SpriteData(new Vector2(ganonWidth, ganonHeight), ganonVisible, 1, 1);
             ganonInvisibleData = new SpriteData(new Vector2(ganonWidth, ganonHeight), ganonInvisible, 1, 1);
             ganonParalyzedData = new SpriteData(new Vector2(ganonWidth, ganonHeight), ganonParalyzed, 1, 1);
+            patraData = new SpriteData(new Vector2(patraWidth, patraHeight), patraTexure, 2, 1);
+            miniPatraData = new SpriteData(new Vector2(miniPatraWidth, miniPatraHeight), miniPatraTexure, 2, 1);
         }
 
         // Ganon Sprites
@@ -686,6 +719,16 @@
         public ISprite CreateGanonInvisibleSprite()
         {
             return new ObjectSprite(ganonInvisible, ganonInvisibleData);
+        }
+
+        public ISprite CreatePatraSprite()
+        {
+            return new ObjectSprite(patraTexure, patraData);
+        }
+
+        public ISprite CreateMiniPatraSprite()
+        {
+            return new ObjectSprite(miniPatraTexure, miniPatraData);
         }
 
         public ISprite CreateGanonParalyzedSprite()
