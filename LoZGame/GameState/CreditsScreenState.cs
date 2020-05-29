@@ -40,6 +40,7 @@ namespace LoZClone
             if (count == MAX)
             {
                 SoundFactory.Instance.StopCreditsSong();
+                LoZGame.Instance.Profiles.ResetSaveFile();
                 LoZGame.Instance.GameState.TitleScreen();
             }  
         }
