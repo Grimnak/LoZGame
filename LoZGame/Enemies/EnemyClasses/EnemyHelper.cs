@@ -39,6 +39,7 @@
             BlueWizzrobe,
             Gohma,
             Segment,
+            MiniPatra,
             NoAI
         }
 

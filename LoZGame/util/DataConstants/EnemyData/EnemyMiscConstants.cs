@@ -37,6 +37,8 @@ namespace LoZClone
         private const int LikelikeFavorCardinal = 3;
         private const int PolsVoiceFavorCardinal = 3;
 
+        private const int NrmlMiniPatraOffset = 110;
+
         public int FireSnakeLength => FireSnakeLgth;
 
         public int MaxDirectionChange => MaxDirectionChng;
@@ -98,6 +100,8 @@ namespace LoZClone
         public int LikelikeFavorCardinalValue => LikelikeFavorCardinal;
 
         public int PolsVoiceFavorCardinalValue => PolsVoiceFavorCardinal;
+
+        public int NormalMiniPatraOffset => NrmlMiniPatraOffset;
 
     }
 }

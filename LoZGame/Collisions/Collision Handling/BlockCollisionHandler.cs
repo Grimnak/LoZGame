@@ -19,7 +19,8 @@
             EnemyEssentials.EnemyAI.NoAI,
             EnemyEssentials.EnemyAI.MoldormHead,
             EnemyEssentials.EnemyAI.Segment,
-            EnemyEssentials.EnemyAI.WallMaster
+            EnemyEssentials.EnemyAI.WallMaster,
+            EnemyEssentials.EnemyAI.MiniPatra
         };
 
         public BlockCollisionHandler(IBlock block)

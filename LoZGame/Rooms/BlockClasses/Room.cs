@@ -252,6 +252,9 @@
                 case "BlueGohma":
                     enemies.Add(new BlueGohma(location));
                     break;
+                case "Patra":
+                    enemies.Add(new Patra(location));
+                    break;
                 case "Ganon":
                     enemies.Add(new Ganon(location));
                     break;
