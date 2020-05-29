@@ -52,6 +52,7 @@
                 saveFile.WriteLine(element);
             }
 
+            fileSave.Clear();
             saveFile.Close();
         }
 
@@ -95,6 +96,7 @@
                 saveFile.WriteLine(element);
             }
 
+            fileSave.Clear();
             saveFile.Close();
         }
 
