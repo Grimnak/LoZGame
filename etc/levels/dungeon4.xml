@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dungeon xmlns="LEVEL-4">
-<drow idx="0">
+<dungeon xmlns="LEVEL-4"
+         startX="1" startY="7"
+         bossX="3" bossY="1"
+         maxX="4" maxY="8"
+         dungeonColorRed="178" dungeonColorGreen="162" dungeonColorBlue="0" dungeonColorAlpha="255"
+         mapColorRed="184" mapColorGreen="134" mapColorBlue="11" mapColorAlpha="255">
+  <drow idx="0">
   <room exists="True" oldman="True" basement="False" idx="0">
     <items>
     </items>

@@ -10,27 +10,22 @@
     public partial class Dungeon
     {
         private List<List<Room>> dungeonLayout;
-        private int startX;
-        private int startY;
         private int currentX;
         private int currentY;
         private Color mapColor;
-        private int maxX;
-        private int maxY;
+        private Point maxDimensions;
+        private Point startLocation;
         private IPlayer player;
         private string currentDungeonFile;
         private int dungeonNumber;
         private MiniMap miniMap;
         private Point dungeonBossLoc;
         private bool defeatedBoss;
-
-        public Point DungeonBossLocation => dungeonBossLoc;
+        private string dungeonName;
 
         public List<List<Room>> DungeonLayout { get { return dungeonLayout; } }
 
         public MiniMap MiniMap => miniMap;
-
-        public Color MapColor => mapColor;
 
         public bool DefeatedBoss { get { return defeatedBoss; } set { defeatedBoss = value; } }
 
@@ -44,6 +39,7 @@
         /// Initializes a new instance of the <see cref="Dungeon"/> class.
         /// </summary>
         /// <param name="dungeonNumber">Number of the dungeon whose file is to be parsed.</param>
+        /// <param name="dungeonName">Name of the dungeon where the dungeon is to be serialized/loaded from</param>
         public Dungeon(int dungeonNumber)
         {
             DungeonNumber = dungeonNumber;
@@ -51,102 +47,63 @@
             LoZGame.Instance.GameObjects.LoadedRoomX = -1;
             LoZGame.Instance.GameObjects.LoadedRoomY = -1;
 
+            LoZGame.Instance.DungeonTint = XMLHandler.ParseColor(currentDungeonFile);
+            dungeonName = XMLHandler.ParseName(currentDungeonFile);
+            mapColor = XMLHandler.ParseMapColor(currentDungeonFile);
+            dungeonBossLoc = XMLHandler.ParseBossLocation(currentDungeonFile);
+            startLocation = XMLHandler.ParseStartLocation(currentDungeonFile);
+            maxDimensions = XMLHandler.ParseMaxSize(currentDungeonFile);
+            dungeonLayout = XMLHandler.ParseLayout(currentDungeonFile);
 
-
-            switch (this.dungeonNumber)
-            {
-                case 1:
-                    LoZGame.Instance.DungeonTint = Color.DarkCyan;
-                    startX = 2;
-                    startY = 5; // player spawns at curX/curY
-                    maxX = 6;
-                    maxY = 6;
-                    mapColor = Color.DarkCyan;
-                    dungeonBossLoc = new Point(4, 1);
-                    break;
-                case 2:
-                    LoZGame.Instance.DungeonTint = Color.Blue;
-                    startX = 1;
-                    startY = 7;
-                    maxX = 4;
-                    maxY = 8;
-                    mapColor = Color.Blue;
-                    dungeonBossLoc = new Point(2, 0);
-                    break;
-                case 3:
-                    LoZGame.Instance.DungeonTint = new Color(41, 175, 72);
-                    startX = 3;
-                    startY = 5;
-                    maxX = 5;
-                    maxY = 6;
-                    mapColor = Color.Green;
-                    dungeonBossLoc = new Point(4, 2);
-                    break;
-                case 4:
-                    LoZGame.Instance.DungeonTint = new Color(178, 162, 0);
-                    startX = 1;
-                    startY = 7;
-                    maxX = 4;
-                    maxY = 8;
-                    mapColor = Color.DarkGoldenrod;
-                    dungeonBossLoc = new Point(3, 1);
-                    break;
-                case 5:
-                    LoZGame.Instance.DungeonTint = new Color(41, 175, 72);
-                    startX = 2;
-                    startY = 7;
-                    maxX = 4;
-                    maxY = 8;
-                    mapColor = Color.Green;
-                    dungeonBossLoc = new Point(0, 2);
-                    break;
-                case 6:
-                    LoZGame.Instance.DungeonTint = new Color(178, 162, 0);
-                    startX = 1;
-                    startY = 7;
-                    maxX = 6;
-                    maxY = 8;
-                    mapColor = Color.DarkGoldenrod;
-                    dungeonBossLoc = new Point(4, 1);
-                    break;
-                case 7:
-                    LoZGame.Instance.DungeonTint = new Color(41, 175, 72);
-                    startX = 1;
-                    startY = 7;
-                    maxX = 6;
-                    maxY = 8;
-                    mapColor = Color.Green;
-                    dungeonBossLoc = new Point(2, 2);
-                    break;
-                case 8:
-                    LoZGame.Instance.DungeonTint = Color.LightGray;
-                    startX = 3;
-                    startY = 7;
-                    maxX = 5;
-                    maxY = 8;
-                    mapColor = Color.Gray;
-                    dungeonBossLoc = new Point(1, 3);
-                    break;
-                case 9:
-                    LoZGame.Instance.DungeonTint = Color.LightGray;
-                    startX = 6;
-                    startY = 7;
-                    maxX = 8;
-                    maxY = 8;
-                    mapColor = Color.Gray;
-                    dungeonBossLoc = new Point(2, 4);
-                    break;
-                default:
-                    break;
-            }
-            currentX = startX;
-            currentY = startY;
+            currentX = startLocation.X;
+            currentY = startLocation.Y;
             defeatedBoss = false;
-
-            dungeonLayout = XMLHandler.Parse(currentDungeonFile);
-
             miniMap = new MiniMap(this);
-            miniMap.LoadMap(dungeonLayout, maxX, maxY);
+            miniMap.LoadMap(dungeonLayout, maxDimensions.X, maxDimensions.Y);
+        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Dungeon"/> class.
+        /// </summary>
+        /// <param name="dungeonNumber">Number of the dungeon whose file is to be parsed.</param>
+        /// <param name="dungeonName">Name of the dungeon where the dungeon is to be serialized/loaded from</param>
+        public Dungeon(string dungeonFile)
+        {
+            DungeonNumber = dungeonNumber;
+            currentDungeonFile = "../../../../etc/levels/dungeon" + this.dungeonNumber + ".xml";
+            LoZGame.Instance.GameObjects.LoadedRoomX = -1;
+            LoZGame.Instance.GameObjects.LoadedRoomY = -1;
+
+            LoZGame.Instance.DungeonTint = XMLHandler.ParseColor(currentDungeonFile);
+            dungeonName = XMLHandler.ParseName(currentDungeonFile);
+            mapColor = XMLHandler.ParseMapColor(currentDungeonFile);
+            dungeonBossLoc = XMLHandler.ParseBossLocation(currentDungeonFile);
+            startLocation = XMLHandler.ParseStartLocation(currentDungeonFile);
+            maxDimensions = XMLHandler.ParseMaxSize(currentDungeonFile);
+            dungeonLayout = XMLHandler.ParseLayout(currentDungeonFile);
+
+            currentX = startLocation.X;
+            currentY = startLocation.Y;
+            defeatedBoss = false;
+            miniMap = new MiniMap(this);
+            miniMap.LoadMap(dungeonLayout, maxDimensions.X, maxDimensions.Y);
+        }
+
+        public Point DungeonBossLocation
+        {
+            get { return dungeonBossLoc; }
+            set { dungeonBossLoc = value; }
+        }
+
+        public string DungeonName
+        {
+            get { return dungeonName; }
+            set { dungeonName = value; }
+        }
+
+        public Color MapColor
+        {
+            get { return mapColor; }
+            set { mapColor = value; }
         }
 
         public int CurrentRoomX
@@ -163,14 +120,14 @@
 
         public int StartRoomX
         {
-            get { return startX; }
-            set { currentX = value; }
+            get { return startLocation.X; }
+            set { startLocation.X = value; }
         }
 
         public int StartRoomY
         {
-            get { return startY; }
-            set { currentY = value; }
+            get { return startLocation.Y; }
+            set { startLocation.Y = value; }
         }
 
         public Room CurrentRoom

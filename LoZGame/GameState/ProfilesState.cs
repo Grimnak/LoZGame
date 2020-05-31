@@ -18,11 +18,11 @@
             ProfileScreen = ScreenSpriteFactory.Instance.ProfilesScreen();
             SelectorSprite = LinkSpriteFactory.Instance.CreateSpriteLinkDown(Link.LinkColor.Green);
             SelectorSprite.SetFrame(0);
-            string[] profile1 = File.ReadAllLines("../../../../etc/profiles/Profile#1.txt");
+            string[] profile1 = File.ReadAllLines("../../../../etc/profiles/Profile#1/Inventory.txt");
             profile1Dungeon = profile1[0];
-            string[] profile2 = File.ReadAllLines("../../../../etc/profiles/Profile#2.txt");
+            string[] profile2 = File.ReadAllLines("../../../../etc/profiles/Profile#2/Inventory.txt");
             profile2Dungeon = profile2[0];
-            string[] profile3 = File.ReadAllLines("../../../../etc/profiles/Profile#3.txt");
+            string[] profile3 = File.ReadAllLines("../../../../etc/profiles/Profile#3/Inventory.txt");
             profile3Dungeon = profile3[0];
         }
 
