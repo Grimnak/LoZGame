@@ -61,32 +61,6 @@
             miniMap = new MiniMap(this);
             miniMap.LoadMap(dungeonLayout, maxDimensions.X, maxDimensions.Y);
         }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Dungeon"/> class.
-        /// </summary>
-        /// <param name="dungeonNumber">Number of the dungeon whose file is to be parsed.</param>
-        /// <param name="dungeonName">Name of the dungeon where the dungeon is to be serialized/loaded from</param>
-        public Dungeon(string dungeonFile)
-        {
-            DungeonNumber = dungeonNumber;
-            currentDungeonFile = "../../../../etc/levels/dungeon" + this.dungeonNumber + ".xml";
-            LoZGame.Instance.GameObjects.LoadedRoomX = -1;
-            LoZGame.Instance.GameObjects.LoadedRoomY = -1;
-
-            LoZGame.Instance.DungeonTint = XMLHandler.ParseColor(currentDungeonFile);
-            dungeonName = XMLHandler.ParseName(currentDungeonFile);
-            mapColor = XMLHandler.ParseMapColor(currentDungeonFile);
-            dungeonBossLoc = XMLHandler.ParseBossLocation(currentDungeonFile);
-            startLocation = XMLHandler.ParseStartLocation(currentDungeonFile);
-            maxDimensions = XMLHandler.ParseMaxSize(currentDungeonFile);
-            dungeonLayout = XMLHandler.ParseLayout(currentDungeonFile);
-
-            currentX = startLocation.X;
-            currentY = startLocation.Y;
-            defeatedBoss = false;
-            miniMap = new MiniMap(this);
-            miniMap.LoadMap(dungeonLayout, maxDimensions.X, maxDimensions.Y);
-        }
 
         public Point DungeonBossLocation
         {
