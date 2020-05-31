@@ -428,8 +428,9 @@
     <Compile Include="Util\SpriteFactories\InventorySpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\ScreenSpriteFactory.cs" />
     <Compile Include="Util\Audio\SoundFactory.cs" />
-    <Compile Include="Util\XMLHandler.cs" />
     <Compile Include="GameState\TriforceState.cs" />
+    <Compile Include="Util\XML\XMLRoomHandler.cs" />
+    <Compile Include="Util\XML\XMLDungeonHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">

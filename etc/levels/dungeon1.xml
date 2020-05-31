@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dungeon xmlns="LEVEL-1">
+<dungeon xmlns="LEVEL-1" startX="" startY="" bossX="" bossY="" maxX="" maxY="">
   <drow idx="0">
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="False" idx="0">
