@@ -10,19 +10,111 @@
     public static partial class XMLHandler
     {
         /*
+        * This methodd will parse a MiniMap Color for a givendungeeon
+        * 
+        * args:
+        * nameSpace => namespace of the root of the xml
+        */
+        public static Color ParseMapColor(string filePath)
+        {
+            XDocument xmlDungeon = XDocument.Load(filePath);
+            XElement root = xmlDungeon.Root;
+            int red = int.Parse(root.Attribute("mapColorRed").Value);
+            int green = int.Parse(root.Attribute("mapColorGreen").Value);
+            int blue = int.Parse(root.Attribute("mapColorBlue").Value);
+            int alpha = int.Parse(root.Attribute("mapColorAlpha").Value);
+            return new Color(red, green, blue, alpha);
+        }
+
+        /*
+        * This methodd will parse a spritebatch tint for a given dungeon
+        * 
+        * args:
+        * nameSpace => namespace of the root of the xml
+        */
+        public static Color ParseColor(string filePath)
+        {
+            XDocument xmlDungeon = XDocument.Load(filePath);
+            XElement root = xmlDungeon.Root;
+            int red = int.Parse(root.Attribute("dungeonColorRed").Value);
+            int green = int.Parse(root.Attribute("dungeonColorGreen").Value);
+            int blue = int.Parse(root.Attribute("dungeonColorBlue").Value);
+            int alpha = int.Parse(root.Attribute("dungeonColorAlpha").Value);
+            return new Color(red, green, blue, alpha);
+        }
+
+        /*
+        * This methodd will parse a given name for a given dungeon
+        * 
+        * args:
+        * nameSpace => namespace of the root of the xml
+        */
+        public static string ParseName(string filePath)
+        {
+            XDocument xmlDungeon = XDocument.Load(filePath);
+            XElement root = xmlDungeon.Root;
+            return root.Attribute("xmlns").Value;
+        }
+
+        /*
+        * This methodd will parse a boss location for a given dungeon
+        * 
+        * args:
+        * nameSpace => namespace of the root of the xml
+        */
+        public static Point ParseBossLocation(string filePath)
+        {
+            XDocument xmlDungeon = XDocument.Load(filePath);
+            XElement root = xmlDungeon.Root;
+            int x = int.Parse(root.Attribute("bossX").Value);
+            int y = int.Parse(root.Attribute("bossY").Value);
+            return new Point(x, y);
+        }
+
+        /*
+        * This methodd will parse a starting location for the player given a dungeon
+        * 
+        * args:
+        * nameSpace => namespace of the root of the xml
+        */
+        public static Point ParseStartLocation(string filePath)
+        {
+            XDocument xmlDungeon = XDocument.Load(filePath);
+            XElement root = xmlDungeon.Root;
+            int x = int.Parse(root.Attribute("startX").Value);
+            int y = int.Parse(root.Attribute("startY").Value);
+            return new Point(x, y);
+        }
+
+        /*
+        * This methodd will parse the max x and y dimension for a dungeon layout given a dungeon
+        * 
+        * args:
+        * nameSpace => namespace of the root of the xml
+        */
+        public static Point ParseMaxSize(string filePath)
+        {
+            XDocument xmlDungeon = XDocument.Load(filePath);
+            XElement root = xmlDungeon.Root;
+            int x = int.Parse(root.Attribute("maxX").Value);
+            int y = int.Parse(root.Attribute("maxY").Value);
+            return new Point(x, y);
+        }
+
+        /*
          * this method will parse a given XML document and return 
          * an object describing the layout of a particular dungeon
          * 
          * args:
          * filePath => relative path to XML doc
          */
-        public static List<List<Room>> Parse(string filePath)
+        public static List<List<Room>> ParseLayout(string filePath)
         {
-            List<List<Room>> dungeon = new List<List<Room>>();
-
             XDocument xmlDungeon = XDocument.Load(filePath);
             XElement root = xmlDungeon.Root;
             XNamespace nameSpace = root.GetDefaultNamespace();
+
+            List<List<Room>> dungeon = new List<List<Room>>();
 
             IEnumerable<XElement> rows = from r in xmlDungeon.Descendants(nameSpace + "drow") select r; // all <drow> tags
             foreach (XElement row in rows)
@@ -50,33 +142,6 @@
                 newRow.Add(newRoom);
             }
             return newRow;
-        }
-
-        private static Room ParseRoom(XNamespace nameSpace, XElement xmlRoom)
-        {
-            bool ex = bool.Parse(xmlRoom.Attribute("exists").Value);
-            bool oldman = false;
-            bool basement = false;
-            if (ex)
-            {
-                oldman = bool.Parse(xmlRoom.Attribute("oldman").Value);
-                basement = bool.Parse(xmlRoom.Attribute("basement").Value);
-            }
-            string border = string.Empty + nameSpace;
-            if (xmlRoom.Descendants(nameSpace + "border").Elements().Count<XElement>() > 0)
-            {
-                border = string.Empty + xmlRoom.Descendants(nameSpace + "border").Elements().First<XElement>().Value;
-            }
-            Room newRoom = new Room(string.Empty + border, ex, basement, oldman);
-            if (ex)
-            {
-                ParseDoors(nameSpace, xmlRoom, newRoom);
-                ParseItems(nameSpace, xmlRoom, newRoom);
-                ParseEnemies(nameSpace, xmlRoom, newRoom);
-                ParseBlocks(nameSpace, xmlRoom, newRoom);
-                ParseText(nameSpace, xmlRoom, newRoom);
-            }
-            return newRoom;
         }
     }
 }

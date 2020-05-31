@@ -11,10 +11,10 @@
         /// </summary>
         public void Reset()
         {
-            dungeonLayout = XMLHandler.Parse(currentDungeonFile);
+            dungeonLayout = XMLHandler.ParseLayout(currentDungeonFile);
 
-            currentX = startX;
-            currentY = startY;
+            currentX = startLocation.X;
+            currentY = startLocation.Y;
             LoadNewRoom();
         }
 
@@ -55,7 +55,7 @@
         /// </summary>
         public void MoveDown()
         {
-            if (currentY + 1 < maxY && dungeonLayout[currentY + 1][currentX].Exists)
+            if (currentY + 1 < maxDimensions.Y && dungeonLayout[currentY + 1][currentX].Exists)
             {
                 currentY++;
                 LoadNewRoom();
@@ -108,7 +108,7 @@
         /// </summary>
         public void MoveRight()
         {
-            if (currentX + 1 < maxX && dungeonLayout[currentY][currentX + 1].Exists)
+            if (currentX + 1 < maxDimensions.X && dungeonLayout[currentY][currentX + 1].Exists)
             {
                 currentX++;
                 LoadNewRoom();

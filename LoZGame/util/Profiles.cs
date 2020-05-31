@@ -46,7 +46,7 @@
             fileSave.Add(LoZGame.Instance.Players[0].Inventory.SelectedItem.ToString());
 
             // Write the new data into the save file and overwrite the old data.
-            TextWriter saveFile = new StreamWriter("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + ".txt", false);
+            TextWriter saveFile = new StreamWriter("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + "/Inventory.txt", false);
             foreach (string element in fileSave)
             {
                 saveFile.WriteLine(element);
@@ -89,7 +89,7 @@
             fileSave.Add(0.ToString());
             fileSave.Add(InventoryManager.ItemType.Bomb.ToString());
 
-            TextWriter saveFile = new StreamWriter("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + ".txt", false);
+            TextWriter saveFile = new StreamWriter("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + "/Inventory.txt", false);
 
             foreach (string element in fileSave)
             {

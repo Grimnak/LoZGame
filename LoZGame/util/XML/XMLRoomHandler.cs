@@ -9,6 +9,33 @@
 
     public static partial class XMLHandler
     {
+        private static Room ParseRoom(XNamespace nameSpace, XElement xmlRoom)
+        {
+            bool ex = bool.Parse(xmlRoom.Attribute("exists").Value);
+            bool oldman = false;
+            bool basement = false;
+            if (ex)
+            {
+                oldman = bool.Parse(xmlRoom.Attribute("oldman").Value);
+                basement = bool.Parse(xmlRoom.Attribute("basement").Value);
+            }
+            string border = string.Empty + nameSpace;
+            if (xmlRoom.Descendants(nameSpace + "border").Elements().Count<XElement>() > 0)
+            {
+                border = string.Empty + xmlRoom.Descendants(nameSpace + "border").Elements().First<XElement>().Value;
+            }
+            Room newRoom = new Room(string.Empty + border, ex, basement, oldman);
+            if (ex)
+            {
+                ParseDoors(nameSpace, xmlRoom, newRoom);
+                ParseItems(nameSpace, xmlRoom, newRoom);
+                ParseEnemies(nameSpace, xmlRoom, newRoom);
+                ParseBlocks(nameSpace, xmlRoom, newRoom);
+                ParseText(nameSpace, xmlRoom, newRoom);
+            }
+            return newRoom;
+        }
+
         private static void ParseDoors(XNamespace nameSpace, XElement xmlRoom, Room newRoom)
         {
             IEnumerable<XElement> doors = (from d in xmlRoom.Descendants(nameSpace + "doors") select d).Elements(); // all <door> tags in <room>

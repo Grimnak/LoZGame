@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dungeon xmlns="LEVEL-1" startX="" startY="" bossX="" bossY="" maxX="" maxY="">
+<dungeon xmlns="LEVEL-1" 
+         startX="2" startY="5" 
+         bossX="4" bossY="1" 
+         maxX="6" maxY="6" 
+         dungeonColorRed="0" dungeonColorGreen="139" dungeonColorBlue="139" dungeonColorAlpha="255"
+         mapColorRed="0" mapColorGreen="139" mapColorBlue="139" mapColorAlpha="255"> 
   <drow idx="0">
     <!-- 0 - 0 maps to top left corner  -->
     <room exists="False" idx="0">

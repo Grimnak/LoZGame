@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dungeon xmlns="LEVEL-8">
+<dungeon xmlns="LEVEL-8"
+        startX="3" startY="7"
+         bossX="1" bossY="3"
+         maxX="5" maxY="8"
+         dungeonColorRed="211" dungeonColorGreen="211" dungeonColorBlue="211" dungeonColorAlpha="255"
+         mapColorRed="128" mapColorGreen="128" mapColorBlue="128" mapColorAlpha="255">
   <drow idx="0">
     <room exists="False" oldman="False" basement="False" idx="0">
     </room>
