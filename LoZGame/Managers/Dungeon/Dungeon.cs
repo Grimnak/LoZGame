@@ -51,6 +51,8 @@
             LoZGame.Instance.GameObjects.LoadedRoomX = -1;
             LoZGame.Instance.GameObjects.LoadedRoomY = -1;
 
+
+
             switch (this.dungeonNumber)
             {
                 case 1:
