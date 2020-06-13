@@ -46,6 +46,15 @@
 
         public override void Update()
         {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.IsDark)
+            {
+                CurrentTint = LoZGame.Instance.DefaultTint;
+            }
+            else
+            {
+                CurrentTint = Color.White;
+            }
+
             if (!LoZGame.Instance.Players[0].Inventory.HasClock || IsSpawning || IsDead)
             {
                 CurrentState.Update();

@@ -36,6 +36,8 @@ namespace LoZClone
         private const int VireFavorCardinal = 3;
         private const int LikelikeFavorCardinal = 3;
         private const int PolsVoiceFavorCardinal = 3;
+        private const int GleeokHeadOffFavorCardinal = 8;
+        private const int PatraFavorCardinal = 3;
 
         private const int NrmlMiniPatraOffset = 110;
 
@@ -63,6 +65,8 @@ namespace LoZClone
 
         public int DodongoFavorCardinalValue => DodongoFavorCardinal;
 
+        public int GleeokHeadOffFavorCardinalValue => GleeokHeadOffFavorCardinal;
+
         public int FireSnakeFavorCardinalValue => FireSnakeFavorCardinal;
 
         public int FireSnakeFavorDiagonalValue => FireSnakeFavorDiagonal;
@@ -82,6 +86,8 @@ namespace LoZClone
         public int RopeFavorCardinalValue => RopeFavorCardinal;
 
         public int StalfosFavorCardinalValue => StalfosFavorCardinal;
+
+        public int PatraFavorCardinalValue => PatraFavorCardinal;
 
         public int WallMasterFavorCardinalValue => WallMasterFavorCardinal;
 

@@ -6,6 +6,7 @@ namespace LoZClone
         private const int GoriyaMss = 16;
         private const int RopeMss = 8;
         private const int KeeseMss = 8;
+        private const int PatraMss = 8;
         private const int ZolMss = 12;
         private const int GelMss = 8;
         private const int DragonMss = 24;
@@ -30,6 +31,8 @@ namespace LoZClone
         public int GoriyaMass => GoriyaMss;
 
         public int KeeseMass => KeeseMss;
+
+        public int PatraMass => PatraMss;
 
         public int RopeMass => RopeMss;
 

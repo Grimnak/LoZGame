@@ -6,8 +6,8 @@
 
     internal class RedCandleProjectile : ProjectileEssentials, IProjectile
     {
-        private const int LifeTimeMax = 500;
-        private const int TravelTime = 100;
+        private int LifeTimeMax = LoZGame.Instance.UpdateSpeed * 2;
+        private int TravelTime = LoZGame.Instance.UpdateSpeed;
         private const float AccelDecay = 0.95f;
         private int lifeTime;
 

@@ -19,23 +19,23 @@
         public Patra(Vector2 location)
         {
             RandomStateGenerator = new RandomStateGenerator(this);
-            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.StalfosStateList);
-            Health = new HealthManager(24);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.PatraStateList);
+            Health = new HealthManager(GameData.Instance.EnemyHealthConstants.PatraHealth);
             Physics = new Physics(location);
-            Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
+            Physics.Mass = GameData.Instance.EnemyMassConstants.PatraMass;
             Physics.IsMovable = false;
             CurrentState = new IdleEnemyState(this);
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             EnemyCollisionHandler = new EnemyCollisionHandler(this);
             Expired = false;
             IsTransparent = false;
-            Damage = GameData.Instance.EnemyDamageConstants.DragonDamage;
+            Damage = GameData.Instance.EnemyDamageConstants.PatraDamage;
             DamageTimer = 0;
-            MoveSpeed = 1;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.PatraSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
             spawnedChildren = false;
-            AI = EnemyAI.Stalfos;
-            DropTable = GameData.Instance.EnemyDropTables.GleeokDropTable;
+            AI = EnemyAI.Patra;
+            DropTable = GameData.Instance.EnemyDropTables.PatraDropTable;
             IsSpawning = false;
             children = new Dictionary<int, IEnemy>();
             deadChildren = new List<int>();
@@ -46,7 +46,6 @@
 
         public override void TakeDamage(int damageAmount)
         {
-            Console.WriteLine(children.Count);
             if (children.Count <= 0)
             {
                 base.TakeDamage(damageAmount);
@@ -107,6 +106,27 @@
 
         public override void Update()
         {
+            // Ensure enemy colors correctly correspond with their room's current color tint and continue to adjust their colors accordingly.
+            if (LoZGame.Instance.Dungeon.CurrentRoom.IsDark)
+            {
+                if (LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint == Color.Black)
+                {
+                    CurrentTint = Color.Black;
+                }
+                else if (LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint == LoZGame.Instance.DungeonTint)
+                {
+                    CurrentTint = Color.White;
+                }
+                else
+                {
+                    CurrentTint = LoZGame.Instance.DefaultTint;
+                }
+            }
+            else
+            {
+                CurrentTint = Color.White;
+            }
+
             HandleDamage();
             if (!LoZGame.Instance.Players[0].Inventory.HasClock || IsSpawning || IsDead)
             {
@@ -120,6 +140,18 @@
 
         public override void Stun(int stunTime)
         {
+        }
+
+        public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
+        {
+            if (otherCollider is IPlayer)
+            {
+                EnemyCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+            }
+            else if (otherCollider is IProjectile)
+            {
+                EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
+            }
         }
 
         public override ISprite CreateCorrectSprite()

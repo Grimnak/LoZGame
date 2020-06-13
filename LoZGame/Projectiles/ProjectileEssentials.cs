@@ -143,7 +143,7 @@
 
         public virtual void Draw()
         {
-            Sprite.Draw(Physics.Location, LoZGame.Instance.DefaultTint, Data.Rotation, Data.SpriteEffect, Physics.Depth);
+            Sprite.Draw(Physics.Location, Color.White, Data.Rotation, Data.SpriteEffect, Physics.Depth);
         }
     }
 }

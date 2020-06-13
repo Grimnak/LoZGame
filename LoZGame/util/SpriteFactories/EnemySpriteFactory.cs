@@ -22,8 +22,8 @@
         private static readonly int GleeokHeadWidth = 24;
         private static readonly int GleeokHeadHeight = 48;
 
-        private static readonly int GleeokHeadOffWidth = 30;
-        private static readonly int GleeokHeadOffHeight = 52;
+        private static readonly int GleeokHeadOffWidth = 24;
+        private static readonly int GleeokHeadOffHeight = 48;
 
         private static readonly int GleeokNeckWidth = 24;
         private static readonly int GleeokNeckHeight = 32;

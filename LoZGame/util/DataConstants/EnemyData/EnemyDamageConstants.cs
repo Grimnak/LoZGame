@@ -16,6 +16,8 @@
         private const int RedWizzrobeDmg = 2;
         private const int BlueWizzrobeDmg = 4;
         private const int DragonDmg = 4;
+        private const int PatraDmg = 6;
+        private const int MiniPatraDmg = 4;
         private const int DodongoDmg = 4;
         private const int RedGoriyaDmg = 4;
         private const int BlueGoriyaDmg = 4;
@@ -49,6 +51,10 @@
         public int WallMasterDamage => WallMasterDmg;
 
         public int DragonDamage => DragonDmg;
+
+        public int PatraDamage => PatraDmg;
+
+        public int MiniPatraDamage => MiniPatraDmg;
 
         public int DodongoDamage => DodongoDmg;
 

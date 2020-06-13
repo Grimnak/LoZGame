@@ -19,7 +19,7 @@
             linkCollisionHandler = new PlayerCollisionHandler(this);
             CurrentColor = LinkColor.Green;
             Physics.CurrentDirection = Physics.Direction.North;
-            CurrentTint = LoZGame.Instance.DefaultTint;
+            CurrentTint = Color.White;
             MoveSpeed = GameData.Instance.PlayerConstants.PlayerSpeed;
             DamageTimer = 0;
             DisarmedTimer = 0;

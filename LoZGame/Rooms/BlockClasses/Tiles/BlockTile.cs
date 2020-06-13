@@ -127,6 +127,7 @@
                 case BrownStatueLeft4:
                     return BlockSpriteFactory.Instance.BrownStatueLeft4();
                 case MovableTile4:
+                    spriteTint = LoZGame.Instance.DungeonTint;
                     return BlockSpriteFactory.Instance.MovableTile4();
                 default:
                     spriteTint = LoZGame.Instance.DungeonTint;
@@ -138,6 +139,11 @@
         public void Update()
         {
             sprite.Update();
+
+            if (!(LoZGame.Instance.Dungeon is null))
+            {
+                spriteTint = LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint;
+            }
         }
 
         /// <inheritdoc/>

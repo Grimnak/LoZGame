@@ -13,18 +13,20 @@
         {
             bool ex = bool.Parse(xmlRoom.Attribute("exists").Value);
             bool oldman = false;
+            bool dark = false;
             bool basement = false;
             if (ex)
             {
                 oldman = bool.Parse(xmlRoom.Attribute("oldman").Value);
                 basement = bool.Parse(xmlRoom.Attribute("basement").Value);
+                dark = bool.Parse(xmlRoom.Attribute("dark").Value);
             }
             string border = string.Empty + nameSpace;
             if (xmlRoom.Descendants(nameSpace + "border").Elements().Count<XElement>() > 0)
             {
                 border = string.Empty + xmlRoom.Descendants(nameSpace + "border").Elements().First<XElement>().Value;
             }
-            Room newRoom = new Room(string.Empty + border, ex, basement, oldman);
+            Room newRoom = new Room(string.Empty + border, ex, basement, oldman, dark);
             if (ex)
             {
                 ParseDoors(nameSpace, xmlRoom, newRoom);
@@ -48,7 +50,7 @@
                 // Console.Write("door: " + doorLoc + " " + doorKind + " "); // xml debug
             }
         }
-        
+
         private static void ParseItems(XNamespace nameSpace, XElement xmlRoom, Room newRoom)
         {
             IEnumerable<XElement> items = (from it in xmlRoom.Descendants(nameSpace + "items") select it).Elements(); // all <items> tags in <room>

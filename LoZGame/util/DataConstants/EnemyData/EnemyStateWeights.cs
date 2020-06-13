@@ -17,6 +17,19 @@
             { StateType.MoveSouthWest, 1 }
         };
 
+        private static Dictionary<StateType, int> gleeokHeadOffStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.Attack, 16 },
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 },
+            { StateType.MoveNorthEast, 1 },
+            { StateType.MoveNorthWest, 1 },
+            { StateType.MoveSouthEast, 1 },
+            { StateType.MoveSouthWest, 1 }
+        };
+
         private static Dictionary<StateType, int> oldManStateList = new Dictionary<StateType, int>()
         {
             // { StateType.Attack, 1 },
@@ -111,6 +124,14 @@
         };
 
         private static Dictionary<StateType, int> ropeStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 }
+        };
+
+        private static Dictionary<StateType, int> patraStateList = new Dictionary<StateType, int>()
         {
             { StateType.MoveNorth, 1 },
             { StateType.MoveSouth, 1 },
@@ -238,6 +259,8 @@
 
         public Dictionary<StateType, int> DragonStateList => dragonStateList;
 
+        public Dictionary<StateType, int> PatraStateList => patraStateList;
+
         public Dictionary<StateType, int> DodongoStateList => dodongoStateList;
 
         public Dictionary<StateType, int> FireSnakeStateList => firesnakeStateList;
@@ -271,6 +294,8 @@
         public Dictionary<StateType, int> ManhandlaHeadStateList => manhandlaHeadStateList;
 
         public Dictionary<StateType, int> GleeokHeadStateList => gleeokHeadStateList;
+
+        public Dictionary<StateType, int> GleeokHeadOffStateList => gleeokHeadOffStateList;
 
         public Dictionary<StateType, int> GibdoStateList => gibdoStateList;
 

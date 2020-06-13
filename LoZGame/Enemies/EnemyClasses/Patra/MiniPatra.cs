@@ -19,17 +19,17 @@
             RandomStateGenerator = new RandomStateGenerator(this);
             States = new Dictionary<RandomStateGenerator.StateType, int>()
             {
-                 { RandomStateGenerator.StateType.Idle, 1},
+                 { RandomStateGenerator.StateType.Idle, 1 },
             };
             Health = new HealthManager(1);
-            Physics.Mass = GameData.Instance.EnemyMassConstants.DragonMass;
+            Physics.Mass = GameData.Instance.EnemyMassConstants.PatraMass;
             Physics.IsMovable = false;
             CurrentState = new IdleEnemyState(this);
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, EnemySpriteFactory.GetEnemyWidth(this), EnemySpriteFactory.GetEnemyHeight(this));
             EnemyCollisionHandler = new EnemyCollisionHandler(this);
             Expired = false;
-            Damage = GameData.Instance.EnemyDamageConstants.FullHeart + GameData.Instance.EnemyDamageConstants.HalfHeart;
-            MoveSpeed = GameData.Instance.EnemySpeedConstants.GleeokHeadSpeed;
+            Damage = GameData.Instance.EnemyDamageConstants.MiniPatraDamage;
+            MoveSpeed = GameData.Instance.EnemySpeedConstants.PatraSpeed;
             DamageTimer = 0;
             MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed / 4, LoZGame.Instance.UpdateSpeed);
             CurrentTint = LoZGame.Instance.DefaultTint;
@@ -64,7 +64,7 @@
 
         private void SetLocation()
         {
-            // very bad way to pass rotation from parent to child, our code doesnt yet support thiss and I plan on moving circular motion around a point to Phyics at somepoint
+            // very bad way to pass rotation from parent to child, our code doesnt yet support this and I plan on moving circular motion around a point to Phyics at somepoint
             if (MoveSpeed > MathHelper.TwoPi)
             {
                 MoveSpeed -= MathHelper.TwoPi;
@@ -80,6 +80,27 @@
 
         public override void Update()
         {
+            // Ensure enemy colors correctly correspond with their room's current color tint and continue to adjust their colors accordingly.
+            if (LoZGame.Instance.Dungeon.CurrentRoom.IsDark)
+            {
+                if (LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint == Color.Black)
+                {
+                    CurrentTint = Color.Black;
+                }
+                else if (LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint == LoZGame.Instance.DungeonTint)
+                {
+                    CurrentTint = Color.White;
+                }
+                else
+                {
+                    CurrentTint = LoZGame.Instance.DefaultTint;
+                }
+            }
+            else
+            {
+                CurrentTint = Color.White;
+            }
+
             HandleDamage();
             if (!LoZGame.Instance.Players[0].Inventory.HasClock || IsSpawning || IsDead)
             {

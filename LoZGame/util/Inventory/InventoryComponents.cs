@@ -24,7 +24,7 @@
         /// </summary>
         public void DrawInventoryElements()
         {
-            inventoryBackgroundSprite.Draw(inventoryBackgroundPosition, LoZGame.Instance.DefaultTint, GameData.Instance.InventoryConstants.InvendtoryBackgroundDepth);
+            inventoryBackgroundSprite.Draw(inventoryBackgroundPosition, Color.White, GameData.Instance.InventoryConstants.InvendtoryBackgroundDepth);
             DrawHearts();
             DrawTextIndicators();
             DrawMaps();
@@ -58,7 +58,7 @@
                 ISprite heartSlot = CreateFullHeartSprite();
                 Vector2 heartPosition = new Vector2(firstHeartPosition.X + (InventorySpriteFactory.Instance.HeartSize.X * columnCounter), firstHeartPosition.Y + (InventorySpriteFactory.Instance.HeartSize.Y * rowCounter));
 
-                heartSlot.Draw(heartPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                heartSlot.Draw(heartPosition, Color.White, 1.0f);
                 columnCounter++;
                 if (columnCounter >= GameData.Instance.InventoryConstants.HeartColumns)
                 {
@@ -72,7 +72,7 @@
                 ISprite heartSlot = CreatePartialHeartSprite(partialCount);
                 Vector2 heartPosition = new Vector2(firstHeartPosition.X + (InventorySpriteFactory.Instance.HeartSize.X * columnCounter), firstHeartPosition.Y + (InventorySpriteFactory.Instance.HeartSize.Y * rowCounter));
 
-                heartSlot.Draw(heartPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                heartSlot.Draw(heartPosition, Color.White, 1.0f);
                 columnCounter++;
                 if (columnCounter >= GameData.Instance.InventoryConstants.HeartColumns)
                 {
@@ -87,7 +87,7 @@
                 ISprite heartSlot = CreateEmptyHeartSprite();
                 Vector2 heartPosition = new Vector2(firstHeartPosition.X + (InventorySpriteFactory.Instance.HeartSize.X * columnCounter), firstHeartPosition.Y + (InventorySpriteFactory.Instance.HeartSize.Y * rowCounter));
 
-                heartSlot.Draw(heartPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                heartSlot.Draw(heartPosition, Color.White, 1.0f);
                 columnCounter++;
                 if (columnCounter >= GameData.Instance.InventoryConstants.HeartColumns)
                 {
@@ -121,12 +121,12 @@
 
             if (LoZGame.Instance.Players[0].Inventory.HasMap)
             {
-                mapSprite.Draw(inventoryBackgroundPosition + mapIndicatorOffset, LoZGame.Instance.DefaultTint, 1.0f);
+                mapSprite.Draw(inventoryBackgroundPosition + mapIndicatorOffset, Color.White, 1.0f);
             }
 
             if (LoZGame.Instance.Players[0].Inventory.HasCompass)
             {
-                compassSprite.Draw(inventoryBackgroundPosition + compassIndicatorOffset, LoZGame.Instance.DefaultTint, 1.0f);
+                compassSprite.Draw(inventoryBackgroundPosition + compassIndicatorOffset, Color.White, 1.0f);
             }
         }
 
@@ -173,13 +173,13 @@
                     break;
             }
 
-            selectedItem.Draw(inventoryBackgroundPosition + selectedItemOffset, LoZGame.Instance.DefaultTint, 1.0f);
+            selectedItem.Draw(inventoryBackgroundPosition + selectedItemOffset, Color.White, 1.0f);
 
             // Only show the equipped items while playing the game (as per original game behavior).
             if (!(LoZGame.Instance.GameState is OpenInventoryState || LoZGame.Instance.GameState is CloseInventoryState))
             {
-                selectedItem.Draw(inventoryBackgroundPosition + secondaryEquippedOffset, LoZGame.Instance.DefaultTint, 1.0f);
-                equippedWeaponSprite.Draw(inventoryBackgroundPosition + primaryEquippedOffset, LoZGame.Instance.DefaultTint, 1.0f);
+                selectedItem.Draw(inventoryBackgroundPosition + secondaryEquippedOffset, Color.White, 1.0f);
+                equippedWeaponSprite.Draw(inventoryBackgroundPosition + primaryEquippedOffset, Color.White, 1.0f);
             }
         }
 
@@ -202,7 +202,7 @@
 
                 if (LoZGame.Instance.Players[0].Inventory.SelectionX == columnCounter && LoZGame.Instance.Players[0].Inventory.SelectionY == rowCounter)
                 {
-                    itemSelector.Draw(itemSelectorPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                    itemSelector.Draw(itemSelectorPosition, Color.White, 1.0f);
                 }
 
                 DetermineItemToDraw(selectionItem, itemPosition, position);
@@ -231,7 +231,7 @@
                         selectionItem = CreateBombSprite();
                         if (LoZGame.Instance.Players[0].Inventory.Bombs > 0)
                         {
-                            selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                            selectionItem.Draw(itemPosition, Color.White, 1.0f);
                         }
                         break;
                     }
@@ -239,7 +239,7 @@
                     selectionItem = CreateBoomerangSprite();
                     if (LoZGame.Instance.Players[0].Inventory.HasBoomerang)
                     {
-                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                        selectionItem.Draw(itemPosition, Color.White, 1.0f);
                     }
                     break;
 
@@ -247,15 +247,15 @@
                     selectionItem = CreateArrowSprite();
                     if (LoZGame.Instance.Players[0].Inventory.HasBow && (LoZGame.Instance.Players[0].Inventory.HasArrow || LoZGame.Instance.Players[0].Inventory.HasSilverArrow) && LoZGame.Instance.Players[0].Inventory.Rupees > 0)
                     {
-                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                        selectionItem.Draw(itemPosition, Color.White, 1.0f);
                     }
                     break;
 
                 case 3:
                     selectionItem = CreateCandleSprite();
-                    if (LoZGame.Instance.Players[0].Inventory.HasBlueFlame)
+                    if (LoZGame.Instance.Players[0].Inventory.HasBlueFlame || LoZGame.Instance.Players[0].Inventory.HasRedFlame)
                     {
-                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                        selectionItem.Draw(itemPosition, Color.White, 1.0f);
                     }
                     break;
 
@@ -263,7 +263,7 @@
                     selectionItem = CreateHealthPotionSprite();
                     if (LoZGame.Instance.Players[0].Inventory.Potions > 0)
                     {
-                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                        selectionItem.Draw(itemPosition, Color.White, 1.0f);
                     }
                     break;
 
@@ -271,7 +271,7 @@
                     selectionItem = CreateRodSprite();
                     if (LoZGame.Instance.Players[0].Inventory.HasRod)
                     {
-                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                        selectionItem.Draw(itemPosition, Color.White, 1.0f);
                     }
                     break;
 
@@ -283,13 +283,13 @@
                     selectionItem = CreateFluteSprite();
                     if (LoZGame.Instance.Players[0].Inventory.HasFlute)
                     {
-                        selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                        selectionItem.Draw(itemPosition, Color.White, 1.0f);
                     }
                     break;
 
                 default:
                     selectionItem = CreateEmptySprite();
-                    selectionItem.Draw(itemPosition, LoZGame.Instance.DefaultTint, 1.0f);
+                    selectionItem.Draw(itemPosition, Color.White, 1.0f);
                     break;
             }
         }

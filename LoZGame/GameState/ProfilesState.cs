@@ -18,11 +18,11 @@
             ProfileScreen = ScreenSpriteFactory.Instance.ProfilesScreen();
             SelectorSprite = LinkSpriteFactory.Instance.CreateSpriteLinkDown(Link.LinkColor.Green);
             SelectorSprite.SetFrame(0);
-            string[] profile1 = File.ReadAllLines("../../../../etc/profiles/Profile#1/Inventory.txt");
+            string[] profile1 = File.ReadAllLines("../../../../etc/profiles/Profile#1.txt");
             profile1Dungeon = profile1[0];
-            string[] profile2 = File.ReadAllLines("../../../../etc/profiles/Profile#2/Inventory.txt");
+            string[] profile2 = File.ReadAllLines("../../../../etc/profiles/Profile#2.txt");
             profile2Dungeon = profile2[0];
-            string[] profile3 = File.ReadAllLines("../../../../etc/profiles/Profile#3/Inventory.txt");
+            string[] profile3 = File.ReadAllLines("../../../../etc/profiles/Profile#3.txt");
             profile3Dungeon = profile3[0];
         }
 
@@ -44,20 +44,20 @@
         public override void Draw()
         {
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
-            ProfileScreen.Draw(new Vector2(0, 0), LoZGame.Instance.DefaultTint, 0.9f);
+            ProfileScreen.Draw(new Vector2(0, 0), Color.White, 0.9f);
             switch (LoZGame.Instance.SelectedProfile)
             {
                 case 1:
-                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.ProfilesSelectorX, GameData.Instance.GameStateDataConstants.Profiles1SelectorY), LoZGame.Instance.DefaultTint, 0.99f);
+                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.ProfilesSelectorX, GameData.Instance.GameStateDataConstants.Profiles1SelectorY), Color.White, 0.99f);
                     break;
                 case 2:
-                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.ProfilesSelectorX, GameData.Instance.GameStateDataConstants.Profiles2SelectorY), LoZGame.Instance.DefaultTint, 0.99f);
+                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.ProfilesSelectorX, GameData.Instance.GameStateDataConstants.Profiles2SelectorY), Color.White, 0.99f);
                     break;
                 case 3:
-                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.ProfilesSelectorX, GameData.Instance.GameStateDataConstants.Profiles3SelectorY), LoZGame.Instance.DefaultTint, 0.99f);
+                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.ProfilesSelectorX, GameData.Instance.GameStateDataConstants.Profiles3SelectorY), Color.White, 0.99f);
                     break;
                 default:
-                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.ProfilesSelectorX, GameData.Instance.GameStateDataConstants.Profiles1SelectorY), LoZGame.Instance.DefaultTint, 0.99f);
+                    SelectorSprite.Draw(new Vector2(GameData.Instance.GameStateDataConstants.ProfilesSelectorX, GameData.Instance.GameStateDataConstants.Profiles1SelectorY), Color.White, 0.99f);
                     break;
             }
             LoZGame.Instance.SpriteBatch.End();

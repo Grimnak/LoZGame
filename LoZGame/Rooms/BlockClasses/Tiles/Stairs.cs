@@ -9,6 +9,7 @@
         private Point linkedRoom;
         private Point linkSpawn;
         private ISprite sprite;
+        private Color spriteTint;
         private bool isHidden;
         private static int lockoutTimer;
 
@@ -27,6 +28,7 @@
             Physics.Bounds = new Rectangle(location.ToPoint(), new Point((int)BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight));
             Physics.SetDepth();
             sprite = DungeonSpriteFactory.Instance.Stairs();
+            spriteTint = LoZGame.Instance.DungeonTint;
             lockoutTimer = 0;
         }
 
@@ -45,13 +47,18 @@
             {
                 lockoutTimer--;
             }
+
+            if (!(LoZGame.Instance.Dungeon is null))
+            {
+                spriteTint = LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint;
+            }
         }
 
         public void Draw()
         {
             if (!isHidden)
             {
-                this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
+                this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
             }
         }
 

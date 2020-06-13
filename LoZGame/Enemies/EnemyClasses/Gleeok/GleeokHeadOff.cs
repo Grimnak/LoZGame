@@ -18,7 +18,7 @@
         {
             parent = body;
             RandomStateGenerator = new RandomStateGenerator(this);
-            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GleeokHeadStateList);
+            States = new Dictionary<RandomStateGenerator.StateType, int>(GameData.Instance.EnemyStateWeights.GleeokHeadOffStateList);
             Health = new HealthManager(1);
             Physics = new Physics(spawnPoint.ToVector2());
             Physics.Mass = 1;

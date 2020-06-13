@@ -16,7 +16,7 @@
             RandomStateGenerator = new RandomStateGenerator(this);
             States = new Dictionary<RandomStateGenerator.StateType, int>()
             {
-                { RandomStateGenerator.StateType.Idle, 1}
+                { RandomStateGenerator.StateType.Idle, 1 }
             };
             Health = new HealthManager(GameData.Instance.EnemyHealthConstants.ManhandlaBodyHealth);
             Physics = new Physics(location);

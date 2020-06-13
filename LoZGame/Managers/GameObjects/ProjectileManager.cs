@@ -14,6 +14,7 @@
         private bool spamLock;
         private bool boomerangLock;
         private bool triforceLock;
+        private int candleCooldown;
         private bool candleLock;
         private int swordInstance;
         private int boomerangInstance;
@@ -29,9 +30,9 @@
 
         public bool BoomerangOut => boomerangLock;
 
-        public bool FlameInUse => candleLock;
-
         public bool PrimaryAttackLock => primaryAttackLock;
+
+        public bool CandleLock => candleLock;
 
         public ProjectileManager()
         {
@@ -52,6 +53,7 @@
             triforceInstance = 0;
             candleInstance = 0;
             primaryAttackCoolDown = 0;
+            candleCooldown = 0;
         }
 
         public int Arrow => (int)ProjectileType.Arrow;
@@ -81,18 +83,11 @@
             projectileId++;
             projectileListSize++;
             ProjectileType item = (ProjectileType)itemType;
-            if (item == ProjectileType.WoodenSword /*|| item == ProjectileType.WhiteSword || item == ProjectileType.MagicSword*/)
+            if (item == ProjectileType.WoodenSword || item == ProjectileType.WhiteSword || item == ProjectileType.MagicSword)
             {
                 primaryAttackCoolDown = 20;
                 primaryAttackLock = true;
-                switch (item)
-                {
-                    case ProjectileType.WoodenSword:
-                        projectileList.Add(projectileId, new SwordProjectile(player));
-                        break;
-                    default:
-                        break;
-                }
+                projectileList.Add(projectileId, new SwordProjectile(player));
             }
             else if (!spamLock && !triforceLock)
             {
@@ -121,8 +116,15 @@
                         break;
 
                     case ProjectileType.RedCandle:
-                        SoundFactory.Instance.PlayCandleShoot();
-                        projectileList.Add(projectileId, new RedCandleProjectile(player.Physics));
+                        if (!candleLock)
+                        {
+                            SoundFactory.Instance.PlayCandleShoot();
+                            projectileList.Add(projectileId, new RedCandleProjectile(player.Physics));
+                            candleCooldown = LoZGame.Instance.UpdateSpeed * 15;
+                            candleLock = true;
+                            candleInstance = projectileId;
+                            LoZGame.Instance.Dungeon.CurrentRoom.LightTimer = LoZGame.Instance.UpdateSpeed * 20;
+                        }
                         break;
 
                     case ProjectileType.BlueCandle:
@@ -130,8 +132,10 @@
                         {
                             SoundFactory.Instance.PlayCandleShoot();
                             projectileList.Add(projectileId, new BlueCandleProjectile(player.Physics));
+                            candleCooldown = LoZGame.Instance.UpdateSpeed * 25;
                             candleLock = true;
                             candleInstance = projectileId;
+                            LoZGame.Instance.Dungeon.CurrentRoom.LightTimer = LoZGame.Instance.UpdateSpeed * 20;
                         }
                         break;
 
@@ -200,6 +204,14 @@
             {
                 primaryAttackCoolDown--;
             }
+            if (candleCooldown <= 0)
+            {
+                candleLock = false;
+            }
+            else
+            {
+                candleCooldown--;
+            }
 
             foreach (KeyValuePair<int, IProjectile> item in projectileList)
             {
@@ -220,7 +232,7 @@
                         triforceLock = false;
                     }
 
-                    if (item.Key == candleInstance)
+                    if (item.Key == candleInstance && candleCooldown <= 0)
                     {
                         candleLock = false;
                     }

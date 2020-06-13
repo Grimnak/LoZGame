@@ -67,7 +67,7 @@
                 }
                 else
                 {
-                    CurrentTint = LoZGame.Instance.DefaultTint;
+                    CurrentTint = Color.White;
                 }
                 Physics.HandleKnockBack();
             }

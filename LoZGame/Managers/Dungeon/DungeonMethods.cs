@@ -147,11 +147,11 @@
                 manager.Blocks.Add(block);
             }
 
-            foreach (Door door in dungeonLayout[location.Y][location.X].Doors)
+            foreach (IDoor door in dungeonLayout[location.Y][location.X].Doors)
             {
                 door.Physics.Bounds = new Rectangle(door.Physics.Bounds.Location + offset, door.Physics.Bounds.Size);
                 door.Physics.SetLocation();
-                manager.Doors.Add(door);
+                manager.Doors.Add((Door)door);
             }
 
             if (LoZGame.Instance.Players.Count > 0)

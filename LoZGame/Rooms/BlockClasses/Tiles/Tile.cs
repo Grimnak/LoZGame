@@ -105,6 +105,10 @@
         /// <inheritdoc/>
         public void Update()
         {
+            if (!(LoZGame.Instance.Dungeon is null))
+            {
+                spriteTint = LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint;
+            }
         }
 
         /// <inheritdoc/>

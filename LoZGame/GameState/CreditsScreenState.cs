@@ -11,7 +11,7 @@ namespace LoZClone
     class CreditsScreenState : GameStateEssentials, IGameState
     {
         private readonly ISprite sprite;
-        private readonly Color spriteTint = LoZGame.Instance.DefaultTint;
+        private readonly Color spriteTint = Color.White;
         private int count;
         private int MAX = GameData.Instance.GameStateDataConstants.CreditsMAX;
 
@@ -22,6 +22,7 @@ namespace LoZClone
             sprite = ScreenSpriteFactory.Instance.CreditsScreen();
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
+            LoZGame.Instance.Profiles.ResetSaveFile();
         }
 
         /// <inheritdoc></inheritdoc>
@@ -40,7 +41,6 @@ namespace LoZClone
             if (count == MAX)
             {
                 SoundFactory.Instance.StopCreditsSong();
-                LoZGame.Instance.Profiles.ResetSaveFile();
                 LoZGame.Instance.GameState.TitleScreen();
             }  
         }

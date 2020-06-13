@@ -30,11 +30,14 @@
         private const int GleeokNeckHP = 1;
         private const int GleeokHeadHP = 12;
         private const int LikelikeHP = 12;
-        private const int PolsVoiceHP = 16;
+        private const int PolsVoiceHP = 40;
         private const int digDoggerHP = 24;
         private const int GanonHP = 28;
+        private const int PatraHP = 24;
 
         public int StalfosHealth => StalfosHP;
+
+        public int PatraHealth => PatraHP;
 
         public int RopeHealth => RopeHP;
 

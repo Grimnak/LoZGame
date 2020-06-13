@@ -40,10 +40,13 @@ namespace LoZClone
         private const float GleeokHeadOffSpd = 4;
         private const float GohmaSpd = 1.5f;
         private const float GanonSpd = 0;
+        private const float PatraSpd = 1;
 
         public float StalfosSpeed => StalfosSpd;
 
         public float RopeSpeed => RopeSpd;
+
+        public float PatraSpeed => PatraSpd;
 
         public float RopeAttackSpeed => RopeAttackSpd;
 

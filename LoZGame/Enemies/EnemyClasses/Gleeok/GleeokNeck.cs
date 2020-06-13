@@ -51,6 +51,27 @@
 
         public override void Update()
         {
+            // Ensure enemy colors correctly correspond with their room's current color tint and continue to adjust their colors accordingly.
+            if (LoZGame.Instance.Dungeon.CurrentRoom.IsDark)
+            {
+                if (LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint == Color.Black)
+                {
+                    CurrentTint = Color.Black;
+                }
+                else if (LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint == LoZGame.Instance.DungeonTint)
+                {
+                    CurrentTint = Color.White;
+                }
+                else
+                {
+                    CurrentTint = LoZGame.Instance.DefaultTint;
+                }
+            }
+            else
+            {
+                CurrentTint = Color.White;
+            }
+
             if (parent.IsDead)
             {
                 Expired = true;

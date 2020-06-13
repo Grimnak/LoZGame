@@ -63,12 +63,12 @@
 
         public void UseCandle()
         {
-            if (hasRedFlame || LoZGame.Cheats)
+            if ((hasRedFlame || LoZGame.Cheats) && !LoZGame.Instance.GameObjects.Entities.ProjectileManager.CandleLock)
             {
                 player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.RedCandle, player);
-            } 
-            else if ((!LoZGame.Instance.GameObjects.Entities.ProjectileManager.FlameInUse && HasBlueFlame) || LoZGame.Cheats)
+            }
+            else if ((hasBlueFlame || LoZGame.Cheats) && !LoZGame.Instance.GameObjects.Entities.ProjectileManager.CandleLock)
             {
                 player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.BlueCandle, player);

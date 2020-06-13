@@ -79,6 +79,9 @@
                 LoZGame.Instance.Players[0].Inventory.ClockLockout = 0;
             }
 
+            // Handle room brightness.
+            LoZGame.Instance.Dungeon.CurrentRoom.HandleRoomBrightness(LoZGame.Instance.Dungeon.CurrentRoom.DefaultRoomTint, LoZGame.Instance.DungeonTint);
+
             // Update players as they're inputting commands.
             foreach (IPlayer player in LoZGame.Instance.Players)
             {

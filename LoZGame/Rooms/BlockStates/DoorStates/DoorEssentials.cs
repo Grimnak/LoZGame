@@ -1,14 +1,13 @@
 ﻿namespace LoZClone
 {
+    using System;
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
     public class DoorEssentials : IDoorState
     {
-        public readonly Color SpriteTint = LoZGame.Instance.DungeonTint;
-
+        private Color spriteTint = LoZGame.Instance.DungeonTint;
         public IDoor Door;
-
         public ISprite FrameSprite;
         public ISprite FloorSprite;
         public ISprite OverhangSprite;
@@ -41,17 +40,21 @@
 
         public virtual void Update()
         {
+            if (!(LoZGame.Instance.Dungeon is null))
+            {
+                spriteTint = LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint;
+            }
         }
 
         public virtual void DrawFrame()
         {
-            FrameSprite.Draw(Door.Physics.Location, SpriteTint, Door.Physics.Depth);
-            OverhangSprite.Draw(Door.Physics.Location + Door.OverhangOffset, LoZGame.Instance.DungeonTint, Door.Physics.Depth);
+            FrameSprite.Draw(Door.Physics.Location, spriteTint, Door.Physics.Depth);
+            OverhangSprite.Draw(Door.Physics.Location + Door.OverhangOffset, spriteTint, Door.Physics.Depth);
         }
 
         public virtual void DrawFloor()
         {
-            FloorSprite.Draw(Door.Physics.Location, SpriteTint, 0);
+            FloorSprite.Draw(Door.Physics.Location, spriteTint, 0);
         }
     }
 }

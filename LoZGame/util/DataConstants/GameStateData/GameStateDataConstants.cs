@@ -6,13 +6,13 @@ namespace LoZClone
     {
         private const float doorFloorDepth = 0.02f;
 
-        private const int CloseInventoryTranSpeed = 5;
+        private const int CloseInventoryTranSpeed = 10;
         private const int MaxCreditsTime = 10980;
         private const int DeathTimerMaximum = 85;
         private const int GameOverT = 500;
 
         private const int OpenInventoryLO = -174;
-        private const int OpenInventoryTranSpeed = 5;
+        private const int OpenInventoryTranSpeed = 10;
 
         private const int TitleFrameDelay = 10;
         private const int TitleDrawXValue = 284;

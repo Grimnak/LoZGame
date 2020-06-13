@@ -15,36 +15,6 @@
             return unitVector;
         }
 
-        /// <summary>
-        /// Returns true or false if a line intersects a rectangle
-        /// </summary>
-        /// <param name="one"></param>
-        /// <param name="two"></param>
-        /// <param name="rec"></param>
-        /// <returns></returns>
-        public bool LineIntersectsRectangle(Point one, Point two, Rectangle rec)
-        {
-            // quick checks for rectang
-            if (one.X < rec.Left && two.X < rec.Left)
-            {
-                return false;
-            }
-            if (one.X > rec.Right && two.X > rec.Right)
-            {
-                return false;
-            }
-            if (one.Y < rec.Top && two.Y < rec.Top)
-            {
-                return false;
-            }
-            if (one.Y > rec.Bottom && two.Y > rec.Bottom)
-            {
-                return false;
-            }
-            int pointSum = 0;
-            return true;
-        }
-
         public Vector2 RotateVector(Vector2 oldVector, float rot)
         {
             float cosRot = (float)Math.Cos(rot);

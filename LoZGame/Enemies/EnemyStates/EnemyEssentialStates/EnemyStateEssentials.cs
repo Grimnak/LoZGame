@@ -77,6 +77,9 @@
                 case EnemyAI.Stalfos:
                     UpdateStalfos();
                     break;
+                case EnemyAI.Patra:
+                    UpdatePatra();
+                    break;
                 case EnemyAI.WallMaster:
                     UpdateWallMaster();
                     break;
@@ -87,6 +90,8 @@
                     UpdateManhandla();
                     break;
                 case EnemyAI.GleeokHeadOff:
+                    UpdateGleeokHeadOff();
+                    break;
                 case EnemyAI.GleeokHead:
                     UpdateGleeok();
                     break;

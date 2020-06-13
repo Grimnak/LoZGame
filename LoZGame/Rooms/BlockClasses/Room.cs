@@ -13,15 +13,30 @@
      */
     public class Room
     {
-        private ISprite Background;
+        private ISprite background;
         private bool exists = false;
         private bool basement = false;
         private bool oldman = false;
+        private bool dark = false;
+        private int lightTimer;
+        private float colorTransitionCounter;
         private string text = null;
+        private Color currentRoomTint;
+        private Color defaultRoomTint;
         private List<IItem> items = null; // a list for any and all items in a room
         private List<IEnemy> enemies = null; // a list for any and all enemies in a room
         private List<IBlock> blocks = null; // a list for any and all tiles in a room
         private List<Door> doors = null; // a list for any and all doors in a room
+
+        public ISprite Background { get { return background; } set { background = value; } }
+
+        public Color CurrentRoomTint { get { return currentRoomTint; } set { currentRoomTint = value; } }
+
+        public Color DefaultRoomTint { get { return defaultRoomTint; } set { defaultRoomTint = value; } }
+
+        public int LightTimer { get { return lightTimer; } set { lightTimer = value; } }
+
+        public float ColorTransitionCounter { get { return colorTransitionCounter; } set { colorTransitionCounter = value; } }
 
         /*
          * args:
@@ -30,24 +45,25 @@
          * bm => whether the room is a basement or not
          * om => whether the room is an oldman room or not
          */
-        public Room(string ns, bool ex, bool bm = false, bool om = false)
+        public Room(string ns, bool ex, bool bm = false, bool om = false, bool dk = false)
         {
             if (ex)
             {
                 exists = ex;
                 basement = bm;
                 oldman = om;
+                dark = dk;
                 doors = new List<Door>();
                 blocks = new List<IBlock>();
                 enemies = new List<IEnemy>();
                 items = new List<IItem>();
                 if (oldman)
                 {
-                    Background = DungeonSpriteFactory.Instance.DungeonHole();
+                    background = DungeonSpriteFactory.Instance.DungeonHole();
                 } 
                 else
                 {
-                    Background = DungeonSpriteFactory.Instance.Dungeon();
+                    background = DungeonSpriteFactory.Instance.Dungeon();
                 }
             }
         }
@@ -121,6 +137,8 @@
         public Tuple<IItem, bool> DroppedYellowRupee { get; set; }
 
         public bool IsBasement => basement;
+
+        public bool IsDark { get { return dark; } set { dark = value; } }
 
         /// <summary>
         /// Converts grid position in the room to a screen vector.
@@ -210,7 +228,7 @@
                     break;
                 case "FireBlockEnemy":
                     newEnemy = new BlockEnemy(location);
-                    CenterItem(newEnemy.Physics);
+                    CenterObject(newEnemy.Physics);
                     enemies.Add(newEnemy);
                     break;
                 case "Darknut":
@@ -367,10 +385,10 @@
                     break;
             }
             if (!(newItem is null))
-                CenterItem(newItem.Physics);
+                CenterObject(newItem.Physics);
         }
 
-        private void CenterItem(Physics physics)
+        public void CenterObject(Physics physics)
         {
             Point offset = new Point((int)BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight) - physics.Bounds.Size;
             offset = new Point(offset.X / 2, offset.Y / 2);
@@ -453,7 +471,58 @@
         {
             if (!basement)
             {
-                Background.Draw(new Vector2(0 + locationOffset.X, LoZGame.Instance.InventoryOffset + locationOffset.Y), LoZGame.Instance.DungeonTint, 0);    
+                background.Draw(new Vector2(0 + locationOffset.X, LoZGame.Instance.InventoryOffset + locationOffset.Y), currentRoomTint, 0);    
+            }
+        }
+
+        /// <summary>
+        /// Determines the brightness of the current room.
+        /// </summary>
+        /// <param name="defaultRoomTint">Represents the default color of the room as determined by the XML file.</param>
+        /// <param name="defaultDungeonTint">Represents the default color of the dungeon [non-dark rooms] as determined by the XML file.</param>
+        public void HandleRoomBrightness(Color defaultRoomTint, Color defaultDungeonTint)
+        {
+            if (dark)
+            {
+                // If a candle was used, gradually brighten the room.
+                if (lightTimer > 0)
+                {
+                    if (colorTransitionCounter < 1 && currentRoomTint != defaultDungeonTint)
+                    {
+                        colorTransitionCounter += 0.01f;
+                        currentRoomTint = Color.Lerp(defaultRoomTint, defaultDungeonTint, colorTransitionCounter);
+                        LoZGame.Instance.DefaultTint = Color.Lerp(defaultRoomTint, Color.White, colorTransitionCounter);
+                    }
+                    else
+                    {
+                        colorTransitionCounter = 0;
+                    }
+                    lightTimer--;
+                }
+                // Once the allotted brightness time expires, gradually fade to black.
+                else
+                {
+                    if (colorTransitionCounter < 1 && currentRoomTint != defaultRoomTint)
+                    {
+                        colorTransitionCounter += 0.01f;
+                        currentRoomTint = Color.Lerp(defaultDungeonTint, defaultRoomTint, colorTransitionCounter);
+                        LoZGame.Instance.DefaultTint = Color.Lerp(Color.White, defaultRoomTint, colorTransitionCounter);
+                    }
+                    else
+                    {
+                        colorTransitionCounter = 0;
+                    }
+                }
+
+                // Remove floor crevices if the room is pitch black.
+                if (currentRoomTint == defaultRoomTint)
+                {
+                    background = DungeonSpriteFactory.Instance.DungeonHole();
+                }
+                else
+                {
+                    background = DungeonSpriteFactory.Instance.Dungeon();
+                }
             }
         }
     }

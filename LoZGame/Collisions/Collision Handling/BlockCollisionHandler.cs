@@ -20,6 +20,7 @@
             EnemyEssentials.EnemyAI.MoldormHead,
             EnemyEssentials.EnemyAI.Segment,
             EnemyEssentials.EnemyAI.WallMaster,
+            EnemyEssentials.EnemyAI.Patra,
             EnemyEssentials.EnemyAI.MiniPatra
         };
 

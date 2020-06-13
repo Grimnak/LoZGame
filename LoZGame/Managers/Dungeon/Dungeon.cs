@@ -39,7 +39,6 @@
         /// Initializes a new instance of the <see cref="Dungeon"/> class.
         /// </summary>
         /// <param name="dungeonNumber">Number of the dungeon whose file is to be parsed.</param>
-        /// <param name="dungeonName">Name of the dungeon where the dungeon is to be serialized/loaded from</param>
         public Dungeon(int dungeonNumber)
         {
             DungeonNumber = dungeonNumber;
@@ -54,6 +53,24 @@
             startLocation = XMLHandler.ParseStartLocation(currentDungeonFile);
             maxDimensions = XMLHandler.ParseMaxSize(currentDungeonFile);
             dungeonLayout = XMLHandler.ParseLayout(currentDungeonFile);
+
+            // Parse each individual room's color based on if it's a dark room or not.
+            foreach (List<Room> roomList in dungeonLayout)
+            {
+                foreach (Room room in roomList)
+                {
+                    room.CurrentRoomTint = LoZGame.Instance.DungeonTint;
+
+                    if (room.IsDark)
+                    {
+                        room.DefaultRoomTint = Color.Black;
+                    }
+                    else
+                    {
+                        room.DefaultRoomTint = LoZGame.Instance.DungeonTint;
+                    }
+                }
+            }
 
             currentX = startLocation.X;
             currentY = startLocation.Y;

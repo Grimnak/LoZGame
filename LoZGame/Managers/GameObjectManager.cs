@@ -64,6 +64,13 @@
             doorManager.Draw();
         }
 
+        public void DrawNext()
+        {
+            blockManager.DrawNext();
+            itemManager.Draw();
+            doorManager.Draw();
+        }
+
         public void Update()
         {
             itemManager.Update();

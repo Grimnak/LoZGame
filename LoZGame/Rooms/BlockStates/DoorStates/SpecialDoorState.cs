@@ -69,6 +69,7 @@
             {
                 Open();
             }
+            base.Update();
         }
     }
 }
