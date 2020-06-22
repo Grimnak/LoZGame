@@ -34,6 +34,7 @@
             DamageTimer = 0;
             MinMaxWander = new Point(LoZGame.Instance.UpdateSpeed / 4, LoZGame.Instance.UpdateSpeed);
             CurrentTint = LoZGame.Instance.DefaultTint;
+            IsBossPart = true;
             HasChild = false;
             AI = EnemyAI.GleeokHead;
             IsSpawning = false;

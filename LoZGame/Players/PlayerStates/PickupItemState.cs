@@ -81,6 +81,11 @@ namespace LoZClone
             {
                 player.Inventory.HasFlute = true;
             }
+            else if (item is MagicShield)
+            {
+                player.AcquiredMagicShield = true;
+                player.Inventory.HasMagicShield = true;
+            }
         }
 
         /// <inheritdoc/>

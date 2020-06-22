@@ -6,13 +6,13 @@
          dungeonColorRed="211" dungeonColorGreen="211" dungeonColorBlue="211" dungeonColorAlpha="255"
          mapColorRed="128" mapColorGreen="128" mapColorBlue="128" mapColorAlpha="255">
   <drow idx="0">
-    <room exists="False" oldman="False" basement="False" dark="False" idx="0">
+    <room exists="False" oldman="False" basement="False" dark="False" boss="False" idx="0">
     </room>
-    <room exists="False" oldman="False" basement="False" dark="False" idx="1">
+    <room exists="False" oldman="False" basement="False" dark="False" boss="False" idx="1">
     </room>
-    <room exists="False" oldman="False" basement="False" dark="False" idx="2">
+    <room exists="False" oldman="False" basement="False" dark="False" boss="False" idx="2">
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="3">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="3">
       <items>
         <item X="6" Y="3">Bomb</item>
       </items>
@@ -41,15 +41,15 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="False" oldman="False" basement="False" dark="False" idx="4">
+    <room exists="False" oldman="False" basement="False" dark="False" boss="False" idx="4">
     </room>
   </drow>
   <drow idx="1">
-    <room exists="False" oldman="False" basement="False" dark="False" idx="0">
+    <room exists="False" oldman="False" basement="False" dark="False" boss="False" idx="0">
     </room>
-    <room exists="False" oldman="False" basement="False" dark="False" idx="1">
+    <room exists="False" oldman="False" basement="False" dark="False" boss="False" idx="1">
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="2">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="2">
       <items>
         <item X="6" Y="3">Bomb</item>
       </items>
@@ -95,7 +95,7 @@
         <tile type="block" idx="9">movable_square</tile>
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="3">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="True" idx="3">
       <items>
       </items>
       <enemies>
@@ -126,7 +126,7 @@
         <tile type="block" idx="11">blue_statue_left2</tile>
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="4">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="4">
       <enemies>
         <enemy X="4" Y="1">PolsVoice</enemy>
         <enemy X="10" Y="3">PolsVoice</enemy>
@@ -164,9 +164,9 @@
     </room>
   </drow>
   <drow idx="2">
-    <room exists="False" oldman="False" basement="False" dark="False" idx="0">
+    <room exists="False" oldman="False" basement="False" dark="False" boss="False" idx="0">
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="1">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="1">
       <items>
         <item X="5.5" Y="3">TriForce</item>
       </items>
@@ -216,7 +216,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" oldman="True" basement="False" dark="False" idx="2">
+    <room exists="True" oldman="True" basement="False" dark="False" boss="False" idx="2">
       <items>
             <item X="5.5" Y="1">Rupee</item>
             <item X="4.5" Y="2">Rupee</item>
@@ -248,7 +248,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="3">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="True" idx="3">
       <items>
         <item X="6" Y="3">Map</item>
       </items>
@@ -275,7 +275,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="True" dark="False" idx="4">
+    <room exists="True" oldman="False" basement="True" dark="False" boss="False" idx="4">
       <border>black</border>
       <enemies>
         <enemy X="10" Y="3">Keese</enemy>
@@ -430,7 +430,7 @@
     </room>
   </drow>
   <drow idx="3">
-    <room exists="True" oldman="True" basement="False" dark="False" idx="0">
+    <room exists="True" oldman="True" basement="False" dark="False" boss="False" idx="0">
       <text>10TH ENEMY HAS THE BOMB.</text>
       <items>
       </items>
@@ -458,7 +458,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="1">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="True" idx="1">
       <items>
         <item X="6" Y="3">HeartContainer</item>
       </items>
@@ -509,7 +509,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" oldman="True" basement="False" dark="False" idx="2">
+    <room exists="True" oldman="True" basement="False" dark="False" boss="False" idx="2">
       <text>SPECTACLE ROCK IS AN ENTRANCE TO DEATH.</text>
       <items>
       </items>
@@ -536,7 +536,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="3">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="3">
       <enemies>
         <enemy X="1" Y="0">BlueDarknut</enemy>
         <enemy X="4" Y="0">BlueDarknut</enemy>
@@ -567,7 +567,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="4">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="4">
       <items>
         <item X="6" Y="3">Bomb</item>
       </items>
@@ -624,7 +624,7 @@
     </room>
   </drow>
   <drow idx="4">
-    <room exists="True" oldman="False" basement="False" dark="False" idx="0">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="0">
       <items>
         <item X="6" Y="3">Key</item>
       </items>
@@ -657,7 +657,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="1">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="1">
       <items>
         <item X="11" Y="0">Key</item>
       </items>
@@ -722,7 +722,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="2">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="True" idx="2">
       <enemies>
         <enemy X="5" Y="2">BlueGohma</enemy>
       </enemies>
@@ -830,7 +830,7 @@
         <tile type="walkable" idx="11">spotted_tile</tile>
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="3">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="3">
       <items>
         <item X="6" Y="3">Rupee</item>
       </items>
@@ -864,13 +864,13 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="False" oldman="False" basement="False" dark="False" idx="4">
+    <room exists="False" oldman="False" basement="False" dark="False" boss="False" idx="4">
     </room>
   </drow>
   <drow idx="5">
-    <room exists="False" oldman="False" basement="False" dark="False" idx="0">
+    <room exists="False" oldman="False" basement="False" dark="False" boss="False" idx="0">
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="1">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="1">
       <items>
         <item X="6" Y="3">Key</item>
       </items>
@@ -901,7 +901,7 @@
         <tile type="block" idx="11">blue_statue_left2</tile>
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="True" idx="2">
+    <room exists="True" oldman="False" basement="False" dark="True" boss="False" idx="2">
       <items>
         <item X="6" Y="3">Key</item>
       </items>
@@ -949,7 +949,7 @@
         <tile type="block" idx="9">movable_square</tile>
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="3">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="3">
       <items>
         <item X="6" Y="3">Key</item>
       </items>
@@ -985,7 +985,7 @@
         <tile type="block" idx="11">blue_statue_left2</tile>
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="4">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="4">
       <items>
         <item X="6" Y="3">Compass</item>
       </items>
@@ -1031,13 +1031,13 @@
     </room>
   </drow>
   <drow idx="6">
-    <room exists="False" oldman="False" basement="False" dark="False" idx="0">
+    <room exists="False" oldman="False" basement="False" dark="False" boss="False" idx="0">
     </room>
-    <room exists="False" oldman="False" basement="False" dark="False" idx="1">
+    <room exists="False" oldman="False" basement="False" dark="False" boss="False" idx="1">
     </room>
-    <room exists="False" oldman="False" basement="False" dark="False" idx="2">
+    <room exists="False" oldman="False" basement="False" dark="False" boss="False" idx="2">
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="3">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="True" idx="3">
       <items>
         <item X="6" Y="3">Rupee</item>
       </items>
@@ -1147,11 +1147,11 @@
         <tile type="walkable" idx="11">spotted_tile</tile>
       </rrow>
     </room>
-    <room exists="False" oldman="False" basement="False" dark="False" idx="4">
+    <room exists="False" oldman="False" basement="False" dark="False" boss="False" idx="4">
     </room>
   </drow>
   <drow idx="7">
-    <room exists="True" oldman="False" basement="True" dark="False" idx="0">
+    <room exists="True" oldman="False" basement="True" dark="False" boss="False" idx="0">
       <border>black</border>
       <enemies>
         <enemy X="10" Y="3">Keese</enemy>
@@ -1304,7 +1304,7 @@
         <tile type="block" idx="15">basement_brick_tile</tile>
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="1">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="1">
       <enemies>
         <enemy X="8" Y="1">Gibdo</enemy>
         <enemy X="3" Y="3">Gibdo</enemy>
@@ -1342,7 +1342,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="2">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="True" idx="2">
       <items>
         <item X="6" Y="3">Rupee</item>
       </items>
@@ -1370,7 +1370,7 @@
       <rrow idx="6">
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="False" idx="3">
+    <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="3">
       <doors>
         <door loc="N">unlocked</door>
         <door loc="S">cosmetic</door>
@@ -1418,7 +1418,7 @@
         <tile type="walkable" idx="8">spotted_tile</tile>
       </rrow>
     </room>
-    <room exists="True" oldman="False" basement="False" dark="True" idx="4">
+    <room exists="True" oldman="False" basement="False" dark="True" boss="False" idx="4">
       <items>
         <item X="6" Y="3">Key</item>
       </items>

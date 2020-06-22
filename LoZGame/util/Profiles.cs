@@ -44,6 +44,8 @@
             fileSave.Add(LoZGame.Instance.Players[0].Inventory.HasClock.ToString());
             fileSave.Add(LoZGame.Instance.Players[0].Inventory.ClockLockout.ToString());
             fileSave.Add(LoZGame.Instance.Players[0].Inventory.SelectedItem.ToString());
+            fileSave.Add(LoZGame.Instance.Players[0].Inventory.HasMagicShield.ToString());
+            fileSave.Add(LoZGame.Instance.Players[0].AcquiredMagicShield.ToString());
 
             // Write the new data into the save file and overwrite the old data.
             TextWriter saveFile = new StreamWriter("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + ".txt", false);
@@ -88,6 +90,8 @@
             fileSave.Add(false.ToString());
             fileSave.Add(0.ToString());
             fileSave.Add(InventoryManager.ItemType.Bomb.ToString());
+            fileSave.Add(false.ToString());
+            fileSave.Add(false.ToString());
             
             TextWriter saveFile = new StreamWriter("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + ".txt", false);
 

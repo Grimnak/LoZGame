@@ -26,6 +26,8 @@
         private SpriteData optionsData;
         private Texture2D profilesSpriteSheet;
         private SpriteData profilesData;
+        private Texture2D confirmScreenSpriteSheet;
+        private SpriteData confirmScreenData;
 
         private static readonly ScreenSpriteFactory InstanceValue = new ScreenSpriteFactory();
 
@@ -44,10 +46,12 @@
             creditsSpriteSheet = content.Load<Texture2D>("Credits");
             optionsSpriteSheet = content.Load<Texture2D>("Options");
             profilesSpriteSheet = content.Load<Texture2D>("profileSelection");
+            confirmScreenSpriteSheet = content.Load<Texture2D>("Confirm");
             optionsData = new SpriteData(new Vector2(GameData.Instance.GameStateDataConstants.OptionsWindowWidth, GameData.Instance.GameStateDataConstants.OptionsWindowHeight), optionsSpriteSheet, 1, 1);
             profilesData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), profilesSpriteSheet, 1, 1);
             gameOverData = new SpriteData(new Vector2(LoZGame.Instance.ScreenWidth, LoZGame.Instance.ScreenHeight), gameOverSpriteSheet, 1, 1);
-    }
+            confirmScreenData = new SpriteData(new Vector2(GameData.Instance.GameStateDataConstants.OptionsWindowWidth, GameData.Instance.GameStateDataConstants.OptionsWindowHeight), confirmScreenSpriteSheet, 1, 1);
+        }
 
         public ISprite TitleScreen()
         {
@@ -62,6 +66,11 @@
         public ISprite PauseScreen()
         {
             return new ObjectSprite(pauseScreenSprite, gameOverData);
+        }
+
+        public ISprite ConfirmScreen()
+        {
+            return new ObjectSprite(confirmScreenSpriteSheet, confirmScreenData);
         }
 
         public ISprite CreditsScreen()

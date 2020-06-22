@@ -47,9 +47,19 @@
         int DisarmedTimer { get; set; }
 
         /// <summary>
-        /// Sets the lockout timer before player can place a ladder.
+        /// Gets or sets the lockout timer before player can place a ladder.
         /// </summary>
         int LadderTimer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the lockout timer before player can enter a purchase window.
+        /// </summary>
+        int PurchaseLockout { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the magic shield has been acquired by the player (but not necessarily equipped).
+        /// </summary>
+        bool AcquiredMagicShield { get; set; }
 
         /// <summary>
         /// Makes player idle.
@@ -98,6 +108,13 @@
         /// </summary>
         /// <param name ="waitTime">Time for the player to wait.</param>
         void UseItem(int waitTime);
+
+        /// <summary>
+        /// Detemines whether or not the player blocked an object it was colliding with.
+        /// </summary>
+        /// <param name ="collisionSide">The side of the player that the object is colliding with.</param>
+        /// <returns>Returns a boolean indicating whether or not the object (and therefore its damage and effects) was blocked.</returns>
+        bool Blocked(CollisionDetection.CollisionSide collisionSide);
 
         /// <summary>
         /// Makes the player become stunned for a period of time.

@@ -4,11 +4,11 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class SecondPotion : ItemEssentials, IItem
+    internal class BluePotion : ItemEssentials, IItem
     {
-        public SecondPotion(Vector2 loc)
+        public BluePotion(Vector2 loc)
         {
-            Sprite = ItemSpriteFactory.Instance.SecondPotion();
+            Sprite = ItemSpriteFactory.Instance.BluePotion();
             itemCollisionHandler = new ItemCollisionHandler(this);
             Physics = new Physics(loc);
             PickUpItemTime = LoZGame.Instance.UpdateSpeed;

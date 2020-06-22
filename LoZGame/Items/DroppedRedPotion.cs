@@ -4,14 +4,14 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class DroppedPotion : ItemEssentials, IItem
+    internal class DroppedRedPotion : ItemEssentials, IItem
     {
         private static readonly int DespawnTimer = LoZGame.Instance.UpdateSpeed * 20;
         private static readonly int SpawnTimer = LoZGame.Instance.UpdateSpeed * 1;
         
-        public DroppedPotion(Vector2 loc)
+        public DroppedRedPotion(Vector2 loc)
         {
-            Sprite = ItemSpriteFactory.Instance.LifePotion();
+            Sprite = ItemSpriteFactory.Instance.RedPotion();
             itemCollisionHandler = new ItemCollisionHandler(this);
             Physics = new Physics(loc);
             PickUpItemTime = -1;

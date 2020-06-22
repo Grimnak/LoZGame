@@ -54,11 +54,6 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
-            {
-                projectile.Returning = true;
-                player.Stun(projectile.StunDuration);
-            }
         }
 
         public void OnCollisionResponse(IDoor door, CollisionDetection.CollisionSide collisionSide)

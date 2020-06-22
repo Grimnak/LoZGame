@@ -14,6 +14,7 @@ namespace LoZClone
         private readonly Dictionary<Keys, ICommand> inventoryDict;
         private readonly Dictionary<Keys, ICommand> optionsDict;
         private readonly Dictionary<Keys, ICommand> profilesDict;
+        private readonly Dictionary<Keys, ICommand> purchaseConfirmationDict;
         private ICommand currentCommand;
         private KeyboardState oldState;
         private List<Keys> playerKeys;
@@ -32,6 +33,7 @@ namespace LoZClone
             inventoryDict = allCommands.GetInventoryDict;
             optionsDict = allCommands.GetOptionsDict;
             profilesDict = allCommands.GetProfilesDict;
+            purchaseConfirmationDict = allCommands.GetPurchaseConfirmationDict;
             playerCommands = new Stack<KeyValuePair<Keys, ICommand>>();
             playerKeys = new List<Keys>
             {
@@ -123,6 +125,16 @@ namespace LoZClone
                     if (profilesDict.ContainsKey(key) && oldState.IsKeyUp(key))
                     {
                         profilesDict[key].Execute();
+                    }
+                }
+            }
+            else if (LoZGame.Instance.GameState is ConfirmPurchaseState)
+            {
+                foreach (Keys key in pressed)
+                {
+                    if (purchaseConfirmationDict.ContainsKey(key) && oldState.IsKeyUp(key))
+                    {
+                        purchaseConfirmationDict[key].Execute();
                     }
                 }
             }

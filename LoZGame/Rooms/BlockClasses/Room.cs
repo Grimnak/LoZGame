@@ -18,6 +18,7 @@
         private bool basement = false;
         private bool oldman = false;
         private bool dark = false;
+        private bool boss = false;
         private int lightTimer;
         private float colorTransitionCounter;
         private string text = null;
@@ -44,8 +45,10 @@
          * ex => whether the room is null or not
          * bm => whether the room is a basement or not
          * om => whether the room is an oldman room or not
+         * dk => whether the room is dark or not
+         * bs => whether the room is a boss room or not
          */
-        public Room(string ns, bool ex, bool bm = false, bool om = false, bool dk = false)
+        public Room(string ns, bool ex, bool bm = false, bool om = false, bool dk = false, bool bs = false)
         {
             if (ex)
             {
@@ -53,6 +56,7 @@
                 basement = bm;
                 oldman = om;
                 dark = dk;
+                boss = bs;
                 doors = new List<Door>();
                 blocks = new List<IBlock>();
                 enemies = new List<IEnemy>();
@@ -139,6 +143,8 @@
         public bool IsBasement => basement;
 
         public bool IsDark { get { return dark; } set { dark = value; } }
+
+        public bool IsBossRoom { get { return boss; } set { boss = value; } }
 
         /// <summary>
         /// Converts grid position in the room to a screen vector.
@@ -381,11 +387,21 @@
                     newItem = new MagicRod(location);
                     items.Add(newItem);
                     break;
+                case "MagicShield":
+                    newItem = new MagicShield(location);
+                    items.Add(newItem);
+                    break;
+                case "PurchaseRupee":
+                    newItem = new PurchaseRupee(location);
+                    items.Add(newItem);
+                    break;
                 default:
                     break;
             }
             if (!(newItem is null))
+            {
                 CenterObject(newItem.Physics);
+            }
         }
 
         public void CenterObject(Physics physics)

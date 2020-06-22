@@ -70,13 +70,32 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(player.State is PickupItemState))
+            // If the player has no magic shield, is in a boss room, or fails to block, take damage normally.
+            if (!player.Blocked(collisionSide))
             {
+                if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
+                {
+                    projectile.Returning = true;
+                    player.Stun(projectile.StunDuration);
+                }
                 if (!(projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile) && player.DamageTimer <= 0)
                 {
                     DetermineDirectPushback(projectile.Physics, player.Physics);
                 }
                 player.TakeDamage(projectile.Damage);
+            }
+            // If the player successfully blocks, either expire or return the projectile.
+            else
+            {
+                if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
+                {
+                    projectile.Returning = true;
+                }
+                else
+                {
+                    projectile.IsExpired = true;
+                }
+                player.Physics.KnockbackVelocity = Vector2.Zero;
             }
         }
 

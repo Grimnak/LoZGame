@@ -74,7 +74,7 @@
         /// <summary>
         /// This makes an enemy prefer to move in the cardinal direction (north, south, east, or west) that is closest to the player's current location.
         /// </summary>
-        /// <param name="weight">The affects how often the enemy will move toward the player.</param>
+        /// <param name="weight">This affects how often the enemy will move toward the player.</param>
         public void FavorPlayerCardinal(int weight)
         {
             if (Math.Abs(weight) < 1)

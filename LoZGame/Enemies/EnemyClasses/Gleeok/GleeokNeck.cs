@@ -26,6 +26,7 @@
             DamageTimer = 0;
             MoveSpeed = 0;
             CurrentTint = LoZGame.Instance.DefaultTint;
+            IsBossPart = true;
             HasChild = true;
             AI = EnemyAI.NoAI;
             DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;

@@ -4,16 +4,17 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    internal class LifePotion : ItemEssentials, IItem
+    public class PurchaseRupee : ItemEssentials, IItem
     {
-        public LifePotion(Vector2 loc)
+        public PurchaseRupee(Vector2 loc)
         {
-            Sprite = ItemSpriteFactory.Instance.LifePotion();
+            Sprite = ItemSpriteFactory.Instance.YellowRupee();
+            FrameDelay = 5;
             itemCollisionHandler = new ItemCollisionHandler(this);
             Physics = new Physics(loc);
-            PickUpItemTime = LoZGame.Instance.UpdateSpeed;
+            PickUpItemTime = -1;
             LifeTime = 0;
-            Vector2 size = new Vector2(ItemSpriteFactory.RupeeWidth * ItemSpriteFactory.Instance.Scale, ItemSpriteFactory.RupeeHeight * ItemSpriteFactory.Instance.Scale);
+            Vector2 size = new Vector2(ItemSpriteFactory.RupeeWidth, ItemSpriteFactory.RupeeHeight);
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, (int)size.X, (int)size.Y);
             Expired = false;
         }

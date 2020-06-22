@@ -159,8 +159,8 @@
         private SpriteData ladderData;
         private Texture2D letterSpriteSheet;
         private SpriteData letterData;
-        private Texture2D lifePotionSpriteSheet;
-        private SpriteData lifePotionData;
+        private Texture2D bluePotionSpriteSheet;
+        private SpriteData bluePotionData;
         private Texture2D magicKeySpriteSheet;
         private SpriteData magicKeyData;
         private Texture2D magicRodSpriteSheet;
@@ -179,8 +179,8 @@
         private SpriteData raftData;
         private Texture2D rupeeSpriteSheet;
         private SpriteData rupeeData;
-        private Texture2D secondPotionSpriteSheet;
-        private SpriteData secondPotionData;
+        private Texture2D redPotionSpriteSheet;
+        private SpriteData redPotionData;
         private Texture2D shieldSpriteSheet;
         private SpriteData shieldData;
         private Texture2D silverArrowSpriteSheet;
@@ -227,7 +227,7 @@
             heartContainerSpriteSheet = content.Load<Texture2D>("HeartContainer");
             keySpriteSheet = content.Load<Texture2D>("Key");
             letterSpriteSheet = content.Load<Texture2D>("Letter");
-            lifePotionSpriteSheet = content.Load<Texture2D>("LifePotion");
+            bluePotionSpriteSheet = content.Load<Texture2D>("LifePotion");
             magicKeySpriteSheet = content.Load<Texture2D>("MagicKey");
             magicRodSpriteSheet = content.Load<Texture2D>("MagicRod");
             woodenSwordSpriteSheet = content.Load<Texture2D>("WoodenSword");
@@ -236,7 +236,7 @@
             mapSpriteSheet = content.Load<Texture2D>("Map");
             powerBraceletSpriteSheet = content.Load<Texture2D>("PowerBracelet");
             rupeeSpriteSheet = content.Load<Texture2D>("Rupee");
-            secondPotionSpriteSheet = content.Load<Texture2D>("SecondPotion");
+            redPotionSpriteSheet = content.Load<Texture2D>("SecondPotion");
             shieldSpriteSheet = content.Load<Texture2D>("Shield");
             silverArrowSpriteSheet = content.Load<Texture2D>("SilverArrow");
             woodenArrowSpriteSheet = content.Load<Texture2D>("WoodenArrow");
@@ -265,7 +265,7 @@
             heartContainerData = new SpriteData(new Vector2(HeartContainerWidth, HeartContainerHeight), heartContainerSpriteSheet, 4, 1);
             keyData = new SpriteData(new Vector2(KeyWidth, KeyHeight), keySpriteSheet, 1, 1);
             letterData = new SpriteData(new Vector2(LetterWidth, LetterHeight), letterSpriteSheet, 1, 1);
-            lifePotionData = new SpriteData(new Vector2(PotionWidth, PotionHeight), lifePotionSpriteSheet, 1, 1);
+            bluePotionData = new SpriteData(new Vector2(PotionWidth, PotionHeight), bluePotionSpriteSheet, 1, 1);
             magicKeyData = new SpriteData(new Vector2(KeyWidth, KeyHeight), magicKeySpriteSheet, 1, 1);
             magicRodData = new SpriteData(new Vector2(MagicRodWidth, MagicRodHeight), magicRodSpriteSheet, 1, 1);
             woodenSwordData = new SpriteData(new Vector2(SwordWidth, SwordHeight), woodenSwordSpriteSheet, 1, 1);
@@ -274,7 +274,7 @@
             mapData = new SpriteData(new Vector2(MapWidth, MapHeight), mapSpriteSheet, 1, 1);
             powerBraceletData = new SpriteData(new Vector2(PowerBraceletWidth, PowerBraceletHeight), powerBraceletSpriteSheet, 1, 1);
             rupeeData = new SpriteData(new Vector2(RupeeWidth, RupeeHeight), rupeeSpriteSheet, 1, 1);
-            secondPotionData = new SpriteData(new Vector2(PotionWidth, PotionHeight), secondPotionSpriteSheet, 1, 1);
+            redPotionData = new SpriteData(new Vector2(PotionWidth, PotionHeight), redPotionSpriteSheet, 1, 1);
             shieldData = new SpriteData(new Vector2(ShieldWidth, ShieldHeight), shieldSpriteSheet, 1, 1);
             silverArrowData = new SpriteData(new Vector2(ArrowWidth, ArrowHeight), silverArrowSpriteSheet, 1, 1);
             woodenArrowData = new SpriteData(new Vector2(ArrowWidth, ArrowHeight), woodenArrowSpriteSheet, 1, 1);
@@ -323,14 +323,14 @@
             return new ObjectSprite(rupeeSpriteSheet, rupeeData);
         }
 
-        public ISprite LifePotion()
+        public ISprite BluePotion()
         {
-            return new ObjectSprite(lifePotionSpriteSheet, lifePotionData);
+            return new ObjectSprite(bluePotionSpriteSheet, bluePotionData);
         }
 
-        public ISprite SecondPotion()
+        public ISprite RedPotion()
         {
-            return new ObjectSprite(secondPotionSpriteSheet, secondPotionData);
+            return new ObjectSprite(redPotionSpriteSheet, redPotionData);
         }
 
         public ISprite Letter()

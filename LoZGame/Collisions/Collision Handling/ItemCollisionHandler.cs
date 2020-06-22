@@ -15,7 +15,7 @@
 
         public void OnCollisionResponse(IPlayer player, CollisionDetection.CollisionSide collisionSide)
         {
-            if (item.PickUpItemTime == -1) 
+            if (item.PickUpItemTime == -1 && !(item is PurchaseRupee)) 
             {
                 item.Expired = true;
             }
@@ -46,6 +46,11 @@
                 SoundFactory.Instance.PlayGetRupee();
                 player.Inventory.GainRupees(5);
             }
+            else if (item is PurchaseRupee)
+            {
+                SoundFactory.Instance.PlayGetItem();
+                LoZGame.Instance.GameState.ConfirmPurchase();
+            }
             else if (item is DroppedBomb || item is Bomb)
             {
                 SoundFactory.Instance.PlayGetItem();
@@ -60,12 +65,12 @@
                 SoundFactory.Instance.PlayGetItem();
                 SoundFactory.Instance.PlayTriforceTune();
             }
-            else if (item is DroppedPotion)
+            else if (item is DroppedBluePotion)
             {
                 SoundFactory.Instance.PlayGetItem();
                 player.Inventory.GainRedPotion();
             }
-            else if (item is DroppedSecondPotion)
+            else if (item is DroppedRedPotion)
             {
                 SoundFactory.Instance.PlayGetItem();
                 player.Inventory.GainBluePotion();

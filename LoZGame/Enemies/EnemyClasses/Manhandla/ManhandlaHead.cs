@@ -29,6 +29,7 @@
             Damage = GameData.Instance.EnemyDamageConstants.DragonDamage;
             MoveSpeed = 0;
             CurrentTint = LoZGame.Instance.DefaultTint;
+            IsBossPart = true;
             AI = EnemyAI.ManHandlaHead;
             IsSpawning = false;
             buffedParent = false;

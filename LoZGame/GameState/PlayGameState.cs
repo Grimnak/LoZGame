@@ -39,6 +39,11 @@
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
+        public override void ConfirmPurchase()
+        {
+            LoZGame.Instance.GameState = new ConfirmPurchaseState(this);
+        }
+
         /// <inheritdoc></inheritdoc>
         public override void TransitionRoom(Physics.Direction direction)
         {

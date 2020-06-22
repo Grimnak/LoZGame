@@ -15,6 +15,7 @@
         private const int healthWeight = 25;
         private const int clockWeight = 5;
         private const int fairyWeight = 10;
+        private const int magicShieldWeight = 10;
 
         public int DropChance => dropChance;
 
@@ -34,6 +35,8 @@
 
         public int FairyWeight => fairyWeight;
 
+        public int MagicShieldWeight => magicShieldWeight;
+
         public enum DropType
         {
             BlueRupee,
@@ -44,6 +47,7 @@
             Health,
             Clock,
             Fairy,
+            MagicShield,
             None
         }
 
@@ -56,6 +60,7 @@
             Tuple.Create(DropType.BluePotion, bluePotionWeight, 1, 1),
             Tuple.Create(DropType.Health, healthWeight, 1, 1),
             Tuple.Create(DropType.Clock, clockWeight, 1, 1),
+            Tuple.Create(DropType.MagicShield, magicShieldWeight, 1, 1),
             Tuple.Create(DropType.Fairy, fairyWeight, 1, 1)
         };
 
@@ -85,10 +90,10 @@
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedBomb(loc));
                     break;
                 case DropType.RedPotion:
-                    LoZGame.Instance.GameObjects.Items.Add(new DroppedPotion(loc));
+                    LoZGame.Instance.GameObjects.Items.Add(new DroppedBluePotion(loc));
                     break;
                 case DropType.BluePotion:
-                    LoZGame.Instance.GameObjects.Items.Add(new DroppedSecondPotion(loc));
+                    LoZGame.Instance.GameObjects.Items.Add(new DroppedRedPotion(loc));
                     break;
                 case DropType.Health:
                     LoZGame.Instance.GameObjects.Items.Add(new DroppedHealth(loc));
@@ -98,6 +103,12 @@
                     break;
                 case DropType.Clock:
                     LoZGame.Instance.GameObjects.Items.Add(new Clock(loc));
+                    break;
+                case DropType.MagicShield:
+                    if (LoZGame.Instance.Players[0].AcquiredMagicShield && !LoZGame.Instance.Players[0].Inventory.HasMagicShield)
+                    {
+                        LoZGame.Instance.GameObjects.Items.Add(new MagicShield(loc));
+                    }
                     break;
                 default:
                     break;

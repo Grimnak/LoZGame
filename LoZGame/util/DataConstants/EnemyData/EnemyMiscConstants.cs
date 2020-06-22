@@ -29,7 +29,7 @@ namespace LoZClone
         private const int KeeseFavorDiagonal = 3;
         private const int RopeFavorCardinal = 2;
         private const int StalfosFavorCardinal = 3;
-        private const int WallMasterFavorCardinal = 3;
+        private const int WallMasterFavorCardinal = 2;
         private const int WizzrobeFavorCardinal = 2;
         private const int ZolFavorCardinal = 3;
         private const int DarknutFavorCardinal = 3;

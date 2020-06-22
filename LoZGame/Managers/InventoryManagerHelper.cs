@@ -132,6 +132,14 @@
             }
         }
 
+        public void PurchaseBombs()
+        {
+            SoundFactory.Instance.PlayGetItem();
+            player.Inventory.Rupees -= 50;
+            player.Inventory.MaxBombs += 4;
+            player.Inventory.GainBombs();
+        }
+
         public void GainRedPotion()
         {
             numRedPotions++;

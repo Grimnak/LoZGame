@@ -95,6 +95,7 @@
             if (((Likelike)likelike).Timer > timeout)
             {
                 player.State = new IdleState(player);
+                player.Inventory.HasMagicShield = false;
                 if (likelike.Health.CurrentHealth > 0)
                 {
                     likelike.UpdateState();
@@ -116,15 +117,36 @@
             }
             else if (player.Physics.CurrentDirection == Physics.Direction.South)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkDown(player.CurrentColor);
+                if (player.Inventory.HasMagicShield)
+                {
+                    return LinkSpriteFactory.Instance.CreateSpriteLinkShieldDown(player.CurrentColor);
+                }
+                else
+                {
+                    return LinkSpriteFactory.Instance.CreateSpriteLinkDown(player.CurrentColor);
+                }
             }
             else if (player.Physics.CurrentDirection == Physics.Direction.West)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkLeft(player.CurrentColor);
+                if (player.Inventory.HasMagicShield)
+                {
+                    return LinkSpriteFactory.Instance.CreateSpriteLinkShieldLeft(player.CurrentColor);
+                }
+                else
+                {
+                    return LinkSpriteFactory.Instance.CreateSpriteLinkLeft(player.CurrentColor);
+                }
             }
             else
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkRight(player.CurrentColor);
+                if (player.Inventory.HasMagicShield)
+                {
+                    return LinkSpriteFactory.Instance.CreateSpriteLinkShieldRight(player.CurrentColor);
+                }
+                else
+                {
+                    return LinkSpriteFactory.Instance.CreateSpriteLinkRight(player.CurrentColor);
+                }
             }
         }
 

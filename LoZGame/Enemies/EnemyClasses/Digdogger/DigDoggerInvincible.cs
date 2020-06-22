@@ -23,6 +23,7 @@
             Damage = GameData.Instance.EnemyDamageConstants.DigDoggerDamage;
             MoveSpeed = GameData.Instance.EnemySpeedConstants.DigDoggerSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
+            IsBossPart = true;
             AI = EnemyAI.LargeDigDogger;
             DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
             MinMaxWander = new Point(GameData.Instance.EnemyMiscConstants.MinDirectionChange, GameData.Instance.EnemyMiscConstants.MaxDirectionChange);

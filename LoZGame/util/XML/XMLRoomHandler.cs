@@ -14,19 +14,21 @@
             bool ex = bool.Parse(xmlRoom.Attribute("exists").Value);
             bool oldman = false;
             bool dark = false;
+            bool boss = false;
             bool basement = false;
             if (ex)
             {
                 oldman = bool.Parse(xmlRoom.Attribute("oldman").Value);
                 basement = bool.Parse(xmlRoom.Attribute("basement").Value);
                 dark = bool.Parse(xmlRoom.Attribute("dark").Value);
+                boss = bool.Parse(xmlRoom.Attribute("boss").Value);
             }
             string border = string.Empty + nameSpace;
             if (xmlRoom.Descendants(nameSpace + "border").Elements().Count<XElement>() > 0)
             {
                 border = string.Empty + xmlRoom.Descendants(nameSpace + "border").Elements().First<XElement>().Value;
             }
-            Room newRoom = new Room(string.Empty + border, ex, basement, oldman, dark);
+            Room newRoom = new Room(string.Empty + border, ex, basement, oldman, dark, boss);
             if (ex)
             {
                 ParseDoors(nameSpace, xmlRoom, newRoom);

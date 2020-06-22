@@ -55,6 +55,8 @@
         private bool isTransparent = false;
 
         private bool isInvisible = false;
+
+        private bool isBossPart = false;
       
         private EnemyAI Name = EnemyAI.None;
 
@@ -83,6 +85,8 @@
         public bool IsTransparent { get { return isTransparent; } set { isTransparent = value; } }
 
         public bool IsInvisible { get { return isInvisible; } set { isInvisible = value; } }
+
+        public bool IsBossPart { get { return isBossPart; } set { isBossPart = value; } }
 
         public Physics Physics { get; set; }
 

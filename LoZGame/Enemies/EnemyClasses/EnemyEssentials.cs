@@ -44,7 +44,7 @@
             }
             if (Health.CurrentHealth <= 0)
             {
-                if (this is Dragon || this is Dodongo || this is ManhandlaBody || this is GleeokBody || this is DigDogger || this is RedGohma || this is Ganon)
+                if (LoZGame.Instance.Dungeon.CurrentRoom.IsBossRoom && !this.IsBossPart)
                 {
                     SoundFactory.Instance.PlayBossDie();
                     LoZGame.Instance.Drops.DropHeartContainer();

@@ -23,6 +23,7 @@
             MoveSpeed = GameData.Instance.PlayerConstants.PlayerSpeed;
             DamageTimer = 0;
             DisarmedTimer = 0;
+            PurchaseLockout = 0;
             State = new IdleState(this);
             Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y - 8, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight - 8);
             Physics.BoundsOffset = new Vector2(0, -8);
@@ -49,7 +50,17 @@
             }
             else if (otherCollider is IItem && !(State is PickupItemState))
             {
-                linkCollisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
+                if (otherCollider is PurchaseRupee)
+                {
+                    if (Inventory.Rupees >= 50 && PurchaseLockout <= 0)
+                    {
+                        linkCollisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
+                    }
+                }
+                else
+                {
+                    linkCollisionHandler.OnCollisionResponse((IItem)otherCollider, collisionSide);
+                }
             }
 
         }

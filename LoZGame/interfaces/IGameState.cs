@@ -80,6 +80,11 @@
         void Unpause();
 
         /// <summary>
+        /// Game state goes to confirm a purchase.
+        /// </summary>
+        void ConfirmPurchase();
+
+        /// <summary>
         /// Updates the current state.
         /// </summary>
         void Update();

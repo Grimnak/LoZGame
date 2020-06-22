@@ -15,6 +15,7 @@ namespace LoZClone
         private readonly Dictionary<Keys, ICommand> inventoryDictionary;
         private readonly Dictionary<Keys, ICommand> optionsDictionary;
         private readonly Dictionary<Keys, ICommand> profilesDictionary;
+        private readonly Dictionary<Keys, ICommand> purchaseConfirmationDictionary;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyboardCommandLoader"/> class.
@@ -26,6 +27,7 @@ namespace LoZClone
             inventoryDictionary = new Dictionary<Keys, ICommand>();
             optionsDictionary = new Dictionary<Keys, ICommand>();
             profilesDictionary = new Dictionary<Keys, ICommand>();
+            purchaseConfirmationDictionary = new Dictionary<Keys, ICommand>();
 
             commandIdle = new CommandIdle(player);
             commandContinue = new CommandContinue(player);
@@ -69,6 +71,9 @@ namespace LoZClone
             profilesDictionary.Add(Keys.S, new CommandMoveProfileDown());
             profilesDictionary.Add(Keys.Down, new CommandMoveProfileDown());
             profilesDictionary.Add(Keys.Enter, new CommandSelectProfile());
+
+            purchaseConfirmationDictionary.Add(Keys.Y, new PurchaseCommandYes());
+            purchaseConfirmationDictionary.Add(Keys.N, new PurchaseCommandNo());
         }
 
         /// <summary>
@@ -100,5 +105,10 @@ namespace LoZClone
         /// Gets the dictionary containing profiles commands from the loader.
         /// </summary>
         public Dictionary<Keys, ICommand> GetProfilesDict => profilesDictionary;
+
+        /// <summary>
+        /// Gets the dictionary containing purchasing confirmation commands from the loader.
+        /// </summary>
+        public Dictionary<Keys, ICommand> GetPurchaseConfirmationDict => purchaseConfirmationDictionary;
     }
 }

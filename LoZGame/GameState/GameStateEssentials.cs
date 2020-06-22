@@ -39,6 +39,11 @@
         }
 
         /// <inheritdoc></inheritdoc>
+        public virtual void ConfirmPurchase()
+        {
+        }
+
+        /// <inheritdoc></inheritdoc>
         public virtual void TitleScreen()
         {
         }

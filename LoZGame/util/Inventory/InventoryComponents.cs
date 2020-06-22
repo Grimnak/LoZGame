@@ -105,7 +105,7 @@
             // Item counts.
             LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, GameData.Instance.InventoryConstants.ItemCtStr + LoZGame.Instance.Players[0].Inventory.Rupees.ToString(), inventoryBackgroundPosition + rupeeCountOffset, Color.White, 0.0f, new Vector2(0, 0), 0.90f, SpriteEffects.None, 1f);
             LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, GameData.Instance.InventoryConstants.ItemCtStr + LoZGame.Instance.Players[0].Inventory.Keys.ToString(), inventoryBackgroundPosition + keyCountOffset, Color.White, 0.0f, new Vector2(0, 0), 0.90f, SpriteEffects.None, 1f);
-            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, GameData.Instance.InventoryConstants.ItemCtStr + LoZGame.Instance.Players[0].Inventory.Bombs.ToString(), inventoryBackgroundPosition + bombCountOffset, Color.White, 0.0f, new Vector2(0, 0), 0.90f, SpriteEffects.None, 1f);
+            LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, GameData.Instance.InventoryConstants.ItemCtStr + LoZGame.Instance.Players[0].Inventory.Bombs.ToString() + "/" + LoZGame.Instance.Players[0].Inventory.MaxBombs, inventoryBackgroundPosition + bombCountOffset, Color.White, 0.0f, new Vector2(0, 0), 0.90f, SpriteEffects.None, 1f);
 
             // Level indicator.
             LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, GameData.Instance.InventoryConstants.LevelStr + LoZGame.Instance.Dungeon.DungeonNumber.ToString(), inventoryBackgroundPosition + levelCountOffset, Color.White, 0.0f, new Vector2(0, 0), 1.00f, SpriteEffects.None, 1f);

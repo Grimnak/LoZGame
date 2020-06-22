@@ -92,6 +92,8 @@
     <Compile Include="Collisions\Collision Handling\ItemCollisionHandler.cs" />
     <Compile Include="Collisions\Collision Handling\ProjectileCollisionHandler.cs" />
     <Compile Include="Controller\Commands\CommandContinue.cs" />
+    <Compile Include="Controller\Commands\ConfirmationCommands\PurchaseCommandNo.cs" />
+    <Compile Include="Controller\Commands\ConfirmationCommands\PurchaseCommandYes.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandOptions.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandPause.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionDown.cs" />
@@ -225,6 +227,7 @@
     <Compile Include="GameState\CreditsScreenState.cs" />
     <Compile Include="GameState\HealthRestoreGameState.cs" />
     <Compile Include="GameState\GameStateEssentials.cs" />
+    <Compile Include="GameState\ConfirmPurchaseState.cs" />
     <Compile Include="GameState\ProfilesState.cs" />
     <Compile Include="GameState\OptionsState.cs" />
     <Compile Include="GameState\FluteGameState.cs" />
@@ -232,6 +235,7 @@
     <Compile Include="GameState\PauseState.cs" />
     <Compile Include="Items\Ladder.cs" />
     <Compile Include="Items\ItemTypes.cs" />
+    <Compile Include="Items\PurchaseRupee.cs" />
     <Compile Include="Managers\DropTables\DropHelper.cs" />
     <Compile Include="Managers\DropTables\DropManager.cs" />
     <Compile Include="Managers\InventoryManagerHelper.cs" />
@@ -277,7 +281,6 @@
     <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
     <Compile Include="GameState\CloseInventoryState.cs" />
-    <Compile Include="Interfaces\IDrop.cs" />
     <Compile Include="Interfaces\IGameState.cs" />
     <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Interfaces\IDoor.cs" />
@@ -291,8 +294,8 @@
     <Compile Include="Items\BlueRing.cs" />
     <Compile Include="Items\ItemEssentials.cs" />
     <Compile Include="Items\DroppedFood.cs" />
-    <Compile Include="Items\DroppedSecondPotion.cs" />
-    <Compile Include="Items\DroppedPotion.cs" />
+    <Compile Include="Items\DroppedRedPotion.cs" />
+    <Compile Include="Items\DroppedBluePotion.cs" />
     <Compile Include="Items\DroppedHealth.cs" />
     <Compile Include="Items\DroppedRupee.cs" />
     <Compile Include="Items\DroppedBomb.cs" />
@@ -308,7 +311,7 @@
     <Compile Include="Items\HeartContainer.cs" />
     <Compile Include="Items\Key.cs" />
     <Compile Include="Items\Letter.cs" />
-    <Compile Include="Items\LifePotion.cs" />
+    <Compile Include="Items\BluePotion.cs" />
     <Compile Include="Items\MagicBook.cs" />
     <Compile Include="Items\MagicBoomerang.cs" />
     <Compile Include="Items\MagicKey.cs" />
@@ -320,7 +323,7 @@
     <Compile Include="Items\RedCandle.cs" />
     <Compile Include="Items\RedRing.cs" />
     <Compile Include="Items\Rupee.cs" />
-    <Compile Include="Items\SecondPotion.cs" />
+    <Compile Include="Items\RedPotion.cs" />
     <Compile Include="Items\SilverArrow.cs" />
     <Compile Include="Items\Triforce.cs" />
     <Compile Include="Items\WhiteSword.cs" />

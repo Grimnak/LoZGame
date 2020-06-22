@@ -42,7 +42,7 @@
             {
                 EnemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
-            else if (otherCollider is IProjectile && !Blocked(otherCollider))
+            else if (otherCollider is IProjectile && !Blocked(collisionSide))
             {
                 EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }
@@ -53,23 +53,23 @@
             return EnemySpriteFactory.Instance.CreateBlueDarknutSprite(Physics.CurrentDirection);
         }
 
-        private bool Blocked(ICollider otherCollider)
+        private bool Blocked(CollisionDetection.CollisionSide collisionSide)
         {
             bool blocked = false;
 
-            if (Physics.CurrentDirection == Physics.Direction.North && otherCollider.Physics.CurrentDirection == Physics.Direction.South)
+            if (Physics.CurrentDirection == Physics.Direction.North && collisionSide == CollisionDetection.CollisionSide.Top)
             {
                 blocked = true;
             }
-            else if (Physics.CurrentDirection == Physics.Direction.South && otherCollider.Physics.CurrentDirection == Physics.Direction.North)
+            else if (Physics.CurrentDirection == Physics.Direction.South && collisionSide == CollisionDetection.CollisionSide.Bottom)
             {
                 blocked = true;
             }
-            else if (Physics.CurrentDirection == Physics.Direction.West && otherCollider.Physics.CurrentDirection == Physics.Direction.East)
+            else if (Physics.CurrentDirection == Physics.Direction.West && collisionSide == CollisionDetection.CollisionSide.Left)
             {
                 blocked = true;
             }
-            else if (Physics.CurrentDirection == Physics.Direction.East && otherCollider.Physics.CurrentDirection == Physics.Direction.West)
+            else if (Physics.CurrentDirection == Physics.Direction.East && collisionSide == CollisionDetection.CollisionSide.Right)
             {
                 blocked = true;
             }
