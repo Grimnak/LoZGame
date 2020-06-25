@@ -179,8 +179,8 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingRopeState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingWallMasterState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\BlockEnemyAttackState.cs" />
-    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\OldManAngryState.cs" />
-    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\OldManSecretState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\NPCAngryState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\NPCSecretState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateSwitches.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateDarknut.cs" />
@@ -380,7 +380,7 @@
     <Compile Include="Players\PlayerStates\UseItemState.cs" />
     <Compile Include="Players\PlayerStates\DieState.cs" />
     <Compile Include="Rooms\BlockClasses\Tiles\BlockTile.cs" />
-    <Compile Include="Rooms\BlockClasses\Room.cs" />
+    <Compile Include="Rooms\Room.cs" />
     <Compile Include="Rooms\BlockClasses\Tiles\MovableBlock.cs" />
     <Compile Include="Rooms\BlockClasses\Tiles\Tile.cs" />
     <Compile Include="Managers\HealthManager.cs" />

@@ -286,27 +286,20 @@
       <door loc="E">puzzle</door>
     </doors>
     <rrow idx="0">
-      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="1">
-      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="2">
-      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="3">
       <tile type="movable"  idx="4" dir="">orange_movable_square</tile>
       <tile type="block" idx="7">movable_square</tile>
-      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="4">
-      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="5">
-      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
     <rrow idx="6">
-      <tile type="crossable" idx="10">water_tile</tile>
     </rrow>
   </room>
   <room exists="True" oldman="False" basement="False" dark="False" boss="True" idx="3">
@@ -707,7 +700,7 @@
       <enemy X="5" Y="6">Keese</enemy>
     </enemies>
     <items>
-      <item X="6.75" Y="1.75">Ladder</item>
+      <item X="6.75" Y="1.75">WhiteSword</item>
     </items>
     <rrow idx="-2.5">
       <tile type="stairs" idx="2" room="2,3" loc="10,0" hidden="False">stairs</tile>

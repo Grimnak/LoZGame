@@ -26,6 +26,10 @@
             {
                 ((OldMan)enemy).ShootFireballs();
             }
+            if (enemy is Merchant && (projectile is ArrowProjectile || projectile is SilverArrowProjectile || projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is SwordBeamProjectile))
+            {
+                ((Merchant)enemy).ShootFireballs();
+            }
             else if (enemy.IsTransparent)
             {
             }

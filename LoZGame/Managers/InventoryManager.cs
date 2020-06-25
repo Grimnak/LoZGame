@@ -45,6 +45,7 @@
         private bool hasBlueFlame;
         private bool hasLadder;
         private bool hasMagicShield;
+        private bool hasMagicKey;
         private bool ladderInUse;
         private int maxBombs;
         private int maxSelectionX;
@@ -90,6 +91,7 @@
             this.clockLockout = copiedManager.clockLockout;
             this.selectedItem = copiedManager.selectedItem;
             this.hasMagicShield = copiedManager.hasMagicShield;
+            this.hasMagicKey = copiedManager.hasMagicKey;
         }
 
         public InventoryManager(IPlayer player)
@@ -128,6 +130,7 @@
             this.selectedItem = LoZGame.Instance.Profiles.ParseSelectedItem(inventorySave[29]);
             this.hasMagicShield = bool.Parse(inventorySave[30]);
             this.player.AcquiredMagicShield = bool.Parse(inventorySave[31]);
+            this.hasMagicKey = bool.Parse(inventorySave[32]);
         }
 
         public void UseItem()
@@ -219,7 +222,7 @@
 
         public int SelectionY { get { return selectionY; } }
 
-        public int Rupees { get { return LoZGame.Cheats ? 99 : numRupees; } set { numRupees = value; } }
+        public int Rupees { get { return LoZGame.Cheats ? 999 : numRupees; } set { numRupees = value; } }
 
         public int Bombs { get { return LoZGame.Cheats ? 8 : numBombs; } }
 
@@ -258,6 +261,8 @@
         public bool HasCompass { get { return hasCompass || LoZGame.Cheats; } set { hasCompass = value; } }
 
         public bool HasLadder { get { return hasLadder || LoZGame.Cheats; } set { hasLadder = value; } }
+
+        public bool HasMagicKey { get { return hasMagicKey || LoZGame.Cheats; } set { hasMagicKey = value; } }
 
         public bool LadderInUse { get { return ladderInUse; } set { ladderInUse = value; } }
 

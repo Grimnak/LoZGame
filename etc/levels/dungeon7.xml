@@ -538,7 +538,7 @@
   </drow>
   <drow idx="2">
     <room exists="True" oldman="True" basement="False" dark="False" boss="False" idx="0">
-      <text>GRUMBLE, GRUMBLE...</text>
+      <text>BOMBS CAN MAKE YOU WEALTHY.</text>
       <items>
       </items>
       <enemies>
@@ -903,8 +903,9 @@
   </drow>
   <drow idx="4">
     <room exists="True" oldman="True" basement="False" dark="False" boss="False" idx="0">
-      <text>I BET  YOU'D LIKE TO HAVE MORE BOMBS.</text>
+      <text>I BET  YOU'D LIKE MORE BOMBS.</text>
       <items>
+        <item X="5.5" Y="4">Bomb</item>
       </items>
       <enemies>
         <enemy X="5.5" Y="2">OldMan</enemy>
@@ -980,6 +981,7 @@
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
       <items>
+        <item X="6.75" Y="1.75">MagicSword</item>
       </items>
       <rrow idx="-2.5">
         <tile type="stairs" idx="2" room="2,1" loc="5,3" hidden="False">stairs</tile>
@@ -1253,7 +1255,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" dark="False" boss="False" idx="3">
-      <text>THERE'S A SECRET IN THE TIP OF THE NOSE.</text>
+      <text>THE MAGIC SWORD IS BELOW YOU.</text>
       <items>
       </items>
       <enemies>

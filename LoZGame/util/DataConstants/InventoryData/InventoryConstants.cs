@@ -62,6 +62,24 @@ namespace LoZClone
         private const int dungeon6BossHintTextRoomY = 0;
         private const int dungeon6MagicRodTextRoomX = 2;
         private const int dungeon6MagicRodTextRoomY = 6;
+        private const int dungeon7FreeBombsTextRoomX = 0;
+        private const int dungeon7FreeBombsTextRoomY = 4;
+        private const int dungeon7SwordTextRoomX = 3;
+        private const int dungeon7SwordTextRoomY = 5;
+        private const int dungeon7SecretTextRoomX = 0;
+        private const int dungeon7SecretTextRoomY = 2;
+        private const int dungeon8KeyTextRoomX = 0;
+        private const int dungeon8KeyTextRoomY = 3;
+        private const int dungeon8SecretTextRoomX = 2;
+        private const int dungeon8SecretTextRoomY = 3;
+        private const int dungeon9ArrowTextRoomX = 2;
+        private const int dungeon9ArrowTextRoomY = 0;
+        private const int dungeon9NextRoomTextRoomX = 6;
+        private const int dungeon9NextRoomTextRoomY = 0;
+        private const int dungeon9MapTextRoomX = 3;
+        private const int dungeon9MapTextRoomY = 4;
+        private const int dungeon9BombTextRoomX = 6;
+        private const int dungeon9BombTextRoomY = 6;
 
         private const string itemCtStr = "x";
         private const string levelStr = "L E V E L - ";
@@ -146,7 +164,7 @@ namespace LoZClone
 
         public int SecondaryEquippedOffsetY => 85 + (LoZGame.Instance.ScreenHeight - LoZGame.Instance.InventoryOffset);
 
-        public float InvendtoryBackgroundDepth => inventoryBackgroundDepth;
+        public float InventoryBackgroundDepth => inventoryBackgroundDepth;
 
         public int Dungeon1TxtRoomX => dungeon1TextRoomX;
 
@@ -164,7 +182,7 @@ namespace LoZClone
 
         public int Dungeon3TxtRoomY => dungeon3TextRoomY;
 
-        public Vector2 Dungeon3TxtDrawLoc => new Vector2(130, LoZGame.Instance.InventoryOffset + 100);
+        public Vector2 Dungeon3TxtDrawLoc => new Vector2(150, LoZGame.Instance.InventoryOffset + 100);
 
         public int Dungeon4TxtRoomX => dungeon4TextRoomX;
 
@@ -172,11 +190,9 @@ namespace LoZClone
 
         public Vector2 Dungeon4TxtDrawLoc => new Vector2(130, LoZGame.Instance.InventoryOffset + 100);
 
-        public int Dungeon5BombTxtRoomX => dungeon5BombTextRoomX;
+        public int Dungeon5PurchaseBombTxtX => dungeon5BombTextRoomX;
 
-        public int Dungeon5BombTxtRoomY => dungeon5BombTextRoomY;
-
-        public Vector2 Dungeon5BombTxtDrawLoc => new Vector2(135, LoZGame.Instance.InventoryOffset + 100);
+        public int Dungeon5PurchaseBombTxtY => dungeon5BombTextRoomY;
 
         public int Dungeon5FluteTxtRoomX => dungeon5FluteTextRoomX;
 
@@ -207,6 +223,62 @@ namespace LoZClone
         public Vector2 Dungeon6BossHintTxtDrawLoc => new Vector2(175, LoZGame.Instance.InventoryOffset + 100);
 
         public Vector2 Dungeon6MagicRodTxtDrawLoc => new Vector2(135, LoZGame.Instance.InventoryOffset + 100);
+
+        public int Dungeon7FreeBombsTxtRoomX => dungeon7FreeBombsTextRoomX;
+
+        public int Dungeon7FreeBombsTxtRoomY => dungeon7FreeBombsTextRoomY;
+
+        public int Dungeon7SwordTxtRoomX => dungeon7SwordTextRoomX;
+
+        public int Dungeon7SwordTxtRoomY => dungeon7SwordTextRoomY;
+
+        public int Dungeon7SecretTxtRoomX => dungeon7SecretTextRoomX;
+
+        public int Dungeon7SecretTxtRoomY => dungeon7SecretTextRoomY;
+
+        public Vector2 Dungeon7SecretTxtDrawLoc => new Vector2(130, LoZGame.Instance.InventoryOffset + 100);
+
+        public Vector2 Dungeon7FreeBombsTxtDrawLoc => new Vector2(150, LoZGame.Instance.InventoryOffset + 100);
+
+        public Vector2 Dungeon7SwordTxtDrawLoc => new Vector2(130, LoZGame.Instance.InventoryOffset + 100);
+
+        public int Dungeon8KeyTxtRoomX => dungeon8KeyTextRoomX;
+
+        public int Dungeon8KeyTxtRoomY => dungeon8KeyTextRoomY;
+
+        public int Dungeon8SecretTxtRoomX => dungeon8SecretTextRoomX;
+
+        public int Dungeon8SecretTxtRoomY => dungeon8SecretTextRoomY;
+
+        public Vector2 Dungeon8SecretTxtDrawLoc => new Vector2(130, LoZGame.Instance.InventoryOffset + 100);
+
+        public Vector2 Dungeon8KeyTxtDrawLoc => new Vector2(150, LoZGame.Instance.InventoryOffset + 100);
+
+        public int Dungeon9ArrowTxtRoomX => dungeon9ArrowTextRoomX;
+
+        public int Dungeon9ArrowTxtRoomY => dungeon9ArrowTextRoomY;
+        
+        public int Dungeon9NextRoomTxtRoomX => dungeon9NextRoomTextRoomX;
+
+        public int Dungeon9NextRoomTxtRoomY => dungeon9NextRoomTextRoomY;
+
+        public int Dungeon9MapTxtRoomX => dungeon9MapTextRoomX;
+
+        public int Dungeon9MapTxtRoomY => dungeon9MapTextRoomY;
+
+        public int Dungeon9PurchaseBombTxtX => dungeon9BombTextRoomX;
+
+        public int Dungeon9PurchaseBombTxtY => dungeon9BombTextRoomY;
+
+        public Vector2 Dungeon9ArrowTxtDrawLoc => new Vector2(100, LoZGame.Instance.InventoryOffset + 100);
+
+        public Vector2 Dungeon9NextRoomTxtDrawLoc => new Vector2(210, LoZGame.Instance.InventoryOffset + 100);
+
+        public Vector2 Dungeon9MapTxtDrawLoc => new Vector2(230, LoZGame.Instance.InventoryOffset + 100);
+
+        public Vector2 PurchaseBombTxtDrawLoc => new Vector2(135, LoZGame.Instance.InventoryOffset + 100);
+
+        public Vector2 PurchasePriceTxtDrawLoc => new Vector2(430, LoZGame.Instance.InventoryOffset + 270);
 
         public string ItemCtStr => itemCtStr;
 

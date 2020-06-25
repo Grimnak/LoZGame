@@ -22,6 +22,7 @@
         private int lightTimer;
         private float colorTransitionCounter;
         private string text = null;
+        private string purchaseText = null;
         private Color currentRoomTint;
         private Color defaultRoomTint;
         private List<IItem> items = null; // a list for any and all items in a room
@@ -123,9 +124,19 @@
             text = txt;
         }
 
+        public void SetPurchaseText(string purchasetxt)
+        {
+            purchaseText = purchasetxt;
+        }
+
         public string RoomText
         {
             get { return text; }
+        }
+
+        public string RoomPurchaseText
+        {
+            get { return purchaseText; }
         }
 
         public Tuple<IItem, bool> DroppedKey { get; set; }
@@ -393,6 +404,10 @@
                     break;
                 case "PurchaseRupee":
                     newItem = new PurchaseRupee(location);
+                    items.Add(newItem);
+                    break;
+                case "MagicKey":
+                    newItem = new MagicKey(location);
                     items.Add(newItem);
                     break;
                 default:

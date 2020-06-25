@@ -4,9 +4,9 @@
     using Microsoft.Xna.Framework.Graphics;
     using System;
 
-    public class OldManAngryState : EnemyStateEssentials, IEnemyState
+    public class NPCAngryState : EnemyStateEssentials, IEnemyState
     {
-        public OldManAngryState(IEnemy enemy)
+        public NPCAngryState(IEnemy enemy)
         {
             Enemy = enemy;
             Enemy.CurrentState = this;

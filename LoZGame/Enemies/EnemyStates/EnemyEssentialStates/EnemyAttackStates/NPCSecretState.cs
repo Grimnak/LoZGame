@@ -3,14 +3,14 @@
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
 
-    public class OldManSecretState : EnemyStateEssentials, IEnemyState
+    public class NPCSecretState : EnemyStateEssentials, IEnemyState
     {
         private const float FireballSpeed = 5f;
         private const float FireballSpread = MathHelper.PiOver4;
         private const int NumberFireballs = 5;
         private int lifetime;
 
-        public OldManSecretState(IEnemy enemy)
+        public NPCSecretState(IEnemy enemy)
         {
             Enemy = enemy;
             Enemy.CurrentState = this;

@@ -86,6 +86,10 @@ namespace LoZClone
                 player.AcquiredMagicShield = true;
                 player.Inventory.HasMagicShield = true;
             }
+            else if (item is MagicKey)
+            {
+                player.Inventory.HasMagicKey = true;
+            }
         }
 
         /// <inheritdoc/>

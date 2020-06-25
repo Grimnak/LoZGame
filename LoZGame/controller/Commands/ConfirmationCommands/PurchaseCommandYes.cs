@@ -16,6 +16,8 @@
         public void Execute()
         {
             LoZGame.Instance.GameObjects.Items.Clear();
+            LoZGame.Instance.Dungeon.CurrentRoom.SetText("USE THEM WISELY, ADVENTURER.");
+            LoZGame.Instance.Dungeon.CurrentRoom.SetPurchaseText(string.Empty);
             LoZGame.Instance.Players[0].PurchaseLockout = LoZGame.Instance.UpdateSpeed * 2;
             LoZGame.Instance.Players[0].Inventory.PurchaseBombs();
             LoZGame.Instance.GameState.Unpause();

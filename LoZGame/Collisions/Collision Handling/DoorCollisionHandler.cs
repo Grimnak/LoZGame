@@ -39,7 +39,7 @@
 
                     }
                 }
-                else if (door.DoorType == Door.DoorTypes.Locked && player.Inventory.HasKey())
+                else if (door.DoorType == Door.DoorTypes.Locked && (player.Inventory.HasKey() || player.Inventory.HasMagicKey))
                 {
                     player.Inventory.UseKey();
                     IDoor cousin = FindCousinDoor();

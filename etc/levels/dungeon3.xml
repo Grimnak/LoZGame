@@ -54,7 +54,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" dark="False" boss="False" idx="2">
-      <text>THE WHITE SWORD IS BELOW YOU.</text>
+      <text>THE LIT PATH LIES BELOW YOU.</text>
       <enemies>
         <enemy X="5.5" Y="2">OldMan</enemy>
       </enemies>
@@ -759,7 +759,7 @@
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
       <items>
-        <item X="6.75" Y="1.75">WhiteSword</item>
+        <item X="6.75" Y="1.75">BlueCandle</item>
       </items>
       <rrow idx="-2.5">
         <tile type="stairs" idx="2" room="0,4" loc="10,3" hidden="False">stairs</tile>

@@ -15,6 +15,8 @@
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
       <items>
+        <item X="6.75" Y="1.75">Bow</item>
+        <item X="11" Y="1.7">SilverArrow</item>
       </items>
       <rrow idx="-2.5">
         <tile type="stairs" idx="2" room="0,1" loc="11,1" hidden="False">stairs</tile>
@@ -199,7 +201,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" dark="False" boss="False" idx="2">
-      <text>EYES OF SKULL HAS A SECRET.</text>
+      <text>SECRET POWER LIES IN THE ARROWS.</text>
       <items>
       </items>
       <enemies>
@@ -1803,7 +1805,7 @@
       </enemies>
       <doors>
         <door loc="N">special</door>
-        <door loc="S">special</door>
+        <door loc="S">unlocked</door>
       </doors>
       <rrow idx="0">
         <tile type="block" idx="0">red_statue_right3</tile>
@@ -2700,11 +2702,13 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" dark="False" boss="False" idx="6">
-      <text>PATRA HAS THE MAP.</text>
+      <text>WOULD YOU LIKE MORE BOMBS?</text>
+      <purchaseText>-50</purchaseText>
       <items>
+        <item X="5.5" Y="4">PurchaseRupee</item>
       </items>
       <enemies>
-        <enemy X="5.5" Y="2">OldMan</enemy>
+        <enemy X="5.5" Y="2">Merchant</enemy>
       </enemies>
       <doors>
         <door loc="N">unlocked</door>
@@ -2737,6 +2741,8 @@
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
       <items>
+        <item X="6.75" Y="1.75">MagicSword</item>
+        <item X="11" Y="1.7">MagicShield</item>
       </items>
       <rrow idx="-2.5">
         <tile type="stairs" idx="2" room="7,0" loc="5,3" hidden="False">stairs</tile>

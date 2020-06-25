@@ -100,6 +100,10 @@
       </items>
       <enemies>
         <enemy X="4" Y="1">BlueGohma</enemy>
+        <enemy X="0" Y="0">FireBlockEnemy</enemy>
+        <enemy X="11" Y="0">FireBlockEnemy</enemy>
+        <enemy X="0" Y="6">FireBlockEnemy</enemy>
+        <enemy X="11" Y="6">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="N">special</door>
@@ -284,6 +288,7 @@
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
       <items>
+        <item X="6.75" Y="1.75">MagicKey</item>
       </items>
       <rrow idx="-2.5">
         <tile type="stairs" idx="2" room="4,1" loc="5,3" hidden="False">stairs</tile>
@@ -431,7 +436,7 @@
   </drow>
   <drow idx="3">
     <room exists="True" oldman="True" basement="False" dark="False" boss="False" idx="0">
-      <text>10TH ENEMY HAS THE BOMB.</text>
+      <text>THE MAGIC KEY IS BELOW YOU.</text>
       <items>
       </items>
       <enemies>
@@ -510,7 +515,7 @@
       </rrow>
     </room>
     <room exists="True" oldman="True" basement="False" dark="False" boss="False" idx="2">
-      <text>SPECTACLE ROCK IS AN ENTRANCE TO DEATH.</text>
+      <text>BOMBS CAN MAKE YOU WEALTHY.</text>
       <items>
       </items>
       <enemies>
@@ -544,6 +549,8 @@
         <enemy X="9" Y="1">BlueDarknut</enemy>
         <enemy X="3" Y="2">BlueDarknut</enemy>
         <enemy X="1" Y="4">BlueDarknut</enemy>
+        <enemy X="4" Y="3">FireBlockEnemy</enemy>
+        <enemy X="7" Y="3">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="N">hidden</door>
@@ -635,6 +642,8 @@
         <enemy X="2" Y="2">Darknut</enemy>
         <enemy X="3" Y="2">Darknut</enemy>
         <enemy X="6" Y="5">Darknut</enemy>
+        <enemy X="4" Y="3">FireBlockEnemy</enemy>
+        <enemy X="7" Y="3">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="N">unlocked</door>
@@ -647,8 +656,8 @@
       <rrow idx="2">
       </rrow>
       <rrow idx="3">
-        <tile type="block" idx="3">blue_statue_right2</tile>
-        <tile type="block" idx="3">blue_statue_left2</tile>
+        <tile type="block" idx="4">blue_statue_right2</tile>
+        <tile type="block" idx="7">blue_statue_left2</tile>
       </rrow>
       <rrow idx="4">
       </rrow>
@@ -832,7 +841,7 @@
     </room>
     <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="3">
       <items>
-        <item X="6" Y="3">Rupee</item>
+        <item X="6" Y="3">YellowRupee</item>
       </items>
       <enemies>
         <enemy X="4" Y="0">Gibdo</enemy>
@@ -878,6 +887,10 @@
         <enemy X="1" Y="1">Darknut</enemy>
         <enemy X="0" Y="2">Darknut</enemy>
         <enemy X="9" Y="4">Darknut</enemy>
+        <enemy X="0" Y="0">FireBlockEnemy</enemy>
+        <enemy X="11" Y="0">FireBlockEnemy</enemy>
+        <enemy X="0" Y="6">FireBlockEnemy</enemy>
+        <enemy X="11" Y="6">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="E">unlocked</door>
@@ -959,6 +972,10 @@
         <enemy X="10" Y="0">BlueDarknut</enemy>
         <enemy X="3" Y="3">BlueDarknut</enemy>
         <enemy X="8" Y="3">BlueDarknut</enemy>
+        <enemy X="0" Y="0">FireBlockEnemy</enemy>
+        <enemy X="11" Y="0">FireBlockEnemy</enemy>
+        <enemy X="0" Y="6">FireBlockEnemy</enemy>
+        <enemy X="11" Y="6">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="N">special</door>
@@ -1039,7 +1056,7 @@
     </room>
     <room exists="True" oldman="False" basement="False" dark="False" boss="True" idx="3">
       <items>
-        <item X="6" Y="3">Rupee</item>
+        <item X="6" Y="3">YellowRupee</item>
       </items>
       <enemies>
         <enemy X="5" Y="2">Manhandla</enemy>
@@ -1160,6 +1177,7 @@
         <enemy X="5" Y="6">Keese</enemy>
       </enemies>
       <items>
+        <item X="6.75" Y="1.75">RedCandle</item>
       </items>
       <rrow idx="-2.5">
         <tile type="stairs" idx="2" room="1,7" loc="5,3" hidden="False">stairs</tile>
@@ -1344,10 +1362,12 @@
     </room>
     <room exists="True" oldman="False" basement="False" dark="False" boss="True" idx="2">
       <items>
-        <item X="6" Y="3">Rupee</item>
+        <item X="6" Y="3">YellowRupee</item>
       </items>
       <enemies>
         <enemy X="3" Y="4">Manhandla</enemy>
+        <enemy X="4" Y="3">FireBlockEnemy</enemy>
+        <enemy X="7" Y="3">FireBlockEnemy</enemy>
       </enemies>
       <doors>
         <door loc="E">unlocked</door>

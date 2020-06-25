@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
 
     public partial class Dungeon
     {
@@ -67,7 +68,7 @@
                     player.Physics.Bounds.Height);
 
                 // Player moved to top side of new room (next to door, top of the ladder in the basement case).
-                if (LoZGame.Instance.Dungeon.CurrentRoom.IsBasement)
+                if (CurrentRoom.IsBasement)
                 {
                     player.Physics.Bounds = new Rectangle(
                         (int)BlockSpriteFactory.Instance.TileWidth * 3,
@@ -177,6 +178,110 @@
                 item.Physics.Bounds = new Rectangle(item.Physics.Bounds.Location, item.Physics.Bounds.Size);
                 item.Physics.SetLocation();
                 LoZGame.Instance.GameObjects.Items.Add(item);
+            }
+        }
+
+        /// <summary>
+        /// Draws the correct dungeon background text if applicable.
+        /// </summary>
+        public void DrawText()
+        {
+            switch (dungeonNumber)
+            {
+                case 1:
+                    if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon1TxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon1TxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon1TxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    break;
+                case 2:
+                    if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon2TxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon2TxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon2TxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    break;
+                case 3:
+                    if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon3TxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon3TxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon3TxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    break;
+                case 4:
+                    if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon4TxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon4TxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon4TxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    break;
+                case 5:
+                    if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon5FluteTxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon5FluteTxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon5FluteTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    else if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon5PurchaseBombTxtX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon5PurchaseBombTxtY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.PurchaseBombTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomPurchaseText, GameData.Instance.InventoryConstants.PurchasePriceTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    else if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon5ArrowTxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon5ArrowTxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon5ArrowTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    break;
+                case 6:
+                    if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon6BossHintTxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon6BossHintTxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon6BossHintTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    else if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon6MagicRodTxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon6MagicRodTxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon6MagicRodTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    break;
+                case 7:
+                    if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon7FreeBombsTxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon7FreeBombsTxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon7FreeBombsTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    else if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon7SwordTxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon7SwordTxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon7SwordTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    else if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon7SecretTxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon7SecretTxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon7SecretTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    break;
+                case 8:
+                    if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon8KeyTxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon8KeyTxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon8KeyTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    else if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon8SecretTxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon8SecretTxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon8SecretTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    break;
+                case 9:
+                    if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon9ArrowTxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon9ArrowTxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon9ArrowTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    else if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon9NextRoomTxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon9NextRoomTxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon9NextRoomTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    else if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon9MapTxtRoomX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon9MapTxtRoomY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.Dungeon9MapTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    else if (CurrentRoomX == GameData.Instance.InventoryConstants.Dungeon9PurchaseBombTxtX && CurrentRoomY == GameData.Instance.InventoryConstants.Dungeon9PurchaseBombTxtY)
+                    {
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomText, GameData.Instance.InventoryConstants.PurchaseBombTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                        LoZGame.Instance.SpriteBatch.DrawString(LoZGame.Instance.Font, CurrentRoom.RoomPurchaseText, GameData.Instance.InventoryConstants.PurchasePriceTxtDrawLoc, Color.White, 0.0f, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1f);
+                    }
+                    break;
+                default:
+                    break;
             }
         }
     }

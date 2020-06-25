@@ -36,6 +36,7 @@
                 ParseEnemies(nameSpace, xmlRoom, newRoom);
                 ParseBlocks(nameSpace, xmlRoom, newRoom);
                 ParseText(nameSpace, xmlRoom, newRoom);
+                ParsePurchaseText(nameSpace, xmlRoom, newRoom);
             }
             return newRoom;
         }
@@ -125,6 +126,16 @@
             foreach (XElement node in text)
             {
                 newRoom.SetText(node.Value);
+            }
+        }
+
+        private static void ParsePurchaseText(XNamespace nameSpace, XElement xmlRoom, Room newRoom)
+        {
+            IEnumerable<XElement> purchaseText = from txt in xmlRoom.Descendants(nameSpace + "purchaseText") select txt;
+
+            foreach (XElement node in purchaseText)
+            {
+                newRoom.SetPurchaseText(node.Value);
             }
         }
     }

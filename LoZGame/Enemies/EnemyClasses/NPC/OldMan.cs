@@ -45,7 +45,7 @@
 
         public override void Attack()
         {
-            CurrentState = new OldManSecretState(this);
+            CurrentState = new NPCSecretState(this);
         }
 
         public void ShootFireballs()
@@ -53,12 +53,12 @@
             timesShot++;
             if (timesShot > BreakingPoint)
             {
-                CurrentState = new OldManSecretState(this);
+                CurrentState = new NPCSecretState(this);
                 timesShot = 0;
             }
-            else if (!(CurrentState is OldManSecretState))
+            else if (!(CurrentState is NPCSecretState))
             {
-                CurrentState = new OldManAngryState(this);
+                CurrentState = new NPCAngryState(this);
                 Vector2 playerVectorOne = UnitVectorToPlayer((Physics.Bounds.Center - flameOffset).ToVector2());
                 Vector2 playerVectorTwo = UnitVectorToPlayer((Physics.Bounds.Center + flameOffset).ToVector2());
                 Vector2 velocityVectorOne = new Vector2(playerVectorOne.X * FireballSpeed, playerVectorOne.Y * FireballSpeed);
