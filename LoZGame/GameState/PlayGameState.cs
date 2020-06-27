@@ -39,9 +39,22 @@
             LoZGame.Instance.GameState = new TitleScreenState();
         }
 
+        /// <inheritdoc></inheritdoc>
         public override void ConfirmPurchase()
         {
             LoZGame.Instance.GameState = new ConfirmPurchaseState(this);
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public override void ConfirmReset()
+        {
+            LoZGame.Instance.GameState = new ConfirmResetState(this);
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public override void ConfirmQuit()
+        {
+            LoZGame.Instance.GameState = new ConfirmQuitState(this);
         }
 
         /// <inheritdoc></inheritdoc>

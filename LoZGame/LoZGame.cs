@@ -12,8 +12,8 @@
     public class LoZGame : Game
     {
         public static bool DebugMode = false; // show collision bounding boxes
-        public static bool Cheats = true; // infinite life and item use
-        public static bool Music = false;  // title screen and dungeon music (not SFX)
+        public static bool Cheats = false; // infinite life and item use
+        public static bool Music = true;  // title screen and dungeon music (not SFX)
         public static bool Laser = false; // changes attacks to laser attack
         public int Difficulty = 0; // -1 => EASY 0 => NORMAL 1 => HARD 3 => NIGHTMARE
         public int Profile = 1; // indicates the default profile

@@ -92,6 +92,10 @@
     <Compile Include="Collisions\Collision Handling\ItemCollisionHandler.cs" />
     <Compile Include="Collisions\Collision Handling\ProjectileCollisionHandler.cs" />
     <Compile Include="Controller\Commands\CommandContinue.cs" />
+    <Compile Include="Controller\Commands\ConfirmationCommands\QuitCommandYes.cs" />
+    <Compile Include="Controller\Commands\ConfirmationCommands\ResetCommandYes.cs" />
+    <Compile Include="Controller\Commands\ConfirmationCommands\QuitCommandNo.cs" />
+    <Compile Include="Controller\Commands\ConfirmationCommands\ResetCommandNo.cs" />
     <Compile Include="Controller\Commands\ConfirmationCommands\PurchaseCommandNo.cs" />
     <Compile Include="Controller\Commands\ConfirmationCommands\PurchaseCommandYes.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandOptions.cs" />
@@ -224,6 +228,8 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\StunnedEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\VireStates\HiddenVireState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FollowFireSnakeState.cs" />
+    <Compile Include="GameState\ConfirmQuitState.cs" />
+    <Compile Include="GameState\ConfirmResetState.cs" />
     <Compile Include="GameState\CreditsScreenState.cs" />
     <Compile Include="GameState\HealthRestoreGameState.cs" />
     <Compile Include="GameState\GameStateEssentials.cs" />
@@ -475,11 +481,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Util\Audio\Resources\The Legend of Zelda Spirit Tracks Music - Tower of Spirits Dungeon.wav" />
+    <Content Include="Util\Audio\Resources\The Legend of Zelda Spirit Tracks Music - File Select.wav" />
     <Content Include="Util\Audio\Resources\The Legend of Zelda_ Spirit Tracks Soundtrack - 66 Stagnox, Armored Colossus.wav" />
     <None Include="Util\Audio\Resources\LOZ_Recorder.wav" />
     <None Include="Util\Audio\Resources\coolFlute.wav" />
-    <Content Include="Util\Audio\Resources\CreditsTheme.wav" />
-    <None Include="Util\Audio\Resources\Dungeon_mixdown.wav" />
     <Content Include="Util\Audio\Resources\SpartanLaser_mixdown.wav" />
     <None Include="Util\Audio\Resources\triforce_tune.wav" />
     <None Include="Util\Audio\Resources\dungeon_song.wav" />
@@ -566,9 +572,7 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

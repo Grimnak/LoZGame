@@ -166,6 +166,18 @@
             LoZGame.Instance.GameState = new PauseState(this);
         }
 
+        /// <inheritdoc></inheritdoc>
+        public override void ConfirmReset()
+        {
+            LoZGame.Instance.GameState = new ConfirmResetState(this);
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public override void ConfirmQuit()
+        {
+            LoZGame.Instance.GameState = new ConfirmQuitState(this);
+        }
+
         public override void Update()
         {
             // logic to execute during a transition

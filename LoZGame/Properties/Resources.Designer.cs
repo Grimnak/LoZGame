@@ -72,24 +72,6 @@ namespace LoZClone.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        public static System.IO.UnmanagedMemoryStream CreditsTheme {
-            get {
-                return ResourceManager.GetStream("CreditsTheme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        public static System.IO.UnmanagedMemoryStream Dungeon_mixdown {
-            get {
-                return ResourceManager.GetStream("Dungeon_mixdown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
         public static System.IO.UnmanagedMemoryStream dungeon_song {
             get {
                 return ResourceManager.GetStream("dungeon_song", resourceCulture);
@@ -282,6 +264,24 @@ namespace LoZClone.Properties {
         public static System.IO.UnmanagedMemoryStream The_Legend_of_Zelda__Spirit_Tracks_Soundtrack___66_Stagnox__Armored_Colossus {
             get {
                 return ResourceManager.GetStream("The_Legend_of_Zelda__Spirit_Tracks_Soundtrack___66_Stagnox__Armored_Colossus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream The_Legend_of_Zelda_Spirit_Tracks_Music___File_Select {
+            get {
+                return ResourceManager.GetStream("The_Legend_of_Zelda_Spirit_Tracks_Music___File_Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream The_Legend_of_Zelda_Spirit_Tracks_Music___Tower_of_Spirits_Dungeon {
+            get {
+                return ResourceManager.GetStream("The_Legend_of_Zelda_Spirit_Tracks_Music___Tower_of_Spirits_Dungeon", resourceCulture);
             }
         }
         

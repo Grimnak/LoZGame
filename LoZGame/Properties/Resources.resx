@@ -121,12 +121,6 @@
   <data name="coolFlute" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Util\Audio\Resources\coolFlute.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="CreditsTheme" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Util\Audio\Resources\CreditsTheme.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Dungeon_mixdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\util\Audio\Resources\Dungeon_mixdown.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="dungeon_song" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Util\Audio\Resources\dungeon_song.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -189,6 +183,12 @@
   </data>
   <data name="SpartanLaser_mixdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Util\Audio\Resources\SpartanLaser_mixdown.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="The_Legend_of_Zelda_Spirit_Tracks_Music___File_Select" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\util\Audio\Resources\The Legend of Zelda Spirit Tracks Music - File Select.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="The_Legend_of_Zelda_Spirit_Tracks_Music___Tower_of_Spirits_Dungeon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\util\Audio\Resources\The Legend of Zelda Spirit Tracks Music - Tower of Spirits Dungeon.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="The_Legend_of_Zelda__Spirit_Tracks_Soundtrack___66_Stagnox__Armored_Colossus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\util\Audio\Resources\The Legend of Zelda_ Spirit Tracks Soundtrack - 66 Stagnox, Armored Colossus.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

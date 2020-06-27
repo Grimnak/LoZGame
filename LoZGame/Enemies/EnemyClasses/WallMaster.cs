@@ -6,6 +6,8 @@
 
     public class WallMaster : EnemyEssentials, IEnemy
     {
+        public int Timer { get; set; }
+
         public WallMaster(Vector2 location)
         {
             RandomStateGenerator = new RandomStateGenerator(this);
@@ -23,6 +25,7 @@
             CurrentTint = LoZGame.Instance.DefaultTint;
             AI = EnemyAI.WallMaster;
             DropTable = GameData.Instance.EnemyDropTables.WallMasterDropTable;
+            Timer = 0;
             ApplyDamageMod();
             ApplySmallSpeedMod();
             ApplyLargeWeightModPos();
@@ -48,13 +51,12 @@
             if (otherCollider is IPlayer && !(((Link)otherCollider).State is PickupItemState || CurrentState is StunnedEnemyState) && ((IPlayer)otherCollider).Inventory.ClockLockout <= 0)
             {
                 CurrentState.Attack();
-                Physics.MovementVelocity = new Vector2(-2, 0);
             }
             else if (otherCollider is IBlock && !(CurrentState is AttackingWallMasterState))
             {
                 EnemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
-            else if (otherCollider is IProjectile && !(CurrentState is AttackingWallMasterState))
+            else if (otherCollider is IProjectile && /*!(CurrentState is AttackingWallMasterState)*/Timer <= 100)
             {
                 EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }

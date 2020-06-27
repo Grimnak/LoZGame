@@ -44,6 +44,16 @@
         }
 
         /// <inheritdoc></inheritdoc>
+        public virtual void ConfirmReset()
+        {
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public virtual void ConfirmQuit()
+        {
+        }
+
+        /// <inheritdoc></inheritdoc>
         public virtual void TitleScreen()
         {
         }

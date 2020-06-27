@@ -11,13 +11,14 @@
         private bool musicEnabled = LoZGame.Music;
         private static SoundEffect titleSong = SoundEffect.FromStream(Properties.Resources.title_song);
         SoundEffectInstance titleLoop = titleSong.CreateInstance();
-        private static SoundEffect dungeonSong = SoundEffect.FromStream(Properties.Resources.Dungeon_mixdown);
+        private static SoundEffect dungeonSong = SoundEffect.FromStream(Properties.Resources.The_Legend_of_Zelda_Spirit_Tracks_Music___Tower_of_Spirits_Dungeon);
         SoundEffectInstance dungeonLoop = dungeonSong.CreateInstance();
         private static SoundEffect triforceTune = SoundEffect.FromStream(Properties.Resources.triforce_tune);
         SoundEffectInstance triforceLoop = triforceTune.CreateInstance();
         private static SoundEffect bossTune = SoundEffect.FromStream(Properties.Resources.The_Legend_of_Zelda__Spirit_Tracks_Soundtrack___66_Stagnox__Armored_Colossus);
         SoundEffectInstance bossLoop = bossTune.CreateInstance();
-        private SoundPlayer lobby = new SoundPlayer(Properties.Resources.CreditsTheme);
+        private static SoundEffect lobbyTune = SoundEffect.FromStream(Properties.Resources.The_Legend_of_Zelda_Spirit_Tracks_Music___File_Select);
+        SoundEffectInstance lobbyLoop = lobbyTune.CreateInstance();
         private SoundEffect swordSlash = SoundEffect.FromStream(Properties.Resources.LOZ_Sword_Slash);
         private SoundEffect swordShoot = SoundEffect.FromStream(Properties.Resources.LOZ_Sword_Shoot);
         private SoundEffect laserBlast = SoundEffect.FromStream(Properties.Resources.SpartanLaser_mixdown);
@@ -202,9 +203,11 @@
 
         public void PlayLobbyTune()
         {
+            lobbyLoop.IsLooped = true;
+            lobbyLoop.Volume = 0.5f;
             if (musicEnabled)
             {
-                lobby.Play();
+                lobbyLoop.Play();
             }
         }
 
@@ -215,7 +218,7 @@
 
         public void StopCreditsSong()
         {
-            lobby.Stop();
+            lobbyLoop.Stop();
         }
 
         public void StopBossSong()
@@ -229,7 +232,7 @@
             dungeonLoop.Stop();
             triforceLoop.Stop();
             bossLoop.Stop();
-            lobby.Stop();
+            lobbyLoop.Stop();
         }
     }
 }

@@ -276,7 +276,7 @@
     <enemies>
       <enemy X="3" Y="1">Vire</enemy>
       <enemy X="3" Y="5">Vire</enemy>
-      <enemy X="6" Y="1">Vire</enemy>
+      <enemy X="6" Y="5">Vire</enemy>
       <enemy X="6" Y="3">Vire</enemy>
       <enemy X="9" Y="1">Vire</enemy>
     </enemies>

@@ -8,7 +8,7 @@
     {
         private IGameState previousState;
         private ISprite ConfirmScreen;
-        private Vector2 optionsOffset = new Vector2(GameData.Instance.GameStateDataConstants.OptionsWidthOffset, GameData.Instance.GameStateDataConstants.OptionsHeightOffset);
+        private Vector2 offset = new Vector2(GameData.Instance.GameStateDataConstants.OptionsWidthOffset, GameData.Instance.GameStateDataConstants.OptionsHeightOffset);
 
         public ConfirmPurchaseState(IGameState gameState)
         {
@@ -37,7 +37,7 @@
         {
             previousState.Draw();
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
-            ConfirmScreen.Draw(optionsOffset, LoZGame.Instance.DefaultTint, 1);
+            ConfirmScreen.Draw(offset, LoZGame.Instance.DefaultTint, 1);
             LoZGame.Instance.SpriteBatch.End();
         }
     }

@@ -10,6 +10,7 @@
         private readonly IPlayer player;
         private readonly IEnemy wallMaster;
         private readonly ISprite sprite;
+        private int timeout = 100;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GrabbedState"/> class.
@@ -79,20 +80,39 @@
         /// <inheritdoc/>
         public void Update()
         {
-            player.Physics.MovementVelocity = wallMaster.Physics.MovementVelocity;
-            if (player.Physics.Location.X < 0)
+            // If the Wall Master dies while grabbing the player, release the player.
+            if (wallMaster.IsDead)
             {
-                wallMaster.CurrentState = new RightMovingEnemyState((WallMaster)wallMaster);
-                wallMaster.Physics.Bounds = new Rectangle(new Point(wallMaster.Physics.Bounds.Location.X + (int)(BlockSpriteFactory.Instance.TileWidth * 3), wallMaster.Physics.Bounds.Location.Y), wallMaster.Physics.Bounds.Size);
-                player.Physics.StopVelocity();
                 player.State = new IdleState(player);
-                player.Physics.Location = new Vector2(
-                    (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
-                    (float)(BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
-                player.Physics.Bounds = new Rectangle((int)player.Physics.Location.X, (int)player.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
-                LoZGame.Instance.Dungeon.CurrentRoomX = LoZGame.Instance.Dungeon.StartRoomX;
-                LoZGame.Instance.Dungeon.CurrentRoomY = LoZGame.Instance.Dungeon.StartRoomY;
-                LoZGame.Instance.Dungeon.LoadNewRoom();
+            }
+
+            // If the Wall Master finishes grabbing the player, travel to the edge of the screen and drop the player at the dungeon entrance.
+            if (((WallMaster)wallMaster).Timer > timeout)
+            {
+                ((WallMaster)wallMaster).Physics.MovementVelocity = new Vector2(-2, 0);
+                player.Physics.MovementVelocity = wallMaster.Physics.MovementVelocity;
+                player.DisarmedTimer = LoZGame.Instance.UpdateSpeed * 3;
+                if (player.Physics.Location.X < 0)
+                {
+                    ((WallMaster)wallMaster).Expired = true;
+                    player.DisarmedTimer = 0;
+                    player.Physics.StopVelocity();
+                    player.State = new IdleState(player);
+                    player.Physics.Location = new Vector2(
+                        (float)(BlockSpriteFactory.Instance.HorizontalOffset + (BlockSpriteFactory.Instance.TileWidth * 5.5)),
+                        (float)(BlockSpriteFactory.Instance.TopOffset + (BlockSpriteFactory.Instance.TileHeight * 6)));
+                    player.Physics.Bounds = new Rectangle((int)player.Physics.Location.X, (int)player.Physics.Location.Y, LinkSpriteFactory.LinkWidth, LinkSpriteFactory.LinkHeight);
+                    LoZGame.Instance.Dungeon.CurrentRoomX = LoZGame.Instance.Dungeon.StartRoomX;
+                    LoZGame.Instance.Dungeon.CurrentRoomY = LoZGame.Instance.Dungeon.StartRoomY;
+                    LoZGame.Instance.Dungeon.LoadNewRoom();
+                }
+            }
+            else
+            {
+                player.Physics.CurrentDirection = Physics.Direction.North;
+                wallMaster.Physics.StopMovement();
+                player.Physics.StopMovement();
+                ((WallMaster)wallMaster).Timer++;
             }
         }
 

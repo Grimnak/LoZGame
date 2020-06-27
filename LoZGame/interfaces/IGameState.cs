@@ -85,6 +85,16 @@
         void ConfirmPurchase();
 
         /// <summary>
+        /// Game state goes to confirm a reset.
+        /// </summary>
+        void ConfirmReset();
+
+        /// <summary>
+        /// Game state goes to confirm exiting.
+        /// </summary>
+        void ConfirmQuit();
+
+        /// <summary>
         /// Updates the current state.
         /// </summary>
         void Update();

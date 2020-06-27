@@ -16,6 +16,8 @@ namespace LoZClone
         private readonly Dictionary<Keys, ICommand> optionsDictionary;
         private readonly Dictionary<Keys, ICommand> profilesDictionary;
         private readonly Dictionary<Keys, ICommand> purchaseConfirmationDictionary;
+        private readonly Dictionary<Keys, ICommand> resetConfirmationDictionary;
+        private readonly Dictionary<Keys, ICommand> quitConfirmationDictionary;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyboardCommandLoader"/> class.
@@ -28,6 +30,8 @@ namespace LoZClone
             optionsDictionary = new Dictionary<Keys, ICommand>();
             profilesDictionary = new Dictionary<Keys, ICommand>();
             purchaseConfirmationDictionary = new Dictionary<Keys, ICommand>();
+            resetConfirmationDictionary = new Dictionary<Keys, ICommand>();
+            quitConfirmationDictionary = new Dictionary<Keys, ICommand>();
 
             commandIdle = new CommandIdle(player);
             commandContinue = new CommandContinue(player);
@@ -49,7 +53,7 @@ namespace LoZClone
 
             playerDictionary.Add(Keys.Q, new CommandQuit());
 
-            playerDictionary.Add(Keys.R, new CommandReset(player));
+            playerDictionary.Add(Keys.R, new CommandReset());
 
             inventoryDictionary.Add(Keys.W, new CommandSelectionUp(player));
             inventoryDictionary.Add(Keys.Up, new CommandSelectionUp(player));
@@ -74,6 +78,12 @@ namespace LoZClone
 
             purchaseConfirmationDictionary.Add(Keys.Y, new PurchaseCommandYes());
             purchaseConfirmationDictionary.Add(Keys.N, new PurchaseCommandNo());
+
+            resetConfirmationDictionary.Add(Keys.Y, new ResetCommandYes(player));
+            resetConfirmationDictionary.Add(Keys.N, new ResetCommandNo());
+
+            quitConfirmationDictionary.Add(Keys.Y, new QuitCommandYes());
+            quitConfirmationDictionary.Add(Keys.N, new QuitCommandNo());
         }
 
         /// <summary>
@@ -110,5 +120,15 @@ namespace LoZClone
         /// Gets the dictionary containing purchasing confirmation commands from the loader.
         /// </summary>
         public Dictionary<Keys, ICommand> GetPurchaseConfirmationDict => purchaseConfirmationDictionary;
+
+        /// <summary>
+        /// Gets the dictionary containing resetting confirmation commands from the loader.
+        /// </summary>
+        public Dictionary<Keys, ICommand> GetResetConfirmationDict => resetConfirmationDictionary;
+
+        /// <summary>
+        /// Gets the dictionary containing quitting confirmation commands from the loader.
+        /// </summary>
+        public Dictionary<Keys, ICommand> GetQuitConfirmationDict => quitConfirmationDictionary;
     }
 }

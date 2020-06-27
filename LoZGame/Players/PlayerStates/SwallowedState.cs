@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
 
     /// <summary>
-    /// Immobilized state for player when Wall Master has control of him.
+    /// Immobilized state for player when Like Like eats him.
     /// </summary>
     public class SwallowedState : IPlayerState
     {
@@ -81,6 +81,7 @@
         /// <inheritdoc/>
         public void Update()
         {
+            player.Physics.CurrentDirection = Physics.Direction.North;
             likelike.Physics.StopMovement();
             player.Physics.StopMovement();
             ((Likelike)likelike).Timer++;

@@ -15,7 +15,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            LoZGame.Instance.Exit();
+            LoZGame.Instance.GameState.ConfirmQuit();
         }
     }
 }

@@ -1,4 +1,4 @@
-9
+2
 24
 24
 Wood
@@ -11,7 +11,7 @@ Wood
 0
 8
 8
-99
+999
 True
 True
 True
@@ -30,4 +30,4 @@ False
 Bomb
 True
 False
-False
+True

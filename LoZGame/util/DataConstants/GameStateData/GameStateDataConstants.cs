@@ -9,7 +9,7 @@ namespace LoZClone
         private const int CloseInventoryTranSpeed = 10;
         private const int MaxCreditsTime = 10980;
         private const int DeathTimerMaximum = 85;
-        private const int GameOverT = 500;
+        private const int GameOverT = 1000;
 
         private const int OpenInventoryLO = -174;
         private const int OpenInventoryTranSpeed = 10;

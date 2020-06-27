@@ -15,6 +15,8 @@ namespace LoZClone
         private readonly Dictionary<Keys, ICommand> optionsDict;
         private readonly Dictionary<Keys, ICommand> profilesDict;
         private readonly Dictionary<Keys, ICommand> purchaseConfirmationDict;
+        private readonly Dictionary<Keys, ICommand> resetConfirmationDict;
+        private readonly Dictionary<Keys, ICommand> quitConfirmationDict;
         private ICommand currentCommand;
         private KeyboardState oldState;
         private List<Keys> playerKeys;
@@ -34,6 +36,8 @@ namespace LoZClone
             optionsDict = allCommands.GetOptionsDict;
             profilesDict = allCommands.GetProfilesDict;
             purchaseConfirmationDict = allCommands.GetPurchaseConfirmationDict;
+            resetConfirmationDict = allCommands.GetResetConfirmationDict;
+            quitConfirmationDict = allCommands.GetQuitConfirmationDict;
             playerCommands = new Stack<KeyValuePair<Keys, ICommand>>();
             playerKeys = new List<Keys>
             {
@@ -135,6 +139,26 @@ namespace LoZClone
                     if (purchaseConfirmationDict.ContainsKey(key) && oldState.IsKeyUp(key))
                     {
                         purchaseConfirmationDict[key].Execute();
+                    }
+                }
+            }
+            else if (LoZGame.Instance.GameState is ConfirmResetState)
+            {
+                foreach (Keys key in pressed)
+                {
+                    if (purchaseConfirmationDict.ContainsKey(key) && oldState.IsKeyUp(key))
+                    {
+                        resetConfirmationDict[key].Execute();
+                    }
+                }
+            }
+            else if (LoZGame.Instance.GameState is ConfirmQuitState)
+            {
+                foreach (Keys key in pressed)
+                {
+                    if (purchaseConfirmationDict.ContainsKey(key) && oldState.IsKeyUp(key))
+                    {
+                        quitConfirmationDict[key].Execute();
                     }
                 }
             }
