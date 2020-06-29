@@ -480,7 +480,7 @@
         <enemy X="11" Y="6">FireBlockEnemy</enemy>
       </enemies>
       <doors>
-        <door loc="S">unlocked</door>
+        <door loc="S">locked</door>
         <door loc="N">special</door>
       </doors>
       <rrow idx="0">

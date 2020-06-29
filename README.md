@@ -1,6 +1,6 @@
 # The Legend of Zelda in Monogame
 
-This build features the first six dungeons and incomplete versions of the seventh and eighth dungeons.  There is also an option to turn "cheat mode" on, which gives the player unlimited items and infinite health.  This can be activated by accessing the options menu in-game.
+This build features all nine dungeons present in The Legend of Zelda (1986) with slightly modified gameplay and item placements.
 
 ## Authors:
 Eric Henderson (henderson.939@osu.edu)
@@ -32,7 +32,7 @@ P - Pause and Unpause the Game
 
 Q - Exits the Game
 
-R - Resets the Game to the Title Screen State
+R - Resets the Game
 
 Mouse - Moves Rooms in the Direction you Click (only present if Cheat Mode is enabled)
 
@@ -40,7 +40,7 @@ Mouse - Moves Rooms in the Direction you Click (only present if Cheat Mode is en
 W, A, S, D, Arrow Keys - Controls Item Selection
 
 ### Menu Controls:
-W, S, Up Arrow Key, Down Arrow Key - Controls Options Menu Selection
+W, S, Up Arrow Key, Down Arrow Key - Controls Options/Profiles Menu Selections
 
 Enter - Begin the Game, Toggle an Option, or Continue Gameplay after Death
 

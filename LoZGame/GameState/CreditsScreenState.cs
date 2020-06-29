@@ -22,7 +22,10 @@ namespace LoZClone
             sprite = ScreenSpriteFactory.Instance.CreditsScreen();
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
-            LoZGame.Instance.Profiles.ResetSaveFile();
+            if (LoZGame.Instance.Dungeon.DungeonNumber == 9)
+            {
+                LoZGame.Instance.Profiles.ResetSaveFile();
+            }
         }
 
         /// <inheritdoc></inheritdoc>

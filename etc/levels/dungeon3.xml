@@ -356,7 +356,7 @@
        </items>
        <doors>
         <door loc="W">hidden</door>
-        <door loc="S">special</door>
+        <door loc="S">unlocked</door>
         <door loc="N">special</door>
        </doors>
        <rrow idx="0">

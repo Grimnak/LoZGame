@@ -14,7 +14,7 @@
         {
             if ((numBombs > 0) || LoZGame.Cheats)
             {
-                if (!LoZGame.Cheats)
+                if (!LoZGame.Cheats && !(player.State is UseItemState))
                 {
                     numBombs--;
                 }
@@ -84,7 +84,7 @@
                     numRedPotions--;
                     numBluePotions++;
                 }
-                LoZGame.Instance.GameState = new HealthRestoreGameState();
+                LoZGame.Instance.GameState.RestoreHealth();
             }
             else if (numBluePotions > 0 || LoZGame.Cheats)
             {
@@ -92,7 +92,7 @@
                 {
                     numBluePotions--;
                 }
-                LoZGame.Instance.GameState = new HealthRestoreGameState();
+                LoZGame.Instance.GameState.RestoreHealth();
             }
         }
 
