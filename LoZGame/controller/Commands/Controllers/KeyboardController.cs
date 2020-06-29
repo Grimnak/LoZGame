@@ -42,11 +42,11 @@ namespace LoZClone
             playerKeys = new List<Keys>
             {
                 Keys.W, Keys.Up, Keys.A, Keys.Left, Keys.S, Keys.Down, Keys.D, Keys.Right,
-                Keys.Z, Keys.N,
+                Keys.Z, Keys.Space, Keys.N,
             };
             oneUseKeys = new List<Keys>
             {
-                Keys.Z, Keys.N,
+                Keys.Z, Keys.Space, Keys.N,
             };
         }
 
