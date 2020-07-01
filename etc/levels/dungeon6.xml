@@ -1057,6 +1057,7 @@
     <room exists="True" oldman="True" basement="False" dark="False" boss="False" idx="2">
       <text>THE MAGIC WAND IS BELOW YOU.</text>
       <items>
+        <item X="5.5" Y="4">MagicShield</item>
       </items>
       <enemies>
         <enemy X="5.5" Y="2">OldMan</enemy>

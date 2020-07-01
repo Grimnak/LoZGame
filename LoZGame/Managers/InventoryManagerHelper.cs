@@ -107,7 +107,7 @@
 
         public void UseRod()
         {
-            if (hasRod || LoZGame.Cheats)
+            if ((hasRod || LoZGame.Cheats) && !LoZGame.Instance.GameObjects.Entities.ProjectileManager.BeamLock)
             {
                 player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.SonicBeam, player);

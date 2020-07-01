@@ -39,7 +39,14 @@ namespace LoZClone
             }
             else if (item is Arrow)
             {
-                player.Inventory.HasArrow = true;
+                if (!player.Inventory.HasArrow)
+                {
+                    player.Inventory.HasArrow = true;
+                }
+                else
+                {
+                    player.Inventory.GainRupees(10);
+                }
             }
             else if (item is SilverArrow)
             {

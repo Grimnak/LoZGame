@@ -65,6 +65,10 @@
                     {
                         itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
                     }
+                    else
+                    {
+                        LoZGame.Instance.Dungeon.CurrentRoom.SetText("YOU NEED AT LEAST 50 RUPEES.");
+                    }
                 }
                 else
                 {

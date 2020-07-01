@@ -11,12 +11,14 @@
         private int projectileId;
         private int projectileListSize;
         private bool swordLock;
+        private bool beamLock;
         private bool spamLock;
         private bool boomerangLock;
         private bool triforceLock;
         private int candleCooldown;
         private bool candleLock;
         private int swordInstance;
+        private int beamInstance;
         private int boomerangInstance;
         private int triforceInstance;
         private int candleInstance;
@@ -34,6 +36,8 @@
 
         public bool CandleLock => candleLock;
 
+        public bool BeamLock => beamLock;
+
         public ProjectileManager()
         {
             projectileList = new Dictionary<int, IProjectile>();
@@ -42,12 +46,14 @@
             projectileListSize = 0;
             deletable = new List<int>();
             swordLock = false;
+            beamLock = false;
             boomerangLock = false;
             spamLock = false;
             triforceLock = false;
             candleLock = false;
             primaryAttackLock = false;
             swordInstance = 0;
+            beamInstance = 0;
             boomerangInstance = 0;
             spamCounter = 0;
             triforceInstance = 0;
@@ -111,8 +117,13 @@
                         break;
 
                     case ProjectileType.SonicBeam:
-                        SoundFactory.Instance.PlaySwordShoot();
-                        projectileList.Add(projectileId, new SonicBeamProjectile(player.Physics));
+                        if (!beamLock)
+                        {
+                            SoundFactory.Instance.PlaySwordShoot();
+                            projectileList.Add(projectileId, new SonicBeamProjectile(player.Physics));
+                            beamLock = true;
+                            beamInstance = projectileId;
+                        }
                         break;
 
                     case ProjectileType.RedCandle:
@@ -235,6 +246,11 @@
                     if (item.Key == candleInstance && candleCooldown <= 0)
                     {
                         candleLock = false;
+                    }
+
+                    if (item.Key == beamInstance)
+                    {
+                        beamLock = false;
                     }
 
                     deletable.Add(item.Key);

@@ -567,7 +567,7 @@
     </room>
     <room exists="True" oldman="False" basement="False" dark="False" boss="False" idx="3">
        <enemies>
-        <enemy X="6" Y="1">Darknut</enemy>
+        <enemy X="6" Y="5">Darknut</enemy>
         <enemy X="8" Y="1">Darknut</enemy>
         <enemy X="5" Y="4">Darknut</enemy>
        </enemies>
