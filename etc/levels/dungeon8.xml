@@ -920,7 +920,7 @@
       </items>
       <enemies>
         <enemy X="1" Y="4">Keese</enemy>
-        <enemy X="10" Y="3">Keese</enemy>
+        <enemy X="8" Y="3">Keese</enemy>
         <enemy X="3" Y="2">PolsVoice</enemy>
         <enemy X="7" Y="3">PolsVoice</enemy>
         <enemy X="1" Y="4">Gibdo</enemy>
@@ -1440,7 +1440,7 @@
     </room>
     <room exists="True" oldman="False" basement="False" dark="True" boss="False" idx="4">
       <items>
-        <item X="6" Y="3">Key</item>
+        <item X="6" Y="3">Bomb</item>
       </items>
       <enemies>
         <enemy X="5" Y="0">Keese</enemy>
