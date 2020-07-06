@@ -95,6 +95,14 @@ namespace LoZClone
             }
             if (enemyCount == 0)
             {
+                // Ensure statues stop shooting projectiles once the room has been cleared to prevent cheap damage.
+                foreach (IEnemy fireBlockEnemy in enemyList.Values)
+                {
+                    if (fireBlockEnemy is BlockEnemy)
+                    {
+                        fireBlockEnemy.Expired = true;
+                    }
+                }
                 LoZGame.Instance.Drops.DropItemsEmptyRoom();
             }
         }
