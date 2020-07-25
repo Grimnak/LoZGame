@@ -16,7 +16,7 @@
         {
             if (enemy is WallMaster)
             {
-                if (!(enemy.CurrentState is StunnedEnemyState))
+                if (!(enemy.CurrentState is StunnedEnemyState) && !LoZGame.Instance.Players[0].Inventory.HasClock)
                 {
                     player.State = new GrabbedState(player, (WallMaster)enemy);
                 }

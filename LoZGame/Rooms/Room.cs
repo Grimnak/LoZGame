@@ -326,6 +326,10 @@
                     newItem = new Compass(location);
                     items.Add(newItem);
                     break;
+                case "Clock":
+                    newItem = new Clock(location);
+                    items.Add(newItem);
+                    break;
                 case "Boomerang":
                     newItem = new Boomerang(location);
                     DroppedBoomerang = Tuple.Create(newItem, false);

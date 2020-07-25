@@ -48,7 +48,7 @@
 
         public override void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IPlayer && !(((Link)otherCollider).State is PickupItemState || CurrentState is StunnedEnemyState) && ((IPlayer)otherCollider).Inventory.ClockLockout <= 0)
+            if (otherCollider is IPlayer && !(((Link)otherCollider).State is PickupItemState || CurrentState is StunnedEnemyState) && !LoZGame.Instance.Players[0].Inventory.HasClock)
             {
                 CurrentState.Attack();
             }
@@ -56,7 +56,7 @@
             {
                 EnemyCollisionHandler.OnCollisionResponse((IBlock)otherCollider, collisionSide);
             }
-            else if (otherCollider is IProjectile && /*!(CurrentState is AttackingWallMasterState)*/Timer <= 100)
+            else if (otherCollider is IProjectile && Timer <= 100)
             {
                 EnemyCollisionHandler.OnCollisionResponse((IProjectile)otherCollider, collisionSide);
             }

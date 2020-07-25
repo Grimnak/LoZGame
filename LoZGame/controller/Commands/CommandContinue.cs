@@ -24,7 +24,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            lines = File.ReadAllLines("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + ".txt");
+            lines = File.ReadAllLines("Content/Profile" + LoZGame.Instance.SelectedProfile + ".txt");
             LoZGame.Instance.Dungeon = new Dungeon(int.Parse(lines[0]));
             player.Inventory = new InventoryManager(player);
             LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);

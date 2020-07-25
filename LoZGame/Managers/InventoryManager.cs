@@ -96,7 +96,7 @@
 
         public InventoryManager(IPlayer player)
         {
-            string[] inventorySave = File.ReadAllLines("../../../../etc/profiles/Profile#" + LoZGame.Instance.SelectedProfile + ".txt");
+            string[] inventorySave = File.ReadAllLines("Content/Profile" + LoZGame.Instance.SelectedProfile + ".txt");
 
             this.player = player;
             this.player.Health.CurrentHealth = int.Parse(inventorySave[1]);
