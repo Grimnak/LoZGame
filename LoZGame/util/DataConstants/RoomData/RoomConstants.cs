@@ -7,7 +7,7 @@
         private const float TileD = .001f;
 
         //private const int UpDownDoorXLoc = 363;
-        private const int LeftDoorXLoc = 19;
+        private const int LeftDoorXLoc = 20;
 
         private const string Unlocked = "Unlocked";
         private const string Hidden = "Hidden";

@@ -6,7 +6,7 @@
     public partial class Door : IDoor
     {
         /// <summary>
-        /// Defines the location relative to the door to draw thee overhang of the hallway.
+        /// Defines the location relative to the door to draw the overhang of the hallway.
         /// </summary>
         private Vector2 overhangOffset;
 
@@ -62,7 +62,7 @@
                         Physics = new Physics(rightScreenLoc);
                         Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
                         Physics.CurrentDirection = Physics.Direction.East;
-                        overhangOffset = new Vector2(Physics.Bounds.Width, 0);
+                        overhangOffset = new Vector2(Physics.Bounds.Width + 2, 0);
                         break;
                     }
                 case South:
@@ -78,7 +78,7 @@
                         Physics = new Physics(leftScreenLoc);
                         Physics.Bounds = new Rectangle((int)Physics.Location.X, (int)Physics.Location.Y, BlockSpriteFactory.Instance.DoorHeight, BlockSpriteFactory.Instance.DoorWidth);
                         Physics.CurrentDirection = Physics.Direction.West;
-                        overhangOffset = new Vector2(-(BlockSpriteFactory.Instance.HorizontalOffset - Physics.Bounds.Width), 0);
+                        overhangOffset = new Vector2(-(BlockSpriteFactory.Instance.HorizontalOffset - Physics.Bounds.Width + 2), 0);
                         break;
                     }
                 default:
