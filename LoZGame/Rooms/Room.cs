@@ -528,7 +528,7 @@
                         currentRoomTint = Color.Lerp(defaultRoomTint, defaultDungeonTint, colorTransitionCounter);
                         LoZGame.Instance.DefaultTint = Color.Lerp(defaultRoomTint, Color.White, colorTransitionCounter);
 
-                        // Update enemy tints at the same time to prevent potential lighting bugs.
+                        // Update enemy tints at the same time to prevent potential coloring bugs.
                         foreach (IEnemy enemy in LoZGame.Instance.GameObjects.Enemies.EnemyList)
                         {
                             enemy.CurrentTint = LoZGame.Instance.DefaultTint;
@@ -549,7 +549,7 @@
                         currentRoomTint = Color.Lerp(defaultDungeonTint, defaultRoomTint, colorTransitionCounter);
                         LoZGame.Instance.DefaultTint = Color.Lerp(Color.White, defaultRoomTint, colorTransitionCounter);
 
-                        // Update enemy tints at the same time to prevent potential lighting bugs.
+                        // Update enemy tints at the same time to prevent potential coloring bugs.
                         foreach (IEnemy enemy in LoZGame.Instance.GameObjects.Enemies.EnemyList)
                         {
                             enemy.CurrentTint = LoZGame.Instance.DefaultTint;
@@ -569,6 +569,14 @@
                 else
                 {
                     background = DungeonSpriteFactory.Instance.Dungeon();
+                }
+            }
+            else
+            {
+                // In this case, the room will never be dark so doubly-ensure enemies are appearing as the correct color.
+                foreach (IEnemy enemy in LoZGame.Instance.GameObjects.Enemies.EnemyList)
+                {
+                    enemy.CurrentTint = Color.White;
                 }
             }
         }
