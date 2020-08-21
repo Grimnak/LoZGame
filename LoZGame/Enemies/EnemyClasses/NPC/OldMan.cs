@@ -26,7 +26,7 @@
             Damage = GameData.Instance.EnemyDamageConstants.OldManDamage;
             DamageTimer = 0;
             MoveSpeed = GameData.Instance.EnemySpeedConstants.OldManSpeed;
-            CurrentTint = LoZGame.Instance.DefaultTint;
+            CurrentTint = Color.White;
             timesShot = 0;
             DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
             IsKillable = false;

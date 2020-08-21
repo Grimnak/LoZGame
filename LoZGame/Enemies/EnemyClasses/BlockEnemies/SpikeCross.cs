@@ -20,6 +20,7 @@
             Damage = GameData.Instance.EnemyDamageConstants.SpikeCrossDamage;
             DamageTimer = 0;
             CurrentTint = LoZGame.Instance.DefaultTint;
+            //CurrentTint = Color.White;
             AI = EnemyAI.SpikeCross;
             DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
             IsTransparent = true;
@@ -46,14 +47,14 @@
 
         public override void Update()
         {
-            if (LoZGame.Instance.Dungeon.CurrentRoom.IsDark)
+            /*if (LoZGame.Instance.Dungeon.CurrentRoom.IsDark)
             {
                 CurrentTint = LoZGame.Instance.DefaultTint;
             }
             else
             {
                 CurrentTint = Color.White;
-            }
+            }*/
 
             if (!LoZGame.Instance.Players[0].Inventory.HasClock || IsSpawning || IsDead)
             {

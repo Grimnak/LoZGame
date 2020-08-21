@@ -527,6 +527,12 @@
                         colorTransitionCounter += 0.01f;
                         currentRoomTint = Color.Lerp(defaultRoomTint, defaultDungeonTint, colorTransitionCounter);
                         LoZGame.Instance.DefaultTint = Color.Lerp(defaultRoomTint, Color.White, colorTransitionCounter);
+
+                        // Update enemy tints at the same time to prevent potential lighting bugs.
+                        foreach (IEnemy enemy in LoZGame.Instance.GameObjects.Enemies.EnemyList)
+                        {
+                            enemy.CurrentTint = LoZGame.Instance.DefaultTint;
+                        }
                     }
                     else
                     {
@@ -542,6 +548,12 @@
                         colorTransitionCounter += 0.01f;
                         currentRoomTint = Color.Lerp(defaultDungeonTint, defaultRoomTint, colorTransitionCounter);
                         LoZGame.Instance.DefaultTint = Color.Lerp(Color.White, defaultRoomTint, colorTransitionCounter);
+
+                        // Update enemy tints at the same time to prevent potential lighting bugs.
+                        foreach (IEnemy enemy in LoZGame.Instance.GameObjects.Enemies.EnemyList)
+                        {
+                            enemy.CurrentTint = LoZGame.Instance.DefaultTint;
+                        }
                     }
                     else
                     {
