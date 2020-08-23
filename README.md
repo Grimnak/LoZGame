@@ -32,7 +32,7 @@ P - Pause and Unpause the Game
 
 Q - Exits the Game
 
-R - Resets the Game
+R - Resets the Game (and Profile)
 
 Mouse - Moves Rooms in the Direction you Click (only present if Cheat Mode is enabled)
 
