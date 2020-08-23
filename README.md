@@ -47,16 +47,14 @@ Enter - Begin the Game, Toggle an Option, or Continue Gameplay after Death
 ### Options Menu:
 
 - Difficulty: The selection you make in the options menu will only apply to future dungeons in your current playthrough
-    - Note: Difficulty modifies how much damage the enemies deal, how much damage the player may take, how quickly the enemies move, AI behavior, as well as new functionality for a small number of enemies dependent on difficulty
+    - Note: Difficulty modifies how much damage the enemies deal, how much damage the player may take, how quickly the enemies move, AI behavior, as well as new functionality for a small number of enemies dependent on difficulty.
 - Cheats: Will grant you the ability to travel via Mouse Controller, infinite health and infinite use of most items.
-- Debug: Draws bounding boxes of all relevant objects on screen
+- Debug: Draws bounding boxes of all relevant objects on screen.
 - Music:  Toggles the in-game background music.
 
 ## Required Tools:
 
-Visual Studio
-
-Monogame
+None
 
 ## Known Bugs:
 ### Mouse Controller
