@@ -31,7 +31,7 @@
             DamageTimer = 0;
             MoveSpeed = GameData.Instance.EnemySpeedConstants.LikelikeSpeed;
             CurrentTint = LoZGame.Instance.DefaultTint;
-            DropTable = GameData.Instance.EnemyDropTables.EmptyDropTable;
+            DropTable = GameData.Instance.EnemyDropTables.LikelikeDropTable;
         }
 
         public override void Update()

@@ -6,21 +6,21 @@ namespace LoZClone
     {
         private const float doorFloorDepth = 0.02f;
 
-        private const int CloseInventoryTranSpeed = 5;
-        private const int MaxCreditsTime = 10980;
+        private const int CloseInventoryTranSpeed = 10;
+        private const int MaxCreditsTime = 3830;
         private const int DeathTimerMaximum = 85;
-        private const int GameOverT = 500;
+        private const int GameOverT = 1000;
 
         private const int OpenInventoryLO = -174;
-        private const int OpenInventoryTranSpeed = 5;
+        private const int OpenInventoryTranSpeed = 10;
 
         private const int TitleFrameDelay = 10;
         private const int TitleDrawXValue = 284;
 
-        private const int WinGameStMaxDungeons = 8;
-        private const int WinGameStMaxLO = 440;
-        private const int WinStSpriteWidth = 236;
-        private const int WinStSpriteHeight = 160;
+        private const int TriforceGameStMaxDungeons = 9;
+        private const int TriforceGameStMaxLO = 430;
+        private const int TriforceStSpriteWidth = 236;
+        private const int TriforceStSpriteHeight = 160;
 
         private const int optionsWindowHeight = 350;
         private const int optionsWindowWidth = 430;
@@ -34,6 +34,14 @@ namespace LoZClone
         private const int optionsMusicY = 501;
         private const int optionsTextLeading = 58; // What is Leading? https://techterms.com/definition/leading
         private const int optionsSelectorY = 325;
+        private const int profilesSelectorX = 225;
+        private const int profiles1SelectorY = 235;
+        private const int profiles2SelectorY = 370;
+        private const int profiles3SelectorY = 510;
+        private const int profilesDungeonTextX = 550;
+        private const int profiles1DungeonTextY = 235;
+        private const int profiles2DungeonTextY = 370;
+        private const int profiles3DungeonTextY = 510;
 
         private const int playerTransitionMaxDistance = 200;
 
@@ -59,13 +67,13 @@ namespace LoZClone
 
         public int TransitionRoomStateTransitionTime => 2 * LoZGame.Instance.UpdateSpeed;
 
-        public int WinStateMaxDungeons => WinGameStMaxDungeons;
+        public int TriforceStateMaxDungeons => TriforceGameStMaxDungeons;
 
-        public int WinStateMaxLockout => WinGameStMaxLO;
+        public int TriforceStateMaxLockout => TriforceGameStMaxLO;
 
-        public int WinStateSpriteWidth => WinStSpriteWidth;
+        public int TriforceStateSpriteWidth => TriforceStSpriteWidth;
 
-        public int WinStateSpriteHeight => WinStSpriteHeight;
+        public int TriforceStateSpriteHeight => TriforceStSpriteHeight;
 
         public int OptionsWindowHeight => optionsWindowHeight;
 
@@ -94,5 +102,21 @@ namespace LoZClone
         public int PlayerTransitionMaxDistance => playerTransitionMaxDistance;
 
         public int CreditsMAX => MaxCreditsTime;
+
+        public int ProfilesSelectorX => profilesSelectorX;
+
+        public int Profiles1SelectorY => profiles1SelectorY;
+
+        public int Profiles2SelectorY => profiles2SelectorY;
+
+        public int Profiles3SelectorY => profiles3SelectorY;
+
+        public int ProfilesDungeonTextX => profilesDungeonTextX;
+
+        public int Profiles1DungeonTextY => profiles1DungeonTextY;
+
+        public int Profiles2DungeonTextY => profiles2DungeonTextY;
+
+        public int Profiles3DungeonTextY => profiles3DungeonTextY;
     }
 }

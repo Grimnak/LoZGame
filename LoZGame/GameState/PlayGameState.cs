@@ -2,6 +2,7 @@
 {
     using Microsoft.Xna.Framework;
     using Microsoft.Xna.Framework.Graphics;
+    using System;
 
     public class PlayGameState : GameStateEssentials, IGameState
     {
@@ -22,6 +23,12 @@
         }
 
         /// <inheritdoc></inheritdoc>
+        public override void RestoreHealth()
+        {
+            LoZGame.Instance.GameState = new HealthRestoreGameState();
+        }
+
+        /// <inheritdoc></inheritdoc>
         public override void OpenInventory()
         {
             LoZGame.Instance.GameState = new OpenInventoryState();
@@ -34,19 +41,37 @@
         }
 
         /// <inheritdoc></inheritdoc>
+        public override void ConfirmPurchase()
+        {
+            LoZGame.Instance.GameState = new ConfirmPurchaseState(this);
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public override void ConfirmReset()
+        {
+            LoZGame.Instance.GameState = new ConfirmResetState(this);
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public override void ConfirmQuit()
+        {
+            LoZGame.Instance.GameState = new ConfirmQuitState(this);
+        }
+
+        /// <inheritdoc></inheritdoc>
         public override void TransitionRoom(Physics.Direction direction)
         {
-            if (!(LoZGame.Instance.Players[0].State is SwallowedState)) // -- potential bug --
+            if (!(LoZGame.Instance.Players[0].State is SwallowedState))
             {
                 LoZGame.Instance.GameState = new TransitionRoomState(direction);
             }
         }
 
         /// <inheritdoc></inheritdoc>
-        public override void WinGame()
+        public override void TriforceState()
         {
             SoundFactory.Instance.StopAll();
-            LoZGame.Instance.GameState = new WinGameState();
+            LoZGame.Instance.GameState = new TriforceState();
         }
 
         public override void Pause()
@@ -62,6 +87,7 @@
         /// <inheritdoc></inheritdoc>
         public override void Update()
         {
+            // Handle the clock freezing mechanics.
             if (LoZGame.Instance.Players[0].Inventory.HasClock)
             {
                 LoZGame.Instance.Players[0].Inventory.ClockLockout++;
@@ -71,12 +97,41 @@
                 LoZGame.Instance.Players[0].Inventory.HasClock = false;
                 LoZGame.Instance.Players[0].Inventory.ClockLockout = 0;
             }
+
+            // Handle room brightness.
+            LoZGame.Instance.Dungeon.CurrentRoom.HandleRoomBrightness(LoZGame.Instance.Dungeon.CurrentRoom.DefaultRoomTint, LoZGame.Instance.DungeonTint);
+
+            // Update players as they're inputting commands.
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Update();
             }
-            LoZGame.Instance.GameObjects.Update();
-            LoZGame.Instance.CollisionDetector.Update(LoZGame.Instance.Players.AsReadOnly(), LoZGame.Instance.GameObjects.Enemies.EnemyList.AsReadOnly(), LoZGame.Instance.GameObjects.Blocks.BlockList.AsReadOnly(), LoZGame.Instance.GameObjects.Doors.DoorList.AsReadOnly(), LoZGame.Instance.GameObjects.Items.ItemList.AsReadOnly(), LoZGame.Instance.GameObjects.Entities.PlayerProjectiles.AsReadOnly(), LoZGame.Instance.GameObjects.Entities.EnemyProjectiles.AsReadOnly());
+
+            // Play the correct song based on where the players are located within the game, when appropriate.
+            if (!LoZGame.Instance.Dungeon.DefeatedBoss)
+            {
+                if (LoZGame.Instance.Dungeon.CurrentRoomX == LoZGame.Instance.Dungeon.DungeonBossLocation.X && LoZGame.Instance.Dungeon.CurrentRoomY == LoZGame.Instance.Dungeon.DungeonBossLocation.Y)
+                {
+                    SoundFactory.Instance.StopDungeonSong();
+                    SoundFactory.Instance.PlayBossSong();
+                }
+                else
+                {
+                    SoundFactory.Instance.StopBossSong();
+                    SoundFactory.Instance.PlayDungeonSong();
+                }
+            }
+            else
+            {
+                SoundFactory.Instance.StopAll();
+            }
+
+            // Update all game objects and the collisions associated with them if the player is not frozen in pickup state.
+            if (!(LoZGame.Instance.Players[0].State is PickupItemState))
+            {
+                LoZGame.Instance.GameObjects.Update();
+                LoZGame.Instance.CollisionDetector.Update(LoZGame.Instance.Players.AsReadOnly(), LoZGame.Instance.GameObjects.Enemies.EnemyList.AsReadOnly(), LoZGame.Instance.GameObjects.Blocks.BlockList.AsReadOnly(), LoZGame.Instance.GameObjects.Doors.DoorList.AsReadOnly(), LoZGame.Instance.GameObjects.Items.ItemList.AsReadOnly(), LoZGame.Instance.GameObjects.Entities.PlayerProjectiles.AsReadOnly(), LoZGame.Instance.GameObjects.Entities.EnemyProjectiles.AsReadOnly());
+            }
 
         }
 
@@ -94,7 +149,7 @@
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             LoZGame.Instance.GameObjects.Enemies.Draw();
             LoZGame.Instance.GameObjects.Entities.Draw();
-            InventoryComponents.Instance.DrawText();
+            LoZGame.Instance.Dungeon.DrawText();
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Draw();

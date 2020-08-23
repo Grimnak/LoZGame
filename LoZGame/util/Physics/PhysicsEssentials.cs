@@ -23,7 +23,7 @@
 
         public bool IsJumping { get; set; }
 
-        public bool IsMoveable { get; set; }
+        public bool IsMovable { get; set; }
 
         public float Depth { get; set; }
 

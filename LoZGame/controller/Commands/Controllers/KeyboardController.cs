@@ -13,6 +13,10 @@ namespace LoZClone
         private readonly Dictionary<Keys, ICommand> playerDict;
         private readonly Dictionary<Keys, ICommand> inventoryDict;
         private readonly Dictionary<Keys, ICommand> optionsDict;
+        private readonly Dictionary<Keys, ICommand> profilesDict;
+        private readonly Dictionary<Keys, ICommand> purchaseConfirmationDict;
+        private readonly Dictionary<Keys, ICommand> resetConfirmationDict;
+        private readonly Dictionary<Keys, ICommand> quitConfirmationDict;
         private ICommand currentCommand;
         private KeyboardState oldState;
         private List<Keys> playerKeys;
@@ -30,15 +34,19 @@ namespace LoZClone
             playerDict = allCommands.GetPlayerDict;
             inventoryDict = allCommands.GetInventoryDict;
             optionsDict = allCommands.GetOptionsDict;
+            profilesDict = allCommands.GetProfilesDict;
+            purchaseConfirmationDict = allCommands.GetPurchaseConfirmationDict;
+            resetConfirmationDict = allCommands.GetResetConfirmationDict;
+            quitConfirmationDict = allCommands.GetQuitConfirmationDict;
             playerCommands = new Stack<KeyValuePair<Keys, ICommand>>();
             playerKeys = new List<Keys>
             {
                 Keys.W, Keys.Up, Keys.A, Keys.Left, Keys.S, Keys.Down, Keys.D, Keys.Right,
-                Keys.Z, Keys.N,
+                Keys.Z, Keys.Space, Keys.N,
             };
             oneUseKeys = new List<Keys>
             {
-                Keys.Z, Keys.N,
+                Keys.Z, Keys.Space, Keys.N,
             };
         }
 
@@ -91,7 +99,7 @@ namespace LoZClone
             {
                 if (pressed.Contains(Keys.Enter))
                 {
-                    LoZGame.Instance.GameState.PlayGame();
+                    LoZGame.Instance.GameState.ProfilesScreen();
                 }
             }
             else if (LoZGame.Instance.GameState is OpenInventoryState)
@@ -114,11 +122,51 @@ namespace LoZClone
                     }
                 }
             }
+            else if (LoZGame.Instance.GameState is ProfilesState)
+            {
+                foreach (Keys key in pressed)
+                {
+                    if (profilesDict.ContainsKey(key) && oldState.IsKeyUp(key))
+                    {
+                        profilesDict[key].Execute();
+                    }
+                }
+            }
+            else if (LoZGame.Instance.GameState is ConfirmPurchaseState)
+            {
+                foreach (Keys key in pressed)
+                {
+                    if (purchaseConfirmationDict.ContainsKey(key) && oldState.IsKeyUp(key))
+                    {
+                        purchaseConfirmationDict[key].Execute();
+                    }
+                }
+            }
+            else if (LoZGame.Instance.GameState is ConfirmResetState)
+            {
+                foreach (Keys key in pressed)
+                {
+                    if (purchaseConfirmationDict.ContainsKey(key) && oldState.IsKeyUp(key))
+                    {
+                        resetConfirmationDict[key].Execute();
+                    }
+                }
+            }
+            else if (LoZGame.Instance.GameState is ConfirmQuitState)
+            {
+                foreach (Keys key in pressed)
+                {
+                    if (purchaseConfirmationDict.ContainsKey(key) && oldState.IsKeyUp(key))
+                    {
+                        quitConfirmationDict[key].Execute();
+                    }
+                }
+            }
             else if (LoZGame.Instance.GameState is DeathState)
             {
                 if (pressed.Contains(Keys.Enter) && oldState.IsKeyUp(Keys.Enter))
                 {
-                    allCommands.GetContine.Execute();
+                    allCommands.GetContinue.Execute();
                 }
             }
 

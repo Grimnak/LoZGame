@@ -3,7 +3,7 @@
     using Microsoft.Xna.Framework;
 
     /// <summary>
-    /// Immobilized state for player when Wall Master has control of him.
+    /// Immobilized state for player when Like Like eats him.
     /// </summary>
     public class SwallowedState : IPlayerState
     {
@@ -81,6 +81,7 @@
         /// <inheritdoc/>
         public void Update()
         {
+            player.Physics.CurrentDirection = Physics.Direction.North;
             likelike.Physics.StopMovement();
             player.Physics.StopMovement();
             ((Likelike)likelike).Timer++;
@@ -95,6 +96,7 @@
             if (((Likelike)likelike).Timer > timeout)
             {
                 player.State = new IdleState(player);
+                player.Inventory.HasMagicShield = false;
                 if (likelike.Health.CurrentHealth > 0)
                 {
                     likelike.UpdateState();
@@ -116,15 +118,36 @@
             }
             else if (player.Physics.CurrentDirection == Physics.Direction.South)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkDown(player.CurrentColor);
+                if (player.Inventory.HasMagicShield)
+                {
+                    return LinkSpriteFactory.Instance.CreateSpriteLinkShieldDown(player.CurrentColor);
+                }
+                else
+                {
+                    return LinkSpriteFactory.Instance.CreateSpriteLinkDown(player.CurrentColor);
+                }
             }
             else if (player.Physics.CurrentDirection == Physics.Direction.West)
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkLeft(player.CurrentColor);
+                if (player.Inventory.HasMagicShield)
+                {
+                    return LinkSpriteFactory.Instance.CreateSpriteLinkShieldLeft(player.CurrentColor);
+                }
+                else
+                {
+                    return LinkSpriteFactory.Instance.CreateSpriteLinkLeft(player.CurrentColor);
+                }
             }
             else
             {
-                return LinkSpriteFactory.Instance.CreateSpriteLinkRight(player.CurrentColor);
+                if (player.Inventory.HasMagicShield)
+                {
+                    return LinkSpriteFactory.Instance.CreateSpriteLinkShieldRight(player.CurrentColor);
+                }
+                else
+                {
+                    return LinkSpriteFactory.Instance.CreateSpriteLinkRight(player.CurrentColor);
+                }
             }
         }
 

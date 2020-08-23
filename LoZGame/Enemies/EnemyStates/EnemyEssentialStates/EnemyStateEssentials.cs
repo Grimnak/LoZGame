@@ -31,6 +31,7 @@
             EnemyAI.LargeDigDogger,
             EnemyAI.Gohma,
             EnemyAI.Segment,
+            EnemyAI.MiniPatra,
             EnemyAI.NoSpawn
         };
 
@@ -76,6 +77,9 @@
                 case EnemyAI.Stalfos:
                     UpdateStalfos();
                     break;
+                case EnemyAI.Patra:
+                    UpdatePatra();
+                    break;
                 case EnemyAI.WallMaster:
                     UpdateWallMaster();
                     break;
@@ -86,8 +90,10 @@
                     UpdateManhandla();
                     break;
                 case EnemyAI.GleeokHeadOff:
+                    UpdateGleeokHeadOff();
+                    break;
                 case EnemyAI.GleeokHead:
-                    UpdateGleeock();
+                    UpdateGleeok();
                     break;
                 case EnemyAI.SpikeCross:
                     UpdateSpikeCross();

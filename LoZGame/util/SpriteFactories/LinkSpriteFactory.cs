@@ -22,12 +22,15 @@ namespace LoZClone
         private SpriteData blueLinkUpData;
         private SpriteData redLinkUpData;
         private SpriteData greenLinkDownData;
+        private SpriteData greenLinkShieldDownData;
         private SpriteData blueLinkDownData;
         private SpriteData redLinkDownData;
         private SpriteData greenLinkLeftData;
+        private SpriteData greenLinkShieldLeftData;
         private SpriteData blueLinkLeftData;
         private SpriteData redLinkLeftData;
         private SpriteData greenLinkRightData;
+        private SpriteData greenLinkShieldRightData;
         private SpriteData blueLinkRightData;
         private SpriteData redLinkRightData;
         private SpriteData greenLinkDieData;
@@ -42,18 +45,22 @@ namespace LoZClone
         private SpriteData greenLinkLaserRightData;
 
         private Texture2D greenLinkUpTexture;
+        private Texture2D greenLinkShieldUpTexture;
         private Texture2D blueLinkUpTexture;
         private Texture2D redLinkUpTexture;
 
         private Texture2D greenLinkDownTexture;
+        private Texture2D greenLinkShieldDownTexture;
         private Texture2D blueLinkDownTexture;
         private Texture2D redLinkDownTexture;
 
         private Texture2D greenLinkLeftTexture;
+        private Texture2D greenLinkShieldLeftTexture;
         private Texture2D blueLinkLeftTexture;
         private Texture2D redLinkLeftTexture;
 
         private Texture2D greenLinkRightTexture;
+        private Texture2D greenLinkShieldRightTexture;
         private Texture2D blueLinkRightTexture;
         private Texture2D redLinkRightTexture;
 
@@ -91,14 +98,17 @@ namespace LoZClone
             redLinkUpTexture = content.Load<Texture2D>("Red_Link_Up");
 
             greenLinkDownTexture = content.Load<Texture2D>("Green_Link_Down");
+            greenLinkShieldDownTexture = content.Load<Texture2D>("Green_Link_Shield_Down");
             blueLinkDownTexture = content.Load<Texture2D>("Blue_Link_Down");
             redLinkDownTexture = content.Load<Texture2D>("Red_Link_Down");
 
             greenLinkLeftTexture = content.Load<Texture2D>("Green_Link_Left");
+            greenLinkShieldLeftTexture = content.Load<Texture2D>("Green_Link_Shield_Left");
             blueLinkLeftTexture = content.Load<Texture2D>("Blue_Link_Left");
             redLinkLeftTexture = content.Load<Texture2D>("Red_Link_Left");
 
             greenLinkRightTexture = content.Load<Texture2D>("Green_Link_Right");
+            greenLinkShieldRightTexture = content.Load<Texture2D>("Green_Link_Shield_Right");
             blueLinkRightTexture = content.Load<Texture2D>("Blue_Link_Right");
             redLinkRightTexture = content.Load<Texture2D>("Red_Link_Right");
 
@@ -122,14 +132,17 @@ namespace LoZClone
             blueLinkUpData = new SpriteData(DrawSize, blueLinkUpTexture, 3, 1);
             redLinkUpData = new SpriteData(DrawSize, redLinkUpTexture, 3, 1);
             greenLinkDownData = new SpriteData(DrawSize, greenLinkDownTexture, 3, 1);
+            greenLinkShieldDownData = new SpriteData(DrawSize, greenLinkShieldDownTexture, 2, 1);
             blueLinkDownData = new SpriteData(DrawSize, blueLinkDownTexture, 3, 1);
             redLinkDownData = new SpriteData(DrawSize, redLinkDownTexture, 3, 1);
             greenLinkLeftData = new SpriteData(DrawSize, greenLinkLeftTexture, 3, 1);
+            greenLinkShieldLeftData = new SpriteData(DrawSize, greenLinkShieldLeftTexture, 2, 1);
             blueLinkLeftData = new SpriteData(DrawSize, blueLinkLeftTexture, 3, 1);
             redLinkLeftData = new SpriteData(DrawSize, redLinkLeftTexture, 3, 1);
-            greenLinkRightData = new SpriteData(DrawSize, greenLinkLeftTexture, 3, 1);
+            greenLinkRightData = new SpriteData(DrawSize, greenLinkRightTexture, 3, 1);
+            greenLinkShieldRightData = new SpriteData(DrawSize, greenLinkShieldRightTexture, 2, 1);
             blueLinkRightData = new SpriteData(DrawSize, blueLinkRightTexture, 3, 1);
-            redLinkRightData = new SpriteData(DrawSize, redLinkLeftTexture, 3, 1);
+            redLinkRightData = new SpriteData(DrawSize, redLinkRightTexture, 3, 1);
             greenLinkDieData = new SpriteData(DrawSize, greenLinkDieTexture, 1, 17);
             blueLinkDieData = new SpriteData(DrawSize, blueLinkDieTexture, 1, 17);
             redLinkDieData = new SpriteData(DrawSize, redLinkDieTexture, 1, 17);
@@ -194,6 +207,22 @@ namespace LoZClone
             }
         }
 
+        public ISprite CreateSpriteLinkShieldDown(Link.LinkColor currentColor)
+        {
+            if (currentColor.Equals(Link.LinkColor.Red))
+            {
+                return new ObjectSprite(greenLinkShieldDownTexture, greenLinkShieldDownData);
+            }
+            else if (currentColor.Equals(Link.LinkColor.Blue))
+            {
+                return new ObjectSprite(greenLinkShieldDownTexture, greenLinkShieldDownData);
+            }
+            else
+            {
+                return new ObjectSprite(greenLinkShieldDownTexture, greenLinkShieldDownData);
+            }
+        }
+
         public ISprite CreateSpriteLinkLeft(Link.LinkColor currentColor)
         {
             if (currentColor.Equals(Link.LinkColor.Red))
@@ -210,6 +239,22 @@ namespace LoZClone
             }
         }
 
+        public ISprite CreateSpriteLinkShieldLeft(Link.LinkColor currentColor)
+        {
+            if (currentColor.Equals(Link.LinkColor.Red))
+            {
+                return new ObjectSprite(greenLinkShieldLeftTexture, greenLinkShieldLeftData);
+            }
+            else if (currentColor.Equals(Link.LinkColor.Blue))
+            {
+                return new ObjectSprite(greenLinkShieldLeftTexture, greenLinkShieldLeftData);
+            }
+            else
+            {
+                return new ObjectSprite(greenLinkShieldLeftTexture, greenLinkShieldLeftData);
+            }
+        }
+
         public ISprite CreateSpriteLinkRight(Link.LinkColor currentColor)
         {
             if (currentColor.Equals(Link.LinkColor.Red))
@@ -223,6 +268,22 @@ namespace LoZClone
             else
             {
                 return new ObjectSprite(greenLinkRightTexture, greenLinkRightData);
+            }
+        }
+
+        public ISprite CreateSpriteLinkShieldRight(Link.LinkColor currentColor)
+        {
+            if (currentColor.Equals(Link.LinkColor.Red))
+            {
+                return new ObjectSprite(greenLinkShieldRightTexture, greenLinkShieldRightData);
+            }
+            else if (currentColor.Equals(Link.LinkColor.Blue))
+            {
+                return new ObjectSprite(greenLinkShieldRightTexture, greenLinkShieldRightData);
+            }
+            else
+            {
+                return new ObjectSprite(greenLinkShieldRightTexture, greenLinkShieldRightData);
             }
         }
 

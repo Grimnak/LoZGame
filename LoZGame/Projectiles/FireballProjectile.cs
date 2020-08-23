@@ -10,6 +10,7 @@
             {
                 MovementVelocity = new Vector2(physics.MovementVelocity.X, physics.MovementVelocity.Y)
             };
+            Source = physics;
             CollisionHandler = new ProjectileCollisionHandler(this);
             Data = new EntityData();
             Width = ProjectileSpriteFactory.Instance.FireballWidth;

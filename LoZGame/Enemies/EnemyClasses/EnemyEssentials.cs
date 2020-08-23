@@ -44,7 +44,7 @@
             }
             if (Health.CurrentHealth <= 0)
             {
-                if (this is Dragon || this is Dodongo || this is ManhandlaBody || this is GleeokBody || this is DigDogger || this is RedGohma)
+                if (LoZGame.Instance.Dungeon.CurrentRoom.IsBossRoom && !this.IsBossPart)
                 {
                     SoundFactory.Instance.PlayBossDie();
                     LoZGame.Instance.Drops.DropHeartContainer();
@@ -58,7 +58,7 @@
             }
         }
 
-        public void HandleDamage()
+        public virtual void HandleDamage()
         {
             if (DamageTimer > 0 && Health.CurrentHealth > 0)
             {
@@ -69,7 +69,7 @@
                 }
                 else
                 {
-                    CurrentTint = LoZGame.Instance.DefaultTint;
+                    CurrentTint = Color.White;
                 }
                 Physics.HandleKnockBack();
             }
@@ -77,6 +77,27 @@
 
         public virtual void Update()
         {
+            // Ensure enemy colors correctly correspond with their room's current color tint and continue to adjust their colors accordingly.
+            if (LoZGame.Instance.Dungeon.CurrentRoom.IsDark)
+            {
+                if (LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint == Color.Black)
+                {
+                    CurrentTint = Color.Black;
+                }
+                else if (LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint == LoZGame.Instance.DungeonTint)
+                {
+                    CurrentTint = Color.White;
+                }
+                else
+                {
+                    CurrentTint = LoZGame.Instance.DefaultTint;
+                }
+            }
+            else
+            {
+                CurrentTint = Color.White;
+            }
+
             HandleDamage();
             if (!LoZGame.Instance.Players[0].Inventory.HasClock || IsSpawning || IsDead)
             {
@@ -88,7 +109,10 @@
 
         public virtual void Draw()
         {
-            CurrentState.Draw();
+            if (!isInvisible)
+            {
+                CurrentState.Draw();
+            }
         }
 
         public virtual void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)

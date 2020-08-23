@@ -19,7 +19,9 @@
             EnemyEssentials.EnemyAI.NoAI,
             EnemyEssentials.EnemyAI.MoldormHead,
             EnemyEssentials.EnemyAI.Segment,
-            EnemyEssentials.EnemyAI.WallMaster
+            EnemyEssentials.EnemyAI.WallMaster,
+            EnemyEssentials.EnemyAI.Patra,
+            EnemyEssentials.EnemyAI.MiniPatra
         };
 
         public BlockCollisionHandler(IBlock block)
@@ -56,7 +58,6 @@
             else if (block is Tile)
             {
                 SoundFactory.Instance.PlayClimbStairs();
-                LoZGame.Instance.CollisionDetector.MoveToBasement = true;
             }
             else if (block is BlockTile)
             {

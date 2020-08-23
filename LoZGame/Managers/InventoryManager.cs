@@ -1,6 +1,7 @@
 ﻿namespace LoZClone
 {
     using System.Collections.Generic;
+    using System.IO;
 
     public partial class InventoryManager
     {
@@ -43,6 +44,8 @@
         private bool hasRedFlame;
         private bool hasBlueFlame;
         private bool hasLadder;
+        private bool hasMagicShield;
+        private bool hasMagicKey;
         private bool ladderInUse;
         private int maxBombs;
         private int maxSelectionX;
@@ -57,27 +60,6 @@
 
         private bool hasFlute;
         private int fluteLockout;
-
-        public InventoryManager(IPlayer player)
-        {
-            this.player = player;
-            selectionX = 0;
-            selectionY = 0;
-            maxBombs = GameData.Instance.InventoryConstants.MaximumBombs;
-            maxSelectionX = GameData.Instance.InventoryConstants.MaximumSelectionX;
-            maxSelectionY = GameData.Instance.InventoryConstants.MaximumSelectionY;
-
-            numBombs = 4;
-            numKeys = 0;
-            numRedPotions = 0;
-            numBluePotions = 0;
-            numRupees = 5;
-           
-            hasClock = false;
-            clockLockout = 0;
-
-            selectedItem = ItemType.Bomb;
-        }
 
         public InventoryManager(InventoryManager copiedManager)
         {
@@ -96,9 +78,11 @@
             this.hasRod = copiedManager.hasRod;
             this.hasMagicBoomerang = copiedManager.hasMagicBoomerang;
             this.hasBow = copiedManager.hasBow;
+            this.hasArrow = copiedManager.hasArrow;
             this.hasSilverArrow = copiedManager.hasSilverArrow;
             this.hasRedFlame = copiedManager.hasRedFlame;
             this.hasBlueFlame = copiedManager.hasBlueFlame;
+            this.hasFlute = copiedManager.hasFlute;
             this.hasLadder = copiedManager.hasLadder;
             this.ladderInUse = copiedManager.ladderInUse;
             this.hasMap = copiedManager.hasMap;
@@ -106,6 +90,47 @@
             this.hasClock = copiedManager.hasClock;
             this.clockLockout = copiedManager.clockLockout;
             this.selectedItem = copiedManager.selectedItem;
+            this.hasMagicShield = copiedManager.hasMagicShield;
+            this.hasMagicKey = copiedManager.hasMagicKey;
+        }
+
+        public InventoryManager(IPlayer player)
+        {
+            string[] inventorySave = File.ReadAllLines("Content/Profile" + LoZGame.Instance.SelectedProfile + ".txt");
+
+            this.player = player;
+            this.player.Health.CurrentHealth = int.Parse(inventorySave[1]);
+            this.player.Health.MaxHealth = int.Parse(inventorySave[2]);
+            this.player.CurrentWeapon = LoZGame.Instance.Profiles.ParseWeapon(player, inventorySave[3]);
+            this.maxBombs = int.Parse(inventorySave[4]);
+            this.maxSelectionX = int.Parse(inventorySave[5]);
+            this.maxSelectionY = int.Parse(inventorySave[6]);
+            this.selectionX = int.Parse(inventorySave[7]);
+            this.selectionY = int.Parse(inventorySave[8]);
+            this.numBombs = int.Parse(inventorySave[9]);
+            this.numKeys = int.Parse(inventorySave[10]);
+            this.numRedPotions = int.Parse(inventorySave[11]);
+            this.numBluePotions = int.Parse(inventorySave[12]);
+            this.numRupees = int.Parse(inventorySave[13]);
+            this.hasBoomerang = bool.Parse(inventorySave[14]);
+            this.hasRod = bool.Parse(inventorySave[15]);
+            this.hasMagicBoomerang = bool.Parse(inventorySave[16]);
+            this.hasBow = bool.Parse(inventorySave[17]);
+            this.hasArrow = bool.Parse(inventorySave[18]);
+            this.hasSilverArrow = bool.Parse(inventorySave[19]);
+            this.hasRedFlame = bool.Parse(inventorySave[20]);
+            this.hasBlueFlame = bool.Parse(inventorySave[21]);
+            this.hasFlute = bool.Parse(inventorySave[22]);
+            this.hasLadder = bool.Parse(inventorySave[23]);
+            this.ladderInUse = bool.Parse(inventorySave[24]);
+            this.hasMap = bool.Parse(inventorySave[25]);
+            this.hasCompass = bool.Parse(inventorySave[26]);
+            this.hasClock = bool.Parse(inventorySave[27]);
+            this.clockLockout = int.Parse(inventorySave[28]);
+            this.selectedItem = LoZGame.Instance.Profiles.ParseSelectedItem(inventorySave[29]);
+            this.hasMagicShield = bool.Parse(inventorySave[30]);
+            this.player.AcquiredMagicShield = bool.Parse(inventorySave[31]);
+            this.hasMagicKey = bool.Parse(inventorySave[32]);
         }
 
         public void UseItem()
@@ -197,9 +222,11 @@
 
         public int SelectionY { get { return selectionY; } }
 
-        public int Rupees { get { return LoZGame.Cheats ? 99 : numRupees; } }
+        public int Rupees { get { return LoZGame.Cheats ? 999 : numRupees; } set { numRupees = value; } }
 
         public int Bombs { get { return LoZGame.Cheats ? 8 : numBombs; } }
+
+        public int MaxBombs { get { return maxBombs; } set { maxBombs = value; } }
 
         public int Keys { get { return numKeys; } }
 
@@ -217,6 +244,8 @@
 
         public bool HasFlute { get { return hasFlute || LoZGame.Cheats; } set { hasFlute = value; } }
 
+        public bool HasMagicShield { get { return hasMagicShield || LoZGame.Cheats; } set { hasMagicShield = value; } }
+
         public bool HasRod { get { return hasRod || LoZGame.Cheats; } set { hasRod = value; } }
 
         public bool HasArrow { get { return hasArrow || LoZGame.Cheats; } set { hasArrow = value; } }
@@ -232,6 +261,8 @@
         public bool HasCompass { get { return hasCompass || LoZGame.Cheats; } set { hasCompass = value; } }
 
         public bool HasLadder { get { return hasLadder || LoZGame.Cheats; } set { hasLadder = value; } }
+
+        public bool HasMagicKey { get { return hasMagicKey || LoZGame.Cheats; } set { hasMagicKey = value; } }
 
         public bool LadderInUse { get { return ladderInUse; } set { ladderInUse = value; } }
 

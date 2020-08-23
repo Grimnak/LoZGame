@@ -67,10 +67,10 @@
                     Add(new Rupee(location));
                     break;
                 case ItemType.LifePotion:
-                    Add(new LifePotion(location));
+                    Add(new BluePotion(location));
                     break;
                 case ItemType.SecondPotion:
-                    Add(new SecondPotion(location));
+                    Add(new RedPotion(location));
                     break;
                 case ItemType.Letter:
                     Add(new Letter(location));

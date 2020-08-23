@@ -27,7 +27,8 @@ namespace LoZClone
         private const float BlueGoriyaSpd = 1.5f;
         private const float OldManSpd = 0;
         private const float MerchantSpd = 0;
-        private const float FireSnakeSpd = 2;
+        private const float RedFireSnakeSpd = 1.5f;
+        private const float BlueFireSnakeSpd = 2.25f;
         private const float DarknutSpd = 1.5f;
         private const float VireSpd = 2;
         private const float BubbleSpd = 3;
@@ -38,10 +39,14 @@ namespace LoZClone
         private const float DigDoggerFleeSpd = 4;
         private const float GleeokHeadOffSpd = 4;
         private const float GohmaSpd = 1.5f;
+        private const float GanonSpd = 0;
+        private const float PatraSpd = 1;
 
         public float StalfosSpeed => StalfosSpd;
 
         public float RopeSpeed => RopeSpd;
+
+        public float PatraSpeed => PatraSpd;
 
         public float RopeAttackSpeed => RopeAttackSpd;
 
@@ -79,7 +84,9 @@ namespace LoZClone
 
         public float MerchantSpeed => MerchantSpd;
 
-        public float FireSnakeSpeed => FireSnakeSpd;
+        public float RedFireSnakeSpeed => RedFireSnakeSpd;
+
+        public float BlueFireSnakeSpeed => BlueFireSnakeSpd;
 
         public float DodongoAttackSpeed => DodongoAttackSpd;
 
@@ -110,5 +117,7 @@ namespace LoZClone
         public float GleeokHeadOffSpeed => GleeokHeadOffSpd;
 
         public float GohmaSpeed => GohmaSpd;
+
+        public float GanonSpeed => GanonSpd;
     }
 }

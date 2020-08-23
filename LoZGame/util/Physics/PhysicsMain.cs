@@ -31,7 +31,7 @@
             BoundsOffset = Vector2.Zero;
             boundsLocation = Vector2.Zero;
             CurrentDirection = Direction.None;
-            IsMoveable = true;
+            IsMovable = true;
             Gravity = GameData.Instance.PhysicsConstants.DefaultGravity;
         }
 

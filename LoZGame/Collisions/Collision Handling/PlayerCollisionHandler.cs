@@ -16,11 +16,17 @@
         {
             if (enemy is WallMaster)
             {
-                player.State = new GrabbedState(player, (WallMaster)enemy);
+                if (!(enemy.CurrentState is StunnedEnemyState) && !LoZGame.Instance.Players[0].Inventory.HasClock)
+                {
+                    player.State = new GrabbedState(player, (WallMaster)enemy);
+                }
             }
             else if (enemy is Likelike)
             {
-                player.State = new SwallowedState(player, (Likelike)enemy);
+                if (!(enemy.CurrentState is StunnedEnemyState))
+                {
+                    player.State = new SwallowedState(player, (Likelike)enemy);
+                }
             }
             else if (enemy is Bubble)
             {
@@ -32,7 +38,7 @@
                     SoundFactory.Instance.PlayLinkHurt();
                 }
             }
-            else if (enemy is OldMan || enemy is Merchant || enemy is BlockEnemy || enemy.IsTransparent)
+            else if (enemy is OldMan || enemy is Merchant || enemy is BlockEnemy || (enemy is Vire && enemy.CurrentState is HiddenVireState))
             {
                 // do nothing
             }
@@ -64,13 +70,32 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            if (!(player.State is PickupItemState))
+            // If the player has no magic shield, is in a boss room, or fails to block, take damage normally.
+            if (!player.Blocked(collisionSide))
             {
+                if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
+                {
+                    projectile.Returning = true;
+                    player.Stun(projectile.StunDuration);
+                }
                 if (!(projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile) && player.DamageTimer <= 0)
                 {
                     DetermineDirectPushback(projectile.Physics, player.Physics);
                 }
                 player.TakeDamage(projectile.Damage);
+            }
+            // If the player successfully blocks, either expire or return the projectile.
+            else
+            {
+                if (projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile)
+                {
+                    projectile.Returning = true;
+                }
+                else
+                {
+                    projectile.IsExpired = true;
+                }
+                player.Physics.KnockbackVelocity = Vector2.Zero;
             }
         }
 

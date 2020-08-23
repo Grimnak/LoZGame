@@ -64,6 +64,13 @@
             doorManager.Draw();
         }
 
+        public void DrawNext()
+        {
+            blockManager.DrawNext();
+            itemManager.Draw();
+            doorManager.Draw();
+        }
+
         public void Update()
         {
             itemManager.Update();
@@ -105,6 +112,11 @@
             foreach (IEnemy enemy in LoZGame.Instance.Dungeon.DungeonLayout[LoZGame.Instance.Dungeon.CurrentRoomY][LoZGame.Instance.Dungeon.CurrentRoomX].Enemies)
             {
                 LoZGame.Instance.GameObjects.Enemies.Add(enemy);
+                if (enemy.AI == EnemyEssentials.EnemyAI.SpikeCross)
+                {
+                    enemy.Physics.Bounds = new Rectangle(enemy.SpawnPoint, enemy.Physics.Bounds.Size);
+                }
+                enemy.Physics.SetLocation();
             }
 
             foreach (IBlock block in LoZGame.Instance.Dungeon.DungeonLayout[LoZGame.Instance.Dungeon.CurrentRoomY][LoZGame.Instance.Dungeon.CurrentRoomX].Tiles)

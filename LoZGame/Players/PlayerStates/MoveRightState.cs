@@ -99,7 +99,14 @@
 
         private ISprite CreateCorrectSprite()
         {
-            return LinkSpriteFactory.Instance.CreateSpriteLinkRight(player.CurrentColor);
+            if (player.Inventory.HasMagicShield)
+            {
+                return LinkSpriteFactory.Instance.CreateSpriteLinkShieldRight(player.CurrentColor);
+            }
+            else
+            {
+                return LinkSpriteFactory.Instance.CreateSpriteLinkRight(player.CurrentColor);
+            }
         }
     }
 }

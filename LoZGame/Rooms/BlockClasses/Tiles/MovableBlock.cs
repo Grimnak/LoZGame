@@ -22,6 +22,8 @@
         
         public IMovableBlockState CurrentState { get; set; }
 
+        public Color SpriteTint { get { return spriteTint; } set { spriteTint = value; } }
+
         public bool IsTransparent { get { return isTransparent; } set { isTransparent = value; } }
 
         private Rectangle bounds;
@@ -57,6 +59,7 @@
         public MovableBlock(Vector2 location, string name, string direction)
         {
             originalLocation = location;
+            spriteTint = LoZGame.Instance.DungeonTint;
             CurrentState = new UnsolvedState(this);
             invalidDirections = new List<InvalidDirection>();
             string[] invalidDirectionStrings = !string.IsNullOrEmpty(direction) ? direction.Split(',') : null;
@@ -78,6 +81,11 @@
         public void Update()
         {
             CurrentState.Update();
+
+            if (!(LoZGame.Instance.Dungeon is null))
+            {
+                spriteTint = LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint;
+            }
         }
 
         /// <inheritdoc/>

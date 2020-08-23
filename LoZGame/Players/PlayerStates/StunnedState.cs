@@ -25,7 +25,7 @@
             oldVelocity = player.Physics.MovementVelocity;
             player.Physics.MovementVelocity = Vector2.Zero;
             stunDuration = stunTime;
-            player.CurrentTint = LoZGame.Instance.DefaultTint;
+            player.CurrentTint = Color.White;
         }
 
         /// <inheritdoc/>

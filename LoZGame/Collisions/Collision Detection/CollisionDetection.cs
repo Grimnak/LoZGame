@@ -9,9 +9,6 @@
     public partial class CollisionDetection
     {
         private Dungeon dungeon;
-        private bool moveToBasement = false;
-
-        public bool MoveToBasement { get { return moveToBasement; } set { moveToBasement = value; } }
 
         public CollisionDetection(Dungeon dungeon)
         {
@@ -25,13 +22,6 @@
             CheckBlocks(blocks, players, enemies);
             CheckItems(items, playerProjectiles);
             CheckProjectiles(playerProjectiles, enemyProjectiles, doors, blocks);
-
-            // Unable to change rooms mid-foreach loop, so set a flag and change directly after.
-            if (moveToBasement)
-            {
-                dungeon.MoveDown();
-                moveToBasement = false;
-            }
         }
 
         private void CheckPlayers(ReadOnlyCollection<IPlayer> players, ReadOnlyCollection<IEnemy> enemies, ReadOnlyCollection<IProjectile> enemyProjectiles, ReadOnlyCollection<IDoor> doors, ReadOnlyCollection<IItem> items)

@@ -102,7 +102,7 @@
         }
 
         /// <summary>
-        /// temporary method just to correct swordbeam and arrow until i caan find a better solution
+        /// temporary method just to correct swordbeam and arrow until i can find a better solution
         /// TODO: Find a way to remove this method.
         /// </summary>
         public void CorrectProjectile()
@@ -143,7 +143,7 @@
 
         public virtual void Draw()
         {
-            Sprite.Draw(Physics.Location, LoZGame.Instance.DefaultTint, Data.Rotation, Data.SpriteEffect, Physics.Depth);
+            Sprite.Draw(Physics.Location, Color.White, Data.Rotation, Data.SpriteEffect, Physics.Depth);
         }
     }
 }

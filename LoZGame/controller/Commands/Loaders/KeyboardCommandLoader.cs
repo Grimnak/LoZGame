@@ -14,6 +14,10 @@ namespace LoZClone
         private readonly Dictionary<Keys, ICommand> playerDictionary;
         private readonly Dictionary<Keys, ICommand> inventoryDictionary;
         private readonly Dictionary<Keys, ICommand> optionsDictionary;
+        private readonly Dictionary<Keys, ICommand> profilesDictionary;
+        private readonly Dictionary<Keys, ICommand> purchaseConfirmationDictionary;
+        private readonly Dictionary<Keys, ICommand> resetConfirmationDictionary;
+        private readonly Dictionary<Keys, ICommand> quitConfirmationDictionary;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyboardCommandLoader"/> class.
@@ -24,6 +28,10 @@ namespace LoZClone
             playerDictionary = new Dictionary<Keys, ICommand>();
             inventoryDictionary = new Dictionary<Keys, ICommand>();
             optionsDictionary = new Dictionary<Keys, ICommand>();
+            profilesDictionary = new Dictionary<Keys, ICommand>();
+            purchaseConfirmationDictionary = new Dictionary<Keys, ICommand>();
+            resetConfirmationDictionary = new Dictionary<Keys, ICommand>();
+            quitConfirmationDictionary = new Dictionary<Keys, ICommand>();
 
             commandIdle = new CommandIdle(player);
             commandContinue = new CommandContinue(player);
@@ -38,6 +46,7 @@ namespace LoZClone
             playerDictionary.Add(Keys.Right, new CommandRight(player));
 
             playerDictionary.Add(Keys.Z, new CommandAttackA(player));
+            playerDictionary.Add(Keys.Space, new CommandAttackA(player));
             playerDictionary.Add(Keys.N, new CommandAttackB(player));
             playerDictionary.Add(Keys.I, new CommandInventory());
             playerDictionary.Add(Keys.P, new CommandPause());
@@ -45,7 +54,7 @@ namespace LoZClone
 
             playerDictionary.Add(Keys.Q, new CommandQuit());
 
-            playerDictionary.Add(Keys.R, new CommandReset(player));
+            playerDictionary.Add(Keys.R, new CommandReset());
 
             inventoryDictionary.Add(Keys.W, new CommandSelectionUp(player));
             inventoryDictionary.Add(Keys.Up, new CommandSelectionUp(player));
@@ -62,6 +71,20 @@ namespace LoZClone
             optionsDictionary.Add(Keys.Down, new CommandMoveOptionDown());
             optionsDictionary.Add(Keys.Enter, new CommandToggleOption());
 
+            profilesDictionary.Add(Keys.W, new CommandMoveProfileUp());
+            profilesDictionary.Add(Keys.Up, new CommandMoveProfileUp());
+            profilesDictionary.Add(Keys.S, new CommandMoveProfileDown());
+            profilesDictionary.Add(Keys.Down, new CommandMoveProfileDown());
+            profilesDictionary.Add(Keys.Enter, new CommandSelectProfile());
+
+            purchaseConfirmationDictionary.Add(Keys.Y, new PurchaseCommandYes());
+            purchaseConfirmationDictionary.Add(Keys.N, new PurchaseCommandNo());
+
+            resetConfirmationDictionary.Add(Keys.Y, new ResetCommandYes(player));
+            resetConfirmationDictionary.Add(Keys.N, new ResetCommandNo());
+
+            quitConfirmationDictionary.Add(Keys.Y, new QuitCommandYes());
+            quitConfirmationDictionary.Add(Keys.N, new QuitCommandNo());
         }
 
         /// <summary>
@@ -69,7 +92,10 @@ namespace LoZClone
         /// </summary>
         public ICommand GetIdle => commandIdle;
 
-        public ICommand GetContine => commandContinue;
+        /// <summary>
+        /// Gets the continue command from the loader.
+        /// </summary>
+        public ICommand GetContinue => commandContinue;
 
         /// <summary>
         /// Gets the dictionary containing player commands from the loader.
@@ -85,5 +111,25 @@ namespace LoZClone
         /// Gets the dictionary containing options commands from the loader.
         /// </summary>
         public Dictionary<Keys, ICommand> GetOptionsDict => optionsDictionary;
+
+        /// <summary>
+        /// Gets the dictionary containing profiles commands from the loader.
+        /// </summary>
+        public Dictionary<Keys, ICommand> GetProfilesDict => profilesDictionary;
+
+        /// <summary>
+        /// Gets the dictionary containing purchasing confirmation commands from the loader.
+        /// </summary>
+        public Dictionary<Keys, ICommand> GetPurchaseConfirmationDict => purchaseConfirmationDictionary;
+
+        /// <summary>
+        /// Gets the dictionary containing resetting confirmation commands from the loader.
+        /// </summary>
+        public Dictionary<Keys, ICommand> GetResetConfirmationDict => resetConfirmationDictionary;
+
+        /// <summary>
+        /// Gets the dictionary containing quitting confirmation commands from the loader.
+        /// </summary>
+        public Dictionary<Keys, ICommand> GetQuitConfirmationDict => quitConfirmationDictionary;
     }
 }

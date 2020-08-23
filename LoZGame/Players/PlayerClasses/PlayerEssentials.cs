@@ -29,6 +29,10 @@
 
         public InventoryManager BackupInventory { get; set; }
 
+        public bool AcquiredMagicShield { get; set; }
+
+        public int PurchaseLockout { get; set; }
+
         public void TakeDamage(int damageAmount)
         {
             if (DamageTimer <= 0)
@@ -50,6 +54,7 @@
             if (Health.CurrentHealth <= 0)
             {
                 SoundFactory.Instance.StopDungeonSong();
+                SoundFactory.Instance.StopBossSong();
                 SoundFactory.Instance.PlayLinkDie();
                 State.Die();
                 LoZGame.Instance.GameState.Death();
@@ -67,7 +72,7 @@
                 }
                 else
                 {
-                    CurrentTint = LoZGame.Instance.DefaultTint;
+                    CurrentTint = Color.White;
                 }
                 Physics.HandleKnockBack();
             }
@@ -86,6 +91,14 @@
             if (LadderTimer > 0)
             {
                 LadderTimer--;
+            }
+        }
+
+        public void HandlePurchaseLockout()
+        {
+            if (PurchaseLockout > 0)
+            {
+                PurchaseLockout--;
             }
         }
 
@@ -129,6 +142,33 @@
             State.UseItem(waitTime);
         }
 
+        public bool Blocked(CollisionDetection.CollisionSide collisionSide)
+        {
+            bool blocked = false;
+
+            if (Inventory.HasMagicShield && !LoZGame.Instance.Dungeon.CurrentRoom.IsBossRoom)
+            {
+                if (Physics.CurrentDirection == Physics.Direction.North && collisionSide == CollisionDetection.CollisionSide.Top)
+                {
+                    blocked = true;
+                }
+                else if (Physics.CurrentDirection == Physics.Direction.South && collisionSide == CollisionDetection.CollisionSide.Bottom)
+                {
+                    blocked = true;
+                }
+                else if (Physics.CurrentDirection == Physics.Direction.West && collisionSide == CollisionDetection.CollisionSide.Left)
+                {
+                    blocked = true;
+                }
+                else if (Physics.CurrentDirection == Physics.Direction.East && collisionSide == CollisionDetection.CollisionSide.Right)
+                {
+                    blocked = true;
+                }
+            }
+
+            return blocked;
+        }
+
         public void Stun(int stunTime)
         {
             State.Stun(stunTime);
@@ -140,6 +180,7 @@
             HandleDamage();
             HandleDisarm();
             HandleLadder();
+            HandlePurchaseLockout();
             Physics.Move();
             State.Update();
         }

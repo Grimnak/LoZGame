@@ -7,12 +7,13 @@
     {
         private readonly ISprite sprite;
         private readonly ISprite enter;
-        private readonly Color spriteTint = LoZGame.Instance.DefaultTint;
+        private readonly Color spriteTint = Color.White;
 
         public TitleScreenState()
         {
             SoundFactory.Instance.StopCreditsSong();
             SoundFactory.Instance.StopDungeonSong();
+            SoundFactory.Instance.StopBossSong();
             SoundFactory.Instance.PlayTitleSong();
             sprite = ScreenSpriteFactory.Instance.TitleScreen();
             enter = ScreenSpriteFactory.Instance.PressEnter();
@@ -20,17 +21,11 @@
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
 
-            LoZGame.Instance.Dungeon = new Dungeon(LoZGame.StartDungeon);
-            LoZGame.Instance.CollisionDetector = new CollisionDetection(LoZGame.Instance.Dungeon);
-            LoZGame.Instance.Dungeon.LoadNewRoom();
-
             LoZGame.Instance.Link = new Link(new Vector2(
                     (float)(BlockSpriteFactory.Instance.HorizontalOffset + GameData.Instance.GameStateDataConstants.HorizontalHalfDungeon),
                     (float)(BlockSpriteFactory.Instance.TopOffset + GameData.Instance.GameStateDataConstants.VerticalHalfDungeon)));
 
             LoZGame.Instance.Players.Add(LoZGame.Instance.Link);
-
-            LoZGame.Instance.Dungeon.Player = LoZGame.Instance.Link;
 
             KeyboardCommandLoader keyboardLoader = new KeyboardCommandLoader(LoZGame.Instance.Players[0]);
             MouseCommandLoader mouseLoader = new MouseCommandLoader();
@@ -56,11 +51,10 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public override void PlayGame()
+        public override void ProfilesScreen()
         {
             SoundFactory.Instance.StopAll();
-            SoundFactory.Instance.PlayDungeonSong();
-            LoZGame.Instance.GameState = new PlayGameState();
+            LoZGame.Instance.GameState = new ProfilesState();
         }
 
         /// <inheritdoc></inheritdoc>
@@ -68,6 +62,18 @@
         {
             // Can perform a hard reset while in this state already.
             LoZGame.Instance.GameState = new TitleScreenState();
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public override void ConfirmReset()
+        {
+            LoZGame.Instance.GameState = new ConfirmResetState(this);
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public override void ConfirmQuit()
+        {
+            LoZGame.Instance.GameState = new ConfirmQuitState(this);
         }
 
         /// <inheritdoc></inheritdoc>

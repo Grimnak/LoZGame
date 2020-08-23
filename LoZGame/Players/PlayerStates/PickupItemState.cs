@@ -27,7 +27,7 @@ namespace LoZClone
             if (item is Triforce)
             {
                 sprite.SetFrame(GameData.Instance.PlayerConstants.MaximumFrames);
-                LoZGame.Instance.GameState.WinGame();
+                LoZGame.Instance.GameState.TriforceState();
             }
             else if (item is Key)
             {
@@ -39,7 +39,14 @@ namespace LoZClone
             }
             else if (item is Arrow)
             {
-                player.Inventory.HasArrow = true;
+                if (!player.Inventory.HasArrow)
+                {
+                    player.Inventory.HasArrow = true;
+                }
+                else
+                {
+                    player.Inventory.GainRupees(10);
+                }
             }
             else if (item is SilverArrow)
             {
@@ -80,6 +87,15 @@ namespace LoZClone
             else if (item is Flute)
             {
                 player.Inventory.HasFlute = true;
+            }
+            else if (item is MagicShield)
+            {
+                player.AcquiredMagicShield = true;
+                player.Inventory.HasMagicShield = true;
+            }
+            else if (item is MagicKey)
+            {
+                player.Inventory.HasMagicKey = true;
             }
         }
 

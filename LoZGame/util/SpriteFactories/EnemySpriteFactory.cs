@@ -10,14 +10,20 @@
         private static readonly int dodongoWidthUp = 60;
         private static readonly int dodongoWidthLeftRight = 96;
 
+        private static readonly int patraWidth = 40;
+        private static readonly int patraHeight = 27;
+
+        private static readonly int miniPatraWidth = 20;
+        private static readonly int miniPatraHeight = 20;
+
         private static readonly int GleeokBodyWidth = 96;
         private static readonly int GleeokBodyHeight = 128;
 
         private static readonly int GleeokHeadWidth = 24;
         private static readonly int GleeokHeadHeight = 48;
 
-        private static readonly int GleeokHeadOffWidth = 30;
-        private static readonly int GleeokHeadOffHeight = 52;
+        private static readonly int GleeokHeadOffWidth = 24;
+        private static readonly int GleeokHeadOffHeight = 48;
 
         private static readonly int GleeokNeckWidth = 24;
         private static readonly int GleeokNeckHeight = 32;
@@ -93,6 +99,9 @@
         private static readonly int gohmaWidth = 162;
         private static readonly int gohmaHeight = 48;
 
+        private static readonly int ganonWidth = 108;
+        private static readonly int ganonHeight = 96;
+
         public static int GetEnemyWidth(IEnemy enemy)
         {
             if (enemy is Dodongo)
@@ -102,6 +111,10 @@
             else if (enemy is Dragon)
             {
                 return dragonWidth;
+            }
+            else if (enemy is Ganon)
+            {
+                return ganonWidth;
             }
             else if (enemy is DigDoggerInvincible)
             {
@@ -163,7 +176,7 @@
             {
                 return zolWidth;
             }
-            else if (enemy is MoldormHead || enemy is MoldormSegment)
+            else if (enemy is RedMoldormHead || enemy is RedMoldormSegment || enemy is BlueMoldormHead || enemy is BlueMoldormSegment)
             {
                 return fireSnakeWidth;
             }
@@ -211,6 +224,14 @@
             {
                 return PolsVoiceWidth;
             }
+            else if (enemy is Patra)
+            {
+                return patraWidth;
+            }
+            else if (enemy is MiniPatra)
+            {
+                return miniPatraWidth;
+            }
             else
             {
                 return 0;
@@ -226,6 +247,10 @@
             else if (enemy is Dragon)
             {
                 return dragonHeight;
+            }
+            else if (enemy is Ganon)
+            {
+                return ganonHeight;
             }
             else if (enemy is DigDoggerInvincible)
             {
@@ -287,7 +312,7 @@
             {
                 return zolHeight;
             }
-            else if (enemy is MoldormHead || enemy is MoldormSegment)
+            else if (enemy is RedMoldormHead || enemy is RedMoldormSegment || enemy is BlueMoldormHead || enemy is BlueMoldormSegment)
             {
                 return fireSnakeHeight;
             }
@@ -335,11 +360,25 @@
             {
                 return PolsVoiceHeight;
             }
+            else if (enemy is Patra)
+            {
+                return patraWidth;
+            }
+            else if (enemy is MiniPatra)
+            {
+                return miniPatraWidth;
+            }
             else
             {
                 return 0;
             }
         }
+
+        private Texture2D patraTexure;
+        private SpriteData patraData;
+
+        private Texture2D miniPatraTexure;
+        private SpriteData miniPatraData;
 
         private Texture2D manhandlaBodyTexture;
         private SpriteData manhandlaBodyData;
@@ -458,6 +497,13 @@
         private Texture2D polsVoice;
         private SpriteData polsVoiceData;
 
+        private Texture2D ganonVisible;
+        private SpriteData ganonVisibleData;
+        private Texture2D ganonInvisible;
+        private SpriteData ganonInvisibleData;
+        private Texture2D ganonParalyzed;
+        private SpriteData ganonParalyzedData;
+
         private Texture2D redGohmaOpenTexture;
         private SpriteData redGohmaOpenData;
         private Texture2D redGohmaClosedTexture;
@@ -513,6 +559,9 @@
             manhandlaHeadRightTexture = content.Load<Texture2D>("man_head_right");
             manhandlaHeadDownTexture = content.Load<Texture2D>("man_head_down");
             manhandlaHeadUpTexture = content.Load<Texture2D>("man_head_up");
+
+            patraTexure = content.Load<Texture2D>("patra_boss");
+            miniPatraTexure = content.Load<Texture2D>("patra_mini");
 
             digDoggerLeft = content.Load<Texture2D>("digdogger_left");
             digDoggerRight = content.Load<Texture2D>("digdogger_right");
@@ -578,6 +627,10 @@
             likelike = content.Load<Texture2D>("likelike");
 
             polsVoice = content.Load<Texture2D>("polsvoice");
+
+            ganonVisible = content.Load<Texture2D>("Gannon_BothArmsUp");
+            ganonInvisible = content.Load<Texture2D>("Invisible_Square");
+            ganonParalyzed = content.Load<Texture2D>("Gannon_Paralyzed_Sitting");
 
             redGohmaOpenTexture = content.Load<Texture2D>("red_gohma_open");
             redGohmaClosedTexture = content.Load<Texture2D>("red_gohma_closed");
@@ -650,6 +703,37 @@
             blueGohmaOpenData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), blueGohmaOpenTexture, 2, 1);
             blueGohmaClosedData = new SpriteData(new Vector2(gohmaWidth, gohmaHeight), blueGohmaClosedTexture, 2, 1);
             wizzrobeData = new SpriteData(new Vector2(wizzrobeWidth, wizzrobeHeight), redWizzrobeLeftTexture, 2, 1);
+            ganonVisibleData = new SpriteData(new Vector2(ganonWidth, ganonHeight), ganonVisible, 1, 1);
+            ganonInvisibleData = new SpriteData(new Vector2(ganonWidth, ganonHeight), ganonInvisible, 1, 1);
+            ganonParalyzedData = new SpriteData(new Vector2(ganonWidth, ganonHeight), ganonParalyzed, 1, 1);
+            patraData = new SpriteData(new Vector2(patraWidth, patraHeight), patraTexure, 2, 1);
+            miniPatraData = new SpriteData(new Vector2(miniPatraWidth, miniPatraHeight), miniPatraTexure, 2, 1);
+        }
+
+        // Ganon Sprites
+        public ISprite CreateGanonVisibleSprite()
+        {
+            return new ObjectSprite(ganonVisible, ganonVisibleData);
+        }
+
+        public ISprite CreateGanonInvisibleSprite()
+        {
+            return new ObjectSprite(ganonInvisible, ganonInvisibleData);
+        }
+
+        public ISprite CreatePatraSprite()
+        {
+            return new ObjectSprite(patraTexure, patraData);
+        }
+
+        public ISprite CreateMiniPatraSprite()
+        {
+            return new ObjectSprite(miniPatraTexure, miniPatraData);
+        }
+
+        public ISprite CreateGanonParalyzedSprite()
+        {
+            return new ObjectSprite(ganonParalyzed, ganonParalyzedData);
         }
 
         // Wizzrobe Sprites

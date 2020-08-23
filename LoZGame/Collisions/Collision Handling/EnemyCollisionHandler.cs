@@ -22,12 +22,28 @@
 
         public void OnCollisionResponse(IProjectile projectile, CollisionDetection.CollisionSide collisionSide)
         {
-            if (enemy is OldMan && (projectile is ArrowProjectile || projectile is SilverArrowProjectile || projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is SwordBeamProjectile))
+            if (enemy is OldMan && (projectile is ArrowProjectile || projectile is SilverArrowProjectile || projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is SwordBeamProjectile || projectile is SonicBeamProjectile))
             {
                 ((OldMan)enemy).ShootFireballs();
             }
-            if (enemy.IsTransparent)
+            if (enemy is Merchant && (projectile is ArrowProjectile || projectile is SilverArrowProjectile || projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is SwordBeamProjectile || projectile is SonicBeamProjectile))
             {
+                ((Merchant)enemy).ShootFireballs();
+            }
+            else if (enemy.IsTransparent)
+            {
+            }
+            else if (enemy is Ganon)
+            {
+                if (enemy.Health.CurrentHealth > 4 && projectile is SwordProjectile)
+                {
+                    enemy.TakeDamage(projectile.Damage);
+                    enemy.CurrentState = new IdleEnemyState(enemy);
+                }
+                if (enemy.Health.CurrentHealth <= 4 && projectile is SilverArrowProjectile)
+                {
+                    enemy.TakeDamage(GameData.Instance.EnemyHealthConstants.GanonHealth);
+                }
             }
             else if (enemy is Dodongo)
             {
@@ -59,7 +75,7 @@
                     enemy.TakeDamage(projectile.Damage);
                 }
             }
-            else if (enemy is MoldormHead || enemy is MoldormSegment)
+            else if (enemy is RedMoldormHead || enemy is RedMoldormSegment || enemy is BlueMoldormHead || enemy is BlueMoldormSegment)
             {
                 if (!(projectile is BoomerangProjectile || projectile is MagicBoomerangProjectile || projectile is BombProjectile))
                 {
@@ -73,18 +89,6 @@
                     DetermineDirectPushback(projectile.Physics, enemy.Physics);
                 }
                 enemy.TakeDamage(projectile.Damage);
-            }
-        }
-
-        public void ReverseVelocity(CollisionDetection.CollisionSide collisionSide)
-        {
-            if (collisionSide == CollisionDetection.CollisionSide.Top || collisionSide == CollisionDetection.CollisionSide.Bottom)
-            {
-                enemy.Physics.MovementVelocity = new Vector2(enemy.Physics.MovementVelocity.X, enemy.Physics.MovementVelocity.Y * -1);
-            } 
-            else
-            {
-                enemy.Physics.MovementVelocity = new Vector2(enemy.Physics.MovementVelocity.X * -1, enemy.Physics.MovementVelocity.Y);
             }
         }
 

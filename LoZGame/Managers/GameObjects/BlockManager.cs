@@ -51,5 +51,28 @@
                 }
             }
         }
+
+        public void DrawNext()
+        {
+            foreach (IBlock block in blocks)
+            {
+                if (block is Tile || block is Stairs)
+                {
+                    block.Draw();
+                }
+            }
+
+            foreach (IBlock block in blocks)
+            {
+                if (block is BlockTile || block is MovableBlock)
+                {
+                    block.Draw();
+                }
+                else if (block is CrossableTile)
+                {
+                    ((CrossableTile)block).DrawNext();
+                }
+            }
+        }
     }
 }

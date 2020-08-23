@@ -4,16 +4,19 @@
     using System.Collections.Generic;
     using System.Threading;
     using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Audio;
+    using Microsoft.Xna.Framework.Content;
     using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Media;
 
     public class LoZGame : Game
     {
         public static bool DebugMode = false; // show collision bounding boxes
-        public static bool Cheats = false; // infinite life and item uses
-        public static bool Music = true;  // Title screen and dungeon music (not SFX)
+        public static bool Cheats = false; // infinite life and item use
+        public static bool Music = true;  // title screen and dungeon music (not SFX)
         public static bool Laser = false; // changes attacks to laser attack
-        public static readonly int StartDungeon = 1; // dungeon ID to load into [1 - 8];
         public int Difficulty = 0; // -1 => EASY 0 => NORMAL 1 => HARD 3 => NIGHTMARE
+        public int Profile = 1; // indicates the default profile
         private const int DefaultUpdateSpeed = 60;
         private readonly int screenWidth;
         private readonly int screenHeight;
@@ -43,6 +46,7 @@
         private GameObjectManager gameObjectManager;
         private Effect betterTinting;
         private Options options;
+        private Profiles profiles;
 
         private DropManager dropManager;
         private CollisionDetection collisionDetector;
@@ -52,6 +56,7 @@
         private List<IPlayer> players;
 
         private Color dungeonTint;
+        private Color defaultTint = Color.White;
 
         private static readonly LoZGame instance = new LoZGame();
 
@@ -59,13 +64,11 @@
 
         public Color DungeonTint { get { return dungeonTint; } set { dungeonTint = value; } }
 
-        public Color DefaultTint { get { return Color.White; } }
+        public Color DefaultTint { get { return defaultTint; } set { defaultTint = value; } }
 
-        public IPlayer Link
-        {
-            get { return link; }
-            set { link = value; }
-        }
+        public IPlayer Link { get { return link; } set { link = value; } }
+
+        public int SelectedProfile { get { return Profile; } set { Profile = value; } }
 
         public Dungeon Dungeon { get { return dungeon; } set { dungeon = value; } }
 
@@ -93,9 +96,12 @@
 
         public Options Options { get { return options; } }
 
+        public Profiles Profiles { get { return profiles; } }
+
         private LoZGame()
         {
             options = new Options();
+            profiles = new Profiles();
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 654;
@@ -170,7 +176,9 @@
 
             gameState.Update();
             if (!LoZGame.Music)
+            {
                 SoundFactory.Instance.StopAll();
+            }
             if (DebugMode)
             {
                 debugManager.Update();
@@ -199,42 +207,6 @@
                 spriteBatch.End();
             }
             base.Draw(gameTime);
-        }
-
-        public void ToggleDebug()
-        {
-            if (DebugMode)
-            {
-                DebugMode = false;
-            }
-            else
-            {
-                DebugMode = true;
-            }
-        }
-
-        public void ToggleCheats()
-        {
-            if (DebugMode)
-            {
-                Cheats = false;
-            }
-            else
-            {
-                Cheats = true;
-            }
-        }
-
-        public void ToggleMusic()
-        {
-            if (DebugMode)
-            {
-                Music = false;
-            }
-            else
-            {
-                Music = true;
-            }
         }
     }
 }

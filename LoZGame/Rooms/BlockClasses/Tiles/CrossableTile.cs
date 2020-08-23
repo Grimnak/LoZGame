@@ -31,7 +31,7 @@ namespace LoZClone
         public bool BeingCrossed { get { return playerCrossing; } }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BlockTile"/> class.
+        /// Initializes a new instance of the <see cref="CrossableTile"/> class.
         /// </summary>
         /// <param name="location">The location of the tile.</param>
         /// <param name="name">Name of the tiles sprite.</param>
@@ -77,11 +77,22 @@ namespace LoZClone
 
         public void Draw()
         {
-            if (playerCrossing)
+            if (LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint != Color.Black)
             {
-                crossingSprite.Draw(Physics.Location, spriteTint, Physics.Depth);
+                if (playerCrossing)
+                {
+                    crossingSprite.Draw(Physics.Location, spriteTint, Physics.Depth);
+                }
+                else
+                {
+                    sprite.Draw(Physics.Location, spriteTint, Physics.Depth);
+                }
             }
-            else
+        }
+
+        public void DrawNext()
+        {
+            if (LoZGame.Instance.GameState is TransitionRoomState && ((TransitionRoomState)LoZGame.Instance.GameState).NextRoom.CurrentRoomTint != Color.Black)
             {
                 sprite.Draw(Physics.Location, spriteTint, Physics.Depth);
             }

@@ -14,7 +14,10 @@
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>C:\LoZRepo\temp\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,13 +27,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>28</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -43,7 +44,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
@@ -60,6 +61,41 @@
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>74555400964BE6FCF1705000B391E03BDDC529D1</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>LoZGame_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Collisions\Collision Detection\CollisionInteractions.cs" />
     <Compile Include="Collisions\Collision Detection\CollisionCalculations.cs" />
@@ -70,12 +106,21 @@
     <Compile Include="Collisions\Collision Handling\ItemCollisionHandler.cs" />
     <Compile Include="Collisions\Collision Handling\ProjectileCollisionHandler.cs" />
     <Compile Include="Controller\Commands\CommandContinue.cs" />
+    <Compile Include="Controller\Commands\ConfirmationCommands\QuitCommandYes.cs" />
+    <Compile Include="Controller\Commands\ConfirmationCommands\ResetCommandYes.cs" />
+    <Compile Include="Controller\Commands\ConfirmationCommands\QuitCommandNo.cs" />
+    <Compile Include="Controller\Commands\ConfirmationCommands\ResetCommandNo.cs" />
+    <Compile Include="Controller\Commands\ConfirmationCommands\PurchaseCommandNo.cs" />
+    <Compile Include="Controller\Commands\ConfirmationCommands\PurchaseCommandYes.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandOptions.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandPause.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionDown.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionLeft.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionRight.cs" />
     <Compile Include="Controller\Commands\InventoryCommands\CommandSelectionUp.cs" />
+    <Compile Include="Controller\Commands\ProfileCommands\CommandMoveProfileDown.cs" />
+    <Compile Include="Controller\Commands\ProfileCommands\CommandMoveProfileUp.cs" />
+    <Compile Include="Controller\Commands\ProfileCommands\CommandSelectProfile.cs" />
     <Compile Include="Controller\Commands\OptionCommands\CommandMoveOptionDown.cs" />
     <Compile Include="Controller\Commands\OptionCommands\CommandMoveOptionUp.cs" />
     <Compile Include="Controller\Commands\OptionCommands\CommandToggleOption.cs" />
@@ -97,37 +142,45 @@
     <Compile Include="Controller\Commands\Loaders\MouseCommandLoader.cs" />
     <Compile Include="Controller\Commands\Controllers\KeyboardController.cs" />
     <Compile Include="Controller\Commands\Controllers\MouseController.cs" />
-    <Compile Include="Enemies\EnemyClasses\BlockEnemy.cs" />
+    <Compile Include="Enemies\EnemyClasses\BlockEnemies\BlockEnemy.cs" />
     <Compile Include="Enemies\EnemyClasses\DifficultyModifiers.cs" />
-    <Compile Include="Enemies\EnemyClasses\DigDogger.cs" />
-    <Compile Include="Enemies\EnemyClasses\GleeokBody.cs" />
-    <Compile Include="Enemies\EnemyClasses\GleeokHeadOff.cs" />
-    <Compile Include="Enemies\EnemyClasses\GleeokNeck.cs" />
-    <Compile Include="Enemies\EnemyClasses\GleeokHead.cs" />
-    <Compile Include="Enemies\EnemyClasses\DigDoggerInvincible.cs" />
+    <Compile Include="Enemies\EnemyClasses\Digdogger\DigDogger.cs" />
+    <Compile Include="Enemies\EnemyClasses\Ganon.cs" />
+    <Compile Include="Enemies\EnemyClasses\Gleeok\GleeokHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\Gleeok\GleeokBody.cs" />
+    <Compile Include="Enemies\EnemyClasses\Patra\Patra.cs" />
+    <Compile Include="Enemies\EnemyClasses\Gleeok\GleeokHeadOff.cs" />
+    <Compile Include="Enemies\EnemyClasses\Gleeok\GleeokNeck.cs" />
+    <Compile Include="Enemies\EnemyClasses\Patra\MiniPatra.cs" />
+    <Compile Include="Enemies\EnemyClasses\Digdogger\DigDoggerInvincible.cs" />
     <Compile Include="Enemies\EnemyClasses\LikeLike.cs" />
-    <Compile Include="Enemies\EnemyClasses\ManhandlaHead.cs" />
-    <Compile Include="Enemies\EnemyClasses\ManhandlaBody.cs" />
+    <Compile Include="Enemies\EnemyClasses\Manhandla\ManhandlaHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\Manhandla\ManhandlaBody.cs" />
     <Compile Include="Enemies\EnemyClasses\EnemyHelper.cs" />
-    <Compile Include="Enemies\EnemyClasses\MoldormSegment.cs" />
-    <Compile Include="Enemies\EnemyClasses\MoldormHead.cs" />
-    <Compile Include="Enemies\EnemyClasses\BlueGoriya.cs" />
-    <Compile Include="Enemies\EnemyClasses\BlueDarknut.cs" />
-    <Compile Include="Enemies\EnemyClasses\RedDarknut.cs" />
-    <Compile Include="Enemies\EnemyClasses\BlueGohma.cs" />
-    <Compile Include="Enemies\EnemyClasses\RedGoriya.cs" />
+    <Compile Include="Enemies\EnemyClasses\Moldorm\BlueMoldorm\BlueMoldormHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\Moldorm\BlueMoldorm\BlueMoldormSegment.cs" />
+    <Compile Include="Enemies\EnemyClasses\Moldorm\RedMoldorm\RedMoldormSegment.cs" />
+    <Compile Include="Enemies\EnemyClasses\Moldorm\RedMoldorm\RedMoldormHead.cs" />
+    <Compile Include="Enemies\EnemyClasses\Goriya\BlueGoriya.cs" />
+    <Compile Include="Enemies\EnemyClasses\Darknut\BlueDarknut.cs" />
+    <Compile Include="Enemies\EnemyClasses\Darknut\RedDarknut.cs" />
+    <Compile Include="Enemies\EnemyClasses\Gohma\BlueGohma.cs" />
+    <Compile Include="Enemies\EnemyClasses\Goriya\RedGoriya.cs" />
     <Compile Include="Enemies\EnemyClasses\Bubble.cs" />
     <Compile Include="Enemies\EnemyClasses\Gibdo.cs" />
     <Compile Include="Enemies\EnemyClasses\PolsVoice.cs" />
-    <Compile Include="Enemies\EnemyClasses\BlueWizzrobe.cs" />
-    <Compile Include="Enemies\EnemyClasses\RedWizzrobe.cs" />
-    <Compile Include="Enemies\EnemyClasses\RedGohma.cs" />
-    <Compile Include="Enemies\EnemyClasses\Vire.cs" />
-    <Compile Include="Enemies\EnemyClasses\VireKeese.cs" />
+    <Compile Include="Enemies\EnemyClasses\Wizzrobe\BlueWizzrobe.cs" />
+    <Compile Include="Enemies\EnemyClasses\Wizzrobe\RedWizzrobe.cs" />
+    <Compile Include="Enemies\EnemyClasses\Gohma\RedGohma.cs" />
+    <Compile Include="Enemies\EnemyClasses\Vire\Vire.cs" />
+    <Compile Include="Enemies\EnemyClasses\Vire\VireKeese.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\BlockEnemyStates\BlockEnemyIdleState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingGanonState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingGohmaState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGleeokHeadOff.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateRedWizzrobe.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdatePatra.cs" />
     <Compile Include="Enemies\EnemyStates\GohmaStates\CloseEyeState.cs" />
     <Compile Include="Enemies\EnemyStates\GohmaStates\OpenEyeState.cs" />
     <Compile Include="Enemies\EnemyStates\DodongoStates\StunnedDodongoState.cs" />
@@ -144,8 +197,8 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingRopeState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\AttackingWallMasterState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\BlockEnemyAttackState.cs" />
-    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\OldManAngryState.cs" />
-    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\OldManSecretState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\NPCAngryState.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyAttackStates\NPCSecretState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateSwitches.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateEssentials.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateDarknut.cs" />
@@ -155,7 +208,7 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateLikelike.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateBlueWizzrobe.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateVire.cs" />
-    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGleeock.cs" />
+    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGleeok.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateFireSnake.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGel.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyStateUpdates\UpdateGoriya.cs" />
@@ -187,16 +240,22 @@
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\EnemyWanderStates\UpRightMovingEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\SpawnEnemyState.cs" />
     <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\StunnedEnemyState.cs" />
-    <Compile Include="Enemies\EnemyStates\EnemyEssentialStates\VireStates\HiddenVireState.cs" />
+    <Compile Include="Enemies\EnemyStates\VireStates\HiddenVireState.cs" />
     <Compile Include="Enemies\EnemyStates\FireSnakeStates\FollowFireSnakeState.cs" />
+    <Compile Include="GameState\ConfirmQuitState.cs" />
+    <Compile Include="GameState\ConfirmResetState.cs" />
     <Compile Include="GameState\CreditsScreenState.cs" />
+    <Compile Include="GameState\HealthRestoreGameState.cs" />
     <Compile Include="GameState\GameStateEssentials.cs" />
+    <Compile Include="GameState\ConfirmPurchaseState.cs" />
+    <Compile Include="GameState\ProfilesState.cs" />
     <Compile Include="GameState\OptionsState.cs" />
     <Compile Include="GameState\FluteGameState.cs" />
     <Compile Include="GameState\UnpauseState.cs" />
     <Compile Include="GameState\PauseState.cs" />
     <Compile Include="Items\Ladder.cs" />
     <Compile Include="Items\ItemTypes.cs" />
+    <Compile Include="Items\PurchaseRupee.cs" />
     <Compile Include="Managers\DropTables\DropHelper.cs" />
     <Compile Include="Managers\DropTables\DropManager.cs" />
     <Compile Include="Managers\InventoryManagerHelper.cs" />
@@ -234,15 +293,14 @@
     <Compile Include="Enemies\EnemyClasses\Dragon.cs" />
     <Compile Include="Enemies\EnemyClasses\Gel.cs" />
     <Compile Include="Enemies\EnemyClasses\Keese.cs" />
-    <Compile Include="Enemies\EnemyClasses\Merchant.cs" />
-    <Compile Include="Enemies\EnemyClasses\OldMan.cs" />
+    <Compile Include="Enemies\EnemyClasses\NPC\Merchant.cs" />
+    <Compile Include="Enemies\EnemyClasses\NPC\OldMan.cs" />
     <Compile Include="Enemies\EnemyClasses\Rope.cs" />
-    <Compile Include="Enemies\EnemyClasses\SpikeCross.cs" />
+    <Compile Include="Enemies\EnemyClasses\BlockEnemies\SpikeCross.cs" />
     <Compile Include="Enemies\EnemyClasses\Stalfos.cs" />
     <Compile Include="Enemies\EnemyClasses\WallMaster.cs" />
     <Compile Include="Enemies\EnemyClasses\Zol.cs" />
     <Compile Include="GameState\CloseInventoryState.cs" />
-    <Compile Include="Interfaces\IDrop.cs" />
     <Compile Include="Interfaces\IGameState.cs" />
     <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Interfaces\IDoor.cs" />
@@ -256,8 +314,8 @@
     <Compile Include="Items\BlueRing.cs" />
     <Compile Include="Items\ItemEssentials.cs" />
     <Compile Include="Items\DroppedFood.cs" />
-    <Compile Include="Items\DroppedSecondPotion.cs" />
-    <Compile Include="Items\DroppedPotion.cs" />
+    <Compile Include="Items\DroppedRedPotion.cs" />
+    <Compile Include="Items\DroppedBluePotion.cs" />
     <Compile Include="Items\DroppedHealth.cs" />
     <Compile Include="Items\DroppedRupee.cs" />
     <Compile Include="Items\DroppedBomb.cs" />
@@ -273,7 +331,7 @@
     <Compile Include="Items\HeartContainer.cs" />
     <Compile Include="Items\Key.cs" />
     <Compile Include="Items\Letter.cs" />
-    <Compile Include="Items\LifePotion.cs" />
+    <Compile Include="Items\BluePotion.cs" />
     <Compile Include="Items\MagicBook.cs" />
     <Compile Include="Items\MagicBoomerang.cs" />
     <Compile Include="Items\MagicKey.cs" />
@@ -285,7 +343,7 @@
     <Compile Include="Items\RedCandle.cs" />
     <Compile Include="Items\RedRing.cs" />
     <Compile Include="Items\Rupee.cs" />
-    <Compile Include="Items\SecondPotion.cs" />
+    <Compile Include="Items\RedPotion.cs" />
     <Compile Include="Items\SilverArrow.cs" />
     <Compile Include="Items\Triforce.cs" />
     <Compile Include="Items\WhiteSword.cs" />
@@ -342,7 +400,7 @@
     <Compile Include="Players\PlayerStates\UseItemState.cs" />
     <Compile Include="Players\PlayerStates\DieState.cs" />
     <Compile Include="Rooms\BlockClasses\Tiles\BlockTile.cs" />
-    <Compile Include="Rooms\BlockClasses\Room.cs" />
+    <Compile Include="Rooms\Room.cs" />
     <Compile Include="Rooms\BlockClasses\Tiles\MovableBlock.cs" />
     <Compile Include="Rooms\BlockClasses\Tiles\Tile.cs" />
     <Compile Include="Managers\HealthManager.cs" />
@@ -376,6 +434,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\Inventory\InventoryComponentsHelper.cs" />
+    <Compile Include="Util\Profiles.cs" />
     <Compile Include="Util\Options.cs" />
     <Compile Include="Util\Physics\JumpPhysics.cs" />
     <Compile Include="Util\Physics\KnockbackPhysics.cs" />
@@ -394,8 +453,9 @@
     <Compile Include="Util\SpriteFactories\InventorySpriteFactory.cs" />
     <Compile Include="Util\SpriteFactories\ScreenSpriteFactory.cs" />
     <Compile Include="Util\Audio\SoundFactory.cs" />
-    <Compile Include="Util\XMLHandler.cs" />
-    <Compile Include="GameState\WinGameState.cs" />
+    <Compile Include="GameState\TriforceState.cs" />
+    <Compile Include="Util\XML\XMLRoomHandler.cs" />
+    <Compile Include="Util\XML\XMLDungeonHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
@@ -434,10 +494,2754 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\art\bosses\aquamentus\aquamentus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\aquamentus\damagedAqua.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\aquamentus\fireball.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\bossesMaster.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\digdogger\digdogger_Idle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\digdogger\digdogger_large.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\digdogger\digdogger_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\digdogger\digdogger_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\digdogger\digdogger_small.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\dodongo\dodongoDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\dodongo\dodongoDown2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\dodongo\dodongoLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\dodongo\dodongoRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\dodongo\dodongoUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\Gannon\Gannon_BothArmsDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\Gannon\Gannon_BothArmsUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\Gannon\Gannon_Dead_NoTriforce.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\Gannon\Gannon_Dead_Triforce.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\Gannon\Gannon_Fabulous.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\Gannon\Gannon_Paralyzed_Sitting.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\Gannon\Gannon_Paralyzed_Standing.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\Gannon\Gannon_Sitting.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\Gannon\Gannon_Standing.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\Gannon\Invisible_Square.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\gleeok\gleeok_body.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\gleeok\gleeok_head_off.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\gleeok\gleeok_head_on.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\gleeok\gleeok_neck.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\gohma\blue_gohma_closed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\gohma\blue_gohma_open.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\gohma\red_gohma_closed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\gohma\red_gohma_open.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\manhandla\man_body.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\manhandla\man_head_down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\manhandla\man_head_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\manhandla\man_head_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\manhandla\man_head_up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\patra\patra_boss.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\bosses\patra\patra_mini.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayBombedDoorDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayBombedDoorLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayBombedDoorRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayBombedDoorUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayBricks.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayDungeon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayDungeonHole.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayFloorTile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayHorizontalBricks.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayLockedDoorDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayLockedDoorLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayLockedDoorRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayLockedDoorUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayMoveableTile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GraySpecialDoorDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GraySpecialDoorLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GraySpecialDoorRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GraySpecialDoorUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GraySpottedTile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayStairs.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayUnlockedDoorFloorDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayUnlockedDoorFloorLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayUnlockedDoorFloorRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayUnlockedDoorFloorUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayUnlockedDoorFrameDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayUnlockedDoorFrameLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayUnlockedDoorFrameRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayUnlockedDoorFrameUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\GrayVerticalBricks.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\DungeonTiles\SolidGray.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\bubble\blue_bubble.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\darknut\blue_darknut_down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\darknut\blue_darknut_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\darknut\blue_darknut_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\darknut\blue_darknut_up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\darknut\red_darknut_down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\darknut\red_darknut_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\darknut\red_darknut_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\darknut\red_darknut_up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\enemiesMaster.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\enemyCloudSpawn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\enemyDeath.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\enemySpawn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\gibdo\gibdo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\blue\blueGoriyaDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\blue\blueGoriyaLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\blue\blueGoriyaRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\blue\blueGoriyaUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\extras\blueGoriyaDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\extras\blueGoriyaLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\extras\blueGoriyaRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\extras\blueGoriyaUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\extras\redGoriyaDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\extras\redGoriyaLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\extras\redGoriyaRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\extras\redGoriyaUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\red\redGoriyaDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\red\redGoriyaLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\red\redGoriyaRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\goriya\red\redGoriyaUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\jelly\xol\blackXol.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\jelly\xol\darkgreenXol.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\jelly\xol\grayXol.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\jelly\xol\greenXol.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\keese\keese.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\likelike\likelike.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\polsvoice\polsvoice.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\rope\ropeLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\rope\ropeRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\spike\spike.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\stalfos\stalfos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\vire\vire_down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\vire\vire_keese.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\vire\vire_up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\wallMaster\wallMasterLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\wallMaster\wallMasterRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\wizzrobe\blue_wizzrobe_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\wizzrobe\blue_wizzrobe_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\wizzrobe\blue_wizzrobe_up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\wizzrobe\red_wizzrobe_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\wizzrobe\red_wizzrobe_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\enemies\wizzrobe\red_wizzrobe_up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Explosions\BombExplosionFive.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Explosions\BombExplosionFour.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Explosions\BombExplosionOne.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Explosions\BombExplosionThree.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Explosions\BombExplosionTwo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\elementsMaster.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDEmptyHeart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDFullHeart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDHalfHeart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMap.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapClosed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapDungeon1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapDungeon2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapE.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapES.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapESW.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapEW.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapN.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapNE.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapNES.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapNESW.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapNEW.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapNS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapNSW.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapNW.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapS.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapSW.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDMapW.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDQuarterHeart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDSelector.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDThreeQuarterHeart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDtriforce.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDTriforceLeft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDTriforceRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\HUDTriforceTemplate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\HUD\playerMap.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\BlueCandle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\BlueRing.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Bomb.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Book.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Boomerang.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Bow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Clock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Compass.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Fairy.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Flame.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Flute.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Food.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Health.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\HeartContainer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\ItemSpriteMaster.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Key.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Ladder.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Letter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\LifePotion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\MagicBoomerang.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\MagicKey.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\MagicRod.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\MagicSword.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Map.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\PowerBracelet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Raft.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\RedCandle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\RedRing.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Rupee.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Rupee5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\SecondPotion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Shield.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\SilverArrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\SpartanLaser.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\SpartanLaserInventory.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\SpartanLaser_down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\SpartanLaser_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\SpartanLaser_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\SpartanLaser_up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\Triforce.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\WhiteSword.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\WoodenArrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\WoodenSword.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Items\YellowRupee.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\levels\level-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\levels\level-3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\levels\Level3Q1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\blueLink\Blue_Link_Die.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\blueLink\Blue_Link_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\blueLink\Blue_Link_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\blueLink\Blue_Link_Pickup.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\blueLink\Blue_Link_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\blueLink\Blue_Link_Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\greenLink\Green-Link_Pickup.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\greenLink\Green_Link_Die.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\greenLink\Green_Link_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\greenLink\Green_Link_Laser_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\greenLink\Green_Link_Laser_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\greenLink\Green_Link_Laser_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\greenLink\Green_Link_Laser_Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\greenLink\Green_Link_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\greenLink\Green_Link_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\greenLink\Green_Link_Shield_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\greenLink\Green_Link_Shield_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\greenLink\Green_Link_Shield_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\greenLink\Green_Link_Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\linkMaster.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\linkSprites.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Link_Items.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Magic\Green_Magic_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Magic\Green_Magic_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Magic\Green_Magic_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Magic\Green_Magic_Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wand\Wand_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wand\Wand_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wand\Wand_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wand\Wand_Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\White\Blue_Magic_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\White\Blue_Magic_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\White\Blue_Magic_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\White\Blue_White_Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\White\Green_White_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\White\Green_White_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\White\Green_White_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\White\Green_White_Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\White\Red_Magic_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\White\Red_Magic_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\White\Red_Magic_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\White\Red_White_Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wood\Blue_Wood_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wood\Blue_Wood_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wood\Blue_Wood_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wood\Blue_Wood_Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wood\Green_Wood_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wood\Green_Wood_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wood\Green_Wood_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wood\Green_Wood_Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wood\Red_Wood_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wood\Red_Wood_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wood\Red_Wood_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\Link_Items\Wood\Red_Wood_Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\redLink\Red_Link_Die.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\redLink\Red_Link_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\redLink\Red_Link_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\redLink\Red_Link_Pickup.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\redLink\Red_Link_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\link\redLink\Red_Link_Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Menus\1-title.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Menus\1-title_big.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Menus\Confirm.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Menus\Credits.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Menus\LoZTitle.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Menus\Options.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Menus\PauseMenu.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Menus\pressEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Menus\profileSelection.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Menus\titleComponents.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\NPC\angryOldMan.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\NPC\merchant.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\NPC\oldMan.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Projectiles\laserColumn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Projectiles\laserEnd.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Projectiles\laserStart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Projectiles\sonicBeam_Down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Projectiles\sonicBeam_Left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Projectiles\sonicBeam_Right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Projectiles\sonicBeam_Up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Projectiles\SwordBeam.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\Projectiles\SwordBeamExplosion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\dungeonMaster.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\fire.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\gap_tile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\ladder_on_lava.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\ladder_on_water.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\lava5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\8376.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\basement_brick_tile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\bombed_opening_down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\bombed_opening_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\bombed_opening_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\bombed_opening_up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\brick.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\door_down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\door_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\door_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\door_up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\dungeonHole.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\floor_tile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\horizontal_bricks.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\ladder_tile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\locked_door_down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\locked_door_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\locked_door_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\locked_door_up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\special_door_down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\special_door_left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\special_door_right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\special_door_up.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\spotted_tile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\stairs.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\unlocked_door_down_floor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\unlocked_door_down_frame.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\unlocked_door_left_floor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\unlocked_door_left_frame.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\unlocked_door_right_floor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\unlocked_door_right_frame.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\unlocked_door_up_floor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\unlocked_door_up_frame.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level1\vertical_bricks.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level2\bombed_opening_down2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level2\bombed_opening_left2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level2\bombed_opening_right2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level2\bombed_opening_up2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level2\boss_tile2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level2\dungeon2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level2\dungeon2hole.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level2\floor_tile2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level2\lava2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level2\Level2Q1 %281%29.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level2\Level2Q1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level2\movable_square2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level2\orange_movable_square2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level4\blue_statue_left4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level4\blue_statue_right4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level4\brown_statue_left4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level4\brown_statue_right4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level4\movable_tile4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\level4\spotted_tile4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\movable_square3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\stairs3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\art\tiles\water_tile.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Content\Dungeon_mixdown.wma" />
+    <Content Include="Content\bin\Windows\Dungeon_mixdown.wma">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\dungeon1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\dungeon2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\dungeon3.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\dungeon4.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\dungeon5.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\dungeon6.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\dungeon7.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\dungeon8.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\dungeon9.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Profile1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Profile2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Profile3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icon.ico" />
+    <None Include="Content\art\bosses\aquamentus\aquamentus.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\bosses\aquamentus\damagedAqua.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\HUD\Inventory.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\blueLink\psd\blueDeath.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\blueLink\psd\blueLink.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\blueLink\psd\down.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\blueLink\psd\left.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\blueLink\psd\pickup.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\blueLink\psd\right.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\blueLink\psd\up.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\greenLink\psd\down.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\greenLink\psd\greenDeath.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\greenLink\psd\left.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\greenLink\psd\pickup.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\greenLink\psd\right.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\greenLink\psd\up.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\linkItems.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\linkSprites.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Link_Items.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wand\psd\Wand_Down.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wand\psd\Wand_Left.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wand\psd\Wand_Right.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wand\psd\Wand_Up.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\White\psd\Blue_Down.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\White\psd\Blue_Left.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\White\psd\Blue_Right.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\White\psd\Blue_Up.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\White\psd\Green_Down.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\White\psd\Green_Left.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\White\psd\Green_Right.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\White\psd\Green_Up.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\White\psd\Red_Down.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\White\psd\Red_Left.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\White\psd\Red_Right.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\White\psd\Red_Up.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wood\psd\Blue_Down.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wood\psd\Blue_Left.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wood\psd\Blue_Right.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wood\psd\Blue_Up.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wood\psd\Green_Down.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wood\psd\Green_Left.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wood\psd\Green_Right.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wood\psd\Green_Up.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wood\psd\Red_Down.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wood\psd\Red_Left.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wood\psd\Red_Right.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\Link_Items\Wood\psd\Red_Up.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\redLink\psd\down.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\redLink\psd\left.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\redLink\psd\pickup.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\redLink\psd\redDeath.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\redLink\psd\redLink.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\redLink\psd\right.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\link\redLink\psd\up.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\Menus\Credits.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\Menus\LoZTitle.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\art\tiles\level1\brick.psd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Content\bin\Windows\angryOldMan.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\aquamentus.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\basement_brick_tile.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\BetterTint.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blackGel.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blackXol.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\BlueCandle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blueGoriyaDown.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blueGoriyaLeft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blueGoriyaRight.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blueGoriyaUp.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\BlueRing.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_bubble.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_darknut_down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_darknut_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_darknut_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_darknut_up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_gohma_closed.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_gohma_open.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_Link_Die.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_Link_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_Link_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_Link_Pickup.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_Link_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_Link_Up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_Magic_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_Magic_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_Magic_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_statue_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_statue_left2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_statue_left4.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_statue_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_statue_right2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_statue_right4.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_White_Up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_wizzrobe_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_wizzrobe_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\blue_wizzrobe_up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_Wood_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_Wood_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_Wood_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Blue_Wood_Up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Bomb.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\bombed_opening_down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\bombed_opening_down2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\bombed_opening_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\bombed_opening_left2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\bombed_opening_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\bombed_opening_right2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\bombed_opening_up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\bombed_opening_up2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\BombExplosionFive.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\BombExplosionFour.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\BombExplosionOne.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\BombExplosionThree.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\BombExplosionTwo.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Book.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Boomerang.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\boss_tile2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Bow.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\brick_tile.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\brown_statue_left4.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\brown_statue_right4.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Clock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Compass.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Confirm.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Content\bin\Windows\Content\angryOldMan.xnb" />
+    <None Include="Content\bin\Windows\Content\aquamentus.xnb" />
+    <None Include="Content\bin\Windows\Content\basement_brick_tile.xnb" />
+    <None Include="Content\bin\Windows\Content\BetterTint.xnb" />
+    <None Include="Content\bin\Windows\Content\blackGel.xnb" />
+    <None Include="Content\bin\Windows\Content\blackXol.xnb" />
+    <None Include="Content\bin\Windows\Content\BlueCandle.xnb" />
+    <None Include="Content\bin\Windows\Content\blueGoriyaDown.xnb" />
+    <None Include="Content\bin\Windows\Content\blueGoriyaLeft.xnb" />
+    <None Include="Content\bin\Windows\Content\blueGoriyaRight.xnb" />
+    <None Include="Content\bin\Windows\Content\blueGoriyaUp.xnb" />
+    <None Include="Content\bin\Windows\Content\BlueRing.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_bubble.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_darknut_down.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_darknut_left.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_darknut_right.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_darknut_up.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_gohma_closed.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_gohma_open.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_Link_Die.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_Link_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_Link_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_Link_Pickup.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_Link_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_Link_Up.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_Magic_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_Magic_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_Magic_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_statue_left.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_statue_left2.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_statue_left4.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_statue_right.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_statue_right2.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_statue_right4.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_White_Up.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_wizzrobe_left.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_wizzrobe_right.xnb" />
+    <None Include="Content\bin\Windows\Content\blue_wizzrobe_up.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_Wood_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_Wood_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_Wood_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\Blue_Wood_Up.xnb" />
+    <None Include="Content\bin\Windows\Content\Bomb.xnb" />
+    <None Include="Content\bin\Windows\Content\bombed_opening_down.xnb" />
+    <None Include="Content\bin\Windows\Content\bombed_opening_down2.xnb" />
+    <None Include="Content\bin\Windows\Content\bombed_opening_left.xnb" />
+    <None Include="Content\bin\Windows\Content\bombed_opening_left2.xnb" />
+    <None Include="Content\bin\Windows\Content\bombed_opening_right.xnb" />
+    <None Include="Content\bin\Windows\Content\bombed_opening_right2.xnb" />
+    <None Include="Content\bin\Windows\Content\bombed_opening_up.xnb" />
+    <None Include="Content\bin\Windows\Content\bombed_opening_up2.xnb" />
+    <None Include="Content\bin\Windows\Content\BombExplosionFive.xnb" />
+    <None Include="Content\bin\Windows\Content\BombExplosionFour.xnb" />
+    <None Include="Content\bin\Windows\Content\BombExplosionOne.xnb" />
+    <None Include="Content\bin\Windows\Content\BombExplosionThree.xnb" />
+    <None Include="Content\bin\Windows\Content\BombExplosionTwo.xnb" />
+    <None Include="Content\bin\Windows\Content\Book.xnb" />
+    <None Include="Content\bin\Windows\Content\Boomerang.xnb" />
+    <None Include="Content\bin\Windows\Content\boss_tile2.xnb" />
+    <None Include="Content\bin\Windows\Content\Bow.xnb" />
+    <None Include="Content\bin\Windows\Content\brick_tile.xnb" />
+    <None Include="Content\bin\Windows\Content\brown_statue_left4.xnb" />
+    <None Include="Content\bin\Windows\Content\brown_statue_right4.xnb" />
+    <None Include="Content\bin\Windows\Content\Clock.xnb" />
+    <None Include="Content\bin\Windows\Content\Compass.xnb" />
+    <None Include="Content\bin\Windows\Content\Confirm.xnb" />
+    <None Include="Content\bin\Windows\Content\Credits.xnb" />
+    <None Include="Content\bin\Windows\Content\damagedAqua.xnb" />
+    <None Include="Content\bin\Windows\Content\darkgreenXol.xnb" />
+    <None Include="Content\bin\Windows\Content\digdogger_Idle.xnb" />
+    <None Include="Content\bin\Windows\Content\digdogger_large.xnb" />
+    <None Include="Content\bin\Windows\Content\digdogger_left.xnb" />
+    <None Include="Content\bin\Windows\Content\digdogger_right.xnb" />
+    <None Include="Content\bin\Windows\Content\digdogger_small.xnb" />
+    <None Include="Content\bin\Windows\Content\dodongoDown.xnb" />
+    <None Include="Content\bin\Windows\Content\dodongoLeft.xnb" />
+    <None Include="Content\bin\Windows\Content\dodongoRight.xnb" />
+    <None Include="Content\bin\Windows\Content\dodongoUp.xnb" />
+    <None Include="Content\bin\Windows\Content\door_down.xnb" />
+    <None Include="Content\bin\Windows\Content\door_left.xnb" />
+    <None Include="Content\bin\Windows\Content\door_left2.xnb" />
+    <None Include="Content\bin\Windows\Content\door_right.xnb" />
+    <None Include="Content\bin\Windows\Content\door_right2.xnb" />
+    <None Include="Content\bin\Windows\Content\door_up.xnb" />
+    <None Include="Content\bin\Windows\Content\dungeon.xnb" />
+    <None Include="Content\bin\Windows\Content\dungeon2.xnb" />
+    <None Include="Content\bin\Windows\Content\dungeon2hole.xnb" />
+    <None Include="Content\bin\Windows\Content\dungeonHole.xnb" />
+    <None Include="Content\bin\Windows\Content\Dungeon_mixdown.xnb" />
+    <None Include="Content\bin\Windows\Content\enemies.xnb" />
+    <None Include="Content\bin\Windows\Content\enemyDeath.xnb" />
+    <None Include="Content\bin\Windows\Content\enemySpawn.xnb" />
+    <None Include="Content\bin\Windows\Content\Fairy.xnb" />
+    <None Include="Content\bin\Windows\Content\File.xnb" />
+    <None Include="Content\bin\Windows\Content\fire.xnb" />
+    <None Include="Content\bin\Windows\Content\fireball.xnb" />
+    <None Include="Content\bin\Windows\Content\Flame.xnb" />
+    <None Include="Content\bin\Windows\Content\floor_tile.xnb" />
+    <None Include="Content\bin\Windows\Content\floor_tile2.xnb" />
+    <None Include="Content\bin\Windows\Content\floor_tile_dungeon.xnb" />
+    <None Include="Content\bin\Windows\Content\Flute.xnb" />
+    <None Include="Content\bin\Windows\Content\Food.xnb" />
+    <None Include="Content\bin\Windows\Content\gameOver.xnb" />
+    <None Include="Content\bin\Windows\Content\Gannon_BothArmsUp.xnb" />
+    <None Include="Content\bin\Windows\Content\Gannon_Dead_NoTriforce.xnb" />
+    <None Include="Content\bin\Windows\Content\Gannon_Dead_Triforce.xnb" />
+    <None Include="Content\bin\Windows\Content\Gannon_Fabulous.xnb" />
+    <None Include="Content\bin\Windows\Content\Gannon_Paralyzed_Sitting.xnb" />
+    <None Include="Content\bin\Windows\Content\Gannon_Sitting.xnb" />
+    <None Include="Content\bin\Windows\Content\gap_tile.xnb" />
+    <None Include="Content\bin\Windows\Content\gibdo.xnb" />
+    <None Include="Content\bin\Windows\Content\gleeok_body.xnb" />
+    <None Include="Content\bin\Windows\Content\gleeok_head_off.xnb" />
+    <None Include="Content\bin\Windows\Content\gleeok_head_on.xnb" />
+    <None Include="Content\bin\Windows\Content\gleeok_neck.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayBombedDoorDown.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayBombedDoorLeft.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayBombedDoorRight.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayBombedDoorUp.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayBricks.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayDoorDown.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayDoorLeft.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayDoorRight.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayDoorUp.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayDungeon.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayDungeonHole.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayFloorTile.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayHorizontalBricks.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayLockedDoorDown.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayLockedDoorLeft.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayLockedDoorRight.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayLockedDoorUp.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayMoveableTile.xnb" />
+    <None Include="Content\bin\Windows\Content\GraySpecialDoorDown.xnb" />
+    <None Include="Content\bin\Windows\Content\GraySpecialDoorLeft.xnb" />
+    <None Include="Content\bin\Windows\Content\GraySpecialDoorRight.xnb" />
+    <None Include="Content\bin\Windows\Content\GraySpecialDoorUp.xnb" />
+    <None Include="Content\bin\Windows\Content\GraySpottedTile.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayStairs.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayUnlockedDoorFloorDown.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayUnlockedDoorFloorLeft.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayUnlockedDoorFloorRight.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayUnlockedDoorFloorUp.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayUnlockedDoorFrameDown.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayUnlockedDoorFrameLeft.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayUnlockedDoorFrameRight.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayUnlockedDoorFrameUp.xnb" />
+    <None Include="Content\bin\Windows\Content\GrayVerticalBricks.xnb" />
+    <None Include="Content\bin\Windows\Content\grayZol.xnb" />
+    <None Include="Content\bin\Windows\Content\greenZol.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Link_Die.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Link_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Link_Laser_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Link_Laser_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Link_Laser_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Link_Laser_Up.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Link_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Link_Pickup.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Link_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Link_Shield_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Link_Shield_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Link_Shield_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Link_Up.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Magic_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Magic_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Magic_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Magic_Up.xnb" />
+    <None Include="Content\bin\Windows\Content\green_statue_left3.xnb" />
+    <None Include="Content\bin\Windows\Content\green_statue_right.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_White_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_White_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_White_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_White_Up.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Wood_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Wood_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Wood_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\Green_Wood_Up.xnb" />
+    <None Include="Content\bin\Windows\Content\Health.xnb" />
+    <None Include="Content\bin\Windows\Content\HeartContainer.xnb" />
+    <None Include="Content\bin\Windows\Content\horizontal_bricks.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDEmptyHeart.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDFullHeart.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDHalfHeart.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDmap.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapClosed.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapE.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapES.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapESW.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapEW.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapN.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapNE.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapNES.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapNESW.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapNEW.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapNS.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapNSW.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapNW.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapS.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapSW.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDMapW.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDQuarterHeart.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDSelector.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDThreeQuarterHeart.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDtriforce.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDTriforceLeft.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDTriforceRight.xnb" />
+    <None Include="Content\bin\Windows\Content\HUDTriforceTemplate.xnb" />
+    <None Include="Content\bin\Windows\Content\Inventory.xnb" />
+    <None Include="Content\bin\Windows\Content\Invisible_Square.xnb" />
+    <None Include="Content\bin\Windows\Content\Items.xnb" />
+    <None Include="Content\bin\Windows\Content\keese.xnb" />
+    <None Include="Content\bin\Windows\Content\Key.xnb" />
+    <None Include="Content\bin\Windows\Content\Ladder.xnb" />
+    <None Include="Content\bin\Windows\Content\ladder_on_lava.xnb" />
+    <None Include="Content\bin\Windows\Content\ladder_on_water.xnb" />
+    <None Include="Content\bin\Windows\Content\ladder_tile.xnb" />
+    <None Include="Content\bin\Windows\Content\laserColumn.xnb" />
+    <None Include="Content\bin\Windows\Content\laserEnd.xnb" />
+    <None Include="Content\bin\Windows\Content\laserStart.xnb" />
+    <None Include="Content\bin\Windows\Content\lava2.xnb" />
+    <None Include="Content\bin\Windows\Content\lava5.xnb" />
+    <None Include="Content\bin\Windows\Content\Letter.xnb" />
+    <None Include="Content\bin\Windows\Content\level-1.xnb" />
+    <None Include="Content\bin\Windows\Content\level-2.xnb" />
+    <None Include="Content\bin\Windows\Content\level-3.xnb" />
+    <None Include="Content\bin\Windows\Content\LifePotion.xnb" />
+    <None Include="Content\bin\Windows\Content\likelike.xnb" />
+    <None Include="Content\bin\Windows\Content\Link_Items.xnb" />
+    <None Include="Content\bin\Windows\Content\locked_door_down.xnb" />
+    <None Include="Content\bin\Windows\Content\locked_door_down2.xnb" />
+    <None Include="Content\bin\Windows\Content\locked_door_left.xnb" />
+    <None Include="Content\bin\Windows\Content\locked_door_left2.xnb" />
+    <None Include="Content\bin\Windows\Content\locked_door_right.xnb" />
+    <None Include="Content\bin\Windows\Content\locked_door_right2.xnb" />
+    <None Include="Content\bin\Windows\Content\locked_door_up.xnb" />
+    <None Include="Content\bin\Windows\Content\locked_door_up2.xnb" />
+    <None Include="Content\bin\Windows\Content\LoZTitle.xnb" />
+    <None Include="Content\bin\Windows\Content\MagicBoomerang.xnb" />
+    <None Include="Content\bin\Windows\Content\MagicKey.xnb" />
+    <None Include="Content\bin\Windows\Content\MagicRod.xnb" />
+    <None Include="Content\bin\Windows\Content\MagicSword.xnb" />
+    <None Include="Content\bin\Windows\Content\man_body.xnb" />
+    <None Include="Content\bin\Windows\Content\man_head_down.xnb" />
+    <None Include="Content\bin\Windows\Content\man_head_left.xnb" />
+    <None Include="Content\bin\Windows\Content\man_head_right.xnb" />
+    <None Include="Content\bin\Windows\Content\man_head_up.xnb" />
+    <None Include="Content\bin\Windows\Content\Map.xnb" />
+    <None Include="Content\bin\Windows\Content\merchant.xnb" />
+    <None Include="Content\bin\Windows\Content\movable_square.xnb" />
+    <None Include="Content\bin\Windows\Content\movable_square2.xnb" />
+    <None Include="Content\bin\Windows\Content\movable_square3.xnb" />
+    <None Include="Content\bin\Windows\Content\movable_square4.xnb" />
+    <None Include="Content\bin\Windows\Content\movable_tile4.xnb" />
+    <None Include="Content\bin\Windows\Content\oldMan.xnb" />
+    <None Include="Content\bin\Windows\Content\Options.xnb" />
+    <None Include="Content\bin\Windows\Content\orange_movable_square.xnb" />
+    <None Include="Content\bin\Windows\Content\orange_statue_left2.xnb" />
+    <None Include="Content\bin\Windows\Content\orange_statue_right2.xnb" />
+    <None Include="Content\bin\Windows\Content\patra_boss.xnb" />
+    <None Include="Content\bin\Windows\Content\patra_mini.xnb" />
+    <None Include="Content\bin\Windows\Content\PauseMenu.xnb" />
+    <None Include="Content\bin\Windows\Content\playerHUD.xnb" />
+    <None Include="Content\bin\Windows\Content\playerMap.xnb" />
+    <None Include="Content\bin\Windows\Content\polsvoice.xnb" />
+    <None Include="Content\bin\Windows\Content\PowerBracelet.xnb" />
+    <None Include="Content\bin\Windows\Content\pressEnter.xnb" />
+    <None Include="Content\bin\Windows\Content\profileSelection.xnb" />
+    <None Include="Content\bin\Windows\Content\Purchase.xnb" />
+    <None Include="Content\bin\Windows\Content\Raft.xnb" />
+    <None Include="Content\bin\Windows\Content\RedCandle.xnb" />
+    <None Include="Content\bin\Windows\Content\redGoriyaDown.xnb" />
+    <None Include="Content\bin\Windows\Content\redGoriyaLeft.xnb" />
+    <None Include="Content\bin\Windows\Content\redGoriyaRight.xnb" />
+    <None Include="Content\bin\Windows\Content\redGoriyaUp.xnb" />
+    <None Include="Content\bin\Windows\Content\RedRing.xnb" />
+    <None Include="Content\bin\Windows\Content\red_darknut_down.xnb" />
+    <None Include="Content\bin\Windows\Content\red_darknut_left.xnb" />
+    <None Include="Content\bin\Windows\Content\red_darknut_right.xnb" />
+    <None Include="Content\bin\Windows\Content\red_darknut_up.xnb" />
+    <None Include="Content\bin\Windows\Content\red_gohma_closed.xnb" />
+    <None Include="Content\bin\Windows\Content\red_gohma_open.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_Link_Die.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_Link_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_Link_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_Link_Pickup.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_Link_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_Link_Up.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_Magic_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_Magic_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_Magic_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\red_statue_left3.xnb" />
+    <None Include="Content\bin\Windows\Content\red_statue_right3.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_White_Up.xnb" />
+    <None Include="Content\bin\Windows\Content\red_wizzrobe_left.xnb" />
+    <None Include="Content\bin\Windows\Content\red_wizzrobe_right.xnb" />
+    <None Include="Content\bin\Windows\Content\red_wizzrobe_up.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_Wood_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_Wood_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_Wood_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\Red_Wood_Up.xnb" />
+    <None Include="Content\bin\Windows\Content\ropeLeft.xnb" />
+    <None Include="Content\bin\Windows\Content\ropeRight.xnb" />
+    <None Include="Content\bin\Windows\Content\Rupee.xnb" />
+    <None Include="Content\bin\Windows\Content\Rupee5.xnb" />
+    <None Include="Content\bin\Windows\Content\SecondPotion.xnb" />
+    <None Include="Content\bin\Windows\Content\SelectorSprite2.xnb" />
+    <None Include="Content\bin\Windows\Content\Shield.xnb" />
+    <None Include="Content\bin\Windows\Content\SilverArrow.xnb" />
+    <None Include="Content\bin\Windows\Content\SolidGray.xnb" />
+    <None Include="Content\bin\Windows\Content\sonicBeam_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\sonicBeam_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\sonicBeam_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\sonicBeam_Up.xnb" />
+    <None Include="Content\bin\Windows\Content\SpartanLaser.xnb" />
+    <None Include="Content\bin\Windows\Content\SpartanLaserInventory.xnb" />
+    <None Include="Content\bin\Windows\Content\SpartanLaser_down.xnb" />
+    <None Include="Content\bin\Windows\Content\SpartanLaser_left.xnb" />
+    <None Include="Content\bin\Windows\Content\SpartanLaser_right.xnb" />
+    <None Include="Content\bin\Windows\Content\SpartanLaser_up.xnb" />
+    <None Include="Content\bin\Windows\Content\special_door_down.xnb" />
+    <None Include="Content\bin\Windows\Content\special_door_down2.xnb" />
+    <None Include="Content\bin\Windows\Content\special_door_left.xnb" />
+    <None Include="Content\bin\Windows\Content\special_door_left2.xnb" />
+    <None Include="Content\bin\Windows\Content\special_door_right.xnb" />
+    <None Include="Content\bin\Windows\Content\special_door_right2.xnb" />
+    <None Include="Content\bin\Windows\Content\special_door_up.xnb" />
+    <None Include="Content\bin\Windows\Content\special_door_up2.xnb" />
+    <None Include="Content\bin\Windows\Content\spike.xnb" />
+    <None Include="Content\bin\Windows\Content\spotted_tile.xnb" />
+    <None Include="Content\bin\Windows\Content\spotted_tile2.xnb" />
+    <None Include="Content\bin\Windows\Content\spotted_tile3.xnb" />
+    <None Include="Content\bin\Windows\Content\spotted_tile4.xnb" />
+    <None Include="Content\bin\Windows\Content\stairs.xnb" />
+    <None Include="Content\bin\Windows\Content\stairs3.xnb" />
+    <None Include="Content\bin\Windows\Content\stalfos.xnb" />
+    <None Include="Content\bin\Windows\Content\SwordBeam.xnb" />
+    <None Include="Content\bin\Windows\Content\SwordBeamExplosion.xnb" />
+    <None Include="Content\bin\Windows\Content\tealGel.xnb" />
+    <None Include="Content\bin\Windows\Content\Text.xnb" />
+    <None Include="Content\bin\Windows\Content\Triforce.xnb" />
+    <None Include="Content\bin\Windows\Content\turquoise_statue_left.xnb" />
+    <None Include="Content\bin\Windows\Content\turquoise_statue_right.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_down.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_down2.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_down_floor.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_down_frame.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_left.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_left2.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_left_floor.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_left_frame.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_right.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_right2.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_right_floor.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_right_frame.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_up.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_up2.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_up_floor.xnb" />
+    <None Include="Content\bin\Windows\Content\unlocked_door_up_frame.xnb" />
+    <None Include="Content\bin\Windows\Content\vertical_bricks.xnb" />
+    <None Include="Content\bin\Windows\Content\vire_down.xnb" />
+    <None Include="Content\bin\Windows\Content\vire_keese.xnb" />
+    <None Include="Content\bin\Windows\Content\vire_up.xnb" />
+    <None Include="Content\bin\Windows\Content\wallMasterLeft.xnb" />
+    <None Include="Content\bin\Windows\Content\wallMasterRight.xnb" />
+    <None Include="Content\bin\Windows\Content\Wand_Down.xnb" />
+    <None Include="Content\bin\Windows\Content\Wand_Left.xnb" />
+    <None Include="Content\bin\Windows\Content\Wand_Right.xnb" />
+    <None Include="Content\bin\Windows\Content\Wand_Up.xnb" />
+    <None Include="Content\bin\Windows\Content\water_tile.xnb" />
+    <None Include="Content\bin\Windows\Content\WhiteSword.xnb" />
+    <None Include="Content\bin\Windows\Content\WoodenArrow.xnb" />
+    <None Include="Content\bin\Windows\Content\WoodenSword.xnb" />
+    <None Include="Content\bin\Windows\Content\YellowRupee.xnb" />
+    <Content Include="Content\bin\Windows\Credits.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\damagedAqua.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\darkgreenXol.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\digdogger_Idle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\digdogger_large.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\digdogger_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\digdogger_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\digdogger_small.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\dodongoLeft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\dodongoRight.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\dodongoUp.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\door_down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\door_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\door_left2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\door_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\door_right2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\door_up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\dungeon.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\dungeon2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\dungeon2hole.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\dungeonHole.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Dungeon_mixdown.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\enemies.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\enemyDeath.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\enemySpawn.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Fairy.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\File.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\fire.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\fireball.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Flame.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\floor_tile.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\floor_tile2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\floor_tile_dungeon.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Flute.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Food.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\gameOver.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Gannon_BothArmsUp.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Gannon_Dead_NoTriforce.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Gannon_Dead_Triforce.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Gannon_Fabulous.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Gannon_Paralyzed_Sitting.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Gannon_Sitting.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\gap_tile.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\gibdo.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\gleeok_body.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\gleeok_head_off.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\gleeok_head_on.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\gleeok_neck.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayBombedDoorDown.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayBombedDoorLeft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayBombedDoorRight.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayBombedDoorUp.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayBricks.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayDoorDown.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayDoorLeft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayDoorRight.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayDoorUp.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayDungeon.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayDungeonHole.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayFloorTile.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayHorizontalBricks.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayLockedDoorDown.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayLockedDoorLeft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayLockedDoorRight.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayLockedDoorUp.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayMoveableTile.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GraySpecialDoorDown.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GraySpecialDoorLeft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GraySpecialDoorRight.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GraySpecialDoorUp.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GraySpottedTile.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayStairs.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayUnlockedDoorFloorDown.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayUnlockedDoorFloorLeft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayUnlockedDoorFloorRight.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayUnlockedDoorFloorUp.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayUnlockedDoorFrameDown.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayUnlockedDoorFrameLeft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayUnlockedDoorFrameRight.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayUnlockedDoorFrameUp.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\GrayVerticalBricks.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\grayZol.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\greenZol.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Link_Die.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Link_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Link_Laser_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Link_Laser_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Link_Laser_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Link_Laser_Up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Link_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Link_Pickup.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Link_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Link_Shield_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Link_Shield_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Link_Shield_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Link_Up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Magic_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Magic_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Magic_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Magic_Up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\green_statue_left3.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\green_statue_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_White_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_White_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_White_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_White_Up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Wood_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Wood_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Wood_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Green_Wood_Up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Health.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HeartContainer.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\horizontal_bricks.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDEmptyHeart.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDFullHeart.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDHalfHeart.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDmap.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapClosed.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapE.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapES.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapESW.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapEW.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapN.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapNE.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapNES.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapNESW.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapNEW.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapNS.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapNSW.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapNW.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapS.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapSW.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDMapW.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDQuarterHeart.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDSelector.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDThreeQuarterHeart.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDtriforce.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDTriforceLeft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDTriforceRight.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\HUDTriforceTemplate.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Inventory.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Invisible_Square.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Items.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\keese.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Key.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\ladder.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\ladder_on_lava.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\ladder_on_water.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\ladder_tile.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\laserColumn.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\laserEnd.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\laserStart.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\lava2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\lava5.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Letter.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\level-1.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\level-2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\level-3.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\LifePotion.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\likelike.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Link_Items.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\locked_door_down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\locked_door_down2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\locked_door_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\locked_door_left2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\locked_door_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\locked_door_right2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\locked_door_up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\locked_door_up2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\LoZTitle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\MagicBoomerang.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\MagicKey.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\MagicRod.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\MagicSword.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\man_body.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\man_head_down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\man_head_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\man_head_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\man_head_up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Map.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\merchant.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\movable_square.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\movable_square2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\movable_square3.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\movable_square4.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\movable_tile4.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\oldMan.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Options.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\orange_movable_square.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\orange_statue_left2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\orange_statue_right2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\patra_boss.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\patra_mini.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\PauseMenu.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\playerHUD.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\playerMap.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\polsvoice.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\PowerBracelet.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\pressEnter.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\profileSelection.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Raft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\RedCandle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\redGoriyaDown.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\redGoriyaLeft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\redGoriyaRight.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\redGoriyaUp.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\RedRing.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\red_darknut_down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\red_darknut_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\red_darknut_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\red_darknut_up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\red_gohma_closed.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\red_gohma_open.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_Link_Die.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_Link_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_Link_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_Link_Pickup.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_Link_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_Link_Up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_Magic_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_Magic_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_Magic_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\red_statue_left3.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\red_statue_right3.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_White_Up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\red_wizzrobe_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\red_wizzrobe_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\red_wizzrobe_up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_Wood_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_Wood_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_Wood_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Red_Wood_Up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\ropeLeft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\ropeRight.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Rupee.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Rupee5.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\SecondPotion.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\SelectorSprite2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Shield.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\SilverArrow.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\SolidGray.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\sonicBeam_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\sonicBeam_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\sonicBeam_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\sonicBeam_Up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\SpartanLaser.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\SpartanLaserInventory.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\SpartanLaser_down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\SpartanLaser_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\SpartanLaser_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\SpartanLaser_up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\special_door_down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\special_door_down2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\special_door_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\special_door_left2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\special_door_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\special_door_right2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\special_door_up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\special_door_up2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\spike.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\spotted_tile.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\spotted_tile2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\spotted_tile3.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\spotted_tile4.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\stairs.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\stairs3.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\stalfos.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\SwordBeam.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\SwordBeamExplosion.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\tealGel.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Text.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Triforce.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\turquoise_statue_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\turquoise_statue_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_down2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_down_floor.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_down_frame.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_left2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_left_floor.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_left_frame.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_right2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_right_floor.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_right_frame.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_up2.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_up_floor.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\unlocked_door_up_frame.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\vertical_bricks.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\vire_down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\vire_keese.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\vire_up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\wallMasterLeft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\wallMasterRight.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Wand_Down.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Wand_Left.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Wand_Right.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\Wand_Up.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\water_tile.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\WhiteSword.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\WoodenArrow.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\WoodenSword.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bin\Windows\YellowRupee.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="LoZGame_TemporaryKey.pfx" />
+    <None Include="Util\Audio\Resources\The Legend of Zelda Spirit Tracks Music - Tower of Spirits Dungeon.wav" />
+    <Content Include="Util\Audio\Resources\The Legend of Zelda Spirit Tracks Music - File Select.wav" />
+    <Content Include="Util\Audio\Resources\The Legend of Zelda_ Spirit Tracks Soundtrack - 66 Stagnox, Armored Colossus.wav" />
     <None Include="Util\Audio\Resources\LOZ_Recorder.wav" />
     <None Include="Util\Audio\Resources\coolFlute.wav" />
-    <Content Include="Util\Audio\Resources\CreditsTheme.wav" />
     <Content Include="Util\Audio\Resources\SpartanLaser_mixdown.wav" />
     <None Include="Util\Audio\Resources\triforce_tune.wav" />
     <None Include="Util\Audio\Resources\dungeon_song.wav" />
@@ -525,7 +3329,96 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <PublishFile Include="Content\dungeon1.xml">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Content\dungeon2.xml">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Content\dungeon3.xml">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Content\dungeon4.xml">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Content\dungeon5.xml">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Content\dungeon6.xml">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Content\dungeon7.xml">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Content\dungeon8.xml">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Content\dungeon9.xml">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>File</FileType>
+    </PublishFile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -59,7 +59,21 @@
         {
             if (otherCollider is IPlayer)
             {
-                itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                if (this is PurchaseRupee)
+                {
+                    if (LoZGame.Instance.Players[0].Inventory.Rupees >= 50 && LoZGame.Instance.Players[0].PurchaseLockout <= 0)
+                    {
+                        itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                    }
+                    else
+                    {
+                        LoZGame.Instance.Dungeon.CurrentRoom.SetText("YOU NEED AT LEAST 50 RUPEES.");
+                    }
+                }
+                else
+                {
+                    itemCollisionHandler.OnCollisionResponse((IPlayer)otherCollider, collisionSide);
+                }
             }
         }
 

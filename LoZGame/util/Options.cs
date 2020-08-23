@@ -71,7 +71,6 @@ namespace LoZClone
             }
         }
 
-
         private void ChangeDifficulty()
         {
             switch (LoZGame.Instance.Difficulty)
@@ -108,9 +107,20 @@ namespace LoZClone
         {
             LoZGame.Music = !LoZGame.Music;
             if (!LoZGame.Music)
+            {
                 SoundFactory.Instance.StopAll();
+            }
             else
-                SoundFactory.Instance.PlayDungeonSong();
+            {
+                if (LoZGame.Instance.Dungeon.CurrentRoomX == LoZGame.Instance.Dungeon.DungeonBossLocation.X && LoZGame.Instance.Dungeon.CurrentRoomY == LoZGame.Instance.Dungeon.DungeonBossLocation.Y)
+                {
+                    SoundFactory.Instance.PlayBossSong();
+                }
+                else
+                {
+                    SoundFactory.Instance.PlayDungeonSong();
+                }
+            }
         }
 
         public void DetermineWhatToDo()

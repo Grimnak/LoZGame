@@ -9,7 +9,9 @@
         private Point linkedRoom;
         private Point linkSpawn;
         private ISprite sprite;
+        private Color spriteTint;
         private bool isHidden;
+        private static int lockoutTimer;
 
         public Physics Physics { get; set; }
 
@@ -26,6 +28,8 @@
             Physics.Bounds = new Rectangle(location.ToPoint(), new Point((int)BlockSpriteFactory.Instance.TileWidth, BlockSpriteFactory.Instance.TileHeight));
             Physics.SetDepth();
             sprite = DungeonSpriteFactory.Instance.Stairs();
+            spriteTint = LoZGame.Instance.DungeonTint;
+            lockoutTimer = 0;
         }
 
         public bool IsTransparent { get { return false; } set { } }
@@ -34,20 +38,35 @@
 
         public void Update()
         {
+            if (LoZGame.Instance.Dungeon.CurrentRoom.IsBasement)
+            {
+                lockoutTimer = 0;
+            }
+
+            if (lockoutTimer > 0)
+            {
+                lockoutTimer--;
+            }
+
+            if (!(LoZGame.Instance.Dungeon is null))
+            {
+                spriteTint = LoZGame.Instance.Dungeon.CurrentRoom.CurrentRoomTint;
+            }
         }
 
         public void Draw()
         {
             if (!isHidden)
             {
-                this.sprite.Draw(this.Physics.Location, LoZGame.Instance.DungeonTint, this.Physics.Depth);
+                this.sprite.Draw(this.Physics.Location, spriteTint, this.Physics.Depth);
             }
         }
 
         public void OnCollisionResponse(ICollider otherCollider, CollisionDetection.CollisionSide collisionSide)
         {
-            if (otherCollider is IPlayer && !isHidden)
+            if (otherCollider is IPlayer && !isHidden && lockoutTimer <= 0)
             {
+                lockoutTimer = LoZGame.Instance.UpdateSpeed * 2;
                 SoundFactory.Instance.PlayClimbStairs();
                 LoZGame.Instance.Dungeon.CurrentRoomX = this.PointLinkedRoom.X;
                 LoZGame.Instance.Dungeon.CurrentRoomY = this.PointLinkedRoom.Y;
@@ -81,6 +100,6 @@
             isHidden = false;
         }
 
-        public bool IsHidden { get { return isHidden; }  set { isHidden = value; } }
+        public bool IsHidden { get { return isHidden; } set { isHidden = value; } }
     }
 }

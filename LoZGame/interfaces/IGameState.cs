@@ -14,6 +14,11 @@
         void TitleScreen();
 
         /// <summary>
+        /// Game states goes to profile selection.
+        /// </summary>
+        void ProfilesScreen();
+
+        /// <summary>
         /// Game state goes to credits screen.
         /// </summary>
         void CreditsScreen();
@@ -24,19 +29,24 @@
         void PlayGame();
 
         /// <summary>
-        /// Game state goes to Play.
+        /// Game state goes to the death state.
         /// </summary>
         void Death();
 
         /// <summary>
-        /// Game state goes to player death.
+        /// Game state goes to the options menu.
         /// </summary>
         void Options();
 
         /// <summary>
-        /// Game state goes to Play Flute.
+        /// Game state goes to playing the flute.
         /// </summary>
         void PlayFlute();
+
+        /// <summary>
+        /// Game state goes to restoring player health.
+        /// </summary>
+        void RestoreHealth();
 
         /// <summary>
         /// Game state goes to access inventory.
@@ -49,24 +59,40 @@
         void CloseInventory();
 
         /// <summary>
-        /// Game state goes to win state.
+        /// Game state goes to triforce state.
         /// </summary>
-        void WinGame();
+        void TriforceState();
 
         /// <summary>
         /// Game state for room transitions.
         /// </summary>
+        /// <param name="direction">Indicates the direction that the player is trying to move relative to the current room.</param>
         void TransitionRoom(Physics.Direction direction);
 
         /// <summary>
-        /// Game state goes to win state.
+        /// Game state goes to paused.
         /// </summary>
         void Pause();
 
         /// <summary>
-        /// Game state goes to win state.
+        /// Game state goes to unpaused.
         /// </summary>
         void Unpause();
+
+        /// <summary>
+        /// Game state goes to confirm a purchase.
+        /// </summary>
+        void ConfirmPurchase();
+
+        /// <summary>
+        /// Game state goes to confirm a reset.
+        /// </summary>
+        void ConfirmReset();
+
+        /// <summary>
+        /// Game state goes to confirm exiting.
+        /// </summary>
+        void ConfirmQuit();
 
         /// <summary>
         /// Updates the current state.

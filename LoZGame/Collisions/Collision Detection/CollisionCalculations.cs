@@ -108,7 +108,7 @@
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
                 }
                 // is top wall
-                else if(sourceCollider.Physics.Bounds.Top < BlockSpriteFactory.Instance.TopOffset)
+                else if (sourceCollider.Physics.Bounds.Top < BlockSpriteFactory.Instance.TopOffset)
                 {
                     sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
                 }
@@ -118,62 +118,7 @@
             {
                 if (sourceCollider.Physics.Location.Y < LoZGame.Instance.InventoryOffset)
                 {
-                    if (sourceCollider is IPlayer && LoZGame.Instance.Players[0].DamageTimer <= 0)
-                    {
-                        if (LoZGame.Instance.Dungeon.CurrentRoomY - 1 < 0)
-                        {
-                            dungeon.MoveRight();
-                        }
-                        else
-                        {
-                            dungeon.MoveUp();
-                        }
-                    }
-                    else
-                    {
-                        sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
-                    }
-                }
-                else if (sourceCollider.Physics.Location.Y > LoZGame.Instance.ScreenHeight - sourceHeight)
-                {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Bottom);
-                }
-                else if (sourceCollider.Physics.Location.X < 0)
-                {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Left);
-                }
-                else if (sourceCollider.Physics.Location.X > LoZGame.Instance.ScreenWidth - sourceWidth)
-                {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
-                }
-            }
-        }
-
-        private void CheckSideBorders(ICollider sourceCollider, int sourceWidth, int sourceHeight)
-        {
-            // Check borders for all rooms except basement
-            if (!LoZGame.Instance.Dungeon.CurrentRoom.IsBasement)
-            {
-                // is right wall
-                if (sourceCollider.Physics.Bounds.Right > LoZGame.Instance.ScreenWidth - BlockSpriteFactory.Instance.HorizontalOffset)
-                {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Right);
-                }
-                // is left wall
-                else if (sourceCollider.Physics.Bounds.Left < BlockSpriteFactory.Instance.HorizontalOffset)
-                {
-                    sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Left);
-                }
-            }
-            else
-            {
-                if (sourceCollider.Physics.Location.Y < LoZGame.Instance.InventoryOffset)
-                {
-                    if (sourceCollider is IPlayer)
-                    {
-                        dungeon.MoveUp();
-                    }
-                    else
+                    if (!(sourceCollider is IPlayer) || ((IPlayer)sourceCollider).DamageTimer > 0)
                     {
                         sourceCollider.OnCollisionResponse(sourceWidth, sourceHeight, CollisionSide.Top);
                     }

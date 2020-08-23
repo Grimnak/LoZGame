@@ -18,7 +18,7 @@
         private Point nextRoomOffset;               // a, y coord offset of where to draw enemies when we start transitioning
         private Dungeon dungeon;                    // current dungeon we are transitioning in
         private Vector2 MasterMovement;             // movement velocity that every object follows for the transition
-        private Room NextRoom;                      // all the objects in the next room
+        private Room nextRoom;                      // all the objects in the next room
         private Vector2 nextRoomBorderOffset;       // offset to draw the dungeon border
         private Vector2 currentRoomBorderOffset;    // offset to draw the original dungeon border
         private GameObjectManager oldObjects;       // tracks all the gameobjects that were loadad before the transition started
@@ -27,9 +27,11 @@
         private List<IDoor> specialDoors;           // used to track special doors we open during transition
         private bool done;                          // tracks when we are done transitioning to return to play state
 
+        public Room NextRoom { get { return nextRoom; } set { nextRoom = value; } }
+
         public TransitionRoomState(Physics.Direction direction)
         {
-            // initialize the variabls and directions we need to check for a transition
+            // initialize the variables and directions we need to check for a transition
             oldObjects = LoZGame.Instance.GameObjects;
             newObjects = new GameObjectManager();
             done = false;
@@ -40,7 +42,12 @@
             puzzleDoors = new List<IDoor>();
             specialDoors = new List<IDoor>();
 
-            // finds the room we are transitioning to, and sets the variabls needed to transition to it
+            foreach (IPlayer player in LoZGame.Instance.Players)
+            {
+                player.Physics.KnockbackVelocity = Vector2.Zero;
+            }
+
+            // finds the room we are transitioning to, and sets the variables needed to transition to it
             switch (direction)
             {
                 case Physics.Direction.North:
@@ -159,12 +166,24 @@
             LoZGame.Instance.GameState = new PauseState(this);
         }
 
+        /// <inheritdoc></inheritdoc>
+        public override void ConfirmReset()
+        {
+            LoZGame.Instance.GameState = new ConfirmResetState(this);
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public override void ConfirmQuit()
+        {
+            LoZGame.Instance.GameState = new ConfirmQuitState(this);
+        }
+
         public override void Update()
         {
             // logic to execute during a transition
             if (!done)
             {
-                // if we are going to transition past the desire amount we instead snap to the new location
+                // if we are going to transition past the desired amount we instead snap to the new location
                 if (MasterMovement.Length() >= transitionDistance)
                 {
                     MasterMovement.Normalize();
@@ -176,7 +195,7 @@
                 {
                     transitionDistance -= Math.Abs(MasterMovement.X + MasterMovement.Y);
                 }
-                // appliees a global movement to all objects new and old
+                // applies a global movement to all objects new and old
                 nextRoomBorderOffset += MasterMovement;
                 currentRoomBorderOffset += MasterMovement;
                 oldObjects.MoveObjects();
@@ -188,9 +207,10 @@
                     player.Update();
                 }
             }
-            // logic to execute and return to play staate
+            // logic to execute and return to play state
             else
             {
+                // swap references to the new room
                 oldObjects.LoadedRoomX = dungeon.CurrentRoomX;
                 oldObjects.LoadedRoomY = dungeon.CurrentRoomY;
                 dungeon.CurrentRoomX = nextRoomLocation.X;
@@ -260,7 +280,7 @@
             // Draw Game Objects
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
             oldObjects.Draw();
-            newObjects.Draw();
+            newObjects.DrawNext();
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Draw();

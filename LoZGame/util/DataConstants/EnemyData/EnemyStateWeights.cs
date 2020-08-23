@@ -5,7 +5,7 @@
 
     public struct EnemyStateWeights
     {
-        private static Dictionary<StateType, int> gleeockHeadStateList = new Dictionary<StateType, int>()
+        private static Dictionary<StateType, int> gleeokHeadStateList = new Dictionary<StateType, int>()
         {
             { StateType.MoveNorth, 1 },
             { StateType.MoveSouth, 1 },
@@ -17,7 +17,26 @@
             { StateType.MoveSouthWest, 1 }
         };
 
+        private static Dictionary<StateType, int> gleeokHeadOffStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.Attack, 16 },
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 },
+            { StateType.MoveNorthEast, 1 },
+            { StateType.MoveNorthWest, 1 },
+            { StateType.MoveSouthEast, 1 },
+            { StateType.MoveSouthWest, 1 }
+        };
+
         private static Dictionary<StateType, int> oldManStateList = new Dictionary<StateType, int>()
+        {
+            // { StateType.Attack, 1 },
+            { StateType.Idle, 99 }
+        };
+
+        private static Dictionary<StateType, int> merchantStateList = new Dictionary<StateType, int>()
         {
             // { StateType.Attack, 1 },
             { StateType.Idle, 99 }
@@ -60,6 +79,18 @@
             { StateType.MoveSouthWest, 1 }
         };
 
+        private static Dictionary<StateType, int> ganonTeleportingStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.Attack, 1 },
+            { StateType.Teleport, 1 },
+            { StateType.Idle, 2 }
+        };
+
+        private static Dictionary<StateType, int> ganonParalyzedStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.Idle, 1 }
+        };
+
         private static Dictionary<StateType, int> gelStateList = new Dictionary<StateType, int>()
         {
             { StateType.MoveWest, 1 },
@@ -99,6 +130,14 @@
         };
 
         private static Dictionary<StateType, int> ropeStateList = new Dictionary<StateType, int>()
+        {
+            { StateType.MoveNorth, 1 },
+            { StateType.MoveSouth, 1 },
+            { StateType.MoveEast, 1 },
+            { StateType.MoveWest, 1 }
+        };
+
+        private static Dictionary<StateType, int> patraStateList = new Dictionary<StateType, int>()
         {
             { StateType.MoveNorth, 1 },
             { StateType.MoveSouth, 1 },
@@ -222,9 +261,13 @@
 
         public Dictionary<StateType, int> OldManStateList => oldManStateList;
 
+        public Dictionary<StateType, int> MerchantStateList => merchantStateList;
+
         public Dictionary<StateType, int> DarknutStateList => darknutStateList;
 
         public Dictionary<StateType, int> DragonStateList => dragonStateList;
+
+        public Dictionary<StateType, int> PatraStateList => patraStateList;
 
         public Dictionary<StateType, int> DodongoStateList => dodongoStateList;
 
@@ -258,7 +301,9 @@
 
         public Dictionary<StateType, int> ManhandlaHeadStateList => manhandlaHeadStateList;
 
-        public Dictionary<StateType, int> GleeockHeadStateList => gleeockHeadStateList;
+        public Dictionary<StateType, int> GleeokHeadStateList => gleeokHeadStateList;
+
+        public Dictionary<StateType, int> GleeokHeadOffStateList => gleeokHeadOffStateList;
 
         public Dictionary<StateType, int> GibdoStateList => gibdoStateList;
 
@@ -267,5 +312,9 @@
         public Dictionary<StateType, int> PolsVoiceStateList => polsVoiceStateList;
 
         public Dictionary<StateType, int> DigDoggerStateList => digDoggerStateList;
+
+        public Dictionary<StateType, int> GanonTeleportingStateList => ganonTeleportingStateList;
+
+        public Dictionary<StateType, int> GanonParalyzedStateList => ganonParalyzedStateList;
     }
 }

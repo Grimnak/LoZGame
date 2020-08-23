@@ -1,6 +1,6 @@
 # The Legend of Zelda in Monogame
 
-This build features the first six dungeons and incomplete versions of the seventh and eighth dungeons.  There is also an option to turn "cheat mode" on, which gives the player unlimited items and infinite health.  This can be activated by accessing the options menu in-game.
+This build features all nine dungeons present in The Legend of Zelda (1986) with slightly modified gameplay and item placements.
 
 ## Authors:
 Eric Henderson (henderson.939@osu.edu)
@@ -32,7 +32,7 @@ P - Pause and Unpause the Game
 
 Q - Exits the Game
 
-R - Resets the Game to the Title Screen State
+R - Resets the Game
 
 Mouse - Moves Rooms in the Direction you Click (only present if Cheat Mode is enabled)
 
@@ -40,22 +40,21 @@ Mouse - Moves Rooms in the Direction you Click (only present if Cheat Mode is en
 W, A, S, D, Arrow Keys - Controls Item Selection
 
 ### Menu Controls:
-W, S, Up Arrow Key, Down Arrow Key - Controls Options Menu Selection
+W, S, Up Arrow Key, Down Arrow Key - Controls Options/Profiles Menu Selections
 
 Enter - Begin the Game, Toggle an Option, or Continue Gameplay after Death
 
 ### Options Menu:
 
 - Difficulty: The selection you make in the options menu will only apply to future dungeons in your current playthrough
-    - Note: Difficulty modifies how much damage the enemies deal, how much damage the player may take, how quickly the enemies move, AI behavior, as well as new functionality for a small number of enemies dependent on difficulty
+    - Note: Difficulty modifies how much damage the enemies deal, how much damage the player may take, how quickly the enemies move, AI behavior, as well as new functionality for a small number of enemies dependent on difficulty.
 - Cheats: Will grant you the ability to travel via Mouse Controller, infinite health and infinite use of most items.
-- Debug: Draws bounding boxes of all relevant objects on screen
+- Debug: Draws bounding boxes of all relevant objects on screen.
+- Music:  Toggles the in-game background music.
 
 ## Required Tools:
 
-Visual Studio
-
-Monogame
+None
 
 ## Known Bugs:
 ### Mouse Controller

@@ -14,7 +14,7 @@
         {
             if ((numBombs > 0) || LoZGame.Cheats)
             {
-                if (!LoZGame.Cheats)
+                if (!LoZGame.Cheats && !(player.State is UseItemState))
                 {
                     numBombs--;
                 }
@@ -63,12 +63,12 @@
 
         public void UseCandle()
         {
-            if (hasRedFlame || LoZGame.Cheats)
+            if ((hasRedFlame || LoZGame.Cheats) && !LoZGame.Instance.GameObjects.Entities.ProjectileManager.CandleLock)
             {
                 player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.RedCandle, player);
-            } 
-            else if ((!LoZGame.Instance.GameObjects.Entities.ProjectileManager.FlameInUse && HasBlueFlame) || LoZGame.Cheats)
+            }
+            else if ((hasBlueFlame || LoZGame.Cheats) && !LoZGame.Instance.GameObjects.Entities.ProjectileManager.CandleLock)
             {
                 player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.BlueCandle, player);
@@ -77,22 +77,22 @@
 
         public void UsePotion()
         {
-            if (numBluePotions > 0 || LoZGame.Cheats)
+            if (numRedPotions > 0 || LoZGame.Cheats)
             {
-                if (!LoZGame.Cheats)
-                {
-                    numBluePotions--;
-                    numRedPotions++;
-                }
-                LoZGame.Instance.Players[0].Health.CurrentHealth = LoZGame.Instance.Players[0].Health.MaxHealth;
-            }
-            else if (numRedPotions > 0 || LoZGame.Cheats)
-            {
-                if (!LoZGame.Cheats)
+                if (!LoZGame.Cheats && (LoZGame.Instance.Players[0].Health.CurrentHealth != LoZGame.Instance.Players[0].Health.MaxHealth))
                 {
                     numRedPotions--;
+                    numBluePotions++;
                 }
-                LoZGame.Instance.Players[0].Health.CurrentHealth = LoZGame.Instance.Players[0].Health.MaxHealth;
+                LoZGame.Instance.GameState.RestoreHealth();
+            }
+            else if (numBluePotions > 0 || LoZGame.Cheats)
+            {
+                if (!LoZGame.Cheats && (LoZGame.Instance.Players[0].Health.CurrentHealth != LoZGame.Instance.Players[0].Health.MaxHealth))
+                {
+                    numBluePotions--;
+                }
+                LoZGame.Instance.GameState.RestoreHealth();
             }
         }
 
@@ -107,7 +107,7 @@
 
         public void UseRod()
         {
-            if (hasRod || LoZGame.Cheats)
+            if ((hasRod || LoZGame.Cheats) && !LoZGame.Instance.GameObjects.Entities.ProjectileManager.BeamLock)
             {
                 player.UseItem(ProjectileManager.MaxWaitTime);
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.SonicBeam, player);
@@ -130,6 +130,14 @@
             {
                 numBombs = temp;
             }
+        }
+
+        public void PurchaseBombs()
+        {
+            SoundFactory.Instance.PlayGetItem();
+            player.Inventory.Rupees -= 50;
+            player.Inventory.MaxBombs += 4;
+            player.Inventory.GainBombs();
         }
 
         public void GainRedPotion()

@@ -11,10 +11,7 @@
         public FluteGameState()
         {
             lifeTime = 0;
-            if (LoZGame.Cheats)
-                SoundFactory.Instance.PlayCoolFlute();
-            else
-                SoundFactory.Instance.PlayFlute();
+            SoundFactory.Instance.PlayFlute();
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Physics.KnockbackVelocity = Vector2.Zero;
@@ -22,42 +19,6 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public override void Death()
-        {
-            LoZGame.Instance.GameState = new DeathState();
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public override void OpenInventory()
-        {
-            LoZGame.Instance.GameState = new OpenInventoryState();
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public override void TitleScreen()
-        {
-            LoZGame.Instance.GameState = new TitleScreenState();
-        }
-
-        /// <inheritdoc></inheritdoc>
-        public override void TransitionRoom(Physics.Direction direction)
-        {
-            if (!(LoZGame.Instance.Players[0].State is SwallowedState)) // -- potential bug --
-            {
-                LoZGame.Instance.GameState = new TransitionRoomState(direction);
-            }
-        }
-
-        public override void Pause()
-        {
-            LoZGame.Instance.GameState = new PauseState(this);
-        }
-
-        public override void Options()
-        {
-            LoZGame.Instance.GameState = new OptionsState(this);
-        }
-
         public override void PlayGame()
         {
             LoZGame.Instance.GameState = new PlayGameState();
@@ -98,7 +59,7 @@
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
             LoZGame.Instance.GameObjects.Enemies.Draw();
             LoZGame.Instance.GameObjects.Entities.Draw();
-            InventoryComponents.Instance.DrawText();
+            LoZGame.Instance.Dungeon.DrawText();
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Draw();

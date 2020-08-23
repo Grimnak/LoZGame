@@ -34,7 +34,32 @@
         }
 
         /// <inheritdoc></inheritdoc>
+        public virtual void RestoreHealth()
+        {
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public virtual void ConfirmPurchase()
+        {
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public virtual void ConfirmReset()
+        {
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public virtual void ConfirmQuit()
+        {
+        }
+
+        /// <inheritdoc></inheritdoc>
         public virtual void TitleScreen()
+        {
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public virtual void ProfilesScreen()
         {
         }
 
@@ -44,18 +69,21 @@
         }
 
         /// <inheritdoc></inheritdoc>
-        public virtual void WinGame()
+        public virtual void TriforceState()
         {
         }
 
+        /// <inheritdoc></inheritdoc>
         public virtual void Pause()
         {
         }
 
+        /// <inheritdoc></inheritdoc>
         public virtual void Unpause()
         {
         }
 
+        /// <inheritdoc></inheritdoc>
         public virtual void Options()
         {
         }
@@ -70,6 +98,7 @@
         {
         }
 
+        /// <inheritdoc></inheritdoc>
         public virtual void CreditsScreen()
         {
         }

@@ -32,6 +32,18 @@
         }
 
         /// <inheritdoc></inheritdoc>
+        public override void ConfirmReset()
+        {
+            LoZGame.Instance.GameState = new ConfirmResetState(this);
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public override void ConfirmQuit()
+        {
+            LoZGame.Instance.GameState = new ConfirmQuitState(this);
+        }
+
+        /// <inheritdoc></inheritdoc>
         public override void Update()
         {
             lockout += transitionSpeed;
@@ -50,23 +62,24 @@
         {
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
             LoZGame.Instance.Dungeon.CurrentRoom.Draw(Point.Zero);
+            LoZGame.Instance.SpriteBatch.End();
 
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone, LoZGame.Instance.BetterTinting);
+            LoZGame.Instance.GameObjects.Draw();
+            LoZGame.Instance.SpriteBatch.End();
+
+            LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
+            LoZGame.Instance.GameObjects.Enemies.Draw();
+            LoZGame.Instance.GameObjects.Entities.Draw();
+            LoZGame.Instance.Dungeon.DrawText();
             foreach (IPlayer player in LoZGame.Instance.Players)
             {
                 player.Draw();
             }
-            LoZGame.Instance.GameObjects.Draw();
-            LoZGame.Instance.GameObjects.Entities.Draw();
-            LoZGame.Instance.GameObjects.Enemies.Draw();
-            InventoryComponents.Instance.DrawText();
-
             LoZGame.Instance.SpriteBatch.End();
 
-            // Ensure inventory objects draw above the game objects while transitioning.
             LoZGame.Instance.SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, DepthStencilState.DepthRead, RasterizerState.CullNone);
-
             InventoryComponents.Instance.DrawInventoryElements();
-
             LoZGame.Instance.SpriteBatch.End();
         }
     }

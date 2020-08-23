@@ -19,7 +19,7 @@
         /// <inheritdoc/>
         public void Execute()
         {
-            if (!(player.State is DieState || player.State is PickupItemState || player.State is GrabbedState || player.State is StunnedState) && !LoZGame.Instance.GameObjects.Entities.ProjectileManager.PrimaryAttackLock && player.DisarmedTimer <= 0)
+            if (!(player.State is DieState || player.State is PickupItemState || player.State is StunnedState) && !LoZGame.Instance.GameObjects.Entities.ProjectileManager.PrimaryAttackLock && player.DisarmedTimer <= 0)
             {
                 player.Attack();
                 LoZGame.Instance.GameObjects.Entities.ProjectileManager.AddItem(LoZGame.Instance.GameObjects.Entities.ProjectileManager.WoodenSword, player);

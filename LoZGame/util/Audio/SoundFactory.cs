@@ -11,11 +11,14 @@
         private bool musicEnabled = LoZGame.Music;
         private static SoundEffect titleSong = SoundEffect.FromStream(Properties.Resources.title_song);
         SoundEffectInstance titleLoop = titleSong.CreateInstance();
-        private static SoundEffect dungeonSong = SoundEffect.FromStream(Properties.Resources.dungeon_song);
+        private static SoundEffect dungeonSong = SoundEffect.FromStream(Properties.Resources.The_Legend_of_Zelda_Spirit_Tracks_Music___Tower_of_Spirits_Dungeon);
         SoundEffectInstance dungeonLoop = dungeonSong.CreateInstance();
         private static SoundEffect triforceTune = SoundEffect.FromStream(Properties.Resources.triforce_tune);
         SoundEffectInstance triforceLoop = triforceTune.CreateInstance();
-        private SoundPlayer credits = new SoundPlayer(Properties.Resources.CreditsTheme);
+        private static SoundEffect bossTune = SoundEffect.FromStream(Properties.Resources.The_Legend_of_Zelda__Spirit_Tracks_Soundtrack___66_Stagnox__Armored_Colossus);
+        SoundEffectInstance bossLoop = bossTune.CreateInstance();
+        private static SoundEffect lobbyTune = SoundEffect.FromStream(Properties.Resources.The_Legend_of_Zelda_Spirit_Tracks_Music___File_Select);
+        SoundEffectInstance lobbyLoop = lobbyTune.CreateInstance();
         private SoundEffect swordSlash = SoundEffect.FromStream(Properties.Resources.LOZ_Sword_Slash);
         private SoundEffect swordShoot = SoundEffect.FromStream(Properties.Resources.LOZ_Sword_Shoot);
         private SoundEffect laserBlast = SoundEffect.FromStream(Properties.Resources.SpartanLaser_mixdown);
@@ -178,6 +181,16 @@
             }
         }
 
+        public void PlayBossSong()
+        {
+            bossLoop.IsLooped = true;
+            bossLoop.Volume = 0.5f;
+            if (musicEnabled)
+            {
+                bossLoop.Play();
+            }
+        }
+
         public void PlayTriforceTune()
         {
             triforceLoop.IsLooped = true;
@@ -188,11 +201,13 @@
             }
         }
 
-        public void PlayCreditsTune()
+        public void PlayLobbyTune()
         {
+            lobbyLoop.IsLooped = true;
+            lobbyLoop.Volume = 0.5f;
             if (musicEnabled)
             {
-                credits.Play();
+                lobbyLoop.Play();
             }
         }
 
@@ -203,7 +218,12 @@
 
         public void StopCreditsSong()
         {
-            credits.Stop();
+            lobbyLoop.Stop();
+        }
+
+        public void StopBossSong()
+        {
+            bossLoop.Stop();
         }
 
         public void StopAll()
@@ -211,7 +231,8 @@
             titleLoop.Stop();
             dungeonLoop.Stop();
             triforceLoop.Stop();
-            credits.Stop();
+            bossLoop.Stop();
+            lobbyLoop.Stop();
         }
     }
 }

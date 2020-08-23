@@ -39,13 +39,35 @@
 
                     }
                 }
-                else if (door.DoorType == Door.DoorTypes.Locked && player.Inventory.HasKey())
+                else if (door.DoorType == Door.DoorTypes.Locked && (player.Inventory.HasKey() || player.Inventory.HasMagicKey))
                 {
                     player.Inventory.UseKey();
                     IDoor cousin = FindCousinDoor();
                     cousin.Open();
                     door.Open();
                     SoundFactory.Instance.PlayDoorUnlock();
+
+                    // Automatically travel through the door after unlocking.
+                    switch (door.Physics.CurrentDirection)
+                    {
+                        case Physics.Direction.North:
+                            AlignVertical(door.Physics, player.Physics);
+                            LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.North);
+                            break;
+                        case Physics.Direction.South:
+                            AlignVertical(door.Physics, player.Physics);
+                            LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.South);
+                            break;
+                        case Physics.Direction.East:
+                            AlignHorizontal(door.Physics, player.Physics);
+                            LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.East);
+                            break;
+                        case Physics.Direction.West:
+                            AlignHorizontal(door.Physics, player.Physics);
+                            LoZGame.Instance.GameState.TransitionRoom(Physics.Direction.West);
+                            break;
+
+                    }
                 }
                 else if (door.DoorType == Door.DoorTypes.Puzzle && door.IsSolved)
                 {

@@ -34,7 +34,17 @@
         bool IsTransparent { get; set; }
 
         /// <summary>
-        /// Gets or sets the value that the enemy spawned at.
+        /// Gets or sets a value indicating whether or not an enemy appears on-screen (but is still affected by projectiles).
+        /// </summary>
+        bool IsInvisible { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not an enemy behaves as a singular part of a larger boss fight.
+        /// </summary>
+        bool IsBossPart { get; set; }
+
+        /// <summary>
+        /// Gets the value that the enemy spawned at.
         /// </summary>
         Point SpawnPoint { get; }
 

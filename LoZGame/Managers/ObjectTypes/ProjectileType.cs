@@ -14,7 +14,9 @@
             BlueCandle,
             SwordBeam,
             SonicBeam,
-            WoodenSword
+            WoodenSword,
+            WhiteSword,
+            MagicSword
         }
     }
 }

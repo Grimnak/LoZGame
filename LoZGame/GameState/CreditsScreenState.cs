@@ -11,17 +11,21 @@ namespace LoZClone
     class CreditsScreenState : GameStateEssentials, IGameState
     {
         private readonly ISprite sprite;
-        private readonly Color spriteTint = LoZGame.Instance.DefaultTint;
+        private readonly Color spriteTint = Color.White;
         private int count;
         private int MAX = GameData.Instance.GameStateDataConstants.CreditsMAX;
 
         public CreditsScreenState()
         {
             count = 0;
-            SoundFactory.Instance.PlayCreditsTune();
+            SoundFactory.Instance.PlayLobbyTune();
             sprite = ScreenSpriteFactory.Instance.CreditsScreen();
             LoZGame.Instance.GameObjects.Clear();
             LoZGame.Instance.Players.Clear();
+            if (LoZGame.Instance.Dungeon.DungeonNumber == 9)
+            {
+                LoZGame.Instance.Profiles.ResetSaveFile();
+            }
         }
 
         /// <inheritdoc></inheritdoc>
@@ -31,6 +35,18 @@ namespace LoZClone
             SoundFactory.Instance.StopAll();
             
             LoZGame.Instance.GameState = new TitleScreenState();
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public override void ConfirmReset()
+        {
+            LoZGame.Instance.GameState = new ConfirmResetState(this);
+        }
+
+        /// <inheritdoc></inheritdoc>
+        public override void ConfirmQuit()
+        {
+            LoZGame.Instance.GameState = new ConfirmQuitState(this);
         }
 
         /// <inheritdoc></inheritdoc>

@@ -29,13 +29,17 @@ namespace LoZClone
         private const int KeeseFavorDiagonal = 3;
         private const int RopeFavorCardinal = 2;
         private const int StalfosFavorCardinal = 3;
-        private const int WallMasterFavorCardinal = 3;
+        private const int WallMasterFavorCardinal = 2;
         private const int WizzrobeFavorCardinal = 2;
         private const int ZolFavorCardinal = 3;
         private const int DarknutFavorCardinal = 3;
         private const int VireFavorCardinal = 3;
         private const int LikelikeFavorCardinal = 3;
         private const int PolsVoiceFavorCardinal = 3;
+        private const int GleeokHeadOffFavorCardinal = 8;
+        private const int PatraFavorCardinal = 3;
+
+        private const int NrmlMiniPatraOffset = 110;
 
         public int FireSnakeLength => FireSnakeLgth;
 
@@ -61,6 +65,8 @@ namespace LoZClone
 
         public int DodongoFavorCardinalValue => DodongoFavorCardinal;
 
+        public int GleeokHeadOffFavorCardinalValue => GleeokHeadOffFavorCardinal;
+
         public int FireSnakeFavorCardinalValue => FireSnakeFavorCardinal;
 
         public int FireSnakeFavorDiagonalValue => FireSnakeFavorDiagonal;
@@ -81,6 +87,8 @@ namespace LoZClone
 
         public int StalfosFavorCardinalValue => StalfosFavorCardinal;
 
+        public int PatraFavorCardinalValue => PatraFavorCardinal;
+
         public int WallMasterFavorCardinalValue => WallMasterFavorCardinal;
 
         public int WizzrobeFavorCardinalValue => WizzrobeFavorCardinal;
@@ -98,6 +106,8 @@ namespace LoZClone
         public int LikelikeFavorCardinalValue => LikelikeFavorCardinal;
 
         public int PolsVoiceFavorCardinalValue => PolsVoiceFavorCardinal;
+
+        public int NormalMiniPatraOffset => NrmlMiniPatraOffset;
 
     }
 }

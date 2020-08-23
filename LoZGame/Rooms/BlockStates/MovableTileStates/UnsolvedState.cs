@@ -20,7 +20,7 @@ namespace LoZClone
 
         public void Draw()
         {
-            sprite.Draw(Block.Physics.Location, LoZGame.Instance.DungeonTint, Block.Physics.Depth);
+            sprite.Draw(Block.Physics.Location, Block.SpriteTint, Block.Physics.Depth);
         }
 
         public void Update()

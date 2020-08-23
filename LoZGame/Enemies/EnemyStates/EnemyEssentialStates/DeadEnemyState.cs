@@ -45,7 +45,6 @@
 
             // use of 100 is not a magic number as it represents a percentage.
             float dropChance = 50 - (50 * health / maxhealth);
-            Console.WriteLine(dropChance);
             if (dropChance < GameData.Instance.InventoryConstants.MinHealthChance)
             {
                 dropChance = GameData.Instance.InventoryConstants.MinHealthChance;
