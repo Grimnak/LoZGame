@@ -1,6 +1,6 @@
 # The Legend of Zelda - Reimagined
 
-This build features all nine dungeons present in The Legend of Zelda (1986) with slightly modified gameplay and item placements.
+This build features all nine dungeons present in Nintendo's The Legend of Zelda (1986) with slightly modified gameplay and item placements.
 
 ## Authors:
 Eric Henderson (henderson.939@osu.edu)
