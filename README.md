@@ -1,4 +1,4 @@
-# The Legend of Zelda in Monogame
+# The Legend of Zelda - Reimagined
 
 This build features all nine dungeons present in The Legend of Zelda (1986) with slightly modified gameplay and item placements.
 
